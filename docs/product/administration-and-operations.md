@@ -60,12 +60,15 @@ Audit gerektiren admin mutasyonu audit yazılamıyorsa commit olmaz. Telemetry k
 
 ## Parametre sicili ve değişiklik yönetimi
 
+[Limit sözleşmesi](../architecture/resource-limits-and-abuse.md) rate, quota ve kapasite hatalarını ayırır. Yönetici kendi yetkili kapsamında kullanım/rezervasyon, ret sayacı, en eski iş ve limiter sağlığını görür; kullanıcı kendi işinin bekleme nedeni ve çözümünü görür. Trafik artışı tek başına kötü niyet kanıtı veya otomatik kalıcı ban nedeni değildir. Cooldown/pause dar kapsamlı ve audit'li; normal role/source izinleri geçerlidir.
+
 Her parametre: `key, type, unit, allowed_range, default_source, scope, effective_value, inherited_from, locked_reason, policy_revision, effective_at, restart_required`. Secret'ın kendisi değil `credential_ref` tutulur. Geçersiz veya desteklenmeyen değer reddedilir; sıfır, boş ve unlimited aynı yorumlanmaz. UI hem seçilen hem fiilen uygulanan değeri gösterir.
 
 | Parametre ailesi | Örnekler | Kim / sınır |
 |---|---|---|
 | İşleme ve maliyet | Profil, context limiti, günlük/run bütçesi, model allowlist, eşzamanlılık | Workspace/project; task override yalnız üst policy içinde. Harcama/egress izni ayrıca gerekir |
 | Dayanıklılık | Payload/queue/storage tavanı, retry sayısı/deadline, lease, batch sınırı | Kurulum tavanı; workspace daha daraltabilir. Keyfi limitsiz değer yok |
+| İşlem ve kötüye kullanım | Route hızı/burst, principal/workspace toplamı, concurrency, DB lock/query/transaction sınırı | Kurulum tavanı ve daraltılabilir scope; admin sınırsız değildir. Limit ayarı kaynak/egress izni vermez |
 | Veri yaşamı | Geçici payload, 1C arşivi, cache, telemetry, audit, backup/purge | Yetkili veri yöneticisi; OPEN-08. Kaynak sınıfları birbirine dönüştürülmez |
 | Erişim ve review | Üyelik, grant süresi, izinli connector/kaynak, korunan işlem policy'si | Workspace/project sahibi kendi kapsamı içinde; agent insan approval'ı veremez |
 | İşletim | Uyarı eşikleri, bakım, backup schedule, export hedefi | Kurulum yöneticisi; dış hedef/secret kurulumu ayrı açık işlem |

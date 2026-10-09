@@ -42,6 +42,8 @@ Query: yetkili project scope, filter, limit, snapshot/cursor ve context budget. 
 | STALE_BASE / STALE_IMPACT / POLICY_CHANGED | Yeni diff/evaluation gerekli; eski onay yeniden kullanılamaz |
 | IDEMPOTENCY_CONFLICT | Aynı anahtar farklı içerikte; yeni istek diye uygulanmaz |
 | BUDGET_EXCEEDED / CAPABILITY_UNAVAILABLE | Deferred/unsupported; sessiz ucuz ama yanlış fallback yok |
+| RATE_LIMITED / PAYLOAD_TOO_LARGE | İstek hızı veya boyutu aşıldı; admission reddi domain mutasyonu yapmaz; güvenli bekleme/küçültme açıklaması |
+| QUEUE_FULL / SERVICE_BUSY / STORAGE_QUOTA_EXCEEDED | Kapasite veya kota nedeniyle yeni kabul yok; önceden alınmış iş silinmez; receipt/coverage durumu açık |
 | TEMPORARY_FAILURE / STORAGE_UNAVAILABLE | Retry tavsiyesi; başarı iddiası yok |
 
 Network cevabı kaybolduğunda istemci yeni key üretmek yerine aynı command/key ile durumu sorgular. Schema major uyumsuzluğu açık reddedilir. Transport status mapping T04'te kararlaştırılır; burada var olmayan endpoint dokümante edilmez.
@@ -81,6 +83,8 @@ Yedek DB ile payload referansları tutarlı snapshot içermelidir; sadece DB dos
 Privacy purge ham payload, arama index'i, embedding/cache, export ve backup retention kapsamını değerlendirir. Event log'da ham özel veri tutulmaması esastır. Purge tombstone/audit kalır; erişilemeyen kaynak `redacted/unavailable` görünür. Hash'in kişisel veri açısından her zaman anonim olduğunu varsayma. Ayrıntılı politika [açık karar OPEN-08](../governance/open-decisions.md).
 
 ## 6. Kaynak sınırları ve işletim görünürlüğü
+
+[Limit ve kötüye kullanım sözleşmesi](resource-limits-and-abuse.md) request hızı/burst, eşzamanlılık, byte/iş kotası, maliyet ve DB transaction sınırlarını ayırır. Ortak insan/subagent bütçesi, admission sırası, belirsiz commit, limiter arızası ve admin müdahalesi orada tanımlıdır. Sayısal eşikler açık; temel kontroller ilk ingress'te gerekir.
 
 Her provider/iş için deadline, max_attempts, payload/batch boyutu, input/output token, max_cost, queue capacity, traversal node/edge budget tanımlanır. Değerler fixture/baseline sonrası versioned config olur; sonsuz/unbounded default kullanılmaz. Queue doluysa source drop değil backpressure ve coverage alarmı gerekir. Shutdown yeni lease alımını durdurur; commit edilen iş korunur, kalan lease yeniden alınabilir.
 

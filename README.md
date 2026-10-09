@@ -74,6 +74,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Ekip altyapısını hangi adımlarla yapacağız? | [Fazlı uygulama planı](docs/delivery/team-data-plan.md) · [18 ek kabul senaryosu](docs/quality/collaboration-validation.md) |
 | Codex/Claude Code nasıl bağlanacak? | [Kurulum, capture, MCP ve context](docs/architecture/connection-and-context.md) |
 | Fazla token tüketimi nasıl önlenecek? | [Limitler, cache, bütçe rezervasyonu ve ölçüm](docs/architecture/routing-token-economy.md) |
+| Rate limit, transaction ve kötüye kullanım nasıl yönetilecek? | [Katmanlı sınırlar, admin davranışı ve 10 kabul senaryosu](docs/architecture/resource-limits-and-abuse.md) |
 | İlişkiler ve iptaller grafikte nasıl görünecek? | [Görsel sözlük, geçmiş ve örnek diyagramlar](docs/product/graph-experience.md) |
 | İşin fikri nasıl olgunlaştı; hangi testler yapıldı? | [Bağlam hikâyesi, AC/DoD ve kanıt matrisi](docs/product/task-context-and-acceptance.md) |
 | Hangi kararlar kullanıcıyı bekliyor? | [Owner soruları ve teknik hazırlık](docs/delivery/decision-brief.md) |

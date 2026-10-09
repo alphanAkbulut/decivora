@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — İşlem limitleri ve kötüye kullanım tasarımı
+
+- [Limit sözleşmesi](../architecture/resource-limits-and-abuse.md): rate/burst, concurrency, byte/iş kotası, token/harcama ve DB transaction sınırları ayrıldı. Ortak insan/subagent bütçesi, receipt koruyan admission, limiter arızası, bounded log ve admin açıklamaları tanımlandı.
+- T04d/T06f/T08c/T24j ve LIM-01–10 planlandı; OWASP API4, RFC 6585 ve SQLite birincil belgeleri incelendi. Mekanizmalar öneri, eşikler OPEN-12/16 ölçüm kapısında; Q03 harcama/egress izni açık kalır.
+- Mevcut 30 Mermaid diyagramının topolojisi değiştirilmedi; ek sözleşme yeni servis/engine gerektirmez. Runtime, yük/saldırı testi veya çalışan limiter yok; T01 sıradaki hazırlık olarak kalıyor.
+- Doküman kontrolü geçti: 67 Markdown, 483 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. LIM-01–10 kimlikleri kontrol edildi; senaryolar not_run. Eşzamanlı ranking güncellemesi korunarak birleştirildi.
+
 ### 2026-10-10 — Biriken işler için açıklanabilir ranking tasarımı
 
 - [Ranking sözleşmesi](../product/priority-and-flow.md): 40+ task senaryosu, sekiz faktör, ilerlememe nedenleri, next actionable ve downstream etki açıklaması; canonical priority / önerilen rank / teknik execution order ayrıldı.

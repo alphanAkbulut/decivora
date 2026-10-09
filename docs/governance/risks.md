@@ -24,6 +24,10 @@
 
 Queue kapasitesi, lease, recovery ve purge ayrıntıları [runtime sözleşmesinde](../architecture/runtime-contracts.md). Roller sorumluluk önerisidir; bağımsız güvenlik/operasyon ekibinin atanmış olduğu iddia edilmez. Özellikle R16/R18 son release hardening'ine ertelenmez.
 
+## Kaynak tüketimi ve kötüye kullanım
+
+İstek seli, agent döngüsü, pahalı batch, storage/log şişmesi ve shared-provider bütçe aşımı için [limit ve kötüye kullanım sözleşmesi](../architecture/resource-limits-and-abuse.md) R06/R08/R11/R16'yı tamamlar. Kontroller ilk ingress/dispatch'te başlar; LIM-01–10 uygulamayla doğrulanacaktır. IP-only ve yalnız istek sayısı yeterli değildir. API limiter; fiziksel DB erişimini veya ağ düzeyinde DDoS'u tek başına engellediği iddiası taşımaz. Meşru burst ve ortak IP için yanlış throttle da ölçülür.
+
 ## Ham veri ve append-only gerilimi
 
 Ürün ilkesi normal iş geçmişinin sessizce değiştirilmemesidir; kişisel veri/secret'ın sonsuza kadar saklanması değildir. Payload şifreli ayrı storage'da, domain event gerekli minimum metadata ile tasarlanır. Kullanıcının yetkilendirdiği privacy purge/retention işlemi normal agent araçlarından ayrıdır; payload silinebilir ve tombstone/redaction olayı eklenir. Log'daki hash bile hassas sayılabilecekse tehdit modeline göre tutulur veya kaldırılır. Böyle bir yasal silme sonrası byte-for-byte tam replay mümkün olmayabilir; etkilenen tarihçe kapsamı görünür olmalıdır. Retention süreleri henüz seçilmedi.

@@ -440,3 +440,16 @@ Mevcut T11c/T20e/T24d MVP dilimleri [ranking sözleşmesi](../product/priority-a
 | T26b / T24d,T26,T18c,T21b | **PROPOSED / P2 adayı:** context-aware, açıklanabilir çok faktörlü scoring, critical-path veri yeterliliği, what-if ve gelişmiş ranking UX deneyi | FLOW-16–17 + FLOW-01–15 regresyonu; factor contribution/unknown, veri kalitesi, deterministik baseline kıyası, süre/maliyet/UX ölçümü, go/no-go ve fallback |
 
 P2 yerleşimi takvim veya uygulama taahhüdü değildir. Faz yalnız feasibility sonucuyla kesinleşir: veri/izin/context erişimi, kalite, ölçülen efor/maliyet ve 40+ görevde anlaşılabilirlik. Eksik süre/takvimle kesin gecikme hesabı yapılmaz. Scope/value kararını PO verir; scoring veya simülasyon canonical planı değiştirmez. Rollout shadow öneri → yetkili MVP board → feasibility sonrası P2; hata halinde manuel canonical sıraya dönüş. Feature kodu bu dokümantasyon görevinin kapsamı dışındadır.
+
+## İşlem limitleri ve kötüye kullanım dilimleri
+
+**TODO / teknik öneri; uygulanmadı.** [Limit sözleşmesi](../architecture/resource-limits-and-abuse.md) mevcut kaynak/izin/maliyet kontrollerini tamamlar. Temel koruma T24 pilotuna ertelenmez; her dilim kendi negatif testleriyle teslim edilir.
+
+| Dilim / bağımlılık | Küçük teslim | Kabul ve faz |
+|---|---|---|
+| T04d / T04b,T04c | Sonlu request/body/burst/concurrency config, erken admission, güvenli hata/transport eşlemesi | P1a ilk ingress: LIM-01/03/04 temel fixture; input limitleri pahalı parse/LLM'den önce, ret domain mutasyonu yapmaz |
+| T06f / T04d,T06d,T06e,T05b | Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure | P1a: LIM-05/08/09 yerel kısmı; receipt sonrası iş kaybolmaz, replay yan etkisiz |
+| T08c / T06f,T08b,T07b | Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı | P1a: LIM-02/06/07/08 sentetik; ilk model dispatch'i bu minimum rezervasyon guard'ına bağlı, T21b raporlama/settlement'i tamamlar |
+| T24j / T08c,T21b,T21c,T23e | Etkin limit/ret/rezervasyon admin görünümü ve tekrar üretilebilir limit-aşımı pilot raporu | P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run |
+
+T08c/T09b ilk model dispatch'inde provider/account ortak çıkış sınırını ve 429/retry davranışını da uygular. T28c bunu P3 dış yazma connector'larına taşır; C06 dağıtık atomik sayaç, tenant yük izolasyonu ve hosted ağ sınırını P4'te doğrular. T04/T06 temel ilkeleri, T08c tam kimlik/maliyet entegrasyonunu sağlar; deployment bu kapıları atlayamaz. Sayısal eşikler OPEN-12/16 ile seçilecek; ücretli veya dış sisteme yük testi yetkisi verilmiş değildir.

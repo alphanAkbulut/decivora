@@ -26,6 +26,8 @@ Bu açık sorular dokümantasyonun GitHub'a kaydedilmesini engellemez. Etkili ol
 
 ## Ekip ve veri altyapısı karar kapıları
 
+2026-10-10: OPEN-12/16, [rate/burst, concurrency, kapasite ve DB transaction limitlerini](../architecture/resource-limits-and-abuse.md) de kapsar. T04/T06 ilk dış girdi öncesi sonlu değerleri sentetik ölçümle hazırlar; gerçek pilot için limit-aşımı kanıtı gerekir. İlk model dispatch'i ayrıca bütçe guard ister. Kesin eşikler ve P4 dağıtık sayaç backend'i açık; kullanıcıya ölçümsüz dakika/istek sayısı seçtirilmez. Bu belge Q03 harcama/egress iznini vermez.
+
 2026-10-10: OPEN-12 için [olay/profil ve sayısal zamanlama deney adayları](../architecture/execution-and-integrations.md#3-aralıklar-ve-takvim) hazırlandı. Kesin debounce/max-wait, polling, lease/deadline ve bakım değerleri fake-clock/yük/gerçek capability ölçümüyle seçilecek; bunlar yeni kullanıcı onayı veya aktif takvim değildir. OPEN-02/T03 ardından fiziksel [ER/FK/transaction şeması](../architecture/data-relationships.md) migration'a dönüşür. Dış provider destekleri bilinmeden kesin endpoint/timeout uydurulmaz.
 
 | ID | Karar | Önerilen yön | Ne zaman / kanıt |

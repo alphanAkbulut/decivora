@@ -65,6 +65,8 @@ Alt işler [team-data-plan](../delivery/team-data-plan.md), MU senaryoları [col
 
 ## Bağlantı, token ve graph takip isteği
 
+**2026-10-10 limit/kötüye kullanım isteği:** CAP-05,CST-01/02,AUD-01,GOV-01,TEAM-01 → ENG-01/06/07/09 ve admin yüzeyi → [limit sözleşmesi](../architecture/resource-limits-and-abuse.md) → T04d/T06f/T08c/T24j, C06 → LIM-01–10. İhtiyaç kullanıcıdan; mekanizma/eşik önerisi ile çalışan kontrol ayrıdır. Ana scope/engine sayısını artırmaz.
+
 **Q09/DEC-17 takip kararı:** GRF-01,APR-02,UX-02,ROU-01 / F11,F12 → ENG-05/06/09/10 → [öncelik ve akış](../product/priority-and-flow.md) → T11c,T20e,T24d / FLOW-01–08. Kabul edilen öncelik ilkesi; algoritma/UX öneridir, uygulama veya ölçüm yoktur. [Yönetim planı](../delivery/project-management.md) Scrum kaynaklarını ve bireysel çalışma uyarlamasını ayırır.
 
 | Mevcut kapsam / özellik | Ayrıntı | İş / kontrol |
