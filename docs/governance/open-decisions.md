@@ -13,6 +13,8 @@
 | OPEN-09 | Ölçüm eşikleri? | Ölçüm belgesindeki pilot hedefleri | Golden corpus baseline sonrası |
 | OPEN-10 | Ücretli model ve bütçe? | Provider bağımsız usage, explicit limit | API-backed deneme öncesi |
 | OPEN-11 | Public/core/commercial sınırı? | Yerel çekirdek açık aday, servisler ayrı aday | Talep ve lisans incelemesi sonrası |
+| OPEN-12 | Queue/lease/timeout/traversal ve recovery limitleri? | Sınırlı versioned config; ayrı cursors; snapshot backup; RPO/RTO ölçülsün | T04/T06 fixture ve T23 gerçek veri öncesi; ADR-0007 |
+| OPEN-13 | Approval graph snapshot ve verifier yetkisi? | P1 project knowledge revision; insan/agent/runner capability ayrı | T08/T12/T14; ADR-0008; T24 false-stale ölçümü |
 
 Varsayımlar: ilk kullanıcı tek kişi; local-first kabul edilebilir; ilk dil Türkçe dokümantasyon ve İngilizce teknik ID'ler; otomatik capture için bir defalık izin/binding kurulabilir. Bunlar kanıt veya alınmış ticari karar değildir.
 

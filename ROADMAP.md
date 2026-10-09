@@ -22,4 +22,24 @@ flowchart LR
 
 Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
 
+```mermaid
+flowchart TB
+    S[Kaynak konuşma ve tam vizyon] --> C[T01 Corpus ve oracle]
+    C --> A[T02 Gerçek adapter capability]
+    A --> D{T03 Build veya extend kararı}
+    D -->|Karar ve izinler hazır| CORE[T04-T08 Kimlik, kalıcı source, log, policy]
+    D -->|Kanıt yetersiz| EXP[Küçük ek deney ve açık karar]
+    EXP --> D
+    CORE --> INT[T09-T14 Extraction, reconciliation, impact, approval, verification]
+    INT --> G{T15 Teknik kanıt kapısı}
+    G -->|Geçti| MVP[T16-T23 İki adapter, MCP, UX, ekonomi, restore]
+    G -->|Başarısız| FIX[Kanıta bağlı küçük düzeltme]
+    FIX --> G
+    MVP --> PILOT{T24 MVP ve kullanıcı pilotu}
+    PILOT -->|AC ve kalite kanıtlı| NEXT[T25-T30 Chat, entegrasyon, release, ekip]
+    PILOT -->|Eksik capability| LIMITED[Sınırlı pilot ve açık gap]
+```
+
+Güvenlik/kalıcı işleme/graph race sözleşmeleri ilk çekirdek dilimlerinde doğrulanır; son release'e bırakılmaz. Çalışma ritmi ve roller [kısa proje yönetim planında](docs/delivery/project-management.md).
+
 Başarısız kapıda: neden ve kanıt kaydedilir, küçük düzeltme işi açılır, faz geçişi bekler. Bir yetenek platformca engellenirse full scope kaydında kalır; sınırlı sürüm adı ve fallback açıkça belirtilir.

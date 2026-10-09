@@ -33,9 +33,9 @@ Bu örnek sentetiktir, runtime şema uygulaması değildir. Zaman damgası sıra
 
 ## Atomik uygulama ve concurrency
 
-1. Capture endpoint doğrulanmış kaynak zarfını dayanıklı storage'a yazar; bundan sonra ack verir.
-2. Worker yeni aralığı işler, extraction sonucu ve source→record mapping'i aynı commit'te saklar. Cursor başarıyla kalıcı yazılan aralığa ilerler. Model hatasında cursor atlamaz.
-3. Change set uygulanırken project/actor policy, digest, tüm base revisions, edge referansları ve AC sürümleri kontrol edilir.
+1. Capture endpoint doğrulanmış kaynak zarfını ve job'ı dayanıklı storage'a yazar; bundan sonra receipt verir. Adapter ingest cursor'ı bu receipt sonrası ilerler.
+2. Worker yeni aralığı işler, extraction sonucu ve source→record mapping'i aynı commit'te saklar. Ayrı processing cursor yalnız başarıyla kalıcı yazılan kesintisiz aralığa ilerler. Model hatasında başarısız aralık atlanmaz; lease/fencing eski worker'ın yazmasını engeller.
+3. Change set uygulanırken project/actor policy, digest, tüm base revisions, graph knowledge revision, edge referansları ve AC sürümleri kontrol edilir. Preview sonrası eklenen gerekçe edge'i eski onayı stale yapar.
 4. Tek transaction içinde domain events, projection değişiklikleri ve outbox kayıtları yazılır. Kısmi create/link olmaz.
 5. Aynı idempotency key ve aynı digest önceki sonucu döndürür; farklı digest conflict verir. Aynı record'a eşzamanlı yazan agent'lardan biri version conflict alır.
 6. Dış API transaction'ın parçası değildir. Outbox consumer ayrı retry/idempotency ile çalışır; local success dış sistem success diye gösterilmez.
@@ -56,6 +56,6 @@ EVENT-003 silinmez. Eski sistemden gelen “done” kaydı ayrıca legacy/unveri
 
 ## Projection ve bütünlük
 
-Projection tabloları: records, record_versions, relationships, approvals, evidence_links, processing_state, project_bindings. Replay yalnız saklı domain olaylarına dayanır; LLM'i tekrar çağırmaz. Projector version ve schema migration kaydedilir. Snapshot replay'i hızlandırır fakat source of truth olmaz.
+Projection tabloları: records, record_versions, relationships, approvals, evidence_links, processing_state, project_bindings. Replay yalnız saklı domain olaylarına dayanır; LLM, verifier veya dış delivery çağırmaz. Outbox kaydının yeniden projekte edilmesi teslim edilmiş işlemin yeniden gönderilmesi değildir. Projector version ve schema migration kaydedilir. Snapshot replay'i hızlandırır fakat source of truth olmaz. Recovery ve iki cursor ayrıntısı [runtime sözleşmelerindedir](runtime-contracts.md).
 
 Normal agent API'sinde UPDATE/DELETE event ve arbitrary SQL yoktur. Ayrı process/file izinleri, hash chain ve dış checkpoint/backup izinsiz değişikliği tespit etmeye yardım eder. Aynı yöneticinin DB ve tüm hash'leri değiştirmesine karşı mutlak garanti yoktur. Restore drill sırasında event sayısı, son sequence ve projection digest karşılaştırılır.

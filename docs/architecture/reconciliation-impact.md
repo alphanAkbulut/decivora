@@ -25,6 +25,8 @@ Sadece yeni mesajları okumak eski bağlamı unutturabilir: extraction sırasın
 
 Preview, önerilen yeni kararın **varsayımsal** etkisini gösterebilir. Apply yalnız onaylı change set digest'i ve güncel revisions üzerinde çalışır. Karar onayı ile ona bağlı task değişiklikleri aynı change set'te atomik uygulanabilir; alternatif olarak karar uygulanır ve impact incelemesi pending kalır. Hangi yol seçildiyse UI açık gösterir.
 
+Pending impact, etkilenen işin uygulanabilirliği belirsiz demektir; next-ready/auto verification bunu geçmez. Preview `knowledge_revision` taşır; sonradan eklenen veya değişen gerekçe/edge varsa eski onay reddedilir. [ADR-0008](adr/0008-approval-snapshot-authority.md) bu yarışın korumasını, [diyagram 5](diagrams.md) örneğini açıklar. Bilinen etki kümesinin dışındaki eksik bağlar için coverage ve periodic audit gerekliliği sürer.
+
 ## Önerilen algoritma
 
 ```text

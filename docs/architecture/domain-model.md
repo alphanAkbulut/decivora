@@ -8,11 +8,17 @@
 
 `ProjectBinding`: provider, account scope, workspace/repo/session/conversation referansı, project_id, bound_by, valid_from/to. Aynı repo çok projeyi içeriyorsa açık seçim gerekir. Repo olmayan projede conversation binding yeterlidir.
 
+Binding değişince yeni epoch yalnız yeni kaynak olaylarına uygulanır. Önceki kaynak/record proje geçmişi sessizce taşınmaz. Yanlış bağlanmış geçmiş veri için ayrı yetkili transfer/correction önerisi, provenance ve etki review gerekir. Quarantine'dan ilk bağlama da kaydedilir; eski session adını yeniden kullanmak eski veriye yetki vermez.
+
 `KnowledgeRecord`: ID, type, title, description, version, source_refs, rationale, tags, created_by, timestamps. Tipler: Idea, Finding, Risk, Requirement, Task, Prompt, DocumentInstruction, Decision, PendingDecision, Artifact. Execution ve Evidence ayrı nesnelerdir. Aday birleşmesi kimlik ve provenance kaybettirmez.
 
 `Evaluation`: input source spans, retrieved record revisions, extractor/prompt/model versions, recommendation, rationale, counter_evidence, uncertainty, cost reference. Model confidence ölçülmemişse olasılık gibi sunulmaz.
 
+`ImpactRun`: project, trigger/source revisions, knowledge snapshot revision, engine version, visited/remainder frontier, reason paths, coverage, candidate operations ve status. Aynı input snapshot tekrarında önceki sonuç referanslanabilir; yeni engine sürümü eski değerlendirmeyi silmez. Evidence sonucu ve impact sonucu ayrı nesnedir.
+
 `ChangeSet`: operations, local temp IDs, ilişkiler, base revisions, source IDs, evaluation, idempotency key, digest, proposed/approved/applied/rejected/deferred/stale/failed durumu. Operasyonlar create/update/link/supersede/mark_obsolete/progress/verify/invalidate. Modelin arbitrary SQL üretmesi yasak.
+
+Karar/edge/justification değişimlerinde artan `Project.knowledge_revision`, impact proposal'a bağlanır; apply öncesi kontrol yeni eklenen gerekçeyi de yakalar. Detay [ADR-0008](adr/0008-approval-snapshot-authority.md). Kayıtların yalnız bugünkü aktif sürümü değil, kullanıldıkları revision ilişkileri korunur.
 
 ## Ayrı durum eksenleri
 

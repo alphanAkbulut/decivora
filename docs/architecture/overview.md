@@ -2,6 +2,8 @@
 
 **Statü: tasarım; uygulanmadı.** Tek yerel servis, SQLite ve açık modül sınırları başlangıç önerisidir. Mikroservis, graph database veya ayrı vector database ilk gün gerekli kabul edilmez. [ADR'ler](adr/README.md) seçenekleri ve doğrulama koşullarını kaydeder.
 
+Devamı: [Engine ve alias kataloğu](engines.md) sorumlulukları; [runtime sözleşmeleri](runtime-contracts.md) ack, concurrency, auth ve recovery'yi; [diyagram atlası](diagrams.md) bağlam, ER ve yaşam döngülerini açıklar. [Mimari inceleme](../quality/completeness-review.md) açık risk ve uygulama kapılarını kaydeder.
+
 ```mermaid
 flowchart TB
     CC[Claude Code adapter] --> I[Ingress ve proje binding]

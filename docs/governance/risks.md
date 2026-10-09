@@ -18,6 +18,11 @@
 | R14 | Lisans/marka çakışması | Reuse inventory, geçici ad, release gate | Owner ve uygun hukuk incelemesi |
 | R15 | Runtime API/format sürümü değişir | Version pin, adapter contract, fail-visible | Upgrade compatibility suite |
 | R16 | Loopback servis kötü amaçlı web'den çağrılır | Auth, origin/CSRF, least privilege | Yetkisiz read/write testleri |
+| R17 | Preview sonrası yeni gerekçe edge'i yanlış obsolete üretir | Knowledge revision guard; yeni diff/onay | V22; ADR-0008; engineering |
+| R18 | Verifier transcript komutunu yetkisiz çalıştırır | Ayrı runner capability, izinli workspace/check, timeout | V24; ilk verifier diliminde engineering |
+| R19 | Restore/replay dış işlemi tekrar gönderir | Etkisiz replay, delivery ledger, restore sonrası outbox pause | V27; ADR-0007; operations |
+
+Queue kapasitesi, lease, recovery ve purge ayrıntıları [runtime sözleşmesinde](../architecture/runtime-contracts.md). Roller sorumluluk önerisidir; bağımsız güvenlik/operasyon ekibinin atanmış olduğu iddia edilmez. Özellikle R16/R18 son release hardening'ine ertelenmez.
 
 ## Ham veri ve append-only gerilimi
 

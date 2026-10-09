@@ -20,6 +20,8 @@
 
 mai-mcp'nin bounded read ve supersession beyanı özellikle yakın bir rakip davranışıdır; “karar farkındalığı yalnız bizde” sonucu çıkarılamaz. Claude Task Tracker, ProblemFactory projesidir; Anthropic'in resmî ürünü olarak sunulmaz. Bugünkü Beads storage yaklaşımı eski konuşmadaki sürüm varsayımlarıyla eşitlenmez.
 
+[Farklılaşma belgesi](../product/differentiation.md), bu referansların her biriyle karşılaştırılacak ürün sözleşmesini ve altı yanlışlanabilir hipotezi tanımlar. Cortex, mai-mcp, Tracker ve OpenSpec ana kaynakları 2026-10-09 ikinci incelemede yeniden açıldı; runtime doğrulaması statüsü değişmedi.
+
 ## Konuşmada geçen ek referansları kaybetmeme havuzu
 
 | Referans | Neden saklandı | Bu turdaki kanıt seviyesi |

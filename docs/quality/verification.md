@@ -36,6 +36,18 @@ Bugün uygulama yoktur. Aşağıdaki suite **uygulanacak test planıdır**. Dok�
 | V16 | Prompt superseded; eski prompt yine çalıştırıldı | Execution geçmişi korunur; stale intent uyarısı |
 | V17 | Backup restore; hash zinciri bozulmuş | Sağlıklı diye açılmaz; audit/restore farkı görünür |
 | V18 | Aynı repo/isim, iki proje, worktree değişimi | Açık binding ve izolasyon / AC-01 |
+| V19 | Ingress commit sonrası receipt kaybı; receipt öncesi disk dolması | İlkinde aynı key aynı sonucu döndürür; ikincisinde başarı ack/cursor ilerleme yok / AC-02/14 |
+| V20 | Worker lease bitti; eski worker geç sonuçla döndü | Fencing eski write'ı reddeder; geçerli worker tek etki üretir / AC-02 |
+| V21 | İşleme aralığı başarısız, sonraki aralık tamam; session-end yok | Contiguous watermark boşluğu atlamaz; idle flush, gap ve bounded retry görünür / AC-14 |
+| V22 | Impact preview sonrası task'a geçerli OR gerekçesi eklendi | STALE_IMPACT; graph revision yenilenir; task yanlış obsolete olmaz / AC-05/06 |
+| V23 | Agent approved=true/actor=human gönderir; onay sonrası policy değişir | Kimlik spoof reddi; policy değişimi eski onayı stale yapar / AC-01/06 |
+| V24 | Transcript test komutu içerir; test sürerken artifact/AC değişir | Yetkisiz komut çalışmaz; eski snapshot kanıtı yeni revision'ı verified yapmaz / AC-04/08 |
+| V25 | Query cursor başka projede kullanılır; session yeni projeye bağlanır | Query reddi; eski kayıt/provenance sessiz taşınmaz; yeni binding epoch / AC-01 |
+| V26 | Payload purge, arama cache'i ve backup restore | Politika kapsamındaki türevler temizlenir/retention'a alınır; tombstone/audit; erişilemeyen kaynak açık |
+| V27 | Replay/restore sonrası eski outbox ve verifier olayları | LLM/test/external write yeniden tetiklenmez; uzak delivery reconciliation sonrası yetkili devam / AC-10 |
+| V28 | Karar onaylı; task impact review pending veya traversal incomplete | Known affected task ready gösterilmez; frontier ve pending görünür; tarihsel başarı korunur / AC-05/09 |
+
+V19–V28 ikinci mimari incelemede eklenen **test planlarıdır**; bu belge revizyonunda çalıştırılmadılar. Karşılıkları [runtime sözleşmelerinde](../architecture/runtime-contracts.md) ve [görev eklerinde](../delivery/backlog.md).
 
 ## Kabul raporu formatı
 

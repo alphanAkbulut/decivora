@@ -33,6 +33,63 @@ if len(task_ids) != 30 or len(set(task_ids)) != 30:
 for ac in range(1, 15):
     if f'AC-{ac:02}' not in (ROOT / 'docs/product/mvp.md').read_text():
         errors.append(f'missing AC-{ac:02}')
+
+# Referential coverage, not proof that natural-language requirements are complete.
+feature_text = (ROOT / 'docs/product/feature-catalog.md').read_text()
+engine_text = (ROOT / 'docs/architecture/engines.md').read_text()
+evolution = (ROOT / 'docs/discovery/evolution.md').read_text()
+verification = (ROOT / 'docs/quality/verification.md').read_text()
+traceability = (ROOT / 'docs/quality/traceability.md').read_text()
+features = set(re.findall(r'^\| (F\d+) ', feature_text, re.M))
+engines = set(re.findall(r'^\| (ENG-\d+) ', engine_text, re.M))
+source_stages = set(re.findall(r'^\| (E\d+) \|', evolution, re.M))
+scenarios = set(re.findall(r'^\| (V\d+) \|', verification, re.M))
+for label, actual, expected in [
+    ('features', features, {f'F{i:02}' for i in range(1, 18)}),
+    ('engines', engines, {f'ENG-{i:02}' for i in range(1, 11)}),
+    ('source stages', source_stages, {f'E{i:02}' for i in range(1, 15)}),
+    ('verification scenarios', scenarios, {f'V{i:02}' for i in range(1, 29)}),
+]:
+    if actual != expected:
+        errors.append(f'{label} mismatch: missing {sorted(expected-actual)}, extra {sorted(actual-expected)}')
+trace_ids = []
+covered_features, covered_engines, covered_stages = set(), set(), set()
+for line in traceability.splitlines():
+    if not re.match(r'^\| [A-Z]+-\d+ \|', line):
+        continue
+    fields = [field.strip() for field in line.strip('|').split('|')]
+    if len(fields) != 6:
+        errors.append(f'invalid traceability row: {line}')
+        continue
+    scope_id, source, feature, engine, task, check = fields
+    trace_ids.append(scope_id)
+    for label, cell, pattern, allowed in [
+        ('source', source, r'\bE\d+\b', source_stages),
+        ('feature', feature, r'\bF\d+\b', features),
+        ('engine', engine, r'\bENG-\d+\b', engines),
+        ('task', task, r'\bT\d+\b', set(task_ids)),
+        ('scenario', check, r'\bV\d+\b', scenarios),
+    ]:
+        refs = set(re.findall(pattern, cell))
+        if refs - allowed:
+            errors.append(f'{scope_id}: unknown {label} refs {sorted(refs-allowed)}')
+        if label in {'source', 'feature', 'task'} and not refs:
+            errors.append(f'{scope_id}: missing {label} mapping')
+        if label == 'source': covered_stages.update(refs)
+        if label == 'feature': covered_features.update(refs)
+        if label == 'engine': covered_engines.update(refs)
+    if not check:
+        errors.append(f'{scope_id}: missing acceptance evidence plan')
+if set(trace_ids) != scope_ids or len(trace_ids) != len(scope_ids):
+    errors.append('traceability must map each scope ID exactly once')
+for label, covered, defined in [
+    ('feature', covered_features, features),
+    ('engine', covered_engines, engines),
+    ('source stage', covered_stages, source_stages),
+]:
+    if covered != defined:
+        errors.append(f'unmapped {label}: {sorted(defined-covered)}')
+
 for path in ROOT.rglob('*.json'):
     json.loads(path.read_text())
 fixture = json.loads((ROOT / 'examples/impact-scenario.json').read_text())
@@ -47,4 +104,6 @@ if errors:
     sys.exit(1)
 print(f'PASS: {len(markdown)} Markdown files, {links} local links, '
       f'{len(scope_ids)} scope IDs, {len(task_ids)} tasks, 14 MVP criteria; JSON valid.')
+print(f'Traceability: {len(source_stages)} source stages, {len(features)} features, '
+      f'{len(engines)} engines, {len(scenarios)} planned verification scenarios.')
 print('Not tested: application runtime, adapters, model quality, Mermaid rendering.')

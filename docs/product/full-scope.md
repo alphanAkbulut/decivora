@@ -2,6 +2,8 @@
 
 Tüm satırlar **planlanmıştır**; bu belge çalışan özellik listesi değildir. P0 keşif, P1a teknik kanıt, P1b MVP, P2 kapsam genişletme, P3 maliyet/entegrasyon, P4 ekip/ürünleşme. Ayrıntılı görev eşlemesi [backlog](../delivery/backlog.md) içindedir.
 
+Kullanıcı deneyimi [özellik kataloğunda](feature-catalog.md); konuşma→özellik→engine→görev→doğrulama eşlemesi [izlenebilirlik matrisinde](../quality/traceability.md). Bunlar kapsamı daraltmaz veya uygulanmışlık statüsünü değiştirmez.
+
 | ID | Korunan yetenek / iş kuralı | İlk teslim / genişleme | Kabul işareti |
 |---|---|---|---|
 | CAP-01 | Fikir, finding, risk, gereksinim, task, prompt, belge talimatı, karar ve bekleyen karar yakalama | P1a/P1b | Kaynak mesajı olan tipli aday kayıt |

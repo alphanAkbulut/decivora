@@ -17,6 +17,12 @@
 | Token overhead | Capture/eval/tool schema/brief/retry toplamı / anlamlı event | Önce baseline; kalite eşitliğinde iyileşme |
 | Capture latency | Durable ingest→review-ready süresi p50/p95 | İlk hedef p95 ≤ 60 sn; offline ayrı |
 | Reliability | Tekrar/çökme sonrası kayıp ve duplicate domain effect | Fault suite'te 0 |
+| False-stale approval | Yeniden hesaplanınca semantik sonucu değişmeyen stale proposal / tüm stale proposal | Önce baseline; kaba graph revision kontrolünün UX maliyeti ölçülür |
+| Review backlog age | Açık PendingDecision/ChangeSet yaşının p50/p95'i; deferred ayrı | Önce baseline; bildirim sayısı ile birlikte yorumla |
+| Ready precision | Gold'a göre gerçekten hazır önerilen task / tüm ready önerileri | Zorunlu pending-impact/unknown fixture'da yanlış ready 0 |
+| Processing health | Oldest queued age, gap sayısı, quarantine ve retry / kaynak türü | Limit ve alarm eşikleri T06/T24 baseline sonrası; healthy tek puana indirgenmez |
+
+Farklılaşma hipotezlerinin deney karşılığı [H1–H6 tablosunda](../product/differentiation.md). Etiketleyiciler false-stale/ready gold sonucunu sistem çıktısından bağımsız belirler. Bu ek metrikler için sayısal ürün SLA'sı henüz yoktur.
 
 ## Deney tasarımı
 
