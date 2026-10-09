@@ -31,3 +31,7 @@ Proje belirsizse global quarantine inbox kullanılır; kayıtlar kullanıcı se�
 P0 iki coding yüzeyinin teknik keşfi. P1b coding capture ve aynı sağlayıcı Chat→Code aktarımında provenance zinciri; desteklenmeyen normal chat için import. P2 sağlayıcılar arası sohbet sürekliliği ve izinli pasif yöntemler. Manuel import otomatik capture gibi pazarlanmaz. Tarayıcı DOM scraping kalıcı ürün mimarisi olarak benimsenmiş değildir.
 
 Her adapter için: yeni mesaj, assistant final, tool failure, stop olmadan kapanma, offline, retry, edit, transcript rotation, compaction, truncation, subagent, başka proje ve redacted payload test edilir. Her test gerçek sürüm/build, hesap yetkisi, fixture ve sonucu kaydeder.
+
+## Kurulum ve context protokolü
+
+[Bağlantı sözleşmesi](connection-and-context.md) kullanıcı kurulumunu, MCP/capture/UI ayrımını, tools-only durumunu, stdio/HTTP adaylarını, health/disconnect ve delta context akışını somutlaştırır. Bağlı MCP, pasif capture kanıtı değildir. Kaynak iki yoldan gelirse model çağrısı/öneri duplicate olmamalı; CON-01–CON-08 ile doğrulanır. Paket/komut ve kurulu host testleri henüz yoktur.

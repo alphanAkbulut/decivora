@@ -42,3 +42,7 @@ PendingDecision: açık soru, alternatifler, öneri/gerekçe, source, owner, blo
 ## Birden fazla reviewer ve agent
 
 [Yetki tasarımındaki](../architecture/identity-access.md) rol/grant ve kaynak görünürlüğü server'da kontrol edilir. Ekipte onay ekranı öneren insan/agent, kimin adına çalıştığı, bağımsız reviewer gereksinimi ve erişim eksikliğini gösterir. Aynı insanın iki oturumu bağımsız review değildir. İlk bireysel pilot açık single-owner policy ile ilerler; gelecekteki iki insan şartı bugünkü kullanımı kilitlemez. Yetki veya kaynak ACL değişince eski approval yeniden değerlendirilir.
+
+## İlişkiler, iptal ve geçmiş
+
+[Graph deneyimi](graph-experience.md) task bağlamını, typed edge'leri, AND/OR gerekçelerini ve before/after görünümünü tanımlar. İptal edilen task'ın bağlantıları silinmez; task durumu ayrı rozettir. Sona erdirilen ilişki aktif traversal'dan çıkar fakat geçmişte kesikli çizgi ve açık durum/gerekçe etiketiyle gösterilir. Çarpı/renk tek başına bilgi taşımaz. Q04 ile güncel işler + seçili işin bağlamı seçildi; tam geçmiş ayrıca açılır. [İşin olgunlaşma ve kabul görünümü](task-context-and-acceptance.md) AC/DoD ve test raporunu tamamlar.

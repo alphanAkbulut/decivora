@@ -48,3 +48,9 @@ P1a: invariants ve sentetik güvenlik suite'i. P1b: AC-01..14, iki adapter rapor
 [Storage kapasite planındaki](../architecture/storage-memory-capacity.md) workload/ortam protokolüne göre DB read/commit p50/p95, writer wait, queue büyümesi, WAL/disk alanı ve backup/restore süresi ölçülür. Sayısal başlangıç eşikleri kalibrasyon hedefidir; baseline yok. Yetki revocation sonrası yanlış servis edilen kayıt/egress sayısı sıfır olmalı; negatif oracle MU01–MU07 ile değerlendirilir. Cache invalidation ve stale approval kaynaklı kullanıcı yükü de ölçülür.
 
 Retention UI'sında kullanıcı hangi içeriğin kalacağını/kimle paylaşılacağını doğru anlıyor mu, expired raw kaynak kaç review'u engelliyor, dedup yeniden öneri oranı artıyor mu soruları T24b pilot çıktısıdır. Ekipte grant yönetimi/onay bekleme süresi, offboarding tamamlanma ve tenant başına iş bütçesi C06'ya eklenir. Bunların hiçbiri bugün ölçülmüş sonuç değildir.
+
+## Token ve graph deney paketi
+
+[TOK kabul planı](../architecture/routing-token-economy.md) aynı corpus ve kaliteyle full-context baseline karşılaştırmasını; host toplamının bilinmediği durumda yalnız gözlenebilen ek yükün raporlanmasını tanımlar. Cache write/read ve reasoning sınıfları provider'a göre eşlenir. Graph yükleme/filtre/zoom model çağrı sayısı sıfır olmalı.
+
+[GUX senaryolarında](../product/graph-experience.md) kullanıcıya sentetik iptal/obsolete/verified ve ended/invalidated ilişki örnekleri verilir; “ne oldu, neden oldu, ne hâlâ gerekli?” cevapları, yanlış yorum sayısı ve açıklamaya ulaşma adımları ölçülür. Q04 tercihine göre başlangıç görünümü değişebilir; tarihçe ve erişilebilirlik kabulü korunur. Sonuç yoktur.

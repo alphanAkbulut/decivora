@@ -32,3 +32,17 @@ Q01 müşteri talebi veya pazar segmenti doğrulaması değildir. Q02'de mevcut 
 4. Bağımsız hazırlığı sürdür. T01/T02/T03 tamamlanmadan uygulama veya benchmark sonucu varmış gibi iş kapatma.
 
 Bağlantılar: [açık kararlar](../governance/open-decisions.md), [kullanıcı araştırması](../discovery/user-research.md), [benchmark bulguları](../discovery/benchmark-findings.md), [proje yönetim planı](project-management.md).
+
+## UI ve token tercihi — takip soruları
+
+2026-10-09 kullanıcının talebi üzerine iki somut seçenek soruldu ve yanıt alındı. Kabul edilen ürün tercihi ile hâlâ açık dosya/harcama kararı aşağıda ayrılır.
+
+| ID | Soru / seçenekler | Durum | Etkisi |
+|---|---|---|---|
+| Q04 | Graph ilk açılış ve olgunlaşma görünümü | **Kabul edildi:** güncel işler + seçili işin bağlamı; fikirlerin evrimi, önemli değişimlerin gerekçesi ve task AC/DoD/test görünürlüğü isteniyor | Default graph + context/acceptance sekmesi; tarihçe korunur |
+| Q05 | Proje/görev analiz sıklığı | **Kabul edildi:** kullanıcı proje başlangıcında seçebilmeli, task bazında değiştirebilmeli ve ileride yeni yaklaşım seçebilmeli | Tek global profil dayatılmaz; tavan/egress onayı değişmez |
+| Q06 | Ana iş milestone'larında context özeti + otomatik sürümlü Markdown mı; yoksa yalnız istek üzerine export mu? | Soruldu; cevap bekleniyor | Uygulama içi context her iki seçenekte var; otomatik Git push yok |
+
+Q02 ilk coding/chat yüzeyleri/OS ve Q03 dış model/veri/aylık bütçe soruları hâlâ açık. Tekrar sorularak yeni yanıt varmış gibi yazılmadı. Q05 tercihi Q03'ün yerine geçmez; ücretli arka plan modeli Q03 kararı olmadan açılmaz. Sayısal token/batch sınırlarını kullanıcıya seçtirmek yerine engineering deneyleriyle kalibre edeceğiz.
+
+Öneri paketleri: [connection/context](../architecture/connection-and-context.md), [token ekonomisi](../architecture/routing-token-economy.md), [graph deneyimi](../product/graph-experience.md). Q04/Q05 yanıtları graph, task context ve token profil sözleşmesine işlendi. Q06 yanıtı geldiğinde yalnız export üretim tercihi ve bu kayıt güncellenecek.

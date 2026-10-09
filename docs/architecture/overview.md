@@ -60,3 +60,7 @@ P0'da Cortex, Claude Task Tracker ve mai-mcp aynı sentetik senaryoyla; Beads ç
 ## Ekip ve veri altyapısı ayrıntıları
 
 [Kimlik/yetki modeli](identity-access.md) workspace tenant, proje üyeliği, insan/agent principal ve süreli grant'i; [log/audit](logging-audit.md) kayıt sınıflarını; [depolama/hafıza](storage-memory-capacity.md) retention, DB/blob/secret ayrımını ve ölçüme bağlı ölçeği tanımlar. [ADR-0009](adr/0009-scoped-principals.md) ve [ADR-0010](adr/0010-storage-lifecycle.md) öneridir. Birincil pilot bireyseldir; tenant/agent sınırları P1, davet ve çok insanlı yönetim P4'tedir. Merkezi ekip servisi için PostgreSQL adayına geçiş yeni işletim kararı ve migration kanıtı gerektirir.
+
+## Bağlantı ve görsel tüketim
+
+[Kurulum/context sözleşmesi](connection-and-context.md) capture, MCP ve insan UI yollarını aynı servise bağlar. [Token sözleşmesi](routing-token-economy.md) host model tüketimini kendi arka plan modellerimizden ayırır; bounded context, metered retry ve atomik budget reservation önerir. [Graph UX](../product/graph-experience.md) aktif/geçmiş ilişkileri ve iptali açıklar. UI'nın normal graph/filtre işlemleri model çağrısı gerektirmez; anlamsal açıklama ayrı işlemdir.

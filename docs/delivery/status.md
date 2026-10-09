@@ -15,6 +15,16 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-09 — Bağlantı, token ve iş bağlamı
+
+- MCP/capture/insan UI ayrımı, bir defalık kurulum, tools-only health, delta brief/resync, disconnect ve sağlayıcı build kapıları ayrıntılandırıldı. OpenAI/Claude resmî kaynakları belge düzeyinde kontrol edildi; gerçek kurulum yapılmadı.
+- Host model tüketimi ile kendi arka plan analizimiz ayrıldı. No-op/duplicate bypass, sınırlı context, sürümlü cache, retry/escalation ve atomik bütçe rezervasyonu; bilinmeyen usage ve deferred UI davranışı yazıldı. Fiyat/tasarruf iddiası veya ücretli çağrı yok.
+- Kullanıcı Q04 ile güncel işler + seçili iş bağlamını; Q05 ile proje/görev bazlı, sonradan değiştirilebilir analiz profilini seçti. Olgunlaşma hikâyesi, AC/DoD ve test matrisi istendi; task context/acceptance sözleşmesi eklendi. Q06 otomatik Markdown üretimi, Q02 yüzey/OS ve Q03 gerçek veri/bütçe ayrı açık sorular.
+- Görev iptali, obsolete ve relationship ended/invalidated ayrıldı; geçmiş bağlantıları silmeyen graph sözlüğü ve üç yeni Mermaid şeması eklendi. AC/DoD başlamadan versiyonlu; completion güncel kanıta bağlı.
+- CON/TOK/GUX/CTX kapsamında 30 planlı senaryo ve küçük görev dilimleri eklendi. Doküman kontrolü geçti: 60 Markdown, 319 yerel bağlantı; mevcut 32 scope, 30 ana görev, 14 MVP AC korundu. Runtime, maliyet veya tıklanabilir UI testi yapılmadı. T01 sıradaki uygulamalı hazırlık olarak kaldı.
+
+
+
 ### 2026-10-09 — Çok kullanıcı, log ve hafıza planı
 
 - Linear/GitHub/OpenFGA, Cortex/mai-mcp, Letta legacy kavramları ve SQLite/PostgreSQL/OTel birincil belgeleri üzerinden hedefli benchmark hazırlandı; ürünler kurularak IAM veya yük kıyası yapılmadı.

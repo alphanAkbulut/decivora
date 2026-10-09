@@ -66,3 +66,7 @@ Normal agent API'sinde UPDATE/DELETE event ve arbitrary SQL yoktur. Ayrı proces
 Bu belgedeki source/domain ayrımına ek olarak [security audit ve operational telemetry](logging-audit.md) ayrı amaç, erişim ve retention taşır. DB WAL audit kaydı değildir. Event actor bilgisi güvenilir transport'tan üretilir; gerektiğinde on_behalf_of, grant/run ve authz revision kaydedilir. Permission değişimi ve high-impact command başarı audit'i aynı yerel transaction'da kalıcıdır.
 
 Zarftaki tenant/proje kapsamı source dedup, stream unique key ve idempotency anahtarlarına da dahil edilir; sadece aynı ID'ye sahip farklı tenant verileri birleşmez. Ham payload silinmesi kompakt dedup kimliğini silmez. [Depolama planı](storage-memory-capacity.md) minimal event payload, privacy purge ve restore sonrası tombstone uygulamasını tamamlar.
+
+## İptal ve ilişki değişimi olayları
+
+`task.cancelled`, `relationship.ended` ve `relationship.invalidated` farklı önerilen domain olaylarıdır. İlki yürütme kararını; diğerleri ilişki geçerliliğini değiştirir. Eski event/edge revision silinmez. Geri alma yeni yetkili revision ve etki değerlendirmesi gerektirir. Projection aktif edge'leri günceller, tarihçe eski görünümü korur; knowledge revision değişimi eski approval'ı geçersiz kılar. [Graph UX](../product/graph-experience.md) normal iptalin privacy purge veya yalnız görünüm filtresi olmadığını açıklar.

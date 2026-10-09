@@ -58,3 +58,9 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 ## Çok kullanıcı, hafıza ve kapasite ek planı
 
 [MU01–MU18](collaboration-validation.md), tenant izolasyonu, agent yetki daraltması, revocation yarışı, türev bilgi sızıntısı, audit arızası, TTL/dedup, restore/purge, DB migration ve kapasiteyi kapsar. V01–V28 korunur. Bu ek senaryolar da çalıştırılmadı; [fazlı plan](../delivery/team-data-plan.md) hangi MVP veya ekip kapısında zorunlu olduklarını belirler.
+
+## Bağlantı, token ve graph kontrolleri
+
+[CON-01–08](../architecture/connection-and-context.md) kurulum/context; [TOK-01–08](../architecture/routing-token-economy.md) kaynak tamlığı/bütçe/maliyet; [GUX-01–08](../product/graph-experience.md) görsel ilişki/durum/iptal davranışını tamamlar. Hepsi planlıdır. MVP'nin AC-05/06/09/10/13 kriterlerine bağlı bu yollar uygulandığında gerçek test ve UI etkileşim kanıtı gerekir; doküman veya Mermaid render testi runtime kabulü değildir.
+
+[CTX-01–06](../product/task-context-and-acceptance.md), kaynaklı olgunlaşma özeti, versioned AC/DoD ve test matrisi, snapshot/export idempotency, ACL ve yeniden açılma yollarının ek planıdır. AC/DoD iş sonunda başarıyı göstermek için geriye dönük uydurulamaz. Bu altı kontrol de henüz çalıştırılmadı.

@@ -36,3 +36,7 @@ Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeler
 ## Ekip ve veri yaşam döngüsü kaynak eki
 
 2026-10-09 doğrudan incelenen birincil kaynaklar [hedefli benchmark tablosunda](collaboration-storage-benchmark.md) tek tek linklidir: Linear members/private teams/audit; GitHub user/installation token; OpenFGA roles/agents/RAG; Cortex ve mai-mcp README; Letta V1 legacy stateful agents; SQLite kullanım/WAL/backup; PostgreSQL RLS/PITR; OpenTelemetry log modeli. Bunlar kaynak belgesi incelemesidir; yerel ürün testi veya güncel sürüm uyumluluk sertifikası değildir.
+
+## Bağlantı ve token kaynak kontrolü
+
+2026-10-09: [Codex MCP/transport](https://learn.chatgpt.com/docs/extend/mcp?surface=cli), [plugin/hooks paketleme](https://developers.openai.com/plugins/build/plugins), [Claude Code hooks](https://code.claude.com/docs/en/hooks), [OpenAI prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) ve [MCP/UI quickstart](https://developers.openai.com/plugins/build/app-quickstart) doğrudan okundu. Belgelenmiş destek seçili host'ta kurulum/test kanıtı değildir. Provider fiyatları ve cache oranları sabitlenmedi; [token sözleşmesi](../architecture/routing-token-economy.md) sınıf eşlemesi/ölçüm ister.

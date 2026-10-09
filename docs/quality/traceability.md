@@ -52,3 +52,15 @@ E01–E14 orijinal kaynak konuşmanın evreleridir; sonraki kullanıcı talebi b
 | Başka araçlardan yararlanma | EVAL-01 / F17 | [Hedefli benchmark](../discovery/collaboration-storage-benchmark.md) | T03,T30; belge bulguları, runtime sonuç değil |
 
 Alt işler [team-data-plan](../delivery/team-data-plan.md), MU senaryoları [collaboration-validation](collaboration-validation.md) içindedir; ana 32 scope/30 task sayısını yapay olarak artırmaz.
+
+## Bağlantı, token ve graph takip isteği
+
+| Mevcut kapsam / özellik | Ayrıntı | İş / kontrol |
+|---|---|---|
+| CAP-02/05,INT-02 / F02,F08 | [Bağlantı ve context](../architecture/connection-and-context.md) | T02b,T06,T16,T17,T18c; CON-01–08 |
+| CST-01/02,ROU-02 / F12,F13 | [Token/bütçe sözleşmesi](../architecture/routing-token-economy.md) | T09b,T18c,T21b,T24c; TOK-01–08; AC-13 |
+| GRF-01/02,APR-01,UX-01,AUD-01 / F06,F07,F10,F14 | [Graph ve iptal UX](../product/graph-experience.md) | T11b,T13b,T20b; GUX-01–08; AC-05/06/09/10 |
+
+Orijinal 32 scope korunur. Q04/Q05 tercihleri teknik öneriden ve doğrulanmış davranıştan ayrı [karar kuyruğunda](../delivery/decision-brief.md) tutulur.
+
+Kullanıcı Q04 cevabında olgunlaşma hikâyesi ve AC/DoD/test görünürlüğünü istedi: KNO-01,APR-01,VER-01/02,AUD-01,UX-01 / F04,F07,F09,F10,F14 → [context ve acceptance](../product/task-context-and-acceptance.md) → T13c,T14b,T20c / CTX-01–06. Q05 cevabı CST-01/02,ROU-02 kapsamındaki proje/görev profil seçimini netleştirdi; bütçe/veri izni sağlamadı.

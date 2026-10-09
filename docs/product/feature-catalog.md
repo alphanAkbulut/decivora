@@ -45,3 +45,7 @@ Aynı sağlayıcı Chat→Code sürekliliği önce, sağlayıcılar arası otoma
 Bir projede insanlar farklı rollerle çalışır; agent'lar ayrı kimlik, süre ve görev kapsamıyla görünür. Kullanıcı kimin neyi görebildiğini, kimin adına çalışan agent'ın hangi işlemleri yapabildiğini ve erişimi nasıl durduracağını görür. Kişisel sohbetten ortak bilgiye geçiş açık paylaşım önizlemesi taşır. Karar onayı, iş üstlenme, test çalıştırma ve dış sisteme yazma ayrı izinlerdir.
 
 [Yönetim/rol tasarımı](../architecture/identity-access.md), [kayıt ve audit](../architecture/logging-audit.md), [hafıza/retention](../architecture/storage-memory-capacity.md) ve [C01–C06 ekip dilimleri](../delivery/team-data-plan.md) bu kullanıcı davranışlarının önerilen çözümüdür. İlk pilot tek kullanıcıdır; henüz ekip ekranı yoktur.
+
+## F07/F09/F10 — Olgunlaşma ve iş başına kabul görünümü
+
+Kullanıcı isteğiyle [task context ve kabul dosyası](task-context-and-acceptance.md) ayrıntılandırıldı: ilk fikir→alternatif→değişim gerekçesi→onaylı yaklaşım→uygulama/test kanıtı aynı task üzerinden görünür. AC ve uygulanabilir DoD işe başlamadan versiyonlu hazırlanır; iş sonrasında test/evidence matrisi bunlara karşı gösterilir. Ana işin önemli değişimi veya kapanışı context milestone'ı üretir; dosya otomasyonu Q06 tercihidir. Bu mevcut kapsamın açılımıdır, çalışan özellik değildir.

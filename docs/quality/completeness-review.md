@@ -59,3 +59,9 @@ Ana ürün vizyonu ilk pakette korunuyordu. Asıl eksik, bazı kavramların belg
 | Ekip işleri yalnız T30 keşif düzeyindeydi | P1 alt dilimleri + P4 C01–C06 ve 18 MU senaryosu | Uygulama ve ekip pilot kararı |
 
 ADR-0001 yerel başlangıç için korunur; 0002/0007 durable akışına storage lifecycle eklenir; 0005/0008 onayına authz revision ve bağımsız insan kimliği eklenir. [ADR-0009/0010](../architecture/adr/README.md) bu incelemede önerildi. [Benchmark](../discovery/collaboration-storage-benchmark.md) belgelenen örüntülerle önerilen tasarımı ayırır. Bağımsız saldırı testi veya formal güvenlik analizi yapılmadı.
+
+## Bağlantı/token/graph incelemesi
+
+Önceki belgelerde capture/MCP adayları, delta/cache fikri ve Graph hedefi vardı. Eksik ayrıntılar: bir defalık kurulum ve tools-only health; host tüketimi ile kendi model çağrılarımızın ayrımı; eşzamanlı budget reservation/unknown usage; iptal ile edge ending/invalidation'ın görsel ve domain ayrımıydı.
+
+[Connection/context](../architecture/connection-and-context.md), genişletilen [token sözleşmesi](../architecture/routing-token-economy.md) ve [graph deneyimi](../product/graph-experience.md) bu boşlukları öneri olarak kapatır. CON/TOK/GUX altında 24 planlı senaryo, küçük backlog dilimleri ve kaynak bağlantıları eklendi. Q04 güncel/seçili graph, Q05 kullanıcıya proje/görev bazlı profil seçimi olarak cevaplandı; context dosyasının otomatik export tercihi Q06 ayrı bekler. Çalışan adapter, bütçe yöneticisi veya graph UI kanıtı yoktur.

@@ -68,3 +68,13 @@ Bir task'ın zorunluluk koşulu `any` / `all` ifadesiyle belirtilir. Yapraklar o
 Workspace, Membership, Principal, AgentRun, DelegationGrant, ResourceACL ve ServiceConnection [kimlik modelinde](identity-access.md) tanımlanır. Project policy/knowledge revision yanında authz revision'a bağlıdır. ChangeSet/Approval kapsamı workspace, kaynak ACL revision'ları ve authz revision taşır; server güncel durumu commit'te kontrol eder. Kaynağın `personal` görünürlüğü proje binding'i yapılınca kendiliğinden `shared` olmaz.
 
 Kaynak/blob referansında retention_policy_version, expires_at, pin_reason/pin_until, availability ve deletion/tombstone durumu bulunur. Canonical kayıtlar ve türev context aynı ömre sahip değildir; [yaşam döngüsü tablosu](storage-memory-capacity.md) authoritative tasarım önerisidir. Credential gövdeleri hiçbir domain entity'de tutulmaz.
+
+## İlişki yaşam döngüsü ve graph görünümü
+
+Edge kaydı proposal/onay durumundan bağımsız `asserted / ended / invalidated` yaşam döngüsü ve revision taşır. `valid_from_sequence`, `valid_to_sequence`, değişim gerekçesi, actor/approval ve önceki revision bağlantısı önerilen alanlardır. Ended önceki ilişkinin sona erdiğini, invalidated geçmiş iddianın yanlış bulunduğunu söyler; fiziksel DELETE değildir. Değişiklik knowledge_revision'ı artırır; eski impact/onay stale olur.
+
+Current traversal yalnız güncel geçerli ilişkileri kullanır; historical traversal seçilmiş sequence'i gösterir ve bugünkü ACL'yi uygular. Gerekçenin kaldırılması otomatik obsolete kararı değildir; kalan AND/OR/unknown ve coverage yeniden değerlendirilir. Task cancelled olduğunda ilişkiler kendiliğinden ended olmaz; açık gereksinim/bağımlı işler review veya blocked kalabilir. Görsel karşılığı [graph deneyimindedir](../product/graph-experience.md).
+
+## Task context ve DoD assessment
+
+`ContextSnapshot` kaynak/karar/evidence revision'larından türetilen milestone görünümüdür; canonical truth değildir. `DoDTemplate` proje/iş türü bazlı version'lanır, task assessment hangi maddelerin neden uygulanabilir olduğunu kaydeder. Completion gerekli AC'lerle birlikte uygulanabilir gerekli DoD kanıtı ve review/impact kapılarını kontrol eder. Parent task sırf child'lar bitti diye complete olmaz. [Context ve acceptance sözleşmesi](../product/task-context-and-acceptance.md) alanları, üretim tetiklerini, export hatasını ve eski kanıt davranışını tanımlar.

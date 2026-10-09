@@ -90,6 +90,26 @@ for label, covered, defined in [
     if covered != defined:
         errors.append(f'unmapped {label}: {sorted(defined-covered)}')
 
+# Feature-contract scenario references; no runtime behavior is executed here.
+contract_docs = {
+    'CON': 'docs/architecture/connection-and-context.md',
+    'TOK': 'docs/architecture/routing-token-economy.md',
+    'GUX': 'docs/product/graph-experience.md',
+    'CTX': 'docs/product/task-context-and-acceptance.md',
+}
+contract_count = 0
+for prefix, relative in contract_docs.items():
+    expected_count = 6 if prefix == 'CTX' else 8
+    actual = set(re.findall(r'^\| (' + prefix + r'-\d+) \|', (ROOT / relative).read_text(), re.M))
+    expected = {f'{prefix}-{i:02}' for i in range(1, expected_count + 1)}
+    contract_count += len(actual)
+    if actual != expected:
+        errors.append(f'{prefix}: invalid contract scenario set')
+    for path in markdown:
+        refs = set(re.findall(r'\b' + prefix + r'-\d+\b', path.read_text()))
+        if refs - actual:
+            errors.append(f'{path.relative_to(ROOT)}: unknown contract refs {sorted(refs-actual)}')
+
 for path in ROOT.rglob('*.json'):
     json.loads(path.read_text())
 collaboration_plan = (ROOT / 'docs/quality/collaboration-validation.md').read_text()
@@ -115,4 +135,5 @@ print(f'PASS: {len(markdown)} Markdown files, {links} local links, '
 print(f'Traceability: {len(source_stages)} source stages, {len(features)} features, '
       f'{len(engines)} engines, {len(scenarios)} planned verification scenarios.')
 print(f'Collaboration/data: {len(collaboration_scenarios)} additional planned scenarios; not runtime tested.')
+print(f'Connection/token/graph/context: {contract_count} additional planned contract scenarios.')
 print('Not tested: application runtime, adapters, model quality, Mermaid rendering.')

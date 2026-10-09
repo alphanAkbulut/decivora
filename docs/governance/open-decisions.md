@@ -33,3 +33,7 @@ Bu açık sorular dokümantasyonun GitHub'a kaydedilmesini engellemez. Etkili ol
 | OPEN-16 | Kapasite/SLO, audit kapsamı ve işletim bütçesi? | Sentetik 100k/1m event ve concurrent client profili; RPO/RTO ölçülsün | T23d ve C06; ortamlı rapor ve maliyet |
 
 OPEN-08 için [retention tablosunda](../architecture/storage-memory-capacity.md) somut süre önerileri, OPEN-02 için DB/blob/secret sınırları hazırlandı; bu hazırlık owner onayı veya çalışan silme politikası değildir. [Uygulama planı](../delivery/team-data-plan.md) bağımlılıkları korur. Mevcut yanıt bekleyen sorular tekrar sorulmadı.
+
+## UI görünümü ve analiz sıklığı
+
+Q04 güncel işler/seçili iş bağlamı; Q05 proje/görev bazlı değiştirilebilir analiz profili olarak cevaplandı. Q06 context dosyasının otomatik milestone export tercihi [karar kaydında](../delivery/decision-brief.md) bekliyor. Bu sorular OPEN-07/09/10 ile ilişkilidir; yeni ücret/egress yetkisi vermez. İptal ve ended edge geçmişinin korunması mevcut append-only ilkesinin sonucudur; grafikte çarpı/renk tercihi bu domain kuralını değiştirmez.

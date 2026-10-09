@@ -67,3 +67,11 @@ Sonraki LLM'den bu cevapları ve aşağıdaki ek kontrolü ilgili belgeyle deste
 13. DB ekip büyümesine hazır mı? **Henüz uygulama yok.** Local SQLite ve merkezi PostgreSQL geçişi için ölçüm, migration ve recovery planı var; kapasite kanıtlanmadı.
 
 Kaynaklar: [identity/access](../architecture/identity-access.md), [logging](../architecture/logging-audit.md), [storage/memory](../architecture/storage-memory-capacity.md), [benchmark](../discovery/collaboration-storage-benchmark.md), [fazlı işler](team-data-plan.md). Handoff protokolü artık 13 soruyu içerir; bağımsız model deneyi yapılmadı.
+
+## Bağlantı, token ve graph için ek sorular
+
+14. MCP kurmak tüm geçmişi yakalar mı? **Hayır.** [Capture, tool ve UI yolları](../architecture/connection-and-context.md) ayrı; tools-only coverage mümkündür.
+15. MCP/token cache toplam tüketimi garanti düşürür mü? **Hayır.** [Host/arka plan ayrımı ve bütçe sözleşmesi](../architecture/routing-token-economy.md) yalnız kontrol edilebilen alanı sınırlar; kullanım/kalite ölçülmeli.
+16. Task iptal edilince okları siler miyiz? **Hayır.** Task cancelled, edge ended/invalidated ve privacy purge ayrı işlemdir; [graph geçmişi](../product/graph-experience.md) korunur.
+
+Handoff kontrolü toplam 16 sorudur; bağımsız LLM testi yapılmadı. Q04 güncel/seçili bağlamı, Q05 kullanıcıya proje/görev bazlı profil seçimini kabul eder. Otomatik context dosyası Q06 ve gerçek veri/bütçe Q03 ayrı sorulardır.
