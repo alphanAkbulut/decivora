@@ -92,8 +92,8 @@ sequenceDiagram
     P->>P: Reporter, grant, binding ve schema kontrolu
     P->>D: TX claim + job + gereken audit
     D-->>P: Commit sonucu
-    P-->>A: Receipt; task completed degil
-    W->>D: Lease; task AC DoD artifact snapshot
+    P-->>A: Receipt, task completed degil
+    W->>D: Lease, task AC DoD artifact snapshot
     alt Guvenilir mevcut rapor yeterli
         W->>W: Kod ile freshness, coverage ve sonuc kontrolu
     else Yeni check gerekli ve runner izni var
@@ -113,7 +113,7 @@ sequenceDiagram
         alt Gerekli kanit ve review kapilari gecti
             P->>D: Verification event + projection + milestone job
         else Failed, stale, unknown veya review pending
-            P->>D: Durum ve neden; completion yok
+            P->>D: Durum ve neden, completion yok
         end
     end
 ```
@@ -141,10 +141,10 @@ sequenceDiagram
             W->>M: Sinirli ilgili context ve output schema
             M-->>W: Oneri veya hata
             W->>W: Schema, kaynak ve coverage kontrolu
-            W->>D: Usage sonucu; belirsizse unknown
+            W->>D: Usage sonucu, belirsizse unknown
             W->>P: Gecerli sonucsa revision bagli proposal
         else Izin veya butce yok
-            W->>D: Deferred; kaynak kalir
+            W->>D: Deferred, kaynak kalir
         end
     end
     opt Gecerli degisiklik onerisi var
@@ -156,7 +156,7 @@ sequenceDiagram
         alt Gecerli onay
             P->>D: Events + projection + audit + gerekli jobs
         else Stale veya yetki eksik
-            P-->>H: Uygulanmadi; yeni inceleme gerekli
+            P-->>H: Uygulanmadi, yeni inceleme gerekli
         end
     end
 ```
@@ -175,14 +175,14 @@ sequenceDiagram
     P->>D: TX domain event + outbox intent + audit
     W->>D: Due item lease ve guncel connection yetkisi
     alt Yetki / capability yok veya stale
-        W->>D: Deferred veya iptal; dis cagri yok
+        W->>D: Deferred veya iptal, dis cagri yok
     else Teslim izinli
         W->>X: Izinli mutation + idempotency key mevcutsa
         alt Kesin sonuc
             X-->>W: Remote ID, revision ve receipt
             W->>D: Delivery sonucu + audit
         else Timeout veya cevap kaybi
-            W->>D: Unknown; yeniden gonderme durur
+            W->>D: Unknown, yeniden gonderme durur
             W->>X: Destekleniyorsa read-only reconciliation
             X-->>W: Bulundu / bulunamadi / belirsiz
             W->>D: Kanitli sonuc veya manual review
