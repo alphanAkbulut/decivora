@@ -41,10 +41,21 @@ Ana ürün vizyonu ilk pakette korunuyordu. Asıl eksik, bazı kavramların belg
 - Stack/sürüm/DDL/transport mapping ve build/extend: T03/T04. Dokümanda aday mimari bulunması kesin teknoloji seçimi değildir.
 - Extraction/evaluation doğruluğu, impact recall, kullanıcı yükü, maliyet ve latency: T01/T03/T24. Başarı hedefleri ölçülmüş sonuç değildir.
 - Policy varsayılanları, model bütçesi, encryption/retention/backup ve restore hedefleri: OPEN-07/08/10/12/13. Gerçek veri/ücretli model öncesi çözülmeli.
-- Takım yetkileri, çok cihaz conflict çözümü ve commercial boundary: P4. MVP'ye sessizce dağıtık sistem kapsamı eklenmedi.
+- Takım yetkileri için ADR-0009 ve rol/grant modeli artık öneri olarak var; uygulama, çok cihaz conflict/sync ve commercial boundary P4 kapısında. MVP'ye sessizce dağıtık sistem kapsamı eklenmedi.
 - Lisans, isim/marka ve public release: owner kararı bekliyor. Private repo güncellemesi bunları kararlaştırmaz.
 - Anlamı tartışmalı yeni bir kaynak ortaya çıkarsa kapsam matrisi tekrar gözden geçirilir; “eksiksiz” sözcüğü gelecekteki keşfi kapatmaz.
 
 ## Bu teslimin doğrulama kapsamı
 
 `scripts/check_docs.py` yerel bağlantılar, fence dengesi, JSON fixture, scope/task/feature/engine/source referans bütünlüğünü denetler. Bu betik doğal dilin anlamını, Mermaid layout'unu veya ürünü test etmez. Diyagram render kontrolü ve GitHub commit sonrası dosya karşılaştırması teslim sırasında ayrıca yapılır; gerçekleşen sonuç [status](../delivery/status.md) içinde kaydedilir. Ham özel transcript repository'ye eklenmez.
+
+## 2026-10-09 — Ekip, log ve hafıza incelemesi
+
+| Önceki boşluk | Eklenen tasarım | Henüz doğrulanmayan |
+|---|---|---|
+| Genel project policy dışında rol/grant lifecycle yoktu | Workspace/project üyeliği; ayrı agent principal; süreli grant/revocation; özel/ortak hafıza | Auth servisi ve UI testleri |
+| Event audit ile operasyon logu ayrıntısı sınırlıydı | Dört kayıt sınıfı; atomik high-impact audit; bounded telemetry; secret redaction | Audit failure injection ve logger |
+| Retention/DB büyümesi açık karardı | Veri sınıfı bazında TTL/kalıcılık; DB/blob/secret; capacity profilleri; Postgres geçişi | Gerçek veri policy onayı, load/restore/migration |
+| Ekip işleri yalnız T30 keşif düzeyindeydi | P1 alt dilimleri + P4 C01–C06 ve 18 MU senaryosu | Uygulama ve ekip pilot kararı |
+
+ADR-0001 yerel başlangıç için korunur; 0002/0007 durable akışına storage lifecycle eklenir; 0005/0008 onayına authz revision ve bağımsız insan kimliği eklenir. [ADR-0009/0010](../architecture/adr/README.md) bu incelemede önerildi. [Benchmark](../discovery/collaboration-storage-benchmark.md) belgelenen örüntülerle önerilen tasarımı ayırır. Bağımsız saldırı testi veya formal güvenlik analizi yapılmadı.

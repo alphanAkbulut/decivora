@@ -54,3 +54,7 @@ V19–V28 ikinci mimari incelemede eklenen **test planlarıdır**; bu belge revi
 Her sonuç: task/scenario/AC ID, commit veya artifact hash, platform/build, test verisi, command/action, beklenen/gerçek, pass/fail/not-run, sınırlama, zaman, kanıt yolu. “Not run” başarısız veya başarılı yerine geçmez. Doğrulama sonucu farklı revision için yeniden kullanılmaz.
 
 Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğunu kanıtlamaz; MVP holdout ve kullanıcı akışı gerekir. Yeni değişiklik/failure yoksa aynı check tekrar tekrar çalıştırılmaz.
+
+## Çok kullanıcı, hafıza ve kapasite ek planı
+
+[MU01–MU18](collaboration-validation.md), tenant izolasyonu, agent yetki daraltması, revocation yarışı, türev bilgi sızıntısı, audit arızası, TTL/dedup, restore/purge, DB migration ve kapasiteyi kapsar. V01–V28 korunur. Bu ek senaryolar da çalıştırılmadı; [fazlı plan](../delivery/team-data-plan.md) hangi MVP veya ekip kapısında zorunlu olduklarını belirler.

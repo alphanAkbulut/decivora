@@ -32,3 +32,7 @@ Erişim tarihi: **2026-10-09**. URL'ler hareketli `main`/dokümantasyon sayfalar
 GNU lisans sayfaları bu turda fetch timeout verdi; AGPL için OSI metni kullanıldı. İsim için sınırlı web sorgusu marka araştırması yerine geçmez. Marka tescili, alan adı ve npm/package adları doğrulanmadı. GitHub repo adının kullanılabilir olması trademark uygunluğu değildir.
 
 Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeleri ve “piyasada hiç yok” türü iddialar buraya doğrulanmış bulgu olarak aktarılmadı. Ek referansların seviyesi [benchmark](benchmark.md) içinde ayrıdır. SRC-17–24 takip çalışmasında doğrudan okundu; kullanıcı deneyimi ile teknik doğrulama ayrımı [şikâyet araştırmasında](user-research.md) korunur.
+
+## Ekip ve veri yaşam döngüsü kaynak eki
+
+2026-10-09 doğrudan incelenen birincil kaynaklar [hedefli benchmark tablosunda](collaboration-storage-benchmark.md) tek tek linklidir: Linear members/private teams/audit; GitHub user/installation token; OpenFGA roles/agents/RAG; Cortex ve mai-mcp README; Letta V1 legacy stateful agents; SQLite kullanım/WAL/backup; PostgreSQL RLS/PITR; OpenTelemetry log modeli. Bunlar kaynak belgesi incelemesidir; yerel ürün testi veya güncel sürüm uyumluluk sertifikası değildir.

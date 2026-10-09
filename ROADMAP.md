@@ -43,3 +43,7 @@ flowchart TB
 Güvenlik/kalıcı işleme/graph race sözleşmeleri ilk çekirdek dilimlerinde doğrulanır; son release'e bırakılmaz. Çalışma ritmi ve roller [kısa proje yönetim planında](docs/delivery/project-management.md).
 
 Başarısız kapıda: neden ve kanıt kaydedilir, küçük düzeltme işi açılır, faz geçişi bekler. Bir yetenek platformca engellenirse full scope kaydında kalır; sınırlı sürüm adı ve fallback açıkça belirtilir.
+
+## Ekip ve veri altyapısı hattı
+
+P1'de tenant/agent kimliği, dar izin, kalıcı audit ve retention/recovery temeli kurulur; P4'te davet, rol yönetimi, ortak hafıza, bağımsız review ve merkezi ekip işletimi gelir. [Ekip/veri planı](docs/delivery/team-data-plan.md) küçük P1 alt görevlerini ve C01–C06 kapılarını açıklar. [Kapasite planındaki](docs/architecture/storage-memory-capacity.md) S0–S3 topolojileri bir kullanıcı sayısı garantisi veya takvim değildir; ölçülmüş darboğaz ve operasyon ihtiyacıyla seçilir.

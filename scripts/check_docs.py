@@ -92,6 +92,14 @@ for label, covered, defined in [
 
 for path in ROOT.rglob('*.json'):
     json.loads(path.read_text())
+collaboration_plan = (ROOT / 'docs/quality/collaboration-validation.md').read_text()
+collaboration_scenarios = set(re.findall(r'^\| (MU\d+) \|', collaboration_plan, re.M))
+if collaboration_scenarios != {f'MU{i:02}' for i in range(1, 19)}:
+    errors.append('expected MU01-MU18 collaboration/data scenarios')
+for path in markdown:
+    refs = set(re.findall(r'\bMU\d+\b', path.read_text()))
+    if refs - collaboration_scenarios:
+        errors.append(f'{path.relative_to(ROOT)}: unknown MU scenario {sorted(refs-collaboration_scenarios)}')
 fixture = json.loads((ROOT / 'examples/impact-scenario.json').read_text())
 if not fixture['synthetic'] or fixture['implemented']:
     errors.append('fixture must be clearly synthetic and unimplemented')
@@ -106,4 +114,5 @@ print(f'PASS: {len(markdown)} Markdown files, {links} local links, '
       f'{len(scope_ids)} scope IDs, {len(task_ids)} tasks, 14 MVP criteria; JSON valid.')
 print(f'Traceability: {len(source_stages)} source stages, {len(features)} features, '
       f'{len(engines)} engines, {len(scenarios)} planned verification scenarios.')
+print(f'Collaboration/data: {len(collaboration_scenarios)} additional planned scenarios; not runtime tested.')
 print('Not tested: application runtime, adapters, model quality, Mermaid rendering.')

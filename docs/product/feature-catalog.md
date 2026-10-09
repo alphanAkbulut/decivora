@@ -39,3 +39,9 @@ Kullanıcı bekleyen kararı ertelediğinde yeni oturum aynı kararı tekrar yok
 ## Kapsam korunumu
 
 Aynı sağlayıcı Chat→Code sürekliliği önce, sağlayıcılar arası otomasyon sonra gelir. P1b import fallback kapsamı görünür tutar ama otomasyon hedefini teslim etmiş sayılmaz. Gelecekteki code graph/IDE/cloud fikirleri silinmez. Bu repo bir agent çalıştırma platformunu, tüm sağlayıcılara sınırsız erişimi veya insan kararı olmadan proje yön değiştirmeyi taahhüt etmez.
+
+## F16 — Ekip kullanımının açılımı
+
+Bir projede insanlar farklı rollerle çalışır; agent'lar ayrı kimlik, süre ve görev kapsamıyla görünür. Kullanıcı kimin neyi görebildiğini, kimin adına çalışan agent'ın hangi işlemleri yapabildiğini ve erişimi nasıl durduracağını görür. Kişisel sohbetten ortak bilgiye geçiş açık paylaşım önizlemesi taşır. Karar onayı, iş üstlenme, test çalıştırma ve dış sisteme yazma ayrı izinlerdir.
+
+[Yönetim/rol tasarımı](../architecture/identity-access.md), [kayıt ve audit](../architecture/logging-audit.md), [hafıza/retention](../architecture/storage-memory-capacity.md) ve [C01–C06 ekip dilimleri](../delivery/team-data-plan.md) bu kullanıcı davranışlarının önerilen çözümüdür. İlk pilot tek kullanıcıdır; henüz ekip ekranı yoktur.

@@ -14,6 +14,7 @@ Ham metin ayrı, korumalı bir payload deposunda tutulabilir; event güvenli ref
 {
   "schema_version": 1,
   "event_id": "evt_example_005",
+  "workspace_id": "ws_demo",
   "project_id": "prj_demo",
   "stream_id": "task_demo_01",
   "stream_version": 5,
@@ -59,3 +60,9 @@ EVENT-003 silinmez. Eski sistemden gelen “done” kaydı ayrıca legacy/unveri
 Projection tabloları: records, record_versions, relationships, approvals, evidence_links, processing_state, project_bindings. Replay yalnız saklı domain olaylarına dayanır; LLM, verifier veya dış delivery çağırmaz. Outbox kaydının yeniden projekte edilmesi teslim edilmiş işlemin yeniden gönderilmesi değildir. Projector version ve schema migration kaydedilir. Snapshot replay'i hızlandırır fakat source of truth olmaz. Recovery ve iki cursor ayrıntısı [runtime sözleşmelerindedir](runtime-contracts.md).
 
 Normal agent API'sinde UPDATE/DELETE event ve arbitrary SQL yoktur. Ayrı process/file izinleri, hash chain ve dış checkpoint/backup izinsiz değişikliği tespit etmeye yardım eder. Aynı yöneticinin DB ve tüm hash'leri değiştirmesine karşı mutlak garanti yoktur. Restore drill sırasında event sayısı, son sequence ve projection digest karşılaştırılır.
+
+## Kayıt sınıfları ve ekip uzantısı
+
+Bu belgedeki source/domain ayrımına ek olarak [security audit ve operational telemetry](logging-audit.md) ayrı amaç, erişim ve retention taşır. DB WAL audit kaydı değildir. Event actor bilgisi güvenilir transport'tan üretilir; gerektiğinde on_behalf_of, grant/run ve authz revision kaydedilir. Permission değişimi ve high-impact command başarı audit'i aynı yerel transaction'da kalıcıdır.
+
+Zarftaki tenant/proje kapsamı source dedup, stream unique key ve idempotency anahtarlarına da dahil edilir; sadece aynı ID'ye sahip farklı tenant verileri birleşmez. Ham payload silinmesi kompakt dedup kimliğini silmez. [Depolama planı](storage-memory-capacity.md) minimal event payload, privacy purge ve restore sonrası tombstone uygulamasını tamamlar.

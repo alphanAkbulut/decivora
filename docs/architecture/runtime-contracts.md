@@ -85,3 +85,7 @@ Her provider/iş için deadline, max_attempts, payload/batch boyutu, input/outpu
 Gözlemlenebilirlik: trace/correlation ile source receipt→job→evaluation→changeset→event→evidence izlenir. Ölçümler ingest lag, oldest queued age, retry/quarantine, incomplete intervals, stale approval oranı, impact frontier, projection lag, false-obsolete, verification freshness, budget ve actual/estimated usage. Loglara transcript, credential ve hassas prompt basılmaz. İnsan okuyabilir tanı export'u redacted olmalıdır.
 
 Bu gereksinimlerin uygulanma sırası [backlog ek sözleşmelerinde](../delivery/backlog.md); doğrulaması V19–V28'de tanımlıdır. Local auth ve runner sınırları son hardening fazına bırakılmaz; ilk dış girdi alan runtime'da başlar.
+
+## Ekip ve kalıcılık tamamlayıcı sözleşmeleri
+
+[Identity/access](identity-access.md) komut/retrieval/dispatch'te authz revision, dar agent grant'i, kişisel kaynak görünürlüğü ve offboarding yarışını tanımlar. [Logging/audit](logging-audit.md) high-impact başarı kaydını atomik; dış teslim sonucunu ayrı yapar. [Storage/memory](storage-memory-capacity.md) durable job ile geçici context, raw TTL ile dedup kimliği, DB snapshot ile blob manifest ve restore ile purge ilişkisini tanımlar. Bunlar önerilen runtime sınırlarıdır; mevcut bir implementasyon değildir. Yerel tek owner modunda da insan/agent ayrımı ve proje izolasyonu atlanmaz.

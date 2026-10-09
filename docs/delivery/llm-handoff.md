@@ -56,4 +56,14 @@ Güncel yetkili kullanıcı talimatı ve uygulanabilir AGENTS kuralları izlenir
 7. Knowledge Evolution Engine eksik bir ayrı servis mi? **Hayır.** ENG-03/04/05/06/07 birleşik davranışının kaynak konuşmadaki adı.
 8. Üstünlük ve tasarruf kanıtlandı mı? **Hayır.** Hipotez/ölçüm planı var; benchmark runtime sonucu yok.
 
-Sonraki LLM'den bu sekiz cevabı ilgili belgeyle destekleyebilmesini bekleriz. Bu bir **handoff kontrol protokolüdür**; bağımsız LLM deneyi yapılmış değildir.
+Sonraki LLM'den bu cevapları ve aşağıdaki ek kontrolü ilgili belgeyle destekleyebilmesini bekleriz. Bu bir **handoff kontrol protokolüdür**; bağımsız LLM deneyi yapılmış değildir.
+
+## Ekip ve veri için ek anlama kontrolü
+
+9. Owner'ın agent'ı owner gibi onay verebilir mi? **Hayır.** İnsan izni, dar grant, run, kaynak ACL ve policy kesişir; insan approval yetkisi devredilmez.
+10. Private sohbetten türetilen özet ekibe otomatik açılır mı? **Hayır.** Kaynak erişimleri korunur; paylaşım ayrı redakte kayıt ve onaydır.
+11. Context dolunca proje hafızası silinir mi? **Hayır.** Context geçicidir; canonical geçmiş ve dedup kimliği ayrı dayanıklılık taşır.
+12. SQLite WAL denetim logu mu? **Hayır.** Domain log, security audit, source ve operational telemetry ayrı kayıt sınıflarıdır.
+13. DB ekip büyümesine hazır mı? **Henüz uygulama yok.** Local SQLite ve merkezi PostgreSQL geçişi için ölçüm, migration ve recovery planı var; kapasite kanıtlanmadı.
+
+Kaynaklar: [identity/access](../architecture/identity-access.md), [logging](../architecture/logging-audit.md), [storage/memory](../architecture/storage-memory-capacity.md), [benchmark](../discovery/collaboration-storage-benchmark.md), [fazlı işler](team-data-plan.md). Handoff protokolü artık 13 soruyu içerir; bağımsız model deneyi yapılmadı.

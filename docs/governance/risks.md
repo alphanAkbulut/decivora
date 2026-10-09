@@ -35,3 +35,18 @@ API key, token, auth header, kişi/müşteri bilgisi, rezervasyon/işlem kimliğ
 ## Açık platform sınırları
 
 MCP tüm sohbetleri gören event bus değildir. Codex, Claude Code, ChatGPT Chat, Claude Chat ve API ürünleri eş anlamlı değildir. UI içinde sabit panel host API'sine bağlıdır. Tool availability ve hesap yetkileri değişebilir. Her release kendi destek matrisini yayımlar; “unsupported”, “unknown”, “degraded” sağlıklı durumdan ayrılır.
+
+## Çok kullanıcı ve veri altyapısı ek riskleri
+
+| Risk | Önerilen kontrol / kanıt |
+|---|---|
+| Workspace rolünden private kaynak sızması | Proje ve kaynak ACL; türetilen summary/citation/count/context kontrolü; MU01/MU05/MU10 |
+| İptal edilmiş grant ile queued iş veya dış egress | Authz revision, dispatch/commit kontrolü, quarantine; MU03/MU04/MU18 |
+| Agent'ın insan/runner yetkisini taklit etmesi | Ayrı principal/grant; trusted actor; MU02/MU07 |
+| Log veya yedekten veri sızması | İlk yazım redaction, ayrı audit erişimi, şifreli backup/key yönetimi; MU08/MU09/MU12 |
+| TTL ile kaynak/idempotency kaybı | Raw TTL ile kompakt kimlik ömrü ayrı; review uyarısı; MU11 |
+| Audit veya disk arızasında sahte başarı | Yüksek etkili commit audit ile atomik; backpressure; MU08/MU15 |
+| Paylaşılan DB/pool üzerinden tenant karışması | Merkezi API, tenant FK, nonowner RLS, pool reset; MU13/MU14 |
+| Aynı OS hesabına tam yetkili agent | API ACL fiziksel sınır değildir; ayrı servis hesabı/sandbox/host deployment gerekir |
+
+[Kimlik](../architecture/identity-access.md), [log](../architecture/logging-audit.md), [veri yaşam döngüsü](../architecture/storage-memory-capacity.md) bu risklerin ayrıntılı önerileridir. Mevcut kontrollerin uygulanmış/güvenlik taramasından geçmiş olduğu iddia edilmez.

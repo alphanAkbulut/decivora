@@ -42,3 +42,7 @@ Tarih ve bütçe henüz taahhüt edilmedi. Bağımlılık kapısını geçemeyen
 Yeni fikir → mevcut scope/kararla karşılaştır → delta ve etki → gerekiyorsa owner onayı → ADR/scope/backlog birlikte güncelle. Eski karar ve görevi silerek geçmişi yeniden yazma. Öncelikli riskler: kaynak erişimi, yanlış obsolete/verified, capture kaybı, onay yorgunluğu, token maliyeti ve lisans. Ayrıntılar [risk kaydında](../governance/risks.md); bekleyen seçimler [açık kararlarda](../governance/open-decisions.md).
 
 **Sıradaki üç iş:** T01 sentetik corpus ve oracle; T02 Claude Code/Codex yüzeylerini izole fixture'da gözlemleme; T03 Cortex/Tracker/mai-mcp/Beads alternatiflerini aynı senaryoda karşılaştırıp build/extend kararı hazırlama. Doküman denetiminin tamamlanması bu üç işi yapılmış saydırmaz.
+
+## Ekip/veri hattının yönetimi
+
+[Team/data plan](team-data-plan.md) P1 temellerini ve P4 ekip dilimlerini ana backlog'a bağlar. Owner ürün policy/retention/hosting kararını; uygulayıcı izin/log/migration kanıtını hazırlar. “Belgelendi”, “uygulandı” ve “MU senaryosu geçti” ayrı durumlar olarak raporlanır. İlk pilotun bireysel kullanım kararı korunur; ücretli servis veya yeni dış bağlantı belge yazımıyla onaylanmış sayılmaz.

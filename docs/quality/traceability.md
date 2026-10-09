@@ -33,8 +33,22 @@ Bu tablo **tasarım izlenebilirliğidir; uygulanmışlık kanıtı değildir**. 
 | INT-02 | E06,E09,E10 | F08 | ENG-01,ENG-10 | T18,T22,T25 | INT-02 kabul işareti; iki agent aynı project/revision |
 | GOV-01 | E06,E09,E10 | F01,F14 | ENG-01,ENG-06,ENG-08 | T05,T08,T14,T23 | AC-01; V10,V18,V23,V24,V25 |
 | GOV-02 | E10,E13 | F14 | ENG-07,ENG-10 | T23 | GOV-02 kabul işareti; V26 |
-| TEAM-01 | E13 | F16 | Gelecek ekip ADR'si | T30 | TEAM-01 kabul işareti; tenant/sync threat model ve talep kanıtı |
+| TEAM-01 | E13 | F16 | ENG-06,ENG-07; ADR-0009/0010 | T05,T08,T18,T23,T30 | MU01–MU18; C01–C06 ekip kapıları; sync ayrıca P4 tasarımı |
 | OSS-01 | E12,E13,E14 | F16 | Yönetişim | T29 | OSS-01 kabul işareti; owner/lisans/isim/kurulum kapısı |
 | EVAL-01 | E05,E08,E09,E10,E14 | F17 | ENG-01,ENG-02,ENG-03,ENG-04,ENG-05,ENG-06,ENG-07,ENG-08,ENG-09,ENG-10 | T01,T03,T15,T24 | Holdout, karşılaştırmalı pilot ve faz raporları |
 
 “Kabul işareti” [full-scope](../product/full-scope.md) satırının gözlenebilir beklentisidir. P2–P4 detay testleri ilgili görevde genişletilir; ileri faz satırında V numarası bulunmaması testin yapılmış veya gereksiz olduğu anlamına gelmez. Yeni scope maddesi bu matrise eklenmeden kaybolmuş sayılır; yalnız bir kelimenin dokümanda geçmesi semantik kapsam kanıtı değildir.
+
+## Güncel ekip/veri isteğinin alt eşlemesi
+
+E01–E14 orijinal kaynak konuşmanın evreleridir; sonraki kullanıcı talebi bu tarihsel kaydı değiştirmez. 2026-10-09 isteği mevcut kapsamı aşağıdaki şekilde detaylandırır:
+
+| İstek | Scope / feature | Tasarım | İş / kontrol |
+|---|---|---|---|
+| Çok insan ve agent yetkileri | TEAM-01,PRJ-01,GOV-01 / F01,F16 | [Kimlik/rol](../architecture/identity-access.md), ADR-0009 | T05b,T08b,T18b; C01–C04; MU01–MU07,MU10,MU17 |
+| Log ve audit | AUD-01,GOV-01 / F14 | [Kayıt sınıfları](../architecture/logging-audit.md) | T07b,C05; MU08/MU09/MU18 |
+| DB ve kapasite | AUD-01,TEAM-01 / F14,F16 | [Storage/scale](../architecture/storage-memory-capacity.md), ADR-0010 | T23d,C02/C06; MU13–MU16 |
+| Geçici ve kalıcı hafıza | KNO-01,CST-01,GOV-02,INT-02 / F04,F08,F13,F14 | [Retention ve ACL](../architecture/storage-memory-capacity.md) | T06d,T18b,T23c; MU05/MU10–MU12 |
+| Başka araçlardan yararlanma | EVAL-01 / F17 | [Hedefli benchmark](../discovery/collaboration-storage-benchmark.md) | T03,T30; belge bulguları, runtime sonuç değil |
+
+Alt işler [team-data-plan](../delivery/team-data-plan.md), MU senaryoları [collaboration-validation](collaboration-validation.md) içindedir; ana 32 scope/30 task sayısını yapay olarak artırmaz.

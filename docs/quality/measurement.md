@@ -42,3 +42,9 @@ Precision paydası sıfırsa metrik N/A olur, %100 yapılmaz. Unknown kaynak kap
 ## Gate kararı
 
 P1a: invariants ve sentetik güvenlik suite'i. P1b: AC-01..14, iki adapter raporu, holdout ve UX pilotu. Her kritik yanlış kapanış, çapraz proje sızıntısı veya log veri kaybı release blocker'dır. Eşikler tutmazsa hata sınıfı ve sonraki küçük iş açılır. Tekil kullanıcı pilotu ödeme isteğini kanıtlamaz; P3/P4 için ayrı talep görüşmeleri gerekir.
+
+## Ekip ve depolama ölçümleri
+
+[Storage kapasite planındaki](../architecture/storage-memory-capacity.md) workload/ortam protokolüne göre DB read/commit p50/p95, writer wait, queue büyümesi, WAL/disk alanı ve backup/restore süresi ölçülür. Sayısal başlangıç eşikleri kalibrasyon hedefidir; baseline yok. Yetki revocation sonrası yanlış servis edilen kayıt/egress sayısı sıfır olmalı; negatif oracle MU01–MU07 ile değerlendirilir. Cache invalidation ve stale approval kaynaklı kullanıcı yükü de ölçülür.
+
+Retention UI'sında kullanıcı hangi içeriğin kalacağını/kimle paylaşılacağını doğru anlıyor mu, expired raw kaynak kaç review'u engelliyor, dedup yeniden öneri oranı artıyor mu soruları T24b pilot çıktısıdır. Ekipte grant yönetimi/onay bekleme süresi, offboarding tamamlanma ve tenant başına iş bütçesi C06'ya eklenir. Bunların hiçbiri bugün ölçülmüş sonuç değildir.

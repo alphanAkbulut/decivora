@@ -23,3 +23,13 @@
 Varsayımlar: local-first kabul edilebilir; ilk dil Türkçe dokümantasyon ve İngilizce teknik ID'ler; otomatik capture için bir defalık izin/binding kurulabilir. Bunlar kanıt veya alınmış ticari karar değildir. Teknik ayrıntılar önce deneyle hazırlanır; bütün açık maddeler için hemen kullanıcıya soyut seçim sorulmaz.
 
 Bu açık sorular dokümantasyonun GitHub'a kaydedilmesini engellemez. Etkili oldukları uygulama görevinden önce karara bağlanırlar; AGENTS.md içine güncel iş listesi olarak gömülmezler.
+
+## Ekip ve veri altyapısı karar kapıları
+
+| ID | Karar | Önerilen yön | Ne zaman / kanıt |
+|---|---|---|---|
+| OPEN-14 | Ekip deployment, identity ve veri sahipliği? | Kişisel workspace ile başla; ekipte merkezi servis ve ayrı human/agent kimliği; private kaynak otomatik paylaşılmaz | T30/C01; gerçek ekip profili ve işletim sorumlusu |
+| OPEN-15 | Korunan işlemler için kaç bağımsız reviewer? | Tek owner pilot; ekipte korumalı karar/scope için bağımsız insan review | C04 öncesi policy/UX deneyi; grant/role preset onayı |
+| OPEN-16 | Kapasite/SLO, audit kapsamı ve işletim bütçesi? | Sentetik 100k/1m event ve concurrent client profili; RPO/RTO ölçülsün | T23d ve C06; ortamlı rapor ve maliyet |
+
+OPEN-08 için [retention tablosunda](../architecture/storage-memory-capacity.md) somut süre önerileri, OPEN-02 için DB/blob/secret sınırları hazırlandı; bu hazırlık owner onayı veya çalışan silme politikası değildir. [Uygulama planı](../delivery/team-data-plan.md) bağımlılıkları korur. Mevcut yanıt bekleyen sorular tekrar sorulmadı.

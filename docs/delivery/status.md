@@ -15,6 +15,17 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-09 — Çok kullanıcı, log ve hafıza planı
+
+- Linear/GitHub/OpenFGA, Cortex/mai-mcp, Letta legacy kavramları ve SQLite/PostgreSQL/OTel birincil belgeleri üzerinden hedefli benchmark hazırlandı; ürünler kurularak IAM veya yük kıyası yapılmadı.
+- Workspace/project üyeliği, insan/agent principal, süreli grant, authz revision, private/shared türev bilgi, davet/offboarding ve reviewer policy tasarımı eklendi. İlk bireysel pilot korundu.
+- Source/domain/security audit/operational telemetry ayrımı; SQLite başlangıcı, merkezi ekip PostgreSQL adayı, blob/secret sınırı, retention/backup/purge ve sentetik kapasite profilleri belgelendi.
+- ADR-0009/0010 önerileri, P1 alt görevleri, P4 C01–C06 ekip dilimleri ve 18 MU kabul senaryosu eklendi. README, AGENTS, scope, roadmap, handoff ve izlenebilirlik bağlandı.
+- Doküman kontrolü geçti: 57 Markdown, 264 yerel bağlantı, 32 scope, 30 ana görev, 14 MVP AC; 28 V + 18 MU planlı senaryo. Bunlar runtime test sonucu değildir.
+- Sayısal retention/SLO/RPO/RTO önerileri ve ekip deployment/reviewer seçenekleri açık karar olarak kaldı. Uygulama ve gerçek veri/ücretli API deneyi yapılmadı. T01 hâlâ sıradaki uygulamalı hazırlık.
+
+
+
 ### 2026-10-09 — Kullanıcı araştırması ve pilot soruları
 
 - Owner ilk pilotu kendi bireysel kullanımıyla, sonra benzer kullanıcılarla ilerletmeyi seçti. Coding/chat yüzeyleri + hedef OS ve harici API/veri/bütçe sınırı soruldu; henüz cevap gelmedi. Karar durumu [soru kaydında](decision-brief.md).

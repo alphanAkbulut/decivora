@@ -1,6 +1,6 @@
 # Domain modeli ve durum makineleri
 
-**Önerilen sözleşme.** Bütün proje kapsamlı tablolar/işlemler `project_id` ile sınırlandırılır. Ad, klasör adı veya repository URL'si kimliğin yerine geçmez. Cross-project ilişki ancak ayrı yetkilendirilmiş paylaşım tasarımıyla gelir.
+**Önerilen sözleşme.** Bütün proje kapsamlı tablolar/işlemler `(workspace_id, project_id)` ile sınırlandırılır. Workspace tenant sınırıdır; ilk pilot tek kişisel workspace içerir. Ad, klasör adı veya repository URL'si kimliğin yerine geçmez. Cross-project ilişki ancak ayrı yetkilendirilmiş paylaşım tasarımıyla gelir.
 
 ## Kayıtlar
 
@@ -62,3 +62,9 @@ Bir task'ın zorunluluk koşulu `any` / `all` ifadesiyle belirtilir. Yapraklar o
 - Boş gerekçe listesi `unknown`; “gerekmiyor” sonucu değildir.
 
 İlişki grafiğinin eksiksiz olduğunu varsaymayız. “Gerekçe kalmadı” yalnız kaydedilmiş kapsama göre öneridir. Periodic audit ilişkisiz task'ları gösterir; insan onayı kapanış hatasına karşı son kapıdır.
+
+## Kimlik, erişim ve veri yaşam döngüsü uzantısı
+
+Workspace, Membership, Principal, AgentRun, DelegationGrant, ResourceACL ve ServiceConnection [kimlik modelinde](identity-access.md) tanımlanır. Project policy/knowledge revision yanında authz revision'a bağlıdır. ChangeSet/Approval kapsamı workspace, kaynak ACL revision'ları ve authz revision taşır; server güncel durumu commit'te kontrol eder. Kaynağın `personal` görünürlüğü proje binding'i yapılınca kendiliğinden `shared` olmaz.
+
+Kaynak/blob referansında retention_policy_version, expires_at, pin_reason/pin_until, availability ve deletion/tombstone durumu bulunur. Canonical kayıtlar ve türev context aynı ömre sahip değildir; [yaşam döngüsü tablosu](storage-memory-capacity.md) authoritative tasarım önerisidir. Credential gövdeleri hiçbir domain entity'de tutulmaz.

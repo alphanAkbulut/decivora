@@ -12,3 +12,8 @@ ADR'ler henüz uygulanan teknoloji kararları değildir. Kabul edilmiş kullanı
 - [ADR-0008 — Snapshot'a bağlı onay ve ayrı çalıştırma yetkisi](0008-approval-snapshot-authority.md)
 
 0007, 0002/0003'ü; 0008, 0004/0005'i tamamlar. Hiçbiri önceki ürün ilkelerini geçersiz kılmaz. 2026-10-09 [mimari inceleme tablosu](../../quality/completeness-review.md) bütün ADR'lerin yeniden değerlendirmesini ve gereken kanıtı kaydeder.
+
+- [ADR-0009 — Kapsamlı insan/agent principal ve grant](0009-scoped-principals.md)
+- [ADR-0010 — Depolama katmanları ve veri yaşam döngüsü](0010-storage-lifecycle.md)
+
+0009, 0005/0008'i; 0010, 0001/0002/0007'yi tamamlar. Rol matrisi, ekip DB geçişi, retention sayıları ve capacity hedefleri öneridir; onaylanmış/uygulanmış kabul edilmez.

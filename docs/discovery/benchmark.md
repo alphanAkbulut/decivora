@@ -48,3 +48,7 @@ P0'da aynı sentetik corpus'u Cortex, Claude Task Tracker, mai-mcp ve mümkünse
 Fixture görevleri: yeni fikir, duplicate, geri çekilen öneri, forgotten approval, false done, çoklu gerekçe, karar değişimi, crash/retry, iki proje ve prompt→execution. Her araç için **native / configuration / custom extension / unavailable / unknown** sonucu yaz. Onay tıklaması, manuel metin, token, elapsed time ve doğru state aynı kriterlerle ölçülsün. Custom geliştirme süresi ayrıca raporlansın.
 
 Önerilen seçim sırası: önce Cortex/mai-mcp ile yakın domain kapsamını, Tracker ile pasif capture'ı kanıtla; sonra store/adapter reuse kararını ver. Şimdilik bağımsız domain çekirdeği önerilir; karşılaştırma sonuçları bunu değiştirebilir. Mevcut araç hedefi yeterince karşılıyorsa entegrasyon yolu geçerli başarıdır.
+
+## Ekip, izin ve kalıcı hafıza ek taraması
+
+2026-10-09 [hedefli benchmark](collaboration-storage-benchmark.md), Linear/GitHub/OpenFGA erişim örüntülerini; Cortex/mai-mcp agent sınırlarını; Letta'nın legacy context/state ayrımını; SQLite/PostgreSQL/OTel veri ve log sınırlarını inceler. Belgelenen özellik→bizim önerimiz→uygulama/test kapısı bağlantısı vardır. Runtime IAM/yük karşılaştırması yapılmadı.

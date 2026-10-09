@@ -35,8 +35,10 @@ Kullanıcı deneyimi [özellik kataloğunda](feature-catalog.md); konuşma→öz
 | INT-02 | Agent'lar arası ortak hafıza ve execution lineage | P1b temel MCP; P2 geniş | Bir agent'ın kaydı diğerinde aynı sürümle okunur |
 | GOV-01 | Veri minimizasyonu, onay, proje izolasyonu, injection savunması | P1a/P1b | Kaynak metni sistem komutu olarak yürütülmez |
 | GOV-02 | İhracat/taşınabilirlik, retention ve silme istisnası | P1b/P2 | Runtime private; export anlaşılır ve yeniden alınabilir |
-| TEAM-01 | Takım/organizasyon, RBAC, cloud sync, enterprise audit, managed automation | P4 | Yeni ADR, güvenlik ve lisans kapısı sonrası |
+| TEAM-01 | Takım/organizasyon; insan/agent yetkileri, davet/offboarding, özel/ortak hafıza, cloud sync, enterprise audit, managed automation | P1 kimlik temeli; P4 ekip | ADR-0009/0010; MU01–MU18 ve C01–C06 ekip kapıları; onaylı policy/işletim |
 | OSS-01 | Açık kaynak çekirdek, iyi demo, kurulum, katkı ve olası open core | P3/P4 | Public release ayrı kullanıcı kararı |
 | EVAL-01 | Benchmark, golden corpus, pilot, yönetim yükü ve yanlış öneri ölçümü | P0 ve tüm fazlar | Sonuç, sürüm ve örneklemle yayımlanır |
 
 “Otomatik task kapanışı” VER-01 ve policy sınırlarıyla mümkündür; scope kararlarını kendi başına alma anlamına gelmez. “Universal” hedef kapsamı anlatır, bugün mevcut platform erişimi iddiası değildir.
+
+Ekip isteğinin ayrıntısı yeni bir ürün değildir: TEAM-01, PRJ-01, GOV-01/02, AUD-01, APR-01 ve INT-02 kapsamlarını açar. [Fazlı plan](../delivery/team-data-plan.md) rol/agent yönetimi, log sınıfları, DB kapasitesi ve hafıza ömrünü işlere bağlar. Cloud/offline sync tam kapsamda kalır; bugünkü DB migration tasarımı sync'in uygulanmış olduğu anlamına gelmez.

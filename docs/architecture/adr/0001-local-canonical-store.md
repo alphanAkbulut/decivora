@@ -24,3 +24,4 @@ P0 corpus'u en yakın alternatiflerle karşılaştır. SQLite atomic/replay/cras
 
 Kaynak: [Karar haritası](../../product/decision-map.md), [evrim kaydı](../../discovery/evolution.md). Onaylayan/tarih henüz atanmadı; kullanıcı niyeti teknik uygulama onayıyla eşitlenmez.
 
+2026-10-09 tamamlayıcı inceleme: [ADR-0010](0010-storage-lifecycle.md) local SQLite önerisini korur; merkezi ekip API'si/PostgreSQL, ayrı blob deposu ve ölçüme bağlı geçiş planını ekler. Aktif DB dosyasını network drive üzerinden ortak kullanmak önerilmez. Sayısal kapasite/retention için [veri planı](../storage-memory-capacity.md).

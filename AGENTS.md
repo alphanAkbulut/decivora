@@ -37,3 +37,11 @@ Doküman kontrolü: `python3 scripts/check_docs.py`. Uygulama test komutları he
 Değişiklik riskine göre `docs/quality/verification.md` senaryolarını kullan. Özellikle yanlış obsolete, false done, stale approval, crash/retry, proje izolasyonu ve replay regresyonlarını koru. UI etkileşimi iddiası gerçek tıklama/akış testi ister.
 
 Sonuçta ne değişti, ne doğrulandı, açık kalanlar ve sıradaki iş yaz. Benchmark özelliği README'de varsa documented de; çalıştırmadan verified deme. Kaynak/lisans koşulu incelenmeden kod, prompt, logo veya asset kopyalama. Yeni runtime dependency için sürüm, gerekçe ve lisans kaydı tut.
+
+## Erişim ve hafıza sınırları
+
+- Workspace/project kimliği, kaynak ACL'si ve güncel authz revision her query/command/dispatch için geçerlidir. Agent grant'i insan onayı, runner veya dış yazma izni yerine geçmez.
+- Private kaynaktan türetilen özet/index/context erişimi genişletemez. Model öncesi authorization uygula; açık paylaşımı ayrı kayıt ve onayla yap.
+- Source capture, domain event, security audit, operational telemetry ve DB WAL farklıdır. Secret/raw transcript operational loga konmaz.
+- Kalıcı hafıza ile geçici model context'ini ayır. Payload TTL dedup/approval kimliğini silmez. Purge ve restore birlikte tasarlanır.
+- Ayrıntılı sözleşmeler `docs/architecture/identity-access.md`, `logging-audit.md` ve `storage-memory-capacity.md` içindedir. Sayısal süre/kapasite önerileri ölçülmüş sonuç veya kabul edilmiş policy sayılmaz.

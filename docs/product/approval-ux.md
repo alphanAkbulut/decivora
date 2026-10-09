@@ -31,10 +31,14 @@ Seçenekler: **Onayla / Koru / Ayrı incele / Ertele / Reddet / Karşılaştır*
 
 ## Toplu onay güvenliği
 
-Bağımsız işlemler seçilebilir. Birbirine referans veren operations aynı atomic group olarak gösterilir; kullanıcı birini kaldırırsa kalan set yeniden doğrulanır. “Approve All” otomatik yeni seçim veya timeout onayı değildir. Onay `actor + project + changeset digest + base revisions + policy revision` taşır. Stale onayda diff yeniden hazırlanır. Double click aynı sonucu döndürür. Reddetme nedeni hazır seçeneklerden seçilebilir; açıklama opsiyoneldir.
+Bağımsız işlemler seçilebilir. Birbirine referans veren operations aynı atomic group olarak gösterilir; kullanıcı birini kaldırırsa kalan set yeniden doğrulanır. “Approve All” otomatik yeni seçim veya timeout onayı değildir. Onay `actor + workspace/project + changeset digest + base revisions + knowledge revision + policy revision + authz revision` taşır. Stale onayda diff yeniden hazırlanır. Double click aynı sonucu döndürür. Reddetme nedeni hazır seçeneklerden seçilebilir; açıklama opsiyoneldir.
 
 Klavye erişimi, focus sırası, ekran okuyucu etiketleri, yalnız renge dayanmayan durum, uzun başlıklar ve dar ekranda review akışı P1b testine dahildir. Graph'ın erişilebilir liste alternatifi bulunmalıdır. Board'da drag-and-drop tek işlem yolu olmamalıdır.
 
 ## Bekleyen kararın yaşamı
 
 PendingDecision: açık soru, alternatifler, öneri/gerekçe, source, owner, blocker links ve durum (open/deferred/resolved/cancelled). Belirsiz “sonra bakarız” ifadesi source olarak saklanabilir; konu belirlenmeden committed decision olmaz. Resolved olduğunda gerçek Decision ID'sine bağlanır. Kullanıcının bir kartı açması “değerlendirildi/onaylandı” anlamına gelmez.
+
+## Birden fazla reviewer ve agent
+
+[Yetki tasarımındaki](../architecture/identity-access.md) rol/grant ve kaynak görünürlüğü server'da kontrol edilir. Ekipte onay ekranı öneren insan/agent, kimin adına çalıştığı, bağımsız reviewer gereksinimi ve erişim eksikliğini gösterir. Aynı insanın iki oturumu bağımsız review değildir. İlk bireysel pilot açık single-owner policy ile ilerler; gelecekteki iki insan şartı bugünkü kullanımı kilitlemez. Yetki veya kaynak ACL değişince eski approval yeniden değerlendirilir.
