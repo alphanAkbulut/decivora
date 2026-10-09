@@ -58,7 +58,28 @@ Tarih ve bütçe henüz taahhüt edilmedi. Bağımlılık kapısını geçemeyen
 
 Mevcut T01–T30 sırası başlangıç teslim planıdır. Refinement sırasında gerçek teknik gate, politika/izin gate'i ve yalnız planlama sırası ayırt edilir. Kanıt olmadan sırayı kaldırma veya bütün gelecekteki işleri bugünkü blocker sayma. Yeni öneri hedefi/scope'u değiştiriyorsa owner kararı gerekir; onaylı kapsam içindeki rutin teknik planlama uygulayıcılarda kalır. Gereksiz bağımlılığı azaltmak da çözüm adayıdır. Product Owner sorumluluğu AI'ya devredilmiş sayılmaz.
 
-## Değişiklik ve risk uygulaması
+## DEC-17 — Kaynak yaklaşımı → tercih → gerekçe
+
+**Karar sahibi:** kullanıcı/Product Owner. **Tarih:** 2026-10-09. **Tetikleyici:** kullanıcının Q09 yanıtında blocker ve başka işleri geciktiren bağımlılıkların önceliğini, ürün bakışını ve Scrum Alliance yaklaşımından yararlanmayı istemesi. **Statü:** bu yön kabul edildi; öncelik hesabı/UX teknik öneri, çalışma düzeni bireysel pilot uyarlamasıdır.
+
+Bu ayrıntılı kaynak–gerekçe eşlemesi 2026-10-10'da kullanıcının açıklık talebiyle eklendi; önceki karar tarihi değiştirilmedi.
+
+Kararın başlangıcı kullanıcı ihtiyacıdır. Ardından Scrum kaynaklarıyla sorumluluk ve çalışma yaklaşımı kontrol edilmiştir; kaynak incelemesinin kullanıcı kararından önce yapıldığı veya kaynağın algoritmamızı zorunlu kıldığı iddia edilmez.
+
+| Baz alınan yaklaşım / doğrudan kaynak | Bizim tercihimiz | Neden / sınır | Doğrulama veya yeniden değerlendirme |
+|---|---|---|---|
+| Scrum Alliance [Managing Dependencies in Scrum — Intra-team dependencies](https://resources.scrumalliance.org/Article/managing-dependencies-scrum): teknik bağımlılıkları görünür kılma, backlog sırasını değerlendirme | Engellenmiş işi tekrar denemek yerine ilerlemeyi açan işi/kararı öner; gerekçe yolunu göster | Kullanıcının diğer işlerin gecikmesini azaltma ihtiyacını karşılar. Salt downstream sayısı bizim için yeterli değer ölçüsü değildir | FLOW-01–04/07; yanlış ready, bekleme ve owner override gerekçeleri |
+| Aynı [Scrum Alliance rehberi](https://resources.scrumalliance.org/Article/managing-dependencies-scrum): sprint içi task koordinasyonunu uygulayıcıların yapması | Ürün sırası/scope kullanıcıda; izinli teknik sonraki adımlar uygulayıcıda | Her küçük teknik adım için owner'ı bekletmeden kontrolü korumak. Agent grant'i insan onayına dönüşmez | FLOW-05/06; eski onay, scope ve izin sınırları |
+| Scrum Alliance [Product Owner Responsibilities — Defining the Vision / Prioritizing Needs](https://resources.scrumalliance.org/Article/im-new-product-owner-responsibilities): vizyon ve değer odağı | İş seçiminde kullanıcı sonucu, mevcut hedef ve risk açıklaması | Kart/puan sayısını başarı saymak ürünün manuel yönetim yükünü azaltma amacını kaçırabilir | Yönetim yükü, doğrulanmış kullanıcı çıktısı ve pilot geri bildirimi |
+| [Scrum Guide — Inspection / Adaptation](https://scrumguides.org/scrum-guide.html#inspection): gözlemle inceleme ve uyarlama | Küçük doğrulanabilir teslim, sonuç incelemesi ve somut süreç iyileştirmesi | Yanlış varsayımı erken görmek; P0 araştırma çıktısını çalışan ürün diye göstermemek | T01–T03 kanıt kapıları; teslim sonu AC/DoD ve sonraki karar kaydı |
+
+**Bedeller:** ilişki/kanıt güncel tutulmalı; eksik coverage doğru sıralamayı sınırlayabilir; sürekli yeni acil iş odak kaybı yaratabilir. Bu yüzden unknown, bekleme yaşı ve öncelik değişiminin gerekçesi görünürdür. Hazırlanmış öneri kabul edilmiş planı sessiz değiştirmez.
+
+**Bu turdaki karşılaştırma:** yalnız geliş sırasıyla ilerlemek bağımlılık etkisini kaçırabilir; yalnız bağlantı sayısıyla ilerlemek düşük değerli işleri öne çıkarabilir; her değişimde planı otomatik değiştirmek odağı bozabilir. Bunlar mevcut kararın açıklayıcı değerlendirmesidir; geçmişte kullanıcıya ayrı seçenek olarak sunulduğu iddia edilmez. Seçilen yön, blocker etkisini ürün hedefi/değeriyle birlikte değerlendirmektir; kesin puanlama formülü seçilmedi.
+
+**Uyarlama sınırı:** WIP=1, bireysel oturum kontrolü, agent yetkileri, FLOW algoritması ve onay UX'i Decivora tercihidir; Scrum Alliance'ın zorunlu reçetesi değildir. Formal Sprint takvimi/roller henüz yoktur. Ekip pilotunda sorumlular ve ritim; bireysel pilotta yanlış öncelik, bekleme ve yönetim yükü sonuçları bu kararı yeniden değerlendirme girdileridir. Kaynaklara referans vermek tam Scrum uyumu/sertifikasyonu kanıtlamaz.
+
+## Değişiklik kaydı ve riskler
 
 Yeni fikir → mevcut scope/kararla karşılaştır → delta ve etki → gerekiyorsa owner onayı → ADR/scope/backlog birlikte güncelle. Eski karar ve görevi silerek geçmişi yeniden yazma. Öncelikli riskler: kaynak erişimi, yanlış obsolete/verified, capture kaybı, onay yorgunluğu, token maliyeti ve lisans. Ayrıntılar [risk kaydında](../governance/risks.md); bekleyen seçimler [açık kararlarda](../governance/open-decisions.md).
 

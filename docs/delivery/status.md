@@ -1,6 +1,6 @@
 # Mevcut durum
 
-2026-10-09 — **Discovery / Product Definition**.
+2026-10-10 — **Discovery / Product Definition**.
 
 | Alan | Durum |
 |---|---|
@@ -14,6 +14,12 @@
 **Sıradaki iş: T01** — golden corpus ve kanıt şablonunu hazırlamak; ardından T02 adapter fizibilitesi. İlk üretim kodu T03'te build/extend ve stack kapısından sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-10 — Karar gerekçelerinin kaynakla eşlenmesi
+
+- Proje yönetim planında DEC-17 için kullanıcı ihtiyacı, karar sahibi/tarihi, kaynak yaklaşımı, Decivora uyarlaması, seçim gerekçesi, bedel ve doğrulama aynı kayıtta eşlendi. Kaynak kontrolünün kullanıcı yönlendirmesinden sonra yapıldığı ve formal Scrum uyumu iddiası olmadığı açık.
+- Karar haritasına gerekçe belgeleri indeksi ve kayıt standardı eklendi. Kayıtsız geçmiş gerekçeler uydurulmadı; sonradan yapılan karşılaştırma tarihsel seçenek sunumu gibi gösterilmedi. Ürün kapsamı/karar statüsü değişmedi.
+- Doküman kontrolü geçti: 62 Markdown, 366 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. Runtime veya bağımsız LLM anlama testi yapılmadı.
 
 ### 2026-10-09 — Tek insanın çok agent'ı ve ekip kurulumu
 
