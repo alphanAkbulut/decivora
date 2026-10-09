@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Biriken işler için açıklanabilir ranking tasarımı
+
+- [Ranking sözleşmesi](../product/priority-and-flow.md): 40+ task senaryosu, sekiz faktör, ilerlememe nedenleri, next actionable ve downstream etki açıklaması; canonical priority / önerilen rank / teknik execution order ayrıldı.
+- Admin/owner etkin proje yetkisiyle; üst agent yalnız önceden verilmiş grant içinde teknik planı düzenleyebilir. Scope/value ve korunan karar hakları insan Product Owner'da; öneri otomatik plan değişikliği değildir.
+- MVP deterministik blocker/dependency + basit board; P2 context-aware scoring/simülasyon/UX feasibility adayı. T11c/T20e/T24d ayrıntılandırıldı, T26b PROPOSED eklendi; FLOW-09–17 planlandı, FLOW-01–08 ve ana görev bağımlılıkları korundu. DEC-17'nin kabul tarihi 2026-10-09 olarak kaldı; teknik ağırlık/eşik/faz kesinleşmedi.
+- Yalnız doküman değişikliği; feature, runtime, UI veya scoring deneyi yapılmadı. T01 sıradaki iş; açık kararlar ve 14 MVP kriteri korunuyor. Doküman kontrolü geçti: 66 Markdown, 471 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. Sekiz hedef belge dışında değişiklik olmadığı ve FLOW-01–08/ana görev bağımlılıklarının korunduğu ayrıca kontrol edildi; planlı FLOW senaryoları not_run.
+
 ### 2026-10-10 — Sequence, DB ilişkileri ve tetikleme/zamanlama sözleşmesi
 
 - [İletişim belgesi](../architecture/execution-and-integrations.md): 12 tetikleyici, sistem/API matrisi, olay odaklı işleme ve profil/polling/retry deney aralıkları; task doğrulama, koşullu LLM ve dış teslim için üç sequence.

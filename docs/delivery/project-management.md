@@ -106,3 +106,11 @@ Yeni fikir → mevcut scope/kararla karşılaştır → delta ve etki → gereki
 ## Ekip/veri hattının yönetimi
 
 [Team/data plan](team-data-plan.md) P1 temellerini ve P4 ekip dilimlerini ana backlog'a bağlar. Owner ürün policy/retention/hosting kararını; uygulayıcı izin/log/migration kanıtını hazırlar. “Belgelendi”, “uygulandı” ve “MU senaryosu geçti” ayrı durumlar olarak raporlanır. İlk pilotun bireysel kullanım kararı korunur; ücretli servis veya yeni dış bağlantı belge yazımıyla onaylanmış sayılmaz.
+
+## Biriken işlerin sıralanması — 2026-10-10 takip talebi
+
+Kullanıcı, ilerlemeyen 40+ task için açıklanabilir öneri ve admin/owner ya da önceden yetkilendirilmiş üst agent'ın düzenleyebileceği board'un belgelenmesini istedi. Bu bir feature geliştirme talebi değildir. [Ranking sözleşmesi](../product/priority-and-flow.md) faktörleri, seçenekleri, FLOW-09–17 kabul senaryolarını ve rollout'u tanımlar.
+
+Önerilen rank, insan PO'nun canonical priority kararı ve izinli teknik execution order ayrıdır. Sistem “şimdi yapılmazsa hangi downstream işler bekler?” sorusunu kanıtlı ilişki yollarıyla cevaplar; öneri plan değişikliği değildir. İnsan Product Owner scope/value ve karar haklarını korur. Üst agent ancak mevcut grant içinde teknik plan düzenler; admin etiketi veya yüksek skor yeni yetki sağlamaz.
+
+MVP için deterministik blocker/dependency ve basit board; P2 için context-aware çok faktörlü scoring/simülasyon ve gelişmiş UX adaydır. Faz seçimi yalnız feasibility kanıtıyla kesinleşir; ağırlık, kritik yol hesabı ve UX tasarımı kabul edilmiş teknik karar değildir. T11c/T20e/T24d genişletilir, T26b önerisi eklenir; mevcut ana görev bağımlılıkları ve sıradaki T01 korunur. Önceki yöntem açıklamasında kritik yol kapsam dışıydı; yeni talep bunu yalnız P2 feasibility adayı olarak kaydeder, çalışan motor taahhüdü olarak değil.

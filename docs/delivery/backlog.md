@@ -4,9 +4,9 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 | Yeni alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
-| T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04; eksik graph/ACL/unknown yanlış ready veya tamlık üretmez |
-| T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08; stale/override, tekrar bildirim, yetki ve bağımsız iş |
-| T24d / T20e,T24 | TODO / P1b: sentetik oracle ve owner pilotu | FLOW-01–08; zorunlu sette yanlış ready 0; bekleme/uyarı yükü baseline |
+| T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
+| T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş |
+| T24d / T20e,T24 | TODO / P1b: sentetik oracle ve owner pilotu | FLOW-01–15; 40+ sentetik task; zorunlu sette yanlış ready/yetkisiz mutation 0; bekleme, next-action seçimi ve uyarı yükü baseline |
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
@@ -430,3 +430,13 @@ P4 C03/C05 aynı sözleşmeyi farklı kaynak sahibi ve ekip yöneticisiyle doğr
 | T28c / T28b | Outbox→API→callback/poll korelasyonu, unknown reconciliation ve endpoint sözleşmesi | P3: SEQ-05/07, DBR-04; provider bazında idempotency/Retry-After/permission kanıtı |
 
 T04c fiziksel DB'yi erken seçmez; T05–T08 seçilmiş stack'te FK/unique/transaction kısıtlarını uygular. Güncel AC/DoD ve zorunlu review'lar task sonucunda policy katmanında denetlenir; event veya model cevabı doğrudan executor başlatmaz. T23/C02 migration ve restore DBR-05/06'yı kendi fazlarında tekrar doğrular.
+
+## Ranking feasibility ve Faz 2 dilimi — 2026-10-10
+
+Mevcut T11c/T20e/T24d MVP dilimleri [ranking sözleşmesi](../product/priority-and-flow.md) ile ayrıntılandırıldı; TODO durumları ve ana T01–T30 bağımlılıkları korunur. T01 planlanan FLOW-09–17 fixture taslağını içerir; bu kayıt fixture veya runtime testinin üretildiği anlamına gelmez. T20e apply entegrasyonu için T08b grant ve T07b audit hazır olmalıdır; parent T20/T24 sırası bu kapıları atlamaz.
+
+| Alt görev / bağımlılık | Statü ve teslim | Kabul / feasibility kanıtı |
+|---|---|---|
+| T26b / T24d,T26,T18c,T21b | **PROPOSED / P2 adayı:** context-aware, açıklanabilir çok faktörlü scoring, critical-path veri yeterliliği, what-if ve gelişmiş ranking UX deneyi | FLOW-16–17 + FLOW-01–15 regresyonu; factor contribution/unknown, veri kalitesi, deterministik baseline kıyası, süre/maliyet/UX ölçümü, go/no-go ve fallback |
+
+P2 yerleşimi takvim veya uygulama taahhüdü değildir. Faz yalnız feasibility sonucuyla kesinleşir: veri/izin/context erişimi, kalite, ölçülen efor/maliyet ve 40+ görevde anlaşılabilirlik. Eksik süre/takvimle kesin gecikme hesabı yapılmaz. Scope/value kararını PO verir; scoring veya simülasyon canonical planı değiştirmez. Rollout shadow öneri → yetkili MVP board → feasibility sonrası P2; hata halinde manuel canonical sıraya dönüş. Feature kodu bu dokümantasyon görevinin kapsamı dışındadır.

@@ -76,3 +76,5 @@ Alt işler [team-data-plan](../delivery/team-data-plan.md), MU senaryoları [col
 Orijinal 32 scope korunur. Q04/Q05 tercihleri teknik öneriden ve doğrulanmış davranıştan ayrı [karar kuyruğunda](../delivery/decision-brief.md) tutulur.
 
 Kullanıcı Q04 cevabında olgunlaşma hikâyesi ve AC/DoD/test görünürlüğünü istedi: KNO-01,APR-01,VER-01/02,AUD-01,UX-01 / F04,F07,F09,F10,F14 → [context ve acceptance](../product/task-context-and-acceptance.md) → T13c,T14b,T20c / CTX-01–06. Q05 cevabı CST-01/02,ROU-02 kapsamındaki proje/görev profil seçimini netleştirdi; bütçe/veri izni sağlamadı.
+
+**2026-10-10 ranking takip talebi:** Kaynak, kullanıcının “İlişki Kontrolü ve Kanıt Doğrulaması” devamındaki doğrudan dokümantasyon isteğidir; 40+ ilerlemeyen iş senaryosu ölçüm değildir. DEC-17 → GRF-01/APR-02/UX-02/ROU-01 ve F11/F12 → ENG-05/06/09/10 → [ranking sözleşmesi](../product/priority-and-flow.md) → MVP T11c/T20e/T24d, P2 adayı T26b → FLOW-09–17 ve mevcut FLOW-01–08 regresyonları. Value/scope/karar insan PO'da, üst agent teknik sıra yetkisi mevcut grant ile sınırlı; öneri canonical priority değişimi değildir. Planlı kabul tanımlarıdır, uygulama veya test sonucu değildir.

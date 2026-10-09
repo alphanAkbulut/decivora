@@ -220,3 +220,15 @@ Kesin endpoint/HTTP kodu ve SDK sürümü teknoloji/capability deneyinden sonra 
 | SEQ-08 | Saat değişimi ve restart catch-up fırtınası yaratmaz; benzersiz source olayları kaybolmaz; düşük öncelikli geçmiş aç bırakılmaz |
 
 DB ilişkilerinin ayrı kabulü [veri ilişkileri belgesinde](data-relationships.md). Uygulama sırası [backlog](../delivery/backlog.md#tetikleme-zamanlama-ve-veri-ilişkileri-dilimleri); kesin sayısal değerler OPEN-12/16'da ölçümle karara bağlanacak. Q02/Q03/Q06/Q08/Q10 açık seçimleri bu belgeyle kapanmaz.
+
+## 9. Ranking önerisi ile plan uygulama sınırı
+
+**2026-10-10 — önerilen sözleşme; uygulanmadı.** [DEC-17 ranking devamı](../product/priority-and-flow.md), mevcut ENG-05/06/09/10 üzerinde çalışır; ayrı otonom scheduler/agent servisi kararı değildir.
+
+TRG-04/07/09 ilgili graph, goal, task, context veya authz değişiminde öneriyi stale işaretleyip deterministik yeniden değerlendirme adayı üretir. Aging için TRG-10 yalnız sürümlü eşik vadesini ve kayıtlı assessment zamanını değerlendirir; sürekli polling/LLM çağrısı gerekmez. Graph gezme, board refresh ve rank sıralama LLM çağırmaz. P2'de semantik context gerektiğinde TRG-02'nin izin/bütçe kapısı geçerlidir; model çıktısı öneridir.
+
+Akış: yetkili snapshot → gate/blocker/coverage kontrolü → benzersiz downstream yolları → rank + ilerlememe nedenleri + next actionable → board önizlemesi. Burada işlem biter; canonical priority, execution order, task status veya dış dispatch otomatik değişmez. Commit'in bulunması, run bitişi veya yüksek rank verification yerine geçmez; TRG-05/06/07 completion kuralları korunur.
+
+Sıra apply ayrı command'dır: authenticated actor, proje/task kapsamı, amaçlanan değişiklik, gerekçe, base plan/graph/goal/context/policy/authz revisions ve idempotency kimliği taşır. İnsan PO canonical priority/value/scope kararını verir; üst agent yalnız mevcut grant içindeki teknik execution order'ı düzenler. Apply anında grant/revocation ve snapshot yeniden kontrol edilir; stale/conflict yeniden preview ister. Yetkili değişiklik atomik domain event + audit üretir; retry tek etki, replay sıfır LLM/dış delivery. Yeni execution veya dış yazma ayrıca kendi izin kapısından geçer.
+
+[Identity/access](identity-access.md), [agent soru/karar akışı](agent-and-team-operation.md) ve [impact sözleşmesi](reconciliation-impact.md) değişmez: AND/OR/unknown korunur; depends_on, required_by ve part_of karıştırılmaz; pending impact ready değildir. FLOW-09–15 MVP, FLOW-16–17 P2 planlı kabul testleridir; SEQ testleri yerine geçmez.

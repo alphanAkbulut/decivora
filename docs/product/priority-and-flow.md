@@ -52,3 +52,71 @@ Q09 ile blocker'ların dikkat sırası kabul edildi. Anlık push/e-posta kanalı
 | FLOW-08 | Aynı snapshot'ta graph/inbox/board gerekçesi tutarlı; graph gezme ve sıralama yeni LLM çağrısı gerektirmez |
 
 T11c/T20e uygulama, T24d sentetik oracle ve pilot ölçümü için planlandı; hiçbiri çalıştırılmadı. Yanlış ready güvenlik kapısı ve kullanıcı yönetim yükü birlikte değerlendirilir. Scrum dayanağı ve proje çalışma ritmi [kısa yönetim planında](../delivery/project-management.md); bu belgedeki algoritma ve UI tercihleri Decivora tasarımıdır, Scrum'ın zorunlu formülü değildir.
+
+## 40+ bekleyen task için açıklanabilir ranking
+
+**2026-10-10 — kullanıcı talebinin dokümantasyon kaydı.** DEC-17'nin 2026-10-09 tarihli kabulü korunur. Kullanıcı biriken fakat ilerlemeyen işler için sistem önerisi ve insan/izinli üst agent kontrolünde board istedi. “40+” kullanım senaryosudur; ölçülmüş müşteri verisi veya mevcut repo task sayısı değildir. Bu bölüm önerilen uygulama sözleşmesidir; feature geliştirme, scoring formülü kabulü veya otonom plan değişimi yetkisi vermez.
+
+### Birbirinden ayrı üç sıra
+
+- **Canonical priority:** Product Owner'ın kabul ettiği ürün önceliği/sırası; hedef, scope ve business/product value kararlarının kaydıdır.
+- **Recommended rank:** belirli graph, goal, context, policy ve authz snapshot'ından hesaplanan geçici öneri. Yeniden hesaplama canonical priority'yi değiştirmez; puan, işin ready olduğunu veya çalıştırma iznini göstermez.
+- **Execution order:** onaylı hedef/scope içinde uygulanabilir teknik adımların sırası. Admin/owner yalnız etkin proje yetkisiyle düzenler; “üst agent” unvanı yeterli değildir. Üst agent ancak önceden verilmiş, proje/task/action/süre bakımından geçerli grant'in izin verdiği plan düzenlemesini yapabilir. Ürün sırası, değer, scope, AC ve karar hakları insan Product Owner'da kalır.
+
+Board öneri ve canonical priority'yi yan yana gösterir; execution order değişiminin ürün kararına etkisi ayrıca önizlenir. Öneriyi görmek/seçmek veya kartı sürüklemek sessiz kayıt değildir: değişiklik özeti, neden ve yetki kontrolüyle ayrı apply command gerekir. Yetki içi teknik düzenleme için her seferinde yeni insan onayı istenmez; korunan ürün kararı değişiyorsa güvenilir insan onayına gider. Read-only kullanıcı sıralamayı inceleyebilir, kaydedemez. Kurulum admin'i olmak proje verisine veya Product Owner kararına sınırsız yetki vermez.
+
+### Faktörler ve açıklama sözleşmesi
+
+| Faktör | Girdi ve açıklanacak etki | Eksik veri / sınır |
+|---|---|---|
+| Blocker/dependency ağırlığı | Doğrulanmış aktif başlangıç/bitiş gate'i, benzersiz doğrudan/dolaylı downstream, mevcut hedefin durması | Yalnız ilişki sayısı değer değildir; başka gate varsa ready olmaz |
+| Business/product value | İnsan PO'nun kaynaklı hedef/değer değerlendirmesi ve açılacak kullanıcı sonucu | LLM değer kararı vermez; boş alan sıfır değer sayılmaz |
+| Critical path | Süre, takvim, ilişki ve kapasite varsayımları yeterliyse hedef teslim yoluna etkisi | Çok bağlantı kritik yol değildir; veri yoksa yalnız bağımlılık yolu gösterilir, gün cinsinden gecikme uydurulmaz |
+| Stale task / aging | Oluşturulma yaşı, blocked_since ve son anlamlı ilerleme ayrı; review ihtiyacı | Yorum/heartbeat yaş sayacını sıfırlamaz; eski iş otomatik iptal/obsolete olmaz |
+| Effort | Çözüm adımının tahmini efor aralığı ve tahmin kaynağı | Küçük iş otomatik kazanmaz; bilinmeyen efor sıfır değildir |
+| Uncertainty | Bilinmeyen ilişki, düşük coverage, tahmin güveni ve gerekli araştırma | Belirsizliği gizleyen kesin tek puan yerine review/spike önerisi |
+| Context readiness | Güncel AC/karar/input/evidence, pending impact ve gerekli erişimin varlığı | Eksik/stale context'te önce bağlamı tamamlama adımı; skor bu gate'i aşamaz |
+| Risk | Gecikmenin ürün/teslim riski ve işi yapmanın güvenlik/değişiklik riski ayrı | Yüksek uygulama riski otomatik çalıştırma nedeni değil; mitigation/insan kararı gerekebilir |
+
+MVP'de yukarıdaki mevcut değerlendirme sırası deterministik ve açıklamalı kullanılır; faktörler kanıt/unknown olarak gösterilir, ağırlıklı toplam icat edilmez. Önce yetki ve hazır olma kapıları değerlendirilir; engellenmiş önemli task ile onun uygulanabilir çözüm adımı ayrı tutulur. Eşitlikte canonical sıra, sonra sabit task ID kullanılır. Aging yalnız kaynak zamanı ve kayıtlı değerlendirme zamanı üzerinden hesaplanır; eşik/policy sürümlüdür ve henüz seçilmemiştir.
+
+Faz 2 scoring adayı her faktörün ham girdisini, kaynağını, normalization/weight sürümünü, katkısını, eksiklerini ve hassasiyetini açıklar. İlişki sayısı/değer/critical path aynı faydayı tekrar puanlamamalıdır. Ağırlıklar, eşikler ve score ölçeği feasibility/pilot sonrası insan PO review'una gider; sabit formül veya doğruluk iddiası yoktur. LLM yalnız izinli context'te anlamsal açıklama/aday çıkarımı yapabilir; deterministik graph hesabının ve insan kararının yerine geçmez.
+
+Her öneri en az şunları taşır: aday task ve **next actionable**, neden şimdi, mevcut→önerilen sıra, canonical priority, ilerlememe nedenleri, çözüm sahibi/karar mercii, reason paths ve kaynak revision'ları, etkilenen işler, açılabilecek işler, belirsizlik/coverage, değerlendirme zamanı ve geçerlilik. İlerlememe nedeni dependency, insan kararı, erişim, dış teslim, context eksikliği, kapasite/WIP, failed verification, pending impact veya unknown olabilir; birden çok neden birlikte görünür. Hiç uygun iş yoksa zorla task seçilmez; “uygulanabilir iş yok” ve gereken karar/izin gösterilir.
+
+**Sentetik impact explanation:** “API sözleşmesini şimdi netleştirmezsek B import entegrasyonu ve B üzerinden C doğrulama işi beklemeye devam eder: A→B→C. B ayrıca erişim bekliyor; A çözülünce B ve C hemen ready olmayacak. Teslim tarihi/süre verisi yok; kaç gün gecikeceği bilinmiyor. Şimdiki adım: sözleşme seçeneklerini PO review'una hazırlamak; bu karar beklerken yetkili ve hazır D fixture işine geçilebilir.” Gizli başlık/sayım/yol açıklamada veya LLM context'inde sızmaz.
+
+### Board, seçenekler ve fazlama
+
+Board'da canonical sıra / önerilen sıra / execution order, ready-blocked-review durumu, aging, neden, owner ve next actionable birlikte bulunur. Filtreleme ve klavye ile sıra düzenleme alternatifi 40+ kartta kullanılabilir olmalıdır. Öneriyi kabul/ertele/reddet ve manuel override gerekçeleri geçmişte korunur; refresh kullanıcının kaydedilmiş sırasını ezmez. Board/graph/inbox aynı snapshot'ı gösterir.
+
+| Seçenek | Fayda / bedel | Önerilen yer |
+|---|---|---|
+| Yalnız manuel board | Basit ve kontrollü; birikimde dependency etkisini insan keşfeder | Fallback; otomatik öneri ihtiyacını tek başına karşılamaz |
+| Deterministik blocker/dependency önerisi + yetkili board | İzlenebilir neden, düşük model maliyeti; semantik değer/efor tahmini sınırlı | MVP: T11c çekirdek, T20e board, T24d kabul |
+| Context-aware çok faktörlü scoring, what-if simülasyon ve gelişmiş UX | Değer/risk/efor trade-off'unu karşılaştırır; veri kalitesi, kalibrasyon ve yanlış kesinlik maliyeti | Faz 2 / P2 adayı: T26b; feasibility kapılı |
+
+Bu faz ayrımı ön taslaktır. Fazı belirleyen kanıt; veri bulunabilirliği/kalitesi, deterministik oracle doğruluğu, 40+ görevde gecikme ve anlaşılabilirlik, context/izin desteği, model maliyeti ve uygulama eforudur. Sırf “AI özelliği” olduğu için Faz 2'ye atılmaz. MVP'ye sığmayan parça gerekçe ve fallback ile raporlanır; güvenlik kapıları ertelenmez. Faz değişikliği feasibility kanıtıyla önerilir, scope değişimini PO kabul eder. What-if sonucu varsayımsaldır; plan/priority/dependency'yi değiştirmez. Kesin süreli kritik yol veya Gantt motoru taahhüdü yoktur.
+
+### Ek kabul kriterleri ve test senaryoları
+
+Aşağıdaki senaryolar **planlı / not_run**; FLOW-01–08'in yerine geçmez.
+
+| ID | Senaryo → gözlenebilir kabul kriteri | Kapı |
+|---|---|---|
+| FLOW-09 | 40+ sentetik task, aynı snapshot ve assessment zamanı → deterministik öneri ve eşitlik sırası aynı; rank refresh canonical priority/execution order değiştirmez | MVP |
+| FLOW-10 | Yüksek rank fakat erişim/context/karar eksik → nedenler ve çözüm sahibi görünür; yetkili next actionable veya hazır bağımsız iş; hiçbiri yoksa açık none | MVP |
+| FLOW-11 | A→B→C ve ek gate → “yapılmazsa etki” gerçek yol/kaynakla açıklanır; etkilenen/hazır olacak ayrılır; süre yoksa tarih uydurulmaz | MVP |
+| FLOW-12 | Owner/admin, read-only, geçerli/revoked/expired/scope dışı üst agent → yalnız yetkili teknik sıra apply edilir; PO value/scope/kararı agent'a devredilmez | MVP |
+| FLOW-13 | Board reorder sırasında graph/goal/context/authz/plan revision değişir veya iki kişi yazar → stale/conflict; overwrite yok, yeni preview; retry tek event | MVP |
+| FLOW-14 | Aging eşiği aşımı, heartbeat ve stale kanıt → son anlamlı ilerleme korunur; review önerisi oluşur; otomatik iptal/completion/priority değişimi yok | MVP |
+| FLOW-15 | 40+ kartta filtre, klavye reorder, öneri ertele/reddet/override ve refresh → neden/üç sıra açık, kayıt korunur; FLOW-08 snapshot tutarlılığı ve ACL negatifleri geçer | MVP gerçek UI pilotu |
+| FLOW-16 | Eksik value/effort, değişen weight ve belirsiz context → katkı/unknown/sensitivity görünür; yeniden üretilebilir score; manuel/deterministik baseline ile PO review kıyası | P2 feasibility |
+| FLOW-17 | Süre/takvim yeterli ve yetersiz iki what-if fixture → ilkinde varsayımlar/yol/etki aralığı görünür, ikincide yalnız nitel etki; canonical state ve dış execution değişmez | P2 feasibility |
+
+### Rollout ve geri dönüş
+
+1. T01'e sentetik 40+ görev, zincir/elmas, bağımsız işler, cycle, eksik ACL/context ve aging oracle'ı ekleme planı; T11c graph kuralları önce. Gerçek kullanıcı verisi kendiliğinden alınmaz.
+2. T20e/T24d'de öneriler önce shadow/read-only karşılaştırılır; ardından yetkili board apply akışı pilotlanır. Zorunlu sette yanlış ready ve yetkisiz mutation sıfır; açıklama anlaşılabilirliği, next-action seçme süresi, override nedenleri, starvation ve öneri değişim sıklığı ölçülür. Hız hedefleri baseline sonrasında belirlenir.
+3. T26b feasibility raporu veri/kalite/maliyet/UX kanıtı ve go/no-go sunar. Önce açıklamalı çok faktörlü öneri, sonra varsayımsal simülasyon değerlendirilir; dış runner veya connector açılmaz.
+4. Hatalı rank, ACL sızıntısı, yetkisiz plan değişimi veya açıklanamayan dalgalanmada öneri özelliği kapatılır; canonical sıra ve manuel board korunur. Önceden uygulanmış sıra geri dönüşü yeni yetkili revision/event'tir; tarihçe silinmez. Replay LLM, bildirim veya agent dispatch tetiklemez.
