@@ -15,6 +15,14 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-09 — Tek insanın çok agent'ı ve ekip kurulumu
+
+- İnsan sayısı, agent sayısı ve execution yetkisi ayrı eksenler olarak belgelendi. Mevcut INT-02/TEAM-01 kapsamında tek owner + iki agent için T02c/T18d/T24e; ekip kurulum/hesap/davet için C01–C04 ayrıntıları eklendi.
+- Resmî Codex SDK, OpenAI reasoning ve Claude Code hook belgeleri okundu. Girdi/parent/tool/artifact/usage coverage, gözlemci/aktör kimliği, private muhakeme sınırı, run başarı/task doğrulama ayrımı, duplicate/revoke/race ve usage toplamı tasarlandı. Agent veya provider kurulmadı.
+- Self-host/managed seçenekleri, merkezi servis/ayrı hesaplar, private kaynak paylaşımı, bootstrap/recovery/offboarding ve kişisel→ekip geçişi belgelendi. Hosting/SSO/ticari lisans seçilmedi; bireysel pilot ve T01 sıradaki hazırlık olarak kaldı.
+- AGT-01–08 planlıdır; uygulama, gerçek çok-agent çalışması veya ekip giriş testi yapılmadı. Q02/Q03 ve OPEN-14–16 mevcut karar kapılarıdır.
+- Doküman kontrolü geçti: 62 Markdown, 362 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. Yeni sekiz AGT senaryosu uygulama kabul planıdır, test sonucu değildir.
+
 ### 2026-10-09 — Product Owner yaklaşımı ve blocker önceliği
 
 - Q09/DEC-17 kabul edildi: ilerlemeyi engelleyen işler/kararlar ve downstream gecikmesi önce; değer/hedef/risk odaklı çevik çalışma. Bildirim kanalı/sıklığı ve formal Sprint takvimi seçilmedi; Q08 ayrı açık.

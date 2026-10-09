@@ -41,4 +41,6 @@ Kullanıcı deneyimi [özellik kataloğunda](feature-catalog.md); konuşma→öz
 
 “Otomatik task kapanışı” VER-01 ve policy sınırlarıyla mümkündür; scope kararlarını kendi başına alma anlamına gelmez. “Universal” hedef kapsamı anlatır, bugün mevcut platform erişimi iddiası değildir.
 
+INT-02 tek insanın çok-agent çalışmasını da kapsar; TEAM-01 yalnız insan sayısına indirgenmez. [Agent ve ekip işletimi](../architecture/agent-and-team-operation.md) run/task ayrımını, gözlem erişimini ve ürünü ekibine kuran kullanıcının akışını detaylandırır. P1b temel çok-agent takip pilotu; P2/P3 yetkili execution genişlemesi; P4 çok insanlı kurulum/üyelik/işletim kapıları korunur. Özel iç muhakeme erişimi ürünün ön koşulu değildir.
+
 Ekip isteğinin ayrıntısı yeni bir ürün değildir: TEAM-01, PRJ-01, GOV-01/02, AUD-01, APR-01 ve INT-02 kapsamlarını açar. [Fazlı plan](../delivery/team-data-plan.md) rol/agent yönetimi, log sınıfları, DB kapasitesi ve hafıza ömrünü işlere bağlar. Cloud/offline sync tam kapsamda kalır; bugünkü DB migration tasarımı sync'in uygulanmış olduğu anlamına gelmez.

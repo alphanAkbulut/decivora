@@ -41,6 +41,8 @@ Bu tablo **tasarım izlenebilirliğidir; uygulanmışlık kanıtı değildir**. 
 
 ## Güncel ekip/veri isteğinin alt eşlemesi
 
+**Çok-agent ve ekip kurulumu takip isteği:** INT-02,CAP-02/05,PRJ-01,VER-01,CST-02,GOV-01,TEAM-01 / F08,F09,F13,F16 → [gözlem/işletim sözleşmesi](../architecture/agent-and-team-operation.md) → T02c,T18d,T24e ve C01–C04 / AGT-01–08. Tek insanın çok agent'ı, çok insan üyeliği ve agent execution orchestration ayrı teslimlerdir; özel muhakeme erişimi varsayılmaz. Senaryolar planlıdır.
+
 E01–E14 orijinal kaynak konuşmanın evreleridir; sonraki kullanıcı talebi bu tarihsel kaydı değiştirmez. 2026-10-09 isteği mevcut kapsamı aşağıdaki şekilde detaylandırır:
 
 | İstek | Scope / feature | Tasarım | İş / kontrol |

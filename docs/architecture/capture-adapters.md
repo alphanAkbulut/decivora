@@ -14,6 +14,8 @@ OpenAI belgeleri plugin hooks için güven incelemesi gerektiğini, web kurulumu
 
 ## Adapter sözleşmesi
 
+Çok-agent gözleminde her capability ayrı raporlanır: agent identity, parent run, task input, tool events, artifacts, usage, stop ve backfill. [Agent/ekip işletim belgesi](agent-and-team-operation.md) documented Codex SDK ve Claude Code subagent hook yollarını, görünmeyen prompt/özel muhakeme sınırını ve AGT-01–06 testlerini tanımlar. Agent'ın bildirimi verified sonuç değildir; observer kimliği ile observed actor karıştırılmaz. SDK üzerinden kontrol edilen run'ların görünürlüğü bütün mevcut desktop oturumlarına erişim garantisi sayılmaz.
+
 `capabilities()` → source_surface, provider_version, supported_events, transcript_access, historical_backfill, coverage_limitations, consent_state.
 
 `collect(cursor)` → normalize edilmiş source events, next_candidate_cursor, gap markers; cursor storage commit'ten sonra kesinleşir. `health()` → last_seen, last_durable, backlog, dropped/failed count, unsupported reason. `disconnect()` → yeni capture'ı durdurur; storage retention politikasını değiştirmez.

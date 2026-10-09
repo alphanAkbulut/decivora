@@ -4,6 +4,8 @@
 
 ## Şimdi tasarlanan kararlar
 
+- [Tek insan + çok agent / ekip kurulumu](../architecture/agent-and-team-operation.md): görünür işlem kayıtları, parent/run/task ayrımı, capability tablosu, merkezi servis ve hesap yaşam döngüsü. Çok-agent gözlemi çok insanlı ekip sürümünden bağımsız pilotlanır.
+
 - [İnsan/agent kimliği ve rol matrisi](../architecture/identity-access.md): kimin hangi kaynakta ne yapabildiği.
 - [Dört kayıt sınıfı](../architecture/logging-audit.md): gözlem, domain geçmişi, güvenlik audit'i ve operasyon logu.
 - [Kalıcı/geçici hafıza, retention ve kapasite](../architecture/storage-memory-capacity.md): ne saklanır, ne yeniden üretilir, ne zaman ölçeklenir.
@@ -26,7 +28,19 @@ Ana görevler [T01–T30](backlog.md) korunur. Bu alt dilimler ilgili ana görev
 | T24b / T23d,T18b | Bireysel pilot erişim/retention anlaşılabilirliği ve kaynak kaybı ölçümü | Kullanıcı “kim görür/ne silinir?” yanıtını doğru verebilir; kalan sınırlar raporlu |
 | T28b / T28,T08b | Dış delivery öncesi güncel connector/actor scope kontrolü | MU18; belirsiz dış sonuç doğru gösterilir; P3'e kadar uygulanmaz |
 
-## P4 ekip kapıları
+## Çok-agent ve ekip teslim kapıları
+
+### P1b çok-agent pilotu — ekip hesabı gerektirmez
+
+| Dilim / bağımlılık | Somut çıktı | Kabul |
+|---|---|---|
+| T02c / T02 | İki izinli oturum/run için kimlik, parent, input, tool, output, usage ve stop capability raporu | AGT-01–03; gerçek host/build; erişilemeyen alan unknown. Q02 yüzey seçimi, gerçek veri/ücret için Q03 |
+| T18d / T05b,T08b,T18b,T18c,T02c | Aynı kişisel projede iki agent'ın kaynaklı kaydı, run/task bağları ve sınırlandırılmış context'i | AGT-01–06; duplicate/race/revoke/usage; agent başlatma zorunlu değil |
+| T24e / T18d,T24b | Tek owner + iki agent pilotu; sentetik başlangıç, coverage ve kanıt incelemesi | AGT-01–06; false completed yok, görünmeyen input/muhakeme uydurulmaz |
+
+SDK/orchestrator ile aktif execution daha sonraki ROU-02 kapsamıdır. Görevleri takip etmek ve agent'ı başlatmak aynı teslim değildir.
+
+### P4 ekip kurulum ve erişim kapıları
 
 T30 discovery çıktısı bu C-dilimlerinin ihtiyaç/öncelik ve deployment kararını kesinleştirir. P4 uygulaması owner kapsam/işletim kararı ardından gelir; bugünkü dokümantasyon kararı hosted servis satın alma yetkisi değildir.
 
@@ -38,6 +52,8 @@ T30 discovery çıktısı bu C-dilimlerinin ihtiyaç/öncelik ve deployment kara
 | C04 | Çok insanlı review policy'si, agent listesi/grant editörü, shared memory UX | C03 + T18b; MU03–MU07/MU10; bağımsız reviewer ve değişiklik önizlemesi |
 | C05 | Ekip audit/export, support erişimi, connector sponsor/egress ve purge/restore | C04; MU08/MU09/MU12/MU18; dış etki/belirsizlik doğru |
 | C06 | Kotalar, noisy-neighbour testi, çok worker, kapasite ve kurtarma tatbikatı | C05; MU15/MU16; maliyet/operasyon raporu ve ekip release kararı |
+
+C01–C03 ayrıca doğrulanabilir ilk owner bootstrap, ayrı kullanıcı oturumu/giriş/çıkış, hesap kurtarma ve self-host işletim sorumluluklarını içerir. C03/C04 kişisel→ekip aktarım önizlemesi ve rol değişimi/revocation için AGT-07/08'i MU kontrolleriyle birlikte doğrular. Workspace membership, ürünün ticari lisansı ve harici model aboneliği ayrı kavramlardır; paket/SSO/koltuk fiyatı kararı henüz yoktur.
 
 ```mermaid
 flowchart LR

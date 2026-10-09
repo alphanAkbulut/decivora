@@ -346,6 +346,8 @@ T23, erken auth/runner sınırlarının ilk kez eklendiği görev değildir; ön
 
 ## Çok kullanıcılı tasarım ve veri yaşam döngüsü alt işleri
 
+Tek owner + çok-agent kayıt pilotu **T02c → T18d → T24e** olarak [team/data planında](team-data-plan.md) ayrıdır; çok insanlı C01–C06 teslimini beklemek gerekmez. [AGT-01–08](../architecture/agent-and-team-operation.md) kimlik, input/parent eksikliği, concurrency, revoke, usage ve ekip kurulumunu kapsar. Bu plan takip/gözlem içindir; bütün agent'ları yönetebilen çalışan orchestration iddiası yoktur.
+
 [Team/data plan](team-data-plan.md) bu backlog'un parçasıdır: T05b kimlik/tenant, T08b grant/revocation, T06d durable dedup, T07b audit/log, T18b kaynak ACL/retrieval, T23c retention/purge, T23d backup/kapasite, T24b pilot anlaşılabilirliği, T28b dış yetki. Bağımlılık ve kabul kriterleri oradaki tabloda, MU01–MU18 kontrolleri [doğrulama belgesindedir](../quality/collaboration-validation.md).
 
 T30 ekip discovery çıktısı ardından C01–C06 dilimleri merkezi veri, davet/offboarding, review, audit ve ölçek uygulamasını açar. Bu dilimler P4 planıdır; tamamlandı veya P1 MVP'ye eklenmiş sayılmaz.

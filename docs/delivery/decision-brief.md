@@ -67,3 +67,9 @@ Q02 ilk coding/chat yüzeyleri/OS ve Q03 dış model/veri/aylık bütçe sorular
 Q08 önerisinin kazanımları ve sınırları [task bağlamı belgesinde](../product/task-context-and-acceptance.md#isteğe-bağlı-alt-görevlere-böl-ve-takip-et) yer alır. Q06 otomatik Markdown tercihi hâlâ açıktır. Bu kayıt seçeneklerin neden elendiğini korur; henüz cevaplanmayan tercihleri kabul edilmiş göstermez.
 
 Q09 yanıtı ayrıca Scrum Alliance yaklaşımından yararlanma yönlendirmesi içerir. [Öncelik/akış sözleşmesi](../product/priority-and-flow.md) ve [Scrum kaynaklı çalışma planı](project-management.md) hazırlandı. Takım rolleri, sabit Sprint takvimi ve dış bildirim kanalı atanmış değildir. Q08 otomatik/parçalı task tercihi bu yanıtla cevaplanmış sayılmaz. Kısa öğrenme/teslim döngüleri şimdiki çalışma yaklaşımıdır; tam Scrum uygulaması veya sertifikasyon iddiası yoktur.
+
+## Çok-agent ve ekip kurulumu — kapsam netleştirmesi
+
+2026-10-09 kullanıcı tek insanın birden fazla agent'ın işlerini izlemesini ve ürünü kendi ekibine kurabilmesini sordu; agent girdileri/gözlenebilir davranışların kapsanmasını istedi. Mevcut INT-02/TEAM-01 ihtiyacı [işletim sözleşmesiyle](../architecture/agent-and-team-operation.md) açıldı. İlk bireysel pilot korunur; T02c/T18d/T24e çok-agent gözlem dilimleri, C01–C04 ekip kurulum/davet/giriş akışı olarak ayrıdır.
+
+Bu istek belirli bir host/SDK, hidden reasoning erişimi, harici veri aktarımı, yeni provider ücreti veya hosted ürün satın alımı kararı değildir. Q02/Q03 ve OPEN-14–16 kapıları geçerlidir. Gözlenebilir olayların davranış örüntüsü analizi önerildi; modelin iç düşünce yapısını bildiğimiz iddia edilmez. Owner'ın mevcut hesabını ekibe/agent'lara dağıtma yaklaşımı önerilmez.

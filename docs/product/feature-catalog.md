@@ -48,6 +48,8 @@ Aynı sağlayıcı Chat→Code sürekliliği önce, sağlayıcılar arası otoma
 
 ## F16 — Ekip kullanımının açılımı
 
+**Tek insan + çok agent da ayrı kullanım hikâyesidir:** araştırma, uygulama ve doğrulama run'ları aynı task/karar görünümüne kaynaklı katkı verir. Kullanıcı agent/run, sponsor, görev, blocker, çıktı/kanıt, son sinyal ve coverage sınırını görür. Run bitişi task'ın tamamlanması değildir; modelin gizli muhakemesini okuduğumuz iddia edilmez. F08/F13/F16 için [gözlem ve ekip kurulum sözleşmesi](../architecture/agent-and-team-operation.md) merkezi hesap/rol akışını ve bireysel çok-agent pilotunu ayrı tanımlar.
+
 Bir projede insanlar farklı rollerle çalışır; agent'lar ayrı kimlik, süre ve görev kapsamıyla görünür. Kullanıcı kimin neyi görebildiğini, kimin adına çalışan agent'ın hangi işlemleri yapabildiğini ve erişimi nasıl durduracağını görür. Kişisel sohbetten ortak bilgiye geçiş açık paylaşım önizlemesi taşır. Karar onayı, iş üstlenme, test çalıştırma ve dış sisteme yazma ayrı izinlerdir.
 
 [Yönetim/rol tasarımı](../architecture/identity-access.md), [kayıt ve audit](../architecture/logging-audit.md), [hafıza/retention](../architecture/storage-memory-capacity.md) ve [C01–C06 ekip dilimleri](../delivery/team-data-plan.md) bu kullanıcı davranışlarının önerilen çözümüdür. İlk pilot tek kullanıcıdır; henüz ekip ekranı yoktur.

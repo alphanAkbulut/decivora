@@ -41,6 +41,10 @@ Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeler
 
 2026-10-09 doğrudan incelendi: [Scrum Guide 2020](https://scrumguides.org/scrum-guide.html), Scrum Alliance [Managing Dependencies in Scrum](https://resources.scrumalliance.org/Article/managing-dependencies-scrum) ve [Product Owner Responsibilities](https://resources.scrumalliance.org/Article/im-new-product-owner-responsibilities). Çerçeve tanımı ile uygulayıcı makaleleri [yönetim planında](../delivery/project-management.md) ayrılır. Decivora öncelik algoritması kaynakların zorunlu formülü değildir; kullanıcı ihtiyacına dayalı tasarımdır. Bu inceleme sertifikasyon/uygunluk denetimi değildir.
 
-## Bağlantı ve token incelemesi
+## Agent görünürlüğü kaynakları
+
+2026-10-09: [Codex SDK](https://learn.chatgpt.com/docs/codex-sdk), [OpenAI reasoning](https://developers.openai.com/api/docs/guides/reasoning) ve [Claude Code hooks](https://code.claude.com/docs/en/hooks) doğrudan okundu. SDK/custom-client yolu, private reasoning sınırı, SubagentStart/Stop kimlik/transcript alanları [agent/ekip işletim belgesinde](../architecture/agent-and-team-operation.md) kaynaklı ve koşullu kaydedildi. Bu okuma kurulu host'ta adapter çalıştığının, her agent prompt'unun görülebildiğinin veya kaynakların tamamına izin bulunduğunun kanıtı değildir.
+
+## Bağlantı ve token inceleme kaydı
 
 2026-10-09: [Codex MCP/transport](https://learn.chatgpt.com/docs/extend/mcp?surface=cli), [plugin/hooks paketleme](https://developers.openai.com/plugins/build/plugins), [Claude Code hooks](https://code.claude.com/docs/en/hooks), [OpenAI prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) ve [MCP/UI quickstart](https://developers.openai.com/plugins/build/app-quickstart) doğrudan okundu. Belgelenmiş destek seçili host'ta kurulum/test kanıtı değildir. Provider fiyatları ve cache oranları sabitlenmedi; [token sözleşmesi](../architecture/routing-token-economy.md) sınıf eşlemesi/ölçüm ister.

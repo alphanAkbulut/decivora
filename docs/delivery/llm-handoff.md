@@ -82,3 +82,10 @@ Handoff kontrolü toplam 16 sorudur; bağımsız LLM testi yapılmadı. Q04 gün
 18. Scrum yaklaşımı AI'nın Product Owner olması veya başlamış Sprint anlamına gelir mi? **Hayır.** Ürün değeri, engel etkisi ve küçük doğrulanabilir teslim ilkeleri kabul edildi. Ürün sorumluluğu kullanıcıda; uygulayıcı teknik planı yetkisi içinde yapar. Formal roller/takvim ve dış bildirim seçilmedi.
 
 [Öncelik sözleşmesi](../product/priority-and-flow.md), [çalışma planı](project-management.md) ve [Q09](decision-brief.md) referanslardır. Kontrol toplam 18 sorudur; bağımsız LLM testi yapılmadı.
+
+## Çok-agent ve ekip kurulum kontrolü
+
+19. Tek insanın birçok agent'ını takip etmek için takım SaaS'ı veya özel düşünce erişimi gerekir mi? **Hayır.** İzinli task/run/tool/artifact kayıtları ve dar ortak hafıza yeterli temel; provider'ın sunmadığı input/parent bilinmiyor kalır. Agent'ı başlatmak ayrı yetkidir.
+20. Ürünü ekibe vermek owner hesabını/DB dosyasını paylaşmak mıdır? **Hayır.** Merkezi servis, ayrı üyelik/oturum ve agent grant'leri gerekir; kişisel kaynakların paylaşılması ayrı onaylıdır. Bugün ekip kurulum paketi veya SaaS yoktur.
+
+[Agent ve ekip işletim belgesi](../architecture/agent-and-team-operation.md) iki senaryoyu, test kapılarını ve platform kaynaklarını açıklar. Toplam 20 kontrol sorusu; bağımsız LLM deneyi yapılmadı.

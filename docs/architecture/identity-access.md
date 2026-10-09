@@ -78,11 +78,15 @@ Impact analizi yalnız görünen alt grafiği bütün proje sanamaz. Erişilemey
 
 ## Bir projede birden fazla insan/agent
 
+[Çok-agent ve ekip işletimi](agent-and-team-operation.md) tek insanın birçok agent'ı ile çok insanlı ekip kurulumunu ayırır. AgentPrincipal, AgentRun ve Task ayrı kimliklerdir; collector'ın gözlediği aktör ile kimliği doğrulanmış reporter farklı olabilir. Run soy ağacı task hiyerarşisine otomatik dönüşmez; gözlenen agent'a command yetkisi verilmez. Private muhakeme erişimi varsayılmaz; kaynaklı beyan/araç/kanıt takibi yeterli temel olarak tasarlanır.
+
 Task claim bir koordinasyon mekanizmasıdır, izin değildir. Assignee/claim değişimi izlenir; worker lease ve fencing eski worker sonucunu engeller. Kod çalışma izolasyonu için ayrı worktree/sandbox gerekir; claim dosya kilidi sağlamaz. İki proposal aynı kaydı değiştirirse base revision kontrolü ikinciyi stale yapar; sessiz last-write-wins uygulanmaz.
 
 Tek kişilik pilotta owner kendi önerisini onaylayabilir; bu açık `single_owner` policy'sidir. Ekipte korumalı karar/scope değişimleri için `independent_human_review` önerilir: önerinin sorumlu insanı ile onaylayan farklı doğrulanmış insan olmalı. Aynı kişinin iki token'ı, iki agent'ı veya iki oturumu bağımsız reviewer değildir. Gerekli reviewer yoksa işlem pending kalır; policy sessiz düşürülmez. Kaç onay gerektiği ve korunan işlemler ekip pilotu öncesi karara bağlanır. Aynı insanın farklı hesaplarını otomatik tespit ettiğimiz iddia edilmez: ekip identity provider bağlantısı ve yönetilen canonical human ID gerekir. Bağlantısı bilinmeyen sahte/ikinci hesapların bağımsız kişi olup olmadığını uygulama tek başına kanıtlayamaz; bu risk ekip identity policy'sinde açıklanır.
 
 ## Kullanıcı yönetimi ve UX
+
+Ekip self-host/managed kurulumunda üyeler ayrı oturumlarla merkezi API'ye bağlanır; aynı owner hesabı veya ortak SQLite dosyası dağıtılmaz. Bootstrap, login/recovery, davet, kaynak paylaşımı ve kişisel→ekip geçişi [işletim sözleşmesinde](agent-and-team-operation.md) somutlaştırılır. Tek insanın çok-agent pilotu P1b'de denenebilir; çok insanlı ekip dağıtımı C01–C06 kapılarını gerektirir.
 
 1. Doğrulanmış alıcı kimliğine bağlı, süreli ve tek kullanımlı davet: workspace, proje, rol ve görünürlük önizlemesi. Daveti kabul etmek diğer projelere katılım değildir.
 2. Üye listesi insanları, agent'ları ve bağlantıları ayrı gösterir; her agent için kimin adına, hangi projede, hangi işlemler ve ne zamana kadar bilgisi görünür.
