@@ -22,7 +22,9 @@ Referanslar: DEC-15/1C, DEC-16 öneri statüsü, DEC-17 ve yöntem ayrımı; Q04
 
 - Bütün Mermaid kaynakları ve ilgili metin sözleşmeleri okundu; inventory sayımıyla 11 dosya / 25 diyagram doğrulandı.
 - `python3 scripts/check_docs.py` yerel bağlantı, fence, JSON ve kapsam/görev/AC bütünlüğünü kontrol eder; Mermaid parser veya görsel render testi değildir.
-- GitHub render kontrolü bu değişikliklerin yüklenmesinden sonra kaydedilecek; bu satır tek başına başarılı render iddiası değildir.
+- İçerik commit'i `10bbb0f3a1df5e2dec599f01773372a3a9fb2642` GitHub'a kaydedildi; değişen 16 dosya aynı ref'ten geri okunup yerel içerikle birebir karşılaştırıldı.
+- GitHub Preview tarayıcı kontrolünde 11 belgedeki 25 Mermaid çıktısının tamamının iframe içindeki render edilmiş etiketleri okundu; parse/syntax/render hata mesajı bulunmadı. Atlasın yönetim şeması ayrıca ekran görüntüsüyle incelendi. Bu, tüm ekran boyutlarında görsel UX testi veya ürün UI testi değildir.
+- Son doküman kontrolü: 64 Markdown, 417 yerel bağlantı; 32 scope, 30 ana görev, 14 MVP kriteri korundu. ADM-01–10 kabul tanımları ayrıca sayıldı; henüz runtime'da çalıştırılmadı.
 - ADM-01–10 ve mevcut ASK/AGT/FLOW/MU senaryoları uygulama sırasında çalıştırılacak; bu inceleme onları passed yapmaz.
 
 ## Sonraki değişikliklerde bakım kuralı
