@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | [Beads](https://github.com/gastownhall/beads) | Agent görev hafızası ve bağımlılıklar | Tipli ilişki, hazır iş seçimi | Karar gerekçesi AND/OR ve repo olmadan araştırma | [MIT metni](https://github.com/gastownhall/beads/blob/main/LICENSE) görüldü; alımda commit sabitle |
 | [Task Master](https://github.com/eyaltoledano/claude-task-master) | PRD'den görev ayrıştırma, MCP araçları | Hazır AC, task decomposition ve minimal tool profile | Gereksiz alt görev, context maliyeti | [MIT + Commons Clause](https://github.com/eyaltoledano/claude-task-master/blob/main/LICENSE); kod/prompt kopyalama yok |
-| [Linear](https://linear.app/docs/mcp) | MCP ile proje/issue erişimi | Hızlı review ve görsel tutarlılık | Sohbetten task'a yönetim süresi; kapsam yetkileri | Hizmet koşulları; API/UX araştırması, kod alımı yok |
+| [Linear](https://linear.app/docs/mcp) | MCP; ayrıca [agent assisted updates](https://linear.app/docs/initiative-and-project-updates) ve [Intercom'dan AI issue](https://linear.app/docs/intercom) belgeleniyor | Hızlı review ve otomatik taslakların mevcut rakip kabiliyeti olduğunu hesaba katma | Coding/chat→karar etkisi akışı ve yönetim süresi | Hizmet koşulları; API/UX araştırması, kod alımı yok |
 | [Claude Task Tracker](https://github.com/ProblemFactory/claude-task-tracker) | Claude Code hook/transcript tabanlı pasif task inference, SQLite ve dashboard | Delta capture/checkpoint | Partial completion, ret, yanlış proje, Codex uyumluluğu | README MIT diyor; alım öncesi tam lisans/commit |
 | [Cortex](https://github.com/gsl0001/Cortex) | Yerel SQLite hafıza, proje operasyonu, graph, autonomy ve bounded context | Entegre kontrol merkezi ve bilgi bütçesi | Onaylı karar değişince eski task gerekçeleri ne oluyor? | Repo MIT gösteriyor; bileşen incelemesi gerekli |
 | [mai-mcp](https://github.com/maikai-group/mai-mcp) | Search-before-write, novel/extends/supersedes, review queue, bounded reads | Reconciliation kapısı ve evidence lineage | Aynı fixture'da çelişki ve obsolete precision | Repo MIT gösteriyor; bağımlılık koşulları ayrı |
@@ -37,7 +37,9 @@ mai-mcp'nin bounded read ve supersession beyanı özellikle yakın bir rakip dav
 
 ## Konuşmadaki kullanıcı şikâyetleri: araştırma ipuçları
 
-[Task Master #1280](https://github.com/eyaltoledano/claude-task-master/issues/1280) context yükü, [#1728](https://github.com/eyaltoledano/claude-task-master/issues/1728) görev bölme, [Beads #2363](https://github.com/gastownhall/beads/issues/2363) veri kaybı anlatısı ve [UI tartışması](https://github.com/gastownhall/beads/discussions/276) kaynak konuşmada anıldı. Bu turda yeniden üretilmedi; güncel hata, sayı veya çözülme durumu iddia edilmez. Reddit PM/Linear tartışmaları da nitel kullanıcı araştırması ipucudur, temsili örneklem değildir. Dersler: context ölç, gereksiz task üretimini cezalandır, agent silme yetkisini sınırla, toplu ilişkili işlem sun.
+İlk derlemede yalnız araştırma ipucu olarak tutulan [Task Master #1280](https://github.com/eyaltoledano/claude-task-master/issues/1280), [#1728](https://github.com/eyaltoledano/claude-task-master/issues/1728), [Beads #2363](https://github.com/gastownhall/beads/issues/2363) ve [UI tartışması](https://github.com/gastownhall/beads/discussions/276) 2026-10-09 takip çalışmasında doğrudan okundu. #1280 ve #2363 kapalı; bakımcı yorumlarında düzeltme bildiriliyor. #1728 okunan sayfada açık; hiçbiri bu çalışmada yeniden üretilmedi. Eski şikâyetleri güncel rakip kusuru saymıyoruz.
+
+Üç Reddit konuşmasıyla birlikte kaynak/durum/karşı kanıt ayrımı [kullanıcı araştırmasında](user-research.md). “Şikâyet → hipotez → çözüm → test” ve “ürünü neden terk ederler?” incelemesi oradadır. [Benchmark bulguları](benchmark-findings.md) bugünkü belge sonuçlarını ve henüz yapılmamış kullanım deneyini ayırır. V/O statüsü hâlâ yoktur.
 
 ## Karşılaştırmalı deney protokolü
 

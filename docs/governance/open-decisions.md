@@ -16,6 +16,10 @@
 | OPEN-12 | Queue/lease/timeout/traversal ve recovery limitleri? | Sınırlı versioned config; ayrı cursors; snapshot backup; RPO/RTO ölçülsün | T04/T06 fixture ve T23 gerçek veri öncesi; ADR-0007 |
 | OPEN-13 | Approval graph snapshot ve verifier yetkisi? | P1 project knowledge revision; insan/agent/runner capability ayrı | T08/T12/T14; ADR-0008; T24 false-stale ölçümü |
 
-Varsayımlar: ilk kullanıcı tek kişi; local-first kabul edilebilir; ilk dil Türkçe dokümantasyon ve İngilizce teknik ID'ler; otomatik capture için bir defalık izin/binding kurulabilir. Bunlar kanıt veya alınmış ticari karar değildir.
+## Cevaplanan ihtiyaç ve bekleyen sorular
+
+2026-10-09 owner yanıtı: ilk pilot kendi bireysel kullanımıyla, ardından benzer kullanıcılarla yapılacak. Bu artık varsayım değil, pilot kapsamı kararıdır; tam ürünün ekip vizyonunu kaldırmaz. Günlük coding/chat yüzeyleri ve ilk hedef OS ile harici model/veri/bütçe sınırı soruldu, yanıt bekleniyor. [Karar hazırlığı ve soru kaydı](../delivery/decision-brief.md).
+
+Varsayımlar: local-first kabul edilebilir; ilk dil Türkçe dokümantasyon ve İngilizce teknik ID'ler; otomatik capture için bir defalık izin/binding kurulabilir. Bunlar kanıt veya alınmış ticari karar değildir. Teknik ayrıntılar önce deneyle hazırlanır; bütün açık maddeler için hemen kullanıcıya soyut seçim sorulmaz.
 
 Bu açık sorular dokümantasyonun GitHub'a kaydedilmesini engellemez. Etkili oldukları uygulama görevinden önce karara bağlanırlar; AGENTS.md içine güncel iş listesi olarak gömülmezler.

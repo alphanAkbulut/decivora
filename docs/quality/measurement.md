@@ -21,8 +21,13 @@
 | Review backlog age | Açık PendingDecision/ChangeSet yaşının p50/p95'i; deferred ayrı | Önce baseline; bildirim sayısı ile birlikte yorumla |
 | Ready precision | Gold'a göre gerçekten hazır önerilen task / tüm ready önerileri | Zorunlu pending-impact/unknown fixture'da yanlış ready 0 |
 | Processing health | Oldest queued age, gap sayısı, quarantine ve retry / kaynak türü | Limit ve alarm eşikleri T06/T24 baseline sonrası; healthy tek puana indirgenmez |
+| No-op doğruluğu | Gold'a göre yeni task gerektirmeyen input'ta task üretmeyen sonuç / tüm no-op input | Başlangıç baseline; meaningful capture recall ile birlikte raporla |
+| İlk değere ulaşma | İzinli temiz kurulum başlangıcı → doğru kaynaklı ilk yararlı review | Önce baseline; başarısız kurulumlar ve recovery zamanı dahil |
+| Yeniden bağlam kurma | Projeye dönüş görevi süresi + aktif karar/next action doğruluğu | Manuel yöntemle eş görev; hız uğruna yanlış karar gösterme kabul edilmez |
 
 Farklılaşma hipotezlerinin deney karşılığı [H1–H6 tablosunda](../product/differentiation.md). Etiketleyiciler false-stale/ready gold sonucunu sistem çıktısından bağımsız belirler. Bu ek metrikler için sayısal ürün SLA'sı henüz yoktur.
+
+Takip araştırmasındaki [UR-01–07](../discovery/user-research.md), no-op, onboarding ve yeniden bağlam kurma ölçümlerini gerekçelendirir. Bunlar yeni ürün kapsamı değil, mevcut CAP/KNO/UX/CST davranışlarının kullanıcı maliyetini görme yoludur. Mevcut araçların güncel profile/fix seçenekleri baseline'a dahil edilir.
 
 ## Deney tasarımı
 

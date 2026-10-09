@@ -12,7 +12,7 @@ Aşağıdaki karşılaştırma doküman incelemesine dayanır. **Rakipte bulunma
 |---|---|---|
 | [Beads](https://github.com/gastownhall/beads) | Görev hafızası ve dependency graph | Yürütme bağımlılığına ek olarak Decision/Requirement gerekçeleri, AND/OR/unknown ve açıklanmış obsolete önerisi |
 | [Task Master](https://github.com/eyaltoledano/claude-task-master) | Gereksinimden uygulanabilir küçük işler üretmek | Yeni sohbet/karar geldikçe mevcut planı yeniden değerlendirmek; gereksiz task sayısını ve manuel düzeltmeyi ölçmek |
-| [Linear](https://linear.app/docs/mcp) | Proje/issue erişimi ve olgun çalışma yüzeyi | Kaynak konuşmadan hazır change set ve etki review; insanın başlık/AC yazma süresini azaltmak |
+| [Linear](https://linear.app/docs/mcp) | Proje/issue erişimi; [agent-assisted updates](https://linear.app/docs/initiative-and-project-updates) ve [Intercom'dan AI issue üretimi](https://linear.app/docs/intercom) | Genel AI taslağını özgünlük saymamak; coding/chat kaynaklarını karar gerekçesi, downstream impact ve revision-bound kanıtla birleştirmeyi sınamak |
 | [Claude Task Tracker](https://github.com/ProblemFactory/claude-task-tracker) | Hook tabanlı pasif görev çıkarımı | Task dışı prompt/decision/document instruction lineage, çoklu gerekçe ve kanıta bağlı geçerlilik |
 | [Cortex](https://github.com/gsl0001/Cortex) | Kalıcı yerel hafıza, typed provenance, bütçeli context, kontrol merkezi ve evidence içeren kayıtlar | Bu alanları farklılık diye saymamak; değişen karar→task etkisini aynı corpus ve onay/race koşullarında karşılaştırmak |
 | [mai-mcp](https://github.com/maikai-group/mai-mcp) | Search-before-write, extends/supersedes, review ve bounded retrieval | Knowledge evolution yakınlığı nedeniyle öncelikli alternatif; AND/OR gerekçe, geçmiş completion ve approval freshness deneyinin sonucuna göre extend seçeneğini değerlendirmek |
@@ -39,3 +39,9 @@ T01 corpus, T02 platform testi, T03 alternatif karşılaştırması, T24 pilot b
 ## Özgün katkı için karar kuralı
 
 Mevcut araç veya makul bir extension aynı sözleşmeyi daha az bakım yüküyle sağlıyorsa entegrasyon geçerli sonuçtur. Bağımsız ürün ancak karar gerekçesi, güvenilir impact ve düşük yönetim yükü kombinasyonu ölçülebilir değer üretiyorsa anlamlıdır. Lisans, bakım ve veri göçü maliyeti de değerlendirilir. “Hepsinin özelliklerini toplayalım” yeterli bir farklılaşma tezi değildir.
+
+## Şikâyetlerden çıkan öncelik
+
+[Kullanıcı araştırması](../discovery/user-research.md) context yükü, gereksiz task üretimi, veri kurtarma güveni, görünürlük, kurulum yükü ve bilgi tutarlılığı sinyallerini ayrı kanıt seviyeleriyle kaydeder. Ters düşünme sonucu: bizim ürünümüz bunları çözmeye çalışırken daha kalabalık inbox, daha pahalı context ve daha zor kurulum yaratırsa başarısız olur. İlk pilotta H1/H3/H4 birlikte ölçülmeli; yalnız üretilen task sayısı başarı metriği olmamalı.
+
+Task Master ve Beads için okunan tarihsel şikâyetlerde bakımcı düzeltmeleri de var. Güncel sürümü ve desteklenen yapılandırmayı karşılaştırmadan üstünlük iddia etmeyiz. [Güncellenen bulgular ve deney şablonu](../discovery/benchmark-findings.md).

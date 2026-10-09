@@ -40,7 +40,7 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 ## T01 — Golden corpus ve karşılaştırma protokolü
 
 - **Durum / faz:** TODO / P0. **Bağımlılık:** —. **Kapsam ID:** EVAL-01.
-- **İş:** En az 30 anlamlı kayıt içeren 6 sentetik oturum; iki proje, ret, partial done, karar değişimi ve bekleyen onay; beklenen tip/ilişki/durumları etiketle.
+- **İş:** En az 30 anlamlı kayıt içeren 6 sentetik oturum; iki proje, ret, partial done, karar değişimi ve bekleyen onay; beklenen tip/ilişki/durumları etiketle. Ek no-op ve sıfır expansion örnekleriyle gereksiz task üretimini de değerlendir; 30 anlamlı kaydın yerine no-op sayma.
 - **Kabul:** Her örneğin source span'ı ve beklenen sonucu var; model geliştirmede kullanılmayan holdout ayrılmış; kişisel veri yok.
 - **Doğrulama:** Corpus şema kontrolü ve insan örneklem incelemesi.
 - **Beklenen dosya alanı:** `examples/corpus/; docs/quality/baseline.md` (henüz oluşmamış yollar uygulama sırasında açılır).
@@ -58,7 +58,7 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 ## T03 — Build/extend ve teknoloji kararı
 
 - **Durum / faz:** TODO / P0. **Bağımlılık:** T01,T02. **Kapsam ID:** EVAL-01.
-- **İş:** Cortex/Tracker/mai-mcp ve Beads alternatifi için aynı corpus denemesini hazırla; lisans ve kurulum etkisini incele; seçenek öner.
+- **İş:** Cortex/Tracker/mai-mcp ve Beads alternatifi için aynı corpus denemesini hazırla; lisans ve kurulum etkisini incele; seçenek öner. [Benchmark bulgularındaki](../discovery/benchmark-findings.md) güncel yapılandırma ve sonuç şablonunu kullan; [şikâyet araştırmasındaki](../discovery/user-research.md) düzeltme/karşı kanıtı atlama.
 - **Kabul:** Native/config/custom/unknown matrisi ve maliyet/kalite kanıtı var; owner kararı ADR-0001/0003'e işlenir; deneme yapılamayanlar açık.
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).

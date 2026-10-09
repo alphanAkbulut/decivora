@@ -15,6 +15,14 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-09 — Kullanıcı araştırması ve pilot soruları
+
+- Owner ilk pilotu kendi bireysel kullanımıyla, sonra benzer kullanıcılarla ilerletmeyi seçti. Coding/chat yüzeyleri + hedef OS ve harici API/veri/bütçe sınırı soruldu; henüz cevap gelmedi. Karar durumu [soru kaydında](decision-brief.md).
+- Yedi kamuya açık issue/tartışma kaynağı ve iki Linear resmî belgesi incelendi. İki kapalı issue'nun bakımcı düzeltme açıklamaları okundu; tarihsel yakınmalar güncel rakip kusuru olarak sunulmadı.
+- [Kullanıcı araştırması](../discovery/user-research.md), şikâyet→hipotez→ürün davranışı→ölçüm zincirini ve ürünü terk ettirebilecek durumları kaydeder. [Benchmark bulguları](../discovery/benchmark-findings.md) belge incelemesi ile runtime deneyi arasındaki sınırı ve doldurulmamış sonuç şablonunu gösterir.
+- Linear'ın otomatik taslak kabiliyetleri karşılaştırmaya eklendi; farklılaşma genel AI task üretimi yerine gerekçeli karar etkisi ve yönetim yükü üzerinde netleştirildi. No-op, onboarding ve projeye dönüş ölçümleri mevcut scope'a bağlandı.
+- Dokümantasyon kontrolü geçti; runtime benchmark, kullanıcı görüşmesi ve ücretli/gerçek veri deneyi yapılmadı. T01 corpus henüz tamamlanmadı; sıradaki uygulamalı hazırlık olarak kalıyor.
+
 ### 2026-10-09 — İkinci kapsam ve mimari incelemesi
 
 - Kaynak konuşmanın 14 evresi ve engine adları tekrar eşleştirildi; 32 scope satırı için kaynak→özellik→engine→görev→kontrol matrisi eklendi.

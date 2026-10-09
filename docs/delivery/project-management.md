@@ -2,6 +2,8 @@
 
 **Aşama: P0 — Discovery / Product Definition.** Ürün çalışmıyor. Amaç: AI konuşmalarını yaşayan, karar farkındalıklı hafızaya dönüştürmek; eskimiş işleri açıklanabilir biçimde yeniden değerlendirmek ve manuel yönetim yükünü azaltmak. Tam kapsam korunur; ilk kullanılabilir teslim P1b MVP'dir.
 
+**Pilot kararı (2026-10-09):** önce owner'ın bireysel kullanımı; sonra benzer kullanıcılar. [Sorular/cevaplar](decision-brief.md) pilot erişimi ve bütçe sınırını izler. [Şikâyet araştırması](../discovery/user-research.md) görüşme akışını ve ürünü terk ettirebilecek riskleri; [benchmark bulguları](../discovery/benchmark-findings.md) ölçülmüş sonuç ile kaynak araştırmasını ayırır.
+
 ## Başarı ve teslim sınırı
 
 İlk değer: bir mimari değişiklikte tek gerekçeli eski işi obsolete adayı yapmak, alternatif gerekçeli işi korumak, historical done'ı silmemek ve kullanıcıya hazır toplu onay sunmak. İlerleme belge/kod miktarıyla değil [MVP kabul kriterleri](../product/mvp.md) ve [ölçüm kapılarıyla](../quality/measurement.md) değerlendirilir.

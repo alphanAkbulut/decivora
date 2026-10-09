@@ -20,7 +20,15 @@ Erişim tarihi: **2026-10-09**. URL'ler hareketli `main`/dokümantasyon sayfalar
 | SRC-14 | [OSI tanımı](https://opensource.org/osd) | Açık kaynağın kullanım alanı kısıtlamaması |
 | SRC-15 | [AGPLv3](https://opensource.org/license/agpl-3-0) | Ağ üzerinden değiştirilmiş sürümün source yükümlülüğü |
 | SRC-16 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) | Patent/attribution ve trademark ayrımı |
+| SRC-17 | [Task Master #1280](https://github.com/eyaltoledano/claude-task-master/issues/1280) ve [bakımcı cevabı](https://github.com/eyaltoledano/claude-task-master/issues/1280#issuecomment-3403117739) | Tarihsel context yakınması; kapalı ve çözüm PR'ı birleşti beyanı; reproduction yok |
+| SRC-18 | [Task Master #1728](https://github.com/eyaltoledano/claude-task-master/issues/1728) | Sıfır subtasks yerine expansion raporu; sayfada açık; reproduction yok |
+| SRC-19 | [Beads #2363](https://github.com/gastownhall/beads/issues/2363) ve [fix cevabı](https://github.com/gastownhall/beads/issues/2363#issuecomment-4007206076) | Veri kaybı anlatısı; kapalı ve koruma eklendi beyanı; bağımsız fix testi yok |
+| SRC-20 | [Beads UI #276](https://github.com/gastownhall/beads/discussions/276) | Görünürlük/kurulum/paylaşım hakkında seçilmiş katılımcı anlatıları |
+| SRC-21 | [PM bilgi tutarlılığı](https://www.reddit.com/r/projectmanagement/comments/1tz4pid/how_much_of_your_week_is_just_keeping_information/) | Birinci el nitel anlatı; kullanıcı kimliği ve temsilî örneklem doğrulanmadı |
+| SRC-22 | [PM araç karmaşıklığı](https://www.reddit.com/r/aiToolForBusiness/comments/1srje0j/whats_the_best_ai_tool_for_managing_projects/) | Kurulum/öğrenme yükü; pazar genellemesi değil |
+| SRC-23 | [AI kodda proje bağlamı](https://www.reddit.com/r/ClaudeAI/comments/1pdd0pc/how_do_you_keep_track_of_your_project_when_ai/) | Bağlam kaybı ve code review/dokümantasyon karşı önerileri |
+| SRC-24 | [Linear updates](https://linear.app/docs/initiative-and-project-updates), [Intercom Agent](https://linear.app/docs/intercom) | Otomatik taslak/issue üretimi için rakip kabiliyeti; genel manuel Linear varsayımına karşı kanıt |
 
 GNU lisans sayfaları bu turda fetch timeout verdi; AGPL için OSI metni kullanıldı. İsim için sınırlı web sorgusu marka araştırması yerine geçmez. Marka tescili, alan adı ve npm/package adları doğrulanmadı. GitHub repo adının kullanılabilir olması trademark uygunluğu değildir.
 
-Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeleri ve “piyasada hiç yok” türü iddialar buraya doğrulanmış bulgu olarak aktarılmadı. Ek referanslar ve yeniden kontrol edilmeyen issue bağlantıları [benchmark](benchmark.md) içinde ayrı U statüsündedir.
+Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeleri ve “piyasada hiç yok” türü iddialar buraya doğrulanmış bulgu olarak aktarılmadı. Ek referansların seviyesi [benchmark](benchmark.md) içinde ayrıdır. SRC-17–24 takip çalışmasında doğrudan okundu; kullanıcı deneyimi ile teknik doğrulama ayrımı [şikâyet araştırmasında](user-research.md) korunur.
