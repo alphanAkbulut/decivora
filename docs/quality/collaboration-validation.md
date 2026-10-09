@@ -8,7 +8,7 @@
 | MU02 | Contributor agent'ı owner/approve alanı gönderir | Güvenilir principal değişmez; approval reddedilir; audit aktörü doğru | P1 T08b |
 | MU03 | Parent grant iptal; queued child run dispatch edilir | Child token geçerli görünse bile çalışmaz; scope-wide authz revision kontrolü | P1 T08b; child desteği geldiğinde tekrar |
 | MU04 | Model çağrısı sürerken üyelik/grant iptal edilir | Yeni egress yok; gelen sonuç canonical uygulanmaz; quarantine/audit; geçmiş dış gönderim gizlenmez | P1 T08b |
-| MU05 | Viewer retrieval, graph, export veya citation üzerinden private S1 ister | S1 ve türev özeti modele/yanıta giremez; erişim daralınca cache stale | P1 T18b; shared UI'da tekrar |
+| MU05 | Viewer retrieval, graph, export veya citation üzerinden private S1 ister | S1 ve türev özeti modele/yanıta giremez; erişim daralınca cache stale; görünmeyen gerekçe yanlış obsolete sonucu üretmez | P1 T18b; shared UI'da tekrar |
 | MU06 | İki agent aynı revision'ı değiştirir; eski worker geç yanıtlar | Tek canonical effect; stale/conflict ve fencing sonucu; claim izne dönüşmez | P1 T06b/T08b |
 | MU07 | Aynı canonical human ID'ye bağlı iki hesap/token veya o insanın iki agent'ı korumalı proposal'ı onaylar | Aynı doğrulanmış insan/sorumlu zincir bağımsız review sayılmaz; başka reviewer gerekir | Ekip C04 |
 | MU08 | Başarılı permission/approval transaction'ında audit yazımı bozulur | Canonical mutation commit olmaz; attempted/failed gerçek sonuca uygun | P1 T07b |

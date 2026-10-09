@@ -68,9 +68,11 @@ Grant süresi sınırlı ve yenileme açık policy'ye bağlıdır; token ömrü 
 
 ## Özel hafızadan ortak proje bilgisine
 
-Kişisel sohbet otomatik olarak takımın malı değildir. Varsayılan capture görünürlüğü personal'dır. Projeye katkı için kullanıcı bir excerpt veya redakte edilmiş öneriyi paylaşır; hedef proje, içeriği görecek üyeler ve eklenecek provenance önizlenir. Ortak bilgi için gerekli gerekçe paylaşılmamışsa review `insufficient_access` durumunda kalır.
+Kişisel sohbet otomatik olarak takımın malı değildir. İnsan oturumundan varsayılan capture görünürlüğü personal'dır. Takım servis bağlantısı için kaynak görünürlüğü kurulumda açık resource ACL ile seçilir; agent'ın görebildiği her şeyin ortak olduğu çıkarılmaz. Projeye katkı için kullanıcı bir excerpt veya redakte edilmiş öneriyi paylaşır; hedef proje, içeriği görecek üyeler ve eklenecek provenance önizlenir. Ortak bilgi için gerekli gerekçe paylaşılmamışsa review `insufficient_access` durumunda kalır.
 
 Bir özetin varsayılan okuyucuları tüm kaynaklarının okuyucu kümelerinin **kesişimidir**; kaynaklara erişimlerin birleşimi sızıntı yaratır. Arama, autocomplete, ilişki grafiği, sayılar, bildirim, citation, export, cache ve model context aynı kuralı uygular. Kaynak erişimi daralınca bağlı özet/index/model context stale olur, yeniden yetkilendirilmeden servis edilmez. Modelden sonra metni maskelemek yeterli değildir: izinsiz içerik modele hiç girmemeli.
+
+Impact analizi yalnız görünen alt grafiği bütün proje sanamaz. Erişilemeyen gerekçe varsa “gerekçe kalmadı” sonucu üretmek yerine coverage/authorization yetersizliğiyle review bloke edilir; gizli kaydın başlığı veya sayısı açıklanmaz. İç servis bütün grafiği işleyebilse de daha geniş yetkili sonucu düşük yetkili kullanıcıya aktaramaz. Gerekçenin güvenli ortak sürümü ayrıca paylaşılıp yeniden analiz edilir.
 
 İnsan onaylı redakte edilmiş paylaşım, yeni ve ayrı ACL'li bir kayıt üretir; bu bilinçli yayın işlemi audit'lenir. Kaynak linkine erişim ortak kayıttan miras alınmaz. Sonradan personal kaynağı kaldırmak daha önce açıkça yayımlanmış bilgiyi veya başka kişinin indirdiği kopyayı otomatik geri çekmez. Paylaşılmış türevin geri çekilmesi ayrı impact/purge değerlendirmesidir. Workspace'ler arası canlı ilişki varsayılan kapalıdır; açık export/import aynı kaydı iki tenant arasında ortak mutable nesne yapmaz.
 

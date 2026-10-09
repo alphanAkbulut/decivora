@@ -22,6 +22,7 @@
 - Source/domain/security audit/operational telemetry ayrımı; SQLite başlangıcı, merkezi ekip PostgreSQL adayı, blob/secret sınırı, retention/backup/purge ve sentetik kapasite profilleri belgelendi.
 - ADR-0009/0010 önerileri, P1 alt görevleri, P4 C01–C06 ekip dilimleri ve 18 MU kabul senaryosu eklendi. README, AGENTS, scope, roadmap, handoff ve izlenebilirlik bağlandı.
 - Doküman kontrolü geçti: 57 Markdown, 264 yerel bağlantı, 32 scope, 30 ana görev, 14 MVP AC; 28 V + 18 MU planlı senaryo. Bunlar runtime test sonucu değildir.
+- Ana içerik commit'i `6c659c1367e9618a76efc537fb409a6c2d66796e`: 33 değişen dosya GitHub'dan geri okunup yerel içerikle birebir eşleşti. Repository private olarak tekrar doğrulandı. Dört yeni Mermaid diyagramı GitHub'da render edildi; audit akışı görsel olarak da incelendi. Son incelemede gizli gerekçelerin impact analizinde yanlış obsolete üretmemesi netleştirildi.
 - Sayısal retention/SLO/RPO/RTO önerileri ve ekip deployment/reviewer seçenekleri açık karar olarak kaldı. Uygulama ve gerçek veri/ücretli API deneyi yapılmadı. T01 hâlâ sıradaki uygulamalı hazırlık.
 
 
