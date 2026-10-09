@@ -41,6 +41,24 @@ Tarih ve bütçe henüz taahhüt edilmedi. Bağımlılık kapısını geçemeyen
 
 ## Scrum dayanağı ve bu projeye uygulama sınırı
 
+### Kavram düzeltmesi: bağımlılıklar Scrum'a özgü değildir
+
+**2026-10-10 açıklaması:** Önceki “Scrum Alliance bağımlılık yaklaşımı” ifadesi, bu genel yeteneğin Scrum'a ait olduğu anlamına gelmemeli. Görev bağımlılığı ve engel yönetimi farklı çalışma biçimlerinde kullanılabilir. Scrum Alliance makalesi, bunların Scrum ortamında nasıl ele alınabileceğine ilişkin dayanaklarımızdan biridir; kavramların tek kaynağı veya ürünümüzün zorunlu yöntemi değildir.
+
+**Scrum** bir çalışma çerçevesidir. **PMI (Project Management Institute)** mesleki kuruluştur; tek bir rakip yöntem adı değildir ([PMI hakkında](https://www.pmi.org/about)). PMI'ın [A Spectrum of Approaches](https://www.pmi.org/learning/thought-leadership/series/achieving-greater-agility/spectrum-of-approaches) yayını öngörücü, yinelemeli, artımlı, çevik ve hibrit yaklaşımları birlikte ele alır. Dolayısıyla “Scrum mu PMI mı?” zorunlu bir ikili seçim değildir. Bu kaynak karşılaştırması genel yaklaşımı açıklamak içindir; belirli PMBOK sürümünün tüm maddelerine uyum analizi yapılmadı.
+
+| Katman | Bu projede karşılığı | İddia sınırı |
+|---|---|---|
+| Yöntemden bağımsız ürün çekirdeği | Görev, karar/gerekçe, bağımlılık, engel, kaynak, değişiklik etkisi, onay ve kanıt | Bunları yalnız Scrum kullanıcısına bağlamıyoruz |
+| Bizim geliştirme çalışma biçimimiz | Kullanıcının kabul ettiği ürün değeri odağı, küçük teslim, geri bildirim; Scrum kaynaklarından yararlanma | Formal Scrum ekibi/Sprint uygulanmış sayılmaz |
+| Müşterinin çalışma yöntemi | Scrum veya öngörücü/hibrit süreçte aynı çekirdeği kullanma hedefi | Kullanım senaryolarında test edilmeden tam uyum/destek iddiası yok |
+
+**Konumlandırma önerisi:** “Decivora, insan ve agent çalışmalarını kararlar, bağımlılıklar ve kanıtlarla ilişkilendiren; farklı proje yönetimi yaklaşımlarına uyarlanması hedeflenen AI-native proje hafızasıdır.” Bu öneri “Scrum ve PMI sertifikalı/uyumlu ürün” ifadesinin yerine geçer. Pazarlama metni veya yeni bir workflow motoru kararı olarak kabul edilmiş sayılmaz. Sprint, rol ya da süreç preset'lerini ürünün her kullanıcısına zorunlu kılmıyoruz; müşterinin karar yetkilisi kendi proje policy'siyle belirlenir. Bizim projede Product Owner kullanıcının rolüdür.
+
+Bu açıklama DEC-17 blocker önceliğini veya mevcut yetki kurallarını değiştirmez; gerekçenin atfını düzeltir. PMBOK uyumu, kritik yol/Gantt hesaplama, kaynak dengeleme veya yeni Scrum/PMI modları bu turda kapsamımıza eklenmedi. Gelecekte belirli bir yönteme destek iddiası gerekiyorsa hedef süreç, somut senaryo ve kabul kanıtı ayrıca tanımlanır.
+
+### Scrum'dan yararlandığımız çalışma yaklaşımı
+
 [Scrum Guide 2020](https://scrumguides.org/scrum-guide.html) çerçevenin dayanağıdır: Product Owner ürün değerinden ve Product Backlog sırasından; Developers Sprint planından; Scrum Master çerçevenin etkin uygulanmasından sorumludur. Product Goal yönü, Sprint Goal dönem amacını, Definition of Done tamamlanma standardını tanımlar. Planning planı kurar, Daily Scrum ilerlemeyi uyarlar, Review sonucu inceler, Retrospective çalışma yöntemini iyileştirir. Sprint en çok bir aydır; değişiklik hedefi tehlikeye atmamalı ve kaliteyi düşürmemelidir. Hazır olma checklist'imiz Scrum'ın zorunlu ayrı bir artefaktı değildir.
 
 [Scrum Alliance bağımlılık rehberi](https://resources.scrumalliance.org/Article/managing-dependencies-scrum) teknik bağımlılıkların Product Owner'a görünür kılınmasını, ürün backlog sırasının buna göre değerlendirilmesini ve sprint içi task koordinasyonunun uygulayıcılarda olmasını anlatır. Bağımlılıkları azaltma seçeneğini de ele alır. [Product Owner sorumlulukları](https://resources.scrumalliance.org/Article/im-new-product-owner-responsibilities) kullanıcının ihtiyacı, ürün vizyonu ve değer odağını destekler. Bu makaleler uygulama rehberidir; sertifika/uygunluk denetimi değildir. Kaynaklar 2026-10-09'da incelendi.

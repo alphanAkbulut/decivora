@@ -4,6 +4,8 @@
 
 ## Hangi iş önce?
 
+**Yöntemden bağımsız anlamlar:** Bağımlılık bir işin başka bir koşula bağlı olmasıdır; bu koşul gelecekte gerektiğinde normal şekilde sağlanıyorsa bugün blocker olmak zorunda değildir. Blocker, ilgili adımın ilerlemesini fiilen engelleyen durumdur; bir görev, erişim, karar veya dış teslim olabilir. Risk olası gelecekteki sorunla, gerçekleşmiş engel mevcut durumla ilgilidir. Bu ayrımlar Scrum'a veya PMI'a özel değildir; [yöntem ve kaynak açıklaması](../delivery/project-management.md) Scrum kullanım örneği ile genel ürün yeteneğini ayırır. Bir node'un çok işi etkilemesi tek başına kritik yol hesabı değildir; bu belgede süre/takvim temelli kritik yol motoru tasarlanmış sayılmaz.
+
 Bir task'ın önemli olması, hemen çalışılabilir olması ve bildirim gerektirmesi ayrı alanlardır. Engellenmiş işi sürekli çalıştırmayı denemek yerine engeli kaldıran **uygulanabilir adım** belirlenir. Bu adım kod, test, erişim, dış teslim veya insan kararı olabilir. İzin bekleyen işin önceliği artabilir; öncelik izin sağlamaz.
 
 | Durum | Önerilen davranış |

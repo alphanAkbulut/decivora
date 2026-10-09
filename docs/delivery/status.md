@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Scrum, PMI ve genel bağımlılık yönetimi ayrımı
+
+- Scrum çerçevesi, PMI mesleki kuruluşu ve yöntemden bağımsız bağımlılık/engel kavramları ayrıldı. Önceki Scrum Alliance atfı tek sahiplik/kaynak gibi yorumlanmayacak şekilde açıklandı; DEC-17'nin kabul edilmiş ilkesi korunuyor.
+- Ürün çekirdeği, kendi geliştirme ritmimiz ve müşterinin yöntemi ayrı katmanlarda açıklandı. Farklı süreçlere uyarlanabilirlik konumlandırması önerildi; tam Scrum/PMBOK uyumu, kritik yol veya yeni yöntem modları taahhüt edilmedi.
+- PMI birincil kaynakları okundu; Scrum kaynakları tekrar kontrol edildi. Ürün kodu/öncelik algoritması değişmedi, runtime veya yöntem uyum testi yapılmadı. T01 sıradaki uygulamalı hazırlık olarak kalıyor.
+- Doküman kontrolü geçti: 62 Markdown, 374 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. Beş belgede kavram ve kaynak atfı netleştirildi.
+
 ### 2026-10-10 — Subagent soru ve karar mekanizması
 
 - Bilgi/görüş isteği, yetki içi teknik seçim ve korunan insan kararı ayrıldı. Parent/uzman agent danışması onay yetkisine dönüşmez; önceki geçerli karar tekrar sorulmadan kaynaklı kullanılabilir.

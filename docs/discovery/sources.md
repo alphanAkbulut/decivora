@@ -39,6 +39,8 @@ Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeler
 
 ## Product Owner ve Scrum kaynak kontrolü
 
+2026-10-10 ek açıklama: [PMI hakkında](https://www.pmi.org/about) ve PMI'ın [A Spectrum of Approaches](https://www.pmi.org/learning/thought-leadership/series/achieving-greater-agility/spectrum-of-approaches) yayını doğrudan okundu. İkincisi Kasım 2017 tarihli kavramsal kaynaktır; farklı yaşam döngülerini anlatır, güncel bir PMBOK madde uyumu veya ürün sertifikasyonu kanıtı değildir. Scrum Guide ve Scrum Alliance bağımlılık makalesi yeniden kontrol edildi. [Yöntem ayrımı](../delivery/project-management.md) bağımlılık/engellerin genel kavram olduğunu ve çalışma yöntemiyle ürün yeteneklerinin karıştırılmaması gerektiğini açıklar.
+
 2026-10-09 doğrudan incelendi: [Scrum Guide 2020](https://scrumguides.org/scrum-guide.html), Scrum Alliance [Managing Dependencies in Scrum](https://resources.scrumalliance.org/Article/managing-dependencies-scrum) ve [Product Owner Responsibilities](https://resources.scrumalliance.org/Article/im-new-product-owner-responsibilities). Çerçeve tanımı ile uygulayıcı makaleleri [yönetim planında](../delivery/project-management.md) ayrılır. Decivora öncelik algoritması kaynakların zorunlu formülü değildir; kullanıcı ihtiyacına dayalı tasarımdır. Bu inceleme sertifikasyon/uygunluk denetimi değildir.
 
 ## Agent görünürlüğü kaynakları
