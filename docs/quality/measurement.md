@@ -39,7 +39,13 @@ Manual tracking, full-context LLM ve Decivora hedefli context aynı anlamlı gö
 
 Precision paydası sıfırsa metrik N/A olur, %100 yapılmaz. Unknown kaynak kapsamı recall'da “yakalandı” sayılmaz; erişilebilir gold ve tüm beklenen kaynak coverage ayrı raporlanır. Tasarruf iddiası eş kalite altında karşılaştırmalı ölçüm olmadan yayınlanmaz.
 
-## Gate kararı
+## Ürün değeri ve blocker akışı
+
+[Öncelik sözleşmesi](../product/priority-and-flow.md) için T24d raporu: blocker kaydı→çözüm süresi; gerçek blocked süre/aktif iş süresi; çözüm sonrası gerçekten hazır olan işler; hedefe katkılı doğrulanmış çıktı; yanlış blocker/ready; owner sıra override gerekçeleri; tekrar bildirim; uzun bekleyen işlerin yaşı. Çözülememiş kayıtlar atılmaz, mevcut yaşlarıyla ayrıca raporlanır. Başlangıç/bitiş gate'i ve dış bekleme ayrıdır; bunlar kişi performans puanı değildir.
+
+FLOW-01–08 oracle'ı zincir, elmas, ek gate, gizli/eksik graph, eski onay ve dış engel içerir. Zorunlu sette kanıtsız ready sıfır olmalı; hız veya tasarruf baseline olmadan vaat edilmez. Tamamlanan task/puan sayısı kullanıcı değerinin yerine geçmez. Bireysel pilot ekip verimliliği kanıtı sayılmaz. Kontroller planlıdır.
+
+## Gate değerlendirmesi
 
 P1a: invariants ve sentetik güvenlik suite'i. P1b: AC-01..14, iki adapter raporu, holdout ve UX pilotu. Her kritik yanlış kapanış, çapraz proje sızıntısı veya log veri kaybı release blocker'dır. Eşikler tutmazsa hata sınıfı ve sonraki küçük iş açılır. Tekil kullanıcı pilotu ödeme isteğini kanıtlamaz; P3/P4 için ayrı talep görüşmeleri gerekir.
 

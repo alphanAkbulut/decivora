@@ -24,6 +24,8 @@
 
 ## Ana kullanım hikâyesi
 
+**F11/F12 — Blocker ve ürün önceliği:** Q09 ile diğer işleri geciktiren engellerin önceliği ve Product Owner bakışı kabul edildi. Kullanıcı engellenen işi, engeli kaldıracak adımı, açılacak değeri, hazır olma sınırını ve sıra gerekçesini görür. Çok bağlantı tek başına yüksek değer değildir; mevcut hedef/risk gözetilir. [Akış sözleşmesi](priority-and-flow.md) grant/bütçe sınırını korur; dış bildirim veya agent yürütme başlatılmaz. Bu mevcut kapsamın uygulama tasarımıdır; çalışan özellik değildir.
+
 Bir araştırma sohbetinde üç bulgu, bir prompt ve henüz kabul edilmemiş teknoloji önerisi çıkar. F02/F03 bunları kaynaklarıyla aday olarak kaydeder. F04 eski fikirleri getirir; F05 farklılığın gerekçesini hazırlar. Kullanıcı onaylamadığı için teknik öneri mevcut kararın yerine geçmez.
 
 Kullanıcı yeni depolama kararını seçince F06 etki önizlemesi çıkarır. Eski sync işi yalnız eski karara bağlıdır; watcher hem eski karar hem import gereksinimiyle OR bağlıdır. F07 birincisini obsolete adayı olarak gösterir, ikincisini korur. Onay eskiyse hiçbir yarım güncelleme oluşmaz.

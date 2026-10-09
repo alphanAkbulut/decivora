@@ -1,5 +1,15 @@
 # Ardışık uygulanabilir backlog
 
+Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir. T01–T30 başlangıç teslim sırasıdır; bütün ön koşullar doğrulanmış teknik blocker gibi graph'a otomatik alınmaz. Refinement gerçek teknik/izin gate'i ile plan sırasını ayırır; kalite kapıları korunur. [Öncelik ve akış](../product/priority-and-flow.md) GRF-01/APR-02/UX-02/ROU-01 kapsamını detaylandırır.
+
+| Yeni alt dilim / bağımlılık | Teslim / durum | Kabul |
+|---|---|---|
+| T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04; eksik graph/ACL/unknown yanlış ready veya tamlık üretmez |
+| T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08; stale/override, tekrar bildirim, yetki ve bağımsız iş |
+| T24d / T20e,T24 | TODO / P1b: sentetik oracle ve owner pilotu | FLOW-01–08; zorunlu sette yanlış ready 0; bekleme/uyarı yükü baseline |
+
+T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
+
 Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.

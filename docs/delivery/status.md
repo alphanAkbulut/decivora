@@ -15,6 +15,14 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-09 — Product Owner yaklaşımı ve blocker önceliği
+
+- Q09/DEC-17 kabul edildi: ilerlemeyi engelleyen işler/kararlar ve downstream gecikmesi önce; değer/hedef/risk odaklı çevik çalışma. Bildirim kanalı/sıklığı ve formal Sprint takvimi seçilmedi; Q08 ayrı açık.
+- Scrum Guide ve Scrum Alliance kaynakları incelendi; çerçeve, uygulama rehberi ve bireysel pilot uyarlaması ayrıldı. AGENTS ve kısa yönetim planı güncellendi; sertifika/uygunluk iddiası yok.
+- Öncelik/akış belgesi, blocker ile ready ayrımı, benzersiz etki hesabı, ACL/unknown/stale, karar yetkisi, inbox ve öğrenme ölçümleri yazıldı. T11c/T20e/T24d ve sekiz FLOW kabul senaryosu planlandı; runtime veya bildirim servisi yok.
+- T01 sıradaki uygulamalı hazırlık olarak kaldı; dokümantasyon corpus/adapter testlerinin tamamlandığı anlamına gelmez.
+- Doküman kontrolü geçti: 61 Markdown, 348 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. Sekiz FLOW tanımı ve değişen belgelerin bölüm yapısı ayrıca kontrol edildi. Bunlar runtime, Scrum uygunluğu veya bildirim testi değildir.
+
 ### 2026-10-09 — 1C kararı ve alt görev önerisi
 
 - Kullanıcı Q07/1C'yi kabul etti: izinli/erişilebilir geçmişi aktif işlere öncelik vererek aşamalı işleme. 1A/1B seçenekleri ve seçilmeme nedenleri korundu; DEC-15, import, token ve retention belgelerine işlendi. Geçici ham payload için eski 30 gün önerisi 1C kaynak arşivinden ayrıldı; OPEN-08 kesin süre/kapasite kararı açık.

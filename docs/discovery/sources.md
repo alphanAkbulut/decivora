@@ -37,6 +37,10 @@ Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeler
 
 2026-10-09 doğrudan incelenen birincil kaynaklar [hedefli benchmark tablosunda](collaboration-storage-benchmark.md) tek tek linklidir: Linear members/private teams/audit; GitHub user/installation token; OpenFGA roles/agents/RAG; Cortex ve mai-mcp README; Letta V1 legacy stateful agents; SQLite kullanım/WAL/backup; PostgreSQL RLS/PITR; OpenTelemetry log modeli. Bunlar kaynak belgesi incelemesidir; yerel ürün testi veya güncel sürüm uyumluluk sertifikası değildir.
 
-## Bağlantı ve token kaynak kontrolü
+## Product Owner ve Scrum kaynak kontrolü
+
+2026-10-09 doğrudan incelendi: [Scrum Guide 2020](https://scrumguides.org/scrum-guide.html), Scrum Alliance [Managing Dependencies in Scrum](https://resources.scrumalliance.org/Article/managing-dependencies-scrum) ve [Product Owner Responsibilities](https://resources.scrumalliance.org/Article/im-new-product-owner-responsibilities). Çerçeve tanımı ile uygulayıcı makaleleri [yönetim planında](../delivery/project-management.md) ayrılır. Decivora öncelik algoritması kaynakların zorunlu formülü değildir; kullanıcı ihtiyacına dayalı tasarımdır. Bu inceleme sertifikasyon/uygunluk denetimi değildir.
+
+## Bağlantı ve token incelemesi
 
 2026-10-09: [Codex MCP/transport](https://learn.chatgpt.com/docs/extend/mcp?surface=cli), [plugin/hooks paketleme](https://developers.openai.com/plugins/build/plugins), [Claude Code hooks](https://code.claude.com/docs/en/hooks), [OpenAI prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) ve [MCP/UI quickstart](https://developers.openai.com/plugins/build/app-quickstart) doğrudan okundu. Belgelenmiş destek seçili host'ta kurulum/test kanıtı değildir. Provider fiyatları ve cache oranları sabitlenmedi; [token sözleşmesi](../architecture/routing-token-economy.md) sınıf eşlemesi/ölçüm ister.

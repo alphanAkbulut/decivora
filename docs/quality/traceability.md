@@ -55,6 +55,8 @@ Alt işler [team-data-plan](../delivery/team-data-plan.md), MU senaryoları [col
 
 ## Bağlantı, token ve graph takip isteği
 
+**Q09/DEC-17 takip kararı:** GRF-01,APR-02,UX-02,ROU-01 / F11,F12 → ENG-05/06/09/10 → [öncelik ve akış](../product/priority-and-flow.md) → T11c,T20e,T24d / FLOW-01–08. Kabul edilen öncelik ilkesi; algoritma/UX öneridir, uygulama veya ölçüm yoktur. [Yönetim planı](../delivery/project-management.md) Scrum kaynaklarını ve bireysel çalışma uyarlamasını ayırır.
+
 | Mevcut kapsam / özellik | Ayrıntı | İş / kontrol |
 |---|---|---|
 | CAP-02/05,INT-02 / F02,F08 | [Bağlantı ve context](../architecture/connection-and-context.md) | T02b,T06,T16,T17,T18c; CON-01–08 |

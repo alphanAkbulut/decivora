@@ -62,6 +62,8 @@ Q02 ilk coding/chat yüzeyleri/OS ve Q03 dış model/veri/aylık bütçe sorular
 | ID / kullanıcı soru no | Seçenekler | Durum |
 |---|---|---|
 | Q08 / 2 — Task boyutu | 2A: anlamlı ana/alt görev + küçük adımlarda checklist; 2B: her küçük adım ayrı task; 2C: yalnız büyük işler | **Öneri: 2A.** Kullanıcı ayrıca “bu taskı alt görevlere böl ve takibi öyle gerçekleştir” seçeneğini değerlendirmemizi istedi. İsteğe bağlı önizlemeli bölme tasarlandı; varsayılan otomatik bölme kararı alınmadı |
-| Q09 / 3 — Bildirim | 3A: engelleyici/önemli konular hemen, kalanlar inbox; 3B: hepsi inbox; 3C: her anlamlı değişimde bildirim | Yanıt bekliyor; bildirim servisi veya otomasyon başlatılmadı |
+| Q09 / 3 — Dikkat ve iş önceliği | Önceki alternatifler: 3A engelleyici/önemli konular hemen, kalanlar inbox; 3B hepsi inbox; 3C her anlamlı değişimde bildirim | **Öncelik ilkesi kabul edildi:** blocker'lar ve diğer işleri geciktiren bağımlılıklar önce; tüm projede Product Owner ve çevik ürün yaklaşımı. Bu yanıt 3A'nın anlık kanal/zamanlama ayrıntılarını bütünüyle seçmiş sayılmaz; bunlar açık, servis/otomasyon yok |
 
 Q08 önerisinin kazanımları ve sınırları [task bağlamı belgesinde](../product/task-context-and-acceptance.md#isteğe-bağlı-alt-görevlere-böl-ve-takip-et) yer alır. Q06 otomatik Markdown tercihi hâlâ açıktır. Bu kayıt seçeneklerin neden elendiğini korur; henüz cevaplanmayan tercihleri kabul edilmiş göstermez.
+
+Q09 yanıtı ayrıca Scrum Alliance yaklaşımından yararlanma yönlendirmesi içerir. [Öncelik/akış sözleşmesi](../product/priority-and-flow.md) ve [Scrum kaynaklı çalışma planı](project-management.md) hazırlandı. Takım rolleri, sabit Sprint takvimi ve dış bildirim kanalı atanmış değildir. Q08 otomatik/parçalı task tercihi bu yanıtla cevaplanmış sayılmaz. Kısa öğrenme/teslim döngüleri şimdiki çalışma yaklaşımıdır; tam Scrum uygulaması veya sertifikasyon iddiası yoktur.

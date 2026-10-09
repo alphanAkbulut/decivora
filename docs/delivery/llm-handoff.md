@@ -75,3 +75,10 @@ Kaynaklar: [identity/access](../architecture/identity-access.md), [logging](../a
 16. Task iptal edilince okları siler miyiz? **Hayır.** Task cancelled, edge ended/invalidated ve privacy purge ayrı işlemdir; [graph geçmişi](../product/graph-experience.md) korunur.
 
 Handoff kontrolü toplam 16 sorudur; bağımsız LLM testi yapılmadı. Q04 güncel/seçili bağlamı, Q05 kullanıcıya proje/görev bazlı profil seçimini kabul eder. Otomatik context dosyası Q06 ve gerçek veri/bütçe Q03 ayrı sorulardır.
+
+## Ürün önceliği için ek kontrol
+
+17. Blocked task'ı sürekli tekrar çalıştırır mıyız? **Hayır.** Engeli kaldıran uygulanabilir adım/karar öne çıkar; dış beklemede hedefe katkılı hazır iş seçilir. Çok bağlantı tek başına yüksek değer veya ready kanıtı değildir.
+18. Scrum yaklaşımı AI'nın Product Owner olması veya başlamış Sprint anlamına gelir mi? **Hayır.** Ürün değeri, engel etkisi ve küçük doğrulanabilir teslim ilkeleri kabul edildi. Ürün sorumluluğu kullanıcıda; uygulayıcı teknik planı yetkisi içinde yapar. Formal roller/takvim ve dış bildirim seçilmedi.
+
+[Öncelik sözleşmesi](../product/priority-and-flow.md), [çalışma planı](project-management.md) ve [Q09](decision-brief.md) referanslardır. Kontrol toplam 18 sorudur; bağımsız LLM testi yapılmadı.

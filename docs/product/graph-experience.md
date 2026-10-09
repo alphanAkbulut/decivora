@@ -74,6 +74,8 @@ flowchart TB
 
 ## Etkileşim ve kabul senaryoları
 
+Q09 için `Engelleniyor` ve `Başka işleri engelliyor` ayrı rozetler önerilir. Güncel depends_on yolunda başlangıç/bitiş koşulu, kanıt ve çözüm adımı görünür. Aynı downstream bir kez sayılır; ek gate açıkken bütün işlerin hemen hazır olacağı söylenmez. part_of/required_by veya plan sırası blocker oku değildir. Tarihsel iptal ilişkileri bugünkü engel sayısını şişiremez. ACL ve coverage korunur; board/inbox/graph aynı revision'ı kullanır, bilgi klavye/liste yoluyla da erişilebilir. [FLOW-01–08](priority-and-flow.md) T11c/T20e/T24d'de planlıdır; henüz test edilmedi.
+
 Kart seçimi tüm görünümlerde aynı revision'ı açar. Edge seçimi neden/tür/kaynak/geçerlilik panelini açar; dokunmatik ve klavye alternatifi bulunur. Graph sürüklemek yalnız layout'u değiştirir; iş durumunu veya ilişkiyi değiştirmez. “İlişkiyi kaldır” ve “İşi iptal et” farklı, gerekçeli preview açar. Tarihsel görünümden doğrudan güncel veriye yazılmaz; önce mevcut sürüme geçilir.
 
 | ID | Kabul kriteri | İş |
