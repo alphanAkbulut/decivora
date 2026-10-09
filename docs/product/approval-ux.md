@@ -1,0 +1,40 @@
+# Onay ve görsel çalışma alanı
+
+## Ana deneyim
+
+Project selector yanında capture sağlığı ve son işlenen kaynak görünür. Ana ekran **Review Inbox** olur. Board yürütmeyi, Graph neden/ilişkiyi, Timeline tarihçeyi açıklar. Decision Pending kuyruğu normal yapılacak işlerden ayrı gösterilir. Knowledge Health; unreviewed, disputed, stale, blocked ve unknown sayılarını ayrı tutar.
+
+Kullanıcı normal sohbet eder. Sistem session sonunda veya anlamlı değişiklikte hazırlanmış kart sunar; sürekli modal açmaz. Sonradan bakılacak kararlar erteleme nedeni/tarihi veya bağımlı olay ile saklanır. Bildirimler tekrar eden gürültü üretmez; uygulanacak politika kullanıcı tercihine bağlıdır.
+
+## Örnek etki kartı — tasarım, canlı UI değil
+
+**Karar:** Yerel depolamayı SQLite'a taşı.
+
+**Mevcut → önerilen:** Markdown canonical storage → SQLite canonical storage.
+
+**Neden:** Onay bekleyen yeni mimari öneri. **Etkiler:** Sync obsolete adayı; watcher import için korunacak. **Belirsizlik:** İlişkisiz export işinin gerekçesi eksik. **Kaynak:** Mesaj ve evaluation bağlantısı. **Kanıt:** İlgili requirements/ADR revisions. **Geri alma:** Yeni telafi olayı; sonraki etkiler tekrar değerlendirilir.
+
+Seçenekler: **Onayla / Koru / Ayrı incele / Ertele / Reddet / Karşılaştır**. Hazır başlık, description ve test edilebilir AC okunabilir; metin girmek zorunlu değildir. Sistem ürettiği AC'nin öneri olduğunu ve gereksinimden nereden türetildiğini gösterir.
+
+## Otonomi politikası
+
+| İşlem | İlk sürüm varsayılanı |
+|---|---|
+| Kaynak capture, exact duplicate provenance, teknik checkpoint | Yetkili binding içinde otomatik |
+| Yeni fikir/task taslağı, açıklama önerisi | Otomatik proposal; aktif scope olmaz |
+| Düşük riskli metadata tamamlama | Politika sınırında; anlam/scope değişmez |
+| Implementation claim | Otomatik gözlem, verified değil |
+| Önceden yetkilendirilmiş AC verifier sonucu | Policy karşılanırsa otomatik verification |
+| Kabul edilmiş karar/AC/scope değişimi; ambiguous merge; obsolete/cancel | Kullanıcı onayı |
+| Publish, ücret, dış sisteme yazma, erişim değişikliği | Ayrı açık yetki; task onayı bu yetkiyi otomatik vermez |
+| Geçmişi fiziksel silme | Normal agent erişiminde yok |
+
+## Toplu onay güvenliği
+
+Bağımsız işlemler seçilebilir. Birbirine referans veren operations aynı atomic group olarak gösterilir; kullanıcı birini kaldırırsa kalan set yeniden doğrulanır. “Approve All” otomatik yeni seçim veya timeout onayı değildir. Onay `actor + project + changeset digest + base revisions + policy revision` taşır. Stale onayda diff yeniden hazırlanır. Double click aynı sonucu döndürür. Reddetme nedeni hazır seçeneklerden seçilebilir; açıklama opsiyoneldir.
+
+Klavye erişimi, focus sırası, ekran okuyucu etiketleri, yalnız renge dayanmayan durum, uzun başlıklar ve dar ekranda review akışı P1b testine dahildir. Graph'ın erişilebilir liste alternatifi bulunmalıdır. Board'da drag-and-drop tek işlem yolu olmamalıdır.
+
+## Bekleyen kararın yaşamı
+
+PendingDecision: açık soru, alternatifler, öneri/gerekçe, source, owner, blocker links ve durum (open/deferred/resolved/cancelled). Belirsiz “sonra bakarız” ifadesi source olarak saklanabilir; konu belirlenmeden committed decision olmaz. Resolved olduğunda gerçek Decision ID'sine bağlanır. Kullanıcının bir kartı açması “değerlendirildi/onaylandı” anlamına gelmez.

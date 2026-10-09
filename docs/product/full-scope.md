@@ -1,0 +1,40 @@
+# Tam kapsam — kalıcı yetenek envanteri
+
+Tüm satırlar **planlanmıştır**; bu belge çalışan özellik listesi değildir. P0 keşif, P1a teknik kanıt, P1b MVP, P2 kapsam genişletme, P3 maliyet/entegrasyon, P4 ekip/ürünleşme. Ayrıntılı görev eşlemesi [backlog](../delivery/backlog.md) içindedir.
+
+| ID | Korunan yetenek / iş kuralı | İlk teslim / genişleme | Kabul işareti |
+|---|---|---|---|
+| CAP-01 | Fikir, finding, risk, gereksinim, task, prompt, belge talimatı, karar ve bekleyen karar yakalama | P1a/P1b | Kaynak mesajı olan tipli aday kayıt |
+| CAP-02 | Pasif Claude Code ve Codex adapter'ları | P0 araştırma; P1b iki ayrı doğrulama | Her yüzeyin sürüm ve olay kapsaması raporlu |
+| CAP-03 | ChatGPT→Codex ve Claude Chat→Claude Code sürekliliği | P1b açık aktarım; P2 otomasyon | Kaynak/prompt/hedef execution bağı korunur |
+| CAP-04 | Sağlayıcılar arası sohbet hafızası, import ve gelecekte izinli kısayol/eklenti | P2 | Aktarım türü otomatik veya manuel diye açık gösterilir |
+| CAP-05 | Incremental checkpoint, toplu capture, ilişki koruma, crash/retry | P1a | Tekrar import ek kayıt üretmez; yarım change set kalmaz |
+| PRJ-01 | Çoklu proje, repo olmadan araştırma, değişmeyen kimlik ve binding | P1a/P1b | Aynı adlı iki projenin verisi karışmaz |
+| KNO-01 | Kaynak ve sürüm taşıyan canonical knowledge; active/history ayrımı | P1a | Eski karar tarihçede, onaylı yenisi aktif |
+| KNO-02 | Duplicate, refinement, contradiction, supersession, rejected revival uzlaştırması | P1a temel; P2 semantik | Gerekçeli diff; belirsiz merge otomatik uygulanmaz |
+| KNO-03 | Idea evaluation; destek ve karşı kanıt, belirsizlik | P1b/P2 | Tek bir “doğruluk puanı” yerine değerlendirme kaydı |
+| GRF-01 | Tipli ilişkiler ve karar farkındalıklı dependency graph | P1a/P1b | Her task'ın neden var olduğu izlenir |
+| GRF-02 | Çoklu gerekçe ve AND/OR koşulları; eksik ilişki taraması | P1a/P2 | Bir gerekçesi kalan iş yanlış iptal olmaz |
+| IMP-01 | Impact triggers ve hedefli alt grafikte yeniden değerlendirme | P1a | Karar değişince keep/update/review/obsolete önerileri |
+| IMP-02 | Gereksinim, teknoloji, özellik iptali, kanıt geçersizliği ve prompt eskimesi etkileri | P1b/P2 | Değişikliğin downstream çıktıları izlenir |
+| APR-01 | Hazır başlık/açıklama/AC; çoktan seçmeli ve toplu onay, ertele, reddet, karşılaştır | P1b | Kullanıcı metin yazmadan değişikliği karara bağlar |
+| APR-02 | Decision Pending, unutulan onay ve bekleyen iş kuyruğu | P1b | Konu/alternatif/kaynak/bloklanan işler görünür |
+| VER-01 | Claimed/implemented/verified ayrımı, dosya/test/commit/PR kanıtı | P1a temel; P2 geniş | Kanıt yoksa verified olamaz |
+| VER-02 | Kanıt tazeliği, başarısız test sonrası reopening, kısmi ilerleme | P1b | Kabul kriteri değişince eski test yeterli sayılmaz |
+| AUD-01 | Append-only olaylar, projection, compensating event, audit ve backup | P1a/P1b | Replay aynı sonucu verir; agent geçmişi değiştiremez |
+| UX-01 | Project selector, Inbox/Review, Board, Graph, Timeline | P1b | Aynı seçili kayda tüm görünümlerden ulaşılır |
+| UX-02 | Knowledge health, coverage, next-ready task, arama, filtre | P1b temel; P2 geniş | Bekleyen/yarım/eski/unknown açıkça ayrılır |
+| UX-03 | Çalışma ekranı yanında kalıcı görünürlük, IDE paneli ve uygulama entegrasyonu | P2 araştırma | Host desteği kanıtlı; tarayıcı paneli fallback |
+| ROU-01 | İş niteliği ile yürütücüyü ayrı etiketleme, insan için basit iş seçeneği | P1b | HUMAN ve HUMAN_DECISION aynı alan değildir |
+| ROU-02 | Risk/yetenek/bütçe bazlı deterministic/API/model/insan routing | P2/P3 | Basit kontrol modele gitmez; limitte durur |
+| CST-01 | Minimal MCP, delta context, cache, batch, retrieval budget | P1a/P1b | LLM input ve tool overhead ayrı ölçülür |
+| CST-02 | Tahmini/gerçek token, model, fiyat sürümü, tasarruf raporu | P1b telemetry; P3 rapor | Bilinmeyen kullanım sıfır gösterilmez |
+| INT-01 | GitHub kanıt bağlantısı, Linear/Jira ve diğer dış sistemler | P2 read; P3 write | Yetkili outbox, tekrar/çatışma kontrolü |
+| INT-02 | Agent'lar arası ortak hafıza ve execution lineage | P1b temel MCP; P2 geniş | Bir agent'ın kaydı diğerinde aynı sürümle okunur |
+| GOV-01 | Veri minimizasyonu, onay, proje izolasyonu, injection savunması | P1a/P1b | Kaynak metni sistem komutu olarak yürütülmez |
+| GOV-02 | İhracat/taşınabilirlik, retention ve silme istisnası | P1b/P2 | Runtime private; export anlaşılır ve yeniden alınabilir |
+| TEAM-01 | Takım/organizasyon, RBAC, cloud sync, enterprise audit, managed automation | P4 | Yeni ADR, güvenlik ve lisans kapısı sonrası |
+| OSS-01 | Açık kaynak çekirdek, iyi demo, kurulum, katkı ve olası open core | P3/P4 | Public release ayrı kullanıcı kararı |
+| EVAL-01 | Benchmark, golden corpus, pilot, yönetim yükü ve yanlış öneri ölçümü | P0 ve tüm fazlar | Sonuç, sürüm ve örneklemle yayımlanır |
+
+“Otomatik task kapanışı” VER-01 ve policy sınırlarıyla mümkündür; scope kararlarını kendi başına alma anlamına gelmez. “Universal” hedef kapsamı anlatır, bugün mevcut platform erişimi iddiası değildir.

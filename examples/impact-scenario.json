@@ -1,0 +1,85 @@
+{
+  "synthetic": true,
+  "implemented": false,
+  "project_id": "prj_demo",
+  "change": {
+    "old_decision": "DEC_MD",
+    "new_decision": "DEC_DB",
+    "operation": "supersedes",
+    "requires_approval": true
+  },
+  "facts_after": {
+    "DEC_MD": false,
+    "DEC_DB": true,
+    "REQ_IMPORT": true,
+    "REQ_EXPORT": true
+  },
+  "records": [
+    {
+      "id": "T1",
+      "execution": "implemented",
+      "verification": "passed",
+      "required_when": {
+        "any": [
+          "DEC_MD"
+        ]
+      },
+      "expected": "preserve_historical_completion_review_applicability"
+    },
+    {
+      "id": "T2",
+      "execution": "todo",
+      "required_when": {
+        "any": [
+          "DEC_MD"
+        ]
+      },
+      "expected": "replace_or_cancel_proposal"
+    },
+    {
+      "id": "T3",
+      "execution": "todo",
+      "required_when": {
+        "any": [
+          "DEC_MD"
+        ]
+      },
+      "expected": "obsolete_candidate"
+    },
+    {
+      "id": "T4",
+      "execution": "todo",
+      "required_when": {
+        "any": [
+          "DEC_MD",
+          "REQ_IMPORT"
+        ]
+      },
+      "expected": "keep"
+    },
+    {
+      "id": "T5",
+      "execution": "todo",
+      "required_when": {
+        "all": [
+          "DEC_MD",
+          "REQ_EXPORT"
+        ]
+      },
+      "expected": "update_or_review"
+    },
+    {
+      "id": "T6",
+      "execution": "todo",
+      "required_when": null,
+      "expected": "review_unknown"
+    }
+  ],
+  "invariants": [
+    "no mutation before approval",
+    "historical events retained",
+    "missing reason is unknown",
+    "apply is atomic and idempotent",
+    "approval bound to revisions"
+  ]
+}
