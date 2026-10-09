@@ -25,6 +25,10 @@ Brief yalnız current approved decisions, aktif iş, unresolved blockers ve değ
 
 ## Maliyet kontrolü
 
+**1C seçiminin ekonomi kuralı:** İzinli geçmişin arşivlenmesi ile modele verilen context ayrıdır. İlk geçmiş çıkarımı maliyetlidir; aynı source/revision için sonucu yeniden kullanıp sonraki çalışmaları delta ve hedefli retrieval ile küçültmeyi hedefleriz. İlk kurulum maliyeti, günlük tüketim, kaynağa dönüş başarısı ve karar/ilişki recall'u ayrı raporlanır. Az token tek başına başarı değildir; eksik bilgiyle yanlış kapanış kabul edilmez. Ayrıntı [Q07](../delivery/decision-brief.md) ve [import sözleşmesinde](connection-and-context.md).
+
+Alt göreve bölme token tasarrufunu garanti etmez. Önerilen child context paketi ana amaç + ilgili onaylı kararlar + child AC/DoD + gerekli bağımlılıklar ve kaynak pointer'larıdır; tüm sibling geçmişi kopyalanmaz. Birden çok işi bölen planlama çağrısı ve tekrar brief maliyetleri de ölçülür. Child/run yaratmak parent/proje/dönem tavanını sıfırlamaz; bölme ve yeniden denemeler aynı kaynak bütçesine bağlanır. UI alt görev/progress işlemleri deterministiktir; her child kapanışında yeni LLM özeti zorunlu olmaz.
+
 - Turn/idle batch, kalıcı cursor, content/revision cache ve hedefli retrieval.
 - Cache anahtarı project + record revisions + policy + extractor/prompt/model sürümü; yanlış proje cache paylaşımı yok.
 - Her iş için max_input_tokens, max_output_tokens, max_retries, max_cost ve deadline; limitte defer/review, sessiz drop yok.

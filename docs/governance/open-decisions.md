@@ -36,4 +36,6 @@ OPEN-08 için [retention tablosunda](../architecture/storage-memory-capacity.md)
 
 ## UI görünümü ve analiz sıklığı
 
+Q07/1C kabul edildi: izinli ve erişilebilir geçmiş, aktif işler önce olacak şekilde aşamalı işlenecek. Bu karar OPEN-08'i kapatmaz: 1C kaynak arşivine önceki genel 30 günlük geçici payload önerisi otomatik uygulanmaz; kesin arşiv süresi, kapasite ve silme politikası gerçek veri öncesi kararlaştırılacak. Kaynak korunumu ile modelin eksiksiz hatırlaması farklı hedeflerdir. Q08 isteğe bağlı alt göreve bölme/varsayılan boyut önerisi ve Q09 bildirim tercihi [soru kaydında](../delivery/decision-brief.md) açıktır. Q03 dış model/bütçe yanıtı yerine yeni izin çıkarılamaz.
+
 Q04 güncel işler/seçili iş bağlamı; Q05 proje/görev bazlı değiştirilebilir analiz profili olarak cevaplandı. Q06 context dosyasının otomatik milestone export tercihi [karar kaydında](../delivery/decision-brief.md) bekliyor. Bu sorular OPEN-07/09/10 ile ilişkilidir; yeni ücret/egress yetkisi vermez. İptal ve ended edge geçmişinin korunması mevcut append-only ilkesinin sonucudur; grafikte çarpı/renk tercihi bu domain kuralını değiştirmez.

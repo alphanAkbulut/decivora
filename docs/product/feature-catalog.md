@@ -38,6 +38,10 @@ Kullanıcı bekleyen kararı ertelediğinde yeni oturum aynı kararı tekrar yok
 
 ## Kapsam korunumu
 
+**F08/F13 — Q07 kabulü:** 1C, izinli ve erişilebilir geçmişi aktif işlere öncelik vererek aşamalı işler. Arşiv ve model context'i ayrı tutulur; eski öneriler otomatik aktif görev olmaz. Alternatifler, seçim gerekçesi ve maliyet sınırı [karar kaydındadır](../delivery/decision-brief.md).
+
+**F07/F09/F10 — Q08 önerisi:** Kullanıcı bir task için `Alt görevlere bölerek takip et` seçebilir; hazır child/AC/bağımlılık önizlemesini değerlendirir. Anlamlı teslimler child, küçük adımlar checklist olabilir. Parent'ın kendi kabulü korunur; ayrı doğrulanan çocuklar parent'ı kendiliğinden complete yapmaz. [Ayrıntılı tasarım](task-context-and-acceptance.md) öneridir; otomatik bölme veya agent başlatma kararı alınmadı.
+
 Aynı sağlayıcı Chat→Code sürekliliği önce, sağlayıcılar arası otomasyon sonra gelir. P1b import fallback kapsamı görünür tutar ama otomasyon hedefini teslim etmiş sayılmaz. Gelecekteki code graph/IDE/cloud fikirleri silinmez. Bu repo bir agent çalıştırma platformunu, tüm sağlayıcılara sınırsız erişimi veya insan kararı olmadan proje yön değiştirmeyi taahhüt etmez.
 
 ## F16 — Ekip kullanımının açılımı

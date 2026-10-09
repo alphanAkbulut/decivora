@@ -75,7 +75,37 @@ AC ve DoD iş başlamadan önerilir, kaynak gerekçesiyle görünür ve gerekli 
 >
 > Sonuç: Yaklaşım açıklanmış, uygulama ve test doğrulanmamış. Completed değil.
 
-## Kabul planı
+## İsteğe bağlı: Alt görevlere böl ve takip et
+
+**Q08 / DEC-16 önerisi; varsayılan tercih henüz onaylanmadı.** Task menüsünde `Alt görevlere bölerek takip et` eylemi öneriyoruz. Ayrı teslimi, kabul kriteri, sorumlusu veya bağımlılığı olan anlamlı parçalar task; küçük uygulama adımları checklist olur. Her işi otomatik mikro görevlere bölmek önerilmez.
+
+Örnek (sentetik): **“Geçmiş konuşmaları güvenle aktar”** ana işi altında **kaynak/izin önizlemesi**, **tekrarları ayıklayan devam edilebilir import**, **tarihsel kararların uzlaştırılması** ayrı test edilebilir alt çıktılardır. “Dosyayı aç / alanı oku / başlığı göster” gibi adımlar bağımsız çıktı değilse checklist'te kalır. Ana işin ayrıca uçtan uca kabul koşulu bulunur.
+
+| Kazanç | Nasıl sağlanır / sınır |
+|---|---|
+| Nerede takıldığını anlama | Her child kendi blocked nedeni, AC ve kanıtını taşır; belirsiz bir ana task yüzdesine güvenilmez |
+| Daha dar agent bağlamı | İlgili child + ana amaç + gerekli kararlar getirilir; ek planlama maliyeti yüzünden tasarruf garanti değildir |
+| Değişikliğin etkisini sınırlama | Karar yalnız etkilenen child ve ilişkilerinde review üretir; diğer doğrulanmış kanıtlar revision uyumluysa korunabilir |
+| İşi paylaşma ve yeniden başlama | Farklı insan/agent adayları ve sıralama görülebilir; atama, yetki verme ve execution başlatma ayrı işlemlerdir |
+| Daha anlamlı tamamlanma | Eksik bir teslim veya test gizlenmez; child'lar bitse de ana işin kendi AC/DoD/entegrasyon kanıtı aranır |
+
+### Önizleme ve kayıt sözleşmesi
+
+1. Sistem mevcut task/AC/DoD/ilişkilerden hazır öneri çıkarır. Model gerekirse normal veri/bütçe politikasına tabidir; kullanıcı manuel de bölebilir. Önizlemede eski→yeni yapı, gerekçe, child çıktıları/AC, bağımlılıklar, checklist'te kalanlar, mevcut kanıtın eşlemesi ve karşılanmamış ana AC'ler görünür.
+2. İnsan düzenleyip onaylar. Parent ID, amaç, geçmiş kararlar ve önceki kanıtlar korunur; task yerine kimliği ilgisiz yeni bir task yaratılmaz. Mevcut child'lar kontrol edilir, duplicate plan oluşturulmaz. Alt görev eklemek parent'ın kapsamını sessiz genişletmez veya düşürmez.
+3. Child kayıtları, `part_of` bağlantıları, completion gereklilikleri ve kriter eşlemesi aynı onaylı ChangeSet içinde atomik uygulanır. Kaynak task/knowledge/authz revision değişmişse önizleme stale olur. Retry aynı işlemi tekrarlamaz; yarım hierarchy bırakılmaz. Çalışan işin sonucuyla yarış halinde yeni revision için yeniden değerlendirme gerekir.
+4. Ana AC→child AC eşlemesi kapsam boşluğunu gösterir; eski evidence child'a körlemesine `passed` kopyalanmaz. Aynı kanıt yalnız kapsam/artifact/revision gerçekten uygunsa referanslanabilir. Yeni child verification başlangıcı kanıt yoksa unknown'dur.
+5. Kullanıcı sonradan yapıyı değiştirebilir. Eski bağlantı ended/invalidated olaylarıyla izlenir; geçmiş silinmez. İptal edilen child grafikte iptal etiketi ve seçili işin tarihçesiyle kalır. Zorunlu child iptal edilirse ana iş otomatik ilerlemiş sayılmaz; replacement veya açık scope/completion review gerekir.
+
+### Takip ve tamamlama
+
+Ana işte örneğin **“Gerekli alt işlerin 3/5'i güncel kanıtla doğrulandı; ana işin uçtan uca kontrolü bekliyor”** yazılır. Bu süre/eforun %60'ı bitti demek değildir. Opsiyonel, iptal, blocked, unknown ve stale ayrı sayılır; paydanın değişmesi onaylı scope geçmişine bağlanır. Parent ve child aynı toplam iş sayısında iki kez sayılmaz; gösterimin düzeyi açık olur.
+
+Child tamamlanması: kendi güncel AC/DoD/kanıt kapıları. Parent tamamlanması: kendi kapıları **ve** onaylı gerekli child koşulları; yalnız child sayacı yeterli değildir. Child eklemek/silmek execution grant veya bütçe tavanını değiştirmez. Her küçük adım için bildirim/dosya/model üretmek zorunlu değildir; Q06 milestone export ve Q09 bildirim tercihi ayrı kalır.
+
+**Planlı doğrulama:** self-parent/cycle/cross-project reddi; eski onay ve eşzamanlı sonuç; retry ile tek bölme; mevcut child/evidence korunumu; zorunlu child iptali; child passed ama parent entegrasyon kanıtı eksik; sonradan eklenen child ve değişen payda; parent/child toplam bütçe. Uygulama dilimleri T13d ve T20d, Q08 tercih kapısından sonra açılır. Şimdilik tasarım önerisidir; test edilmedi.
+
+## Mevcut bağlam ve kabul senaryoları
 
 | ID | Gözlenebilir kriter | Görev |
 |---|---|---|

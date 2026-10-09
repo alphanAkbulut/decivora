@@ -46,3 +46,22 @@ Bağlantılar: [açık kararlar](../governance/open-decisions.md), [kullanıcı 
 Q02 ilk coding/chat yüzeyleri/OS ve Q03 dış model/veri/aylık bütçe soruları hâlâ açık. Tekrar sorularak yeni yanıt varmış gibi yazılmadı. Q05 tercihi Q03'ün yerine geçmez; ücretli arka plan modeli Q03 kararı olmadan açılmaz. Sayısal token/batch sınırlarını kullanıcıya seçtirmek yerine engineering deneyleriyle kalibre edeceğiz.
 
 Öneri paketleri: [connection/context](../architecture/connection-and-context.md), [token ekonomisi](../architecture/routing-token-economy.md), [graph deneyimi](../product/graph-experience.md). Q04/Q05 yanıtları graph, task context ve token profil sözleşmesine işlendi. Q06 yanıtı geldiğinde yalnız export üretim tercihi ve bu kayıt güncellenecek.
+
+## Geçmiş aktarımı ve görev boyutu — Q07–Q09
+
+**2026-10-09, Q07 / kullanıcıya gösterilen soru 1:** Kullanıcı “önerin ne ise onla devam edelim … 1C'yi şu sebeple seçtik” diyerek öneriyi kabul etti. Ürün kararı **1C: açıkça izin verilmiş ve erişilebilen geçmişin tamamını, aktif işlere öncelik vererek aşamalı işlemek**. DEC-15 kabul edilen niyeti; bağlantı/retention belgeleri önerilen uygulama sözleşmesini taşır.
+
+| Alternatif | Kazanç / maliyet | Karar ve gerekçe |
+|---|---|---|
+| 1A — Yalnız seçilen konuşma veya tarih aralığı | İlk işleme daha küçük; seçimin dışında eski gerekçeler kalabilir | Varsayılan seçilmedi. Kullanıcı kaynak iznini sınırlamak isterse geçerli bir kapsam seçeneği olarak korunur |
+| 1B — Yalnız bağlantı sonrasındaki konuşmalar | En az geçmiş hazırlığı; önceki kararların evrimi bulunmaz | Varsayılan seçilmedi; mevcut bağlamı koruma hedefini tek başına karşılamaz. Geçmiş erişilemiyorsa açık coverage uyarısıyla kullanılabilir |
+| **1C — İzinli ve erişilebilir geçmiş, aşamalı işleme** | İlk indeksleme/çıkarım ve depolama yükü daha büyük; gerekçe ve alternatifleri sonradan bulma imkânı sağlar | **Seçildi.** Kaynağı koruma ile her çağrıda dar bağlam kullanmayı ayırır; aktif işler önce, kalan geçmiş görünür kuyrukta |
+
+1C, bütün geçmişi her çağrıda modele göndermek veya geçmişteki her öneriyi aktif görev yapmak değildir. Sürüm bağlı kaynak, sonuç cache'i, delta işleme ve gerektiğinde orijinal parçaya dönüş kullanılır. En düşük maliyet veya kusursuz hatırlama kanıtlanmış değildir; kaynak bulunabilirliği ve karar/ilişki recall'u token maliyetiyle birlikte ölçülecek. Kabul, şu anda hesaplardan veri toplama, harici modele gönderme veya ücretli çağrı izni vermez; Q02/Q03 ve OPEN-08 geçerlidir.
+
+| ID / kullanıcı soru no | Seçenekler | Durum |
+|---|---|---|
+| Q08 / 2 — Task boyutu | 2A: anlamlı ana/alt görev + küçük adımlarda checklist; 2B: her küçük adım ayrı task; 2C: yalnız büyük işler | **Öneri: 2A.** Kullanıcı ayrıca “bu taskı alt görevlere böl ve takibi öyle gerçekleştir” seçeneğini değerlendirmemizi istedi. İsteğe bağlı önizlemeli bölme tasarlandı; varsayılan otomatik bölme kararı alınmadı |
+| Q09 / 3 — Bildirim | 3A: engelleyici/önemli konular hemen, kalanlar inbox; 3B: hepsi inbox; 3C: her anlamlı değişimde bildirim | Yanıt bekliyor; bildirim servisi veya otomasyon başlatılmadı |
+
+Q08 önerisinin kazanımları ve sınırları [task bağlamı belgesinde](../product/task-context-and-acceptance.md#isteğe-bağlı-alt-görevlere-böl-ve-takip-et) yer alır. Q06 otomatik Markdown tercihi hâlâ açıktır. Bu kayıt seçeneklerin neden elendiğini korur; henüz cevaplanmayan tercihleri kabul edilmiş göstermez.

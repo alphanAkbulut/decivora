@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-09 — 1C kararı ve alt görev önerisi
+
+- Kullanıcı Q07/1C'yi kabul etti: izinli/erişilebilir geçmişi aktif işlere öncelik vererek aşamalı işleme. 1A/1B seçenekleri ve seçilmeme nedenleri korundu; DEC-15, import, token ve retention belgelerine işlendi. Geçici ham payload için eski 30 gün önerisi 1C kaynak arşivinden ayrıldı; OPEN-08 kesin süre/kapasite kararı açık.
+- Q08 için isteğe bağlı alt göreve bölme önizlemesi, parent/child kimliği, AC/kanıt eşlemesi, part_of, atomik onay, iptal ve tamamlama kuralları önerildi. Anlamlı child + küçük adımlarda checklist önerisi henüz varsayılan kullanıcı kararı değil. DEC-16 ve T13d/T20d öneri olarak kaldı; T22b kabul edilen geçmiş davranışının uygulama dilimi.
+- Doküman kontrolü geçti: 60 Markdown, 331 yerel bağlantı; mevcut 32 scope, 30 ana görev ve 14 MVP kriteri korundu. Yeni sözleşme senaryoları planlıdır; runtime veya yeni Mermaid render testi yapılmadı.
+- Q02/Q03/Q06 ve yeni Q08/Q09 açık; gerçek kaynak aktarımı, ücretli model, çalışan task bölme veya yeni runtime testi yok. T01 sıradaki uygulamalı hazırlık olarak korunuyor.
+
 ### 2026-10-09 — Bağlantı, token ve iş bağlamı
 
 - MCP/capture/insan UI ayrımı, bir defalık kurulum, tools-only health, delta brief/resync, disconnect ve sağlayıcı build kapıları ayrıntılandırıldı. OpenAI/Claude resmî kaynakları belge düzeyinde kontrol edildi; gerçek kurulum yapılmadı.

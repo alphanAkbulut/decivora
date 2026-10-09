@@ -49,6 +49,20 @@ Bu kaynaklar 2026-10-09'da belge düzeyinde incelendi. Hiçbir kurulum, izin gen
 
 ## Her çalışma turunda ne gönderilir?
 
+### 1C — İzinli geçmişin aşamalı alınması
+
+**Ürün tercihi kabul edildi; aşağıdaki uygulama tasarımı henüz çalışmıyor.** [Q07](../delivery/decision-brief.md) uyarınca kurulumda izin verilen ve adapter'ın gerçekten erişebildiği geçmiş için kaynak manifest'i hazırlanır. Kullanıcı kaynakları hariç tutabilir; 1C bütün hesaplara otomatik erişim değildir. Manifest kaynak kimliği/revision/hash, zaman aralığı, ACL, availability, capture ve processing checkpoint'leri, kalan parçalar ve retention sınıfını taşır. Orijinal kaynak, izin verilen güvenli arşivde korunur; secret redaction veya erişim eksikliği açık coverage kaydı üretir.
+
+1. Kaynaklar deterministik alınır, hash/dedup/index yapılır. Güvenli receipt öncesinde “arşivlendi” gösterilmez. Yalnız dış URL tutmak kalıcı kaynak kopyası sayılmaz.
+2. Aktif işlerin karar/gerekçe zincirleri önce değerlendirilir. Eski kaynak kuyruğu görünür kalır; sınırlı arka plan payı ve bekleme yaşına göre öncelik artışıyla sürekli ertelenmesi önlenir. Kesin pay baseline deneyinde belirlenir; bütçe yoksa iş açıkça deferred kalır.
+3. Çıkarım kaynak sırası ve kararların geçerlilik zamanını gözetir. Geç gelen eski mesaj bugünkü onaylı kararı geçersiz kılamaz. Tarihsel “yapalım” ifadeleri historical/unreviewed adaydır; otomatik aktif task veya doğrulanmış başarı değildir.
+4. Aynı kaynak revision ve extractor sürümü tekrarında önceki sonuç kullanılır. Değişen span, düzeltme veya açık yeniden değerlendirme ayrı işlemdir. Kesintiden sonra checkpoint ile sürdürülür; parçalar arası ilişki reconciliation'ı tamamlanmadan bütün kaynak analiz edilmiş sayılmaz.
+5. UI `alındı`, `analiz edildi`, `inceleme bekliyor`, `erişilemiyor` ve `bütçe nedeniyle ertelendi` ayrımını gösterir. Kaynak sayısı, analiz kapsamı ve karar doğruluğu aynı yüzde değildir. Eksik geçmiş varken kapsamlı “gerekçe kalmadı” sonucu verilmez.
+
+Arşivin diskte olması onun her model çağrısına girmesini gerektirmez. Aşağıdaki bounded brief ve hedefli retrieval yalnız gerekli parçayı getirir; gerekçe eksikse model tamlık iddiasında bulunmaz. [Retention](storage-memory-capacity.md) ham çalışma payload'ı ile 1C arşivini ayırır. Kaynak korunumu hatırlama garantisi değildir; retrieval hatası ayrıca ölçülür.
+
+**T22b kabul planı:** tekrar import duplicate çıkarım/task üretmez; kesinti devamında parça kaybolmaz; eski karar yeni kararı ezmez; aktif öncelik kalan kuyruğu gizlemez; eksik erişim/bütçe coverage'ı daraltır; okunmamış arşiv varsayılan kısa TTL ile silinmez. Bunlar planlı kontrollerdir.
+
 Agent oturum başlangıcında veya proje değişince kısa brief alır. Brief'e workspace/project, snapshot/knowledge/authz revision, amaç, aktif kararlar, seçili iş, blockers, kaynak pointer'ları ve coverage bilgisi girer. Kullanıcı grafik açtığında tüm grafiği modele göndermek gerekmez; UI servis verisini deterministik çizer.
 
 `get_project_brief` için tasarım girdileri: session scope, project, `since_revision`, seçili task ve budget. Çıktı: snapshot, ilgili değişiklikler, `coverage`, `truncated`, `continuation_cursor`, `estimated_tokens`, gerekirse `resync_required`. İlk çağrı bounded snapshot; sonraki çağrı delta'dır. Geçersiz/eski cursor tam transcript döndürmez; yeniden bounded snapshot ister. Silinmiş/geri çekilmiş kayıtlar delta tombstone taşıyarak eski bağlamı geçersiz kılar.

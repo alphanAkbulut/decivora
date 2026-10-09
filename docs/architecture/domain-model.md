@@ -39,6 +39,7 @@ Gelecekte verified bir çıktının kullanımdan kalkması, historical completio
 | İlişki | Yön / anlam |
 |---|---|
 | depends_on / blocks | Task→prerequisite; ilerleme sırası, varoluş gerekçesi değildir |
+| part_of | Child Task→Parent Task; Q08 önerisi: hiyerarşi, execution sırası veya gerekçe değildir |
 | required_by | Task→Decision/Requirement; iş neden var? |
 | implements | Task/Artifact→Requirement |
 | discovered_from | Finding/Idea→SourceRecord/Execution |
@@ -76,5 +77,7 @@ Edge kaydı proposal/onay durumundan bağımsız `asserted / ended / invalidated
 Current traversal yalnız güncel geçerli ilişkileri kullanır; historical traversal seçilmiş sequence'i gösterir ve bugünkü ACL'yi uygular. Gerekçenin kaldırılması otomatik obsolete kararı değildir; kalan AND/OR/unknown ve coverage yeniden değerlendirilir. Task cancelled olduğunda ilişkiler kendiliğinden ended olmaz; açık gereksinim/bağımlı işler review veya blocked kalabilir. Görsel karşılığı [graph deneyimindedir](../product/graph-experience.md).
 
 ## Task context ve DoD assessment
+
+Q08 için önerilen hierarchy: ilk tasarımda child'ın aynı workspace/project içinde en fazla bir güncel parent'ı vardır; self-parent/cycle reddedilir. Birden fazla işin kullandığı ortak task kopyalanmaz; diğer bağlantılar gerçek anlamına göre depends_on/related_to olabilir. `part_of` tek başına completion zorunluluğu, gerekçe veya yetki/grant mirası oluşturmaz. Parent completion planı hangi child'ın gerekli olduğunu ve ana AC→child AC eşlemesini version'lı tutar. Çoklu parent modeli gerekirse ayrı mimari review ister. Split yalnız onaylı atomik ChangeSet'tir; parent kimliği, geçmiş ve evidence korunur. [Bölme önizlemesi ve kabul kuralları](../product/task-context-and-acceptance.md) uygulanır; öneri Q08 kararından önce runtime'a alınmaz.
 
 `ContextSnapshot` kaynak/karar/evidence revision'larından türetilen milestone görünümüdür; canonical truth değildir. `DoDTemplate` proje/iş türü bazlı version'lanır, task assessment hangi maddelerin neden uygulanabilir olduğunu kaydeder. Completion gerekli AC'lerle birlikte uygulanabilir gerekli DoD kanıtı ve review/impact kapılarını kontrol eder. Parent task sırf child'lar bitti diye complete olmaz. [Context ve acceptance sözleşmesi](../product/task-context-and-acceptance.md) alanları, üretim tetiklerini, export hatasını ve eski kanıt davranışını tanımlar.
