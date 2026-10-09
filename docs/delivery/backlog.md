@@ -388,3 +388,16 @@ T20c ilk sürümde deterministik kaynaklı şablondur; modelle anlatı güzelle�
 | T20d / Q08,T13d,T14b,T20b | **PROPOSED / P1b:** parent/child liste+graph, sayım ve iptal/blocked görünümü | Gerekli child iptali başarı sayılmaz; tüm child'lar passed olsa da parent AC/DoD eksikse completed olmaz; değişen payda ve toplam bütçe görünür |
 
 Q08 yanıtı beklerken T13d/T20d tamamlandı veya kesin MVP taahhüdü sayılmaz; mevcut kapsamın önerilen ayrıntısıdır. T22b gerçek veri veya ücretli analiz izni içermez. T24c geçmiş import ilk maliyetini günlük tüketimden ayırıp aynı kalite ölçütleriyle raporlar.
+
+## Yönetim merkezi ve hata takibi alt dilimleri
+
+2026-10-10 takip isteği; tümü **TODO / önerilen P1b ayrıntısı**, çalışan panel değildir. [Yönetim sözleşmesi](../product/administration-and-operations.md) ve ADM-01–10 uygulanacak. Ana 30 görevin kapsamlı alt dilimleridir; yeni motor/servis değildir.
+
+| Dilim / bağımlılık | Küçük teslim | Kabul |
+|---|---|---|
+| T20f / T07b,T08b,T20a | Owner yerel sağlık/hata görünümü; sıradan kullanıcı için güvenli hata ve referans | ADM-01/05/06; rol negatif API ve temel UI akışı, incident kapanınca task değişmez |
+| T21c / T08b,T21b | Parametre sicili; miras/etkin değer, tavan, config önizleme ve revision/audit | ADM-03/04; concurrent config, rollback ve in-flight reservation testi |
+| T23e / T20f,T21c,T23c,T23d | Kapsamlı pause/retry, bounded hata kaydı, yedek/recovery görünümü | ADM-07/08/09; disk/audit arızası, archive TTL ve sıfır replay yan etkisi |
+| T24g / T20f,T21c,T23e | Owner “neden bekliyor/ne değiştirebilirim?” pilotu ve yerel admin negatif fixture'ları | ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run |
+
+P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yönetimi, platform konsolu, süreli destek ve kotaları tamamlar. ADM-02 ve ADM-10'un hosted kısmı o kapılarda test edilir. T20f ölçülen temel incident görünümüyle sınırlıdır; tam ticketing/on-call entegrasyonu MVP değildir.

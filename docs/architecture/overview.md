@@ -9,7 +9,7 @@ flowchart TB
     CC[Claude Code adapter] --> I[Ingress ve proje binding]
     CX[Codex adapter] --> I
     IM[İzinli chat import] --> I
-    MCP[MCP okuma ve öneri araçları] --> I
+    MCP[MCP okuma ve öneri araçları] --> CMD
     I --> RAW[Kaynak olay deposu]
     RAW --> Q[Dayanıklı iş kuyruğu ve checkpoint]
     Q --> EX[Extraction ve retrieval]
@@ -19,6 +19,7 @@ flowchart TB
     IMP --> UX[Review Inbox]
     UX --> CMD[Policy ve concurrency kontrolü]
     CMD --> EV[Domain event log]
+    CMD -->|Yetkili query| PROJ
     EV --> PROJ[Records ve ilişkiler projection]
     PROJ --> V[Board Graph Timeline]
     PROJ --> EX
@@ -62,5 +63,7 @@ P0'da Cortex, Claude Task Tracker ve mai-mcp aynı sentetik senaryoyla; Beads ç
 [Kimlik/yetki modeli](identity-access.md) workspace tenant, proje üyeliği, insan/agent principal ve süreli grant'i; [log/audit](logging-audit.md) kayıt sınıflarını; [depolama/hafıza](storage-memory-capacity.md) retention, DB/blob/secret ayrımını ve ölçüme bağlı ölçeği tanımlar. [ADR-0009](adr/0009-scoped-principals.md) ve [ADR-0010](adr/0010-storage-lifecycle.md) öneridir. Birincil pilot bireyseldir; tenant/agent sınırları P1, davet ve çok insanlı yönetim P4'tedir. Merkezi ekip servisi için PostgreSQL adayına geçiş yeni işletim kararı ve migration kanıtı gerektirir.
 
 ## Bağlantı ve görsel tüketim
+
+[Yönetim merkezi](../product/administration-and-operations.md) günlük kullanıcı, workspace ayarları ve kurulum/platform operasyonunu ayrı yetkilerle aynı API'ye bağlar. Hata takibi ve versioned config ENG-06/07/10 sınırlarındadır; yeni bir engine/servis kararı değildir. Atlas 9–13 run, soru, blocker ve admin akışlarını tamamlar. Query command policy'den geçer ama domain mutation üretmez; capture ingestion ayrı yoldur.
 
 [Kurulum/context sözleşmesi](connection-and-context.md) capture, MCP ve insan UI yollarını aynı servise bağlar. [Token sözleşmesi](routing-token-economy.md) host model tüketimini kendi arka plan modellerimizden ayırır; bounded context, metered retry ve atomik budget reservation önerir. [Graph UX](../product/graph-experience.md) aktif/geçmiş ilişkileri ve iptali açıklar. UI'nın normal graph/filtre işlemleri model çağrısı gerektirmez; anlamsal açıklama ayrı işlemdir.

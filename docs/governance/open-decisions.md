@@ -36,6 +36,8 @@ OPEN-08 için [retention tablosunda](../architecture/storage-memory-capacity.md)
 
 ## UI görünümü ve analiz sıklığı
 
+2026-10-10 yönetim ayrıntıları [admin/operasyon belgesinde](../product/administration-and-operations.md): OPEN-14 kurulum işletim sorumlusu ve rol preset'lerini; OPEN-16 alert kanalı, hizmet eşiği ve operasyon bütçesini kapsar. OPEN-05/11 kaynak lisansı/ticari modeldir; kurulum ve veri erişiminden ayrıdır. Yerel owner görünümü önerildi, çok-kullanıcı backoffice P4'te. Sayısal kullanıcı level'ı veya L1 destek ekibi seçilmiş sayılmaz; bugün bu ayrım dokümantasyonu bloke etmez.
+
 **Q09/DEC-17 güncellemesi:** Blocker ve downstream gecikmesi önceliği, Product Owner bakışı ve çevik çalışma yönü kabul edildi. Önceki Q09 açık kaydı artık yalnız bildirim kanalı/sıklığı ayrıntılarını kapsar. Yanıt Sprint süresi/rol ataması veya dış mesaj izni değildir. [Öncelik sözleşmesi](../product/priority-and-flow.md) ve [yönetim planı](../delivery/project-management.md) hazır; uygulama yok. Q08 ayrı açık kalır.
 
 Q07/1C kabul edildi: izinli ve erişilebilir geçmiş, aktif işler önce olacak şekilde aşamalı işlenecek. Bu karar OPEN-08'i kapatmaz: 1C kaynak arşivine önceki genel 30 günlük geçici payload önerisi otomatik uygulanmaz; kesin arşiv süresi, kapasite ve silme politikası gerçek veri öncesi kararlaştırılacak. Kaynak korunumu ile modelin eksiksiz hatırlaması farklı hedeflerdir. Q08 isteğe bağlı alt göreve bölme/varsayılan boyut önerisi ve Q09 bildirim kanalı/sıklığı ayrıntıları [soru kaydında](../delivery/decision-brief.md) açıktır. Q03 dış model/bütçe yanıtı yerine yeni izin çıkarılamaz.

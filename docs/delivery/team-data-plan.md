@@ -67,15 +67,17 @@ C01–C03 ayrıca doğrulanabilir ilk owner bootstrap, ayrı kullanıcı oturumu
 
 ```mermaid
 flowchart LR
-    P1[P1 Kimlik ve veri sınırları] --> SOLO[Bireysel pilot kanıtı]
+    P1[P1 Kimlik, veri ve yerel yönetim] --> SOLO[Tek insan ve çok-agent pilot kanıtı]
     SOLO --> NEED[T30 Ekip gereksinimi ve işletim kararı]
     NEED --> C2[C02 Merkezi veri ve izolasyon]
     C2 --> C3[C03 Üyelik yaşam döngüsü]
     C3 --> C4[C04 İnsan ve agent işbirliği]
-    C4 --> C5[C05 Audit ve recovery]
-    C5 --> C6[C06 Ölçek ve ekip pilotu]
+    C4 --> C5[C05 Operasyon konsolu, audit ve recovery]
+    C5 --> C6[C06 Kotalar, ölçek ve ekip pilotu]
 ```
 
 ## Karar gerektirenler
+
+[Yönetim sözleşmesi](../product/administration-and-operations.md) C03'e admin kapsamlarını, C05'e redakte incident/süreli support erişimini, C06'ya parametre tavanı ve operational release kanıtını ekler. ADM-01–10 mevcut MU/AGT kontrollerini tamamlar. Günlük kullanıcı rolü, L1 destek preset'i ve ticari paket farklıdır. P1b minimal görünüm işleri [backlog](backlog.md#yönetim-merkezi-ve-hata-takibi-alt-dilimleri) içindedir; tam backoffice P4'tedir.
 
 Bugün yeni kullanıcı sorusu zorunlu değil: bireysel pilot tercihi mevcut. Ekip aşamasında deployment ve private veri sahipliği; korumalı kararlar için gereken reviewer sayısı; kesin retention/key recovery; hedef kapasite ve işletim bütçesi somut pilot profiliyle seçilecek. Bunlar [OPEN-14–OPEN-16](../governance/open-decisions.md) altında kayıtlıdır. Daha önce sorulan coding/chat yüzeyi ve harici model/veri/bütçe yanıtı bu planla cevaplanmış sayılmaz.

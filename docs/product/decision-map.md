@@ -39,6 +39,13 @@ flowchart TD
     A --> M
     R --> M
     X --> M
+    D15[DEC-15 Kabul: 1C aşamalı geçmiş] --> R
+    D15 --> HIST[Kaynak arşivi ve açık coverage]
+    HIST --> A
+    D16[DEC-16 Öneri: anlamlı alt görev ve checklist] -.-> M
+    D17[DEC-17 Kabul: blocker ve ürün değeri] --> FLOW[Yöntemden bağımsız öncelik önerisi]
+    FLOW --> M
+    GOV[Yönetici ve hata takibi: tasarım önerisi] -.-> M
 ```
 
 ## Kararların neden ve nasıl alındığını bulma
@@ -51,6 +58,7 @@ flowchart TD
 | Kullanıcının seçtiği alternatifler | [Karar hazırlığı](../delivery/decision-brief.md): örneğin Q07/1A–1B–1C, tercih ve bedel |
 | Teknik mimari önerileri | [ADR dizini](../architecture/adr/README.md): bağlam, alternatif, karar statüsü ve kabul kapısı |
 | Scrum/ürün önceliği | [DEC-17 gerekçe eşlemesi](../delivery/project-management.md#dec-17--kaynak-yaklaşımı--tercih--gerekçe): doğrudan kaynak bölümü, bizim tercihimiz, neden, sınır ve doğrulama |
+| Yönetim/operasyon ve lisans ayrımı | [Yönetim gerekçesi](administration-and-operations.md#neden-bu-tasarım) ve [dört ayrı karar](../governance/licensing.md#kaynak-kodu-kurulum-erişim-ve-paket-ayrı-kararlar); ayrıntılı roller ve ticari model öneri, seçilmiş lisans değil |
 
 Gerekçe standardı: tetikleyen ihtiyaç/kaynak → tarih ve karar sahibi → gerçekten değerlendirilen alternatifler → tercih ve neden → bedel/risk → etkilenen belge/görev → doğrulama ve yeniden değerlendirme koşulu. Kaynak yaklaşımı, bizim çıkarımımız ve kullanıcının kabulü ayrı tutulur. Önceki bir kararda bu bilgi kayıtlı değilse sonradan gerekçe uydurulmaz; eksiklik veya sonradan yapılan değerlendirme açık etiketlenir. Bütün tarihsel kararların aynı ayrıntı düzeyinde olduğu iddia edilmez.
 

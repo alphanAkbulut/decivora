@@ -86,6 +86,8 @@ Tek kişilik pilotta owner kendi önerisini onaylayabilir; bu açık `single_own
 
 ## Kullanıcı yönetimi ve UX
 
+[Yönetim/operasyon merkezi](../product/administration-and-operations.md) bu matrisi installation administrator, platform operator ve workspace/proje ayarlarıyla tamamlar. Sayısal kullanıcı level'ı, L1 destek rolü ve ticari paket birbirine karıştırılmaz. Platform admin'i kaynak ACL'sini aşamaz; P1b minimal owner görünümü, P4 ekip/backoffice. ADM-01/02/03 negatif testleri planlıdır.
+
 Ekip self-host/managed kurulumunda üyeler ayrı oturumlarla merkezi API'ye bağlanır; aynı owner hesabı veya ortak SQLite dosyası dağıtılmaz. Bootstrap, login/recovery, davet, kaynak paylaşımı ve kişisel→ekip geçişi [işletim sözleşmesinde](agent-and-team-operation.md) somutlaştırılır. Tek insanın çok-agent pilotu P1b'de denenebilir; çok insanlı ekip dağıtımı C01–C06 kapılarını gerektirir.
 
 1. Doğrulanmış alıcı kimliğine bağlı, süreli ve tek kullanımlı davet: workspace, proje, rol ve görünürlük önizlemesi. Daveti kabul etmek diğer projelere katılım değildir.

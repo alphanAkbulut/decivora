@@ -19,12 +19,12 @@ Decivora'nın hedefi kullanıcının kart, açıklama ve kabul kriteri yazmasın
 
 ```mermaid
 flowchart LR
-    A[AI konuşmaları ve çalışma olayları] --> B[Capture]
+    A[AI konuşmaları ve agent çalışma olayları] --> B[Capture]
     B --> C[Reconcile]
     C --> D[Karar farkındalıklı etki analizi]
     D --> E[Gerekçeli toplu onay]
     E --> F[Güncel proje bilgisi]
-    F --> G[Yürütme ve doğrulama]
+    F --> G[Çalışma kanıtları ve ayrı task doğrulaması]
     G --> C
     B --> H[Append-only olay geçmişi]
     E --> H
@@ -61,7 +61,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Başka bir LLM ne anlamalı? | [Devir ve anlama kontrolü](docs/delivery/llm-handoff.md) |
 | Kullanıcı hangi özellikleri görecek? | [17 özellik ve kullanıcı yolculuğu](docs/product/feature-catalog.md) |
 | Konuştuğumuz engine'ler nerede? | [10 modül ve kaynak isimleri](docs/architecture/engines.md) |
-| Sistem ayrıntıları ve diyagramlar | [8 diyagramlık atlas](docs/architecture/diagrams.md) · [Runtime sözleşmeleri](docs/architecture/runtime-contracts.md) |
+| Sistem ayrıntıları ve diyagramlar | [13 diyagramlık atlas](docs/architecture/diagrams.md) · [Runtime sözleşmeleri](docs/architecture/runtime-contracts.md) · [Diyagram incelemesi](docs/quality/diagram-review.md) |
 | Diğer araçlardan ne fark hedefliyoruz? | [Farklılaşma ve altı hipotez](docs/product/differentiation.md) |
 | Proje nasıl yönetilecek? | [Kısa proje yönetim planı](docs/delivery/project-management.md) |
 | Eksikler yeniden tarandı mı? | [Mimari/kapsam incelemesi](docs/quality/completeness-review.md) · [Kaynak→özellik→test matrisi](docs/quality/traceability.md) |
@@ -75,6 +75,8 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | İlişkiler ve iptaller grafikte nasıl görünecek? | [Görsel sözlük, geçmiş ve örnek diyagramlar](docs/product/graph-experience.md) |
 | İşin fikri nasıl olgunlaştı; hangi testler yapıldı? | [Bağlam hikâyesi, AC/DoD ve kanıt matrisi](docs/product/task-context-and-acceptance.md) |
 | Hangi kararlar kullanıcıyı bekliyor? | [Owner soruları ve teknik hazırlık](docs/delivery/decision-brief.md) |
+| Admin, kullanıcı rolleri, hata takibi ve backoffice | [Yönetim ve işletim sözleşmesi](docs/product/administration-and-operations.md) |
+| Açık kaynak mı, private mı, self-host mu? | [Lisans, hosting, erişim ve paket ayrımı](docs/governance/licensing.md#kaynak-kodu-kurulum-erişim-ve-paket-ayrı-kararlar) |
 
 ## Repository düzeni
 

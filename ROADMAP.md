@@ -5,10 +5,10 @@ Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenek
 ```mermaid
 flowchart LR
     P0[P0 Kaynak ve fizibilite] --> P1A[P1a Teknik kanıt]
-    P1A --> P1B[P1b Yerel MVP]
+    P1A --> P1B[P1b Yerel MVP ve owner sağlık görünümü]
     P1B --> P2[P2 Chat ve agent sürekliliği]
     P2 --> P3[P3 Maliyet ve entegrasyon]
-    P3 --> P4[P4 Ekip ve ürünleşme]
+    P3 --> P4[P4 Ekip, yönetim ve ürünleşme]
 ```
 
 | Faz | Teslim | Çıkış kapısı |
@@ -32,7 +32,7 @@ flowchart TB
     EXP --> D
     CORE --> INT[T09-T14 Extraction, reconciliation, impact, approval, verification]
     INT --> G{T15 Teknik kanıt kapısı}
-    G -->|Geçti| MVP[T16-T23 İki adapter, MCP, UX, ekonomi, restore]
+    G -->|Geçti| MVP[T16-T23 Adapter, MCP, UX, ekonomi, yerel yönetim, restore]
     G -->|Başarısız| FIX[Kanıta bağlı küçük düzeltme]
     FIX --> G
     MVP --> PILOT{T24 MVP ve kullanıcı pilotu}
@@ -45,5 +45,7 @@ Güvenlik/kalıcı işleme/graph race sözleşmeleri ilk çekirdek dilimlerinde 
 Başarısız kapıda: neden ve kanıt kaydedilir, küçük düzeltme işi açılır, faz geçişi bekler. Bir yetenek platformca engellenirse full scope kaydında kalır; sınırlı sürüm adı ve fallback açıkça belirtilir.
 
 ## Ekip ve veri altyapısı hattı
+
+[Yönetim merkezi](docs/product/administration-and-operations.md) P1b'de yerel owner için sağlık/hata/etkin limitler; P4'te ekip admin ve platform operasyon konsolu olarak ayrılır. T20f/T21c/T23e/T24g mevcut görevlerin küçük dilimleridir. Kaynak lisansı, private veri erişimi, self-host/managed kurulum ve olası paketler ayrı kararlardır; bugün hosted servis veya lisans seçilmedi.
 
 P1'de tenant/agent kimliği, dar izin, kalıcı audit ve retention/recovery temeli kurulur; P4'te davet, rol yönetimi, ortak hafıza, bağımsız review ve merkezi ekip işletimi gelir. [Ekip/veri planı](docs/delivery/team-data-plan.md) küçük P1 alt görevlerini ve C01–C06 kapılarını açıklar. [Kapasite planındaki](docs/architecture/storage-memory-capacity.md) S0–S3 topolojileri bir kullanıcı sayısı garantisi veya takvim değildir; ölçülmüş darboğaz ve operasyon ihtiyacıyla seçilir.

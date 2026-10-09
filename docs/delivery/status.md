@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Diyagram incelemesi ve yönetim/operasyon tasarımı
+
+- 11 belgedeki 20 Mermaid şeması son kararlarla karşılaştırıldı; 1C arşiv/TTL, eksik DEC-15–17, MCP routing ve tenant ER kapsamı düzeltildi. Run, soru, blocker, admin ve incident için beş şema eklendi: toplam 25. Ayrıntı [inceleme kaydında](../quality/diagram-review.md).
+- [Yönetim sözleşmesi](../product/administration-and-operations.md) yerel/kurulum admin'i, workspace/proje rolleri, platform operatörü, günlük kullanıcı, agent ve olası L1 desteği ayırır. Incident, güvenli müdahale, versioned parametre ve miras/tavan kuralları; T20f/T21c/T23e/T24g ve ADM-01–10 planlandı.
+- Lisans, hosting, veri erişimi ve ticari paket ayrı kararlardır. OSI/AGPL/Apache kaynakları tekrar okundu. Repo private kalır; lisans, ücretli provider, kullanıcı hesabı veya hosted servis oluşturulmadı. P1b minimal yerel yönetim, P4 ekip/platform konsolu önerisi; runtime/test sonucu değil.
+- Doküman kontrolü ve diagram inventory çalıştırıldı; son kontrol kapsamı inceleme kaydında. T01 hâlâ sıradaki uygulamalı hazırlık; açık lisans/retention/host/bütçe kararları bu tasarımla kapanmadı.
+
 ### 2026-10-10 — Scrum, PMI ve genel bağımlılık yönetimi ayrımı
 
 - Scrum çerçevesi, PMI mesleki kuruluşu ve yöntemden bağımsız bağımlılık/engel kavramları ayrıldı. Önceki Scrum Alliance atfı tek sahiplik/kaynak gibi yorumlanmayacak şekilde açıklandı; DEC-17'nin kabul edilmiş ilkesi korunuyor.

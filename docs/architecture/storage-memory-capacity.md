@@ -20,15 +20,21 @@ Blob önce staging'e yazılır ve hash doğrulanır; DB commit yalnız dayanıkl
 ```mermaid
 flowchart LR
     SRC[İzinli kaynak] --> IN[Durable ingress ve receipt]
-    IN --> RAW[Korumalı ham payload]
+    IN --> CLASS{Onaylı veri sınıfı}
+    CLASS --> TMP[Geçici ham payload]
+    CLASS --> ARCH[1C izinli kaynak arşivi]
     IN --> JOB[Kalıcı iş kuyruğu]
     JOB --> CTX[Geçici izinli context]
     CTX --> PROP[Kalıcı aday ve review]
     PROP -->|Yetkili onay| EV[Canonical event geçmişi]
     EV --> VIEW[Yeniden üretilebilir görünüm ve index]
     VIEW --> CTX
-    RAW -->|TTL veya yetkili purge| DEL[Tombstone ve coverage kaydı]
+    TMP -->|Sınıfa özgü TTL veya purge| DEL[Tombstone ve coverage kaydı]
+    ARCH -->|Ayrı onaylı retention veya erase| DEL
+    ARCH -->|Aktif işler önce, aşamalı| JOB
+    ARCH -.-> LIMIT[Kapasite sınırında intake durur; sessiz silme yok]
     EV --> BK[Tutarlı DB ve blob yedeği]
+    ARCH --> BK
 ```
 
 ## Retention başlangıç önerisi

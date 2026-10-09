@@ -12,6 +12,7 @@ flowchart TB
         CX[Codex desteklenen yüzey]
         CHAT[İzinli Chat importu]
         ART[Artifact ve test raporu]
+        AG[Agent run ve soru gözlemleri]
     end
     subgraph LOCAL["Yerel Decivora sınırı"]
         AD[Adapter ve kalıcı ingress]
@@ -27,6 +28,7 @@ flowchart TB
     CX --> AD
     CHAT --> AD
     ART --> AD
+    AG --> AD
     AD --> EN
     EN -->|Öneri| UI
     USER -->|Güvenilir oturum| UI
@@ -49,9 +51,9 @@ flowchart LR
     E3 --> E4[ENG-04 Idea Evaluation]
     E3 --> E5[ENG-05 Graph ve Impact]
     E4 --> E5
-    E5 --> E6[ENG-06 Review ve Policy]
+    E5 --> E6[ENG-06 Review, soru yönlendirme ve Policy]
     E6 --> E7[ENG-07 Log ve Projection]
-    E7 --> E10[ENG-10 Context ve Health]
+    E7 --> E10[ENG-10 Context, Health ve sonraki adım]
     E10 -->|İlgili current ve history| E3
     E7 --> E8[ENG-08 Verification]
     E8 -->|Assessment command| E6
@@ -66,6 +68,7 @@ E4 her aday için zorunlu model çağrısı değildir. Verification okunan kanı
 
 ```mermaid
 erDiagram
+    WORKSPACE ||--o{ PROJECT : contains
     PROJECT ||--o{ BINDING : scopes
     PROJECT ||--o{ SOURCE_EVENT : contains
     PROJECT ||--o{ RECORD : owns
@@ -84,8 +87,10 @@ erDiagram
     DOMAIN_EVENT ||--o{ OUTBOX_ITEM : schedules
     PROJECT {
         string project_id PK
+        string workspace_id FK
         int knowledge_revision
         int policy_revision
+        int authz_revision
     }
     SOURCE_EVENT {
         string source_id PK
@@ -118,7 +123,7 @@ erDiagram
     }
 ```
 
-Şema mantıksaldır; fiziksel DDL değildir. RecordVersion'ın anahtarı `(project_id, record_id, revision)`; edge iki endpoint revision'ına başvurur. Diagram okunabilirliği için tüm foreign key'ler ve Evaluation'ın çoklu input provenance bağlantıları çizilmedi. Source kimliği quarantine'da henüz project'e bağlı olmayabilir. Imported/manual ChangeSet ayrıca evaluation olmadan oluşabilir; normal inferred akış yukarıda gösterilir. Detailed constraints runtime belgesinde korunur.
+Şema mantıksaldır; fiziksel DDL değildir. RecordVersion'ın anahtarı `(workspace_id, project_id, record_id, revision)`; tüm proje kayıt/FK/unique sınırları tenant kapsamını korur. Edge iki endpoint revision'ına başvurur. Diagram okunabilirliği için her tabloda tenant/FK alanları, üyelik/ACL ve Evaluation'ın çoklu input provenance bağlantıları tekrarlanmadı; [yetki sözleşmesi](identity-access.md) normatiftir. Source kimliği quarantine'da henüz project'e bağlı olmayabilir; izolasyon kalkmaz. Imported/manual ChangeSet ayrıca evaluation olmadan oluşabilir. Run ve soru ilişkileri aşağıdaki ayrı diyagramlarda; bunlar task hiyerarşisi değildir.
 
 ## 4. Capture: receipt ile değerlendirme farklıdır
 
@@ -140,8 +145,14 @@ sequenceDiagram
         I-->>A: Hata, başarı ack yok
     end
     W->>D: Lease + fencing token al
-    W->>M: Gerekirse bounded input
-    M-->>W: Structured result veya hata
+    W->>W: Güncel yetki, veri izni, dedup ve bütçe kontrolü
+    alt Model gerekli ve izinli
+        W->>D: Atomik bütçe rezervasyonu
+        W->>M: Rezervasyon başarılıysa bounded input
+        M-->>W: Structured result veya hata
+    else Deterministik veya bekleyen iş
+        W->>W: Deterministik sonuç veya deferred nedeni
+    end
     alt Geçerli sonuç ve güncel lease
         W->>D: TX result + mapping + processing interval
     else Timeout veya bozuk sonuç
@@ -235,3 +246,108 @@ flowchart TD
 ```
 
 Yedekten dönmek uzak GitHub/Linear durumunu geriye almaz. Dış etkiler local replay'den ayrı denetlenir.
+
+## 9. Task, agent ve run farklı kimliklerdir
+
+```mermaid
+flowchart LR
+    H[İnsan veya servis sponsoru] --> G[Süreli dar grant]
+    A[Agent principal] --> R1[Run A]
+    G --> R1
+    R1 -->|Gözlenmiş parent ilişkisi| R2[Run B]
+    G2[Alt küme child grant] --> R2
+    R1 -->|Çalışma bağlantısı| T[Ana task]
+    R2 -->|Çalışma bağlantısı| T
+    T -.->|Yalnız ayrı onaylı split| ST[Alt task]
+    R2 --> END[Run sona erdi]
+    END --> E[Artifact ve kanıt iddiası]
+    E --> V[Güncel AC ve DoD doğrulaması]
+    V -->|Geçerli kanıt| DONE[Task completion command]
+    V -->|Eksik veya stale| WAIT[Verification bekliyor]
+```
+
+Parent kimliği bulunamıyorsa unknown kalır; gizli muhakeme çıkarılmaz. Run soy ağacı otomatik alt görev yaratmaz. Tüm child'ların geçmesi parent AC/DoD doğrulamasını kaldırmaz. [Agent işletimi](agent-and-team-operation.md), [split ve acceptance](../product/task-context-and-acceptance.md).
+
+## 10. Soru, cevap, onay ve teslim ayrımı
+
+```mermaid
+flowchart TB
+    Q[Kalıcı QuestionRequest ve bağımlı iş] --> TYPE{Soru türü ve gerekli yetki}
+    TYPE -->|Bilgi veya görüş| RET[İzinli kaynak veya yetkili uzman agent]
+    TYPE -->|Yetki içi teknik seçim| POL[Mevcut policy ve geçerli karar]
+    TYPE -->|Korunan karar veya yetki eksik| HUMAN[Yetkili insan Inbox]
+    RET --> ANS[Kaynaklı AnswerRecord]
+    POL --> ANS
+    HUMAN --> APP[Digest ve revision bağlı approval]
+    APP --> CHECK[Güncel yetki ve bağlam kontrolü]
+    ANS --> CHECK
+    CHECK -->|Stale veya çelişkili| REVIEW[Yeni değerlendirme; bağlı iş bekler]
+    CHECK -->|Geçerli| CAP{Host delivery capability}
+    CAP -->|Destekli ve yetkili| DEL[Teslim ve receipt takibi]
+    CAP -->|Yok veya bilinmiyor| MAN[Manuel aktarım veya delivery pending]
+    DEL --> ACK{Host devamı doğruladı mı}
+    ACK -->|Evet| RUN[Bağımlı çalışma devam edebilir]
+    ACK -->|Hayır| MAN
+    Q -->|Timeout veya döngü limiti| WAIT[Escalation veya bekleme; otomatik onay yok]
+```
+
+Bilgi cevabı approval değildir; protected karara dönüşürse insan koluna gider. Uzman/parent agent insanın yerini alamaz. Yetkili ve değişmemiş önceki karar tekrar sorulmadan kullanılabilir. Yalnız bağlı iş bekler; harici agent'ın durduğu veya yeniden başladığı capability/receipt olmadan iddia edilmez. [ASK sözleşmesi](agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider).
+
+## 11. Blocker çözüm sırası ve görev önceliği
+
+```mermaid
+flowchart TB
+    GRAPH[Güncel ve yetkili dependency graph] --> VALID{Coverage ve ilişkiler yeterli mi}
+    VALID -->|Hayır| GAP[Unknown veya cycle inceleme]
+    VALID -->|Evet| BLOCK[Engellenen işler ve ortak kök neden]
+    BLOCK --> READY[Engeli çözen uygulanabilir iş veya karar]
+    GOAL[Ürün hedefi, değer, risk ve owner tercihi] --> RANK[Gerekçeli öncelik önerisi]
+    READY --> RANK
+    RANK --> REVIEW[Yetkili değerlendirme ve sırayı düzenleme]
+    REVIEW --> ACT[İzin sınırları içinde çalışma]
+    ACT --> VERIFY[Kanıt ve graph yeniden değerlendirmesi]
+    VERIFY --> GRAPH
+```
+
+Blocked task ile engeli çözen ready iş farklıdır. Etki sayısı tek başına öncelik değildir; gizli kayıtları açıklamaz. Dependency ve blocker yöntemden bağımsızdır; Scrum/PMBOK uygunluğu veya kritik yol hesabı iddiası yok. [Öncelik sözleşmesi](../product/priority-and-flow.md).
+
+## 12. Yönetim yüzeyleri ve veri sınırları
+
+```mermaid
+flowchart TB
+    USER[Günlük kullanıcı] --> APP[Inbox Board Graph Timeline]
+    OWNER[Workspace veya proje yöneticisi] --> SETTINGS[Üye, grant, policy ve limit ayarları]
+    OP[Kurulum veya platform operatörü] --> OPS[Operasyon merkezi]
+    APP --> AUTH[Ortak kimlik, kapsam ve kaynak yetkisi]
+    SETTINGS --> AUTH
+    OPS --> AUTH
+    AUTH -->|Yetkili proje query veya command| DOMAIN[Domain store ve projection]
+    AUTH -->|Yetkili admin command| CONFIG[Sürümlü config ve audit]
+    AUTH -->|Operasyon okuma| HEALTH[Redakte sağlık ve incident görünümü]
+    DOMAIN -->|İçeriksiz sinyaller| HEALTH
+    CONFIG --> POLICY[Etkin policy ve dispatch sınırları]
+    SUPPORT[Süreli ve açık onaylı destek grant] -.-> AUTH
+```
+
+Operatör kimliği domain içeriğine otomatik izin değildir. Aynı servis önerilir; ayrı backoffice DB veya mikroservis zorunlu değil. P1b yerel owner sağlık/ayar görünümü, P4 ekip ve hosted operasyon konsolu. [Yönetim sözleşmesi](../product/administration-and-operations.md).
+
+## 13. Hata müdahalesi ve config değişimi
+
+```mermaid
+flowchart TB
+    ERR[Operasyon hatası] --> SAFE[Yazmadan önce redaction]
+    SAFE --> INC[Kapsamlı incident ve güvenli fingerprint]
+    INC --> TRIAGE[Etki, sorumlu ve inceleme]
+    TRIAGE --> PLAN[Retry, pause veya ayar önizlemesi]
+    PLAN --> GUARD[Yetki, revision, bütçe ve idempotency]
+    GUARD -->|Geçti| APPLY[İşlem kaydı ve zorunlu audit]
+    GUARD -->|Ret veya stale| HOLD[İşlem yapılmaz; neden görünür]
+    APPLY --> HEALTH[Sağlık kontrolü ve çözüm kanıtı]
+    HEALTH -->|Geçti| RES[Incident resolved]
+    HEALTH -->|Başarısız| TRIAGE
+    RES -->|Tekrarlandı| INC
+    RES -.-> SEPARATE[Job ve task doğrulaması ayrı kalır]
+    APPLY -->|Dış sonuç belirsiz| UNKNOWN[Önce reconciliation; kör retry yok]
+```
+
+Config apply beklenen revision ile atomiktir; rollback yeni revision olur. Dış istek yerel transaction'a alınamaz. Telemetry veya DB arızası kayıtsız başarı iddiası üretmez. [ADM kabul senaryoları](../product/administration-and-operations.md#planlı-kabul-senaryoları).

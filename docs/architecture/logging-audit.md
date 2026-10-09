@@ -51,6 +51,8 @@ Denied istek zaten durum değiştirmez. Audit diski dolsa bile erişim açılmaz
 
 ## Bütünlük ve inceleme
 
+[Operasyon sözleşmesi](../product/administration-and-operations.md) incident alanlarını, open/mitigated/resolved/reopened ayrımını, güvenli retry/pause ve config audit'ini tanımlar. Incident kapanması domain task'ını veya failed job'ı tamamlamaz. Ortak fingerprint farklı tenant içeriğini birleştiremez. DB arızasında kalıcı hata yazılamayacağı durum ayrı degraded health ve kayıt boşluğuyla görünür olur; logger çalışıyor varsayılmaz. ADM-05–09 doğrulaması planlıdır.
+
 Normal insan/agent API'si event/audit satırı UPDATE/DELETE etmez. Authorized privacy purge ayrı rol, gerekçe, policy ve silinen veri sınıflarının minimal tombstone kaydını gerektirir. Hash zinciri ve bağımsız saklanan imzalı/checkpoint kopyaları değişiklik tespitine yardımcıdır; DB, anahtar ve checkpoint'leri yöneten kişinin tüm müdahalelerini engellediği iddia edilmez. Harici immutable storage ve anahtar ayrımı ekip/hosted aşamasında maliyet ve tehdit modeline göre değerlendirilecek.
 
 Proje timeline'ı tüm security audit'i göstermez. Project reviewer yalnız izinli karar zincirini; ayrı workspace auditor yetkisi üyelik/erişim hareketlerini görür. Audit izni ham özel sohbeti okuma hakkı vermez. Download/export işlemi de audit'lenir. Platform operasyon ekibi tenant içeriğini sıradan hata logundan görememeli.
