@@ -72,7 +72,7 @@ Bir provider'a aynı anda webhook ve polling açılırsa ortak source key/revisi
 | Model timeout / runner timeout | Ayrı adapter/check config; T02/T14 ölçümüyle | Tek global süre uydurulmaz; bilinmeyen billable çağrı reservation'ı düşürmez |
 | Health örnekleme / orphan audit | Örnek health 60 sn; orphan audit günde bir bounded tur | Audit checkpoint/frontier tutar; varsayılan LLM yok, eski task otomatik kapatılmaz |
 | Backup | [Mevcut günlük yerel aday](storage-memory-capacity.md); ayrıca manuel | RPO/RTO ölçülmedi; restore testi ve retention ayrı |
-| Yetki/grant süresi | Her kullanım/commit'te yerel güncel kontrol; harici revalidation adapter policy'si | Periodik kontrol tek savunma değildir; sıklık OPEN-14/16, Q10 keşif tercihi açık |
+| Yetki/grant süresi | Her kullanım/commit'te yerel güncel kontrol; harici revalidation adapter policy'si | Periodik kontrol tek savunma değildir; sıklık OPEN-14/16, Q10-A kabul edildi; gerçek listeleme izni ayrıca gerekir |
 
 Idle debounce sürekli yeni olayla sonsuza uzamaz; ilk bekleyen parçadan max-wait ölçülür. Byte/token/batch limiti erken bölme yapabilir, kalanı manifest'te bırakır. Blocker önceliği yalnız uygulanabilir işler arasında sırayı etkiler; düşük öncelikli geçmiş için aging/fairness korunur. Q05 task override üst tavanı aşamaz.
 
@@ -219,7 +219,7 @@ Kesin endpoint/HTTP kodu ve SDK sürümü teknoloji/capability deneyinden sonra 
 | SEQ-07 | Webhook+poll+outbox echo duplicate üretmez; timeout ve eksik remote idempotency manual/unknown kalır |
 | SEQ-08 | Saat değişimi ve restart catch-up fırtınası yaratmaz; benzersiz source olayları kaybolmaz; düşük öncelikli geçmiş aç bırakılmaz |
 
-DB ilişkilerinin ayrı kabulü [veri ilişkileri belgesinde](data-relationships.md). Uygulama sırası [backlog](../delivery/backlog.md#tetikleme-zamanlama-ve-veri-ilişkileri-dilimleri); kesin sayısal değerler OPEN-12/16'da ölçümle karara bağlanacak. Q02/Q03/Q06/Q08/Q10 açık seçimleri bu belgeyle kapanmaz.
+DB ilişkilerinin ayrı kabulü [veri ilişkileri belgesinde](data-relationships.md). Uygulama sırası [backlog](../delivery/backlog.md#tetikleme-zamanlama-ve-veri-ilişkileri-dilimleri); kesin sayısal değerler OPEN-12/16'da ölçümle karara bağlanacak. Q02/Q03/Q06/Q08 açık seçimleri bu belgeyle kapanmaz. Q10-A kabul edildi; ayrı listeleme izni olmadan keşif, seçim/onay olmadan içerik alımı başlamaz.
 
 ## 9. Ranking önerisi ile plan uygulama sınırı
 

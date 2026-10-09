@@ -15,6 +15,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Q10-A kaynak keşfi tercihi kabul edildi
+
+- Kullanıcı seçili öneriye “1a ile devam” dedi: ayrı metadata/listeleme izni varsa yeni kaynak için bağlama önerisi; seçilmeden ve gerekli onaylar tamamlanmadan içerik okuma veya takip yok. Manuel bağlantı alternatifi korunur.
+- Karar/gerekçe, bağlantı, tetikleme, backlog ve ACC-02 güncellendi. Önceki ilerleme kayıtlarındaki Q10 bekleme durumu bu yeni kayıtla kapanır; Q07/1C ve diğer açık izin/bütçe kararları değişmez.
+- Ürün tercihi belgelendi; gerçek hesap keşfi, yeni bağlantı, runtime veya provider testi yapılmadı. T01 sıradaki iş olarak kalır.
+
 ### 2026-10-10 — İşlem limitleri ve kötüye kullanım tasarımı
 
 - [Limit sözleşmesi](../architecture/resource-limits-and-abuse.md): rate/burst, concurrency, byte/iş kotası, token/harcama ve DB transaction sınırları ayrıldı. Ortak insan/subagent bütçesi, receipt koruyan admission, limiter arızası, bounded log ve admin açıklamaları tanımlandı.

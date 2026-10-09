@@ -76,11 +76,11 @@ Bu istek belirli bir host/SDK, hidden reasoning erişimi, harici veri aktarımı
 
 ## Q10 — Yeni kaynakların keşfi ve bağlanması
 
-**2026-10-10 / cevap bekleniyor.** Kullanıcı proje erişim alanları ve izni veren kişilerin görünürlüğünü istedi. [Erişim sözleşmesi](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) kurulumda hedef/kaynak, işlemler, geçmiş, görünürlük, egress ve süre sorularını tanımlar. Bunlar ürünün onboarding sorularıdır; bugünkü dokümantasyon çalışmasına yeni gerçek bağlantı izni vermez.
+**2026-10-10 / cevaplandı: A kabul edildi.** Kullanıcının seçili öneriye verdiği “1a ile devam” yanıtı Q10-A'ya aittir; geçmiş işleme kapsamındaki Q07/1C kararını değiştirmez. Kullanıcı proje erişim alanları ve izni veren kişilerin görünürlüğünü istedi. [Erişim sözleşmesi](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) kurulumda hedef/kaynak, işlemler, geçmiş, görünürlük, egress ve süre sorularını tanımlar. Bunlar ürünün onboarding sorularıdır; bugünkü dokümantasyon çalışmasına yeni gerçek bağlantı izni vermez.
 
 Ürün tercihi sorusu: İzinli hesabında yeni repo/proje bulunduğunda sistem ne yapsın?
 
-- **A — Önerilen:** Kullanıcı ayrıca metadata keşfine izin vermişse yeni kaynağı bağlama önerisi göster; içerik okuma veya capture yalnız kaynak seçimi ve gerekli onaydan sonra başlasın. Manuel bağlantı da mümkün kalsın.
-- **B:** Yalnız kullanıcının elle seçtiği/verdiği kaynaklarla çalış; hesap genelinde metadata keşfi ve yeni kaynak önerisi yapma.
+- **A — Seçildi:** Kullanıcı ayrıca metadata keşfine izin vermişse yeni kaynağı bağlama önerisi göster; içerik okuma veya capture yalnız kaynak seçimi ve gerekli onaydan sonra başlasın. Manuel bağlantı da mümkün kalsın.
+- **B — Alternatif olarak korundu, varsayılan seçilmedi:** Yalnız kullanıcının elle seçtiği/verdiği kaynaklarla çalış; hesap genelinde metadata keşfi ve yeni kaynak önerisi yapma.
 
-İkisi de otomatik tüm-proje yetkisi içermez. A önerisi aktif keşif zorunluluğu değildir; provider listeleme kapsamı gerçekten ayrıştırılabiliyorsa sunulur. Bu ayrım uygulama öncesi capability deneyi ister. Cevap yokken keşif etkinleştirilmez. Q03 dış veri/bütçe, Q07/1C izinli geçmiş ve OPEN-14 ekip yetki kapısı korunur. Bağlantı için read/capture/proposal başlangıç paketi teknik öneridir; dış yazma, execution veya scope onayı kabul edilmiş sayılmaz.
+İkisi de otomatik tüm-proje yetkisi içermez. A önerisi aktif keşif zorunluluğu değildir; provider listeleme kapsamı gerçekten ayrıştırılabiliyorsa sunulur. Bu ayrım uygulama öncesi capability deneyi ister. Seçim gerekçesi: yeni kaynakları fark etme kolaylığı sağlarken içerik erişimini kullanıcı seçimine bağlı tutar. Bu ürün tercihi, bugün herhangi bir hesabı listeleme izni değildir; her bağlantıda ayrıca açık metadata/list izni gerekir. Bu izin yoksa keşif kapalıdır ve manuel bağlantı kullanılır. Q03 dış veri/bütçe, Q07/1C izinli geçmiş ve OPEN-14 ekip yetki kapısı korunur. Bağlantı için read/capture/proposal başlangıç paketi teknik öneridir; dış yazma, execution veya scope onayı kabul edilmiş sayılmaz.

@@ -404,7 +404,7 @@ P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yön
 
 ## Proje bağlantısı ve izin makbuzu alt dilimleri
 
-**TODO; önerilen sözleşme, runtime kanıtı yok.** [ConnectionAuthorization ve kurulum soruları](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) mevcut PRJ-01/CAP/GOV/TEAM kapsamını açar. Yeni kaynak metadata keşfi Q10'a bağlı; kaynak allowlist'i ve iki taraflı yetki kontrolü cevaptan bağımsız gereklidir.
+**TODO; önerilen sözleşme, runtime kanıtı yok.** [ConnectionAuthorization ve kurulum soruları](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) mevcut PRJ-01/CAP/GOV/TEAM kapsamını açar. Q10-A kabul edildi: ayrı listeleme izniyle öneri, seçim/onay sonrasında içerik ve takip. Kaynak allowlist'i ve iki taraflı yetki kontrolü gereklidir; T16b capability ayrımını, T20g öneri/manuel seçim UX'ini, T24h genişletilmiş ACC-02'yi doğrular. Gerçek keşif izni verilmiş veya özellik uygulanmış sayılmaz.
 
 | Dilim / bağımlılık | Somut teslim | Kabul |
 |---|---|---|

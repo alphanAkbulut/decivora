@@ -85,7 +85,7 @@ Sürümlü `ConnectionAuthorization` kaydı: connection/binding ID ve epoch; wor
 
 ### Kaynak değişimi, geri çekme ve sınırlar
 
-- Yeni kaynak yalnız keşfedildi diye bağlanmaz. Metadata keşfi dahi açık ayrı kapsam ister; bu tercih Q10'da açıktır. Proje eşlemesi belirsiz olay quarantine'a gider. Repo adı/URL/klasör değişimi sabit kimlikle doğrulanır; farklı owner'a transfer yeniden yetki değerlendirmesi ister.
+- Yeni kaynak yalnız keşfedildi diye bağlanmaz. Metadata keşfi dahi açık ayrı kapsam ister; Q10-A 2026-10-10'da kabul edildi. Ayrı listeleme izni varsa “Bunu da bağlamak ister misin?” önerisi gösterilir; seçim ve gerekli kaynak/hedef onayları tamamlanmadan içerik okunmaz, capture/takip başlamaz. Listeleme izni yoksa veya provider bunu güvenle ayıramıyorsa manuel seçim kullanılır. Proje eşlemesi belirsiz olay quarantine'a gider. Repo adı/URL/klasör değişimi sabit kimlikle doğrulanır; farklı owner'a transfer yeniden yetki değerlendirmesi ister.
 - Yerel adapter izinli kökün dışına symlink/path traversal ile çıkamaz; gerçek path/file identity kontrolü ve okuma anındaki yarış savunması test edilir. Monorepo alt dizin filtresi, tüm repo yetkisi varmış gibi genişlemez. Tek transcript birden fazla projeyi karıştırıyorsa yanlış projeye auto-import yerine review/quarantine; dışarıdan gelen project ID güvenilir değildir.
 - Yetki geri çekilince yeni retrieval/capture/dispatch ve ilgili grant zinciri durur; queued işleri yeniden yetkilendir, cache/context'i invalid et. Commit ve dış dispatch öncesi revision kontrolü gerekir. Gönderilmiş dış istek geri alınmış sayılmaz; sonucu belirsizse reconciliation, kör retry yok.
 - Disconnect otomatik veri silme değildir. Önceden alınan kaynağın/türevlerin devam eden kullanım hakkı ayrı kontrol edilir; kapsam kaybında erişim askıya alınır. Retention/purge ve açıkça daha önce paylaşılmış kopyalar kendi kayıtlarına göre ele alınır; “bağlantı kapandı, her yerden silindi” denmez.
@@ -98,7 +98,7 @@ Sürümlü `ConnectionAuthorization` kaydı: connection/binding ID ve epoch; wor
 | ID | Gözlenebilir kabul |
 |---|---|
 | ACC-01 | Hedef proje owner'ı kaynak yetkisi olmadan bağlantıyı active yapamaz; kaynak erişimi olan ama hedef yetkisi olmayan insan da yapamaz |
-| ACC-02 | Geniş credential ile yalnız A seçilmişse B içeriği alınmaz/model context'ine girmez; metadata keşfi ayrı izin yoksa B listelemesi yapılmaz |
+| ACC-02 | Geniş credential ile yalnız A seçilmişse B içeriği alınmaz/model context'ine girmez; metadata keşfi ayrı izin yoksa B listelemesi yapılmaz; izin varsa yalnız bağlama önerisi gösterilir, seçim/onay olmadan B içeriği alınmaz veya takip edilmez |
 | ACC-03 | Aynı isimli projeler, kaynak transferi ve karışık transcript yanlış binding oluşturmaz; belirsizlik görünür |
 | ACC-04 | Symlink/path traversal ve eşzamanlı hedef değişimi izinli kökün dışından okuma yapamaz; kapsam doğrulanamıyorsa durur |
 | ACC-05 | Yeni write/runner/egress veya private→shared talebi yalnız eski read izniyle geçmez; önceki scope yeni onay gelmeden genişlemez |
