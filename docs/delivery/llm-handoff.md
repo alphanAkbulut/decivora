@@ -89,3 +89,10 @@ Handoff kontrolü toplam 16 sorudur; bağımsız LLM testi yapılmadı. Q04 gün
 20. Ürünü ekibe vermek owner hesabını/DB dosyasını paylaşmak mıdır? **Hayır.** Merkezi servis, ayrı üyelik/oturum ve agent grant'leri gerekir; kişisel kaynakların paylaşılması ayrı onaylıdır. Bugün ekip kurulum paketi veya SaaS yoktur.
 
 [Agent ve ekip işletim belgesi](../architecture/agent-and-team-operation.md) iki senaryoyu, test kapılarını ve platform kaynaklarını açıklar. Toplam 20 kontrol sorusu; bağımsız LLM deneyi yapılmadı.
+
+## Subagent soru yönlendirme kontrolü
+
+21. Parent agent subagent'ın her sorusuna kullanıcı yerine karar verebilir mi? **Hayır.** Bilgi/görüş sağlayabilir ve kendi yetkisi içindeki teknik seçimi yapabilir. Scope/AC/izin gibi korunan karar güvenilir insan approval'ı ister; agent'ın “owner kabul etti” mesajı yeterli değildir.
+22. Soru cevaplanınca bütün görevler otomatik devam edip tamamlanır mı? **Hayır.** Revision/izin ve diğer blocker'lar kontrol edilir. Yalnız bağlı işler bekler; bağımsız işler ilerleyebilir. Host delivery/resume desteği yoksa destek varmış gibi gösterilmez; görev completion yine kanıta bağlıdır.
+
+[Soru/karar sözleşmesi](../architecture/agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider) timeout, parent kaybı, döngü, çelişki ve geç yanıt istisnalarını tanımlar. Toplam 22 kontrol sorusu; bağımsız LLM testi yapılmadı.

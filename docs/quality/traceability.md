@@ -41,6 +41,8 @@ Bu tablo **tasarım izlenebilirliğidir; uygulanmışlık kanıtı değildir**. 
 
 ## Güncel ekip/veri isteğinin alt eşlemesi
 
+**Subagent soru/karar takip isteği (2026-10-10):** APR-01/02,INT-02,GOV-01,UX-02 / F07,F08,F11,F16 → [soru yönlendirme sözleşmesi](../architecture/agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider), [approval UX](../product/approval-ux.md) → T13e,T18e,T24f / ASK-01–08. Bilgi/görüş, yetki içi seçim ve insan kararı ayrımı mevcut yetki ilkesinin açılımıdır; provider messaging veya auto-resume desteği varmış gibi gösterilmez.
+
 **Çok-agent ve ekip kurulumu takip isteği:** INT-02,CAP-02/05,PRJ-01,VER-01,CST-02,GOV-01,TEAM-01 / F08,F09,F13,F16 → [gözlem/işletim sözleşmesi](../architecture/agent-and-team-operation.md) → T02c,T18d,T24e ve C01–C04 / AGT-01–08. Tek insanın çok agent'ı, çok insan üyeliği ve agent execution orchestration ayrı teslimlerdir; özel muhakeme erişimi varsayılmaz. Senaryolar planlıdır.
 
 E01–E14 orijinal kaynak konuşmanın evreleridir; sonraki kullanıcı talebi bu tarihsel kaydı değiştirmez. 2026-10-09 isteği mevcut kapsamı aşağıdaki şekilde detaylandırır:

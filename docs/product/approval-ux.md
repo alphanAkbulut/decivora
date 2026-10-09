@@ -41,6 +41,14 @@ PendingDecision: açık soru, alternatifler, öneri/gerekçe, source, owner, blo
 
 ## Birden fazla reviewer ve agent
 
+### Subagent soruları ve karar yönlendirmesi
+
+Bilgi isteği, danışma, yetki içi teknik seçim ve insan onayı gerektiren karar [agent işletim sözleşmesinde](../architecture/agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider) ayrıdır. Her soru PendingDecision değildir; yalnız gerçek karar ihtiyacı bu kuyruğa bağlanır. Teknik soru önce güncel yetkili kayıttan/ilgili agent'tan çözülür. Parent agent kanıt/seçenek toparlayabilir; insan scope/AC/izin kararını veremez.
+
+İnsan kartı şunları gösterir: soran agent/run ve task, eksik bilgi veya karar, öneri/alternatifler, kaynaklar/karşı görüş, bekleyen işler, bağımsız ilerleyebilecek işler, gereken karar yetkisi ve cevabın kapsamı. Ekipte yetkili reviewer'a, tek owner pilotunda kullanıcıya gider. Aynı konu aynı yetkili kapsamda tek soruya toplanır; özgün talepler kaybolmaz. Yanıtı kimin verdiği ve hangi revision'a uygulandığı tarihçede kalır.
+
+`Yanıt geldi`, `insan onayladı`, `host'a teslim edildi`, `iş yeniden başladı` ve `task doğrulandı` farklı göstergelerdir. Cevap yokken veya süre dolunca onay varsayılmaz. Önceden geçerli bir karar varsa kullanıcı tekrar soruyla yorulmaz. Soru resolved olsa da diğer blocker/izin/kanıt kapıları korunur. ASK-01–08 planlı kontrollerdir; UI henüz yoktur.
+
 [Yetki tasarımındaki](../architecture/identity-access.md) rol/grant ve kaynak görünürlüğü server'da kontrol edilir. Ekipte onay ekranı öneren insan/agent, kimin adına çalıştığı, bağımsız reviewer gereksinimi ve erişim eksikliğini gösterir. Aynı insanın iki oturumu bağımsız review değildir. İlk bireysel pilot açık single-owner policy ile ilerler; gelecekteki iki insan şartı bugünkü kullanımı kilitlemez. Yetki veya kaynak ACL değişince eski approval yeniden değerlendirilir.
 
 ## İlişkiler, iptal ve geçmiş

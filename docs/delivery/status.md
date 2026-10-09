@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Subagent soru ve karar mekanizması
+
+- Bilgi/görüş isteği, yetki içi teknik seçim ve korunan insan kararı ayrıldı. Parent/uzman agent danışması onay yetkisine dönüşmez; önceki geçerli karar tekrar sorulmadan kaynaklı kullanılabilir.
+- Soru/cevap/approval/delivery/resume/task verification ayrı; timeout, parent kaybı, stale/conflict, ACL, döngü/bütçe ve gözlem-only host istisnaları yazıldı. Yalnız cevaba bağımlı iş bekler; dış process'in durduğu teyitsiz söylenmez.
+- T13e/T18e/T24f ve ASK-01–08 planlandı; insan review ilkesi değiştirilmedi. Host kurulumu, messaging, agent execution veya runtime testi yapılmadı. T01 sıradaki hazırlık; önceki açık tercihler korunuyor.
+- Doküman kontrolü geçti: 62 Markdown, 371 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. Sekiz ASK senaryosu planlı kabul tanımıdır, çalışmış test sonucu değildir.
+
 ### 2026-10-10 — Karar gerekçelerinin kaynakla eşlenmesi
 
 - Proje yönetim planında DEC-17 için kullanıcı ihtiyacı, karar sahibi/tarihi, kaynak yaklaşımı, Decivora uyarlaması, seçim gerekçesi, bedel ve doğrulama aynı kayıtta eşlendi. Kaynak kontrolünün kullanıcı yönlendirmesinden sonra yapıldığı ve formal Scrum uyumu iddiası olmadığı açık.

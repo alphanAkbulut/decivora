@@ -40,6 +40,16 @@ Ana görevler [T01–T30](backlog.md) korunur. Bu alt dilimler ilgili ana görev
 
 SDK/orchestrator ile aktif execution daha sonraki ROU-02 kapsamıdır. Görevleri takip etmek ve agent'ı başlatmak aynı teslim değildir.
 
+### Soru ve karar aktarımı alt dilimleri
+
+| Dilim / bağımlılık | Somut çıktı / faz | Kabul |
+|---|---|---|
+| T13e / T08b,T13 | P1a sözleşme, P1b inbox: kalıcı QuestionRequest/AnswerRecord; tür, karar capability'si, dedup, stale ve wait links | [ASK-01–06/08](../architecture/agent-and-team-operation.md); soru/yanıt/approval/task completion ayrı |
+| T18e / T02c,T13e,T18d | P1b: read/report + question/answer delivery capability raporu, delivery_pending/unsupported görünümü | ASK-03/05/07; gözlem-only host'ta pause/resume iddiası yok. Aktif bridge/auto-resume ROU-02 execution kapısında |
+| T24f / T13e,T18e | P1b: bilgi sorusu, insan kararı, timeout, stale, conflict, döngü, revocation ve unsupported delivery fixture'ları | ASK-01–08; timeout veya parent mesajı insan approval'ı üretemez |
+
+Bu dilimler uygulanmadı. Sayısal danışma/hop/retry limitleri engineering fixture'ında hazırlanır; bu belge soru yönlendirmek adına yeni model/agent çalıştırma izni vermez. Ayrı yetkili insan gerekmesi ve erişim/coverage eksikliği sessizce düşük review policy'sine çevrilemez.
+
 ### P4 ekip kurulum ve erişim kapıları
 
 T30 discovery çıktısı bu C-dilimlerinin ihtiyaç/öncelik ve deployment kararını kesinleştirir. P4 uygulaması owner kapsam/işletim kararı ardından gelir; bugünkü dokümantasyon kararı hosted servis satın alma yetkisi değildir.
