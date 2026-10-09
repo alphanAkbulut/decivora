@@ -26,6 +26,8 @@ Bu açık sorular dokümantasyonun GitHub'a kaydedilmesini engellemez. Etkili ol
 
 ## Ekip ve veri altyapısı karar kapıları
 
+2026-10-10: OPEN-12 için [olay/profil ve sayısal zamanlama deney adayları](../architecture/execution-and-integrations.md#3-aralıklar-ve-takvim) hazırlandı. Kesin debounce/max-wait, polling, lease/deadline ve bakım değerleri fake-clock/yük/gerçek capability ölçümüyle seçilecek; bunlar yeni kullanıcı onayı veya aktif takvim değildir. OPEN-02/T03 ardından fiziksel [ER/FK/transaction şeması](../architecture/data-relationships.md) migration'a dönüşür. Dış provider destekleri bilinmeden kesin endpoint/timeout uydurulmaz.
+
 | ID | Karar | Önerilen yön | Ne zaman / kanıt |
 |---|---|---|---|
 | OPEN-14 | Ekip deployment, identity ve veri sahipliği? | Kişisel workspace ile başla; ekipte merkezi servis ve ayrı human/agent kimliği; private kaynak otomatik paylaşılmaz | T30/C01; gerçek ekip profili ve işletim sorumlusu |

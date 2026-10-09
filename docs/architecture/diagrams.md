@@ -2,6 +2,8 @@
 
 **Tüm diyagramlar önerilen tasarımı gösterir; çalışan sistem görüntüsü değildir.** Mermaid kaynakları GitHub'da görüntülenebilir. Oklar yetki aktarımı anlamına gelmez; yazma otoritesi command/policy katmanıdır. Metinsel sözleşmeler [engine haritası](engines.md), [domain](domain-model.md) ve [runtime](runtime-contracts.md) belgelerindedir.
 
+Tamamlayıcılar: [task sonucu, LLM analizi ve dış API için üç sequence + tetikleme/zamanlama matrisi](execution-and-integrations.md); [erişim ve task/run/evidence için iki ER + FK/transaction kuralları](data-relationships.md). Bu atlasın 13 şeması korunur; bütün repo inventory'si [inceleme kaydındadır](../quality/diagram-review.md). Zamanlama tablosu deney önerilerini kesin SLA'dan ayırır.
+
 ## 1. Sistem bağlamı ve güven sınırları
 
 ```mermaid

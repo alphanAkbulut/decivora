@@ -66,6 +66,8 @@ Bir task'ın zorunluluk koşulu `any` / `all` ifadesiyle belirtilir. Yapraklar o
 
 ## Kimlik, erişim ve veri yaşam döngüsü uzantısı
 
+[İlişki ve bütünlük şemaları](data-relationships.md) Membership, ConnectionAuthorization, grantor join, run/task join, kriter/kanıt join ve assessment revision'larını ER ile gösterir. Source/Evaluation ve task/evidence bağlantıları çoktan çoğa olabilir; atlasın sade işlem okları fiziksel FK kardinalitesi yerine kullanılmaz. Task, KnowledgeRecord türü olarak kalır; ikinci task deposu eklenmez.
+
 Workspace, Membership, Principal, AgentRun, DelegationGrant, ResourceACL ve ServiceConnection [kimlik modelinde](identity-access.md) tanımlanır. Project policy/knowledge revision yanında authz revision'a bağlıdır. ChangeSet/Approval kapsamı workspace, kaynak ACL revision'ları ve authz revision taşır; server güncel durumu commit'te kontrol eder. Kaynağın `personal` görünürlüğü proje binding'i yapılınca kendiliğinden `shared` olmaz.
 
 Kaynak/blob referansında retention_policy_version, expires_at, pin_reason/pin_until, availability ve deletion/tombstone durumu bulunur. Canonical kayıtlar ve türev context aynı ömre sahip değildir; [yaşam döngüsü tablosu](storage-memory-capacity.md) authoritative tasarım önerisidir. Credential gövdeleri hiçbir domain entity'de tutulmaz.

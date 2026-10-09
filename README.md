@@ -62,6 +62,8 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Kullanıcı hangi özellikleri görecek? | [17 özellik ve kullanıcı yolculuğu](docs/product/feature-catalog.md) |
 | Konuştuğumuz engine'ler nerede? | [10 modül ve kaynak isimleri](docs/architecture/engines.md) |
 | Sistem ayrıntıları ve diyagramlar | [13 diyagramlık atlas](docs/architecture/diagrams.md) · [Runtime sözleşmeleri](docs/architecture/runtime-contracts.md) · [Diyagram incelemesi](docs/quality/diagram-review.md) |
+| Kim, ne zaman, hangi API/LLM işini tetikler? | [İletişim matrisi, zamanlama ve üç sequence](docs/architecture/execution-and-integrations.md) |
+| DB kayıtları ve kanıtlar nasıl ilişkili? | [İki tamamlayıcı ER, anahtarlar ve bütünlük kuralları](docs/architecture/data-relationships.md) |
 | Diğer araçlardan ne fark hedefliyoruz? | [Farklılaşma ve altı hipotez](docs/product/differentiation.md) |
 | Proje nasıl yönetilecek? | [Kısa proje yönetim planı](docs/delivery/project-management.md) |
 | Eksikler yeniden tarandı mı? | [Mimari/kapsam incelemesi](docs/quality/completeness-review.md) · [Kaynak→özellik→test matrisi](docs/quality/traceability.md) |

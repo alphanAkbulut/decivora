@@ -43,6 +43,8 @@ ENG-10 adı ve bu onlu ayrım, bu repo incelemesinde eklenen **uygulama tasarım
 
 ## Ortak çalışma bağlamı
 
+[TRG-01–12 tetikleme kaydı](execution-and-integrations.md#1-tetikleme-kaydı) her engine'in hangi olayda çalıştığını, API hedeflerini ve kod/LLM/insan ayrımını tanımlar. Scheduler ve event dispatcher ENG-01/06/07/09/10 uygulamasının parçalarıdır; on birinci engine veya zorunlu ayrı servis değildir. Her task/run sonu LLM çağrısı gerektirmez.
+
 Her değerlendirme `project_id`, `run_id`, `input_refs`, `input_revisions`, `policy_revision`, `engine_version`, `correlation_id`, `budget` taşır. Sonuç `status`, `output_refs`, `reason`, `coverage`, `usage_ref` içerir. Model/prompt sürümü yalnız model kullanıldıysa eklenir. Log satırları raw transcript ve secret içermez.
 
 `received`, `extracted`, `evaluated`, `approved`, `applied`, `verified` farklı kilometre taşlarıdır. Kaynakta değerlendirilmeye değer içerik bulunmaması gerekçeli no-op olabilir; provider/model hatası no-op değildir. Yalnız ENG-06'nın yetkilendirdiği command ENG-07 üzerinden canonical durumu değiştirebilir. ENG-08 de doğrudan store'a yazmaz.

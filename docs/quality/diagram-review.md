@@ -1,5 +1,7 @@
 # Diyagram tutarlılık incelemesi
 
+**Güncel inventory: 13 belgede 30 Mermaid şeması.** Aşağıdaki ilk inceleme 25 şemayı kapsar; sonraki sequence/ER genişlemesi ayrı kayıt olarak eklenmiştir. Eski doğrulama sonucu yeni çizimlerin testi yerine kullanılmaz.
+
 **2026-10-10.** İnceleme öncesinde 11 belgede 20 Mermaid diyagramı vardı. Hepsi son kararlarla içerik düzeyinde karşılaştırıldı; tamamı zaten günceldi denemez. Aşağıdaki düzeltmelerle 25 diyagram oldu. Şemalar tasarımdır; runtime, tam UI veya benchmark kanıtı değildir.
 
 Referanslar: DEC-15/1C, DEC-16 öneri statüsü, DEC-17 ve yöntem ayrımı; Q04/05 graph/profil tercihi; run/task ve ASK yetki/delivery ayrımı; tenant/ACL, token policy, yeni admin/operasyon isteği. Diyagram okları tek başına yetki veya uygulanmış capability göstermez.
@@ -27,6 +29,15 @@ Referanslar: DEC-15/1C, DEC-16 öneri statüsü, DEC-17 ve yöntem ayrımı; Q04
 - Son doküman kontrolü: 64 Markdown, 417 yerel bağlantı; 32 scope, 30 ana görev, 14 MVP kriteri korundu. ADM-01–10 kabul tanımları ayrıca sayıldı; henüz runtime'da çalıştırılmadı.
 - ADM-01–10 ve mevcut ASK/AGT/FLOW/MU senaryoları uygulama sırasında çalıştırılacak; bu inceleme onları passed yapmaz.
 
-## Sonraki değişikliklerde bakım kuralı
+## Sequence ve ER genişlemesi — 2026-10-10
+
+| Yeni belge | Şema sayısı | Kapsam |
+|---|---:|---|
+| [Tetikleme ve iletişim](../architecture/execution-and-integrations.md) | 3 sequence | Task sonucu/verification, koşullu LLM ve insan kararı, dış API teslimi/unknown/callback |
+| [DB ilişkileri](../architecture/data-relationships.md) | 2 ER | Kaynak/binding/izin makbuzu; task/run/AC/DoD/evidence ilişkileri |
+
+Önceki 25 Mermaid kaynağı bu genişlemede değiştirilmedi. Yeni belgeler TRG-01–12, iletişim matrisi, deney aralıkları ve veri bütünlüğü sözleşmeleriyle çapraz okundu. Yeni toplam 30; bunun 6'sı sequence, 3'ü ER. SEQ-01–08 ve DBR-01–06 planlı runtime kabulüdür; çizim testi bunları passed yapmaz. GitHub render kontrolü yükleme sonrasında ayrıca kaydedilecek.
+
+## Bakım uygulaması
 
 Karar değişikliği yapan görev ilgili metin, diyagram, backlog ve acceptance etkisini birlikte değerlendirir. Değişmeyen diyagramı sırf tarih yenilemek için çizme. Etkilenen graph/node/edge etiketleri, phase ve accepted/proposed statüsü kontrol edilir; Mermaid render sonucu ayrı raporlanır. Bütün diyagramların sonsuza kadar güncel kalacağı garantisi verilmez.

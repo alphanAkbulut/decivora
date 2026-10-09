@@ -15,6 +15,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Sequence, DB ilişkileri ve tetikleme/zamanlama sözleşmesi
+
+- [İletişim belgesi](../architecture/execution-and-integrations.md): 12 tetikleyici, sistem/API matrisi, olay odaklı işleme ve profil/polling/retry deney aralıkları; task doğrulama, koşullu LLM ve dış teslim için üç sequence.
+- [DB ilişkileri](../architecture/data-relationships.md): bağlantı/izin ve task/run/kanıt için iki ER; N:M input/kanıt, composite key, revision, transaction ve indeks adayları. Toplam 30 Mermaid şeması; kesin DDL veya çalışan API yok.
+- T04c/T06e/T09c/T14c/T18f/T24i/T28c ve SEQ-01–08/DBR-01–06 planlandı. Sayısal süreler ölçülmemiş adaydır; Q02/Q03/Q06/Q08/Q10 açık kalır. T01 sıradaki hazırlık; runtime/DB/provider testleri yapılmadı.
+
 ### 2026-10-10 — Proje erişimi, izin makbuzu ve bağlantı soruları
 
 - Kaynak hesabı/OS yetkisi, hedef projeye bağlantı ekleme yetkisi ve agent grant'i ayrı tanımlandı. Sürümlü ConnectionAuthorization, requested/granted/effective scope, kurulumda altı soru ve proje bazlı “Bağlantılar ve izinler” görünümü belgelendi.

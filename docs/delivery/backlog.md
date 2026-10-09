@@ -414,3 +414,19 @@ P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yön
 | T24h / T16b,T17,T20g | Yerel/sentetik erişim oracle ve UX pilotu | ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu |
 
 P4 C03/C05 aynı sözleşmeyi farklı kaynak sahibi ve ekip yöneticisiyle doğrular. Gerçek provider grant, hesap bağlantısı veya veri aktarımı ilgili somut izinler olmadan yapılmaz. T05c çekirdek sözleşmesi yeni veri ingestion'ından önce, UI görünümü P1b'de gelir.
+
+## Tetikleme, zamanlama ve veri ilişkileri dilimleri
+
+**TODO / önerilen ayrıntılar.** [API/sequence ve TRG sicili](../architecture/execution-and-integrations.md), [DB ilişkileri](../architecture/data-relationships.md) mevcut modülleri tamamlar; fiziksel şema T03 kapısından sonra. Aralıklar deney adayı, fake clock/provider sonuçları gerçek entegrasyon sonucu değildir.
+
+| Dilim / bağımlılık | Küçük teslim | Kabul ve faz |
+|---|---|---|
+| T04c / T04a | Source, command, trigger ve async result şemaları; ER composite key/N:M ilişki kontratı | P1a: DBR-01/02/03 fixture tanımı; HTTP/MCP mapping seçilen transport'ta açık |
+| T06e / T04c,T06a,T06b,T06c | Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression | P1a: SEQ-03/04/08, DBR-04; domain commit entegrasyonu T07/T08'de, erken scheduler ücretli çağrı açmaz |
+| T09c / T06e,T09b | TRG-02 deterministik bypass, profil ve izin/rezervasyon kapısından koşullu semantik dispatch | P1a/P1b profil tamamlaması: SEQ-02/03/05/06; no-op/duplicate/manual mod çağrı sayacı; minimum bütçe guard önce |
+| T14c / T14a,T14b,T08b | Run sonucu→evidence→AC/DoD assessment→completion command akışı | P1a: SEQ-01/06, DBR-02/03; parent ve stale kanıt; runner yoksa not_run |
+| T18f / T18c,T06e | Query/result/notification cursor ve reconnect contract fixture | P1b: SEQ-02/08; UI fallback policy, stale görünümü; host otomatik tool çağırır varsayımı yok |
+| T24i / T09c,T14c,T18f,T21b,T23a | Fake-clock/crash/replay/ilişki corpus'u ve izinli gerçek yüzey raporu | P1b: SEQ-01–06/08 + DBR-01–06; P3 dış teslim SEQ-07 açık not_run |
+| T28c / T28b | Outbox→API→callback/poll korelasyonu, unknown reconciliation ve endpoint sözleşmesi | P3: SEQ-05/07, DBR-04; provider bazında idempotency/Retry-After/permission kanıtı |
+
+T04c fiziksel DB'yi erken seçmez; T05–T08 seçilmiş stack'te FK/unique/transaction kısıtlarını uygular. Güncel AC/DoD ve zorunlu review'lar task sonucunda policy katmanında denetlenir; event veya model cevabı doğrudan executor başlatmaz. T23/C02 migration ve restore DBR-05/06'yı kendi fazlarında tekrar doğrular.

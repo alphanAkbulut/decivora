@@ -2,6 +2,8 @@
 
 **Öneri; uygulanmadı.** [Domain modeli](domain-model.md) iş anlamlarını, bu belge modüllerin hata/yarış koşullarındaki davranışını tanımlar. Teknoloji seçimi T03'te kesinleşir. Verilen alan ve sonuç kodları HTTP/MCP SDK veya fiziksel SQL şeması değildir.
 
+[Tetik/API/zamanlama matrisi ve sequence'ler](execution-and-integrations.md) bu kuralların çağrı sırasını; [DB ilişki sözleşmesi](data-relationships.md) kardinalite, composite key ve transaction ilişkilerini tamamlar. Sayısal aralıklar fixture adayıdır, seçilmiş runtime varsayılanı değildir.
+
 ## 1. Kalıcı alım, işleme ve yeniden deneme
 
 `SourceEnvelope`: schema_version, project_id veya quarantine_ref, provider/account/session kimliği, source_event_id, source_revision, source_epoch, occurred_at, ingested_at, payload_ref/hash, binding_revision, consent_revision, source_span, origin ve correlation_id.

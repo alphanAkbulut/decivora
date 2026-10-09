@@ -4,6 +4,8 @@
 
 Devamı: [Engine ve alias kataloğu](engines.md) sorumlulukları; [runtime sözleşmeleri](runtime-contracts.md) ack, concurrency, auth ve recovery'yi; [diyagram atlası](diagrams.md) bağlam, ER ve yaşam döngülerini açıklar. [Mimari inceleme](../quality/completeness-review.md) açık risk ve uygulama kapılarını kaydeder.
 
+[Tetikleme/API/zamanlama sözleşmesi](execution-and-integrations.md) hangi olayın kod, LLM veya insan işi başlattığını ve async sonuçlarını; [DB ilişkileri](data-relationships.md) bağlantı izinleri, run-task çoktan çoğa ilişkisi ve revision bağlı AC/evidence bütünlüğünü tamamlar. İç engine çağrıları aynı süreçte olabilir; her ok için yeni HTTP servisi tasarlanmaz.
+
 ```mermaid
 flowchart TB
     CC[Claude Code adapter] --> I[Ingress ve proje binding]
