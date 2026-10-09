@@ -73,3 +73,14 @@ Q09 yanıtı ayrıca Scrum Alliance yaklaşımından yararlanma yönlendirmesi i
 2026-10-09 kullanıcı tek insanın birden fazla agent'ın işlerini izlemesini ve ürünü kendi ekibine kurabilmesini sordu; agent girdileri/gözlenebilir davranışların kapsanmasını istedi. Mevcut INT-02/TEAM-01 ihtiyacı [işletim sözleşmesiyle](../architecture/agent-and-team-operation.md) açıldı. İlk bireysel pilot korunur; T02c/T18d/T24e çok-agent gözlem dilimleri, C01–C04 ekip kurulum/davet/giriş akışı olarak ayrıdır.
 
 Bu istek belirli bir host/SDK, hidden reasoning erişimi, harici veri aktarımı, yeni provider ücreti veya hosted ürün satın alımı kararı değildir. Q02/Q03 ve OPEN-14–16 kapıları geçerlidir. Gözlenebilir olayların davranış örüntüsü analizi önerildi; modelin iç düşünce yapısını bildiğimiz iddia edilmez. Owner'ın mevcut hesabını ekibe/agent'lara dağıtma yaklaşımı önerilmez.
+
+## Q10 — Yeni kaynakların keşfi ve bağlanması
+
+**2026-10-10 / cevap bekleniyor.** Kullanıcı proje erişim alanları ve izni veren kişilerin görünürlüğünü istedi. [Erişim sözleşmesi](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) kurulumda hedef/kaynak, işlemler, geçmiş, görünürlük, egress ve süre sorularını tanımlar. Bunlar ürünün onboarding sorularıdır; bugünkü dokümantasyon çalışmasına yeni gerçek bağlantı izni vermez.
+
+Ürün tercihi sorusu: İzinli hesabında yeni repo/proje bulunduğunda sistem ne yapsın?
+
+- **A — Önerilen:** Kullanıcı ayrıca metadata keşfine izin vermişse yeni kaynağı bağlama önerisi göster; içerik okuma veya capture yalnız kaynak seçimi ve gerekli onaydan sonra başlasın. Manuel bağlantı da mümkün kalsın.
+- **B:** Yalnız kullanıcının elle seçtiği/verdiği kaynaklarla çalış; hesap genelinde metadata keşfi ve yeni kaynak önerisi yapma.
+
+İkisi de otomatik tüm-proje yetkisi içermez. A önerisi aktif keşif zorunluluğu değildir; provider listeleme kapsamı gerçekten ayrıştırılabiliyorsa sunulur. Bu ayrım uygulama öncesi capability deneyi ister. Cevap yokken keşif etkinleştirilmez. Q03 dış veri/bütçe, Q07/1C izinli geçmiş ve OPEN-14 ekip yetki kapısı korunur. Bağlantı için read/capture/proposal başlangıç paketi teknik öneridir; dış yazma, execution veya scope onayı kabul edilmiş sayılmaz.

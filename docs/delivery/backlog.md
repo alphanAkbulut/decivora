@@ -401,3 +401,16 @@ Q08 yanıtı beklerken T13d/T20d tamamlandı veya kesin MVP taahhüdü sayılmaz
 | T24g / T20f,T21c,T23e | Owner “neden bekliyor/ne değiştirebilirim?” pilotu ve yerel admin negatif fixture'ları | ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run |
 
 P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yönetimi, platform konsolu, süreli destek ve kotaları tamamlar. ADM-02 ve ADM-10'un hosted kısmı o kapılarda test edilir. T20f ölçülen temel incident görünümüyle sınırlıdır; tam ticketing/on-call entegrasyonu MVP değildir.
+
+## Proje bağlantısı ve izin makbuzu alt dilimleri
+
+**TODO; önerilen sözleşme, runtime kanıtı yok.** [ConnectionAuthorization ve kurulum soruları](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) mevcut PRJ-01/CAP/GOV/TEAM kapsamını açar. Yeni kaynak metadata keşfi Q10'a bağlı; kaynak allowlist'i ve iki taraflı yetki kontrolü cevaptan bağımsız gereklidir.
+
+| Dilim / bağımlılık | Somut teslim | Kabul |
+|---|---|---|
+| T05c / T05b | P1a kaynak/hedef binding ve versioned izin makbuzu şeması; grantor/active gate kural fixture'ı | ACC-01/03/07'nin veri/kural örnekleri; gerçek activation yetki/audit entegrasyonu T08b/T07b sonrasında |
+| T16b / T02b,T05c,T08b,T07b,T16 | P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü | ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular |
+| T20g / T05c,T16b,T20f | P1b proje bağlantı envanteri, kurulum soruları ve izin farkı önizlemesi | ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur |
+| T24h / T16b,T17,T20g | Yerel/sentetik erişim oracle ve UX pilotu | ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu |
+
+P4 C03/C05 aynı sözleşmeyi farklı kaynak sahibi ve ekip yöneticisiyle doğrular. Gerçek provider grant, hesap bağlantısı veya veri aktarımı ilgili somut izinler olmadan yapılmaz. T05c çekirdek sözleşmesi yeni veri ingestion'ından önce, UI görünümü P1b'de gelir.

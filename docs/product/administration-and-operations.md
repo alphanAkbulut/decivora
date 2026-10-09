@@ -30,6 +30,8 @@ Free/Pro/Enterprise gibi olası paketler rol değildir. Ücretli kullanıcı ba�
 
 ## Yönetici ne görecek?
 
+**Bağlantılar ve izinler:** Her proje için hangi kaynaklara hangi servis/hesap üzerinden erişildiği, kaynak/hedef yetkisini kimin verdiği, okunabilir/yazılabilir işlemler, model/runner izni, geçerlilik ve son kontrol gösterilir. Sürümlü izin makbuzu, scope farkı ve iptal akışı [erişim sözleşmesinde](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı). Admin görünümü kaynak yetkisi sağlamaz; izin genişletmek ve bağlantıyı yalnız durdurmak ayrı işlemlerdir.
+
 1. **Sağlık:** capture coverage ve boşlukları, son receipt, adapter/build desteği, worker durumu, kuyruk yaşı, failed/quarantine sayısı. Servisin ayakta olması bütün kaynakların alındığı anlamına gelmez.
 2. **Maliyet ve sınırlar:** bilinen tüketim, tahmin, unknown usage, ayrılmış fakat sonuçlanmamış bütçe, defer nedeni, storage/queue tavanları. Host model tüketimi ile Decivora arka plan analizi ayrı.
 3. **Hatalar ve kurtarma:** incident listesi, güvenli hata kodu, etkilenen bileşen/sürüm, başlangıç/son görülme, tekrar sayısı, redakte correlation, atanan operatör ve doğrulama kanıtı.

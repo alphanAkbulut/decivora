@@ -14,6 +14,7 @@
 | DelegationGrant | grantor, agent, workspace/project/resource kapsamı, actions, expires_at, revoked_at, revision; isteğe bağlı task/run sınırı |
 | AgentRun | agent, grant, on_behalf_of veya service grant, task, runner, policy/authz revision, başlangıç/bitiş |
 | ServiceConnection | Workspace ve izinli projeler, provider hesabı, credential_ref, resource allowlist; yetki verilmiş olması bağlantıyı herkese açmaz |
+| ConnectionAuthorization | ServiceConnection'ın sürümlü izin makbuzu; kaynak ve hedef yetkisi, doğrulanmış grantor, kapsam/diff digest, zaman ve policy/authz revisions. Agent grant'inden ayrı |
 | ResourceACL | Personal / project-shared / explicitly restricted; sahibi ve kaynak erişim ilişkileri |
 | Approval | Doğrulanmış human ID, digest, resource/knowledge/policy/authz revisions; görev mesajındaki isim kabul edilmez |
 
@@ -85,6 +86,8 @@ Task claim bir koordinasyon mekanizmasıdır, izin değildir. Assignee/claim de�
 Tek kişilik pilotta owner kendi önerisini onaylayabilir; bu açık `single_owner` policy'sidir. Ekipte korumalı karar/scope değişimleri için `independent_human_review` önerilir: önerinin sorumlu insanı ile onaylayan farklı doğrulanmış insan olmalı. Aynı kişinin iki token'ı, iki agent'ı veya iki oturumu bağımsız reviewer değildir. Gerekli reviewer yoksa işlem pending kalır; policy sessiz düşürülmez. Kaç onay gerektiği ve korunan işlemler ekip pilotu öncesi karara bağlanır. Aynı insanın farklı hesaplarını otomatik tespit ettiğimiz iddia edilmez: ekip identity provider bağlantısı ve yönetilen canonical human ID gerekir. Bağlantısı bilinmeyen sahte/ikinci hesapların bağımsız kişi olup olmadığını uygulama tek başına kanıtlayamaz; bu risk ekip identity policy'sinde açıklanır.
 
 ## Kullanıcı yönetimi ve UX
+
+[Proje erişim sözleşmesi](connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) dış kaynak izni, hedef projeye bağlama izni ve agent yetkisini ayırır. “Bağlantılar ve izinler” ekranı verilen ve fiilen kullanılabilen scope'u, kimin izin verdiğini, son doğrulamayı ve revocation durumunu gösterir. ACC-01–08 kaynak/hedef yetki çatışması, scope artışı, path kaçışı ve izin makbuzu testleridir; uygulanmadı.
 
 [Yönetim/operasyon merkezi](../product/administration-and-operations.md) bu matrisi installation administrator, platform operator ve workspace/proje ayarlarıyla tamamlar. Sayısal kullanıcı level'ı, L1 destek rolü ve ticari paket birbirine karıştırılmaz. Platform admin'i kaynak ACL'sini aşamaz; P1b minimal owner görünümü, P4 ekip/backoffice. ADM-01/02/03 negatif testleri planlıdır.
 

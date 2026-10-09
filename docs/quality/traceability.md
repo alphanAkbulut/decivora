@@ -41,6 +41,8 @@ Bu tablo **tasarım izlenebilirliğidir; uygulanmışlık kanıtı değildir**. 
 
 ## Güncel ekip/veri isteğinin alt eşlemesi
 
+**Proje erişimi ve izin kaynağı takip isteği (2026-10-10):** PRJ-01,CAP-02/05,GOV-01,TEAM-01,AUD-01 / F01,F02,F14,F16 → [proje erişim sözleşmesi](../architecture/connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) → T05c,T16b,T20g,T24h ve C03/C05 / ACC-01–08. Kaynak/hedef izinleri, grantor ve scope makbuzu, bağlantı envanteri ve kurulum soruları; Q10 keşif tercihi cevap bekliyor. Yeni gerçek bağlantı/yetki oluşturulmadı.
+
 **Yönetim ve diyagram takip isteği (2026-10-10):** TEAM-01,GOV-01,AUD-01,CST-01/02,UX-02,OSS-01 / F11,F13,F14,F16 → [admin/operasyon sözleşmesi](../product/administration-and-operations.md), [lisans ayrımı](../governance/licensing.md), [diyagram incelemesi](diagram-review.md) → T20f,T21c,T23e,T24g ve C03/C05/C06 / ADM-01–10. Günlük kullanıcı, kurulum admin'i, platform operatörü, L1 destek ve paket ayrı; uygulama/lisans kabulü veya yeni runtime benchmark değildir.
 
 **Subagent soru/karar takip isteği (2026-10-10):** APR-01/02,INT-02,GOV-01,UX-02 / F07,F08,F11,F16 → [soru yönlendirme sözleşmesi](../architecture/agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider), [approval UX](../product/approval-ux.md) → T13e,T18e,T24f / ASK-01–08. Bilgi/görüş, yetki içi seçim ve insan kararı ayrımı mevcut yetki ilkesinin açılımıdır; provider messaging veya auto-resume desteği varmış gibi gösterilmez.

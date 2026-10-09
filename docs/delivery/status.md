@@ -15,6 +15,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-10 — Proje erişimi, izin makbuzu ve bağlantı soruları
+
+- Kaynak hesabı/OS yetkisi, hedef projeye bağlantı ekleme yetkisi ve agent grant'i ayrı tanımlandı. Sürümlü ConnectionAuthorization, requested/granted/effective scope, kurulumda altı soru ve proje bazlı “Bağlantılar ve izinler” görünümü belgelendi.
+- Yeni kaynak, scope/egress artışı, kaynak transferi, path kaçışı, karışık transcript, revocation ve kayıtların sonraki kullanımı açıklandı. T05c/T16b/T20g/T24h ile ACC-01–08 planlandı; metadata keşfi için Q10 seçenekleri hazır, cevap bekliyor.
+- Mevcut 25 Mermaid şeması değiştirilmedi; bağlantı/policy sınırlarının metinsel sözleşmesi ayrıntılandırıldı. Runtime, provider izin deneyi veya yeni görsel render testi yapılmadı. Hesap bağlantısı, yetki genişletme, gerçek veri aktarımı ve ücret yok; T01 sıradaki iş olarak kalıyor.
+
 ### 2026-10-10 — Diyagram incelemesi ve yönetim/operasyon tasarımı
 
 - 11 belgedeki 20 Mermaid şeması son kararlarla karşılaştırıldı; 1C arşiv/TTL, eksik DEC-15–17, MCP routing ve tenant ER kapsamı düzeltildi. Run, soru, blocker, admin ve incident için beş şema eklendi: toplam 25. Ayrıntı [inceleme kaydında](../quality/diagram-review.md).

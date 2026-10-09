@@ -36,6 +36,76 @@ flowchart LR
 7. **Sentetik smoke test yap:** Bir test önerisi yakala → receipt gör → MCP ile aynı project/revision'ı oku → proposal oluştur → insan UI'sında karar ver. Bu aşama gerçek özel veriye veya ücretli modele gerek duymayan fixture ile yapılabilir.
 8. **Health ve kaldırmayı göster:** Son receipt/processing, coverage gap, grant süresi ve pause/disconnect düğmeleri. Disconnect yeni capture/agent erişimini durdurur; depolanan geçmişi silmek ayrı retention/purge işlemidir.
 
+## Proje erişim sözleşmesi ve izin ekranı
+
+**2026-10-10 takip tasarımı; uygulanmadı.** Kullanıcı üyeliği, Decivora servisinin dış kaynağa erişimi ve agent delegasyonu üç ayrı yetkidir. Bağlantı kurulması hesabın bütün kaynaklarını işleme hakkı vermez. Bu bölüm [kimlik sözleşmesini](identity-access.md) tamamlar; belirli bir provider'ın bu ayrıntıda izin desteklediği iddiası değildir.
+
+### Kime, hangi kaynağa, hangi işlem için?
+
+| Alan | Kullanıcıya gösterilecek bilgi ve kontrol |
+|---|---|
+| Hedef | Decivora workspace/project ID ve adı; hedefte bağlantı kurma yetkisi olan insan |
+| Kaynak | Provider/host, hesap veya installation kimliği; seçilen sabit repo/proje/session ID'leri ya da yerel kök dizin; include/exclude kuralları |
+| Bağlantının sahibi | Kişisel veya takım bağlantısı; credential sahibi/ref, servis sponsoru, provider yetkisini doğrulama durumu |
+| İşlem kapsamı | Kaynak metadata'sını listele, içeriği oku/yakala, yerel öneri üret, dış sisteme yaz, runner çalıştır, veri dışarı aktar ayrı izinler |
+| Geçmiş ve süreklilik | Seçilmiş kaynakların geçmiş aralığı, gelecekteki olaylar, 1C arşiv sınıfı; yeni repo/session'ların kapsamı |
+| Görünürlük | Personal veya açık proje ACL'si; özet/grafik/kanıtı kimlerin görebileceği |
+| Veri çıkışı ve maliyet | İzinli model/hedef, hangi veri sınıfı, redaction, bütçe; dış model ve runner başlangıçta kapalı önerilir |
+| Geçerlilik | Başlangıç, sona erme veya açık sürekli-izleme policy'si, yeniden inceleme zamanı, iptal eden yetkiler |
+
+Önerilen başlangıç paketi: yalnız seçilen kaynakları **oku/yakala ve Decivora içinde öneri hazırla**. Bu paket dış issue/PR yazmaz, repo dosyası değiştirmez, test/shell çalıştırmaz, kaynak silmez ve veriyi dış modele göndermez. Yerel proposal da kendi sınırlı command iznini gerektirir; “read-only” ifadesi dış kaynağa göre açıklanır. Diğer işlemler ihtiyaç çıktığında somut hedef/işlem farkıyla ayrıca açılır. Korunan karar/scope/AC değişikliklerinin insan onayı kuralı her pakette geçerlidir.
+
+### İzni kim verebilir?
+
+- **Kaynak tarafı:** Bağlanan hesabın gerçekten sahip olduğu provider/OS yetkisi ve kaynak sahibinin geçerli paylaşım hakkı gerekir. Decivora proje owner'ı başkasının özel kaynağına tek başına izin veremez. Provider'ın ilave organization/admin onayı gerekiyorsa durum `pending_external_authorization`; bağlandı gösterilmez.
+- **Hedef tarafı:** Hedef projeye bağlantı ekleme yetkisi ayrıca kontrol edilir. Kaynak sahibi yalnız personal import izni vermişse workspace admin bu izni ortak paylaşım sayamaz. Kaynak sahibiyle hedef yönetici farklıysa iki ayrı yetki kanıtı bağlanır; aynı yetkili insan iki kapsamı karşılayabilir.
+- **Agent tarafı:** Agent principal'ın grant'i, sponsorun güncel yetkisi ve run/task kapsamı ayrıca gerekir. Bir agent'ın “kullanıcı izin verdi” mesajı izin kaydı değildir; gözlenen aktör kimliği onay veren kimliği yerine geçmez.
+- **Operasyon tarafı:** Kurulum/platform admin'i bağlantıyı güvenlik için durdurabilir; yeniden açmak, içeriği okumak veya scope genişletmek için gerekli kaynak/hedef yetkilerini aşamaz.
+
+Her işlemde etkin erişim = **dış kaynağın güncel yetkisi ∩ connection allowlist'i ∩ hedef proje policy'si ∩ işlemi yapan insan/servis/agent grant'i ∩ kaynak ACL'si**; model/runner/dış yazımda ilgili ek izin ve bütçe de aranır. Gerekli kanıt unknown/expired/revoked ise hassas işlem durur. Provider scope çok geniş olabilir: “provider'ın verdiği” ile “Decivora'nın kullanacağı” izin ayrı gösterilir. Daha dar credential varsa tercih edilir; uygulama allowlist'i geniş credential'ın ele geçirilme riskini ortadan kaldırmaz. Gerekli izolasyon sağlanamıyorsa o bağlantı modu desteklenmez veya açıkça sınırlı sayılır.
+
+### Kurulumda sorulacak sorular
+
+1. **Hangi Decivora projesini hangi hesap, repo, klasör veya konuşmayla bağlıyorsun?** Seçilmemiş kaynaklar dahil değildir; isim benzerliği eşleştirme kanıtı olmaz.
+2. **Neleri yapabilsin?** Ayrı işlem anahtarları ve anlaşılır sonuçları; gerekli olmayan izinler önceden seçili değil.
+3. **Hangi geçmişi ve bundan sonraki hangi olayları alsın?** 1C yalnız izinli ve erişilebilir kapsam içinde işler; tüm hesaba izin sayılmaz.
+4. **Yakalanan içerik ve türevlerini kim görebilsin?** Personal varsayılanı, takım paylaşımı önizlemesi ve kaynak sahibi kontrolü.
+5. **Veri dış modele/başka servise çıkabilir mi; hangi sınırla?** Önceki Q03'ün yerine genel kurulum onayı kullanılamaz.
+6. **Erişim ne kadar sürsün ve kim iptal edebilsin?** Bağlantı, kısa ömürlü credential, worker lease ve agent grant süresi ayrı gösterilir; kesin süre policy kararıdır.
+
+Gereksiz tekrar yok: aynı kapsam ve geçerli izinle her okuma için soru sorulmaz. Yeni repo/kök dizin, yeni hesap, yeni alıcı/model, private→shared görünürlük, ek write/runner izni, geçmiş aralığı genişlemesi veya yetkisiz kaynak yeniden bağlama **izin farkı önizlemesi** ister. Rutin credential yenilemesi aynı kimlik/kapsamı doğrulayabiliyorsa yeni ürün onayı zorunlu değildir; provider'ın kendi yeniden yetkilendirmesi gerekebilir.
+
+### İzin makbuzu ve bağlantı envanteri
+
+Sürümlü `ConnectionAuthorization` kaydı: connection/binding ID ve epoch; workspace/project; kaynak/provider kimlikleri; requested / externally granted / application allowed actions; include/exclude ve zaman kapsamı; görünürlük/retention/egress policy ref'leri; izni veren doğrulanmış insan(lar), yetki kanıtı ref'i, izin metni/diff digest'i, gerekçe, zaman, expiry/review; policy/authz revision; `last_verified_at`, verification yöntemi ve sonuç. Secret veya token içermez; kanıt ref'i ayrı ACL taşır. Genel sohbetten çıkarılmış rıza bu kaydı imzalamaz.
+
+Önerilen durumlar: `draft`, `pending_approval`, `pending_external_authorization`, `active`, `paused`, `reauthorization_required`, `expired`, `revoked`. Kısmi yetki veya erişilemeyen alan `coverage` ile ayrıca gösterilir; token varlığı active kanıtı değildir. `active` son doğrulama ve desteklenen işlemler açısından açıklanır, gelecekte kesintisiz erişim garantisi değildir.
+
+**Proje → Bağlantılar ve izinler** görünümü “nereden / hangi kimlikle / kim izin verdi / hangi işlemler / hangi alıcılar / son doğrulama / süre / neden kısıtlı?” sorularını tek tabloda yanıtlar. İzinli kullanıcı detayında geçmiş izin sürümleri ve kullanımla bağlantılı audit bulunur. Bağlantı sahibinin kişisel hesabının başka projeleri, credential veya gizli kaynak sayıları açıklanmaz. Kullanıcı hem verilen kapsamı hem son gerçek kullanım zamanını görebilir; “hiç kullanılmadı” ile “kullanım kaydı yok” ayrıdır. [Yönetim merkezi](../product/administration-and-operations.md) aynı veriyi yetkili kapsamda gösterir.
+
+### Kaynak değişimi, geri çekme ve sınırlar
+
+- Yeni kaynak yalnız keşfedildi diye bağlanmaz. Metadata keşfi dahi açık ayrı kapsam ister; bu tercih Q10'da açıktır. Proje eşlemesi belirsiz olay quarantine'a gider. Repo adı/URL/klasör değişimi sabit kimlikle doğrulanır; farklı owner'a transfer yeniden yetki değerlendirmesi ister.
+- Yerel adapter izinli kökün dışına symlink/path traversal ile çıkamaz; gerçek path/file identity kontrolü ve okuma anındaki yarış savunması test edilir. Monorepo alt dizin filtresi, tüm repo yetkisi varmış gibi genişlemez. Tek transcript birden fazla projeyi karıştırıyorsa yanlış projeye auto-import yerine review/quarantine; dışarıdan gelen project ID güvenilir değildir.
+- Yetki geri çekilince yeni retrieval/capture/dispatch ve ilgili grant zinciri durur; queued işleri yeniden yetkilendir, cache/context'i invalid et. Commit ve dış dispatch öncesi revision kontrolü gerekir. Gönderilmiş dış istek geri alınmış sayılmaz; sonucu belirsizse reconciliation, kör retry yok.
+- Disconnect otomatik veri silme değildir. Önceden alınan kaynağın/türevlerin devam eden kullanım hakkı ayrı kontrol edilir; kapsam kaybında erişim askıya alınır. Retention/purge ve açıkça daha önce paylaşılmış kopyalar kendi kayıtlarına göre ele alınır; “bağlantı kapandı, her yerden silindi” denmez.
+- Provider revocation bildirimi/yeniden kontrol desteği yüzey testine bağlıdır. Kontrol gecikmesi, son doğrulama ve desteklenmeyen alanlar görünür; erişimi her dış sistemde anında kesme garantisi verilmez. Periyodik inceleme süresi OPEN-14/16'da seçilecek.
+
+### Planlı erişim kabul senaryoları
+
+**Çalıştırılmadı.** Mevcut CON/MU/ADM senaryolarını tamamlar.
+
+| ID | Gözlenebilir kabul |
+|---|---|
+| ACC-01 | Hedef proje owner'ı kaynak yetkisi olmadan bağlantıyı active yapamaz; kaynak erişimi olan ama hedef yetkisi olmayan insan da yapamaz |
+| ACC-02 | Geniş credential ile yalnız A seçilmişse B içeriği alınmaz/model context'ine girmez; metadata keşfi ayrı izin yoksa B listelemesi yapılmaz |
+| ACC-03 | Aynı isimli projeler, kaynak transferi ve karışık transcript yanlış binding oluşturmaz; belirsizlik görünür |
+| ACC-04 | Symlink/path traversal ve eşzamanlı hedef değişimi izinli kökün dışından okuma yapamaz; kapsam doğrulanamıyorsa durur |
+| ACC-05 | Yeni write/runner/egress veya private→shared talebi yalnız eski read izniyle geçmez; önceki scope yeni onay gelmeden genişlemez |
+| ACC-06 | Grant iptaliyle queue/retrieval/cache/commit yeniden kontrol edilir; provider kontrol gecikmesi ve in-flight dış etki doğru gösterilir |
+| ACC-07 | Makbuz doğrulanmış grantor, scope diff ve revision taşır; sahte transcript onayı ve eski approval reddedilir; audit arızasında activation olmaz |
+| ACC-08 | Bağlantı görünümü gizli kaynak/credential sızdırmaz; disconnect, erişim askısı ve purge ayrı durumlar olarak anlaşılır |
+
 ## Sağlayıcıya göre deney kapısı
 
 | Yüzey | Belgelenmiş dayanak | Decivora uygulamasında gereken kanıt |
