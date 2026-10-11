@@ -564,3 +564,11 @@ Kullanıcının Q12'ye geç verdiği yanıt [somut sözleşmede](../product/pend
 | T24f / T13e,T18e,T19,T20i,T24 | TODO / P1b: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması | ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon |
 
 T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez. T19/T20i UI, T18g/T18h bounded context açık soruları ve yanıt eşleme durumunu gösterir. P2 bütçeli semantic association kalitesi T25/T26'nın aday refinement'ıdır; tüm platformlarda P1 otomatik eşleme garantisi yok. Ana görev statü/bağımlılıkları değişmedi; bu dilimler ve bütün kontroller not_run.
+
+## Ekosistem bileşen araştırması — T03 alt dilimi
+
+**T03e — TODO / P0 (ilk masa başı tarama belgesi mevcut; derin inceleme ve deney tamamlanmadı).** Kullanıcı WrongStack dışındaki adayların araştırılmasını istedi. Salt okunur keşif için runtime önkoşulu yok; deney için T01,T02,T03a ve gereken erişim/model/bütçe yetkisi. [Araştırma kartı](../discovery/ecosystem-research.md), [10 pinned aday](../discovery/ecosystem-candidates.json).
+
+- **İş:** ER-R1 bounded keşif DOC_COMPLETE; ER-R2 Graphiti/LangGraph/LiteLLM export/dependency/contract closure TODO; ER-R3 native/config/extension/port/own deney önerisi TODO; ER-R4 kanıtlı adoption önerisi TODO. Ekip modeline ihtiyaç varsa OpenFGA/Cedar; distributed gerekçesi varsa Temporal. Her aday zorunlu runtime dependency değildir.
+- **Kabul:** gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.
+- **Korunan kapı:** yeni mimari/stack/kod alımı owner adoption kararı gerektirir; Q13 ve T03d kapanmadı. 30 ana görev TODO ve T01 sonraki ana iş olarak korunur; bu alt dilim MVP'den önce on framework kurma talimatı değildir.

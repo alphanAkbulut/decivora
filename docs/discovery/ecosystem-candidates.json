@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "research_task": "T03e",
+  "reviewed_at": "2026-10-11",
+  "method": "bounded desk scan; selected static source reading; no runtime execution",
+  "candidates": [
+    {
+      "id": "ER-01",
+      "repository": "getzep/graphiti",
+      "commit": "964bb11d1e7020e3cc67fab244268b0736b6c219",
+      "reviewed_at": "2026-10-11",
+      "area": "Zamansal ilişki/karar etkisi",
+      "root_license_observed": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "graphiti_core/utils/maintenance/temporal_edge_utils.py",
+        "graphiti_core/utils/maintenance/edge_operations.py",
+        "graphiti_core/edges.py",
+        "tests/utils/maintenance/test_temporal_edge_utils.py"
+      ],
+      "evidence_level": "D+S",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "öncelikli_derin_inceleme",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-02",
+      "repository": "mem0ai/mem0",
+      "commit": "b7ad69afda6b6ed030347c66d48a13e4de9dec08",
+      "reviewed_at": "2026-10-11",
+      "area": "Uzun süreli hafıza/retrieval",
+      "root_license_observed": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "mem0/memory/main.py",
+        "mem0/memory/storage.py"
+      ],
+      "evidence_level": "D+S",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "ikincil_baseline",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-03",
+      "repository": "topoteretes/cognee",
+      "commit": "0ec7a9fa61c9ff04bf7e02e0d57af363a993a5e1",
+      "reviewed_at": "2026-10-11",
+      "area": "Graph memory/local extraction",
+      "root_license_observed": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "NOTICE.md"
+      ],
+      "evidence_level": "D",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "koşullu_inceleme",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-04",
+      "repository": "letta-ai/letta",
+      "commit": "5bcdd177d70fa2b31a754cfcd801e77b2e1ab16a",
+      "reviewed_at": "2026-10-11",
+      "area": "Stateful agent/native alternatif",
+      "root_license_observed": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ],
+      "evidence_level": "D",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "native_baseline",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-05",
+      "repository": "langchain-ai/langgraph",
+      "commit": "b4991f1ba36a2449ab59c38ab71828ee865bff84",
+      "reviewed_at": "2026-10-11",
+      "area": "Kalıcı soru/resume",
+      "root_license_observed": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "libs/langgraph/langgraph/types.py",
+        "libs/langgraph/tests/test_interrupt_state.py",
+        "libs/checkpoint-sqlite/LICENSE"
+      ],
+      "evidence_level": "D+S",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "öncelikli_derin_inceleme",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-06",
+      "repository": "temporalio/temporal",
+      "commit": "30c625664a2bbc1bd4cd9022d71982cc473e6979",
+      "reviewed_at": "2026-10-11",
+      "area": "Dayanıklı workflow",
+      "root_license_observed": "MIT",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ],
+      "evidence_level": "D",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "faz4_ertele",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-07",
+      "repository": "openfga/openfga",
+      "commit": "526995eb202464e2cace266fb5be56c212af9ecf",
+      "reviewed_at": "2026-10-11",
+      "area": "İlişki tabanlı yetkilendirme",
+      "root_license_observed": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "pkg/server/commands/check_command.go",
+        "pkg/server/commands/check.go"
+      ],
+      "evidence_level": "D+S",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "ekip_modeli_incelemesi",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-08",
+      "repository": "cedar-policy/cedar",
+      "commit": "56c9706aeb342d748170d5787e142f79480f972d",
+      "reviewed_at": "2026-10-11",
+      "area": "Politika tabanlı yetkilendirme",
+      "root_license_observed": "Apache-2.0",
+      "read_paths": [
+        "README.md",
+        "LICENSE"
+      ],
+      "evidence_level": "D",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "ekip_modeli_incelemesi",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-09",
+      "repository": "BerriAI/litellm",
+      "commit": "2a01fe6e5ca2ed67472ca0ed2909e66811ff8d35",
+      "reviewed_at": "2026-10-11",
+      "area": "Bütçe/rate-limit gateway",
+      "root_license_observed": "MIT-core; separate enterprise license",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "litellm/proxy/spend_tracking/budget_reservation.py",
+        "litellm/proxy/middleware/budget_reservation_release_middleware.py",
+        "litellm/proxy/hooks/dynamic_rate_limiter_v3.py",
+        "enterprise/LICENSE.md"
+      ],
+      "evidence_level": "D+S",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "öncelikli_derin_inceleme",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    },
+    {
+      "id": "ER-10",
+      "repository": "langfuse/langfuse",
+      "commit": "cb2cebae9f8e7d53e8e514780fce8493d680ecfb",
+      "reviewed_at": "2026-10-11",
+      "area": "LLM gözlemlenebilirliği/eval",
+      "root_license_observed": "MIT-core; commercial excluded paths",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "ee/LICENSE"
+      ],
+      "evidence_level": "D",
+      "review_depth": "root documents and named selected files only",
+      "recommendation": "koşullu_inceleme",
+      "runtime_status": "not_run",
+      "adoption_status": "not_selected",
+      "measurements": {
+        "accuracy": null,
+        "tokens": null,
+        "latency": null,
+        "setup_minutes": null
+      }
+    }
+  ]
+}

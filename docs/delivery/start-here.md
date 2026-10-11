@@ -13,3 +13,5 @@ Kullanıcının uygulama geliştirme talebi geldiğinde kullanılabilecek talima
 T01/T02 önce kanıt üretir. Kurulum gerekiyorsa yalnız izole fixture workspace kullan; mevcut gerçek projelerin agent config'ini değiştirme. Ücret, dış erişim veya scope kararı gerektiren adımları somut hazırlık sonrası owner'a sun.
 
 Portföy/ürün değerlendirmesi için ayrı [vaka çalışması](../portfolio/product-evaluation-case-study.md) problemi, owner katkısını, karar alternatiflerini ve kanıt eksiklerini özetler. Kod/teknoloji alımı için [kaynak değerlendirmesi](../discovery/code-reuse-assessment.md) R01–24, paket haritası ve henüz seçilmemiş A/B/C önerilerini gösterir. README'nin veya canonical backlog/ADR'nin yerine geçmezler.
+
+Ek kaynak ararken [T03e araştırma kartı](../discovery/ecosystem-research.md) ve [pinned aday listesi](../discovery/ecosystem-candidates.json) ile başla. İlk 10 repo tarandı; Graphiti/LangGraph/LiteLLM öncelikli derin inceleme adayı, henüz seçilmiş dependency değil. Araştırmanın stop kuralı, küçük işleri ve not_run deneyleri kartta; T01 ana sıra korunur.

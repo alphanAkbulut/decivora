@@ -78,3 +78,9 @@ Bu doldurulmamış şablon sonuç değildir. Ölçülen sıfır `0`, ölçülmey
 ## Repo geneli kaynak taramasından yeni karşı kanıt — 2026-10-11
 
 [Kod/teknoloji değerlendirmesi](code-reuse-assessment.md) 39 manifest alanı, 9.657 kod dosyası ve dahili paket ilişkilerini yapısal olarak kapsar; kritik adaylarda seçili davranış okumaları ekler. Governance append-only event/receipt, revision/plan contract, bağımsız verifier/grant; Kanban contract graph ve core karar/gerekçe graph'ı ilk incelemeyi genişletir. EvidenceValidator ref-only veya legacy soft completion bulguları bütün platforma genellenmez. Native/config/extension aynı GAP/RES/WS oracle'ında en uygun desteklenen yapılandırmayla denenmeli. Kod kopyası, install, CI, runtime/performans/lisans-audit sonucu yok; inceleme V değildir. A/B/C reuse seçenekleri henüz owner kararı değildir.
+
+## 2026-10-11 — On ek repo: karşı kanıt ve araştırma önceliği
+
+[Ekosistem taraması](ecosystem-research.md) kaynakla destekli üç yeni örtüşmeyi kaydeder: Graphiti fact validity/supersession; LangGraph persistent wait/resume; LiteLLM çağrı öncesi rezervasyon/uzlaştırma. Kalıcı hafıza, soru bekleme veya bütçe rezervasyonu tek başına farklılaşma değildir. Domain karar yetkisi, exact uygulama kanıtı ve downstream etki birlikte aynı fixture'da sınanmalı.
+
+Mem0 managed benchmark'ının OSS'den ayrılması, LiteLLM enterprise yolu/premium priority feature ve Langfuse ticari klasörleri adil karşılaştırma/alım için önemlidir. Root lisans okuması tüm dependency/model/feature uygunluğu değildir. 10 root belge/lisans, beş seçili kaynak okuması; bütün repo audit'i ve runtime yok. T03e ilk masa başı çıktısı hazır; derin closure, deney ve owner adoption kararı bekler. Native/config/extension/own seçenekleri korunur.

@@ -109,3 +109,9 @@ Güncel kontrol toplamı **25**; önceki toplamlar tarihsel ekleme kayıtlarıd�
 ## Ürün değerlendirmesi ve kaynak alımı için ek okuma
 
 [Portföy vaka çalışması](../portfolio/product-evaluation-case-study.md), owner rolünü ve AI destekli katkıyı gerçek kanıt sınırıyla gösterir. [Kod/teknoloji raporu](../discovery/code-reuse-assessment.md) tüm manifest alanlarının yapısal taraması ile R01–24 seçili davranış okumalarını ayırır. 9.657 dosya indeksi semantic audit veya test sonucu değildir. Governance ve contract graph örtüşmesi önceki hedefli benchmark'ı genişletir; EvidenceValidator bulgusunu bütün upstream verification yüzeyine genelleme. A/B/C owner seçimi, nihai stack ve runtime kod alımı henüz yok. T03d öneri ve T01 sırası korunur.
+
+## Ekosistem araştırması devir notu
+
+[T03e](../discovery/ecosystem-research.md) 10 ek repo için immutable ref/root lisans ve beş seçili source okumasını toplar; [JSON](../discovery/ecosystem-candidates.json) gerçekten okunan yolları listeler. ER-R1 masa başı çıktısı mevcut; ER-R2–4 TODO, ER-T1–5 not_run. D/S kanıtını V runtime sonucu sayma. Graphiti temporal invalidation, LangGraph wait/resume ve LiteLLM reservation özgünlük karşı kanıtıdır; semantik uyum/closure/unknown-cost/premium gate'ler henüz tam deneyle doğrulanmadı.
+
+Öncelikli derin inceleme Graphiti/LangGraph/LiteLLM; ekip authorization OpenFGA/Cedar koşullu, Temporal dağıtık ihtiyaçta. Bunlar teknoloji/ücretli hizmet/kod alımı seçimi değil. Native/config/extension/own seçenekleri, Q13 ve T01 sırası korunur. Repo sayısını artırmayı ilerleme ölçütü sayma; açık contract sorusu için 1–2 aday yeterliyse dur.

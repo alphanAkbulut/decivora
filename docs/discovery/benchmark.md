@@ -54,3 +54,9 @@ Fixture görevleri: yeni fikir, duplicate, geri çekilen öneri, forgotten appro
 ## Ekip, izin ve kalıcı hafıza ek taraması
 
 2026-10-09 [hedefli benchmark](collaboration-storage-benchmark.md), Linear/GitHub/OpenFGA erişim örüntülerini; Cortex/mai-mcp agent sınırlarını; Letta'nın legacy context/state ayrımını; SQLite/PostgreSQL/OTel veri ve log sınırlarını inceler. Belgelenen özellik→bizim önerimiz→uygulama/test kapısı bağlantısı vardır. Runtime IAM/yük karşılaştırması yapılmadı.
+
+## 2026-10-11 — Ekosistem ve bileşen araştırması
+
+[T03e araştırması](ecosystem-research.md) WrongStack dışında 10 ek adayı sabit commit/root lisansla tarar: Graphiti, Mem0, Cognee, Letta, LangGraph, Temporal, OpenFGA, Cedar, LiteLLM, Langfuse. Beşinde seçili kaynak/test tanımı okundu; **S = statik seçili source incelemesi**, D/V/U/O ayrımına ek kanıt düzeyidir, V değildir. [Kayıt](ecosystem-candidates.json) scope/okunan yolları tutar. Önceki tarihteki benchmark sonuçları yeniden yazılmaz.
+
+Graphiti temporal invalidation, LangGraph durable interrupt/resume ve LiteLLM budget reservation için yeni karşı kanıt var; bu bileşenleri tek başına özgün saymayız. Product baseline ile component test ayrı; runtime, tasarruf ve üstünlük not_run. Üç öncelikli derin inceleme adayını lisans/contract/aynı oracle kapısına bağladık; yeni mimari/dependency kararı yok.

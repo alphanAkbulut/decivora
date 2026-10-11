@@ -63,3 +63,9 @@ Kullanıcının “dosyalar üretildi ama yüklenip yüklenmediği ve hangi yakl
 WrongStack'in küçük deterministik modülleri reuse adayıdır; bütün platformu fork etmek veya onu gereksiz ilan etmek bugünkü kanıtla gerekçeli değildir. T03d kaynak/uyum deneyi T03b karşılaştırmasını besler; T03c sonucu bağımsız build, native kullanım veya extension olabilir. Bugün kod alımı, çalışan interoperability veya üstünlük sonucu yok.
 
 **Repo geneli takip (2026-10-11):** [R04–09 kaynak bulguları](../discovery/code-reuse-assessment.md) governance event/receipt/revision/grant/verification ve typed contract graph örtüşmesini güçlendirir. Decision/options/rationale kayıtları da upstream core'da var. Bu temel bileşenler özgünlük iddiası olamaz; H1/H4/H6'da insan seçimi, exact target observation, causal supersession ve providerlar arası devam birlikte ölçülmeli. Uygun native/extension konfigürasyonu kontrol baseline'ı olarak korunur.
+
+## Ekosistem karşı kanıtı — 2026-10-11
+
+[10 repo taraması](../discovery/ecosystem-research.md): Graphiti zamansal bilgi ilişkisi, LangGraph kalıcı interrupt/resume, LiteLLM rezervasyon ve rate limit mekanizmaları içeriyor. “Bilgi yaşar”, “soru kaybolmaz”, “bütçe rezervasyonu var” tek başına benzersizlik iddiası değil. Kaynak okuması bütün domain sözleşmesinin çalıştığını veya eksik olduğunu kanıtlamaz.
+
+Ölçülecek hedef H1/H3/H4/H6 birleşimi: kullanıcı seçiminin doğru bağlanması, gerekçeye bağlı değişiklik etkisi, hedef revision'da uygulama kanıtı ve az yönetim yüküyle providerlar arası devam. Hazır bileşen/native kullanım bu zinciri daha ekonomik sağlıyorsa reuse/extension başarıdır. T03e kapsamı araştırma; ürün yönü, model/stack ve Q13 adoption kararı değişmedi.
