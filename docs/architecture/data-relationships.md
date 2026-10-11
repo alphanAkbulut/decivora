@@ -103,3 +103,29 @@ Atlas'ın source→job→evaluation çizgisi genel işlem hattını sadeleştiri
 | DBR-06 | Migration/replay ilişki sayıları, referanslar, sequence ve projection digest'i korur; unknown event/schema sessiz atlanmaz |
 
 Bu ayrıntılar T04/T05/T06/T07/T08/T14 sözleşmelerine dağıtılır; fiziksel migration dosyaları T03 teknoloji kararından sonra oluşturulur. [Uygulama dilimleri](../delivery/backlog.md#tetikleme-zamanlama-ve-veri-ilişkileri-dilimleri).
+
+## ER-03 — Artifact, hedef uygulama ve kabul ayrımı
+
+**Önerilen mantıksal uzantı.** Ayrı artifact/task/decision canonical deposu kurulmaz; Artifact ve Decision mevcut RecordVersion tipleridir. Bu şema [ADR-0011](adr/0011-target-application-evidence.md) ve [GAP-01–10](../product/intent-to-reality-gap.md) için eksik bağlantıyı tamamlar.
+
+```mermaid
+erDiagram
+    PROJECT ||--o{ APPLICATION_TARGET : scopes
+    APPLICATION_TARGET ||--o{ APPLICATION_EXPECTATION : addressed_by
+    TASK_REVISION ||--o{ APPLICATION_EXPECTATION : tracked_by
+    APPLICATION_EXPECTATION ||--o{ EXPECTED_ARTIFACT_LINK : requires
+    ARTIFACT_REVISION ||--o{ EXPECTED_ARTIFACT_LINK : expected_as
+    APPLICATION_TARGET ||--o{ APPLICATION_OBSERVATION : observed_at
+    PRINCIPAL ||--o{ APPLICATION_OBSERVATION : reports_as
+    APPLICATION_EXPECTATION ||--o{ APPLICATION_ASSESSMENT : assessed_by
+    APPLICATION_ASSESSMENT ||--o{ ASSESSMENT_OBSERVATION_LINK : uses
+    APPLICATION_OBSERVATION ||--o{ ASSESSMENT_OBSERVATION_LINK : backs
+    APPLICATION_ASSESSMENT ||--o{ EVIDENCE_LINK : may_support_criterion
+    CRITERION_REVISION ||--o{ EVIDENCE_LINK : supported_by
+```
+
+Task bağlaması henüz belli olmayan capture/quarantine gözlemleri bu bağlı şemadan önce source olarak kalır; sahte task/principal yaratılmaz. Expectation birden çok artifact ister; aynı artifact birden çok hedef için farklı expectation'da kullanılabilir. Target locator sürümü ve exact ref expectation snapshot'ına bağlıdır; uygulama birden çok hedefteyse ayrı assessment gerekir. Diagram karar/approval bağlantılarını tekrarlamaz; seçilen karar revision'ları ve expectation'ın accepted/proposed durumu mevcut domain onay yoluna bağlıdır.
+
+EvidenceLink burada **typed** application-assessment referansıyla yalnız ilgili “hedefte beklenen dosya var” kriterini destekleyebilir. Herhangi bir observation tüm AC'leri destekler demek değildir. Acceptance VerificationAssessment ER-02'de ayrı kalır; test/deploy not_run iken observed upload completion sağlamaz. Schema uygulamasında typed FK/association bütünlüğü açık validator ve composite keys ile korunacak; serbest string FK yeterli değil.
+
+Expectation/target/observation/assessment revision'ları aynı workspace/project kapsamını taşır. Yeni assessment append event + projection + gereken audit/job ile atomik; dış okuma transaction dışındadır. Authorization ve freshness commit'te tekrar kontrol edilir. Farklı branch, partial bundle, response kaybı, revoked grant ve yeni karar fixture'ları GAP-03–07/10 ve DBR-01/03/04/05'i birlikte sınar. Fiziksel migration ve query indeksleri T03/T04'ten sonra; bu tur migration/test çalışmadı.

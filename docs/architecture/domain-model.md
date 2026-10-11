@@ -83,3 +83,23 @@ Current traversal yalnız güncel geçerli ilişkileri kullanır; historical tra
 Q08 için önerilen hierarchy: ilk tasarımda child'ın aynı workspace/project içinde en fazla bir güncel parent'ı vardır; self-parent/cycle reddedilir. Birden fazla işin kullandığı ortak task kopyalanmaz; diğer bağlantılar gerçek anlamına göre depends_on/related_to olabilir. `part_of` tek başına completion zorunluluğu, gerekçe veya yetki/grant mirası oluşturmaz. Parent completion planı hangi child'ın gerekli olduğunu ve ana AC→child AC eşlemesini version'lı tutar. Çoklu parent modeli gerekirse ayrı mimari review ister. Split yalnız onaylı atomik ChangeSet'tir; parent kimliği, geçmiş ve evidence korunur. [Bölme önizlemesi ve kabul kuralları](../product/task-context-and-acceptance.md) uygulanır; öneri Q08 kararından önce runtime'a alınmaz.
 
 `ContextSnapshot` kaynak/karar/evidence revision'larından türetilen milestone görünümüdür; canonical truth değildir. `DoDTemplate` proje/iş türü bazlı version'lanır, task assessment hangi maddelerin neden uygulanabilir olduğunu kaydeder. Completion gerekli AC'lerle birlikte uygulanabilir gerekli DoD kanıtı ve review/impact kapılarını kontrol eder. Parent task sırf child'lar bitti diye complete olmaz. [Context ve acceptance sözleşmesi](../product/task-context-and-acceptance.md) alanları, üretim tetiklerini, export hatasını ve eski kanıt davranışını tanımlar.
+
+## Artifact ve hedef uygulama gözlemi
+
+**ADR-0011 teknik önerisi; fiziksel şema yok.** [GAP sözleşmesindeki](../product/intent-to-reality-gap.md) insan seçimi, generated artifact, hedef uygulama ve acceptance eksenleri tek task status enum'una eklenmez. Mevcut review/validity/execution/verification eksenleri korunur.
+
+| Mantıksal kayıt | Alan / anlam |
+|---|---|
+| Artifact revision | KnowledgeRecord'ın Artifact tipi; hash/availability/source refs, generated claim veya güvenilir artifact gözlemi dayanağı |
+| ApplicationTarget | Scope içinde değişmeyen kimlik ve versioned locator: local makine+kapsamlı path veya provider/account/repo/ref/environment; credential gövdesi yok |
+| ApplicationExpectation | Task/proposal, seçilmiş karar revision'ları, target revision, beklenen etki/validation rule, authz/policy ve source refs; proposed/accepted kapsamı açık |
+| ExpectedArtifactLink | Expectation↔Artifact revision N:M; gerekli dosya/path/ref ve expected content/hash; üç dosyayı tek “var” bitine indirgeme |
+| ApplicationObservation | Observer/reporter principal, authority class, target snapshot/ref, artifact gözlemi veya human report, occurred/observed_at ve availability/coverage; yüklendi claim'i otomatik read-back değil |
+| ApplicationAssessment | Expectation revision, kullanılan observation/evidence refs, assessment yöntemi/sürümü, input decision/target/artifact snapshot, result/reason ve freshness |
+| AssessmentObservationLink | Bir assessment birçok observation, bir observation birçok assessment'ta kaynak olabilir; provenance kaybolmaz |
+
+Application result: not_observed / reported / pending / observed / partial / mismatch / failed / unknown. Freshness current / stale / unknown ayrı boyuttur; bunlar acceptance VerificationAssessment passed değildir. not_observed “olmuyor” demek değildir; missing ancak exact hedefin yetkili, yeterli kapsamlı gözlemiyle raporlanabilir. Permission denied unknown/unavailable'dır. observed yalnız belirtilen expected effect ve snapshot'ta; test/deploy/whole task completion kapsamaz.
+
+Trusted insan selection'ı policy/kimlik/kapsamla Decision'a bağlanır; bu ek tablo ikinci karar deposu değildir. Expectation hâlâ proposal'a ait olabilir; capture onu accepted backlog yapmaz. Hedef, artifact veya ilgili karar/AC değişimi current assessment'ı stale/review yapar; tarihsel observation silinmez. Evidence önceki snapshot'a bağlı kalır. Başka hedefe uygulama aynı expectation başarı sonucu değildir.
+
+Kayıtlar aynı workspace/project composite sınırına tabidir. Yeni query'de güncel kaynak/target ACL gerekir; assessment türevi ACL genişletemez. [ER-03 ve DB bütünlüğü](data-relationships.md#er-03--artifact-hedef-uygulama-ve-kabul-ayrımı), [tetikler](execution-and-integrations.md#10-hedef-uygulama-gözlemi-tetikleri) ve [ADR-0011](adr/0011-target-application-evidence.md) ayrıntıları tamamlar.

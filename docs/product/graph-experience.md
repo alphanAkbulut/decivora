@@ -90,3 +90,9 @@ Kart seçimi tüm görünümlerde aynı revision'ı açar. Edge seçimi neden/t�
 | GUX-08 | Undo yeni event üretir; history filtresi eski revision'ı korur; Board/Graph/Timeline aynı sonucu gösterir | T13b/T20b |
 
 Henüz test edilmedi. Q04 görünüm tercihi alındı; T19/T20'de sentetik etkileşimli prototip ve gerçek tıklama/klavye kontrolü gerekir. Kaynak: [owner karar kuyruğu](../delivery/decision-brief.md).
+
+## Artifact ve hedefte gerçekleşme görünümü
+
+[Domain uygulama kaydı](../architecture/domain-model.md#artifact-ve-hedef-uygulama-gözlemi) generated artifact'i, uygulama expectation'ını, hedef gözlemini ve AC assessment'ını ayrı bağlar. İlk prototip liste/ayrıntı olabilir; bütün graph UI uygulaması ön koşul değildir.
+
+Tam graph'ta önerilen görsel ayrım: artifact node'u **üretildi**, target assessment **bildirildi / gözlendi / kısmi / bilinmiyor / stale**; acceptance ayrı rozet. Observation edge'i exact ref/snapshot ve kaynak kapsamını gösterir, karar approved edge'iyle aynı semantik değildir. Aynı artifact çok hedefe uygulanabilir; bir hedefin başarı rengi diğerlerine taşınmaz. Eski artifact uygulaması tarihçede durur, yeni karara uygun değilse current uyarısı alır. Renk yanında metin/ikon gerekir; bilinmeyene iptal çarpısı konmaz. Mevcut iptal ve ended/invalidated kuralları değişmez; GAP-04/05/06/10 bu görünümün planlı oracle'ıdır.

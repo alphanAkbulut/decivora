@@ -65,3 +65,22 @@ ADR-0001 yerel başlangıç için korunur; 0002/0007 durable akışına storage 
 Önceki belgelerde capture/MCP adayları, delta/cache fikri ve Graph hedefi vardı. Eksik ayrıntılar: bir defalık kurulum ve tools-only health; host tüketimi ile kendi model çağrılarımızın ayrımı; eşzamanlı budget reservation/unknown usage; iptal ile edge ending/invalidation'ın görsel ve domain ayrımıydı.
 
 [Connection/context](../architecture/connection-and-context.md), genişletilen [token sözleşmesi](../architecture/routing-token-economy.md) ve [graph deneyimi](../product/graph-experience.md) bu boşlukları öneri olarak kapatır. CON/TOK/GUX altında 24 planlı senaryo, küçük backlog dilimleri ve kaynak bağlantıları eklendi. Q04 güncel/seçili graph, Q05 kullanıcıya proje/görev bazlı profil seçimi olarak cevaplandı; context dosyasının otomatik export tercihi Q06 ayrı bekler. Çalışan adapter, bütçe yöneticisi veya graph UI kanıtı yoktur.
+
+## 2026-10-11 — Tasarım revizyonu 03 tutarlılık denetimi
+
+Başlangıç ref'i `6889d48fbc2f75c4c36e81ba6ae370cc22e1d8ba`. Remote tree kesilmeden alındı; **76 mevcut repository dosyası** local mirror ile birebir karşılaştırıldı. Tüm dosyalar envanter/referans/yetenek statüsü taramasına, 32 Mermaid kaynağı içerik incelemesine alındı; değişen odağın normatif ürün/mimari/ADR/delivery belgeleri hedefli çapraz okundu. Başka repository değiştirilmedi; rakip kaynak kodlarının tümü yeniden incelenmiş değildir.
+
+| Somut eksik | Düzeltme | Sınır |
+|---|---|---|
+| Güncel yön farklı son eklerdeydi; README geniş MVP'yi ilk değer gibi gösteriyordu | Tek [güncel yön](../product/current-direction.md), önce/sonra tablosu, P0 yatırım kapısı ve giriş indeksleri | Independent build veya iptal kararı alınmış değil |
+| Generated/reported/observed ayrımı ürün sözleşmesinde kaldı | Domain ApplicationTarget/Expectation/Observation/Assessment, ER-03, event/projection ve trigger/API karşılıkları | Mantıksal tasarım; DDL veya migration yok |
+| İlk deneye başlamak için önce nihai T03 kararını isteyen döngü | T03a geçici yöntem → T03b yetkili prototip/native baseline → T03c yatırım/production kararı | Kodlama bu tur başlamadı |
+| Source capture ile target read aynı kapsam sanılabilirdi | T02d capability, selected exact target ve ayrı izin/coverage | Ücret/hesap/runner yetkisi oluşturulmadı |
+| Sürüm/LLM handoff eski toplamları ve “v3” ürün beklentisi | Tek canonical set, tasarım revizyonu 03, 25 handoff sorusu ve versioning | Release/tag/sürüm dizini veya yeni repo yok |
+| Diyagram inventory 30'da kaldı; son iki GAP çizimi sayılmadı | 34 şema / 15 belge inventory, ilgili 7 mevcut blok güncellemesi + 2 yeni blok | Render ve runtime sonuçları ayrıca raporlanır |
+| GAP oracle yalnız prose idi | [Sentetik JSON](../../examples/intent-reality-scenario.json), ID/ref/inventory kontrolleri | Veri/lint geçmesi ürün test sonucu değildir |
+| R13 rekabet riski ilk yatırım sırasına yeterince bağlanmadı | Native/extend/build/ek deney/durdur kapıları; yönetim/setup/maintenance metrikleri | Rakip superiority veya kullanıcı talebi ölçülmedi |
+
+ADR-0001–0010'da store/event/adapter/graph/approval/routing/identity/lifecycle ilkeleri son odakla çelişmedi; proposed statüleri korundu. 0005, generated→target observation→acceptance ayrımını [ADR-0011](../architecture/adr/0011-target-application-evidence.md) ile tamamladı. Yeni servis/vector DB veya accepted stack kararı eklenmedi. Tenant/ACL, token risk, admin, ekip/sync ve retention sözleşmeleri gelecekteki tam ürün sınırları olarak korunur; ilk prototip hepsini teslim etmiş sayılmaz.
+
+Açık kalanlar: T01 geniş corpus, gerçek source/target capability, native kıyas, model/host receiver başarısı, runtime/UI/DB/migration, sayısal eşikler ve owner yatırım kararı. İlk 10 GAP örneği altı oturum/30 anlamlı kayıt şartını kapatmaz. Bu kapsam incelemesi gelecekte hiç eksik çıkmayacağı garantisi değildir.

@@ -58,3 +58,9 @@ on meaningful change:
 | T6 ilişkisiz iş | Gerekçe bilinmiyor | Review; güvenli biçimde obsolete çıkarılamaz |
 
 Geliştirilen çıktı yeni karar altında yanlış olabilir; geçmiş olay ile güncel uygunluk ayrılır. Reddedilmiş öneri yeni kanıtla geri gelebilir fakat eski reddetme gerekçesi gizlenmez. [Sentetik fixture](../../examples/impact-scenario.json) gelecekteki test oracle'ını gösterir.
+
+## Uygulama gözlemi gelmeden planı gerçekleşmiş saymama
+
+[GAP sözleşmesinde](../product/intent-to-reality-gap.md) yeni upload report veya artifact observation ENG-03'te doğru task/proposal/target/revision ile eşleştirilir. Metinsel benzerlik human adoption veya exact target eşleşmesi sağlamaz. Yeni karar kabulünde ApplicationExpectation/ApplicationAssessment current uygunluğu da IMP-02/VER-02 kapsamında değerlendirilir; eski artifact uygulanmış olsa bile yeni planın uygulanması sayılmaz.
+
+Karar current, uygulama unknown veya impact pending olduğunda context bunları ayrı taşır. Bilinen gerekli ön koşul unknown ise ilgili iş ready olmaz; bu belirsizlik bağımsız işleri kapatmaz. Source/event tarihçesi, AND/OR ve historical completion korunur; hedef değişimi bütün task'ları otomatik obsolete yapmaz.

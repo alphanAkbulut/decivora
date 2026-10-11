@@ -49,3 +49,9 @@ OPEN-08 için [retention tablosunda](../architecture/storage-memory-capacity.md)
 Q07/1C kabul edildi: izinli ve erişilebilir geçmiş, aktif işler önce olacak şekilde aşamalı işlenecek. Bu karar OPEN-08'i kapatmaz: 1C kaynak arşivine önceki genel 30 günlük geçici payload önerisi otomatik uygulanmaz; kesin arşiv süresi, kapasite ve silme politikası gerçek veri öncesi kararlaştırılacak. Kaynak korunumu ile modelin eksiksiz hatırlaması farklı hedeflerdir. Q08 isteğe bağlı alt göreve bölme/varsayılan boyut önerisi ve Q09 bildirim kanalı/sıklığı ayrıntıları [soru kaydında](../delivery/decision-brief.md) açıktır. Q03 dış model/bütçe yanıtı yerine yeni izin çıkarılamaz.
 
 Q04 güncel işler/seçili iş bağlamı; Q05 proje/görev bazlı değiştirilebilir analiz profili olarak cevaplandı. Q06 context dosyasının otomatik milestone export tercihi [karar kaydında](../delivery/decision-brief.md) bekliyor. Bu sorular OPEN-07/09/10 ile ilişkilidir; yeni ücret/egress yetkisi vermez. İptal ve ended edge geçmişinin korunması mevcut append-only ilkesinin sonucudur; grafikte çarpı/renk tercihi bu domain kuralını değiştirmez.
+
+## Tasarım revizyonu 03 yatırım kapısı
+
+OPEN-01/02: native kullanım, extension, independent build, ek deney veya durdurma [güncel yön](../product/current-direction.md) ve T03a–c'de değerlendirilir. Claude Projects release'i tek başına cancellation veya go kararı değildir. İlk prototype yöntemi production stack seçimini otomatik accepted yapmaz.
+
+Tek belge seti/sürüm otoritesi [versioning](versioning.md) içinde belgelendi; v3 product release'i yok. Q02 source/target/yüzey tercihleri ve Q03 gerçek veri/egress/bütçe açık. Q11-A önizle/kopyala önerisi runtime varsayılanı sayılmaz. Bu dokümantasyon isteği gerçek bağlantı veya prototip başlatma izni değildir.

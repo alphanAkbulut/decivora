@@ -21,6 +21,8 @@
 | DEC-15 | Accepted intent: 1C, izinli/erişilebilir geçmişi aşamalı işle; aktif işleri öne al | Kaynak korunur, hedefli context kullanılır; 1A/1B alternatifleri ve gerekçe [Q07 kaydında](../delivery/decision-brief.md). Egress/harcama veya sınırsız saklama onayı değildir |
 | DEC-16 | Proposed: anlamlı alt görevler + checklist; isteğe bağlı bölme önizlemesi | Kullanıcının Q08 fikrinin tasarımı; ayrı AC/kanıt ve parent takibi. Varsayılan otomatik bölme henüz kabul edilmedi |
 | DEC-17 | Accepted intent: blocker ve downstream gecikmesini önce ele al; Product Owner bakışıyla çevik ilerle | Q09 yanıtı; değer/hedef/riskle açıklanan çözüm sırası, Scrum kaynaklı inceleme/uyarlama. [Akış sözleşmesi](priority-and-flow.md) teknik öneri; bildirim kanalı ve Sprint takvimi ayrı |
+| DEC-18 | Accepted problem intent: gerçek insan seçimi ve dosyanın hedefe uygulanması kaybolmasın | 2026-10-11 kullanıcı örneği; generated/sessizlik yükleme veya kabul kanıtı değildir. [GAP sözleşmesi](intent-to-reality-gap.md); mekanizma teknik öneri |
+| DEC-19 | Proposed investment path: ilk sınırlı gerçekleşme/devam deneyi + native karşılaştırması | [Güncel yön](current-direction.md); build/extend/native/durdur sonuçları açık. Son belge güncelleme isteği runtime yatırımını kabul etmiş sayılmaz |
 
 ```mermaid
 flowchart TD
@@ -46,6 +48,11 @@ flowchart TD
     D17[DEC-17 Kabul: blocker ve ürün değeri] --> FLOW[Yöntemden bağımsız öncelik önerisi]
     FLOW --> M
     GOV[Yönetici ve hata takibi: tasarım önerisi] -.-> M
+    D18[DEC-18 İhtiyaç: gerçek seçim ve uygulama durumu] --> REAL[Artifact, hedef gözlemi ve kabul ayrı]
+    REAL --> G
+    CP[Claude Projects örtüşmesi] --> TEST[DEC-19 Öneri: sınırlı karşılaştırma]
+    TEST --> X
+    TEST -.-> M
 ```
 
 ## Kararların neden ve nasıl alındığını bulma

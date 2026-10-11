@@ -97,3 +97,11 @@ Handoff kontrolü toplam 16 sorudur; bağımsız LLM testi yapılmadı. Q04 gün
 22. Soru cevaplanınca bütün görevler otomatik devam edip tamamlanır mı? **Hayır.** Revision/izin ve diğer blocker'lar kontrol edilir. Yalnız bağlı işler bekler; bağımsız işler ilerleyebilir. Host delivery/resume desteği yoksa destek varmış gibi gösterilmez; görev completion yine kanıta bağlıdır.
 
 [Soru/karar sözleşmesi](../architecture/agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider) timeout, parent kaybı, döngü, çelişki ve geç yanıt istisnalarını tanımlar. Toplam 22 kontrol sorusu; bağımsız LLM testi yapılmadı.
+
+## Güncel yatırım ve gerçekleşme anlama kontrolü
+
+23. Şimdi ürün v3 veya bitmiş yeni MVP var mı? **Hayır.** [Tasarım revizyonu 03](../product/current-direction.md), aynı tam vizyonun ilk kanıt odağını günceller. Tek güncel set main'de; geçmiş Git'te, [sürüm düzeni](../governance/versioning.md) product/schema/task sürümlerini ayırır.
+24. Dosya üretimi, yeni soruya geçiş veya agent “kullanıcı seçti” özeti yeterli mi? **Hayır.** Güvenilir insan selection'ı, generated artifact, exact target application ve AC verification ayrı. [Domain](../architecture/domain-model.md#artifact-ve-hedef-uygulama-gözlemi), [ER-03](../architecture/data-relationships.md#er-03--artifact-hedef-uygulama-ve-kabul-ayrımı), [GAP oracle](../../examples/intent-reality-scenario.json).
+25. İlk prototipten sonra mutlaka bağımsız ürün mü? **Hayır.** T03a yöntem → T03b yetkili deney → T03c native/extend/build/ek deney/durdur. Native Projects kıyası yoksa üstünlük unknown; test edilmiş typed fixture actual capture/fresh-session başarısı değildir.
+
+Güncel kontrol toplamı **25**; önceki toplamlar tarihsel ekleme kayıtlarıdır. Bağımsız LLM anlama testi henüz yapılmadı. İlk okuma güncel yön→status→T01; geniş roadmap koşullu yatırım yoludur.

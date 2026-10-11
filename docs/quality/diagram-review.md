@@ -1,6 +1,34 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 13 belgede 30 Mermaid şeması.** Aşağıdaki ilk inceleme 25 şemayı kapsar; sonraki sequence/ER genişlemesi ayrı kayıt olarak eklenmiştir. Eski doğrulama sonucu yeni çizimlerin testi yerine kullanılmaz.
+**Güncel inventory: 15 belgede 34 Mermaid şeması — tasarım revizyonu 03.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+
+## Güncel inventory — 2026-10-11
+
+<!-- diagram-inventory:start -->
+| Belge | Mermaid sayısı |
+|---|---:|
+| [README.md](../../README.md) | 1 |
+| [ROADMAP.md](../../ROADMAP.md) | 2 |
+| [docs/architecture/connection-and-context.md](../../docs/architecture/connection-and-context.md) | 1 |
+| [docs/architecture/data-relationships.md](../../docs/architecture/data-relationships.md) | 3 |
+| [docs/architecture/diagrams.md](../../docs/architecture/diagrams.md) | 13 |
+| [docs/architecture/execution-and-integrations.md](../../docs/architecture/execution-and-integrations.md) | 3 |
+| [docs/architecture/identity-access.md](../../docs/architecture/identity-access.md) | 1 |
+| [docs/architecture/logging-audit.md](../../docs/architecture/logging-audit.md) | 1 |
+| [docs/architecture/overview.md](../../docs/architecture/overview.md) | 1 |
+| [docs/architecture/storage-memory-capacity.md](../../docs/architecture/storage-memory-capacity.md) | 1 |
+| [docs/delivery/team-data-plan.md](../../docs/delivery/team-data-plan.md) | 1 |
+| [docs/product/decision-map.md](../../docs/product/decision-map.md) | 1 |
+| [docs/product/graph-experience.md](../../docs/product/graph-experience.md) | 2 |
+| [docs/product/intent-to-reality-gap.md](../../docs/product/intent-to-reality-gap.md) | 2 |
+| [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
+<!-- diagram-inventory:end -->
+
+İçerik incelemesi tüm 34 kaynağı kapsar. Bu revizyonda README (1), roadmap (2), overview (1), atlas bağlam/engine (2) ve decision map (1) olmak üzere **7 mevcut blok güncellendi**. Güncel yönün yatırım akışı ve ER-03 **2 yeni bloktur**; önceki GAP akışları (2) inventory'ye dahil edildi. 25 eski blok kaynak düzeyinde değişmedi; yalnız tarihler veya sürüm görünümü için yeniden çizilmedi.
+
+Onay snapshot/AND-OR/iptal/replay, source/target yetki sınırı, log/storage ve ekip/admin akışları korundu. Atlas ER'si ER-03 ile tamamlanır; bütün relation alanlarını her diagramda tekrar etmek gerekmez. Source alımı, application assessment ve AC/DoD completion aynı durum değildir. İlk prototip tam atlası çalıştırmış sayılmaz.
+
+Görsel render bu güncellemenin teslim kontrolünde ayrıca denenecek; aşağıdaki önceki render sonuçları yeni çizimler için kullanılamaz. Runtime/UX testi yok.
 
 **2026-10-10.** İnceleme öncesinde 11 belgede 20 Mermaid diyagramı vardı. Hepsi son kararlarla içerik düzeyinde karşılaştırıldı; tamamı zaten günceldi denemez. Aşağıdaki düzeltmelerle 25 diyagram oldu. Şemalar tasarımdır; runtime, tam UI veya benchmark kanıtı değildir.
 

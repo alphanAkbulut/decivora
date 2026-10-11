@@ -68,3 +68,7 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 ## Konuşulan plan ile dışarıda gerçekleşen işlem
 
 [GAP-01–10](../product/intent-to-reality-gap.md#6-planlı-kabul-ve-karşılaştırma): öneri/insan seçimi, generated/reported/observed artifact, exact repo/branch/path/revision, partial upload, karar değişimi, yeni chat, stale/ACL ve gözlemden test/deploy sonucu uydurmama. T01 oracle, T14d/T18i/T20i ve T24n üzerinden planlıdır; runtime sonuçları not_run. “Hedefte gözlenmedi” gerçekleşmediği kanıtı değildir.
+
+## İlk deney ile ürün kabulünü ayırma
+
+[Sentetik GAP oracle](../../examples/intent-reality-scenario.json), implemented=false ve result_status=not_run taşır. Veri geçerliliği ürün test sonucu değildir. T03b'de deterministic core/target contract/UI/fresh-session/native kıyas ayrı kanıt sütunlarıyla kaydedilir; unsupported veya izin verilmeyen bölüm başarı paydasından sessiz çıkarılmaz. Mock read-back pass gerçek provider pass değildir. P0 prototype GAP/RES kapısını geçmesi P1b AC-01–14'ü tamamlamaz; [güncel yön](../product/current-direction.md) bu kabul sınırını tanımlar.

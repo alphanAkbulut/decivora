@@ -30,3 +30,9 @@ Başlangıç çözümü gereksinim dosyaları ve GitHub task disiplinidir. Token
 Araştırma→prompt→agent execution→kod/belge→verification zinciri; daha önce reddedilmiş fikrin yeni kanıtla yeniden ele alınması; source mesajına geri dönme; birden çok gerekçeyi birlikte karşılayan işler; epoch/cursor ile incremental analysis; ayrı audit; kanıtla otomatik ilerleme; oturum sonunda tek review; kısa kurulum kuralı; editör yanında görünürlük; next-ready task; mevcut araçla kısa vadeli pilot; kendi geliştirme sürecinde dogfooding; açık kaynak reputasyonu; open core/managed service ihtimali kapsamda korunmuştur.
 
 Ürünün kendi hafızasını kullanması gelecekte hedeflenir; bugün çalışmayan ürünün kendisine bağımlı geliştirme süreci kurulmaz. Git dokümantasyonu bootstrap hafızadır.
+
+## Kaynak konuşma sonrası evrim — 2026-10-11
+
+Bu takip E01–E14 orijinal evrelerini değiştirmez. Yeni Claude Projects'in memory/koordinasyon örtüşmesi [rekabet incelemesinde](claude-projects-overlap.md) kaydedildi. Kullanıcı, dosya üretimi/yükleme talimatı ile gerçek uygulama ve gerçek yaklaşım seçiminin konuşmada karışmasını problem olarak verdi. [GAP sözleşmesi](../product/intent-to-reality-gap.md), yeni domain/ER/event karşılıkları ve [güncel yön](../product/current-direction.md) bu somut ihtiyaca bağlandı.
+
+Sonraki assistant önerisi geniş geliştirmeden önce sınırlı prototip/karşılaştırmadır; kullanıcı tüm belgelere son evrimi yansıtmayı istedi. Bu istek belge revizyonunu yetkilendirir; bağımsız ürün geliştirme, iptal, stack veya model/hesap erişimi kararı çıkarılmaz. Tam vizyon, impact ve ekip geleceği korunur; tasarım revizyonu 03 tek güncel set içinde tutulur.

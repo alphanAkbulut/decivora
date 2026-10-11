@@ -4,7 +4,13 @@ Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenek
 
 ```mermaid
 flowchart LR
-    P0[P0 Kaynak ve fizibilite] --> P1A[P1a Teknik kanıt]
+    P0[P0 Oracle ve kaynak hedef fizibilitesi] --> E[P0 Sınırlı gerçekleşme devam deneyi]
+    E --> G{Native extend veya build kararı}
+    G -->|Build kanıtlı ve owner seçti| P1A[P1a Teknik kanıt]
+    G -->|Native yeterli| N[Mevcut çözüm veya entegrasyon]
+    G -->|Dar açık| X[Extension deneyi]
+    G -->|Kanıt yetersiz| W[Ek deney veya bekleme]
+    G -->|Owner durdurma kararı| S[Gerekçeli kapanış]
     P1A --> P1B[P1b Yerel MVP ve owner sağlık görünümü]
     P1B --> P2[P2 Chat ve agent sürekliliği]
     P2 --> P3[P3 Maliyet ve entegrasyon]
@@ -13,12 +19,14 @@ flowchart LR
 
 | Faz | Teslim | Çıkış kapısı |
 |---|---|---|
-| P0 | Kaynak haritası, benchmark, platform testleri, build/extend ve stack kararı | Gerçek capability/karşılaştırma raporu; sonraki ADR'ler onaylı |
+| P0 | T01 oracle, T02 kaynak + tek hedef capability, T03a yöntem, T03b sınırlı prototip/native kıyas, T03c yatırım kararı | GAP/RES kanıtı ve native/extend/build/durdur değerlendirmesi; erişim yoksa not_run, otomatik P1 geçişi yok |
 | P1a | Import→reconcile→impact→approval→event→projection teknik dilimi | Synthetic oracle, atomic retry, AND/OR/unknown, replay ve false-done senaryoları geçer |
 | P1b | Çok projeli local MVP; iki coding adapter; MCP; Inbox/Board/Graph/Timeline; temel verifier/routing/telemetry | AC-01..14 ve pilot kalite kapıları; destek matrisi dürüst |
 | P2 | Aynı sağlayıcı ve cross-provider chat sürekliliği; gelişmiş reconciliation, verification, read-only GitHub evidence; izinli panel/import iyileştirmeleri | Kaynak→prompt→execution trace ve coverage; gerçek yüzeylerde test |
 | P3 | Maliyet raporları, model routing, kontrollü GitHub/Linear/Jira yazma, kurulum ve açık kaynak release hazırlığı | Cost/quality kıyası, outbox conflict testleri, lisans/isim kararı |
 | P4 | Takımlar, organization, RBAC, cloud sync, enterprise audit, managed service ve open core değerlendirmesi | Talep kanıtı, güvenlik/uyumluluk ve ticari model onayı |
+
+Güncel yön ve önceki plan karşılaştırması [tasarım revizyonu 03](docs/product/current-direction.md) içindedir. Bu P0 deney önerisidir; tam vizyon ve aşağıdaki P1b çıkış kapısı korunur. Native/extension seçilirse T04–T30 bağımsız uygulama yolu otomatik çalıştırılmaz, ilgili yeni teslim planı owner kararıyla hazırlanır.
 
 Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
 
@@ -26,8 +34,12 @@ Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri
 flowchart TB
     S[Kaynak konuşma ve tam vizyon] --> C[T01 Corpus ve oracle]
     C --> A[T02 Gerçek adapter capability]
-    A --> D{T03 Build veya extend kararı}
-    D -->|Karar ve izinler hazır| CORE[T04-T08 Kimlik, kalıcı source, log, policy]
+    A --> PLAN[T03a Geçici deney yöntemi]
+    PLAN --> PROTO[T03b İzinli sınırlı prototip ve native baseline]
+    PROTO --> D{T03c Yatırım kararı}
+    D -->|Build seçildi ve izinler hazır| CORE[T04-T08 Kimlik, kalıcı source, log, policy]
+    D -->|Native veya extend| ALT[İlgili entegrasyon veya extension yolu]
+    D -->|Owner durdurma kararı| STOP[Gerekçe ve kanıtla kapanış]
     D -->|Kanıt yetersiz| EXP[Küçük ek deney ve açık karar]
     EXP --> D
     CORE --> INT[T09-T14 Extraction, reconciliation, impact, approval, verification]

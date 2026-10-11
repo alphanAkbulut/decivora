@@ -70,3 +70,11 @@ Zarftaki tenant/proje kapsamı source dedup, stream unique key ve idempotency an
 ## İptal ve ilişki değişimi olayları
 
 `task.cancelled`, `relationship.ended` ve `relationship.invalidated` farklı önerilen domain olaylarıdır. İlki yürütme kararını; diğerleri ilişki geçerliliğini değiştirir. Eski event/edge revision silinmez. Geri alma yeni yetkili revision ve etki değerlendirmesi gerektirir. Projection aktif edge'leri günceller, tarihçe eski görünümü korur; knowledge revision değişimi eski approval'ı geçersiz kılar. [Graph UX](../product/graph-experience.md) normal iptalin privacy purge veya yalnız görünüm filtresi olmadığını açıklar.
+
+## Artifact uygulama geçmişi ve güncel karar
+
+[ADR-0011](adr/0011-target-application-evidence.md) için örnek domain türleri: `artifact.generation_claimed`, `artifact.generated_observed`, `application.expectation_proposed`, `application.reported`, `application.observation_recorded`, `application.assessed`, `application.assessment_stale`. Bunlar **önerilen event kataloğudur**, uygulanmış runtime enum/schema değildir. Kaynak observation'ın domain event'e dönüşmesi kimlik/policy ve şema doğrulaması ister; source metni kendi başına karar yetkisi taşımaz.
+
+Projection, expectation ve assessment geçmişini target/ref/artifact/decision revision'larıyla tutar; current pointer ilgili freshness'e göre türetilir. İnsan “yükledim” beyanı reporter/authority ile reported kalabilir; acceptance human_attestation policy'si ayrı ve açık. `application.assessed: observed` kendiliğinden `verification.passed` veya task completion olayı üretmez.
+
+Yeni onaylı karar önceki uygulamayı tarihsel olmaktan çıkarmaz; current uygunluk ve stale assessment ayrı olayla değerlendirilir. Restore/replay bu gözlemleri yeniden gösterir, dosya read/upload/LLM/check başlatmaz. Kaynak kaybı ve privacy purge observation availability'yi etkileyebilir; geçmişten current erişim/onay üretilemez.

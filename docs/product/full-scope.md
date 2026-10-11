@@ -52,3 +52,9 @@ Ekip isteğinin ayrıntısı yeni bir ürün değildir: TEAM-01, PRJ-01, GOV-01/
 ## Bekleyen işe devam ve dış hafıza deneyi
 
 2026-10-11 yapıştırılan konuşma; F04/F08/F11/F13 ve KNO-01/02, APR-02, UX-02, CST-01/02, GOV kapsamını ayrıntılandırır. [Devam paketi](resume-package-and-memory.md) kaynağı, yapılmış/claim/unknown ayrımını, kalan AC/DoD, güncel karar ve next-action'ı taşır. [Spike-1 v1](../delivery/spike-1-v1.md) temiz oturumda memory yeterliliğini ölçen öneridir; “unutuldu” yerine kaynaklı yaş/kanıt/coverage etiketi kullanır. A önizle/kopyala başlangıç önerisi, B host başlatma ayrı capability/izin araştırmasıdır. Mevcut tam vizyon ve MVP daraltılmadı; Wedge-0 yeniden adlandırması kabul edilmiş karar değildir.
+
+## Güncel ilk odak ve gerçekleşme ayrımı
+
+[Tasarım revizyonu 03](current-direction.md), mevcut KNO/APR/VER/INT/UX/EVAL kapsamını **öneri→güvenilir seçim→artifact→exact hedef uygulaması→güncel uygunluk** üzerinden sınar. [GAP sözleşmesi](intent-to-reality-gap.md) generated/reported/observed/unknown ve test/deploy ayrımını; [ADR-0011](../architecture/adr/0011-target-application-evidence.md) teknik veri karşılığını tanımlar. 32 scope maddesi korunur; bu yeni ana feature/engine değildir.
+
+P0 deneyinde tek hedef read-back mock/sentetik veya açıkça izinli seçilmiş adapter olabilir. Bu, bütün GitHub entegrasyonunu P2'den taşımaz, pasif capture başarısını varsaymaz veya P1b iki-adapter kabulünü kaldırmaz. İlk yatırım kararı native/extend/build/durdur sonucuna açıktır; ürün iptali kabul edilmedi.

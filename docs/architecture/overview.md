@@ -2,6 +2,8 @@
 
 **Statü: tasarım; uygulanmadı.** Tek yerel servis, SQLite ve açık modül sınırları başlangıç önerisidir. Mikroservis, graph database veya ayrı vector database ilk gün gerekli kabul edilmez. [ADR'ler](adr/README.md) seçenekleri ve doğrulama koşullarını kaydeder.
 
+[Güncel P0 odağı](../product/current-direction.md), aşağıdaki **tam ürün** tasarımının sınırlı gerçekleşme/devam halkasını önce sınamayı önerir. İlk prototype'te bütün paket/adapter/ekip altyapısını kurmak gerekmez; runtime henüz yok. [ADR-0011](adr/0011-target-application-evidence.md) mevcut verifier/context modüllerini tamamlar, yeni servis değildir.
+
 Devamı: [Engine ve alias kataloğu](engines.md) sorumlulukları; [runtime sözleşmeleri](runtime-contracts.md) ack, concurrency, auth ve recovery'yi; [diyagram atlası](diagrams.md) bağlam, ER ve yaşam döngülerini açıklar. [Mimari inceleme](../quality/completeness-review.md) açık risk ve uygulama kapılarını kaydeder.
 
 [Tetikleme/API/zamanlama sözleşmesi](execution-and-integrations.md) hangi olayın kod, LLM veya insan işi başlattığını ve async sonuçlarını; [DB ilişkileri](data-relationships.md) bağlantı izinleri, run-task çoktan çoğa ilişkisi ve revision bağlı AC/evidence bütünlüğünü tamamlar. İç engine çağrıları aynı süreçte olabilir; her ok için yeni HTTP servisi tasarlanmaz.
@@ -26,6 +28,10 @@ flowchart TB
     PROJ --> V[Board Graph Timeline]
     PROJ --> EX
     VE[Verification adapters] --> CMD
+    CMD -->|İzinli bounded read isteği| RB[Hedef read-back adapter]
+    RB <-->|Exact ref path revision| TARGET[Seçilmiş local veya repo hedefi]
+    RB -->|Observation ve application assessment| CMD
+    PROJ --> BR[Karar uygulama unknown ve kabul ayrı brief]
     EV --> OUT[Transactional outbox]
     OUT --> EXT[İleride yetkili dış sistemler]
 ```

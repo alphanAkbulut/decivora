@@ -1,6 +1,6 @@
 # Kısa proje yönetim planı
 
-**Aşama: P0 — Discovery / Product Definition.** Ürün çalışmıyor. Amaç: AI konuşmalarını yaşayan, karar farkındalıklı hafızaya dönüştürmek; eskimiş işleri açıklanabilir biçimde yeniden değerlendirmek ve manuel yönetim yükünü azaltmak. Tam kapsam korunur; ilk kullanılabilir teslim P1b MVP'dir.
+**Aşama: P0 — Discovery / Product Definition.** Ürün çalışmıyor. Amaç: AI konuşmalarını yaşayan, karar farkındalıklı hafızaya dönüştürmek; eskimiş işleri açıklanabilir biçimde yeniden değerlendirmek ve manuel yönetim yükünü azaltmak. Tam kapsam korunur; P1b tam MVP çıkışıdır. Güncel ilk öğrenme teslimi [tasarım revizyonu 03](../product/current-direction.md) için P0 gerçekleşme/devam prototipi + native karşılaştırması önerisidir; P1b tamamlandı anlamına gelmez.
 
 **Pilot kararı (2026-10-09):** önce owner'ın bireysel kullanımı; sonra benzer kullanıcılar. [Sorular/cevaplar](decision-brief.md) pilot erişimi ve bütçe sınırını izler. [Şikâyet araştırması](../discovery/user-research.md) görüşme akışını ve ürünü terk ettirebilecek riskleri; [benchmark bulguları](../discovery/benchmark-findings.md) ölçülmüş sonuç ile kaynak araştırmasını ayırır.
 
@@ -20,7 +20,7 @@ Bunlar görev rolleridir; kurulmuş ayrı bir ekip veya atanmış çalışan idd
 
 | Faz | Somut teslim | Devam etmek için gerekli kanıt |
 |---|---|---|
-| P0 | Corpus, gerçek adapter capability ve alternatif karşılaştırması | T01–T03; build/extend ve stack kararı |
+| P0 | Corpus, kaynak/tek target capability, sınırlı prototip ve native karşılaştırması | T01/T02d/T03a–c; GAP/RES + yönetim yükü; native/extend/build/ek deney/durdur ve production stack kararı |
 | P1a | Import→impact→approval→event→verification teknik dilimi | T15; atomicity, isolation, false-done, graph race ve replay |
 | P1b | İki coding adapter, minimal MCP, review/board/graph/timeline, temel ekonomi | T24; 14 AC, holdout ve kullanıcı pilotu |
 | P2 | Chat sürekliliği, daha iyi semantik, GitHub read, panel | Platform/kalite kanıtı; fallback açık |
@@ -114,3 +114,7 @@ Kullanıcı, ilerlemeyen 40+ task için açıklanabilir öneri ve admin/owner ya
 Önerilen rank, insan PO'nun canonical priority kararı ve izinli teknik execution order ayrıdır. Sistem “şimdi yapılmazsa hangi downstream işler bekler?” sorusunu kanıtlı ilişki yollarıyla cevaplar; öneri plan değişikliği değildir. İnsan Product Owner scope/value ve karar haklarını korur. Üst agent ancak mevcut grant içinde teknik plan düzenler; admin etiketi veya yüksek skor yeni yetki sağlamaz.
 
 MVP için deterministik blocker/dependency ve basit board; P2 için context-aware çok faktörlü scoring/simülasyon ve gelişmiş UX adaydır. Faz seçimi yalnız feasibility kanıtıyla kesinleşir; ağırlık, kritik yol hesabı ve UX tasarımı kabul edilmiş teknik karar değildir. T11c/T20e/T24d genişletilir, T26b önerisi eklenir; mevcut ana görev bağımlılıkları ve sıradaki T01 korunur. Önceki yöntem açıklamasında kritik yol kapsam dışıydı; yeni talep bunu yalnız P2 feasibility adayı olarak kaydeder, çalışan motor taahhüdü olarak değil.
+
+## Yatırım ve sürüm kontrolü
+
+Önce sonuç sorusu sabitlenir; sınırlı deney yapılabiliyorsa prototip yöntemi seçilir, uygulama yetkisi içinde deney çalıştırılır, sonra bağımsız ürün yatırımı değerlendirilir. Claude Projects release'i tek başına iptal gerekçesi veya bizim üstünlük kanıtımız değildir. [Güncel yön](../product/current-direction.md) karar seçeneklerini; [versioning](../governance/versioning.md) tek canonical doküman setini tanımlar. Repo bugün dokümantasyon; bütçe/takvim taahhüdü yok.

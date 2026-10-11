@@ -2,7 +2,9 @@
 
 **Tüm diyagramlar önerilen tasarımı gösterir; çalışan sistem görüntüsü değildir.** Mermaid kaynakları GitHub'da görüntülenebilir. Oklar yetki aktarımı anlamına gelmez; yazma otoritesi command/policy katmanıdır. Metinsel sözleşmeler [engine haritası](engines.md), [domain](domain-model.md) ve [runtime](runtime-contracts.md) belgelerindedir.
 
-Tamamlayıcılar: [task sonucu, LLM analizi ve dış API için üç sequence + tetikleme/zamanlama matrisi](execution-and-integrations.md); [erişim ve task/run/evidence için iki ER + FK/transaction kuralları](data-relationships.md). Bu atlasın 13 şeması korunur; bütün repo inventory'si [inceleme kaydındadır](../quality/diagram-review.md). Zamanlama tablosu deney önerilerini kesin SLA'dan ayırır.
+Güncel ilk deney [ürün yönünde](../product/current-direction.md); atlas tüm ürünün proposed sınırlarını gösterir. [GAP akışındaki iki diagram](../product/intent-to-reality-gap.md) seçimin/hedef uygulamasının AC kabulünden ayrı döngüsünü tamamlar.
+
+Tamamlayıcılar: [task sonucu, LLM analizi ve dış API için üç sequence + tetikleme/zamanlama matrisi](execution-and-integrations.md); [erişim, task/run/evidence ve hedef uygulama için üç ER + FK/transaction kuralları](data-relationships.md). Bu atlasın 13 şeması korunur; bütün repo inventory'si [inceleme kaydındadır](../quality/diagram-review.md). Zamanlama tablosu deney önerilerini kesin SLA'dan ayırır.
 
 ## 1. Sistem bağlamı ve güven sınırları
 
@@ -26,6 +28,8 @@ flowchart TB
     end
     MODEL["Opsiyonel model provider: izinli veri ve bütçe"]
     EXT["P3 dış sistem yazımı: ayrı izin"]
+    TARGET["Seçilmiş hedef: exact ref ve path"]
+    RB["İzinli read-back: ENG-08 yolu"]
     CC --> AD
     CX --> AD
     CHAT --> AD
@@ -40,6 +44,9 @@ flowchart TB
     STORE -->|Revision ile read| UI
     EN <-->|Hedefli bağlam| MODEL
     STORE -->|Yetkili outbox| EXT
+    POLICY -->|Kapsamlı okuma yetkisi| RB
+    RB <-->|Bounded hedef gözlemi| TARGET
+    RB -->|Assessment command| POLICY
 ```
 
 Yerel depolama dış model kullanımında veri çıkmayacağı anlamına gelmez. Agent'ın MCP kimliği UI insan kimliğine yükseltilemez. P1'de model olmadan deterministik fixture akışı mümkündür.
@@ -57,7 +64,7 @@ flowchart LR
     E6 --> E7[ENG-07 Log ve Projection]
     E7 --> E10[ENG-10 Context, Health ve sonraki adım]
     E10 -->|İlgili current ve history| E3
-    E7 --> E8[ENG-08 Verification]
+    E7 --> E8[ENG-08 Uygulama assessment ve ayrı AC verification]
     E8 -->|Assessment command| E6
     E9[ENG-09 Routing ve Budget] -.-> E2
     E9 -.-> E4
@@ -125,7 +132,7 @@ erDiagram
     }
 ```
 
-Şema mantıksaldır; fiziksel DDL değildir. RecordVersion'ın anahtarı `(workspace_id, project_id, record_id, revision)`; tüm proje kayıt/FK/unique sınırları tenant kapsamını korur. Edge iki endpoint revision'ına başvurur. Diagram okunabilirliği için her tabloda tenant/FK alanları, üyelik/ACL ve Evaluation'ın çoklu input provenance bağlantıları tekrarlanmadı; [yetki sözleşmesi](identity-access.md) normatiftir. Source kimliği quarantine'da henüz project'e bağlı olmayabilir; izolasyon kalkmaz. Imported/manual ChangeSet ayrıca evaluation olmadan oluşabilir. Run ve soru ilişkileri aşağıdaki ayrı diyagramlarda; bunlar task hiyerarşisi değildir.
+Şema mantıksaldır; fiziksel DDL değildir. RecordVersion'ın anahtarı `(workspace_id, project_id, record_id, revision)`; tüm proje kayıt/FK/unique sınırları tenant kapsamını korur. Edge iki endpoint revision'ına başvurur. Artifact/target expectation, observation ve application assessment N:M bağlantıları tamamlayıcı [ER-03](data-relationships.md#er-03--artifact-hedef-uygulama-ve-kabul-ayrımı) içindedir; generated/observed/acceptance ayrımı bu sade ER'den atlanmış sayılmaz. Diagram okunabilirliği için her tabloda tenant/FK alanları, üyelik/ACL ve Evaluation'ın çoklu input provenance bağlantıları tekrarlanmadı; [yetki sözleşmesi](identity-access.md) normatiftir. Source kimliği quarantine'da henüz project'e bağlı olmayabilir; izolasyon kalkmaz. Imported/manual ChangeSet ayrıca evaluation olmadan oluşabilir. Run ve soru ilişkileri aşağıdaki ayrı diyagramlarda; bunlar task hiyerarşisi değildir.
 
 ## 4. Capture: receipt ile değerlendirme farklıdır
 

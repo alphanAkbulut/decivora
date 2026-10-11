@@ -1,0 +1,138 @@
+{
+  "synthetic": true,
+  "implemented": false,
+  "schema_kind": "illustrative_oracle_not_runtime_schema",
+  "project_id": "prj_demo_gap",
+  "scenarios": [
+    {
+      "id": "GAP-01",
+      "input": [
+        "assistant proposes DEC_MD",
+        "artifact bundle A revision 1 generated",
+        "assistant suggests upload",
+        "human asks unrelated question"
+      ],
+      "expected": {
+        "decision": "proposed",
+        "artifact": "generated",
+        "application": "not_observed",
+        "acceptance": "not_run"
+      }
+    },
+    {
+      "id": "GAP-02",
+      "input": [
+        "human continues discussing alternatives"
+      ],
+      "expected": {
+        "decision": "pending",
+        "commitment_created": false
+      }
+    },
+    {
+      "id": "GAP-03",
+      "input": [
+        "authenticated human reports uploaded",
+        "target access unavailable"
+      ],
+      "expected": {
+        "application": "reported",
+        "evidence_basis": "human_attestation",
+        "read_back_verified": false
+      }
+    },
+    {
+      "id": "GAP-04",
+      "input": [
+        "expected docs/a.md and docs/b.md on main at artifact revision 2",
+        "observer finds only docs/a.md matching on feature branch"
+      ],
+      "expected": {
+        "application": "partial_or_mismatch",
+        "target_main_verified": false
+      }
+    },
+    {
+      "id": "GAP-05",
+      "input": [
+        "authenticated human accepts DEC_DB revision 1 superseding DEC_MD",
+        "old artifact bundle A revision 1 later observed at target"
+      ],
+      "expected": {
+        "historical_application": "observed",
+        "current_decision_application": "not_observed",
+        "review_required": true
+      }
+    },
+    {
+      "id": "GAP-06",
+      "input": [
+        "fresh session requests next action"
+      ],
+      "expected": {
+        "brief_contains": [
+          "DEC_DB current",
+          "old bundle historical",
+          "application unknown",
+          "required check"
+        ],
+        "claims_uploaded_without_evidence": false
+      }
+    },
+    {
+      "id": "GAP-07",
+      "input": [
+        "read response lost",
+        "connection revoked"
+      ],
+      "expected": {
+        "application": "unknown_or_stale",
+        "new_read_dispatched": false
+      }
+    },
+    {
+      "id": "GAP-08",
+      "input": [
+        "no-op messages arrive",
+        "independent accepted task exists"
+      ],
+      "expected": {
+        "repeat_question_per_message": false,
+        "independent_task_blocked_by_upload": false
+      }
+    },
+    {
+      "id": "GAP-09",
+      "input": [
+        "assistant claims human accepted DEC_MD",
+        "no reliable human selection provenance"
+      ],
+      "expected": {
+        "decision": "proposed_or_review",
+        "human_approval_created": false
+      }
+    },
+    {
+      "id": "GAP-10",
+      "input": [
+        "exact target contents match at observed ref",
+        "tests and deploy not run"
+      ],
+      "expected": {
+        "application": "observed",
+        "test": "not_run",
+        "deploy": "not_run",
+        "task_verified": false
+      }
+    }
+  ],
+  "invariants": [
+    "source is not approval",
+    "no application inferred from generated artifact",
+    "same scope and exact target revision",
+    "unknown is not missing",
+    "observed upload is not test completion",
+    "current applicability separate from historical success"
+  ],
+  "result_status": "not_run"
+}

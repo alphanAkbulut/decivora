@@ -51,3 +51,7 @@ Task Master ve Beads için okunan tarihsel şikâyetlerde bakımcı düzeltmeler
 2026-10-11 [güncel inceleme](../discovery/claude-projects-overlap.md): paylaşılan memory, karar bağlamı, paralel threads ve iş takibi ciddi örtüşmedir. “Claude yalnız dosya klasörü” veya “karar hatırlama yalnız bizde” tezi kullanılmaz. Bağlı çalışma ortamında native takip güçlü olabilir; manuel veya providerlar arası geçiş için aynı oracle gerekir.
 
 Kullanıcının “dosyalar üretildi ama yüklenip yüklenmediği ve hangi yaklaşımın seçildiği bilinmiyor” örneği H2/H4/H6'yı [GAP-01–10](intent-to-reality-gap.md) ile somutlaştırır. Öneri, gerçek insan seçimi, artifact üretimi, exact hedefe uygulama ve acceptance evidence ayrı tutulur. Bu hipotezi yalnız memory boyutuyla veya token bütçesiyle çözülmüş saymayız. Native Projects bunu yeterli yönetim yüküyle sağlıyorsa integration/extension T03 için geçerli sonuçtur.
+
+## Güncel yatırım sırası
+
+[Tasarım revizyonu 03](current-direction.md) H2/H4/H6'yı GAP ve RES ile ilk sınırlı deneyde sınamayı önerir; H1 karar-aware impact tam vizyonda ve aynı fixture'ın stale/OR kısmında korunur. Tek hedef kanıtı ve tekrar başlayan oturum davranışı gösterilmeden geniş orchestration/admin/ekip yatırımı önerilmez. Ürün iptali veya independent build kararı verilmedi; native/extend/build kapısı sonuçlara bağlıdır.

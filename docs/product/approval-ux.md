@@ -58,3 +58,9 @@ Bilgi isteği, danışma, yetki içi teknik seçim ve insan onayı gerektiren ka
 ## Yüksek tüketim riski için ayrı karar
 
 [Token riski onay kartı](token-risk-and-approval.md) yapılacak iş, risk nedeni, tahmin/unknown, uygulanabilir üst sınır, toplam retry/child tüketimi, kalan bütçe ve alternatifleri gösterir. Yetkili insan sınırlı planı onaylar, küçültür, aşamalı plan ister, erteler veya reddeder. Task onayı veya parent agent cevabı bu onayın yerine geçmez; hard-cap/egress/izin değişimi ayrı kapıdır. Aynı geçerli planın her küçük adımında tekrar soru yok; kapsam/sınır değişirse yeni assessment gerekir. Yeni dispatch onay beklerken kalıcı kaynak ve task korunur. T19b/TRA-01–10 planlıdır, çalışan UI değildir.
+
+## Gerçek seçim ve uygulama durumu
+
+[GAP review](intent-to-reality-gap.md) dört ayrı bilgiyi gösterir: öneri, güvenilir insan seçimi, generated artifact, hedef uygulama assessment'ı; AC/DoD kabulü ayrıca. “B'yi seçiyorum” kapsamı/kimliği açıksa mevcut policy'yle kaydedilir; her açık seçim tekrar sorulmaz. Yeni soru/sessizlik/agent özeti onay değildir.
+
+Minimal eylemler izinli kontrol, kanıtla yükledim, henüz uygulamadım, öneriyi seçmedim ve ertele olabilir; varsayılan otomatik kontrol veya yeni erişim onayı kabul edilmedi. Sonraki iş bu uygulamaya gerçekten bağlıysa odaklı durum sorusu; bağımsız işleri bloke etme. Hedef durumunu görmek yeni LLM çağrısı gerektirmez.

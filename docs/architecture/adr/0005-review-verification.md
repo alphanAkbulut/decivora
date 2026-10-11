@@ -24,3 +24,6 @@ No-text review flow, yanlış done, test failure, partial approval ve iki-agent 
 
 Kaynak: [Karar haritası](../../product/decision-map.md), [evrim kaydı](../../discovery/evolution.md). Onaylayan/tarih henüz atanmadı; kullanıcı niyeti teknik uygulama onayıyla eşitlenmez.
 
+
+2026-10-11: [ADR-0011](0011-target-application-evidence.md) generated artifact, human selection, hedefte application observation ve AC/DoD verification ayrımını tamamlar. Upload read-back yalnız kapsadığı kriteri destekler; test/deploy veya bütün task completion değildir. GAP-01–10 ek kabul planıdır.
+

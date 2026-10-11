@@ -1,5 +1,9 @@
 # MVP spesifikasyonu
 
+## Güncel P0 deneyi, P1a ve P1b ayrımı
+
+[Tasarım revizyonu 03](current-direction.md) için önerilen ilk teslim, seçim/artifact/hedef gözlemi/devam bağlamını sınayan **P0 karşılaştırma prototipidir**. GAP-01–10 ve RES kontrolleri uygulanabilen bölümünü test eder. Bu deney başarıya ulaşsa bile aşağıdaki 14 P1b AC tamamlanmış sayılmaz; iki coding adapter veya otomatik chat erişimi varmış gibi sunulmaz.
+
 ## P1a proof of concept ile P1b MVP ayrımı
 
 P1a: Sentetik/import edilmiş bir oturumdan karar değişikliği, görev gerekçesi, onay ve replay akışını doğrulayan dar teknik kanıt. **MVP diye sunulmaz.**
@@ -14,7 +18,7 @@ P1b: Tek kullanıcının yerel uygulamada birden fazla projeyi takip edebildiği
 4. Aynı öneri yeni task üretmez; kaynak bağlantısı eklenir. Yeni fikir hemen commitment olmaz.
 5. Karar değişikliği eski görevlere etki seti çıkarır. Çoklu gerekçeler korunur.
 6. Kullanıcı tekli veya geçerli toplu seçimle onaylar. Eski sürüm değişmişse onay uygulanmadan yenilenir.
-7. Agent işi yaptığını bildirir; kanıt politikası uygun kriterleri doğrular. Dashboard eksik kriterleri gösterir.
+7. Üretilen artifact ve hedefe uygulanma durumu ayrı gösterilir; exact hedef/ref/path/revision gözlemi veya insan bildirimi dayanağı açık tutulur. Agent işi yaptığını bildirir; kanıt politikası uygun AC/DoD kriterlerini ayrıca doğrular. Dashboard bilinmeyen/kısmi uygulamayı ve eksik kriterleri gösterir.
 8. Başka oturum/agent aynı projeyi mevcut kararla açar. History, önceki düşüncenin neden değiştiğini gösterir.
 
 ## MVP kabul kriterleri
@@ -24,7 +28,7 @@ P1b: Tek kullanıcının yerel uygulamada birden fazla projeyi takip edebildiği
 | AC-01 | Aynı adlı iki proje varken oturum A'ya bağlıysa, tüm capture/read/write yalnızca A'ya gider; binding yoksa quarantine oluşur |
 | AC-02 | Aynı event yeniden gönderildiğinde tek domain etkisi oluşur; aynı metnin farklı mesajları yalnız hash yüzünden düşmez |
 | AC-03 | Bir finding, prompt ve document instruction aynı batch'te yakalandığında kaynakları ve ilişkileri korunur |
-| AC-04 | Agent yalnızca “done” dediğinde claim görünür; doğrulama bekler |
+| AC-04 | Agent yalnızca “done” dediğinde claim görünür; generated dosya uploaded sayılmaz; reported/observed/unknown ve acceptance verification ayrı görünür |
 | AC-05 | Eski kararın tek gerekçesi olduğu açık iş obsolete adayı olur; başka geçerli OR gerekçesi bulunan iş korunur |
 | AC-06 | Kullanıcı onay vermeden kabul edilmiş karar veya scope değişmez; onay sonrası yeni olay ve yeni projection oluşur |
 | AC-07 | Onay ekranı hazır açıklama ve AC içerir; kullanıcı metin girmeden accept/reject/defer/compare yapabilir |

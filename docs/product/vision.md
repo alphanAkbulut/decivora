@@ -28,3 +28,9 @@ Kullanıcının işi doğal konuşmaya devam etmek ve hazırlanmış seçenekler
 Başarı: Unutulan kararları geri getirmek, hatalı kapanışı önlemek, gereksizleşen işi gerekçesiyle sunmak ve kontrol süresini azaltmak. Ölçümler [ölçüm planında](../quality/measurement.md).
 
 Garanti edilmeyenler: bütün platformlarda tüm konuşmalara erişim, kusursuz anlamsal çıkarım, objektif fikir doğruluğu, yöneticiye karşı mutlak değiştirilemezlik, sıfır token maliyeti ve otomatik pazar başarısı. Genel Jira/Linear özellik eşitliği, izinsiz ajan çalıştırma ve production sistemini yönetme ürünün ilk hedefi değildir.
+
+## Güncel ilk yatırım sorusu
+
+[Tasarım revizyonu 03](current-direction.md) ilk kullanıcı değerini öneri/gerçek seçim/artifact/hedefte uygulama ayrımında sınar. Yeni Claude Projects'in [belgelenen örtüşmesi](../discovery/claude-projects-overlap.md), hafıza veya koordinasyonun tek başına farklılaşma olmadığını gösterir. Hedef, gerçek durum bilinmiyorsa bunu açıkça koruyarak doğru devamı ve karar etkisini sağlamaktır; bağımsız ürün gerekliliği henüz kanıtlanmadı.
+
+Generated dosya veya “yükle” önerisi uygulama kanıtı değildir; konuşmaya devam etmek seçim değildir. İlk küçük deney tam vizyonu silmez ve geniş MVP yerine geçmez. Runtime/prototip geliştirme veya büyük ürün yatırımı başlamadı.

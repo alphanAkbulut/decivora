@@ -1,17 +1,19 @@
-# Spike-1 v1 — Bekleyen iş ve devam paketi deneyi
+# Spike-1 — Güncel gerçekleşme ve devam paketi deneyi
 
 **2026-10-11 / PROPOSED / not_started.** Yapıştırılan konuşmadaki öneri incelenebilir bir görev planına dönüştürüldü. Bu belge “Spike-0 çalışıyor” varsayımına dayanmaz. Repo bugün dokümantasyon aşamasındadır; önceki prototip kanıtı yoktur. Üretim kodu, otomatik agent başlatma veya ücretli model çalıştırma taahhüdü değildir.
 
+**Tek aktif deney belgesi:** Dosya adındaki v1 geçmiş kimliğidir; içerik tasarım revizyonu 03 için yerinde güncellendi. Yeni v2/v3 plan kopyası yok. [Güncel yön](../product/current-direction.md) ve [sürüm düzeni](../governance/versioning.md) otoriteyi açıklar.
+
 ## Deney sorusu
 
-Kullanıcı, gözlenen kayıtlarda uzun süredir ilerleme/kanıt görünmeyen işi bulup sınırlı ve güncel bir paketle yeni oturumda doğru next-action'a dönebiliyor mu? [Ürün sözleşmesi](../product/resume-package-and-memory.md) state, tazelik, izin ve RES-01–08 test oracle'ını tanımlar.
+Kullanıcı hangi yaklaşımı seçtiğini ve hangi artifact'in gerçekten hedefe uygulandığını unknown/partial/kanıt ayrımıyla görebiliyor; sınırlı ve güncel paketle yeni oturumda doğru next-action'a dönebiliyor mu? [GAP-01–10](../product/intent-to-reality-gap.md) seçim→hedef uygulama oracle'ını ekler. Native Projects ile ek kullanıcı değeri henüz ölçülmedi. [Ürün sözleşmesi](../product/resume-package-and-memory.md) state, tazelik, izin ve RES-01–08 test oracle'ını tanımlar.
 
 Önerilen dar deney: kaynaklı bekleyen kartlar + yaş/kanıt/coverage + önizle/kopyala devam paketi + ertele/incele. Obsolete tespiti önce mevcut güncel karar/impact kayıtlarına dayanır; bir regex'in bulduğu “yerine” ifadesi doğrulanmış supersession sayılmaz. Tam ürün vizyonu ve 14 MVP kriteri aynen kalır; bu bir öğrenme dilimidir.
 
 ## Önkoşullar ve ilerleme kapısı
 
 - T01 golden corpus/oracle ve T02 kaynak/host capability raporu hazırlanır. Önceki Spike-0 artifact'i varsa ayrı repo/path, revision, test ve izin kapsamıyla incelenir; doğrulanana kadar bağımlılık değildir.
-- T03 build/extend/stack kapısından sonra ayrı sentetik prototype uygulanabilir. Production entegrasyonu için T05/T07/T08 kaynak/kimlik/event/audit, T10 reconciliation ve ilgili context/UI katmanları gerekir.
+- T03a sınırlı prototype yöntemi/stack önerisi hazırlanır; T03b yalnız yetkili kapsamda küçük deney, T03c sonuç sonrası native/extend/build yatırım ve production stack kararıdır. Prototype T03c sonucunu sınamak içindir; önce sonuç kararı isteme döngüsü yok. Production entegrasyonu için T05/T07/T08 kaynak/kimlik/event/audit, T10 reconciliation ve ilgili context/UI katmanları gerekir.
 - İlk deneyde deterministic template, örnek kayıt ve mock job kullanılır. Gerçek transcript ve model testi Q03 kapsamında somut veri/provider/bütçe izni gerektirir. Paket hazırlama, gerçek araçta resume veya execution ile karıştırılmaz.
 - Q11-A ilk deney için öneridir. Owner tercihi gelmezse taslak/sentetik değerlendirme hazırlanabilir; B host/CLI başlatma uygulanmaz.
 
@@ -19,11 +21,11 @@ Kullanıcı, gözlenen kayıtlarda uzun süredir ilerleme/kanıt görünmeyen i�
 
 | Adım | Çıktı ve bağımlılık | Gözlenebilir kabul |
 |---|---|---|
-| S1-01 Kaynak/oracle envanteri | T01/T02; observed, unknown ve izinli kaynak listesini belirle | Aynı projeye bağlı iki chat ve eksik erişim ayrı; beklenen next-step/AC/karar etiketi model çıktısından bağımsız yazılır |
-| S1-02 Bekleyen iş görünümü | S1-01; sentetik kart, ilerleme yaşı, kanıt ve coverage | RES-01/05; erteleme/iptal ayrı, kesin “unutuldu” iddiası yok; filtre/sıra deterministik |
+| S1-01 Kaynak/oracle envanteri | T01/T02/T02d; GAP/RES, human selection ve source/target scope | Aynı projeye bağlı iki chat ve eksik erişim ayrı; beklenen next-step/AC/karar etiketi model çıktısından bağımsız yazılır |
+| S1-02 Gerçekleşme/bekleyen iş görünümü | S1-01; karar, artifact, target assessment, yaş ve coverage | GAP-01–05/07/09/10 ve RES-01/05; reported/observed/unknown/partial ve acceptance ayrı; exact ref/path kontrolü fake ise etiketi açık |
 | S1-03 Paket şablonu | S1-01; source→task/decision/AC/evidence snapshot ve bounded metin | RES-02/06/07; kritik eksik bağlam görünür, raw transcript talimat değil; LLM çağrı sayısı sıfır |
 | S1-04 Önizle/kopyala | S1-02/03; clipboard veya seçilebilir metin fallback | RES-03/04/05; explicit copy, stale/ACL negatifleri, copy run başlatmaz; prototype temel tıklama gerçekten test edilir |
-| S1-05 Hafıza deney protokolü | S1-03; fresh-session koşulu, prompt/paket/full-source baseline ve puanlama formu | RES-08; model/config/context contamination/usage alanları ve izin kapısı; çalıştırılmadıysa not_run |
+| S1-05 Native ve hafıza deney protokolü | S1-03; bağlı/manual hedef ayrımı, native Projects, fresh-session prompt/paket/full-source ve puanlama | RES-08; model/config/context contamination/usage alanları ve izin kapısı; çalıştırılmadıysa not_run |
 | S1-06 Pilot ve karar raporu | S1-04/05; önce sentetik, sonra yalnız izinli gerçek örneklem | Yanlış alarm ve kaçırılan iş için ayrı oracle; stale karar, next-step ve düzeltme maliyeti raporlu; go/no-go ve kalan açıklar |
 
 Adımlar tamamlanmış sayılmaz. Üretim entegrasyonu mevcut backlog'da T20h/T18h/T24m ile izlenir; sıradaki ana iş T01 olarak kalır. Gerçek prototip ile ürün runtime'ı ve doküman taslağı ayrı teslim durumlarıdır.
@@ -50,6 +52,6 @@ Bir modelin “anladım” demesi başarı değildir. Plan/cevap güncel oracle 
 - RES-08 protokol ve rapor: örneklem, karşılaştırılabilir koşullar, tazelik/ACL, unknown tüketim ve izinli çalışma. Gerçek model deneyi yapılmadıysa sonuç yerine hazır protokol sunulur.
 - Zorunlu fixture setinde yetkisiz veri/dispatch, kanıtsız tamamlanma ve eski kararı current gibi sunma kabul edilmez. Diğer başarı eşikleri baseline sonrası owner review'una gider; ölçümsüz yüzde veya optimum token hedefi yok.
 - Negatif sonuçlar, kaçırılan işler ve yanlış uyarılar rapordan çıkarılmaz. Paket daha kısa fakat gerekli karar eksikse tasarruf başarısı sayılmaz.
-- Go/no-go: kaynak/next-step yeterli ve kullanıcı düzeltme yükü kabul edilebilir ise dar entegrasyon öner; aksi halde capture/reconciliation/context eksiğini önce çöz. B başlatma seçeneği için ayrı capability ve izin kapısı devam eder.
+- Go/no-go: GAP/RES doğru ve kullanıcı düzeltme yükü kabul edilebilirse native/extension/bağımsız build seçeneklerini aynı maliyet/kalite verisiyle sun. Native yeterliyse ayrı ürün gerekliliği yok; erişim/deney yoksa sonuç unknown ve ek deney/bekleme. Hatalı kabul/uygulama ataması önce çözülür; yatırım owner kararıdır. B başlatma seçeneği için ayrı capability ve izin kapısı devam eder.
 
 Önerilen 3–5 gerçek oturum ve iki haftalık süre yalnız pilot adaylarıdır; takvim, veri erişimi, ücret veya başarı garantisi değildir. Hiçbir gerçek oturum/deney bu doküman hazırlanırken çalıştırılmadı.

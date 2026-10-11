@@ -46,3 +46,9 @@ Sonuçta ne değişti, ne doğrulandı, açık kalanlar ve sıradaki iş yaz. Be
 - Source capture, domain event, security audit, operational telemetry ve DB WAL farklıdır. Secret/raw transcript operational loga konmaz.
 - Kalıcı hafıza ile geçici model context'ini ayır. Payload TTL dedup/approval kimliğini silmez. Purge ve restore birlikte tasarlanır.
 - Ayrıntılı sözleşmeler `docs/architecture/identity-access.md`, `logging-audit.md` ve `storage-memory-capacity.md` içindedir. Sayısal süre/kapasite önerileri ölçülmüş sonuç veya kabul edilmiş policy sayılmaz.
+
+## Doküman ve kanıt sürümlerini ayır
+
+Tek güncel doküman setini yerinde güncelle; README-v2/v3 veya docs sürüm kopyaları üretme. Geçmişi Git ref'iyle oku. Tasarım revizyonu ürün release'i, event/API schema_version veya task snapshot sürümü değildir; `docs/governance/versioning.md` otorite düzenini tanımlar.
+
+Generated artifact, insan seçimi, hedef uygulama gözlemi ve acceptance evidence ayrı kavramlardır. Exact hedef/ref/path + artifact/decision/AC revision ve kanıt otoritesi korunur. Reported/observed/unknown/missing/partial/stale aynı değildir. Hedefte dosya varlığı test/deploy veya bütün task completion kanıtı olmaz. Yetkisiz kaynak/target read veya upload çıkarma; ayrıntı `docs/product/intent-to-reality-gap.md` ve ADR-0011.

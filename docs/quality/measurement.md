@@ -60,3 +60,17 @@ Retention UI'sında kullanıcı hangi içeriğin kalacağını/kimle paylaşıla
 [TOK kabul planı](../architecture/routing-token-economy.md) aynı corpus ve kaliteyle full-context baseline karşılaştırmasını; host toplamının bilinmediği durumda yalnız gözlenebilen ek yükün raporlanmasını tanımlar. Cache write/read ve reasoning sınıfları provider'a göre eşlenir. Graph yükleme/filtre/zoom model çağrı sayısı sıfır olmalı.
 
 [GUX senaryolarında](../product/graph-experience.md) kullanıcıya sentetik iptal/obsolete/verified ve ended/invalidated ilişki örnekleri verilir; “ne oldu, neden oldu, ne hâlâ gerekli?” cevapları, yanlış yorum sayısı ve açıklamaya ulaşma adımları ölçülür. Q04 tercihine göre başlangıç görünümü değişebilir; tarihçe ve erişilebilirlik kabulü korunur. Sonuç yoktur.
+
+## Güncel ilk değer kapısı — GAP/RES ve native kıyas
+
+[Tasarım revizyonu 03](../product/current-direction.md), geniş MVP metriklerini kaldırmaz. İlk deney [GAP-01–10](../product/intent-to-reality-gap.md) ve [RES](../product/resume-package-and-memory.md) üzerinde şunları birlikte raporlar:
+
+- Yanlış accepted/uygulandı ataması: gold'a aykırı atamalar / tüm adoption/application değerlendirmeleri; false-positive ve kaçan belirsizlik ayrı.
+- Hedef doğruluğu: exact repo/ref/path/artifact revision, partial bundle, unknown/stale; application observation acceptance başarıyla karıştırılmamalı.
+- Yeni oturumda current karar/uygulama bilinmeyeni/next-action doğruluğu; typed input veya paket kısa olması gerçek extraction/host kullanım başarısı değildir.
+- Yönetim süresi: setup + izin/import + durum kontrolü + review/düzeltme + context aktarma; yalnız düğme tıklama süresi alınmaz.
+- Tekrar soru, model tokenı, adapter/API istekleri ve maintenance/setup yükü; bilinmeyen değer null/not_run.
+
+Aynı senaryo native Projects ve izinli Decivora prototipte uygun desteklenen ayarlarla karşılaştırılır; bağlı target ile manuel/providerlar arası koşul ayrı raporlanır. Model ve dataset kontrolü, paket/full-source contamination ve reviewer oracle bağımsızlığı korunur. Zorunlu sette yanlış seçildi/uygulandı/verified ataması 0 kabul hedefidir; genellenmiş garanti değildir.
+
+T03c yatırım kararı olumlu sonuç çıkarmak zorunda değildir. Native yeterli veya maintenance faydayı aşıyorsa integration/native/durdur önerisi kanıtlı sonuçtur; account/izin yoksa not_run, rekabet üstünlüğü unknown. Henüz hiçbir sonuç ölçülmedi.

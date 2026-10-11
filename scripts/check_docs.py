@@ -110,6 +110,41 @@ for prefix, relative in contract_docs.items():
         if refs - actual:
             errors.append(f'{path.relative_to(ROOT)}: unknown contract refs {sorted(refs-actual)}')
 
+# Current focus and target-observation contracts; documentation references only.
+gap_doc = (ROOT / 'docs/product/intent-to-reality-gap.md').read_text()
+gap_ids = set(re.findall(r'^\| (GAP-\d+) \|', gap_doc, re.M))
+if gap_ids != {f'GAP-{i:02}' for i in range(1, 11)}:
+    errors.append('expected GAP-01–10 planned contracts')
+for path in markdown:
+    refs = set(re.findall(r'\bGAP-\d+\b', path.read_text()))
+    if refs - gap_ids:
+        errors.append(f'{path.relative_to(ROOT)}: unknown GAP refs {sorted(refs-gap_ids)}')
+gap_fixture = json.loads((ROOT / 'examples/intent-reality-scenario.json').read_text())
+if gap_fixture.get('synthetic') is not True or gap_fixture.get('implemented') is not False:
+    errors.append('GAP fixture must be synthetic and unimplemented')
+if gap_fixture.get('result_status') != 'not_run':
+    errors.append('GAP oracle is not a runtime result')
+fixture_ids = [row['id'] for row in gap_fixture['scenarios']]
+if len(fixture_ids) != 10 or set(fixture_ids) != gap_ids:
+    errors.append('GAP fixture scenario coverage mismatch')
+
+# Inventory must cover every Mermaid-bearing document once.
+diagram_counts = {
+    path.relative_to(ROOT).as_posix(): sum(line == '```mermaid' for line in path.read_text().splitlines())
+    for path in markdown
+}
+diagram_counts = {path: count for path, count in diagram_counts.items() if count}
+inventory_doc = (ROOT / 'docs/quality/diagram-review.md').read_text()
+inventory = inventory_doc.split('<!-- diagram-inventory:start -->')[1].split('<!-- diagram-inventory:end -->')[0]
+inventory_counts = {}
+for target, count in re.findall(r'^\| \[.*?\]\(([^)]+)\) \| (\d+) \|$', inventory, re.M):
+    resolved = ((ROOT / 'docs/quality') / target).resolve().relative_to(ROOT.resolve()).as_posix()
+    if resolved in inventory_counts:
+        errors.append(f'duplicate diagram inventory: {resolved}')
+    inventory_counts[resolved] = int(count)
+if inventory_counts != diagram_counts:
+    errors.append('diagram inventory differs from Mermaid source counts')
+
 for path in ROOT.rglob('*.json'):
     json.loads(path.read_text())
 collaboration_plan = (ROOT / 'docs/quality/collaboration-validation.md').read_text()
@@ -136,4 +171,6 @@ print(f'Traceability: {len(source_stages)} source stages, {len(features)} featur
       f'{len(engines)} engines, {len(scenarios)} planned verification scenarios.')
 print(f'Collaboration/data: {len(collaboration_scenarios)} additional planned scenarios; not runtime tested.')
 print(f'Connection/token/graph/context: {contract_count} additional planned contract scenarios.')
+print(f'Target application: {len(gap_ids)} planned GAP scenarios; oracle is not_run.')
+print(f'Diagrams: {sum(diagram_counts.values())} source blocks in {len(diagram_counts)} documents; inventory matched.')
 print('Not tested: application runtime, adapters, model quality, Mermaid rendering.')

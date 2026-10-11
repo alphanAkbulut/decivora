@@ -1,10 +1,12 @@
 # Decivora
 
-### Living project memory. Decisions evolve; plans stay accountable.
+### Living project memory. Decisions, actions, and evidence stay connected.
 
-**Kararlarla evrilen AI-native proje hafızası.** Konuşmalardaki fikirleri, bulguları, talimatları ve yarım kalan işleri yakalamayı; yeni kararların mevcut işler üzerindeki etkisini gerekçesiyle göstermeyi hedefler.
+**Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
 
 > **Durum: Discovery / Product Definition.** Bu repository ürün ve mühendislik planıdır. Çalışan uygulama, otomatik capture entegrasyonu veya doğrulanmış performans sonucu henüz yoktur. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+
+**Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Build/extend sonucu ve prototip başlatma henüz karara bağlanmadı. [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
 
 ## Çözdüğümüz problem
 
@@ -25,8 +27,11 @@ flowchart LR
     C --> D[Karar farkındalıklı etki analizi]
     D --> E[Gerekçeli toplu onay]
     E --> F[Güncel proje bilgisi]
-    F --> G[Çalışma kanıtları ve ayrı task doğrulaması]
+    F --> X[Artifact ve hedef uygulama durumu]
+    X --> G[Uygulama gözlemi ve ayrı AC doğrulaması]
+    X --> U[Unknown veya partial açıkça korunur]
     G --> C
+    U --> C
     B --> H[Append-only olay geçmişi]
     E --> H
     G --> H
@@ -34,7 +39,9 @@ flowchart LR
 
 ## Gösterilecek ilk değer
 
-**Örnek senaryo; çalışan demo değildir:** Proje Markdown depolamadan SQLite'a geçer. Eski senkronizasyon işi gereksizleşme adayı olur. Dosya izleme işi belge importu için de gerektiğinden korunur. Önceden gerçekten tamamlanan iş tarihçede kalır. Kullanıcı öneriyi inceler; onay yeni olay üretir, geçmişi değiştirmez.
+**Güncel ilk deney; çalışan demo değildir:** AI üç dosya üretir, kullanıcı yeni yaklaşımı seçer; hedefte yükleme kanıtı yoktur. Sonraki oturuma dosyalar yüklenmiş varsayımı yerine onaylı karar, üretilen taslaklar, uygulama bilinmeyeni ve uygun sonraki adım aktarılır. [Sentetik oracle](examples/intent-reality-scenario.json) ve [GAP-01–10](docs/product/intent-to-reality-gap.md) bu ayrımı sınamak için hazırlanmıştır.
+
+**Korunan impact senaryosu:** Proje Markdown depolamadan SQLite'a geçer. Eski senkronizasyon işi gereksizleşme adayı olur. Dosya izleme işi belge importu için de gerektiğinden korunur. Önceden gerçekten tamamlanan iş tarihçede kalır. Kullanıcı öneriyi inceler; onay yeni olay üretir, geçmişi değiştirmez.
 
 | Ürünün odağı | Kullanıcıya değeri |
 |---|---|
@@ -50,6 +57,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 
 | Amaç | Belge |
 |---|---|
+| Son evrim ve önceki planla fark | [Güncel yön](docs/product/current-direction.md) · [Sürüm/otorite düzeni](docs/governance/versioning.md) |
 | Vizyon ve ürün ilkeleri | [Ürün tanımı](docs/product/vision.md) |
 | Hiçbir fikri kaybetmeden kapsamı görmek | [Tam kapsam](docs/product/full-scope.md) |
 | İlk sürümün sınırlarını anlamak | [MVP](docs/product/mvp.md) |

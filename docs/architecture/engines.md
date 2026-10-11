@@ -60,3 +60,9 @@ Health en az ayrı göstergeler sunar: capture coverage, oldest unprocessed age,
 ENG-01 duplicate/crash/gap; ENG-02 tür ve span recall; ENG-03 duplicate/conflict precision; ENG-04 gerekçe/karşı kanıt insan değerlendirmesi; ENG-05 false-obsolete ve missed-impact; ENG-06 yetki/stale/partial approval; ENG-07 atomic/replay; ENG-08 false-done/freshness; ENG-09 kalite eşitliğinde maliyet; ENG-10 cross-project retrieval ve missed-ready ölçülür. Hedefler [ölçüm planında](../quality/measurement.md); sonuçlar henüz yoktur.
 
 Detaylar: [runtime sözleşmeleri](runtime-contracts.md), [diyagramlar](diagrams.md), [routing](routing-token-economy.md).
+
+## İlk gerçekleşme/devam halkası
+
+[Tasarım revizyonu 03](../product/current-direction.md) için ENG-01 artifact/target gözlemini alır; ENG-03 mevcut öneri/karar/supersession ile uzlaştırır; ENG-06 güvenilir seçimi ve authorization'ı doğrular; ENG-07 application kayıtlarını event/projection olarak tutar; ENG-08 **ApplicationAssessment** ile **acceptance VerificationAssessment**'ı ayrı değerlendirir; ENG-10 güncel karar/uygulama/unknown içeren brief üretir. Yeni on birinci engine yok.
+
+Hedef read-back kod/API işidir; model exact hash/ref eşleşmesinin yerine geçmez. Enginelerin hepsini ayrı servis/agent yapmak veya ilk deneyde tam model extraction uygulamak zorunlu değildir. Bütün akışın pipeline dry-run'ı, gerçek transcript capture ve fresh-session başarısı yerine geçmez.

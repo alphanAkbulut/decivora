@@ -232,3 +232,21 @@ Akış: yetkili snapshot → gate/blocker/coverage kontrolü → benzersiz downs
 Sıra apply ayrı command'dır: authenticated actor, proje/task kapsamı, amaçlanan değişiklik, gerekçe, base plan/graph/goal/context/policy/authz revisions ve idempotency kimliği taşır. İnsan PO canonical priority/value/scope kararını verir; üst agent yalnız mevcut grant içindeki teknik execution order'ı düzenler. Apply anında grant/revocation ve snapshot yeniden kontrol edilir; stale/conflict yeniden preview ister. Yetkili değişiklik atomik domain event + audit üretir; retry tek etki, replay sıfır LLM/dış delivery. Yeni execution veya dış yazma ayrıca kendi izin kapısından geçer.
 
 [Identity/access](identity-access.md), [agent soru/karar akışı](agent-and-team-operation.md) ve [impact sözleşmesi](reconciliation-impact.md) değişmez: AND/OR/unknown korunur; depends_on, required_by ve part_of karıştırılmaz; pending impact ready değildir. FLOW-09–15 MVP, FLOW-16–17 P2 planlı kabul testleridir; SEQ testleri yerine geçmez.
+
+## 10. Hedef uygulama gözlemi tetikleri
+
+[ADR-0011](adr/0011-target-application-evidence.md) mevcut TRG kataloğunun açılımıdır; ayrı scheduler/servis kararı yok.
+
+| Mevcut tetik | Yeni ayrıntı | İlk işlem / sınır |
+|---|---|---|
+| TRG-01/03 | Artifact üretimi, upload önerisi veya insan seçim kaynağı geldi | Kaynak/proposal/selection provenance ayrı; human approval güvenilir transport/policy ister |
+| TRG-05/06 | İnsan/agent upload beyanı veya exact target gözlemi | ENG-08 application assessment; reported/observed/partial/unknown, acceptance ayrıca |
+| TRG-04/09 | Karar/AC/artifact/target locator/authz değişti | İlgili expectation/assessment ve brief stale; current yetki olmadan yeni read yok |
+| TRG-07/08 | İlgili sonraki iş soruldu veya gerekli ön koşul inceleniyor | Cached snapshot/freshness yeterliyse tekrar read/model yok; aksi halde izinli kontrol veya odaklı insan sorusu |
+| TRG-10/12 | Opt-in bakım kontrolü vadesi | Yalnız açık selected target ve policy'de varsa bounded recheck; sayısal default seçilmedi |
+
+Mantıksal işlemler `query_application_status`, `propose_application_expectation`, `report_application`, `request_target_check`, `record_application_assessment` ve `build_current_brief` adaylarıdır; çalışan API/MCP adı veya endpoint değildir. Input scope + expectation/target/artifact revision + permission/policy + idempotency taşır. İlk cevap receipt/pending olabilir; async observation ayrı sonuçtur. Commit unknown, read error/unavailable/mismatch ve test not_run birbirinden ayrılır.
+
+Tek target kontrolü P0 capability/prototype deneyinde mümkünse sınanır; genel GitHub evidence P2 ve external write P3 kapsamı korunur. Hedef access izni source capture izninden farklıdır. Bütün mesajlarda poll veya LLM yok; kontrol budget/rate/byte/concurrency sınırına tabidir. Dış read sonrasında assessment commit'i taze authz ve expectation revision ister; in-flight okumanın sonradan geri alınabildiği söylenmez.
+
+İlk GAP sequence [ürün sözleşmesindedir](../product/intent-to-reality-gap.md#4-kapalı-geri-bildirim-döngüsü). SEQ-01 task acceptance, SEQ-02 model/onay, SEQ-03 dış mutation olarak korunur; biri ötekini tamamlanmış saymaz.

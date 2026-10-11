@@ -17,3 +17,7 @@ ADR'ler henüz uygulanan teknoloji kararları değildir. Kabul edilmiş kullanı
 - [ADR-0010 — Depolama katmanları ve veri yaşam döngüsü](0010-storage-lifecycle.md)
 
 0009, 0005/0008'i; 0010, 0001/0002/0007'yi tamamlar. Rol matrisi, ekip DB geçişi, retention sayıları ve capacity hedefleri öneridir; onaylanmış/uygulanmış kabul edilmez.
+
+- [ADR-0011 — Hedef uygulama gözlemi ve ayrı kabul kanıtı](0011-target-application-evidence.md)
+
+0011, 0005/0008/0010'u tamamlar; mevcut event/kimlik/impact ilkelerini iptal etmez. [Güncel tasarım revizyonu](../../product/current-direction.md) ilk yatırım odağını belirtir; stack ve build/extend ADR'leri hâlâ proposed. Genel mimariyi komple tekrar sürüm kopyasına dönüştürmeyin.

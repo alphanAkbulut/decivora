@@ -37,3 +37,9 @@ Her adapter için: yeni mesaj, assistant final, tool failure, stop olmadan kapan
 ## Kurulum ve context protokolü
 
 [Bağlantı sözleşmesi](connection-and-context.md) kullanıcı kurulumunu, MCP/capture/UI ayrımını, tools-only durumunu, stdio/HTTP adaylarını, health/disconnect ve delta context akışını somutlaştırır. Bağlı MCP, pasif capture kanıtı değildir. Kaynak iki yoldan gelirse model çağrısı/öneri duplicate olmamalı; CON-01–CON-08 ile doğrulanır. Paket/komut ve kurulu host testleri henüz yoktur.
+
+## İlk deney için kaynak ile hedef erişimi ayrımı
+
+[Güncel yön](../product/current-direction.md) T02'de iki coding yüzeyinin kaynak capability'sini korur; sınırlı deney için ayrıca **tek seçilmiş hedef** read-back fizibilitesi ister. Local read/GitHub erişimi ile source transcript erişimi ayrı izin ve coverage'dır. Generated artifact sinyali (ID/revision/hash/availability), güvenilir insan selection kaynağı ve upload observation/report alanları platform tarafından sunulmuyorsa unknown/manual fallback kalır.
+
+Typed sentetik input ile state testi extraction/capture doğruluğunu kanıtlamaz. Import edilen assistant “user accepted” özeti insan principal yaratmaz. Hedef diff/refetch desteklenmedikçe durumun sürekli güncel kaldığı iddiası yok. GAP-01–10 ve T02d bu contract raporunu tamamlar.

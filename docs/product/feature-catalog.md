@@ -61,3 +61,7 @@ Kullanıcı isteğiyle [task context ve kabul dosyası](task-context-and-accepta
 ## Bekleyen işten yeni oturuma dönüş
 
 F11'in yaş/kanıt göstergesi ve F08/F13'ün context aktarımı [devam paketi](resume-package-and-memory.md) ile birleşir: seçili işin izinli kaynakları, ne yapıldığı/ne kaldığı ve güncel kararlar önizlenir. İlk deney için önerilen kopyala eylemi run başlatmaz veya görevi completed yapmaz. F04 stale/çelişki kontrolü ve F09 verification korunur. Q11 tercihi açık; [Spike-1 v1](../delivery/spike-1-v1.md) bir uygulama/test sonucu değildir.
+
+## F07/F08/F09/F10 — İlk gerçekleşme sürekliliği deneyi
+
+[Güncel yön](current-direction.md) F07'de gerçek insan seçimini, F08'de generated artifact ve target expectation'ı, F09'da reported/observed/partial/unknown ile acceptance ayrımını, F10'da bunların kaynaklı görünümünü birlikte sınar. Minimal deney ekranı tam Inbox/Board/Graph/Timeline teslimi değildir. [GAP oracle](../../examples/intent-reality-scenario.json) sentetik ve not_run; native Projects ile ek değer kanıtlanmadı. Mevcut 17 feature ve tam scope korunur.

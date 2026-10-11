@@ -54,3 +54,10 @@ MCP tüm sohbetleri gören event bus değildir. Codex, Claude Code, ChatGPT Chat
 | Aynı OS hesabına tam yetkili agent | API ACL fiziksel sınır değildir; ayrı servis hesabı/sandbox/host deployment gerekir |
 
 [Kimlik](../architecture/identity-access.md), [log](../architecture/logging-audit.md), [veri yaşam döngüsü](../architecture/storage-memory-capacity.md) bu risklerin ayrıntılı önerileridir. Mevcut kontrollerin uygulanmış/güvenlik taramasından geçmiş olduğu iddia edilmez.
+
+## Güncel gerçekleşme/rekabet riskleri
+
+- Öneri veya sessizliği insan seçimi; generated dosyayı applied; eski/başka hedef gözlemini current completion sayma: [GAP](../product/intent-to-reality-gap.md), ADR-0011 ve typed target/assessment doğrulaması.
+- İlk deneyi geçirmek için sürekli manuel import/kontrol gerektirme: bütün yönetim/setup/bakım süresini baseline'a dahil et; kullanıcıya yeni proje yönetim yükü yaratma.
+- Claude Projects ile örtüşmeyi küçümseyip geniş MVP'ye erken yatırım: [güncel yön](../product/current-direction.md), T03 native/extend/build kapısı; ürün iptali de kanıtsız varsayılmaz.
+- Prototip, tasarım revizyonu veya mock sonucunu ürün release'i sanma: [versioning](versioning.md) ve ayrı acceptance/test sütunları. Bu kontroller tasarımdır, uygulanmış risk azaltımı değildir.

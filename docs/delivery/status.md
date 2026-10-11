@@ -166,3 +166,13 @@ Her görev sonunda görev ID, değişen dosyalar, AC karşılığı, çalıştı
 ## Korunacak alanlar
 
 Başka kullanıcı projeleri bu repo için pilot olarak kendiliğinden bağlanmaz/değiştirilmez. Kaynak transcript ve credentials repoya konmaz. Doküman düzenlemesi ürünü çalıştırma, ücretli API kullanma veya public release yetkisi değildir.
+
+## Tasarım revizyonu 03 — güncel durum özeti
+
+**2026-10-11:** [Güncel yön](../product/current-direction.md) ilk karşılaştırma odağını gerçek seçim/artifact/hedef uygulama/devam bağlamı olarak toplar. Tam vizyon ve P1b MVP korunur; projenin iptal edilmesi veya bağımsız build'e geçiş kabul edilmiş değil. Bu tur belgeleme/tutarlılık güncellemesidir, prototip/runtime başlamadı.
+
+76 başlangıç dosyası remote/local eşleşmesiyle tarandı; diagram/şema/ADR/giriş/analiz/delivery etkileri çapraz incelendi. ApplicationTarget/Expectation/Observation/Assessment ve ER-03/ADR-0011, T02d/T03a–c yatırım sırası, GAP JSON oracle ve tek canonical set sürüm düzeni eklendi. Tasarım revizyonu 03 product v3 değildir; v2/v3 kopyaları oluşturulmadı.
+
+Sıradaki **T01**; ardından source/tek target capability ve sınırlı yöntem önerisi. T03b prototype/native deney ancak yetkili kapsamda; T03c sonuç sonrası yatırım kararı. Q02/Q03/Q06/Q08/Q11 ve sayısal/stack/lisans kararları açık. Prototip, native benchmark, gerçek LLM/adapter/DB/UI/migration/test sonucu not_run.
+
+Bu teslimin doküman kontrolü ve render/read-back sonucu doğrulandıktan sonra bu kayda eklenir; eski başarı kayıtları bu revizyonun testi değildir.

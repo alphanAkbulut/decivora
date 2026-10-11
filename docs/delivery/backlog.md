@@ -65,11 +65,11 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 - **Beklenen dosya alanı:** `docs/discovery/adapter-feasibility.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Yüzey başına küçük deney.
 
-## T03 — Build/extend ve teknoloji kararı
+## T03 — Native/extend/build ve teknoloji kararı
 
 - **Durum / faz:** TODO / P0. **Bağımlılık:** T01,T02. **Kapsam ID:** EVAL-01.
-- **İş:** Cortex/Tracker/mai-mcp ve Beads alternatifi için aynı corpus denemesini hazırla; lisans ve kurulum etkisini incele; seçenek öner. [Benchmark bulgularındaki](../discovery/benchmark-findings.md) güncel yapılandırma ve sonuç şablonunu kullan; [şikâyet araştırmasındaki](../discovery/user-research.md) düzeltme/karşı kanıtı atlama.
-- **Kabul:** Native/config/custom/unknown matrisi ve maliyet/kalite kanıtı var; owner kararı ADR-0001/0003'e işlenir; deneme yapılamayanlar açık.
+- **İş:** [Güncel yön](../product/current-direction.md) uyarınca yeni Claude Projects ve mevcut Cortex/Tracker/mai-mcp/Beads adaylarını aynı oracle'ın uygun bölümünde karşılaştır. T03a geçici deney yöntemi/stack kapsamı, T03b yetkili sınırlı prototip + native baseline, T03c owner yatırım/production stack kararı olarak sırayla ilerle; lisans ve kurulum etkisini incele. [Benchmark bulgularındaki](../discovery/benchmark-findings.md) güncel yapılandırma ve sonuç şablonunu kullan; [şikâyet araştırmasındaki](../discovery/user-research.md) düzeltme/karşı kanıtı atlama.
+- **Kabul:** Native/config/custom/unknown matrisi, GAP/RES sonuçları ve kullanıcı yönetim yükü kanıtı var; native/extend/build/ek deney/durdur seçenekleri gerekçeli. Owner kararı ilgili ADR'lere işlenir; deneme yapılamayanlar not_run. T03a prototype yöntemi production stack onayı değildir; build seçilmeden T04 başlamaz.
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
@@ -504,3 +504,16 @@ S1-01–06 deney adları ana 30 göreve yeni task sayısı eklemez. Ayrı sentet
 | T24n / T18i,T20i,T24m | Aynı sentetik görevden fresh-session + dış hedef belirsizliği karşılaştırması | GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run |
 
 İlk local veya GitHub adapter'ı T02/T03 capability seçimine bağlıdır; gelecekteki GitHub evidence T27 kapsamı kaybolmaz. Bu plan yeni hesap bağlantısı veya otomatik upload yetkisi değildir.
+
+## Güncel P0 yatırım kapısı — tasarım revizyonu 03
+
+T01 ilk hazır iş olarak korunur; GAP/RES sentetik oracle örnekleri geniş corpus'un yerine geçmez. Prototip kodlaması bu dokümantasyon turunda başlamadı. [Deney planı](spike-1-v1.md) aynı dosyada günceldir; yeni v2/v3 kopyası yok.
+
+| Dilim / bağımlılık | Teslim / durum | Kabul |
+|---|---|---|
+| T02d / T01 | TODO: selected kaynak, trustworthy human selection ve tek local/repo target capability | Capture ve target izinleri ayrı; real/mock/import farkı, exact hedef coverage, unknown sınırı; ücret/erişim ayrıca |
+| T03a / T01,T02d | TODO: sınırlı deney yöntemi, geçici stack/lisans ve kapsam önerisi | Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil |
+| T03b / T03a | TODO: yetkilendirilirse küçük prototip ve adil native deneyi | GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok |
+| T03c / T03b,T02 | TODO: sonuç, yönetim/kurulum/bakım maliyeti ve yatırım seçenekleri | Owner native/extend/build/ek deney/durdur kararı; build'de production stack ADR ve T04 kapısı, native/extend'de uygun teslim planı |
+
+T02'nin iki coding yüzeyi kapsamı korunur; prototip tek hedefle sınırlı olabilir. T14d/T18i/T20i/T24n üretim entegrasyonunun bağımlılıklarıdır; P0 prototip bütün bu görevlerin tamamlandığını iddia etmez. T03b çalıştırma onayı/veri veya bütçe izni bu tabloyla oluşmaz.
