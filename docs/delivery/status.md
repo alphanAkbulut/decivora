@@ -276,3 +276,12 @@ Kullanıcı ilk pilot için **A açık aktarım + tek read-only hedef** yolunu s
 README, başlangıç/devir, teknik gap soru kuyruğu, bağlantı sözleşmesi ve Spike-1 bu sıraya hizalandı. B için MCP hedefli bağlam/öneri araçları ile ayrıca host/build deneyi gerektiren otomatik capture ayrıldı; `tools_only` tam transcript/subagent coverage sayılmaz. Q02'nin somut kaynak/hedef/host/OS ayrıntıları ve Q03 veri/provider/bütçe açık. Sonraki öneri ek ücretli model API'si olmadan sentetik/elle etiketli fixture + deterministik kontrol; henüz Q03 owner yanıtı değil.
 
 Pilot, runtime, gerçek hedef taraması, host/MCP kurulumu veya model deneyi yapılmadı. T01 ve ana backlog TODO; yatırım/stack kararı açık. Bu tur hiçbir Mermaid kaynak bloğu veya SVG değişmedi; önceki render kanıtını yeni render yapılmış gibi sunma. Teslim doğrulaması doküman tutarlılığı, değişmeyen diagram source/fallback hashleri ve remote içerik read-back'i ile yapılır.
+
+
+## 2026-10-11 — Q03-R1 A: ilk deney ek ücretli model API'si olmadan
+
+Kullanıcı, “İlk deneyde ek ücretli model API'si kullanalım mı?” sorusuna **A** yanıtını verdi. İlk dilim örnek/elle etiketli kayıtlar ve deterministik kod kontrolleriyle ilerler; otomatik serbest metin extraction ve native/fresh-session model değerlendirmesi sonraki ayrı deneydir. B alternatifi korunur, seçilmedi. [Karar/gerekçe](decision-brief.md#q03-r1--ilk-deneyde-ek-ücretli-model-apisi) Q03'ün ilk-deney kısmını kapatır; sonraki gerçek veri/provider/bütçe açık kalır.
+
+README, karar brief'i, başlangıç, LLM devir, teknik gap kuyruğu ve Spike-1 aynı kabul durumuna hizalandı. Spike-1 no-model dilimin kabul sınırı, model sonuçlarının `not_run` kalması ve ölçülmeyen maliyetin sıfır diye gösterilmemesini açıklar. Bu seçim kalıcı LLM yasağı veya gerçek kaynak/target erişim izni değildir. T01/ana backlog TODO; runtime, corpus deneyi, gerçek model/API/capture/target/UI testi bu tur yapılmadı. İlk kaynak A → sonraki Codex B sırası korunur.
+
+Mermaid/SVG kaynakları değişmedi; mevcut render hash kayıtları korunur. Teslim kontrolü doküman/link/inventory ve remote metin read-back ile yapılır; yeni runtime/render testi iddiası yok.

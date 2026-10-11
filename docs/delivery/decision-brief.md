@@ -8,7 +8,7 @@
 |---|---|---|---|
 | Q01 | İlk pilot kimin işiyle doğrulansın? | **Kabul edildi:** önce owner'ın bireysel kullanımı, sonra benzer kullanıcılar. Kullanıcının bu oturumdaki açık cevabı | İlk UX ve araştırma örneklemi; tam kapsam ve P4 ekip vizyonu korunur |
 | Q02 | Günlük kullanılan coding/chat yüzeyleri, pilotun zorunlu ilk ikisi ve hedef OS? | Kısmen cevaplandı: Q02-R1 A ilk pilot, B sonraki hedef; OS/host ve somut kaynak/hedef açık | T02 capability deneyi sırası, kurulum/host matrisi. Tam MVP'nin iki coding adapter hedefi kendiliğinden düşmez |
-| Q03 | Ayıklanmış sohbet parçaları harici API'ye gönderilebilir mi; aylık bütçe tavanı? | Soruldu, cevap bekleniyor | OPEN-08/10; gerçek veri ve ücretli model deneyi. Yanıt yokken yalnız doküman ve sentetik, ücret yaratmayan hazırlık |
+| Q03 | Ayıklanmış sohbet parçaları harici API'ye gönderilebilir mi; aylık bütçe tavanı? | Kısmen cevaplandı: Q03-R1 A; ilk deney ek ücretli model API'si olmadan. Sonraki gerçek veri/provider/bütçe açık | OPEN-08/10; ilk dilim etiketli fixture/kod kontrolleri. Otomatik extraction ve ücretli model deneyi için ayrı somut karar |
 
 Q01 müşteri talebi veya pazar segmenti doğrulaması değildir. Q02'de mevcut bilgisayarın gözlenmesi desteklenecek tek OS seçimi sayılmaz. Q03'te genel API istekliliği tüm özel konuşmaların aktarım izni yerine geçmez; kaynak ve redaction sınırı pilotta somutlaştırılır.
 
@@ -135,4 +135,16 @@ Yanıtsızsa açık kalır; kod alımı/production stack seçilmiş sayılmaz. T
 
 MCP bağlantısı tools-only olabilir; bütün oturum veya alt agent mesajlarının yakalandığı anlamına gelmez. B'nin deneyi aynı kaynaklı karar/artifact/AC kayıtlarını kullanır; yeniden geçmişi her çağrıya yüklemez. [Bağlantı planı](../architecture/connection-and-context.md#kabul-edilmiş-pilot-sırası--q02-r1) ve [Spike-1](spike-1-v1.md) aşama/kanıt ayrımını tutar.
 
-Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, config/runner, dış veri veya ücret izni sağlamaz. Somut grant ve Q03 ayrıca kapanır. Q03 için ilk öneri ek ücretli model API'si olmadan sentetik/elle etiketli fixture ve deterministik kontrollerdir; henüz owner cevabı değildir. Serbest metin çıkarım kalitesi ve gerçek Codex bağlantısı bu hazırlıkla doğrulanmış sayılmaz.
+Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, config/runner, dış veri veya ücret izni sağlamaz. Somut grant ve Q03'ün sonraki gerçek veri/provider/bütçe kısmı ayrıca kapanır. Q03-R1 A kabul edildi: ilk deney ek ücretli model API'si olmadan sentetik/elle etiketli fixture ve deterministik kontrollerle ilerler. Serbest metin çıkarım kalitesi ve gerçek Codex bağlantısı bu hazırlıkla doğrulanmış sayılmaz.
+
+
+## Q03-R1 — İlk deneyde ek ücretli model API'si
+
+**2026-10-11 · A kabul edildi.** Önceki Q02-R1 ilk kaynak yolu sorusundan ayrıdır. Kullanıcının bu soruya verdiği “A” yanıtı yalnız ilk deneyin model/maliyet yöntemini seçer.
+
+- **A — Seçildi:** Önce örnek/elle etiketlenmiş kayıtlar ve kod kontrolleri; ek ücretli model API'si kullanılmaz. Otomatik serbest metin anlam çıkarımı ayrı sonraki deneyde ölçülür.
+- **B — Korunan, seçilmemiş alternatif:** İlk deneyde otomatik extraction'ı da sınamak; öncesinde model/provider, aktarılacak veri ve bütçe tavanını belirlemek.
+
+**Neden / trade-off:** Maliyet önceliği ve domain zincirindeki hataları model doğruluğundan ayrı inceleyebilme. Bedeli, ilk sonucun doğal dil extraction, native karşılaştırma veya alıcı modelin bağlamı doğru kullandığını doğrulamamasıdır. Bu tercih bütün ürünün LLM kullanmayacağı, ücretli araştırmanın kalıcı olarak yasaklandığı veya mevcut host/geliştirme tokenlarının sıfır olduğu anlamına gelmez.
+
+**Etki / kabul:** [Spike-1](spike-1-v1.md) ilk dilimi `no_model` fixture/code kontrolleriyle sınırlar; model dispatch/judge/retry ve fresh-session model deneyleri bu dilimde çalıştırılmaz. T01 oracle/corpus sıradaki hazırlıktır. Sonuç raporu code/fixture ile model `not_run` durumunu ayırır. Sonraki gerçek veri/provider/aylık bütçe, somut hedef read ve retention izinleri açık; bu cevap bunları onaylamaz. Uygulama veya deney bu kayıtla başlamış/tamamlanmış sayılmaz.

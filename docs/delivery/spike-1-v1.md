@@ -14,7 +14,7 @@ Kullanıcı hangi yaklaşımı seçtiğini ve hangi artifact'in gerçekten hedef
 
 [Q02-R1](decision-brief.md) 2026-10-11'de cevaplandı: **A ilk pilot**, maliyet/kurulum bağımlılığını azaltmak için; **B Codex oturumu + tek repo sonra görülmek isteniyor**. C Claude Code-first alternatifi korunur, seçilmedi. Bu seçim deneyin tamamlandığı veya bağımsız ürün yatırımının onaylandığı anlamına gelmez.
 
-A, kullanıcının açıkça aktardığı Claude/ChatGPT parçasını mevcut oracle'a bağlar; seçilmiş tek hedef/ref/path'te read-only gözlem yapar. Dosya varlığı tek başına AC/test başarısı değildir. Önce sentetik/elle etiketli fixture ve deterministik kontrol önerilir; gerçek kaynak/hedef izni ve Q03 açık kalır. A'nın model/token maliyeti otomatik olarak sıfır veya B'den düşük sayılmaz.
+A, kullanıcının açıkça aktardığı Claude/ChatGPT parçasını mevcut oracle'a bağlar; seçilmiş tek hedef/ref/path'te read-only gözlem yapar. Dosya varlığı tek başına AC/test başarısı değildir. Q03-R1 A uyarınca ilk deney sentetik/elle etiketli fixture ve deterministik kontrollerle, ek ücretli model API'si olmadan ilerler; gerçek kaynak/hedef izni ve sonraki gerçek veri/provider/bütçe açık kalır. A'nın model/token maliyeti otomatik olarak sıfır veya B'den düşük sayılmaz.
 
 B takip deneyi aynı seçim/uygulama senaryosunu Codex ile tekrarlar: önce MCP brief/query/proposal bağlantısı, ayrıca gerçek host/build destekliyorsa otomatik capture coverage'ı. `tools_only` ile capture-connected ayrı raporlanır; elle import edilmiş olay otomatik capture başarısı sayılmaz. T02/T17/T18 ve [CON-01–08](../architecture/connection-and-context.md#bağlantı-kabul-senaryoları) mevcut görev/kontrol referanslarıdır; yeni tamamlanmış iş oluşturulmadı.
 
@@ -22,7 +22,7 @@ B takip deneyi aynı seçim/uygulama senaryosunu Codex ile tekrarlar: önce MCP 
 
 - T01 golden corpus/oracle ve T02 kaynak/host capability raporu hazırlanır. Önceki Spike-0 artifact'i varsa ayrı repo/path, revision, test ve izin kapsamıyla incelenir; doğrulanana kadar bağımlılık değildir.
 - T03a sınırlı prototype yöntemi/stack önerisi hazırlanır; T03b yalnız yetkili kapsamda küçük deney, T03c sonuç sonrası native/extend/build yatırım ve production stack kararıdır. Prototype T03c sonucunu sınamak içindir; önce sonuç kararı isteme döngüsü yok. Production entegrasyonu için T05/T07/T08 kaynak/kimlik/event/audit, T10 reconciliation ve ilgili context/UI katmanları gerekir.
-- İlk deneyde deterministic template, örnek kayıt ve mock job kullanılır. Gerçek transcript ve model testi Q03 kapsamında somut veri/provider/bütçe izni gerektirir. Paket hazırlama, gerçek araçta resume veya execution ile karıştırılmaz.
+- **Q03-R1 A kabul edildi:** İlk deneyde deterministic template, örnek/elle etiketli kayıt ve mock job kullanılır; ek ücretli model API'si çağrılmaz. Native/fresh-session model karşılaştırması ve otomatik extraction sonraki aşamadır, ilk no-model sonuçla geçmiş sayılmaz. Gerçek transcript ve sonraki model testi somut veri/provider/bütçe izni gerektirir. Paket hazırlama, gerçek araçta resume veya execution ile karıştırılmaz.
 - Q11-A ilk deney için öneridir. Owner tercihi gelmezse taslak/sentetik değerlendirme hazırlanabilir; B host/CLI başlatma uygulanmaz.
 
 ## Küçük ardışık görevler
@@ -37,6 +37,13 @@ B takip deneyi aynı seçim/uygulama senaryosunu Codex ile tekrarlar: önce MCP 
 | S1-06 Pilot ve karar raporu | S1-04/05; önce sentetik, sonra yalnız izinli gerçek örneklem | Yanlış alarm ve kaçırılan iş için ayrı oracle; stale karar, next-step ve düzeltme maliyeti raporlu; go/no-go ve kalan açıklar |
 
 Adımlar tamamlanmış sayılmaz. Üretim entegrasyonu mevcut backlog'da T20h/T18h/T24m ile izlenir; sıradaki ana iş T01 olarak kalır. Gerçek prototip ile ürün runtime'ı ve doküman taslağı ayrı teslim durumlarıdır.
+
+## İlk no-model dilimin kabul sınırı — Q03-R1 A
+
+- Beklenen karar/görev/ilişki/durumlar elle etiketli veya sentetik oracle'dan gelir; parser'ın kendi ürettiği sonucu oracle yapma. Bu dilim kaynak kimliği, revision, replay/dedup, uygulanma/AC ayrımı ve kısa paket tutarlılığını test etmeye hazırlanır.
+- Deney yapılandırması `no_model` olur; ek ücretli provider dispatch, LLM judge, model retry veya alt agent model deneyi bu dilime dahil edilmez. Gerçek runner/provider henüz yok; bu bir kabul kuralıdır, uygulanmış bütçe kontrolü değil.
+- Rapor code/fixture sonucunu otomatik serbest metin extraction ve fresh-session model başarısından ayırır. Model koşulları `not_run` kalır. No-model tercihinden toplam geliştirme/host token tüketiminin sıfır olduğu çıkarılmaz; ölçülmeyen maliyet için uydurma sıfır yazılmaz.
+- Bütçe/kalite trade-off'u: önce düşük maliyetle domain zincirini sınamak, ardından model gerektiğinde dar kapsam/veri/provider/tavanla ayrı deney. T01 ve S1 adımları bu karar kaydıyla tamamlanmış olmaz.
 
 ## Hafıza değerlendirme formu
 
