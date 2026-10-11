@@ -39,7 +39,7 @@ Diğer bulguların bir bölümü mevcut ilkeleri executable sözleşmeye dönü�
 | TG-09 · Spec detail | [Task context](../product/task-context-and-acceptance.md) gerekli AC/DoD ister; boş required set'in otomatik all-pass olması belirtilmemiş | IC-05 empty/applicable count ve explicit human assessment önerisi | T14/T20; boş AC/not_applicable-only completion oluşturmaz |
 | TG-10 · Spec detail | [Runtime](../architecture/runtime-contracts.md) snapshot/stale bilgili; gecikmiş projection ile command readiness kontrolünün uygulama sınırı net değil | IC-05 canonical seq/watermark ve apply guard önerisi | T12/T13/T18; stale read model ve OR edge race onayı geçmez |
 | TG-11 · Spec detail | [Domain](../architecture/domain-model.md) yürütme cycle'ı reddet veya bloke review der; tek wire mapping seçilmedi | IC-05 canonical reject + candidate review önerisi; bilgi graph'ı DAG'a zorlanmaz | T11; dependency/parent/supersedes cycle ayrı, related_to döngüsü yasak sayılmaz |
-| TG-12 · Capability pending | [Adapters](../architecture/capture-adapters.md) conditional yetenekler; event adı veya MCP desteği transcript/actor/access garantisi değil | Mevcut T02 kapısı korunur; IC-06 host/build/transport ayrımı eklendi. İlk kaynak Q02 açık | T02/T16/T17; seçilen sürümde event/log/export, actor/revision, gap ve permission kanıtı |
+| TG-12 · Capability pending | [Adapters](../architecture/capture-adapters.md) conditional yetenekler; event adı veya MCP desteği transcript/actor/access garantisi değil | Mevcut T02 kapısı korunur; IC-06 host/build/transport ayrımı eklendi. Q02-R1 A ilk yol seçildi, B sonraki hedef; host/OS/capture kanıtı açık | T02/T16/T17; seçilen sürümde event/log/export, actor/revision, gap ve permission kanıtı |
 | TG-13 · Implementation pending | [Identity](../architecture/identity-access.md) ve T04b local auth'ı ister; login/bootstrap/cookie/agent secret/session recovery çalışan tasarım değil | IC-06 browser ve agent ayrımı önerildi. Auth skip “local olduğu için güvenli” sayılamaz | T04b/T05/T08b; unauth/Origin/Host/spoof/revoke testleri; gerçek özel veri öncesi |
 | TG-14 · Implementation pending | [Çoklu chat](../architecture/multi-chat-and-processing-lag.md) iki frontier/fencing/bounded queue tanımlar; admission/crash/gap işleyicileri kodlanmadı | IC-07 fault injection noktaları ve receipt oracle'ı hazır. Hızlı konuşma kayıpsız işleme vaadi yok | T06/T07/T15; commit/ack crash, holes, queue full, stale lease; V19–V21/LIM |
 | TG-15 · Implementation pending | [Pending sorular](../product/pending-questions-and-late-answers.md) late/orphan/ambiguous ve approval ayrımını kapsıyor; resolver/UX yok | Tasarım boşluğu değil implementasyon borcu. Geç A cevabı güncel seçeneği otomatik onaylamaz | T13e/T18e/T24f; out-of-order/option revision/two A-B questions/source ACL fixture'ları |
@@ -57,7 +57,7 @@ Diğer bulguların bir bölümü mevcut ilkeleri executable sözleşmeye dönü�
 
 | Kapı | Kullanıldığı ilk adım | Gerekli kanıt / açık soru | Beklemeden yapılabilecek |
 |---|---|---|---|
-| G0 · Deney tanımı | T01 → T02d → T03a | Golden case/ref, kapsam ve stage oracle; gerçek ilk kaynak için Q02 | Sentetik corpus, typed oracle/spec; nihai production stack gerektirmez |
+| G0 · Deney tanımı | T01 → T02d → T03a | Golden case/ref, kapsam ve stage oracle; Q02-R1 A seçildi, somut kaynak/hedef ve izinler açık | Sentetik corpus, typed oracle/spec; nihai production stack gerektirmez |
 | G1 · İlk dış kaynak | Capture/target/API sınırı ilk çalıştığında | IC-01/06, finite ingress, exact selected source/target, capability ve source/read grant | Mock adapter, permission denial/receipt fixture |
 | G2 · İlk model dispatch | Her ücretli/harici model çağrısı öncesi | Q03 somut provider/veri/tavan; IC-03 + egress ve risk policy | No-model code oracle, model output sentetik decoder fixture |
 | G3 · Canonical apply/complete | İlk approval apply veya verified sonucu | IC-02/04/05, human authority, AC/evidence/revision ve transaction oracle | Candidate preview/negative cases; gerçek tamamlandı iddiası yok |
@@ -82,9 +82,9 @@ Research stop kuralı: seçilen ilk sınır için candidate+authority+error+clos
 
 ## 5. Owner'a adım adım sorulacaklar
 
-Cevabı verilmiş Q01/Q04/Q05/Q07/Q09/Q10/Q12 tekrar açılmaz. Engineering serializer, Unicode offset veya DB constraint seçimini soyut A/B kararı diye kullanıcıya yüklemez; conformance önerisi/testi hazırlar. Aşağıdaki sıra görüşme önerisidir, cevap değildir.
+Cevabı verilmiş Q01/Q04/Q05/Q07/Q09/Q10/Q12 tekrar açılmaz. Engineering serializer, Unicode offset veya DB constraint seçimini soyut A/B kararı diye kullanıcıya yüklemez; conformance önerisi/testi hazırlar. Aşağıdaki sıra görüşme kuyruğudur; cevaplanmış madde durumu ayrıca gösterilir.
 
-1. **Q02-R1 / ilk pilot kaynak yolu:** A önerisi Claude/ChatGPT sohbetinin kullanıcı tarafından açıkça aktarılan parçası + seçilmiş bir uygulama hedefinde read-only gözlem; B Codex coding oturumu + tek repo; C Claude Code + tek repo. A günlük “dosya verildi ama yüklendi mi?” problemini capture entegrasyonuna bağımlı olmadan sınar. B/C otomatik capture fizibilitesini erken sınar. A bütün geçmişe erişim, B/C yeni hesap/konfig/runner izni değildir. Q02'nin diğer OS/ikinci adapter ayrıntısı açık kalır.
+1. **Q02-R1 / cevaplandı, 2026-10-11:** Kullanıcı maliyet odağıyla A'yı (açıkça aktarılan Claude/ChatGPT parçası + tek read-only uygulama hedefi) ilk pilot için seçti; B Codex coding oturumu + tek repo sonrasında görülmek isteniyor. C seçilmedi, alternatif korunur. A capture entegrasyonuna bağımlı olmadan değeri sınar; en düşük maliyet iddiası ölçülmedi. MCP bağlam/öneri bağlantısı B için bir adımdır, otomatik transcript capture kanıtı değildir. Somut kaynak/hedef/host/OS ve izinler açık; bu ilk yol tercihini tekrar sorma.
 2. **Q03 / somut veri ve maliyet:** Seçilen kaynak için no-model/sentetik başlangıç mı, ayıklanmış gerçek parça hangi provider'a hangi tavanla gönderilebilir mi? Öneri ve exact veri kapsamı önceden hazırlanır; genel “API kullanabiliriz” tüm konuşma/ücret izni olmaz.
 3. **OPEN-08/12 / saklama-kurtarma:** Gerçek veri önce retention, purge/export/backup ve key-loss trade-off'larını somut küçük planla sor. 1C kaybı önleme tercihi korunur.
 4. **Q11 ve Q06 / devam ve context export:** İlk deney önizle/kopyala mı; milestone context Markdown otomatik mi? UI/export örneğiyle sor; host başlatma veya Git push ayrı yetkidir.
@@ -93,7 +93,7 @@ Cevabı verilmiş Q01/Q04/Q05/Q07/Q09/Q10/Q12 tekrar açılmaz. Engineering seri
 7. **OPEN-09/16 / pilot kararı:** Ölçümden sonra gerçek hata/review/maliyet ve incomplete oranlarıyla başarı/stop eşiğini kararlaştır; mevcut yüzde hedeflerini yapılmış taahhüt sayma.
 8. Public release/lisans/commercial/team kapsamı ilgili faza gelince somut seçenekle sor; bugünkü docs güncellemesi izin oluşturmaz.
 
-Bu tur kullanıcıya yalnız ilk soru düz metin A/B/C olarak gösterilecek; widget geçmişte kaybolduğu için soru dosyada da kalır. Yanıtsızsa pending kalır. Q02-R1 bir alt netleştirmedir, yeni bağımsız ürün kararı ID'si değildir; cevap [decision brief](../delivery/decision-brief.md) ve yalnız ilgili pilot planlarına kapsamıyla işlenir.
+Q02-R1 cevabı [decision brief](../delivery/decision-brief.md) ve ilgili pilot planlarına işlendi; yeni bağımsız ürün kararı ID'si değildir. Sıradaki odak Q03'ün ilk deneyde ek ücretli model API'si gerekip gerekmediği kısmıdır. Öneri sentetik/elle etiketli fixture + deterministik kontrolle başlamak; serbest metin extraction başarısını bununla iddia etmemek. Kullanıcı soruları düz metin seçenekleriyle gösterilir; widget kaybolduğu için kayıt dosyada da korunur. Cevap/izin eksikse ilgili dispatch veya gerçek veri okuma kapısı pending kalır.
 
 ## 6. Sonraki oturumun kurtarma ve kapanış prosedürü
 

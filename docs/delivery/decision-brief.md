@@ -7,7 +7,7 @@
 | ID | Soru | Durum / cevap | Etkisi |
 |---|---|---|---|
 | Q01 | İlk pilot kimin işiyle doğrulansın? | **Kabul edildi:** önce owner'ın bireysel kullanımı, sonra benzer kullanıcılar. Kullanıcının bu oturumdaki açık cevabı | İlk UX ve araştırma örneklemi; tam kapsam ve P4 ekip vizyonu korunur |
-| Q02 | Günlük kullanılan coding/chat yüzeyleri, pilotun zorunlu ilk ikisi ve hedef OS? | Soruldu, cevap bekleniyor | T02 capability deneyi sırası, kurulum/host matrisi. Tam MVP'nin iki coding adapter hedefi kendiliğinden düşmez |
+| Q02 | Günlük kullanılan coding/chat yüzeyleri, pilotun zorunlu ilk ikisi ve hedef OS? | Kısmen cevaplandı: Q02-R1 A ilk pilot, B sonraki hedef; OS/host ve somut kaynak/hedef açık | T02 capability deneyi sırası, kurulum/host matrisi. Tam MVP'nin iki coding adapter hedefi kendiliğinden düşmez |
 | Q03 | Ayıklanmış sohbet parçaları harici API'ye gönderilebilir mi; aylık bütçe tavanı? | Soruldu, cevap bekleniyor | OPEN-08/10; gerçek veri ve ücretli model deneyi. Yanıt yokken yalnız doküman ve sentetik, ücret yaratmayan hazırlık |
 
 Q01 müşteri talebi veya pazar segmenti doğrulaması değildir. Q02'de mevcut bilgisayarın gözlenmesi desteklenecek tek OS seçimi sayılmaz. Q03'te genel API istekliliği tüm özel konuşmaların aktarım izni yerine geçmez; kaynak ve redaction sınırı pilotta somutlaştırılır.
@@ -125,10 +125,14 @@ Yanıtsızsa açık kalır; kod alımı/production stack seçilmiş sayılmaz. T
 
 [İnceleme ve soru kuyruğu](../quality/technical-gap-analysis.md) Q02→Q03→gerçek veri policy→Q11/Q06→Q08→kanıtlı Q13/pilot değerlendirmesi sırasını önerir. Cevabı verilmiş ürün tercihleri tekrar açılmaz; rutin serializer/offset/constraint seçimlerini engineering test eder. Sorular bu tur düz metin A/B/C ile gösterilir; UI widget yanıtı kaybolduğu için kalıcı kayıt da korunur.
 
-**Q02-R1 · İlk kaynak yolu · Açık/cevap bekleniyor.** Q02'nin alt netleştirmesidir, bütün OS/ikinci adapter sorusunu kapatmaz.
+**Q02-R1 · İlk kaynak yolu · 2026-10-11: A kabul edildi; B sonraki hedef.** Q02'nin alt netleştirmesidir; OS/host ve somut kaynak/hedef sorularını kapatmaz.
 
-- **A — Önerilen:** Claude/ChatGPT sohbetinden kullanıcı tarafından açıkça aktarılan parça + seçilmiş tek uygulama hedefinde read-only gözlem. Önce “dosya verildi, gerçekten uygulandı mı?” değer zincirini capture entegrasyonu olmadan sınar.
-- **B:** İlk gerçek senaryo Codex coding oturumu + tek repo; otomatik capture fizibilitesi önce.
-- **C:** İlk gerçek senaryo Claude Code oturumu + tek repo; otomatik capture fizibilitesi önce.
+- **A — İlk pilot için seçildi:** Claude/ChatGPT sohbetinden kullanıcı tarafından açıkça aktarılan parça + seçilmiş tek uygulama hedefinde read-only gözlem. Önce “dosya verildi, gerçekten uygulandı mı?” zincirini capture entegrasyonu olmadan sınar.
+- **B — Sonrasında görülmesi istendi:** Codex coding oturumu + tek repo. MCP ile hedefli bağlam/öneri alışverişi; otomatik capture için ayrıca seçili host/build'de kaynak erişimi ve coverage deneyi. İlk pilot için seçilmedi.
+- **C — Korunan, seçilmemiş alternatif:** Claude Code oturumu + tek repo; otomatik capture fizibilitesini önce sınama seçeneği.
 
-Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, config/runner, dış veri veya ücret izni sağlamaz. Somut grant ve Q03 ayrıca kapanır. Yanıtsızsa A seçilmiş sayılmaz; sentetik, ücret yaratmayan hazırlık sürdürülebilir.
+**Kaynak ve gerekçe:** Kullanıcı “ilk etapta maliyet odaklı düşünürsek A. ama sonra B yi de görmek isterim” dedi. A, başlangıçtaki adapter/kurulum bağımlılığını azaltıp asıl değer zincirini daha erken sınamak için seçildi; B bağlantılı kullanımın sonraki doğrulamasıdır. A'nın toplam token/maliyet bakımından daha ucuz olduğu henüz ölçülmedi. Açık metinden karar çıkarımı ile deterministik hedef kontrolü ayrı maliyet kalemleridir; aktarımın manuel olması model maliyetini kendiliğinden sıfırlamaz.
+
+MCP bağlantısı tools-only olabilir; bütün oturum veya alt agent mesajlarının yakalandığı anlamına gelmez. B'nin deneyi aynı kaynaklı karar/artifact/AC kayıtlarını kullanır; yeniden geçmişi her çağrıya yüklemez. [Bağlantı planı](../architecture/connection-and-context.md#kabul-edilmiş-pilot-sırası--q02-r1) ve [Spike-1](spike-1-v1.md) aşama/kanıt ayrımını tutar.
+
+Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, config/runner, dış veri veya ücret izni sağlamaz. Somut grant ve Q03 ayrıca kapanır. Q03 için ilk öneri ek ücretli model API'si olmadan sentetik/elle etiketli fixture ve deterministik kontrollerdir; henüz owner cevabı değildir. Serbest metin çıkarım kalitesi ve gerçek Codex bağlantısı bu hazırlıkla doğrulanmış sayılmaz.

@@ -10,6 +10,14 @@ Kullanıcı hangi yaklaşımı seçtiğini ve hangi artifact'in gerçekten hedef
 
 Önerilen dar deney: kaynaklı bekleyen kartlar + yaş/kanıt/coverage + önizle/kopyala devam paketi + ertele/incele. Obsolete tespiti önce mevcut güncel karar/impact kayıtlarına dayanır; bir regex'in bulduğu “yerine” ifadesi doğrulanmış supersession sayılmaz. Tam ürün vizyonu ve 14 MVP kriteri aynen kalır; bu bir öğrenme dilimidir.
 
+## Seçilmiş ilk kaynak ve sonraki bağlantı
+
+[Q02-R1](decision-brief.md) 2026-10-11'de cevaplandı: **A ilk pilot**, maliyet/kurulum bağımlılığını azaltmak için; **B Codex oturumu + tek repo sonra görülmek isteniyor**. C Claude Code-first alternatifi korunur, seçilmedi. Bu seçim deneyin tamamlandığı veya bağımsız ürün yatırımının onaylandığı anlamına gelmez.
+
+A, kullanıcının açıkça aktardığı Claude/ChatGPT parçasını mevcut oracle'a bağlar; seçilmiş tek hedef/ref/path'te read-only gözlem yapar. Dosya varlığı tek başına AC/test başarısı değildir. Önce sentetik/elle etiketli fixture ve deterministik kontrol önerilir; gerçek kaynak/hedef izni ve Q03 açık kalır. A'nın model/token maliyeti otomatik olarak sıfır veya B'den düşük sayılmaz.
+
+B takip deneyi aynı seçim/uygulama senaryosunu Codex ile tekrarlar: önce MCP brief/query/proposal bağlantısı, ayrıca gerçek host/build destekliyorsa otomatik capture coverage'ı. `tools_only` ile capture-connected ayrı raporlanır; elle import edilmiş olay otomatik capture başarısı sayılmaz. T02/T17/T18 ve [CON-01–08](../architecture/connection-and-context.md#bağlantı-kabul-senaryoları) mevcut görev/kontrol referanslarıdır; yeni tamamlanmış iş oluşturulmadı.
+
 ## Önkoşullar ve ilerleme kapısı
 
 - T01 golden corpus/oracle ve T02 kaynak/host capability raporu hazırlanır. Önceki Spike-0 artifact'i varsa ayrı repo/path, revision, test ve izin kapsamıyla incelenir; doğrulanana kadar bağımlılık değildir.

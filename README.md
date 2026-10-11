@@ -16,7 +16,7 @@
 | Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli | T01 golden corpus ve ilk senaryo |
 | Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
 | Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
-| Pilot ve uygulama | Henüz başlamadı; yatırım/stack seçimi açık | Q02 ilk kaynak, Q03 veri/bütçe; izinli T03b deneyi |
+| Pilot ve uygulama | Henüz başlamadı; maliyet odağıyla A ilk yol seçildi, B sonraki bağlantı hedefi | Q03 veri/bütçe, somut kaynak/hedef; izinli T03b deneyi. Yatırım/stack seçimi açık |
 
 > [!IMPORTANT]
 > **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.

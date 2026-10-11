@@ -125,3 +125,8 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Teknik boşluklar ve inceleme hafızası
 
 [2026-10-11 TG-01–24](../quality/technical-gap-analysis.md) inceleme ref'i/yöntemi, iki somut doc conflict, önerilen ayrıntılar, implementation/capability/owner/measurement ayrımı ve sonraki soruları tutar. “Boşluk var mı?” sorusunda her şeyi yeniden yok sayma; ilgili TG→[IC-01–08](../architecture/implementation-contracts.md)→canonical task→closure evidence zincirini aç. Yeni component/release/accepted ADR yok. IC testleri not_run; son task ID düzeltmesinde dil T24p korunup ölçüm T24q oldu. Source/generated/accepted/observed/verified ve doc pass/runtime pass ayrımını açıklayamayan model uygulamadan önce ilgili bölümü yeniden okumalı.
+
+
+## İlk pilot yolu — Q02-R1 kabul kaydı
+
+2026-10-11: kullanıcı maliyet odağıyla **A açık aktarım + tek read-only hedef** yolunu ilk pilot için seçti; **B Codex coding oturumu + tek repo** sonrasında görülmek isteniyor. C Claude Code-first seçilmedi, alternatif korunur. İlk yol sorusunu tekrar sorma; [kaynak, alternatifler ve gerekçe](decision-brief.md) kayıtlıdır. B'de MCP hedefli bağlam/öneri araçları ile ayrıca host/build capability deneyi isteyen otomatik capture ayrıdır. Somut kaynak/hedef/host ve Q03 veri/provider/bütçe açık; ücret veya gerçek veri okuma izni çıkarma. T01 ve 30 ana görev TODO; pilot not_started. Ek ücretli API olmadan sentetik/elle etiketli fixture + deterministik kontrol sonraki öneridir, Q03 owner yanıtı değil. Görsel tur sonrası toplam 35 Mermaid/15 belge; güncel inventory/render kaydı ürün runtime kanıtı değildir.

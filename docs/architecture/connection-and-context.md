@@ -178,7 +178,18 @@ Hook yolu dayanıklı receipt sonrası dönmeli; model analizi kullanıcı turun
 | CON-07 | Remote host local makineye bağlıymış gibi healthy gösterilmez | T02b |
 | CON-08 | Kurulum/kaldırma başka MCP/hook ayarlarını korur; destek raporu gerçek build taşır | T16/T17 |
 
-Tüm senaryolar planlıdır, çalıştırılmadı. Kesin ilk yüzeyler/OS için Q02 yanıtı bekleniyor; [karar kaydı](../delivery/decision-brief.md).
+Tüm senaryolar planlıdır, çalıştırılmadı. Q02-R1 A ilk pilot yolu olarak seçildi; B Codex + tek repo sonraki hedef. Somut kaynak/hedef ve Codex host/build/OS henüz seçilip denenmedi; [karar kaydı](../delivery/decision-brief.md).
+
+## Kabul edilmiş pilot sırası — Q02-R1
+
+**A önce, B sonra:** Kullanıcı ilk aşamada maliyeti önceledi. A'da açıkça aktarılan kaynak parçası ve ayrı izinli tek hedef gözlemiyle seçim→uygulama→AC ayrımı sınanır. Veri aktarımı bütün hesapları taramaz; hedefte yalnız seçilmiş artifact/ref/path kontrol edilir. Elle etiketli/sentetik ilk fixture ve deterministik read/hash karşılaştırması ek model çağrısı gerektirmeyebilir; serbest metinden anlam çıkarımı ayrıca değerlendirilir. Maliyet üstünlüğü henüz ölçülmedi.
+
+B için iki ayrı kabul adımı vardır:
+
+1. **MCP araç bağlantısı — T18/T17:** Seçili host/build'de hedefli brief/record sorgusu ve kaynaklı öneri alışverişi gerçekten çalışıyor mu? Kurulum, auth, scope, disconnect ve bounded cevap testleri gerekir. Bu adıma kadar kaynak elle aktarılıyorsa durum `tools_only` ve capture coverage'ı açık kalır.
+2. **İzinli otomatik capture — T02/T17:** Desteklenen event/log/export yolu session/actor/revision ile yeni parçaları, alt agent coverage'ını ve kesinti/compaction boşluklarını doğru kaydediyor mu? MCP'nin çalışması bu adımın geçtiği anlamına gelmez. Yeterli host desteği yoksa açık aktarım fallback'i ve eksik coverage gösterilir.
+
+B, A'daki aynı onaylı karar/artifact/AC/kanıt modelini kullanır; ikinci bir proje hafızası yaratmaz. Model tarafına kısa brief, revision delta ve gerektiğinde sayfalı kayıt döner; aynı kaynak revision'ını yeniden ayıklamama kuralı sürer. MCP çıktısı alıcı modelde token tüketebilir; Decivora dışındaki host tüketimini bütçe kontrol etmiş saymayız. Gerçek model dispatch'i Q03'e, gerçek kaynak/hedef ve host kurulum işlemleri ayrı somut izne bağlıdır.
 
 ## Aynı projeye bağlı farklı chat'ler
 
