@@ -83,6 +83,8 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 |
 
+P1 temel dil dilimleri T05e/T24p: Unicode/source/ref korunumu ve açık pilot dili. Otomatik çok dil desteği P2 T25a/T26c önerisidir; MVP'de teslim edilmiş sayılmaz.
+
 T24 çıkışı: [AC-01–14](../product/mvp.md), iki ayrı gerçek coding-adapter raporu, source coverage, holdout ve gerçek UI pilotu. Bir adapter başarısızsa “sınırlı pilot” ve açık kapsam kararı gerekir; sessizce tam MVP işaretleme.
 
 ### MVP içindeki alt işler
@@ -110,6 +112,7 @@ Aşağıdaki gruplar **önemli örneklerdir**, bütün alt görevlerin kopyası 
 
 | Çalışma paketi | Planlanan sonuç | Çıkış kanıtı |
 |---|---|---|
+| Konuşma dili ve yerelleştirme | T25a/T26c PROPOSED: otomatik tespit, mixed/fallback, etkin dilde çıktı, UI katalogları ve çok dilli retrieval | [LANG-01–08](../product/language-and-localization.md); Q12 stratejisi, source/ACL/revision ve kalite/maliyet kanıtı |
 | Chat ve sağlayıcılar arası süreklilik | Yüzey başına izin/capability raporu, binding ve source lineage | Gerçek yüzeyde test; documented/verified/unknown ayrımı, manuel fallback açık |
 | Gelişmiş uzlaştırma ve impact | Semantic diff, stale/unlink/orphan incelemesi; embedding yalnız ihtiyaç kanıtlıysa | Holdout recall ve false-obsolete regresyonu; toplam bütçe/kalite kıyası |
 | Öncelik/ranking deneyi | T26b PROPOSED: açıklanabilir çok faktörlü scoring/what-if | FLOW-16/17 ve mevcut regresyonlar; veri yeterliliği/UX/efor kanıtı olmadan kesin kritik yol iddiası yok |

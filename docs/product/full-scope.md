@@ -58,3 +58,7 @@ Ekip isteğinin ayrıntısı yeni bir ürün değildir: TEAM-01, PRJ-01, GOV-01/
 [Tasarım revizyonu 03](current-direction.md), mevcut KNO/APR/VER/INT/UX/EVAL kapsamını **öneri→güvenilir seçim→artifact→exact hedef uygulaması→güncel uygunluk** üzerinden sınar. [GAP sözleşmesi](intent-to-reality-gap.md) generated/reported/observed/unknown ve test/deploy ayrımını; [ADR-0011](../architecture/adr/0011-target-application-evidence.md) teknik veri karşılığını tanımlar. 32 scope maddesi korunur; bu yeni ana feature/engine değildir.
 
 P0 deneyinde tek hedef read-back mock/sentetik veya açıkça izinli seçilmiş adapter olabilir. Bu, bütün GitHub entegrasyonunu P2'den taşımaz, pasif capture başarısını varsaymaz veya P1b iki-adapter kabulünü kaldırmaz. İlk yatırım kararı native/extend/build/durdur sonucuna açıktır; ürün iptali kabul edilmedi.
+
+## Konuşma dili ve çok dilli proje içeriği
+
+2026-10-11 kullanıcı talebi CAP-01/03/04,KNO-01/02,APR-01,UX-01/02,CST-01/02,EVAL-01 kapsamında korunur: insan konuşmasının dilini dikkate alan not/görev/karar/AC/DoD/devam çıktıları; kaynak dili, üretim dili ve UI locale ayrımı. [Dil sözleşmesi](language-and-localization.md) P1 temel source/metadata ve açık pilot dili, P2 otomatik tespit/mixed fallback/yerelleştirme/çok dilli kalite planını tanımlar. Dil değişimi eski karar/kanıtı sessiz çevirmez; toplu çeviri ayrı izin/bütçe ister. Karma proje stratejisi Q12 açık; bütün dillerde destek veya tasarruf kanıtı yok. 32 scope korunur.

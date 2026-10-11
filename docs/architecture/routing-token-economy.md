@@ -146,3 +146,9 @@ T21b ek kabulü: project/task inheritance doğru; override hard-cap aşamaz; mod
 [Metin adayları ve deney planı](lexical-prefilter.md), mevcut parser-first ve structured duplicate bypass yaklaşımını detaylandırır. Sürümlü TR/EN sözlük + bağlam guard'ları ucuz aday saptama içindir; kelime eşleşmesi task completion veya işlem yetkisi değildir. Yapılandırılmış sinyal varsa ikinci extraction önlenebilir, fakat assistant raporu yine kanıt/onay sayılmaz.
 
 İlk yöntem shadow modda ölçülür. Eşleşmeyen içerik sırf keyword yok diye atılmaz; fallback, insan review ve ek output/schema maliyeti toplam tüketimde sayılır. İlk cevap üretme maliyetini azaltma iddiası yok. Sözlük ancak aynı kalite/coverage koşulunda toplam çağrı/token ve kullanıcı yükünü düşürürse ekonomik başarıdır. LEX-01–08 planlı; gerçek model pattern analizi ve tasarruf sonucu yok.
+
+## Dil tespiti ve çeviri ekonomisi
+
+[Dil sözleşmesinde](../product/language-and-localization.md) ilk tercih açık çıktı dili veya hafif yerel detector adayıdır; yalnız dil tespiti için varsayılan LLM çağrısı yok. Gerekli extraction/generation çağrısı doğrudan etkin dilde üretebilir; İngilizce ara çıktı + ayrı çeviri çağrısı varsayılan değil. Dil/karakter sayısı aynı token maliyetini garanti etmez; provider/model/locale bazlı input-output/retry ve kalite ölçülür.
+
+Sabit UI metinleri locale kataloglarından çizilir. Tüm geçmişi çevirme, çok dilli embedding/reranking veya çok dilli türev üretme ayrı ihtiyaç/egress/bütçe ve risk onayı gerektirir. Cache language/policy revision'a bağlı, source ACL korunur; model kapalıyken fallback/coverage görünür. P2 otomasyon önerisi T25a/T26c ve LANG-01–08 ile ölçülecek; tasarruf sonucu yok.

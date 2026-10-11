@@ -76,3 +76,7 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 ## Sözlük ve pattern adayları
 
 [LEX-01–08](../architecture/lexical-prefilter.md#küçük-uygulama-dilimleri-ve-planlı-kabul), olumsuz/gelecek/koşul/alıntı/kod, implicit karar, actor/target belirsizliği, structured false claim, çoklu aday, ACL/provenance/dedup ve unmatched coverage kontrolleridir. T01e/T09e/T24o shadow mode ve aynı kalite/coverage koşulunda ekonomik kıyası kapsar. 20 elle etiketlenmiş sentetik satır oracle önerisidir; regex/parser/model çalıştırılmadı. Veri/doküman kontrolü LEX passed yapmaz.
+
+## Konuşma dili ve yerelleştirme
+
+[LANG-01–08](../product/language-and-localization.md#sentetik-örnekler-ve-planlı-kabul), açık pilot dili, human/assistant/code ayrımı, short/mixed/unknown, Q12 policy, source/ref/AC korunumu, locale refresh sıfır model çağrısı, cross-language duplicate/conflict ve ACL/cache/revision kontrolleridir. T05e/T24p temel, T25a/T26c P2 otomasyon/kalite yoludur. TR/EN sentetik fixture önerisi bütün dillerde destek veya tespit doğruluğu kanıtı değildir. Detector/LLM/UI çalıştırılmadı; planlı kabul not_run.

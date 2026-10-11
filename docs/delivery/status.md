@@ -194,3 +194,11 @@ Kullanıcı güncel planın MVP, P2 ve P3 olarak ayrı takip edilip edilmediğin
 Ana görev ID/faz/durum/başlık/ön koşulları doküman betiğiyle backlog'a eşleştirilir; ikinci bağımsız backlog veya v2/v3 kopyası yaratılmadı. README/roadmap/start-here/backlog bu görünümü işaret eder. Bütün runtime ana görevleri TODO, aday alt dilimler PROPOSED; uygulama, model veya yeni UI testi yok. Mevcut 34 Mermaid kaynak bloğu değiştirilmedi. Sıradaki T01 ve owner karar kapıları korunur.
 
 Teslim kontrolü geçti: 78 Markdown, 693 yerel bağlantı; 30 ana görev satırı faz/durum/başlık/ön koşul düzeyinde backlog ile eşleşti. Geçici kopyada yanlış DONE durumu kontrol tarafından reddedildi; gerçek dosyalarda böyle bir değişiklik yapılmadı. 32 scope/14 MVP kriteri/10 engine ve 34 Mermaid inventory korundu. Bu statik denetim çalışan proje takip uygulaması veya ürün test sonucu değildir.
+
+## 2026-10-11 — Konuşma dili ve İngilizce dışındaki kullanıcılar
+
+Kullanıcı konuşma dilini tespit edip not/proje çıktısını o dilde üretme ihtiyacını ekledi; maliyetli otomasyonun P2'de olabileceğini belirtti. [Dil sözleşmesi](../product/language-and-localization.md), P1 source/Unicode/metadata/açık pilot dili, P2 otomatik tespit/mixed fallback/locale katalogları/cross-language kalite planını önerir. Source/üretim/UI dili ayrıdır; kod/kanıt/ref korunur, eski kayıtlar sessiz çevrilmez. Q12 proje dili değişim önerisi (A) veya session bazlı dil (B) açık; A teknik öneridir, kullanıcı seçimi değil.
+
+T05e/T24p/T25a/T26c ve LANG-01–08 mevcut parent kapsamına bağlandı. Detector/model/library veya yeni DB/engine seçilmedi; gerçek veri/model/translation görevi çalıştırılmadı. Bütün dil desteği veya token tasarrufu ölçülmedi. 30 ana görev/P1b 14 AC korunur; faz takip görünümü P2 dil satırıyla tamamlandı. Mevcut 34 Mermaid kaynak bloğu değiştirilmedi; sıradaki T01 ve Q03 erişim/bütçe kapısı korunur.
+
+Doküman kontrolü geçti: 79 Markdown, 711 yerel bağlantı; 30 ana görev faz/durum/ön koşul görünümüyle eşleşti, 32 scope/14 AC/17 feature/10 engine ve 34 Mermaid inventory korundu. LANG-01–08 tanım/referansları, dört alt görev ve tek Q12 açık soru kaydı kontrol edildi. Detector/model/çeviri/UI deneyi yapılmadı; planlı dil kabulü not_run.

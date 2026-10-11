@@ -65,3 +65,7 @@ F11'in yaş/kanıt göstergesi ve F08/F13'ün context aktarımı [devam paketi](
 ## F07/F08/F09/F10 — İlk gerçekleşme sürekliliği deneyi
 
 [Güncel yön](current-direction.md) F07'de gerçek insan seçimini, F08'de generated artifact ve target expectation'ı, F09'da reported/observed/partial/unknown ile acceptance ayrımını, F10'da bunların kaynaklı görünümünü birlikte sınar. Minimal deney ekranı tam Inbox/Board/Graph/Timeline teslimi değildir. [GAP oracle](../../examples/intent-reality-scenario.json) sentetik ve not_run; native Projects ile ek değer kanıtlanmadı. Mevcut 17 feature ve tam scope korunur.
+
+## F03/F04/F07/F08/F10/F13 — İngilizce dışındaki kullanım
+
+Kullanıcı Türkçe konuşuyorsa proje çıktılarının anlaşılır Türkçe üretilmesi; başka dillerde de aynı ihtiyacın desteklenmesi hedeflenir. [Dil ve yerelleştirme](language-and-localization.md) kaynak metnini, üretim dilini ve UI locale'i ayırır. Kod/ref/kanıt çevrilmez; eski kayıt sessiz yeniden yazılmaz. P1 temel metadata/açık pilot dili; P2 otomatik tespit, mixed/fallback, locale katalogları ve dil/model bazlı kalite raporları önerilir. Q12 karma projede tek dil/değişim önerisi veya session bazlı çıktı tercihini bekler. Yeni feature numarası/engine veya uygulanmış çok dil desteği iddiası yok.

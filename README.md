@@ -83,6 +83,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Log, DB, kalıcı/geçici hafıza ve kapasite nasıl olacak? | [Log ve audit](docs/architecture/logging-audit.md) · [Depolama ve ölçek planı](docs/architecture/storage-memory-capacity.md) |
 | Ekip altyapısını hangi adımlarla yapacağız? | [Fazlı uygulama planı](docs/delivery/team-data-plan.md) · [18 ek kabul senaryosu](docs/quality/collaboration-validation.md) |
 | Codex/Claude Code nasıl bağlanacak? | [Kurulum, capture, MCP ve context](docs/architecture/connection-and-context.md) |
+| İngilizce dışındaki konuşmalar ve proje çıktıları | [Konuşma dili, locale, P2 otomasyonu ve maliyet](docs/product/language-and-localization.md) |
 | Fazla token tüketimi nasıl önlenecek? | [Limitler, cache, bütçe rezervasyonu ve ölçüm](docs/architecture/routing-token-economy.md) |
 | Hangi işler fazla token riski için ayrıca onay ister? | [Risk tespiti, sınırlı plan onayı ve 10 kabul senaryosu](docs/product/token-risk-and-approval.md) |
 | Farklı chat'ler ve hızlı konuşmalar nasıl işlenir? | [Ortak proje bağlamı, kaynak izleri ve gecikme yönetimi](docs/architecture/multi-chat-and-processing-lag.md) |

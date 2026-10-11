@@ -30,6 +30,8 @@ Güncel yön ve önceki plan karşılaştırması [tasarım revizyonu 03](docs/p
 
 MVP, P2 ve P3 ana görevleri ayrı tablolarla [faz bazlı proje ağacı ve takip görünümünde](docs/delivery/phase-tracker.md) bulunur. Görev durumları backlog ile eşleştirilir; ayrı sürüm listesi veya ilerleme veritabanı yoktur.
 
+Dil ihtiyacı: P1'de source/Unicode/metadata ve açık pilot dili korunur; P2'de otomatik dil tespiti, mixed fallback, locale katalogları ve çok dilli kalite önerilir. [Dil sözleşmesi](docs/product/language-and-localization.md); karma proje stratejisi Q12 açık, toplu çeviri varsayılan değil.
+
 Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
 
 ```mermaid

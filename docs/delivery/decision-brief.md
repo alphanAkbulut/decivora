@@ -99,3 +99,12 @@ MVP'yi “unutulanlar radarı” olarak yeniden tanımlama onayı yok; bu ifade 
 Kullanıcı tüm diagram/şema/giriş/analiz belgelerinin güncel yönle tutarlı olmasını, eski ve güncel planın karşılaştırılmasını ve sürüm kopyalarının kafa karıştırmamasını istedi. **Doküman güncelleme yetkisi vardır**; independent build, iptal veya ücret/hesap/runner izni çıkarılmaz.
 
 Uygulanan belge düzeni: tek canonical set, tasarım revizyonu 03; [önce/sonra ve yatırım kapısı](../product/current-direction.md), [sürüm anlamı](../governance/versioning.md). DEC-18 gerçek seçim/uygulama problem ihtiyacını kaydeder; DEC-19 bounded prototip + native kıyas önerisidir. Q02/Q03/Q06/Q08/Q11 ve OPEN yatırım/stack/sayısal policy kararları açık kalır. Sonraki uygulama talebinde T01→T02d→T03a hazırlığı, yetkili T03b deneyinden sonra T03c owner kararı; prototip bu tur başlamadı.
+
+## Q12 — Aynı projede konuşma dili değişirse
+
+**2026-10-11 / cevap bekleniyor.** Kullanıcı konuşma dilinin tespit edilip not/proje çıktılarının o dilde üretilmesini istedi; maliyetli otomasyonun P2'de olabileceğini belirtti. [İhtiyaç, teknik öneri ve faz planı](../product/language-and-localization.md) kaydedildi. İlk pilot yalnız İngilizce varsayımıyla tasarlanmayacak; somut detector/model/language desteği henüz test edilmedi.
+
+- **A — Önerilen:** İlk insan konuşmasının dili proje dili olarak önerilir, kullanıcı düzeltebilir. Sonradan başka dil konuşulursa proje çıktı dilini değiştirme önerisi gösterilir; eski kayıtlar otomatik çevrilmez.
+- **B:** Her sohbetin dilinde yeni not üret; aynı projede farklı dilli kayıtlar bulunabilir. Ortak retrieval/cross-language kalite ayrıca gerekir.
+
+A/B seçilmedi. Bu soru metadata/sentetik hazırlığı bekletmez, otomatik çok dilli production policy'si öncesi karara bağlanır. Kaynak dili, yeni üretim dili ve UI locale ayrıdır. Genel dil ihtiyacı toplu geçmiş çevirisi, yeni modele veri aktarımı/ücret veya eski karar/AC rewrite onayı değildir. Q03 ve mevcut izin/kanıt kapıları korunur.

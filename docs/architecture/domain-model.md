@@ -103,3 +103,7 @@ Application result: not_observed / reported / pending / observed / partial / mis
 Trusted insan selection'ı policy/kimlik/kapsamla Decision'a bağlanır; bu ek tablo ikinci karar deposu değildir. Expectation hâlâ proposal'a ait olabilir; capture onu accepted backlog yapmaz. Hedef, artifact veya ilgili karar/AC değişimi current assessment'ı stale/review yapar; tarihsel observation silinmez. Evidence önceki snapshot'a bağlı kalır. Başka hedefe uygulama aynı expectation başarı sonucu değildir.
 
 Kayıtlar aynı workspace/project composite sınırına tabidir. Yeni query'de güncel kaynak/target ACL gerekir; assessment türevi ACL genişletemez. [ER-03 ve DB bütünlüğü](data-relationships.md#er-03--artifact-hedef-uygulama-ve-kabul-ayrımı), [tetikler](execution-and-integrations.md#10-hedef-uygulama-gözlemi-tetikleri) ve [ADR-0011](adr/0011-target-application-evidence.md) ayrıntıları tamamlar.
+
+## Dil ve locale metadata önerisi
+
+[Konuşma dili sözleşmesi](../product/language-and-localization.md) source/span language tags (mixed/undetermined dahil), detector provenance; proje output policy revision; record content_language ve varsa version-bound translated_from alanlarını önerir. UI locale üretim dilinden ayrıdır. Bu mantıksal tasarım fiziksel DDL/migration değildir. Orijinal source span/offset/ACL, decision/AC/evidence kimliği korunur; çeviri ayrı türevdir. Dil değişimi event/karar/kanıtı rewrite etmez; cache/brief ilgili language policy/source revision ile bağlanır. Q12 stratejisi açık.
