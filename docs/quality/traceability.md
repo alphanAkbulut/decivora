@@ -84,3 +84,5 @@ Kullanıcı Q04 cevabında olgunlaşma hikâyesi ve AC/DoD/test görünürlüğ�
 **2026-10-11 yüksek token riski takip isteği:** CST-01/02,APR-01,GOV-01,ROU-02 → ENG-06/09 → [risk/onay sözleşmesi](../product/token-risk-and-approval.md) → T09d/T19b/T24k → TRA-01–10. İhtiyaç kabul edildi; mekanizma/eşik öneri, uygulama/test yok.
 
 **2026-10-11 farklı chat'ler ve hızlı konuşma isteği:** CAP-01/02/05,PRJ-01,KNO-01/02,CST-01,UX-01 → ENG-01/02/03/06/07/09 → [çoklu chat/lag](../architecture/multi-chat-and-processing-lag.md) → T05d/T10b/T06g/T18g/T24l → CHAT-01–06/LAG-01–06. Kaynak bağlama, görev çıkarımı, ortak hafıza ve backlog gecikmesi ayrıdır; yeni scope/engine veya ölçülmüş kapasite iddiası yok.
+
+**2026-10-11 yapıştırılan devam paketi/hafıza konuşması:** KNO-01/02,APR-02,UX-02,CST-01/02,GOV-01 ve F04/F08/F11/F13 → ENG-03/06/07/09/10 → [devam paketi](../product/resume-package-and-memory.md) / [Spike-1 v1](../delivery/spike-1-v1.md) → T20h/T18h/T24m ve S1-01–06 → RES-01–08. Aktarılan assistant önerileri proposed; Spike-0/Projects iddiaları ve hafıza başarısı doğrulanmış sonuç değildir. Q11 açık; tam kapsam korunur.

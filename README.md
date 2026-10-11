@@ -79,6 +79,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Rate limit, transaction ve kötüye kullanım nasıl yönetilecek? | [Katmanlı sınırlar, admin davranışı ve 10 kabul senaryosu](docs/architecture/resource-limits-and-abuse.md) |
 | İlişkiler ve iptaller grafikte nasıl görünecek? | [Görsel sözlük, geçmiş ve örnek diyagramlar](docs/product/graph-experience.md) |
 | İşin fikri nasıl olgunlaştı; hangi testler yapıldı? | [Bağlam hikâyesi, AC/DoD ve kanıt matrisi](docs/product/task-context-and-acceptance.md) |
+| Yarım kalan işe yeni chat'te nasıl döneriz? | [Devam paketi ve hafıza yeterliliği](docs/product/resume-package-and-memory.md) · [Spike-1 v1 deney planı](docs/delivery/spike-1-v1.md) |
 | Hangi kararlar kullanıcıyı bekliyor? | [Owner soruları ve teknik hazırlık](docs/delivery/decision-brief.md) |
 | Admin, kullanıcı rolleri, hata takibi ve backoffice | [Yönetim ve işletim sözleşmesi](docs/product/administration-and-operations.md) |
 | Açık kaynak mı, private mı, self-host mu? | [Lisans, hosting, erişim ve paket ayrımı](docs/governance/licensing.md#kaynak-kodu-kurulum-erişim-ve-paket-ayrı-kararlar) |

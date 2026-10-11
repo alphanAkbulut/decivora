@@ -24,6 +24,7 @@ Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/promp
 | Hangi eksikler bulundu ve hangileri hâlâ açık? | [Kapsam/mimari incelemesi](../quality/completeness-review.md) |
 | İnsanların hangi şikâyetleri bu yönü destekliyor; karşı kanıt ne? | [Kullanıcı araştırması ve ters düşünme](../discovery/user-research.md) |
 | Benchmark gerçekten çalıştırıldı mı? | [Bulgular ve test edilmemiş alanlar](../discovery/benchmark-findings.md) |
+| Bekleyen işe yeni chat'te nasıl devam edilir; hafıza yeterli mi? | [Devam paketi](../product/resume-package-and-memory.md), [Spike-1 v1](spike-1-v1.md); proposed/not_run |
 | Pilot için owner neyi seçti, hangi yanıtlar bekliyor? | [Sorular ve cevaplar](decision-brief.md) |
 
 ## Belge otoritesi ve çelişki çözümü

@@ -57,3 +57,7 @@ Bir projede insanlar farklı rollerle çalışır; agent'lar ayrı kimlik, süre
 ## F07/F09/F10 — Olgunlaşma ve iş başına kabul görünümü
 
 Kullanıcı isteğiyle [task context ve kabul dosyası](task-context-and-acceptance.md) ayrıntılandırıldı: ilk fikir→alternatif→değişim gerekçesi→onaylı yaklaşım→uygulama/test kanıtı aynı task üzerinden görünür. AC ve uygulanabilir DoD işe başlamadan versiyonlu hazırlanır; iş sonrasında test/evidence matrisi bunlara karşı gösterilir. Ana işin önemli değişimi veya kapanışı context milestone'ı üretir; dosya otomasyonu Q06 tercihidir. Bu mevcut kapsamın açılımıdır, çalışan özellik değildir.
+
+## Bekleyen işten yeni oturuma dönüş
+
+F11'in yaş/kanıt göstergesi ve F08/F13'ün context aktarımı [devam paketi](resume-package-and-memory.md) ile birleşir: seçili işin izinli kaynakları, ne yapıldığı/ne kaldığı ve güncel kararlar önizlenir. İlk deney için önerilen kopyala eylemi run başlatmaz veya görevi completed yapmaz. F04 stale/çelişki kontrolü ve F09 verification korunur. Q11 tercihi açık; [Spike-1 v1](../delivery/spike-1-v1.md) bir uygulama/test sonucu değildir.

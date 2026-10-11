@@ -48,3 +48,7 @@ Ekip isteğinin ayrıntısı yeni bir ürün değildir: TEAM-01, PRJ-01, GOV-01/
 ## Açıklanabilir task ranking takip kapsamı
 
 2026-10-10 kullanıcı talebi mevcut GRF-01/APR-02/UX-02/ROU-01 içinde korunur: 40+ ilerlemeyen task'ın nedenleri, blocker/dependency, business/product value, critical path veri yeterliliği, aging, effort, uncertainty, context readiness ve risk; downstream impact explanation ve next actionable; owner/admin ve önceden yetkili üst agent için board. [Ayrıntı, seçenekler ve kabul](priority-and-flow.md). MVP deterministik öneri/board, Faz 2 context-aware scoring/simülasyon/UX adayı; nihai faz feasibility kanıtına bağlıdır. Rank canonical priority değildir; insan PO scope/value ve karar haklarını korur. Bu doküman kaydı çalışan özellik veya yeni otonomi yetkisi değildir.
+
+## Bekleyen işe devam ve dış hafıza deneyi
+
+2026-10-11 yapıştırılan konuşma; F04/F08/F11/F13 ve KNO-01/02, APR-02, UX-02, CST-01/02, GOV kapsamını ayrıntılandırır. [Devam paketi](resume-package-and-memory.md) kaynağı, yapılmış/claim/unknown ayrımını, kalan AC/DoD, güncel karar ve next-action'ı taşır. [Spike-1 v1](../delivery/spike-1-v1.md) temiz oturumda memory yeterliliğini ölçen öneridir; “unutuldu” yerine kaynaklı yaş/kanıt/coverage etiketi kullanır. A önizle/kopyala başlangıç önerisi, B host başlatma ayrı capability/izin araştırmasıdır. Mevcut tam vizyon ve MVP daraltılmadı; Wedge-0 yeniden adlandırması kabul edilmiş karar değildir.

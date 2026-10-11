@@ -84,3 +84,12 @@ Bu istek belirli bir host/SDK, hidden reasoning erişimi, harici veri aktarımı
 - **B — Alternatif olarak korundu, varsayılan seçilmedi:** Yalnız kullanıcının elle seçtiği/verdiği kaynaklarla çalış; hesap genelinde metadata keşfi ve yeni kaynak önerisi yapma.
 
 İkisi de otomatik tüm-proje yetkisi içermez. A önerisi aktif keşif zorunluluğu değildir; provider listeleme kapsamı gerçekten ayrıştırılabiliyorsa sunulur. Bu ayrım uygulama öncesi capability deneyi ister. Seçim gerekçesi: yeni kaynakları fark etme kolaylığı sağlarken içerik erişimini kullanıcı seçimine bağlı tutar. Bu ürün tercihi, bugün herhangi bir hesabı listeleme izni değildir; her bağlantıda ayrıca açık metadata/list izni gerekir. Bu izin yoksa keşif kapalıdır ve manuel bağlantı kullanılır. Q03 dış veri/bütçe, Q07/1C izinli geçmiş ve OPEN-14 ekip yetki kapısı korunur. Bağlantı için read/capture/proposal başlangıç paketi teknik öneridir; dış yazma, execution veya scope onayı kabul edilmiş sayılmaz.
+
+## Q11 — İlk devam düğmesi
+
+**2026-10-11 / cevap bekleniyor.** Yapıştırılan metindeki önceki assistant cevabı A'yı öneriyor; kullanıcı tercihi sayılmaz. [Somut paket ve izin tasarımı](../product/resume-package-and-memory.md), [Spike-1 v1 görev planı](spike-1-v1.md) hazırlandı.
+
+- **A — Önerilen:** İlk deneyde önizle/kopyala; kullanıcı istediği araçta yapıştırır. Paket kalitesi/fresh-session testi ve düşük kurulum eforu öne çıkar.
+- **B:** İlk deneyde host'a teslim/başlat seçeneğinin fizibilitesini de araştır. Gerçek uygulama ayrıca host capability, somut hedef/path, izin ve maliyet doğrulaması ister; bu tercih tek başına agent başlatma yetkisi değildir.
+
+MVP'yi “unutulanlar radarı” olarak yeniden tanımlama onayı yok; bu ifade pilot konumlandırma adayıdır. Çalışan Spike-0 kaydı bu repoda bulunmadı. Gerçek 3–5 oturum ve iki haftalık pilot için kaynak/model/bütçe ve takvim ayrıca somutlaştırılır. Q03 kararı yerine öneriden izin çıkarılmaz.

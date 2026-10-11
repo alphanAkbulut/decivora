@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Devam paketi ve hafıza yeterliliği taslağı
+
+- Yapıştırılan konuşmadan [devam paketi](../product/resume-package-and-memory.md) ve [Spike-1 v1](spike-1-v1.md) hazırlandı: yaş/kanıt/coverage, güncel karar/AC, source provenance, copy/launch ayrımı ve clean-session baseline kıyası.
+- T20h/T18h/T24m, S1-01–06 ve RES-01–08 planlandı. Q11 ilk düğme tercihi açık; A kopyala öneri, B capability araştırması. Wedge/MVP yeniden tanımı yapılmadı; bu repo main'inde Spike-0 runtime/prototipi bulunmadı.
+- Yalnız tasarım ve deney protokolü; gerçek oturum, model, clipboard veya UI testi yapılmadı. Tam vizyon, ana görev/MVP kriterleri ve sıradaki T01 korunur.
+- Doküman kontrolü geçti: 71 Markdown, 532 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. RES-01–08 ve S1-01–06 kimlikleri kontrol edildi; senaryolar not_run.
+
 ### 2026-10-11 — Token riski onayı, çoklu chat ve işleme gecikmesi
 
 - [Ek token risk onayı](../product/token-risk-and-approval.md): deterministik risk tespiti, sınırlı plan onayı, unknown/hard-cap ayrımı ve koşu sırasında yeni çağrıyı durdurma. T09d/T19b/T24k ve TRA-01–10 planlandı.

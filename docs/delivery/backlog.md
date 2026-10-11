@@ -479,3 +479,15 @@ T09b'nin minimum bütçe guard'ı korunur; T09d bunun risk değerlendirmesini ta
 | T24l / T18g,T06g,T24k | Çoklu chat + burst/uzun yük + geciken provider/onay corpus raporu | P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı |
 
 Adapter gerçek erişim testi T02/T16/T17'de; sentetik yük sonucu provider kapasitesi garantisi değildir. Kapasite hedefi OPEN-12/16'da pilot öncesi seçilir. UI tamamlanana kadar trace/cursor çıktısıyla çekirdek kontroller doğrulanır; yüksek riskli catch-up izinsiz model çağrısı açmaz.
+
+## Devam paketi ve hafıza yeterliliği — 2026-10-11
+
+**PROPOSED / not_started.** [Spike-1 v1](spike-1-v1.md) altı ardışık deney adımını ve [ürün sözleşmesi](../product/resume-package-and-memory.md) RES-01–08 kabulünü tanımlar. Yapıştırılan metindeki Spike-0 iddiaları doğrulanmadı; çalışan prototip bağımlılığı kabul edilmez. T01/T02/T03 kapıları ve sıradaki T01 korunur.
+
+| Dilim / bağımlılık | Teslim | Kabul / faz |
+|---|---|---|
+| T20h / T20e,T14b,T06g | Bekleyen işler için kaynaklı yaş/kanıt/coverage görünümü ve ertele/incele | P1b adayı: RES-01/05; yaş tek başına unutuldu/obsolete/priority değildir |
+| T18h / T18g,T14b,T08b,T09d | Revision/ACL bağlı deterministic resume şablonu, bounded önizle/kopyala; Q11 tercihi doğrultusunda | P1b adayı: RES-02–07; copy model/runner başlatmaz, kritik eksik context görünür; yeni özet metered gate'e tabidir |
+| T24m / T20h,T18h,T24l | Fresh-session oracle, prompt/paket/full-source koşulları ve izinli deney raporu | RES-08 + RES-01–07 regresyonları; model/gerçek veri izni yoksa yalnız hazır sentetik protokol + not_run |
+
+S1-01–06 deney adları ana 30 göreve yeni task sayısı eklemez. Ayrı sentetik prototype stack kapısından sonra incelenebilir; üretim entegrasyonu yukarıdaki bağımlılıklara bağlıdır. Q11-A kopyala önerisi, B başlatma capability araştırması açık; hiçbir düğme execution, egress, ücret veya scope iznini sessiz genişletmez.
