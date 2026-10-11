@@ -14,7 +14,7 @@
 
 **Beklenen kritik sonuç:** `{"current_decision": "D_SQLITE", "history_preserved": true, "impact": {"T_SYNC": "obsolete_candidate", "T_EXPORT": "retained", "T_WATCH": "review_unknown", "T_COMBINED": "obsolete_or_update_candidate"}, "task_closure_without_impact_approval": false}`.
 
-**İnsan inceleme durumu:** pending. Doğru / düzeltme + gerekçe kaydedilecek.
+**İnsan inceleme durumu:** 2026-10-12 · Kullanıcı “Evet, bu davranış doğru” yanıtıyla sorulan karar seçimi/ayrı impact kapanışı davranışını onayladı. [Sürümlü ve source/oracle hash bağlı kayıt](reviews/h1-behavior.json). **Partial case review:** yukarıdaki tek tek task impact etiketleri, exact extraction alanları, history assertion ve corpus bütünü bu soruda incelenmedi; human-gold değil. H2/H3 pending; oracle değiştirilmedi.
 
 ## H2 — Kısmi kabul kriteri
 

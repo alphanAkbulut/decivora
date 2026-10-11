@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — H1 insan davranış incelemesi
+
+- Kullanıcı doğrulanmış geç cevapla karar seçimi ve görev etkisinin ayrı onayı davranışını kabul etti. [Sürümlü review](../quality/reviews/h1-behavior.json) exact soru/yanıt ve source/oracle hash içerir. Yalnız sorulan davranış reviewed; task impact/extraction etiketleri veya bütün corpus gold yapılmadı, oracle değiştirilmedi.
+- H2 kısmi kabul kriteri soruldu; H3 ve tam etiket/karşılaştırma kapıları açık. T01 IN_PROGRESS; yeni model/harcama izni yok. Dört küçük Done teslimi korunur.
+
+
 ### 2026-10-12 — Dört küçük teslimin kapanışı ve tek komutluk zincir
 
 - T03g/T03h/T03i/T03j scoped DONE olarak kaydedildi; her teslimin kabulü ve kanıtı backlog'da. Geniş ana T03 ve T03f kalite/native kapıları korunur. [Tek komutluk çalışan zincir](../quality/integrated-chain.md) quote-only adapter ile bounded observer'ı karar/impact/AC/restore'a bağlar.

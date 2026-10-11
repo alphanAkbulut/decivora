@@ -58,8 +58,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
-- **Son ilerleme:** 2026-10-11 · Veri hazırlığı: 6 sentetik oturum/58 mesaj ve bağımsız scorer mevcut. Bu son token-limit çalışmasında yeni corpus veya insan gold üretilmedi.
-- **Sıradaki adım:** [İnsan inceleme kuyruğu](../quality/human-review-queue.md) ve kritik etiket doğrulaması; gerçek model sonucu ayrıca T03 deneyine eklenecek. T01 henüz kapanmadı.
+- **Son ilerleme:** 2026-10-12 · H1 karar seçimi ve ayrı görev etkisi onayı davranışı kullanıcı tarafından onaylandı; [source/oracle hash bağlı partial review](../quality/reviews/h1-behavior.json) kaydedildi. Exact extraction/task impact etiketleri ve corpus bütünü henüz incelenmedi; gold/holdout iddiası yok, oracle değişmedi.
+- **Sıradaki adım:** H2 kısmi kabul kriteri incelemesi soruldu; H3 ve exact candidate/domain etiketleri sırada. İnsan inceleme kuyruğu ve gerçek model kalite ölçümü ayrı kapılar; T01 IN_PROGRESS.
 
 ## T02 — İki coding yüzeyinde capability spike
 

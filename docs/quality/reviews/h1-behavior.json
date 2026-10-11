@@ -1,0 +1,38 @@
+{
+  "format": "decivora-human-behavior-review-1",
+  "review_id": "H1-BEHAVIOR-001",
+  "revision": 1,
+  "date": "2026-10-12",
+  "reviewer": {
+    "identity": "project_owner_current_chat",
+    "role": "product_owner",
+    "provenance": "explicit user reply in current Codex chat; not production IAM"
+  },
+  "question_item_id": "[\"request_user_input_async\",\"call_7b02693b25a54e17b5d61934f2cfb1bc\",0]",
+  "question": "İlk insan incelemesi (H1): Kullanıcı başka bir sohbette gecikerek “Önceki Q_STORE sorusundaki B, SQLite ile devam” diyor. Kaynak kimliği ve soru sürümü ayrıca doğrulanmışsa SQLite seçimini kaydedelim; etkilenen eski görevleri kapatmayı ise ayrı onaya bırakalım. Bu beklenen davranış doğru mu?",
+  "answer": "Evet, bu davranış doğru",
+  "status": "approved_behavior_partial_case_review",
+  "bindings": {
+    "source_path": "examples/corpus/sources/s02.json",
+    "source_sha256": "69330e5c2d003463f86421a20e54713ea7a6b886929ffe9c58713824dfafbdc9",
+    "source_message_id": "S02-m01",
+    "oracle_path": "examples/corpus/oracles/s02.json",
+    "oracle_sha256": "8a6db61aed45bbdd342d0b6cdc8d96b55ae8e901fac86345f1ef65294b19d433"
+  },
+  "approved_scope": [
+    "Given separately verified source identity and question revision, delayed explicit Q_STORE option B selects SQLite",
+    "Task closure due to decision impact requires separate approval"
+  ],
+  "not_reviewed": [
+    "exact extraction kinds/quotes/spans/attributes",
+    "individual task AND/OR impact labels",
+    "full H1 oracle",
+    "H2/H3 and remaining corpus annotations",
+    "second reviewer or adjudication",
+    "sealed holdout"
+  ],
+  "corpus_gold": false,
+  "oracle_modified": false,
+  "model_dispatch_authorized": false,
+  "paid_api_authorized": false
+}
