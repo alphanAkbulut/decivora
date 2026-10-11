@@ -517,3 +517,15 @@ T01 ilk hazır iş olarak korunur; GAP/RES sentetik oracle örnekleri geniş cor
 | T03c / T03b,T02 | TODO: sonuç, yönetim/kurulum/bakım maliyeti ve yatırım seçenekleri | Owner native/extend/build/ek deney/durdur kararı; build'de production stack ADR ve T04 kapısı, native/extend'de uygun teslim planı |
 
 T02'nin iki coding yüzeyi kapsamı korunur; prototip tek hedefle sınırlı olabilir. T14d/T18i/T20i/T24n üretim entegrasyonunun bağımlılıklarıdır; P0 prototip bütün bu görevlerin tamamlandığını iddia etmez. T03b çalıştırma onayı/veri veya bütçe izni bu tabloyla oluşmaz.
+
+## Sözlük/pattern takip isteği — 2026-10-11
+
+Aşağıdaki dilimler ENG-02'nin mevcut kapsamını açar; yeni ana görev/engine oluşturmaz. Tasarım [lexical-prefilter](../architecture/lexical-prefilter.md) içindedir. Sözlük yapma önerisi kabul edilmiş parser/DB/otomatik işlem kararı değildir.
+
+| Alt dilim / bağımlılık | Teslim / durum | Kabul ve doğrulama |
+|---|---|---|
+| T01e / T01 | TODO / P0: TR/EN claim/request/negation/quote/future/implicit karar etiketleri ve holdout; izin varsa ayrıca redakte gerçek çıktı örneklemi | LEX-01–04/07; örnekler source span/actor taşır, gerçek veri yoksa sıklık/tasarruf unknown; mevcut corpus şartı korunur |
+| T09e / T01e,T09b,T09c | PROPOSED / P1a: sürümlü rule config, guard'lar ve structured-first candidate yolu; shadow mode, bounded matcher ve provenance dedup | LEX-01–06/08; unmatched içerik kaybolmaz, hiçbir keyword doğrudan command/onay üretmez; negatif örneklerle runtime test gerekir |
+| T24o / T09e,T24 | TODO / P1b: uygun batch baseline / lexical+fallback / structured-first hibrit kıyası | LEX-07/08; aynı holdout/kalite/coverage; bütün token/çağrı/false-done/review ve bakım yükü; ücretli model için Q03 ayrıca |
+
+20 sentetik örnek analizi bir parser testi veya gerçek LLM çıktı araştırması değildir. T01 sonraki iş olarak kalır; ön eleme kaliteyi düşürüyorsa bypass kapatılır veya yalnız yardımcı aday etiketi olarak tutulur.

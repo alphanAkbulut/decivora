@@ -140,3 +140,9 @@ T21b ek kabulü: project/task inheritance doğru; override hard-cap aşamaz; mod
 [Yüksek token riski ve ek onay](../product/token-risk-and-approval.md) bütçe dolmadan önce de büyük import, tekrar context, fan-out, retry ve belirsiz toplamı değerlendirir. Deterministik preflight → policy içinde olağan iş / insan risk onayı / hard-cap nedeniyle blocked ayrımı; onay kapsamı, stale kontrolü ve koşu sırasında yeni dispatch durdurma burada tanımlıdır. Onay bütçe veya veri izni yaratmaz; child/run bölme toplamı sıfırlamaz. TRA-01–10 planlıdır; T09d/T19b/T24k ilk model dispatch kapısını ve UX'i tamamlar.
 
 [Çoklu chat ve lag](multi-chat-and-processing-lag.md) ortak proje kayıtlarına hedefli retrieval, session başına frontier ve bounded catch-up kullanır. Geride kalmak bütün chat geçmişini pahalı bir çağrıyla yeniden işleme yetkisi değildir.
+
+## Sözlük/pattern ile ön eleme önerisi
+
+[Metin adayları ve deney planı](lexical-prefilter.md), mevcut parser-first ve structured duplicate bypass yaklaşımını detaylandırır. Sürümlü TR/EN sözlük + bağlam guard'ları ucuz aday saptama içindir; kelime eşleşmesi task completion veya işlem yetkisi değildir. Yapılandırılmış sinyal varsa ikinci extraction önlenebilir, fakat assistant raporu yine kanıt/onay sayılmaz.
+
+İlk yöntem shadow modda ölçülür. Eşleşmeyen içerik sırf keyword yok diye atılmaz; fallback, insan review ve ek output/schema maliyeti toplam tüketimde sayılır. İlk cevap üretme maliyetini azaltma iddiası yok. Sözlük ancak aynı kalite/coverage koşulunda toplam çağrı/token ve kullanıcı yükünü düşürürse ekonomik başarıdır. LEX-01–08 planlı; gerçek model pattern analizi ve tasarruf sonucu yok.

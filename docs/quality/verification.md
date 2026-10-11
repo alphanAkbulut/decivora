@@ -72,3 +72,7 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 ## İlk deney ile ürün kabulünü ayırma
 
 [Sentetik GAP oracle](../../examples/intent-reality-scenario.json), implemented=false ve result_status=not_run taşır. Veri geçerliliği ürün test sonucu değildir. T03b'de deterministic core/target contract/UI/fresh-session/native kıyas ayrı kanıt sütunlarıyla kaydedilir; unsupported veya izin verilmeyen bölüm başarı paydasından sessiz çıkarılmaz. Mock read-back pass gerçek provider pass değildir. P0 prototype GAP/RES kapısını geçmesi P1b AC-01–14'ü tamamlamaz; [güncel yön](../product/current-direction.md) bu kabul sınırını tanımlar.
+
+## Sözlük ve pattern adayları
+
+[LEX-01–08](../architecture/lexical-prefilter.md#küçük-uygulama-dilimleri-ve-planlı-kabul), olumsuz/gelecek/koşul/alıntı/kod, implicit karar, actor/target belirsizliği, structured false claim, çoklu aday, ACL/provenance/dedup ve unmatched coverage kontrolleridir. T01e/T09e/T24o shadow mode ve aynı kalite/coverage koşulunda ekonomik kıyası kapsar. 20 elle etiketlenmiş sentetik satır oracle önerisidir; regex/parser/model çalıştırılmadı. Veri/doküman kontrolü LEX passed yapmaz.

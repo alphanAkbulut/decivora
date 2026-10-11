@@ -11,7 +11,7 @@
 | Model doğruluğu / tasarruf / kullanıcı talebi | Ölçülmedi |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Sıradaki iş: T01** — golden corpus ve kanıt şablonunu hazırlamak; ardından T02 adapter fizibilitesi. İlk üretim kodu T03'te build/extend ve stack kapısından sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Sıradaki iş: T01** — golden corpus ve kanıt şablonunu hazırlamak; ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
 
@@ -178,3 +178,11 @@ Sıradaki **T01**; ardından source/tek target capability ve sınırlı yöntem 
 Bu teslimin içerik commit'i `aaf9cbef1c5a387848a6d75975482b9d09ae9e4a`: 42 değişen/yeni dosya aynı ref'ten GitHub üzerinden geri okundu ve local içerikle birebir eşleşti. Doküman kontrolü geçti: 76 Markdown, 658 yerel bağlantı; 32 scope, 30 ana görev, 14 MVP kriteri, 17 feature ve 10 engine korundu. JSON/ID/diyagram inventory kontrolü geçti. Hatalı fixture implemented işareti, yanlış inventory sayısı ve tanımsız GAP ID'si geçici kopyalarda reddedildi.
 
 15 belgedeki 34 Mermaid çıktısının tamamı GitHub Preview üzerinden render edilmiş SVG/etiket düzeyinde kontrol edildi; syntax/render hatası görülmedi. Güncel roadmap ayrıca ekran görüntüsüyle incelendi. Bu kontrol ürünün DB, API, agent, model veya tıklanabilir UI davranışını doğrulamaz. Kontrol kaydı değişiklikleri ayrıca küçük bir doküman commit'inde tutulur; ürün release'i oluşturulmadı.
+
+## 2026-10-11 — Token önlemleri ve sözlük/pattern önerisi
+
+Yedi token önlemi mevcut routing/connection/risk belgelerinde kontrol edildi: batch/delta, structured bypass, revision bağlı cache, kaynaklı özet, parent/dönem bütçesi ve yüksek tüketim onayı mevcut tasarımda var. Uygulama veya tasarruf kanıtı yok.
+
+[Lexical prefilter](../architecture/lexical-prefilter.md) önerisi eklendi: 20 elle hazırlanmış sentetik TR/EN örnek, versiyonlu küçük rule config adayı, guard/actor/target/provenance, structured-first/shadow/unmatched yolu ve üç ekonomik karşılaştırma. T01e/T09e/T24o ve LEX-01–08 planlı; gerçek transcript/model sıklık analizi yapılmadı. Keyword completion, insan approval, shell/write veya doğrulanmış hedef gözlemi üretemez. 10 engine ve 30 ana görev korunur; yeni DB veya kabul edilmiş stack yok.
+
+Bu teslim yalnız dokümantasyon değişikliğidir; mevcut 34 Mermaid kaynak bloğu değiştirilmedi. Sıradaki T01, Q03 gerçek veri/ücretli model kapısı ve mevcut açık owner kararları korunur. Doküman kontrolü geçti: 77 Markdown, 672 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri ve 34 Mermaid inventory korundu. LEX-01–08 tekil/sıralı ve T01e/T09e/T24o referansları ayrıca kontrol edildi. Commit sonrası içerik read-back teslimde ayrıca doğrulanır; LEX senaryoları runtime'da not_run kalır.

@@ -66,3 +66,7 @@ Detaylar: [runtime sözleşmeleri](runtime-contracts.md), [diyagramlar](diagrams
 [Tasarım revizyonu 03](../product/current-direction.md) için ENG-01 artifact/target gözlemini alır; ENG-03 mevcut öneri/karar/supersession ile uzlaştırır; ENG-06 güvenilir seçimi ve authorization'ı doğrular; ENG-07 application kayıtlarını event/projection olarak tutar; ENG-08 **ApplicationAssessment** ile **acceptance VerificationAssessment**'ı ayrı değerlendirir; ENG-10 güncel karar/uygulama/unknown içeren brief üretir. Yeni on birinci engine yok.
 
 Hedef read-back kod/API işidir; model exact hash/ref eşleşmesinin yerine geçmez. Enginelerin hepsini ayrı servis/agent yapmak veya ilk deneyde tam model extraction uygulamak zorunlu değildir. Bütün akışın pipeline dry-run'ı, gerçek transcript capture ve fresh-session başarısı yerine geçmez.
+
+## Sözlük ve pattern adayları
+
+[Lexical prefilter](lexical-prefilter.md) ENG-02'nin parser-first yoluna ait teknik öneridir. Kelime eşleşmesi yalnız kaynaklı aday üretir; gerçek işlem, insan seçimi, approval veya execution yetkisi üretmez. Negation/future/quote/actor/target guard'ları, çoklu aday, structured-first seçenek ve unmatched metnin coverage korunumu T01e/T09e/T24o ile değerlendirilecek. Yeni engine/servis yok; pattern başarı ve tasarrufu not_run.
