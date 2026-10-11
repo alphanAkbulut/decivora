@@ -12,7 +12,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
-Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
+**T01 IN_PROGRESS; diğer 29 ana görev TODO.** İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.
 
@@ -51,11 +51,12 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 
 ## T01 — Golden corpus ve karşılaştırma protokolü
 
-- **Durum / faz:** TODO / P0. **Bağımlılık:** —. **Kapsam ID:** EVAL-01.
+- **Durum / faz:** IN_PROGRESS / P0. **Bağımlılık:** —. **Kapsam ID:** EVAL-01.
 - **İş:** En az 30 anlamlı kayıt içeren 6 sentetik oturum; iki proje, ret, partial done, karar değişimi ve bekleyen onay; beklenen tip/ilişki/durumları etiketle. Ek no-op ve sıfır expansion örnekleriyle gereksiz task üretimini de değerlendir; 30 anlamlı kaydın yerine no-op sayma.
 - **Kabul:** Her örneğin source span'ı ve beklenen sonucu var; model geliştirmede kullanılmayan holdout ayrılmış; kişisel veri yok.
 - **Doğrulama:** Corpus şema kontrolü ve insan örneklem incelemesi.
-- **Beklenen dosya alanı:** `examples/corpus/; docs/quality/baseline.md` (henüz oluşmamış yollar uygulama sırasında açılır).
+- **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
+- **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
 
 ## T02 — İki coding yüzeyinde capability spike
@@ -571,7 +572,7 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 
 - **İş:** ER-R1 bounded keşif DOC_COMPLETE; ER-R2 Graphiti/LangGraph/LiteLLM export/dependency/contract closure TODO; ER-R3 native/config/extension/port/own deney önerisi TODO; ER-R4 kanıtlı adoption önerisi TODO. Ekip modeline ihtiyaç varsa OpenFGA/Cedar; distributed gerekçesi varsa Temporal. Her aday zorunlu runtime dependency değildir.
 - **Kabul:** gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.
-- **Korunan kapı:** yeni mimari/stack/kod alımı owner adoption kararı gerektirir; Q13 ve T03d kapanmadı. 30 ana görev TODO ve T01 sonraki ana iş olarak korunur; bu alt dilim MVP'den önce on framework kurma talimatı değildir.
+- **Korunan kapı:** yeni mimari/stack/kod alımı owner adoption kararı gerektirir; Q13 ve T03d kapanmadı. 30 ana görev korunur; T01 IN_PROGRESS, diğer 29 TODO; bu alt dilim MVP'den önce on framework kurma talimatı değildir.
 
 ## Karar→etki→gerçekleşme ölçüm alt dilimleri
 
@@ -583,7 +584,7 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 | T03f / T01f,T02,T03a | TODO / P0: sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
 | T24q / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
 
-Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev ve T01 sonraki sıra korunur.
+Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev korunur; T01 IN_PROGRESS, diğer 29 TODO.
 
 ## Teknik boşluk kapanışları — 2026-10-11
 

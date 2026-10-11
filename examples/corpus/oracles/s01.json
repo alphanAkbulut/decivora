@@ -1,0 +1,356 @@
+{
+  "format": "decivora-corpus-oracle-1",
+  "synthetic": true,
+  "session_id": "S01",
+  "project_id": "prj_memory",
+  "scenario_family": "storage_evolution",
+  "split": "development",
+  "label_status": "ai_authored_pending_human_review",
+  "product_result": "not_run",
+  "items": [
+    {
+      "message_id": "S01-m01",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Decision",
+          "entity_key": "D_SQLITE",
+          "source_span": {
+            "start": 0,
+            "end": 27,
+            "quote": "SQLite bir seçenek olabilir",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed",
+            "validity": "proposed"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_decision": "D_MARKDOWN",
+        "human_approval_created": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m02",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "PendingDecision",
+          "entity_key": "Q_STORE",
+          "source_span": {
+            "start": 0,
+            "end": 29,
+            "quote": "Q_STORE: A Markdown, B SQLite",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "state": "pending",
+            "options_revision": 1,
+            "options": {
+              "A": "D_MARKDOWN",
+              "B": "D_SQLITE"
+            }
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_decision": "D_MARKDOWN",
+        "timeout_is_approval": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m03",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_SYNC",
+          "source_span": {
+            "start": 0,
+            "end": 42,
+            "quote": "Markdown dosyalarını senkronize edecek işi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "verification": "unknown",
+            "justification": {
+              "op": "ref",
+              "id": "D_MARKDOWN"
+            }
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "required_by",
+          "from": "T_SYNC",
+          "to": "D_MARKDOWN",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "candidate_task": "T_SYNC",
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m04",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_EXPORT",
+          "source_span": {
+            "start": 0,
+            "end": 19,
+            "quote": "Arşiv dışa aktarımı",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "justification": {
+              "op": "any",
+              "args": [
+                {
+                  "op": "ref",
+                  "id": "D_MARKDOWN"
+                },
+                {
+                  "op": "ref",
+                  "id": "R_ARCHIVE"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "required_by",
+          "from": "T_EXPORT",
+          "to": "R_ARCHIVE",
+          "status": "requested"
+        },
+        {
+          "kind": "required_by",
+          "from": "T_EXPORT",
+          "to": "D_MARKDOWN",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "candidate_task": "T_EXPORT",
+        "justification_logic": "any",
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m05",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_WATCH",
+          "source_span": {
+            "start": 0,
+            "end": 21,
+            "quote": "Dosya izleme görevini",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed",
+            "justification": {
+              "op": "unknown"
+            }
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "incomplete_justification_can_obsolete": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m06",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Requirement",
+          "entity_key": "R_LOCAL",
+          "source_span": {
+            "start": 12,
+            "end": 25,
+            "quote": "yerel kurulum",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted",
+            "validity": "active",
+            "reference_only": true
+          }
+        },
+        {
+          "kind": "Task",
+          "entity_key": "T_COMBINED",
+          "source_span": {
+            "start": 46,
+            "end": 67,
+            "quote": "dosya watcher testini",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "justification": {
+              "op": "all",
+              "args": [
+                {
+                  "op": "ref",
+                  "id": "D_MARKDOWN"
+                },
+                {
+                  "op": "ref",
+                  "id": "R_LOCAL"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "required_by",
+          "from": "T_COMBINED",
+          "to": "D_MARKDOWN",
+          "status": "requested"
+        },
+        {
+          "kind": "required_by",
+          "from": "T_COMBINED",
+          "to": "R_LOCAL",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "candidate_task": "T_COMBINED",
+        "justification_logic": "all",
+        "task_verified": false,
+        "new_requirement_from_conditional_clause": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m07",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Artifact",
+          "entity_key": "A_STORAGE",
+          "source_span": {
+            "start": 0,
+            "end": 15,
+            "quote": "docs/storage.md",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "artifact_revision": 1,
+            "generation_status": "reported_generated",
+            "application_status": "unknown"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "task_verified": false,
+        "upload_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m08",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "DocumentInstruction",
+          "entity_key": "I_UPLOAD",
+          "source_span": {
+            "start": 3,
+            "end": 31,
+            "quote": "dosyanın GitHub'a yüklenmesi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed",
+            "target_artifact": "A_STORAGE"
+          }
+        },
+        {
+          "kind": "Task",
+          "entity_key": "T_UPLOAD",
+          "source_span": {
+            "quote": "upload görevi",
+            "start": 66,
+            "end": 79,
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed",
+            "execution": "todo",
+            "artifact": "A_STORAGE"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "instruction_is_execution": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m09",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Prompt",
+          "entity_key": "P_LEGACY",
+          "source_span": {
+            "start": 41,
+            "end": 74,
+            "quote": "Markdown senkronizasyonunu uygula",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "role": "historical_reference",
+            "execution": "not_run"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "quoted_prompt_executed": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S01-m10",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "new_tasks": 0,
+        "new_decisions": 0,
+        "pending_question": "Q_STORE",
+        "approval_created": false
+      },
+      "rationale": "Erteleme/sosyal yanıt seçenek seçimi değildir; Q_STORE açık kalır."
+    }
+  ]
+}

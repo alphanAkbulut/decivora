@@ -1,0 +1,247 @@
+{
+  "format": "decivora-corpus-source-1",
+  "synthetic": true,
+  "workspace_id": "ws_fixture",
+  "project_id": "prj_release",
+  "project_display_name": "Atlas",
+  "session_id": "S05",
+  "scenario_family": "release_revisions",
+  "split": "holdout_reserved",
+  "language": "tr",
+  "initial_state": {
+    "knowledge_revision": 1,
+    "binding": {
+      "project_id": "prj_release",
+      "epoch": 1
+    },
+    "policy": {
+      "output_language": "tr",
+      "revision": 1
+    },
+    "question_presentations": [
+      {
+        "question_id": "Q_DEPLOY",
+        "revision": 1,
+        "options": {
+          "A": "staging",
+          "B": "production"
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "id": "T_OLD_DEPLOY",
+        "validity": "active",
+        "execution": "todo"
+      }
+    ],
+    "acceptance_contracts": {
+      "T_CANARY_PACKAGE": {
+        "criterion_revision": 1,
+        "artifact_revision": 2,
+        "required_criteria": [
+          "AC_YAML",
+          "AC_ROLLBACK_DOC"
+        ],
+        "deployment_in_scope": false
+      }
+    }
+  },
+  "continues_session_id": null,
+  "messages": [
+    {
+      "message_id": "S05-m01",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:01:00Z",
+      "received_at": "2026-01-01T05:01:01Z",
+      "text": "Kademeli yayına geçmeyi öneriyorum; production kararını henüz değiştirmeyelim.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S05-m02",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:02:00Z",
+      "received_at": "2026-01-01T05:02:01Z",
+      "text": "Yayın planında geri dönüş adımları ve tek hedefe bağlı kanıt olsun.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S05-m03",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:03:00Z",
+      "received_at": "2026-01-01T05:03:01Z",
+      "text": "Canary paketini hazırlama görevini ekle.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S05-m04",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:04:00Z",
+      "received_at": "2026-01-01T05:04:01Z",
+      "text": "release.yaml ve rollback.md taslakları hazır; hedefe uygulanmış değiller.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "bundle_id": "BUNDLE_RELEASE_2",
+        "paths": [
+          "release.yaml",
+          "rollback.md"
+        ]
+      }
+    },
+    {
+      "message_id": "S05-m05",
+      "actor": {
+        "type": "system",
+        "id": "system_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:05:00Z",
+      "received_at": "2026-01-01T05:05:01Z",
+      "text": "Q_DEPLOY seçenekleri değişti: revision 2'de A hosted production, B staging; önceki gösterim geçersiz.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "question_id": "Q_DEPLOY",
+        "presentation_revision": 2,
+        "fixture_option_change": {
+          "A": "hosted_production",
+          "B": "staging"
+        }
+      }
+    },
+    {
+      "message_id": "S05-m06",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:06:00Z",
+      "received_at": "2026-01-01T05:06:01Z",
+      "text": "Önceki sorudaki A ile ilerle.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_authority": {
+          "authenticated": true,
+          "permission": "decision.approve",
+          "question_id": "Q_DEPLOY",
+          "option_id": "A",
+          "presentation_revision": 1,
+          "base_knowledge_revision": 1
+        },
+        "selected_source_revision": 1
+      }
+    },
+    {
+      "message_id": "S05-m07",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:07:00Z",
+      "received_at": "2026-01-01T05:07:01Z",
+      "text": "Let's discuss the release in English, but keep the project notes in Turkish.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "language_hint": "en"
+      }
+    },
+    {
+      "message_id": "S05-m08",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:08:00Z",
+      "received_at": "2026-01-01T05:08:01Z",
+      "text": "Eski bütün-kullanıcılara-deploy işini iptal ediyorum; tarihçesi kalsın.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_authority": {
+          "authenticated": true,
+          "permission": "task.cancel",
+          "task_id": "T_OLD_DEPLOY",
+          "base_task_revision": 1
+        }
+      }
+    },
+    {
+      "message_id": "S05-m09",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T05:09:00Z",
+      "received_at": "2026-01-01T05:09:01Z",
+      "text": "Eğer bir gün hosted modele geçersek bütçeyi konuşuruz.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    }
+  ],
+  "fixture_principals": {
+    "human_owner": {
+      "authenticated": true,
+      "project_role": "owner"
+    },
+    "assistant": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "agent": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "observer": {
+      "authenticated": true,
+      "permissions": [
+        "target.read"
+      ],
+      "authority": "fixture_only"
+    },
+    "tool": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.verify"
+      ],
+      "authority": "fixture_only"
+    },
+    "system": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.control"
+      ],
+      "authority": "fixture_only"
+    }
+  }
+}

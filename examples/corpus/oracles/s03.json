@@ -1,0 +1,313 @@
+{
+  "format": "decivora-corpus-oracle-1",
+  "synthetic": true,
+  "session_id": "S03",
+  "project_id": "prj_release",
+  "scenario_family": "project_identity",
+  "split": "development",
+  "label_status": "ai_authored_pending_human_review",
+  "product_result": "not_run",
+  "items": [
+    {
+      "message_id": "S03-m01",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_LOGIN",
+          "source_span": {
+            "start": 19,
+            "end": 38,
+            "quote": "giriş doğrulamasını",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "project_id": "prj_release",
+            "execution": "todo"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "project_scope": "prj_release",
+        "cross_project_write": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S03-m02",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Requirement",
+          "entity_key": "R_VISIBILITY",
+          "source_span": {
+            "start": 0,
+            "end": 21,
+            "quote": "Ekran erişim izinleri",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed"
+          }
+        },
+        {
+          "kind": "Requirement",
+          "entity_key": "R_LOGIN",
+          "source_span": {
+            "start": 25,
+            "end": 40,
+            "quote": "giriş davranışı",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "two_requirements_distinct": true
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S03-m03",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_AUTHZ",
+          "source_span": {
+            "start": 15,
+            "end": 28,
+            "quote": "izin kontrolü",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo"
+          }
+        },
+        {
+          "kind": "Task",
+          "entity_key": "T_LOGIN_UI",
+          "source_span": {
+            "start": 0,
+            "end": 14,
+            "quote": "Giriş ekranını",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "blocked"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "depends_on",
+          "from": "T_LOGIN_UI",
+          "to": "T_AUTHZ",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "next_action": "T_AUTHZ",
+        "blocked_task_should_run": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S03-m04",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "AnswerRecord",
+          "entity_key": "ANS_AMBIGUOUS_A",
+          "source_span": {
+            "start": 0,
+            "end": 2,
+            "quote": "A.",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "association": "ambiguous",
+            "candidate_question_ids": [
+              "Q_UI",
+              "Q_RELEASE"
+            ]
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "human_approval_created": false,
+        "canonical_mutations": 0,
+        "new_pending_decisions": 0
+      },
+      "rationale": "İki açık A/B sorusu var; cevap AnswerRecord olarak korunur. Yeni soru/karar uydurulmaz, mevcut sorular açık kalır; harften onay çıkarılmaz."
+    },
+    {
+      "message_id": "S03-m05",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Finding",
+          "entity_key": "F_UNSUPPORTED_APPROVAL",
+          "source_span": {
+            "start": 39,
+            "end": 76,
+            "quote": "kaynak insan cevabıyla eşleşmiş değil",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed",
+            "claim_supported": false
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "human_approval_created": false,
+        "canonical_mutations": 0
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S03-m06",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Risk",
+          "entity_key": "RISK_TARGET_ACCESS",
+          "source_span": {
+            "start": 0,
+            "end": 20,
+            "quote": "Hedef okuma izni yok",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "assessment": "permission_denied"
+          }
+        },
+        {
+          "kind": "Evidence",
+          "entity_key": "E_DENIED",
+          "source_span": {
+            "start": 31,
+            "end": 48,
+            "quote": "kontrol edilemedi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "availability": "permission_denied",
+            "application_status": "unknown"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "application_status": "unknown",
+        "missing_proven": false,
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S03-m07",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_ACCESS_DIAG",
+          "source_span": {
+            "start": 5,
+            "end": 48,
+            "quote": "yetki hatasının hangi bağlantıdan geldiğini",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "scope": "diagnosis_only"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "authorization_expanded": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S03-m08",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "cross_project_transfer": false,
+        "new_tasks": 0
+      },
+      "rationale": "Aynı display name veya açık olumsuz cümle proje taşıma yetkisi değildir."
+    },
+    {
+      "message_id": "S03-m09",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "new_tasks": 0,
+        "new_decisions": 0
+      },
+      "rationale": "Emoji/codepoint testi; açık no-op, göreve çevrilmez."
+    },
+    {
+      "message_id": "S03-m10",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Decision",
+          "entity_key": "D_PASSWORD_MODULE",
+          "source_span": {
+            "quote": "özel bir parola saklama modülü",
+            "start": 21,
+            "end": 51,
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "validity": "proposed",
+            "review": "unreviewed"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "human_approval_created": false
+      },
+      "rationale": "Yeni aday mevcut gereksinimi veya uygulanmış yaklaşımı otomatik değiştirmez."
+    },
+    {
+      "message_id": "S03-m11",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Decision",
+          "entity_key": "D_PASSWORD_MODULE",
+          "source_span": {
+            "quote": "önerisini reddediyorum",
+            "start": 19,
+            "end": 41,
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "rejected"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "rejected_proposal_new_tasks": 0,
+        "history_preserved": true
+      },
+      "rationale": "Ret kaynak ve tarihçesiyle kalır; rejected öneri yeniden açık task'a dönmez."
+    }
+  ]
+}

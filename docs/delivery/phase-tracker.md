@@ -40,11 +40,11 @@ Bu ağaç ürün teslim ağacıdır; çalışan kaynak kodu dizinleri değildir.
 
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
-| T01 | P0 | TODO | Golden corpus ve karşılaştırma protokolü | — |
+| T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü | — |
 | T02 | P0 | TODO | İki coding yüzeyinde capability spike | T01 |
 | T03 | P0 | TODO | Native/extend/build ve teknoloji kararı | T01,T02 |
 
-Sıradaki **T01**. T01e sözlük/istek/claim örneklerini ekler; T02d tek hedef ve güvenilir seçim sinyalini araştırır; T03a–c [güncel P0 planını](backlog.md) açar. GAP/RES oracle, [Spike-1](spike-1-v1.md) ve native baseline ile ilk değer değerlendirilir. Bu hazırlık tamamlandı veya prototype kodu üretildi demek değildir.
+**T01 IN_PROGRESS:** [ilk corpus](../../examples/corpus/README.md) ve [hazırlık/kalan kapsam raporu](../quality/baseline.md) mevcut; insan etiket incelemesi ve deney ölçümü tamamlanmadı. T01e sözlük/istek/claim örneklerini ekler; T02d tek hedef ve güvenilir seçim sinyalini araştırır; T03a–c [güncel P0 planını](backlog.md) açar. GAP/RES oracle, [Spike-1](spike-1-v1.md) ve native baseline ile ilk değer değerlendirilir. Bu hazırlık tamamlandı veya prototype kodu üretildi demek değildir.
 
 ## MVP — P1a ve P1b
 

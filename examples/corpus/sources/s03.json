@@ -1,0 +1,251 @@
+{
+  "format": "decivora-corpus-source-1",
+  "synthetic": true,
+  "workspace_id": "ws_fixture",
+  "project_id": "prj_release",
+  "project_display_name": "Atlas",
+  "session_id": "S03",
+  "scenario_family": "project_identity",
+  "split": "development",
+  "language": "tr",
+  "initial_state": {
+    "binding": {
+      "project_id": "prj_release",
+      "epoch": 1
+    },
+    "visible_same_name_projects": [
+      "prj_memory",
+      "prj_release"
+    ],
+    "question_presentations": [
+      {
+        "question_id": "Q_UI",
+        "revision": 1,
+        "options": {
+          "A": "board",
+          "B": "timeline"
+        }
+      },
+      {
+        "question_id": "Q_RELEASE",
+        "revision": 1,
+        "options": {
+          "A": "canary",
+          "B": "all_users"
+        }
+      }
+    ]
+  },
+  "continues_session_id": null,
+  "messages": [
+    {
+      "message_id": "S03-m01",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:01:00Z",
+      "received_at": "2026-01-01T03:01:01Z",
+      "text": "👋 Atlas projesinde giriş doğrulamasını görev olarak izleyelim.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m02",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:02:00Z",
+      "received_at": "2026-01-01T03:02:01Z",
+      "text": "Ekran erişim izinleri ve giriş davranışı ayrı gereksinimlerdir.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m03",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:03:00Z",
+      "received_at": "2026-01-01T03:03:01Z",
+      "text": "Giriş ekranını izin kontrolü bitmeden açmayalım; izin kontrolünü önceliklendir.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m04",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:04:00Z",
+      "received_at": "2026-01-01T03:04:01Z",
+      "text": "A.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "question_ref": null
+      }
+    },
+    {
+      "message_id": "S03-m05",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:05:00Z",
+      "received_at": "2026-01-01T03:05:01Z",
+      "text": "AI şu anda 'kullanıcı onayladı' diyor; kaynak insan cevabıyla eşleşmiş değil.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m06",
+      "actor": {
+        "type": "observer",
+        "id": "observer_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:06:00Z",
+      "received_at": "2026-01-01T03:06:01Z",
+      "text": "Hedef okuma izni yok; login.ts kontrol edilemedi.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_observation": {
+          "authorized_read": false,
+          "target": "fixture://release",
+          "path": "src/login.ts",
+          "status": "permission_denied"
+        }
+      }
+    },
+    {
+      "message_id": "S03-m07",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:07:00Z",
+      "received_at": "2026-01-01T03:07:01Z",
+      "text": "Önce yetki hatasının hangi bağlantıdan geldiğini inceleyelim.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m08",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:08:00Z",
+      "received_at": "2026-01-01T03:08:01Z",
+      "text": "Diğer Atlas'taki storage görevini bu projeye taşıma.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "mentioned_project_id": "prj_memory"
+      }
+    },
+    {
+      "message_id": "S03-m09",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:09:00Z",
+      "received_at": "2026-01-01T03:09:01Z",
+      "text": "Not: 👋 Merhaba. Şimdilik başka bir görev yok.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m10",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:10:00Z",
+      "received_at": "2026-01-01T03:10:01Z",
+      "text": "Parola ekranı yerine özel bir parola saklama modülü geliştirebiliriz.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S03-m11",
+      "actor": {
+        "type": "human_owner",
+        "id": "human_owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T03:11:00Z",
+      "received_at": "2026-01-01T03:11:01Z",
+      "text": "Özel parola modülü önerisini reddediyorum; ondan yeni iş türetmeyelim.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_authority": {
+          "authenticated": true,
+          "permission": "proposal.reject",
+          "record_key": "D_PASSWORD_MODULE",
+          "base_record_revision": 1
+        }
+      }
+    }
+  ],
+  "fixture_principals": {
+    "human_owner": {
+      "authenticated": true,
+      "project_role": "owner"
+    },
+    "assistant": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "agent": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "observer": {
+      "authenticated": true,
+      "permissions": [
+        "target.read"
+      ],
+      "authority": "fixture_only"
+    },
+    "tool": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.verify"
+      ],
+      "authority": "fixture_only"
+    },
+    "system": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.control"
+      ],
+      "authority": "fixture_only"
+    }
+  }
+}

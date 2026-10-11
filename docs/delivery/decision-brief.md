@@ -148,3 +148,15 @@ Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, c
 **Neden / trade-off:** Maliyet önceliği ve domain zincirindeki hataları model doğruluğundan ayrı inceleyebilme. Bedeli, ilk sonucun doğal dil extraction, native karşılaştırma veya alıcı modelin bağlamı doğru kullandığını doğrulamamasıdır. Bu tercih bütün ürünün LLM kullanmayacağı, ücretli araştırmanın kalıcı olarak yasaklandığı veya mevcut host/geliştirme tokenlarının sıfır olduğu anlamına gelmez.
 
 **Etki / kabul:** [Spike-1](spike-1-v1.md) ilk dilimi `no_model` fixture/code kontrolleriyle sınırlar; model dispatch/judge/retry ve fresh-session model deneyleri bu dilimde çalıştırılmaz. T01 oracle/corpus sıradaki hazırlıktır. Sonuç raporu code/fixture ile model `not_run` durumunu ayırır. Sonraki gerçek veri/provider/aylık bütçe, somut hedef read ve retention izinleri açık; bu cevap bunları onaylamaz. Bunlar otomatik anlam çıkarımını yapıp yapmama kararı değil, zorunlu deneyi hangi yöntem/veri/sınırla yürüteceğimizin açık ayrıntılarıdır. T01/T03f hazırlığı → T09 extractor uygulaması → T24/T24q ölçümü mevcut görevlerdir. Yalnız fixture/code sonucu otomatik ürünün doğrulama kapısını kapatamaz; izin/erişim eksikse ilgili sonuç `blocked`/`not_run` olur, passed sayılmaz. Uygulama veya deney bu kayıtla başlamış/tamamlanmış sayılmaz.
+
+
+## Q02-R2 — İlk gerçek read-back hedefi
+
+**Soruldu / cevap bekleniyor.** T01'in ilk [sentetik corpus hazırlığı](../quality/baseline.md) hazırdır; insan review'u ve gerçek deney tamamlanmadı. Q02-R1 A ilk kaynak yolu ile Q03-R1 ilk no-model sıra tercihleri yeniden sorulmaz.
+
+İlk gerçek uygulama kontrolünde hangi hedefi önce kullanalım?
+
+- **A — Önerilen hedef/sıra:** Mevcut private Decivora GitHub reposunda seçilmiş tek doküman. Deney öncesi source/artifact revision, exact path ve immutable ref belirlenir; read-only gözlem upload/AC/deploy ayrımıyla raporlanır.
+- **B — Hedef/sıra alternatifi:** Seçilmiş tek yerel dosya. Kullanıcı path'i belirtir; yalnız o artifact/target'ın read kapsamı hazırlanır, klasör/başka projeler genel taranmaz.
+
+İkisi de ürünün desteklemesi hedeflenen senaryolardır; seçim hangisini önce gerçek veriyle sınayacağımızdır. Cevap verilmeden hedef seçilmiş sayılmaz. Bu soru bütün kaynak hesaplarına erişim, dış modele veri, ücret veya target write/execution izni istemez/vermez; somut source/target read kapsamı ilgili deneyde ayrıca açık tutulur.

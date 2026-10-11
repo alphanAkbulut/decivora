@@ -1,0 +1,75 @@
+{
+  "kind": "corpus_preparation_validation_not_product_test",
+  "checked_on": "2026-10-11",
+  "validation": "passed",
+  "counts": {
+    "sessions": 6,
+    "projects": 2,
+    "messages": 58,
+    "record_annotations": 66,
+    "unique_knowledge_records": 46,
+    "meaningful_messages": 51,
+    "no_new_record_messages": 7
+  },
+  "human_review": "pending",
+  "product_result": "not_run",
+  "errors": [],
+  "validator_negative_tests": [
+    {
+      "test": "bad_span",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "stale_hash",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "missing_item",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "duplicate_message",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "leaked_expected",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "false_runtime_pass",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "cross_family_split",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "foreign_source_reference",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "ghost_relation",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "insufficient_unique_records",
+      "outcome": "rejected_as_expected"
+    },
+    {
+      "test": "duplicate_json_key",
+      "outcome": "rejected_as_expected"
+    }
+  ],
+  "product_runtime_tested": false,
+  "semantic_extraction_tested": false,
+  "holdout_status": "reserved_not_sealed",
+  "review_status": "pending",
+  "dataset_revision": 1,
+  "validator_sha256": "b0ff5609db10d05634f5503e54e3d70c3daf34aeec3a189e31ceeb73ae2bdb84",
+  "manifest_sha256": "07b8d6f8aae530198dca4b790c6e8d15d152213ce6ab9a8bf455aaf0c626bf22",
+  "limitations": [
+    "AI-authored labels; no independent human adjudication",
+    "Reserved holdout exposed to corpus author",
+    "Validation of expected declarations is not execution of expected product effects"
+  ]
+}

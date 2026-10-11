@@ -13,10 +13,12 @@
 
 | Alan | Bugünkü durum | Sonraki kanıt |
 |---|---|---|
-| Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli | T01 golden corpus ve ilk senaryo |
+| Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli; T01 ilk corpus hazır | İnsan etiket incelemesi ve çalışan sistemde ölçüm |
 | Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
 | Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
 | Pilot ve uygulama | Henüz başlamadı; A ilk kaynak yolu ve ek ücretli model API'si olmadan ilk deney seçildi; Codex B sonra | Önce fixture/kod kontrolleri; ardından zorunlu otomatik anlam çıkarımı deneyi. Somut veri/model/bütçe ve yatırım/stack kararları açık |
+
+**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti; insan incelemesi ve gerçek anlam çıkarımı testi bekliyor.
 
 > [!IMPORTANT]
 > **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.

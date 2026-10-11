@@ -9,9 +9,10 @@
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
 | Uygulama / adapter / dashboard | Başlanmadı |
 | Model doğruluğu / tasarruf / kullanıcı talebi | Ölçülmedi |
+| T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Sıradaki iş: T01** — golden corpus ve kanıt şablonunu hazırlamak; ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Güncel iş: T01 IN_PROGRESS** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
 
@@ -294,3 +295,16 @@ Kullanıcı Q03-R1 B ifadesinin otomatik anlam çıkarımını uygulanmayabilece
 Karar brief'i, Spike-1, MVP, T09/T24 backlog kabulü, README ve başlangıç/devir/gap kuyruğu hizalandı. T01/T01f/T03f hazırlığı → T09 uygulama → T24/T24q semantik ölçüm zinciri mevcut görevlerle açıklandı; yeni ana task/engine/AC, stack veya ücret seçimi yok. Model/veri/bütçe ve gerçek hedef izinleri ilgili deneyin yürütme önkoşuludur, özelliği yapıp yapmama oylaması değildir. LLM judge opsiyonel değerlendirme desteği olarak kalır.
 
 Yalnız typed fixture/code pass otomatik extraction veya P1b MVP doğrulaması değildir; çalıştırılmayan gerçek semantik test `not_run` ve ilgili blocker ile görünür kalır. T01 ve ana işler TODO; gerçek extractor/model/API/host/corpus deneyi bu tur yapılmadı. Mermaid/SVG kaynakları değişmedi; doküman/link/inventory ve remote read-back teslim kontrolü uygulanır.
+
+
+## 2026-10-11 — T01 ilk somut corpus hazırlığı
+
+Kullanıcı etiketli örnekleri hazırlamamızı ve zorunlu işleri yapılmayabilecek seçenek gibi sunmamamızı istedi. Kalıcı çalışma kuralı AGENTS.md'de yöntem/sıra tercihi ile gerekli iş ayrımına işlendi; MVP ve tam kapsam/fazlar korundu. Q03-R1 A ilk no-model dilimi, otomatik extraction uygulama/testi zorunlu sonraki adımdır.
+
+[Corpus](../../examples/corpus/README.md): 2 sentetik proje/6 oturum, 58 mesaj, 66 kayıt annotation'ı ve 46 farklı KnowledgeRecord kimliği. 51 anlamlı mesaj ve 7 no-new-record örneği. Storage evolution/new-chat late answer, aynı adlı proje/ambiguous A/ret, multi-agent authority/bütçe ve release option/target/AC/stale aileleri. Belirsiz A cevabı AnswerRecord olarak tutuldu, yeni PendingDecision oluşturulmaz; farklı KnowledgeRecord sayısı son semantik düzeltmede 47'den 46'ya indi. 4 oturum geliştirme, 2 aynı aileli oturum ayrılan değerlendirme; source/oracle ayrı. Etiketler bu AI çalışmasında hazırlandı; insan gold incelemesi pending. Seti yazan model ayrılan seti gördü; sealed/blind holdout iddiası yok.
+
+[Baseline hazırlığı](../quality/baseline.md) kritik checkpoint, MVP/P2/P3/P4 temsil/kalan kanıt, T01 alt teslim ve insan review listesini tutar. İlk semantik incelemede staging hedefi→canary stratejisi için kaynaksız supersedes edge çıkarıldı; veri kontrolünde dört boş expected assertion tamamlandı. Bunlar corpus düzeltmesidir; çalışan üründe hata/başarı sonucu değil.
+
+`check_corpus.py --self-test` veri/hash/exact Unicode span/split/referans/minimum kayıt kontrolünü geçti; 11 mutant beklenen şekilde reddedildi. [JSON kontrol raporu](../quality/corpus-preparation-results.json) validator/manifest hashlerini ve product_result=not_run sınırını taşır. Validator extractor/scorer/harness değildir; gerçek precision/recall, token tasarrufu, replay, target read ve UI testi yapılmadı. Ek ücretli model/provider çağrısı başlatılmadı.
+
+T01 IN_PROGRESS ve diğer 29 ana görev TODO; canonical backlog/phase tracker eşleştirildi. İnsan incelemesi, T01e/T01f ve daha geniş FLOW/authority/crash/protokol hazırlığı kapanmadan T01 complete sayılmaz. Görsel Mermaid/SVG kaynakları değişmedi; yeni ürün diagram/render testi iddiası yok. Remote commit/read-back teslimde ayrıca doğrulanır.

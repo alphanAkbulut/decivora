@@ -1,0 +1,328 @@
+{
+  "format": "decivora-corpus-oracle-1",
+  "synthetic": true,
+  "session_id": "S04",
+  "project_id": "prj_memory",
+  "scenario_family": "agent_authority",
+  "split": "development",
+  "label_status": "ai_authored_pending_human_review",
+  "product_result": "not_run",
+  "items": [
+    {
+      "message_id": "S04-m01",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_MANIFEST",
+          "source_span": {
+            "start": 13,
+            "end": 31,
+            "quote": "manifest hazırlama",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "parent": "T_IMPORT",
+            "execution": "todo"
+          }
+        },
+        {
+          "kind": "Task",
+          "entity_key": "T_SOURCE_READ",
+          "source_span": {
+            "start": 35,
+            "end": 47,
+            "quote": "kaynak okuma",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "parent": "T_IMPORT",
+            "execution": "todo"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "part_of",
+          "from": "T_MANIFEST",
+          "to": "T_IMPORT",
+          "status": "requested"
+        },
+        {
+          "kind": "part_of",
+          "from": "T_SOURCE_READ",
+          "to": "T_IMPORT",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "parent_acceptance_criteria_preserved": true,
+        "parent_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m02",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Artifact",
+          "entity_key": "A_MANIFEST",
+          "source_span": {
+            "start": 0,
+            "end": 9,
+            "quote": "Manifesti",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "generation_status": "reported_generated"
+          }
+        },
+        {
+          "kind": "Execution",
+          "entity_key": "RUN_CHILD",
+          "source_span": {
+            "start": 22,
+            "end": 36,
+            "quote": "çalışmam bitti",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "run_status": "finished",
+            "task": "T_MANIFEST"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "agent_run_finished": true,
+        "task_verified": false,
+        "parent_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m03",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "PendingDecision",
+          "entity_key": "Q_EGRESS",
+          "source_span": {
+            "start": 0,
+            "end": 34,
+            "quote": "Dış modele bütün geçmişi göndermek",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "state": "pending",
+            "requires": "human_risk_and_egress_approval"
+          }
+        },
+        {
+          "kind": "Risk",
+          "entity_key": "RISK_EGRESS",
+          "source_span": {
+            "start": 11,
+            "end": 34,
+            "quote": "bütün geçmişi göndermek",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "assessment": "high_risk"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "agent_can_approve_egress": false,
+        "new_provider_dispatches": 0
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m04",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Finding",
+          "entity_key": "F_AGENT_APPROVAL",
+          "source_span": {
+            "start": 35,
+            "end": 74,
+            "quote": "bütçeyi yeni token ile sıfırlayabiliriz",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "claim_supported": false
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "human_approval_created": false,
+        "parent_child_budget_reset": false,
+        "new_provider_dispatches": 0
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m05",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_MANIFEST_PASS",
+          "source_span": {
+            "start": 0,
+            "end": 42,
+            "quote": "Manifest kriteri fixture verifier'da geçti",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "criterion_id": "AC_MANIFEST",
+            "verification": "passed"
+          }
+        },
+        {
+          "kind": "Evidence",
+          "entity_key": "E_READ_NOT_RUN",
+          "source_span": {
+            "start": 44,
+            "end": 84,
+            "quote": "kaynak-okuma kriteri hâlâ çalıştırılmadı",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "criterion_id": "AC_SOURCE_READ",
+            "verification": "pending",
+            "execution_status": "not_run"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "parent_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m06",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_MANIFEST_FAIL",
+          "source_span": {
+            "start": 28,
+            "end": 50,
+            "quote": "manifest JSON geçersiz",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "criterion_id": "AC_MANIFEST",
+            "verification": "failed"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_manifest_verification": "failed",
+        "prior_evidence_preserved": true,
+        "parent_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m07",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Finding",
+          "entity_key": "F_READ_BLOCKER",
+          "source_span": {
+            "start": 0,
+            "end": 24,
+            "quote": "Kaynak okuma izin engeli",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "blocker_for": "T_SOURCE_READ"
+          }
+        },
+        {
+          "kind": "Task",
+          "entity_key": "T_MANIFEST_FIX",
+          "source_span": {
+            "start": 50,
+            "end": 69,
+            "quote": "manifest düzeltmesi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "blocked": false
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "T_SOURCE_READ": "blocked",
+        "next_action": "T_MANIFEST_FIX",
+        "project_globally_blocked": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m08",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Requirement",
+          "entity_key": "R_SHARED_CAP",
+          "source_span": {
+            "start": 0,
+            "end": 18,
+            "quote": "Ortak bütçe sınırı",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted",
+            "validity": "active"
+          }
+        },
+        {
+          "kind": "Task",
+          "entity_key": "T_BUDGET_GUARD",
+          "source_span": {
+            "start": 0,
+            "end": 31,
+            "quote": "Ortak bütçe sınırı uygulanmadan",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "new_provider_dispatches": 0,
+        "child_budget_escape_allowed": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S04-m09",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "human_approval_created": false,
+        "task_verified": false,
+        "new_tasks": 0
+      },
+      "rationale": "Kod içindeki kelimeler komut/onay/tamamlanma olayı değildir."
+    }
+  ]
+}

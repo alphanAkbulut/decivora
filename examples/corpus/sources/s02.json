@@ -1,0 +1,298 @@
+{
+  "format": "decivora-corpus-source-1",
+  "synthetic": true,
+  "workspace_id": "ws_fixture",
+  "project_id": "prj_memory",
+  "project_display_name": "Atlas",
+  "session_id": "S02",
+  "scenario_family": "storage_evolution",
+  "split": "development",
+  "language": "tr",
+  "initial_state": {
+    "knowledge_revision": 1,
+    "question_presentations": [
+      {
+        "question_id": "Q_STORE",
+        "revision": 1,
+        "source_message_id": "S01-m02",
+        "options": {
+          "A": "D_MARKDOWN",
+          "B": "D_SQLITE"
+        }
+      }
+    ],
+    "decision_truth": {
+      "D_MARKDOWN": true,
+      "R_ARCHIVE": true,
+      "R_LOCAL": true,
+      "D_SQLITE": false
+    },
+    "task_justification_refs": [
+      "T_SYNC",
+      "T_EXPORT",
+      "T_WATCH",
+      "T_COMBINED",
+      "T_UPLOAD"
+    ],
+    "artifact_refs": [
+      {
+        "id": "A_STORAGE",
+        "revision": 1,
+        "application_status": "unknown"
+      }
+    ],
+    "acceptance_contracts": {
+      "T_MIGRATION": {
+        "criterion_revision": 1,
+        "artifact_revision": 2,
+        "required_criteria": [
+          "AC_ROLLBACK",
+          "AC_MIGRATION_SCHEMA"
+        ]
+      }
+    }
+  },
+  "continues_session_id": "S01",
+  "messages": [
+    {
+      "message_id": "S02-m01",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:01:00Z",
+      "received_at": "2026-01-01T02:01:01Z",
+      "text": "Önceki Q_STORE sorusundaki B, SQLite ile devam.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_authority": {
+          "authenticated": true,
+          "permission": "decision.approve",
+          "question_id": "Q_STORE",
+          "option_id": "B",
+          "presentation_revision": 1,
+          "base_knowledge_revision": 1
+        },
+        "selected_source_message_id": "S01-m02"
+      }
+    },
+    {
+      "message_id": "S02-m02",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:02:00Z",
+      "received_at": "2026-01-01T02:02:01Z",
+      "text": "SQLite için migration planını hazırlamamız gerekiyor.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S02-m03",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:03:00Z",
+      "received_at": "2026-01-01T02:03:01Z",
+      "text": "Planın veri kaybetmeden geri alınabilir olmasını istiyorum.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S02-m04",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:04:00Z",
+      "received_at": "2026-01-01T02:04:01Z",
+      "text": "SQLite kararına bağlı storage.md planını revision 2 olarak güncelledim; henüz yüklenmedi.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "artifact_key": "A_STORAGE",
+        "artifact_revision": 2,
+        "decision_binding": "D_SQLITE",
+        "declared_path": "docs/storage.md"
+      }
+    },
+    {
+      "message_id": "S02-m05",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:05:00Z",
+      "received_at": "2026-01-01T02:05:01Z",
+      "text": "Yükledim.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "selected_artifact_key": "A_STORAGE",
+        "target_ref_available": false
+      }
+    },
+    {
+      "message_id": "S02-m06",
+      "actor": {
+        "type": "observer",
+        "id": "observer_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:06:00Z",
+      "received_at": "2026-01-01T02:06:01Z",
+      "text": "Gözlem: önceki Markdown bundle'ı eski ref'te var.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_observation": {
+          "authorized_read": true,
+          "target": "fixture://atlas",
+          "immutable_ref": "fixture_ref_old",
+          "path": "docs/markdown.md",
+          "artifact_key": "A_STORAGE",
+          "status": "observed",
+          "content_sha256": null
+        }
+      }
+    },
+    {
+      "message_id": "S02-m07",
+      "actor": {
+        "type": "observer",
+        "id": "observer_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:07:00Z",
+      "received_at": "2026-01-01T02:07:01Z",
+      "text": "Gözlem: seçilen ref'te storage.md içeriği güncel artifact ile eşleşiyor.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_observation": {
+          "authorized_read": true,
+          "target": "fixture://atlas",
+          "immutable_ref": "fixture_ref_current",
+          "path": "docs/storage.md",
+          "artifact_key": "A_STORAGE",
+          "status": "observed",
+          "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "artifact_revision": 2
+        }
+      }
+    },
+    {
+      "message_id": "S02-m08",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:08:00Z",
+      "received_at": "2026-01-01T02:08:01Z",
+      "text": "Şema planını doğrulama işi dosya yüklenmeden başlayamasın.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S02-m09",
+      "actor": {
+        "type": "tool",
+        "id": "tool_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:09:00Z",
+      "received_at": "2026-01-01T02:09:01Z",
+      "text": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_verifier": {
+          "authorized": true,
+          "result": "passed",
+          "criteria": [
+            "AC_ROLLBACK"
+          ],
+          "criterion_revision": 1,
+          "artifact_revision": 2,
+          "task_id": "T_MIGRATION"
+        }
+      }
+    },
+    {
+      "message_id": "S02-m10",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:10:00Z",
+      "received_at": "2026-01-01T02:10:01Z",
+      "text": "Bağımsız yedekleme incelemesi bu storage kararını beklemiyor.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S02-m11",
+      "actor": {
+        "type": "system",
+        "id": "system_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T02:11:00Z",
+      "received_at": "2026-01-01T02:11:01Z",
+      "text": "Aynı gözlem receipt'i yeniden teslim edildi.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "retry_of_message_id": "S02-m07"
+      }
+    }
+  ],
+  "fixture_principals": {
+    "human_owner": {
+      "authenticated": true,
+      "project_role": "owner"
+    },
+    "assistant": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "agent": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "observer": {
+      "authenticated": true,
+      "permissions": [
+        "target.read"
+      ],
+      "authority": "fixture_only"
+    },
+    "tool": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.verify"
+      ],
+      "authority": "fixture_only"
+    },
+    "system": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.control"
+      ],
+      "authority": "fixture_only"
+    }
+  }
+}

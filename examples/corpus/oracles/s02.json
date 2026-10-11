@@ -1,0 +1,339 @@
+{
+  "format": "decivora-corpus-oracle-1",
+  "synthetic": true,
+  "session_id": "S02",
+  "project_id": "prj_memory",
+  "scenario_family": "storage_evolution",
+  "split": "development",
+  "label_status": "ai_authored_pending_human_review",
+  "product_result": "not_run",
+  "items": [
+    {
+      "message_id": "S02-m01",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Decision",
+          "entity_key": "D_SQLITE",
+          "source_span": {
+            "start": 30,
+            "end": 46,
+            "quote": "SQLite ile devam",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted",
+            "validity": "active",
+            "supersedes": "D_MARKDOWN"
+          }
+        },
+        {
+          "kind": "PendingDecision",
+          "entity_key": "Q_STORE",
+          "source_span": {
+            "start": 7,
+            "end": 14,
+            "quote": "Q_STORE",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "state": "resolved",
+            "option": "B"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "supersedes",
+          "from": "D_SQLITE",
+          "to": "D_MARKDOWN",
+          "status": "accepted"
+        }
+      ],
+      "assertions": {
+        "current_decision": "D_SQLITE",
+        "history_preserved": true,
+        "impact": {
+          "T_SYNC": "obsolete_candidate",
+          "T_EXPORT": "retained",
+          "T_WATCH": "review_unknown",
+          "T_COMBINED": "obsolete_or_update_candidate"
+        },
+        "task_closure_without_impact_approval": false
+      },
+      "rationale": "Geç ve başka chat'teki cevap exact soru/revision ile eşleşir; karar kabulü etki setindeki task kapatma onayı değildir."
+    },
+    {
+      "message_id": "S02-m02",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_MIGRATION",
+          "source_span": {
+            "start": 12,
+            "end": 29,
+            "quote": "migration planını",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "unreviewed",
+            "execution": "todo"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "required_by",
+          "from": "T_MIGRATION",
+          "to": "D_SQLITE",
+          "status": "proposed"
+        }
+      ],
+      "assertions": {
+        "candidate_task": "T_MIGRATION",
+        "current_decision": "D_SQLITE",
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m03",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Requirement",
+          "entity_key": "R_ROLLBACK",
+          "source_span": {
+            "start": 7,
+            "end": 39,
+            "quote": "veri kaybetmeden geri alınabilir",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted",
+            "validity": "active"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "criterion_is_test_evidence": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m04",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Artifact",
+          "entity_key": "A_STORAGE",
+          "source_span": {
+            "quote": "storage.md planını",
+            "start": 22,
+            "end": 40,
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "artifact_revision": 2,
+            "decision_binding": "D_SQLITE",
+            "application_status": "unknown",
+            "generation_status": "reported_generated"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_application": "unknown",
+        "task_verified": false
+      },
+      "rationale": "Yeni karar yeni artifact revision'ına bağlanır; önceki dosyanın yüklenmesi yeni içeriğin uygulandığı kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m05",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Artifact",
+          "entity_key": "A_STORAGE",
+          "source_span": {
+            "start": 0,
+            "end": 8,
+            "quote": "Yükledim",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "application_status": "reported",
+            "artifact_revision": 2
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_application": "reported",
+        "read_back_verified": false,
+        "task_verified": false,
+        "current_artifact_revision": 2
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m06",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_OLD_FILE",
+          "source_span": {
+            "start": 33,
+            "end": 48,
+            "quote": "eski ref'te var",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "application_revision": 0,
+            "current_applicability": "stale"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_application": "reported",
+        "current_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m07",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_CURRENT_FILE",
+          "source_span": {
+            "start": 42,
+            "end": 71,
+            "quote": "güncel artifact ile eşleşiyor",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "artifact_revision": 2,
+            "application_status": "observed",
+            "test_status": "not_run"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_application": "observed",
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m08",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_SCHEMA_CHECK",
+          "source_span": {
+            "start": 0,
+            "end": 26,
+            "quote": "Şema planını doğrulama işi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "start_gate": "application_observed"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "depends_on",
+          "from": "T_SCHEMA_CHECK",
+          "to": "T_UPLOAD",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "existence_is_full_ac_pass": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m09",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_ROLLBACK_PASS",
+          "source_span": {
+            "start": 23,
+            "end": 45,
+            "quote": "rollback kriteri geçti",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "criterion_id": "AC_ROLLBACK",
+            "criterion_revision": 1,
+            "artifact_revision": 2,
+            "verification": "passed"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "verified_by",
+          "from": "R_ROLLBACK",
+          "to": "E_ROLLBACK_PASS",
+          "status": "observed"
+        }
+      ],
+      "assertions": {
+        "criterion_verified": "AC_ROLLBACK",
+        "all_task_criteria_verified": false
+      },
+      "rationale": "Tek kriterin geçmesi bütün task veya deploy başarısı değildir."
+    },
+    {
+      "message_id": "S02-m10",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_BACKUP_REVIEW",
+          "source_span": {
+            "start": 0,
+            "end": 29,
+            "quote": "Bağımsız yedekleme incelemesi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "blocked": false
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "global_project_blocked": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S02-m11",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "duplicate_domain_effects": 0,
+        "new_model_calls": 0,
+        "new_verifier_dispatches": 0
+      },
+      "rationale": "Aynı source identity/revision retry'ı yeni Evidence veya execution üretmez."
+    }
+  ]
+}

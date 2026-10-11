@@ -1,0 +1,272 @@
+{
+  "format": "decivora-corpus-source-1",
+  "synthetic": true,
+  "workspace_id": "ws_fixture",
+  "project_id": "prj_release",
+  "project_display_name": "Atlas",
+  "session_id": "S06",
+  "scenario_family": "release_revisions",
+  "split": "holdout_reserved",
+  "language": "tr",
+  "initial_state": {
+    "knowledge_revision": 2,
+    "binding": {
+      "project_id": "prj_release",
+      "epoch": 1
+    },
+    "question_presentations": [
+      {
+        "question_id": "Q_DEPLOY",
+        "revision": 2,
+        "options": {
+          "A": "hosted_production",
+          "B": "staging"
+        }
+      }
+    ],
+    "artifact_refs": [
+      {
+        "id": "A_RELEASE",
+        "revision": 2
+      },
+      {
+        "id": "A_RELEASE_ROLLBACK",
+        "revision": 2
+      }
+    ],
+    "task_refs": [
+      "T_CANARY_PACKAGE",
+      "T_OLD_DEPLOY"
+    ],
+    "cancelled_task_ids": [
+      "T_OLD_DEPLOY"
+    ],
+    "acceptance_contracts": {
+      "T_CANARY_PACKAGE": {
+        "criterion_revision": 1,
+        "artifact_revision": 2,
+        "required_criteria": [
+          "AC_YAML",
+          "AC_ROLLBACK_DOC"
+        ],
+        "deployment_in_scope": false
+      }
+    }
+  },
+  "continues_session_id": "S05",
+  "messages": [
+    {
+      "message_id": "S06-m01",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:01:00Z",
+      "received_at": "2026-01-01T06:01:01Z",
+      "text": "Q_DEPLOY revision 2'de B, staging ile devam edelim.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_authority": {
+          "authenticated": true,
+          "permission": "decision.approve",
+          "question_id": "Q_DEPLOY",
+          "option_id": "B",
+          "presentation_revision": 2,
+          "base_knowledge_revision": 2
+        }
+      }
+    },
+    {
+      "message_id": "S06-m02",
+      "actor": {
+        "type": "observer",
+        "id": "observer_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:02:00Z",
+      "received_at": "2026-01-01T06:02:01Z",
+      "text": "Staging ref'inde release.yaml mevcut, rollback.md okunmadı; gözlem kapsamı kısmi.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_observation": {
+          "authorized_read": true,
+          "target": "fixture://release/staging",
+          "immutable_ref": "staging_ref_2",
+          "artifact_revision": 2,
+          "observed_paths": [
+            "release.yaml"
+          ],
+          "unread_paths": [
+            "rollback.md"
+          ],
+          "status": "partial"
+        }
+      }
+    },
+    {
+      "message_id": "S06-m03",
+      "actor": {
+        "type": "observer",
+        "id": "observer_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:03:00Z",
+      "received_at": "2026-01-01T06:03:01Z",
+      "text": "Production ref'inde iki dosya var, fakat seçilen hedef staging.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_observation": {
+          "authorized_read": true,
+          "target": "fixture://release/production",
+          "immutable_ref": "production_ref_2",
+          "artifact_revision": 2,
+          "status": "observed"
+        }
+      }
+    },
+    {
+      "message_id": "S06-m04",
+      "actor": {
+        "type": "observer",
+        "id": "observer_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:04:00Z",
+      "received_at": "2026-01-01T06:04:01Z",
+      "text": "Staging'in güncel immutable ref'inde iki dosyanın içeriği revision 2 ile eşleşiyor.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_observation": {
+          "authorized_read": true,
+          "target": "fixture://release/staging",
+          "immutable_ref": "staging_ref_3",
+          "artifact_revision": 2,
+          "matched_paths": [
+            "release.yaml",
+            "rollback.md"
+          ],
+          "status": "observed"
+        }
+      }
+    },
+    {
+      "message_id": "S06-m05",
+      "actor": {
+        "type": "tool",
+        "id": "tool_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:05:00Z",
+      "received_at": "2026-01-01T06:05:01Z",
+      "text": "İzole staging fixture testinde bütün tanımlı AC'ler geçti; deploy çalıştırılmadı.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_verifier": {
+          "authorized": true,
+          "task_id": "T_CANARY_PACKAGE",
+          "result": "passed",
+          "required_criteria": [
+            "AC_YAML",
+            "AC_ROLLBACK_DOC"
+          ],
+          "passed_criteria": [
+            "AC_YAML",
+            "AC_ROLLBACK_DOC"
+          ],
+          "artifact_revision": 2,
+          "criterion_revision": 1,
+          "target": "fixture://release/staging",
+          "immutable_ref": "staging_ref_3"
+        }
+      }
+    },
+    {
+      "message_id": "S06-m06",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:06:00Z",
+      "received_at": "2026-01-01T06:06:01Z",
+      "text": "Staging ref'i ilerlediyse önceki gözleme dayanıp devam etmeyelim; güncel içeriği tekrar kontrol et.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "fixture_target_revision_change": {
+          "previous": "staging_ref_3",
+          "current": "staging_ref_4"
+        }
+      }
+    },
+    {
+      "message_id": "S06-m07",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:07:00Z",
+      "received_at": "2026-01-01T06:07:01Z",
+      "text": "İptal edilen eski deploy görevini diriltme.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S06-m08",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T06:08:00Z",
+      "received_at": "2026-01-01T06:08:01Z",
+      "text": "Sonraki oturum paketi staging kararını, güncel ref bilinmeyenini ve bekleyen kontrolü taşımalı.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    }
+  ],
+  "fixture_principals": {
+    "human_owner": {
+      "authenticated": true,
+      "project_role": "owner"
+    },
+    "assistant": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "agent": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "observer": {
+      "authenticated": true,
+      "permissions": [
+        "target.read"
+      ],
+      "authority": "fixture_only"
+    },
+    "tool": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.verify"
+      ],
+      "authority": "fixture_only"
+    },
+    "system": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.control"
+      ],
+      "authority": "fixture_only"
+    }
+  }
+}

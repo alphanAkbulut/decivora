@@ -1,0 +1,98 @@
+{
+  "format": "decivora-corpus-manifest-1",
+  "synthetic": true,
+  "dataset_revision": 1,
+  "created_on": "2026-10-11",
+  "scope": "T01 initial corpus preparation; not a full conformance suite",
+  "labels": "ai_authored_candidate_gold",
+  "human_review": "pending",
+  "product_result": "not_run",
+  "holdout_status": "reserved_not_sealed",
+  "authoring_note": "Source and expected labels were prepared by the same AI assistant before any product predictions; independent human review pending. Author has seen reserved holdout; do not tune a model with this conversation and call its evaluation blind.",
+  "span_coordinate": "unicode_codepoint_half_open",
+  "minimum_unique_knowledge_records": 30,
+  "minimum_sessions": 6,
+  "expected_counts": {
+    "sessions": 6,
+    "projects": 2,
+    "messages": 58,
+    "record_annotations": 66,
+    "unique_knowledge_records": 46,
+    "meaningful_messages": 51,
+    "no_new_record_messages": 7
+  },
+  "sessions": [
+    {
+      "session_id": "S01",
+      "project_id": "prj_memory",
+      "scenario_family": "storage_evolution",
+      "split": "development",
+      "source": "sources/s01.json",
+      "oracle": "oracles/s01.json",
+      "source_sha256": "0f6f122bc4ee19023f4618e3c8666fd85b239d9d2b71e26bbf81137d79a51942",
+      "oracle_sha256": "ff3ded6c8080afc69c3358cd375a98c200ffe2e2793d67cd0c17cc1d0fb8e49a",
+      "messages": 10,
+      "record_annotations": 11
+    },
+    {
+      "session_id": "S02",
+      "project_id": "prj_memory",
+      "scenario_family": "storage_evolution",
+      "split": "development",
+      "source": "sources/s02.json",
+      "oracle": "oracles/s02.json",
+      "source_sha256": "69330e5c2d003463f86421a20e54713ea7a6b886929ffe9c58713824dfafbdc9",
+      "oracle_sha256": "8a6db61aed45bbdd342d0b6cdc8d96b55ae8e901fac86345f1ef65294b19d433",
+      "messages": 11,
+      "record_annotations": 11
+    },
+    {
+      "session_id": "S03",
+      "project_id": "prj_release",
+      "scenario_family": "project_identity",
+      "split": "development",
+      "source": "sources/s03.json",
+      "oracle": "oracles/s03.json",
+      "source_sha256": "0462eabe1de841aa790369939247ee892f6235c5ea0bdc94d3ca1cef2ea1fa2e",
+      "oracle_sha256": "76d8dbc444144ef4c47556c17efc574d7c000e328238d873e454d00d148b9fe4",
+      "messages": 11,
+      "record_annotations": 12
+    },
+    {
+      "session_id": "S04",
+      "project_id": "prj_memory",
+      "scenario_family": "agent_authority",
+      "split": "development",
+      "source": "sources/s04.json",
+      "oracle": "oracles/s04.json",
+      "source_sha256": "faa4b8c724a61930a775c7cbbea94c99a6939c40968af71f265e4c4c241c85ec",
+      "oracle_sha256": "d569294692e6ec642d726453b9b3da7cf9fc43acffd62d0d3ecd6d30dac36f2e",
+      "messages": 9,
+      "record_annotations": 14
+    },
+    {
+      "session_id": "S05",
+      "project_id": "prj_release",
+      "scenario_family": "release_revisions",
+      "split": "holdout_reserved",
+      "source": "sources/s05.json",
+      "oracle": "oracles/s05.json",
+      "source_sha256": "e0e8320200be23fa90a17d9f2b50dd22b10aa42c58b434d223067aa875577e93",
+      "oracle_sha256": "791c232c1820a24aecb485d907ccd7da71b15460e4efe5882d2eb19c49e1f0f9",
+      "messages": 9,
+      "record_annotations": 10
+    },
+    {
+      "session_id": "S06",
+      "project_id": "prj_release",
+      "scenario_family": "release_revisions",
+      "split": "holdout_reserved",
+      "source": "sources/s06.json",
+      "oracle": "oracles/s06.json",
+      "source_sha256": "36dfc3b068940212ad3523f7f96daaa0966046f952e4ce0d80979d28c0db8870",
+      "oracle_sha256": "9a418755d716201f13462b3fb1dd98d1259054dffac077c9aadd7317e34d03cd",
+      "messages": 8,
+      "record_annotations": 8
+    }
+  ]
+}

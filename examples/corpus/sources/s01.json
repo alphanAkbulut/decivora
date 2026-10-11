@@ -1,0 +1,227 @@
+{
+  "format": "decivora-corpus-source-1",
+  "synthetic": true,
+  "workspace_id": "ws_fixture",
+  "project_id": "prj_memory",
+  "project_display_name": "Atlas",
+  "session_id": "S01",
+  "scenario_family": "storage_evolution",
+  "split": "development",
+  "language": "tr",
+  "initial_state": {
+    "decisions": [
+      {
+        "id": "D_MARKDOWN",
+        "revision": 1,
+        "status": "active"
+      }
+    ],
+    "requirements": [
+      {
+        "id": "R_ARCHIVE",
+        "revision": 1,
+        "status": "active"
+      },
+      {
+        "id": "R_LOCAL",
+        "revision": 1,
+        "status": "active"
+      }
+    ],
+    "tasks": [],
+    "question_presentations": [],
+    "binding": {
+      "project_id": "prj_memory",
+      "epoch": 1
+    }
+  },
+  "continues_session_id": null,
+  "messages": [
+    {
+      "message_id": "S01-m01",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:01:00Z",
+      "received_at": "2026-01-01T01:01:01Z",
+      "text": "SQLite bir seçenek olabilir; şimdilik Markdown kararını değiştirmiyorum.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S01-m02",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:02:00Z",
+      "received_at": "2026-01-01T01:02:01Z",
+      "text": "Q_STORE: A Markdown, B SQLite. Hangisiyle ilerleyelim?",
+      "metadata": {
+        "fixture_trust_only": true,
+        "question_id": "Q_STORE",
+        "presentation_revision": 1
+      }
+    },
+    {
+      "message_id": "S01-m03",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:03:00Z",
+      "received_at": "2026-01-01T01:03:01Z",
+      "text": "Markdown dosyalarını senkronize edecek işi plana alalım.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S01-m04",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:04:00Z",
+      "received_at": "2026-01-01T01:04:01Z",
+      "text": "Arşiv dışa aktarımı Markdown veya arşiv gereksinimi için gerekli; bunu ayrı görev olarak izleyelim.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S01-m05",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:05:00Z",
+      "received_at": "2026-01-01T01:05:01Z",
+      "text": "Dosya izleme görevini de öneriyorum; hangi gereksinimi karşıladığı henüz açık değil.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S01-m06",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:06:00Z",
+      "received_at": "2026-01-01T01:06:01Z",
+      "text": "Markdown ve yerel kurulum birlikte geçerliyse dosya watcher testini de yapalım.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S01-m07",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:07:00Z",
+      "received_at": "2026-01-01T01:07:01Z",
+      "text": "docs/storage.md dosyasını oluşturdum; GitHub'a yükleyebilirsin.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "artifact_key": "A_STORAGE",
+        "declared_path": "docs/storage.md"
+      }
+    },
+    {
+      "message_id": "S01-m08",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:08:00Z",
+      "received_at": "2026-01-01T01:08:01Z",
+      "text": "Bu dosyanın GitHub'a yüklenmesi için bir belge talimatı ve ayrıca upload görevi öneriyorum.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    },
+    {
+      "message_id": "S01-m09",
+      "actor": {
+        "type": "assistant",
+        "id": "assistant_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:09:00Z",
+      "received_at": "2026-01-01T01:09:01Z",
+      "text": "Şu prompt eski yaklaşım için saklansın: 'Markdown senkronizasyonunu uygula'.",
+      "metadata": {
+        "fixture_trust_only": true,
+        "quoted_content": true
+      }
+    },
+    {
+      "message_id": "S01-m10",
+      "actor": {
+        "type": "human_owner",
+        "id": "owner_fixture"
+      },
+      "source_revision": 1,
+      "occurred_at": "2026-01-01T01:10:00Z",
+      "received_at": "2026-01-01T01:10:01Z",
+      "text": "Teşekkürler, yarın bakacağım.",
+      "metadata": {
+        "fixture_trust_only": true
+      }
+    }
+  ],
+  "fixture_principals": {
+    "human_owner": {
+      "authenticated": true,
+      "project_role": "owner"
+    },
+    "assistant": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "agent": {
+      "authenticated": true,
+      "permissions": [
+        "capture",
+        "proposal"
+      ]
+    },
+    "observer": {
+      "authenticated": true,
+      "permissions": [
+        "target.read"
+      ],
+      "authority": "fixture_only"
+    },
+    "tool": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.verify"
+      ],
+      "authority": "fixture_only"
+    },
+    "system": {
+      "authenticated": true,
+      "permissions": [
+        "fixture.control"
+      ],
+      "authority": "fixture_only"
+    }
+  }
+}

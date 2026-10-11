@@ -1,0 +1,229 @@
+{
+  "format": "decivora-corpus-oracle-1",
+  "synthetic": true,
+  "session_id": "S06",
+  "project_id": "prj_release",
+  "scenario_family": "release_revisions",
+  "split": "holdout_reserved",
+  "label_status": "ai_authored_pending_human_review",
+  "product_result": "not_run",
+  "items": [
+    {
+      "message_id": "S06-m01",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Decision",
+          "entity_key": "D_STAGING",
+          "source_span": {
+            "start": 26,
+            "end": 43,
+            "quote": "staging ile devam",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted",
+            "validity": "active"
+          }
+        },
+        {
+          "kind": "PendingDecision",
+          "entity_key": "Q_DEPLOY",
+          "source_span": {
+            "start": 0,
+            "end": 24,
+            "quote": "Q_DEPLOY revision 2'de B",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "state": "resolved",
+            "option": "B",
+            "options_revision": 2
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_target": "staging",
+        "hosted_production_authorized": false,
+        "strategy_implicitly_superseded": false
+      },
+      "rationale": "Staging hedefinin seçilmesi canary stratejisini otomatik supersede etmez; ayrı boyutlar ve kaynaksız ilişki yaratmama kontrolüdür."
+    },
+    {
+      "message_id": "S06-m02",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_PARTIAL_RELEASE",
+          "source_span": {
+            "start": 60,
+            "end": 80,
+            "quote": "gözlem kapsamı kısmi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "bundle_id": "BUNDLE_RELEASE_2",
+            "application_status": "partial",
+            "coverage": "one_of_two"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "bundle_fully_observed": false,
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S06-m03",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_WRONG_TARGET",
+          "source_span": {
+            "start": 41,
+            "end": 62,
+            "quote": "seçilen hedef staging",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "target_match": false
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_bundle_fully_observed": false,
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S06-m04",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_RELEASE_CURRENT",
+          "source_span": {
+            "start": 58,
+            "end": 82,
+            "quote": "revision 2 ile eşleşiyor",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "artifact_revision": 2,
+            "application_status": "observed",
+            "test_status": "not_run"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "current_application": "observed",
+        "deploy_verified": false,
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S06-m05",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Evidence",
+          "entity_key": "E_RELEASE_AC_PASS",
+          "source_span": {
+            "start": 31,
+            "end": 57,
+            "quote": "bütün tanımlı AC'ler geçti",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "task_id": "T_CANARY_PACKAGE",
+            "artifact_revision": 2,
+            "criterion_revision": 1,
+            "verification": "passed"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "T_CANARY_PACKAGE_verified": true,
+        "deploy_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S06-m06",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_REFRESH_EVIDENCE",
+          "source_span": {
+            "start": 66,
+            "end": 98,
+            "quote": "güncel içeriği tekrar kontrol et",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "previous_current_assessment": "stale",
+        "historical_pass_preserved": true,
+        "unknown_current_content_not_failed": true,
+        "current_task_verification": "stale"
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S06-m07",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "T_OLD_DEPLOY": "cancelled",
+        "new_tasks": 0,
+        "history_preserved": true
+      },
+      "rationale": "Olumsuz emir yeni task üretmemeli; iptal edilmiş işi done veya todo yapmamalı."
+    },
+    {
+      "message_id": "S06-m08",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "DocumentInstruction",
+          "entity_key": "I_RESUME",
+          "source_span": {
+            "start": 0,
+            "end": 21,
+            "quote": "Sonraki oturum paketi",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "required_context": [
+              "D_STAGING",
+              "staging_ref_4",
+              "T_REFRESH_EVIDENCE"
+            ]
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "obsolete_deploy_instructions_in_current_brief": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    }
+  ]
+}

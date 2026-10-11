@@ -10,6 +10,7 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 - Kullanıcının tam vizyonunu `docs/product/full-scope.md` içinde koru. MVP dışında kalan fikirleri silme; açık fazla ilişkilendir.
 - Değiştireceğin dosyanın güncel halini yeniden oku; kullanıcı ve diğer agent değişikliklerini koru. Küçük, incelenebilir değişiklik yap.
 - Ürün ilkesi, teknik öneri, doğrulanmış davranış ve açık soruyu ayır. ADR önerilerini sessizce kabul edilmiş sayma.
+- Kapsamda zorunlu olarak kayıtlı işi/doğrulamayı yapılmayabilecek seçenek gibi sunma. Seçenekler yöntem, sıra, veri/hedef veya açık ürün tercihine aittir; MVP ve tam ürün/faz sınırını koru. Sıra/maliyet tercihi gerekli işi iptal etmez; gerçek ücret/erişim izni yine somut kapsamla alınır.
 - Hedefli okuma için `docs/delivery/llm-handoff.md` soru haritasını kullan. Engine adlarını `docs/architecture/engines.md` ile eşleştir; ayrı servis/agent varsayma. Yeni scope'u `docs/quality/traceability.md` içinde kaynak, özellik, görev ve doğrulamaya bağla.
 - Repo dışı projeleri, global agent config'lerini veya gerçek transcript/credential'ları bu görev adına değiştirme ya da import etme.
 - Kullanıcı tarafından istenmiş kapsamda olağan güvenli adımları tamamla; gereksiz yeniden onay isteme. Public release, ücret, erişim genişletme ve yetkilendirilmemiş dış sistem yazımı ayrı owner kararıdır.
@@ -33,7 +34,7 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 
 ## Doğrulama ve teslim
 
-Doküman kontrolü: `python3 scripts/check_docs.py`. Uygulama test komutları henüz belirlenmedi; ilk runtime görevinde package manifest ile belgelenecek. Test uydurma.
+Doküman kontrolü: `python3 scripts/check_docs.py`. Sentetik corpus hazırlığında `python3 scripts/check_corpus.py --self-test` hash/span/split/referansları ve validator'ın negatiflerini kontrol eder; ürün/extractor testinin yerine geçmez. Kaynak input'u ve oracle ayrı tutulur; AI etiket taslağı insan onaylı gold veya sealed holdout diye sunulmaz. Uygulama test komutları henüz belirlenmedi; ilk runtime görevinde package manifest ile belgelenecek. Test uydurma.
 
 Değişiklik riskine göre `docs/quality/verification.md` senaryolarını kullan. Özellikle yanlış obsolete, false done, stale approval, crash/retry, proje izolasyonu ve replay regresyonlarını koru. UI etkileşimi iddiası gerçek tıklama/akış testi ister.
 

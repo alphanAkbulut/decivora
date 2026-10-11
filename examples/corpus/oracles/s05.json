@@ -1,0 +1,263 @@
+{
+  "format": "decivora-corpus-oracle-1",
+  "synthetic": true,
+  "session_id": "S05",
+  "project_id": "prj_release",
+  "scenario_family": "release_revisions",
+  "split": "holdout_reserved",
+  "label_status": "ai_authored_pending_human_review",
+  "product_result": "not_run",
+  "items": [
+    {
+      "message_id": "S05-m01",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Decision",
+          "entity_key": "D_CANARY",
+          "source_span": {
+            "start": 0,
+            "end": 15,
+            "quote": "Kademeli yayına",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "validity": "proposed",
+            "review": "unreviewed"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "human_approval_created": false,
+        "canonical_decision_changed": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m02",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Requirement",
+          "entity_key": "R_RELEASE_ROLLBACK",
+          "source_span": {
+            "start": 15,
+            "end": 34,
+            "quote": "geri dönüş adımları",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted"
+          }
+        },
+        {
+          "kind": "Requirement",
+          "entity_key": "R_EXACT_TARGET",
+          "source_span": {
+            "start": 38,
+            "end": 60,
+            "quote": "tek hedefe bağlı kanıt",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "review": "accepted"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "requirements_are_not_test_results": true
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m03",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_CANARY_PACKAGE",
+          "source_span": {
+            "start": 0,
+            "end": 25,
+            "quote": "Canary paketini hazırlama",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "todo",
+            "verification": "unknown"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "kind": "implements",
+          "from": "T_CANARY_PACKAGE",
+          "to": "R_RELEASE_ROLLBACK",
+          "status": "requested"
+        }
+      ],
+      "assertions": {
+        "generation_is_not_deploy": true
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m04",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Artifact",
+          "entity_key": "A_RELEASE",
+          "source_span": {
+            "start": 0,
+            "end": 12,
+            "quote": "release.yaml",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "artifact_revision": 2,
+            "application_status": "unknown",
+            "generation_status": "reported_generated"
+          }
+        },
+        {
+          "kind": "Artifact",
+          "entity_key": "A_RELEASE_ROLLBACK",
+          "source_span": {
+            "start": 16,
+            "end": 27,
+            "quote": "rollback.md",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "artifact_revision": 2,
+            "application_status": "unknown"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "application_observed": false,
+        "task_verified": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m05",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "PendingDecision",
+          "entity_key": "Q_DEPLOY",
+          "source_span": {
+            "start": 0,
+            "end": 28,
+            "quote": "Q_DEPLOY seçenekleri değişti",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "state": "pending",
+            "options_revision": 2
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "old_answer_can_apply": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m06",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "PendingDecision",
+          "entity_key": "Q_DEPLOY",
+          "source_span": {
+            "start": 0,
+            "end": 17,
+            "quote": "Önceki sorudaki A",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "association": "stale",
+            "answered_presentation_revision": 1
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "human_approval_applied": false,
+        "hosted_production_authorized": false
+      },
+      "rationale": "Exact eski soruya cevap, güncel seçenek revision'ını onaylamaz."
+    },
+    {
+      "message_id": "S05-m07",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Requirement",
+          "entity_key": "R_LANGUAGE_POLICY",
+          "source_span": {
+            "start": 42,
+            "end": 75,
+            "quote": "keep the project notes in Turkish",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "output_language": "tr",
+            "source_language": "en"
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "output_language_changed": false,
+        "old_notes_translated": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m08",
+      "classification": "meaningful",
+      "records": [
+        {
+          "kind": "Task",
+          "entity_key": "T_OLD_DEPLOY",
+          "source_span": {
+            "start": 32,
+            "end": 52,
+            "quote": "işini iptal ediyorum",
+            "coordinate": "unicode_codepoint_half_open"
+          },
+          "attributes": {
+            "execution": "cancelled",
+            "history_preserved": true
+          }
+        }
+      ],
+      "relations": [],
+      "assertions": {
+        "related_edges_deleted": false,
+        "cancelled_is_done": false
+      },
+      "rationale": "Kaynak, kimlik/yetki ve güncel revision birlikte değerlendirilir; çıkarım onay veya tamamlanma kanıtı değildir."
+    },
+    {
+      "message_id": "S05-m09",
+      "classification": "no_new_record",
+      "records": [],
+      "relations": [],
+      "assertions": {
+        "new_provider_dispatches": 0,
+        "provider_selected": false,
+        "budget_approval_created": false
+      },
+      "rationale": "Koşullu gelecek konuşması provider/bütçe izni oluşturmaz."
+    }
+  ]
+}
