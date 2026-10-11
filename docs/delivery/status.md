@@ -15,6 +15,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Öneri, gerçek kullanıcı seçimi ve hedef uygulama ayrımı
+
+- Kullanıcının dosya üretimi/yükleme bilinmeyeni [ürün sözleşmesine](../product/intent-to-reality-gap.md) dönüştürüldü: karar, artifact, exact hedefe uygulama ve acceptance evidence ayrı; reported/observed/unknown, partial ve stale davranışları tanımlandı.
+- İki tamamlayıcı Mermaid akışı, GAP-01–10 ve T14d/T18i/T20i/T24n planlandı; T01 oracle ve T03 native/extension karşılaştırmasına bağlandı. Yeni engine/scope veya otomatik bağlantı/upload yetkisi yok.
+- [Claude Projects incelemesi](../discovery/claude-projects-overlap.md), ciddi memory/koordinasyon örtüşmesini ve 17 Eylül tanıtımı ile bildirilen 9 Ekim erişim yayılımını ayırır. Orijinal X kaynağı 403; rollout tarihi ikincil teyit düzeyinde, bütün hesaplar/genel erişim iddiası yok.
+- Uygulama, target adapter, gerçek kullanıcı/LLM deneyi ve GAP testleri not_run. Doküman kontrolü geçti: 73 Markdown, 552 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri korundu. GAP-01–10, dört alt dilim ve iki Mermaid kaynak bloğu kontrol edildi; görsel render yapılmadı. Sıradaki T01 ve açık owner tercihleri korunur.
+
 ### 2026-10-11 — Devam paketi ve hafıza yeterliliği taslağı
 
 - Yapıştırılan konuşmadan [devam paketi](../product/resume-package-and-memory.md) ve [Spike-1 v1](spike-1-v1.md) hazırlandı: yaş/kanıt/coverage, güncel karar/AC, source provenance, copy/launch ayrımı ve clean-session baseline kıyası.

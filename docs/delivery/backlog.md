@@ -491,3 +491,16 @@ Adapter gerçek erişim testi T02/T16/T17'de; sentetik yük sonucu provider kapa
 | T24m / T20h,T18h,T24l | Fresh-session oracle, prompt/paket/full-source koşulları ve izinli deney raporu | RES-08 + RES-01–07 regresyonları; model/gerçek veri izni yoksa yalnız hazır sentetik protokol + not_run |
 
 S1-01–06 deney adları ana 30 göreve yeni task sayısı eklemez. Ayrı sentetik prototype stack kapısından sonra incelenebilir; üretim entegrasyonu yukarıdaki bağımlılıklara bağlıdır. Q11-A kopyala önerisi, B başlatma capability araştırması açık; hiçbir düğme execution, egress, ücret veya scope iznini sessiz genişletmez.
+
+## Konuşmadan gerçekleşen işe geri bildirim — 2026-10-11
+
+**Önerilen alt dilimler / TODO.** [Ürün sözleşmesi](../product/intent-to-reality-gap.md) mevcut F07/F08/F09/F10'u somutlaştırır. T01 corpus GAP-01–10 için kaynak/oracle içerir; T03'te [Claude Projects karşılaştırması](../discovery/claude-projects-overlap.md) build/extend kararına girdi olur. T01 sıradaki görevdir.
+
+| Dilim / bağımlılık | Teslim | Kabul / faz |
+|---|---|---|
+| T14d / T14b,T05c,T08b | Artifact expected-effect ve exact hedefe bağlı read-back assessment; human reported ayrı | P1a: GAP-01/03/04/05/07/10; gözlem AC/deploy yerine geçmez; yetkisiz okuma/yazma yok |
+| T18i / T18h,T14d,T10b | Güncel context'te kabul/uygulama/unknown ve alternatiflerin kaynağı | P1b: GAP-02/05/06/09; host desteklenmiyorsa teslim/kullanım garantisi yok |
+| T20i / T20h,T14d,T13 | Karar ve teslim durumu ayrı görünüm; ön koşul olduğunda odaklı durum sorusu | P1b: GAP-03/08/10; tekrarlı nag/model çağrısı yok; independent işler açık |
+| T24n / T18i,T20i,T24m | Aynı sentetik görevden fresh-session + dış hedef belirsizliği karşılaştırması | GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run |
+
+İlk local veya GitHub adapter'ı T02/T03 capability seçimine bağlıdır; gelecekteki GitHub evidence T27 kapsamı kaybolmaz. Bu plan yeni hesap bağlantısı veya otomatik upload yetkisi değildir.

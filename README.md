@@ -14,6 +14,7 @@ Decivora'nın hedefi kullanıcının kart, açıklama ve kabul kriteri yazmasın
 
 - Ne önerildi ve hangi kaynaktan geldi?
 - Ne değerlendirildi, ne onaylandı, ne gerçekten doğrulandı?
+- Üretilen dosya gerçekten hedefe uygulandı mı; bunu biliyor muyuz?
 - Yeni karar hangi eski işleri değiştirdi; hangileri başka gerekçelerle hâlâ gerekli?
 - Sırada hangi küçük iş veya insan kararı var?
 
@@ -79,6 +80,8 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Rate limit, transaction ve kötüye kullanım nasıl yönetilecek? | [Katmanlı sınırlar, admin davranışı ve 10 kabul senaryosu](docs/architecture/resource-limits-and-abuse.md) |
 | İlişkiler ve iptaller grafikte nasıl görünecek? | [Görsel sözlük, geçmiş ve örnek diyagramlar](docs/product/graph-experience.md) |
 | İşin fikri nasıl olgunlaştı; hangi testler yapıldı? | [Bağlam hikâyesi, AC/DoD ve kanıt matrisi](docs/product/task-context-and-acceptance.md) |
+| Konuşmada önerilen dosya gerçekten yüklendi mi; hangi yaklaşım seçildi? | [Niyet, karar, uygulama ve kanıt ayrımı](docs/product/intent-to-reality-gap.md) |
+| Yeni Claude Projects ile nerede örtüşüyoruz? | [Güncel rekabet incelemesi](docs/discovery/claude-projects-overlap.md) |
 | Yarım kalan işe yeni chat'te nasıl döneriz? | [Devam paketi ve hafıza yeterliliği](docs/product/resume-package-and-memory.md) · [Spike-1 v1 deney planı](docs/delivery/spike-1-v1.md) |
 | Hangi kararlar kullanıcıyı bekliyor? | [Owner soruları ve teknik hazırlık](docs/delivery/decision-brief.md) |
 | Admin, kullanıcı rolleri, hata takibi ve backoffice | [Yönetim ve işletim sözleşmesi](docs/product/administration-and-operations.md) |

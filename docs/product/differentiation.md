@@ -45,3 +45,9 @@ Mevcut araç veya makul bir extension aynı sözleşmeyi daha az bakım yüküyl
 [Kullanıcı araştırması](../discovery/user-research.md) context yükü, gereksiz task üretimi, veri kurtarma güveni, görünürlük, kurulum yükü ve bilgi tutarlılığı sinyallerini ayrı kanıt seviyeleriyle kaydeder. Ters düşünme sonucu: bizim ürünümüz bunları çözmeye çalışırken daha kalabalık inbox, daha pahalı context ve daha zor kurulum yaratırsa başarısız olur. İlk pilotta H1/H3/H4 birlikte ölçülmeli; yalnız üretilen task sayısı başarı metriği olmamalı.
 
 Task Master ve Beads için okunan tarihsel şikâyetlerde bakımcı düzeltmeleri de var. Güncel sürümü ve desteklenen yapılandırmayı karşılaştırmadan üstünlük iddia etmeyiz. [Güncellenen bulgular ve deney şablonu](../discovery/benchmark-findings.md).
+
+## Yeni Claude Projects ve somut gerçekleşme boşluğu
+
+2026-10-11 [güncel inceleme](../discovery/claude-projects-overlap.md): paylaşılan memory, karar bağlamı, paralel threads ve iş takibi ciddi örtüşmedir. “Claude yalnız dosya klasörü” veya “karar hatırlama yalnız bizde” tezi kullanılmaz. Bağlı çalışma ortamında native takip güçlü olabilir; manuel veya providerlar arası geçiş için aynı oracle gerekir.
+
+Kullanıcının “dosyalar üretildi ama yüklenip yüklenmediği ve hangi yaklaşımın seçildiği bilinmiyor” örneği H2/H4/H6'yı [GAP-01–10](intent-to-reality-gap.md) ile somutlaştırır. Öneri, gerçek insan seçimi, artifact üretimi, exact hedefe uygulama ve acceptance evidence ayrı tutulur. Bu hipotezi yalnız memory boyutuyla veya token bütçesiyle çözülmüş saymayız. Native Projects bunu yeterli yönetim yüküyle sağlıyorsa integration/extension T03 için geçerli sonuçtur.

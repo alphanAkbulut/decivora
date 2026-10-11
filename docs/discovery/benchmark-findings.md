@@ -66,3 +66,7 @@ limitations: []
 ```
 
 Bu doldurulmamış şablon sonuç değildir. Ölçülen sıfır `0`, ölçülmeyen `null/not_run` olur. Üstünlük için aynı senaryo ve karşılaştırılabilir kalite gerekir. Mevcut çözüm düşük bakım yüküyle yeterliyse entegrasyon önerilir; bağımsız ürün kararı otomatik varsayılmaz.
+
+## 2026-10-11 — Yeni Claude Projects karşı kanıtı
+
+[Yeni Projects incelemesi](claude-projects-overlap.md) ve [kullanıcının gerçekleşme örneği](../product/intent-to-reality-gap.md) önceki bulguları tamamlar. Paylaşılan hafıza, karar gerekçelerini taşıma, koordinasyon ve iş takibi Anthropic tarafından belgeleniyor; genel memory eksikliği iddiası yeterli değil. T03 karşılaştırmasına GAP-01–10 ve aynı kaynak/karar/target revision oracle'ı eklenir. Belge incelemesi, kullanıcının deneyim bildirimi ve ölçülmemiş Decivora hipotezi ayrı tutulur. Runtime üstünlük sonucu yok.

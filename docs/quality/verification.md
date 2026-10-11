@@ -64,3 +64,7 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 [CON-01–08](../architecture/connection-and-context.md) kurulum/context; [TOK-01–08](../architecture/routing-token-economy.md) kaynak tamlığı/bütçe/maliyet; [GUX-01–08](../product/graph-experience.md) görsel ilişki/durum/iptal davranışını tamamlar. Hepsi planlıdır. MVP'nin AC-05/06/09/10/13 kriterlerine bağlı bu yollar uygulandığında gerçek test ve UI etkileşim kanıtı gerekir; doküman veya Mermaid render testi runtime kabulü değildir.
 
 [CTX-01–06](../product/task-context-and-acceptance.md), kaynaklı olgunlaşma özeti, versioned AC/DoD ve test matrisi, snapshot/export idempotency, ACL ve yeniden açılma yollarının ek planıdır. AC/DoD iş sonunda başarıyı göstermek için geriye dönük uydurulamaz. Bu altı kontrol de henüz çalıştırılmadı.
+
+## Konuşulan plan ile dışarıda gerçekleşen işlem
+
+[GAP-01–10](../product/intent-to-reality-gap.md#6-planlı-kabul-ve-karşılaştırma): öneri/insan seçimi, generated/reported/observed artifact, exact repo/branch/path/revision, partial upload, karar değişimi, yeni chat, stale/ACL ve gözlemden test/deploy sonucu uydurmama. T01 oracle, T14d/T18i/T20i ve T24n üzerinden planlıdır; runtime sonuçları not_run. “Hedefte gözlenmedi” gerçekleşmediği kanıtı değildir.

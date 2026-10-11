@@ -86,3 +86,7 @@ Senaryolar **planlı / not_run**. Mevcut F04/F08/F11/F13, KNO-01/02, APR-02, UX-
 Yapıştırılan metindeki Projects/Claude/Cortex/mai-mcp davranışları, rekabetin iki haftada ne yapacağı ve Spike-0 sonuçları bu görevde birincil kaynak/çalıştırılmış artifact ile doğrulanmadı; yeni benchmark sonucu olarak kaydedilmez. Bu repo main'inde 2026-10-11 kontrolünde Spike-0/Wedge-0 uygulaması bulunmadı. Ayrı bir deney varsa repo/artifact/revision ve raporuyla ayrıca tanıtılmalıdır.
 
 İlk deney adı için “bekleyen iş + devam paketi” önerisi korunur. Mevcut MVP'yi “unutulanlar radarı” olarak yeniden tanımlamak ve B otomatik başlatmayı seçmek owner kararı ister. A önerisi düşük efor ve araç bağımsızlığı sağlar; devam kalitesi için kabul testi gerekir. [Q11 seçim kaydı](../delivery/decision-brief.md) öneriyi kabul edilmiş karar gibi göstermeden saklar.
+
+## Konuşulan planı gerçekleşmiş saymama
+
+[Konuşma→gerçekleşme sözleşmesi](intent-to-reality-gap.md), paketin karar, üretilen artifact, hedefe uygulama ve AC kanıtını ayrı taşımasını zorunlu kılar. “Dosyaları yükle” talimatı veya generated dosya uploaded sayılmaz; sessizlik kabul değildir. User reported, exact hedefte observed, test verified ve unknown ayrıdır. GAP-01–10, RES-01–08'i tamamlayan planlı senaryolardır. Daha çok reasoning gözlenmeyen dış işlemi kanıtlayamaz.
