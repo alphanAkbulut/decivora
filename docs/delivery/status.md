@@ -1,6 +1,6 @@
 # Mevcut durum
 
-2026-10-10 — **Discovery / Product Definition**.
+2026-10-11 — **Discovery / Product Definition**.
 
 | Alan | Durum |
 |---|---|
@@ -14,6 +14,13 @@
 **Sıradaki iş: T01** — golden corpus ve kanıt şablonunu hazırlamak; ardından T02 adapter fizibilitesi. İlk üretim kodu T03'te build/extend ve stack kapısından sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-11 — Token riski onayı, çoklu chat ve işleme gecikmesi
+
+- [Ek token risk onayı](../product/token-risk-and-approval.md): deterministik risk tespiti, sınırlı plan onayı, unknown/hard-cap ayrımı ve koşu sırasında yeni çağrıyı durdurma. T09d/T19b/T24k ve TRA-01–10 planlandı.
+- [Çoklu chat/lag](../architecture/multi-chat-and-processing-lag.md): session/span binding, kaynak→konu→task/karar ilişkisi, çelişki/geç mesaj, ACL-aware context, frontier/queue/gap ve yük ölçümü. T05d/T10b/T06g/T18g/T24l; CHAT-01–06/LAG-01–06 planlandı.
+- Teknik tasarım ve test planıdır; model/host erişimi, runtime, hız, tasarruf ve UI testi yapılmadı. Ana 32 scope/30 görev/14 MVP kriteri korunur; T01 sıradaki iş. Q03 ve sayısal kapasite/risk eşikleri açık kalır.
+- Doküman kontrolü geçti: 69 Markdown, 507 yerel bağlantı; TRA/CHAT/LAG için 22 planlı senaryo kimliği doğrulandı. Bunlar runtime test sonucu değildir; mevcut diyagramlar değiştirilmedi.
 
 ### 2026-10-10 — Q10-A kaynak keşfi tercihi kabul edildi
 

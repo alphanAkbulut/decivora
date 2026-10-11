@@ -95,3 +95,9 @@ Bu gereksinimlerin uygulanma sırası [backlog ek sözleşmelerinde](../delivery
 ## Ekip ve kalıcılık tamamlayıcı sözleşmeleri
 
 [Identity/access](identity-access.md) komut/retrieval/dispatch'te authz revision, dar agent grant'i, kişisel kaynak görünürlüğü ve offboarding yarışını tanımlar. [Logging/audit](logging-audit.md) high-impact başarı kaydını atomik; dış teslim sonucunu ayrı yapar. [Storage/memory](storage-memory-capacity.md) durable job ile geçici context, raw TTL ile dedup kimliği, DB snapshot ile blob manifest ve restore ile purge ilişkisini tanımlar. Bunlar önerilen runtime sınırlarıdır; mevcut bir implementasyon değildir. Yerel tek owner modunda da insan/agent ayrımı ve proje izolasyonu atlanmaz.
+
+## Çoklu kaynak frontier'ı ve model risk kapısı
+
+[Çoklu chat/lag sözleşmesi](multi-chat-and-processing-lag.md) receipt ve processing frontier'ı session/epoch bazında tutar; project current durumu tek bir son mesaj zamanıyla hesaplanmaz. Geç gelen/çelişen konuşma güncel onaylı kaydı timestamp ile ezmez. Queue/storage tavanında yeni receipt durur; replay'siz adapter'da gap ihtimali açık gösterilir. Pending ilgili bağlam final impact/ready/verification gibi sunulmaz.
+
+[Token risk onayı](../product/token-risk-and-approval.md) yeni dispatch öncesi assessment/approval tazeliği ve planın kalan tüketim payını bütçe rezervasyonuyla atomik denetler. Yüksek riskte `deferred + token_risk_approval_required`; bilinmeyen güvenli üst sınır veya yetersiz izin/hard-cap için blocked kullanılır. Karar beklemek source receipt'i geri almaz; model onayı domain completion değildir.

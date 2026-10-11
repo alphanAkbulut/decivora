@@ -453,3 +453,29 @@ P2 yerleşimi takvim veya uygulama taahhüdü değildir. Faz yalnız feasibility
 | T24j / T08c,T21b,T21c,T23e | Etkin limit/ret/rezervasyon admin görünümü ve tekrar üretilebilir limit-aşımı pilot raporu | P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run |
 
 T08c/T09b ilk model dispatch'inde provider/account ortak çıkış sınırını ve 429/retry davranışını da uygular. T28c bunu P3 dış yazma connector'larına taşır; C06 dağıtık atomik sayaç, tenant yük izolasyonu ve hosted ağ sınırını P4'te doğrular. T04/T06 temel ilkeleri, T08c tam kimlik/maliyet entegrasyonunu sağlar; deployment bu kapıları atlayamaz. Sayısal eşikler OPEN-12/16 ile seçilecek; ücretli veya dış sisteme yük testi yetkisi verilmiş değildir.
+
+## Yüksek token riski ve ek onay dilimleri — 2026-10-11
+
+**TODO / önerilen teknik sözleşme.** Kullanıcının ek onay ihtiyacı [risk belgesinde](../product/token-risk-and-approval.md) kayıtlıdır; gerçek ücret/provider yetkisi değildir.
+
+| Dilim / bağımlılık | Teslim | Kabul ve faz |
+|---|---|---|
+| T09d / T09b,T08c | Deterministik assessment, toplam plan tahmini, reason codes ve dispatch risk kapısı | P1a: TRA-01–07/09 çekirdek fixture; missing policy/unknown cap otomatik dispatch açmaz; ilk gerçek model çağrısından önce |
+| T19b / T09d,T19,T08b,T07b | Yetkili insan risk kartı, sınırlı plan approval ve audit; ertele/reddet/küçült | P1b: TRA-05/06/08/10; stale/revoked/duplicate; UI hazır değilken yüksek riskli iş bekler |
+| T24k / T19b,T21b,T21c | Risk corpus'u, yanlış uyarı/tahmin sapması ve onay yükü pilot raporu | P1b: TRA-01–10; gerçek provider yalnız ayrı izinle, aksi halde sentetik/not_run |
+
+T09b'nin minimum bütçe guard'ı korunur; T09d bunun risk değerlendirmesini tamamlar. T21c sayısal risk policy'sini, T21b usage/unknown muhasebesini sağlar. Normal, önceden yetkili düşük riskli işler her seferinde onay istemez. Eşikler ölçüm kapısında, kod henüz yok.
+
+## Çoklu chat bağlamı ve işleme gecikmesi — 2026-10-11
+
+[Çoklu chat/lag](../architecture/multi-chat-and-processing-lag.md) mevcut CAP/PRJ/KNO/CST kapsamını açar; yeni engine veya sınırsız otomasyon değildir. T01 corpus'a bir projenin birden çok chat'te ilerlemesi eklenir; T02 adapter raporu session kimliği, mesaj revision'ı ve replay/gap kabiliyetini belirtir.
+
+| Dilim / bağımlılık | Teslim | Kabul ve faz |
+|---|---|---|---|
+| T05d / T05c,T08b | Session/span binding, konu segmenti ve kaynak→aday→record ilişki sözleşmesi | P1a: CHAT-01/04/05; seçilmemiş session, karışık proje, yanlış binding düzeltmesi ve ACL |
+| T10b / T10,T05d | Chat'ler arası duplicate/refinement/conflict ve geç kaynak reconciliation corpus'u | P1a: CHAT-02/03/04; kaynaklar korunur, benzerlik tek başına merge/approval değildir |
+| T06g / T06f | Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü | P1a: LAG-01–05 sentetik/crash; queue dolunca sahte receipt ve sessiz source drop yok |
+| T18g / T18c,T10b,T20g,T06g | Bounded proje context/delta ve chat→task kaynak görünümü; stale/coverage UX | P1b: CHAT-05/06, LAG-06; host desteklenmiyorsa sync/stop iddiası yok |
+| T24l / T18g,T06g,T24k | Çoklu chat + burst/uzun yük + geciken provider/onay corpus raporu | P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı |
+
+Adapter gerçek erişim testi T02/T16/T17'de; sentetik yük sonucu provider kapasitesi garantisi değildir. Kapasite hedefi OPEN-12/16'da pilot öncesi seçilir. UI tamamlanana kadar trace/cursor çıktısıyla çekirdek kontroller doğrulanır; yüksek riskli catch-up izinsiz model çağrısı açmaz.

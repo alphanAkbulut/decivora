@@ -161,3 +161,7 @@ Hook yolu dayanıklı receipt sonrası dönmeli; model analizi kullanıcı turun
 | CON-08 | Kurulum/kaldırma başka MCP/hook ayarlarını korur; destek raporu gerçek build taşır | T16/T17 |
 
 Tüm senaryolar planlıdır, çalıştırılmadı. Kesin ilk yüzeyler/OS için Q02 yanıtı bekleniyor; [karar kaydı](../delivery/decision-brief.md).
+
+## Aynı projeye bağlı farklı chat'ler
+
+[Çoklu chat ve işleme gecikmesi sözleşmesi](multi-chat-and-processing-lag.md) sabit session kimliği/binding, chat içi konu segmenti, mesaj→aday→task/karar provenance'ı ve N:M ilişkileri tanımlar. Proje ortak olsa da kaynak ACL'leri korunur; benzer başlıkla otomatik proje veya task birleştirme yoktur. Q10-A yeni session'ın ayrıca izin kapsamını denetler. Yeni chat sınırlı güncel brief/delta alabilir; host'un bunu gerçekten tükettiği doğrulanmadan otomatik bağlam senkronu iddia edilmez.

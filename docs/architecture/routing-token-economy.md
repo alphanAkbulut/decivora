@@ -134,3 +134,9 @@ Profil değişim önizlemesi mevcut → önerilen ayarı, pending işlerin etkis
 Yeterli gözlenmiş veri olduğunda UI “Bu projede şimdiye kadar Dengeli kullanıldı; son dönemde şu kadar bekleyen analiz var” gibi kaynaklı öneri sunabilir. Usage bilinmiyorsa uydurma maliyet/trend çıkarmayacak. Kullanıcı reddettiğinde tekrar tekrar öneri çıkarılmayacak; bildirim sıklığı sınırlı. Q03 tavanı verilmeden kullanıcı Daha güncel seçse de ücretli arka plan API açılmaz.
 
 T21b ek kabulü: project/task inheritance doğru; override hard-cap aşamaz; mode switch queued/in-flight işleri doğru gösterir; otomatik pahalı escalation olmaz. T24c profillerin kalite/gecikme/tüketimini aynı corpus ile karşılaştırır.
+
+## Büyük veya belirsiz tüketim için ek onay
+
+[Yüksek token riski ve ek onay](../product/token-risk-and-approval.md) bütçe dolmadan önce de büyük import, tekrar context, fan-out, retry ve belirsiz toplamı değerlendirir. Deterministik preflight → policy içinde olağan iş / insan risk onayı / hard-cap nedeniyle blocked ayrımı; onay kapsamı, stale kontrolü ve koşu sırasında yeni dispatch durdurma burada tanımlıdır. Onay bütçe veya veri izni yaratmaz; child/run bölme toplamı sıfırlamaz. TRA-01–10 planlıdır; T09d/T19b/T24k ilk model dispatch kapısını ve UX'i tamamlar.
+
+[Çoklu chat ve lag](multi-chat-and-processing-lag.md) ortak proje kayıtlarına hedefli retrieval, session başına frontier ve bounded catch-up kullanır. Geride kalmak bütün chat geçmişini pahalı bir çağrıyla yeniden işleme yetkisi değildir.

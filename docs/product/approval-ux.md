@@ -54,3 +54,7 @@ Bilgi isteği, danışma, yetki içi teknik seçim ve insan onayı gerektiren ka
 ## İlişkiler, iptal ve geçmiş
 
 [Graph deneyimi](graph-experience.md) task bağlamını, typed edge'leri, AND/OR gerekçelerini ve before/after görünümünü tanımlar. İptal edilen task'ın bağlantıları silinmez; task durumu ayrı rozettir. Sona erdirilen ilişki aktif traversal'dan çıkar fakat geçmişte kesikli çizgi ve açık durum/gerekçe etiketiyle gösterilir. Çarpı/renk tek başına bilgi taşımaz. Q04 ile güncel işler + seçili işin bağlamı seçildi; tam geçmiş ayrıca açılır. [İşin olgunlaşma ve kabul görünümü](task-context-and-acceptance.md) AC/DoD ve test raporunu tamamlar.
+
+## Yüksek tüketim riski için ayrı karar
+
+[Token riski onay kartı](token-risk-and-approval.md) yapılacak iş, risk nedeni, tahmin/unknown, uygulanabilir üst sınır, toplam retry/child tüketimi, kalan bütçe ve alternatifleri gösterir. Yetkili insan sınırlı planı onaylar, küçültür, aşamalı plan ister, erteler veya reddeder. Task onayı veya parent agent cevabı bu onayın yerine geçmez; hard-cap/egress/izin değişimi ayrı kapıdır. Aynı geçerli planın her küçük adımında tekrar soru yok; kapsam/sınır değişirse yeni assessment gerekir. Yeni dispatch onay beklerken kalıcı kaynak ve task korunur. T19b/TRA-01–10 planlıdır, çalışan UI değildir.
