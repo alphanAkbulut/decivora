@@ -138,6 +138,8 @@ MCP bağlantısı tools-only olabilir; bütün oturum veya alt agent mesajların
 Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, config/runner, dış veri veya ücret izni sağlamaz. Somut grant ve Q03'ün sonraki gerçek veri/provider/bütçe kısmı ayrıca kapanır. Q03-R1 A kabul edildi: ilk deney ek ücretli model API'si olmadan sentetik/elle etiketli fixture ve deterministik kontrollerle ilerler. Serbest metin çıkarım kalitesi ve gerçek Codex bağlantısı bu hazırlıkla doğrulanmış sayılmaz.
 
 
+<a id="q03-r1--ilk-deneyde-ek-ücretli-model-apisi"></a>
+
 ## Q03-R1 — İlk deneyde ek ücretli model API'si
 
 **2026-10-11 · A kabul edildi; sonraki açıklamayla kapsamı netleştirildi.** Önceki Q02-R1 ilk kaynak yolu sorusundan ayrıdır. A yalnız ilk deneyin model/maliyet sırasını seçer. Kullanıcı sonraki mesajında otomatik anlam çıkarımının uygulanıp test edilmesinin isteğe bağlı seçenek değil, gerekli ürün işi olduğunu belirtti; bu açıklama güncel yorumun otoritesidir.
@@ -149,6 +151,8 @@ Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, c
 
 **Etki / kabul:** [Spike-1](spike-1-v1.md) ilk dilimi `no_model` fixture/code kontrolleriyle sınırlar; model dispatch/judge/retry ve fresh-session model deneyleri bu dilimde çalıştırılmaz. T01 oracle/corpus sıradaki hazırlıktır. Sonuç raporu code/fixture ile model `not_run` durumunu ayırır. Sonraki gerçek veri/provider/aylık bütçe, somut hedef read ve retention izinleri açık; bu cevap bunları onaylamaz. Bunlar otomatik anlam çıkarımını yapıp yapmama kararı değil, zorunlu deneyi hangi yöntem/veri/sınırla yürüteceğimizin açık ayrıntılarıdır. T01/T03f hazırlığı → T09 extractor uygulaması → T24/T24q ölçümü mevcut görevlerdir. Yalnız fixture/code sonucu otomatik ürünün doğrulama kapısını kapatamaz; izin/erişim eksikse ilgili sonuç `blocked`/`not_run` olur, passed sayılmaz. Uygulama veya deney bu kayıtla başlamış/tamamlanmış sayılmaz.
 
+
+<a id="q02-r2--ilk-gerçek-read-back-hedefi"></a>
 
 ## Q02-R2 — İlk gerçek read-back hedefi
 

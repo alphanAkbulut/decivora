@@ -12,7 +12,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
-**T01 IN_PROGRESS; diğer 29 ana görev TODO.** İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
+**T01/T02/T03 IN_PROGRESS; diğer 27 ana görev TODO.** P0 deney kodu var; hiçbir ana görev kapanmadı. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.
 
@@ -32,7 +32,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 | T12 | P1a | T11 | Impact preview ve apply planı |
 | T13 | P1a | T12 | Review işlemi ve güvenilir onay |
 | T14 | P1a | T13 | Evidence ve false-done düzeltmesi |
-| T15 | P1a | T14 | Teknik kanıt kapısı |
+| T15 | P1a | T14,T07c | Teknik kanıt kapısı |
 | T16 | P1b | T15 | Claude Code adapter |
 | T17 | P1b | T16 | Codex adapter |
 | T18 | P1b | T17 | Minimal MCP ve cross-agent read |
@@ -61,7 +61,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 
 ## T02 — İki coding yüzeyinde capability spike
 
-- **Durum / faz:** TODO / P0. **Bağımlılık:** T01. **Kapsam ID:** CAP-02.
+- **Durum / faz:** IN_PROGRESS / P0. **Bağımlılık:** T01. **Kapsam ID:** CAP-02.
 - **İş:** Claude Code ve Codex'in kurulu/test edilebilir sürümlerini kaydet; izinli hook/transcript olayını izole fixture'da gözle.
 - **Kabul:** Her yüzey için version, olay, payload, izin, truncation ve coverage raporu var; erişilemeyenler unsupported/unknown.
 - **Doğrulama:** Yeni mesaj, final output, tool failure, kapanışsız session ve offline deneyi.
@@ -70,7 +70,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 
 ## T03 — Native/extend/build ve teknoloji kararı
 
-- **Durum / faz:** TODO / P0. **Bağımlılık:** T01,T02. **Kapsam ID:** EVAL-01.
+- **Durum / faz:** IN_PROGRESS / P0. **Bağımlılık:** T01,T02. **Kapsam ID:** EVAL-01.
 - **İş:** [Güncel yön](../product/current-direction.md) uyarınca yeni Claude Projects, [WrongStack](../discovery/wrongstack-review.md) ve mevcut Cortex/Tracker/mai-mcp/Beads adaylarını aynı oracle'ın uygun bölümünde karşılaştır. T03a geçici deney yöntemi/stack kapsamı, T03b yetkili sınırlı prototip + native baseline, T03c owner yatırım/production stack kararı olarak sırayla ilerle; lisans ve kurulum etkisini incele. [Benchmark bulgularındaki](../discovery/benchmark-findings.md) güncel yapılandırma ve sonuç şablonunu kullan; [şikâyet araştırmasındaki](../discovery/user-research.md) düzeltme/karşı kanıtı atlama.
 - **Kabul:** Native/config/custom/unknown matrisi, GAP/RES sonuçları ve kullanıcı yönetim yükü kanıtı var; native/extend/build/ek deney/durdur seçenekleri gerekçeli. Owner kararı ilgili ADR'lere işlenir; deneme yapılamayanlar not_run. T03a prototype yöntemi production stack onayı değildir; build seçilmeden T04 başlamaz.
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
@@ -178,7 +178,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 
 ## T15 — Teknik kanıt kapısı
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T14. **Kapsam ID:** EVAL-01,AUD-01.
+- **Durum / faz:** TODO / P1a. **Bağımlılık:** T14,T07c. **Kapsam ID:** EVAL-01,AUD-01.
 - **İş:** Sentetik uçtan uca senaryoyu ve restore/replay'i çalıştır; sonuçları kaydet.
 - **Kabul:** Import→impact→onay→state→düzeltme zinciri kanıtlı; başarısız kriter gizlenmez.
 - **Doğrulama:** AC-01..08/10/14 ve adversarial set.
@@ -333,6 +333,7 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | T06b / T06 | Worker lease/fencing ve job transitions | Expired worker sonuç yazamaz; V20 geçer | capture/storage |
 | T06c / T06 | Processing intervals, idle flush, bounded retry/quarantine | Boşluk üstünden watermark atlamaz; V11/V21 ve rotation geçer | capture |
 | T07a / T07 | Replay mode ve projector version gate | Bilinmeyen event sessiz atlanmaz; replay aynı digest, sıfır dış yan etki; V14/V27 | storage |
+| T07c / T06,T07a | **TODO / P1a:** Minimal çekirdek DB+payload backup/restore | Tutarlı checkpoint, source payload manifest/hash, event sequence ve projection digest; boş hedefe restore, eksik/uyumsuz veri fail closed; replay sıfır dış dispatch; V17/V27. T15a bunu sınar; T23a migration/privacy/export/operasyon kapsamını tamamlar | storage |
 | T08a / T08 | Command identity, key/digest ve policy capability | Aynı key güvenli; spoofed human reddi; V03/V23 | domain/hub |
 | T10a / T10 | Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
 | T12a / T12 | ImpactRun snapshot, visited/frontier ve knowledge revision | Yeni OR edge eski preview'yu stale yapar; V22 ve limit testi | impact/storage |
@@ -345,7 +346,7 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | T23b / T23 | Payload purge ve türev cache/export retention akışı | Redaction/tombstone izlenir; ilgili index/cache/backup politikası V26 ile kanıtlı | storage/governance |
 | T24a / T24 | Yeni güvenilirlik ve UX ölçümleri | V19–V28 MVP yollarında raporlu; false-stale, pending age ve no-text review yükü ölçülmüş | quality |
 
-T23, erken auth/runner sınırlarının ilk kez eklendiği görev değildir; önceki kontrolleri restore/privacy açısından tamamlar. Dış connector'a özgü V27 teslim senaryoları T28'de ayrıca çalıştırılır. Gelecek capability henüz uygulanmıyorsa `not_run + faz` yazılır; mevcut MVP invariant'ı bu gerekçeyle atlanmaz.
+T07c erken restore teslimidir; T15 ve T15a kapanış için T07c kanıtını zorunlu tutar. P0 fixture backup testi bu production işi kapatmaz; payload bundle/migration/runner/izin kapsamı henüz yok. T23, erken auth/runner sınırlarının ilk kez eklendiği görev değildir; önceki kontrolleri restore/privacy açısından tamamlar. Dış connector'a özgü V27 teslim senaryoları T28'de ayrıca çalıştırılır. Gelecek capability henüz uygulanmıyorsa `not_run + faz` yazılır; mevcut MVP invariant'ı bu gerekçeyle atlanmaz.
 
 ## Çok kullanıcılı tasarım ve veri yaşam döngüsü alt işleri
 
@@ -514,9 +515,9 @@ T01 ilk hazır iş olarak korunur; GAP/RES sentetik oracle örnekleri geniş cor
 
 | Dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
-| T02d / T01 | TODO (kısmi manuel kanıt): selected kaynak, trustworthy human selection ve tek local/repo target capability | [READBACK-01](../quality/first-target-readback.md) tek GitHub dokümanında manuel happy-path eşleşmesi; otomatik capability, missing/permission/partial/stale ve kaynak coverage henüz not_run. Capture/target izinleri ayrı; ücret/erişim ayrıca |
-| T03a / T01,T02d | TODO: sınırlı deney yöntemi, geçici stack/lisans ve kapsam önerisi | Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil |
-| T03b / T03a | TODO: yetkilendirilirse küçük prototip ve adil native deneyi | GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok |
+| T02d / T01 | IN_PROGRESS (manuel target + synthetic measurement; gerçek host kısmi): selected kaynak, trustworthy human selection ve tek local/repo target capability | [READBACK-01](../quality/first-target-readback.md) tek GitHub dokümanında manuel happy-path eşleşmesi; otomatik capability, missing/permission/partial/stale ve kaynak coverage henüz not_run. Capture/target izinleri ayrı; ücret/erişim ayrıca |
+| T03a / T01,T02d | IN_PROGRESS: kullanıcı yetkili P0 fixture yöntemi, Python stdlib/SQLite, paid dispatch yok; production stack/lisans açık | Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil |
+| T03b / T03a | IN_PROGRESS: yetkilendirilmiş typed zincir + lexical baseline çalıştı; semantik/native deneyi açık | GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok |
 | T03c / T03b,T02 | TODO: sonuç, yönetim/kurulum/bakım maliyeti ve yatırım seçenekleri | Owner native/extend/build/ek deney/durdur kararı; build'de production stack ADR ve T04 kapısı, native/extend'de uygun teslim planı |
 
 T02'nin iki coding yüzeyi kapsamı korunur; prototip tek hedefle sınırlı olabilir. T14d/T18i/T20i/T24n üretim entegrasyonunun bağımlılıklarıdır; P0 prototip bütün bu görevlerin tamamlandığını iddia etmez. T03b çalıştırma onayı/veri veya bütçe izni bu tabloyla oluşmaz.
@@ -580,8 +581,8 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 
 | Alt dilim / bağımlılık | Teslim / durum | Gözlenebilir kabul |
 |---|---|---|
-| T01f / T01 | TODO / P0: frozen checkpoint/identity/source-span oracle, bağımsız rubric ve error taxonomy | 6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı |
-| T03f / T01f,T02,T03a | TODO / P0: sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
+| T01f / T01 | IN_PROGRESS / P0 (draft oracle + bağımsız source-span scorer; insan/critical domain kapsamı açık): frozen checkpoint/identity/source-span oracle, bağımsız rubric ve error taxonomy | 6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı |
+| T03f / T01f,T02,T03a | IN_PROGRESS / P0 (P0 harness/scorer kısmi; gerçek adapter/telemetry açık): sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
 | T24q / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
 
 Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev korunur; T01 IN_PROGRESS, diğer 29 TODO.
@@ -602,3 +603,8 @@ Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştı
 | T01f/T03f/T24q | IC-08; frozen oracle ve katman/gerçek-target/native fair baseline | TODO; örnek/veri lint'i runtime ölçüm değildir |
 
 TG-01/02 belge düzeltmeleri runtime görevlerini complete yapmaz. TG-12–23 capability/owner/implementation/measurement kapanışı ilgili canonical task ve scoped evidence ile yapılır.
+
+
+## Audit sonrası P0 kanıtı ve restore bağımlılığı
+
+[2026-10-11 düzeltme kaydı](../quality/audit-remediation.md), source/code hash’li [sonuç](../quality/audit-remediation-results.json), [insan review kuyruğu](../quality/human-review-queue.md) ve [ortak kıyas planı](../quality/pilot-comparison-plan.md). T01/T02/T03 kısmi bağımsız deneyleri IN_PROGRESS; mevcut ön koşullar ana kapı **kapanışı** içindir. İnsan gold tamamlanmadan fixture kodu hazırlanabilir; gold/native/model kalitesi varmış gibi ana görev kapatılamaz. T07c minimal production restore, T15 proof, T23 operasyon/migration/purge; fixture SQLite backup bu işlerin completion’ı değildir.

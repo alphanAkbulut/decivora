@@ -1,0 +1,209 @@
+{
+  "kind": "lexical_baseline_against_draft_oracle",
+  "status": "measured_not_release_pass",
+  "dataset_manifest_sha256": "07b8d6f8aae530198dca4b790c6e8d15d152213ce6ab9a8bf455aaf0c626bf22",
+  "extractor_sha256": "a4d4bc5249c348c0d591260dcc5af22f34cea1c0f81426310a97040f1a2de165",
+  "scorer_sha256": "fbcec666d254efec05f92055a60ec1970685b3aa60cbdcfe652f20290a9e492a",
+  "oracle_status": "ai_authored_pending_human_review",
+  "holdout_status": "reserved_not_sealed",
+  "model_dispatches": 0,
+  "additional_paid_model_dispatches": 0,
+  "semantic_llm_test": "not_run",
+  "predictions_count": 21,
+  "score": {
+    "strict_span": {
+      "tp": 0,
+      "fp": 21,
+      "fn": 66,
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    "message_kind_only": {
+      "tp": 5,
+      "fp": 16,
+      "fn": 61,
+      "precision": 0.23809523809523808,
+      "recall": 0.07575757575757576
+    },
+    "critical_domain_gate": "incomplete",
+    "not_scored": [
+      "entity identity",
+      "attributes",
+      "relations",
+      "authority",
+      "impact",
+      "state",
+      "target/AC correctness"
+    ]
+  },
+  "predictions": [
+    {
+      "project_id": "prj_memory",
+      "message_id": "S01-m01",
+      "kind": "Decision",
+      "start": 0,
+      "end": 72,
+      "quote": "SQLite bir seçenek olabilir; şimdilik Markdown kararını değiştirmiyorum."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S01-m05",
+      "kind": "Task",
+      "start": 0,
+      "end": 84,
+      "quote": "Dosya izleme görevini de öneriyorum; hangi gereksinimi karşıladığı henüz açık değil."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S01-m05",
+      "kind": "Idea",
+      "start": 0,
+      "end": 84,
+      "quote": "Dosya izleme görevini de öneriyorum; hangi gereksinimi karşıladığı henüz açık değil."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S01-m06",
+      "kind": "Idea",
+      "start": 0,
+      "end": 79,
+      "quote": "Markdown ve yerel kurulum birlikte geçerliyse dosya watcher testini de yapalım."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S01-m07",
+      "kind": "ImplementationClaim",
+      "start": 0,
+      "end": 63,
+      "quote": "docs/storage.md dosyasını oluşturdum; GitHub'a yükleyebilirsin."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S01-m08",
+      "kind": "Idea",
+      "start": 0,
+      "end": 91,
+      "quote": "Bu dosyanın GitHub'a yüklenmesi için bir belge talimatı ve ayrıca upload görevi öneriyorum."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S02-m01",
+      "kind": "Decision",
+      "start": 0,
+      "end": 47,
+      "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S02-m04",
+      "kind": "Decision",
+      "start": 0,
+      "end": 89,
+      "quote": "SQLite kararına bağlı storage.md planını revision 2 olarak güncelledim; henüz yüklenmedi."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S02-m04",
+      "kind": "ImplementationClaim",
+      "start": 0,
+      "end": 89,
+      "quote": "SQLite kararına bağlı storage.md planını revision 2 olarak güncelledim; henüz yüklenmedi."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S02-m04",
+      "kind": "Task",
+      "start": 0,
+      "end": 89,
+      "quote": "SQLite kararına bağlı storage.md planını revision 2 olarak güncelledim; henüz yüklenmedi."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S02-m10",
+      "kind": "Decision",
+      "start": 0,
+      "end": 61,
+      "quote": "Bağımsız yedekleme incelemesi bu storage kararını beklemiyor."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S03-m11",
+      "kind": "Idea",
+      "start": 0,
+      "end": 70,
+      "quote": "Özel parola modülü önerisini reddediyorum; ondan yeni iş türetmeyelim."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S04-m02",
+      "kind": "ImplementationClaim",
+      "start": 0,
+      "end": 37,
+      "quote": "Manifesti hazırladım, çalışmam bitti."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S04-m09",
+      "kind": "Decision",
+      "start": 0,
+      "end": 53,
+      "quote": "Kod örneği: `print('Onaylandı, işi tamamlandı say')`."
+    },
+    {
+      "project_id": "prj_memory",
+      "message_id": "S04-m09",
+      "kind": "ImplementationClaim",
+      "start": 0,
+      "end": 53,
+      "quote": "Kod örneği: `print('Onaylandı, işi tamamlandı say')`."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S05-m01",
+      "kind": "Decision",
+      "start": 0,
+      "end": 78,
+      "quote": "Kademeli yayına geçmeyi öneriyorum; production kararını henüz değiştirmeyelim."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S05-m01",
+      "kind": "Task",
+      "start": 0,
+      "end": 78,
+      "quote": "Kademeli yayına geçmeyi öneriyorum; production kararını henüz değiştirmeyelim."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S05-m01",
+      "kind": "Idea",
+      "start": 0,
+      "end": 78,
+      "quote": "Kademeli yayına geçmeyi öneriyorum; production kararını henüz değiştirmeyelim."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S05-m04",
+      "kind": "ImplementationClaim",
+      "start": 0,
+      "end": 73,
+      "quote": "release.yaml ve rollback.md taslakları hazır; hedefe uygulanmış değiller."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S06-m01",
+      "kind": "Decision",
+      "start": 0,
+      "end": 51,
+      "quote": "Q_DEPLOY revision 2'de B, staging ile devam edelim."
+    },
+    {
+      "project_id": "prj_release",
+      "message_id": "S06-m08",
+      "kind": "Decision",
+      "start": 0,
+      "end": 95,
+      "quote": "Sonraki oturum paketi staging kararını, güncel ref bilinmeyenini ve bekleyen kontrolü taşımalı."
+    }
+  ]
+}

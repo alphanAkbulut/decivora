@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](docs/quality/visual-documentation.md).
 
-Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenekleri [tam kapsamda](docs/product/full-scope.md) korunur. Mevcut aşama **P0 Discovery / Product Definition**; uygulama geliştirilmedi.
+Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenekleri [tam kapsamda](docs/product/full-scope.md) korunur. Mevcut aşama **P0 keşif + kontrollü çalışan deneyler**; ürün MVP’si geliştirilmedi. [Audit sonrası sonuç/kalan işler](docs/quality/audit-remediation.md).
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
@@ -96,3 +96,6 @@ Başarısız kapıda: neden ve kanıt kaydedilir, küçük düzeltme işi açıl
 [Yönetim merkezi](docs/product/administration-and-operations.md) P1b'de yerel owner için sağlık/hata/etkin limitler; P4'te ekip admin ve platform operasyon konsolu olarak ayrılır. T20f/T21c/T23e/T24g mevcut görevlerin küçük dilimleridir. Kaynak lisansı, private veri erişimi, self-host/managed kurulum ve olası paketler ayrı kararlardır; bugün hosted servis veya lisans seçilmedi.
 
 P1'de tenant/agent kimliği, dar izin, kalıcı audit ve retention/recovery temeli kurulur; P4'te davet, rol yönetimi, ortak hafıza, bağımsız review ve merkezi ekip işletimi gelir. [Ekip/veri planı](docs/delivery/team-data-plan.md) küçük P1 alt görevlerini ve C01–C06 kapılarını açıklar. [Kapasite planındaki](docs/architecture/storage-memory-capacity.md) S0–S3 topolojileri bir kullanıcı sayısı garantisi veya takvim değildir; ölçülmüş darboğaz ve operasyon ihtiyacıyla seçilir.
+
+
+**Restore sırası açıklaması:** P1a T07c çekirdek DB+payload restore’u üretir, T15/T15a sınar; şemadaki P1b restore etiketi T23’ün kapsamlı migration/privacy/export ve operasyon devamıdır. Teknik kalite kapısı P1b’yi beklemez. Mevcut Mermaid/SVG kaynağı değişmedi.

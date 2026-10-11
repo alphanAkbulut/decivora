@@ -48,6 +48,8 @@ Bu corpus **14 AC'nin tamamına yönelik çalışan test suite'i değildir**. So
 
 Repo kökündeki tekrar komutları corpus rehberindedir. JSON raporu validator/source/oracle/manifest hashlerini bağlar; kaynak değişince eski rapor yeni veri için kanıt olmaz.
 
+<a id="insan-incelemesi-ve-t01-kapanışı"></a>
+
 ## İnsan incelemesi ve T01 kapanışı
 
 | Alt teslim | Durum / kanıt | Sonraki zorunlu iş |

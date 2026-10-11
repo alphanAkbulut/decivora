@@ -5,9 +5,9 @@
 **Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
 
 > [!NOTE]
-> **Aşama: Keşif, ürün tanımı ve teknik tasarım.** Çalışan uygulama, otomatik capture entegrasyonu veya doğrulanmış performans sonucu henüz yok. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+> **Aşama: P0 keşif ve çalışan deney düzenekleri.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
 
-**Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Build/extend sonucu ve prototip başlatma henüz karara bağlanmadı. [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
+**Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Kullanıcı sınırlı P0 deneylerini ve audit düzeltmelerini yetkilendirdi; build/extend sonucu ve production stack kararı açık. [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
 
 ## Çalışmanın neresindeyiz?
 
@@ -16,9 +16,9 @@
 | Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli; T01 ilk corpus hazır | İnsan etiket incelemesi ve çalışan sistemde ölçüm |
 | Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
 | Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
-| Pilot ve uygulama | Henüz başlamadı; A ilk kaynak yolu ve ek ücretli model API'si olmadan ilk deney seçildi; Codex B sonra | Önce fixture/kod kontrolleri; ardından zorunlu otomatik anlam çıkarımı deneyi. Somut veri/model/bütçe ve yatırım/stack kararları açık |
+| Pilot ve uygulama | P0: Spike-0 regresyonları, typed karar zinciri ve lexical baseline çalıştırıldı; insan pilotu başlamadı | İnsan gold review, zorunlu semantik model deneyi, gerçek host ve native kıyası; Codex B sonra |
 
-**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti; insan incelemesi ve gerçek anlam çıkarımı testi bekliyor.
+**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti. [Lexical baseline](docs/quality/audit-remediation.md) düşük başarı gösterdi; insan gold incelemesi ve gerçek semantik model deneyi bekliyor.
 
 > [!IMPORTANT]
 > **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.
@@ -161,10 +161,14 @@ docs/
   portfolio/     Ürün değerlendirme vaka çalışması
 assets/          Mermaid kaynağından üretilen görsel fallback
 examples/        Sentetik etki ve karar zinciri oracle örnekleri
-scripts/         Dokümantasyon tutarlılık kontrolü
+spikes/          P0 deney kodu; production uygulama değildir
+tests/           Bağımsız scorer ve anchor regresyonları
+scripts/         Doküman/corpus kontrolü ve bağımsız ölçüm
 ```
 
-Dokümantasyon kontrolü: `python3 scripts/check_docs.py`. Bu komut uygulama özelliklerini test etmez.
+Dokümantasyon kontrolü: `python3 scripts/check_docs.py` ve `python3 scripts/check_anchors.py`. Bunlar uygulama özelliklerini test etmez.
+
+**Çalıştırılmış kanıt ve bulgular:** [Audit düzeltme özeti](docs/quality/audit-remediation.md) → [Spike-0](spikes/spike-0/README.md) → [karar zinciri](spikes/decision-chain/README.md). [İnsan etiket incelemesi](docs/quality/human-review-queue.md) ve semantik kalite kapısı açık. CI doküman, corpus ve P0 testlerini otomatik çalıştırır; CI sonucu ayrı run kanıtıdır.
 
 ## Kapsam ve lisans
 

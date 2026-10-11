@@ -34,7 +34,9 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 
 ## Doğrulama ve teslim
 
-Doküman kontrolü: `python3 scripts/check_docs.py`. Sentetik corpus hazırlığında `python3 scripts/check_corpus.py --self-test` hash/span/split/referansları ve validator'ın negatiflerini kontrol eder; ürün/extractor testinin yerine geçmez. Kaynak input'u ve oracle ayrı tutulur; AI etiket taslağı insan onaylı gold veya sealed holdout diye sunulmaz. Uygulama test komutları henüz belirlenmedi; ilk runtime görevinde package manifest ile belgelenecek. Test uydurma.
+Doküman kontrolü: `python3 scripts/check_docs.py`. Sentetik corpus hazırlığında `python3 scripts/check_corpus.py --self-test` hash/span/split/referansları ve validator'ın negatiflerini kontrol eder; ürün/extractor testinin yerine geçmez. Kaynak input'u ve oracle ayrı tutulur; AI etiket taslağı insan onaylı gold veya sealed holdout diye sunulmaz. P0 deney testleri aşağıda; production uygulama test sözleşmesi ilk runtime görevinde ayrıca belgelenecek. Test uydurma.
+
+Repo kökünde `python3 -B -m unittest discover -s tests -v`, `python3 -B -m unittest discover -s spikes/spike-0/tests -v`, `python3 -B -m unittest discover -s spikes/decision-chain -v`; ayrıca `python3 -B spikes/decision-chain/run.py` ve `python3 -B scripts/evaluate_corpus.py`. `python3 -B scripts/check_anchors.py` local başlık/explicit-ID kontrolüdür, GitHub renderer’ın tam uygulaması değildir. Kontrollü roller auth sistemi, typed fixture metin çıkarımı, lexical baseline semantik model ve fixture target gerçek GitHub adapter değildir. Kaynaklar/komutlar network/model gerektirmez; gerçek host kurulum/paid provider ayrı izin ister. P0 Python stdlib/SQLite production ADR seçimi değildir.
 
 Değişiklik riskine göre `docs/quality/verification.md` senaryolarını kullan. Özellikle yanlış obsolete, false done, stale approval, crash/retry, proje izolasyonu ve replay regresyonlarını koru. UI etkileşimi iddiası gerçek tıklama/akış testi ister.
 

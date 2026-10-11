@@ -75,6 +75,8 @@ AC ve DoD iş başlamadan önerilir, kaynak gerekçesiyle görünür ve gerekli 
 >
 > Sonuç: Yaklaşım açıklanmış, uygulama ve test doğrulanmamış. Completed değil.
 
+<a id="isteğe-bağlı-alt-görevlere-böl-ve-takip-et"></a>
+
 ## İsteğe bağlı: Alt görevlere böl ve takip et
 
 **Q08 / DEC-16 önerisi; varsayılan tercih henüz onaylanmadı.** Task menüsünde `Alt görevlere bölerek takip et` eylemi öneriyoruz. Ayrı teslimi, kabul kriteri, sorumlusu veya bağımlılığı olan anlamlı parçalar task; küçük uygulama adımları checklist olur. Her işi otomatik mikro görevlere bölmek önerilmez.

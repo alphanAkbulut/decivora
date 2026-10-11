@@ -134,3 +134,8 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## İlk somut hedef — Q02-R2 A
 
 2026-10-11: kullanıcı private Decivora reposunda tek dokümanı ilk read-back hedefi seçti. Asistanın exact path tercihi `examples/corpus/README.md`; [READBACK-01](../quality/first-target-readback.md) önceki yayım ref'inde manuel içerik/SHA-256/blob eşleşmesi kaydeder. Q02-R2'yi tekrar sorma. Yukarıdaki `pilot not_started` end-to-end ürün deneyi içindir; artık tek manuel target gözlemi vardır. Otomatik source/answer/approval eşleme, adapter/harness/extractor/native/UI testleri çalışmadı. T01 IN_PROGRESS; T02/T03b kapanmadı. Gerçek sohbet/host erişimi ve sonraki provider/veri/bütçe ayrıntıları açık; target seçimi geniş hesap veya ücret yetkisi vermez.
+
+
+## Audit sonrası çalışan P0 kanıtı — 2026-10-11
+
+[Audit düzeltme kaydı](../quality/audit-remediation.md) güncel sonuçları gösterir. T01/T02/T03 IN_PROGRESS; ürün MVP’si ve production stack seçilmedi. Spike-0 fixture capture/regresyon kodu, typed karar–etki–kanıt zinciri ve bağımsız lexical scorer çalıştırıldı. Üstteki geçmiş “scorer/prototype yok” cümleleri bu ekten önceki duruma aittir. İnsan etiket incelemesi, zorunlu gerçek semantik çıkarım, iki gerçek coding-host capability testi, devam paketi/simple/native kıyası hâlâ kapanış işleri. Deney kodunu ürün auth/permission/DoD garantisi sayma; exact komutlar AGENTS ve spike README’lerindedir.

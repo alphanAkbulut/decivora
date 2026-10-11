@@ -1,0 +1,17 @@
+{
+  "kind": "original_supplied_suite_summary",
+  "status": "passed",
+  "test_count": 32,
+  "python": "3.9.6",
+  "os": "macOS 26.6.2 arm64",
+  "suite_seconds": 2.902,
+  "resource_warning_lines": 8,
+  "archive_sha256": "a7b4685a94395f2c0b2989079d65e9d764e10008442e2209cb4db5f3d2b2f147",
+  "log_sha256": "5c9b0b29b4deb5640e29ce4cc3b1fe52221287ec77a9f98170f6ab66445f0a8e",
+  "raw_log_published": false,
+  "redacted_fields": [
+    "local account and temporary filesystem paths"
+  ],
+  "real_host_test": false,
+  "note": "Historical pre-fix suite; real cloud n=1 was reported, not independently rerun."
+}

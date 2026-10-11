@@ -14,3 +14,6 @@ transcripts/
 secrets/
 work/
 __pycache__/
+spikes/**/data/
+spikes/**/.spike0-backup
+

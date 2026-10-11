@@ -1,0 +1,98 @@
+{
+  "kind": "audit_remediation_local_validation",
+  "date": "2026-10-11",
+  "source_main_before_changes": "28e9d6d29fa2010ff6febc220d7e4b123abe04de",
+  "validation": "passed_local_checks_not_product_release",
+  "suites": [
+    {
+      "command": "python3 -B -m unittest discover -s spikes/spike-0/tests -v",
+      "tests": 40,
+      "seconds": 3.272,
+      "exit_code": 0,
+      "result": "passed",
+      "resource_warning_lines": 0
+    },
+    {
+      "command": "python3 -B -m unittest discover -s spikes/decision-chain -v",
+      "tests": 15,
+      "seconds": 0.069,
+      "exit_code": 0,
+      "result": "passed",
+      "resource_warning_lines": 0
+    },
+    {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "tests": 8,
+      "seconds": 0.01,
+      "exit_code": 0,
+      "result": "passed",
+      "resource_warning_lines": 0
+    }
+  ],
+  "total_unit_tests": 63,
+  "real_host": "not_run",
+  "semantic_llm": "not_run",
+  "native_comparison": "not_run",
+  "human_gold_review": "pending",
+  "production_runtime": false,
+  "additional_paid_model_dispatches": 0,
+  "host_token_usage": null,
+  "ci_status": "workflow_added_execution_requires_remote_observation",
+  "new_mermaid_render": false,
+  "environment": {
+    "python": "3.9.6",
+    "system": "Darwin",
+    "release": "25.6.0",
+    "machine": "arm64"
+  },
+  "checks": [
+    {
+      "command": "python3 -B scripts/check_docs.py",
+      "exit_code": 0,
+      "result": "passed",
+      "output": "PASS: 101 Markdown files, 1055 local links, 32 scope IDs, 30 tasks, 14 MVP criteria; JSON valid.\nPhase tracker: 30 main-task rows matched canonical backlog metadata.\nTraceability: 14 source stages, 17 features, 10 engines, 28 planned verification scenarios.\nCollaboration/data: 18 additional planned scenarios; not runtime tested.\nConnection/token/graph/context: 30 additional planned contract scenarios.\nTarget application: 10 planned GAP scenarios; oracle is not_run.\nDiagrams: 35 source blocks in 15 documents; inventory matched.\nNot tested: application runtime, adapters, model quality, Mermaid rendering.\n"
+    },
+    {
+      "command": "python3 -B scripts/check_anchors.py",
+      "exit_code": 0,
+      "result": "passed",
+      "output": "PASS: 46 local Markdown anchors checked\n"
+    },
+    {
+      "command": "python3 -B scripts/check_corpus.py --self-test",
+      "exit_code": 0,
+      "result": "passed",
+      "output": "{\n  \"validation\": \"passed\",\n  \"counts\": {\n    \"sessions\": 6,\n    \"projects\": 2,\n    \"messages\": 58,\n    \"record_annotations\": 66,\n    \"unique_knowledge_records\": 46,\n    \"meaningful_messages\": 51,\n    \"no_new_record_messages\": 7\n  },\n  \"human_review\": \"pending\",\n  \"product_result\": \"not_run\",\n  \"errors\": [],\n  \"validator_negative_tests\": [\n    {\n      \"test\": \"bad_span\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"stale_hash\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"missing_item\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"duplicate_message\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"leaked_expected\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"false_runtime_pass\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"cross_family_split\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"foreign_source_reference\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"ghost_relation\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"insufficient_unique_records\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"duplicate_json_key\",\n      \"outcome\": \"rejected_as_expected\"\n    }\n  ]\n}\n"
+    }
+  ],
+  "code_sha256": {
+    "spikes/decision-chain/chain.py": "04c517f4f560e153bb870906359b9dac6217560b7af0aafc2e73e3377bf64041",
+    "spikes/decision-chain/run.py": "5a8fe2013b0d93c1829de436f429f80e19d5154320c579a71bb97edf77fbed9b",
+    "spikes/decision-chain/test_chain.py": "647c5b0df36f47ae6d1ca1c14a95017f79203d922dfa41d17b42bfaecc60c120",
+    "spikes/spike-0/bin/spike0_hook.py": "9cbbfa759f3e16973ccd1bb8c5539da6ba0714710b1cefb12c2cb5eb632896e0",
+    "spikes/spike-0/spike0/__init__.py": "eba2147049fa38eb9ad01425a1be033df79cb8db4b456012b516c6074226a35a",
+    "spikes/spike-0/spike0/cli.py": "233bb2950b0aa2bff0a08b020fdbeefdfdc1d4972159342c660c9d317c441c66",
+    "spikes/spike-0/spike0/db.py": "ec22f7c8710f212a129558aaf5aeebaf56bcdd1ad4739c156e0631385e10ebd3",
+    "spikes/spike-0/spike0/extract.py": "a4d4bc5249c348c0d591260dcc5af22f34cea1c0f81426310a97040f1a2de165",
+    "spikes/spike-0/spike0/hook.py": "80fea52dc8c280e94aeba46d90307b3056ea4e806395c27f177115ea7b2bfcba",
+    "spikes/spike-0/spike0/install.py": "9c7e30170434d7d5418bc00abc0b2c16446b59d148a2131da3bff1054009c3f0",
+    "spikes/spike-0/spike0/pipeline.py": "32b7aa0b10d969de764ce2ed866ceda4d3c7e511276fec79df3407ef4dd6ae0d",
+    "spikes/spike-0/spike0/reconcile.py": "66cce7d2805d2fe3aee9d6bed02eeb5cd014fc0559618657bddc94f8d41b2bc8",
+    "spikes/spike-0/spike0/redact.py": "115adcc4199243c008b708b4ed46cfbb2c25ca5e45894316fe1d11b7ac64531c",
+    "spikes/spike-0/spike0/reporting.py": "4630de01117ef5548af6fa78cee3313a92b6f09b928ace562ff1c20fef599744",
+    "spikes/spike-0/spike0/transcript.py": "c40b02c402d17db428790c0c0fb8a111fdc3ceff3c96236dc2a03a64c4943864",
+    "spikes/spike-0/tests/helpers.py": "e0c939a3699c3b062645a0cd0871a19fd1be2a580fe635c2ceb4c484df078da4",
+    "spikes/spike-0/tests/make_fixtures.py": "63c9a4807c901c06c7634b92a4f6b146a5816ceb9b4376711851d9615e0137f6",
+    "spikes/spike-0/tests/test_hook.py": "f679f47892853418ea532b4a5b29ec985333f057a897b0977f0ab06da9e5b7ae",
+    "spikes/spike-0/tests/test_pipeline.py": "00feda664752a5ea670b8f49684e8abd882528ee9bbaa1348bd7da6025ce9ff9",
+    "spikes/spike-0/tests/test_regressions.py": "82b80d301bbe0d62433f872753e87cc0464791bcee291839d87d677d09113923",
+    "scripts/check_anchors.py": "d92c40a8ce7ae04ed4028597abaa4f2ff7f96795f4e844884908731f5dfaa98c",
+    "scripts/check_corpus.py": "b0ff5609db10d05634f5503e54e3d70c3daf34aeec3a189e31ceeb73ae2bdb84",
+    "scripts/check_docs.py": "171ac55d8136be1bb0aa567ab0397380a1bb5f089be613b1dad5b1b2e4b55732",
+    "scripts/evaluate_corpus.py": "fbcec666d254efec05f92055a60ec1970685b3aa60cbdcfe652f20290a9e492a",
+    "scripts/inventory_upstream.py": "295d0a8da4b0f858659370abd8c0daaaa3f4323c55b2c577c7f1ee1dda5d97bf",
+    "tests/test_anchors.py": "fd7de1719055e2114dc33f8cd382efddba45f18725ef8cb56fdd857a9405ebcf",
+    "tests/test_evaluation.py": "b31f4d80675bf753b6bb3e684a617a76a25574709d82b2cb1595ea9d6ce12165"
+  },
+  "diagram_evidence": "Existing source/SVG hashes validated by check_docs; unchanged blocks, no new render."
+}

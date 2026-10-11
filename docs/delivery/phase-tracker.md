@@ -1,6 +1,6 @@
 # Faz bazlı proje ağacı ve takip görünümü
 
-**2026-10-11 — P0 / ürün uygulaması başlamadı.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
+**2026-10-11 — P0 / kontrollü deney kodu var; ürün MVP uygulaması başlamadı.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
 
 **Otorite:** İşin tanımı, ana/alt görev, bağımlılık ve kabul kriterleri [backlog](backlog.md) ve bağlı [ekip/veri planında](team-data-plan.md); gerçekleşen ilerleme/kanıt [status](status.md); ürün çıkış sınırı [MVP](../product/mvp.md) ve [roadmap](../../ROADMAP.md) içindedir. Aşağıdaki 30 ana görev satırı backlog'dan türetilmiştir; doküman kontrolü ID/faz/durum/başlık/ön koşul eşleşmesini denetler. Bunları bağımsız güncelleme.
 
@@ -41,10 +41,10 @@ Bu ağaç ürün teslim ağacıdır; çalışan kaynak kodu dizinleri değildir.
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü | — |
-| T02 | P0 | TODO | İki coding yüzeyinde capability spike | T01 |
-| T03 | P0 | TODO | Native/extend/build ve teknoloji kararı | T01,T02 |
+| T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01,T02 |
 
-**T01 IN_PROGRESS:** [ilk corpus](../../examples/corpus/README.md) ve [hazırlık/kalan kapsam raporu](../quality/baseline.md) mevcut; insan etiket incelemesi ve deney ölçümü tamamlanmadı. T01e sözlük/istek/claim örneklerini ekler; T02d tek hedef ve güvenilir seçim sinyalini araştırır; T03a–c [güncel P0 planını](backlog.md) açar. GAP/RES oracle, [Spike-1](spike-1-v1.md) ve native baseline ile ilk değer değerlendirilir. Bu hazırlık tamamlandı veya prototype kodu üretildi demek değildir.
+**T01 IN_PROGRESS:** [ilk corpus](../../examples/corpus/README.md) ve [hazırlık/kalan kapsam raporu](../quality/baseline.md) mevcut; insan etiket incelemesi ve deney ölçümü tamamlanmadı. T01e sözlük/istek/claim örneklerini ekler; T02d tek hedef ve güvenilir seçim sinyalini araştırır; T03a–c [güncel P0 planını](backlog.md) açar. GAP/RES oracle, [Spike-1](spike-1-v1.md) ve native baseline ile ilk değer değerlendirilir. Güncel ek: [iki P0 deney düzeneği ve scorer](../quality/audit-remediation.md) çalıştırıldı; T02/T03 kısmi kanıtla IN_PROGRESS. İki gerçek coding yüzeyi, insan gold review, semantic LLM ve native kıyası açık; ana kapılar kapanmadı.
 
 ## MVP — P1a ve P1b
 
@@ -65,7 +65,9 @@ Bu ağaç ürün teslim ağacıdır; çalışan kaynak kodu dizinleri değildir.
 | T12 | P1a | TODO | Impact preview ve apply planı | T11 |
 | T13 | P1a | TODO | Review işlemi ve güvenilir onay | T12 |
 | T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 |
-| T15 | P1a | TODO | Teknik kanıt kapısı | T14 |
+| T15 | P1a | TODO | Teknik kanıt kapısı | T14,T07c |
+
+T07c erken minimal DB+payload restore teslimidir; T15a bunu teknik kapıda sınar; T23a kapsamlı operasyon/migration/privacy restore devamıdır.
 
 T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/projection → kanıt ve düzeltme. Atomiklik/retry/replay, proje izolasyonu, AND/OR/unknown, stale approval ve false-done kritik kontrollerdir. Tek hedefin read-back gözlemi bütün kabul kriterlerinin geçmesi değildir.
 
@@ -154,7 +156,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 4. Bir task veya fazın kapanışında [AC/DoD ve kaynaklı bağlam](../product/task-context-and-acceptance.md) güncellenir. İptal/erteleme gerekçesi ve tarihçesi korunur.
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
-Bugünkü snapshot'ta 30 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
+Bugünkü snapshot'ta T01/T02/T03 IN_PROGRESS, 27 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
 
 ### P0 karşılaştırma havuzu eki: WrongStack
 

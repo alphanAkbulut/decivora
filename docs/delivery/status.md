@@ -1,19 +1,19 @@
 # Mevcut durum
 
-2026-10-11 — **Discovery / Product Definition**.
+2026-10-11 — **P0 / Product Definition + kontrollü deneyler**.
 
 | Alan | Durum |
 |---|---|
 | Kaynak konuşma derlemesi, vizyon/MVP/karar haritası | Bu dokümantasyon paketinde hazırlanmış |
-| Mimari, ADR, görev ve kabul planları | Öneri; uygulama kanıtı yok |
+| Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
-| Uygulama / adapter / dashboard | Başlanmadı |
-| Model doğruluğu / tasarruf / kullanıcı talebi | Ölçülmedi |
+| Ürün MVP / adapter / dashboard | Ürün başlamadı; iki P0 kod düzeneği mevcut, gerçek host/dashboard test edilmedi |
+| Semantik model / tasarruf / kullanıcı talebi | Ölçülmedi; lexical baseline ayrı draft oracle üzerinde ölçüldü, başarı kapısı değil |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel iş: T01 IN_PROGRESS** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. İnsan etiket incelemesi → semantik model koşullarının kararı → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
 
@@ -315,3 +315,12 @@ T01 IN_PROGRESS ve diğer 29 ana görev TODO; canonical backlog/phase tracker e�
 Kullanıcı mevcut private repo dokümanını ilk read-back hedefi seçti. Asistan önceki corpus rehberini seçip değiştirmeden `6de536e44b22d6f839aa7c94e3ca2444addb5115` ref'inde okudu; yerel artifact ile GitHub içeriği/SHA-256/Git blob kimliği eşleşti. [READBACK-01 raporu](../quality/first-target-readback.md) ve [JSON gözlem](../quality/first-target-readback.json) scope, revision ve not_run ayrımlarını tutar.
 
 Bu manuel happy-path, yüklenmiş tek dosyanın somut kanıtıdır; Decivora target adapter'ı, semantik kalite, coding capture, bütün corpus bundle'ı veya task DoD kanıtı değildir. T02d kısmi manuel kanıt aldı; ana durumlar **T01 IN_PROGRESS, diğer 29 TODO**. İnsan etiket review'u ve kalan T01 protokolü sıradadır; otomatik extraction uygulaması/testi zorunlu kalır. Ek ücretli model/provider deneyi yok; host token kullanımının ölçümü yok. GitHub hedef sorusu tekrar sorulmaz; B yerel hedef senaryosu ve sonraki Codex bağlantı testi korunur.
+
+
+## 2026-10-11 — Audit önerileri ve çalışan P0 düzeltmeleri
+
+Kullanıcı raporların private GitHub’a alınmasını, Spike-0 önerilerini ve dört devam maddesini uygulamayı istedi. [Güncel bulgu/düzeltme matrisi](../quality/audit-remediation.md) tarihsel audit ve source review’u ayırır. Kullanıcı ZIP’inden capture ölçüm kodu alındı; 8 regression eklendi. Source kimliği, tam içerik ölçümü, kısa claim/answer, cap görünürlüğü, fuzzy conflict, durable receipt ve bounded catch-up uygulandı. Gerçek projeye kurulum/host/model çağrısı yok.
+
+63 test (40 Spike-0 + 15 typed chain + 8 scorer/anchor) geçti; kaynak/scorer-only lexical corpus koşusu zayıf çıktı ve başarısızlıklar saklandı. Typed karar→impact→target→AC→backup/replay zinciri geçti; bu IAM, gerçek semantik extraction veya production backup değildir. T07c erken restore teslimi, T15 kapanış bağımlılığı; T23a kapsamlı operasyon restore olarak ayrıldı. CI tanımı ve explicit Türkçe anchors eklendi.
+
+T01/T02/T03 **IN_PROGRESS**, diğer 27 ana görev TODO; hiçbir ana görev tamamlanmadı. [Üç insan review örneği](../quality/human-review-queue.md), zorunlu semantik model koşulları ve [native/dosya/devam paketi kıyası](../quality/pilot-comparison-plan.md) sıradadır. Eski tarihsel “kod/scorer/CI yok” kayıtları kendi snapshot’ına aittir. Mevcut 35 Mermaid source/SVG hashleri korunur; yeni render/UI testi iddiası yok. Yayın/remote read-back kanıtı teslim sırasında ayrıca doğrulanır.

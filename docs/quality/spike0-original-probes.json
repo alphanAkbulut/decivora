@@ -1,0 +1,68 @@
+{
+  "kind": "supplied_spike0_synthetic_probe_results",
+  "archive_sha256": "a7b4685a94395f2c0b2989079d65e9d764e10008442e2209cb4db5f3d2b2f147",
+  "python": "3.9.6",
+  "product_runtime_tested": false,
+  "real_host_tested": false,
+  "note": "Expectations include target product requirements beyond the intentionally narrow spike. Mismatches do not mean the supplied 32 tests failed.",
+  "probes": [
+    {
+      "probe": "lag_prefix_false_positive",
+      "expected": false,
+      "observed": true,
+      "matches_expected": false,
+      "data": "synthetic"
+    },
+    {
+      "probe": "same_session_id_changed_source",
+      "expected": [
+        "project-a",
+        "project-b"
+      ],
+      "observed": [
+        "project-a"
+      ],
+      "matches_expected": false,
+      "data": "synthetic"
+    },
+    {
+      "probe": "negation_fuzzy_duplicate",
+      "expected": false,
+      "observed": true,
+      "matches_expected": false,
+      "data": "synthetic"
+    },
+    {
+      "probe": "per_message_candidate_cap",
+      "expected": 12,
+      "observed": 8,
+      "matches_expected": false,
+      "data": "synthetic"
+    },
+    {
+      "probe": "standalone_done_claim",
+      "expected": [
+        "impl_claim"
+      ],
+      "observed": [],
+      "matches_expected": false,
+      "data": "synthetic"
+    },
+    {
+      "probe": "contextual_yes_answer",
+      "expected": "answer_or_unresolved_preserved_for_matching",
+      "observed": "no_candidates",
+      "matches_expected": false,
+      "data": "synthetic"
+    },
+    {
+      "probe": "assistant_claim_decision_rule_precedence",
+      "data": "synthetic",
+      "observed_types": [
+        "decision"
+      ],
+      "canonical_approval_or_task_written": false,
+      "interpretation": "Type ambiguity; candidate classification only, not a demonstrated false verified"
+    }
+  ]
+}

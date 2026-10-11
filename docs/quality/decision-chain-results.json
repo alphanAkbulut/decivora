@@ -1,0 +1,28 @@
+{
+  "kind": "typed_fixture_decision_chain",
+  "result": "passed",
+  "automatic_semantic_extraction": false,
+  "real_host": false,
+  "production_runtime": false,
+  "oracle_status": "synthetic_authored_pending_human_review",
+  "current_decision": "sqlite",
+  "impact": {
+    "export": "retained",
+    "sync": "obsolete_candidate",
+    "watch": "review_unknown"
+  },
+  "old_ref_status": "stale",
+  "partial_ac_verified": false,
+  "all_fixture_ac_verified": true,
+  "backup_projection_digest": "eb2e0770a5e896ff177875081934169bcf661f0236f1253d7776bda629cf4440",
+  "projection_digest": "eb2e0770a5e896ff177875081934169bcf661f0236f1253d7776bda629cf4440",
+  "event_count": 9,
+  "external_dispatches": 0,
+  "additional_paid_model_dispatches": 0,
+  "limitations": [
+    "trusted fixture roles are not IAM",
+    "typed inputs are not extracted chat",
+    "fixture ref is not a GitHub observation",
+    "verifier outcomes are controlled synthetic inputs"
+  ]
+}
