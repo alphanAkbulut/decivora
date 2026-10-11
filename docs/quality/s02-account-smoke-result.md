@@ -23,6 +23,10 @@ Q03-R3 A ile mevcut ChatGPT/Codex hesabı seçildi. Q03-R4 A, yalnız bu tek S02
 
 Bu smoke tek development family'dir; human-gold, sealed holdout veya release/üstünlük değerlendirmesi değildir. Model kalitesi için çıktı hâlâ gereklidir. Yerel strict preflight bu hesapta sonlu token üst sınırı bulunmadığından blocked kalır; manuel istisna production/otomatik dispatch yetkisi vermez. Preflight'ın `execution_status: not_run` alanı kendi provider çağırmayan çalışmasını anlatır; bu ayrı web denemesinin durumu **attempted_no_model_output** olarak kayıtlıdır.
 
-## Sıradaki somut iş
+## Bu denemeden sonraki gelişme
+
+Q03-R5 ile kullanıcı bir yeni denemeyi açıkça onayladı. Normal Chrome'daki ayrı oturum bir çıktı verdi; strict kaynak konumu doğrulaması 10/11 hatalı span nedeniyle reddetti. [S02-002 güncel raporu](s02-second-attempt-result.md) ve [ayrı makine kaydı](s02-second-attempt-results.json). Yukarıdaki S02-001 gözlemleri değiştirilmedi.
+
+## İlk deneme sonrasında önerilmiş adım (tarihsel)
 
 Mevcut tek-deney izni tüketildi; otomatik ikinci gönderim yapılmaz. Owner normal tarayıcısında ChatGPT erişimini kontrol edebilir. Sonrasında yeni **tek S02 gönderimi / sıfır retry** planı açıkça yetkilendirilirse aynı değişmemiş prompt yeni boş ve kişiselleştirilmemiş oturumda çalıştırılır; ilk ham response korunup mevcut bağımsız evaluator ve kontrollü zincirle ölçülür. Harici API, yeni ücret veya kapsam genişlemesi bu hatadan çıkarılmaz.

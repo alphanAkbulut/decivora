@@ -80,8 +80,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Son ilerleme:** 2026-10-11 · Gerçek hesap denemesi: Q03-R4 A tek-deney istisnasıyla S02 ChatGPT web oturumuna bir kez gönderildi. cloudflare_challenge nedeniyle model output yok; retry 0, token/usage unknown. [Rapor](../quality/s02-account-smoke-result.md) hazır; model kalitesi ölçülmedi, üretim limiter uygulanmadı.
-- **Sıradaki adım:** [S02 planı](../quality/s02-account-smoke-plan.md): İlk tek-deney izni tüketildi → owner normal ChatGPT erişimini kontrol etsin → yeni sınırlı gönderim yetkisi → ilk ham output → bağımsız ölçüm; otomatik retry yok. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
+- **Son ilerleme:** 2026-10-11 · Q03-R5 onayıyla S02 normal Chrome'daki ayrı kişiselleştirilmemiş geçici ChatGPT oturumuna bir kez gönderildi. Bir gerçek output alındı; 11/11 alıntı exact, 10/11 kaynak span hatalı. Strict validator reddetti; skor/zincir çalışmadı, canonical mutation 0/retry 0. [Güncel rapor ve ham çıktı](../quality/s02-second-attempt-result.md); token/model kimliği unknown.
+- **Sıradaki adım:** İnsan bağımlılığı olmayan P0 source anchoring adapter deneyi: message ID + exact quote için tekil kaynak eşleşmesini kodla hesapla; eksik/çoklu eşleşmeyi reddet, ham ve türetilmiş çıktıyı ayır. Sonra bağımsız scorer ve trusted-receipt zinciri; validator gevşetilmez. [S02 sonucu](../quality/s02-second-attempt-result.md) başarısız orijinali korur. Q03-R5 tüketildi; yeni inference/ücret izni yok. Human gold, native kıyas ve T03c kapıları açık.
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

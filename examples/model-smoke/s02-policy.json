@@ -18,7 +18,7 @@
   "additional_api_spend_authorized": false,
   "credit_purchase_authorized": false,
   "existing_paid_credit_overage_authorized": false,
-  "execution_status": "attempted_no_model_output",
+  "execution_status": "model_output_received_contract_rejected",
   "provider": "OpenAI",
   "model": null,
   "usage": null,
@@ -30,7 +30,7 @@
     "Existing ChatGPT account selected; one fresh non-personalized temporary web session submitted; exact model and enforceable per-run token bounds remain unverified",
     "S02 is development data; n=1 and AI draft oracle do not establish release quality"
   ],
-  "dispatch_status": "attempted_retry_exhausted",
+  "dispatch_status": "completed_new_single_smoke_approval_consumed",
   "max_input_tokens": null,
   "max_output_tokens": null,
   "max_context_tokens": null,
@@ -82,17 +82,44 @@
     "consumed": true,
     "renewable_automatically": false
   },
-  "interface": "ChatGPT web, non-personalized temporary chat",
-  "model_ui_label": "Instant",
+  "interface": "ChatGPT web in normal Chrome; non-personalized temporary chat",
+  "model_ui_label": "Hızlı (1 of 3)",
   "model_identity_verified": false,
   "submitted_requests": 1,
-  "received_model_outputs": 0,
+  "received_model_outputs": 1,
   "actual_retries": 0,
   "attempt_result": {
-    "observed_error": "cloudflare_challenge",
-    "observed_at_utc": "2026-10-11 19:31:45 UTC",
-    "provider_inference_started": null,
-    "evaluation_status": "not_run_no_output",
-    "retry_clicked": false
-  }
+    "attempt_id": "S02-002",
+    "observed_error": null,
+    "observed_at_utc": "2026-10-11 19:41:27 UTC",
+    "evaluation_status": "rejected_before_scoring",
+    "validation_error": "ValueError: candidate quote not in source",
+    "chain_status": "not_run_invalid_response",
+    "retry_clicked": false,
+    "record": "docs/quality/s02-second-attempt-results.json"
+  },
+  "previous_attempt": {
+    "id": "S02-001",
+    "result": "attempted_no_model_output",
+    "record": "docs/quality/s02-account-smoke-results.json"
+  },
+  "active_attempt": {
+    "id": "S02-002",
+    "authorization": "Q03-R5: user explicitly said tek yeni denemeyi onaylıyorum",
+    "max_requests": 1,
+    "submitted_requests": 1,
+    "max_retries": 0,
+    "additional_paid_usage_authorized": false,
+    "risk_exception": "same single-smoke token/context exception; product rule unchanged",
+    "interface": "ChatGPT web in normal Chrome, non-personalized temporary chat",
+    "model_ui_label": "Hızlı (1 of 3)",
+    "model": null,
+    "status": "completed_contract_rejected",
+    "received_model_outputs": 1,
+    "actual_retries": 0,
+    "authorization_consumed": true,
+    "record": "docs/quality/s02-second-attempt-results.json"
+  },
+  "cumulative_separately_authorized_submissions": 2,
+  "counters_scope": "Latest separately authorized attempt S02-002; first attempt retained in previous_attempt"
 }

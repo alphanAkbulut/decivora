@@ -31,9 +31,9 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · Gerçek hesap denemesi: Q03-R4 A tek-deney istisnasıyla S02 ChatGPT web oturumuna bir kez gönderildi. cloudflare_challenge nedeniyle model output yok; retry 0, token/usage unknown. [Rapor](../quality/s02-account-smoke-result.md) hazır; model kalitesi ölçülmedi, üretim limiter uygulanmadı.
+2026-10-11 · Q03-R5 onayıyla S02 normal Chrome'daki ayrı kişiselleştirilmemiş geçici ChatGPT oturumuna bir kez gönderildi. Bir gerçek output alındı; 11/11 alıntı exact, 10/11 kaynak span hatalı. Strict validator reddetti; skor/zincir çalışmadı, canonical mutation 0/retry 0. [Güncel rapor ve ham çıktı](../quality/s02-second-attempt-result.md); token/model kimliği unknown.
 
-Sıradaki adım: [S02 planı](../quality/s02-account-smoke-plan.md): İlk tek-deney izni tüketildi → owner normal ChatGPT erişimini kontrol etsin → yeni sınırlı gönderim yetkisi → ilk ham output → bağımsız ölçüm; otomatik retry yok. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
+Sıradaki adım: İnsan bağımlılığı olmayan P0 source anchoring adapter deneyi: message ID + exact quote için tekil kaynak eşleşmesini kodla hesapla; eksik/çoklu eşleşmeyi reddet, ham ve türetilmiş çıktıyı ayır. Sonra bağımsız scorer ve trusted-receipt zinciri; validator gevşetilmez. [S02 sonucu](../quality/s02-second-attempt-result.md) başarısız orijinali korur. Q03-R5 tüketildi; yeni inference/ücret izni yok. Human gold, native kıyas ve T03c kapıları açık.
 
 
 ## Mevcut teslim parçaları
@@ -49,14 +49,14 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Otomasyon ve devir** — Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı; Docs/corpus/anchor + runtime regresyonları
 - **Seçili gerçek hedef okuması** — Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match; Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil
 - **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil
-- **S02 gönderim ve güvenlik hazırlığı** — Tek S02 kaynak/prompt/policy; Q03-R4 A istisnasıyla bir web gönderimi denendi; cloudflare_challenge, model output 0/retry 0; hard-cap doğrulanmadı; [Hazır plan](../quality/s02-account-smoke-plan.md) ve [gerçek deneme raporu](../quality/s02-account-smoke-result.md); kaynak hashleri sabit. Output/scorer/chain bu deneme için not_run_no_output; production limiter not_run
+- **S02 gönderim ve güvenlik hazırlığı** — İki ayrı onaylı tek gönderim: S02-001 cloudflare_challenge/çıktı yok; S02-002 gerçek output, 10/11 span hatalı, strict ret; her denemede retry 0; [Güncel rapor/ham çıktı](../quality/s02-second-attempt-result.md); kaynak hashleri sabit. JSON parse geçti, scorer/zincir çalışmadı; hard-cap/production limiter doğrulanmadı
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Bir gerçek model output’u | Tek web gönderimi cloudflare_challenge ile çıktı vermedi; kaynak/response aktarımında UI hatası. Token üst sınırları ve model kalitesi hâlâ unknown; ek ücret izni yok | [Paket](../quality/s02-account-smoke-plan.md) ve [preflight kodu](../quality/token-preflight.md) hazır. Q03-R4 istisnası tüketildi; retry yapılmadı. Normal ChatGPT erişimi + yeni tek-gönderim yetkisi → ilk output → ölçüm; [sonuç](../quality/s02-account-smoke-result.md), kalite not_measured |
+| Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [S02-002 raporu](../quality/s02-second-attempt-result.md): offline exact quote anchoring deneyi → bağımsız scorer → trusted-receipt zinciri. Q03-R5 tüketildi; otomatik tekrar yok, token upper bound unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -99,10 +99,10 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 ## Kanıt kapsamı
 
-Kayıt durumu: **recorded**; rapor tarihi: 2026-10-11; kayıtlı test sayısı: 91. Model: not_run; insan gold: pending; native kıyas: not_run. Production runtime: False.
+Kayıt durumu: **recorded**; rapor tarihi: 2026-10-11; kayıtlı test sayısı: 91. Kaynak raporun tarihsel model kaydı: not_run; insan gold: pending; native kıyas: not_run. Production runtime: False.
 
-Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo veya güncel CI sonucu değildir. [Kaynak rapor](../quality/semantic-readiness-results.json).
+Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun tarihsel checkpoint’idir. Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo veya güncel CI sonucu değildir. [Kaynak rapor](../quality/semantic-readiness-results.json).
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `3f927e423e1d521d7cbd6ec5cd227844e52b48a83d271bdc41a94b7ed850f80c`
+Kaynak fingerprint: `aea3caf0a7d964aa8069661cdf448b5fbbab798a750f569dc3e2f2029f7bdba1`

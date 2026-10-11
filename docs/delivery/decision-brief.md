@@ -195,3 +195,9 @@ Salt okunur hesap kontrolünde normal kullanım açık görüldü; özel hesap/k
 **2026-10-11 · Kabul edildi: A.** Kullanıcı, önceki mesajdaki “Yalnız bu deney için istisnayı kabul et” seçeneğine “a” dedi. Scope: 11 sentetik mesaj/5498 byte sabit prompt, bir gönderim/ilk output, sıfır tekrar/araç/alt agent; ek ücretli kullanım açılmaz, kesin token/context tavanı garanti edilmez. Ürün hard-cap gereksinimi değişmedi; genel/gelecek deney izni değildir.
 
 [Deney raporu](../quality/s02-account-smoke-result.md): kişiselleştirilmemiş geçici ChatGPT web oturumunda tek gönderim denendi; cloudflare_challenge, sıfır model output, usage unknown. İlk onay denetimi reddinden sonra önceki seçenek ve güncel insan cevabı sohbet kaydında doğrulandı; aynı UI eylemi yeniden değerlendirildi, dolaylı gönderim yapılmadı. İzin tüketildi; ikinci model gönderimi/retry yapılmadı.
+
+## Q03-R5 — Bir yeni S02 gönderimi
+
+**2026-10-11 · Kabul edildi ve tüketildi.** İnsan yanıtı: “tek yeni denemeyi onaylıyorum”. Aynı 5498 byte/11 sentetik mesaj, bir yeni boş kişiselleştirilmemiş ChatGPT oturumu, tek gönderim/ilk output, sıfır retry/tools/subagent ve ek ücret yasağı korunur. Q03-R4'ün yalnız bu sınırlı smoke için kabul edilmiş token/context riski dışında ürün hard-cap kuralı değişmez.
+
+Normal Chrome'da bir gerçek output alındı. [S02-002 raporu](../quality/s02-second-attempt-result.md): JSON parse edildi, 11 exact alıntının 10'unda kaynak konumu hatalı; strict evaluator validation aşamasında reddetti, skor/zincir uygulanmadı. UI “Hızlı” model sürümü değildir; token/cost unknown. İlk cloudflare sonucu ayrı korunur; yeni çıktı eski hatanın kök nedenini kanıtlamaz. Yeni gönderim izni yok; insan bağımlılığı olmayan offline source anchoring işi sıradadır.

@@ -139,8 +139,8 @@ def markdown(data):
     lines += ["", "## Fazlara göre tüm ana işler", "", "| ID | Faz | Durum | İş | Plan ön koşulu | Alt dilim |", "|---|---|---|---|---|---|"]
     lines += ["| " + t["id"] + " | " + t["phase"] + " | " + t["status"] + " | " + t["title"] + " | " + ", ".join(t["dependencies"]) + " | " + str(len(t["subtasks"])) + " |" for t in data["tasks"]]
     e = data["evidence"]
-    lines += ["", "## Kanıt kapsamı", "", f"Kayıt durumu: **{e['status']}**; rapor tarihi: {e['date']}; kayıtlı test sayısı: {e['tests']}. Model: {e['model']}; insan gold: {e['human_gold']}; native kıyas: {e['native']}. Production runtime: {e['production']}.", "",
-        "Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo veya güncel CI sonucu değildir. [Kaynak rapor](../quality/semantic-readiness-results.json).", "",
+    lines += ["", "## Kanıt kapsamı", "", f"Kayıt durumu: **{e['status']}**; rapor tarihi: {e['date']}; kayıtlı test sayısı: {e['tests']}. Kaynak raporun tarihsel model kaydı: {e['model']}; insan gold: {e['human_gold']}; native kıyas: {e['native']}. Production runtime: {e['production']}.", "",
+        "Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun tarihsel checkpoint’idir. Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo veya güncel CI sonucu değildir. [Kaynak rapor](../quality/semantic-readiness-results.json).", "",
         "Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.", "",
         "Kaynak fingerprint: `" + data["fingerprint"] + "`", ""]
     # Preserve links from source tables, correcting their original relative base (same delivery folder).

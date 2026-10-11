@@ -13,9 +13,16 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain bağlantısı artık çalışıyor; ayrı model inference hâlâ not_run. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. İnsan etiket incelemesi → semantik model koşullarının kararı → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain fixture bağlantısı çalışıyor; ayrı gerçek inference bir output verdi, strict kaynak konumu kontrolü reddetti; semantik skor/zincir çalışmadı. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. Offline source anchoring → geçerli output ölçümü → insan etiket incelemesi → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-11 — Q03-R5: gerçek output ve strict kaynak konumu reddi
+
+- Kullanıcının bir yeni deneme onayıyla aynı sentetik S02 normal Chrome, boş kişiselleştirilmemiş geçici ChatGPT oturumunda tek kez gönderildi; bir gerçek output alındı, retry 0. İlk cloudflare kaydı ayrı korunur; kök neden kanıtlanmadı.
+- [Ham çıktı ve güncel rapor](../quality/s02-second-attempt-result.md): JSON parse/ID eşleşmesi geçti, 11/11 quote exact, 10/11 source span hatalı (7 sınır dışı, 3 kesilmiş). Strict evaluator exit 1 ile skor/zincir öncesinde reddetti; canonical mutation 0. Semantik kalite başarısı ilan edilmedi.
+- Rapor checkpoint’inin eski model `not_run` alanı UI ve generated görünümde tarihsel olarak etiketlendi; güncel model sonucu T03 kaydında gösterilir, tarihsel kanıt JSON’u değiştirilmedi. 37 mevcut kök test, docs/anchor/progress kontrolleri geçti; model validator ret durumu ayrıca yeniden üretildi.
+- Q03-R5 tüketildi; yeni inference/ücret izni yok. Model kimliği ve gerçek token/cost unknown. Offline message-ID + exact-quote anchoring deneyi sıradadır; orijinal output değiştirilmez, türev ayrı ölçülür. Human gold/native/capture/production kapıları ve T01/T02/T03 IN_PROGRESS korunur.
 
 ### 2026-10-11 — Q03-R4 A ve ilk gerçek web gönderimi
 

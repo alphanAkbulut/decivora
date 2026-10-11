@@ -1,6 +1,6 @@
 # S02 — Mevcut hesapla sınırlı model smoke deneyi
 
-**2026-10-11 · Q03-R2/R3/R4 A seçildi; tek web gönderimi denendi, model output alınamadı (`cloudflare_challenge`).** [Güncel deney sonucu](s02-account-smoke-result.md). Kullanıcı “burada da önerin ile devam edelim” yanıtıyla hazır S02 sentetik isteğini mevcut LLM hesabında çalıştırma yöntemini seçti. Bu önceki no-model sıra kararını iptal etmez; zorunlu gerçek extraction doğrulamasının sonraki küçük adımıdır. **Q03-R3 A kabul edildi: mevcut ChatGPT/Codex hesabı (OpenAI) seçildi.** Tam arayüz/model ve enforce edilmiş token/context sınırları henüz doğrulanmadı. Yeni API harcaması, credit satın alma veya abonelik dışı kullanım yetkisi yoktur.
+**2026-10-11 · Q03-R5 ile ikinci ayrı denemeden gerçek output alındı; strict validator kaynak konumu hatasında reddetti.** [Güncel deney sonucu](s02-second-attempt-result.md). İlk Q03-R4 denemesi `cloudflare_challenge` ile çıktısız kaldı; [tarihsel rapor](s02-account-smoke-result.md). Kullanıcı “burada da önerin ile devam edelim” yanıtıyla hazır S02 sentetik isteğini mevcut LLM hesabında çalıştırma yöntemini seçti. Bu önceki no-model sıra kararını iptal etmez; zorunlu gerçek extraction doğrulamasının sonraki küçük adımıdır. **Q03-R3 A kabul edildi: mevcut ChatGPT/Codex hesabı (OpenAI) seçildi.** Tam arayüz/model ve enforce edilmiş token/context sınırları henüz doğrulanmadı. Yeni API harcaması, credit satın alma veya abonelik dışı kullanım yetkisi yoktur.
 
 ## Hazır paket ve sınırlar
 
@@ -25,7 +25,7 @@ OpenAI için [resmî authentication belgesi](https://learn.chatgpt.com/docs/auth
 
 Gelecekteki otomatik API yolunda kendi call/retry/parent-child rezervasyon ve toplam bütçe admission sınırlarımız gerekir. Provider token/para/usage desteği ayrıca doğrulanır; API kullanmak tek başına hard parasal tavan sağlamaz. Bu deneyde o yol açılmadı.
 
-## Token/context güvenlik kaydı — 2026-10-11
+## Token/context güvenlik kaydı — gönderim öncesi tarihsel durum
 
 Kullanıcının son isteği ayrı input, output ve toplam context sınırları; olağan dışı tüketimde durma/onay bekleme gereksinimidir. [Ürün sözleşmesi](../architecture/routing-token-economy.md) ve [risk davranışı](../product/token-risk-and-approval.md) güncellendi. Bu gereksinim ücret/credit veya daha büyük model izni değildir.
 
@@ -53,6 +53,10 @@ Hard-cap koşulu korunuyor. İncelenen OpenAI SIWC plan kullanım preview yolu `
 
 Somut istisna önerisi yalnız bu tek deney içindir: 5498 byte sabit sentetik prompt, bağımsız boş oturum, bir gönderim/ilk çıktı, sıfır retry/tools/subagent; 1536 token soft hedefi; ek ücretli kullanım/credit açılmadan mevcut kotadan tüketim. Kesin input/output/context/reasoning tavanı garanti edilemez. Kesme/timeout veya 128 KiB import kontrolü önceki tüketimi geri almaz. Kullanıcı bu sınırlı riski ayrıca kabul ederse ayrı receipt kaydedilir; ürünün hard-cap sözleşmesi gevşetilmez ve sonraki deneylere genellenmez. Bu öneri Q03-R3 sırasında henüz kabul edilmemişti. **Q03-R4 A ile sonraki insan yanıtı bu tek-deney istisnasını kabul etti**; bir gönderim denendi, host hatasında çıktı alınamadı. İzin tüketildi; ikinci gönderim otomatik değildir.
 
-## Güncel sonuç — Q03-R4 A
+## İlk denemenin sonucu — Q03-R4 A
 
 Önceki pending_capability_review anlatımı ilk gönderimden önceki strict/hard-cap kapısıdır. Q03-R4 açık insan istisnası yalnız manuel web smoke yolunu yetkilendirdi; hard-cap desteği doğrulanmış sayılmaz. Tek gönderimden sonra `cloudflare_challenge` gözlendi, response ve kullanım verisi alınmadı. Güncel durum policy'de attempted_no_model_output / attempted_retry_exhausted; parse/scorer/chain bu deneme için not_run_no_output. [Sonuç ve sonraki sınırlı plan](s02-account-smoke-result.md).
+
+## Güncel sonuç — Q03-R5
+
+Kullanıcı “tek yeni denemeyi onaylıyorum” dedi. Aynı kapsamla bir yeni gönderim normal Chrome, boş kişiselleştirilmemiş geçici ChatGPT oturumunda yapıldı; bir output alındı, retry 0. Alıntılar 11/11 exact fakat span 10/11 hatalı; evaluator validation aşamasında exit 1 ile durdu, skor/zincir çalışmadı. [Ayrı sonuç/provenance](s02-second-attempt-result.md). Token/cost unknown, strict otomatik preflight blocked ve ürün hard-cap gereksinimi değişmedi. İki ayrı yetkilendirilmiş gönderimin kayıtları korunur; Q03-R5 tüketildi, sonraki inference izni yok. Offline quote→source anchoring adapter deneyi sıradadır.
