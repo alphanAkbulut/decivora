@@ -43,7 +43,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · Onaylı 60 dakikalık dilim: bounded exact-quote adapter, ayrı quote-only contract/CLI ve candidate rubric kodlandı; 48 semantik suite testi geçti. Ham S02 korunarak 10 offset türevde düzeltildi, 11 candidate doğrulandı. Üç scripted late/ambiguous/upload-claim case canonical değişiklik yapmadı; gerçek semantic kalite testi değildir. [Teslim ve API değerlendirmesi](../quality/source-anchor-adapter.md), [hashli kanıt](../quality/source-anchor-adapter-results.json). Yeni provider çağrısı 0.
+2026-10-12 · Quote-only API paket hazırlayıcı ve saved response importer kodlandı; strict schema taslağı, source-only payload ve unresolved bütçe manifesti mevcut. 56 semantik suite testi (8 yeni) geçti. Refusal/incomplete/yetki iddiası retleri korundu; yeni inference 0. [Teslim](../quality/quote-api-package.md). T03 IN_PROGRESS; gerçek API şema/model/usage testi yapılmadı.
 
 **Aktif teknik risk:** Observed / High · R20: ham S02-002 10/11 span hatasında reddedildi. Bounded offline adapter teslim; yeni quote-only contract üzerinde gerçek-model kalite/production doğrulaması açık. [Aktif risk kaydı](../governance/risks.md). Provider cap/usage unknown; yeni inference izni yok.
 
@@ -51,7 +51,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 production source anchoring/entegrasyonu gerekli; P0 offline adapter teslim. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
 
-Sıradaki adım: Yeni quote-only contract ile kullanım ölçülen gerçek semantik deney; candidate ve canonical/domain beklentilerini ayrı insan incelemesiyle doğrula. Ardından ilişki/impact ve native karşılaştırma. Eski 4/11 draft ve 0/11 strict skorlar korunur; adapter testleri kalite başarısı değildir. API yöntem önerisi var; sağlayıcı/model/veri/token/context/para tavanı ve dispatch izni açık. Q03-R5 tüketildi. Genel araştırma/kapsam büyütme yok.
+Sıradaki adım: Model/API capability ve fiyat, seçili veri ve package digest, input/output/context/run/para tavanı ile somut dispatch kararını netleştir; candidate/domain beklentilerini insan review ile doğrula, tek gerçek quote-only deneyi çalıştır. Sonra relation/impact ve native kıyas. Eski sonuçlar korunur; paket hazırlığı kalite başarısı veya yeni harcama izni değildir.
 
 
 ## Mevcut teslim parçaları
@@ -69,6 +69,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 14 tracker testi; tarayıcıda T03 aktif risk/deneme bölümü ve önceki detay/P0 filtre kontrolleri; ürün UI veya canlı agent telemetry değil
 - **S02 gönderim ve güvenlik hazırlığı** — İki ayrı onaylı tek gönderim: S02-001 cloudflare_challenge/çıktı yok; S02-002 gerçek output, 10/11 span hatalı, strict ret; her denemede retry 0; [Güncel rapor/ham çıktı](../quality/s02-second-attempt-result.md); kaynak hashleri sabit. JSON parse geçti, scorer/zincir çalışmadı; hard-cap/production limiter doğrulanmadı
 - **Kaynak adapter ve candidate rubric** — Bounded exact quote + source/revision contract; explicit legacy türev; candidate/domain beklentileri ayrı; CLI offline; [48 suite testi ve üç scripted case](../quality/source-anchor-adapter.md); gerçek inference/semantic accuracy değil
+- **Quote-only API deney paketi** — Strict schema taslağı, source-only payload, pending bütçe/onay manifesti ve saved response importer; [56 semantik test / 8 yeni](../quality/quote-api-package.md); gerçek provider dispatch/schema/kalite not_run
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -124,4 +125,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `de55d74368084c4e0a80f78157b20d0e9911f99c199cc28eda1e9bf1fd64a43a`
+Kaynak fingerprint: `15b3d24c16df22b3a1124c0658dedf4a7b88662dd84de4be9b60aa7f8eb4ef7c`

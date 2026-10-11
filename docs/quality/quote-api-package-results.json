@@ -1,0 +1,28 @@
+{
+  "id": "QUOTE-API-PACKAGE-01",
+  "date": "2026-10-12",
+  "kind": "offline_preparation_and_fixture_tests",
+  "status": "passed",
+  "tests": {
+    "suite": "semantic-chain",
+    "total": 56,
+    "new": 8
+  },
+  "model_calls": 0,
+  "canonical_mutations": 0,
+  "provider_schema_acceptance": "not_run",
+  "semantic_accuracy": "not_measured",
+  "approval": "pending",
+  "usage": null,
+  "code_and_artifact_sha256": {
+    "spikes/semantic-chain/provider_packet.py": "2dd6432e7dc0a34d534948b5346e4e8be4dd4c1f460ff78e21d7d16d4185ccc5",
+    "spikes/semantic-chain/test_provider_packet.py": "0b1b6a5fe51775f7ae9b416ba9ce3cd0ec5579b20dabf01ae4bb8b03e73c1678",
+    "examples/model-smoke/s02-quote-api-draft.json": "b59ca24252a92ee3117abf308081e9a182e90ff16ced68d148a27bfa5b4ea567",
+    "docs/quality/quote-api-package.md": "302ed8c2a7044d77b0074f44411bca7f10ad21a0d1c40f18d4ab228ca88a6eff"
+  },
+  "additional_validation": {
+    "root_tests_passed": 39,
+    "docs_links_anchors_progress": "passed",
+    "initial_root_socket_failure": "sandbox_denied; passed with localhost permission"
+  }
+}

@@ -51,3 +51,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 `anchors.py` / `anchor_cli.py`: modelden offset istemeyen ayrı quote-only contract; unique exact quote konumunu code hesaplar, ambiguity/stale/authority/limit reddi korunur. Eski response yalnız açık legacy opt-in ile türetilir; raw/türev hash ayrı, canonical mutation 0. `candidate_eval.py` dört aday alanını exact one-to-one ölçer; canonical karar/onay veya verification ölçümü değildir. Historical protocol/prompt ve oracle korunur.
 
 `python3 -B spikes/semantic-chain/run_anchor_checks.py` mevcut raw S02 ve üç authored scripted case için hashli kanıtı tekrar üretir. 20 ek testle toplam 48; yeni provider dispatch yok. CLI komutları, API değerlendirmesi ve kalan kapılar [teslim raporunda](../../docs/quality/source-anchor-adapter.md). Audit wrapper’ın `response` alanı ayrı candidate envelope’dur; eski runner’a wrapper’ın tamamını verme. Yeni gerçek deney için model/veri/bütçe izni gerekir.
+
+## Quote-only API paket hazırlığı
+
+`provider_packet.py` gönderimsiz Responses schema/payload taslağı ve saved response import sağlar. `experiment.py` mevcut corpus evaluator olarak korunur. [Teslim, komutlar ve sınırlamalar](../../docs/quality/quote-api-package.md); model/bütçe/onay pending, semantic suite 56 test. Gerçek provider çağrısı veya anlam doğruluğu kanıtı değildir.

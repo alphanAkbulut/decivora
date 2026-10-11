@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — Quote-only API paket ve import kodu
+
+- [Teslim](../quality/quote-api-package.md): source-only schema/payload hazırlığı, pending token/context/para manifesti, saved response import; refusal/incomplete/authority retleri. 56 semantik suite testi geçti (8 yeni); yeni provider inference 0.
+- Paket gönderilebilir değildir; model ve tavanlar null. T03 IN_PROGRESS, gerçek anlam/graph/hedef/native/production kapıları açık. Sırada somut bounded dispatch kararı ve insan review var.
+
+
 ### 2026-10-11 — Onaylı sınırlı kaynak adapter teslimi
 
 - Kullanıcı 60 dakikalık kaynak/değerlendirme kod dilimini kabul etti; genel araştırma ve yeni özellik tasarımı genişletilmedi. API yalnız resmî belgelerle değerlendirildi; yeni paid/inference çağrısı yapılmadı.
