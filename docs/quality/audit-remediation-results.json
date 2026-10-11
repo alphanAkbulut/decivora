@@ -37,7 +37,7 @@
   "production_runtime": false,
   "additional_paid_model_dispatches": 0,
   "host_token_usage": null,
-  "ci_status": "workflow_added_execution_requires_remote_observation",
+  "ci_status": "success_at_initial_bundle_commit",
   "new_mermaid_render": false,
   "environment": {
     "python": "3.9.6",
@@ -94,5 +94,19 @@
     "tests/test_anchors.py": "fd7de1719055e2114dc33f8cd382efddba45f18725ef8cb56fdd857a9405ebcf",
     "tests/test_evaluation.py": "b31f4d80675bf753b6bb3e684a617a76a25574709d82b2cb1595ea9d6ce12165"
   },
-  "diagram_evidence": "Existing source/SVG hashes validated by check_docs; unchanged blocks, no new render."
+  "diagram_evidence": "Existing source/SVG hashes validated by check_docs; unchanged blocks, no new render.",
+  "publication_of_initial_bundle": {
+    "initial_bundle_commit": "337a956a87a367c1a2686d80092d14a97175e217",
+    "exact_readback_files": 61,
+    "readback_failures": [],
+    "ci": {
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "337a956a87a367c1a2686d80092d14a97175e217",
+      "run_id": 38157499544,
+      "url": "https://github.com/alphanAkbulut/decivora/actions/runs/38157499544"
+    },
+    "scope": "Initial 61-file bundle at immutable commit; this evidence update is subsequently committed separately."
+  }
 }
+
