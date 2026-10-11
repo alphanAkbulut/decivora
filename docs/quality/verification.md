@@ -84,3 +84,9 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 ## Cevapsız sorular ve geciken insan yanıtı
 
 [LATE-01–08](../product/pending-questions-and-late-answers.md#6-uygulama-ve-kabul-planı) Q12 örneğinden çıkarıldı: kalıcı açık soru/restart, exact seçili kaynağa geç cevap, iki A/B sorusunda ambiguity, changed options/expiry/revocation, retry/conflict/cancel, soru öncesi ingest, ACL/actor/quoted spoof ve capture gap/unmatched korunumu. T01 corpus → T13e/T18e/T19/T20i/T24f; ASK-01–08 mevcut soru/yetki kontrolleri ayrıca korunur. Kod/host/parser/LLM/UI testleri yapılmadı; planlı senaryolar not_run. Capture/association/resolution/delivery/task completion farklı sonuçlardır.
+
+## Zincir ölçümünü uygulama kapısı
+
+[Teknik değerlendirme protokolü](evaluation-protocol.md) bağımsız oracle/scorer, typed-domain ile chat extraction ayrımı, exact target/authority binding ve telemetry/payda contract'ını tanımlar. [CHAIN-01 örneği](../../examples/decision-impact-evaluation-case.json) human selection→impact proposal→reported/old/current target→replay için yedi checkpoint ve dört negatif varyant planlar. Bu ilk taslak positive verified, tam AND/OR truth suite veya holdout corpus yerine geçmez; result_status not_run.
+
+Critical scorer error/missing score release gate'i incomplete yapar; sessiz pass/başarı yüzdesi yok. T01f case/rubric, T03f minimal harness tasarımı ve T24p katman/uçtan uca raporu üzerinden ilerle. Source/test tanımı okuması veya fixture şema kontrolü CHAIN-01/ER-T testleri geçti demek değildir.

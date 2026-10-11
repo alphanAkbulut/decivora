@@ -101,3 +101,9 @@ Yeni planlanan araştırma senaryoları:
 Beşi de **not_run**. Desteklenmeyen feature ile çalıştırılmayan feature ayrılır. Dataset revision, commit/config, cost-price snapshot, bütün extraction/retrieval/retry çağrıları, tool response token'ları ve manuel review süresi kaydedilir. Ölçülmeyen sıfır yazılmaz. Framework'ü tam kullanıcı ürünüyle bütün özelliklerde yarıştırma; bileşen senaryosu ile uçtan uca ürün baseline'ı ayrı raporlanır.
 
 **Yatırım ölçütü:** Aynı doğruluk/izin/kanıt şartlarında daha düşük toplam kullanıcı yönetim süresi, token, geliştirme ve işletim yükü. Sonucu önceden Decivora lehine tanımlama. Yeni repository ismi veya engine adı kendiliğinden değer kanıtı değildir.
+
+## Ölçüm yöntemi için hedefli takip — 2026-10-11
+
+Kullanıcının teknik ölçülebilirlik sorusu üzerine [evaluation protocol](../quality/evaluation-protocol.md) hazırlandı. Graphiti'nin aynı pinned ref'inde graph-building eval/judge prompt; ayrı Langfuse Python SDK bf11ec121479145923ff27b32ec2ad1d06fd2d51 ref'inde experiment.py/unit test/LICENSE okundu. SDK önceki Langfuse server source kapsamından farklı repodur; önceki 10 aday JSON'u bütün SDK incelendi diye değiştirilmedi. Source okumaları statik; testler, exporter/platform/CI ve model çağrısı not_run.
+
+ER-R2 üç runtime adayının tüm export/dependency closure incelemesi tamamlanmadı. Bu takip yalnız oracle/scoring/run/error örüntüsünü çözer. Yeni T01f/T03f/T24p küçük işleri; bağımsız typed oracle, exact evidence ve incomplete gate protokolde. Bounded araştırma bittiğinde corpus/harness deneyine geçilir; yeni broad scan veya dependency adoption kararı yok.

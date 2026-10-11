@@ -572,3 +572,15 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 - **İş:** ER-R1 bounded keşif DOC_COMPLETE; ER-R2 Graphiti/LangGraph/LiteLLM export/dependency/contract closure TODO; ER-R3 native/config/extension/port/own deney önerisi TODO; ER-R4 kanıtlı adoption önerisi TODO. Ekip modeline ihtiyaç varsa OpenFGA/Cedar; distributed gerekçesi varsa Temporal. Her aday zorunlu runtime dependency değildir.
 - **Kabul:** gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.
 - **Korunan kapı:** yeni mimari/stack/kod alımı owner adoption kararı gerektirir; Q13 ve T03d kapanmadı. 30 ana görev TODO ve T01 sonraki ana iş olarak korunur; bu alt dilim MVP'den önce on framework kurma talimatı değildir.
+
+## Karar→etki→gerçekleşme ölçüm alt dilimleri
+
+[Teknik protokol](../quality/evaluation-protocol.md) mevcut EVAL-01 ve H1/H3/H4/H6 sözleşmelerinin nasıl sınanacağını açıklar; yeni ürün engine/scope/stack yok. [CHAIN-01 veri taslağı](../../examples/decision-impact-evaluation-case.json) not_run, T01 corpus ve holdout tamamlandı sayılmaz.
+
+| Alt dilim / bağımlılık | Teslim / durum | Gözlenebilir kabul |
+|---|---|---|
+| T01f / T01 | TODO / P0: frozen checkpoint/identity/source-span oracle, bağımsız rubric ve error taxonomy | 6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı |
+| T03f / T01f,T02,T03a | TODO / P0: sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
+| T24p / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
+
+Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev ve T01 sonraki sıra korunur.

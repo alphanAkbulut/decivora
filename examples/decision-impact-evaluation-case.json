@@ -1,0 +1,292 @@
+{
+  "schema_kind": "illustrative_evaluation_case_not_runtime_schema",
+  "synthetic": true,
+  "implemented": false,
+  "result_status": "not_run",
+  "case_id": "CHAIN-01",
+  "dataset_role": "design_example_not_holdout",
+  "project_id": "prj_chain",
+  "oracle_revision": 1,
+  "source_sessions": [
+    "chat_a",
+    "chat_b"
+  ],
+  "target_fixture": {
+    "mode": "mock_not_provider",
+    "repository": "synthetic/fixture",
+    "branch": "main",
+    "initial_snapshot": "target_01",
+    "artifact_revision": 2,
+    "manifest": [
+      {
+        "path": "docs/db-plan.md",
+        "expected_content_id": "content_db_plan_v2"
+      }
+    ],
+    "test_evidence_required": true
+  },
+  "initial_state": {
+    "current_decision": "DEC_FILE@1",
+    "tasks": [
+      {
+        "id": "TASK_SYNC",
+        "justification": {
+          "op": "ref",
+          "decision": "DEC_FILE@1"
+        },
+        "state": "todo"
+      },
+      {
+        "id": "TASK_EXPORT",
+        "justification": {
+          "op": "or",
+          "args": [
+            {
+              "op": "ref",
+              "decision": "DEC_FILE@1"
+            },
+            {
+              "op": "ref",
+              "decision": "DEC_DB@1"
+            }
+          ]
+        },
+        "state": "todo"
+      },
+      {
+        "id": "TASK_UNKNOWN",
+        "justification": {
+          "op": "unknown"
+        },
+        "state": "todo"
+      }
+    ],
+    "decision_truth": {
+      "DEC_FILE@1": "true",
+      "DEC_DB@1": "false"
+    },
+    "pending_questions": [
+      {
+        "question_id": "Q_STORAGE",
+        "option_snapshot_revision": 1,
+        "options": [
+          {
+            "option_id": "OPT_FILE",
+            "decision": "DEC_FILE@1"
+          },
+          {
+            "option_id": "OPT_DB",
+            "decision": "DEC_DB@1"
+          }
+        ],
+        "context_revision": "graph_01",
+        "state": "pending"
+      }
+    ]
+  },
+  "checkpoints": [
+    {
+      "id": "CHAIN-01-S1",
+      "source": {
+        "session": "chat_a",
+        "span": "span_01",
+        "actor": "assistant",
+        "text": "SQLite kullanabiliriz; dosya yaklaşımı yerine bunu düşünelim."
+      },
+      "input_type": "proposal",
+      "expected": {
+        "current_decision": "DEC_FILE@1",
+        "candidate_decision": "DEC_DB@1",
+        "human_approval_created": false,
+        "canonical_task_mutations": 0
+      }
+    },
+    {
+      "id": "CHAIN-01-S2",
+      "source": {
+        "session": "chat_a",
+        "span": "span_02",
+        "actor": "assistant",
+        "text": "DB planını hazırladım. GitHub'a yükleyebilirsin."
+      },
+      "input_type": "artifact_generated",
+      "expected": {
+        "artifact_status": "generated",
+        "current_application": "not_observed",
+        "task_verified": false
+      }
+    },
+    {
+      "id": "CHAIN-01-S3",
+      "source": {
+        "session": "chat_b",
+        "span": "span_03",
+        "actor": "human_owner",
+        "text": "Önceki sorudaki SQLite seçeneğiyle devam."
+      },
+      "input_type": "explicit_bound_human_selection",
+      "trusted_fixture_envelope": {
+        "authenticated": true,
+        "project_authority": "decision_approver",
+        "question_id": "Q_STORAGE",
+        "option_id": "OPT_DB",
+        "option_snapshot_revision": 1,
+        "base_decision_revision": 1,
+        "graph_snapshot": "graph_01"
+      },
+      "expected": {
+        "current_decision": "DEC_DB@1",
+        "superseded_decision": "DEC_FILE@1",
+        "impact_proposal": {
+          "TASK_SYNC": "obsolete_candidate",
+          "TASK_EXPORT": "retained",
+          "TASK_UNKNOWN": "review_unknown"
+        },
+        "canonical_task_mutations": 0,
+        "history_preserved": true
+      }
+    },
+    {
+      "id": "CHAIN-01-S4",
+      "input_type": "human_reports_upload",
+      "source": {
+        "session": "chat_b",
+        "span": "span_04",
+        "actor": "human_owner",
+        "text": "Yükledim."
+      },
+      "target_read_available": false,
+      "expected": {
+        "current_application": "reported",
+        "read_back_verified": false,
+        "task_verified": false
+      }
+    },
+    {
+      "id": "CHAIN-01-S5",
+      "input_type": "observer_reads_old_bundle",
+      "observation": {
+        "mode": "mock_not_provider",
+        "snapshot": "target_02",
+        "branch": "main",
+        "path": "docs/file-plan.md",
+        "artifact_revision": 1,
+        "decision_binding": "DEC_FILE@1"
+      },
+      "expected": {
+        "historical_application": "observed",
+        "current_application": "reported",
+        "current_read_back_verified": false,
+        "task_verified": false
+      }
+    },
+    {
+      "id": "CHAIN-01-S6",
+      "input_type": "observer_reads_matching_current_bundle",
+      "observation": {
+        "mode": "mock_not_provider",
+        "snapshot": "target_03",
+        "branch": "main",
+        "path": "docs/db-plan.md",
+        "content_id": "content_db_plan_v2",
+        "artifact_revision": 2,
+        "decision_binding": "DEC_DB@1",
+        "authority": "authorized_observer"
+      },
+      "expected": {
+        "current_application": "observed",
+        "test_status": "not_run",
+        "task_verified": false
+      }
+    },
+    {
+      "id": "CHAIN-01-S7",
+      "input_type": "retry_and_replay",
+      "replays": [
+        "CHAIN-01-S3",
+        "CHAIN-01-S6"
+      ],
+      "expected": {
+        "same_canonical_projection": true,
+        "duplicate_domain_effects": 0,
+        "new_model_calls": 0,
+        "new_observer_dispatches": 0,
+        "new_verifier_dispatches": 0
+      }
+    }
+  ],
+  "negative_variants": [
+    {
+      "id": "CHAIN-01-N1",
+      "base_checkpoint": "CHAIN-01-S3",
+      "change": "assistant claim of human selection without trusted envelope",
+      "expected": {
+        "human_approval_created": false,
+        "current_decision": "DEC_FILE@1"
+      },
+      "execution_mode": "independent_from_pre_checkpoint_snapshot"
+    },
+    {
+      "id": "CHAIN-01-N2",
+      "base_checkpoint": "CHAIN-01-S3",
+      "change": "revoked authority at application time",
+      "expected": {
+        "decision_mutation": false,
+        "reason": "authorization_revoked"
+      },
+      "execution_mode": "independent_from_pre_checkpoint_snapshot"
+    },
+    {
+      "id": "CHAIN-01-N3",
+      "base_checkpoint": "CHAIN-01-S6",
+      "change": "matching contents only on feature branch, not authorized main target",
+      "expected": {
+        "current_read_back_verified": false,
+        "task_verified": false
+      },
+      "execution_mode": "independent_from_pre_checkpoint_snapshot"
+    },
+    {
+      "id": "CHAIN-01-N4",
+      "base_checkpoint": "CHAIN-01-S3",
+      "change": "different base decision or justification graph revision",
+      "expected": {
+        "decision_mutation": false,
+        "review_required": true,
+        "reason": "stale_snapshot"
+      },
+      "execution_mode": "independent_from_pre_checkpoint_snapshot"
+    }
+  ],
+  "evaluation_contract": {
+    "result_status": "not_run",
+    "required_checks": [
+      "human_selection_authority",
+      "current_decision_revision",
+      "impact_set",
+      "impact_action_class",
+      "justification_path",
+      "artifact_target_binding",
+      "false_verified",
+      "history_replay"
+    ],
+    "evaluator_error_policy": "incomplete_not_pass",
+    "measurements": {
+      "true_positive": null,
+      "false_positive": null,
+      "false_negative": null,
+      "tokens_actual": null,
+      "tokens_estimated": null,
+      "latency_ms": null,
+      "management_seconds": null
+    },
+    "constraints": [
+      "assistant output is untrusted",
+      "option selection does not apply task impact proposal",
+      "matching file is not task acceptance",
+      "reported and observed facts are separate axes",
+      "mock success is not provider success",
+      "no runtime source read or model call occurred"
+    ]
+  }
+}

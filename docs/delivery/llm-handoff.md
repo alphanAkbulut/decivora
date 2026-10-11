@@ -115,3 +115,9 @@ Güncel kontrol toplamı **25**; önceki toplamlar tarihsel ekleme kayıtlarıd�
 [T03e](../discovery/ecosystem-research.md) 10 ek repo için immutable ref/root lisans ve beş seçili source okumasını toplar; [JSON](../discovery/ecosystem-candidates.json) gerçekten okunan yolları listeler. ER-R1 masa başı çıktısı mevcut; ER-R2–4 TODO, ER-T1–5 not_run. D/S kanıtını V runtime sonucu sayma. Graphiti temporal invalidation, LangGraph wait/resume ve LiteLLM reservation özgünlük karşı kanıtıdır; semantik uyum/closure/unknown-cost/premium gate'ler henüz tam deneyle doğrulanmadı.
 
 Öncelikli derin inceleme Graphiti/LangGraph/LiteLLM; ekip authorization OpenFGA/Cedar koşullu, Temporal dağıtık ihtiyaçta. Bunlar teknoloji/ücretli hizmet/kod alımı seçimi değil. Native/config/extension/own seçenekleri, Q13 ve T01 sırası korunur. Repo sayısını artırmayı ilerleme ölçütü sayma; açık contract sorusu için 1–2 aday yeterliyse dur.
+
+## Ölçüm sorusu ve somut teknik boşluklar
+
+“Nasıl ölçeriz, yöntem net mi?” sorusunda [teknik protokolü](../quality/evaluation-protocol.md) oku. Metrik/eşik ve oracle yaklaşımı mevcut; çalışan scorer/harness/adapter/telemetry ve gerçek karşılaştırma yok. [CHAIN-01](../../examples/decision-impact-evaluation-case.json) yedi checkpoint/dört negatif varyant illustrative taslaktır, T01 corpus/holdout veya V pass değil. T01f/T03f/T24p TODO. Domain authority/target/state code oracle ile; serbest açıklama human rubric, optional judge yalnız ek izin/bütçeyle.
+
+Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; iki repo değerlendirme örüntüsü için faydalı, bizim domain doğruluğumuzun hazır oracle'ı değil. Missing score/evaluator error critical gate'i incomplete yapar. Yeni framework, paid telemetry veya kod alımı yok; T01/Q03/Q13 korunur.

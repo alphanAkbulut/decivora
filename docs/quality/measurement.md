@@ -74,3 +74,7 @@ Retention UI'sında kullanıcı hangi içeriğin kalacağını/kimle paylaşıla
 Aynı senaryo native Projects ve izinli Decivora prototipte uygun desteklenen ayarlarla karşılaştırılır; bağlı target ile manuel/providerlar arası koşul ayrı raporlanır. Model ve dataset kontrolü, paket/full-source contamination ve reviewer oracle bağımsızlığı korunur. Zorunlu sette yanlış seçildi/uygulandı/verified ataması 0 kabul hedefidir; genellenmiş garanti değildir.
 
 T03c yatırım kararı olumlu sonuç çıkarmak zorunda değildir. Native yeterli veya maintenance faydayı aşıyorsa integration/native/durdur önerisi kanıtlı sonuçtur; account/izin yoksa not_run, rekabet üstünlüğü unknown. Henüz hiçbir sonuç ölçülmedi.
+
+## Uygulanabilir teknik ölçüm protokolü
+
+[Karar→etki→gerçekleşme protokolü](evaluation-protocol.md) yukarıdaki eşikleri değiştirmeden frozen oracle, entity/span matching, stage/checkpoint scoring, exact target read-back, run manifest, evaluation_error/incomplete ve fair baseline'ı ayrıntılandırır. [Tek zincir örneği](../../examples/decision-impact-evaluation-case.json) yedi checkpoint ve dört izole negatif varyant içerir; illustrative/not_run, corpus veya çalışan harness değildir. T01f/T03f/T24p uygulanacak küçük işlerdir. Doküman/veri kontrolü ürün ölçüm sonucu sayılmaz.
