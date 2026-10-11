@@ -1,5 +1,8 @@
 # DB ilişkileri ve bütünlük sınırları
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **2026-10-10 — Mantıksal tasarım; migration/DDL veya çalışan DB değildir.** SQLite yerel başlangıç, merkezi PostgreSQL ekip adayı olarak korunur. [Atlas 3](diagrams.md#3-mantıksal-veri-modeli) kaynak→değerlendirme→değişiklik→event ilişkisini gösterir. Bu belge sonradan ayrıntılanan erişim ve task/agent/kanıt ilişkilerini tamamlar; yeni graph DB veya ayrı servis önermez.
 
 ER diyagramı zamanlama göstermez; [tetik ve sequence sözleşmesi](execution-and-integrations.md) işlem sırasını tanımlar. Entity adları mevcut domain kavramlarının mantıksal tablosudur, kesin ORM sınıf adı değildir. Alan listeleri uygulama sırasında versioned schema ile tamamlanır; aşağıda gösterilmeyen FK/ACL/retention alanları kaldırılmış sayılmaz.
@@ -7,7 +10,10 @@ ER diyagramı zamanlama göstermez; [tetik ve sequence sözleşmesi](execution-a
 ## ER-01 — Kaynak bağlantısı ve izin geçmişi
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 erDiagram
+    accTitle: ER-01 Kaynak ve erişim ilişkileri
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     WORKSPACE ||--o{ PROJECT : contains
     WORKSPACE ||--o{ MEMBERSHIP : grants_membership
     PRINCIPAL ||--o{ MEMBERSHIP : holds
@@ -23,6 +29,12 @@ erDiagram
     SOURCE_PAYLOAD ||--|{ RESOURCE_ACL_ENTRY : protected_by
     PRINCIPAL ||--o{ DELEGATION_GRANT : receives
     PROJECT ||--o{ DELEGATION_GRANT : limits
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    class WORKSPACE,PROJECT,SERVICE_CONNECTION,PROJECT_BINDING store
+    class MEMBERSHIP,PRINCIPAL,CONNECTION_AUTHORIZATION,AUTHORIZATION_GRANTOR,RESOURCE_ACL_ENTRY,DELEGATION_GRANT gate
+    class SOURCE_RECEIPT,SOURCE_PAYLOAD source
 ```
 
 Workspace Membership burada gösterilir; ayrıca ProjectMembership aynı human principal'ı proje rolüne bağlar. ServiceConnection bir workspace içinde birden çok açık proje binding'ine bağlanabilir; aynı kaynak iki projeye aktarılırsa ayrı izin/ACL ve kayıt kimliği gerekir. Aynı credential kullanılması private içerikleri ortaklaştırmaz.
@@ -34,7 +46,10 @@ SourceReceipt payload olmadan da yaşamaya devam eder: redaction/purge veya kayn
 ## ER-02 — Task, run, kabul ölçütü ve kanıt
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 erDiagram
+    accTitle: ER-02 Task, run ve kabul kanıtı
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     TASK ||--|{ TASK_REVISION : versions
     TASK_REVISION ||--o{ CRITERION_REVISION : requires
     DOD_TEMPLATE_REVISION ||--o{ DOD_ASSESSMENT : instantiated_as
@@ -55,6 +70,16 @@ erDiagram
     QUESTION_REQUEST ||--o{ WAIT_LINK : blocks_work
     QUESTION_REQUEST ||--o{ ANSWER_RECORD : receives
     TASK_REVISION ||--o{ CONTEXT_SNAPSHOT : summarized_as
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class TASK,TASK_REVISION,AGENT_RUN,RUN_TASK_LINK,RUN_LINEAGE process
+    class PRINCIPAL,DELEGATION_GRANT,CRITERION_REVISION,DOD_TEMPLATE_REVISION gate
+    class EVIDENCE,EVIDENCE_LINK,VERIFICATION_ASSESSMENT,ASSESSMENT_EVIDENCE,DOD_ASSESSMENT evidence
+    class QUESTION_REQUEST,ANSWER_RECORD,WAIT_LINK warning
+    class CONTEXT_SNAPSHOT history
 ```
 
 Task, KnowledgeRecord'ın task türüdür; TASK/TASK_REVISION ikinci canonical task deposu anlamına gelmez. CriterionRevision ve DoD applicability gerçek seçilmiş task/AC/DoD revision setini taşır. EvidenceLink bir evidence'ın birden fazla kriteri desteklemesini, bir kriterin birden fazla kanıt istemesini sağlar. DoD kanıt bağları da ilgili assessment maddesini typed ref ile hedefler; şemada bütün endpoint türleri tekrarlanmadı. Evidence'ın blob'u yoksa availability `unavailable`; geçmiş assessment silinmez.
@@ -109,7 +134,10 @@ Bu ayrıntılar T04/T05/T06/T07/T08/T14 sözleşmelerine dağıtılır; fiziksel
 **Önerilen mantıksal uzantı.** Ayrı artifact/task/decision canonical deposu kurulmaz; Artifact ve Decision mevcut RecordVersion tipleridir. Bu şema [ADR-0011](adr/0011-target-application-evidence.md) ve [GAP-01–10](../product/intent-to-reality-gap.md) için eksik bağlantıyı tamamlar.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 erDiagram
+    accTitle: ER-03 Hedef uygulama gözlemi
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     PROJECT ||--o{ APPLICATION_TARGET : scopes
     APPLICATION_TARGET ||--o{ APPLICATION_EXPECTATION : addressed_by
     TASK_REVISION ||--o{ APPLICATION_EXPECTATION : tracked_by
@@ -122,6 +150,14 @@ erDiagram
     APPLICATION_OBSERVATION ||--o{ ASSESSMENT_OBSERVATION_LINK : backs
     APPLICATION_ASSESSMENT ||--o{ EVIDENCE_LINK : may_support_criterion
     CRITERION_REVISION ||--o{ EVIDENCE_LINK : supported_by
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    class PROJECT,APPLICATION_TARGET store
+    class APPLICATION_EXPECTATION,EXPECTED_ARTIFACT_LINK,TASK_REVISION,CRITERION_REVISION gate
+    class ARTIFACT_REVISION,PRINCIPAL source
+    class APPLICATION_OBSERVATION,APPLICATION_ASSESSMENT,ASSESSMENT_OBSERVATION_LINK,EVIDENCE_LINK evidence
 ```
 
 Task bağlaması henüz belli olmayan capture/quarantine gözlemleri bu bağlı şemadan önce source olarak kalır; sahte task/principal yaratılmaz. Expectation birden çok artifact ister; aynı artifact birden çok hedef için farklı expectation'da kullanılabilir. Target locator sürümü ve exact ref expectation snapshot'ına bağlıdır; uygulama birden çok hedefteyse ayrı assessment gerekir. Diagram karar/approval bağlantılarını tekrarlamaz; seçilen karar revision'ları ve expectation'ın accepted/proposed durumu mevcut domain onay yoluna bağlıdır.

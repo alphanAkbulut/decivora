@@ -1,5 +1,8 @@
 # Karar haritası
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Accepted intent:** Kullanıcının açık yönlendirmesi. **Proposed:** Bu derlemedeki teknik çözüm; kabul edilmiş teknoloji kararı değildir. **Historical:** Önceki düşünce, bugünkü talimat değil. Kaynak evreleri [evrim kaydında](../discovery/evolution.md).
 
 | ID | Karar / statü | Gerekçe ve etkisi |
@@ -25,37 +28,57 @@
 | DEC-19 | Proposed investment path: ilk sınırlı gerçekleşme/devam deneyi + native karşılaştırması | [Güncel yön](current-direction.md); build/extend/native/durdur sonuçları açık. Son belge güncelleme isteği runtime yatırımını kabul etmiş sayılmaz |
 | DEC-20 | Accepted intent: Q12-A, proje çıktı dili sabit; dil değişimi insan seçimiyle | 2026-10-11 doğrudan “a ile devam et” yanıtı; başka session dili yalnız öneri, eski notlar otomatik çevrilmez. [Seçenek/gerekçe ve kabul](language-and-localization.md#q12--karma-projede-çıktı-dili-değişimi); detector/faz ayrıntıları öneri |
 
+**Kabul edilen ürün niyetleri:** aşağıdaki oklar düşüncenin gelişimini anlatır; task dependency veya tamamlanma kanıtı değildir. Her DEC'nin ayrı gerekçesi üst tablodadır.
+
 ```mermaid
-flowchart TD
-    P[Başlangıç: AI önerileri unutuluyor] --> D1[DEC-01 Otomatik hafıza]
-    D1 --> D2[DEC-02 Tüm çıktı türleri]
-    D2 --> D3[DEC-03 Yaşayan bilgi]
-    D3 --> D4[DEC-04 Append-only tarihçe]
-    D3 --> D6[DEC-06 Karar farkındalıklı impact]
-    D5[DEC-05 Hazır onay UX] --> D6
-    D6 --> G[Gerekçe grafiği ve AND OR]
-    D4 --> A[Event log ve projection]
-    D7[DEC-07 Tam vizyon korunur] --> M[MVP ayrı teslim]
-    D8[DEC-08 Maliyet ve routing] --> R[Deterministik iş ve hedefli bağlam]
-    D9[DEC-09 Benchmark] --> X[Build veya extend deneyi]
-    G --> M
-    A --> M
-    R --> M
-    X --> M
-    D15[DEC-15 Kabul: 1C aşamalı geçmiş] --> R
-    D15 --> HIST[Kaynak arşivi ve açık coverage]
-    HIST --> A
-    D16[DEC-16 Öneri: anlamlı alt görev ve checklist] -.-> M
-    D17[DEC-17 Kabul: blocker ve ürün değeri] --> FLOW[Yöntemden bağımsız öncelik önerisi]
-    FLOW --> M
-    GOV[Yönetici ve hata takibi: tasarım önerisi] -.-> M
-    D18[DEC-18 İhtiyaç: gerçek seçim ve uygulama durumu] --> REAL[Artifact, hedef gözlemi ve kabul ayrı]
-    REAL --> G
-    CP[Claude Projects örtüşmesi] --> TEST[DEC-19 Öneri: sınırlı karşılaştırma]
-    TEST --> X
-    TEST -.-> M
-    D20[DEC-20 Kabul: sabit proje çıktı dili] --> LANG[İnsan onaylı dil değişimi ve geçmiş korunumu]
-    LANG --> R
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
+flowchart TB
+    accTitle: Kabul edilen ürün niyetlerinin evrimi
+    accDescr: Karar tablosundaki niyet ve teknik öneriler ayrıdır. Renk accepted teknoloji veya runtime başarısı kanıtı değildir.
+    P[AI önerileri unutuluyor] --> MEMORY[DEC-01 Otomatik hafıza - DEC-02 Tüm çıktı türleri]
+    MEMORY --> LIVE[DEC-03 Yaşayan bilgi - DEC-04 Append-only tarihçe]
+    LIVE --> REVIEW[DEC-05 Hazır insan onayı]
+    REVIEW --> IMPACT[DEC-06 Karar farkındalıklı impact]
+    IMPACT --> SCOPE[DEC-07 Tam vizyon - ayrı MVP]
+    SCOPE --> VALUE[DEC-17 Blocker ve ürün değeri önceliği]
+    MEMORY --> COST[DEC-08 Basit iş routing - DEC-15 1C aşamalı geçmiş]
+    COST --> LANGUAGE[DEC-20 Sabit proje çıktı dili]
+    IMPACT --> REAL[DEC-18 Gerçek seçim ve uygulama bilinmeyeni]
+    REAL --> BENCH[DEC-09 Benchmark ve yasal esinlenme]
+    VALUE --> HANDOFF[DEC-10 Private repo ve profesyonel devir]
+    BENCH --> HANDOFF
+    LANGUAGE --> HANDOFF
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    class P source
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    class MEMORY,LIVE,REVIEW,IMPACT,SCOPE,VALUE,COST,LANGUAGE,REAL,BENCH process
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    class HANDOFF store
+```
+
+**Teknik öneriler:** SQLite, stack, reuse, split, lisans ve yatırım yolu henüz seçilmiş runtime değildir. Ayrı çizim, niyet kabulünü teknoloji onayıyla karıştırmayı önler.
+
+```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
+flowchart TB
+    accTitle: Teknik öneriler ve açık owner kapıları
+    accDescr: Karar tablosundaki niyet ve teknik öneriler ayrıdır. Renk accepted teknoloji veya runtime başarısı kanıtı değildir.
+    NEED[Ürün niyetleri kabul edildi - teknoloji seçimleri açık] --> CORE[DEC-11 SQLite event projection önerisi]
+    CORE -.-> REUSE[DEC-12 Kendi çekirdek ve adapter reuse önerisi]
+    REUSE -.-> STACK[DEC-13 Yerel servis ve TS React önerisi]
+    STACK -.-> TEST[DEC-19 Sınırlı deney ve native karşılaştırma önerisi]
+    TEST --> OWNER[T03c Owner yatırım kararı - build veya extend henüz seçilmedi]
+    NEED --> SPLIT[DEC-16 Alt görev bölme önerisi - Q08 açık]
+    SPLIT -.-> OWNER
+    NEED --> LICENSE[DEC-14 AGPL adayı - Apache alternatif]
+    LICENSE -.-> RELEASE[Public release öncesi lisans ve erişim kararı]
+    GOV[Yönetim ve hata takibi mekanizması - teknik tasarım] -.-> OWNER
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    class NEED source
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    class CORE,REUSE,STACK,TEST,SPLIT,LICENSE,GOV,RELEASE future
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    class OWNER gate
 ```
 
 ## Kararların neden ve nasıl alındığını bulma

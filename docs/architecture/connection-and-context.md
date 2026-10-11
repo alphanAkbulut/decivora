@@ -1,5 +1,8 @@
 # Bağlantı kurulumu ve context alışverişi
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Durum: uygulanacak sözleşme; kurulum paketi ve çalışan adapter henüz yok.** Bu belge çalıştırılabilir komut tarif etmez. P0/T02 gerçek sürüm deneyi, T03 stack kararı ve P1 uygulaması sonrasında sürümlü kurulum talimatı üretilecek. [Capture sınırları](capture-adapters.md), [yetki modeli](identity-access.md) ve [token bütçesi](routing-token-economy.md) birlikte geçerlidir.
 
 ## Üç ayrı bağlantı
@@ -13,7 +16,10 @@
 Web UI kendi bilgisayarındaki servisle çalışabilir; local-first için internetten erişilen bir sunucu zorunlu değildir. Codex veya editör içinde açılması host desteğine bağlı ek bir sunumdur. [Resmî OpenAI UI quickstart](https://developers.openai.com/plugins/build/app-quickstart) MCP araçlarını ChatGPT/Codex için, iframe UI örneğini ChatGPT için anlatır; Codex'e kalıcı özel panel yerleştirme bu proje için doğrulanmadı.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart LR
+    accTitle: Capture, MCP ve insan UI sınırları
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     H[İzinli hook veya import] --> C[Capture ve durable receipt]
     AG[Codex veya Claude Code] <-->|Sınırlı MCP araçları| API[Yetkili servis API]
     U[İnsan web arayüzü] <-->|Okuma ve insan onayı| API
@@ -23,6 +29,18 @@ flowchart LR
     JOB -->|Yalnız gerekirse ve bütçe varsa| LLM[İzinli model analizi]
     LLM --> P[Kaynaklı proposal]
     P --> DB
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class H,AG,U source
+    class C,JOB process
+    class API gate
+    class DB store
+    class LLM future
+    class P warning
 ```
 
 ## Kullanıcının bir defalık kurulum akışı

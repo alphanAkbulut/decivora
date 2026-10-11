@@ -1,5 +1,8 @@
 # Tetikleyiciler, API iletişimi ve sequence sözleşmeleri
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **2026-10-10 — Önerilen tasarım; çalışan endpoint, scheduler veya entegrasyon değildir.** Kullanıcı sorusu: sistemler ne zaman/hangi aralıkla konuşacak, task sonucunu kim işleyecek? Bu belge [engine sorumluluklarını](engines.md), [dayanıklı runtime kurallarını](runtime-contracts.md), [izinleri](connection-and-context.md) ve [token ekonomisini](routing-token-economy.md) zamana ve aktörlere bağlar. Süreler deney adayıdır; onaylanmış SLA veya provider limiti değildir.
 
 ## Hangi şema hangi soruyu cevaplar?
@@ -81,13 +84,19 @@ Zamanlayıcı kayıtlarında UTC `due_at`, policy timezone'u ve revision tutulur
 ## 4. SEQ-01 — Task sonucu nasıl doğrulanır?
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Task sonucunun ayrı doğrulanması
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant A as Agent veya adapter
     participant P as Policy API
     participant D as Kalici DB
     participant W as Verification worker
     participant V as Izinli verifier
     participant H as Insan reviewer
+    Note over W,P: Run finished task completed değildir, boş AC otomatik pass olamaz
+    rect rgb(239, 246, 255)
     A->>P: Run bitti / implementation claim + source + revision
     P->>P: Reporter, grant, binding ve schema kontrolu
     P->>D: TX claim + job + gereken audit
@@ -116,6 +125,7 @@ sequenceDiagram
             P->>D: Durum ve neden, completion yok
         end
     end
+    end
 ```
 
 İnsan cevabı farklı zamanda gelebilir; uzun DB transaction veya worker lease'i açık tutulmaz. Cevap yeni işi uyandırır. Uygulanamaz kriter kararı policy/onay ister. LLM kanıtın yorumuna yardımcı olsa da check'i koşmuş veya insan review'su vermiş sayılmaz. Task completion sonrası başka task **ready adayı** olabilir; executor başlatmak ayrı izin/gelecek capability'dir. Completion yalnız gerekli güncel AC/DoD + review + impact kapılarıyla türetilir.
@@ -123,13 +133,19 @@ sequenceDiagram
 ## 5. SEQ-02 — Model ne zaman çağrılır, karar kimde kalır?
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Deterministik işlem ve koşullu LLM analizi
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant S as Scheduler ve profil
     participant W as Analiz worker
     participant D as Kalici DB
     participant M as Opsiyonel LLM
     participant P as Policy ve impact
     participant H as Insan
+    Note over W,D: Parse hatası no-op değildir, kullanım bilinmiyorsa unknown
+    rect rgb(239, 246, 255)
     S->>D: Izinli TRG-02 due job
     W->>D: Lease + input snapshot + ACL kontrolu
     W->>W: Parser, duplicate ve gecerli cache kontrolu
@@ -159,6 +175,7 @@ sequenceDiagram
             P-->>H: Uygulanmadi, yeni inceleme gerekli
         end
     end
+    end
 ```
 
 Model çağrısı açık DB transaction'ı içinde değildir. Başarısız/bozuk model cevabı proposal olarak ilerlemez; mevcut runtime retry/defer kuralları uygulanır. Deterministik metadata işlemlerinin izinli auto-apply yolu mevcut policy'de ayrıdır; bu şema korunan karar değişikliği review'unu gösterir. “LLM karar verdi ve DB'yi değiştirdi” yolu yoktur.
@@ -166,12 +183,18 @@ Model çağrısı açık DB transaction'ı içinde değildir. Başarısız/bozuk
 ## 6. SEQ-03 — Dış API teslimi, tekrar ve belirsizlik
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Outbox ve callback receipt
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant P as Yetkili command
     participant D as DB ve delivery ledger
     participant W as Outbox worker
     participant X as Dis sistem API
     participant C as Callback adapter
+    Note over W,D: Timeout unknown sonucudur, read-back olmadan kör retry yok
+    rect rgb(239, 246, 255)
     P->>D: TX domain event + outbox intent + audit
     W->>D: Due item lease ve guncel connection yetkisi
     alt Yetki / capability yok veya stale
@@ -192,7 +215,9 @@ sequenceDiagram
         X->>C: Bildirim + dogrulama bilgisi
         C->>C: Imza / kimlik / boyut kontrolu
         C->>D: TX dedup receipt + source job
-        D-->>X: Kalici alindi
+        D-->>C: Kalici receipt
+        C-->>X: Receipt sonrasi ack
+    end
     end
 ```
 

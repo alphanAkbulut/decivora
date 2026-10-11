@@ -1,5 +1,8 @@
 # İnsan, agent ve proje yetkileri
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Statü: önerilen sözleşme; uygulanmadı.** İlk pilot tek insanla yapılacak. Aşağıdaki veri sınırları P1 çekirdeğine, davet/ekip yönetimi ise P4'e aittir. [Benchmark](../discovery/collaboration-storage-benchmark.md), [ADR-0009](adr/0009-scoped-principals.md), [uygulama dilimleri](../delivery/team-data-plan.md) ve [MU doğrulama senaryoları](../quality/collaboration-validation.md) birlikte okunmalı.
 
 ## Kimlik ve sahiplik
@@ -21,7 +24,10 @@
 Projeye ait FK ve unique sınırları `(workspace_id, project_id, id)` kapsamını korur. Global principal ID bilinmesi projeye erişim sağlamaz. Membership değişiklikleri `authz_revision` artırır; bilgi değişikliklerinin `knowledge_revision` sayacından ayrıdır. Kaynak, artifact, evidence, cache ve blob referansı aynı tenant kontrolünden geçer. Tenant/proje kimliği istemci metninden güvenilerek alınmaz; oturum ve binding ile çözülür.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Üyelik, delegation ve güncel yetki
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     H[İnsan kimliği] --> WM[Workspace üyeliği]
     WM --> PM[Proje üyeliği ve rol]
     PM --> GR[Dar kapsamlı delegation grant]
@@ -33,6 +39,14 @@ flowchart TB
     AU -->|İzinli| OP[Okuma veya command]
     AU -->|Reddedildi| DENY[Güvenli hata ve audit]
     OP --> CHECK[Commit veya veri çıkışında tekrar kontrol]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef danger fill:#ffe4e6,stroke:#9f1239,color:#0f172a
+    class H,A source
+    class WM,PM,GR,ACL,AU,CHECK gate
+    class RUN,OP process
+    class DENY danger
 ```
 
 ## Varsayılan rol matrisi

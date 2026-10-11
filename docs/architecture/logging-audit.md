@@ -1,5 +1,8 @@
 # Log, audit ve gözlemlenebilirlik
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Öneri; logger, dashboard veya audit servisi henüz uygulanmadı.** Saklama sürelerinin tek referansı [veri yaşam döngüsü](storage-memory-capacity.md); erişim kuralları [kimlik/yetki modelidir](identity-access.md).
 
 ## Dört kayıt sınıfı
@@ -24,11 +27,18 @@ Credential, API key, authorization header, cookie, ham prompt, belge gövdesi ve
 ## Transaction ve arıza davranışı
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Atomik audit ve ayrı dış teslim
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant C as İstemci
     participant P as Policy ve command
     participant D as Kalıcı DB
+    participant W as Outbox worker
     participant X as Dış hedef
+    Note over C,D: Source, domain, audit ve dış delivery ayrı kayıtlardır
+    rect rgb(239, 246, 255)
     C->>P: Kimlikli ve revision bağlı istek
     P->>P: Güncel yetki ve input kontrolü
     alt İzin yok
@@ -37,11 +47,13 @@ sequenceDiagram
     else İzin var
         P->>D: Atomik domain event + projection + audit + outbox
         D-->>P: Commit sonucu
-        P-->>C: Yerel sonuç
-        P->>P: Dispatch anında yetkiyi tekrar kontrol et
-        P->>X: İzinli outbox teslimi
-        X-->>P: Sonuç veya belirsiz cevap
-        P->>D: Ayrı delivery sonucu ve audit
+        P-->>C: Commit başarılıysa yerel sonuç
+        W->>D: Due item ve lease
+        W->>W: Dispatch anında yetkiyi tekrar kontrol et
+        W->>X: İzinli outbox teslimi
+        X-->>W: Sonuç veya belirsiz cevap
+        W->>D: Ayrı delivery sonucu ve audit
+    end
     end
 ```
 

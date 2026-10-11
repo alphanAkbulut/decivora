@@ -4,9 +4,22 @@
 
 **Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
 
-> **Durum: Discovery / Product Definition.** Bu repository ürün ve mühendislik planıdır. Çalışan uygulama, otomatik capture entegrasyonu veya doğrulanmış performans sonucu henüz yoktur. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+> [!NOTE]
+> **Aşama: Keşif, ürün tanımı ve teknik tasarım.** Çalışan uygulama, otomatik capture entegrasyonu veya doğrulanmış performans sonucu henüz yok. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
 
 **Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Build/extend sonucu ve prototip başlatma henüz karara bağlanmadı. [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
+
+## Çalışmanın neresindeyiz?
+
+| Alan | Bugünkü durum | Sonraki kanıt |
+|---|---|---|
+| Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli | T01 golden corpus ve ilk senaryo |
+| Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
+| Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
+| Pilot ve uygulama | Henüz başlamadı; yatırım/stack seçimi açık | Q02 ilk kaynak, Q03 veri/bütçe; izinli T03b deneyi |
+
+> [!IMPORTANT]
+> **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.
 
 ## Çözdüğümüz problem
 
@@ -21,21 +34,45 @@ Decivora'nın hedefi kullanıcının kart, açıklama ve kabul kriteri yazmasın
 - Sırada hangi küçük iş veya insan kararı var?
 
 ```mermaid
-flowchart LR
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
+flowchart TB
+    accTitle: Karar, uygulama ve kanıt döngüsü
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     A[AI konuşmaları ve agent çalışma olayları] --> B[Capture]
-    B --> C[Reconcile]
+    B -->|Kaynaklı aday| C[Reconcile]
     C --> D[Karar farkındalıklı etki analizi]
-    D --> E[Gerekçeli toplu onay]
-    E --> F[Güncel proje bilgisi]
-    F --> X[Artifact ve hedef uygulama durumu]
-    X --> G[Uygulama gözlemi ve ayrı AC doğrulaması]
+    D -->|Öneri; otomatik karar değil| E[Gerekçeli toplu onay]
+    E -->|Yetkili onay ve güncel revision| F[Güncel proje bilgisi]
+    F -->|Seçilmiş hedef ve ayrı read izni| X[Artifact ve hedef uygulama durumu]
+    X -->|Gözlem, completion değil| G[Uygulama gözlemi ve ayrı AC doğrulaması]
     X --> U[Unknown veya partial açıkça korunur]
     G --> C
     U --> C
-    B --> H[Append-only olay geçmişi]
-    E --> H
-    G --> H
+    B -->|Source receipt| H[Append-only olay geçmişi]
+    E -->|Domain event| H
+    G -->|Evidence event| H
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class A source
+    class B,C,D process
+    class E gate
+    class F,H store
+    class G,X evidence
+    class U warning
 ```
+
+**Renk anahtarı:** mavi kaynak/işleme · sarı yetki/onay kapısı · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik. Renk, özelliğin çalıştığı veya bir task'ın geçtiği anlamına gelmez.
+
+<details>
+<summary>Mermaid gösterilmiyorsa aynı şemanın SVG görünümü</summary>
+
+![Karar, uygulama ve kanıt döngüsünün üretilmiş SVG görünümü](assets/diagrams/overview.svg)
+
+</details>
 
 ## Gösterilecek ilk değer
 
@@ -54,6 +91,13 @@ flowchart LR
 Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'nın daha iyi olduğu henüz kanıtlanmış değildir.
 
 ## Buradan başlayın
+
+**🧭 Ürün:** [Güncel yön](docs/product/current-direction.md) · [MVP](docs/product/mvp.md) · [Portföy vaka çalışması](docs/portfolio/product-evaluation-case-study.md)  
+**🏗️ Mühendislik:** [Başlangıç](docs/delivery/start-here.md) · [Mimari atlas](docs/architecture/diagrams.md) · [Teknik boşluklar](docs/quality/technical-gap-analysis.md)  
+**🧪 Kanıt:** [Ölçüm protokolü](docs/quality/evaluation-protocol.md) · [Diyagram kontrolü](docs/quality/diagram-review.md) · [Görsel sözlük](docs/quality/visual-documentation.md)
+
+<details>
+<summary><strong>Tüm belge rehberi — ürün, araştırma, mimari ve yönetim</strong></summary>
 
 | Amaç | Belge |
 |---|---|
@@ -99,6 +143,9 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Admin, kullanıcı rolleri, hata takibi ve backoffice | [Yönetim ve işletim sözleşmesi](docs/product/administration-and-operations.md) |
 | Açık kaynak mı, private mı, self-host mu? | [Lisans, hosting, erişim ve paket ayrımı](docs/governance/licensing.md#kaynak-kodu-kurulum-erişim-ve-paket-ayrı-kararlar) |
 
+
+</details>
+
 ## Repository düzeni
 
 ```text
@@ -109,7 +156,9 @@ docs/
   delivery/      Aşama, küçük görevler, devam etme düzeni
   quality/       Kabul senaryoları, doğrulama ve ölçüm
   governance/    Risk, gizlilik, lisans ve açık kararlar
-examples/        Sentetik etki analizi örneği
+  portfolio/     Ürün değerlendirme vaka çalışması
+assets/          Mermaid kaynağından üretilen görsel fallback
+examples/        Sentetik etki ve karar zinciri oracle örnekleri
 scripts/         Dokümantasyon tutarlılık kontrolü
 ```
 

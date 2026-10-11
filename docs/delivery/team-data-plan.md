@@ -1,5 +1,8 @@
 # Ekip ve veri altyapısı uygulama planı
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Durum: tasarım tamamlayıcısı; kod ve runtime testleri yapılmadı.** İlk kullanıcı owner, sonra benzer bireysel kullanıcılar. Ekip özellikleri tam vizyonda korunur; bu plan ilk pilotu sessizce SaaS'a dönüştürmez. Temel kimlik/veri sınırları erken; davet ve çok insanlı yönetim daha sonra gelir.
 
 ## Şimdi tasarlanan kararlar
@@ -66,7 +69,10 @@ T30 discovery çıktısı bu C-dilimlerinin ihtiyaç/öncelik ve deployment kara
 C01–C03 ayrıca doğrulanabilir ilk owner bootstrap, ayrı kullanıcı oturumu/giriş/çıkış, hesap kurtarma ve self-host işletim sorumluluklarını içerir. C03/C04 kişisel→ekip aktarım önizlemesi ve rol değişimi/revocation için AGT-07/08'i MU kontrolleriyle birlikte doğrular. Workspace membership, ürünün ticari lisansı ve harici model aboneliği ayrı kavramlardır; paket/SSO/koltuk fiyatı kararı henüz yoktur.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart LR
+    accTitle: Tek owner pilotundan koşullu ekip fazına
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     P1[P1 Kimlik, veri ve yerel yönetim] --> SOLO[Tek insan ve çok-agent pilot kanıtı]
     SOLO --> NEED[T30 Ekip gereksinimi ve işletim kararı]
     NEED --> C2[C02 Merkezi veri ve izolasyon]
@@ -74,6 +80,12 @@ flowchart LR
     C3 --> C4[C04 İnsan ve agent işbirliği]
     C4 --> C5[C05 Operasyon konsolu, audit ve recovery]
     C5 --> C6[C06 Kotalar, ölçek ve ekip pilotu]
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    class P1,SOLO process
+    class NEED gate
+    class C2,C3,C4,C5,C6 future
 ```
 
 ## Karar gerektirenler

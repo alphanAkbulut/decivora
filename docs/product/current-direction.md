@@ -1,5 +1,8 @@
 # Güncel ürün yönü — tasarım revizyonu 03
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **2026-10-11 / P0 Discovery / runtime yok.** Kullanıcı son evrimin bütün belgelere yansıtılmasını ve eski/güncel yaklaşımın karşılaştırılmasını istedi. Bu kayıt güncel araştırma odağını toplar; bağımsız ürün geliştirme, teknoloji seçimi, ücret veya gerçek hesap erişiminin kabulü değildir. Tam kapsam [full-scope](full-scope.md), P1b kabulü [MVP](mvp.md), gerçekleşmiş ilerleme [status](../delivery/status.md) otoritesindedir.
 
 ## Şimdi hangi problemi sınayacağız?
@@ -32,7 +35,10 @@ Bu bir ürün iptali veya bütünüyle farklı ürün kararı değildir. Önceki
 ## Bağımlılık döngüsü yaratmadan deney sırası
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TD
+    accTitle: Güncel ilk deney ve owner yatırım kararı
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     T1["T01 Kaynak ve bağımsız oracle"] --> T2["T02 Kaynak ve tek hedef capability"]
     T2 --> A["T03a Sınırlı deney yöntemi ve geçici stack önerisi"]
     A --> P["T03b Yetkilendirilirse prototip ve native baseline"]
@@ -42,6 +48,16 @@ flowchart TD
     R -->|Sınırlı açık var| E["Küçük extension ve bakım testi"]
     R -->|Kanıt yetersiz| U["Belirli ek deney veya bekleme"]
     R -->|Yük faydayı aşıyor| S["Owner kararıyla durdur"]
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class T1,T2,A,P process
+    class R gate
+    class B,N,E future
+    class U warning
+    class S history
 ```
 
 T03a geçici prototype yöntemini seçer; production stack ADR'sini accepted yapmaz. Böylece T03'ü bitirmek için gereken prototipin önce bitmiş T03 istemesi önlenir. Prototip önerisi [mevcut Spike-1 planında](../delivery/spike-1-v1.md) tutulur; ikinci bir v2/v3 plan kopyası yok. T03b henüz yetkilendirilmiş/başlatılmış değildir. Gerçek veri/hesap/model/runner kapıları ayrıca geçerlidir.

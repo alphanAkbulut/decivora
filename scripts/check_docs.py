@@ -2,6 +2,7 @@
 """Documentation integrity only; does not test the planned product."""
 from pathlib import Path
 import json
+import hashlib
 import re
 import sys
 
@@ -176,6 +177,33 @@ for target, count in re.findall(r'^\| \[.*?\]\(([^)]+)\) \| (\d+) \|$', inventor
     inventory_counts[resolved] = int(count)
 if inventory_counts != diagram_counts:
     errors.append('diagram inventory differs from Mermaid source counts')
+
+# This validates provenance recorded in the report, not a live render.
+render_report_path = ROOT / 'docs/quality/diagram-render-results.json'
+if render_report_path.exists():
+    report = json.loads(render_report_path.read_text())
+    actual_sources = {}
+    for path in markdown:
+        for index, source in enumerate(re.findall(r'```mermaid\n([\s\S]*?)\n```', path.read_text()), 1):
+            actual_sources[(path.relative_to(ROOT).as_posix(), index)] = hashlib.sha256(source.encode()).hexdigest()
+    reported_sources = {}
+    for row in report.get('records', []):
+        key = (row.get('path'), row.get('block'))
+        if key in reported_sources:
+            errors.append(f'duplicate diagram render record: {key}')
+        reported_sources[key] = row.get('source_sha256')
+        if row.get('status') != 'rendered' or row.get('error') is not None:
+            errors.append(f'diagram render report records failure: {key}')
+    if reported_sources != actual_sources:
+        errors.append('diagram render report source hashes/coverage differ from current Mermaid sources')
+    if report.get('product_runtime_tested') is not False:
+        errors.append('diagram report must explicitly exclude product runtime validation')
+    fallback = report.get('readme_fallback', {})
+    fallback_path = ROOT / 'assets/diagrams/overview.svg'
+    if (not fallback_path.exists()
+            or fallback.get('svg_sha256') != hashlib.sha256(fallback_path.read_bytes()).hexdigest()
+            or fallback.get('source_sha256') != actual_sources.get(('README.md', 1))):
+        errors.append('README diagram fallback differs from recorded SVG/source hash')
 
 for path in ROOT.rglob('*.json'):
     json.loads(path.read_text())

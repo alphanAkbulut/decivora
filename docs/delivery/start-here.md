@@ -17,3 +17,10 @@ Portföy/ürün değerlendirmesi için ayrı [vaka çalışması](../portfolio/p
 Ek kaynak ararken [T03e araştırma kartı](../discovery/ecosystem-research.md) ve [pinned aday listesi](../discovery/ecosystem-candidates.json) ile başla. İlk 10 repo tarandı; Graphiti/LangGraph/LiteLLM öncelikli derin inceleme adayı, henüz seçilmiş dependency değil. Araştırmanın stop kuralı, küçük işleri ve not_run deneyleri kartta; T01 ana sıra korunur.
 
 Sonraki engineering çalışmasında [teknik boşluk analizini](../quality/technical-gap-analysis.md) ve ilgili [IC sözleşme ayrıntısını](../architecture/implementation-contracts.md) oku. TG kayıtları neden neyin incelendiğini, kanıt sınırını, kapanış testini ve pending owner sorusunu gösterir; ürünün çalıştığına dair kanıt değildir. İki farklı iş için T24p kullanımı düzeltildi: dil T24p, ölçüm T24q.
+
+## Görsel rehber ve bugünkü aşama
+
+> [!TIP]
+> İlk okuma: [README aşama tablosu](../../README.md) → [görsel sözlük](../quality/visual-documentation.md) → ilgili atlas/sequence/ER → [teknik gap](../quality/technical-gap-analysis.md). 35 renkli Mermaid çizimi tasarımı anlatır; çalıştırılmış ürün veya geçilmiş acceptance sonucu değildir.
+
+Ürün keşif/tanım/teknik tasarımda; T01 corpus, gerçek kaynak/target capability ve izinli sınırlı T03b deneyi henüz bitmedi. Q02-R1 A/B/C ilk kaynak yolu pending; Q03 dış veri/provider/bütçe ayrı. Stack/build/extend ve production yatırım kararı verilmedi. Görevleri doküman ve render başarılarına bakarak complete yapma.

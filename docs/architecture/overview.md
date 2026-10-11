@@ -1,5 +1,8 @@
 # Mimari öneri
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Statü: tasarım; uygulanmadı.** Tek yerel servis, SQLite ve açık modül sınırları başlangıç önerisidir. Mikroservis, graph database veya ayrı vector database ilk gün gerekli kabul edilmez. [ADR'ler](adr/README.md) seçenekleri ve doğrulama koşullarını kaydeder.
 
 [Güncel P0 odağı](../product/current-direction.md), aşağıdaki **tam ürün** tasarımının sınırlı gerçekleşme/devam halkasını önce sınamayı önerir. İlk prototype'te bütün paket/adapter/ekip altyapısını kurmak gerekmez; runtime henüz yok. [ADR-0011](adr/0011-target-application-evidence.md) mevcut verifier/context modüllerini tamamlar, yeni servis değildir.
@@ -9,7 +12,10 @@ Devamı: [Engine ve alias kataloğu](engines.md) sorumlulukları; [runtime sözl
 [Tetikleme/API/zamanlama sözleşmesi](execution-and-integrations.md) hangi olayın kod, LLM veya insan işi başlattığını ve async sonuçlarını; [DB ilişkileri](data-relationships.md) bağlantı izinleri, run-task çoktan çoğa ilişkisi ve revision bağlı AC/evidence bütünlüğünü tamamlar. İç engine çağrıları aynı süreçte olabilir; her ok için yeni HTTP servisi tasarlanmaz.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Modüller, canonical command ve hedef gözlemi
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     CC[Claude Code adapter] --> I[Ingress ve proje binding]
     CX[Codex adapter] --> I
     IM[İzinli chat import] --> I
@@ -34,6 +40,18 @@ flowchart TB
     PROJ --> BR[Karar uygulama unknown ve kabul ayrı brief]
     EV --> OUT[Transactional outbox]
     OUT --> EXT[İleride yetkili dış sistemler]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    class CC,CX,IM,TARGET source
+    class I,Q,EX,RE,CS,MCP,BR,V process
+    class CMD,UX,IMP gate
+    class RAW,EV,PROJ,OUT store
+    class VE,RB evidence
+    class EXT future
 ```
 
 ## Bileşen sınırları

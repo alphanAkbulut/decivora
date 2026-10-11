@@ -1,5 +1,8 @@
 # Konuşulan plan ile gerçekleşen iş arasındaki boşluk
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **2026-10-11 — Kullanıcının doğrudan bildirdiği problem; önerilen ürün sözleşmesi. Uygulama ve bağımsız reproduction yok.** Kullanıcı Claude ile konuşurken üretilen dosyaları GitHub'a veya lokale yüklemesi isteniyor. Konuşma sürüyor, fakat yükleme ve yaklaşım seçimi gözlenmeden sonraki öneriler bunlar gerçekleşmiş gibi ilerleyebiliyor. Bu, tüm Claude sürümlerinde kanıtlanmış kusur veya yaygınlık ölçümü değildir.
 
 Mevcut capture/commitment/verification ayrımının somut açılımıdır; yeni engine veya ana scope eklemez. [ENG-03/06/07/08/10](../architecture/engines.md), [onay UX](approval-ux.md) ve [devam paketi](resume-package-and-memory.md) birlikte uygular.
@@ -53,7 +56,10 @@ Tasarımdaki verification, izin verilmiş **okuma** ile başlayabilir; dosyalar�
 ## 4. Kapalı geri bildirim döngüsü
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TD
+    accTitle: Öneri, seçim, gerçekleşme ve kabul
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     S["Konuşmadaki öneri"] --> P["Kaynaklı proposal"]
     P --> D{"Güvenilir insan seçimi var mı?"}
     D -->|Hayır veya belirsiz| Q["Pending veya review"]
@@ -73,14 +79,30 @@ flowchart TD
     N["Yeni onaylı karar"] --> I["Supersession ve impact incelemesi"]
     I --> T
     I --> C
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    class S,F source
+    class P,T,C,I process
+    class D,A,O,N gate
+    class Q,U,R warning
+    class E,V evidence
 ```
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Yeni chat için uygulama bilinmeyenini koruma
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant H as İnsan
     participant L as LLM host
     participant M as Decivora
     participant X as İzinli hedef adapter
+    Note over H,M: Sessizlik veya dosya üretimi kullanıcı seçimi ve yükleme kanıtı değildir
+    rect rgb(239, 246, 255)
     L-->>H: Dosya üretir, yüklemeyi önerir
     L-->>M: Desteklenen capture veya açık import
     M->>M: Öneri ve artifact ayrı kaydedilir
@@ -95,6 +117,7 @@ sequenceDiagram
     M-->>L: Host destekliyorsa yetkili güncel brief
     Note over M,L: Destek yoksa önizle ve kullanıcı aktarımı
     L-->>H: Onaylı karar, bilinmeyen uygulama ve uygun next action
+    end
 ```
 
 Diyagramlar önerilen akışı anlatır; çalışan capture/delivery/verification entegrasyonu değildir. Context teslimi, alıcı LLM'nin bunu doğru kullanmasını garanti etmez; fresh-session deneyinde ayrıca ölçülür.

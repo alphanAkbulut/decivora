@@ -1,5 +1,8 @@
 # Mimari ve yaşam döngüsü atlası
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Tüm diyagramlar önerilen tasarımı gösterir; çalışan sistem görüntüsü değildir.** Mermaid kaynakları GitHub'da görüntülenebilir. Oklar yetki aktarımı anlamına gelmez; yazma otoritesi command/policy katmanıdır. Metinsel sözleşmeler [engine haritası](engines.md), [domain](domain-model.md) ve [runtime](runtime-contracts.md) belgelerindedir.
 
 Güncel ilk deney [ürün yönünde](../product/current-direction.md); atlas tüm ürünün proposed sınırlarını gösterir. [GAP akışındaki iki diagram](../product/intent-to-reality-gap.md) seçimin/hedef uygulamasının AC kabulünden ayrı döngüsünü tamamlar.
@@ -9,7 +12,10 @@ Tamamlayıcılar: [task sonucu, LLM analizi ve dış API için üç sequence + t
 ## 1. Sistem bağlamı ve güven sınırları
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Sistem bağlamı ve güven sınırları
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     USER["Kullanıcı: incele ve karar ver"]
     subgraph SOURCES["Harici kaynaklar: içerik güvenilir talimat değildir"]
         CC[Claude Code]
@@ -47,6 +53,18 @@ flowchart TB
     POLICY -->|Kapsamlı okuma yetkisi| RB
     RB <-->|Bounded hedef gözlemi| TARGET
     RB -->|Assessment command| POLICY
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    class USER,CC,CX,CHAT,ART,AG,TARGET source
+    class AD,EN,MCP process
+    class UI,POLICY gate
+    class STORE store
+    class RB evidence
+    class MODEL,EXT future
 ```
 
 Yerel depolama dış model kullanımında veri çıkmayacağı anlamına gelmez. Agent'ın MCP kimliği UI insan kimliğine yükseltilemez. P1'de model olmadan deterministik fixture akışı mümkündür.
@@ -54,7 +72,10 @@ Yerel depolama dış model kullanımında veri çıkmayacağı anlamına gelmez.
 ## 2. Engine zinciri ve karar otoritesi
 
 ```mermaid
-flowchart LR
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
+flowchart TB
+    accTitle: On engine ve ortak policy
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     E1[ENG-01 Capture] --> E2[ENG-02 Classification]
     E2 --> E3[ENG-03 Reconciliation]
     E3 --> E4[ENG-04 Idea Evaluation]
@@ -69,6 +90,19 @@ flowchart LR
     E9[ENG-09 Routing ve Budget] -.-> E2
     E9 -.-> E4
     E9 -.-> E8
+    E9 -.->|Dispatch öncesi ortak kontrol| E3
+    E9 -.-> E5
+    E9 -.-> E10
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    class E1 source
+    class E2,E3,E4,E5,E10 process
+    class E6,E9 gate
+    class E7 store
+    class E8 evidence
 ```
 
 E4 her aday için zorunlu model çağrısı değildir. Verification okunan kanıtı değerlendirir; bu ok kendiliğinden test komutu veya agent başlatma yetkisi vermez. Knowledge Evolution bu zincirin ortak davranışıdır.
@@ -76,7 +110,10 @@ E4 her aday için zorunlu model çağrısı değildir. Verification okunan kanı
 ## 3. Mantıksal veri modeli
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 erDiagram
+    accTitle: Kanonik mantıksal veri modeli
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     WORKSPACE ||--o{ PROJECT : contains
     PROJECT ||--o{ BINDING : scopes
     PROJECT ||--o{ SOURCE_EVENT : contains
@@ -104,6 +141,12 @@ erDiagram
     SOURCE_EVENT {
         string source_id PK
         string project_id FK
+        string workspace_id FK
+        string provider
+        string account_id
+        string session_id
+        string source_event_id
+        int source_revision
         string payload_ref
         string source_epoch
     }
@@ -130,6 +173,16 @@ erDiagram
         string project_id FK
         int schema_version
     }
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    class WORKSPACE,PROJECT,BINDING,RECORD,RECORD_VERSION,DOMAIN_EVENT,OUTBOX_ITEM store
+    class SOURCE_EVENT,PROVENANCE_LINK source
+    class JOB,EVALUATION,EDGE process
+    class CHANGESET,APPROVAL gate
+    class EVIDENCE,EVIDENCE_LINK evidence
 ```
 
 Şema mantıksaldır; fiziksel DDL değildir. RecordVersion'ın anahtarı `(workspace_id, project_id, record_id, revision)`; tüm proje kayıt/FK/unique sınırları tenant kapsamını korur. Edge iki endpoint revision'ına başvurur. Artifact/target expectation, observation ve application assessment N:M bağlantıları tamamlayıcı [ER-03](data-relationships.md#er-03--artifact-hedef-uygulama-ve-kabul-ayrımı) içindedir; generated/observed/acceptance ayrımı bu sade ER'den atlanmış sayılmaz. Diagram okunabilirliği için her tabloda tenant/FK alanları, üyelik/ACL ve Evaluation'ın çoklu input provenance bağlantıları tekrarlanmadı; [yetki sözleşmesi](identity-access.md) normatiftir. Source kimliği quarantine'da henüz project'e bağlı olmayabilir; izolasyon kalkmaz. Imported/manual ChangeSet ayrıca evaluation olmadan oluşabilir. Run ve soru ilişkileri aşağıdaki ayrı diyagramlarda; bunlar task hiyerarşisi değildir.
@@ -137,12 +190,18 @@ erDiagram
 ## 4. Capture: receipt ile değerlendirme farklıdır
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Kalıcı source alımı ve bounded değerlendirme
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant A as Adapter
     participant I as Ingress
     participant D as Durable Store
     participant W as Worker
     participant M as Optional Model
+    Note over W,D: Alım ve processing cursor ayrıdır, unknown usage bütçeden kaybolmaz
+    rect rgb(239, 246, 255)
     A->>I: Envelope + source key + binding
     I->>I: Yetki, şema, redaction
     I->>D: TX source + job + dedup
@@ -159,6 +218,7 @@ sequenceDiagram
         W->>D: Atomik bütçe rezervasyonu
         W->>M: Rezervasyon başarılıysa bounded input
         M-->>W: Structured result veya hata
+        W->>D: Usage settlement, belirsizse unknown korunur
     else Deterministik veya bekleyen iş
         W->>W: Deterministik sonuç veya deferred nedeni
     end
@@ -168,16 +228,23 @@ sequenceDiagram
         W->>D: Retry/deferred/quarantine + reason
         Note over W,D: Başarısız aralık üzerinden watermark atlamaz
     end
+    end
 ```
 
 ## 5. Onay öncesi yeni ilişki yarışı
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 sequenceDiagram
+    accTitle: Graph değişiminde stale approval
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
+    autonumber
     participant U as Kullanıcı
     participant P as Preview
     participant C as Command Policy
     participant S as Store
+    Note over U,S: Onay digest ve knowledge revision bağlıdır
+    rect rgb(239, 246, 255)
     P->>S: Snapshot knowledge revision 12
     S-->>P: Karar, task ve justification graph
     P-->>U: Task obsolete adayı + digest A
@@ -192,6 +259,7 @@ sequenceDiagram
     U->>C: Approve digest B, revision 13
     C->>S: TX events + projection + outbox
     S-->>U: APPLIED + sequence
+    end
 ```
 
 Eski onay yeni öneriye otomatik taşınmaz. Agent/source metnindeki “onayladım” cümlesi bu güvenilir approval akışının yerine geçmez.
@@ -199,7 +267,10 @@ Eski onay yeni öneriye otomatik taşınmaz. Agent/source metnindeki “onaylad�
 ## 6. Çoklu gerekçe ve tarihsel başarı
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: AND OR unknown ve tarihsel completion
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     OLD["Eski Markdown kararı: superseded"] -->|false| ONLY["Sync: tek gerekçe"]
     OLD -->|false| OR["Watcher: ANY"]
     IMPORT["Belge importu: active"] -->|true| OR
@@ -211,6 +282,16 @@ flowchart TB
     AND --> CHANGE["Update veya obsolete adayı"]
     DONE["Önceki revision'da verified iş"] --> HISTORY["Tarihsel completion korunur"]
     DONE --> APPLIC["Bugünkü applicability ayrıca değerlendirilir"]
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    class OLD,HISTORY history
+    class ONLY,OR,AND process
+    class IMPORT,OTHER source
+    class MISS,REVIEW,OBS,CHANGE,APPLIC warning
+    class DONE,KEEP evidence
 ```
 
 Boolean false gerekçenin sağlanmadığını söyler; tek başına task'ı cancelled/done yapmaz. Semantik alternatif ve kullanıcı tercihi için review gerekir.
@@ -218,7 +299,10 @@ Boolean false gerekçenin sağlanmadığını söyler; tek başına task'ı canc
 ## 7. ChangeSet durumları
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 stateDiagram-v2
+    accTitle: ChangeSet durumları
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     [*] --> proposed
     proposed --> deferred: ertele
     deferred --> proposed: yeniden incele
@@ -233,6 +317,18 @@ stateDiagram-v2
     stale --> proposed: yeni sürüm ve yeni digest
     applied --> [*]
     rejected --> [*]
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef danger fill:#ffe4e6,stroke:#9f1239,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class proposed process
+    class approved gate
+    class applied store
+    class deferred,stale warning
+    class failed danger
+    class rejected history
 ```
 
 Stale→proposed yeni proposal revision oluşturur; eski onay/history silinmez. Undo ayrı compensating ChangeSet'tir. Bu state machine task execution veya knowledge validity state machine'i değildir; onların değerleri [domain modelinde](domain-model.md) ayrı eksenlerdir.
@@ -240,7 +336,10 @@ Stale→proposed yeni proposal revision oluşturur; eski onay/history silinmez. 
 ## 8. Geri yükleme ve yan etkisiz replay
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TD
+    accTitle: Yan etkisiz replay ve recovery
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     B[DB ve payload backup snapshot] --> V[Şema ve bütünlük denetimi]
     V -->|Uyumlu| R[Staging projection replay]
     V -->|Uyumsuz| STOP[Diagnostic read-only veya upgrade]
@@ -252,6 +351,18 @@ flowchart TD
     O --> REC[Uzak durum ve receipt reconciliation]
     REC -->|Yetkili devam| SEND[Idempotent delivery]
     R -.-> NO[LLM, verifier veya dış yazma tetiklenmez]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef danger fill:#ffe4e6,stroke:#9f1239,color:#0f172a
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    class B source
+    class V,D gate
+    class R,SW,J,REC process
+    class O,NO warning
+    class STOP danger
+    class SEND future
 ```
 
 Yedekten dönmek uzak GitHub/Linear durumunu geriye almaz. Dış etkiler local replay'den ayrı denetlenir.
@@ -259,7 +370,10 @@ Yedekten dönmek uzak GitHub/Linear durumunu geriye almaz. Dış etkiler local r
 ## 9. Task, agent ve run farklı kimliklerdir
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart LR
+    accTitle: İnsan, agent run ve ürün task ayrımı
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     H[İnsan veya servis sponsoru] --> G[Süreli dar grant]
     A[Agent principal] --> R1[Run A]
     G --> R1
@@ -273,6 +387,20 @@ flowchart LR
     E --> V[Güncel AC ve DoD doğrulaması]
     V -->|Geçerli kanıt| DONE[Task completion command]
     V -->|Eksik veya stale| WAIT[Verification bekliyor]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class H,A source
+    class G,G2 gate
+    class R1,R2,T process
+    class ST future
+    class END history
+    class E,V,DONE evidence
+    class WAIT warning
 ```
 
 Parent kimliği bulunamıyorsa unknown kalır; gizli muhakeme çıkarılmaz. Run soy ağacı otomatik alt görev yaratmaz. Tüm child'ların geçmesi parent AC/DoD doğrulamasını kaldırmaz. [Agent işletimi](agent-and-team-operation.md), [split ve acceptance](../product/task-context-and-acceptance.md).
@@ -280,7 +408,10 @@ Parent kimliği bulunamıyorsa unknown kalır; gizli muhakeme çıkarılmaz. Run
 ## 10. Soru, cevap, onay ve teslim ayrımı
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Soru, yetki ve host delivery
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     Q[Kalıcı QuestionRequest ve bağımlı iş] --> TYPE{Soru türü ve gerekli yetki}
     TYPE -->|Bilgi veya görüş| RET[İzinli kaynak veya yetkili uzman agent]
     TYPE -->|Yetki içi teknik seçim| POL[Mevcut policy ve geçerli karar]
@@ -289,7 +420,9 @@ flowchart TB
     POL --> ANS
     HUMAN --> APP[Digest ve revision bağlı approval]
     APP --> CHECK[Güncel yetki ve bağlam kontrolü]
-    ANS --> CHECK
+    ANS --> MATCH[Soru ID, option revision ve kaynak eşleme]
+    MATCH -->|Exact veya insan teyitli bağ| CHECK
+    MATCH -->|Geç geldi; ilişki belirsiz| ORPHAN[Association pending; karar uygulanmaz]
     CHECK -->|Stale veya çelişkili| REVIEW[Yeni değerlendirme; bağlı iş bekler]
     CHECK -->|Geçerli| CAP{Host delivery capability}
     CAP -->|Destekli ve yetkili| DEL[Teslim ve receipt takibi]
@@ -298,6 +431,14 @@ flowchart TB
     ACK -->|Evet| RUN[Bağımlı çalışma devam edebilir]
     ACK -->|Hayır| MAN
     Q -->|Timeout veya döngü limiti| WAIT[Escalation veya bekleme; otomatik onay yok]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class Q source
+    class TYPE,POL,HUMAN,CHECK,CAP,ACK,APP,MATCH gate
+    class RET,ANS,DEL,RUN process
+    class REVIEW,MAN,WAIT,ORPHAN warning
 ```
 
 Bilgi cevabı approval değildir; protected karara dönüşürse insan koluna gider. Uzman/parent agent insanın yerini alamaz. Yetkili ve değişmemiş önceki karar tekrar sorulmadan kullanılabilir. Yalnız bağlı iş bekler; harici agent'ın durduğu veya yeniden başladığı capability/receipt olmadan iddia edilmez. [ASK sözleşmesi](agent-and-team-operation.md#5-subagent-soru-sorunca-karar-kime-gider).
@@ -305,7 +446,10 @@ Bilgi cevabı approval değildir; protected karara dönüşürse insan koluna gi
 ## 11. Blocker çözüm sırası ve görev önceliği
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Blocker ve açıklanabilir öncelik
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     GRAPH[Güncel ve yetkili dependency graph] --> VALID{Coverage ve ilişkiler yeterli mi}
     VALID -->|Hayır| GAP[Unknown veya cycle inceleme]
     VALID -->|Evet| BLOCK[Engellenen işler ve ortak kök neden]
@@ -316,6 +460,16 @@ flowchart TB
     REVIEW --> ACT[İzin sınırları içinde çalışma]
     ACT --> VERIFY[Kanıt ve graph yeniden değerlendirmesi]
     VERIFY --> GRAPH
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class GRAPH,GOAL source
+    class VALID,REVIEW gate
+    class BLOCK,READY,RANK,ACT process
+    class VERIFY evidence
+    class GAP warning
 ```
 
 Blocked task ile engeli çözen ready iş farklıdır. Etki sayısı tek başına öncelik değildir; gizli kayıtları açıklamaz. Dependency ve blocker yöntemden bağımsızdır; Scrum/PMBOK uygunluğu veya kritik yol hesabı iddiası yok. [Öncelik sözleşmesi](../product/priority-and-flow.md).
@@ -323,7 +477,10 @@ Blocked task ile engeli çözen ready iş farklıdır. Etki sayısı tek başın
 ## 12. Yönetim yüzeyleri ve veri sınırları
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Kullanıcı, admin ve operatör sınırları
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     USER[Günlük kullanıcı] --> APP[Inbox Board Graph Timeline]
     OWNER[Workspace veya proje yöneticisi] --> SETTINGS[Üye, grant, policy ve limit ayarları]
     OP[Kurulum veya platform operatörü] --> OPS[Operasyon merkezi]
@@ -336,6 +493,16 @@ flowchart TB
     DOMAIN -->|İçeriksiz sinyaller| HEALTH
     CONFIG --> POLICY[Etkin policy ve dispatch sınırları]
     SUPPORT[Süreli ve açık onaylı destek grant] -.-> AUTH
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class USER,OWNER,OP source
+    class APP,SETTINGS,OPS process
+    class AUTH,SUPPORT,POLICY gate
+    class DOMAIN,CONFIG store
+    class HEALTH warning
 ```
 
 Operatör kimliği domain içeriğine otomatik izin değildir. Aynı servis önerilir; ayrı backoffice DB veya mikroservis zorunlu değil. P1b yerel owner sağlık/ayar görünümü, P4 ekip ve hosted operasyon konsolu. [Yönetim sözleşmesi](../product/administration-and-operations.md).
@@ -343,7 +510,10 @@ Operatör kimliği domain içeriğine otomatik izin değildir. Aynı servis öne
 ## 13. Hata müdahalesi ve config değişimi
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Incident ve güvenli müdahale
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     ERR[Operasyon hatası] --> SAFE[Yazmadan önce redaction]
     SAFE --> INC[Kapsamlı incident ve güvenli fingerprint]
     INC --> TRIAGE[Etki, sorumlu ve inceleme]
@@ -357,6 +527,18 @@ flowchart TB
     RES -->|Tekrarlandı| INC
     RES -.-> SEPARATE[Job ve task doğrulaması ayrı kalır]
     APPLY -->|Dış sonuç belirsiz| UNKNOWN[Önce reconciliation; kör retry yok]
+    classDef danger fill:#ffe4e6,stroke:#9f1239,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef evidence fill:#dcfce7,stroke:#166534,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class ERR danger
+    class SAFE,GUARD gate
+    class INC,TRIAGE,PLAN,APPLY process
+    class HEALTH,RES evidence
+    class HOLD,UNKNOWN warning
+    class SEPARATE history
 ```
 
 Config apply beklenen revision ile atomiktir; rollback yeni revision olur. Dış istek yerel transaction'a alınamaz. Telemetry veya DB arızası kayıtsız başarı iddiası üretmez. [ADM kabul senaryoları](../product/administration-and-operations.md#planlı-kabul-senaryoları).

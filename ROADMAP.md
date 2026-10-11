@@ -1,9 +1,15 @@
 # Roadmap
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](docs/quality/visual-documentation.md).
+
 Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenekleri [tam kapsamda](docs/product/full-scope.md) korunur. Mevcut aşama **P0 Discovery / Product Definition**; uygulama geliştirilmedi.
 
 ```mermaid
-flowchart LR
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
+flowchart TB
+    accTitle: Fazlar ve yatırım alternatifleri
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     P0[P0 Oracle ve kaynak hedef fizibilitesi] --> E[P0 Sınırlı gerçekleşme devam deneyi]
     E --> G{Native extend veya build kararı}
     G -->|Build kanıtlı ve owner seçti| P1A[P1a Teknik kanıt]
@@ -15,6 +21,16 @@ flowchart LR
     P1B --> P2[P2 Chat ve agent sürekliliği]
     P2 --> P3[P3 Maliyet ve entegrasyon]
     P3 --> P4[P4 Ekip, yönetim ve ürünleşme]
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class P0,E process
+    class G gate
+    class P1A,P1B,P2,P3,P4,N,X future
+    class W warning
+    class S history
 ```
 
 | Faz | Teslim | Çıkış kapısı |
@@ -35,7 +51,10 @@ Dil ihtiyacı: P1'de source/Unicode/metadata ve açık pilot dili korunur; P2'de
 Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: Küçük teslimler ve kanıt kapıları
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     S[Kaynak konuşma ve tam vizyon] --> C[T01 Corpus ve oracle]
     C --> A[T02 Gerçek adapter capability]
     A --> PLAN[T03a Geçici deney yöntemi]
@@ -54,6 +73,18 @@ flowchart TB
     MVP --> PILOT{T24 MVP ve kullanıcı pilotu}
     PILOT -->|AC ve kalite kanıtlı| NEXT[T25-T30 Chat, entegrasyon, release, ekip]
     PILOT -->|Eksik capability| LIMITED[Sınırlı pilot ve açık gap]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class S source
+    class C,A,PLAN,PROTO process
+    class D,G,PILOT gate
+    class CORE,INT,MVP,NEXT,ALT future
+    class EXP,FIX,LIMITED warning
+    class STOP history
 ```
 
 Güvenlik/kalıcı işleme/graph race sözleşmeleri ilk çekirdek dilimlerinde doğrulanır; son release'e bırakılmaz. Çalışma ritmi ve roller [kısa proje yönetim planında](docs/delivery/project-management.md).

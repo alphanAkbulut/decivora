@@ -1,5 +1,8 @@
 # Veritabanı, hafıza yaşam döngüsü ve kapasite
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Önerilen plan; DB kurulmadı, yük veya restore testi çalıştırılmadı.** “Kalıcı” yeniden başlatmada korunur demektir; sonsuza kadar tutulması gerektiği anlamına gelmez. Kalıcılık, canonical yetki, erişim ve retention birbirinden ayrı eksenlerdir.
 
 ## Nerede ne tutulacak?
@@ -18,7 +21,10 @@ Yerel P1 için SQLite, aynı host üzerinde tek servis ve kısa write transactio
 Blob önce staging'e yazılır ve hash doğrulanır; DB commit yalnız dayanıklı blob referansını yayımlar. Başarısız transaction orphan bırakabilir; yaş eşiği ve referans kontrolüyle GC temizler. Silme ters sırada tombstone→erişim engeli→blob/cache temizliği olarak ilerler. Blob/DB arasında dağıtık atomiklik varmış gibi davranılmaz. Yerel dosya izinleri ve disk şifrelemesi gereksinimdir; standart SQLite'ın otomatik uygulama düzeyi şifreleme sağladığı varsayılmaz. Şifreleme/key recovery yöntemi gerçek veri öncesi seçilir.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart LR
+    accTitle: Kalıcı kaynak, geçici context ve purge
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     SRC[İzinli kaynak] --> IN[Durable ingress ve receipt]
     IN --> CLASS{Onaylı veri sınıfı}
     CLASS --> TMP[Geçici ham payload]
@@ -35,6 +41,18 @@ flowchart LR
     ARCH -.-> LIMIT[Kapasite sınırında intake durur; sessiz silme yok]
     EV --> BK[Tutarlı DB ve blob yedeği]
     ARCH --> BK
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class SRC source
+    class IN,JOB,CTX,PROP,VIEW process
+    class CLASS gate
+    class EV,BK,ARCH store
+    class TMP,DEL history
+    class LIMIT warning
 ```
 
 ## Retention başlangıç önerisi

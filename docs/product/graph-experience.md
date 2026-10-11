@@ -1,5 +1,8 @@
 # Görev bağlamı, ilişkiler ve iptalin görsel anlatımı
 
+> [!NOTE]
+> **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
+
 **Statü: UI davranış tasarımı; canlı ekran veya test edilmiş prototip değil.** Graph, Board, Inbox ve Timeline aynı record/revision'dan beslenir. [Domain semantiği](../architecture/domain-model.md) ve [impact kuralları](../architecture/reconciliation-impact.md) görsel tercihlerden üstündür. Q04 yanıtı alındı: varsayılan güncel işler ve seçili işin bağlamıdır. Kullanıcı ayrıca fikirlerin olgunlaşma hikâyesi ile iş başına AC/DoD/test görünürlüğünü istedi; [bağlam ve kabul dosyası](task-context-and-acceptance.md) bunu detaylandırır.
 
 ## Bir görevi seçince ne görünür?
@@ -49,12 +52,21 @@ Görev başlığının üstünü çizmek zorunlu değil: uzun başlığın okuna
 Aşağıdaki bütün işlemler, örnekte insan onayından geçmiş varsayılır. Bu diyagram bir uygulama ekranı değildir. Oklar domain yönünü korur: task → gerekçe; yeni karar → superseded karar.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart LR
+    accTitle: Güncel gerekçe ve tarihsel iptal örneği
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     D2[DEC-002 SQLite aktif] -->|supersedes| D1[DEC-001 Markdown - yerine yenisi geçti]
     T3[TASK-003 Sync - artık gerekli değil] -.->|Tarihsel required_by| D1
     T4[TASK-004 Watcher - açık] -.->|Tarihsel required_by| D1
     T4 -->|Aktif required_by - OR gerekçesi| R[REQ-007 Belge importu aktif]
     T7[TASK-007 Export - iptal edildi] -->|required_by hâlâ geçerli| R2[REQ-008 Export ihtiyacı - karşılanmıyor]
+    classDef process fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    class D2,T4,R process
+    class D1,T3,T7 history
+    class R2 warning
 ```
 
 Diyagramdaki tarihsel required_by etiketi eski kararın artık geçerli olmadığını anlatır; tek başına relationship.ended olayı üretildiğini göstermez. İlişki kaydı hâlâ asserted iken hedef karar superseded olabilir; edge detayında ilişki durumu ile hedefin durumu ayrı gösterilir.
@@ -62,7 +74,10 @@ Diyagramdaki tarihsel required_by etiketi eski kararın artık geçerli olmadı�
 Örnek özellikle iptal ile gerekçe geçersizliğini ayırır. TASK-007 iptal edilse de gereksinim açık kalabilir. TASK-004'ün eski karar bağlantısı tarihsel görünürken alternatif OR gerekçesi devam ettiği için iş açık kalır. TASK-003'ün obsolete olması “başarıyla tamamlandı” şeklinde gösterilmez.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
+    accTitle: İlişki değişimi, onay ve tarihçe
+    accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     NOW[Güncel graph snapshot] --> PRE[Önerilen iptal veya ilişki değişimi]
     PRE --> IMP[Gerekçe ve downstream etki önizlemesi]
     IMP --> REV[Yetkili insan review]
@@ -70,6 +85,16 @@ flowchart TB
     EV --> CUR[Güncel görünüm yenilenir]
     EV --> HIST[Eski düğüm ve edge geçmişte korunur]
     REV -->|Graph veya yetki değişti| STALE[Yeni önizleme gerekir]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef warning fill:#ffedd5,stroke:#9a3412,color:#0f172a
+    classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
+    classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
+    class NOW source
+    class PRE,IMP,STALE warning
+    class REV gate
+    class EV,CUR store
+    class HIST history
 ```
 
 ## Etkileşim ve kabul senaryoları
