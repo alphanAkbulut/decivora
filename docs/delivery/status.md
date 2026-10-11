@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — Ek API ödemesi olmadan yerel hedef kodu
+
+- Kullanıcı API kredisi $0.00 bildirdi ve bakiye yüklemeden devam istedi; bu model call/harcama onayı değil. [Local observer](../quality/local-observer.md) kodlandı: tek seçili dosya, gerçek hash okuması; eksik/izin/boyut/yarış ayrı, task_verified=false. 65 semantik suite testi (9 yeni) geçti.
+- Önceki API paket teslimi korunur. T01/T02/T03 IN_PROGRESS; insan H1 review soruldu fakat yanıt gelmeden gold sayılmaz. Mevcut hesap için yeni tek-send planı ve anlam kalite ölçümü açık; ödemeyi bütün kod çalışmasının blocker'ı sayma.
+
+
 ### 2026-10-12 — Quote-only API paket ve import kodu
 
 - [Teslim](../quality/quote-api-package.md): source-only schema/payload hazırlığı, pending token/context/para manifesti, saved response import; refusal/incomplete/authority retleri. 56 semantik suite testi geçti (8 yeni); yeni provider inference 0.

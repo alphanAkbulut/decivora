@@ -1,0 +1,35 @@
+{
+  "id": "LOCAL-OBSERVER-01",
+  "date": "2026-10-12",
+  "kind": "local_read_only_observation",
+  "tests": {
+    "semantic_suite_passed": 65,
+    "new_observer_tests": 9
+  },
+  "observation": {
+    "observer": "local-file-p0-1",
+    "selected_root": "redacted_local_repo_mirror",
+    "path": "docs/quality/quote-api-package.md",
+    "expected_sha256": "302ed8c2a7044d77b0074f44411bca7f10ad21a0d1c40f18d4ab228ca88a6eff",
+    "observed_sha256": "302ed8c2a7044d77b0074f44411bca7f10ad21a0d1c40f18d4ab228ca88a6eff",
+    "bytes_read": 5929,
+    "status": "observed_match",
+    "reason": null,
+    "task_verified": false,
+    "canonical_mutations": 0,
+    "model_calls": 0,
+    "remote_upload_verified": false,
+    "authority": "caller_selected_not_authenticated"
+  },
+  "redaction": [
+    "absolute local root",
+    "device/inode/mtime"
+  ],
+  "scope": "single selected local mirror file; not GitHub upload or model extraction",
+  "model_calls": 0,
+  "usage": null,
+  "code_sha256": {
+    "spikes/semantic-chain/local_observer.py": "3815b9d9fbe1ac9ca3d08c24013e4589f5de547a7a8236aa6627b1d6f0d7f8b6",
+    "spikes/semantic-chain/test_local_observer.py": "ce1e027e6431d057c24b970f28fa2400bf9b271a9c51108ac9ee64bd1e270075"
+  }
+}

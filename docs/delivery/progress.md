@@ -43,7 +43,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · Quote-only API paket hazırlayıcı ve saved response importer kodlandı; strict schema taslağı, source-only payload ve unresolved bütçe manifesti mevcut. 56 semantik suite testi (8 yeni) geçti. Refusal/incomplete/yetki iddiası retleri korundu; yeni inference 0. [Teslim](../quality/quote-api-package.md). T03 IN_PROGRESS; gerçek API şema/model/usage testi yapılmadı.
+2026-10-12 · API harcaması olmadan seçilmiş tek yerel dosya observer kodlandı. 65 semantik suite testi (9 yeni observer) geçti; önceki teslim belgesinin gerçek local read sonucu observed_match, task_verified=false. Symlink/traversal/boyut/izin/concurrent change ayrımı var. [Teslim](../quality/local-observer.md). Önceki API paket teslimi korunur; yeni model çağrısı 0.
 
 **Aktif teknik risk:** Observed / High · R20: ham S02-002 10/11 span hatasında reddedildi. Bounded offline adapter teslim; yeni quote-only contract üzerinde gerçek-model kalite/production doğrulaması açık. [Aktif risk kaydı](../governance/risks.md). Provider cap/usage unknown; yeni inference izni yok.
 
@@ -51,7 +51,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 production source anchoring/entegrasyonu gerekli; P0 offline adapter teslim. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
 
-Sıradaki adım: Model/API capability ve fiyat, seçili veri ve package digest, input/output/context/run/para tavanı ile somut dispatch kararını netleştir; candidate/domain beklentilerini insan review ile doğrula, tek gerçek quote-only deneyi çalıştır. Sonra relation/impact ve native kıyas. Eski sonuçlar korunur; paket hazırlığı kalite başarısı veya yeni harcama izni değildir.
+Sıradaki adım: H1 insan incelemesi → mevcut üyelik üzerinden source-only quote deneyinin route/tek-send/usage sınırını hazırlama. API bakiyesi $0 kullanıcı bildirimi; paid API dispatch yok. Önceki çağrı izinleri tüketildi, yeni sınır/onay gerekecek. Anlam doğruluğu, gerçek grant, graph/target/AC ve native kıyas açık; observer match ana görevi kapatmaz.
 
 
 ## Mevcut teslim parçaları
@@ -70,6 +70,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **S02 gönderim ve güvenlik hazırlığı** — İki ayrı onaylı tek gönderim: S02-001 cloudflare_challenge/çıktı yok; S02-002 gerçek output, 10/11 span hatalı, strict ret; her denemede retry 0; [Güncel rapor/ham çıktı](../quality/s02-second-attempt-result.md); kaynak hashleri sabit. JSON parse geçti, scorer/zincir çalışmadı; hard-cap/production limiter doğrulanmadı
 - **Kaynak adapter ve candidate rubric** — Bounded exact quote + source/revision contract; explicit legacy türev; candidate/domain beklentileri ayrı; CLI offline; [48 suite testi ve üç scripted case](../quality/source-anchor-adapter.md); gerçek inference/semantic accuracy değil
 - **Quote-only API deney paketi** — Strict schema taslağı, source-only payload, pending bütçe/onay manifesti ve saved response importer; [56 semantik test / 8 yeni](../quality/quote-api-package.md); gerçek provider dispatch/schema/kalite not_run
+- **Seçilmiş yerel hedef observer** — Tek dosya real filesystem read, bounded no-follow/hash/change kontrolü; source metninden komut çalıştırılmaz; [65 semantik test ve ayrı gerçek yerel gözlem](../quality/local-observer.md); remote upload/task acceptance veya production IAM değil
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -125,4 +126,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `15b3d24c16df22b3a1124c0658dedf4a7b88662dd84de4be9b60aa7f8eb4ef7c`
+Kaynak fingerprint: `4ef3c6d7d9056e3d776c3c83366ca3db834e51f40cd2762719448d47cd015c40`

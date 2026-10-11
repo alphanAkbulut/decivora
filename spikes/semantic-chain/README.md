@@ -55,3 +55,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Quote-only API paket hazırlığı
 
 `provider_packet.py` gönderimsiz Responses schema/payload taslağı ve saved response import sağlar. `experiment.py` mevcut corpus evaluator olarak korunur. [Teslim, komutlar ve sınırlamalar](../../docs/quality/quote-api-package.md); model/bütçe/onay pending, semantic suite 56 test. Gerçek provider çağrısı veya anlam doğruluğu kanıtı değildir.
+
+## Seçilmiş yerel hedef gözlemi
+
+`local_observer.py` yalnız tek seçili yerel dosyayı bounded read ile gözler; bütün task'ı veya GitHub upload'ını doğrulamaz. [Teslim ve gerçek local read kaydı](../../docs/quality/local-observer.md). Dokuz yeni test, semantik suite 65 passed; model anlam ölçümü hâlâ açık.
