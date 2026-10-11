@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — İngilizce status ve P0 preflight kodu
+
+- Kullanıcı tercihine göre Board/filter/task status etiketleri To Do/In Progress/Blocked/Done oldu; kanonik task state veya faz değişmedi. Jira'nın özel workflow desteğiyle uyumlu etiketleme; Blocked her Jira'nın varsayılanı diye sunulmaz.
+- T03f/T03b altında [yerel token/context preflight](../quality/token-preflight.md) kodlandı: tam input/generation/context ve tüm çağrı/parent bütçe üst sınırları; unknown, review ve hard cap ayrımı. 17 fixture testi; S02 package hashleri sabit, current assessment blocked, gerçek inference not_run. Model/hesap/para veya global host config değişmedi.
+- T03 Son ilerleme ve hazırlık matrisi güncellendi; mevcut parça sayısı 11. İlk gerçek S02 output'u için hesap/model ve uygulanabilir limit/dahil kullanım teyidi açık. Production atomik rezervasyon/para/provider enforcement TODO; test sonucu yalnız offline kontratı kapsar. [Sonuç kaydı](../quality/token-preflight-results.json).
+
 ### 2026-10-11 — P0 ilerlemesini ekrana yansıtma
 
 - Son token/context güncellemesi yalnız status/deney belgelerine işlenmişti; ekranın dört kaynak dosyasındaki hazırlık tablosu ve task özetleri güncel olmadığı için görünüm değişmemişti. Eksik bağlantı giderildi.

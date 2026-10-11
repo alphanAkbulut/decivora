@@ -80,7 +80,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Son ilerleme:** 2026-10-11 · Deney hazırlığı: S02 gönderim paketi hazır; input/output/context ve toplam bütçe durma kuralları belgelendi. Policy pending_capability_review; gerçek model çalıştırması not_run, üretim limiter kodu yok.
+- **Son ilerleme:** 2026-10-11 · Kod teslimi: yerel token/bağlam preflight ve 17 fixture testi hazır. S02 kontrolü belirsiz model/limit/bütçe nedeniyle gönderimi engelliyor; gerçek model deneyi henüz çalıştırılmadı. Üretim limiter ve para tavanı uygulanmadı.
 - **Sıradaki adım:** [S02 planı](../quality/s02-account-smoke-plan.md): hesap/model seçimi → limit/dahil kullanım doğrulaması → tek output → bağımsız ölçüm. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
@@ -619,3 +619,5 @@ TG-01/02 belge düzeltmeleri runtime görevlerini complete yapmaz. TG-12–23 ca
 ## İnsan kararından bağımsız P0 bağlantı teslimi — 2026-10-11
 
 T03f/T03b kısmi kod teslimi: [source-only request, output validator, candidate bridge, evaluator ve checkpoint kodu](../../spikes/semantic-chain/README.md) uygulandı. T01f gold/human ve T03c production yatırım kapıları kapanmadı. [Hazırlık/blocker matrisi](implementation-readiness.md) teknik işi gerçek erişim/model/maliyet ve insan kalite incelemesinden ayırır. Bu işler için bütün gold veya future fazların tamamlanması beklenmez. 28 yeni test ve [sonuç](../quality/semantic-readiness-results.json); sonraki gerçek model dispatch/not_run/usage sınırı açık. AI-authored S02 candidate draft contract/import proof’udur; model kalite benchmark’ı değildir.
+
+T03f/T03b ek P0 dilimi: [token/context preflight](../quality/token-preflight.md) ve 17 fixture testi uygulandı. Mevcut S02 hashleri değişmedi; unknown cap/bütçe blocked sonucunu veriyor, gerçek inference yok. T09d/T21b/T21c için çağrı öncesi hesaplama örüntüsü sınandı; gerçek adapter, trusted policy, atomik reservation, para ve dispatch enforcement işleri TODO kalır. Rapor [ayrı sonuç kaydı](../quality/token-preflight-results.json) taşır.

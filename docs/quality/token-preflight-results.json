@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-11",
+  "scope": "offline_token_context_preflight_not_production_dispatch",
+  "tests": {
+    "command": "python3 -B -m unittest discover -s tests -v",
+    "status": "passed",
+    "total": 37,
+    "token_preflight": 17,
+    "tracker": 12,
+    "anchors_and_scorer": 8
+  },
+  "s02": {
+    "session": "S02",
+    "package_hashes_match": true,
+    "execution_status": "not_run",
+    "assessment": {
+      "decision": "blocked",
+      "reason_codes": [
+        "finite_policy_required",
+        "model_binding_unknown_or_mismatch",
+        "capability_upper_bound_unverified",
+        "call_upper_bound_unknown",
+        "budget_snapshot_unknown"
+      ],
+      "aggregate_token_upper_bound": null,
+      "context_requirements": [],
+      "assessment_digest": "dadf62da975de5c4715292705ee4186bd12f99a6687a85c8cb348b0232f24ac1",
+      "dispatch_performed": false,
+      "dispatch_authorized": false,
+      "reservation_created": false,
+      "monetary_cap_enforced": false
+    }
+  },
+  "local_candidate_route_review": {
+    "provider_selection": "pending",
+    "cli_version": "codex-cli 0.162.0-alpha.17.2",
+    "observed": "version and exec help only",
+    "global_config_changed": false,
+    "inference_started": false,
+    "per_job_hard_output_and_money_bound": "not_verified",
+    "sources": [
+      "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "https://developers.openai.com/api/docs/guides/conversation-state"
+    ]
+  },
+  "limitations": [
+    "Trusted-caller fixture flags are not authenticated provider capability evidence",
+    "No actual reservation, dispatcher, approval acceptance or monetary limit implemented",
+    "Other metered operations and external agents require separate bounds",
+    "Historical semantic 91-test report unchanged"
+  ],
+  "validation_note": "First regression run found a tracker test tied to old gate wording; replaced that dependency with source-row mutations and retained gate/preparation/freshness/model-state assertions. Full rerun passed.",
+  "code_sha256": {
+    "scripts/token_preflight.py": "89a6a7e3b8ac65f97e183ca1a246f91c890f56aea904590f63b2d478214749a7",
+    "tests/test_token_preflight.py": "e37bcab1a30672ed3e2545e76416257572c7ecec6b312a71b19daa6ec575f7a2",
+    "tests/test_project_progress.py": "12dac0f7248305df0d64ae177b2bced5f087285847e7d5ba89b213ef40b4c84a",
+    "tools/progress/index.html": "cbf9af8a69a84f56bbe4aafe4eb5833da99b4697c36c6343ff644932afcdeb10"
+  },
+  "browser_checks": [
+    {
+      "check": "Board, filter and task pills display English statuses",
+      "status": "passed"
+    },
+    {
+      "check": "T03 detail shows new offline code delivery and remaining model gate",
+      "status": "passed"
+    },
+    {
+      "check": "Preparation count 11; P0 filter 3 of 30 main tasks",
+      "status": "passed"
+    }
+  ]
+}

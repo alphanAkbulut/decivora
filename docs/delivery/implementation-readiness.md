@@ -20,6 +20,7 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 | Seçili gerçek hedef okuması | Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match | Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil |
 | Geliştirme takip ekranı | Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür | 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil |
 | S02 gönderim ve güvenlik hazırlığı | Tek S02 kaynak/prompt/policy; bir gönderim, sıfır retry/tools; ayrı token/context hard-cap sözleşmesi ve pending_capability_review | [Hazır plan](../quality/s02-account-smoke-plan.md); paket hash/policy kontrolü geçti. Belge/hazırlık teslimi; gerçek inference ve production limiter not_run |
+| Yerel token/bağlam preflight kodu | Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı | [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil |
 
 Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. Ürün graph/IAM/API/UI hazır olmadı; model input/output kapısı ve fixture karar bağlantısı gerçekten kodlandı.
 
@@ -29,7 +30,7 @@ Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. �
 
 | Konu | Tür | Neden gerekli / neyi durdurur? | Durum |
 |---|---|---|---|
-| Bir gerçek model output’u | Hesap/arayüz, limit desteği ve dahil kullanım teyidi | Q03-R2 A seçildi; token/context güvenlik eki nedeniyle pending_capability_review. Gerçek output yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır. Claude veya ChatGPT/Codex seçimi ve uygulanabilir cap doğrulaması → tek output → ölçüm; model/usage not_run/unknown |
+| Bir gerçek model output’u | Hesap/arayüz, limit desteği ve dahil kullanım teyidi | S02 offline preflight blocked; sonlu model/limit/bütçe kanıtı yok. OpenAI docs + CLI help incelemesi bu kapıyı kapatmıyor; ek ücret izni yok | [Paket](../quality/s02-account-smoke-plan.md) ve [preflight kodu](../quality/token-preflight.md) hazır. Hesap/model seçimi → uygulanabilir cap/dahil kullanım doğrulaması → tek output → ölçüm; inference not_run |
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Erişilebilir ürün/build, aynı koşullar ve veri izni | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |

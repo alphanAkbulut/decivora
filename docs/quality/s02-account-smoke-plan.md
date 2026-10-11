@@ -37,6 +37,8 @@ S02 için bir gönderim, sıfır retry/regenerate/continuation ve araç/alt agen
 
 ## Çalıştırma ve ölçüm
 
+Yerel first-use kontrolü artık kodlanmış ve fixture ile sınanmıştır: [token preflight](token-preflight.md). `python3 -B scripts/token_preflight.py --s02` paket hashlerini doğrular; henüz seçilmemiş model/limit/bütçe için blocked döner ve provider çağırmaz. Bu sonuç gerçek host limiter, parasal rezervasyon veya semantic inference başarısı değildir. Hesap capability incelemesi hâlâ pending.
+
 1. Owner hesabı/arayüzü seçer; aktif model ve dahil kullanım/credit modu kayıt altına alınır. Mevcut bu sohbet extraction için yeniden kullanılmaz; asistan daha önce oracle/taslak gördü. Yeni bağımsız mesaj geçmişi gerekir; modelden modelin adını tahmin etmesi istenmez.
 2. Yalnız hazır metni boş oturuma bir kez gönder. Proje dosyaları ve beklenen cevaplar ekleme; araç/bağlantı açma. İlk ham output’u düzenlemeden, model/arayüz/zaman ve varsa usage ile kaydet. Yeni hesap/bağlantı oluşturma gerekirse ayrıca değerlendirilir.
 3. `python3 -B spikes/semantic-chain/experiment.py evaluate --responses /tmp/s02-account-response.json --out /tmp/s02-account-evaluation.json` ile bağımsız scorer çalışır. Output parse/contract hatası varsa failure/incomplete raporu saklanır; fixture/assistant taslağı ile yer değiştirilmez. Henüz bütün corpus değil, tek S02 olduğundan genel sonuç incomplete kalır.

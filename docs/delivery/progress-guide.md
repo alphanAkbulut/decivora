@@ -37,4 +37,6 @@ Doğrulama: parser/otorite, değişen kaynağın yeniden okunması, eksik/stale/
 
 [Bu teslimin doğrulama kaydı](../quality/development-tracker-results.json): tracker testleri ve gerçekten gözlenen tarayıcı etkileşimleri; gerçek ürün/agent telemetry testi değildir.
 
-Board sütunları: **Planlandı / Çalışılıyor / Engelli / Tamamlandı**. Kartlar aynı ana görevleri gösterir; faz/durum/arama filtreleri ve AC/alt dilim detayı her iki görünümde de çalışır. Sürükleyerek durum değiştirme yoktur; yeni task otoritesi oluşturulmadı. Hazırlık/deney parçaları bitmiş ana görev gibi Tamamlandı sütununa alınmaz. Gerçek BLOCKED kaydı yoksa Engelli boş kalır; açık insan/ölçüm kapıları ayrı paneldedir.
+Board sütunları: **To Do / In Progress / Blocked / Done**. Kartlar aynı ana görevleri gösterir; faz/durum/arama filtreleri ve AC/alt dilim detayı her iki görünümde de çalışır. Sürükleyerek durum değiştirme yoktur; yeni task otoritesi oluşturulmadı. Hazırlık/deney parçaları bitmiş ana görev gibi Done sütununa alınmaz. Gerçek BLOCKED kaydı yoksa Blocked boş kalır; açık insan/ölçüm kapıları ayrı paneldedir.
+
+2026-10-11 kullanıcı tercihi: görünen status adları İngilizce; kanonik TODO/IN_PROGRESS/BLOCKED/DONE değerleri ve görev durumları değişmedi. [Atlassian workflow belgesi](https://support.atlassian.com/jira-software-cloud/docs/manage-how-work-flows-in-your-team-managed-project/) varsayılan To do/In progress/Done'u açıklar; Blocked bizde mevcut özel durumun İngilizce etiketidir, bütün Jira kurulumlarının zorunlu varsayılanı değildir.

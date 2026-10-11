@@ -71,10 +71,14 @@ class ProgressTests(unittest.TestCase):
     def test_preparation_and_gate_updates_refresh_without_model_evidence(self):
         before = progress.build(self.root)
         path = self.root / progress.SOURCES[1]
-        path.write_text(path.read_text().replace("pending_capability_review", "pending_test_review"))
+        text = path.read_text()
+        text = text.replace(before["pending"][0]["reason"], "pending_test_review", 1)
+        text = text.replace(before["delivered"][0]["output"], "prepared_test_revision", 1)
+        path.write_text(text)
         after = progress.build(self.root)
         self.assertNotEqual(before["fingerprint"], after["fingerprint"])
         self.assertIn("pending_test_review", after["pending"][0]["reason"])
+        self.assertEqual(after["delivered"][0]["output"], "prepared_test_revision")
         self.assertEqual(after["evidence"]["model"], "not_run")
         self.assertEqual(after["counts"], before["counts"])
 

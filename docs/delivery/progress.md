@@ -31,7 +31,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · Deney hazırlığı: S02 gönderim paketi hazır; input/output/context ve toplam bütçe durma kuralları belgelendi. Policy pending_capability_review; gerçek model çalıştırması not_run, üretim limiter kodu yok.
+2026-10-11 · Kod teslimi: yerel token/bağlam preflight ve 17 fixture testi hazır. S02 kontrolü belirsiz model/limit/bütçe nedeniyle gönderimi engelliyor; gerçek model deneyi henüz çalıştırılmadı. Üretim limiter ve para tavanı uygulanmadı.
 
 Sıradaki adım: [S02 planı](../quality/s02-account-smoke-plan.md): hesap/model seçimi → limit/dahil kullanım doğrulaması → tek output → bağımsız ölçüm. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
 
@@ -50,12 +50,13 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Seçili gerçek hedef okuması** — Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match; Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil
 - **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil
 - **S02 gönderim ve güvenlik hazırlığı** — Tek S02 kaynak/prompt/policy; bir gönderim, sıfır retry/tools; ayrı token/context hard-cap sözleşmesi ve pending_capability_review; [Hazır plan](../quality/s02-account-smoke-plan.md); paket hash/policy kontrolü geçti. Belge/hazırlık teslimi; gerçek inference ve production limiter not_run
+- **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Bir gerçek model output’u | Q03-R2 A seçildi; token/context güvenlik eki nedeniyle pending_capability_review. Gerçek output yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır. Claude veya ChatGPT/Codex seçimi ve uygulanabilir cap doğrulaması → tek output → ölçüm; model/usage not_run/unknown |
+| Bir gerçek model output’u | S02 offline preflight blocked; sonlu model/limit/bütçe kanıtı yok. OpenAI docs + CLI help incelemesi bu kapıyı kapatmıyor; ek ücret izni yok | [Paket](../quality/s02-account-smoke-plan.md) ve [preflight kodu](../quality/token-preflight.md) hazır. Hesap/model seçimi → uygulanabilir cap/dahil kullanım doğrulaması → tek output → ölçüm; inference not_run |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -104,4 +105,4 @@ Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo 
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `8340ce99639d0d85185dbb3afbe712284d84b145253b2105974edae9a30ce6c5`
+Kaynak fingerprint: `087bed0953d3c83cae6aabedc1fde8bb133ec7ab19cc043984003840570ea1a3`
