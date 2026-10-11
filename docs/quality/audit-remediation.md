@@ -56,3 +56,8 @@ Regresyonlar: [Spike-0 testleri](../../spikes/spike-0/tests/test_regressions.py)
 5. Gerçek Codex B bağlantısı ve Claude Code capability deneyi yalnız seçilmiş izole hedefte, ayrı capture/MCP kapsamıyla yapılır. Installer’ın substring marker/race problemi, source allowlist, oversized gap, concurrent writer ve hard timeout production adoption öncesi kapanır. Şu an gerçek projelere kurulum yapılmadı.
 
 Production auth/ACL, bütçe rezervasyonu, retention, çok kullanıcı, UI ve MCP bu deneylerle uygulanmış sayılmaz; mevcut MVP/faz görevlerinde korunur. Yeni lisans verilmedi; public release yok.
+
+
+## Sonraki kod teslimi — insan bağımsız hazırlık
+
+[Semantik bağlantı hazır](../../spikes/semantic-chain/README.md): source-only request, output validator, proposal/receipt bridge, import evaluator ve checkpoint scorer çalışıyor. [Yeni sonuç](semantic-readiness-results.json) önceki 63-test audit paketinden ayrı; [hazırlık matrisi](../delivery/implementation-readiness.md) gerçek provider/insan/native kapılarını gösterir. Asistanın yorum taslağı source-bound zincirden geçti; blind inference veya genel kalite kanıtı değildir. Yukarıdaki “prompt/adapter/scorer hazırlanacak” sıranın bu alt dilimi artık uygulandı; gerçek model/API ve kalan kapsam açık.

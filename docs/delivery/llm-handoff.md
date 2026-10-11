@@ -139,3 +139,6 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Audit sonrası çalışan P0 kanıtı — 2026-10-11
 
 [Audit düzeltme kaydı](../quality/audit-remediation.md) güncel sonuçları gösterir. T01/T02/T03 IN_PROGRESS; ürün MVP’si ve production stack seçilmedi. Spike-0 fixture capture/regresyon kodu, typed karar–etki–kanıt zinciri ve bağımsız lexical scorer çalıştırıldı. Üstteki geçmiş “scorer/prototype yok” cümleleri bu ekten önceki duruma aittir. İnsan etiket incelemesi, zorunlu gerçek semantik çıkarım, iki gerçek coding-host capability testi, devam paketi/simple/native kıyası hâlâ kapanış işleri. Deney kodunu ürün auth/permission/DoD garantisi sayma; exact komutlar AGENTS ve spike README’lerindedir.
+
+
+**Güncel P0 kod devamı:** [Implementation readiness](implementation-readiness.md) ve [semantik bağlantı](../../spikes/semantic-chain/README.md) source-only prepare/output import/validation/selection bridge/checkpoint testlerini gösterir. İnsan incelemesi bu hazırlığı bekletmez. Ayrı model provider dispatch, production auth, gerçek target ve native kıyas not_run; T01/T02/T03 ana kapıları açık.

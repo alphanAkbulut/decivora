@@ -608,3 +608,8 @@ TG-01/02 belge düzeltmeleri runtime görevlerini complete yapmaz. TG-12–23 ca
 ## Audit sonrası P0 kanıtı ve restore bağımlılığı
 
 [2026-10-11 düzeltme kaydı](../quality/audit-remediation.md), source/code hash’li [sonuç](../quality/audit-remediation-results.json), [insan review kuyruğu](../quality/human-review-queue.md) ve [ortak kıyas planı](../quality/pilot-comparison-plan.md). T01/T02/T03 kısmi bağımsız deneyleri IN_PROGRESS; mevcut ön koşullar ana kapı **kapanışı** içindir. İnsan gold tamamlanmadan fixture kodu hazırlanabilir; gold/native/model kalitesi varmış gibi ana görev kapatılamaz. T07c minimal production restore, T15 proof, T23 operasyon/migration/purge; fixture SQLite backup bu işlerin completion’ı değildir.
+
+
+## İnsan kararından bağımsız P0 bağlantı teslimi — 2026-10-11
+
+T03f/T03b kısmi kod teslimi: [source-only request, output validator, candidate bridge, evaluator ve checkpoint kodu](../../spikes/semantic-chain/README.md) uygulandı. T01f gold/human ve T03c production yatırım kapıları kapanmadı. [Hazırlık/blocker matrisi](implementation-readiness.md) teknik işi gerçek erişim/model/maliyet ve insan kalite incelemesinden ayırır. Bu işler için bütün gold veya future fazların tamamlanması beklenmez. 28 yeni test ve [sonuç](../quality/semantic-readiness-results.json); sonraki gerçek model dispatch/not_run/usage sınırı açık. AI-authored S02 candidate draft contract/import proof’udur; model kalite benchmark’ı değildir.

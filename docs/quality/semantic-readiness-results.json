@@ -1,0 +1,274 @@
+{
+  "kind": "semantic_connection_readiness",
+  "date": "2026-10-11",
+  "base_commit": "64996b798a0acd3c27497d155ede2dccb3b02321",
+  "validation": "passed_local_contract_checks_not_model_or_product_quality",
+  "semantic_model_dispatch": "not_run",
+  "provider": null,
+  "model": null,
+  "usage": null,
+  "human_gold": "pending",
+  "native_comparison": "not_run",
+  "production_runtime": false,
+  "real_target": {
+    "status": "single_real_document_readback",
+    "proof": "semantic-target-readback.json",
+    "chain_target": "controlled_fixture",
+    "task_verified": false
+  },
+  "environment": {
+    "python": "3.9.6",
+    "os": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64"
+  },
+  "suites": [
+    {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "tests": 8,
+      "seconds": 0.008,
+      "status": "passed",
+      "resource_warning_lines": 0
+    },
+    {
+      "command": "python3 -B -m unittest discover -s spikes/spike-0/tests -v",
+      "tests": 40,
+      "seconds": 3.255,
+      "status": "passed",
+      "resource_warning_lines": 0
+    },
+    {
+      "command": "python3 -B -m unittest discover -s spikes/decision-chain -v",
+      "tests": 15,
+      "seconds": 0.05,
+      "status": "passed",
+      "resource_warning_lines": 0
+    },
+    {
+      "command": "python3 -B -m unittest discover -s spikes/semantic-chain -v",
+      "tests": 28,
+      "seconds": 0.073,
+      "status": "passed",
+      "resource_warning_lines": 0
+    }
+  ],
+  "contract_smoke": {
+    "kind": "source_response_chain_contract_smoke",
+    "response_origin": "scripted_contract_fixture_not_inference",
+    "source_session": "S02",
+    "request_count": 6,
+    "request_ids": [
+      "7cc07505b3782bb183017bd88aa0528343ebee78c452f39847c5696e846523ec",
+      "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+      "1f8eda42a480d177fb0229df07fc842a50cf4bed26aea9d307e88a2861fa7963",
+      "91dcb2f11f75c26a89fee350a46a8bd3f17e15460c9a05a50e9dbc705285a411",
+      "e5118e527429ecfbf87fe01006bc61365a330ec384e6e2cb3ab8e54a6543bf1b",
+      "f198dd5f04cb951f56870bbef8b2506cb982d91e2e3419af5e31b85392c190b7"
+    ],
+    "checkpoints": {
+      "proposal": {
+        "decision": "markdown",
+        "revision": 2,
+        "canonical_mutations": 0
+      },
+      "decision": {
+        "decision": "sqlite",
+        "task_statuses": [
+          "todo"
+        ],
+        "combined": "obsolete_candidate",
+        "export": "retained",
+        "sync": "obsolete_candidate",
+        "watch": "review_unknown"
+      },
+      "model_authority": {
+        "rejected": true,
+        "canonical_mutations": 0
+      },
+      "old_target": {
+        "status": "stale",
+        "verified": false
+      },
+      "partial": {
+        "verified": false
+      },
+      "complete": {
+        "verified": true
+      },
+      "restore": {
+        "same_projection": true,
+        "external_dispatches": 0
+      }
+    },
+    "checkpoint_score": {
+      "status": "passed",
+      "missing": [],
+      "mismatches": []
+    },
+    "expected_sha256": "cf340d1d5ae9d207de3c73b4c7f3969cbab0bb7359fe34082bb35167bbf3e320",
+    "prompt_version": "semantic-source-1",
+    "prompt_sha256": "8a6b1c39b433ed017a95bd91e2b4660ca1607a23f6653020118bd11c6e63bad2",
+    "model_dispatches": 0,
+    "semantic_inference": "not_run",
+    "human_gold_review": "pending",
+    "real_host": false,
+    "real_target": false,
+    "production_runtime": false,
+    "usage": null,
+    "limitations": [
+      "explicit synthetic trusted receipt is not production authentication",
+      "contract fixture is not model output quality",
+      "fixture AC outcomes are controlled inputs",
+      "partial checkpoint scorer does not cover every release invariant"
+    ]
+  },
+  "imported_candidate_smoke": {
+    "kind": "source_response_chain_contract_smoke",
+    "response_origin": "imported_candidate_draft_not_blind_inference",
+    "source_session": "S02",
+    "request_count": 6,
+    "request_ids": [
+      "7cc07505b3782bb183017bd88aa0528343ebee78c452f39847c5696e846523ec",
+      "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+      "1f8eda42a480d177fb0229df07fc842a50cf4bed26aea9d307e88a2861fa7963",
+      "91dcb2f11f75c26a89fee350a46a8bd3f17e15460c9a05a50e9dbc705285a411",
+      "e5118e527429ecfbf87fe01006bc61365a330ec384e6e2cb3ab8e54a6543bf1b",
+      "f198dd5f04cb951f56870bbef8b2506cb982d91e2e3419af5e31b85392c190b7"
+    ],
+    "checkpoints": {
+      "proposal": {
+        "decision": "markdown",
+        "revision": 2,
+        "canonical_mutations": 0
+      },
+      "decision": {
+        "decision": "sqlite",
+        "task_statuses": [
+          "todo"
+        ],
+        "combined": "obsolete_candidate",
+        "export": "retained",
+        "sync": "obsolete_candidate",
+        "watch": "review_unknown"
+      },
+      "model_authority": {
+        "rejected": true,
+        "canonical_mutations": 0
+      },
+      "old_target": {
+        "status": "stale",
+        "verified": false
+      },
+      "partial": {
+        "verified": false
+      },
+      "complete": {
+        "verified": true
+      },
+      "restore": {
+        "same_projection": true,
+        "external_dispatches": 0
+      }
+    },
+    "checkpoint_score": {
+      "status": "passed",
+      "missing": [],
+      "mismatches": []
+    },
+    "expected_sha256": "cf340d1d5ae9d207de3c73b4c7f3969cbab0bb7359fe34082bb35167bbf3e320",
+    "prompt_version": "semantic-source-1",
+    "prompt_sha256": "8a6b1c39b433ed017a95bd91e2b4660ca1607a23f6653020118bd11c6e63bad2",
+    "model_dispatches": 0,
+    "semantic_inference": "not_run",
+    "human_gold_review": "pending",
+    "real_host": false,
+    "real_target": false,
+    "production_runtime": false,
+    "usage": null,
+    "limitations": [
+      "explicit synthetic trusted receipt is not production authentication",
+      "contract fixture is not model output quality",
+      "fixture AC outcomes are controlled inputs",
+      "partial checkpoint scorer does not cover every release invariant"
+    ]
+  },
+  "import_evaluation": {
+    "kind": "imported_model_response_evaluation",
+    "status": "incomplete",
+    "requests": 6,
+    "received": 1,
+    "missing": [
+      "7cc07505b3782bb183017bd88aa0528343ebee78c452f39847c5696e846523ec",
+      "1f8eda42a480d177fb0229df07fc842a50cf4bed26aea9d307e88a2861fa7963",
+      "91dcb2f11f75c26a89fee350a46a8bd3f17e15460c9a05a50e9dbc705285a411",
+      "e5118e527429ecfbf87fe01006bc61365a330ec384e6e2cb3ab8e54a6543bf1b",
+      "f198dd5f04cb951f56870bbef8b2506cb982d91e2e3419af5e31b85392c190b7"
+    ],
+    "abstained": [],
+    "score": {
+      "strict_span": {
+        "tp": 4,
+        "fp": 8,
+        "fn": 62,
+        "precision": 0.3333333333333333,
+        "recall": 0.06060606060606061
+      },
+      "message_kind_only": {
+        "tp": 8,
+        "fp": 4,
+        "fn": 58,
+        "precision": 0.6666666666666666,
+        "recall": 0.12121212121212122
+      },
+      "critical_domain_gate": "incomplete",
+      "not_scored": [
+        "entity identity",
+        "attributes",
+        "relations",
+        "authority",
+        "impact",
+        "state",
+        "target/AC correctness"
+      ]
+    },
+    "canonical_mutations": 0,
+    "automatic_model_dispatch": false,
+    "provider": null,
+    "model": null,
+    "usage": null,
+    "oracle_status": "ai_authored_pending_human_review",
+    "holdout": "reserved_not_sealed",
+    "manifest_sha256": "07b8d6f8aae530198dca4b790c6e8d15d152213ce6ab9a8bf455aaf0c626bf22"
+  },
+  "total_tests": 91,
+  "code_sha256": {
+    "spikes/semantic-chain/README.md": "e071e1034f180a34318570b28d46faccbed760cfde48a8dda9f24e0686703b78",
+    "spikes/semantic-chain/bridge.py": "7b882b27d5608475176b8d902969116759ea74591f9875e139b34bf370e6d04d",
+    "spikes/semantic-chain/expected-checkpoints.json": "cf340d1d5ae9d207de3c73b4c7f3969cbab0bb7359fe34082bb35167bbf3e320",
+    "spikes/semantic-chain/experiment.py": "455fbc632bc6f39dc861b6ee53e5f6151127f21d31180dadc473a6ed4c837a56",
+    "spikes/semantic-chain/fixtures/assistant-s02-draft.json": "0fd4b656158c3e0c1f424cbdf06f86de0536a5bba94dc6034c7f8d9fb7b2b69d",
+    "spikes/semantic-chain/fixtures/assistant-s02-provenance.json": "2c25bd3af1933b61613b77f5711830c01c54a572da21b48dc12f60638026841a",
+    "spikes/semantic-chain/protocol.py": "ceae096b7c6b5b8b3dc7b78dc5e336ca557c2897baaea99e6565c718579f27fd",
+    "spikes/semantic-chain/run.py": "57bceed53fe5d9cf1d860751fc94ca44ec660c3e88b2bef95c9f127a33fa90b2",
+    "spikes/semantic-chain/target.py": "252426a77488ea70f0261678217f2237e6e86368a6f4635d5794b3d87449a90a",
+    "spikes/semantic-chain/test_semantic.py": "a934713a81fa049e8e18503231fdf64ca997748c98d6cb3e9febf9c71d1e8985",
+    "spikes/semantic-chain/test_target.py": "f87be5a16254d462b62498dd784b9db02d939f2b12c1115748c0d4bf266f40ad"
+  },
+  "checks": [
+    {
+      "command": "python3 -B scripts/check_docs.py",
+      "exit_code": 0,
+      "output": "PASS: 103 Markdown files, 1087 local links, 32 scope IDs, 30 tasks, 14 MVP criteria; JSON valid.\nPhase tracker: 30 main-task rows matched canonical backlog metadata.\nTraceability: 14 source stages, 17 features, 10 engines, 28 planned verification scenarios.\nCollaboration/data: 18 additional planned scenarios; not runtime tested.\nConnection/token/graph/context: 30 additional planned contract scenarios.\nTarget application: 10 planned GAP scenarios; oracle is not_run.\nDiagrams: 35 source blocks in 15 documents; inventory matched.\nNot tested: application runtime, adapters, model quality, Mermaid rendering.\n"
+    },
+    {
+      "command": "python3 -B scripts/check_anchors.py",
+      "exit_code": 0,
+      "output": "PASS: 46 local Markdown anchors checked\n"
+    },
+    {
+      "command": "python3 -B scripts/check_corpus.py --self-test",
+      "exit_code": 0,
+      "output": "{\n  \"validation\": \"passed\",\n  \"counts\": {\n    \"sessions\": 6,\n    \"projects\": 2,\n    \"messages\": 58,\n    \"record_annotations\": 66,\n    \"unique_knowledge_records\": 46,\n    \"meaningful_messages\": 51,\n    \"no_new_record_messages\": 7\n  },\n  \"human_review\": \"pending\",\n  \"product_result\": \"not_run\",\n  \"errors\": [],\n  \"validator_negative_tests\": [\n    {\n      \"test\": \"bad_span\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"stale_hash\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"missing_item\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"duplicate_message\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"leaked_expected\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"false_runtime_pass\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"cross_family_split\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"foreign_source_reference\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"ghost_relation\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"insufficient_unique_records\",\n      \"outcome\": \"rejected_as_expected\"\n    },\n    {\n      \"test\": \"duplicate_json_key\",\n      \"outcome\": \"rejected_as_expected\"\n    }\n  ]\n}\n"
+    }
+  ],
+  "diagrams": "Existing source/SVG hashes verified; no Mermaid source edit or new render."
+}

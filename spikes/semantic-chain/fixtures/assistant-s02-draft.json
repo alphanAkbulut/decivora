@@ -1,0 +1,143 @@
+{
+  "format": "decivora-candidates-1",
+  "request_id": "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+  "status": "ok",
+  "records": [
+    {
+      "message_id": "S02-m01",
+      "kind": "Decision",
+      "entity_key": "candidate-sqlite",
+      "start": 30,
+      "end": 46,
+      "quote": "SQLite ile devam",
+      "attributes": {
+        "selected_value": "SQLite",
+        "proposed_supersedes": "Markdown"
+      }
+    },
+    {
+      "message_id": "S02-m01",
+      "kind": "AnswerRecord",
+      "entity_key": "candidate-storage-answer",
+      "start": 0,
+      "end": 28,
+      "quote": "Önceki Q_STORE sorusundaki B",
+      "attributes": {
+        "question_id": "Q_STORE",
+        "option_id": "B",
+        "presentation_revision": 1
+      }
+    },
+    {
+      "message_id": "S02-m02",
+      "kind": "Task",
+      "entity_key": "candidate-migration-plan",
+      "start": 12,
+      "end": 52,
+      "quote": "migration planını hazırlamamız gerekiyor",
+      "attributes": {}
+    },
+    {
+      "message_id": "S02-m03",
+      "kind": "Requirement",
+      "entity_key": "candidate-reversible-plan",
+      "start": 7,
+      "end": 39,
+      "quote": "veri kaybetmeden geri alınabilir",
+      "attributes": {}
+    },
+    {
+      "message_id": "S02-m04",
+      "kind": "Artifact",
+      "entity_key": "candidate-storage-document",
+      "start": 22,
+      "end": 32,
+      "quote": "storage.md",
+      "attributes": {
+        "reported_revision": 2,
+        "application_report": "not_uploaded"
+      }
+    },
+    {
+      "message_id": "S02-m04",
+      "kind": "ImplementationClaim",
+      "entity_key": "candidate-document-update",
+      "start": 41,
+      "end": 70,
+      "quote": "revision 2 olarak güncelledim",
+      "attributes": {
+        "reported_action": "updated"
+      }
+    },
+    {
+      "message_id": "S02-m05",
+      "kind": "ImplementationClaim",
+      "entity_key": "candidate-upload-claim",
+      "start": 0,
+      "end": 9,
+      "quote": "Yükledim.",
+      "attributes": {
+        "reported_action": "uploaded"
+      }
+    },
+    {
+      "message_id": "S02-m06",
+      "kind": "Evidence",
+      "entity_key": "candidate-old-observation",
+      "start": 8,
+      "end": 48,
+      "quote": "önceki Markdown bundle'ı eski ref'te var",
+      "attributes": {
+        "reported_ref": "old",
+        "current_match": "unknown"
+      }
+    },
+    {
+      "message_id": "S02-m07",
+      "kind": "Evidence",
+      "entity_key": "candidate-current-observation",
+      "start": 8,
+      "end": 71,
+      "quote": "seçilen ref'te storage.md içeriği güncel artifact ile eşleşiyor",
+      "attributes": {
+        "reported_result": "match",
+        "target_identity": "unresolved"
+      }
+    },
+    {
+      "message_id": "S02-m08",
+      "kind": "Requirement",
+      "entity_key": "candidate-upload-gate",
+      "start": 27,
+      "end": 57,
+      "quote": "dosya yüklenmeden başlayamasın",
+      "attributes": {
+        "proposed_dependency": "artifact_application_before_schema_verification"
+      }
+    },
+    {
+      "message_id": "S02-m09",
+      "kind": "Evidence",
+      "entity_key": "candidate-rollback-criterion",
+      "start": 23,
+      "end": 45,
+      "quote": "rollback kriteri geçti",
+      "attributes": {
+        "criterion_ref": "AC_ROLLBACK",
+        "reported_result": "passed",
+        "scope": "one_criterion"
+      }
+    },
+    {
+      "message_id": "S02-m10",
+      "kind": "Task",
+      "entity_key": "candidate-independent-backup",
+      "start": 0,
+      "end": 29,
+      "quote": "Bağımsız yedekleme incelemesi",
+      "attributes": {
+        "reported_dependency": "does_not_wait_for_storage_decision"
+      }
+    }
+  ]
+}

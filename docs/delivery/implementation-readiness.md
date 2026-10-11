@@ -1,0 +1,46 @@
+# Kod geliştirme hazırlığı: gerçek blocker ve bağımsız işler
+
+**2026-10-11 · P0.** Kullanıcı insan bağımlılığı olmayan işleri tamamlamamızı, teknik belirsizlikleri somutlaştırmamızı istedi. Bu talep mevcut P0 zincirini geliştirme yetkisidir; ayrı ücret, dış model aktarımı, gerçek host ayarı veya production stack kabulü değildir.
+
+## “Deney” tam olarak ne?
+
+Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/spike-0/README.md) capture’ı; [karar zinciri](../../spikes/decision-chain/README.md) state/impact/AC’yi; [semantik bağlantı](../../spikes/semantic-chain/README.md) source→model contract→policy→chain sınırını çalıştırır. Kontrollü fixture’lar gerçek model/host yerine kullanıldığında bu raporda açıkça belirtilir.
+
+## Beklemeyen işler: uygulandı
+
+| İş | Çıktı | Doğrulama |
+|---|---|---|
+| Kaynak-only model input’u | 6 session istek hazırlayıcı; 58 mesaj; source metadata auth ve oracle dışarıda; exact hash/version/proje kimliği | Protocol input/leak/cache/namespace testleri |
+| Semantik çıktı sözleşmesi | JSON envelope, 14 aday türü, Unicode source span, tip/byte/record limiti, duplicate ve abstention | Hatalı/stale/yetki iddialı çıktı reddediliyor |
+| Geç cevap bağlantısı | Model AnswerRecord → pending proposal; ayrı trusted receipt ile karar; task impact apply ayrı | Actor/receipt/project/source/question/base/retry negatifleri |
+| Ölçüm ve başarısızlık | Import edilmiş response → bağımsız span scorer; eksik output/abstention incomplete; yedi state checkpoint için exact scorer | Eksik/yanlış expectation başarı sayılmıyor |
+| Zincir proof’u | Gerçek sentetik source dosyası → scripted contract response → selection → AND/OR/unknown → old target → partial/full AC → restore | [Sonuç](../quality/semantic-readiness-results.json); gerçek inference/target değil |
+| Otomasyon ve devir | Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı | Docs/corpus/anchor + runtime regresyonları |
+
+Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. Ürün graph/IAM/API/UI hazır olmadı; model input/output kapısı ve fixture karar bağlantısı gerçekten kodlandı.
+
+**Ek bağımsız kanıt:** [Seçili gerçek GitHub dosyası](../quality/semantic-target-readback.json) iki immutable ref’te okundu; repo/path/ref/hash scope doğrulaması çalıştı. Eski ref aynı içerikte olsa da stale, seçili ref observed_match; task_verified false. Bu ayrı manuel connector readback’i, fixture chain’in gerçek hedefte SQLite uyguladığı anlamına gelmez.
+
+## Kalanlar: kimin neye karar vermesi gerekiyor?
+
+| Konu | Tür | Neden gerekli / neyi durdurur? | Durum |
+|---|---|---|---|
+| Bir gerçek model output’u | Model/host erişimi ve veri/maliyet sınırı | Mevcut sıra Q03-R1 A ek ücretli ilk çağrıyı yetkilendirmedi. Gerçek output kalite deneyi onsuz çalışmaz; kod hazırlığı çalışır | Öneri: mevcut tercih edilen LLM hesabında yalnız S02 sentetik request; çıktı import. Ayrı ücretli API öncesi bounded config |
+| Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
+| Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
+| Native/dosya/resume kıyas | Erişilebilir ürün/build, aynı koşullar ve veri izni | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
+| Production stack/build | Owner yatırım kararı + deney sonucu | T04–T24 bağımsız ürün başlangıcı | T03c açık; fixture Python/SQLite önerilen üretim stack’i değil |
+
+MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verification invariant’ları önceden uygulanabilir sözleşmelere bağlandı; doğru runtime/host davranışları testlerle kanıtlanacak. Ekip/cloud ve ileri dil/connector detaylarının tamamını şimdi seçmek gerekmiyor.
+
+## Netleşen teknik yöntemler ve sınırlar
+
+- P0 yöntem: mevcut Python stdlib/SQLite devamı; ek bağımlılık veya ücret yok. Source hazırlama/import adapter sağlayıcı bağımsız; hangi LLM daha iyi sonucu deney belirler.
+- İstek kimliği: project/session/messages/source revisions + seçili context + prompt version/hash. Aynı kaynak/prompt/context yeniden kullanılır; değişen kimlikte eski response reddedilir. Canonical mutations model transaction’ı içinde değil.
+- Maliyet: 32 KiB input, 64 mesaj/64 aday ve 128 KiB response parse tavanı; 1536 output token önerisi. Bunlar offline sözleşme sınırlarıdır, ölçülmüş tasarruf veya API budget reservation değildir. Provider usage yoksa null.
+- Güven: model metadata’sı talimat, ACL veya insan approval’ı değildir. Candidate source ile ayrı trusted selection binding’i eşleşir. Trusted receipt dict yalnız fixture; production authenticated policy channel ayrıca gerekir.
+- Tamlık: abstention/eksik inference/parse hatası incomplete/deferred kalır; veri kaynağı saklanır. Typed smoke tüm ürün state/authority kontrollerinin başarı garantisi değildir.
+
+## Sıradaki uygulanabilir adım
+
+Hazır S02 request’inin seçilen LLM yöntemiyle gerçek output’unu al; `evaluate` ile import/ölçüm ve kaynağa bağlı proposal kontrolü yap. Sonra development ailelerinde prompt/adapter düzelt; insan review ve yeni sealed family ile blind kaliteyi ölç. Native/dosya/resume aynı sınırlar altında kıyaslanır; T03c sonucuna göre production yoluna geçilir. Human review beklerken source/adapter/verifier kod ve negatif testleri ilerler; zorunlu semantik iş “isteğe bağlı” yapılmaz.

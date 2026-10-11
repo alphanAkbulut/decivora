@@ -1,0 +1,15 @@
+{
+  "kind": "current_assistant_authored_candidate_draft",
+  "source_session": "S02",
+  "source_request_id": "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+  "generation_method": "current conversation assistant interpretation with selected exact quotes",
+  "automatic_model_dispatch": false,
+  "blind": false,
+  "prior_oracle_visible": true,
+  "human_review": "pending",
+  "model_id": null,
+  "provider_request_id": null,
+  "usage": null,
+  "quality_claim": false,
+  "note": "AI-authored candidate draft exercises import/bridge only. Not an independent semantic inference benchmark or running model integration."
+}

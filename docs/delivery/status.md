@@ -13,7 +13,7 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. İnsan etiket incelemesi → semantik model koşullarının kararı → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain bağlantısı artık çalışıyor; ayrı model inference hâlâ not_run. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. İnsan etiket incelemesi → semantik model koşullarının kararı → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
 
@@ -324,3 +324,15 @@ Kullanıcı raporların private GitHub’a alınmasını, Spike-0 önerilerini v
 63 test (40 Spike-0 + 15 typed chain + 8 scorer/anchor) geçti; kaynak/scorer-only lexical corpus koşusu zayıf çıktı ve başarısızlıklar saklandı. Typed karar→impact→target→AC→backup/replay zinciri geçti; bu IAM, gerçek semantik extraction veya production backup değildir. T07c erken restore teslimi, T15 kapanış bağımlılığı; T23a kapsamlı operasyon restore olarak ayrıldı. CI tanımı ve explicit Türkçe anchors eklendi.
 
 T01/T02/T03 **IN_PROGRESS**, diğer 27 ana görev TODO; hiçbir ana görev tamamlanmadı. [Üç insan review örneği](../quality/human-review-queue.md), zorunlu semantik model koşulları ve [native/dosya/devam paketi kıyası](../quality/pilot-comparison-plan.md) sıradadır. Eski tarihsel “kod/scorer/CI yok” kayıtları kendi snapshot’ına aittir. Mevcut 35 Mermaid source/SVG hashleri korunur; yeni render/UI testi iddiası yok. Yayın/remote read-back kanıtı teslim sırasında ayrıca doğrulanır.
+
+
+## 2026-10-11 — İnsan incelemesini beklemeyen semantik bağlantı kodu
+
+Kullanıcı bağımsız işleri tamamlamamızı istedi. Source-only request hazırlığı (6 session/58 mesaj), hash/version/proje bağlama, strict output schema/Unicode span/limit/duplicate/abstention, ayrı selection makbuzu ve mevcut chain’e AnswerRecord bridge, imported response evaluator ve yedi kritik checkpoint scorer uygulandı. [Kod ve komutlar](../../spikes/semantic-chain/README.md); [hazırlık matrisi](implementation-readiness.md).
+
+28 yeni test, scripted reply ve bu asistanın 12 adaylı S02 yorum taslağını import eden kontrollü zincir sınanır. Beklenti dosyası current projector’dan üretilmez; human gold pending. Taslak prior oracle exposed/non-blind, API/model dispatcher yok; semantik kalite veya genel doğruluk kanıtı değildir. Eksik 5 session output’u incomplete; canonical mutations model/parse aşamasında 0. Gerçek target/auth/host/API hâlâ not_run; model/provider/usage null. Mevcut fixture yöntem ve sınırlar somutlaştırıldı; P0 kod hazırlığı human review veya future faz kararlarını beklemez.
+
+Ana durumlar T01/T02/T03 IN_PROGRESS, diğer 27 TODO. [Sonuç kaydı](../quality/semantic-readiness-results.json) güncel test kapsamını önceki 63-test audit paketinden ayırır. Production stack/T03c, gerçek provider/veri/bütçe, insan gold ve native kıyas kapıları açık; zorunlu extraction görevi korunur. Var olan Mermaid/SVG kaynakları değiştirilmedi.
+
+
+Ek aynı-tur gözlem: [seçili corpus README için gerçek GitHub readback](../quality/semantic-target-readback.json), iki immutable ref, aynı blob; eski ref stale/seçili ref observed_match. Scope/hash kontrol kodu ve dört negatif/pozitif test eklendi. Task verification veya production target adapter iddiası yok.

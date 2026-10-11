@@ -1,0 +1,56 @@
+{
+  "kind": "single_real_github_target_observation",
+  "date": "2026-10-11",
+  "expected": {
+    "repository": "alphanAkbulut/decivora",
+    "path": "examples/corpus/README.md",
+    "ref": "64996b798a0acd3c27497d155ede2dccb3b02321",
+    "artifact_revision": 1,
+    "sha256": "65ff47445f51a92167409ebeca26bc4714ceab7b33b46bea636ec5443fbe16dd"
+  },
+  "observations": [
+    {
+      "observation": {
+        "repository": "alphanAkbulut/decivora",
+        "path": "examples/corpus/README.md",
+        "ref": "28e9d6d29fa2010ff6febc220d7e4b123abe04de",
+        "artifact_revision": 1,
+        "availability": "read",
+        "git_blob_sha": "0ecf4632868d161fc0d245785465457f686a8dfa",
+        "origin": "authenticated_github_connector_read",
+        "sha256": "65ff47445f51a92167409ebeca26bc4714ceab7b33b46bea636ec5443fbe16dd"
+      },
+      "assessment": {
+        "status": "stale",
+        "task_verified": false
+      }
+    },
+    {
+      "observation": {
+        "repository": "alphanAkbulut/decivora",
+        "path": "examples/corpus/README.md",
+        "ref": "64996b798a0acd3c27497d155ede2dccb3b02321",
+        "artifact_revision": 1,
+        "availability": "read",
+        "git_blob_sha": "0ecf4632868d161fc0d245785465457f686a8dfa",
+        "origin": "authenticated_github_connector_read",
+        "sha256": "65ff47445f51a92167409ebeca26bc4714ceab7b33b46bea636ec5443fbe16dd"
+      },
+      "assessment": {
+        "status": "observed_match",
+        "task_verified": false
+      }
+    }
+  ],
+  "same_bytes_at_both_refs": true,
+  "task_verified": false,
+  "semantic_inference": false,
+  "scope": "Existing selected synthetic corpus guide only; no write, storage migration or complete task proof.",
+  "observer": "authenticated GitHub connector via explicit immutable repository/path/ref calls",
+  "production_adapter": false,
+  "limitations": [
+    "Python assessor validates provided metadata, does not authenticate or fetch",
+    "readback does not prove SQLite decision was implemented",
+    "one unchanged document is not a whole artifact bundle or DoD"
+  ]
+}

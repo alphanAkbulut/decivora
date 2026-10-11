@@ -161,3 +161,6 @@ Bugünkü snapshot'ta T01/T02/T03 IN_PROGRESS, 27 ana geliştirme görevi TODO; 
 ### P0 karşılaştırma havuzu eki: WrongStack
 
 [WrongStack sabit ref incelemesi](../discovery/wrongstack-review.md) T03 native/extend/build havuzuna eklendi. T03d PROPOSED; WS-R1–R5 küçük reuse/uyum deneyi, sonuçlar WS-01–08 not_run. Statik incelemenin hazır olması T03/T04'ü bitirmez. 30 ana görev faz/durum/başlığı ve MVP/P2/P3/P4 teslim sınırları korunur.
+
+
+**Güncel P0 kod devamı:** [Implementation readiness](implementation-readiness.md) ve [semantik bağlantı](../../spikes/semantic-chain/README.md) source-only prepare/output import/validation/selection bridge/checkpoint testlerini gösterir. İnsan incelemesi bu hazırlığı bekletmez. Ayrı model provider dispatch, production auth, gerçek target ve native kıyas not_run; T01/T02/T03 ana kapıları açık.

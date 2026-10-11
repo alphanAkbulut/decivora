@@ -5,7 +5,7 @@
 **Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
 
 > [!NOTE]
-> **Aşama: P0 keşif ve çalışan deney düzenekleri.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+> **Aşama: P0 keşif ve çalışan deney düzenekleri.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri, source-bound semantik çıktı bağlantısı ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
 
 **Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Kullanıcı sınırlı P0 deneylerini ve audit düzeltmelerini yetkilendirdi; build/extend sonucu ve production stack kararı açık. [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
 
@@ -16,7 +16,7 @@
 | Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli; T01 ilk corpus hazır | İnsan etiket incelemesi ve çalışan sistemde ölçüm |
 | Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
 | Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
-| Pilot ve uygulama | P0: Spike-0 regresyonları, typed karar zinciri ve lexical baseline çalıştırıldı; insan pilotu başlamadı | İnsan gold review, zorunlu semantik model deneyi, gerçek host ve native kıyası; Codex B sonra |
+| Pilot ve uygulama | P0: capture, typed zincir, lexical baseline ve semantik output contract/import/bridge testleri çalıştı; insan pilotu başlamadı | İnsan gold review, zorunlu semantik model deneyi, gerçek host ve native kıyası; Codex B sonra |
 
 **İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti. [Lexical baseline](docs/quality/audit-remediation.md) düşük başarı gösterdi; insan gold incelemesi ve gerçek semantik model deneyi bekliyor.
 
@@ -167,6 +167,8 @@ scripts/         Doküman/corpus kontrolü ve bağımsız ölçüm
 ```
 
 Dokümantasyon kontrolü: `python3 scripts/check_docs.py` ve `python3 scripts/check_anchors.py`. Bunlar uygulama özelliklerini test etmez.
+
+**Kod geliştirme hazırlığı:** [Neyi tamamladık, neyi bekliyoruz?](docs/delivery/implementation-readiness.md) · [Semantik bağlantı kodu](spikes/semantic-chain/README.md) · [Yeni doğrulama kaydı](docs/quality/semantic-readiness-results.json).
 
 **Çalıştırılmış kanıt ve bulgular:** [Audit düzeltme özeti](docs/quality/audit-remediation.md) → [Spike-0](spikes/spike-0/README.md) → [karar zinciri](spikes/decision-chain/README.md). [İnsan etiket incelemesi](docs/quality/human-review-queue.md) ve semantik kalite kapısı açık. CI doküman, corpus ve P0 testlerini otomatik çalıştırır; CI sonucu ayrı run kanıtıdır.
 

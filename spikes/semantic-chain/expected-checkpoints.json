@@ -1,0 +1,9 @@
+{
+  "proposal": {"decision": "markdown", "revision": 2, "canonical_mutations": 0},
+  "decision": {"decision": "sqlite", "task_statuses": ["todo"], "sync": "obsolete_candidate", "export": "retained", "combined": "obsolete_candidate", "watch": "review_unknown"},
+  "model_authority": {"rejected": true, "canonical_mutations": 0},
+  "old_target": {"status": "stale", "verified": false},
+  "partial": {"verified": false},
+  "complete": {"verified": true},
+  "restore": {"same_projection": true, "external_dispatches": 0}
+}
