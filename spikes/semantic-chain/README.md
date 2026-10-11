@@ -1,6 +1,6 @@
 # P0 — Semantik çıktı bağlantısı ve deney çalıştırıcısı
 
-**Çalışan kod; ayrı model henüz çağrılmadı.** Python 3.9+ standart kütüphanesi. Yeni dependency, ücretli API, gerçek transcript, global config veya host kurulumu yok. Bu P0 prototipidir; production extractor/MCP/IAM değildir.
+**Çalışan P0 kod.** Tarihsel S02-001 erişim hatası, S02-002 output/strict span reddi; yeni adapter üzerinde gerçek inference yapılmadı. Python 3.9+ standart kütüphanesi. Yeni dependency, ücretli API, gerçek transcript, global config veya host kurulumu yok. Bu P0 prototipidir; production extractor/MCP/IAM değildir.
 
 ## Çalışan akış
 
@@ -29,11 +29,11 @@ Prepare: 6 session/58 source mesajı; insan gold pending, reserved split sealed 
 
 `run.py` mevcut S02 source mesajıyla **scripted response contract fixture** çalıştırır. Yedi checkpoint bağımsız yazılmış [beklenti dosyasına](expected-checkpoints.json) göre ölçülür; kod algoritması beklenen sonucu üretmez. Model anlam kalitesi testi değildir. Gerçek target yerine temporary fixture ve kontrollü AC sonucu kullanılır. [Kaydedilmiş sonuç](../../docs/quality/semantic-readiness-results.json).
 
-28 yeni test: source/authority/namespace/span/version/type/schema sınırları, malicious output, abstention, limit, duplicate, stale/ambiguous soru, ayrı receipt, agent approval reddi, idempotency, evaluator missing ve checkpoint fail/incomplete. Production kaynak ACL’si, çok soru/graph modeli, gerçek provider/host ve native kıyas hâlâ ilgili görevlerdedir.
+İlk teslimde 28 test; kaynak adapter/candidate rubric teslimiyle suite toplamı 48 test: source/authority/namespace/span/version/type/schema sınırları, malicious output, abstention, limit, duplicate, stale/ambiguous soru, ayrı receipt, agent approval reddi, idempotency, evaluator missing ve checkpoint fail/incomplete. Production kaynak ACL’si, çok soru/graph modeli, gerçek provider/host ve native kıyas hâlâ ilgili görevlerdedir.
 
 ## Neyi bekliyoruz?
 
-Bu kodu yazmak veya kontrollü negatiflerini çalıştırmak insan etiket incelemesini beklemiyordu; tamamlandı. Gerçek semantik output’u üretmek için **hangi model/host, hangi sentetik dosya ve hangi maliyet sınırı** açık. İlk öneri, tek geliştirme request’i S02’yi mevcut tercih edilen LLM hesabında çalıştırıp contract JSON’u import etmek; ayrı ücretli API bağlantısı kurmadan bir çıktı smoke’u. Mevcut hesap limit/token tüketimi yine olabilir. Bu yöntem otomatik background provider entegrasyonu veya adil native karşılaştırması değildir. Sonraki otomatik çağrıda sağlayıcı/config/usage ve bounded toplam bütçe somutlaştırılacak.
+Yeni quote-only contract için gerçek semantik output ve kullanım ölçümü gerekiyor; sağlayıcı/model, source-only veri ve toplam maliyet sınırı henüz yetkilendirilmedi. Tarihsel S02-002 output'u geldi fakat strict kaynak konumu kontrolünden geçmedi. Yeni adapter bu hatayı ayrı türevde çözer; orijinal sonuç korunur. API yöntem önerisi ve kalan kalite kapıları [teslim raporundadır](../../docs/quality/source-anchor-adapter.md). Gerçek model testi zorunludur; yöntem/bütçe seçimi onu isteğe bağlı yapmaz. Yeni dispatch olmadan local kod ve negatifler tamamlandı.
 
 Human gold review kalite iddiasını, T03c owner kararı production teknoloji/yatırımı sınırlar. Ekip/cloud/dil/future özellikleri bu P0 kod çalışmasını bekletmez; MVP/full-scope ayrı fazlarında korunur.
 
@@ -44,3 +44,10 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 
 
 **Seçili gerçek hedef gözlemi:** [GitHub readback kaydı](../../docs/quality/semantic-target-readback.json) mevcut corpus rehberini iki immutable ref’te gerçekten okur. Aynı byte’lar olsa da beklenen ref dışındaki gözlem stale; seçilen ref observed_match. `target.py` ayrıca repo/path/revision/hash ve missing/unknown ayrımını sınar. Gözlemler authenticated connector çağrılarıyla toplandı; Python assessor fetch/auth yapmaz. Dosya eşleşmesi storage kararının uygulandığı veya task DoD’unun geçtiği değildir. Kontrollü chain koşusundaki target hâlâ fixture’dır; iki kanıtı karıştırma.
+
+
+## Bounded quote adapter ve ayrı candidate değerlendirmesi
+
+`anchors.py` / `anchor_cli.py`: modelden offset istemeyen ayrı quote-only contract; unique exact quote konumunu code hesaplar, ambiguity/stale/authority/limit reddi korunur. Eski response yalnız açık legacy opt-in ile türetilir; raw/türev hash ayrı, canonical mutation 0. `candidate_eval.py` dört aday alanını exact one-to-one ölçer; canonical karar/onay veya verification ölçümü değildir. Historical protocol/prompt ve oracle korunur.
+
+`python3 -B spikes/semantic-chain/run_anchor_checks.py` mevcut raw S02 ve üç authored scripted case için hashli kanıtı tekrar üretir. 20 ek testle toplam 48; yeni provider dispatch yok. CLI komutları, API değerlendirmesi ve kalan kapılar [teslim raporunda](../../docs/quality/source-anchor-adapter.md). Audit wrapper’ın `response` alanı ayrı candidate envelope’dur; eski runner’a wrapper’ın tamamını verme. Yeni gerçek deney için model/veri/bütçe izni gerekir.

@@ -6,6 +6,7 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 
 ## Çalışma düzeni
 
+- Yeni uygulama/entegrasyon yatırımlarında `docs/governance/evidence-first-development.md` rehberini oku: en riskli varsayımı küçük çalışan dilimle sına, kanıt düzeylerini ayır ve onaylı bütçede dur. Rehber kullanıcı yetkisini genişletmez.
 - Güncel aşama ve sıradaki iş için `docs/delivery/status.md` ve `docs/delivery/backlog.md` oku. Geçici görev/branch bilgilerini bu dosyaya ekleme.
 - Kullanıcının tam vizyonunu `docs/product/full-scope.md` içinde koru. MVP dışında kalan fikirleri silme; açık fazla ilişkilendir.
 - Değiştireceğin dosyanın güncel halini yeniden oku; kullanıcı ve diğer agent değişikliklerini koru. Küçük, incelenebilir değişiklik yap.

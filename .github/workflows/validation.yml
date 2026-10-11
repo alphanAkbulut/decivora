@@ -22,3 +22,4 @@ jobs:
       - run: python3 -m unittest discover -s spikes/semantic-chain -v
       - run: python3 spikes/semantic-chain/run.py
       - run: python3 spikes/semantic-chain/run.py --response spikes/semantic-chain/fixtures/assistant-s02-draft.json
+      - run: python3 spikes/semantic-chain/run_anchor_checks.py

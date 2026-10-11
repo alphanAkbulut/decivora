@@ -13,9 +13,17 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain fixture bağlantısı çalışıyor; ayrı gerçek inference bir output verdi, strict kaynak konumu kontrolü reddetti; semantik skor/zincir çalışmadı. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. Offline source anchoring → geçerli output ölçümü → insan etiket incelemesi → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain fixture bağlantısı çalışıyor; ayrı gerçek inference bir output verdi, strict kaynak konumu kontrolü reddetti; semantik skor/zincir çalışmadı. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. Bounded offline source anchoring teslim edildi; yeni quote-only contract üzerinde gerçek model ölçümü → insan etiket incelemesi → adil native karşılaştırma sıradadır. [Yeni teslim](../quality/source-anchor-adapter.md). **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-11 — Onaylı sınırlı kaynak adapter teslimi
+
+- Kullanıcı 60 dakikalık kaynak/değerlendirme kod dilimini kabul etti; genel araştırma ve yeni özellik tasarımı genişletilmedi. API yalnız resmî belgelerle değerlendirildi; yeni paid/inference çağrısı yapılmadı.
+- [Teslim](../quality/source-anchor-adapter.md): bounded exact-quote adapter + ayrı quote-only contract/CLI + candidate rubric; 48 semantik suite testi. [Hashli kanıt](../quality/source-anchor-adapter-results.json): 10 offset ayrı türevde düzeltildi, 11 candidate geçti; üç scripted case state değiştirmedi.
+- Candidate ve canonical/domain değerlendirmesi ayrıldı; eski gerçek sonuçlar/oracle değişmedi. Gerçek model kalite, ilişki/impact extraction, gerçek host, native karşılaştırma ve production stack kapıları açık. T03 IN_PROGRESS kalır.
+- [Projeler arası rehber](../governance/evidence-first-development.md) proje AGENTS dosyasına bağlandı. Global config ve başka repo değiştirilmedi; diğer projelerde referansla kullanılabilir.
+
 
 ### 2026-10-11 — Built edilebilirlik sınırının ek denetimi
 

@@ -1,7 +1,7 @@
 # Riskler, gizlilik ve operasyon sınırları
 
 > [!WARNING]
-> **Aktif P0 engeli: R20 — model çıktısının kaynak konumu güvenilir değil.** S02-002'de 10/11 span hatalı; batch reddedildi, semantik ölçüm ve karar zinciri başlamadı. [Nerede durduk, ne denedik, yerel çözüm kanıtı](../quality/s02-second-attempt-result.md). Fixture/unit test başarısı gerçek-model kalite veya risk kapanışı değildir.
+> **Aktif P0 engeli: R20 — model çıktısının kaynak konumu güvenilir değil.** S02-002'de 10/11 span hatalı; batch reddedildi, semantik ölçüm ve karar zinciri başlamadı. [Deneme geçmişi](../quality/s02-second-attempt-result.md). [Yeni offline adapter](../quality/source-anchor-adapter.md) konumları ayrı türevde çözüyor; gerçek kalite/production kapısı açık. Fixture/unit test başarısı risk kapanışı değildir.
 
 ## Gözlenen ve henüz ölçülmeyen öncelikli riskler
 
@@ -9,7 +9,7 @@ High bir engineering etki değerlendirmesidir; istatistiksel olasılık veya kes
 
 | Risk | Durum / etki | Kanıt | Açık iş / sorumluluk |
 |---|---|---|---|
-| R20 · Modelin yanlış kaynak konumu üretmesi | Observed / High; T03 geçerli import ve scorer'ı durdurur | S02-002: 10/11 span yanlış, 11 exact quote; [11 tekil konum + 7 kontrol probe'u](../quality/source-anchor-feasibility.json) çözüm fizibilitesi, production çözüm değil | T03/T09 · engineering: bounded adapter + negative test + bağımsız ölçüm; tek probe ile Closed değil |
+| R20 · Modelin yanlış kaynak konumu üretmesi | Observed / High; T03 geçerli import ve scorer'ı durdurur | S02-002: 10/11 span yanlış, 11 exact quote; [bounded adapter ve 48 suite testi](../quality/source-anchor-adapter.md) engineering mitigasyonu; yeni contract için gerçek semantic/production proof yok | T03/T09 · adapter/negatifler teslim; bağımsız gerçek semantic kalite, ilişkiler ve production entegrasyonu açık; Closed değil |
 | R01 · Host erişiminin kesilmesi | Observed; devamlılık/root cause Unknown | S02-001 cloudflare_challenge; S02-002 Chrome'da output geldi, kontrollü browser kıyası yapılmadı | T02/T03 · engineering: capability/coverage/fallback; otomatik retry/izin varsayma |
 | R11 · Hesap yolunda token/context/para üst sınırı belirsiz | Unknown / High; sınırsız bütçe izni değil | Web smoke usage null; manuel sınırlı istisna, strict otomatik preflight blocked | T03/T21 · engineering + owner: gerçek cap/telemetri; yeni çağrı için yeni somut izin |
 | R02/R04 · Yanlış karar etkisi veya yanlış done | Unmeasured gerçek-model akışı / High | Fixture negatif testleri var; S02-002 bu aşamalara ulaşmadı | T03/T12/T14 · engineering: source bağlamadan sonra ayrı approval/evidence/AC testleri |
@@ -39,7 +39,7 @@ Risk kapanışı: kanıt → etkilenen iş → düzeltme → anlamlı negatif/po
 | R17 | Preview sonrası yeni gerekçe edge'i yanlış obsolete üretir | Knowledge revision guard; yeni diff/onay | V22; ADR-0008; engineering |
 | R18 | Verifier transcript komutunu yetkisiz çalıştırır | Ayrı runner capability, izinli workspace/check, timeout | V24; ilk verifier diliminde engineering |
 | R19 | Restore/replay dış işlemi tekrar gönderir | Etkisiz replay, delivery ledger, restore sonrası outbox pause | V27; ADR-0007; operations |
-| R20 | Model kaynak span/offset yanlış üretir; bütün batch kullanım dışı kalır | Message ID + tekil exact quote ile kodda konum; revision binding, ambiguous rejection; strict validator korunur | S02-002 Observed; ANCHOR-PROBE-01 fizibilite, production adapter ve semantik doğrulama açık; T03/T09 engineering |
+| R20 | Model kaynak span/offset yanlış üretir; bütün batch kullanım dışı kalır | Message ID + tekil exact quote ile kodda konum; revision binding, ambiguous rejection; strict validator korunur | S02-002 Observed; ANCHOR-ADAPTER-01 offline kod/negatifler teslim; yeni contract gerçek inference ve production doğrulaması açık; T03/T09 |
 
 Queue kapasitesi, lease, recovery ve purge ayrıntıları [runtime sözleşmesinde](../architecture/runtime-contracts.md). Roller sorumluluk önerisidir; bağımsız güvenlik/operasyon ekibinin atanmış olduğu iddia edilmez. Özellikle R16/R18 son release hardening'ine ertelenmez.
 

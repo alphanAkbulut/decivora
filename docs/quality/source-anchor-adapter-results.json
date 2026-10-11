@@ -1,0 +1,134 @@
+{
+  "format": "decivora-anchor-checks-1",
+  "scope": "offline_adapter_and_scripted_contract",
+  "hashes": {
+    "spikes/semantic-chain/anchors.py": "558abf7fb516354f7f1f1d3abc090fee6c7bc5159aca0d84438b6eb7ab5ca72f",
+    "spikes/semantic-chain/anchor_cli.py": "15088092bb8c513f58acb3624b9f693daf8ec95894981800afe8ce92ee8d93fa",
+    "spikes/semantic-chain/candidate_eval.py": "dfacb783750549fe4e6a194f547e3f81bf1a31e3e73d9cbaa62b06022b26cb4d",
+    "spikes/semantic-chain/test_anchors.py": "67906fb20dc0c947717c409ae40155e4268460c92afddc8dfab67573d4c03d0e",
+    "spikes/semantic-chain/run_anchor_checks.py": "b216c06a29ceb557445b81d3c9c8d2aea727394f8b0dae4bacb796279a7cd872",
+    "spikes/semantic-chain/fixtures/candidate-contract-cases.json": "5fe4a041607dbd707d819b0bde6457e65104f510871f7678ce20f4aa56d018c3",
+    "examples/model-smoke/s02-request.json": "10e7f3738f6414b3f36747f04398e076a23bf534a601bca71775696b193416d1",
+    "docs/quality/model-runs/s02-002-response.txt": "ce4988233436a23c5ec6530f3182163d84c8863d4fea0642bd3673f213fab963"
+  },
+  "original": {
+    "status": "rejected",
+    "error": "candidate quote not in source"
+  },
+  "derived": {
+    "request_id": "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+    "raw_sha256": "ce4988233436a23c5ec6530f3182163d84c8863d4fea0642bd3673f213fab963",
+    "derived_sha256": "35679c10a957a0258c67a4c6ea5fa850ceb31a16861755547c64b98fabdae191",
+    "replaced_offsets": 10,
+    "validated_candidates": 11
+  },
+  "fixture_cases": [
+    {
+      "case_id": "late_explicit",
+      "request_id": "59a011259fc4aa284bc2799d700a8c4e11cc40d5003137d7bb8518133e451ff7",
+      "score": {
+        "format": "decivora-candidate-score-1",
+        "review_status": "authored_draft",
+        "status": "evaluated",
+        "true_positive": 1,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "scored_fields": [
+          "attributes",
+          "kind",
+          "message_id",
+          "quote"
+        ],
+        "canonical_mutations": 0,
+        "unscored": [
+          "entity_identity",
+          "canonical_state",
+          "authority",
+          "relations",
+          "impact",
+          "target_verification",
+          "acceptance_criteria"
+        ],
+        "missing": [],
+        "extra": []
+      },
+      "proposal_status": "pending_trusted_selection",
+      "canonical_state_unchanged": true
+    },
+    {
+      "case_id": "ambiguous_short_answer",
+      "request_id": "09ae477403cb643978abbb0cac3ef7f371f75537da0f1ad1528efa4457c96143",
+      "score": {
+        "format": "decivora-candidate-score-1",
+        "review_status": "authored_draft",
+        "status": "evaluated",
+        "true_positive": 1,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "scored_fields": [
+          "attributes",
+          "kind",
+          "message_id",
+          "quote"
+        ],
+        "canonical_mutations": 0,
+        "unscored": [
+          "entity_identity",
+          "canonical_state",
+          "authority",
+          "relations",
+          "impact",
+          "target_verification",
+          "acceptance_criteria"
+        ],
+        "missing": [],
+        "extra": []
+      },
+      "proposal_status": "unmatched_or_stale",
+      "canonical_state_unchanged": true
+    },
+    {
+      "case_id": "upload_claim_without_observation",
+      "request_id": "011862491c8b331bcc54f2d8b1a1660cd9a32a58232bf6ad4d29c0b1d0b5946f",
+      "score": {
+        "format": "decivora-candidate-score-1",
+        "review_status": "authored_draft",
+        "status": "evaluated",
+        "true_positive": 1,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "scored_fields": [
+          "attributes",
+          "kind",
+          "message_id",
+          "quote"
+        ],
+        "canonical_mutations": 0,
+        "unscored": [
+          "entity_identity",
+          "canonical_state",
+          "authority",
+          "relations",
+          "impact",
+          "target_verification",
+          "acceptance_criteria"
+        ],
+        "missing": [],
+        "extra": []
+      },
+      "proposal_status": "unmatched_or_ambiguous",
+      "canonical_state_unchanged": true
+    }
+  ],
+  "model_calls": 0,
+  "canonical_mutations": 0,
+  "usage": null,
+  "semantic_quality": "not_measured",
+  "production_release_gate": "open"
+}

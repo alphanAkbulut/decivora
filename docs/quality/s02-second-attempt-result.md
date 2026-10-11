@@ -100,3 +100,8 @@ Kullanıcının “her aşamada hata çıkarsa yatırım boşa gider mi?” soru
 **Sonuç:** Konum hatasının çözülebilirliği için kanıt var; tüm ürünün güvenilir/ekonomik üretilebilirliği için henüz yeterli kanıt yok. Sıradaki teknik öncelik yalnız adapter değil, candidate/output sözleşmesi ile bağımsız değerlendirme rubric'inin uyumunu sağlamak. Rutin tür/span sözleşmesini engineering hazırlar; insan anlam/karar doğruluğu review'u ayrı kalır. Daha fazla model çağrısı öncesinde bu uyum kontrol edilir. Unit/fixture başarıları production yatırım garantisi vermez.
 
 **Owner'a öneri; henüz seçilmiş bütçe/takvim değil:** Açık uçlu belge ve araştırma yerine kısa çalışan teslimler ve süre/maliyet sınırı olan T03c devam/yeniden tasarım/durdurma kararı. İlk yerel teslim: source anchoring + negatifler + tutarlı scorer; sonraki ayrı izinli teslim: sınırlı yeni örnekte gerçek otomatik karar/görev/ilişki çıkarımı ve düzeltme yükü. Sınır dolduğunda bitmeyen analiz uzatılmaz; kanıt ve kalan riskle owner'a dönülür. Tam vizyon/MVP silinmez; production geliştirmesi bu deneyden başarı çıkmış gibi başlamaz.
+
+
+## Sonraki bounded engineering teslimi
+
+[ANCHOR-ADAPTER-01](source-anchor-adapter.md) kaynak konumunu code ile hesaplayan offline adapter, ayrı candidate rubric ve negatif testleri tamamlar. Ham sonuç ve tarihsel skorlar değişmedi; yeni gerçek inference yok. Projeler arası ders [rehberde](../governance/evidence-first-development.md).

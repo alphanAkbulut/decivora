@@ -1,5 +1,6 @@
 """Tracker tests: authority, freshness and read-only local boundaries, not product tests."""
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -26,6 +27,11 @@ class ProgressTests(unittest.TestCase):
             dest = self.root / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, dest)
+        # Fresh *temporary test fixture*, not a rewrite of the repository's historical proof.
+        # Tests of recorded/stale behavior must not depend on a live README retaining old bytes.
+        report['code_sha256'] = {name: hashlib.sha256((self.root/name).read_bytes()).hexdigest()
+                                 for name in report['code_sha256']}
+        (self.root/progress.SOURCES[3]).write_text(json.dumps(report))
 
     def test_canonical_status_and_acceptance_not_inferred_from_test_pass(self):
         data = progress.build(self.root)
@@ -67,6 +73,14 @@ class ProgressTests(unittest.TestCase):
         data = progress.build(self.root)
         self.assertEqual(data["evidence"]["status"], "stale")
         self.assertIn("spikes/semantic-chain/protocol.py", data["evidence"]["stale_code"])
+
+    def test_changed_evidenced_readme_is_stale_not_new_runtime_failure(self):
+        path = self.root / 'spikes/semantic-chain/README.md'
+        path.write_text(path.read_text() + '\nNew documentation.\n')
+        data = progress.build(self.root)
+        self.assertEqual(data['evidence']['status'], 'stale')
+        self.assertEqual(data['evidence']['stale_code'], ['spikes/semantic-chain/README.md'])
+        self.assertEqual(data['tasks'][2]['status'], 'IN_PROGRESS')
 
     def test_progress_note_refreshes_without_claiming_task_completion(self):
         before = progress.build(self.root)

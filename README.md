@@ -12,7 +12,7 @@
 ## Çalışmanın neresindeyiz?
 
 > [!WARNING]
-> **Gerçek model denemesinde açık teknik engel var.** S02-002 cevabı geldi; 10/11 kaynak konumu hatalı olduğu için import reddedildi. Semantik skor/karar zinciri çalışmadı. Yerel exact-quote probe'unda 11 konum kodla doğrulandı; production düzeltme henüz teslim değil. [Denemeler ve çözüm sınırları](docs/quality/s02-second-attempt-result.md) · [Aktif riskler](docs/governance/risks.md).
+> **Kaynak konumu engeli için offline kod teslim edildi; gerçek semantik kalite kapısı açık.** Ham S02-002 sonucu 10/11 span hatasında reddedildi. Bounded adapter yalnız bu konumları ayrı türevde düzeltir; 11 aday strict kontrolden geçer. Ayrı quote-only contract, candidate rubric ve 48 semantik suite testi var; yeni gerçek inference yok. [Teslim/API değerlendirmesi](docs/quality/source-anchor-adapter.md) · [Aktif riskler](docs/governance/risks.md).
 
 
 **[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) Board/Liste görünümü, görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.

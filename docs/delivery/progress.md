@@ -43,15 +43,15 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · Mevcut S02 türevinde ücretsiz yerel follow-up: kontrollü AnswerRecord zinciri passed (graph/auth/target/AC fixture); bağımsız S02 taslak değerlendirmesinde message-kind eşleşmesi 4/11, exact type/span 0/11. Tür/span granularity ve candidate/canonical değerlendirme uyumu açık; ürün kalite başarısı değil. [Ayrı diagnostic](../quality/s02-derived-followup.json). Yeni provider çağrısı 0.
+2026-10-11 · Onaylı 60 dakikalık dilim: bounded exact-quote adapter, ayrı quote-only contract/CLI ve candidate rubric kodlandı; 48 semantik suite testi geçti. Ham S02 korunarak 10 offset türevde düzeltildi, 11 candidate doğrulandı. Üç scripted late/ambiguous/upload-claim case canonical değişiklik yapmadı; gerçek semantic kalite testi değildir. [Teslim ve API değerlendirmesi](../quality/source-anchor-adapter.md), [hashli kanıt](../quality/source-anchor-adapter-results.json). Yeni provider çağrısı 0.
 
-**Aktif teknik risk:** Observed / High · R20: 10/11 kaynak span hatalı; gerçek-model semantik skor ve zincir çalışmadı. [Aktif risk kaydı](../governance/risks.md). Token/context cap unknown; yeni inference izni yok.
+**Aktif teknik risk:** Observed / High · R20: ham S02-002 10/11 span hatasında reddedildi. Bounded offline adapter teslim; yeni quote-only contract üzerinde gerçek-model kalite/production doğrulaması açık. [Aktif risk kaydı](../governance/risks.md). Provider cap/usage unknown; yeni inference izni yok.
 
-**Denemeler / sonuç:** S02-001: erişim hatası, output yok. S02-002: output var, kaynak konumu reddi. ANCHOR-PROBE-01: 11 exact quote konumu kodla bulundu; bellekteki türev validator'dan geçti, 7 edge kontrolü; yeni model çağrısı ve semantik ölçüm yok. [Kanıt ve deneme günlüğü](../quality/s02-second-attempt-result.md).
+**Denemeler / sonuç:** S02-001: erişim hatası, output yok. S02-002: output var, kaynak konumu reddi. ANCHOR-PROBE-01: 11 exact quote/7 edge kontrolü. ANCHOR-ADAPTER-01: bounded kod ve ayrı rubric/CLI teslim; 10 konum düzeltildi, 11 candidate geçti, 48 suite testi; yeni model çağrısı ve semantik ölçüm yok. [Kanıt ve deneme günlüğü](../quality/s02-second-attempt-result.md).
 
-**Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 source anchoring geliştirmesi gerekli. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
+**Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 production source anchoring/entegrasyonu gerekli; P0 offline adapter teslim. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
 
-Sıradaki adım: Önce candidate/output sözleşmesi ile bağımsız rubric tür/span uyumunu netleştir; ardından bounded kaynak konumu adapter’ı/negatifler ve ayrı ilişki doğrulaması. 4/11 draft eşleşmeyi insan-gold doğruluk sayma. [Teknik denetim ve bounded devam önerisi](../quality/s02-second-attempt-result.md). Açık uçlu ek analiz önerilmiyor; yeni inference/bütçe/takvim ayrıca owner kararı, Q03-R5 tüketildi.
+Sıradaki adım: Yeni quote-only contract ile kullanım ölçülen gerçek semantik deney; candidate ve canonical/domain beklentilerini ayrı insan incelemesiyle doğrula. Ardından ilişki/impact ve native karşılaştırma. Eski 4/11 draft ve 0/11 strict skorlar korunur; adapter testleri kalite başarısı değildir. API yöntem önerisi var; sağlayıcı/model/veri/token/context/para tavanı ve dispatch izni açık. Q03-R5 tüketildi. Genel araştırma/kapsam büyütme yok.
 
 
 ## Mevcut teslim parçaları
@@ -66,15 +66,16 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Zincir proof’u** — Gerçek sentetik source dosyası → scripted contract response → selection → AND/OR/unknown → old target → partial/full AC → restore; [Sonuç](../quality/semantic-readiness-results.json); gerçek inference/target değil
 - **Otomasyon ve devir** — Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı; Docs/corpus/anchor + runtime regresyonları
 - **Seçili gerçek hedef okuması** — Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match; Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil
-- **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 13 tracker testi; tarayıcıda T03 aktif risk/deneme bölümü ve önceki detay/P0 filtre kontrolleri; ürün UI veya canlı agent telemetry değil
+- **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 14 tracker testi; tarayıcıda T03 aktif risk/deneme bölümü ve önceki detay/P0 filtre kontrolleri; ürün UI veya canlı agent telemetry değil
 - **S02 gönderim ve güvenlik hazırlığı** — İki ayrı onaylı tek gönderim: S02-001 cloudflare_challenge/çıktı yok; S02-002 gerçek output, 10/11 span hatalı, strict ret; her denemede retry 0; [Güncel rapor/ham çıktı](../quality/s02-second-attempt-result.md); kaynak hashleri sabit. JSON parse geçti, scorer/zincir çalışmadı; hard-cap/production limiter doğrulanmadı
+- **Kaynak adapter ve candidate rubric** — Bounded exact quote + source/revision contract; explicit legacy türev; candidate/domain beklentileri ayrı; CLI offline; [48 suite testi ve üç scripted case](../quality/source-anchor-adapter.md); gerçek inference/semantic accuracy değil
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [S02-002 raporu](../quality/s02-second-attempt-result.md): 11 tekil konum/7 edge probe’u geçti → bounded adapter ve negatif testler → bağımsız scorer → trusted-receipt zinciri. Q03-R5 tüketildi; otomatik tekrar yok, token upper bound unknown |
+| Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [Yeni teslim](../quality/source-anchor-adapter.md): bounded adapter/negatifler, quote-only contract ve candidate scorer uygulandı; sırada yetkili gerçek inference ve insan review. Orijinal sonuç korunur, Q03-R5 tüketildi; otomatik tekrar yok, provider token upper bound unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -117,10 +118,10 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 ## Kanıt kapsamı
 
-Kayıt durumu: **recorded**; rapor tarihi: 2026-10-11; kayıtlı test sayısı: 91. Kaynak raporun tarihsel model kaydı: not_run; insan gold: pending; native kıyas: not_run. Production runtime: False.
+Kayıt durumu: **stale**; rapor tarihi: 2026-10-11; kayıtlı test sayısı: 91. Kaynak raporun tarihsel model kaydı: not_run; insan gold: pending; native kıyas: not_run. Production runtime: False.
 
 Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun tarihsel checkpoint’idir. Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo veya güncel CI sonucu değildir. [Kaynak rapor](../quality/semantic-readiness-results.json).
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `76b9dbb4fde4eae46e07fe57a33bd70813f2a5212a46b37d53e0c8014515f1be`
+Kaynak fingerprint: `de55d74368084c4e0a80f78157b20d0e9911f99c199cc28eda1e9bf1fd64a43a`

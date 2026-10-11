@@ -1,0 +1,39 @@
+{
+  "format": "decivora-candidate-contract-fixtures-1",
+  "synthetic": true,
+  "review_status": "authored_draft",
+  "provenance": "Engineering contract examples authored with existing problem cases visible. Not a blind model run or human-approved gold. Source, scripted response and expectation are deliberately separate fields.",
+  "cases": [
+    {
+      "id": "late_explicit",
+      "source": {"synthetic": true, "project_id": "p", "session_id": "later", "messages": [
+        {"message_id": "m", "source_revision": 1, "actor": {"type": "human_owner"}, "text": "Dünkü Q_STORE sorusuna cevabım B; SQLite ile devam."}
+      ]},
+      "scripted_records": [{"message_id": "m", "kind": "AnswerRecord", "entity_key": "answer", "quote": "Dünkü Q_STORE sorusuna cevabım B; SQLite ile devam.", "attributes": {"question_id": "Q_STORE", "option_id": "B", "presentation_revision": 1}}],
+      "expected_candidates": [{"message_id": "m", "kind": "AnswerRecord", "quote": "Dünkü Q_STORE sorusuna cevabım B; SQLite ile devam.", "attributes": {"question_id": "Q_STORE", "option_id": "B", "presentation_revision": 1}}],
+      "expected_proposal_status": "pending_trusted_selection",
+      "expected_canonical_mutations": 0
+    },
+    {
+      "id": "ambiguous_short_answer",
+      "source": {"synthetic": true, "project_id": "p", "session_id": "later", "messages": [
+        {"message_id": "q", "source_revision": 1, "actor": {"type": "assistant"}, "text": "Q_STORE: A Markdown, B SQLite. Q_UI: A board, B timeline."},
+        {"message_id": "m", "source_revision": 1, "actor": {"type": "human_owner"}, "text": "A."}
+      ]},
+      "scripted_records": [{"message_id": "m", "kind": "AnswerRecord", "entity_key": "unmatched", "quote": "A.", "attributes": {}}],
+      "expected_candidates": [{"message_id": "m", "kind": "AnswerRecord", "quote": "A.", "attributes": {}}],
+      "expected_proposal_status": "unmatched_or_stale",
+      "expected_canonical_mutations": 0
+    },
+    {
+      "id": "upload_claim_without_observation",
+      "source": {"synthetic": true, "project_id": "p", "session_id": "later", "messages": [
+        {"message_id": "m", "source_revision": 1, "actor": {"type": "human_owner"}, "text": "Yükledim."}
+      ]},
+      "scripted_records": [{"message_id": "m", "kind": "ImplementationClaim", "entity_key": "upload-claim", "quote": "Yükledim.", "attributes": {"claim_type": "upload"}}],
+      "expected_candidates": [{"message_id": "m", "kind": "ImplementationClaim", "quote": "Yükledim.", "attributes": {"claim_type": "upload"}}],
+      "expected_proposal_status": "unmatched_or_ambiguous",
+      "expected_canonical_mutations": 0
+    }
+  ]
+}
