@@ -79,4 +79,4 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 
 ## Konuşma dili ve yerelleştirme
 
-[LANG-01–08](../product/language-and-localization.md#sentetik-örnekler-ve-planlı-kabul), açık pilot dili, human/assistant/code ayrımı, short/mixed/unknown, Q12 policy, source/ref/AC korunumu, locale refresh sıfır model çağrısı, cross-language duplicate/conflict ve ACL/cache/revision kontrolleridir. T05e/T24p temel, T25a/T26c P2 otomasyon/kalite yoludur. TR/EN sentetik fixture önerisi bütün dillerde destek veya tespit doğruluğu kanıtı değildir. Detector/LLM/UI çalıştırılmadı; planlı kabul not_run.
+[LANG-01–08](../product/language-and-localization.md#sentetik-örnekler-ve-planlı-kabul), açık pilot dili, human/assistant/code ayrımı, short/mixed/unknown, kabul edilmiş Q12-A öneri/ret/yanıtsız/onay ve policy revision, source/ref/AC korunumu, locale refresh sıfır model çağrısı, cross-language duplicate/conflict ve ACL/cache/revision kontrolleridir. T05e/T24p temel, T25a/T26c P2 otomasyon/kalite yoludur. TR/EN sentetik fixture önerisi bütün dillerde destek veya tespit doğruluğu kanıtı değildir. Detector/LLM/UI çalıştırılmadı; planlı kabul not_run.

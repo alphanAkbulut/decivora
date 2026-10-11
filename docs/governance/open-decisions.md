@@ -55,3 +55,7 @@ Q04 güncel işler/seçili iş bağlamı; Q05 proje/görev bazlı değiştirileb
 OPEN-01/02: native kullanım, extension, independent build, ek deney veya durdurma [güncel yön](../product/current-direction.md) ve T03a–c'de değerlendirilir. Claude Projects release'i tek başına cancellation veya go kararı değildir. İlk prototype yöntemi production stack seçimini otomatik accepted yapmaz.
 
 Tek belge seti/sürüm otoritesi [versioning](versioning.md) içinde belgelendi; v3 product release'i yok. Q02 source/target/yüzey tercihleri ve Q03 gerçek veri/egress/bütçe açık. Q11-A önizle/kopyala önerisi runtime varsayılanı sayılmaz. Bu dokümantasyon isteği gerçek bağlantı veya prototip başlatma izni değildir.
+
+## 2026-10-11 — Q12 dil tercihi kapandı
+
+Q12-A kabul edildi: proje çıktı dili sabit; farklı sohbet dili yalnız değişim önerisi, insan kabulü sonrası yeni üretime uygulanır; eski notlar otomatik çevrilmez. B session bazlı üretim alternatifi varsayılan seçilmedi. [Seçim/gerekçe](../delivery/decision-brief.md) ve [dil sözleşmesi](../product/language-and-localization.md) güncellendi. Detector/stack, desteklenen dil/model kalite matrisi, Q03 egress/bütçe ve faz uygulaması açık kalır. Ürün kararı uygulanmış otomasyon veya çeviri yetkisi değildir.

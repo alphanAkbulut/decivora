@@ -534,13 +534,13 @@ Aşağıdaki dilimler ENG-02'nin mevcut kapsamını açar; yeni ana görev/engin
 
 ## Konuşma dili ve yerelleştirme — 2026-10-11
 
-Kullanıcı language-aware not/proje içeriği istedi; maliyetli otomasyon P2'ye bırakılabilir. [Dil tasarımı](../product/language-and-localization.md) teknik öneridir. Ana 30 görev ve fazları korunur; yeni ana görev/engine yok. P1 yalnız temel yapı/açık pilot dili, P2 otomatik çok dilli davranış; Q12 seçilmeden karma projede production default uydurma.
+Kullanıcı language-aware not/proje içeriği istedi; maliyetli otomasyon P2'ye bırakılabilir. [Dil tasarımı](../product/language-and-localization.md) teknik öneridir. Ana 30 görev ve fazları korunur; yeni ana görev/engine yok. P1 yalnız temel yapı/açık pilot dili, P2 otomatik çok dilli davranış; Q12-A kabul edildi: proje çıktı dili sabit, farklı sohbet dilinde yalnız değişim önerisi; onaysız geçiş ve eski notların otomatik çevirisi yok.
 
 | Alt dilim / bağımlılık | Teslim / durum | Kabul / faz |
 |---|---|---|
 | T05e / T05,T04c | PROPOSED / P1a: source/record dil metadata'sı ve sürümlü output policy; Unicode/source/ref korunumu | LANG-01/04/07; şema provenance alanları, ayrı UI locale; fiziksel stack seçimi ayrıca |
 | T24p / T05e,T24 | TODO / P1b: açık pilot dili ve source/ref korunumu fixture'ı | LANG-01/04/05/07/08 uygulanabilir temel yollar; otomatik çok dil/mixed kalite P2 not_run, 14 MVP AC korunur |
-| T25a / T24p,T25,T05e | PROPOSED / P2: hafif detector, mixed/short fallback, insan dili odaklı seçim ve Q12 policy | LANG-01–03/08; Q12 açık strateji otomatik uygulanmaz; seçilen diller/model/host için destek matrisi |
+| T25a / T24p,T25,T05e | PROPOSED / P2: hafif detector, mixed/short fallback, insan dili odaklı öneri ve kabul edilmiş Q12-A policy | LANG-01–03/08; Q12-A dil önerisi/ret/yanıtsız/onay ve revision yolları; seçilen diller/model/host için destek matrisi |
 | T26c / T25a,T26,T20,T18c,T21b | PROPOSED / P2: etkin dilde çıkarım/brief, locale katalogları, cross-language reconciliation/retrieval; kontrollü türev çeviri | LANG-01–08; holdout/quality-cost-recall ve kullanıcı review; bütün geçmişi yeniden çevirmeme, egress/usage/ACL kapıları |
 
 T01 corpus'a TR/EN, kısa/mixed, alıntı/kod ve dil değişimi örnekleri eklenir; gerçek dil/model başarısı bugün not_run. Yeni language policy veya locale seçmek veri/model/shell/dış yazma izni vermez. Ekipte kullanıcı UI locale'i ortak canonical dili kendiliğinden değiştirmez. P2 kabulü olmayan otomatik çok dilli davranış P1 parent task kapanışının tamamlanmış özelliği sayılmaz.

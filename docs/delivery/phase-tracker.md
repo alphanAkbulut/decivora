@@ -112,7 +112,7 @@ Aşağıdaki gruplar **önemli örneklerdir**, bütün alt görevlerin kopyası 
 
 | Çalışma paketi | Planlanan sonuç | Çıkış kanıtı |
 |---|---|---|
-| Konuşma dili ve yerelleştirme | T25a/T26c PROPOSED: otomatik tespit, mixed/fallback, etkin dilde çıktı, UI katalogları ve çok dilli retrieval | [LANG-01–08](../product/language-and-localization.md); Q12 stratejisi, source/ACL/revision ve kalite/maliyet kanıtı |
+| Konuşma dili ve yerelleştirme | T25a/T26c PROPOSED: otomatik tespit, mixed/fallback, etkin dilde çıktı, UI katalogları ve çok dilli retrieval | [LANG-01–08](../product/language-and-localization.md); kabul edilmiş Q12-A sabit dil/değişim önerisi, source/ACL/revision ve kalite/maliyet kanıtı |
 | Chat ve sağlayıcılar arası süreklilik | Yüzey başına izin/capability raporu, binding ve source lineage | Gerçek yüzeyde test; documented/verified/unknown ayrımı, manuel fallback açık |
 | Gelişmiş uzlaştırma ve impact | Semantic diff, stale/unlink/orphan incelemesi; embedding yalnız ihtiyaç kanıtlıysa | Holdout recall ve false-obsolete regresyonu; toplam bütçe/kalite kıyası |
 | Öncelik/ranking deneyi | T26b PROPOSED: açıklanabilir çok faktörlü scoring/what-if | FLOW-16/17 ve mevcut regresyonlar; veri yeterliliği/UX/efor kanıtı olmadan kesin kritik yol iddiası yok |
