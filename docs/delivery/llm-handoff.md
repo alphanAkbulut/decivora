@@ -118,6 +118,10 @@ Güncel kontrol toplamı **25**; önceki toplamlar tarihsel ekleme kayıtlarıd�
 
 ## Ölçüm sorusu ve somut teknik boşluklar
 
-“Nasıl ölçeriz, yöntem net mi?” sorusunda [teknik protokolü](../quality/evaluation-protocol.md) oku. Metrik/eşik ve oracle yaklaşımı mevcut; çalışan scorer/harness/adapter/telemetry ve gerçek karşılaştırma yok. [CHAIN-01](../../examples/decision-impact-evaluation-case.json) yedi checkpoint/dört negatif varyant illustrative taslaktır, T01 corpus/holdout veya V pass değil. T01f/T03f/T24p TODO. Domain authority/target/state code oracle ile; serbest açıklama human rubric, optional judge yalnız ek izin/bütçeyle.
+“Nasıl ölçeriz, yöntem net mi?” sorusunda [teknik protokolü](../quality/evaluation-protocol.md) oku. Metrik/eşik ve oracle yaklaşımı mevcut; çalışan scorer/harness/adapter/telemetry ve gerçek karşılaştırma yok. [CHAIN-01](../../examples/decision-impact-evaluation-case.json) yedi checkpoint/dört negatif varyant illustrative taslaktır, T01 corpus/holdout veya V pass değil. T01f/T03f/T24q TODO. Domain authority/target/state code oracle ile; serbest açıklama human rubric, optional judge yalnız ek izin/bütçeyle.
 
 Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; iki repo değerlendirme örüntüsü için faydalı, bizim domain doğruluğumuzun hazır oracle'ı değil. Missing score/evaluator error critical gate'i incomplete yapar. Yeni framework, paid telemetry veya kod alımı yok; T01/Q03/Q13 korunur.
+
+## Teknik boşluklar ve inceleme hafızası
+
+[2026-10-11 TG-01–24](../quality/technical-gap-analysis.md) inceleme ref'i/yöntemi, iki somut doc conflict, önerilen ayrıntılar, implementation/capability/owner/measurement ayrımı ve sonraki soruları tutar. “Boşluk var mı?” sorusunda her şeyi yeniden yok sayma; ilgili TG→[IC-01–08](../architecture/implementation-contracts.md)→canonical task→closure evidence zincirini aç. Yeni component/release/accepted ADR yok. IC testleri not_run; son task ID düzeltmesinde dil T24p korunup ölçüm T24q oldu. Source/generated/accepted/observed/verified ve doc pass/runtime pass ayrımını açıklayamayan model uygulamadan önce ilgili bölümü yeniden okumalı.

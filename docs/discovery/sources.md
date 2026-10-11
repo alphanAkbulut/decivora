@@ -70,3 +70,14 @@ Aynı `5234c15b05fe18857d0119eabd3b8a8f910ecc66` ref'i ayrı salt okunur kaynak 
 [Teknik protokol](../quality/evaluation-protocol.md): Graphiti 964bb11d1e7020e3cc67fab244268b0736b6c219 ref'inde tests/evals/eval_e2e_graph_building.py ve graphiti_core/prompts/eval.py tam seçili dosya okuması; Langfuse Python SDK bf11ec121479145923ff27b32ec2ad1d06fd2d51 ref'inde langfuse/experiment.py ve tests/unit/test_experiment.py hedefli bölümler, root MIT LICENSE okuması. SDK tree non-truncated; bütün SDK/dependency audit'i değil. Graphiti judge context/zip ve Langfuse evaluator exception→empty score yolları source düzeyinde belirtilir; runtime bug veya upstream test başarısızlığı iddiası yok.
 
 [Langfuse core concepts](https://langfuse.com/docs/evaluation/core-concepts) ve [offline evaluation](https://langfuse.com/docs/evaluation/get-started/offline) birincil belgeleri code/human/judge ve dataset→application/evaluator/traces örüntüsü için okundu. Upstream model/prompt/script/install çalıştırılmadı, kaynak kopyası ve hizmet bağlantısı yapılmadı. Açıklamalar yöntem çıkarımıdır; Decivora veya rakip üstünlük sonucu değil.
+
+## 2026-10-11 — Teknik gap incelemesi kaynakları
+
+[Ayrıntılı audit kaydı](../quality/technical-gap-analysis.md) başlangıç ref'ini, kendi belge inceleme derinliğini, neden/neyi kontrol ettiğimizi ve 24 kapanış kaydını tutar. Yeni broad repo taraması veya code adoption yapılmadı.
+
+| Birincil kaynak | İncelenen sınır / tarih | Kullanım ve statü |
+|---|---|---|
+| [RFC 8785 JCS](https://www.rfc-editor.org/rfc/rfc8785) | Canonical JSON/digest; 2026-10-11 | IC-02 serializer seçenekleri/golden test gerekçesi; informational, seçilmiş standard/library değil |
+| [MCP transports 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) | Stdio/HTTP origin/auth/disconnect; 2026-10-11 | IC-06 transport/host sınırı; bu sürüm evrensel/latest varsayılmaz |
+
+Graphiti/Langfuse evaluator örüntüleri önceki pinned [ölçüm takibinde](ecosystem-research.md) kaldı; bu tur tüm source tekrar okundu, test edildi veya runtime bug bulundu iddiası yok. Public specification referansı gerçek permission, güvenlik/kalite testi veya ücretsiz model kullanımı sağlamaz.

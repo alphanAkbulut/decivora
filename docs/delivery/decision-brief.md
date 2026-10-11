@@ -120,3 +120,15 @@ Kullanıcının seçili A önerisine “a ile devam et” yanıtı Q12-A'yı kab
 - **C:** Upstream kaynak taşımadan özgün küçük implementation; aynı algoritma/sözleşmeleri referansla karşılaştır.
 
 Yanıtsızsa açık kalır; kod alımı/production stack seçilmiş sayılmaz. T01/T02/T03a sırası, somut scope ve Q03 gerçek veri/ücret kapısı korunur. Bu seçenekler gelecekteki araştırma önceliğidir; bütün platformu fork etme, provider hesabı veya sınırsız kodlama yetkisi çıkarılmaz. Ayrıntılı artı/eksi ve WS-R çıkışları kaynak raporunda.
+
+## Teknik gap incelemesi — soruların adım adım sırası
+
+[İnceleme ve soru kuyruğu](../quality/technical-gap-analysis.md) Q02→Q03→gerçek veri policy→Q11/Q06→Q08→kanıtlı Q13/pilot değerlendirmesi sırasını önerir. Cevabı verilmiş ürün tercihleri tekrar açılmaz; rutin serializer/offset/constraint seçimlerini engineering test eder. Sorular bu tur düz metin A/B/C ile gösterilir; UI widget yanıtı kaybolduğu için kalıcı kayıt da korunur.
+
+**Q02-R1 · İlk kaynak yolu · Açık/cevap bekleniyor.** Q02'nin alt netleştirmesidir, bütün OS/ikinci adapter sorusunu kapatmaz.
+
+- **A — Önerilen:** Claude/ChatGPT sohbetinden kullanıcı tarafından açıkça aktarılan parça + seçilmiş tek uygulama hedefinde read-only gözlem. Önce “dosya verildi, gerçekten uygulandı mı?” değer zincirini capture entegrasyonu olmadan sınar.
+- **B:** İlk gerçek senaryo Codex coding oturumu + tek repo; otomatik capture fizibilitesi önce.
+- **C:** İlk gerçek senaryo Claude Code oturumu + tek repo; otomatik capture fizibilitesi önce.
+
+Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, config/runner, dış veri veya ücret izni sağlamaz. Somut grant ve Q03 ayrıca kapanır. Yanıtsızsa A seçilmiş sayılmaz; sentetik, ücret yaratmayan hazırlık sürdürülebilir.

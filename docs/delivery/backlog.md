@@ -581,6 +581,23 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 |---|---|---|
 | T01f / T01 | TODO / P0: frozen checkpoint/identity/source-span oracle, bağımsız rubric ve error taxonomy | 6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı |
 | T03f / T01f,T02,T03a | TODO / P0: sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
-| T24p / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
+| T24q / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
 
 Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev ve T01 sonraki sıra korunur.
+
+## Teknik boşluk kapanışları — 2026-10-11
+
+[Ayrıntılı TG incelemesi](../quality/technical-gap-analysis.md) ve [IC önerileri](../architecture/implementation-contracts.md) aşağıdaki mevcut görevlerin kabul kanıtını ayrıntılandırır. Yeni 24 task veya bütün P0'ın önüne 8 engine eklenmez; first-use gate geçerlidir. Ana görev durumları değişmedi. **Düzeltme:** dil T24p/T25a bağı korunur; ölçüm alt görevi T24q'dur.
+
+| Mevcut görev alanı | İlave kapanış yüzeyi | Durum |
+|---|---|---|
+| T04a/T04c, T09/T10 | IC-01; executable schema/error/Unicode span, bounded strict decoder ve partial source coverage | Öneri; implementasyon/test not_run |
+| T08a/T13 | IC-02; server canonical digest, golden vectors, unknown/null/operation ordering ve scope/revision | Öneri; implementasyon/test not_run |
+| T21/T21c | IC-03; exact money, price/period revision, rollover/unknown/duplicate settlement/child budget | Öneri; Q03 ve sonlu config kapısı korunur |
+| T02d/T14b/T14d | IC-04; immutable target ref, concurrent local read/partial/permission/missing ayrımı | Öneri; gerçek capability/read izni gerekir |
+| T11/T12/T13/T14 | IC-05; empty AC, typed cycle mapping, projection freshness/OR edge race | Öneri; accepted enum/policy değil |
+| T04b/T05/T08b/T16/T17/T18 | IC-06; browser/agent auth, transport ve revoke-after-context sınırı | Öneri; ilk external ingress öncesi ilgili kontrol |
+| T06/T07/T15/T23 | IC-07; receipt/commit/lease/budget/audit fault injection ve privacy/key/restore/load | Mevcut implementation borcu; policy kararı açık |
+| T01f/T03f/T24q | IC-08; frozen oracle ve katman/gerçek-target/native fair baseline | TODO; örnek/veri lint'i runtime ölçüm değildir |
+
+TG-01/02 belge düzeltmeleri runtime görevlerini complete yapmaz. TG-12–23 capability/owner/implementation/measurement kapanışı ilgili canonical task ve scoped evidence ile yapılır.

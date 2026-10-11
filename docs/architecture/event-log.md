@@ -41,7 +41,7 @@ Bu örnek sentetiktir, runtime şema uygulaması değildir. Zaman damgası sıra
 5. Aynı idempotency key ve aynı digest önceki sonucu döndürür; farklı digest conflict verir. Aynı record'a eşzamanlı yazan agent'lardan biri version conflict alır.
 6. Dış API transaction'ın parçası değildir. Outbox consumer ayrı retry/idempotency ile çalışır; local success dış sistem success diye gösterilmez.
 
-Kaynak dedup anahtarı provider/account/session/source_event_id/revision bileşimidir. Content hash değişiklik saptamak içindir; aynı cümleyi farklı oturumda söylemek yeni olay olabilir. Kaynak ID yoksa import manifest + offset + content hash birlikte kullanılır; yeniden import aynı manifest'i korur.
+Bağlı kaynak dedup anahtarı workspace/project/provider/account/session/source_epoch/source_event_id/source_revision bileşimidir; [runtime sözleşmesi](runtime-contracts.md) ve [DB ilişkileri](data-relationships.md) aynı kapsamı kullanır. Henüz bağlanmamış kaynak quarantine sahibinin erişim kapsamında tutulur; sahte project_id verilmez. Content hash değişiklik saptamak içindir; aynı cümleyi farklı oturumda söylemek yeni olay olabilir. Kaynak ID yoksa kararlı import manifest + source_epoch + offset + content hash birlikte kullanılır; yeniden import aynı manifest'i korur. Quarantine→project binding provenance ve receipt eşlemesi T05/T06'da doğrulanır; bu işlem yeni capture veya içerik paylaşma izni oluşturmaz.
 
 ## Hatalı tamamlanma ve geri alma
 

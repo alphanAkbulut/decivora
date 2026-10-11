@@ -27,6 +27,16 @@ scope_ids = set(re.findall(r'^\| ([A-Z]+-\d+) \|', scope, re.M))
 for scope_id in scope_ids:
     if scope_id not in backlog:
         errors.append(f'scope without task mapping: {scope_id}')
+# Only canonical definition rows count; repeated references are expected.
+subtask_definitions = {}
+for line_number, line in enumerate(backlog.splitlines(), 1):
+    match = re.match(r'^\| (T\d+[a-z]+) / ', line)
+    if match:
+        subtask_definitions.setdefault(match.group(1), []).append(line_number)
+for subtask_id, line_numbers in subtask_definitions.items():
+    if len(line_numbers) > 1:
+        errors.append(f'duplicate subtask definition {subtask_id}: lines {line_numbers}')
+
 task_ids = re.findall(r'^## (T\d+) —', backlog, re.M)
 if len(task_ids) != 30 or len(set(task_ids)) != 30:
     errors.append('expected 30 distinct tasks')

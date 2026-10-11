@@ -72,7 +72,7 @@ Kanıt artifact hash/revision, AC revision, runner/version, environment ve obser
 
 Mantıksal veri kümeleri: projects/bindings; source envelopes/payloads; jobs/checkpoints; evaluations/usage; changesets/approvals; immutable domain events; records/versions/edges/evidence projections; outbox/delivery receipts. Bu kümeler ayrı veritabanı veya mikroservis gerektirmez. Project kapsamlı foreign key/unique koşulları storage katmanında da uygulanmalıdır.
 
-Minimal uniqueness: provider/account/session/epoch/event/revision source key; project/command key; project/stream/version; project/trigger/engine version/input snapshot impact key. Global dedup farklı projelerin özel kaynaklarını birleştirmez. Event sequence event-store tarafından atanır; provider saati sırayı belirlemez.
+Minimal uniqueness: bağlı source için workspace/project/provider/account/session/source_epoch/source_event_id/source_revision; quarantine için sahibinin ACL kapsamına bağlı import kimliği; project/command key; project/stream/version; project/trigger/engine version/input snapshot impact key. Global dedup farklı projelerin özel kaynaklarını birleştirmez. Event sequence event-store tarafından atanır; provider saati sırayı belirlemez.
 
 Başlangıç: schema/projector compatibility denetimi → migration öncesi geri yüklenebilir backup → migration transaction/journal → integrity check → event log ve projection watermark denetimi → expired lease recovery → pending job/outbox resume. Bilinmeyen event sürümü sessiz atlanmaz; upgrade veya diagnostic read-only mode gerekir.
 
@@ -101,3 +101,7 @@ Bu gereksinimlerin uygulanma sırası [backlog ek sözleşmelerinde](../delivery
 [Çoklu chat/lag sözleşmesi](multi-chat-and-processing-lag.md) receipt ve processing frontier'ı session/epoch bazında tutar; project current durumu tek bir son mesaj zamanıyla hesaplanmaz. Geç gelen/çelişen konuşma güncel onaylı kaydı timestamp ile ezmez. Queue/storage tavanında yeni receipt durur; replay'siz adapter'da gap ihtimali açık gösterilir. Pending ilgili bağlam final impact/ready/verification gibi sunulmaz.
 
 [Token risk onayı](../product/token-risk-and-approval.md) yeni dispatch öncesi assessment/approval tazeliği ve planın kalan tüketim payını bütçe rezervasyonuyla atomik denetler. Yüksek riskte `deferred + token_risk_approval_required`; bilinmeyen güvenli üst sınır veya yetersiz izin/hard-cap için blocked kullanılır. Karar beklemek source receipt'i geri almaz; model onayı domain completion değildir.
+
+## Ortak executable sözleşmeye geçiş
+
+[IC-01–08](implementation-contracts.md) bu sınırların stack'e aktarılırken netleştirilecek serialization, span coordinate, decoder, exact cost/period, target consistency ve completion freshness ayrıntılarını sunar. Öneri statüsündedir; deploy edilmiş API/DB/schema değildir. [TG-01–24 incelemesi](../quality/technical-gap-analysis.md) doküman hatası, teknik detay, owner ve implementasyon/deney açıklarını ayrı kaydeder; ilk kullanım kapıları G0–G6 ile bağlıdır.

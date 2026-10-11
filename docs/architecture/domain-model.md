@@ -111,3 +111,7 @@ Kayıtlar aynı workspace/project composite sınırına tabidir. Yeni query'de g
 ## Soru ve gecikmiş cevap ilişkisi
 
 [Kalıcı soru/cevap sözleşmesi](../product/pending-questions-and-late-answers.md) QuestionRequest ↔ QuestionPresentation/option snapshot ↔ AnswerRecord ↔ Decision/Approval bağını önerir. Soru ID'si değişmez; aynı soru yeniden gösterildiğinde presentation ref eklenir, seçenek değişiminde revision korunur. Cevap source kimliği/responder/selected source/answer association state ve source-created/received/resolved zamanları ayrı tutulur. PendingDecision karar kuyruğudur; her bilgi sorusu bu tip olmaz. Belirsiz veya soru öncesi gelen cevap association bekler, canonical karar üretmez. Exact hedef bile güncel authority/revision/expiry kontrolünü atlamaz. Bu mantıksal metadata/state açılımıdır; fiziksel tablo/migration veya yeni state enum kabulü değildir.
+
+## Uygulama ayrıntıları için tamamlayıcı inceleme
+
+[IC-01–08](implementation-contracts.md) kaynak koordinatı/strict schema, canonical digest, bütçe sayısal temsili, target snapshot, boş AC ve projection freshness ayrıntılarını önerir. Bunlar yeni accepted domain enum veya fiziksel DDL değildir. [TG incelemesi](../quality/technical-gap-analysis.md) mevcut kuralla gerçek eksik/test borcunu ayırır; type/state/authority kararları bu belge ve ilgili ADR ile birlikte uygulanır.

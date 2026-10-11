@@ -86,3 +86,9 @@ ADR-0001–0010'da store/event/adapter/graph/approval/routing/identity/lifecycle
 Açık kalanlar: T01 geniş corpus, gerçek source/target capability, native kıyas, model/host receiver başarısı, runtime/UI/DB/migration, sayısal eşikler ve owner yatırım kararı. İlk 10 GAP örneği altı oturum/30 anlamlı kayıt şartını kapatmaz. Bu kapsam incelemesi gelecekte hiç eksik çıkmayacağı garantisi değildir.
 
 Teslim kontrolü: `aaf9cbef1c5a387848a6d75975482b9d09ae9e4a` içerik ref'inden 42 değişen dosya geri okunup eşleştirildi. Doküman betiği ve üç negatif kontrol geçti; 15 belgedeki 34 Mermaid çıktısı GitHub Preview üzerinden render edildi. Ayrıntılı sınırlar [diyagram kaydı](diagram-review.md) ve [status](../delivery/status.md) içindedir. GAP JSON hâlâ sentetik/not_run; runtime veya native benchmark sonucu eklenmedi.
+
+## 2026-10-11 — Teknik ayrıntı ve teslim borcu denetimi
+
+Başlangıç ref'i `669c6e3ebd56ea232fb259b124ad476957c7107c`. [Ayrıntılı analiz](technical-gap-analysis.md) 24 bulgu, inceleme derinliği/kanıt sınırı, kaynak gerekçesi, owner soru sırası ve ilk kullanım kapılarını içerir. T24p duplicate tanımı ölçüm T24q olarak düzeltildi; dil T24p ve tarihsel status korunur. Source dedup key scope/epoch tarifleri hizalandı. Checker canonical subtask definition tekrarlarını da denetler.
+
+[IC-01–08](../architecture/implementation-contracts.md) serializer/digest, Unicode span, strict decoder/partial coverage, exact money/period, target read consistency, boş AC/projection freshness ve transport/recovery sınırlarına uygulama önerisi ekler. Bunlar accepted ADR veya çalışan code/schema değildir. Mevcut yetki/soru/agent/storage kuralları büyük ölçüde vardı; implementasyon borcu tasarım yokluğu sayılmadı. T01 sırası, 30 ana görev, 32 scope, 10 engine ve MVP/gelecek faz ayrımı korundu. Runtime/eval/host/load/security testleri not_run; bütün dosyaların semantik veya tüm upstream kodların audit edildiği iddiası yok.

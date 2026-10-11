@@ -106,6 +106,6 @@ Mevcut [pilot eşikleri](measurement.md) korunur. İnvariant suite'te kanıtsız
 1. **T01f:** Frozen case/checkpoint/identity matching, gold rubric, hata sınıfı ve evaluator contract. Bu belge + örnek yalnız taslak; corpus/holdout tamamlanmalı.
 2. **T03f (T03a içinde):** Minimal local harness/adapter arayüzü, critical scorer missing/error gate, observer fake/real ayrımı, run manifest. Önce deterministik katman; ücretli model veya bağlı hesap gerekmeden hazırlanabilecek tasarım. Çalışan harness ayrı görev ve kanıt ister.
 3. **T02/T03e:** Exact target gözlemi, kalıcı soru resume, Graphiti supersession ve LiteLLM unknown/cancel/budget closure kaynakları; yalnız ölçümün açık contract soruları için deep dive. Framework benimseme veya bütün repo audit'i önkoşul değil.
-4. **T03b/T24p:** Yetkili run, failure/cost/coverage raporu; T03c native/extend/build kararı. Kendini puanlayan model yerine bağımsız oracle; deney geçmediyse düzeltme/ek deney.
+4. **T03b/T24q:** Yetkili run, failure/cost/coverage raporu; T03c native/extend/build kararı. Kendini puanlayan model yerine bağımsız oracle; deney geçmediyse düzeltme/ek deney.
 
 Araştırma yeterlilik sınırı: named input/output, bağımsız oracle, observable evidence ve hata/unknown davranışı her zincir halkasında belli olunca ilk uygulama deneyi başlar. Daha fazla repo tarayarak corpus/harness işini ertelemeyiz. T01 sıradaki ana iş, Q03 veri/provider/bütçe ve Q13 adoption tercihleri açıktır; yeni teknoloji/ürün kararı alınmadı.
