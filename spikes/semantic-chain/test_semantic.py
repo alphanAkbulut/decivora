@@ -125,6 +125,22 @@ class TestProtocol(unittest.TestCase):
         self.assertEqual(evaluated['status'],'incomplete')
         self.assertEqual(evaluated['score']['critical_domain_gate'],'incomplete')
 
+    def test_quote_adapter_local_observer_and_full_chain_integration(self):
+        here=Path(__file__).parent
+        spec=importlib.util.spec_from_file_location('quote_chain_smoke',here/'run.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        result=module.run()
+        self.assertEqual(result['checkpoint_score']['status'],'passed')
+        self.assertEqual(result['source_binding'],'quote_only_scripted')
+        self.assertEqual(len(result['bounded_local_reads']),2)
+        self.assertTrue(all(not r['task_verified'] and not r['remote_upload_verified']
+                            for r in result['bounded_local_reads']))
+        self.assertEqual(result['checkpoints']['partial']['verified'],False)
+        self.assertEqual(result['checkpoints']['complete']['verified'],True)
+        self.assertTrue(result['checkpoints']['restore']['same_projection'])
+        self.assertEqual(result['model_dispatches'],0)
+        self.assertFalse(result['production_runtime'])
+
 
 class TestBridge(unittest.TestCase):
     def setUp(self):

@@ -125,6 +125,15 @@ def markdown(data):
         "`IN_PROGRESS` açık çalışma kaydıdır; bir agent’ın şu anda çalıştığını göstermez. Plan ön koşulları otomatik teknik blocker değildir. Test sayısı ürün tamamlanma yüzdesi değildir.", "",
         "| Ana görev durumu | Sayı |", "|---|---|"]
     lines += ["| " + status + " | " + str(count) + " |" for status, count in sorted(data["counts"].items())]
+    completed = [(task, sub) for task in data['tasks'] for sub in task['subtasks']
+                 if sub['status'] in ('DONE', 'COMPLETED')]
+    lines += ['', '## Tamamlanmış küçük teslimler', '',
+              'Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı ve kanıt backlog’da kayıtlıdır.', '',
+              '| Alt görev | Ana görev | Durum | Teslim |', '|---|---|---|---|']
+    lines += ['| '+sub['id']+' | '+task['id']+' | '+sub['status']+' | '+sub['scope']+' |'
+              for task, sub in completed]
+    if not completed:
+        lines += ['Henüz kapanmış alt teslim kaydı yok.']
     lines += ["", "## Açık fazda neler değişti?", "", "Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağıdaki kayıtlar backlog'dan gelir; canlı agent etkinliği değildir.", ""]
     for task in data["tasks"]:
         if task["status"] != "IN_PROGRESS":

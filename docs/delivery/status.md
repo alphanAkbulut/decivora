@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — Dört küçük teslimin kapanışı ve tek komutluk zincir
+
+- T03g/T03h/T03i/T03j scoped DONE olarak kaydedildi; her teslimin kabulü ve kanıtı backlog'da. Geniş ana T03 ve T03f kalite/native kapıları korunur. [Tek komutluk çalışan zincir](../quality/integrated-chain.md) quote-only adapter ile bounded observer'ı karar/impact/AC/restore'a bağlar.
+- 66 semantik test ve yedi checkpoint geçti; model_dispatches=0, semantic_inference=not_run, production_runtime=false. İnsan H1 yanıtı pending; paid API yok.
+
+
 ### 2026-10-12 — Ek API ödemesi olmadan yerel hedef kodu
 
 - Kullanıcı API kredisi $0.00 bildirdi ve bakiye yüklemeden devam istedi; bu model call/harcama onayı değil. [Local observer](../quality/local-observer.md) kodlandı: tek seçili dosya, gerçek hash okuması; eksik/izin/boyut/yarış ayrı, task_verified=false. 65 semantik suite testi (9 yeni) geçti.

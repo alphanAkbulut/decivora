@@ -1,0 +1,93 @@
+{
+  "kind": "source_response_chain_contract_smoke",
+  "response_origin": "scripted_contract_fixture_not_inference",
+  "source_session": "S02",
+  "request_count": 6,
+  "request_ids": [
+    "7cc07505b3782bb183017bd88aa0528343ebee78c452f39847c5696e846523ec",
+    "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+    "1f8eda42a480d177fb0229df07fc842a50cf4bed26aea9d307e88a2861fa7963",
+    "91dcb2f11f75c26a89fee350a46a8bd3f17e15460c9a05a50e9dbc705285a411",
+    "e5118e527429ecfbf87fe01006bc61365a330ec384e6e2cb3ab8e54a6543bf1b",
+    "f198dd5f04cb951f56870bbef8b2506cb982d91e2e3419af5e31b85392c190b7"
+  ],
+  "checkpoints": {
+    "proposal": {
+      "decision": "markdown",
+      "revision": 2,
+      "canonical_mutations": 0
+    },
+    "decision": {
+      "decision": "sqlite",
+      "task_statuses": [
+        "todo"
+      ],
+      "combined": "obsolete_candidate",
+      "export": "retained",
+      "sync": "obsolete_candidate",
+      "watch": "review_unknown"
+    },
+    "model_authority": {
+      "rejected": true,
+      "canonical_mutations": 0
+    },
+    "old_target": {
+      "status": "stale",
+      "verified": false
+    },
+    "partial": {
+      "verified": false
+    },
+    "complete": {
+      "verified": true
+    },
+    "restore": {
+      "same_projection": true,
+      "external_dispatches": 0
+    }
+  },
+  "checkpoint_score": {
+    "status": "passed",
+    "missing": [],
+    "mismatches": []
+  },
+  "expected_sha256": "cf340d1d5ae9d207de3c73b4c7f3969cbab0bb7359fe34082bb35167bbf3e320",
+  "prompt_version": "semantic-source-1",
+  "prompt_sha256": "8a6b1c39b433ed017a95bd91e2b4660ca1607a23f6653020118bd11c6e63bad2",
+  "model_dispatches": 0,
+  "semantic_inference": "not_run",
+  "human_gold_review": "pending",
+  "real_host": false,
+  "real_target": false,
+  "production_runtime": false,
+  "usage": null,
+  "source_binding": "quote_only_scripted",
+  "bounded_local_reads": [
+    {
+      "status": "observed_match",
+      "task_verified": false,
+      "remote_upload_verified": false
+    },
+    {
+      "status": "observed_match",
+      "task_verified": false,
+      "remote_upload_verified": false
+    }
+  ],
+  "limitations": [
+    "explicit synthetic trusted receipt is not production authentication",
+    "contract fixture is not model output quality",
+    "fixture AC outcomes are controlled inputs",
+    "partial checkpoint scorer does not cover every release invariant"
+  ],
+  "delivery": "T03j",
+  "date": "2026-10-12",
+  "semantic_suite_tests_passed": 66,
+  "code_and_expectation_sha256": {
+    "spikes/semantic-chain/run.py": "922b981cf2157ad7c37cbad1bd79ac5d6abe60c1920da94993c49884d02c996f",
+    "spikes/semantic-chain/test_semantic.py": "e5f1bb075a20ebd205671a7b4bf32992bc17b9dfd761727421bbaa2f7a36d9c8",
+    "spikes/semantic-chain/anchors.py": "558abf7fb516354f7f1f1d3abc090fee6c7bc5159aca0d84438b6eb7ab5ca72f",
+    "spikes/semantic-chain/local_observer.py": "3815b9d9fbe1ac9ca3d08c24013e4589f5de547a7a8236aa6627b1d6f0d7f8b6",
+    "spikes/semantic-chain/expected-checkpoints.json": "cf340d1d5ae9d207de3c73b4c7f3969cbab0bb7359fe34082bb35167bbf3e320"
+  }
+}

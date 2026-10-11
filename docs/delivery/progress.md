@@ -13,6 +13,17 @@
 | IN_PROGRESS | 3 |
 | TODO | 27 |
 
+## Tamamlanmış küçük teslimler
+
+Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı ve kanıt backlog’da kayıtlıdır.
+
+| Alt görev | Ana görev | Durum | Teslim |
+|---|---|---|---|
+| T03g | T03 | DONE | DONE / P0: bounded quote adapter ve ayrı candidate rubric |
+| T03h | T03 | DONE | DONE / P0: gönderimsiz API paket ve saved response import |
+| T03i | T03 | DONE | DONE / P0: tek selected local file observer |
+| T03j | T03 | DONE | DONE / P0: tek komutluk integrated zincir |
+
 ## Açık fazda neler değişti?
 
 Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağıdaki kayıtlar backlog'dan gelir; canlı agent etkinliği değildir.
@@ -43,7 +54,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · API harcaması olmadan seçilmiş tek yerel dosya observer kodlandı. 65 semantik suite testi (9 yeni observer) geçti; önceki teslim belgesinin gerçek local read sonucu observed_match, task_verified=false. Symlink/traversal/boyut/izin/concurrent change ayrımı var. [Teslim](../quality/local-observer.md). Önceki API paket teslimi korunur; yeni model çağrısı 0.
+2026-10-12 · T03g/T03h/T03i/T03j küçük teslimleri DONE: bounded quote adapter, gönderimsiz API paket/import, tek-file observer ve tek komutluk integrated zincir. 66 semantik suite testi ve yedi checkpoint passed; karar/impact/AC/restore akışı kontrol edildi. [Kapanış kapsamı ve kanıt](../quality/integrated-chain.md). Ana T03 IN_PROGRESS; inference 0, production/semantic kalite kapısı açık.
 
 **Aktif teknik risk:** Observed / High · R20: ham S02-002 10/11 span hatasında reddedildi. Bounded offline adapter teslim; yeni quote-only contract üzerinde gerçek-model kalite/production doğrulaması açık. [Aktif risk kaydı](../governance/risks.md). Provider cap/usage unknown; yeni inference izni yok.
 
@@ -71,6 +82,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Kaynak adapter ve candidate rubric** — Bounded exact quote + source/revision contract; explicit legacy türev; candidate/domain beklentileri ayrı; CLI offline; [48 suite testi ve üç scripted case](../quality/source-anchor-adapter.md); gerçek inference/semantic accuracy değil
 - **Quote-only API deney paketi** — Strict schema taslağı, source-only payload, pending bütçe/onay manifesti ve saved response importer; [56 semantik test / 8 yeni](../quality/quote-api-package.md); gerçek provider dispatch/schema/kalite not_run
 - **Seçilmiş yerel hedef observer** — Tek dosya real filesystem read, bounded no-follow/hash/change kontrolü; source metninden komut çalıştırılmaz; [65 semantik test ve ayrı gerçek yerel gözlem](../quality/local-observer.md); remote upload/task acceptance veya production IAM değil
+- **Tek komutluk integrated zincir / T03j DONE** — Quote-only adapter ve bounded observer mevcut decision/impact/AC/restore akışına bağlandı; [66 semantik test ve yedi checkpoint](../quality/integrated-chain.md); T03g/h/i de scoped DONE, ana T03 ve gerçek model kalite kapısı açık
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -89,7 +101,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 2 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 4 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 8 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -126,4 +138,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `4ef3c6d7d9056e3d776c3c83366ca3db834e51f40cd2762719448d47cd015c40`
+Kaynak fingerprint: `df52d2680cf6a4157ec1ef5f903ba9c4cf467035b050a4371fffb5ef116a569f`

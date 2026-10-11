@@ -58,6 +58,16 @@ class ProgressTests(unittest.TestCase):
         self.assertIn("Observed / High · R20 test source failure", progress.markdown(data))
         self.assertNotIn("R20 Closed", progress.markdown(data))
 
+    def test_completed_small_deliveries_remain_separate_from_parent_gate(self):
+        data = progress.build(self.root)
+        task = next(t for t in data['tasks'] if t['id'] == 'T03')
+        scoped = {s['id']:s for s in task['subtasks']}
+        for sid in ('T03g','T03h','T03i','T03j'):
+            self.assertEqual(scoped[sid]['status'], 'DONE')
+            self.assertIn('| '+sid+' | T03 | DONE |', progress.markdown(data))
+        self.assertEqual(task['status'], 'IN_PROGRESS')
+        self.assertNotIn('DONE', data['counts'])
+
     def test_backlog_change_refreshes_data_and_generated_snapshot(self):
         before = progress.build(self.root)
         path = self.root / progress.SOURCES[0]

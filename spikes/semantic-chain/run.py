@@ -7,10 +7,12 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'decision-chain'))
-from chain import Chain, digest, read_target
+from chain import Chain, digest
 from bridge import propose, apply_selection
 from protocol import validate, score_checkpoints
 from experiment import requests
+from anchors import prepare_quotes, anchor
+from local_observer import observe
 
 
 def run(response_path=None):
@@ -18,13 +20,18 @@ def run(response_path=None):
     request = next(r for r in prepared if r['source']['session_id'] == 'S02')
     message = request['source']['messages'][0]
     # Scripted external-output contract fixture, deliberately not called model inference.
-    response = dict(format='decivora-candidates-1',request_id=request['request_id'],status='ok',
+    packet = prepare_quotes(request)
+    quote_output = dict(format=packet['format'],request_id=request['request_id'],
+      contract_id=packet['contract_id'],status='ok',
       records=[dict(message_id=message['message_id'],kind='AnswerRecord',entity_key='answer-storage',
-      start=0,end=len(message['text']),quote=message['text'],attributes=dict(
+      quote=message['text'],attributes=dict(
       question_id='Q_STORE',option_id='B',presentation_revision=1))])
+    anchored = anchor(request, json.dumps(quote_output,ensure_ascii=False))
+    response = anchored['response']
     if response_path is not None:
         response=json.loads(Path(response_path).read_text())
     checkpoints = {}
+    local_reads = []
     with tempfile.TemporaryDirectory() as tmp:
         root=Path(tmp);chain=Chain(root/'events.db')
         def send(cmd,payload,actor='human'):
@@ -52,9 +59,19 @@ def run(response_path=None):
             send('impact',dict(preview_digest=preview['preview_digest'],actions={'sync':'obsolete','export':'retained','combined':'review','watch':'review'}))
             content=b'SQLite migration contract fixture';(root/'bundle.md').write_bytes(content)
             send('expect',dict(artifact_revision=2,ref='fixture-ref-2',path='bundle.md',sha256=hashlib.sha256(content).hexdigest()))
-            send('observe',read_target(root/'bundle.md',2,'old-ref','bundle.md'),'observer')
+            def collect(ref):
+                observation=observe(root,'bundle.md',hashlib.sha256(content).hexdigest())
+                if observation['status'] != 'observed_match':
+                    raise ValueError('controlled local artifact failed observation')
+                local_reads.append(dict(status=observation['status'],
+                    task_verified=observation['task_verified'],
+                    remote_upload_verified=observation['remote_upload_verified']))
+                # Revision/ref are explicitly scripted fixture metadata, not inferred Git proof.
+                return dict(availability='read',sha256=observation['observed_sha256'],
+                            artifact_revision=2,ref=ref,path='bundle.md')
+            send('observe',collect('old-ref'),'observer')
             state=chain.snapshot();checkpoints['old_target']=dict(status=state['observation']['status'],verified=state['verified'])
-            send('observe',read_target(root/'bundle.md',2,'fixture-ref-2','bundle.md'),'observer')
+            send('observe',collect('fixture-ref-2'),'observer')
             send('verify',dict(artifact_revision=2,criteria={'rollback':'passed'}),'verifier')
             checkpoints['partial']=dict(verified=chain.snapshot()['verified'])
             send('verify',dict(artifact_revision=2,criteria={'migration':'passed'}),'verifier')
@@ -73,6 +90,8 @@ def run(response_path=None):
       prompt_version=request['prompt_version'],prompt_sha256=request['prompt_sha256'],
       model_dispatches=0,semantic_inference='not_run',human_gold_review='pending',
       real_host=False,real_target=False,production_runtime=False,usage=None,
+      source_binding='quote_only_scripted' if not response_path else 'imported_legacy_candidate',
+      bounded_local_reads=local_reads,
       limitations=['explicit synthetic trusted receipt is not production authentication',
                    'contract fixture is not model output quality',
                    'fixture AC outcomes are controlled inputs',

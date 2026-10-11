@@ -59,3 +59,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Seçilmiş yerel hedef gözlemi
 
 `local_observer.py` yalnız tek seçili yerel dosyayı bounded read ile gözler; bütün task'ı veya GitHub upload'ını doğrulamaz. [Teslim ve gerçek local read kaydı](../../docs/quality/local-observer.md). Dokuz yeni test, semantik suite 65 passed; model anlam ölçümü hâlâ açık.
+
+## Tek komutluk integrated teslim — T03j DONE
+
+`python3 -B spikes/semantic-chain/run.py` quote-only adapter + bounded observer + ayrı karar/impact + partial/full AC + restore zincirini çalıştırır. [Kapanış koşulları ve kayıt](../../docs/quality/integrated-chain.md). 66 suite testi geçti; gerçek inference/production kapıları açık. T03g/h/i/j DONE ana T03'ü kapatmaz.
