@@ -9,6 +9,7 @@
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
 | Uygulama / adapter / dashboard | Başlanmadı |
 | Model doğruluğu / tasarruf / kullanıcı talebi | Ölçülmedi |
+| İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
@@ -308,3 +309,9 @@ Kullanıcı etiketli örnekleri hazırlamamızı ve zorunlu işleri yapılmayabi
 `check_corpus.py --self-test` veri/hash/exact Unicode span/split/referans/minimum kayıt kontrolünü geçti; 11 mutant beklenen şekilde reddedildi. [JSON kontrol raporu](../quality/corpus-preparation-results.json) validator/manifest hashlerini ve product_result=not_run sınırını taşır. Validator extractor/scorer/harness değildir; gerçek precision/recall, token tasarrufu, replay, target read ve UI testi yapılmadı. Ek ücretli model/provider çağrısı başlatılmadı.
 
 T01 IN_PROGRESS ve diğer 29 ana görev TODO; canonical backlog/phase tracker eşleştirildi. İnsan incelemesi, T01e/T01f ve daha geniş FLOW/authority/crash/protokol hazırlığı kapanmadan T01 complete sayılmaz. Görsel Mermaid/SVG kaynakları değişmedi; yeni ürün diagram/render testi iddiası yok. Remote commit/read-back teslimde ayrıca doğrulanır.
+
+## 2026-10-11 — Q02-R2 A ve tek gerçek hedef gözlemi
+
+Kullanıcı mevcut private repo dokümanını ilk read-back hedefi seçti. Asistan önceki corpus rehberini seçip değiştirmeden `6de536e44b22d6f839aa7c94e3ca2444addb5115` ref'inde okudu; yerel artifact ile GitHub içeriği/SHA-256/Git blob kimliği eşleşti. [READBACK-01 raporu](../quality/first-target-readback.md) ve [JSON gözlem](../quality/first-target-readback.json) scope, revision ve not_run ayrımlarını tutar.
+
+Bu manuel happy-path, yüklenmiş tek dosyanın somut kanıtıdır; Decivora target adapter'ı, semantik kalite, coding capture, bütün corpus bundle'ı veya task DoD kanıtı değildir. T02d kısmi manuel kanıt aldı; ana durumlar **T01 IN_PROGRESS, diğer 29 TODO**. İnsan etiket review'u ve kalan T01 protokolü sıradadır; otomatik extraction uygulaması/testi zorunlu kalır. Ek ücretli model/provider deneyi yok; host token kullanımının ölçümü yok. GitHub hedef sorusu tekrar sorulmaz; B yerel hedef senaryosu ve sonraki Codex bağlantı testi korunur.

@@ -514,7 +514,7 @@ T01 ilk hazır iş olarak korunur; GAP/RES sentetik oracle örnekleri geniş cor
 
 | Dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
-| T02d / T01 | TODO: selected kaynak, trustworthy human selection ve tek local/repo target capability | Capture ve target izinleri ayrı; real/mock/import farkı, exact hedef coverage, unknown sınırı; ücret/erişim ayrıca |
+| T02d / T01 | TODO (kısmi manuel kanıt): selected kaynak, trustworthy human selection ve tek local/repo target capability | [READBACK-01](../quality/first-target-readback.md) tek GitHub dokümanında manuel happy-path eşleşmesi; otomatik capability, missing/permission/partial/stale ve kaynak coverage henüz not_run. Capture/target izinleri ayrı; ücret/erişim ayrıca |
 | T03a / T01,T02d | TODO: sınırlı deney yöntemi, geçici stack/lisans ve kapsam önerisi | Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil |
 | T03b / T03a | TODO: yetkilendirilirse küçük prototip ve adil native deneyi | GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok |
 | T03c / T03b,T02 | TODO: sonuç, yönetim/kurulum/bakım maliyeti ve yatırım seçenekleri | Owner native/extend/build/ek deney/durdur kararı; build'de production stack ADR ve T04 kapısı, native/extend'de uygun teslim planı |

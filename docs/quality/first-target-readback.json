@@ -1,0 +1,72 @@
+{
+  "schema_version": "manual-readback-1",
+  "observation_id": "READBACK-01",
+  "observed_at_utc": "2026-10-11 15:54:36 UTC",
+  "execution_mode": "manual_existing_github_connector_not_decivora_adapter",
+  "observer": "Codex assistant; local byte comparison by Python",
+  "authorization": {
+    "decision_id": "Q02-R2",
+    "answer": "A",
+    "decision_date": "2026-10-11",
+    "source": "User's direct reply to the pending Q02-R2 target question",
+    "selected_class": "One document in the existing private Decivora repository",
+    "exact_path_selection": "Assistant's routine implementation choice: the previously prepared corpus guide",
+    "verification_scope": "One document at a captured immutable repository revision",
+    "not_granted": [
+      "Other source accounts or projects",
+      "Paid model dispatch",
+      "Target command execution",
+      "Broad conversation import"
+    ]
+  },
+  "expected_artifact": {
+    "repository": "alphanAkbulut/decivora",
+    "path": "examples/corpus/README.md",
+    "publication_ref": "6de536e44b22d6f839aa7c94e3ca2444addb5115",
+    "representation": "Local UTF-8 file bytes",
+    "sha256": "65ff47445f51a92167409ebeca26bc4714ceab7b33b46bea636ec5443fbe16dd",
+    "byte_length": 5477
+  },
+  "target": {
+    "repository": "alphanAkbulut/decivora",
+    "private_at_observation": true,
+    "branch": "main",
+    "captured_branch_ref": "6de536e44b22d6f839aa7c94e3ca2444addb5115",
+    "immutable_observed_ref": "6de536e44b22d6f839aa7c94e3ca2444addb5115",
+    "path": "examples/corpus/README.md",
+    "retrieval": "GitHub fetch_file at immutable ref; UTF-8 returned content encoded without normalization",
+    "sha256": "65ff47445f51a92167409ebeca26bc4714ceab7b33b46bea636ec5443fbe16dd",
+    "byte_length": 5477,
+    "git_blob_sha_from_tree": "0ecf4632868d161fc0d245785465457f686a8dfa",
+    "computed_git_blob_sha": "0ecf4632868d161fc0d245785465457f686a8dfa"
+  },
+  "result": {
+    "application_observation": "observed_match",
+    "exact_content_match": true,
+    "git_blob_identity_match": true,
+    "document_upload_criterion": "passed_for_this_file_and_ref",
+    "entire_corpus_bundle": "not_evaluated",
+    "semantic_document_correctness": "not_evaluated",
+    "product_task_completion": "not_evaluated",
+    "product_adapter": "not_run",
+    "semantic_extraction": "not_run",
+    "host_capture": "not_run",
+    "ui": "not_run",
+    "deployment": "not_evaluated"
+  },
+  "cost": {
+    "additional_paid_model_dispatches": 0,
+    "host_token_usage": null,
+    "host_token_usage_status": "unknown"
+  },
+  "freshness": {
+    "scope": "Snapshot observation only; not ongoing monitoring",
+    "on_target_change": "Retain this historical observation; a new revision requires a new observation",
+    "source_guide_modified_during_check": false
+  },
+  "limitations": [
+    "Manual happy-path measurement, not an automated target adapter or a complete experiment",
+    "No permission-denied, missing-file, partial-bundle, stale-ref, mutation or concurrent-read test in this observation",
+    "Human review of corpus labels remains pending"
+  ]
+}

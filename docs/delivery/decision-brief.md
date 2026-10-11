@@ -7,7 +7,7 @@
 | ID | Soru | Durum / cevap | Etkisi |
 |---|---|---|---|
 | Q01 | İlk pilot kimin işiyle doğrulansın? | **Kabul edildi:** önce owner'ın bireysel kullanımı, sonra benzer kullanıcılar. Kullanıcının bu oturumdaki açık cevabı | İlk UX ve araştırma örneklemi; tam kapsam ve P4 ekip vizyonu korunur |
-| Q02 | Günlük kullanılan coding/chat yüzeyleri, pilotun zorunlu ilk ikisi ve hedef OS? | Kısmen cevaplandı: Q02-R1 A ilk pilot, B sonraki hedef; OS/host ve somut kaynak/hedef açık | T02 capability deneyi sırası, kurulum/host matrisi. Tam MVP'nin iki coding adapter hedefi kendiliğinden düşmez |
+| Q02 | Günlük kullanılan coding/chat yüzeyleri, pilotun zorunlu ilk ikisi ve hedef OS? | Kısmen cevaplandı: Q02-R1 A ilk pilot, B sonra; Q02-R2 A tek GitHub dokümanı manuel kontrol edildi. Coding OS/host ve gerçek sohbet kaynağı açık | T02 capability deneyi sırası, kurulum/host matrisi. Tam MVP'nin iki coding adapter hedefi kendiliğinden düşmez |
 | Q03 | Ayıklanmış sohbet parçaları harici API'ye gönderilebilir mi; aylık bütçe tavanı? | Kısmen cevaplandı: Q03-R1 A; ilk deney ek ücretli model API'si olmadan. Sonraki gerçek veri/provider/bütçe açık | OPEN-08/10; ilk dilim etiketli fixture/kod kontrolleri. Otomatik anlam çıkarımını uygulama/test etme gereksinimi sabit; model/veri/bütçe ve deney zamanı ayrıca somutlaştırılır |
 
 Q01 müşteri talebi veya pazar segmenti doğrulaması değildir. Q02'de mevcut bilgisayarın gözlenmesi desteklenecek tek OS seçimi sayılmaz. Q03'te genel API istekliliği tüm özel konuşmaların aktarım izni yerine geçmez; kaynak ve redaction sınırı pilotta somutlaştırılır.
@@ -152,11 +152,13 @@ Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, c
 
 ## Q02-R2 — İlk gerçek read-back hedefi
 
-**Soruldu / cevap bekleniyor.** T01'in ilk [sentetik corpus hazırlığı](../quality/baseline.md) hazırdır; insan review'u ve gerçek deney tamamlanmadı. Q02-R1 A ilk kaynak yolu ile Q03-R1 ilk no-model sıra tercihleri yeniden sorulmaz.
+**2026-10-11 · A kabul edildi.** Kullanıcının doğrudan “A” yanıtı bu bekleyen hedef sorusuna bağlandı; Q02-R1 kaynak yolu ve Q03-R1 no-model sıra kararıyla karıştırılmadı.
 
-İlk gerçek uygulama kontrolünde hangi hedefi önce kullanalım?
+- **A — Seçilen ilk hedef/sıra:** Mevcut private Decivora GitHub reposunda seçilmiş tek doküman; exact path/ref ve içerik karşılaştırmasıyla read-only kontrol.
+- **B — Korunan sonraki senaryo:** Kullanıcının belirttiği tek yerel dosya; yalnız o path/artifact için scoped read. İlk hedef olarak seçilmedi; ürün kapsamından çıkarılmadı.
 
-- **A — Önerilen hedef/sıra:** Mevcut private Decivora GitHub reposunda seçilmiş tek doküman. Deney öncesi source/artifact revision, exact path ve immutable ref belirlenir; read-only gözlem upload/AC/deploy ayrımıyla raporlanır.
-- **B — Hedef/sıra alternatifi:** Seçilmiş tek yerel dosya. Kullanıcı path'i belirtir; yalnız o artifact/target'ın read kapsamı hazırlanır, klasör/başka projeler genel taranmaz.
+**Gerekçe ve uygulama tercihi:** Mevcut dokümanı/izinli bağlantıyı kullanmak, ilk somut read-back için yeni host kurulumuna ihtiyaç bırakmaz. Bunun daha düşük toplam token maliyeti sağladığı ölçülmedi. Asistan, onaylanan sınıf içinde önceki corpus rehberini `examples/corpus/README.md` olarak seçti; kullanıcı exact path'i ayrıca belirtmedi.
 
-İkisi de ürünün desteklemesi hedeflenen senaryolardır; seçim hangisini önce gerçek veriyle sınayacağımızdır. Cevap verilmeden hedef seçilmiş sayılmaz. Bu soru bütün kaynak hesaplarına erişim, dış modele veri, ücret veya target write/execution izni istemez/vermez; somut source/target read kapsamı ilgili deneyde ayrıca açık tutulur.
+**Sonuç:** [READBACK-01](../quality/first-target-readback.md) önceki artifact yayım commit'ini ve gözlem anındaki main ref'ini `6de536e44b22d6f839aa7c94e3ca2444addb5115` olarak sabitledi. Yerel içerik ile GitHub UTF-8 içeriği/SHA-256/blob kimliği birebir eşleşti: tek doküman/ref için **observed_match**. Rehber bu kontrolde değiştirilmedi. Bu, manuel mevcut GitHub connector'ıyla yapılan kontrol; Decivora adapter/harness, semantik extraction veya tüm task DoD testi değildir.
+
+**Sınır / devam:** Tek hedef dokümanın read kapsamı somutlaştı. Bütün kaynak hesapları, ücretli model, gerçek sohbet import'u ve target execution yetkisi çıkarılmaz. Repo belge bakımının önceki commit/push yetkisi ayrı kalır. T01 insan review'u ve remaining coverage, T02 coding capability ve zorunlu T09/T24q extraction testi açık; gelecekteki model/veri/bütçe ayrıntıları ayrıca karara bağlanır. Sadece hedef/sıra seçildi; gerekli doğrulama işleri seçenek hâline getirilmedi.

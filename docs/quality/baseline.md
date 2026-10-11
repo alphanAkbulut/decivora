@@ -1,6 +1,6 @@
 # İlk corpus ve baseline hazırlığı
 
-2026-10-11 — **T01 IN_PROGRESS.** İlk etiketli sentetik veri seti ve kontrol aracı hazırlanmıştır. **Ürün baseline ölçümü yok; insan oracle incelemesi pending, semantik/domain/target/host/UI sonuçları not_run.** [Corpus rehberi](../../examples/corpus/README.md), [manifest](../../examples/corpus/manifest.json) ve [gerçekleşen veri kontrol raporu](corpus-preparation-results.json) somut çıktılardır.
+2026-10-11 — **T01 IN_PROGRESS.** İlk etiketli sentetik veri seti ve kontrol aracı hazırlanmıştır. **Ürün baseline ölçümü yok; insan oracle incelemesi pending, semantik/domain/host/UI ve ürün target adapter sonuçları not_run. Ayrı [READBACK-01](first-target-readback.md) tek gerçek GitHub dokümanının manuel içerik eşleşmesini doğruladı; ürün baseline ölçümü değildir.** [Corpus rehberi](../../examples/corpus/README.md), [manifest](../../examples/corpus/manifest.json) ve [gerçekleşen veri kontrol raporu](corpus-preparation-results.json) somut çıktılardır.
 
 ## Hazırlanan veri
 
@@ -64,6 +64,6 @@ T01 bütünü kapanmadı. Reviewer şu alanları inceler: kaynağın niyeti doğ
 ## Adım adım devam
 
 1. T01 insan review'u ve kalan sentetik kapsam/protokol; eksik golden varsayımı hazır paket üzerinde somutlaştır.
-2. İlk gerçek A yolunun exact kaynak/artifact/target seçimini netleştir. GitHub/local read-back ve storage/retention izinleri ilgili somut veriyle hazırlanır.
+2. Q02-R2 A hedef seçimi ve ilk manuel GitHub doküman kontrolü [READBACK-01](first-target-readback.md) ile yapıldı. Sonraki otomatik hedef deneyi source/target revision, missing/permission/partial/stale kapsamı ve gerçek veri/retention sınırını hazırlayıp test eder; tek happy-path gözlemi bu işi kapatmaz.
 3. İlk no-model code dilimi → zorunlu otomatik anlam çıkarımı uygulaması ve ayrı kalite/maliyet deneyi. Model/veri/bütçe seçimi yürütme ayrıntısıdır, gereksinimi yapıp yapmama sorusu değildir.
 4. Sonraki Codex B yolunda MCP read/proposal ve ayrıca capture capability/coverage doğrulanır. Native/extend/build yatırım kararı gerçek karşılaştırma ile alınır; fixture lint buna karar vermez.
