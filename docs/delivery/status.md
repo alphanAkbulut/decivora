@@ -17,6 +17,14 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — R20 görünürlüğü ve ücretsiz kaynak konumu fizibilitesi
+
+- README, risk register ve T03 kartına gözlenen engel/denemeler/etkilenen iş eklendi. Model cevabı geldi ama source span import'unda durduğumuz; semantik kalite/karar zincirinin henüz ölçülmediği ayrı gösterilir. R20 High bir etki değerlendirmesi; n=1 ölçülmüş genel hata olasılığı değildir.
+- [ANCHOR-PROBE-01](../quality/source-anchor-feasibility.json) ve salt okunur probe kodu: aynı raw output'ta 11 tekil exact quote, kodla konumlandırılan bellekteki türev mevcut validator'dan geçti; 7 edge kontrolü geçti. Oracle, yeni inference, ücret ve canonical mutation yok; orijinal response ve ilk iki makine sonuç kaydı değişmedi. Production adapter veya semantik başarı teslimi değildir.
+- Doğrulama: 38 root testi, 28 semantik bağlantı testi ve 7 ayrı probe kontrolü geçti; docs/anchor/progress kontrolü geçti. Tarayıcıda aktif risk/deneme bölümü görünür, kaynak bağlantıları ve R20 açık durumu okundu. Bu sonuçlar model anlam kalitesini veya production düzeltmesini kanıtlamaz.
+- Offline bounded adapter/negatif test/ölçüm sıradadır; kullanıcı kararı bekleyen offline adım yok. Yeni model çağrısı/gerçek veri/erişim/ücret ve production stack ayrı somut kararları korur. T03 IN_PROGRESS, R20 açık; unit test sayısı veya probe geçişi risk kapatmaz.
+
+
 ### 2026-10-11 — Q03-R5: gerçek output ve strict kaynak konumu reddi
 
 - Kullanıcının bir yeni deneme onayıyla aynı sentetik S02 normal Chrome, boş kişiselleştirilmemiş geçici ChatGPT oturumunda tek kez gönderildi; bir gerçek output alındı, retry 0. İlk cloudflare kaydı ayrı korunur; kök neden kanıtlanmadı.

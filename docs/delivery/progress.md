@@ -21,19 +21,37 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 2026-10-11 · Veri hazırlığı: 6 sentetik oturum/58 mesaj ve bağımsız scorer mevcut. Bu son token-limit çalışmasında yeni corpus veya insan gold üretilmedi.
 
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
 Sıradaki adım: [İnsan inceleme kuyruğu](../quality/human-review-queue.md) ve kritik etiket doğrulaması; gerçek model sonucu ayrıca T03 deneyine eklenecek. T01 henüz kapanmadı.
 
 ### T02 · İki coding yüzeyinde capability spike
 
 2026-10-11 · Capture kodu: Spike-0 kaynak/session, geciken delta ve kısa cevap kontrolleri 40 fixture testine sahip. Son token-limit çalışması gerçek host kurulumu veya capture testi eklemedi.
 
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
 Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmiş Codex/Claude host ve scoped grant ile gerçek capability kontrolü. MCP erişimi tam otomatik capture kanıtı değil.
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · Q03-R5 onayıyla S02 normal Chrome'daki ayrı kişiselleştirilmemiş geçici ChatGPT oturumuna bir kez gönderildi. Bir gerçek output alındı; 11/11 alıntı exact, 10/11 kaynak span hatalı. Strict validator reddetti; skor/zincir çalışmadı, canonical mutation 0/retry 0. [Güncel rapor ve ham çıktı](../quality/s02-second-attempt-result.md); token/model kimliği unknown.
+2026-10-11 · S02-002 offset hatasının risk ve deneme günlüğü görünür kılındı. Yerel ANCHOR-PROBE-01: 11/11 tekil exact quote konumu kodla hesaplandı; bellekteki türev mevcut validator’dan geçti, 7 edge kontrolü geçti. Ham response değişmedi; semantik skor/zincir not_run, yeni LLM çağrısı 0. [Rapor](../quality/s02-second-attempt-result.md).
 
-Sıradaki adım: İnsan bağımlılığı olmayan P0 source anchoring adapter deneyi: message ID + exact quote için tekil kaynak eşleşmesini kodla hesapla; eksik/çoklu eşleşmeyi reddet, ham ve türetilmiş çıktıyı ayır. Sonra bağımsız scorer ve trusted-receipt zinciri; validator gevşetilmez. [S02 sonucu](../quality/s02-second-attempt-result.md) başarısız orijinali korur. Q03-R5 tüketildi; yeni inference/ücret izni yok. Human gold, native kıyas ve T03c kapıları açık.
+**Aktif teknik risk:** Observed / High · R20: 10/11 kaynak span hatalı; gerçek-model semantik skor ve zincir çalışmadı. [Aktif risk kaydı](../governance/risks.md). Token/context cap unknown; yeni inference izni yok.
+
+**Denemeler / sonuç:** S02-001: erişim hatası, output yok. S02-002: output var, kaynak konumu reddi. ANCHOR-PROBE-01: 11 exact quote konumu kodla bulundu; bellekteki türev validator'dan geçti, 7 edge kontrolü; yeni model çağrısı ve semantik ölçüm yok. [Kanıt ve deneme günlüğü](../quality/s02-second-attempt-result.md).
+
+**Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 source anchoring geliştirmesi gerekli. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
+
+Sıradaki adım: Probe’u bounded, revision/hash-bound source anchoring adapter’ına dönüştür; original/derived provenance ve ambiguity rejection negatiflerini sınayıp bağımsız scorer/trusted-receipt zinciriyle ölç. [R20 kapanış koşulları](../quality/s02-second-attempt-result.md). Probe production fix veya raw model başarısı değil; offline iş kullanıcı yanıtını beklemez. Q03-R5 tüketildi, yeni inference/ücret izni yok; human gold/native/T03c açık.
 
 
 ## Mevcut teslim parçaları
@@ -48,7 +66,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Zincir proof’u** — Gerçek sentetik source dosyası → scripted contract response → selection → AND/OR/unknown → old target → partial/full AC → restore; [Sonuç](../quality/semantic-readiness-results.json); gerçek inference/target değil
 - **Otomasyon ve devir** — Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı; Docs/corpus/anchor + runtime regresyonları
 - **Seçili gerçek hedef okuması** — Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match; Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil
-- **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil
+- **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 13 tracker testi; tarayıcıda T03 aktif risk/deneme bölümü ve önceki detay/P0 filtre kontrolleri; ürün UI veya canlı agent telemetry değil
 - **S02 gönderim ve güvenlik hazırlığı** — İki ayrı onaylı tek gönderim: S02-001 cloudflare_challenge/çıktı yok; S02-002 gerçek output, 10/11 span hatalı, strict ret; her denemede retry 0; [Güncel rapor/ham çıktı](../quality/s02-second-attempt-result.md); kaynak hashleri sabit. JSON parse geçti, scorer/zincir çalışmadı; hard-cap/production limiter doğrulanmadı
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
@@ -56,7 +74,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [S02-002 raporu](../quality/s02-second-attempt-result.md): offline exact quote anchoring deneyi → bağımsız scorer → trusted-receipt zinciri. Q03-R5 tüketildi; otomatik tekrar yok, token upper bound unknown |
+| Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [S02-002 raporu](../quality/s02-second-attempt-result.md): 11 tekil konum/7 edge probe’u geçti → bounded adapter ve negatif testler → bağımsız scorer → trusted-receipt zinciri. Q03-R5 tüketildi; otomatik tekrar yok, token upper bound unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -105,4 +123,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `aea3caf0a7d964aa8069661cdf448b5fbbab798a750f569dc3e2f2029f7bdba1`
+Kaynak fingerprint: `c4e78c71deebc283094d3067f0e095dc2c1700023d7597c66cc1e8bcdf624bbf`

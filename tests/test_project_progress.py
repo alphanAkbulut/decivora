@@ -39,6 +39,19 @@ class ProgressTests(unittest.TestCase):
         self.assertTrue(all(e["status"] == "PLANNED_PRODUCTION" for e in data["engines"]))
         self.assertEqual(data["tasks"][14]["dependencies"], ["T14", "T07c"])
 
+    def test_active_risk_remains_visible_when_fixture_evidence_passed(self):
+        path = self.root / progress.SOURCES[0]
+        original = path.read_text()
+        task = progress.build(self.root)["tasks"][2]
+        old = task["details"].get("Risk durumu")
+        self.assertIsNotNone(old)
+        path.write_text(original.replace(old, "Observed / High · R20 test source failure", 1))
+        data = progress.build(self.root)
+        self.assertEqual(data["evidence"]["status"], "recorded")
+        self.assertEqual(data["tasks"][2]["status"], "IN_PROGRESS")
+        self.assertIn("Observed / High · R20 test source failure", progress.markdown(data))
+        self.assertNotIn("R20 Closed", progress.markdown(data))
+
     def test_backlog_change_refreshes_data_and_generated_snapshot(self):
         before = progress.build(self.root)
         path = self.root / progress.SOURCES[0]

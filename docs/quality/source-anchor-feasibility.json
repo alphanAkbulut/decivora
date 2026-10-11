@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "kind": "offline_source_anchor_feasibility",
+  "date": "2026-10-11",
+  "source_attempt": "S02-002",
+  "scope": "Diagnostic probe; no production adapter or new inference",
+  "request_id": "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+  "request_sha256": "10e7f3738f6414b3f36747f04398e076a23bf534a601bca71775696b193416d1",
+  "raw_response_sha256": "ce4988233436a23c5ec6530f3182163d84c8863d4fea0642bd3673f213fab963",
+  "probe_sha256": "5c7acfd9009c5a6bd614f4e37f33ef0fee60437338eef76a7781c76f8dfa88d0",
+  "original_validation": "rejected",
+  "original_error": "candidate quote not in source",
+  "original_unchanged": true,
+  "unique_exact_quote_matches": 11,
+  "derived_validation": "passed",
+  "derived_records": 11,
+  "derived_sha256": "35679c10a957a0258c67a4c6ea5fa850ceb31a16861755547c64b98fabdae191",
+  "derived_canonical_mutations": 0,
+  "new_model_calls": 0,
+  "oracle_used": false,
+  "semantic_scoring": "not_run",
+  "chain": "not_run",
+  "edge_checks": {
+    "count": 7,
+    "passed": true,
+    "cases": [
+      "unique substring",
+      "repeated quote",
+      "overlapping repetitions",
+      "missing quote",
+      "empty quote",
+      "Unicode codepoints",
+      "no automatic Unicode normalization"
+    ]
+  },
+  "anchors": [
+    {
+      "message_id": "S02-m01",
+      "start": 0,
+      "end": 47
+    },
+    {
+      "message_id": "S02-m02",
+      "start": 0,
+      "end": 53
+    },
+    {
+      "message_id": "S02-m03",
+      "start": 0,
+      "end": 59
+    },
+    {
+      "message_id": "S02-m04",
+      "start": 0,
+      "end": 89
+    },
+    {
+      "message_id": "S02-m05",
+      "start": 0,
+      "end": 9
+    },
+    {
+      "message_id": "S02-m06",
+      "start": 0,
+      "end": 49
+    },
+    {
+      "message_id": "S02-m07",
+      "start": 0,
+      "end": 72
+    },
+    {
+      "message_id": "S02-m08",
+      "start": 0,
+      "end": 58
+    },
+    {
+      "message_id": "S02-m09",
+      "start": 0,
+      "end": 84
+    },
+    {
+      "message_id": "S02-m10",
+      "start": 0,
+      "end": 61
+    },
+    {
+      "message_id": "S02-m11",
+      "start": 0,
+      "end": 44
+    }
+  ],
+  "limitations": [
+    "n=1 already observed development output; not independent holdout",
+    "Derived validation pass is not original model contract success",
+    "No semantic correctness, cross-message identity, authority or production proof",
+    "Missing/ambiguous quote is rejected, not automatically repaired",
+    "No reusable production adapter delivered"
+  ]
+}

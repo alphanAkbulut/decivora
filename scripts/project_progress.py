@@ -131,6 +131,9 @@ def markdown(data):
             continue
         lines += ["### " + task["id"] + " · " + task["title"], "",
                   task["details"].get("Son ilerleme", "Son ilerleme kaydı yok."), "",
+                  "**Aktif teknik risk:** " + task["details"].get("Risk durumu", "Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez."), "",
+                  "**Denemeler / sonuç:** " + task["details"].get("Denemeler / sonuç", "Ayrıntılı kaynak kayıtlarını kontrol et."), "",
+                  "**Etkilenen iş:** " + task["details"].get("Etkilenen iş", "Backlog kabul ve bağımlılıkları geçerli."), "",
                   "Sıradaki adım: " + task["details"].get("Sıradaki adım", "Ayrıntılı backlog'u kontrol et."), ""]
     lines += ["", "## Mevcut teslim parçaları", "", "Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.", ""]
     lines += ["- **" + row["title"] + "** — " + row["output"] + "; " + row["verification"] for row in data["delivered"]]

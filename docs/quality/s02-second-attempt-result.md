@@ -10,6 +10,10 @@ Aynı 5498 byte / 11 sentetik mesajlık [hazır prompt](../../examples/model-smo
 
 ## Gerçek bulgu ve kapsamı
 
+> [!WARNING]
+> **Gözlenen engel: R20 / High / Observed.** Model cevabı → kaynak konumu doğrulaması geçişinde durduk. Karar doğruluğu, görev etkisi veya AC doğrulamasına ulaşmadık. Test suite'in geçmesi bu engeli kapatmaz. Öncelik: T03 source anchoring; production build/kalite kapısı açık.
+
+
 | Kontrol | Sonuç |
 |---|---|
 | JSON parse ve request ID | Parse edildi; hazır isteğin ID'si eşleşti |
@@ -50,6 +54,36 @@ python3 -B spikes/semantic-chain/experiment.py evaluate   --responses docs/quali
 Beklenen gözlem mevcut kodda exit 1 ve yukarıdaki validation hatasıdır; değerlendirme JSON'u yazılmadı. Bu beklenen ret, test suite'in geçtiği veya model deneyinin başarılı olduğu anlamına gelmez. Ham response/hash, source/prompt hashleri ve mesaj bazlı diagnostic [makine kaydında](s02-second-attempt-results.json) saklandı. Screenshot yerelde tutuldu, GitHub'a hesap/session görseli eklenmedi.
 
 ## Öğrenme ve sıradaki iş
+
+### Ne denedik; tam nerede durdu?
+
+| Deneme | Amaç / yöntem | Durduğu yer | Sonuç ve etkisi |
+|---|---|---|---|
+| S02-001 | Sabit sentetik prompt, in-app ChatGPT, bir gönderim | Host erişimi; `cloudflare_challenge` | Output yok; backend/token/root cause unknown. [Tarihsel kayıt](s02-account-smoke-results.json) |
+| S02-002 | Aynı prompt, normal Chrome, ayrı insan onayıyla bir gönderim | Output import'unda codepoint span kontrolü | Output var; 10/11 span yanlış. Ham çıktı değişmedi; scorer/chain çalışmadı |
+| ANCHOR-PROBE-01 | Aynı çıktıda message ID + exact quote için kodla tekil eşleşme; yalnız yerel | Kaynak bağlama teknik fizibilitesi | 11/11 tekil eşleşme; yalnız bellekte türetilen adaylar mevcut validator'dan geçti. Yeni model çağrısı yok; semantik/chain ölçümü yok |
+
+İlk hatanın bilinmeyen kök nedeni ile ikinci denemenin doğrulanmış offset hatası aynı olay değildir. “Tüm ürün ilk adımda çalışamaz” sonucu bu küçük örnekten çıkarılamaz; kullanılabilir model→kaynak bağlantısının henüz teslim edilmediği açık bir engeldir. Modelden hassas sayısal konum üretmesini isteyen sözleşme varsayımını fixture başarıları gerçek kullanımda doğrulamamıştı. Bu varsayım artık R20 olarak görünür; modelin iç nedenini bildiğimizi iddia etmiyoruz.
+
+### Teknik olarak aşılabilir mi?
+
+**Bu örnekte kaynak konumu engelini aşan deterministik yöntem yerelde doğrulandı.** [Probe kodu](../../spikes/semantic-chain/probe_source_anchors.py) yalnız kaynağı ve değiştirilmemiş cevabı okur; oracle/API/tool yok. Modelin önerdiği alıntıyı aynı mesajda exact arar; tek eşleşmede `[start,end)` hesaplar. Boş/eksik/çoklu/örtüşen eşleşme, farklı Unicode normalizasyonu sessizce kabul edilmez. Kodun hesapladığı konum anlam doğruluğu, insan onayı veya task completion kanıtı değildir.
+
+```bash
+python3 -B spikes/semantic-chain/probe_source_anchors.py
+```
+
+[Probe sonucu](source-anchor-feasibility.json): 11 tekil eşleşme ve mevcut validator'da 11 geçerli türev aday; 7 edge kontrolü (tekil alt metin, tekrar, örtüşen tekrar, eksik, boş, Unicode codepoint, normalizasyon farkı) geçti. Bunlar ayrı script kontrolleridir, root suite test sayısına eklenmez. Orijinal S02-002 hâlâ reddedilir. Türev yalnız bellekte oluştu; production import, karar uygulama veya human-gold benchmark yapılmadı. Kod/kaynak/ham response hashleri ve türev hash'i ayrı kayıttadır; mevcut model raporu değiştirilmedi.
+
+### Riskin kapanması için gerekli işler
+
+1. Probe'u bounded, revision/hash-bound adapter'a dönüştür; orijinal ve türev provenance'ı ayrı tut. Eksik/çoklu eşleşme için gözlenebilir rejection/quarantine; batch davranışı açık olsun.
+2. Bozuk envelope, yanlış message/request/revision ve yetki iddiasını bu yolun da reddettiğini negatif testlerle doğrula; mevcut strict validator gevşemesin.
+3. Geçerli türev adayları bağımsız scorer ve ayrı trusted receipt ile kontrollü zincirde ölç. Türev skorunu orijinal raw contract skoruyla karıştırma; AI oracle insan gold değildir.
+4. Yeni veri üzerinde model/adapter kalite ve maliyetini değerlendir; hata/düzeltme yükü ölçülmeden R20 Closed veya MVP hazır deme. Yeni inference ayrıca izinli olsun.
+
+**Şu an kullanıcı kararı bekleyen bir offline adım yok.** Kodla tekil kaynak eşleşmesi ve negatif testler ücret/veri paylaşımı gerektirmez. Yeni LLM çağrısı/sağlayıcı/ücret, gerçek private konuşma aktarımı, erişim genişletme veya production stack seçimi gerektiğinde somut sınırlarıyla ayrıca owner kararı alınır. Önceki tek gönderim izni tüketildi. Mevcut ürün hard-cap kuralına yeni istisna eklenmedi.
+
 
 LLM'ye codepoint saydırmak güvenilir kaynak bağlama için zayıf bir sözleşme olabilir. Sıradaki insan bağımlılığı olmayan P0 işi: modelin mesaj kimliği + exact quote önerisini kodun kaynakta tekil exact match ile konumlandırdığı ayrı adapter deneyi hazırlamak. Eksik veya birden çok eşleşme varsa abstain/quarantine; fuzzy eşleşmeyle sessiz kabul yok. Orijinal response ve türetilmiş aday ayrı hash/revision/provenance taşır. Mevcut source-binding ve authority validator gevşetilmez. Bu öneri henüz uygulanmadı; düzeltilmiş türev sonuç orijinal modelin strict başarısı diye sunulamaz.
 

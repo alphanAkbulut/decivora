@@ -11,6 +11,10 @@
 
 ## Çalışmanın neresindeyiz?
 
+> [!WARNING]
+> **Gerçek model denemesinde açık teknik engel var.** S02-002 cevabı geldi; 10/11 kaynak konumu hatalı olduğu için import reddedildi. Semantik skor/karar zinciri çalışmadı. Yerel exact-quote probe'unda 11 konum kodla doğrulandı; production düzeltme henüz teslim değil. [Denemeler ve çözüm sınırları](docs/quality/s02-second-attempt-result.md) · [Aktif riskler](docs/governance/risks.md).
+
+
 **[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) Board/Liste görünümü, görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.
 
 | Alan | Bugünkü durum | Sonraki kanıt |
@@ -20,7 +24,7 @@
 | Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
 | Pilot ve uygulama | P0: capture, typed zincir, lexical baseline ve semantik output contract/import/bridge testleri çalıştı; insan pilotu başlamadı | İnsan gold review, zorunlu semantik model deneyi, gerçek host ve native kıyası; Codex B sonra |
 
-**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti. [Lexical baseline](docs/quality/audit-remediation.md) düşük başarı gösterdi; insan gold incelemesi ve gerçek semantik model deneyi bekliyor.
+**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti. [Lexical baseline](docs/quality/audit-remediation.md) düşük başarı gösterdi; insan gold incelemesi ve geçerli gerçek model çıktısının semantik ölçümü bekliyor; S02-002 kaynak konumu kontrolünde reddedildi.
 
 > [!IMPORTANT]
 > **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.
