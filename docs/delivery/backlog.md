@@ -549,7 +549,7 @@ T01 corpus'a TR/EN, kısa/mixed, alıntı/kod ve dil değişimi örnekleri eklen
 
 **T03d — PROPOSED / P0. Bağımlılık: T01,T03a; çalıştırılan kapsamın erişim/model/bütçe yetkisi.** [Sabit ref araştırması](../discovery/wrongstack-review.md) belge çıktısıdır; bu runtime alt dilimi tamamlanmadı. T03b native/extension ve T03c yatırım kararı sırası korunur.
 
-- **İş:** WS-R1 native fizibilite; WS-R2 EvidenceValidator; WS-R3 requirement coverage/validity; WS-R4 bounded context/pattern deneyi; WS-R5 reuse/native/extension/build önerisi. İlk üç küçük validator/algoritma adayını komple monorepo bağımlılığıyla karşılaştır; stack kararı olmadan kullanılmayan source klasörü açma.
+- **İş:** WS-R1 native fizibilite; WS-R2 küçük evidence/coverage/validity validator; WS-R3 governance/graph contract; WS-R4 bounded context/pattern deneyi; WS-R5 reuse/native/extension/build önerisi. [R01–24 kod/teknoloji raporundaki](../discovery/code-reuse-assessment.md) küçük modülleri governance paket/port ve native/extension seçenekleriyle karşılaştır; scope/notice/bağımlılık/semantik uyum görünür. Stack kararı olmadan kullanılmayan source klasörü açma.
 - **Kabul:** Pinned ref/path/notice/dependency/semantik fark/target modül kaydı; WS-01–08, GAP/RES/H1 aynı oracle'da native/config/custom/unknown ve pass/fail/not_run. Fake refs, inaccessible target, OR gerekçe, oversized context ve child bütçe istisnaları görünür. Kaynak/test tanımı okundu diye V/pass yazılmaz.
 - **Doğrulama:** Yetkili izole sentetik deney; uygulanacak modül için kendi sözleşme testleri; bütün round-trip/fallback/review maliyeti. T03c owner kararı olmadan production stack değişmez. 30 ana görev ve MVP kapsamı korunur.
 

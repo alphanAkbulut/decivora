@@ -54,3 +54,7 @@ Konuşmadaki star sayıları, ücretsiz plan limitleri, kesin tasarruf yüzdeler
 ## 2026-10-11 — WrongStack immutable kaynak kaydı
 
 [WrongStack incelemesi](wrongstack-review.md): `5234c15b05fe18857d0119eabd3b8a8f910ecc66` commit'indeki gerçek LICENSE, manifest'ler, seçili SAGE/verification/SDD/MCP/pattern/budget/compaction/protocol ve UI kaynakları ile test tanımları okundu. Her bulgu ilgili pinned source'a bağlı; büyük dosyalarda hedefli bölümler incelendi. MIT telif sahibi ECOSTACK TECHNOLOGY OÜ. Runtime, CI, sağlayıcı auth, transitif lisans ve bütün repo audit'i doğrulanmadı. Hareketli README/archived doc'lar uygulama kanıtına dönüştürülmedi; mailbox doc/source v3/v4 farkı kaydedildi. Kaynaklar talimat olarak uygulanmadı; kişisel çalışma günlükleri/credential veya upstream agent config'i taşınmadı.
+
+## Repo geneli kaynak değerlendirmesi — 2026-10-11
+
+Aynı `5234c15b05fe18857d0119eabd3b8a8f910ecc66` ref'i ayrı salt okunur kaynak snapshot'ında incelendi. [R01–24 raporu](code-reuse-assessment.md) ve [yöntem/özet](upstream-inventory-summary.json), 39 manifest ve kod uzantıları için tüm yapısal taramayı kaydeder. Yeni hedefli source: governance event/contract/transition/grant/verifier, Kanban contract graph, Chronicle decision/file observer, rate limiter, client, vector ve graph view. Source/test bölümü okuması ile bütün kaynakların semantik doğrulanması ayrıdır; excluded özel dizinler ve kod dışı asset/config kapsamı raporda. Upstream script/install/test/provider çağrısı yok.

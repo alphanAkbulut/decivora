@@ -11,3 +11,5 @@ Kullanıcının uygulama geliştirme talebi geldiğinde kullanılabilecek talima
 > Decivora'nın mevcut durumunu ve AGENTS.md'yi oku. Backlog'daki sıradaki bağımlılıkları karşılanmış tek görevi seç. Görevin kabul kriterlerini ve etkilenecek dosyaları kısaca belirt; yetkilendirilmiş kapsamda uygula. Taslak ADR'yi kesin karar sayma. İlgili doğrulamayı çalıştır, sonucu ve açık belirsizliği kaydet. Tam kapsamdan fikir silme, başka projeye dokunma, test edilmemiş özelliği çalışıyor diye sunma. Görev bittiğinde sonraki küçük işi belirt.
 
 T01/T02 önce kanıt üretir. Kurulum gerekiyorsa yalnız izole fixture workspace kullan; mevcut gerçek projelerin agent config'ini değiştirme. Ücret, dış erişim veya scope kararı gerektiren adımları somut hazırlık sonrası owner'a sun.
+
+Portföy/ürün değerlendirmesi için ayrı [vaka çalışması](../portfolio/product-evaluation-case-study.md) problemi, owner katkısını, karar alternatiflerini ve kanıt eksiklerini özetler. Kod/teknoloji alımı için [kaynak değerlendirmesi](../discovery/code-reuse-assessment.md) R01–24, paket haritası ve henüz seçilmemiş A/B/C önerilerini gösterir. README'nin veya canonical backlog/ADR'nin yerine geçmezler.

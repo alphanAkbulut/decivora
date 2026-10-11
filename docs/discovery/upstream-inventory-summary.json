@@ -1,0 +1,246 @@
+{
+  "revision": "5234c15b05fe18857d0119eabd3b8a8f910ecc66",
+  "method": "UTF-8 file read, SHA-256 and regex import index; not AST/type/runtime validation",
+  "excluded_directory_names": [
+    ".git",
+    ".project",
+    ".wrongstack",
+    "node_modules"
+  ],
+  "extensions": [
+    ".cjs",
+    ".css",
+    ".cts",
+    ".html",
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".mts",
+    ".ps1",
+    ".py",
+    ".rs",
+    ".sh",
+    ".ts",
+    ".tsx"
+  ],
+  "workspace_manifest_count": 39,
+  "code_file_count": 9657,
+  "code_lines_including_tests_and_declarations": 2203270,
+  "kinds": {
+    "source": 5200,
+    "declaration": 37,
+    "test_or_fixture": 4420
+  },
+  "sorted_path_and_file_hash_digest_sha256": "437d1460dafdba1c7d28febed966b3f2b07c48bfded3f696738918034fe8f3c0",
+  "read_errors": [],
+  "top_level_areas": {
+    "apps/desktop": {
+      "files": 82,
+      "lines": 15083
+    },
+    "apps/wrongstack": {
+      "files": 3,
+      "lines": 103
+    },
+    "deploy": {
+      "files": 1,
+      "lines": 63
+    },
+    "dev.ps1": {
+      "files": 1,
+      "lines": 163
+    },
+    "dev.sh": {
+      "files": 1,
+      "lines": 105
+    },
+    "docs": {
+      "files": 2,
+      "lines": 781
+    },
+    "e2e": {
+      "files": 22,
+      "lines": 4022
+    },
+    "packages/acp": {
+      "files": 107,
+      "lines": 29880
+    },
+    "packages/bench": {
+      "files": 103,
+      "lines": 14273
+    },
+    "packages/cli": {
+      "files": 1247,
+      "lines": 269568
+    },
+    "packages/client": {
+      "files": 9,
+      "lines": 1984
+    },
+    "packages/codebase-index-mcp": {
+      "files": 10,
+      "lines": 1014
+    },
+    "packages/core": {
+      "files": 2096,
+      "lines": 515169
+    },
+    "packages/governance": {
+      "files": 78,
+      "lines": 24825
+    },
+    "packages/kanban": {
+      "files": 191,
+      "lines": 46271
+    },
+    "packages/kanban-mcp": {
+      "files": 10,
+      "lines": 1497
+    },
+    "packages/mailbox-mcp": {
+      "files": 14,
+      "lines": 2329
+    },
+    "packages/mcp": {
+      "files": 136,
+      "lines": 35118
+    },
+    "packages/persistence": {
+      "files": 30,
+      "lines": 5307
+    },
+    "packages/plug-lsp": {
+      "files": 108,
+      "lines": 15380
+    },
+    "packages/plugin-sdk": {
+      "files": 21,
+      "lines": 3345
+    },
+    "packages/plugins": {
+      "files": 278,
+      "lines": 82741
+    },
+    "packages/primitives": {
+      "files": 24,
+      "lines": 4270
+    },
+    "packages/providers": {
+      "files": 245,
+      "lines": 62801
+    },
+    "packages/requirement-intake": {
+      "files": 30,
+      "lines": 7266
+    },
+    "packages/requirement-intake-mcp": {
+      "files": 8,
+      "lines": 1079
+    },
+    "packages/runtime": {
+      "files": 53,
+      "lines": 13432
+    },
+    "packages/sage": {
+      "files": 276,
+      "lines": 59960
+    },
+    "packages/sage-mcp": {
+      "files": 14,
+      "lines": 1873
+    },
+    "packages/sdd": {
+      "files": 87,
+      "lines": 24615
+    },
+    "packages/security-scanner": {
+      "files": 53,
+      "lines": 10956
+    },
+    "packages/simpleui": {
+      "files": 227,
+      "lines": 47020
+    },
+    "packages/techstack": {
+      "files": 111,
+      "lines": 29205
+    },
+    "packages/telegram": {
+      "files": 69,
+      "lines": 14929
+    },
+    "packages/tools": {
+      "files": 639,
+      "lines": 153754
+    },
+    "packages/tui": {
+      "files": 913,
+      "lines": 189458
+    },
+    "packages/vector-memory": {
+      "files": 48,
+      "lines": 9766
+    },
+    "packages/webui": {
+      "files": 1228,
+      "lines": 271627
+    },
+    "packages/webui-hq": {
+      "files": 186,
+      "lines": 30783
+    },
+    "packages/webui-protocol": {
+      "files": 43,
+      "lines": 5366
+    },
+    "packages/webui-server": {
+      "files": 584,
+      "lines": 128853
+    },
+    "packages/wrongtrace": {
+      "files": 21,
+      "lines": 5573
+    },
+    "playwright.config.ts": {
+      "files": 1,
+      "lines": 36
+    },
+    "scripts": {
+      "files": 122,
+      "lines": 19742
+    },
+    "src": {
+      "files": 1,
+      "lines": 110
+    },
+    "vitest.bench.config.ts": {
+      "files": 1,
+      "lines": 64
+    },
+    "vitest.config.ts": {
+      "files": 1,
+      "lines": 339
+    },
+    "vitest.globalTeardown.ts": {
+      "files": 1,
+      "lines": 128
+    },
+    "vitest.scripts.config.ts": {
+      "files": 1,
+      "lines": 62
+    },
+    "vitest.setup.ts": {
+      "files": 1,
+      "lines": 67
+    },
+    "vitest.workers.ts": {
+      "files": 1,
+      "lines": 74
+    },
+    "website": {
+      "files": 118,
+      "lines": 41041
+    }
+  }
+}

@@ -108,3 +108,15 @@ Uygulanan belge düzeni: tek canonical set, tasarım revizyonu 03; [önce/sonra 
 - **B — Korunan alternatif; varsayılan seçilmedi:** Her sohbetin dilinde yeni not üret; aynı projede farklı dilli kayıtlar bulunabilir. Ortak retrieval/cross-language kalite ayrıca gerekir.
 
 Kullanıcının seçili A önerisine “a ile devam et” yanıtı Q12-A'yı kabul eder. Proje çıktı dili kullanıcı değiştirmedikçe sabittir; farklı sohbet dili yalnız öneri doğurur, ret/yanıt yoksa mevcut dil korunur. Değişim kabul edilince sonraki üretim yeni policy revision'ına bağlanır; eski notlar otomatik çevrilmez. Seçimin gerekçesi öneri değerlendirmesidir: ortak proje içeriği tutarlı, tercih kontrollü, gereksiz toplu çeviri maliyeti ve anlam değişimi önlenir. B alternatifi korunur; bedel sonraki sohbet diliyle çıktı dilinin farklı olabilmesidir. Detector/stack/otomasyon faz ayrıntıları hâlâ teknik öneri; uygulama/test yapılmadı. Kaynak dili, yeni üretim dili ve UI locale ayrıdır. Genel dil ihtiyacı toplu geçmiş çevirisi, yeni modele veri aktarımı/ücret veya eski karar/AC rewrite onayı değildir. Q03 ve mevcut izin/kanıt kapıları korunur.
+
+## Q13 — Kaynak kodu/teknoloji yaklaşımı için hazır seçenekler
+
+**2026-10-11 · Açık; seçenekler hazır, owner seçimi yok.** Kullanıcı bütün upstream kod alanlarından Decivora'da nerede/nasıl yararlanılabileceğinin somutlaştırılmasını istedi. [Kod/teknoloji değerlendirmesi](../discovery/code-reuse-assessment.md), 39 manifest alanı, yapısal kod envanteri, R01–24 adayları, paket kapanışı, hedef/kabul/uyarlama ve alım yöntemlerini sunar. Bu kayıt varsayılan stack kabulü değildir.
+
+**Soru:** Sıradaki araştırma yolunda A, B veya C'yi tercih ediyor musun?
+
+- **A — Önerilen:** Küçük deterministik modüller + governance contract uyum deneyi; native/extension kontrol baseline'ı korunur.
+- **B:** Önce WrongStack native/extension aynı GAP/RES/WS oracle'ında yeterli mi incele; eksikse küçük reuse/core önerisine dön.
+- **C:** Upstream kaynak taşımadan özgün küçük implementation; aynı algoritma/sözleşmeleri referansla karşılaştır.
+
+Yanıtsızsa açık kalır; kod alımı/production stack seçilmiş sayılmaz. T01/T02/T03a sırası, somut scope ve Q03 gerçek veri/ücret kapısı korunur. Bu seçenekler gelecekteki araştırma önceliğidir; bütün platformu fork etme, provider hesabı veya sınırsız kodlama yetkisi çıkarılmaz. Ayrıntılı artı/eksi ve WS-R çıkışları kaynak raporunda.

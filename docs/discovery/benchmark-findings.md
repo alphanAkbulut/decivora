@@ -74,3 +74,7 @@ Bu doldurulmamış şablon sonuç değildir. Ölçülen sıfır `0`, ölçülmey
 ## 2026-10-11 — WrongStack kaynak karşı kanıtı
 
 [Hedefli inceleme](wrongstack-review.md) koşullu memory, anchor stale/unknown, completion evidence, DoD UI, MCP proposal-only ve deterministik requirement coverage için seçili uygulama kaynaklarını içerir. Hafıza/gate/dependency tek başına özgünlük iddiası değildir. Küçük validator/coverage/schema reuse, native kullanım ve extension T03'te ayrı seçeneklerdir. WS-01–08 sonuçları not_run; runtime/CI/maliyet testi yok. Doğrudan kod alınmadı; uyumsuz soft completion, hard cap ve unknown semantics açık yazıldı.
+
+## Repo geneli kaynak taramasından yeni karşı kanıt — 2026-10-11
+
+[Kod/teknoloji değerlendirmesi](code-reuse-assessment.md) 39 manifest alanı, 9.657 kod dosyası ve dahili paket ilişkilerini yapısal olarak kapsar; kritik adaylarda seçili davranış okumaları ekler. Governance append-only event/receipt, revision/plan contract, bağımsız verifier/grant; Kanban contract graph ve core karar/gerekçe graph'ı ilk incelemeyi genişletir. EvidenceValidator ref-only veya legacy soft completion bulguları bütün platforma genellenmez. Native/config/extension aynı GAP/RES/WS oracle'ında en uygun desteklenen yapılandırmayla denenmeli. Kod kopyası, install, CI, runtime/performans/lisans-audit sonucu yok; inceleme V değildir. A/B/C reuse seçenekleri henüz owner kararı değildir.

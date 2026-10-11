@@ -105,3 +105,7 @@ Handoff kontrolü toplam 16 sorudur; bağımsız LLM testi yapılmadı. Q04 gün
 25. İlk prototipten sonra mutlaka bağımsız ürün mü? **Hayır.** T03a yöntem → T03b yetkili deney → T03c native/extend/build/ek deney/durdur. Native Projects kıyası yoksa üstünlük unknown; test edilmiş typed fixture actual capture/fresh-session başarısı değildir.
 
 Güncel kontrol toplamı **25**; önceki toplamlar tarihsel ekleme kayıtlarıdır. Bağımsız LLM anlama testi henüz yapılmadı. İlk okuma güncel yön→status→T01; geniş roadmap koşullu yatırım yoludur.
+
+## Ürün değerlendirmesi ve kaynak alımı için ek okuma
+
+[Portföy vaka çalışması](../portfolio/product-evaluation-case-study.md), owner rolünü ve AI destekli katkıyı gerçek kanıt sınırıyla gösterir. [Kod/teknoloji raporu](../discovery/code-reuse-assessment.md) tüm manifest alanlarının yapısal taraması ile R01–24 seçili davranış okumalarını ayırır. 9.657 dosya indeksi semantic audit veya test sonucu değildir. Governance ve contract graph örtüşmesi önceki hedefli benchmark'ı genişletir; EvidenceValidator bulgusunu bütün upstream verification yüzeyine genelleme. A/B/C owner seçimi, nihai stack ve runtime kod alımı henüz yok. T03d öneri ve T01 sırası korunur.
