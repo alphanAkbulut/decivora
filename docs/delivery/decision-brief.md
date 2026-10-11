@@ -8,7 +8,7 @@
 |---|---|---|---|
 | Q01 | İlk pilot kimin işiyle doğrulansın? | **Kabul edildi:** önce owner'ın bireysel kullanımı, sonra benzer kullanıcılar. Kullanıcının bu oturumdaki açık cevabı | İlk UX ve araştırma örneklemi; tam kapsam ve P4 ekip vizyonu korunur |
 | Q02 | Günlük kullanılan coding/chat yüzeyleri, pilotun zorunlu ilk ikisi ve hedef OS? | Kısmen cevaplandı: Q02-R1 A ilk pilot, B sonraki hedef; OS/host ve somut kaynak/hedef açık | T02 capability deneyi sırası, kurulum/host matrisi. Tam MVP'nin iki coding adapter hedefi kendiliğinden düşmez |
-| Q03 | Ayıklanmış sohbet parçaları harici API'ye gönderilebilir mi; aylık bütçe tavanı? | Kısmen cevaplandı: Q03-R1 A; ilk deney ek ücretli model API'si olmadan. Sonraki gerçek veri/provider/bütçe açık | OPEN-08/10; ilk dilim etiketli fixture/kod kontrolleri. Otomatik extraction ve ücretli model deneyi için ayrı somut karar |
+| Q03 | Ayıklanmış sohbet parçaları harici API'ye gönderilebilir mi; aylık bütçe tavanı? | Kısmen cevaplandı: Q03-R1 A; ilk deney ek ücretli model API'si olmadan. Sonraki gerçek veri/provider/bütçe açık | OPEN-08/10; ilk dilim etiketli fixture/kod kontrolleri. Otomatik anlam çıkarımını uygulama/test etme gereksinimi sabit; model/veri/bütçe ve deney zamanı ayrıca somutlaştırılır |
 
 Q01 müşteri talebi veya pazar segmenti doğrulaması değildir. Q02'de mevcut bilgisayarın gözlenmesi desteklenecek tek OS seçimi sayılmaz. Q03'te genel API istekliliği tüm özel konuşmaların aktarım izni yerine geçmez; kaynak ve redaction sınırı pilotta somutlaştırılır.
 
@@ -140,11 +140,11 @@ Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, c
 
 ## Q03-R1 — İlk deneyde ek ücretli model API'si
 
-**2026-10-11 · A kabul edildi.** Önceki Q02-R1 ilk kaynak yolu sorusundan ayrıdır. Kullanıcının bu soruya verdiği “A” yanıtı yalnız ilk deneyin model/maliyet yöntemini seçer.
+**2026-10-11 · A kabul edildi; sonraki açıklamayla kapsamı netleştirildi.** Önceki Q02-R1 ilk kaynak yolu sorusundan ayrıdır. A yalnız ilk deneyin model/maliyet sırasını seçer. Kullanıcı sonraki mesajında otomatik anlam çıkarımının uygulanıp test edilmesinin isteğe bağlı seçenek değil, gerekli ürün işi olduğunu belirtti; bu açıklama güncel yorumun otoritesidir.
 
-- **A — Seçildi:** Önce örnek/elle etiketlenmiş kayıtlar ve kod kontrolleri; ek ücretli model API'si kullanılmaz. Otomatik serbest metin anlam çıkarımı ayrı sonraki deneyde ölçülür.
-- **B — Korunan, seçilmemiş alternatif:** İlk deneyde otomatik extraction'ı da sınamak; öncesinde model/provider, aktarılacak veri ve bütçe tavanını belirlemek.
+- **A — Seçilen sıra:** Önce örnek/elle etiketlenmiş kayıtlar ve kod kontrolleri; bu ilk dilimde ek ücretli model API'si kullanılmaz. Ardından otomatik serbest metin anlam çıkarımının uygulaması ve gerçek extractor çıktısıyla testi zorunlu doğrulama işidir.
+- **B — Yalnız zamanlama alternatifi:** Anlam çıkarımı deneyini ilk dilimde de yapmak. Bu erken başlama sırası seçilmedi; özelliğin kendisi reddedilmedi. Model/provider, aktarılacak veri ve bütçe sınırını belirlemek, ilgili deneyin her iki sırada da önkoşuludur.
 
 **Neden / trade-off:** Maliyet önceliği ve domain zincirindeki hataları model doğruluğundan ayrı inceleyebilme. Bedeli, ilk sonucun doğal dil extraction, native karşılaştırma veya alıcı modelin bağlamı doğru kullandığını doğrulamamasıdır. Bu tercih bütün ürünün LLM kullanmayacağı, ücretli araştırmanın kalıcı olarak yasaklandığı veya mevcut host/geliştirme tokenlarının sıfır olduğu anlamına gelmez.
 
-**Etki / kabul:** [Spike-1](spike-1-v1.md) ilk dilimi `no_model` fixture/code kontrolleriyle sınırlar; model dispatch/judge/retry ve fresh-session model deneyleri bu dilimde çalıştırılmaz. T01 oracle/corpus sıradaki hazırlıktır. Sonuç raporu code/fixture ile model `not_run` durumunu ayırır. Sonraki gerçek veri/provider/aylık bütçe, somut hedef read ve retention izinleri açık; bu cevap bunları onaylamaz. Uygulama veya deney bu kayıtla başlamış/tamamlanmış sayılmaz.
+**Etki / kabul:** [Spike-1](spike-1-v1.md) ilk dilimi `no_model` fixture/code kontrolleriyle sınırlar; model dispatch/judge/retry ve fresh-session model deneyleri bu dilimde çalıştırılmaz. T01 oracle/corpus sıradaki hazırlıktır. Sonuç raporu code/fixture ile model `not_run` durumunu ayırır. Sonraki gerçek veri/provider/aylık bütçe, somut hedef read ve retention izinleri açık; bu cevap bunları onaylamaz. Bunlar otomatik anlam çıkarımını yapıp yapmama kararı değil, zorunlu deneyi hangi yöntem/veri/sınırla yürüteceğimizin açık ayrıntılarıdır. T01/T03f hazırlığı → T09 extractor uygulaması → T24/T24q ölçümü mevcut görevlerdir. Yalnız fixture/code sonucu otomatik ürünün doğrulama kapısını kapatamaz; izin/erişim eksikse ilgili sonuç `blocked`/`not_run` olur, passed sayılmaz. Uygulama veya deney bu kayıtla başlamış/tamamlanmış sayılmaz.

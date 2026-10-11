@@ -124,9 +124,9 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 ## T09 — Extraction ve bounded retrieval
 
 - **Durum / faz:** TODO / P1a. **Bağımlılık:** T08. **Kapsam ID:** CAP-01,CST-01.
-- **İş:** Önce fixture/deterministic extractor; provider arayüzü, FTS ve source span doğrulama.
-- **Kabul:** Desteksiz model sonucu canonical state yazamaz; truncation ve missing source görünür.
-- **Doğrulama:** CAP tipleri ve invalid structured output fixture.
+- **İş:** Önce fixture/deterministic extractor; ardından gerçek serbest metinden kaynaklı tip/karar/görev/soru/ilişki adayları çıkaran çalışan extraction yolu. Provider arayüzü, FTS ve source span doğrulama; Q03-R1 yalnız ilk no-model dilimin sırasıdır, otomatik extraction'ı opsiyonel yapmaz.
+- **Kabul:** Desteksiz model sonucu canonical state yazamaz; truncation ve missing source görünür. Önceden etiketli/mock adayların işlenmesi otomatik anlam çıkarımının tamamlandığı sayılmaz; yöntem ve kapsam belirtilir.
+- **Doğrulama:** CAP tipleri ve invalid structured output fixture; gerçek extractor/holdout ölçümü T03f/T24q kapısına bağlanır. İzin/bütçe eksikse test not_run/blocked, fixture pass ile kapanmaz.
 - **Beklenen dosya alanı:** `packages/capture/; packages/reconciliation/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
@@ -259,7 +259,7 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 ## T24 — MVP kabul ve kullanıcı pilotu
 
 - **Durum / faz:** TODO / P1b. **Bağımlılık:** T23. **Kapsam ID:** EVAL-01.
-- **İş:** AC-01..14, iki adapter, holdout corpus ve management overhead pilotu.
+- **İş:** AC-01..14, iki adapter, gerçek otomatik extractor ile holdout corpus ve management overhead pilotu. Semantik extraction testi zorunludur; fixture/code sonucu yerine geçmez.
 - **Kabul:** Tüm zorunlu kapılar geçer veya sınırlı pilot adıyla açık istisna kararı; MVP iddiası kanıta bağlı.
 - **Doğrulama:** Ölçüm planı; gerçek tıklama ve source coverage.
 - **Beklenen dosya alanı:** `docs/quality/mvp-results.md` (henüz oluşmamış yollar uygulama sırasında açılır).

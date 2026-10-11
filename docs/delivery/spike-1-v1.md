@@ -22,7 +22,7 @@ B takip deneyi aynı seçim/uygulama senaryosunu Codex ile tekrarlar: önce MCP 
 
 - T01 golden corpus/oracle ve T02 kaynak/host capability raporu hazırlanır. Önceki Spike-0 artifact'i varsa ayrı repo/path, revision, test ve izin kapsamıyla incelenir; doğrulanana kadar bağımlılık değildir.
 - T03a sınırlı prototype yöntemi/stack önerisi hazırlanır; T03b yalnız yetkili kapsamda küçük deney, T03c sonuç sonrası native/extend/build yatırım ve production stack kararıdır. Prototype T03c sonucunu sınamak içindir; önce sonuç kararı isteme döngüsü yok. Production entegrasyonu için T05/T07/T08 kaynak/kimlik/event/audit, T10 reconciliation ve ilgili context/UI katmanları gerekir.
-- **Q03-R1 A kabul edildi:** İlk deneyde deterministic template, örnek/elle etiketli kayıt ve mock job kullanılır; ek ücretli model API'si çağrılmaz. Native/fresh-session model karşılaştırması ve otomatik extraction sonraki aşamadır, ilk no-model sonuçla geçmiş sayılmaz. Gerçek transcript ve sonraki model testi somut veri/provider/bütçe izni gerektirir. Paket hazırlama, gerçek araçta resume veya execution ile karıştırılmaz.
+- **Q03-R1 A kabul edildi:** İlk deneyde deterministic template, örnek/elle etiketli kayıt ve mock job kullanılır; ek ücretli model API'si çağrılmaz. Otomatik anlam çıkarımı uygulaması ve kalitesinin testi zorunlu sonraki doğrulama adımıdır; native/fresh-session model karşılaştırması da ilk no-model sonuçla geçmiş sayılmaz. Gerçek transcript ve sonraki model testi somut veri/provider/bütçe izni gerektirir. Paket hazırlama, gerçek araçta resume veya execution ile karıştırılmaz.
 - Q11-A ilk deney için öneridir. Owner tercihi gelmezse taslak/sentetik değerlendirme hazırlanabilir; B host/CLI başlatma uygulanmaz.
 
 ## Küçük ardışık görevler
@@ -43,7 +43,21 @@ Adımlar tamamlanmış sayılmaz. Üretim entegrasyonu mevcut backlog'da T20h/T1
 - Beklenen karar/görev/ilişki/durumlar elle etiketli veya sentetik oracle'dan gelir; parser'ın kendi ürettiği sonucu oracle yapma. Bu dilim kaynak kimliği, revision, replay/dedup, uygulanma/AC ayrımı ve kısa paket tutarlılığını test etmeye hazırlanır.
 - Deney yapılandırması `no_model` olur; ek ücretli provider dispatch, LLM judge, model retry veya alt agent model deneyi bu dilime dahil edilmez. Gerçek runner/provider henüz yok; bu bir kabul kuralıdır, uygulanmış bütçe kontrolü değil.
 - Rapor code/fixture sonucunu otomatik serbest metin extraction ve fresh-session model başarısından ayırır. Model koşulları `not_run` kalır. No-model tercihinden toplam geliştirme/host token tüketiminin sıfır olduğu çıkarılmaz; ölçülmeyen maliyet için uydurma sıfır yazılmaz.
-- Bütçe/kalite trade-off'u: önce düşük maliyetle domain zincirini sınamak, ardından model gerektiğinde dar kapsam/veri/provider/tavanla ayrı deney. T01 ve S1 adımları bu karar kaydıyla tamamlanmış olmaz.
+- Bütçe/kalite trade-off'u: önce düşük maliyetle domain zincirini sınamak, ardından zorunlu otomatik anlam çıkarımı deneyini dar kapsam ve ölçülebilir yöntemle yürütmek; LLM kullanılırsa veri/provider/tavan ayrıca belirlenir. T01 ve S1 adımları bu karar kaydıyla tamamlanmış olmaz.
+
+## Zorunlu sonraki adım — otomatik anlam çıkarımı
+
+Q03-R1 A yalnız sırayı değiştirir. Konuşmadan karar/görev/soru ve ilişkilerini otomatik çıkarma ürünün temel gereksinimidir; önceden etiketlenmiş kaydı okumak bu yeteneğin uygulanması/testi değildir. Ek ücretli API kullanımı bir yöntem/maliyet kararıdır; ürün gereksinimini isteğe bağlı yapmaz.
+
+| Adım / mevcut görev | Gerekli çıktı ve kabul | Durum |
+|---|---|---|
+| Hazırlık / T01,T01f,T03f | Kaynak span ve beklenen tip/ilişki/durumlar bağımsız etiketlenir; geliştirme ve holdout ayrılır. Fixture/code kontrolü yalnız domain katmanını doğrular | TODO |
+| Uygulama / T09 ve ilgili routing/decoder alt işleri | Gerçek serbest metinden çalışan extractor aday üretir; yöntem/sürüm kaydedilir. LLM kullanılırsa model/veri/bütçe ve ilk dispatch guard'ları önceden hazırdır. Mock çıktı gerçek extraction sayılmaz | TODO |
+| Zorunlu ölçüm / T03f,T24,T24q | Gerçek extractor'a expected etiket verilmeden holdout çalıştırılır; tip/karar/soru/ilişki ve source-span doğruluğu, TP/FP/FN, duplicate/yanlış onay/tamamlanma, coverage, maliyet/gecikme ve insan düzeltme yükü raporlanır | not_run |
+
+Ret/negation, “yapıldı” iddiası ile uygulama kanıtı, gecikmiş/bağlamı belirsiz cevap ve değişmiş karar negatifleri mevcut oracle'larla sınanır. [Ölçüm protokolü](../quality/evaluation-protocol.md) scorer, payda ve hata sınırlarını belirler; LLM judge ek değerlendirme seçeneği olarak kalır, zorunlu extractor testinin yerine geçmez.
+
+Semantik test çalıştırılmadıysa fixture prototipi başarılı olabilir; otomatik anlam çıkarımı doğrulandı veya P1b MVP tamamlandı denemez. İzin/erişim/bütçe eksikliği açık blocker'dır; zorunlu işi backlog'dan düşürmez. Yerel/model/provider seçimi bu belgede yapılmadı ve ölçülmemiş başarı eşiği icat edilmedi.
 
 ## Hafıza değerlendirme formu
 

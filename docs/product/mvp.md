@@ -4,6 +4,12 @@
 
 [Tasarım revizyonu 03](current-direction.md) için önerilen ilk teslim, seçim/artifact/hedef gözlemi/devam bağlamını sınayan **P0 karşılaştırma prototipidir**. GAP-01–10 ve RES kontrolleri uygulanabilen bölümünü test eder. Bu deney başarıya ulaşsa bile aşağıdaki 14 P1b AC tamamlanmış sayılmaz; iki coding adapter veya otomatik chat erişimi varmış gibi sunulmaz.
 
+## Otomatik anlam çıkarımı için zorunlu doğrulama
+
+Q03-R1 A, ilk kontrolün ek ücretli model API'si olmadan fixture/kod ile yapılmasını seçer; konuşmadan anlam çıkarma özelliğini opsiyonel yapmaz. Gerçek serbest metinden karar/görev/bekleyen soru ve kaynaklı ilişkileri çıkaran uygulama ile bağımsız holdout ölçümü mevcut CAP-01/T09/T24q kapsamının gerekli kanıtıdır. Elle etiketli adayları işleyen prototip bu ölçümün yerine geçmez; 14 P1b AC'ye yeni bir seçenek veya alternatif MVP eklenmedi.
+
+[Spike-1 zorunlu semantik adımı](../delivery/spike-1-v1.md#zorunlu-sonraki-adım--otomatik-anlam-çıkarımı) ve [ölçüm protokolü](../quality/evaluation-protocol.md) uygulama/rapor sınırını tutar. Yöntem ve kullanılacak model/veri/bütçe ayrıca somutlaştırılır; izin eksikliği `not_run`/blocker'dır, otomatik yeteneğin doğrulandığı sayılmaz.
+
 ## P1a proof of concept ile P1b MVP ayrımı
 
 P1a: Sentetik/import edilmiş bir oturumdan karar değişikliği, görev gerekçesi, onay ve replay akışını doğrulayan dar teknik kanıt. **MVP diye sunulmaz.**

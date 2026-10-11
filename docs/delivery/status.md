@@ -285,3 +285,12 @@ Kullanıcı, “İlk deneyde ek ücretli model API'si kullanalım mı?” sorusu
 README, karar brief'i, başlangıç, LLM devir, teknik gap kuyruğu ve Spike-1 aynı kabul durumuna hizalandı. Spike-1 no-model dilimin kabul sınırı, model sonuçlarının `not_run` kalması ve ölçülmeyen maliyetin sıfır diye gösterilmemesini açıklar. Bu seçim kalıcı LLM yasağı veya gerçek kaynak/target erişim izni değildir. T01/ana backlog TODO; runtime, corpus deneyi, gerçek model/API/capture/target/UI testi bu tur yapılmadı. İlk kaynak A → sonraki Codex B sırası korunur.
 
 Mermaid/SVG kaynakları değişmedi; mevcut render hash kayıtları korunur. Teslim kontrolü doküman/link/inventory ve remote metin read-back ile yapılır; yeni runtime/render testi iddiası yok.
+
+
+## 2026-10-11 — Düzeltme: otomatik anlam çıkarımı isteğe bağlı değildir
+
+Kullanıcı Q03-R1 B ifadesinin otomatik anlam çıkarımını uygulanmayabilecek seçenek gibi göstermesine itiraz etti. **Güncel açıklama:** A yalnız ilk fixture/code kontrolünü ek ücretli model API'si olmadan başlatma sırasıdır. Otomatik serbest metin anlam çıkarımını uygulamak ve gerçek extractor çıktısını bağımsız holdout ile test etmek gerekli ürün işidir. B yalnız bu deneyi ilk dilimde de başlatma alternatifiydi; özelliğin kendisi reddedilmedi. Önceki soru sunumu bu ayrımı yeterince açık kurmadı; geçmiş status kayıtları korunur, bu kayıt yorumunu düzeltir.
+
+Karar brief'i, Spike-1, MVP, T09/T24 backlog kabulü, README ve başlangıç/devir/gap kuyruğu hizalandı. T01/T01f/T03f hazırlığı → T09 uygulama → T24/T24q semantik ölçüm zinciri mevcut görevlerle açıklandı; yeni ana task/engine/AC, stack veya ücret seçimi yok. Model/veri/bütçe ve gerçek hedef izinleri ilgili deneyin yürütme önkoşuludur, özelliği yapıp yapmama oylaması değildir. LLM judge opsiyonel değerlendirme desteği olarak kalır.
+
+Yalnız typed fixture/code pass otomatik extraction veya P1b MVP doğrulaması değildir; çalıştırılmayan gerçek semantik test `not_run` ve ilgili blocker ile görünür kalır. T01 ve ana işler TODO; gerçek extractor/model/API/host/corpus deneyi bu tur yapılmadı. Mermaid/SVG kaynakları değişmedi; doküman/link/inventory ve remote read-back teslim kontrolü uygulanır.
