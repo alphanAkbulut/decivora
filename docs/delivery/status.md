@@ -175,4 +175,6 @@ Başka kullanıcı projeleri bu repo için pilot olarak kendiliğinden bağlanma
 
 Sıradaki **T01**; ardından source/tek target capability ve sınırlı yöntem önerisi. T03b prototype/native deney ancak yetkili kapsamda; T03c sonuç sonrası yatırım kararı. Q02/Q03/Q06/Q08/Q11 ve sayısal/stack/lisans kararları açık. Prototip, native benchmark, gerçek LLM/adapter/DB/UI/migration/test sonucu not_run.
 
-Bu teslimin doküman kontrolü ve render/read-back sonucu doğrulandıktan sonra bu kayda eklenir; eski başarı kayıtları bu revizyonun testi değildir.
+Bu teslimin içerik commit'i `aaf9cbef1c5a387848a6d75975482b9d09ae9e4a`: 42 değişen/yeni dosya aynı ref'ten GitHub üzerinden geri okundu ve local içerikle birebir eşleşti. Doküman kontrolü geçti: 76 Markdown, 658 yerel bağlantı; 32 scope, 30 ana görev, 14 MVP kriteri, 17 feature ve 10 engine korundu. JSON/ID/diyagram inventory kontrolü geçti. Hatalı fixture implemented işareti, yanlış inventory sayısı ve tanımsız GAP ID'si geçici kopyalarda reddedildi.
+
+15 belgedeki 34 Mermaid çıktısının tamamı GitHub Preview üzerinden render edilmiş SVG/etiket düzeyinde kontrol edildi; syntax/render hatası görülmedi. Güncel roadmap ayrıca ekran görüntüsüyle incelendi. Bu kontrol ürünün DB, API, agent, model veya tıklanabilir UI davranışını doğrulamaz. Kontrol kaydı değişiklikleri ayrıca küçük bir doküman commit'inde tutulur; ürün release'i oluşturulmadı.

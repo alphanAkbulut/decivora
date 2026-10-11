@@ -28,7 +28,7 @@
 
 Onay snapshot/AND-OR/iptal/replay, source/target yetki sınırı, log/storage ve ekip/admin akışları korundu. Atlas ER'si ER-03 ile tamamlanır; bütün relation alanlarını her diagramda tekrar etmek gerekmez. Source alımı, application assessment ve AC/DoD completion aynı durum değildir. İlk prototip tam atlası çalıştırmış sayılmaz.
 
-Görsel render bu güncellemenin teslim kontrolünde ayrıca denenecek; aşağıdaki önceki render sonuçları yeni çizimler için kullanılamaz. Runtime/UX testi yok.
+**Bu revizyonun render kontrolü:** `aaf9cbef1c5a387848a6d75975482b9d09ae9e4a` ref'inde 15 belgedeki 34 Mermaid çıktısının tamamı GitHub Preview üzerinden kontrol edildi. Render edilmiş iframe etiketleri/SVG çıktıları okundu; parse/syntax/render hata mesajı bulunmadı. Güncel roadmap'in faz/yatırım çizimi ayrıca açılıp ekran görüntüsüyle incelendi. Bu kontrol bütün ekran boyutlarında layout, ürün UI veya runtime testi değildir; aşağıdaki önceki sonuçlara dayanmaz.
 
 **2026-10-10.** İnceleme öncesinde 11 belgede 20 Mermaid diyagramı vardı. Hepsi son kararlarla içerik düzeyinde karşılaştırıldı; tamamı zaten günceldi denemez. Aşağıdaki düzeltmelerle 25 diyagram oldu. Şemalar tasarımdır; runtime, tam UI veya benchmark kanıtı değildir.
 
