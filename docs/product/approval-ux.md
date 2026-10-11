@@ -39,6 +39,8 @@ Klavye erişimi, focus sırası, ekran okuyucu etiketleri, yalnız renge dayanma
 
 PendingDecision: açık soru, alternatifler, öneri/gerekçe, source, owner, blocker links ve durum (open/deferred/resolved/cancelled). Belirsiz “sonra bakarız” ifadesi source olarak saklanabilir; konu belirlenmeden committed decision olmaz. Resolved olduğunda gerçek Decision ID'sine bağlanır. Kullanıcının bir kartı açması “değerlendirildi/onaylandı” anlamına gelmez.
 
+[Geç cevap sözleşmesi](pending-questions-and-late-answers.md): konu/chat/run değişse de açık soru kaybolmaz. Seçili soru/explicit ID varsa geç cevap aynı kayda bağlanır; yalnız “A” iki soruya uyuyorsa odaklı netleştirme gerekir. Yanıt alınması, ilişkilendirilmesi ve geçerli karar olması ayrı; eski seçenek veya iptal sonrası yanıt otomatik uygulanmaz. Pending Inbox ve bounded devam paketleri cevapsız soruları gösterir; hatırlatma kanalı/sıklığı açık kalır. LATE-01–08 planlıdır, uygulanmadı.
+
 ## Birden fazla reviewer ve agent
 
 ### Subagent soruları ve karar yönlendirmesi

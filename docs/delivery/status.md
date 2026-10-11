@@ -215,3 +215,11 @@ Kullanıcı seçili A önerisine “a ile devam et” yanıtını verdi. DEC-20/
 
 Dil sözleşmesi, scope/catalog/domain/roadmap/phase/backlog/verification/traceability ve açık kararlar eşleştirildi; karar haritasının mevcut Mermaid bloğuna DEC-20 eklendi. 30 ana görev/10 engine/MVP/P1-P2 ayrımı ve sıradaki T01 korunur. Detector/LLM/çeviri/UI çalıştırılmadı; LANG senaryoları not_run. Q03/stack/lisans ve diğer owner tercihleri bu yanıtla kapanmaz.
 Doküman kontrolü geçti: 80 Markdown, 730 yerel bağlantı; 32 scope/30 ana görev/14 MVP AC/17 feature/10 engine ve 34 Mermaid inventory korundu. Güncel Q12 kayıtları kabul edilmiş A ile eşleşti; eski açık durum yalnız tarihsel keşif kaydında bırakıldı. Mermaid render ve runtime/dil model testleri yapılmadı.
+
+## 2026-10-11 — Q12 örneği, cevapsız sorular ve geç yanıt bağlamı
+
+Kullanıcı Q12-A seçimini gecikmeli vermesini ürünün canlı problemi olarak gösterdi. [Kalıcı soru/geç cevap sözleşmesi](../product/pending-questions-and-late-answers.md), explicit ID/selected source/option snapshot bağını, iki A/B sorusundaki ambiguity'yi, answered/associated/approved/applied ayrımını, timeout/stale/expiry, soru öncesi ingest ve ACL/replay/coverage istisnalarını somutlaştırdı. Q12-A/DEC-20 gerçek seçimi korunur; bu sohbetin işlenmesi Decivora otomatik adapter/test kanıtı değildir.
+
+Approval UX, soru/domain/çoklu chat, verification/traceability ve README bağlandı. Önceki belgelerde referanslanan fakat backlog teslim satırı bulunmayan T13e/T18e/T24f eksikliği giderildi. LATE-01–08 planlı; yeni engine/ana görev, reminder servisi, ücret veya erişim kararı yok. Hatırlatma kanalı/sıklığı açık; uygulama içi pending/brief önerisi ve bağımsız iş ilerlemesi korunur. Sıradaki T01; runtime/parser/LLM/host/UI sonuçları not_run.
+
+Doküman kontrolü geçti: 81 Markdown, 746 yerel bağlantı; 32 scope/30 ana görev/14 MVP AC/17 feature/10 engine ve 34 Mermaid inventory korundu. Sekiz LATE kabul ID'si ve üç soru alt dilimi ayrıca kontrol edildi. Mevcut Mermaid kaynakları değişmedi; runtime veya render testi yapılmadı.

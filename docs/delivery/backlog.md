@@ -552,3 +552,15 @@ T01 corpus'a TR/EN, kısa/mixed, alıntı/kod ve dil değişimi örnekleri eklen
 - **İş:** WS-R1 native fizibilite; WS-R2 EvidenceValidator; WS-R3 requirement coverage/validity; WS-R4 bounded context/pattern deneyi; WS-R5 reuse/native/extension/build önerisi. İlk üç küçük validator/algoritma adayını komple monorepo bağımlılığıyla karşılaştır; stack kararı olmadan kullanılmayan source klasörü açma.
 - **Kabul:** Pinned ref/path/notice/dependency/semantik fark/target modül kaydı; WS-01–08, GAP/RES/H1 aynı oracle'da native/config/custom/unknown ve pass/fail/not_run. Fake refs, inaccessible target, OR gerekçe, oversized context ve child bütçe istisnaları görünür. Kaynak/test tanımı okundu diye V/pass yazılmaz.
 - **Doğrulama:** Yetkili izole sentetik deney; uygulanacak modül için kendi sözleşme testleri; bütün round-trip/fallback/review maliyeti. T03c owner kararı olmadan production stack değişmez. 30 ana görev ve MVP kapsamı korunur.
+
+## Kalıcı sorular ve geç cevap eşlemesi — 2026-10-11
+
+Kullanıcının Q12'ye geç verdiği yanıt [somut sözleşmede](../product/pending-questions-and-late-answers.md) kaydedildi. Önceki belgelerde geçen T13e/T18e/T24f için bu backlog'da ayrı teslim satırları bulunmadığı görüldü; mevcut referanslar aşağıda tamamlandı. Yeni ana görev/engine veya geniş orchestration yetkisi değildir.
+
+| Alt dilim / bağımlılık | Teslim / durum | Kabul |
+|---|---|---|
+| T13e / T13,T07,T08,T05 | TODO / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm | ASK-01–06/08 + LATE-01–07 uygulanabilir core; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur |
+| T18e / T13e,T18,T06 | TODO / P1b: host soru/cevap metadata coverage, exact reply/selection normalizasyonu ve delivery capability | ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok |
+| T24f / T13e,T18e,T19,T20i,T24 | TODO / P1b: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması | ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon |
+
+T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez. T19/T20i UI, T18g/T18h bounded context açık soruları ve yanıt eşleme durumunu gösterir. P2 bütçeli semantic association kalitesi T25/T26'nın aday refinement'ıdır; tüm platformlarda P1 otomatik eşleme garantisi yok. Ana görev statü/bağımlılıkları değişmedi; bu dilimler ve bütün kontroller not_run.

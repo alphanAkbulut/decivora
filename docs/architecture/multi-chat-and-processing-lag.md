@@ -97,3 +97,7 @@ Bugün “kaç chat/mesaj işleyebiliriz?” için ölçülmüş sayı yok. OPEN
 | LAG-06 | Gecikmiş/eksik ilgili bağlam final impact/ready/completion olarak sunulmaz; başka bağımsız iş gerekçesiz bloke edilmez |
 
 T05d/T10b bağlama ve reconciliation, T18g context/source görünürlüğü, T06g/T24l yük ve coverage planını uygular. T02 capability deneyi gerçek erişim/geri oynatma sınırlarını önce belirler. Senaryolar **not_run**; bugünkü teslim dokümantasyondur, yeni engine veya otomatik host kontrolü değildir.
+
+## Geç insan yanıtı ve farklı session'daki soru
+
+[Geç cevap tasarımı](../product/pending-questions-and-late-answers.md) kaynak reply/annotation→question presentation→option snapshot zincirini tanımlar. İzinli aynı projedeki başka chat'ten yanıt gelebilir; son konuşulan konu veya yalnız A/B harfi hedef sayılmaz. Cevap sorudan önce ingest edilmişse unresolved/orphan association korunur; ilgili soru geldiğinde idempotent yeniden değerlendirilir. Chat sırası/zaman yakınlığı, ACL ve karar yetkisini aşamaz. Yapılandırılmış metadata yoksa bounded candidate/clarification veya açık import fallback vardır; source coverage eksikliği gizlenmez. CHAT/LAG kontrollerini tamamlayan LATE-01–08 planlıdır.

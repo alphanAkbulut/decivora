@@ -80,3 +80,7 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 ## Konuşma dili ve yerelleştirme
 
 [LANG-01–08](../product/language-and-localization.md#sentetik-örnekler-ve-planlı-kabul), açık pilot dili, human/assistant/code ayrımı, short/mixed/unknown, kabul edilmiş Q12-A öneri/ret/yanıtsız/onay ve policy revision, source/ref/AC korunumu, locale refresh sıfır model çağrısı, cross-language duplicate/conflict ve ACL/cache/revision kontrolleridir. T05e/T24p temel, T25a/T26c P2 otomasyon/kalite yoludur. TR/EN sentetik fixture önerisi bütün dillerde destek veya tespit doğruluğu kanıtı değildir. Detector/LLM/UI çalıştırılmadı; planlı kabul not_run.
+
+## Cevapsız sorular ve geciken insan yanıtı
+
+[LATE-01–08](../product/pending-questions-and-late-answers.md#6-uygulama-ve-kabul-planı) Q12 örneğinden çıkarıldı: kalıcı açık soru/restart, exact seçili kaynağa geç cevap, iki A/B sorusunda ambiguity, changed options/expiry/revocation, retry/conflict/cancel, soru öncesi ingest, ACL/actor/quoted spoof ve capture gap/unmatched korunumu. T01 corpus → T13e/T18e/T19/T20i/T24f; ASK-01–08 mevcut soru/yetki kontrolleri ayrıca korunur. Kod/host/parser/LLM/UI testleri yapılmadı; planlı senaryolar not_run. Capture/association/resolution/delivery/task completion farklı sonuçlardır.

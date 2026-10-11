@@ -138,3 +138,7 @@ T13e kalıcı soru/yetki yönlendirmesi, T18e transport capability, T24f senteti
 | AGT-08 | Kişisel→ekip aktarımı paylaşım önizlemesi ve identity mapping taşır; orijinal kaynak/ACL korunur |
 
 T02c capability, T18d iki-agent ortak hafıza/run görünürlüğü ve T24e pilot kontrolleri; C01–C04 ekip kurulumu/kimliği. AGT-01–08 henüz çalıştırılmadı. Seçili provider/host Q02, dış veri/bütçe Q03 ve ekip işletim OPEN-14–16 kararları geçerli. İlk bireysel pilot kararı korunur; çok-agent gözlemi eklemek otonom orchestration veya formal çok insanlı takımın teslim edildiği anlamına gelmez.
+
+## 2026-10-11 — İnsan cevabının gecikmesi ve soru bağı
+
+[Q12 yaşayan örneği ve geç cevap sözleşmesi](../product/pending-questions-and-late-answers.md), QuestionRequest'in yalnız subagent/run yaşamına bağlı olmadığını netleştirir. Kimlikli kart → reply/selected source → yetkili dar candidate context sırası; unbound/ambiguous cevaplar korunur, model confidence approval değildir. Değişmeyen option IDs/presentation snapshots, AnswerRecord association state ve source/received/resolution zamanları teknik adaydır. Durum “answered” olması aynı snapshot'a uygulanabilirlik veya execution delivery demek değildir. Geçlik tek başına stale değildir; gerçek authority/revision/expiry kontrolleri ayrı. LATE-01–08 T13e/T18e/T24f'ye bağlı not_run; ASK-01–08 korunur.
