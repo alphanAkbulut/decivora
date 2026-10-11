@@ -28,7 +28,7 @@ Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. �
 
 | Konu | Tür | Neden gerekli / neyi durdurur? | Durum |
 |---|---|---|---|
-| Bir gerçek model output’u | Model/host erişimi ve veri/maliyet sınırı | Mevcut sıra Q03-R1 A ek ücretli ilk çağrıyı yetkilendirmedi. Gerçek output kalite deneyi onsuz çalışmaz; kod hazırlığı çalışır | Öneri: mevcut tercih edilen LLM hesabında yalnız S02 sentetik request; çıktı import. Ayrı ücretli API öncesi bounded config |
+| Bir gerçek model output’u | Hesap/arayüz ve dahil kullanım teyidi | Q03-R2 A seçildi: tek S02 mevcut hesap smoke’u. Gerçek output henüz yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır; kalan seçim Claude veya ChatGPT/Codex hesabı. Model/usage not_run/unknown |
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Erişilebilir ürün/build, aynı koşullar ve veri izni | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "method": "existing_account_single_synthetic_smoke",
+  "authorization": "Q03-R2 A accepted by user 2026-10-11",
+  "request_id": "bdb693e5039ea798a1b29a121a088afde65d6d7ac810fab3d3a11de0bb375275",
+  "session": "S02",
+  "messages": 11,
+  "prepared_prompt_bytes": 5498,
+  "max_requests": 1,
+  "max_manual_retries": 0,
+  "automatic_retries": 0,
+  "tools_and_subagents_allowed": false,
+  "fresh_session_required": true,
+  "prompt_only_no_repo_or_oracle": true,
+  "suggested_output_tokens": 1536,
+  "output_token_cap_enforced": false,
+  "max_imported_response_bytes": 131072,
+  "additional_api_spend_authorized": false,
+  "credit_purchase_authorized": false,
+  "existing_paid_credit_overage_authorized": false,
+  "execution_status": "not_run",
+  "provider": null,
+  "model": null,
+  "usage": null,
+  "request_sha256": "10e7f3738f6414b3f36747f04398e076a23bf534a601bca71775696b193416d1",
+  "prompt_sha256": "ecce98ec7805b985aed06e1e6f39b4581aca8666cdad9ae681068b6678fa745d",
+  "limitations": [
+    "Call count is a user-controlled smoke limit, not a provider-internal inference count",
+    "Subscription quota is shared; this experiment has no verified per-job monetary or total-token hard cap",
+    "No provider chosen or new account/thread created; one account question remains",
+    "S02 is development data; n=1 and AI draft oracle do not establish release quality"
+  ]
+}

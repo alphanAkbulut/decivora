@@ -31,7 +31,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Bir gerçek model output’u | Mevcut sıra Q03-R1 A ek ücretli ilk çağrıyı yetkilendirmedi. Gerçek output kalite deneyi onsuz çalışmaz; kod hazırlığı çalışır | Öneri: mevcut tercih edilen LLM hesabında yalnız S02 sentetik request; çıktı import. Ayrı ücretli API öncesi bounded config |
+| Bir gerçek model output’u | Q03-R2 A seçildi: tek S02 mevcut hesap smoke’u. Gerçek output henüz yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır; kalan seçim Claude veya ChatGPT/Codex hesabı. Model/usage not_run/unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -80,4 +80,4 @@ Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo 
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `fd01fc034956f0429c45f4e0dc2f04c7473598ae42fa80c5eac9ee6ed0bb0ffc`
+Kaynak fingerprint: `4f56b8eec18490aceaceeced194163f71ef2ee1fd3cd33a86e9981b938b9535e`

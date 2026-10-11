@@ -5,7 +5,7 @@
 ## Nereden bakacağım?
 
 - GitHub’da [ilerleme görünümü](progress.md): mevcut parçalar, açık kapılar ve 30 ana görevin faz/durum/alt dilim sayıları.
-- Etkileşimli yerel ekran: repo kökünde `python3 -B scripts/project_progress.py --serve` çalıştır; tarayıcıda `http://127.0.0.1:8765` aç. Servis kapanırsa ekran güncelleme hatasını gösterir. Başka port için `--port 8766`; internet yayını yoktur.
+- Etkileşimli yerel ekran (varsayılan Board; Liste görünümü korunur): repo kökünde `python3 -B scripts/project_progress.py --serve` çalıştır; tarayıcıda `http://127.0.0.1:8765` aç. Servis kapanırsa ekran güncelleme hatasını gösterir. Başka port için `--port 8766`; internet yayını yoktur.
 - Başlatılmış ekranı Codex’in tarayıcı panelinde açık tutabilirsin. Kullanılan yerel repo kopyası güncellendikçe görünüm değişir. Yeni makinede private repoyu yetkili hesabınla indirip aynı komutu kullan.
 
 ## Ekranda ne göreceğim?
@@ -36,3 +36,5 @@ Python standard library; yeni paket/provider/hesap yok. API yalnız durum okur, 
 Doğrulama: parser/otorite, değişen kaynağın yeniden okunması, eksik/stale/tutarsız kanıt, duplicate/invalid metadata, salt okunur API ve erişim sınırları için tracker testleri. Ürün deney testlerinden ayrı değerlendirilir. Tarayıcı filtre/seçim/alt görev/yenileme ve dar ekran kontrolleri teslim kaydında belirtilir.
 
 [Bu teslimin doğrulama kaydı](../quality/development-tracker-results.json): tracker testleri ve gerçekten gözlenen tarayıcı etkileşimleri; gerçek ürün/agent telemetry testi değildir.
+
+Board sütunları: **Planlandı / Çalışılıyor / Engelli / Tamamlandı**. Kartlar aynı ana görevleri gösterir; faz/durum/arama filtreleri ve AC/alt dilim detayı her iki görünümde de çalışır. Sürükleyerek durum değiştirme yoktur; yeni task otoritesi oluşturulmadı. Hazırlık/deney parçaları bitmiş ana görev gibi Tamamlandı sütununa alınmaz. Gerçek BLOCKED kaydı yoksa Engelli boş kalır; açık insan/ölçüm kapıları ayrı paneldedir.

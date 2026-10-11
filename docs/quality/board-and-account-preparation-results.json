@@ -1,0 +1,60 @@
+{
+  "kind": "board_and_existing_account_smoke_preparation",
+  "observed_at": "2026-10-11T18:41:57.157950+00:00",
+  "base_commit": "fe73f4e8893c513453e94ccd3a870ffc9638bd01",
+  "tracker_tests": {
+    "count": 10,
+    "status": "passed",
+    "command": "python3 -B -m unittest discover -s tests -p test_project_progress.py -v"
+  },
+  "browser": {
+    "surface": "Codex in-app browser",
+    "board_total_cards": 30,
+    "lane_counts": {
+      "TODO": 27,
+      "IN_PROGRESS": 3,
+      "BLOCKED": 0,
+      "DONE": 0
+    },
+    "mvp_filter_cards": 21,
+    "task_detail": "T01 acceptance, verification and subtasks visible",
+    "list_switch": {
+      "board_visible": false,
+      "list_visible": true
+    },
+    "board_restored": true,
+    "screenshot": "local artifact not uploaded",
+    "drag_write": "not_implemented"
+  },
+  "preparation": {
+    "method": "Q03-R2 A selected",
+    "session": "S02",
+    "messages": 11,
+    "prompt_bytes": 5498,
+    "source_prompt_policy_hashes": "matched",
+    "request_contract": "check_request passed",
+    "execution": "not_run",
+    "provider": null,
+    "model": null,
+    "usage": null,
+    "fresh_independent_session": "not_created",
+    "additional_api_spend": false,
+    "max_requests": 1,
+    "automatic_retries": 0,
+    "max_output_tokens_enforced": false
+  },
+  "production_runtime": false,
+  "human_gold": "pending",
+  "canonical_task_status_changed": false,
+  "code_sha256": {
+    "tools/progress/index.html": "8da32018a9228d5b16ac6d3225e5359343476692c3fd8cfa0999eb760f63f31a",
+    "examples/model-smoke/s02-request.json": "10e7f3738f6414b3f36747f04398e076a23bf534a601bca71775696b193416d1",
+    "examples/model-smoke/s02-prompt.txt": "ecce98ec7805b985aed06e1e6f39b4581aca8666cdad9ae681068b6678fa745d",
+    "examples/model-smoke/s02-policy.json": "dc657275e4b432c4e9fb8f5368253143995d6e0a3f54aab95b24c6f5200e84c3"
+  },
+  "limitations": [
+    "UI task status is not live agent telemetry",
+    "No output inference or blind-quality claim",
+    "Prepared manual limit is not provider-internal token/money enforcement"
+  ]
+}

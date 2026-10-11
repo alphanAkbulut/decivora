@@ -17,6 +17,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Basit Board ve Q03-R2 mevcut hesap smoke'u
+
+- Kullanıcının görsel takip talebi üzerine aynı veriden Board eklendi: Planlandı/Çalışılıyor/Engelli/Tamamlandı, kart→AC/alt görev, faz/arama/durum filtreleri; Liste görünümü korunur. Salt okunur; ana task statüsü veya production UI kapsamı değişmedi.
+- Tarayıcıda 30 kart (27 TODO/3 IN_PROGRESS), MVP=21, T01 ayrıntısı ve Board/Liste geçişi görüldü; mevcut 10 tracker testi geçti. Model çalıştırma veya completion mutation yok. [Teslim doğrulaması](../quality/board-and-account-preparation-results.json).
+- **Q03-R2 A kabul edildi:** [S02 mevcut hesap planı](../quality/s02-account-smoke-plan.md) ve üç kaynak-only/prompt/policy dosyası hazır. Tek S02/11 sentetik mesaj, bir gönderim, retry/tools/subagent yok; ek API/credit ücretine izin yok. 1536 token hedefi enforce edilmiş tavan diye gösterilmez; 128 KiB import sınırı provider maliyetini sınırlamaz.
+- Sağlayıcı/hesap/model seçimi ve dahil kullanım teyidi açık; gerçek inference not_run, usage null. Bu sohbet oracle gördüğü için bağımsız extraction output'u diye yeniden kullanılmadı. Human gold/native/production kapıları korunur. Statik ilerleme görünümü yenilendi; repo private tutulur.
+
 ### 2026-10-11 — Dinamik geliştirme görünümü
 
 - [İlerleme görünümü](progress.md) ve [yerel takip ekranı rehberi](progress-guide.md) eklendi. Aynı backlog/hazırlık/engine/kanıt kaynaklarını okur: 30 ana görev, 9 mevcut hazırlık/deney/araç parçası, 5 açık kapı, görev AC/alt dilimleri ve 10 production engine planı.

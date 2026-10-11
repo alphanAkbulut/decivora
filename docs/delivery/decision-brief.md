@@ -166,3 +166,12 @@ Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, c
 **Sonuç:** [READBACK-01](../quality/first-target-readback.md) önceki artifact yayım commit'ini ve gözlem anındaki main ref'ini `6de536e44b22d6f839aa7c94e3ca2444addb5115` olarak sabitledi. Yerel içerik ile GitHub UTF-8 içeriği/SHA-256/blob kimliği birebir eşleşti: tek doküman/ref için **observed_match**. Rehber bu kontrolde değiştirilmedi. Bu, manuel mevcut GitHub connector'ıyla yapılan kontrol; Decivora adapter/harness, semantik extraction veya tüm task DoD testi değildir.
 
 **Sınır / devam:** Tek hedef dokümanın read kapsamı somutlaştı. Bütün kaynak hesapları, ücretli model, gerçek sohbet import'u ve target execution yetkisi çıkarılmaz. Repo belge bakımının önceki commit/push yetkisi ayrı kalır. T01 insan review'u ve remaining coverage, T02 coding capability ve zorunlu T09/T24q extraction testi açık; gelecekteki model/veri/bütçe ayrıntıları ayrıca karara bağlanır. Sadece hedef/sıra seçildi; gerekli doğrulama işleri seçenek hâline getirilmedi.
+
+
+## Q03-R2 — İlk gerçek model output'u mevcut hesapla
+
+**2026-10-11 · A kabul edildi.** Kullanıcı seçili A/B önerisine “burada da önerin ile devam edelim” yanıtını verdi. A: hazır S02 sentetik isteği mevcut LLM hesabında tek yeni oturumda çalıştır; sonucu import/ölç. B: otomatik API provider + bounded bütçe alternatifi korunur, bu ilk smoke için seçilmedi. Gerçek semantik çıkarım zorunlu iş olmaya devam eder.
+
+Gerekçe: mevcut hesabı kullanmak, ilk output smoke'una ek API bağlantısı/harcama bağımlılığı eklemez. Dahil hesap kotası tüketilebilir; abonelik veya prompt token hedefi iş başına hard parasal tavan değildir. Kullanıcı da tavan ihtiyacını sordu. İlk engineering sınırı: tek S02/11 sentetik mesaj, bir gönderim/çıktı, retry/regenerate/tools/subagent yok, 1536 çıktı token hedefi (enforce edilmediyse soft), 128 KiB import/64 aday hard validator sınırı; ek API spend/credit satın alma veya ücretli aşım izni yok.
+
+[Hazır paket, plan ve kaynaklar](../quality/s02-account-smoke-plan.md). Hesap/arayüz ve model seçimi açık; bu nedenle model execution not_run, usage null. Q03-R1 A önceki no-model dilimin sırası olarak tarihsel kayıtta korunur. S02 ilk output, n=1 development smoke; human gold, sealed holdout, native kıyas veya production build kapısını kapatmaz. Bu sohbet oracle/taslak gördüğü için bağımsız inference diye tekrar kullanılmaz. Yeni dış hesap/thread otomatik açılmadı.

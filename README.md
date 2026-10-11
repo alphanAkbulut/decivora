@@ -11,7 +11,7 @@
 
 ## Çalışmanın neresindeyiz?
 
-**[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.
+**[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) Board/Liste görünümü, görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.
 
 | Alan | Bugünkü durum | Sonraki kanıt |
 |---|---|---|
