@@ -18,7 +18,7 @@
   "additional_api_spend_authorized": false,
   "credit_purchase_authorized": false,
   "existing_paid_credit_overage_authorized": false,
-  "execution_status": "not_run",
+  "execution_status": "attempted_no_model_output",
   "provider": "OpenAI",
   "model": null,
   "usage": null,
@@ -27,10 +27,10 @@
   "limitations": [
     "Call count is a user-controlled smoke limit, not a provider-internal inference count",
     "Subscription quota is shared; this experiment has no verified per-job monetary or total-token hard cap",
-    "OpenAI existing ChatGPT/Codex account selected; exact model/interface and enforceable per-run token bounds remain unverified; no new account/thread created",
+    "Existing ChatGPT account selected; one fresh non-personalized temporary web session submitted; exact model and enforceable per-run token bounds remain unverified",
     "S02 is development data; n=1 and AI draft oracle do not establish release quality"
   ],
-  "dispatch_status": "pending_capability_review",
+  "dispatch_status": "attempted_retry_exhausted",
   "max_input_tokens": null,
   "max_output_tokens": null,
   "max_context_tokens": null,
@@ -40,7 +40,7 @@
   "total_token_cap_enforced": false,
   "hard_capability_verified": false,
   "hard_cap_required_before_dispatch": true,
-  "bounded_manual_risk_exception_authorized": false,
+  "bounded_manual_risk_exception_authorized": true,
   "context_tokens": null,
   "input_tokens": null,
   "capability_review": {
@@ -60,7 +60,8 @@
       "account_statistics_published": false,
       "token_capability": "No enforceable per-job token/context bound proved; documented SIWC preview does not support max_output_tokens",
       "source": "https://developers.openai.com/siwc/token-sharing-open-source/preview-limitations",
-      "dispatch_performed": false
+      "dispatch_performed": true,
+      "isolation": "UI: temporary, non-personalized; memory/plugins/custom instructions ignored"
     }
   },
   "account_route": "existing_ChatGPT_Codex_account",
@@ -70,5 +71,28 @@
     "answer": "A",
     "date": "2026-10-11",
     "scope": "Existing ChatGPT/Codex account for one synthetic S02 smoke; no paid API, credit purchase or weaker hard-cap exception"
+  },
+  "risk_exception": {
+    "decision_id": "Q03-R4",
+    "status": "accepted",
+    "answer": "A",
+    "date": "2026-10-11",
+    "scope": "One fixed synthetic S02 request and first output in existing ChatGPT account; zero retries/tools/subagents, no additional paid usage; per-run token/context cap not guaranteed",
+    "product_hard_cap_requirement_unchanged": true,
+    "consumed": true,
+    "renewable_automatically": false
+  },
+  "interface": "ChatGPT web, non-personalized temporary chat",
+  "model_ui_label": "Instant",
+  "model_identity_verified": false,
+  "submitted_requests": 1,
+  "received_model_outputs": 0,
+  "actual_retries": 0,
+  "attempt_result": {
+    "observed_error": "cloudflare_challenge",
+    "observed_at_utc": "2026-10-11 19:31:45 UTC",
+    "provider_inference_started": null,
+    "evaluation_status": "not_run_no_output",
+    "retry_clicked": false
   }
 }

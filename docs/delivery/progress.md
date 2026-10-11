@@ -31,9 +31,9 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · Hesap kararı: Q03-R3 A ile mevcut ChatGPT/Codex (OpenAI) seçildi; normal hesap kullanımı açık kontrol edildi. 17 testli preflight hazır; kesin token/context tavanı doğrulanamadığından S02 henüz gönderilmedi. Üretim limiter ve para tavanı uygulanmadı.
+2026-10-11 · Gerçek hesap denemesi: Q03-R4 A tek-deney istisnasıyla S02 ChatGPT web oturumuna bir kez gönderildi. cloudflare_challenge nedeniyle model output yok; retry 0, token/usage unknown. [Rapor](../quality/s02-account-smoke-result.md) hazır; model kalitesi ölçülmedi, üretim limiter uygulanmadı.
 
-Sıradaki adım: [S02 planı](../quality/s02-account-smoke-plan.md): OpenAI hesap seçimi tamamlandı → kesin arayüz/model ve enforce edilen sınır veya tek-deney risk istisnası → tek output → bağımsız ölçüm. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
+Sıradaki adım: [S02 planı](../quality/s02-account-smoke-plan.md): İlk tek-deney izni tüketildi → owner normal ChatGPT erişimini kontrol etsin → yeni sınırlı gönderim yetkisi → ilk ham output → bağımsız ölçüm; otomatik retry yok. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
 
 
 ## Mevcut teslim parçaları
@@ -49,14 +49,14 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Otomasyon ve devir** — Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı; Docs/corpus/anchor + runtime regresyonları
 - **Seçili gerçek hedef okuması** — Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match; Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil
 - **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil
-- **S02 gönderim ve güvenlik hazırlığı** — Tek S02 kaynak/prompt/policy; Q03-R3 A mevcut ChatGPT/Codex seçildi; bir gönderim/sıfır retry/tools; hard-cap kontrolü kısmen yapıldı, dispatch pending_capability_review; [Hazır plan](../quality/s02-account-smoke-plan.md); paket hash/policy kontrolü geçti. Belge/hazırlık teslimi; gerçek inference ve production limiter not_run
+- **S02 gönderim ve güvenlik hazırlığı** — Tek S02 kaynak/prompt/policy; Q03-R4 A istisnasıyla bir web gönderimi denendi; cloudflare_challenge, model output 0/retry 0; hard-cap doğrulanmadı; [Hazır plan](../quality/s02-account-smoke-plan.md) ve [gerçek deneme raporu](../quality/s02-account-smoke-result.md); kaynak hashleri sabit. Output/scorer/chain bu deneme için not_run_no_output; production limiter not_run
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Bir gerçek model output’u | S02 offline preflight blocked; sonlu model/limit/bütçe kanıtı yok. OpenAI docs + CLI help incelemesi bu kapıyı kapatmıyor; ek ücret izni yok | [Paket](../quality/s02-account-smoke-plan.md) ve [preflight kodu](../quality/token-preflight.md) hazır. OpenAI hesap seçimi tamamlandı, normal kullanım açık. Kesin arayüz/model ve enforce edilen sınır veya yalnız S02 için ayrı risk istisnası → tek output → ölçüm; inference not_run |
+| Bir gerçek model output’u | Tek web gönderimi cloudflare_challenge ile çıktı vermedi; kaynak/response aktarımında UI hatası. Token üst sınırları ve model kalitesi hâlâ unknown; ek ücret izni yok | [Paket](../quality/s02-account-smoke-plan.md) ve [preflight kodu](../quality/token-preflight.md) hazır. Q03-R4 istisnası tüketildi; retry yapılmadı. Normal ChatGPT erişimi + yeni tek-gönderim yetkisi → ilk output → ölçüm; [sonuç](../quality/s02-account-smoke-result.md), kalite not_measured |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -105,4 +105,4 @@ Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo 
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `b2e0eee87e0b4643dd4c1686b9a6127f46de441b991620b3b2923dd0cf365060`
+Kaynak fingerprint: `3f927e423e1d521d7cbd6ec5cd227844e52b48a83d271bdc41a94b7ed850f80c`

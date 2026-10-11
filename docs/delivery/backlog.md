@@ -80,8 +80,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Son ilerleme:** 2026-10-11 · Hesap kararı: Q03-R3 A ile mevcut ChatGPT/Codex (OpenAI) seçildi; normal hesap kullanımı açık kontrol edildi. 17 testli preflight hazır; kesin token/context tavanı doğrulanamadığından S02 henüz gönderilmedi. Üretim limiter ve para tavanı uygulanmadı.
-- **Sıradaki adım:** [S02 planı](../quality/s02-account-smoke-plan.md): OpenAI hesap seçimi tamamlandı → kesin arayüz/model ve enforce edilen sınır veya tek-deney risk istisnası → tek output → bağımsız ölçüm. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
+- **Son ilerleme:** 2026-10-11 · Gerçek hesap denemesi: Q03-R4 A tek-deney istisnasıyla S02 ChatGPT web oturumuna bir kez gönderildi. cloudflare_challenge nedeniyle model output yok; retry 0, token/usage unknown. [Rapor](../quality/s02-account-smoke-result.md) hazır; model kalitesi ölçülmedi, üretim limiter uygulanmadı.
+- **Sıradaki adım:** [S02 planı](../quality/s02-account-smoke-plan.md): İlk tek-deney izni tüketildi → owner normal ChatGPT erişimini kontrol etsin → yeni sınırlı gönderim yetkisi → ilk ham output → bağımsız ölçüm; otomatik retry yok. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

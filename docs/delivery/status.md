@@ -17,6 +17,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Q03-R4 A ve ilk gerçek web gönderimi
+
+- Kullanıcı yalnız bir S02 için hard token/context cap olmadan sınırlı risk istisnasını kabul etti. Ürün hard-cap kuralı, sıfır retry/tools ve ek ücret yasağı korunur.
+- Boş, kişiselleştirilmemiş geçici ChatGPT web oturumunda sabit sentetik prompt bir kez gönderildi. `cloudflare_challenge` görüldü; model output 0, usage/token unknown. Retry veya ikinci yöntem çağrısı yapılmadı; kalite/scorer/chain bu deneme için çalışmadı.
+- [Rapor](../quality/s02-account-smoke-result.md) ve [makine kaydı](../quality/s02-account-smoke-results.json), policy ve T03 ilerlemesi güncellendi. İlk otomatik onay reddi, mevcut insan cevabının sohbet kaydında doğrulanmasından sonra aynı eylemin yeniden değerlendirilmesiyle çözüldü; dolaylı dispatch yok.
+- T01/T02/T03 IN_PROGRESS ve 11 mevcut parça korunur; başarısız transport denemesi ana görev kapanışı veya semantik başarısızlık değildir. Sonraki gönderim yeni sınırlı izin gerektirir.
+
 ### 2026-10-11 — Q03-R3 A: OpenAI hesabı seçildi
 
 - Kullanıcı mevcut ChatGPT/Codex hesabını seçti; policy, deney planı ve owner karar kaydı güncellendi. Normal hesap kullanımının açık olduğu salt okunur kontrol edildi; kişisel hesap/kota detayları yayınlanmadı.

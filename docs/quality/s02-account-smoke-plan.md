@@ -1,6 +1,6 @@
 # S02 — Mevcut hesapla sınırlı model smoke deneyi
 
-**2026-10-11 · Q03-R2 A seçildi; paket hazır; gerçek model çalıştırması not_run.** Kullanıcı “burada da önerin ile devam edelim” yanıtıyla hazır S02 sentetik isteğini mevcut LLM hesabında çalıştırma yöntemini seçti. Bu önceki no-model sıra kararını iptal etmez; zorunlu gerçek extraction doğrulamasının sonraki küçük adımıdır. **Q03-R3 A kabul edildi: mevcut ChatGPT/Codex hesabı (OpenAI) seçildi.** Tam arayüz/model ve enforce edilmiş token/context sınırları henüz doğrulanmadı. Yeni API harcaması, credit satın alma veya abonelik dışı kullanım yetkisi yoktur.
+**2026-10-11 · Q03-R2/R3/R4 A seçildi; tek web gönderimi denendi, model output alınamadı (`cloudflare_challenge`).** [Güncel deney sonucu](s02-account-smoke-result.md). Kullanıcı “burada da önerin ile devam edelim” yanıtıyla hazır S02 sentetik isteğini mevcut LLM hesabında çalıştırma yöntemini seçti. Bu önceki no-model sıra kararını iptal etmez; zorunlu gerçek extraction doğrulamasının sonraki küçük adımıdır. **Q03-R3 A kabul edildi: mevcut ChatGPT/Codex hesabı (OpenAI) seçildi.** Tam arayüz/model ve enforce edilmiş token/context sınırları henüz doğrulanmadı. Yeni API harcaması, credit satın alma veya abonelik dışı kullanım yetkisi yoktur.
 
 ## Hazır paket ve sınırlar
 
@@ -51,4 +51,8 @@ Yerel first-use kontrolü artık kodlanmış ve fixture ile sınanmıştır: [to
 
 Hard-cap koşulu korunuyor. İncelenen OpenAI SIWC plan kullanım preview yolu `max_output_tokens` desteklemiyor; CLI help de iş başına enforce edilmiş output/para tavanı kanıtı sağlamadı. Bunlar bütün OpenAI arayüzleri için yokluk kanıtı değildir. Bu nedenle mevcut S02 preflight blocked ve execution not_run kalır.
 
-Somut istisna önerisi yalnız bu tek deney içindir: 5498 byte sabit sentetik prompt, bağımsız boş oturum, bir gönderim/ilk çıktı, sıfır retry/tools/subagent; 1536 token soft hedefi; ek ücretli kullanım/credit açılmadan mevcut kotadan tüketim. Kesin input/output/context/reasoning tavanı garanti edilemez. Kesme/timeout veya 128 KiB import kontrolü önceki tüketimi geri almaz. Kullanıcı bu sınırlı riski ayrıca kabul ederse ayrı receipt kaydedilir; ürünün hard-cap sözleşmesi gevşetilmez ve sonraki deneylere genellenmez. Şimdilik **istisna kabul edilmedi**; hesap seçimi bu iznin yerine geçmez.
+Somut istisna önerisi yalnız bu tek deney içindir: 5498 byte sabit sentetik prompt, bağımsız boş oturum, bir gönderim/ilk çıktı, sıfır retry/tools/subagent; 1536 token soft hedefi; ek ücretli kullanım/credit açılmadan mevcut kotadan tüketim. Kesin input/output/context/reasoning tavanı garanti edilemez. Kesme/timeout veya 128 KiB import kontrolü önceki tüketimi geri almaz. Kullanıcı bu sınırlı riski ayrıca kabul ederse ayrı receipt kaydedilir; ürünün hard-cap sözleşmesi gevşetilmez ve sonraki deneylere genellenmez. Bu öneri Q03-R3 sırasında henüz kabul edilmemişti. **Q03-R4 A ile sonraki insan yanıtı bu tek-deney istisnasını kabul etti**; bir gönderim denendi, host hatasında çıktı alınamadı. İzin tüketildi; ikinci gönderim otomatik değildir.
+
+## Güncel sonuç — Q03-R4 A
+
+Önceki pending_capability_review anlatımı ilk gönderimden önceki strict/hard-cap kapısıdır. Q03-R4 açık insan istisnası yalnız manuel web smoke yolunu yetkilendirdi; hard-cap desteği doğrulanmış sayılmaz. Tek gönderimden sonra `cloudflare_challenge` gözlendi, response ve kullanım verisi alınmadı. Güncel durum policy'de attempted_no_model_output / attempted_retry_exhausted; parse/scorer/chain bu deneme için not_run_no_output. [Sonuç ve sonraki sınırlı plan](s02-account-smoke-result.md).

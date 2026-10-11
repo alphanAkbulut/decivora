@@ -189,3 +189,9 @@ Gerekçe: tek gönderim veya kısa cevap talimatı, gizli context/reasoning ve �
 **2026-10-11 · Kabul edildi: A, mevcut ChatGPT/Codex hesabı (OpenAI).** Kaynak: kullanıcının A/B hesap sorusuna verdiği “a” yanıtı. Claude bu ilk smoke için seçilmedi. Q03-R2 tek S02/bir output/sıfır retry, sentetik-only ve ek ücret yasağı korunur. Hesap seçimi kapandı; kesin model/arayüz, enforce edilebilir limitler ve gerekirse yalnız bu deney için sınırlı risk istisnası açık.
 
 Salt okunur hesap kontrolünde normal kullanım açık görüldü; özel hesap/kota ayrıntıları repoya taşınmadı. [Capability bulgusu ve somut istisna kapsamı](../quality/s02-account-smoke-plan.md#q03-r3--hesap-seçimi-ve-kalan-tek-owner-kararı): incelenen SIWC preview yolunda output token cap parametresi desteklenmiyor; bütün hostlar için genelleme yok. Token tavanını prompt hedefiyle eşitlememek için dispatch bekliyor. Bu yanıt ücretli API veya risk istisnası sayılmadı; gerçek inference not_run.
+
+## Q03-R4 — Tek S02 için sınırlı token riski istisnası
+
+**2026-10-11 · Kabul edildi: A.** Kullanıcı, önceki mesajdaki “Yalnız bu deney için istisnayı kabul et” seçeneğine “a” dedi. Scope: 11 sentetik mesaj/5498 byte sabit prompt, bir gönderim/ilk output, sıfır tekrar/araç/alt agent; ek ücretli kullanım açılmaz, kesin token/context tavanı garanti edilmez. Ürün hard-cap gereksinimi değişmedi; genel/gelecek deney izni değildir.
+
+[Deney raporu](../quality/s02-account-smoke-result.md): kişiselleştirilmemiş geçici ChatGPT web oturumunda tek gönderim denendi; cloudflare_challenge, sıfır model output, usage unknown. İlk onay denetimi reddinden sonra önceki seçenek ve güncel insan cevabı sohbet kaydında doğrulandı; aynı UI eylemi yeniden değerlendirildi, dolaylı gönderim yapılmadı. İzin tüketildi; ikinci model gönderimi/retry yapılmadı.
