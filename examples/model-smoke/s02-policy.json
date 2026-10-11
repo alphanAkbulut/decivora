@@ -19,7 +19,7 @@
   "credit_purchase_authorized": false,
   "existing_paid_credit_overage_authorized": false,
   "execution_status": "not_run",
-  "provider": null,
+  "provider": "OpenAI",
   "model": null,
   "usage": null,
   "request_sha256": "10e7f3738f6414b3f36747f04398e076a23bf534a601bca71775696b193416d1",
@@ -27,7 +27,7 @@
   "limitations": [
     "Call count is a user-controlled smoke limit, not a provider-internal inference count",
     "Subscription quota is shared; this experiment has no verified per-job monetary or total-token hard cap",
-    "No provider chosen or new account/thread created; one account question remains",
+    "OpenAI existing ChatGPT/Codex account selected; exact model/interface and enforceable per-run token bounds remain unverified; no new account/thread created",
     "S02 is development data; n=1 and AI draft oracle do not establish release quality"
   ],
   "dispatch_status": "pending_capability_review",
@@ -44,7 +44,7 @@
   "context_tokens": null,
   "input_tokens": null,
   "capability_review": {
-    "status": "pending",
+    "status": "partially_reviewed",
     "required": [
       "model_and_interface",
       "full_input_counting",
@@ -52,6 +52,23 @@
       "context_limit_mechanism",
       "billable_reasoning_mapping",
       "included_usage_and_overage_mode"
-    ]
+    ],
+    "checked": {
+      "date": "2026-10-11",
+      "normal_account_usage_available": true,
+      "experiment_usage": null,
+      "account_statistics_published": false,
+      "token_capability": "No enforceable per-job token/context bound proved; documented SIWC preview does not support max_output_tokens",
+      "source": "https://developers.openai.com/siwc/token-sharing-open-source/preview-limitations",
+      "dispatch_performed": false
+    }
+  },
+  "account_route": "existing_ChatGPT_Codex_account",
+  "provider_selection": {
+    "status": "accepted",
+    "decision_id": "Q03-R3",
+    "answer": "A",
+    "date": "2026-10-11",
+    "scope": "Existing ChatGPT/Codex account for one synthetic S02 smoke; no paid API, credit purchase or weaker hard-cap exception"
   }
 }

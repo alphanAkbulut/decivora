@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Q03-R3 A: OpenAI hesabı seçildi
+
+- Kullanıcı mevcut ChatGPT/Codex hesabını seçti; policy, deney planı ve owner karar kaydı güncellendi. Normal hesap kullanımının açık olduğu salt okunur kontrol edildi; kişisel hesap/kota detayları yayınlanmadı.
+- İncelenen SIWC preview yolunda output cap parametresi desteklenmiyor; kesin per-run token/context tavanı doğrulanmadı. [S02 planı](../quality/s02-account-smoke-plan.md) tek-deney risk istisnasını somutlaştırıyor; henüz kabul edilmedi, dispatch pending_capability_review ve inference not_run.
+- Board'un kaynak T03 ilerleme/kalan adımı güncellendi. 11 hazırlık parçası ve T01/T02/T03 IN_PROGRESS korunur; hesap seçimi semantik başarı veya ana görev kapanışı sayılmaz.
+
 ### 2026-10-11 — İngilizce status ve P0 preflight kodu
 
 - Kullanıcı tercihine göre Board/filter/task status etiketleri To Do/In Progress/Blocked/Done oldu; kanonik task state veya faz değişmedi. Jira'nın özel workflow desteğiyle uyumlu etiketleme; Blocked her Jira'nın varsayılanı diye sunulmaz.

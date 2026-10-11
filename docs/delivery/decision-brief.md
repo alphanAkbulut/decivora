@@ -183,3 +183,9 @@ Gerekçe: mevcut hesabı kullanmak, ilk output smoke'una ek API bağlantısı/ha
 Gerekçe: tek gönderim veya kısa cevap talimatı, gizli context/reasoning ve ücretli kullanım için kesin güvence sağlamaz. Korunan alternatif mevcut hesapla manuel smoke'dur; hard sınırları desteklemiyorsa capability kapısı veya açık sınırlı risk istisnası gerekir. İlk çağrıdan sonra iptal/timeout harcamayı geri almaz. Ücretli API alternatifi kendi dispatch sınırlarını uygulama adayıdır; otomatik seçilmedi ve harcama izni yoktur.
 
 [Token/context hesaplama sözleşmesi](../architecture/routing-token-economy.md), [durma/onay UX'i](../product/token-risk-and-approval.md), [S02 kayıt ve kapısı](../quality/s02-account-smoke-plan.md) güncellendi. Model/arayüz seçimi açık; token/cost null alanları unlimited sayılmaz. Ürün kontrolü P1 uygulama/doğrulama gereksinimi; dokümantasyon güncellemesi runtime enforcement kanıtı değildir.
+
+## Q03-R3 — İlk model smoke için sağlayıcı
+
+**2026-10-11 · Kabul edildi: A, mevcut ChatGPT/Codex hesabı (OpenAI).** Kaynak: kullanıcının A/B hesap sorusuna verdiği “a” yanıtı. Claude bu ilk smoke için seçilmedi. Q03-R2 tek S02/bir output/sıfır retry, sentetik-only ve ek ücret yasağı korunur. Hesap seçimi kapandı; kesin model/arayüz, enforce edilebilir limitler ve gerekirse yalnız bu deney için sınırlı risk istisnası açık.
+
+Salt okunur hesap kontrolünde normal kullanım açık görüldü; özel hesap/kota ayrıntıları repoya taşınmadı. [Capability bulgusu ve somut istisna kapsamı](../quality/s02-account-smoke-plan.md#q03-r3--hesap-seçimi-ve-kalan-tek-owner-kararı): incelenen SIWC preview yolunda output token cap parametresi desteklenmiyor; bütün hostlar için genelleme yok. Token tavanını prompt hedefiyle eşitlememek için dispatch bekliyor. Bu yanıt ücretli API veya risk istisnası sayılmadı; gerçek inference not_run.
