@@ -25,6 +25,16 @@ OpenAI için [resmî authentication belgesi](https://learn.chatgpt.com/docs/auth
 
 Gelecekteki otomatik API yolunda kendi call/retry/parent-child rezervasyon ve toplam bütçe admission sınırlarımız gerekir. Provider token/para/usage desteği ayrıca doğrulanır; API kullanmak tek başına hard parasal tavan sağlamaz. Bu deneyde o yol açılmadı.
 
+## Token/context güvenlik kaydı — 2026-10-11
+
+Kullanıcının son isteği ayrı input, output ve toplam context sınırları; olağan dışı tüketimde durma/onay bekleme gereksinimidir. [Ürün sözleşmesi](../architecture/routing-token-economy.md) ve [risk davranışı](../product/token-risk-and-approval.md) güncellendi. Bu gereksinim ücret/credit veya daha büyük model izni değildir.
+
+Bu smoke paketinde tam gönderilecek metin **5498 UTF-8 byte** olarak sabittir. Tokenizer/model ve arayüzün eklediği talimat/geçmiş bilinmediğinden bunu kesin input token sayısına çevirmiyoruz. Policy'de `max_input_tokens`, `max_context_tokens` ve `max_total_tokens` henüz **null**; “sınırsız izin” anlamına gelmez. 1536 output hedefi soft; enforce edilmiş output tavanı da null'dır. 128 KiB import kontrolü çağrıdan sonra çalışır, bütçeyi koruyan çağrı öncesi limit değildir.
+
+**Gönderim öncesi zorunlu capability kontrolü:** seçilen model/arayüz, tam input sayımı, output ve context cap desteği, görünür/gizli ücretli token sınıfları, dahil kullanım/overage modu kaydedilir. Henüz bu kontrol yapılmadı; gönderim `pending_capability_review`, execution `not_run`. Hard cap gerekli olup arayüz sağlayamıyorsa otomatik veya manuel gönderim yapılmış sayılmaz; uygun kontrollü yöntem hazırlanır. Prompt'a “en çok şu kadar token” yazmak bu kapıyı kapatmaz. Daha zayıf sınırla manuel smoke ancak insanın açıkça kabul ettiği sınırlı risk istisnasıyla yapılabilir; bu son istek böyle bir istisna kabulü sayılmaz. Seçilmiş A yöntemi iptal edilmedi; kullanılabilirliği kontrol ediliyor. Ücretli API'ye kendiliğinden geçiş yoktur.
+
+S02 için bir gönderim, sıfır retry/regenerate/continuation ve araç/alt agent olmaması korunur. Kesilen/eksik output yeni çağrıyla otomatik tamamlanmaz; failure/incomplete saklanır. Daha büyük context veya ikinci çağrı aynı deneye sessiz eklenmez. Ürün için önerilen sayısal deney profili bu henüz seçilmemiş hesapta uygulanmış tavan değildir.
+
 ## Çalıştırma ve ölçüm
 
 1. Owner hesabı/arayüzü seçer; aktif model ve dahil kullanım/credit modu kayıt altına alınır. Mevcut bu sohbet extraction için yeniden kullanılmaz; asistan daha önce oracle/taslak gördü. Yeni bağımsız mesaj geçmişi gerekir; modelden modelin adını tahmin etmesi istenmez.

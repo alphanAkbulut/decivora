@@ -8,6 +8,18 @@ Bütçesi henüz dolmamış bir iş de gereksiz derecede pahalı olabilir. Amaç
 
 P1 önerisi deterministik preflight kontrolüdür. Riski anlamak için bütün geçmişi başka bir pahalı modele göndermeyiz. Mevcut manifest, boyut/token tahmini, planlanan model/araç adımları, izinli metadata ve kullanım kayıtları kullanılır. Kaynak okuma izni yoksa tahmin uğruna içerik alınmaz. Semantik yardımcı değerlendirme ileride gerekirse kendisi de bütçeli/onaylı iş sayılır.
 
+## Olağan dışı durumda durma ve devam etme
+
+**2026-10-11 — Kullanıcı token ve context sınırları ile onay bekleme ihtiyacını ayrıca doğruladı.** [Token/context sözleşmesi](../architecture/routing-token-economy.md) zorunlu preflight'ın parçasıdır. Bu gereksinim mevcut hesaba otomatik hard cap uygulandığı anlamına gelmez.
+
+- Normal eşik içinde ve geçerli grant/rezervasyonla iş ilerler.
+- Risk inceleme eşiği aşılmış fakat kesin tavanlar içinde sonlu plan kurulabiliyorsa `requires_risk_approval`: yeni model/araç dispatch'i durur, insan sınırları ve planı görür. Sessizlik, eski genel onay veya agent cevabı onay değildir.
+- Kesin token/context/para/attempt sınırı aşılacaksa veya zorunlu üst sınır bilinmiyorsa `blocked`: ek risk onayı bunu aşamaz. Kapsam küçültülür veya yetkili ayrı policy değişimi hazırlanır.
+- Çalışma sırasında döngü, büyüyen context, beklenmedik child/retry ya da unknown usage saptanırsa yeni dispatch'ler durur. Çağrı öncesi output sınırı gerekir; streaming'i sonradan kesmek veya timeout, oluşmuş tüketimi geri almaz.
+- Bekleme kaydı checkpoint, kalan kapsam, sebep, kullanılan/rezerve edilen/bilinmeyen tüketim ve uygulanabilir devam yollarını gösterir. Task `done` olmaz; kaynak ve geçmiş korunur. Yeniden başlatma aynı parent muhasebesiyle güncel izin/tavanları tekrar kontrol eder.
+
+TRA-04 güvenli üst sınırı olmayan context/output capability'yi; TRA-06 unknown tüketim ve eşzamanlı rezervasyonu; TRA-07 in-flight ile yeni dispatch ayrımını; TRA-09 dış hesabın sınırlanamayan tüketimini de içerecek. Bunlar planlı senaryolardır, bu belge değişikliği test başarısı değildir.
+
 ## Hangi sinyaller risk yaratır?
 
 | Sinyal | Açıklanacak gerekçe / daha az tüketen aday yol |

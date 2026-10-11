@@ -29,5 +29,29 @@
     "Subscription quota is shared; this experiment has no verified per-job monetary or total-token hard cap",
     "No provider chosen or new account/thread created; one account question remains",
     "S02 is development data; n=1 and AI draft oracle do not establish release quality"
-  ]
+  ],
+  "dispatch_status": "pending_capability_review",
+  "max_input_tokens": null,
+  "max_output_tokens": null,
+  "max_context_tokens": null,
+  "max_total_tokens": null,
+  "input_token_cap_enforced": false,
+  "context_token_cap_enforced": false,
+  "total_token_cap_enforced": false,
+  "hard_capability_verified": false,
+  "hard_cap_required_before_dispatch": true,
+  "bounded_manual_risk_exception_authorized": false,
+  "context_tokens": null,
+  "input_tokens": null,
+  "capability_review": {
+    "status": "pending",
+    "required": [
+      "model_and_interface",
+      "full_input_counting",
+      "output_limit_mechanism",
+      "context_limit_mechanism",
+      "billable_reasoning_mapping",
+      "included_usage_and_overage_mode"
+    ]
+  }
 }

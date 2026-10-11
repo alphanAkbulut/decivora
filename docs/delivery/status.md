@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Token ve context durdurma sözleşmesi
+
+- Kullanıcının aşırı tüketimde durma/onay bekleme ihtiyacı [risk belgesine](../product/token-risk-and-approval.md) ve [token ekonomisine](../architecture/routing-token-economy.md) işlendi: tam input + generation rezervi + margin, uygulama/model pencerelerinin küçüğü; risk eşiği ile hard cap ayrılır.
+- [S02 plan/policy](../quality/s02-account-smoke-plan.md) hard token/context desteği henüz unknown olduğundan `pending_capability_review`; gerçek inference not_run. 5498 byte sabit prompt, 1536 soft output hedefi, bir gönderim/sıfır retry korunur. Ek ücret, dış hesap kullanım kontrolü veya sayısal optimum iddiası yok.
+- Gereksinim kaydı tamamlandı; production limiter/atomik rezervasyon uygulanmadı. Ana task durumları değişmedi; model/arayüz seçimi ve first-dispatch capability/limit doğrulaması açık.
+
 ### 2026-10-11 — Basit Board ve Q03-R2 mevcut hesap smoke'u
 
 - Kullanıcının görsel takip talebi üzerine aynı veriden Board eklendi: Planlandı/Çalışılıyor/Engelli/Tamamlandı, kart→AC/alt görev, faz/arama/durum filtreleri; Liste görünümü korunur. Salt okunur; ana task statüsü veya production UI kapsamı değişmedi.

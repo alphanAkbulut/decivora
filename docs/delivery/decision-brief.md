@@ -175,3 +175,11 @@ Bu seçim pilot araştırma yönüdür; gerçek transcript/hesap/target okuma, c
 Gerekçe: mevcut hesabı kullanmak, ilk output smoke'una ek API bağlantısı/harcama bağımlılığı eklemez. Dahil hesap kotası tüketilebilir; abonelik veya prompt token hedefi iş başına hard parasal tavan değildir. Kullanıcı da tavan ihtiyacını sordu. İlk engineering sınırı: tek S02/11 sentetik mesaj, bir gönderim/çıktı, retry/regenerate/tools/subagent yok, 1536 çıktı token hedefi (enforce edilmediyse soft), 128 KiB import/64 aday hard validator sınırı; ek API spend/credit satın alma veya ücretli aşım izni yok.
 
 [Hazır paket, plan ve kaynaklar](../quality/s02-account-smoke-plan.md). Hesap/arayüz ve model seçimi açık; bu nedenle model execution not_run, usage null. Q03-R1 A önceki no-model dilimin sırası olarak tarihsel kayıtta korunur. S02 ilk output, n=1 development smoke; human gold, sealed holdout, native kıyas veya production build kapısını kapatmaz. Bu sohbet oracle/taslak gördüğü için bağımsız inference diye tekrar kullanılmaz. Yeni dış hesap/thread otomatik açılmadı.
+
+## Q03-R2 güvenlik eki — Token ve bağlam sınırları
+
+**2026-10-11 · İhtiyaç kabul edildi; hesap capability ve sayısal policy açık.** Kullanıcı olağan dışı tüketimin para/kotayı tüketmeden durmasını veya insan onayı beklemesini istedi. Input, output, toplam context ve parent/dönem tüketimi ayrı sınırlar olacak. Risk eşiğinde sınırları belli onay; hard cap aşıldığında veya gerekli üst sınır bilinmediğinde blocked. Kaynak/geçmiş korunur, retry/child bütçeyi sıfırlamaz.
+
+Gerekçe: tek gönderim veya kısa cevap talimatı, gizli context/reasoning ve ücretli kullanım için kesin güvence sağlamaz. Korunan alternatif mevcut hesapla manuel smoke'dur; hard sınırları desteklemiyorsa capability kapısı veya açık sınırlı risk istisnası gerekir. İlk çağrıdan sonra iptal/timeout harcamayı geri almaz. Ücretli API alternatifi kendi dispatch sınırlarını uygulama adayıdır; otomatik seçilmedi ve harcama izni yoktur.
+
+[Token/context hesaplama sözleşmesi](../architecture/routing-token-economy.md), [durma/onay UX'i](../product/token-risk-and-approval.md), [S02 kayıt ve kapısı](../quality/s02-account-smoke-plan.md) güncellendi. Model/arayüz seçimi açık; token/cost null alanları unlimited sayılmaz. Ürün kontrolü P1 uygulama/doğrulama gereksinimi; dokümantasyon güncellemesi runtime enforcement kanıtı değildir.

@@ -88,6 +88,27 @@ Input/output/total alanlarının provider'ın reasoning/cached token sayımları
 
 Batch'in context'e sığması için kaynak sessiz kesilmez. Chunk manifest ve işlenmemiş remainder frontier kalıcıdır. Birden fazla chunk ayrı ayrı öneriler üretse bile ilişkilerin birleşimi tamamlanmadan full coverage ilan edilmez. Büyük import bütçeyi çok run'a bölerek aşamaz; source manifest ve dönem bütçesi tüm child run'ları kapsar.
 
+## Token ve bağlam için ayrı durdurma sınırları
+
+**2026-10-11 — Kullanıcı ihtiyacı kabul edildi; aşağıdaki dispatch sözleşmesi P1 uygulama gereksinimidir, mevcut runtime garantisi değildir.** Token sınırı, modelin ilan ettiği context window'u ve parasal tavan ayrı kontrollerdir. Daha büyük pencere, o pencerenin tamamını kullanma izni değildir.
+
+| Policy alanı | Kapsam / kontrol |
+|---|---|
+| `max_input_tokens` | Tek çağrının tüm talimatları, konuşma geçmişi, kaynak/context ve araç şemaları dahil input |
+| `max_output_tokens` | Adapter'ın doğrulanmış provider mekanizmasıyla sınırladığı çıktı birimleri; prompt isteği tek başına hard cap değildir |
+| `max_context_tokens` | Uygulamanın kullanmayı kabul ettiği toplam pencere; provider/model kapasitesinden küçük olabilir |
+| `context_safety_margin_tokens` | Framing/sayım belirsizliği için sürümlü pay; evrensel sabit veya güvenli tokenizer yerine kullanılmaz |
+| `max_run_tokens` / dönem tavanları | Parent, child, retry, escalation ve diğer ücretli işlemlerin birlikte tüketimi; kapsam/birim eşlemesi kayıtlıdır |
+| `risk_review_thresholds` | Kesin tavanın altında olağan dışı tüketimde insan incelemesi; toplam bütçeyi artırmaz |
+
+Dispatch için iki koşul birlikte gerekir: tam input üst sınırı `max_input_tokens` içinde olmalı; `full_input_upper_bound + reserved_generation_window + safety_margin <= min(max_context_tokens, verified_model_context_window)` olmalı. Provider'ın reasoning, tool ve output birimlerinin pencere/fatura eşlemesi adapter'da açıkça tanımlanır; görünür cevap sınırı gizli reasoning'i mutlaka kapsar varsayılmaz. Aynı token iki kez sayılmaz. Provider/model/tokenizer ve wrapper overhead bilinmiyorsa hard context garantisi kurulamaz; otomatik dispatch `blocked` kalır. Byte/karakter sayısı veya “karakter/4” kestirimi kesin token sayısı diye sunulmaz.
+
+Mevcut deney tablosunu tamamlayan **kalibrasyon adayı**: 8.000 input, 1.500 provider output birimi, 12.000 toplam context, 512 margin. Bunlar kullanıcı tarafından seçilmiş veya modelde ölçülmüş değerler değildir; S02'nin 1536 soft hedefinden ayrı profildir. Yalnız bu birim eşlemesi geçerli bir adapter'da örnek hesap 8.000 + 1.500 + 512 = 10.012 eder. Model kapasitesi daha küçükse etkin pencere küçülür ve plan yeniden değerlendirilir; daha büyük modele otomatik geçilmez. Sayısal profil OPEN-12/16 ve model doğrulamasıyla kesinleşir.
+
+Pencere dolduğunda kaynak arşivi/event log silinmez. Önce ilgili onaylı karar, açık soru, görev amacı/AC ve kanıt referansları korunur; gereksiz tekrarlar elenir, hedefli retrieval veya kaynaklı devam paketi hazırlanır. Zorunlu gerekçe hâlâ sığmıyorsa iş aşamalara ayrılır ya da bekler. Bölme/özetleme de aynı parent bütçesine dahildir; eksik coverage görünürdür. Context dolması yeni pencere, retry veya bütçe yenileme hakkı yaratmaz.
+
+Bu kontrol T09d/T21b/T21c'de uygulanacak; TRA-04/06/07/09 doğrulamalarına dahildir. Mevcut hesap smoke'u için [ayrı uygulanabilirlik kaydı](../quality/s02-account-smoke-plan.md) geçerlidir.
+
 ## Bütçenin eşzamanlı çağrılarda uygulanması
 
 `BudgetPolicy`: workspace/project, operation/provider/model allowlist, data-egress policy, per-call/run/day/month limitleri, currency, dönem timezone'u, price snapshot/version ve effective_from. Workspace tavanı proje tavanlarının üst sınırıdır; kullanıcı arayüzünde ikisi ayrı görünür. Bütçe artırmak/başka provider'a geçmek ayrı yetki ister. Uyarı eşiği ve hard stop ayrı kavramlardır.
