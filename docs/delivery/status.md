@@ -17,6 +17,13 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — Built edilebilirlik sınırının ek denetimi
+
+- [S02 türev follow-up](../quality/s02-derived-followup.json): kontrollü AnswerRecord + fixture graph/onay/target/AC zinciri passed; bağımsız S02 draft değerlendirmesinde tür eşleşmesi 4/11, exact type/span 0/11. Bu oranlar insan-gold doğruluk değildir; candidate/canonical tür ve span granularity uyumu da incelenmelidir. Ham model sonucu değiştirilmedi.
+- Yeni provider çağrısı veya ücretli API yok; bu Codex çalışmasının kendi hesap kotası/token maliyeti ayrıca geçerlidir ve ölçülmedi. Teknik blokların fixture/test edilebilirliği tüm ürünün ekonomik, güvenilir veya pazarda faydalı olduğunu kanıtlamaz.
+- T03 sonraki iş scorer/output uyumu + bounded source adapter; kısa teslimli süre/maliyet sınırlı T03c kapısı owner'a öneridir, bütçe/takvim kabulü değil. Tam kapsam korunur; yeni research/production/modeller otomatik başlatılmaz.
+
+
 ### 2026-10-11 — R20 görünürlüğü ve ücretsiz kaynak konumu fizibilitesi
 
 - README, risk register ve T03 kartına gözlenen engel/denemeler/etkilenen iş eklendi. Model cevabı geldi ama source span import'unda durduğumuz; semantik kalite/karar zincirinin henüz ölçülmediği ayrı gösterilir. R20 High bir etki değerlendirmesi; n=1 ölçülmüş genel hata olasılığı değildir.

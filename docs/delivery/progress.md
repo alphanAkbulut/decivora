@@ -43,7 +43,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-11 · S02-002 offset hatasının risk ve deneme günlüğü görünür kılındı. Yerel ANCHOR-PROBE-01: 11/11 tekil exact quote konumu kodla hesaplandı; bellekteki türev mevcut validator’dan geçti, 7 edge kontrolü geçti. Ham response değişmedi; semantik skor/zincir not_run, yeni LLM çağrısı 0. [Rapor](../quality/s02-second-attempt-result.md).
+2026-10-11 · Mevcut S02 türevinde ücretsiz yerel follow-up: kontrollü AnswerRecord zinciri passed (graph/auth/target/AC fixture); bağımsız S02 taslak değerlendirmesinde message-kind eşleşmesi 4/11, exact type/span 0/11. Tür/span granularity ve candidate/canonical değerlendirme uyumu açık; ürün kalite başarısı değil. [Ayrı diagnostic](../quality/s02-derived-followup.json). Yeni provider çağrısı 0.
 
 **Aktif teknik risk:** Observed / High · R20: 10/11 kaynak span hatalı; gerçek-model semantik skor ve zincir çalışmadı. [Aktif risk kaydı](../governance/risks.md). Token/context cap unknown; yeni inference izni yok.
 
@@ -51,7 +51,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 source anchoring geliştirmesi gerekli. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
 
-Sıradaki adım: Probe’u bounded, revision/hash-bound source anchoring adapter’ına dönüştür; original/derived provenance ve ambiguity rejection negatiflerini sınayıp bağımsız scorer/trusted-receipt zinciriyle ölç. [R20 kapanış koşulları](../quality/s02-second-attempt-result.md). Probe production fix veya raw model başarısı değil; offline iş kullanıcı yanıtını beklemez. Q03-R5 tüketildi, yeni inference/ücret izni yok; human gold/native/T03c açık.
+Sıradaki adım: Önce candidate/output sözleşmesi ile bağımsız rubric tür/span uyumunu netleştir; ardından bounded kaynak konumu adapter’ı/negatifler ve ayrı ilişki doğrulaması. 4/11 draft eşleşmeyi insan-gold doğruluk sayma. [Teknik denetim ve bounded devam önerisi](../quality/s02-second-attempt-result.md). Açık uçlu ek analiz önerilmiyor; yeni inference/bütçe/takvim ayrıca owner kararı, Q03-R5 tüketildi.
 
 
 ## Mevcut teslim parçaları
@@ -123,4 +123,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `c4e78c71deebc283094d3067f0e095dc2c1700023d7597c66cc1e8bcdf624bbf`
+Kaynak fingerprint: `76b9dbb4fde4eae46e07fe57a33bd70813f2a5212a46b37d53e0c8014515f1be`

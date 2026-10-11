@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "kind": "s02_derived_followup_diagnostic",
+  "date": "2026-10-11",
+  "source_attempt": "S02-002",
+  "source_hashes": {
+    "docs/quality/model-runs/s02-002-response.txt": "ce4988233436a23c5ec6530f3182163d84c8863d4fea0642bd3673f213fab963",
+    "examples/model-smoke/s02-request.json": "10e7f3738f6414b3f36747f04398e076a23bf534a601bca71775696b193416d1",
+    "examples/corpus/sources/s02.json": "69330e5c2d003463f86421a20e54713ea7a6b886929ffe9c58713824dfafbdc9",
+    "examples/corpus/oracles/s02.json": "8a6db61aed45bbdd342d0b6cdc8d96b55ae8e901fac86345f1ef65294b19d433",
+    "spikes/semantic-chain/run.py": "57bceed53fe5d9cf1d860751fc94ca44ec660c3e88b2bef95c9f127a33fa90b2",
+    "spikes/semantic-chain/protocol.py": "ceae096b7c6b5b8b3dc7b78dc5e336ca557c2897baaea99e6565c718579f27fd",
+    "scripts/evaluate_corpus.py": "fbcec666d254efec05f92055a60ec1970685b3aa60cbdcfe652f20290a9e492a"
+  },
+  "derivation": "Deep-copy original; alter only start/end using unique exact quote within the same source message; validate before scorer/chain. Temporary files removed.",
+  "original_raw_output_modified": false,
+  "new_provider_calls": 0,
+  "controlled_chain": {
+    "checkpoint_score": {
+      "status": "passed",
+      "missing": [],
+      "mismatches": []
+    },
+    "real_target": false,
+    "production_auth": false,
+    "actual_model_impact_extraction": false,
+    "scope": "Derived AnswerRecord + scripted graph, trusted receipt, target and AC; not autonomous production flow"
+  },
+  "derived_s02_diagnostic_score": {
+    "strict_span": {
+      "tp": 0,
+      "fp": 11,
+      "fn": 11,
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    "message_kind_only": {
+      "tp": 4,
+      "fp": 7,
+      "fn": 7,
+      "precision": 0.36363636363636365,
+      "recall": 0.36363636363636365
+    },
+    "critical_domain_gate": "incomplete",
+    "not_scored": [
+      "entity identity",
+      "attributes",
+      "relations",
+      "authority",
+      "impact",
+      "state",
+      "target/AC correctness"
+    ]
+  },
+  "oracle_status": "AI draft pending human review",
+  "holdout": false,
+  "predicted_vs_draft_types": [
+    {
+      "message_id": "S02-m01",
+      "proposed_kind": "AnswerRecord",
+      "draft_expected_records": [
+        {
+          "kind": "Decision",
+          "start": 30,
+          "end": 46
+        },
+        {
+          "kind": "PendingDecision",
+          "start": 7,
+          "end": 14
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m02",
+      "proposed_kind": "Task",
+      "draft_expected_records": [
+        {
+          "kind": "Task",
+          "start": 12,
+          "end": 29
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m03",
+      "proposed_kind": "Requirement",
+      "draft_expected_records": [
+        {
+          "kind": "Requirement",
+          "start": 7,
+          "end": 39
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m04",
+      "proposed_kind": "ImplementationClaim",
+      "draft_expected_records": [
+        {
+          "kind": "Artifact",
+          "start": 22,
+          "end": 40
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m05",
+      "proposed_kind": "Execution",
+      "draft_expected_records": [
+        {
+          "kind": "Artifact",
+          "start": 0,
+          "end": 8
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m06",
+      "proposed_kind": "Finding",
+      "draft_expected_records": [
+        {
+          "kind": "Evidence",
+          "start": 33,
+          "end": 48
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m07",
+      "proposed_kind": "Evidence",
+      "draft_expected_records": [
+        {
+          "kind": "Evidence",
+          "start": 42,
+          "end": 71
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m08",
+      "proposed_kind": "Requirement",
+      "draft_expected_records": [
+        {
+          "kind": "Task",
+          "start": 0,
+          "end": 26
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m09",
+      "proposed_kind": "Evidence",
+      "draft_expected_records": [
+        {
+          "kind": "Evidence",
+          "start": 23,
+          "end": 45
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m10",
+      "proposed_kind": "Finding",
+      "draft_expected_records": [
+        {
+          "kind": "Task",
+          "start": 0,
+          "end": 29
+        }
+      ]
+    },
+    {
+      "message_id": "S02-m11",
+      "proposed_kind": "Finding",
+      "draft_expected_records": []
+    }
+  ],
+  "interpretation": [
+    "Strict zero reflects type and exact boundary mismatch; not proof of zero semantic understanding",
+    "The model proposed full-message quotes; draft oracle annotates narrower phrases",
+    "Message-kind agreement 4/11 is a diagnostic count against unreviewed labels, not human-gold accuracy",
+    "Candidate AnswerRecord and canonical Decision may require a deliberate scoring mapping; no mapping has been silently applied",
+    "No entity/relationship extraction or release quality established",
+    "More inference before aligning output contract and rubric would make results hard to interpret"
+  ]
+}
