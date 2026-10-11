@@ -28,6 +28,8 @@ flowchart LR
 
 Güncel yön ve önceki plan karşılaştırması [tasarım revizyonu 03](docs/product/current-direction.md) içindedir. Bu P0 deney önerisidir; tam vizyon ve aşağıdaki P1b çıkış kapısı korunur. Native/extension seçilirse T04–T30 bağımsız uygulama yolu otomatik çalıştırılmaz, ilgili yeni teslim planı owner kararıyla hazırlanır.
 
+MVP, P2 ve P3 ana görevleri ayrı tablolarla [faz bazlı proje ağacı ve takip görünümünde](docs/delivery/phase-tracker.md) bulunur. Görev durumları backlog ile eşleştirilir; ayrı sürüm listesi veya ilerleme veritabanı yoktur.
+
 Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
 
 ```mermaid

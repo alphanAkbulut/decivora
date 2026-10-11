@@ -1,5 +1,7 @@
 # Ardışık uygulanabilir backlog
 
+MVP, P2 ve P3 için ayrı tablolar ve ürün teslim ağacı [faz takip görünümünde](phase-tracker.md) bulunur. Ana görev tanım/durum/ön koşulu burada tutulur; görünüm aynı değişiklikte eşleştirilir.
+
 Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir. T01–T30 başlangıç teslim sırasıdır; bütün ön koşullar doğrulanmış teknik blocker gibi graph'a otomatik alınmaz. Refinement gerçek teknik/izin gate'i ile plan sırasını ayırır; kalite kapıları korunur. [Öncelik ve akış](../product/priority-and-flow.md) GRF-01/APR-02/UX-02/ROU-01 kapsamını detaylandırır.
 
 | Yeni alt dilim / bağımlılık | Teslim / durum | Kabul |
@@ -18,7 +20,7 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 |---|---|---|---|
 | T01 | P0 | — | Golden corpus ve karşılaştırma protokolü |
 | T02 | P0 | T01 | İki coding yüzeyinde capability spike |
-| T03 | P0 | T01,T02 | Build/extend ve teknoloji kararı |
+| T03 | P0 | T01,T02 | Native/extend/build ve teknoloji kararı |
 | T04 | P1a | T03 | Runtime iskeleti ve sözleşme doğrulayıcıları |
 | T05 | P1a | T04 | Proje kimliği ve binding |
 | T06 | P1a | T05 | Source ingress ve checkpoint |

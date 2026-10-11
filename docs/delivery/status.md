@@ -186,3 +186,11 @@ Yedi token önlemi mevcut routing/connection/risk belgelerinde kontrol edildi: b
 [Lexical prefilter](../architecture/lexical-prefilter.md) önerisi eklendi: 20 elle hazırlanmış sentetik TR/EN örnek, versiyonlu küçük rule config adayı, guard/actor/target/provenance, structured-first/shadow/unmatched yolu ve üç ekonomik karşılaştırma. T01e/T09e/T24o ve LEX-01–08 planlı; gerçek transcript/model sıklık analizi yapılmadı. Keyword completion, insan approval, shell/write veya doğrulanmış hedef gözlemi üretemez. 10 engine ve 30 ana görev korunur; yeni DB veya kabul edilmiş stack yok.
 
 Bu teslim yalnız dokümantasyon değişikliğidir; mevcut 34 Mermaid kaynak bloğu değiştirilmedi. Sıradaki T01, Q03 gerçek veri/ücretli model kapısı ve mevcut açık owner kararları korunur. Doküman kontrolü geçti: 77 Markdown, 672 yerel bağlantı; 32 scope/30 ana görev/14 MVP kriteri ve 34 Mermaid inventory korundu. LEX-01–08 tekil/sıralı ve T01e/T09e/T24o referansları ayrıca kontrol edildi. Commit sonrası içerik read-back teslimde ayrıca doğrulanır; LEX senaryoları runtime'da not_run kalır.
+
+## 2026-10-11 — Faz bazlı proje ağacı ve takip
+
+Kullanıcı güncel planın MVP, P2 ve P3 olarak ayrı takip edilip edilmediğini sordu. [Tek faz takip görünümü](phase-tracker.md) eklendi: P0 hazırlık kapısı, MVP için P1a 12 + P1b 9 ana görev, P2 üç ana görev, P3 iki ana görev ve korunan P4 ekip hattı. Her fazın teslim/çıkış kanıtı ve küçük alt iş örnekleri kaynak backlog'a bağlıdır. T03 ana indeks başlığı mevcut native/extend/build detay başlığıyla eşleştirildi; ön koşullar/kapsam değiştirilmedi.
+
+Ana görev ID/faz/durum/başlık/ön koşulları doküman betiğiyle backlog'a eşleştirilir; ikinci bağımsız backlog veya v2/v3 kopyası yaratılmadı. README/roadmap/start-here/backlog bu görünümü işaret eder. Bütün runtime ana görevleri TODO, aday alt dilimler PROPOSED; uygulama, model veya yeni UI testi yok. Mevcut 34 Mermaid kaynak bloğu değiştirilmedi. Sıradaki T01 ve owner karar kapıları korunur.
+
+Teslim kontrolü geçti: 78 Markdown, 693 yerel bağlantı; 30 ana görev satırı faz/durum/başlık/ön koşul düzeyinde backlog ile eşleşti. Geçici kopyada yanlış DONE durumu kontrol tarafından reddedildi; gerçek dosyalarda böyle bir değişiklik yapılmadı. 32 scope/14 MVP kriteri/10 engine ve 34 Mermaid inventory korundu. Bu statik denetim çalışan proje takip uygulaması veya ürün test sonucu değildir.

@@ -34,6 +34,28 @@ for ac in range(1, 15):
     if f'AC-{ac:02}' not in (ROOT / 'docs/product/mvp.md').read_text():
         errors.append(f'missing AC-{ac:02}')
 
+# Phase view mirrors canonical main-task metadata; it is not a second backlog.
+phase_text = (ROOT / 'docs/delivery/phase-tracker.md').read_text()
+phase_rows = re.findall(
+    r'^\| (T\d+) \| (P\d[ab]?) \| ([^|]+) \| ([^|]+) \| ([^|]+) \|$',
+    phase_text, re.M)
+phase_rows = [tuple(value.strip() for value in row) for row in phase_rows]
+canonical_rows = []
+task_headers = list(re.finditer(r'^## (T\d+) — ([^\n]+)\n', backlog, re.M))
+for index, header in enumerate(task_headers):
+    end = task_headers[index + 1].start() if index + 1 < len(task_headers) else len(backlog)
+    section = backlog[header.end():end]
+    metadata = re.search(
+        r'- \*\*Durum / faz:\*\* ([^/.\n]+) / ([^.]+)\. \*\*Bağımlılık:\*\* ([^.]+)\.',
+        section)
+    if metadata is None:
+        errors.append(f'missing canonical task metadata: {header.group(1)}')
+        continue
+    state, phase, dependency = (value.strip() for value in metadata.groups())
+    canonical_rows.append((header.group(1), phase, state, header.group(2), dependency))
+if phase_rows != canonical_rows:
+    errors.append('phase tracker differs from canonical task IDs/phase/status/title/dependencies')
+
 # Referential coverage, not proof that natural-language requirements are complete.
 feature_text = (ROOT / 'docs/product/feature-catalog.md').read_text()
 engine_text = (ROOT / 'docs/architecture/engines.md').read_text()
@@ -167,6 +189,7 @@ if errors:
     sys.exit(1)
 print(f'PASS: {len(markdown)} Markdown files, {links} local links, '
       f'{len(scope_ids)} scope IDs, {len(task_ids)} tasks, 14 MVP criteria; JSON valid.')
+print(f'Phase tracker: {len(phase_rows)} main-task rows matched canonical backlog metadata.')
 print(f'Traceability: {len(source_stages)} source stages, {len(features)} features, '
       f'{len(engines)} engines, {len(scenarios)} planned verification scenarios.')
 print(f'Collaboration/data: {len(collaboration_scenarios)} additional planned scenarios; not runtime tested.')

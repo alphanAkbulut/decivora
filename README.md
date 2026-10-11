@@ -64,6 +64,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Fikrin neden değiştiğini öğrenmek | [Evrim hikâyesi](docs/discovery/evolution.md) · [Karar haritası](docs/product/decision-map.md) |
 | Araçlardan ne öğreniyoruz? | [Benchmark](docs/discovery/benchmark.md) · [Kaynaklar](docs/discovery/sources.md) |
 | Nasıl inşa edeceğiz? | [Mimari](docs/architecture/overview.md) · [ADR dizini](docs/architecture/adr/README.md) |
+| Faz bazında proje ağacı ve takip | [MVP, P2, P3 ve kapılar](docs/delivery/phase-tracker.md) |
 | Sıradaki küçük adım | [Güncel durum](docs/delivery/status.md) · [Görevler](docs/delivery/backlog.md) · [Roadmap](ROADMAP.md) |
 | Nasıl güveneceğiz? | [Doğrulama](docs/quality/verification.md) · [Ölçüm](docs/quality/measurement.md) |
 | Codex ile devam etmek | [AGENTS.md](AGENTS.md) · [Başlangıç talimatı](docs/delivery/start-here.md) |
@@ -72,7 +73,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | Konuştuğumuz engine'ler nerede? | [10 modül ve kaynak isimleri](docs/architecture/engines.md) |
 | Sistem ayrıntıları ve diyagramlar | [13 diyagramlık atlas](docs/architecture/diagrams.md) · [Runtime sözleşmeleri](docs/architecture/runtime-contracts.md) · [Diyagram incelemesi](docs/quality/diagram-review.md) |
 | Kim, ne zaman, hangi API/LLM işini tetikler? | [İletişim matrisi, zamanlama ve üç sequence](docs/architecture/execution-and-integrations.md) |
-| DB kayıtları ve kanıtlar nasıl ilişkili? | [İki tamamlayıcı ER, anahtarlar ve bütünlük kuralları](docs/architecture/data-relationships.md) |
+| DB kayıtları ve kanıtlar nasıl ilişkili? | [Üç tamamlayıcı ER, anahtarlar ve bütünlük kuralları](docs/architecture/data-relationships.md) |
 | Diğer araçlardan ne fark hedefliyoruz? | [Farklılaşma ve altı hipotez](docs/product/differentiation.md) |
 | Proje nasıl yönetilecek? | [Kısa proje yönetim planı](docs/delivery/project-management.md) |
 | Eksikler yeniden tarandı mı? | [Mimari/kapsam incelemesi](docs/quality/completeness-review.md) · [Kaynak→özellik→test matrisi](docs/quality/traceability.md) |
