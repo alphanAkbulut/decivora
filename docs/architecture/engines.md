@@ -1,6 +1,6 @@
 # Engine haritası ve yürütme sınırları
 
-**Durum: önerilen tasarım; hiçbir engine henüz uygulanmadı.** Konuşmada geçen farklı adlar aşağıda tek sözlüğe bağlanır. Engine bir sorumluluk sınırıdır; ayrı servis, ayrı LLM veya otonom agent demek değildir. Başlangıçta aynı yerel süreçte test edilebilir modüller öneriyoruz.
+**Durum: production engine tasarımı; hiçbir engine production kapsamında teslim edilmedi.** İlgili sorumlulukların bazıları P0 capture/karar/semantik bağlantı deneylerinde kodlanıp fixture ile sınandı; [hazırlık matrisi](../delivery/implementation-readiness.md) ve [ilerleme görünümü](../delivery/progress.md) mevcut parçaları ve kalan kapsamı ayırır. Konuşmada geçen farklı adlar aşağıda tek sözlüğe bağlanır. Engine bir sorumluluk sınırıdır; ayrı servis, ayrı LLM veya otonom agent demek değildir. Başlangıçta aynı yerel süreçte test edilebilir modüller öneriyoruz.
 
 ## Konuşmadaki isimler nereye gitti?
 
@@ -57,7 +57,7 @@ Health en az ayrı göstergeler sunar: capture coverage, oldest unprocessed age,
 
 ## Engine bazlı doğrulama
 
-ENG-01 duplicate/crash/gap; ENG-02 tür ve span recall; ENG-03 duplicate/conflict precision; ENG-04 gerekçe/karşı kanıt insan değerlendirmesi; ENG-05 false-obsolete ve missed-impact; ENG-06 yetki/stale/partial approval; ENG-07 atomic/replay; ENG-08 false-done/freshness; ENG-09 kalite eşitliğinde maliyet; ENG-10 cross-project retrieval ve missed-ready ölçülür. Hedefler [ölçüm planında](../quality/measurement.md); sonuçlar henüz yoktur.
+ENG-01 duplicate/crash/gap; ENG-02 tür ve span recall; ENG-03 duplicate/conflict precision; ENG-04 gerekçe/karşı kanıt insan değerlendirmesi; ENG-05 false-obsolete ve missed-impact; ENG-06 yetki/stale/partial approval; ENG-07 atomic/replay; ENG-08 false-done/freshness; ENG-09 kalite eşitliğinde maliyet; ENG-10 cross-project retrieval ve missed-ready ölçülür. Hedefler [ölçüm planında](../quality/measurement.md); production engine kalite sonuçları henüz yoktur. P0 sözleşme/regresyon sonuçları [ayrı raporda](../quality/semantic-readiness-results.json) kayıtlıdır; bütün engine kapsamını doğrulamaz.
 
 Detaylar: [runtime sözleşmeleri](runtime-contracts.md), [diyagramlar](diagrams.md), [routing](routing-token-economy.md).
 

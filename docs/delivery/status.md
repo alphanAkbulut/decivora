@@ -7,7 +7,7 @@
 | Kaynak konuşma derlemesi, vizyon/MVP/karar haritası | Bu dokümantasyon paketinde hazırlanmış |
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
-| Ürün MVP / adapter / dashboard | Ürün başlamadı; iki P0 kod düzeneği mevcut, gerçek host/dashboard test edilmedi |
+| Ürün MVP / adapter / dashboard | Production ürün MVP’si başlamadı; üç P0 kod düzeneği ve ayrı geliştirme tracker’ı mevcut, gerçek host/ürün dashboard’u test edilmedi |
 | Semantik model / tasarruf / kullanıcı talebi | Ölçülmedi; lexical baseline ayrı draft oracle üzerinde ölçüldü, başarı kapısı değil |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
@@ -16,6 +16,13 @@
 **Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain bağlantısı artık çalışıyor; ayrı model inference hâlâ not_run. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. İnsan etiket incelemesi → semantik model koşullarının kararı → adil native karşılaştırma sıradadır. **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-11 — Dinamik geliştirme görünümü
+
+- [İlerleme görünümü](progress.md) ve [yerel takip ekranı rehberi](progress-guide.md) eklendi. Aynı backlog/hazırlık/engine/kanıt kaynaklarını okur: 30 ana görev, 9 mevcut hazırlık/deney/araç parçası, 5 açık kapı, görev AC/alt dilimleri ve 10 production engine planı.
+- Kaynak dosyaları API isteğinde yeniden okunur; görünür tarayıcı 15 saniyede bir sorgular. GitHub Markdown görünümü aynı kaynaklardan üretilir; CI bayat görünümü reddeder. GitHub’dan yerel kopyaya otomatik sync veya canlı agent telemetry yoktur.
+- [Doğrulama kaydı](../quality/development-tracker-results.json): 10 yeni tracker testi geçti; tarayıcıda MVP=21/açık=3 filtreleri, T01 kabul/alt görev, boş arama ve yenileme görüldü. Önceki 91 P0/evaluation test kaydı ayrı kanıt kapsamıdır; tracker ürün kalitesini kanıtlamaz. Docs/anchor/source görünüm kontrolü geçti. Responsive override ve polling latency ölçümü yapılmadı.
+- Salt okunur loopback; model çağrısı/ücret/public hosting yok. Ana görev durumları T01–T03 IN_PROGRESS ve diğer 27 TODO olarak korunur. Production stack, semantik gerçek model, insan gold ve native kıyas kapıları açık kalır. Engine belgesindeki “hiç uygulanmadı” ifadesi production teslimi ile P0 parçalarını ayıracak şekilde düzeltildi.
 
 ### 2026-10-11 — Öneri, gerçek kullanıcı seçimi ve hedef uygulama ayrımı
 

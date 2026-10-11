@@ -12,6 +12,7 @@ jobs:
           python-version: '3.11'
       - run: python3 scripts/check_docs.py
       - run: python3 scripts/check_anchors.py
+      - run: python3 scripts/project_progress.py --check
       - run: python3 scripts/check_corpus.py --self-test
       - run: python3 -m unittest discover -s tests -v
       - run: python3 -m unittest discover -s spikes/spike-0/tests -v

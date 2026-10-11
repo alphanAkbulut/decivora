@@ -1,0 +1,62 @@
+{
+  "kind": "read_only_development_tracker_validation",
+  "observed_at": "2026-10-11T18:30:10.512739+00:00",
+  "base_commit": "4cbd22f75556694ef90b867d1c49fa5e8f191d7a",
+  "tracker_tests": 10,
+  "status": "passed_local_tracker_checks",
+  "checks": [
+    {
+      "command": "python3 -B -m unittest discover -s tests -p test_project_progress.py -v",
+      "exit_code": 0,
+      "output": "test_api_has_no_write_filesystem_or_cross_origin_access (test_project_progress.ProgressTests) ... ok\ntest_api_rereads_sources_without_restart_or_model_dispatch (test_project_progress.ProgressTests) ... ok\ntest_api_source_failure_is_503_not_old_success (test_project_progress.ProgressTests) ... ok\ntest_backlog_change_refreshes_data_and_generated_snapshot (test_project_progress.ProgressTests) ... ok\ntest_bad_metadata_or_duplicate_subtask_fails_closed (test_project_progress.ProgressTests) ... ok\ntest_canonical_status_and_acceptance_not_inferred_from_test_pass (test_project_progress.ProgressTests) ... ok\ntest_changed_evidenced_code_is_stale_not_green (test_project_progress.ProgressTests) ... ok\ntest_inconsistent_test_report_is_incomplete (test_project_progress.ProgressTests) ... ok\ntest_missing_report_is_unknown (test_project_progress.ProgressTests) ... ok\ntest_unrecorded_subtask_status_is_explicit (test_project_progress.ProgressTests) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 1.671s\n\nOK\n"
+    },
+    {
+      "command": "python3 -B scripts/project_progress.py --check",
+      "exit_code": 0,
+      "output": "PASS: progress matches canonical sources and recorded evidence\n"
+    },
+    {
+      "command": "python3 -B scripts/check_docs.py",
+      "exit_code": 0,
+      "output": "PASS: 105 Markdown files, 1104 local links, 32 scope IDs, 30 tasks, 14 MVP criteria; JSON valid.\nPhase tracker: 30 main-task rows matched canonical backlog metadata.\nTraceability: 14 source stages, 17 features, 10 engines, 28 planned verification scenarios.\nCollaboration/data: 18 additional planned scenarios; not runtime tested.\nConnection/token/graph/context: 30 additional planned contract scenarios.\nTarget application: 10 planned GAP scenarios; oracle is not_run.\nDiagrams: 35 source blocks in 15 documents; inventory matched.\nNot tested: application runtime, adapters, model quality, Mermaid rendering.\n"
+    },
+    {
+      "command": "python3 -B scripts/check_anchors.py",
+      "exit_code": 0,
+      "output": "PASS: 46 local Markdown anchors checked\n"
+    }
+  ],
+  "browser": {
+    "surface": "Codex in-app browser",
+    "url": "http://127.0.0.1:8765/",
+    "observed_delivered_rows": 9,
+    "active_main_tasks": 3,
+    "todo_main_tasks": 27,
+    "all_main_tasks": 30,
+    "mvp_filter_rows": 21,
+    "pending_gates": 5,
+    "task_detail": "T01 acceptance/verification/remaining closure visible",
+    "subtasks": "T01e and T01f expanded with acceptance",
+    "search_empty_result": "observed",
+    "manual_refresh": "observed",
+    "source_change_after_reload": "8 -> 9 delivered rows observed",
+    "automatic_poll_interval_seconds": 15,
+    "poll_latency_measurement": "not_run",
+    "responsive_override": "not_run; default in-app viewport visually inspected",
+    "screenshot": "local delivery artifact; not uploaded"
+  },
+  "model_dispatches": 0,
+  "production_runtime": false,
+  "task_completion_mutations": 0,
+  "limitations": [
+    "No live worker/agent telemetry",
+    "No automatic GitHub-to-local sync",
+    "Recorded 91 P0/evaluation tests are a separate earlier evidence scope",
+    "No production engine or MVP UI acceptance claim"
+  ],
+  "code_sha256": {
+    "scripts/project_progress.py": "6b5fe9a8203838d1b0405d7636bf88be23b507f20ee0168e526bdff40fc47a65",
+    "tools/progress/index.html": "51df73f0ab964ce3ba8e0bfd087e91ca129930c2cf5f4ed0ca77168a434a5665",
+    "tests/test_project_progress.py": "6506574d90dd0c5e571b817bb38238494611e1a43c3c58af6af8381606e4a16e"
+  }
+}

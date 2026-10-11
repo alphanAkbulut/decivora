@@ -10,12 +10,15 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 
 | İş | Çıktı | Doğrulama |
 |---|---|---|
+| Capture ölçüm düzeneği | Spike-0 kaynak/session kimliği, kapanışsız delta ve kısa cevap gözlemi; production adapter değil | 40 fixture/regresyon testi; gerçek host capability açık |
 | Kaynak-only model input’u | 6 session istek hazırlayıcı; 58 mesaj; source metadata auth ve oracle dışarıda; exact hash/version/proje kimliği | Protocol input/leak/cache/namespace testleri |
 | Semantik çıktı sözleşmesi | JSON envelope, 14 aday türü, Unicode source span, tip/byte/record limiti, duplicate ve abstention | Hatalı/stale/yetki iddialı çıktı reddediliyor |
 | Geç cevap bağlantısı | Model AnswerRecord → pending proposal; ayrı trusted receipt ile karar; task impact apply ayrı | Actor/receipt/project/source/question/base/retry negatifleri |
 | Ölçüm ve başarısızlık | Import edilmiş response → bağımsız span scorer; eksik output/abstention incomplete; yedi state checkpoint için exact scorer | Eksik/yanlış expectation başarı sayılmıyor |
 | Zincir proof’u | Gerçek sentetik source dosyası → scripted contract response → selection → AND/OR/unknown → old target → partial/full AC → restore | [Sonuç](../quality/semantic-readiness-results.json); gerçek inference/target değil |
 | Otomasyon ve devir | Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı | Docs/corpus/anchor + runtime regresyonları |
+| Seçili gerçek hedef okuması | Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match | Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil |
+| Geliştirme takip ekranı | Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; yerel dosyaları yeniden okur | 10 tracker testi ve tarayıcı filtre/seçim/yenileme kontrolü; ürün UI veya canlı agent telemetry değil |
 
 Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. Ürün graph/IAM/API/UI hazır olmadı; model input/output kapısı ve fixture karar bağlantısı gerçekten kodlandı.
 
