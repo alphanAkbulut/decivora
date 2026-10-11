@@ -18,7 +18,8 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 | Zincir proof’u | Gerçek sentetik source dosyası → scripted contract response → selection → AND/OR/unknown → old target → partial/full AC → restore | [Sonuç](../quality/semantic-readiness-results.json); gerçek inference/target değil |
 | Otomasyon ve devir | Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı | Docs/corpus/anchor + runtime regresyonları |
 | Seçili gerçek hedef okuması | Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match | Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil |
-| Geliştirme takip ekranı | Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; yerel dosyaları yeniden okur | 10 tracker testi ve tarayıcı filtre/seçim/yenileme kontrolü; ürün UI veya canlı agent telemetry değil |
+| Geliştirme takip ekranı | Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür | 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil |
+| S02 gönderim ve güvenlik hazırlığı | Tek S02 kaynak/prompt/policy; bir gönderim, sıfır retry/tools; ayrı token/context hard-cap sözleşmesi ve pending_capability_review | [Hazır plan](../quality/s02-account-smoke-plan.md); paket hash/policy kontrolü geçti. Belge/hazırlık teslimi; gerçek inference ve production limiter not_run |
 
 Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. Ürün graph/IAM/API/UI hazır olmadı; model input/output kapısı ve fixture karar bağlantısı gerçekten kodlandı.
 
@@ -28,7 +29,7 @@ Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. �
 
 | Konu | Tür | Neden gerekli / neyi durdurur? | Durum |
 |---|---|---|---|
-| Bir gerçek model output’u | Hesap/arayüz ve dahil kullanım teyidi | Q03-R2 A seçildi: tek S02 mevcut hesap smoke’u. Gerçek output henüz yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır; kalan seçim Claude veya ChatGPT/Codex hesabı. Model/usage not_run/unknown |
+| Bir gerçek model output’u | Hesap/arayüz, limit desteği ve dahil kullanım teyidi | Q03-R2 A seçildi; token/context güvenlik eki nedeniyle pending_capability_review. Gerçek output yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır. Claude veya ChatGPT/Codex seçimi ve uygulanabilir cap doğrulaması → tek output → ölçüm; model/usage not_run/unknown |
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Erişilebilir ürün/build, aynı koşullar ve veri izni | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -46,4 +47,4 @@ MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verifi
 
 ## Sıradaki uygulanabilir adım
 
-Hazır S02 request’inin seçilen LLM yöntemiyle gerçek output’unu al; `evaluate` ile import/ölçüm ve kaynağa bağlı proposal kontrolü yap. Sonra development ailelerinde prompt/adapter düzelt; insan review ve yeni sealed family ile blind kaliteyi ölç. Native/dosya/resume aynı sınırlar altında kıyaslanır; T03c sonucuna göre production yoluna geçilir. Human review beklerken source/adapter/verifier kod ve negatif testleri ilerler; zorunlu semantik iş “isteğe bağlı” yapılmaz.
+Önce S02 için seçilen hesap/modelin limit ve dahil kullanım koşullarını doğrula; pending_capability_review kapanmadan dispatch başlatma. Ardından gerçek output’u al; `evaluate` ile import/ölçüm ve kaynağa bağlı proposal kontrolü yap. Sonra development ailelerinde prompt/adapter düzelt; insan review ve yeni sealed family ile blind kaliteyi ölç. Native/dosya/resume aynı sınırlar altında kıyaslanır; T03c sonucuna göre production yoluna geçilir. Human review beklerken source/adapter/verifier kod ve negatif testleri ilerler; zorunlu semantik iş “isteğe bağlı” yapılmaz.

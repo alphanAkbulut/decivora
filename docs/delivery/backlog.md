@@ -58,6 +58,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
+- **Son ilerleme:** 2026-10-11 · Veri hazırlığı: 6 sentetik oturum/58 mesaj ve bağımsız scorer mevcut. Bu son token-limit çalışmasında yeni corpus veya insan gold üretilmedi.
+- **Sıradaki adım:** [İnsan inceleme kuyruğu](../quality/human-review-queue.md) ve kritik etiket doğrulaması; gerçek model sonucu ayrıca T03 deneyine eklenecek. T01 henüz kapanmadı.
 
 ## T02 — İki coding yüzeyinde capability spike
 
@@ -67,6 +69,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Yeni mesaj, final output, tool failure, kapanışsız session ve offline deneyi.
 - **Beklenen dosya alanı:** `docs/discovery/adapter-feasibility.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Yüzey başına küçük deney.
+- **Son ilerleme:** 2026-10-11 · Capture kodu: Spike-0 kaynak/session, geciken delta ve kısa cevap kontrolleri 40 fixture testine sahip. Son token-limit çalışması gerçek host kurulumu veya capture testi eklemedi.
+- **Sıradaki adım:** [Hazırlık kapısında](implementation-readiness.md) seçilmiş Codex/Claude host ve scoped grant ile gerçek capability kontrolü. MCP erişimi tam otomatik capture kanıtı değil.
 
 ## T03 — Native/extend/build ve teknoloji kararı
 
@@ -76,6 +80,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
+- **Son ilerleme:** 2026-10-11 · Deney hazırlığı: S02 gönderim paketi hazır; input/output/context ve toplam bütçe durma kuralları belgelendi. Policy pending_capability_review; gerçek model çalıştırması not_run, üretim limiter kodu yok.
+- **Sıradaki adım:** [S02 planı](../quality/s02-account-smoke-plan.md): hesap/model seçimi → limit/dahil kullanım doğrulaması → tek output → bağımsız ölçüm. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

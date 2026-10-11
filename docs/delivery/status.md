@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-11 — P0 ilerlemesini ekrana yansıtma
+
+- Son token/context güncellemesi yalnız status/deney belgelerine işlenmişti; ekranın dört kaynak dosyasındaki hazırlık tablosu ve task özetleri güncel olmadığı için görünüm değişmemişti. Eksik bağlantı giderildi.
+- T01/T02/T03 kanonik backlog'una Son ilerleme ve Sıradaki adım eklendi; açık faz özeti, Board kartları ve detay bunları aynı kaynaklardan okur. S02 hazırlığı mevcut parçalara eklendi (10); capability kapısı güncellendi. Üç ana görev IN_PROGRESS, 27 TODO; kapanış veya gerçek model başarısı üretilmedi.
+- 12 tracker testi geçti; tarayıcıda T03 ayrıntısı ve P0=3 filtre sonucu görüldü. [Doğrulama kaydı](../quality/p0-progress-visibility-results.json). Rehber, sonraki teslimlerde durumun yanında task ilerleme/kalan alanlarının da güncellenmesini ister; canlı agent telemetry iddiası yok.
+
 ### 2026-10-11 — Token ve context durdurma sözleşmesi
 
 - Kullanıcının aşırı tüketimde durma/onay bekleme ihtiyacı [risk belgesine](../product/token-risk-and-approval.md) ve [token ekonomisine](../architecture/routing-token-economy.md) işlendi: tam input + generation rezervi + margin, uygulama/model pencerelerinin küçüğü; risk eşiği ile hard cap ayrılır.

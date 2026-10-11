@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-11",
+  "scope": "development_tracker_visibility_only",
+  "cause": "Last token/context work updated status and smoke documents but not tracked readiness/backlog summaries",
+  "tracker_tests": {
+    "status": "passed",
+    "tests": 12,
+    "command": "python3 -B -m unittest discover -s tests -p test_project_progress.py -v"
+  },
+  "browser_checks": [
+    {
+      "check": "Open-phase progress summary visible for T01/T02/T03",
+      "status": "passed"
+    },
+    {
+      "check": "T03 summary button opens current progress and next step in detail",
+      "status": "passed"
+    },
+    {
+      "check": "P0 filter shows 3 of 30 main tasks",
+      "status": "passed"
+    },
+    {
+      "check": "Refresh reads latest readiness; preparation count 10",
+      "status": "passed"
+    }
+  ],
+  "main_task_counts": {
+    "IN_PROGRESS": 3,
+    "TODO": 27
+  },
+  "model_execution": "not_run",
+  "production_limiter": "not_implemented",
+  "agent_telemetry": "unknown",
+  "new_paid_calls": 0,
+  "limitations": [
+    "Browser checks are manual observations, not an automated UI suite",
+    "Preparation delivery is not main task completion or production quality",
+    "Original 91-test semantic evidence report is historical and unchanged"
+  ],
+  "code_sha256": {
+    "scripts/project_progress.py": "99f6f0511138830af1a60ec384cb41242e17357ace72ee62fbd09ecfde054090",
+    "tools/progress/index.html": "427e6469c1effe01abee5b57586d6e1f436b648bd2103fec2ed222a4ce3b9c3d",
+    "tests/test_project_progress.py": "23810cf086302e14eb375de4168feebe617d76f4b675b2c25c3b0fffcfd873d1"
+  }
+}

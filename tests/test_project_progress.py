@@ -55,6 +55,29 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual(data["evidence"]["status"], "stale")
         self.assertIn("spikes/semantic-chain/protocol.py", data["evidence"]["stale_code"])
 
+    def test_progress_note_refreshes_without_claiming_task_completion(self):
+        before = progress.build(self.root)
+        path = self.root / progress.SOURCES[0]
+        original = path.read_text()
+        old = before["tasks"][2]["details"]["Son ilerleme"]
+        path.write_text(original.replace(old, "New bounded preparation; model not_run", 1))
+        after = progress.build(self.root)
+        self.assertNotEqual(before["fingerprint"], after["fingerprint"])
+        self.assertEqual(after["counts"], before["counts"])
+        self.assertEqual(after["tasks"][2]["status"], "IN_PROGRESS")
+        self.assertIn("New bounded preparation; model not_run", progress.markdown(after))
+        self.assertNotIn("New bounded preparation; model not_run", progress.markdown(before))
+
+    def test_preparation_and_gate_updates_refresh_without_model_evidence(self):
+        before = progress.build(self.root)
+        path = self.root / progress.SOURCES[1]
+        path.write_text(path.read_text().replace("pending_capability_review", "pending_test_review"))
+        after = progress.build(self.root)
+        self.assertNotEqual(before["fingerprint"], after["fingerprint"])
+        self.assertIn("pending_test_review", after["pending"][0]["reason"])
+        self.assertEqual(after["evidence"]["model"], "not_run")
+        self.assertEqual(after["counts"], before["counts"])
+
     def test_missing_report_is_unknown(self):
         (self.root / progress.SOURCES[3]).unlink()
         evidence = progress.build(self.root)["evidence"]

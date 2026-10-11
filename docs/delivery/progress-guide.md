@@ -23,7 +23,7 @@
 
 ## Nasıl güncellenir?
 
-1. İşin durumunu/AC kanıtını kanonik backlog ve hazırlık matrisinde güncelle; yeni sonucu ilgili quality kaydına ekle. Ekran kendi başına done üretmez.
+1. Her ilgili teslimde ana görev kapanmasa bile backlog'daki **Son ilerleme** ve **Sıradaki adım** alanlarını güncelle. Hazırlık/kod/gerçek ölçüm türünü ve remaining kapsamı belirt; sadece durum dosyasını değiştirmek ekranı güncellemez. Bunlar açık faz özetinde, Board kartında ve görev ayrıntısında görünür. Teslim parçası veya açık kapı değişiyorsa hazırlık matrisini de güncelle; yeni sonucu ilgili quality kaydına ekle. Ekran kendi başına done üretmez.
 2. Açık yerel ekran görünürken **15 saniyede bir** bu kaynakları tekrar okur; “Şimdi yenile” anında okur. Kaynak fingerprint ve son okuma zamanı gösterilir. Okuma zamanı test çalıştırma veya commit zamanı değildir.
 3. `python3 -B scripts/project_progress.py --write` GitHub Markdown görünümünü aynı kaynaklardan üretir; `--check` bayat türetilmiş görünümü reddeder. CI bu kontrolü çalıştırır. Commit/push sonrası GitHub görünümü değişir.
 

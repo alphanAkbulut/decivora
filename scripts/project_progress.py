@@ -125,6 +125,13 @@ def markdown(data):
         "`IN_PROGRESS` açık çalışma kaydıdır; bir agent’ın şu anda çalıştığını göstermez. Plan ön koşulları otomatik teknik blocker değildir. Test sayısı ürün tamamlanma yüzdesi değildir.", "",
         "| Ana görev durumu | Sayı |", "|---|---|"]
     lines += ["| " + status + " | " + str(count) + " |" for status, count in sorted(data["counts"].items())]
+    lines += ["", "## Açık fazda neler değişti?", "", "Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağıdaki kayıtlar backlog'dan gelir; canlı agent etkinliği değildir.", ""]
+    for task in data["tasks"]:
+        if task["status"] != "IN_PROGRESS":
+            continue
+        lines += ["### " + task["id"] + " · " + task["title"], "",
+                  task["details"].get("Son ilerleme", "Son ilerleme kaydı yok."), "",
+                  "Sıradaki adım: " + task["details"].get("Sıradaki adım", "Ayrıntılı backlog'u kontrol et."), ""]
     lines += ["", "## Mevcut teslim parçaları", "", "Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.", ""]
     lines += ["- **" + row["title"] + "** — " + row["output"] + "; " + row["verification"] for row in data["delivered"]]
     lines += ["", "## Açık karar ve doğrulama kapıları", "", "| Konu | Etkisi | Sonraki adım |", "|---|---|---|"]

@@ -13,6 +13,29 @@
 | IN_PROGRESS | 3 |
 | TODO | 27 |
 
+## Açık fazda neler değişti?
+
+Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağıdaki kayıtlar backlog'dan gelir; canlı agent etkinliği değildir.
+
+### T01 · Golden corpus ve karşılaştırma protokolü
+
+2026-10-11 · Veri hazırlığı: 6 sentetik oturum/58 mesaj ve bağımsız scorer mevcut. Bu son token-limit çalışmasında yeni corpus veya insan gold üretilmedi.
+
+Sıradaki adım: [İnsan inceleme kuyruğu](../quality/human-review-queue.md) ve kritik etiket doğrulaması; gerçek model sonucu ayrıca T03 deneyine eklenecek. T01 henüz kapanmadı.
+
+### T02 · İki coding yüzeyinde capability spike
+
+2026-10-11 · Capture kodu: Spike-0 kaynak/session, geciken delta ve kısa cevap kontrolleri 40 fixture testine sahip. Son token-limit çalışması gerçek host kurulumu veya capture testi eklemedi.
+
+Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmiş Codex/Claude host ve scoped grant ile gerçek capability kontrolü. MCP erişimi tam otomatik capture kanıtı değil.
+
+### T03 · Native/extend/build ve teknoloji kararı
+
+2026-10-11 · Deney hazırlığı: S02 gönderim paketi hazır; input/output/context ve toplam bütçe durma kuralları belgelendi. Policy pending_capability_review; gerçek model çalıştırması not_run, üretim limiter kodu yok.
+
+Sıradaki adım: [S02 planı](../quality/s02-account-smoke-plan.md): hesap/model seçimi → limit/dahil kullanım doğrulaması → tek output → bağımsız ölçüm. Sonra native kıyas ve T03c yatırım kararı; retry/ücret izni varsayılmaz.
+
+
 ## Mevcut teslim parçaları
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
@@ -25,13 +48,14 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Zincir proof’u** — Gerçek sentetik source dosyası → scripted contract response → selection → AND/OR/unknown → old target → partial/full AC → restore; [Sonuç](../quality/semantic-readiness-results.json); gerçek inference/target değil
 - **Otomasyon ve devir** — Test/CI komutları, mevcut status/backlog ve bu tek hazırlık kaydı; Docs/corpus/anchor + runtime regresyonları
 - **Seçili gerçek hedef okuması** — Tek GitHub dokümanı iki immutable ref'te; aynı içerikte eski ref stale, seçili ref observed_match; Repo/path/ref/hash denetimi; task_verified false; ürün adapter veya SQLite uygulama kanıtı değil
-- **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; yerel dosyaları yeniden okur; 10 tracker testi ve tarayıcı filtre/seçim/yenileme kontrolü; ürün UI veya canlı agent telemetry değil
+- **Geliştirme takip ekranı** — Mevcut parçalar, açık işler, fazlar, AC/alt görevler ve engine görev bağlantıları; açık fazın son ilerleme/kalan adımı kartlarda görünür; 12 tracker testi ve tarayıcı T03 ayrıntısı/P0 filtresi kontrolü; ürün UI veya canlı agent telemetry değil
+- **S02 gönderim ve güvenlik hazırlığı** — Tek S02 kaynak/prompt/policy; bir gönderim, sıfır retry/tools; ayrı token/context hard-cap sözleşmesi ve pending_capability_review; [Hazır plan](../quality/s02-account-smoke-plan.md); paket hash/policy kontrolü geçti. Belge/hazırlık teslimi; gerçek inference ve production limiter not_run
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Bir gerçek model output’u | Q03-R2 A seçildi: tek S02 mevcut hesap smoke’u. Gerçek output henüz yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır; kalan seçim Claude veya ChatGPT/Codex hesabı. Model/usage not_run/unknown |
+| Bir gerçek model output’u | Q03-R2 A seçildi; token/context güvenlik eki nedeniyle pending_capability_review. Gerçek output yok; ek API/credit harcaması izni yok | [Gönderim paketi ve sınırlar](../quality/s02-account-smoke-plan.md) hazır. Claude veya ChatGPT/Codex seçimi ve uygulanabilir cap doğrulaması → tek output → ölçüm; model/usage not_run/unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | Üç [örnek](../quality/human-review-queue.md) ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -80,4 +104,4 @@ Kod hash kontrolü yalnız raporun listelediği dosyaları kapsar; bütün repo 
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `4f56b8eec18490aceaceeced194163f71ef2ee1fd3cd33a86e9981b938b9535e`
+Kaynak fingerprint: `8340ce99639d0d85185dbb3afbe712284d84b145253b2105974edae9a30ce6c5`
