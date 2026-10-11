@@ -91,6 +91,7 @@ Bu yetenekler **tasarım hedefidir**. Rakiplerde bulunmadığı veya Decivora'n�
 | İlişkiler ve iptaller grafikte nasıl görünecek? | [Görsel sözlük, geçmiş ve örnek diyagramlar](docs/product/graph-experience.md) |
 | İşin fikri nasıl olgunlaştı; hangi testler yapıldı? | [Bağlam hikâyesi, AC/DoD ve kanıt matrisi](docs/product/task-context-and-acceptance.md) |
 | Konuşmada önerilen dosya gerçekten yüklendi mi; hangi yaklaşım seçildi? | [Niyet, karar, uygulama ve kanıt ayrımı](docs/product/intent-to-reality-gap.md) |
+| WrongStack'ten ne kullanabiliriz; nerede örtüşüyoruz? | [Sabit ref kaynak incelemesi ve küçük reuse planı](docs/discovery/wrongstack-review.md) |
 | Yeni Claude Projects ile nerede örtüşüyoruz? | [Güncel rekabet incelemesi](docs/discovery/claude-projects-overlap.md) |
 | Yarım kalan işe yeni chat'te nasıl döneriz? | [Devam paketi ve hafıza yeterliliği](docs/product/resume-package-and-memory.md) · [Spike-1 v1 deney planı](docs/delivery/spike-1-v1.md) |
 | Hangi kararlar kullanıcıyı bekliyor? | [Owner soruları ve teknik hazırlık](docs/delivery/decision-brief.md) |

@@ -55,3 +55,9 @@ Kullanıcının “dosyalar üretildi ama yüklenip yüklenmediği ve hangi yakl
 ## Güncel yatırım sırası
 
 [Tasarım revizyonu 03](current-direction.md) H2/H4/H6'yı GAP ve RES ile ilk sınırlı deneyde sınamayı önerir; H1 karar-aware impact tam vizyonda ve aynı fixture'ın stale/OR kısmında korunur. Tek hedef kanıtı ve tekrar başlayan oturum davranışı gösterilmeden geniş orchestration/admin/ekip yatırımı önerilmez. Ürün iptali veya independent build kararı verilmedi; native/extend/build kapısı sonuçlara bağlıdır.
+
+## WrongStack ile örtüşme ve reuse sınırı
+
+2026-10-11 [sabit ref kaynak incelemesi](../discovery/wrongstack-review.md): SAGE conditional validity/anchors, completion gate, evidence schema, requirement coverage ve proposal-only MCP ciddi örtüşmedir. DoD paneli ve subagent budget/orchestration belgeleri de tekil özellikleri fark diye saymamamız gerektiğini gösterir. Exact insan seçimi/target uygulama/AC freshness, AND/OR/unknown impact ve providerlar arası kaynak sürekliliği aynı WS/GAP/RES fixture'ında sınanmalı; incelenmeyen yeteneğe yok denmez.
+
+WrongStack'in küçük deterministik modülleri reuse adayıdır; bütün platformu fork etmek veya onu gereksiz ilan etmek bugünkü kanıtla gerekçeli değildir. T03d kaynak/uyum deneyi T03b karşılaştırmasını besler; T03c sonucu bağımsız build, native kullanım veya extension olabilir. Bugün kod alımı, çalışan interoperability veya üstünlük sonucu yok.

@@ -8,7 +8,7 @@
 |---|---|---|
 | Birincil ürün belgeleri ve repository README'leri | İncelendi | Dokümante kabiliyet/örtüşme ve araştırma adayları |
 | Seçilmiş issue ve kullanıcı konuşmaları | Yedi kamu kaynağı incelendi; iki kapanan issue'nun bakımcı yanıtları okundu | Kaynak sahibinin deneyimi ve bildirilen düzeltme; yaygınlık veya bağımsız reproduction değil |
-| Sabit sürüm kaynak kodu incelemesi | Araçların tamamı için yapılmadı | README vaadinin tüm runtime ayrıntılarını doğrulamıyoruz |
+| Sabit sürüm kaynak kodu incelemesi | Araçların tamamı için yapılmadı; 2026-10-11 WrongStack seçili kaynak/test bölümleri [sabit ref'te incelendi](wrongstack-review.md) | Statik davranış/uyum adayları; çalışmış benchmark veya tüm source/CI doğrulaması değildir |
 | Aynı fixture ile kurulum ve kullanım | Henüz yapılmadı | Native/config/custom/unavailable sonuçları henüz yok |
 | Token, latency, doğruluk, manuel yönetim süresi | Ölçülmedi | Skor, yüzde üstünlük veya tasarruf sonucu yok |
 | Decivora karşılaştırması | Ürün henüz uygulanmadı | Ürün sözleşmesi ve test planı var |
@@ -70,3 +70,7 @@ Bu doldurulmamış şablon sonuç değildir. Ölçülen sıfır `0`, ölçülmey
 ## 2026-10-11 — Yeni Claude Projects karşı kanıtı
 
 [Yeni Projects incelemesi](claude-projects-overlap.md) ve [kullanıcının gerçekleşme örneği](../product/intent-to-reality-gap.md) önceki bulguları tamamlar. Paylaşılan hafıza, karar gerekçelerini taşıma, koordinasyon ve iş takibi Anthropic tarafından belgeleniyor; genel memory eksikliği iddiası yeterli değil. T03 karşılaştırmasına GAP-01–10 ve aynı kaynak/karar/target revision oracle'ı eklenir. Belge incelemesi, kullanıcının deneyim bildirimi ve ölçülmemiş Decivora hipotezi ayrı tutulur. Runtime üstünlük sonucu yok.
+
+## 2026-10-11 — WrongStack kaynak karşı kanıtı
+
+[Hedefli inceleme](wrongstack-review.md) koşullu memory, anchor stale/unknown, completion evidence, DoD UI, MCP proposal-only ve deterministik requirement coverage için seçili uygulama kaynaklarını içerir. Hafıza/gate/dependency tek başına özgünlük iddiası değildir. Küçük validator/coverage/schema reuse, native kullanım ve extension T03'te ayrı seçeneklerdir. WS-01–08 sonuçları not_run; runtime/CI/maliyet testi yok. Doğrudan kod alınmadı; uyumsuz soft completion, hard cap ve unknown semantics açık yazıldı.

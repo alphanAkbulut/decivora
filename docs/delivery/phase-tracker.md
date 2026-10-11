@@ -155,3 +155,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
 Bugünkü snapshot'ta 30 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
+
+### P0 karşılaştırma havuzu eki: WrongStack
+
+[WrongStack sabit ref incelemesi](../discovery/wrongstack-review.md) T03 native/extend/build havuzuna eklendi. T03d PROPOSED; WS-R1–R5 küçük reuse/uyum deneyi, sonuçlar WS-01–08 not_run. Statik incelemenin hazır olması T03/T04'ü bitirmez. 30 ana görev faz/durum/başlığı ve MVP/P2/P3/P4 teslim sınırları korunur.

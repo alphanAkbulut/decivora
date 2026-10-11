@@ -70,7 +70,7 @@ Bütün görevler **TODO**. Bu plan uygulamayı gerçekleştirmiş değildir. He
 ## T03 — Native/extend/build ve teknoloji kararı
 
 - **Durum / faz:** TODO / P0. **Bağımlılık:** T01,T02. **Kapsam ID:** EVAL-01.
-- **İş:** [Güncel yön](../product/current-direction.md) uyarınca yeni Claude Projects ve mevcut Cortex/Tracker/mai-mcp/Beads adaylarını aynı oracle'ın uygun bölümünde karşılaştır. T03a geçici deney yöntemi/stack kapsamı, T03b yetkili sınırlı prototip + native baseline, T03c owner yatırım/production stack kararı olarak sırayla ilerle; lisans ve kurulum etkisini incele. [Benchmark bulgularındaki](../discovery/benchmark-findings.md) güncel yapılandırma ve sonuç şablonunu kullan; [şikâyet araştırmasındaki](../discovery/user-research.md) düzeltme/karşı kanıtı atlama.
+- **İş:** [Güncel yön](../product/current-direction.md) uyarınca yeni Claude Projects, [WrongStack](../discovery/wrongstack-review.md) ve mevcut Cortex/Tracker/mai-mcp/Beads adaylarını aynı oracle'ın uygun bölümünde karşılaştır. T03a geçici deney yöntemi/stack kapsamı, T03b yetkili sınırlı prototip + native baseline, T03c owner yatırım/production stack kararı olarak sırayla ilerle; lisans ve kurulum etkisini incele. [Benchmark bulgularındaki](../discovery/benchmark-findings.md) güncel yapılandırma ve sonuç şablonunu kullan; [şikâyet araştırmasındaki](../discovery/user-research.md) düzeltme/karşı kanıtı atlama.
 - **Kabul:** Native/config/custom/unknown matrisi, GAP/RES sonuçları ve kullanıcı yönetim yükü kanıtı var; native/extend/build/ek deney/durdur seçenekleri gerekçeli. Owner kararı ilgili ADR'lere işlenir; deneme yapılamayanlar not_run. T03a prototype yöntemi production stack onayı değildir; build seçilmeden T04 başlamaz.
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
@@ -544,3 +544,11 @@ Kullanıcı language-aware not/proje içeriği istedi; maliyetli otomasyon P2'ye
 | T26c / T25a,T26,T20,T18c,T21b | PROPOSED / P2: etkin dilde çıkarım/brief, locale katalogları, cross-language reconciliation/retrieval; kontrollü türev çeviri | LANG-01–08; holdout/quality-cost-recall ve kullanıcı review; bütün geçmişi yeniden çevirmeme, egress/usage/ACL kapıları |
 
 T01 corpus'a TR/EN, kısa/mixed, alıntı/kod ve dil değişimi örnekleri eklenir; gerçek dil/model başarısı bugün not_run. Yeni language policy veya locale seçmek veri/model/shell/dış yazma izni vermez. Ekipte kullanıcı UI locale'i ortak canonical dili kendiliğinden değiştirmez. P2 kabulü olmayan otomatik çok dilli davranış P1 parent task kapanışının tamamlanmış özelliği sayılmaz.
+
+## WrongStack reuse araştırması — T03 alt dilimi
+
+**T03d — PROPOSED / P0. Bağımlılık: T01,T03a; çalıştırılan kapsamın erişim/model/bütçe yetkisi.** [Sabit ref araştırması](../discovery/wrongstack-review.md) belge çıktısıdır; bu runtime alt dilimi tamamlanmadı. T03b native/extension ve T03c yatırım kararı sırası korunur.
+
+- **İş:** WS-R1 native fizibilite; WS-R2 EvidenceValidator; WS-R3 requirement coverage/validity; WS-R4 bounded context/pattern deneyi; WS-R5 reuse/native/extension/build önerisi. İlk üç küçük validator/algoritma adayını komple monorepo bağımlılığıyla karşılaştır; stack kararı olmadan kullanılmayan source klasörü açma.
+- **Kabul:** Pinned ref/path/notice/dependency/semantik fark/target modül kaydı; WS-01–08, GAP/RES/H1 aynı oracle'da native/config/custom/unknown ve pass/fail/not_run. Fake refs, inaccessible target, OR gerekçe, oversized context ve child bütçe istisnaları görünür. Kaynak/test tanımı okundu diye V/pass yazılmaz.
+- **Doğrulama:** Yetkili izole sentetik deney; uygulanacak modül için kendi sözleşme testleri; bütün round-trip/fallback/review maliyeti. T03c owner kararı olmadan production stack değişmez. 30 ana görev ve MVP kapsamı korunur.

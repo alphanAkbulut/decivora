@@ -96,3 +96,7 @@ ENG-02 aday saptama, ENG-03 duplicate reconciliation, ENG-06 yetki/onay, ENG-08 
 | LEX-08 | Model/prompt/dil drift, budget-defer ve stale kural cache'i görünür; reprocessing yeni sürümle sınırlı ve idempotent |
 
 Bu kabul senaryoları **planlı / not_run**. Statik doküman kontrolü pattern doğruluğunu veya maliyet tasarrufunu kanıtlamaz.
+
+## WrongStack'ten ilgili kaynak örneği
+
+2026-10-11 [kaynak incelemesi](../discovery/wrongstack-review.md) explicit LEARNED blok çıkarımı ve skill vocabulary routing implementasyonlarını buldu. Bu bizim sözlük fikrimize somut algoritma referansıdır; genel LLM metninden doğru task/onay/tamamlanma çıkardığının kanıtı değildir. İşaretli blok ve aday skill routing semantiğini completion/approval ile karıştırma. T09e/T24o deneyinde explicit yapılandırılmış çıktı → guard'lı lexical candidate → unmatched/fallback yolu; TR/EN, alıntı/negation ve toplam çağrı maliyeti korunur. Bu tur kelime tablosu/parser kodu alınmadı; gerçek pattern sıklığı/tasarruf ölçülmedi.
