@@ -89,8 +89,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R20: ham S02-002 10/11 span hatasında reddedildi. Bounded offline adapter teslim; yeni quote-only contract üzerinde gerçek-model kalite/production doğrulaması açık. [Aktif risk kaydı](../governance/risks.md). Provider cap/usage unknown; yeni inference izni yok.
 - **Denemeler / sonuç:** S02-001: erişim hatası, output yok. S02-002: output var, kaynak konumu reddi. ANCHOR-PROBE-01: 11 exact quote/7 edge kontrolü. ANCHOR-ADAPTER-01: bounded kod ve ayrı rubric/CLI teslim; 10 konum düzeltildi, 11 candidate geçti, 48 suite testi; yeni model çağrısı ve semantik ölçüm yok. [Kanıt ve deneme günlüğü](../quality/s02-second-attempt-result.md).
 - **Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 production source anchoring/entegrasyonu gerekli; P0 offline adapter teslim. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
-- **Son ilerleme:** 2026-10-12 · T03g/T03h/T03i/T03j küçük teslimleri DONE: bounded quote adapter, gönderimsiz API paket/import, tek-file observer ve tek komutluk integrated zincir. 66 semantik suite testi ve yedi checkpoint passed; karar/impact/AC/restore akışı kontrol edildi. [Kapanış kapsamı ve kanıt](../quality/integrated-chain.md). Ana T03 IN_PROGRESS; inference 0, production/semantic kalite kapısı açık.
-- **Sıradaki adım:** H1 insan incelemesi → mevcut üyelik üzerinden source-only quote deneyinin route/tek-send/usage sınırını hazırlama. API bakiyesi $0 kullanıcı bildirimi; paid API dispatch yok. Önceki çağrı izinleri tüketildi, yeni sınır/onay gerekecek. Anlam doğruluğu, gerçek grant, graph/target/AC ve native kıyas açık; observer match ana görevi kapatmaz.
+- **Son ilerleme:** 2026-10-12 · T03k mevcut üyelik için source-only paket/batch importer/scorer hazırlığı DONE. 3330-byte prompt, dört mesaj/iki proje, ayrı authored_draft beklentiler ve tek-send/sıfır-retry öneri planı var. 72 semantik suite testi (6 yeni batch) geçti. [Somut plan](../quality/membership-smoke-plan.md); gerçek model submission 0, paid API 0. T03g/h/i/j kapanışları korunur.
+- **Sıradaki adım:** MEMBERSHIP-001 için tek manual gönderim ve doğrulanmamış hard token/context cap istisnasına somut onay → mevcut hesapta ilk output → source validation/candidate ölçümü. Prompt ve plan hazır; eski iki onay tüketildi, yeni izin gelmeden dispatch yok. Gerçek anlam/domain/native kapıları açık.
 
 ### T03 altında tamamlanan küçük teslimler
 
@@ -102,6 +102,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen offlin
 | T03h / T03g | DONE / P0: gönderimsiz API paket ve saved response import | Schema/payload/source sınırı, refusal/incomplete/unknown ve no-overwrite testleri passed; [kanıt](../quality/quote-api-package.md). Provider/schema acceptance ve bütçe enforcement kapsam dışı |
 | T03i / T03f | DONE / P0: tek selected local file observer | Dokuz negatif/pozitif test ve önceki belgeyle gerçek local hash match; [kanıt](../quality/local-observer.md). GitHub upload/AC/production IAM kapsam dışı |
 | T03j / T03g,T03i | DONE / P0: tek komutluk integrated zincir | Quote-only → ayrı seçim → AND/OR impact → bounded local read → partial/full AC → restore; yedi checkpoint ve 66 suite testi passed; [kanıt](../quality/integrated-chain.md). Model/gerçek grant/remote target kapsam dışı |
+| T03k / T03g,T03h | DONE / P0: mevcut üyelik source-only paket ve batch import/score | Dört synthetic mesaj, iki ayrı proje/contract, oracle dışarıda; 6 negatif/pozitif test ve 72 suite passed; [plan/kanıt](../quality/membership-smoke-plan.md). Gerçek model send/usage/accuracy kapsam dışı |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

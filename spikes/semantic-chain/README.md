@@ -63,3 +63,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Tek komutluk integrated teslim — T03j DONE
 
 `python3 -B spikes/semantic-chain/run.py` quote-only adapter + bounded observer + ayrı karar/impact + partial/full AC + restore zincirini çalıştırır. [Kapanış koşulları ve kayıt](../../docs/quality/integrated-chain.md). 66 suite testi geçti; gerçek inference/production kapıları açık. T03g/h/i/j DONE ana T03'ü kapatmaz.
+
+## Mevcut üyelik smoke hazırlığı — T03k DONE
+
+`membership_batch.py` tek proposed manual submission için source-only batch hazırlar ve saved quote output'unu ayrı authored rubric ile değerlendirir. [Prompt, plan, import komutları ve izin sınırı](../../docs/quality/membership-smoke-plan.md). 72 suite testi passed; gerçek model send/accuracy/usage not_run.

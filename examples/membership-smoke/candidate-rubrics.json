@@ -1,0 +1,50 @@
+[
+  {
+    "format": "decivora-candidate-rubric-1",
+    "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+    "review_status": "authored_draft",
+    "expected": [
+      {
+        "message_id": "S02-m01",
+        "kind": "AnswerRecord",
+        "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam.",
+        "attributes": {
+          "question_id": "Q_STORE",
+          "option_id": "B",
+          "presentation_revision": 1
+        }
+      },
+      {
+        "message_id": "S02-m05",
+        "kind": "ImplementationClaim",
+        "quote": "Yükledim.",
+        "attributes": {
+          "claim_type": "upload"
+        }
+      },
+      {
+        "message_id": "S02-m09",
+        "kind": "Evidence",
+        "quote": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.",
+        "attributes": {
+          "criterion_id": "AC_ROLLBACK",
+          "criterion_revision": 1,
+          "result": "passed"
+        }
+      }
+    ]
+  },
+  {
+    "format": "decivora-candidate-rubric-1",
+    "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+    "review_status": "authored_draft",
+    "expected": [
+      {
+        "message_id": "S03-m04",
+        "kind": "AnswerRecord",
+        "quote": "A.",
+        "attributes": {}
+      }
+    ]
+  }
+]

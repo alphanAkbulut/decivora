@@ -1,0 +1,48 @@
+{
+  "format": "decivora-membership-batch-1",
+  "package_id": "78145e9485b7cc12321951b994224393554688b6516075451a9d900f1a3051b0",
+  "prompt_sha256": "b4693ef6a48be8e64547e899ecf942bfdf9baf0d833c6a39ba05e3c8ccaa66db",
+  "prompt_bytes": 3330,
+  "requests": 2,
+  "source_messages": 4,
+  "dispatch": "not_run",
+  "dispatch_authorized": false,
+  "automatic_retries": 0,
+  "proposed_manual_submissions": 1,
+  "proposed_output_tokens": 2048,
+  "input_tokens": null,
+  "usage": null,
+  "monetary_cost": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "actual_model": null,
+  "warnings": [
+    "bytes are not tokens",
+    "subscription quota is shared",
+    "output target is not a provider enforced cap",
+    "fresh single submission needs explicit authorization; old approvals consumed"
+  ],
+  "attempt_id": "MEMBERSHIP-001",
+  "status": "prepared_pending_single_send_risk_approval",
+  "method": "one_manual_fresh_chat_submission",
+  "candidate_expectations": "authored_draft_not_gold",
+  "human_behavior_reviews": [
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "provider_account": "existing_ChatGPT_subscription_proposal",
+  "source_ids": [
+    "S02-m01",
+    "S02-m05",
+    "S02-m09",
+    "S03-m04"
+  ],
+  "old_single_send_permissions_consumed": true,
+  "paid_api_allowed": false,
+  "tools_allowed": false,
+  "subagents_allowed": false,
+  "actual_submissions": 0,
+  "received_outputs": 0,
+  "prompt_file_sha256": "b4693ef6a48be8e64547e899ecf942bfdf9baf0d833c6a39ba05e3c8ccaa66db"
+}

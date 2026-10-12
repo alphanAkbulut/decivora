@@ -24,6 +24,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03h | T03 | DONE | DONE / P0: gönderimsiz API paket ve saved response import |
 | T03i | T03 | DONE | DONE / P0: tek selected local file observer |
 | T03j | T03 | DONE | DONE / P0: tek komutluk integrated zincir |
+| T03k | T03 | DONE | DONE / P0: mevcut üyelik source-only paket ve batch import/score |
 
 ## Açık fazda neler değişti?
 
@@ -55,7 +56,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · T03g/T03h/T03i/T03j küçük teslimleri DONE: bounded quote adapter, gönderimsiz API paket/import, tek-file observer ve tek komutluk integrated zincir. 66 semantik suite testi ve yedi checkpoint passed; karar/impact/AC/restore akışı kontrol edildi. [Kapanış kapsamı ve kanıt](../quality/integrated-chain.md). Ana T03 IN_PROGRESS; inference 0, production/semantic kalite kapısı açık.
+2026-10-12 · T03k mevcut üyelik için source-only paket/batch importer/scorer hazırlığı DONE. 3330-byte prompt, dört mesaj/iki proje, ayrı authored_draft beklentiler ve tek-send/sıfır-retry öneri planı var. 72 semantik suite testi (6 yeni batch) geçti. [Somut plan](../quality/membership-smoke-plan.md); gerçek model submission 0, paid API 0. T03g/h/i/j kapanışları korunur.
 
 **Aktif teknik risk:** Observed / High · R20: ham S02-002 10/11 span hatasında reddedildi. Bounded offline adapter teslim; yeni quote-only contract üzerinde gerçek-model kalite/production doğrulaması açık. [Aktif risk kaydı](../governance/risks.md). Provider cap/usage unknown; yeni inference izni yok.
 
@@ -63,7 +64,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 geçerli output/kalite ölçümü açık; T09 production source anchoring/entegrasyonu gerekli; P0 offline adapter teslim. Diğer fixture teslimleri korunur; hiçbir ana görev bu probe nedeniyle kapanmaz.
 
-Sıradaki adım: H1 insan incelemesi → mevcut üyelik üzerinden source-only quote deneyinin route/tek-send/usage sınırını hazırlama. API bakiyesi $0 kullanıcı bildirimi; paid API dispatch yok. Önceki çağrı izinleri tüketildi, yeni sınır/onay gerekecek. Anlam doğruluğu, gerçek grant, graph/target/AC ve native kıyas açık; observer match ana görevi kapatmaz.
+Sıradaki adım: MEMBERSHIP-001 için tek manual gönderim ve doğrulanmamış hard token/context cap istisnasına somut onay → mevcut hesapta ilk output → source validation/candidate ölçümü. Prompt ve plan hazır; eski iki onay tüketildi, yeni izin gelmeden dispatch yok. Gerçek anlam/domain/native kapıları açık.
 
 
 ## Mevcut teslim parçaları
@@ -84,6 +85,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Quote-only API deney paketi** — Strict schema taslağı, source-only payload, pending bütçe/onay manifesti ve saved response importer; [56 semantik test / 8 yeni](../quality/quote-api-package.md); gerçek provider dispatch/schema/kalite not_run
 - **Seçilmiş yerel hedef observer** — Tek dosya real filesystem read, bounded no-follow/hash/change kontrolü; source metninden komut çalıştırılmaz; [65 semantik test ve ayrı gerçek yerel gözlem](../quality/local-observer.md); remote upload/task acceptance veya production IAM değil
 - **Tek komutluk integrated zincir / T03j DONE** — Quote-only adapter ve bounded observer mevcut decision/impact/AC/restore akışına bağlandı; [66 semantik test ve yedi checkpoint](../quality/integrated-chain.md); T03g/h/i de scoped DONE, ana T03 ve gerçek model kalite kapısı açık
+- **Mevcut üyelik smoke paket/harness / T03k DONE** — 3330-byte source-only prompt, dört mesaj/iki project, ayrı candidate expectations, batch import/score; [72 semantik test / 6 yeni](../quality/membership-smoke-plan.md); manual submit onayı pending, hard cap/usage/real accuracy not_run
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -102,7 +104,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 3 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 8 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 9 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -139,4 +141,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `ac219b302b409e3d082215cedf4a83b3b5d53a9f8c40ba22bb3a9bf592bec475`
+Kaynak fingerprint: `58afbb0d93e71c94c5781f16f923bd072f3a080742190126f7bcfacf94e705c3`

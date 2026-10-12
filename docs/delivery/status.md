@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — Mevcut üyelik gerçek test paketi hazır
+
+- T03k scoped DONE: [MEMBERSHIP-001 planı](../quality/membership-smoke-plan.md), 3330-byte source-only prompt, dört synthetic mesaj/iki scoped request ve ayrı authored expectations. No-dispatch batch preparation/import/scorer, 72 semantik suite testi (6 yeni).
+- Öneri bir UI submission/sıfır retry; soft 2048 output token hedefi, kesin token/context cap unknown. Önceki izinler tüketildi; yeni manual-risk onayı gelmeden gerçek send yok. Paid API yok, gerçek accuracy not_run; product hard-cap gereksinimi korunur.
+
+
 ### 2026-10-12 — H3 onayı ve ilk üç behavior incelemesi tamamlandı
 
 - Kullanıcı H3 için “uygun” dedi: belirsiz A saklanır, hangi soruya ait olduğu tahmin edilmez, açıklama istenir. [Review](../quality/reviews/h3-behavior.json) kaynak/oracle hash ve scope taşır. T01g ilk üç davranış incelemesi scoped DONE; tam corpus/exact etiket gold veya production runtime tamamlanmış değildir.

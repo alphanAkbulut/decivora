@@ -1,0 +1,24 @@
+{
+  "id": "MEMBERSHIP-PREP-001",
+  "date": "2026-10-12",
+  "status": "prepared_not_dispatched",
+  "semantic_suite_tests_passed": 72,
+  "new_tests": 6,
+  "requests": 2,
+  "source_messages": 4,
+  "prompt_bytes": 3330,
+  "rubric_validation": "passed_structure_and_source_only_not_accuracy",
+  "model_dispatches": 0,
+  "actual_usage": null,
+  "code_and_package_sha256": {
+    "spikes/semantic-chain/membership_batch.py": "c616362819547c783aab499e46a278964bd3ba72a6ac2de6bca4b42c54f45acb",
+    "spikes/semantic-chain/test_membership_batch.py": "5b2171b21541572fc799a3a38d6eaeb9debca76f7a48c8fcba10c35a51a9370c",
+    "examples/membership-smoke/candidate-rubrics.json": "a13d11edd8c60ae2418e69ea6481674b778e57597726d7c2ab4aaef144515d3b",
+    "examples/membership-smoke/plan.json": "6717e7c4f626ca8ff44b5239448dc860f47e0bfef8cf3a2e6e7168628c98846a",
+    "examples/membership-smoke/prompt.txt": "b4693ef6a48be8e64547e899ecf942bfdf9baf0d833c6a39ba05e3c8ccaa66db",
+    "examples/membership-smoke/requests.json": "d7f2482425e82eba5d183443aeb5c570de49af28b64904ee12991563ff934788"
+  },
+  "root_tests_passed": 40,
+  "package_reproduction_and_hash_check": "passed",
+  "docs_anchors_progress": "passed"
+}
