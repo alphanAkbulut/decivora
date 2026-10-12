@@ -554,6 +554,33 @@
       "edge_count": 16,
       "network_requests_allowed": true,
       "network_scope": "Existing private GitHub Preview/native viewscreen renderer; no local file URL or model API"
+    },
+    {
+      "path": "docs/quality/receiver-contract.md",
+      "block": 1,
+      "source_sha256": "765bb15c70daf16f35c4ee2c2bdbcde80fc0598893650fa02738937833f9c686",
+      "status": "rendered",
+      "title": "Receiver yerel doğrulama ve kalite ayrımı",
+      "description_present": true,
+      "view_box": "0 0 823.617431640625 1168",
+      "viewport_width": 1440,
+      "svg_css_width": 823.609375,
+      "svg_css_height": 1167.984375,
+      "canvas_background": "rgba(0, 0, 0, 0)",
+      "artifact": "local receiver-contract-render/serialized/01.svg and 01.png",
+      "error": null,
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "browser": "Google Chrome via bundled Playwright",
+      "checked_at": "2026-10-12",
+      "input_base_ref": "e37471add5ea7958727a414a9d419d3c0abc21d8",
+      "network_requests_allowed": false,
+      "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
+      "svg_snapshot_sha256": "ed984e01a2e58c83198453d8d5eeb1358405438b3f9c088fd9efb5e04390f3eb",
+      "node_count": 11,
+      "edge_count": 12,
+      "xml_parse": "passed after browser DOM XMLSerializer export",
+      "render_scope": "local light desktop PNG visual check, DOM metadata and XML title/node/edge validation; not GitHub/mobile/runtime",
+      "product_runtime_tested": false
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -577,7 +604,20 @@
       "input_ref": "e491fd09590499c27305ec5519281e50fa330bda",
       "renderer": "GitHub native Mermaid renderer; exact version unknown",
       "prior_record_policy": "35 historical source hash/render records preserved; not freshly rendered in this run"
+    },
+    {
+      "checked_at": "2026-10-12",
+      "new_sources": 1,
+      "unchanged_prior_sources": 36,
+      "document": "docs/quality/receiver-contract.md",
+      "input_base_ref": "e37471add5ea7958727a414a9d419d3c0abc21d8",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "local_render_attempts": 2,
+      "first_render": "passed; supplemental raw SVG XML parse failed on HTML br serialization",
+      "final_export": "DOM XMLSerializer and XML parse passed",
+      "prior_record_policy": "36 historical source hash/render records unchanged; not freshly rendered"
     }
   ],
-  "record_provenance": "Top-level renderer/date/bundle describe the historical 35-source run. New records specify their own renderer/date/ref; do not treat all 36 as a fresh local render."
+  "record_provenance": "Top-level renderer/date/bundle describe the historical 35-source run. Incremental records specify their own renderer/date/ref; all 37 are not a fresh render."
 }

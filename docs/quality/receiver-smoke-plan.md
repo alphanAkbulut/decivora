@@ -1,6 +1,6 @@
 # Fresh-session receiver deneyi — RECEIVER-001 hazırlığı
 
-**2026-10-12 · T03u hazırlık DONE; T03v ilk native run kayıt teslimi DONE.** Güncel [RECEIVER-001 sonucu](receiver-001-result.md) **invalid_contract**, tek-send izni tüketildi. Aşağıdaki hazırlık tablosu/limitler dispatch öncesi snapshot'tır; güncel run ile karıştırılmamalı. [Dondurulmuş istek ve ayrı oracle](../../examples/receiver-smoke/README.md) · [Hazırlık ölçümü](receiver-smoke-preparation-results.json) · [Önceki küçültme kanıtı](resume-compaction.md).
+**2026-10-12 · T03u hazırlık DONE; T03v ilk native run kayıt teslimi DONE.** T03w yerel schema/source guard ve [doğrulama akışı](receiver-contract.md#p0-doğrulama-akışı) tamamlandı; model kalite retini değiştirmez. Güncel [RECEIVER-001 sonucu](receiver-001-result.md) **invalid_contract**, tek-send izni tüketildi. Aşağıdaki hazırlık tablosu/limitler dispatch öncesi snapshot'tır; güncel run ile karıştırılmamalı. [Dondurulmuş istek ve ayrı oracle](../../examples/receiver-smoke/README.md) · [Hazırlık ölçümü](receiver-smoke-preparation-results.json) · [Önceki küçültme kanıtı](resume-compaction.md).
 
 ## Testin hedefi ve kapsamadıkları
 

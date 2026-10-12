@@ -7,6 +7,8 @@
 
 Güncel ilk deney [ürün yönünde](../product/current-direction.md); atlas tüm ürünün proposed sınırlarını gösterir. [GAP akışındaki iki diagram](../product/intent-to-reality-gap.md) seçimin/hedef uygulamasının AC kabulünden ayrı döngüsünü tamamlar.
 
+P0 çalışan receiver kodunun ayrı [shape → source → review → scorer şeması](../quality/receiver-contract.md#p0-doğrulama-akışı) mevcut; bu production atlasında önerilen engine/approval uygulamasıyla karıştırılmaz.
+
 Tamamlayıcılar: [task sonucu, LLM analizi ve dış API için üç sequence + tetikleme/zamanlama matrisi](execution-and-integrations.md); [erişim, task/run/evidence ve hedef uygulama için üç ER + FK/transaction kuralları](data-relationships.md). Bu atlasın 13 şeması korunur; bütün repo inventory'si [inceleme kaydındadır](../quality/diagram-review.md). Zamanlama tablosu deney önerilerini kesin SLA'dan ayırır.
 
 ## 1. Sistem bağlamı ve güven sınırları

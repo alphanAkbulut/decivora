@@ -15,6 +15,41 @@
 
 Kaynak ve schema kapıları birbirinden ayrıdır. JSON doğru biçimde olabilir ama yanlış soruya, stale cevaba veya yanlış kanıta işaret edebilir. Yeni `receiver_contract.py` önce bounded JSON/shape, sonra eski kimlik/duplicate guard'ları, ardından kaynak ilişki kurallarını uygular. Oracle doğrulayıcıya input değildir. Scoring ayrıca eski bağımsız evaluator ile yapılır.
 
+## P0 doğrulama akışı
+
+```mermaid
+%%{init: {"theme":"base","flowchart":{"htmlLabels":false,"curve":"linear"},"themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","background":"#ffffff","lineColor":"#64748b","edgeLabelBackground":"#ffffff"}}}%%
+flowchart TB
+    accTitle: Receiver yerel doğrulama ve kalite ayrımı
+    accDescr: P0 kod akışı. Ham çıktı değişmez, JSON şekli ve kaynak bağı ayrı kontrol edilir. Temiz abstention eksik kapsamdır. Review ve scorer başarılı olsa bile onay veya uygulama yapılmaz.
+    A["Değişmez tam model çıktısı<br/>Kaynak bağlı request"] --> B["Bounded JSON ve shape kontrolü<br/>Tipler, ok veya abstain dalları"]
+    B -->|Hatalı yapı| X["Reddet ve ilk hatayı koru<br/>Tamir veya otomatik retry yok"]
+    B -->|Yapı geçerli| C["Request, proje, package ve duplicate kontrolü<br/>Mevcut evaluator guard"]
+    C -->|Yanlış veya eski bağ| X
+    C -->|Kimlik geçerli| D["Kaynak ilişkisi kontrolü<br/>Bilinen soru korunur<br/>Belirsiz kayıt ayrı kalır<br/>İşlem yalnız preserved record"]
+    D -->|Kaynakla çelişir| X
+    D -->|Review güvenli| E["validated_review_only<br/>İşlem veya gerçek onay değil"]
+    E --> F["Ayrı authored oracle ile scorer<br/>Readback ve next-action tamlığı"]
+    F -->|Eksik veya temiz abstention| G["incomplete<br/>Tam proje cevabı alınmadı"]
+    F -->|Yanlış veya eksik öneri| H["failed_draft<br/>Kalite kapısı açık"]
+    F -->|Draft beklentileri eşleşti| I["passed_draft<br/>Human gold veya ürün kabulü değil"]
+    I -. Ayrı yetki ve gelecek uygulama .-> J["İnsan kararı, hedef gözlemi ve AC<br/>Bu receiver akışı çalıştırmaz"]
+    classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef check fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    classDef rejected fill:#fee2e2,stroke:#b91c1c,color:#0f172a
+    classDef review fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    classDef pending fill:#fef3c7,stroke:#92400e,color:#0f172a
+    classDef future fill:#f3e8ff,stroke:#7e22ce,color:#0f172a,stroke-dasharray:4 3
+    class A source
+    class B,C,D,F check
+    class X,H rejected
+    class E,I review
+    class G pending
+    class J future
+```
+
+Renkler kontrol/sonuç türünü anlatır; gerçek model başarısı değildir. Schema tipi geçtiğinde kaynak semantiğinin de geçtiği varsayılmaz. Şekil/kaynak hatasında scorer çalışmaz. `abstain` yanında veri veya öneri varsa ret; temiz `abstain` yalnız kapsam eksikliğidir. [Render ve inceleme kaydı](diagram-review.md) ürün/runtime kabulünden ayrıdır.
+
 ## Makine sözleşmesi ve sınırları
 
 [JSON Schema](../../examples/receiver-contract/response.schema.json) Draft 2020-12 olarak yayımlanan, mevcut request/project/package kimliklerine bağlı shape sözleşmesidir. Önceki `SCHEMA` alan açıklamalarına ek olarak yeni dosya gerçek type/required/additionalProperties/oneOf/enum/const/minimum sınırları içerir. Eski descriptor ve 7950-byte deney isteği **tarihsel kanıt olarak aynı kalır**.

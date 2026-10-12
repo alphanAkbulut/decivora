@@ -20,11 +20,12 @@ Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/promp
 | Veri, status ve ilişkiler ne demek? | [Domain](../architecture/domain-model.md), [event log](../architecture/event-log.md) |
 | Neyi rakiplerden farklı hedefliyoruz? | [Farklılaşma](../product/differentiation.md), [kanıt seviyeli benchmark](../discovery/benchmark.md) |
 | Şimdi ne yapılacak, nasıl bitecek? | [Status](status.md), [backlog](backlog.md), [kısa yönetim planı](project-management.md) |
+| Receiver/yenichat ne durumda; hangi kod çalıştı? | [İlk gerçek failed run](../quality/receiver-001-result.md), [yerel schema/source guard ve akış](../quality/receiver-contract.md); model kalitesi yeniden test edilmedi |
 | Hangi sonuç kanıt sayılır? | [Doğrulama](../quality/verification.md), [ölçüm](../quality/measurement.md) |
 | Hangi eksikler bulundu ve hangileri hâlâ açık? | [Kapsam/mimari incelemesi](../quality/completeness-review.md) |
 | İnsanların hangi şikâyetleri bu yönü destekliyor; karşı kanıt ne? | [Kullanıcı araştırması ve ters düşünme](../discovery/user-research.md) |
 | Benchmark gerçekten çalıştırıldı mı? | [Bulgular ve test edilmemiş alanlar](../discovery/benchmark-findings.md) |
-| Bekleyen işe yeni chat'te nasıl devam edilir; hafıza yeterli mi? | [Devam paketi](../product/resume-package-and-memory.md), [Spike-1 v1](spike-1-v1.md); proposed/not_run |
+| Bekleyen işe yeni chat'te nasıl devam edilir; hafıza yeterli mi? | [Ürün önerisi](../product/resume-package-and-memory.md), [Spike-1 v1](spike-1-v1.md); production proposed/not_run. P0 [resume kodu](../quality/resume-compaction.md) ve [receiver sonucu](../quality/receiver-001-result.md) ayrı scoped kanıt |
 | Pilot için owner neyi seçti, hangi yanıtlar bekliyor? | [Sorular ve cevaplar](decision-brief.md) |
 
 ## Belge otoritesi ve çelişki çözümü

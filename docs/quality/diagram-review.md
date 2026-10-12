@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 16 belgede 36 Mermaid şeması — yeni deney şeması kontrolü 2026-10-12; önceki 35 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 17 belgede 37 Mermaid şeması — receiver yerel doğrulama akışı eklendi, 2026-10-12; önceki 36 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 ## Güncel inventory — 2026-10-12
 
@@ -23,7 +23,15 @@
 | [docs/product/intent-to-reality-gap.md](../../docs/product/intent-to-reality-gap.md) | 2 |
 | [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
 | [docs/quality/membership-002-result.md](membership-002-result.md) | 1 |
+| [docs/quality/receiver-contract.md](receiver-contract.md) | 1 |
 <!-- diagram-inventory:end -->
+
+## 2026-10-12 — Receiver yerel doğrulama akışı
+
+- [T03w akışı](receiver-contract.md#p0-doğrulama-akışı): değişmez tam çıktı → bounded shape → kimlik/duplicate → kaynak ilişkisi → yalnız review → ayrı scorer. Ret, temiz abstention/incomplete ve failed_draft/passed_draft farklı; insan kararı/hedef/AC mor kesik gelecek dalı, doğrudan onay veya yürütme oku yok.
+- Cached Mermaid11.17.2, mevcut bundled Playwright/Chrome ile ağ kapalı geçici headless sayfada yalnız bu kaynak render edildi. 11 düğüm/12 ok, accessible başlık/açıklama ve PNG görseli kontrol edildi. Önceki36 kaynak hash'i aynı; yeniden render edilmiş gibi sunulmaz. GitHub dark/mobil veya her renderer sürümü bu yerel kontrolle doğrulanmış değildir.
+- İlk browser render geçti; ek SVG XML okuması renderer'ın HTML `<br>` serialization'ı nedeniyle başarısız oldu. Aynı kaynak ikinci export'ta browser DOM XMLSerializer ile kaydedildi; XML parse/title/node/edge kontrolü geçti. İlk artifact korundu, schema veya model run başarısızlığı diye sınıflanmadı. Source aynı; iki yerel render ve sıfır model/API çağrısı.
+- [Render raporu](diagram-render-results.json) incremental provenance ve exact source/SVG hash taşır. SVG/PNG inceleme çıktıları repo dışı yerel artefaktlar; canonical Mermaid Markdown'dadır. Ürün/runtime/model kalitesi testi değildir.
 
 ## 2026-10-12 — MEMBERSHIP-002 şeması GitHub'da doğrulandı
 
