@@ -1,0 +1,521 @@
+{
+  "attempt_id": "MEMBERSHIP-003",
+  "date": "2026-10-12",
+  "observed_submission_at_utc": "2026-10-12 16:51:26 UTC",
+  "route": "normal_Chrome_fresh_temporary_nonpersonalized_ChatGPT",
+  "model_ui_label": "Instant, 3 seçenek arasında 1. sırada",
+  "actual_model_identity": null,
+  "submissions": 1,
+  "retries": 0,
+  "outputs_received": 1,
+  "paid_api_requests": 0,
+  "actual_usage": null,
+  "actual_monetary_cost": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "prompt_sha256": "4812b31a0bb68a504dd214c0c178ae0841d697930e967a3e0bbf7860a78b7e8c",
+  "prompt_bytes": 5321,
+  "raw_path": "docs/quality/model-runs/membership-003-response.txt",
+  "raw_sha256": "0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb",
+  "raw_bytes": 2555,
+  "raw_capture": "UI Copy clipboard text, byte-preserved; not provider transport bytes",
+  "source_validation": "passed_6_records_2_bound_envelopes",
+  "typed_contract_validation": "passed",
+  "candidate_counts": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 0
+  },
+  "explicit_no_candidate_messages": [
+    {
+      "message_id": "N01-m03",
+      "candidates_observed": 0
+    },
+    {
+      "message_id": "N01-m04",
+      "candidates_observed": 0
+    }
+  ],
+  "semantic_fields_repaired": false,
+  "human_behavior_review": "H4-BEHAVIOR-001; partial quoted/planned review only",
+  "corpus_gold": false,
+  "holdout": "new_development_families_authored_and_exposed_to_preparing_agent_not_sealed",
+  "domain_application": "not_run; controlled no-mutation guards and explicit per-candidate diagnostic only",
+  "canonical_mutations": 0,
+  "guard_probe": {
+    "fixture_only": true,
+    "results": [
+      {
+        "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+        "fixture_question": {
+          "question_id": "Q_STORE",
+          "option_revision": 2,
+          "options": {
+            "A": "D_SQLITE",
+            "B": "D_POSTGRES"
+          }
+        },
+        "whole_batch_proposal": {
+          "status": "unmatched_or_ambiguous",
+          "canonical_mutations": 0
+        },
+        "per_candidate_diagnostics": [
+          {
+            "message_id": "N01-m01",
+            "proposal": {
+              "status": "unmatched_or_stale",
+              "canonical_mutations": 0
+            },
+            "projection_unchanged": true
+          },
+          {
+            "message_id": "N01-m02",
+            "proposal": {
+              "status": "pending_trusted_selection",
+              "project_id": "prj_storage_review",
+              "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+              "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+              "source_session": "N01",
+              "message_id": "N01-m02",
+              "question_id": "Q_STORE",
+              "option_revision": 2,
+              "option": "A",
+              "base_revision": 2,
+              "canonical_mutations": 0,
+              "proposal_digest": "0b86b8596a2ab48a732d3770c6503fedb7350117e84caac7129452f829018cb7"
+            },
+            "projection_unchanged": true
+          }
+        ],
+        "projection_unchanged": true,
+        "canonical_mutations": 0,
+        "limitation": "Explicit response subset with original source/request/candidate fields; diagnostic only, not production reconciliation or authentication"
+      },
+      {
+        "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+        "fixture_question": {
+          "question_id": "Q_UI",
+          "option_revision": 1,
+          "options": {
+            "A": "board",
+            "B": "timeline"
+          }
+        },
+        "whole_batch_proposal": {
+          "status": "unmatched_or_ambiguous",
+          "canonical_mutations": 0
+        },
+        "per_candidate_diagnostics": [
+          {
+            "message_id": "N02-m01",
+            "proposal": {
+              "status": "pending_trusted_selection",
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "source_session": "N02",
+              "message_id": "N02-m01",
+              "question_id": "Q_UI",
+              "option_revision": 1,
+              "option": "B",
+              "base_revision": 2,
+              "canonical_mutations": 0,
+              "proposal_digest": "d7bcfbf089b40b45dd3e75699140e5ed23e426b9b0239f53c95ca4c7bd24f32f"
+            },
+            "projection_unchanged": true
+          },
+          {
+            "message_id": "N02-m04",
+            "proposal": {
+              "status": "unmatched_or_stale",
+              "canonical_mutations": 0
+            },
+            "projection_unchanged": true
+          }
+        ],
+        "projection_unchanged": true,
+        "canonical_mutations": 0,
+        "limitation": "Explicit response subset with original source/request/candidate fields; diagnostic only, not production reconciliation or authentication"
+      }
+    ]
+  },
+  "audit": {
+    "format": "decivora-membership-import-1",
+    "raw_sha256": "d38c3b40cb11991ebc74ec3e4f718f57282d614e1612b8341f5b46cce32d4a55",
+    "status": "source_validated",
+    "missing": [],
+    "derived": [
+      {
+        "policy": "unique-exact-quote-1",
+        "input_mode": "quote_only",
+        "contract_id": "e49685509e21319b76893b107177033b32085fd6ef56f2f7667141ab562445f9",
+        "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+        "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+        "raw_sha256": "95516384aba1c30ed2741e510fa3c436a8ff70f0d20d83f3e30ada22762b95a0",
+        "derived_sha256": "03a25039896378bba5de9341609fd0dfa545741c231fa0f615ab249a76b55fb3",
+        "changes": [
+          {
+            "record_index": 0,
+            "previous_span": null,
+            "span": [
+              0,
+              59
+            ]
+          },
+          {
+            "record_index": 1,
+            "previous_span": null,
+            "span": [
+              0,
+              51
+            ]
+          }
+        ],
+        "response": {
+          "format": "decivora-candidates-1",
+          "records": [
+            {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_STORE"
+              },
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "N01-m01",
+              "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.",
+              "start": 0,
+              "end": 59
+            },
+            {
+              "attributes": {
+                "option_id": "A",
+                "presentation_revision": 2,
+                "question_id": "Q_STORE"
+              },
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "N01-m02",
+              "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam.",
+              "start": 0,
+              "end": 51
+            }
+          ],
+          "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+          "status": "ok"
+        },
+        "validation": {
+          "status": "ok",
+          "records": [
+            {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_STORE"
+              },
+              "end": 59,
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "N01-m01",
+              "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.",
+              "start": 0,
+              "project_id": "prj_storage_review",
+              "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+              "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "option_id": "A",
+                "presentation_revision": 2,
+                "question_id": "Q_STORE"
+              },
+              "end": 51,
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "N01-m02",
+              "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam.",
+              "start": 0,
+              "project_id": "prj_storage_review",
+              "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+              "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+              "lifecycle": "candidate"
+            }
+          ],
+          "coverage": "model_reported",
+          "canonical_mutations": 0
+        },
+        "canonical_mutations": 0,
+        "model_calls": 0
+      },
+      {
+        "policy": "unique-exact-quote-1",
+        "input_mode": "quote_only",
+        "contract_id": "c539f0cb44a443aa6033567613da377abe6947bff7feb7ccc1c95a29a96e097a",
+        "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+        "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+        "raw_sha256": "9a786ebb9f96419403225e1c0eab16f318cfd9be87a4d16e502e63b3cced8d6d",
+        "derived_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+        "changes": [
+          {
+            "record_index": 0,
+            "previous_span": null,
+            "span": [
+              0,
+              46
+            ]
+          },
+          {
+            "record_index": 1,
+            "previous_span": null,
+            "span": [
+              0,
+              27
+            ]
+          },
+          {
+            "record_index": 2,
+            "previous_span": null,
+            "span": [
+              0,
+              42
+            ]
+          },
+          {
+            "record_index": 3,
+            "previous_span": null,
+            "span": [
+              0,
+              2
+            ]
+          }
+        ],
+        "response": {
+          "format": "decivora-candidates-1",
+          "records": [
+            {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_UI"
+              },
+              "entity_key": "Q_UI",
+              "kind": "AnswerRecord",
+              "message_id": "N02-m01",
+              "quote": "For Q_UI revision 1, my answer is B: timeline.",
+              "start": 0,
+              "end": 46
+            },
+            {
+              "attributes": {
+                "claim_type": "upload"
+              },
+              "entity_key": "file_upload",
+              "kind": "ImplementationClaim",
+              "message_id": "N02-m02",
+              "quote": "The file has been uploaded.",
+              "start": 0,
+              "end": 27
+            },
+            {
+              "attributes": {
+                "criterion_id": "AC_SMOKE",
+                "criterion_revision": 2,
+                "result": "not_run"
+              },
+              "entity_key": "AC_SMOKE",
+              "kind": "Evidence",
+              "message_id": "N02-m03",
+              "quote": "AC_SMOKE revision 2: the test was not run.",
+              "start": 0,
+              "end": 42
+            },
+            {
+              "attributes": {},
+              "entity_key": "unassociated_answer_N02-m04",
+              "kind": "AnswerRecord",
+              "message_id": "N02-m04",
+              "quote": "B.",
+              "start": 0,
+              "end": 2
+            }
+          ],
+          "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+          "status": "ok"
+        },
+        "validation": {
+          "status": "ok",
+          "records": [
+            {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_UI"
+              },
+              "end": 46,
+              "entity_key": "Q_UI",
+              "kind": "AnswerRecord",
+              "message_id": "N02-m01",
+              "quote": "For Q_UI revision 1, my answer is B: timeline.",
+              "start": 0,
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "claim_type": "upload"
+              },
+              "end": 27,
+              "entity_key": "file_upload",
+              "kind": "ImplementationClaim",
+              "message_id": "N02-m02",
+              "quote": "The file has been uploaded.",
+              "start": 0,
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "criterion_id": "AC_SMOKE",
+                "criterion_revision": 2,
+                "result": "not_run"
+              },
+              "end": 42,
+              "entity_key": "AC_SMOKE",
+              "kind": "Evidence",
+              "message_id": "N02-m03",
+              "quote": "AC_SMOKE revision 2: the test was not run.",
+              "start": 0,
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {},
+              "end": 2,
+              "entity_key": "unassociated_answer_N02-m04",
+              "kind": "AnswerRecord",
+              "message_id": "N02-m04",
+              "quote": "B.",
+              "start": 0,
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "lifecycle": "candidate"
+            }
+          ],
+          "coverage": "model_reported",
+          "canonical_mutations": 0
+        },
+        "canonical_mutations": 0,
+        "model_calls": 0
+      }
+    ],
+    "canonical_mutations": 0,
+    "model_calls": 0,
+    "usage": null,
+    "semantic_accuracy": "not_scored",
+    "response_origin": "caller_imported_unverified",
+    "typed_contract_id": "bd416736dc3419d8ba166545e0fa22683845be0bcafce889c381547b5b6aece7",
+    "typed_raw_sha256": "0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb",
+    "semantic_fields_repaired": false
+  },
+  "candidate_score": {
+    "status": "scored",
+    "scores": [
+      {
+        "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+        "score": {
+          "format": "decivora-candidate-score-1",
+          "review_status": "authored_draft",
+          "status": "evaluated",
+          "true_positive": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "scored_fields": [
+            "attributes",
+            "kind",
+            "message_id",
+            "quote"
+          ],
+          "canonical_mutations": 0,
+          "unscored": [
+            "entity_identity",
+            "canonical_state",
+            "authority",
+            "relations",
+            "impact",
+            "target_verification",
+            "acceptance_criteria"
+          ],
+          "missing": [],
+          "extra": []
+        }
+      },
+      {
+        "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+        "score": {
+          "format": "decivora-candidate-score-1",
+          "review_status": "authored_draft",
+          "status": "evaluated",
+          "true_positive": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "scored_fields": [
+            "attributes",
+            "kind",
+            "message_id",
+            "quote"
+          ],
+          "canonical_mutations": 0,
+          "unscored": [
+            "entity_identity",
+            "canonical_state",
+            "authority",
+            "relations",
+            "impact",
+            "target_verification",
+            "acceptance_criteria"
+          ],
+          "missing": [],
+          "extra": []
+        }
+      }
+    ],
+    "corpus_gold": false,
+    "canonical_domain": "unscored",
+    "limitation": "partial human behavior review does not approve exact candidate labels"
+  },
+  "limitations": [
+    "One new UI trial/eight synthetic messages; six authored draft candidates and two scope-no-candidate messages",
+    "Human H4 review does not approve every exact candidate tuple",
+    "Provisional entity_key uniqueness/identity is not scored; repeated Q_STORE keys require proper production entity matching",
+    "Full batch with multiple answers is blocked by current one-answer bridge; per-candidate diagnostic is not implemented production reconciliation",
+    "No real target/AC/tenant IAM/native/cost/latency comparison"
+  ],
+  "semantic_suite_tests_passed": 93,
+  "code_sha256": {
+    "spikes/semantic-chain/membership_typed.py": "7438ed62b4ac702eb8d0fa2711eccb68844bd40c20e9ca88ae56ec0a129445a8",
+    "spikes/semantic-chain/anchors.py": "558abf7fb516354f7f1f1d3abc090fee6c7bc5159aca0d84438b6eb7ab5ca72f",
+    "spikes/semantic-chain/candidate_eval.py": "dfacb783750549fe4e6a194f547e3f81bf1a31e3e73d9cbaa62b06022b26cb4d",
+    "spikes/semantic-chain/bridge.py": "7b882b27d5608475176b8d902969116759ea74591f9875e139b34bf370e6d04d",
+    "spikes/semantic-chain/test_membership_typed.py": "73fe5b5ab41d2d0325880bdd974368064295334238ea849983534da4c5a0b7ba"
+  },
+  "input_sha256": {
+    "examples/adversarial-smoke/requests.json": "de376ba51e94fe22d823549cb2ce2e9f7c444039810842df2a0180a269a306ae",
+    "examples/adversarial-smoke/candidate-rubrics.json": "2c0a2033bcbf86eb5754ac7f8e90c88199c36c34467d71feca60bf6df8562276",
+    "examples/adversarial-smoke/prompt.txt": "4812b31a0bb68a504dd214c0c178ae0841d697930e967a3e0bbf7860a78b7e8c",
+    "examples/adversarial-smoke/plan.json": "585bfd113b6896b61f63505a0704fe4c35a1765a4dab63dc2eca42fc11154a5f",
+    "docs/quality/reviews/h4-behavior.json": "049be990843ad8884643d4bad3fb11f1324ef447970fcebfdf4a42801b8f0765"
+  },
+  "provider_internal_requests_known": false
+}

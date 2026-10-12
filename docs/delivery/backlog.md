@@ -58,8 +58,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
-- **Son ilerleme:** 2026-10-12 · T01h iki yeni development family/sekiz source mesaj ve ayrı6 candidate +2 scope-no-candidate draft beklentisi hazır DONE. Source/prompt/contract/hash consistency geçti; [paket](../../examples/adversarial-smoke/README.md) gönderilmedi, sealed holdout/gold değil. H4 quoted/planned review pending; H1/H2/H3 onayları korunur.
-- **Sıradaki adım:** H4 yeni quoted/planned beklentisini insanla incele; paketin exact source/prompt bağlı tek-send sınırıyla gerçek çıktı ölçümü için yeni onay. Tam exact etiket/adjudication/gold ve mühürlü family kapıları açık; mevcut corpus'un30 anlamlı kayıt koşulu korunur.
+- **Son ilerleme:** 2026-10-12 · Kullanıcı H4 quoted/planned davranışına1-EVET dedi; [hash bağlı review](../quality/reviews/h4-behavior.json) partial case olarak kaydedildi, T01i DONE. Yeni ailede tek model run'ı6 draft candidate/2 scope-no-candidate beklentisiyle eşleşti; corpus/exact gold veya sealed holdout değil, source/rubric değişmedi.
+- **Sıradaki adım:** Tam exact label/ikinci review/adjudication ve gerçekten ayrılmış yeni sealed-family kapıları açık; H1–H4 partial behavior tekrar sorulmaz. Yeni inference izni tüketildi; mevcut30 anlamlı kayıt koşulu korunur.
 
 
 ### İlk üç davranış incelemesi kapanışı
@@ -68,6 +68,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 |---|---|---|
 | T01g / — | DONE / P0: H1/H2/H3 ilk davranış incelemesi | Üç açık insan yanıtı, soru/açıklama/kapsam ve source/oracle hash bağlı ayrı review kayıtları mevcut; [kuyruk](../quality/human-review-queue.md). Exact candidate etiketleri, tam oracle/adjudication/gold/holdout bu kapanışın dışında |
 | T01h / T01g | DONE / P0: iki yeni development family ve ayrı kaynak/rubric paket | Sekiz sentetik mesaj/iki proje; eski-güncel soru revision,quoted/planned,EN claim/not_run/ambiguous; hash/source/schema consistency ve5 harness testi; [paket](../../examples/adversarial-smoke/README.md). İnsan exact gold/holdout/gerçek inference değil |
+| T01i / T01h | DONE / P0: H4 quoted/planned partial insan review | Kullanıcı1-EVET, source/rubric hash ve explicit kapsam [review kaydında](../quality/reviews/h4-behavior.json); tam6label/gold/holdout veya dispatch yetkisi değil |
 
 ## T02 — İki coding yüzeyinde capability spike
 
@@ -91,8 +92,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 - **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
 - **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
-- **Son ilerleme:** 2026-10-12 · T03p aynı iki request/dört mesaj üzerinde source-only lexical ve kayıtlı MEMBERSHIP-002 shared-field karşılaştırması DONE. Model4TP/0FP/0FN, lexical0TP/1FP/4FN; baseline AnswerRecord/Evidence capability farkı görünür.91 semantik test; yeni model0. [Tanı/kanıt](../quality/same-source-comparison.md).
-- **Sıradaki adım:** Hazır yeni8-message paketi H4 review ve yeni tek-send onayından sonra ölç; ardından aynı bilgiyle resume/dosya/native kıyası. Dar tür/kapsam farkını genel üstünlük veya token tasarrufu diye sunma; native/domain/ekonomi ve T03c yatırım/stack gate açık.
+- **Son ilerleme:** 2026-10-12 · T03q onaylı MEMBERSHIP-003 tek gerçek output/ölçüm DONE:6 draft aday eşleşti, quoted/planned aday0, old/current revisions veENnot_run korundu.93 semantik test. Whole-batch iki cevapta güvenli blok; explicit per-candidate fixture tanısı stale/current ayrımını no-mutation gösterdi. [Rapor](../quality/membership-003-result.md); R22 reconciliation sınırı görünür.
+- **Sıradaki adım:** R22 için mesaj/soru/revision bazında read-only ayrı öneri toplama sözleşmesi ve stale/ambiguity negatifleri; sonra aynı bilgiyle resume/dosya/native kıyası. Yeni model izni tüketildi; paid API kapalı. Production IAM/criterion revision/lineage, insan gold ve T03c yatırım/stack açık.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -111,6 +112,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | T03n / T03m | DONE / P0: onaylı MEMBERSHIP-002 gerçek typed çıktı ve ölçüm | Tek gönderim, dört authored_draft aday eşleşti, source/type/hash pass; iki ayrı guard no-mutation ve iki yeni regresyon testi, 80 suite passed; [run](../quality/membership-002-result.md). Human gold/production/domain doğruluğu kapsam dışı |
 | T03o / T03n | DONE / P0: gerçek kayıtlı candidate → controlled karar/impact/hedef/AC/restore replay | Kendi request/source kimliği, bağımsız fixture receipt ve13 authored checkpoint; 6 negatif/pozitif test, 86 suite passed; [rapor](../quality/membership-chain-replay.md). Yeni inference/production IAM/remote uygulama/human gold değil |
 | T03p / T03o | DONE / P0: aynı source'ta lexical ve saved-model dar ölçüm | Dört mesaj/iki request, shared span/kind skorları, source-only extraction ve capability farkı kaydı;5 yeni harness testi/91 suite passed; [rapor](../quality/same-source-comparison.md). Genel/native/domain/para üstünlük değil |
+| T03q / T03p,T01h | DONE / P0: yeni8-message MEMBERSHIP-003 gerçek typed output ve ölçüm | Tek onaylı send/retry0,6 draft aday/2 scope-no-candidate,source/hash/type pass; whole-batch ve per-candidate no-mutation guard/93suite; [sonuç](../quality/membership-003-result.md). Çok-aday production reconcile/human gold/native/cost gate değil |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

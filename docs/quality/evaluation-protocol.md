@@ -4,7 +4,7 @@
 
 ## Net olan, eksik olan
 
-**Güncel uygulama kapsamı:** [13 controlled state checkpoint replay](membership-chain-replay.md) ve [aynı dört kaynakta lexical/kayıtlı-model shared-field kıyası](same-source-comparison.md) çalıştı. Aşağıdaki geniş skor/telemetry/UI/istatistik sözleşmesinin tamamı uygulanmış değildir; aynı development kaynakları, authored_draft, production/human gold/holdout/ekonomi gate açık. Yeni8-message paket hazırlanmış ama gönderilmemiştir.
+**Güncel uygulama kapsamı:** [13 controlled state checkpoint replay](membership-chain-replay.md) ve [aynı dört kaynakta lexical/kayıtlı-model shared-field kıyası](same-source-comparison.md) çalıştı. Aşağıdaki geniş skor/telemetry/UI/istatistik sözleşmesinin tamamı uygulanmış değildir; aynı development kaynakları, authored_draft, production/human gold/holdout/ekonomi gate açık. Yeni8-message [MEMBERSHIP-003](membership-003-result.md) tek gönderimde çalıştı;6 draft aday/2scope-no-candidate eşleşti. H4 partial review tam gold değildir; çok-aday reconciliation için R22 açık.
 
 | Alan | Mevcut netlik | Kalan somut iş |
 |---|---|---|

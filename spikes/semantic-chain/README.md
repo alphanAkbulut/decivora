@@ -83,3 +83,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Same-source tanısı ve yeni paket — T03p/T01h DONE
 
 `python3 -B spikes/semantic-chain/compare_membership.py` aynı dört source üzerinde lexical/saved-model shared span/kind skorlarını üretir; [scope/kanıt](../../docs/quality/same-source-comparison.md). Attribute/domain/native/latency/cost değil; source-only baseline, old raw değişmez.91 suite/5 yeni test. [Yeni8-message paket](../../examples/adversarial-smoke/README.md) no-dispatch5321byte, authored_draft, H4 review ve yeni tek-send izin pending; API/model çağrısı yapılmadı.
+
+## Yeni family gerçek run — T03q/T01i DONE
+
+[MEMBERSHIP-003](../../docs/quality/membership-003-result.md): tek yeni onaylı UI send,6 draft aday/2scope-no-candidate; H4 partial review, raw değişmedi.93 semantic test, iki yeni raw/guard regression. Whole-batch ikiAnswerRecord güvenli bloke; ayrı response-subset tanısı current/stale ayrımını no-mutation gösterir, production reconcile değil. R22 read-only proposal koleksiyonu sıradadır; yeni canlı izin tüketildi.

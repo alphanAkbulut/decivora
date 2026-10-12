@@ -21,6 +21,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 |---|---|---|---|
 | T01g | T01 | DONE | DONE / P0: H1/H2/H3 ilk davranış incelemesi |
 | T01h | T01 | DONE | DONE / P0: iki yeni development family ve ayrı kaynak/rubric paket |
+| T01i | T01 | DONE | DONE / P0: H4 quoted/planned partial insan review |
 | T03g | T03 | DONE | DONE / P0: bounded quote adapter ve ayrı candidate rubric |
 | T03h | T03 | DONE | DONE / P0: gönderimsiz API paket ve saved response import |
 | T03i | T03 | DONE | DONE / P0: tek selected local file observer |
@@ -31,6 +32,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03n | T03 | DONE | DONE / P0: onaylı MEMBERSHIP-002 gerçek typed çıktı ve ölçüm |
 | T03o | T03 | DONE | DONE / P0: gerçek kayıtlı candidate → controlled karar/impact/hedef/AC/restore replay |
 | T03p | T03 | DONE | DONE / P0: aynı source'ta lexical ve saved-model dar ölçüm |
+| T03q | T03 | DONE | DONE / P0: yeni8-message MEMBERSHIP-003 gerçek typed output ve ölçüm |
 
 ## Açık fazda neler değişti?
 
@@ -38,7 +40,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 ### T01 · Golden corpus ve karşılaştırma protokolü
 
-2026-10-12 · T01h iki yeni development family/sekiz source mesaj ve ayrı6 candidate +2 scope-no-candidate draft beklentisi hazır DONE. Source/prompt/contract/hash consistency geçti; [paket](../../examples/adversarial-smoke/README.md) gönderilmedi, sealed holdout/gold değil. H4 quoted/planned review pending; H1/H2/H3 onayları korunur.
+2026-10-12 · Kullanıcı H4 quoted/planned davranışına1-EVET dedi; [hash bağlı review](../quality/reviews/h4-behavior.json) partial case olarak kaydedildi, T01i DONE. Yeni ailede tek model run'ı6 draft candidate/2 scope-no-candidate beklentisiyle eşleşti; corpus/exact gold veya sealed holdout değil, source/rubric değişmedi.
 
 **Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
 
@@ -46,7 +48,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: H4 yeni quoted/planned beklentisini insanla incele; paketin exact source/prompt bağlı tek-send sınırıyla gerçek çıktı ölçümü için yeni onay. Tam exact etiket/adjudication/gold ve mühürlü family kapıları açık; mevcut corpus'un30 anlamlı kayıt koşulu korunur.
+Sıradaki adım: Tam exact label/ikinci review/adjudication ve gerçekten ayrılmış yeni sealed-family kapıları açık; H1–H4 partial behavior tekrar sorulmaz. Yeni inference izni tüketildi; mevcut30 anlamlı kayıt koşulu korunur.
 
 ### T02 · İki coding yüzeyinde capability spike
 
@@ -62,7 +64,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · T03p aynı iki request/dört mesaj üzerinde source-only lexical ve kayıtlı MEMBERSHIP-002 shared-field karşılaştırması DONE. Model4TP/0FP/0FN, lexical0TP/1FP/4FN; baseline AnswerRecord/Evidence capability farkı görünür.91 semantik test; yeni model0. [Tanı/kanıt](../quality/same-source-comparison.md).
+2026-10-12 · T03q onaylı MEMBERSHIP-003 tek gerçek output/ölçüm DONE:6 draft aday eşleşti, quoted/planned aday0, old/current revisions veENnot_run korundu.93 semantik test. Whole-batch iki cevapta güvenli blok; explicit per-candidate fixture tanısı stale/current ayrımını no-mutation gösterdi. [Rapor](../quality/membership-003-result.md); R22 reconciliation sınırı görünür.
 
 **Aktif teknik risk:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 
@@ -70,7 +72,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
 
-Sıradaki adım: Hazır yeni8-message paketi H4 review ve yeni tek-send onayından sonra ölç; ardından aynı bilgiyle resume/dosya/native kıyası. Dar tür/kapsam farkını genel üstünlük veya token tasarrufu diye sunma; native/domain/ekonomi ve T03c yatırım/stack gate açık.
+Sıradaki adım: R22 için mesaj/soru/revision bazında read-only ayrı öneri toplama sözleşmesi ve stale/ambiguity negatifleri; sonra aynı bilgiyle resume/dosya/native kıyası. Yeni model izni tüketildi; paid API kapalı. Production IAM/criterion revision/lineage, insan gold ve T03c yatırım/stack açık.
 
 
 ## Mevcut teslim parçaları
@@ -95,15 +97,16 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Gerçek üyelik run kaydı ve typed v2 / T03l,T03m DONE** — Bir gerçek output: source doğrulaması passed, candidate gate incomplete; alias/tür sorunu ayrı açık v2 contract ile sınırlandı; [78 semantik test ve run kanıtı](../quality/membership-001-result.md); v2 dispatch 0, primary skor/gold/production gate korunur
 - **Gerçek typed v2 ölçümü / T03n DONE** — Tek yeni model output; dört draft aday eşleşti, source/type pass; isolated guards mutation 0; [80 semantik test ve ilk çıktı](../quality/membership-002-result.md); yeni send izni tüketildi, insan gold/production kalite değil
 - **Kayıtlı gerçek aday zincir replay / T03o DONE** — V2 raw/source→ayrı receipt→AND/OR impact→eski/güncel içerik→partial/full AC→restore; [13 kontrollü checkpoint,86 semantik/6 yeni test](../quality/membership-chain-replay.md); yeni model/egress0; üretim IAM/criterion revision/lineage değil
-- **Yeni development aileleri / T01h DONE** — Sekiz synthetic mesaj/iki source-only request, ayrı draft rubric/manifest/5321-byte prompt; [Hazır paket](../../examples/adversarial-smoke/README.md); source/hash/schema testleri; H4 review/model send pending, sealed holdout değil
+- **Yeni development aileleri / T01h DONE** — Sekiz synthetic mesaj/iki source-only request, ayrı draft rubric/manifest/5321-byte prompt; [Hazır paket](../../examples/adversarial-smoke/README.md); source/hash/schema testleri; hazırlık tarihsel; H4 partial review ve MEMBERSHIP-003 gerçekleşti, sealed holdout/gold değil
 - **Same-source kıyas / T03p DONE** — Aynı dört mesajda lexical ve saved-model shared span/kind skorları; capability farkı açık; [91 semantik test/5 yeni harness testi](../quality/same-source-comparison.md); yeni model0, native/domain/ekonomi kıyası değil
+- **Yeni aile gerçek ölçümü ve H4 review / T03q,T01i DONE** — Onaylı tek çıktı6 draft aday/2 scope-no-candidate; source/type ve partial behavior review hash bağlı; [93 test/guard sonuçları](../quality/membership-003-result.md); whole-batch çok-aday blok, production reconciliation açık, izin tüketildi
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Geçerli gerçek model output’u ve bağımsız ölçüm | MEMBERSHIP-002 source/typed/dört draft aday geçti; exact insan gold ve kör yeni aile ölçümü yok | [V2 run](../quality/membership-002-result.md): ayrı fixture guard, canonical mutation 0; recorded-output zincir13 checkpoint ve same-source kıyas çalıştı; yeni aile paketi hazır/H4 review ve tek-send onayı pending. Usage/hard cap unknown |
+| Geçerli gerçek model output’u ve bağımsız ölçüm | MEMBERSHIP-003 yeni8mesajda6 draft aday ve2scope-no-candidate geçti; H4 partial review, tamgold/holdout yok | [Yeni run](../quality/membership-003-result.md): çok-aday whole-batch blocked; ayrı tanı source/revision no-mutation, R22 proposal toplama ve native kıyas açık; usage/hard cap unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1](../quality/reviews/h1-behavior.json) / [H2](../quality/reviews/h2-behavior.json) / [H3](../quality/reviews/h3-behavior.json) behavior review tamamlandı (T01g DONE); exact etiketler ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -113,9 +116,9 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 | ID | Faz | Durum | İş | Plan ön koşulu | Alt dilim |
 |---|---|---|---|---|---|
-| T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 4 |
+| T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 14 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 15 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -152,4 +155,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `9b449c473390f03d4dc4d9c20d48ff066e09858534ac3c065ddb94184bbd233a`
+Kaynak fingerprint: `1d4ab263bc8ce33028efd2b7dfd313475f05729e1450054d9cff0fe105f3c82e`

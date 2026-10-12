@@ -1,0 +1,42 @@
+{
+  "format": "decivora-human-behavior-review-1",
+  "review_id": "H4-BEHAVIOR-001",
+  "question_id": "Q-H4-QUOTED-PLANNED",
+  "revision": 1,
+  "date": "2026-10-12",
+  "reviewer": {
+    "identity": "project_owner_current_chat",
+    "role": "product_owner",
+    "provenance": "explicit numbered user reply in current Codex chat; not production IAM"
+  },
+  "question": "Örnek olarak alıntılanmış bir karar gerçek seçim; “yarın yükleyeceğim” ise gerçekleşmiş yükleme sayılmasın. Kaynak korunsun; gelecek planı tam üründe görev olabilir. Bu beklenen davranış doğru mu?",
+  "answer": "1- EVET",
+  "full_user_reply": "1- EVET\n2-EVET",
+  "status": "approved_behavior_partial_case_review",
+  "bindings": {
+    "source_path": "examples/adversarial-smoke/requests.json",
+    "source_sha256": "de376ba51e94fe22d823549cb2ce2e9f7c444039810842df2a0180a269a306ae",
+    "source_message_ids": [
+      "N01-m03",
+      "N01-m04"
+    ],
+    "oracle_path": "examples/adversarial-smoke/candidate-rubrics.json",
+    "oracle_sha256": "2c0a2033bcbf86eb5754ac7f8e90c88199c36c34467d71feca60bf6df8562276"
+  },
+  "approved_scope": [
+    "Quoted example with explicit non-selection is not an actual choice",
+    "Future upload plan is not a completed upload claim",
+    "Preserve source; full product may capture the future plan as Task/Instruction"
+  ],
+  "not_reviewed": [
+    "all six exact candidate kinds/quotes/attributes",
+    "remaining new-family or original-corpus labels",
+    "production implementation",
+    "second reviewer/adjudication",
+    "sealed holdout"
+  ],
+  "corpus_gold": false,
+  "oracle_modified": false,
+  "model_dispatch_authorized": false,
+  "paid_api_authorized": false
+}

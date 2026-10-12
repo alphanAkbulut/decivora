@@ -78,6 +78,53 @@ class TestTypedMembership(unittest.TestCase):
         self.assertFalse(result['semantic_fields_repaired'])
         self.assertEqual(result['canonical_mutations'],0)
 
+    def test_saved_new_family_output_keeps_revision_negation_and_not_run(self):
+        from membership_batch import score_batch
+        requests=json.loads((ROOT/'examples/adversarial-smoke/requests.json').read_text())
+        raw=(ROOT/'docs/quality/model-runs/membership-003-response.txt').read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),
+            '0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb')
+        derived=derive_typed(requests,raw.decode('utf-8'))
+        score=score_batch(requests,derived,json.loads((ROOT/'examples/adversarial-smoke/candidate-rubrics.json').read_text()))
+        self.assertEqual([r['score']['true_positive'] for r in score['scores']],[2,4])
+        self.assertTrue(all(r['score']['false_positive']==r['score']['false_negative']==0 for r in score['scores']))
+        records=[r for d in derived['derived'] for r in d['response']['records']]
+        self.assertFalse({'N01-m03','N01-m04'}&{r['message_id'] for r in records})
+        self.assertEqual(next(r for r in records if r['message_id']=='N02-m03')['attributes']['result'],'not_run')
+        self.assertFalse(score['corpus_gold'])
+        self.assertFalse(derived['semantic_fields_repaired'])
+        self.assertEqual(derived['canonical_mutations'],0)
+
+    def test_new_family_batch_is_blocked_and_explicit_subsets_remain_candidate_only(self):
+        import sys
+        import tempfile
+        sys.path.insert(0,str(ROOT/'spikes/decision-chain'))
+        from chain import Chain
+        from bridge import propose
+        requests=json.loads((ROOT/'examples/adversarial-smoke/requests.json').read_text())
+        raw=(ROOT/'docs/quality/model-runs/membership-003-response.txt').read_text()
+        imported=derive_typed(requests,raw)
+        with tempfile.TemporaryDirectory() as tmp:
+            for i,(request,derived) in enumerate(zip(requests,imported['derived'])):
+                chain=Chain(Path(tmp)/f'{i}.db')
+                try:
+                    q=dict(question_id='Q_STORE',option_revision=2,options={'A':'D_SQLITE','B':'D_POSTGRES'}) if i==0 else dict(question_id='Q_UI',option_revision=1,options={'A':'board','B':'timeline'})
+                    chain.dispatch('seed',dict(decision='unchanged',active=[],tasks={},criteria=[]),'human',0,'seed')
+                    chain.dispatch('ask',q,'human',1,'ask')
+                    before=chain.snapshot();response=derived['response']
+                    self.assertEqual(propose(chain,request,canonical(response))['status'],'unmatched_or_ambiguous')
+                    statuses=[]
+                    for record in response['records']:
+                        if record['kind']=='AnswerRecord':
+                            # Explicit diagnostic projection, not a repaired raw or production matcher.
+                            proposal=propose(chain,request,canonical(dict(response,records=[record])))
+                            statuses.append(proposal['status'])
+                            self.assertEqual(proposal['canonical_mutations'],0)
+                    self.assertEqual(statuses,[['unmatched_or_stale','pending_trusted_selection'],
+                        ['pending_trusted_selection','unmatched_or_stale']][i])
+                    self.assertEqual(chain.snapshot(),before)
+                finally:chain.close()
+
     def test_saved_v2_proposals_cannot_apply_selection_or_verify_claims(self):
         import sys
         import tempfile

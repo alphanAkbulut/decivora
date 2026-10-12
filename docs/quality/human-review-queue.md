@@ -52,7 +52,7 @@ N01-m03: “Q_STORE revision 2 için B, PostgreSQL ile devam” yalnız örnek a
 
 **Sorulacak davranış incelemesi:** Alıntı gerçek karar seçimi, gelecek planı gerçekleşmiş upload claim olmasın; source saklansın. Tam üründe gelecekteki plan ayrıca Task/Instruction olabilir; bu üç-tür pilotun boş adayını bütün bilgiyi silme/no-op saymayalım. Draft expectation bu iki mesaj için AnswerRecord/ImplementationClaim/Evidence adayı olmamasıdır.
 
-**Durum:** pending; insan yanıtı yok, kaynak modele gönderilmedi. Bu review bütün altı exact label'ı veya gold/holdout'u onaylamaz. H1/H2/H3 tekrar sorulmaz. Yeni üyelik model denemesinin onayı ayrı `MEMBERSHIP-003-PROPOSED` kapsamına aittir; H4 yanıtı tek başına dispatch yetkisi değildir.
+**Durum:** 2026-10-12 · Kullanıcı birinci soruya “1- EVET” dedi; [H4 review](reviews/h4-behavior.json) source/rubric hash'ine ve bu partial davranış kapsamına bağlı. İkinci “2-EVET” yanıtı ayrı tek-send yetkisi olarak kaydedildi, MEMBERSHIP-003 bir kez çalıştı ve [sonuç](membership-003-result.md) ölçüldü. H4 bütün altı exact label veya gold/holdout'u onaylamaz; rubric authored_draft korunur, H1/H2/H3 tekrar sorulmaz.
 
 ## Review kaydı ve sonraki kapsam
 
