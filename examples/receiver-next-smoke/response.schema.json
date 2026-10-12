@@ -1,0 +1,249 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "string",
+      "const": "decivora-receiver-review-2"
+    },
+    "request_id": {
+      "type": "string",
+      "const": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f"
+    },
+    "responses": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "enum": [
+                  "prj_storage_review",
+                  "prj_ui_review"
+                ]
+              },
+              "package_digest": {
+                "type": "string",
+                "enum": [
+                  "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+                  "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "const": "ok"
+              },
+              "readback": {
+                "type": "object",
+                "properties": {
+                  "question_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1
+                  },
+                  "question_revision": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 1
+                  },
+                  "question_state": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "resolved",
+                      "unknown"
+                    ]
+                  },
+                  "approved_real_decision": {
+                    "type": "boolean",
+                    "const": false
+                  },
+                  "task_verified": {
+                    "type": "boolean",
+                    "const": false
+                  },
+                  "upload_verification": {
+                    "type": "string",
+                    "enum": [
+                      "unknown",
+                      "reported_only"
+                    ]
+                  },
+                  "answer_states": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "message_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "conflicting_answers",
+                            "duplicate_candidate",
+                            "needs_clarification",
+                            "needs_question_context",
+                            "no_pending_question",
+                            "non_human_answer",
+                            "pending_trusted_selection",
+                            "stale_question_revision"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "message_id",
+                        "status"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 16
+                  },
+                  "reported_test_results": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "criterion_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "criterion_revision": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "result": {
+                          "type": "string",
+                          "enum": [
+                            "passed",
+                            "failed",
+                            "unknown",
+                            "not_run"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "criterion_id",
+                        "criterion_revision",
+                        "result"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 16
+                  }
+                },
+                "required": [
+                  "question_id",
+                  "question_revision",
+                  "question_state",
+                  "approved_real_decision",
+                  "task_verified",
+                  "upload_verification",
+                  "answer_states",
+                  "reported_test_results"
+                ],
+                "additionalProperties": false
+              },
+              "next_actions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "preserve_history",
+                        "request_clarification",
+                        "request_selection_confirmation",
+                        "request_target_verification",
+                        "request_test_execution_permission"
+                      ]
+                    },
+                    "message_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "question_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "message_id",
+                    "question_id"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 16
+              }
+            },
+            "required": [
+              "project_id",
+              "package_digest",
+              "status",
+              "readback",
+              "next_actions"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "enum": [
+                  "prj_storage_review",
+                  "prj_ui_review"
+                ]
+              },
+              "package_digest": {
+                "type": "string",
+                "enum": [
+                  "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+                  "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "const": "abstain"
+              },
+              "readback": {
+                "type": "null"
+              },
+              "next_actions": {
+                "type": "array",
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "project_id",
+              "package_digest",
+              "status",
+              "readback",
+              "next_actions"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "maxItems": 2
+    }
+  },
+  "required": [
+    "format",
+    "request_id",
+    "responses"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

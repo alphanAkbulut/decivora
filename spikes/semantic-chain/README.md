@@ -120,3 +120,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Q14-A bağımsız proje review — T03x DONE
 
 [`project_review.py` ve tekrar üretim](../../docs/quality/project-review.md), global source/identity/access fixture preflight ve ayrı per-project guard; valid diğer proje, technical/missing/abstain/ambiguous sonuçları, atomic-group bekleme ve stable clarification reply association. `check_project_review.py` saved JSON raporunu üretir.20 yeni/172 semantik test; eski raw/whole-output evaluator/proof'lar aynı, yeni model/API/mutation0. Descriptor/report kalıcı Inbox servisi değildir; gerçek UI/IAM/host capture/resume ve kalite gate açık.
+
+## Yeni machine-schema receiver hazırlığı — T03y DONE
+
+[`receiver_next.py` / RECEIVER-002 planı](../../docs/quality/receiver-next-plan.md), yeni identity/wire2/8089-byte source-only prompt; ortak typed machine schema, whole-message projection ve hermetik3file prepare. `check_receiver_next.py` scripted scorer-only kanıtı;20 yeni/192 semantik test. Model0/output0/paidAPI0/izin yok; golden/model/provider/runtime başarı değil. Oldraw/request/prompt/evaluator/proof değişmedi; v1 Q14wrapper ayrı kalır, format/ID rewrite yapılmaz.

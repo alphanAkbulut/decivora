@@ -69,3 +69,7 @@ Kullanıcı ayrı chat'i açıp Luna/Low deneyini yapmamızı ve önce model/rea
 ## İlk run tamamlandı — 2026-10-12
 
 [RECEIVER-001 actual sonuç](receiver-001-result.md): kullanıcı yeni local chat'i açıkça istedi, tek configured gpt-6-luna/low turn çalıştı. İlk raw1739byte syntax valid, schema invalid receiver abstention; scoresunscored/usageunknown, retry0/paidAPI0. İzin tüketildi. Frozen hazırlık request/prompt/oracle/manifest değişmedi; yukarıdaki hazırlık not_run/onaypending satırları tarihsel snapshot'tır. Native host/extra injected wrapper tarayıcı planından ayrıdır; summary yerine fullmessagecapture kullanıldı. Bu güncel sonuç model/gold/native/production kapısını kapatmaz.
+
+## Sonraki ayrı deney hazırlığı — 2026-10-13
+
+[RECEIVER-002](receiver-next-plan.md) yeni request/wire/machine schema ile8089byte hazır;20 yeni/192 semantik test, actualsend0/izin yok. Bu dosyanın7950-byte RECEIVER-001 hazırlığı ve ilkfailedrun kanıtı değişmez; eski prompt'a yeni schema sonradan eklenmiş sayılmaz.

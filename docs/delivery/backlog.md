@@ -92,8 +92,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 - **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
 - **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
-- **Son ilerleme:** 2026-10-13 · T03x DONE: Q14-A per-project review ve clarification association;20 yeni/172 semantik test, source/access/atomic/mixed/late/stale negatifleri. [Rapor](../quality/project-review.md). Caller fixture yetkisi, gerçek UI/IAM veya yeni model başarısı değildir.
-- **Sıradaki adım:** Ayrı request kimliğiyle daha açık per-record talimatı ve schema bağlı source-only receiver isteği hazırlayın. Eski raw/prompt/oracle/scorer aynı; yeni model/API izni yok. Durable Inbox/gerçek yetki/host resume/UI, native/gold/ROI ve T03c stack kapıları açık.
+- **Son ilerleme:** 2026-10-13 · T03y DONE: RECEIVER-002 ayrı kimlik/wire ve machine schema,8089-byte source-only prompt, bağımsız authored oracle/scorer;20 yeni/192 semantik test. [Plan](../quality/receiver-next-plan.md). Yeni actualsend0/modelquality not_run; önceki raw ve failure korunur.
+- **Sıradaki adım:** Hazır RECEIVER-002 önerisinin exact prompt/scope için yeni tek-run iznini al; yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review bağlama gerekiyorsa ayrı sürümlü local iş, v1 ID/format onarımı yok. Production/native/gold/ROI/T03c açık.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -125,6 +125,12 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
 |---|---|---|
 | T03x / T03w | DONE / P0: Q14-A bağımsız proje review ve açıklama cevabı descriptor |20 yeni/172 semantik test; valid diğer proje korunur, technical/missing/abstain/ambiguous görünür; global source/access/kimlik ret ve atomic-group birlikte bekleme; explicit late/stale/agent/source/idempotent association. [Rapor](../quality/project-review.md). Frozen raw/scorer unchanged, model/API/mutation0; durable Inbox/UI/IAM/host resume kapsam dışı |
+
+### T03 altında tamamlanan yeni deney hazırlığı
+
+| Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
+|---|---|---|
+| T03y / T03x | DONE / P0: yeni source-only receiver isteği ve ortak makine schema/scorer |20 yeni/192 semantik test;8 exactsource/6record,8089byte/8192tavan, hermetik3file preparation, typed/source/duplicate/abstention/no-overwrite. [Plan](../quality/receiver-next-plan.md). Actualsend0/izin yok, provider/model/gold/ROI kapısı açık; eski raw/prompt/scorer aynı |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

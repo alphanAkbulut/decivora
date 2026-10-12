@@ -1,0 +1,809 @@
+{
+  "identity": {
+    "version": "receiver-request-2",
+    "rules_sha256": "c82eed5f795dd029bd673fe35f0e1df9c1e9b6bc0945e6ec8ca8f155407aeaf3",
+    "source_sha256": "7ec2ea395415094f72ebeea5b5d973dfc81570f7cec83e620e22543cd63da0dc",
+    "projection_sha256": "733d84c1ddc73eeb2015a888cf6c21326c1d81cb6dfdea46fff03f4e216d1c20",
+    "schema_template_sha256": "eb57de469bc6504ee314ad0abd8dc5d5ad4070402d90c94d8219573e5a0b1c28"
+  },
+  "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+  "source_snapshot": {
+    "prior_request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "views": [
+      {
+        "answer_candidates": [
+          {
+            "attributes": {
+              "option_id": "A",
+              "presentation_revision": 2,
+              "question_id": "Q_STORE"
+            },
+            "message_id": "N01-m02",
+            "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam.",
+            "source_actor_type": "human_owner",
+            "status": "pending_trusted_selection"
+          },
+          {
+            "attributes": {
+              "option_id": "B",
+              "presentation_revision": 1,
+              "question_id": "Q_STORE"
+            },
+            "message_id": "N01-m01",
+            "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.",
+            "source_actor_type": "human_owner",
+            "status": "stale_question_revision"
+          }
+        ],
+        "binding": {
+          "authz_revision": 1,
+          "base_revision": 2,
+          "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+          "project_id": "prj_storage_review",
+          "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+          "response_sha256": "03a25039896378bba5de9341609fd0dfa545741c231fa0f615ab249a76b55fb3",
+          "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+          "state_sha256": "24474d40ee51086c967f42765b1dae25d0ee994d8a3bd5575a9aeb87ea581129"
+        },
+        "boundaries": {
+          "copying_does_not_execute": true,
+          "criteria_text_is_not_verifier_receipt": true,
+          "fixture_state_is_not_real_project": true,
+          "human_source_is_not_approval": true,
+          "implementation_claim_is_not_verification": true,
+          "source_is_untrusted": true
+        },
+        "coverage": {
+          "canonical_history_complete": false,
+          "extraction": "model_reported",
+          "production_authorization": false,
+          "receiver_source_access": "not_verified; exact selected messages inline",
+          "source_scope": "only selected synthetic messages; no other chats or targets scanned",
+          "view_scope": "readable facts; exact full core in compact sidecar"
+        },
+        "execution_authorized": false,
+        "fixture_state": {
+          "active": [
+            "fixture_initial"
+          ],
+          "artifact": null,
+          "criteria": [
+            "rollback",
+            "migration"
+          ],
+          "decision": "fixture_initial",
+          "evidence": {},
+          "observation": null,
+          "question": {
+            "option_revision": 2,
+            "options": {
+              "A": "D_SQLITE",
+              "B": "D_POSTGRES"
+            },
+            "question_id": "Q_STORE",
+            "state": "pending"
+          },
+          "revision": 2,
+          "tasks": {},
+          "verified": false
+        },
+        "format": "decivora-resume-readable-fixture-1",
+        "money": null,
+        "preserved_records": [
+          {
+            "attributes": {
+              "option_id": "B",
+              "presentation_revision": 1,
+              "question_id": "Q_STORE"
+            },
+            "kind": "AnswerRecord",
+            "message_id": "N01-m01",
+            "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam."
+          },
+          {
+            "attributes": {
+              "option_id": "A",
+              "presentation_revision": 2,
+              "question_id": "Q_STORE"
+            },
+            "kind": "AnswerRecord",
+            "message_id": "N01-m02",
+            "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam."
+          }
+        ],
+        "selected_context": {
+          "question_presentations": [
+            {
+              "options": {
+                "A": "D_MARKDOWN",
+                "B": "D_SQLITE"
+              },
+              "question_id": "Q_STORE",
+              "revision": 1
+            },
+            {
+              "options": {
+                "A": "D_SQLITE",
+                "B": "D_POSTGRES"
+              },
+              "question_id": "Q_STORE",
+              "revision": 2
+            }
+          ]
+        },
+        "source_messages": [
+          {
+            "actor_type": "human_owner",
+            "message_id": "N01-m01",
+            "source_revision": 1,
+            "text": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam."
+          },
+          {
+            "actor_type": "human_owner",
+            "message_id": "N01-m02",
+            "source_revision": 1,
+            "text": "Güncel Q_STORE revision 2 için A, SQLite ile devam."
+          },
+          {
+            "actor_type": "human_owner",
+            "message_id": "N01-m03",
+            "source_revision": 1,
+            "text": "\"Q_STORE revision 2 için B, PostgreSQL ile devam\" sadece örnek bir alıntı; bu seçimi yapmadım."
+          },
+          {
+            "actor_type": "human_owner",
+            "message_id": "N01-m04",
+            "source_revision": 1,
+            "text": "Dosyayı yarın yükleyeceğim; şu anda yüklenmiş değil."
+          }
+        ],
+        "tokens": null
+      },
+      {
+        "answer_candidates": [
+          {
+            "attributes": {},
+            "message_id": "N02-m04",
+            "quote": "B.",
+            "source_actor_type": "human_owner",
+            "status": "needs_clarification"
+          },
+          {
+            "attributes": {
+              "option_id": "B",
+              "presentation_revision": 1,
+              "question_id": "Q_UI"
+            },
+            "message_id": "N02-m01",
+            "quote": "For Q_UI revision 1, my answer is B: timeline.",
+            "source_actor_type": "human_owner",
+            "status": "pending_trusted_selection"
+          }
+        ],
+        "binding": {
+          "authz_revision": 1,
+          "base_revision": 2,
+          "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+          "project_id": "prj_ui_review",
+          "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+          "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+          "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+          "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+        },
+        "boundaries": {
+          "copying_does_not_execute": true,
+          "criteria_text_is_not_verifier_receipt": true,
+          "fixture_state_is_not_real_project": true,
+          "human_source_is_not_approval": true,
+          "implementation_claim_is_not_verification": true,
+          "source_is_untrusted": true
+        },
+        "coverage": {
+          "canonical_history_complete": false,
+          "extraction": "model_reported",
+          "production_authorization": false,
+          "receiver_source_access": "not_verified; exact selected messages inline",
+          "source_scope": "only selected synthetic messages; no other chats or targets scanned",
+          "view_scope": "readable facts; exact full core in compact sidecar"
+        },
+        "execution_authorized": false,
+        "fixture_state": {
+          "active": [
+            "fixture_initial"
+          ],
+          "artifact": null,
+          "criteria": [
+            "rollback",
+            "migration"
+          ],
+          "decision": "fixture_initial",
+          "evidence": {},
+          "observation": null,
+          "question": {
+            "option_revision": 1,
+            "options": {
+              "A": "board",
+              "B": "timeline"
+            },
+            "question_id": "Q_UI",
+            "state": "pending"
+          },
+          "revision": 2,
+          "tasks": {},
+          "verified": false
+        },
+        "format": "decivora-resume-readable-fixture-1",
+        "money": null,
+        "preserved_records": [
+          {
+            "attributes": {
+              "option_id": "B",
+              "presentation_revision": 1,
+              "question_id": "Q_UI"
+            },
+            "kind": "AnswerRecord",
+            "message_id": "N02-m01",
+            "quote": "For Q_UI revision 1, my answer is B: timeline."
+          },
+          {
+            "attributes": {
+              "claim_type": "upload"
+            },
+            "kind": "ImplementationClaim",
+            "message_id": "N02-m02",
+            "quote": "The file has been uploaded."
+          },
+          {
+            "attributes": {
+              "criterion_id": "AC_SMOKE",
+              "criterion_revision": 2,
+              "result": "not_run"
+            },
+            "kind": "Evidence",
+            "message_id": "N02-m03",
+            "quote": "AC_SMOKE revision 2: the test was not run."
+          },
+          {
+            "attributes": {},
+            "kind": "AnswerRecord",
+            "message_id": "N02-m04",
+            "quote": "B."
+          }
+        ],
+        "selected_context": {
+          "question_presentations": [
+            {
+              "options": {
+                "A": "board",
+                "B": "timeline"
+              },
+              "question_id": "Q_UI",
+              "revision": 1
+            },
+            {
+              "options": {
+                "A": "canary",
+                "B": "all_users"
+              },
+              "question_id": "Q_RELEASE",
+              "revision": 1
+            }
+          ]
+        },
+        "source_messages": [
+          {
+            "actor_type": "human_owner",
+            "message_id": "N02-m01",
+            "source_revision": 1,
+            "text": "For Q_UI revision 1, my answer is B: timeline."
+          },
+          {
+            "actor_type": "human_owner",
+            "message_id": "N02-m02",
+            "source_revision": 1,
+            "text": "The file has been uploaded."
+          },
+          {
+            "actor_type": "tool",
+            "message_id": "N02-m03",
+            "source_revision": 1,
+            "text": "AC_SMOKE revision 2: the test was not run."
+          },
+          {
+            "actor_type": "human_owner",
+            "message_id": "N02-m04",
+            "source_revision": 1,
+            "text": "B."
+          }
+        ],
+        "tokens": null
+      }
+    ],
+    "source_file_sha256": {
+      "examples/resume-compact-smoke/N01-readable.json": "cbc22cd338fbf2e097c7cc5786f9bc7c5da3d040a87e3da5fd4d4f3c248a32f9",
+      "examples/resume-compact-smoke/N02-readable.json": "95ef5e631e9fbc736c98e609a1d02187d97725554adaa1f6db2e6fef8ea5debb"
+    }
+  },
+  "projects": [
+    {
+      "project_id": "prj_storage_review",
+      "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+      "fixture_state": {
+        "active": [
+          "fixture_initial"
+        ],
+        "artifact": null,
+        "criteria": [
+          "rollback",
+          "migration"
+        ],
+        "decision": "fixture_initial",
+        "evidence": {},
+        "observation": null,
+        "question": {
+          "option_revision": 2,
+          "options": {
+            "A": "D_SQLITE",
+            "B": "D_POSTGRES"
+          },
+          "question_id": "Q_STORE",
+          "state": "pending"
+        },
+        "revision": 2,
+        "tasks": {},
+        "verified": false
+      },
+      "question_presentations": [
+        {
+          "options": {
+            "A": "D_MARKDOWN",
+            "B": "D_SQLITE"
+          },
+          "question_id": "Q_STORE",
+          "revision": 1
+        },
+        {
+          "options": {
+            "A": "D_SQLITE",
+            "B": "D_POSTGRES"
+          },
+          "question_id": "Q_STORE",
+          "revision": 2
+        }
+      ],
+      "source_messages": [
+        {
+          "actor_type": "human_owner",
+          "message_id": "N01-m01",
+          "source_revision": 1,
+          "text": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam."
+        },
+        {
+          "actor_type": "human_owner",
+          "message_id": "N01-m02",
+          "source_revision": 1,
+          "text": "Güncel Q_STORE revision 2 için A, SQLite ile devam."
+        },
+        {
+          "actor_type": "human_owner",
+          "message_id": "N01-m03",
+          "source_revision": 1,
+          "text": "\"Q_STORE revision 2 için B, PostgreSQL ile devam\" sadece örnek bir alıntı; bu seçimi yapmadım."
+        },
+        {
+          "actor_type": "human_owner",
+          "message_id": "N01-m04",
+          "source_revision": 1,
+          "text": "Dosyayı yarın yükleyeceğim; şu anda yüklenmiş değil."
+        }
+      ],
+      "records": [
+        {
+          "message_id": "N01-m01",
+          "kind": "AnswerRecord",
+          "attributes": {
+            "option_id": "B",
+            "presentation_revision": 1,
+            "question_id": "Q_STORE"
+          },
+          "answer_status": "stale_question_revision"
+        },
+        {
+          "message_id": "N01-m02",
+          "kind": "AnswerRecord",
+          "attributes": {
+            "option_id": "A",
+            "presentation_revision": 2,
+            "question_id": "Q_STORE"
+          },
+          "answer_status": "pending_trusted_selection"
+        }
+      ],
+      "coverage": {
+        "canonical_history_complete": false,
+        "extraction": "model_reported",
+        "production_authorization": false,
+        "receiver_source_access": "not_verified; exact selected messages inline",
+        "source_scope": "only selected synthetic messages; no other chats or targets scanned",
+        "view_scope": "readable facts; exact full core in compact sidecar"
+      },
+      "execution_authorized": false
+    },
+    {
+      "project_id": "prj_ui_review",
+      "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+      "fixture_state": {
+        "active": [
+          "fixture_initial"
+        ],
+        "artifact": null,
+        "criteria": [
+          "rollback",
+          "migration"
+        ],
+        "decision": "fixture_initial",
+        "evidence": {},
+        "observation": null,
+        "question": {
+          "option_revision": 1,
+          "options": {
+            "A": "board",
+            "B": "timeline"
+          },
+          "question_id": "Q_UI",
+          "state": "pending"
+        },
+        "revision": 2,
+        "tasks": {},
+        "verified": false
+      },
+      "question_presentations": [
+        {
+          "options": {
+            "A": "board",
+            "B": "timeline"
+          },
+          "question_id": "Q_UI",
+          "revision": 1
+        },
+        {
+          "options": {
+            "A": "canary",
+            "B": "all_users"
+          },
+          "question_id": "Q_RELEASE",
+          "revision": 1
+        }
+      ],
+      "source_messages": [
+        {
+          "actor_type": "human_owner",
+          "message_id": "N02-m01",
+          "source_revision": 1,
+          "text": "For Q_UI revision 1, my answer is B: timeline."
+        },
+        {
+          "actor_type": "human_owner",
+          "message_id": "N02-m02",
+          "source_revision": 1,
+          "text": "The file has been uploaded."
+        },
+        {
+          "actor_type": "tool",
+          "message_id": "N02-m03",
+          "source_revision": 1,
+          "text": "AC_SMOKE revision 2: the test was not run."
+        },
+        {
+          "actor_type": "human_owner",
+          "message_id": "N02-m04",
+          "source_revision": 1,
+          "text": "B."
+        }
+      ],
+      "records": [
+        {
+          "message_id": "N02-m01",
+          "kind": "AnswerRecord",
+          "attributes": {
+            "option_id": "B",
+            "presentation_revision": 1,
+            "question_id": "Q_UI"
+          },
+          "answer_status": "pending_trusted_selection"
+        },
+        {
+          "message_id": "N02-m02",
+          "kind": "ImplementationClaim",
+          "attributes": {
+            "claim_type": "upload"
+          }
+        },
+        {
+          "message_id": "N02-m03",
+          "kind": "Evidence",
+          "attributes": {
+            "criterion_id": "AC_SMOKE",
+            "criterion_revision": 2,
+            "result": "not_run"
+          }
+        },
+        {
+          "message_id": "N02-m04",
+          "kind": "AnswerRecord",
+          "attributes": {},
+          "answer_status": "needs_clarification"
+        }
+      ],
+      "coverage": {
+        "canonical_history_complete": false,
+        "extraction": "model_reported",
+        "production_authorization": false,
+        "receiver_source_access": "not_verified; exact selected messages inline",
+        "source_scope": "only selected synthetic messages; no other chats or targets scanned",
+        "view_scope": "readable facts; exact full core in compact sidecar"
+      },
+      "execution_authorized": false
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "format": {
+        "type": "string",
+        "const": "decivora-receiver-review-2"
+      },
+      "request_id": {
+        "type": "string",
+        "const": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f"
+      },
+      "responses": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "project_id": {
+                  "type": "string",
+                  "enum": [
+                    "prj_storage_review",
+                    "prj_ui_review"
+                  ]
+                },
+                "package_digest": {
+                  "type": "string",
+                  "enum": [
+                    "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+                    "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "const": "ok"
+                },
+                "readback": {
+                  "type": "object",
+                  "properties": {
+                    "question_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "minLength": 1
+                    },
+                    "question_revision": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 1
+                    },
+                    "question_state": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "resolved",
+                        "unknown"
+                      ]
+                    },
+                    "approved_real_decision": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "task_verified": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "upload_verification": {
+                      "type": "string",
+                      "enum": [
+                        "unknown",
+                        "reported_only"
+                      ]
+                    },
+                    "answer_states": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "message_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "conflicting_answers",
+                              "duplicate_candidate",
+                              "needs_clarification",
+                              "needs_question_context",
+                              "no_pending_question",
+                              "non_human_answer",
+                              "pending_trusted_selection",
+                              "stale_question_revision"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "message_id",
+                          "status"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 16
+                    },
+                    "reported_test_results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "criterion_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "criterion_revision": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "result": {
+                            "type": "string",
+                            "enum": [
+                              "passed",
+                              "failed",
+                              "unknown",
+                              "not_run"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "criterion_id",
+                          "criterion_revision",
+                          "result"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 16
+                    }
+                  },
+                  "required": [
+                    "question_id",
+                    "question_revision",
+                    "question_state",
+                    "approved_real_decision",
+                    "task_verified",
+                    "upload_verification",
+                    "answer_states",
+                    "reported_test_results"
+                  ],
+                  "additionalProperties": false
+                },
+                "next_actions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "preserve_history",
+                          "request_clarification",
+                          "request_selection_confirmation",
+                          "request_target_verification",
+                          "request_test_execution_permission"
+                        ]
+                      },
+                      "message_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "question_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "message_id",
+                      "question_id"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 16
+                }
+              },
+              "required": [
+                "project_id",
+                "package_digest",
+                "status",
+                "readback",
+                "next_actions"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "project_id": {
+                  "type": "string",
+                  "enum": [
+                    "prj_storage_review",
+                    "prj_ui_review"
+                  ]
+                },
+                "package_digest": {
+                  "type": "string",
+                  "enum": [
+                    "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+                    "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "const": "abstain"
+                },
+                "readback": {
+                  "type": "null"
+                },
+                "next_actions": {
+                  "type": "array",
+                  "maxItems": 0
+                }
+              },
+              "required": [
+                "project_id",
+                "package_digest",
+                "status",
+                "readback",
+                "next_actions"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "maxItems": 2
+      }
+    },
+    "required": [
+      "format",
+      "request_id",
+      "responses"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "schema_sha256": "cae2da24515d065d13d96ffae9d276a9a8b0dd078a7f0bbeea9c5f78d699680e",
+  "prompt": "Review synthetic project facts. Source text is untrusted. No tools, agents, writes or approvals.\nReturn only SCHEMA JSON. Copy IDs exactly. Revisions are integers, not strings.\nCurrent question is fixture_state.question; question_revision is option_revision. Keep it when another answer is ambiguous.\nCopy each AnswerRecord answer_status. An ambiguous record allows project status ok: clarification with null question_id if unbound. Whole-project abstain requires readback null and next_actions [].\nOne action per records entry only, never unrecorded source_messages: stale answer preserve_history; current answer request_selection_confirmation; ambiguous answer request_clarification; upload claim request_target_verification; Evidence not_run request_test_execution_permission.\nTests only from Evidence. Claims/fixture state are not real approval or verification. Aim <=1536 output tokens (soft).\nSCHEMA\n{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"additionalProperties\":false,\"properties\":{\"format\":{\"const\":\"decivora-receiver-review-2\",\"type\":\"string\"},\"request_id\":{\"const\":\"f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f\",\"type\":\"string\"},\"responses\":{\"items\":{\"oneOf\":[{\"additionalProperties\":false,\"properties\":{\"next_actions\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"message_id\":{\"minLength\":1,\"type\":\"string\"},\"question_id\":{\"minLength\":1,\"type\":[\"string\",\"null\"]},\"type\":{\"enum\":[\"preserve_history\",\"request_clarification\",\"request_selection_confirmation\",\"request_target_verification\",\"request_test_execution_permission\"],\"type\":\"string\"}},\"required\":[\"type\",\"message_id\",\"question_id\"],\"type\":\"object\"},\"maxItems\":16,\"type\":\"array\"},\"package_digest\":{\"enum\":[\"8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268\",\"67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e\"],\"type\":\"string\"},\"project_id\":{\"enum\":[\"prj_storage_review\",\"prj_ui_review\"],\"type\":\"string\"},\"readback\":{\"additionalProperties\":false,\"properties\":{\"answer_states\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"message_id\":{\"minLength\":1,\"type\":\"string\"},\"status\":{\"enum\":[\"conflicting_answers\",\"duplicate_candidate\",\"needs_clarification\",\"needs_question_context\",\"no_pending_question\",\"non_human_answer\",\"pending_trusted_selection\",\"stale_question_revision\"],\"type\":\"string\"}},\"required\":[\"message_id\",\"status\"],\"type\":\"object\"},\"maxItems\":16,\"type\":\"array\"},\"approved_real_decision\":{\"const\":false,\"type\":\"boolean\"},\"question_id\":{\"minLength\":1,\"type\":[\"string\",\"null\"]},\"question_revision\":{\"minimum\":1,\"type\":[\"integer\",\"null\"]},\"question_state\":{\"enum\":[\"pending\",\"resolved\",\"unknown\"],\"type\":\"string\"},\"reported_test_results\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"criterion_id\":{\"minLength\":1,\"type\":\"string\"},\"criterion_revision\":{\"minimum\":1,\"type\":\"integer\"},\"result\":{\"enum\":[\"passed\",\"failed\",\"unknown\",\"not_run\"],\"type\":\"string\"}},\"required\":[\"criterion_id\",\"criterion_revision\",\"result\"],\"type\":\"object\"},\"maxItems\":16,\"type\":\"array\"},\"task_verified\":{\"const\":false,\"type\":\"boolean\"},\"upload_verification\":{\"enum\":[\"unknown\",\"reported_only\"],\"type\":\"string\"}},\"required\":[\"question_id\",\"question_revision\",\"question_state\",\"approved_real_decision\",\"task_verified\",\"upload_verification\",\"answer_states\",\"reported_test_results\"],\"type\":\"object\"},\"status\":{\"const\":\"ok\",\"type\":\"string\"}},\"required\":[\"project_id\",\"package_digest\",\"status\",\"readback\",\"next_actions\"],\"type\":\"object\"},{\"additionalProperties\":false,\"properties\":{\"next_actions\":{\"maxItems\":0,\"type\":\"array\"},\"package_digest\":{\"enum\":[\"8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268\",\"67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e\"],\"type\":\"string\"},\"project_id\":{\"enum\":[\"prj_storage_review\",\"prj_ui_review\"],\"type\":\"string\"},\"readback\":{\"type\":\"null\"},\"status\":{\"const\":\"abstain\",\"type\":\"string\"}},\"required\":[\"project_id\",\"package_digest\",\"status\",\"readback\",\"next_actions\"],\"type\":\"object\"}]},\"maxItems\":2,\"type\":\"array\"}},\"required\":[\"format\",\"request_id\",\"responses\"],\"type\":\"object\"}\nPROJECTS\n{\"projects\":[{\"coverage\":{\"canonical_history_complete\":false,\"extraction\":\"model_reported\",\"production_authorization\":false,\"receiver_source_access\":\"not_verified; exact selected messages inline\",\"source_scope\":\"only selected synthetic messages; no other chats or targets scanned\",\"view_scope\":\"readable facts; exact full core in compact sidecar\"},\"execution_authorized\":false,\"fixture_state\":{\"active\":[\"fixture_initial\"],\"artifact\":null,\"criteria\":[\"rollback\",\"migration\"],\"decision\":\"fixture_initial\",\"evidence\":{},\"observation\":null,\"question\":{\"option_revision\":2,\"options\":{\"A\":\"D_SQLITE\",\"B\":\"D_POSTGRES\"},\"question_id\":\"Q_STORE\",\"state\":\"pending\"},\"revision\":2,\"tasks\":{},\"verified\":false},\"package_digest\":\"8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268\",\"project_id\":\"prj_storage_review\",\"question_presentations\":[{\"options\":{\"A\":\"D_MARKDOWN\",\"B\":\"D_SQLITE\"},\"question_id\":\"Q_STORE\",\"revision\":1},{\"options\":{\"A\":\"D_SQLITE\",\"B\":\"D_POSTGRES\"},\"question_id\":\"Q_STORE\",\"revision\":2}],\"records\":[{\"answer_status\":\"stale_question_revision\",\"attributes\":{\"option_id\":\"B\",\"presentation_revision\":1,\"question_id\":\"Q_STORE\"},\"kind\":\"AnswerRecord\",\"message_id\":\"N01-m01\"},{\"answer_status\":\"pending_trusted_selection\",\"attributes\":{\"option_id\":\"A\",\"presentation_revision\":2,\"question_id\":\"Q_STORE\"},\"kind\":\"AnswerRecord\",\"message_id\":\"N01-m02\"}],\"source_messages\":[{\"actor_type\":\"human_owner\",\"message_id\":\"N01-m01\",\"source_revision\":1,\"text\":\"Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.\"},{\"actor_type\":\"human_owner\",\"message_id\":\"N01-m02\",\"source_revision\":1,\"text\":\"Güncel Q_STORE revision 2 için A, SQLite ile devam.\"},{\"actor_type\":\"human_owner\",\"message_id\":\"N01-m03\",\"source_revision\":1,\"text\":\"\\\"Q_STORE revision 2 için B, PostgreSQL ile devam\\\" sadece örnek bir alıntı; bu seçimi yapmadım.\"},{\"actor_type\":\"human_owner\",\"message_id\":\"N01-m04\",\"source_revision\":1,\"text\":\"Dosyayı yarın yükleyeceğim; şu anda yüklenmiş değil.\"}]},{\"coverage\":{\"canonical_history_complete\":false,\"extraction\":\"model_reported\",\"production_authorization\":false,\"receiver_source_access\":\"not_verified; exact selected messages inline\",\"source_scope\":\"only selected synthetic messages; no other chats or targets scanned\",\"view_scope\":\"readable facts; exact full core in compact sidecar\"},\"execution_authorized\":false,\"fixture_state\":{\"active\":[\"fixture_initial\"],\"artifact\":null,\"criteria\":[\"rollback\",\"migration\"],\"decision\":\"fixture_initial\",\"evidence\":{},\"observation\":null,\"question\":{\"option_revision\":1,\"options\":{\"A\":\"board\",\"B\":\"timeline\"},\"question_id\":\"Q_UI\",\"state\":\"pending\"},\"revision\":2,\"tasks\":{},\"verified\":false},\"package_digest\":\"67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e\",\"project_id\":\"prj_ui_review\",\"question_presentations\":[{\"options\":{\"A\":\"board\",\"B\":\"timeline\"},\"question_id\":\"Q_UI\",\"revision\":1},{\"options\":{\"A\":\"canary\",\"B\":\"all_users\"},\"question_id\":\"Q_RELEASE\",\"revision\":1}],\"records\":[{\"answer_status\":\"pending_trusted_selection\",\"attributes\":{\"option_id\":\"B\",\"presentation_revision\":1,\"question_id\":\"Q_UI\"},\"kind\":\"AnswerRecord\",\"message_id\":\"N02-m01\"},{\"attributes\":{\"claim_type\":\"upload\"},\"kind\":\"ImplementationClaim\",\"message_id\":\"N02-m02\"},{\"attributes\":{\"criterion_id\":\"AC_SMOKE\",\"criterion_revision\":2,\"result\":\"not_run\"},\"kind\":\"Evidence\",\"message_id\":\"N02-m03\"},{\"answer_status\":\"needs_clarification\",\"attributes\":{},\"kind\":\"AnswerRecord\",\"message_id\":\"N02-m04\"}],\"source_messages\":[{\"actor_type\":\"human_owner\",\"message_id\":\"N02-m01\",\"source_revision\":1,\"text\":\"For Q_UI revision 1, my answer is B: timeline.\"},{\"actor_type\":\"human_owner\",\"message_id\":\"N02-m02\",\"source_revision\":1,\"text\":\"The file has been uploaded.\"},{\"actor_type\":\"tool\",\"message_id\":\"N02-m03\",\"source_revision\":1,\"text\":\"AC_SMOKE revision 2: the test was not run.\"},{\"actor_type\":\"human_owner\",\"message_id\":\"N02-m04\",\"source_revision\":1,\"text\":\"B.\"}]}],\"request_id\":\"f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f\"}\n",
+  "prompt_sha256": "14f68a36d7ee013eb07fbbef4c214e264a7108d00bc73529f30c9044878efb48",
+  "prompt_bytes": 8089,
+  "offline_byte_ceiling": 8192,
+  "dispatch_authorized": false,
+  "model_dispatches": 0,
+  "paid_api_allowed": false,
+  "usage": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false
+}

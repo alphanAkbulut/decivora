@@ -1,0 +1,41 @@
+{
+  "experiment_id": "RECEIVER-002-PROPOSED",
+  "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+  "prompt_bytes": 8089,
+  "prompt_sha256": "14f68a36d7ee013eb07fbbef4c214e264a7108d00bc73529f30c9044878efb48",
+  "schema_sha256": "cae2da24515d065d13d96ffae9d276a9a8b0dd078a7f0bbeea9c5f78d699680e",
+  "wire_format": "decivora-receiver-review-2",
+  "prior_request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+  "source_file_sha256": {
+    "examples/resume-compact-smoke/N01-readable.json": "cbc22cd338fbf2e097c7cc5786f9bc7c5da3d040a87e3da5fd4d4f3c248a32f9",
+    "examples/resume-compact-smoke/N02-readable.json": "95ef5e631e9fbc736c98e609a1d02187d97725554adaa1f6db2e6fef8ea5debb"
+  },
+  "file_sha256": {
+    "request.json": "6e76ad0485a0f2ca7d0f174846cb090cb29d58d20641b4a020844b9783946893",
+    "prompt.txt": "14f68a36d7ee013eb07fbbef4c214e264a7108d00bc73529f30c9044878efb48",
+    "response.schema.json": "21262b2cb3f461cc2e84e20f0fbe745990a2ce33568d42f060f37c17b546cf92",
+    "expected.json": "f86c2b0f8f4c52bfde06062c1f8a52dc385766b64abbb5d03c1d6b15036a0661"
+  },
+  "review_status": "authored_draft",
+  "human_gold": false,
+  "dispatch_authorized": false,
+  "authorization_status": "not_granted",
+  "actual_submissions": 0,
+  "actual_outputs": 0,
+  "proposed_method": "one fresh native projectless Codex chat; first full final output only",
+  "proposed_model": "gpt-6-luna",
+  "proposed_reasoning": "low",
+  "actual_model": null,
+  "proposed_max_submissions": 1,
+  "automatic_retries": 0,
+  "tools_allowed": false,
+  "subagents_allowed": false,
+  "paid_api_allowed": false,
+  "proposed_soft_output_tokens": 1536,
+  "offline_byte_ceiling": 8192,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "provider_schema_acceptance": "not_run; prompt-only machine schema, no provider-enforced mode",
+  "usage": null,
+  "cost": null
+}
