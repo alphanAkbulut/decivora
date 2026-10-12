@@ -102,3 +102,8 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Kayıpsız resume + readable view — T03t DONE
 
 `python3 -B spikes/semantic-chain/compare_compact_resume.py [--out NEWPATH] [--export-dir NEWDIR]`: inline source/record table, strict decoder, source/state/access preflight ve exact literal quotes içeren model-visible view. [Örnekler](../../examples/resume-compact-smoke/README.md)/[rapor](../../docs/quality/resume-compaction.md):121 suite/11 yeni, frozen core exact, üç checklist, byte%31,79/%35,20 azaldı. Token/model/ROI değildir; codec'i genel modele çözdürme. Next: bounded receiver request + ayrı evaluator, gerçek send yeni somut onayla.
+
+
+## Receiver yeni-sohbet hazırlığı — T03u DONE
+
+`python3 -B spikes/semantic-chain/receiver_smoke.py prepare [--out NEWPATH]`; `evaluate --request examples/receiver-smoke/request.json --response FIRST_OUTPUT --expected examples/receiver-smoke/expected.json [--out NEWPATH]`. [Paket](../../examples/receiver-smoke/README.md)/[plan ve134 test/13 yeni](../../docs/quality/receiver-smoke-plan.md). Source-only7950-byte prompt, separate authored oracle, readback/actions/criticalerrors; import unverified/notrealrun, mutation0/model0. Tek-send gerçek model onayı henüz yok; eski izinleri kullanma.

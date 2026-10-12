@@ -1,0 +1,31 @@
+{
+  "experiment_id": "RECEIVER-001-PROPOSED",
+  "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+  "prompt_sha256": "a4a636ecd53aee80ea74ef21608e26cdb50cc65f1f1da434a9cf9294d2073b6b",
+  "prompt_bytes": 7950,
+  "source_file_sha256": {
+    "examples/resume-compact-smoke/N01-readable.json": "cbc22cd338fbf2e097c7cc5786f9bc7c5da3d040a87e3da5fd4d4f3c248a32f9",
+    "examples/resume-compact-smoke/N02-readable.json": "95ef5e631e9fbc736c98e609a1d02187d97725554adaa1f6db2e6fef8ea5debb"
+  },
+  "request_sha256": "b3346d88fc4a1cdec0d9eea61f4e901b0daec1f084fc6331aa9da07cc62b155e",
+  "expected_sha256": "6e8762caf6dddf0c900b84a87a37bfbea0f21b3e4984fc8771727a9cfbf0277a",
+  "review_status": "authored_draft",
+  "human_gold": false,
+  "dispatch_authorized": false,
+  "actual_submissions": 0,
+  "actual_outputs": 0,
+  "proposed_method": "one fresh temporary nonpersonalized ChatGPT session; first output only",
+  "proposed_max_submissions": 1,
+  "automatic_retries": 0,
+  "tools_allowed": false,
+  "subagents_allowed": false,
+  "paid_api_allowed": false,
+  "proposed_soft_output_tokens": 1536,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "backend_model": null,
+  "usage": null,
+  "cost": null,
+  "provider_internal_requests_known": false,
+  "success_scope": "readback and safe proposed next steps only; no native/file/real execution comparison"
+}

@@ -1,0 +1,56 @@
+{
+  "experiment_id": "RECEIVER-001-PREPARATION",
+  "status": "prepared_not_dispatched",
+  "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+  "prompt_bytes": 7950,
+  "prompt_sha256": "a4a636ecd53aee80ea74ef21608e26cdb50cc65f1f1da434a9cf9294d2073b6b",
+  "semantic_suite_tests": 134,
+  "new_evaluator_tests": 13,
+  "real_model_run": "not_run",
+  "actual_submissions": 0,
+  "actual_outputs": 0,
+  "scripted_evaluator_smoke": {
+    "status": "passed_draft",
+    "readback_score": {
+      "status": "passed",
+      "missing": [],
+      "mismatches": []
+    },
+    "action_score": {
+      "true_positive": 6,
+      "false_positive": 0,
+      "false_negative": 0
+    },
+    "critical_errors": [],
+    "review_status": "authored_draft",
+    "human_gold": false,
+    "raw_sha256": "5677c7c2a3fd51c16f672cadcd5437a767e791fadfa69bc111e95a6006978341",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "response_origin": "caller_imported_unverified",
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "usage": null,
+    "unmeasured": [
+      "receiving-model identity/usage",
+      "native baseline",
+      "human correction time",
+      "production authority"
+    ]
+  },
+  "scripted_predictions_origin": "copied authored oracle only to exercise evaluator; not model predictions",
+  "human_gold": false,
+  "new_model_dispatches": 0,
+  "paid_api_calls": 0,
+  "canonical_mutations": 0,
+  "hashes": {
+    "spikes/semantic-chain/receiver_smoke.py": "be472dad1dee5fdfb88543ad87d131be8159817019db8786d4d20d1a344a069a",
+    "spikes/semantic-chain/test_receiver_smoke.py": "ef3bde0bc4ed5cc25bdd6e2e7098383b4f4dfdcac3d37fc2bdbd9d07a851a78e",
+    "examples/receiver-smoke/request.json": "b3346d88fc4a1cdec0d9eea61f4e901b0daec1f084fc6331aa9da07cc62b155e",
+    "examples/receiver-smoke/prompt.txt": "a4a636ecd53aee80ea74ef21608e26cdb50cc65f1f1da434a9cf9294d2073b6b",
+    "examples/receiver-smoke/expected.json": "6e8762caf6dddf0c900b84a87a37bfbea0f21b3e4984fc8771727a9cfbf0277a",
+    "examples/receiver-smoke/manifest.json": "5ea9e885b59663ce898f8e046c5e694b2be41bfd1f1a3782bf65e965835f5e8d",
+    "examples/resume-compact-smoke/N01-readable.json": "cbc22cd338fbf2e097c7cc5786f9bc7c5da3d040a87e3da5fd4d4f3c248a32f9",
+    "examples/resume-compact-smoke/N02-readable.json": "95ef5e631e9fbc736c98e609a1d02187d97725554adaa1f6db2e6fef8ea5debb"
+  }
+}

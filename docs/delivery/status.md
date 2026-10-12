@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On yedi küçük teslim DONE (T01g/T01h/T01i ve T03g–T03t); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; gerçek receiving-model/native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On sekiz küçük teslim DONE (T01g/T01h/T01i ve T03g–T03u); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver request/evaluator hazır, gerçek send onay bekliyor; native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — Receiver isteği ve bağımsız evaluator
+
+- T03u scoped DONE: [7950-byte frozen source-only istek ve ayrı authored oracle/evaluator](../quality/receiver-smoke-plan.md). İki readable view, readback ile safe next-action ayrı, metadata/type/source/critical false-state guardları.
+- 134 semantik test/13 yeni; scripted positive yalnız evaluator harness. Actual model sends0/outputs0/paidAPI0, tek yeni run onayı bekliyor; source/gold/native/production ve ana gate'ler kapanmadı.
 
 ### 2026-10-12 — Kayıpsız paket küçültme ve readable view
 

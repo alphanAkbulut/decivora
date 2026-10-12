@@ -36,6 +36,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03r | T03 | DONE | DONE / P0: birden fazla source-bound cevap için read-only öneri koleksiyonu |
 | T03s | T03 | DONE | DONE / P0: deterministic kaynak bağlı resume ve eşit bilgiyle dosya serialization kıyası |
 | T03t | T03 | DONE | DONE / P0: kayıpsız inline source/record table ve çözülmüş readable model view |
+| T03u | T03 | DONE | DONE / P0: bounded fresh-session receiver request ve bağımsız saved-output evaluator hazırlığı |
 
 ## Açık fazda neler değişti?
 
@@ -67,7 +68,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · T03t kayıpsız inline table + kodla çözülen readable view DONE. Frozen önceki core exact eşleşti; aynı checklist üç temsilde geçti.121 semantik/11 yeni test, byteN01%31,79/N02%35,20 azaldı; model/selection/API0. [Rapor](../quality/resume-compaction.md); token/accuracy veya alıcı model kanıtı değil.
+2026-10-12 · T03u bounded receiver request + ayrı readback/next-action oracle/evaluator hazırlığı DONE.7950-byte frozen prompt/iki readable view;134 semantik test/13 yeni; critical false approval/done/upload/not_run/ambiguity/stale guardları. [Plan](../quality/receiver-smoke-plan.md); actual model send0, hazırlık başarıları model accuracy değil.
 
 **Aktif teknik risk:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 
@@ -75,7 +76,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
 
-Sıradaki adım: İki okunabilir view için bounded fresh-session model request + bağımsız readback/next-action beklentileri ve saved-output evaluator hazırla. Hazırlık model gerektirmez; gerçek tek-send için exact prompt/veri/limit somutlaştırıldıktan sonra yeni kullanıcı onayı al. Yeni model izni tüketildi; paid API kapalı. Production IAM/criterion revision/lineage, insan gold ve T03c yatırım/stack açık.
+Sıradaki adım: RECEIVER-001 için somut tek-send/ilk-output/0retry/0paidAPI/unknown hardcap scope'u kullanıcıya onaya sun. Yeni onay olmadan send yok; onay sonrası raw/UI capture ve readback/action ayrı ölçüm/kayıt. Production IAM/criterion revision/lineage, insan gold/native/user burden ve T03c yatırım/stack açık.
 
 
 ## Mevcut teslim parçaları
@@ -106,6 +107,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Çoklu cevap koleksiyonu / T03r DONE** — Her cevabın message/question revision'ı ayrı; tam response validation, source kimliği ve read-only proposal; [102 test/9 yeni ve stored raw replay](../quality/proposal-collection.md); stale/conflict/ambiguity korunur, production çok-soru/IAM değil
 - **Resume/export ve eşit bilgi dosya kıyası / T03s DONE** — Bounded deterministic core, source/state/access freshness, inspectable altı synthetic dosya; [110 test/8 yeni ve byte ölçümü](../quality/resume-file-comparison.md); iki temsil checklist geçti, receiver/native/token/user burden not_run
 - **Kayıpsız resume table + okunabilir view / T03t DONE** — Tek inline source, source-span/record references; code-decoded literal quotes ve current-snapshot export guard; [121 test/11 yeni, exact frozen core ve byte ölçümü](../quality/resume-compaction.md); üç checklist geçti, receiving-model/token/production IAM değil
+- **Receiver bounded request/evaluator / T03u DONE** — İki readable view, ayrı readback/next-action oracle,7950-byte frozen prompt; source/schema/critical guards; [134 test/13 yeni ve hazırlık planı](../quality/receiver-smoke-plan.md); actual send0/onay bekler, scripted positive model kanıtı değil
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -124,7 +126,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 18 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 19 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -161,4 +163,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `722653d332fe0bd5cfe343f44835cc6bbc20f8b31c8eba9e6b03971dd55b59e5`
+Kaynak fingerprint: `902476c345adeef98fd3fbac1c6da5531b2f75498a8786df5c14629ebe7f2dfb`

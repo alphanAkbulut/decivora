@@ -44,3 +44,8 @@ S01→S02: eski Markdown → Q_STORE → başka chat’ten gecikmiş B → SQLit
 ## Kayıpsız paket küçültme — 2026-10-12
 
 [T03t](resume-compaction.md): N01/N02 byte boyutu%31,79/%35,20 azaldı; compact paketten ve simple-file'dan frozen önceki core exact restored. Receiver-facing view quote'ları kodla çözer; değişmemiş authored checklist üç kolda geçti. Token/para veya gerçek alıcı/model/native sonucu değil. Sonraki model deneyi decoded readable view ile hazırlanır; LLM'e offset/record tablosu çözdürmek default yol sayılmaz. Yeni live izin yok.
+
+
+## Fresh-session receiver request/evaluator — 2026-10-12
+
+[T03u](receiver-smoke-plan.md) iki readable view için 7950-byte exact prompt ve ayrı authored readback/next-action oracle hazırladı;134 semantic/13 evaluator testi geçti. Scripted positive model sonucu değildir. Gerçek tek-send/ilk-output/0retry/0paidAPI scope'u yeni owner onayı bekler; actual submissions0. Field labels visible source state'in doğal parçasıdır; oracle prompt'ta yok. Native/file superiority veya execution/holdout/gold ölçümü değildir.
