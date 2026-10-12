@@ -19,6 +19,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 
 | Alt görev | Ana görev | Durum | Teslim |
 |---|---|---|---|
+| T01g | T01 | DONE | DONE / P0: H1/H2/H3 ilk davranış incelemesi |
 | T03g | T03 | DONE | DONE / P0: bounded quote adapter ve ayrı candidate rubric |
 | T03h | T03 | DONE | DONE / P0: gönderimsiz API paket ve saved response import |
 | T03i | T03 | DONE | DONE / P0: tek selected local file observer |
@@ -30,7 +31,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 ### T01 · Golden corpus ve karşılaştırma protokolü
 
-2026-10-12 · H1 karar/ayrı impact ve H2 kısmi AC davranışları kullanıcı tarafından onaylandı. H2 açıklama sonrası kabul: tek criterion passed, görev açık, kalan doğrulama takip edilir. [H2 partial review](../quality/reviews/h2-behavior.json) source/oracle hash ve soru/açıklama/yanıt taşır. Exact extraction/impact etiketleri ve tam corpus gold değil; oracle değişmedi.
+2026-10-12 · H1/H2/H3 ilk behavior incelemesi tamamlandı; source/oracle hash, soru/yanıt ve kapsam kayıtları var. [H3 review](../quality/reviews/h3-behavior.json): belirsiz cevabı koru, soru bağını tahmin etme, açıklama iste. T01g scoped DONE; exact extraction/impact etiketleri ve corpus bütünü gold değil, oracle değişmedi.
 
 **Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
 
@@ -38,7 +39,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: H3 belirsiz harf davranışı, ardından exact candidate/domain etiket incelemesi ve gerçek model ölçümü. H1/H2 behavior reviewed; kalan kalite/holdout/karşılaştırma kapıları açık, T01 IN_PROGRESS.
+Sıradaki adım: Onaylanan davranışlarla gerçek quote-only model çıktısını ayrı candidate/domain ölçümünde sınamak; mevcut üyelik için somut tek-send/route/usage sınırı hazırlama. Exact etiket incelemesi, kalan corpus ve karşılaştırma/holdout kapıları açık; T01 IN_PROGRESS.
 
 ### T02 · İki coding yüzeyinde capability spike
 
@@ -90,7 +91,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
 | Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [Yeni teslim](../quality/source-anchor-adapter.md): bounded adapter/negatifler, quote-only contract ve candidate scorer uygulandı; sırada yetkili gerçek inference ve insan review. Orijinal sonuç korunur, Q03-R5 tüketildi; otomatik tekrar yok, provider token upper bound unknown |
-| Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1](../quality/reviews/h1-behavior.json) / [H2](../quality/reviews/h2-behavior.json) davranışları partial reviewed; H3, exact etiketler ve tam kritik set pending |
+| Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1](../quality/reviews/h1-behavior.json) / [H2](../quality/reviews/h2-behavior.json) / [H3](../quality/reviews/h3-behavior.json) behavior review tamamlandı (T01g DONE); exact etiketler ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
 | Production stack/build | T04–T24 bağımsız ürün başlangıcı | T03c açık; fixture Python/SQLite önerilen üretim stack’i değil |
@@ -99,7 +100,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 | ID | Faz | Durum | İş | Plan ön koşulu | Alt dilim |
 |---|---|---|---|---|---|
-| T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 2 |
+| T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 3 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
 | T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 8 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
@@ -138,4 +139,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `dcd885a13582d545921cced3eb863d86f36bebf143b9630a46ba66b95a7f4127`
+Kaynak fingerprint: `ac219b302b409e3d082215cedf4a83b3b5d53a9f8c40ba22bb3a9bf592bec475`

@@ -14,7 +14,7 @@
 
 **Beklenen kritik sonuç:** `{"current_decision": "D_SQLITE", "history_preserved": true, "impact": {"T_SYNC": "obsolete_candidate", "T_EXPORT": "retained", "T_WATCH": "review_unknown", "T_COMBINED": "obsolete_or_update_candidate"}, "task_closure_without_impact_approval": false}`.
 
-**İnsan inceleme durumu:** 2026-10-12 · Kullanıcı “Evet, bu davranış doğru” yanıtıyla sorulan karar seçimi/ayrı impact kapanışı davranışını onayladı. [Sürümlü ve source/oracle hash bağlı kayıt](reviews/h1-behavior.json). **Partial case review:** yukarıdaki tek tek task impact etiketleri, exact extraction alanları, history assertion ve corpus bütünü bu soruda incelenmedi; human-gold değil. H2 incelemesi aşağıda; H3 pending; oracle değiştirilmedi.
+**İnsan inceleme durumu:** 2026-10-12 · Kullanıcı “Evet, bu davranış doğru” yanıtıyla sorulan karar seçimi/ayrı impact kapanışı davranışını onayladı. [Sürümlü ve source/oracle hash bağlı kayıt](reviews/h1-behavior.json). **Partial case review:** yukarıdaki tek tek task impact etiketleri, exact extraction alanları, history assertion ve corpus bütünü bu soruda incelenmedi; human-gold değil. H2/H3 incelemeleri aşağıda; oracle değiştirilmedi.
 
 ## H2 — Kısmi kabul kriteri
 
@@ -42,8 +42,8 @@
 
 **Beklenen kritik sonuç:** `{"human_approval_created": false, "canonical_mutations": 0, "new_pending_decisions": 0}`.
 
-**İnsan inceleme durumu:** pending. Doğru / düzeltme + gerekçe kaydedilecek.
+**İnsan inceleme durumu:** 2026-10-12 · Kullanıcı “uygun” yanıtıyla belirsiz cevabı saklama, soru bağını tahmin etmeme ve açıklama isteme davranışını onayladı. [Hash bağlı review kaydı](reviews/h3-behavior.json). İlk üç behavior review tamamlandı; exact extraction etiketleri, tüm oracle/corpus veya production clarification uygulanmış sayılmaz. Oracle değişmedi.
 
 ## Review kaydı ve sonraki kapsam
 
-Her yanıt: reviewer kimliği/rolü, source/oracle hash ve revision, onay/düzeltme, gerekçe, ikinci reviewer/adjudication durumu. Bu tur kullanıcı adına yanıt üretilmedi. Üç örneğin kabulü 66 annotation’ın tamamını reviewed yapmaz; kalan authority/rejection/cross-project/crash/holdout kapsamı T01 kapanışında ayrı kontrol edilir.
+Her yanıt: reviewer kimliği/rolü, source/oracle hash ve revision, onay/düzeltme, gerekçe, ikinci reviewer/adjudication durumu. H1/H2/H3 yanıtları kullanıcı tarafından verildi ve ayrı review kayıtlarına işlendi; kullanıcı adına yanıt üretilmedi. Üç örneğin kabulü 66 annotation’ın tamamını reviewed yapmaz; kalan authority/rejection/cross-project/crash/holdout kapsamı T01 kapanışında ayrı kontrol edilir.

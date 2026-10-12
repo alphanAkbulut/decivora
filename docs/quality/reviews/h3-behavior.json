@@ -1,0 +1,37 @@
+{
+  "format": "decivora-human-behavior-review-1",
+  "review_id": "H3-BEHAVIOR-001",
+  "revision": 1,
+  "date": "2026-10-12",
+  "reviewer": {
+    "identity": "project_owner_current_chat",
+    "role": "product_owner",
+    "provenance": "explicit user reply in current Codex chat; not production IAM"
+  },
+  "question": "İlk üç örneğin sonuncusu H3: İki açık A/B sorusu varken kullanıcı yalnızca “A” yazıyor. Sistem hangi soruya cevap verildiğini tahmin ederek karar uygulamayacak; cevabı saklayıp hangi sorunun kastedildiğini soracak. Bu davranış uygun mu?",
+  "answer": "uygun",
+  "status": "approved_behavior_partial_case_review",
+  "bindings": {
+    "source_path": "examples/corpus/sources/s03.json",
+    "source_sha256": "0462eabe1de841aa790369939247ee892f6235c5ea0bdc94d3ca1cef2ea1fa2e",
+    "source_message_id": "S03-m04",
+    "oracle_path": "examples/corpus/oracles/s03.json",
+    "oracle_sha256": "76d8dbc444144ef4c47556c17efc574d7c000e328238d873e454d00d148b9fe4"
+  },
+  "approved_scope": [
+    "Preserve ambiguous A reply when multiple A/B questions are unresolved",
+    "Do not infer question association or apply a decision from that ambiguous reply",
+    "Ask which question was meant before applying selection"
+  ],
+  "not_reviewed": [
+    "exact extraction kinds/quotes/spans/attributes",
+    "complete H3 oracle and production clarification implementation",
+    "remaining corpus annotations",
+    "second reviewer/adjudication",
+    "sealed holdout"
+  ],
+  "corpus_gold": false,
+  "oracle_modified": false,
+  "model_dispatch_authorized": false,
+  "paid_api_authorized": false
+}

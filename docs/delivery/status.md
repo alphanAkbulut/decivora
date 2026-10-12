@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — H3 onayı ve ilk üç behavior incelemesi tamamlandı
+
+- Kullanıcı H3 için “uygun” dedi: belirsiz A saklanır, hangi soruya ait olduğu tahmin edilmez, açıklama istenir. [Review](../quality/reviews/h3-behavior.json) kaynak/oracle hash ve scope taşır. T01g ilk üç davranış incelemesi scoped DONE; tam corpus/exact etiket gold veya production runtime tamamlanmış değildir.
+- T01/T02/T03 IN_PROGRESS; dört kod teslimi ve T01g kapanışı korunur. Sırada gerçek quote-only anlam testi hazırlığı ve exact etiket ölçümü; ücret/ek model dispatch izni yok.
+
+
 ### 2026-10-12 — H2 açıklama sonrası insan incelemesi
 
 - Kullanıcı kısmi kriterin nedenini sorguladı; geçici durum/hata senaryosu ve kalan doğrulamayı sürdürme açıklandı, ardından “evet” ile kabul edildi. [Review kaydı](../quality/reviews/h2-behavior.json) soru/itiraz/açıklama/yanıt ve source/oracle hashlerini korur. Bir passed criterion bütün görevi kapatmaz; eksikler ve next verification takip edilir.
