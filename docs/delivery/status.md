@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Q03-R6 tek yeni deneme onayı
+
+- Kullanıcı “Bu tek yeni denemeyi onaylıyorum” yanıtını açık RECEIVER-002 sorusuna verdi. Source-bound [authorization](../../examples/receiver-next-smoke/authorization.json) kaydedildi; yalnız exact8089-byte sentetik isteğin tek yeni projectless Luna/Low turn'ü, retry/tools/subagents/paidAPI0.
+- Dispatch öncesi kayıt: gönderim/çıktı0. Kesin token/context cap unknown; parent/oracle/repo modele aktarılmaz. İlk başarısızlık korunacak; yeni retry otomatik yetkili değil. T03 ana gate kapanmadı.
+
 ### 2026-10-13 — Wire-2 bağımsız proje incelemesi tamamlandı
 
 - T03z scoped DONE: [yeni receiver inceleme yolu](../quality/project-review-next.md), eski raw/ID/format onarılmadan v2 source guard ve Q14-A proje ayrımı.14 yeni/206 semantik,15 karar,40 takip testi geçti; eski deneyler ve38 Mermaid kaynakları aynı.

@@ -81,7 +81,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 
-Sıradaki adım: Hazır RECEIVER-002 önerisinin exact prompt/scope için yeni tek-run iznini al; yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review T03z DONE, v1 ID/format onarımı yok; trial scorer ile review uygunluğu ayrı. Production/native/gold/ROI/T03c açık.
+Sıradaki adım: Q03-R6 tek yeni run onayı alındı; exact RECEIVER-002 promptunu bir yeni native Luna/Low sohbette gönder, yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review T03z DONE, v1 ID/format onarımı yok; trial scorer ile review uygunluğu ayrı. Production/native/gold/ROI/T03c açık.
 
 
 ## Mevcut teslim parçaları
@@ -174,4 +174,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `eb6995398725c6bf869f13053d2bf57db7ae0a37bfc03bc0f409bac2bf4e576a`
+Kaynak fingerprint: `69d47f02648ab1933bb006e60a4f4198dee69800115b9b5daa2175e26f9c9800`

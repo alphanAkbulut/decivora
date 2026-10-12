@@ -93,7 +93,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 hazırlanmış/not_run. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 - **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 - **Son ilerleme:** 2026-10-13 · T03z DONE: wire-2 için bağımsız proje incelemesi;14 yeni/206 semantik test. [Kanıt](../quality/project-review-next.md). T03y exact prompt/scorer hazır; actualsend0/modelquality not_run, eski raw/failure korunur.
-- **Sıradaki adım:** Hazır RECEIVER-002 önerisinin exact prompt/scope için yeni tek-run iznini al; yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review T03z DONE, v1 ID/format onarımı yok; trial scorer ile review uygunluğu ayrı. Production/native/gold/ROI/T03c açık.
+- **Sıradaki adım:** Q03-R6 tek yeni run onayı alındı; exact RECEIVER-002 promptunu bir yeni native Luna/Low sohbette gönder, yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review T03z DONE, v1 ID/format onarımı yok; trial scorer ile review uygunluğu ayrı. Production/native/gold/ROI/T03c açık.
 
 
 ### T03 altında tamamlanan küçük teslimler

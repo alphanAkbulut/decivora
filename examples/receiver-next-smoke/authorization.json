@@ -1,0 +1,36 @@
+{
+  "experiment_id": "RECEIVER-002",
+  "authorization_status": "authorized_one_initial_submission",
+  "question_id": "Q03-R6",
+  "permission_evidence": "Bu tek yeni denemeyi onaylıyorum",
+  "permission_source": {
+    "kind": "request_user_input_async_reply",
+    "question_item_id": "[\"request_user_input_async\",\"call_09754e4cdaa6416caba50d3a50ffd73e\",0]"
+  },
+  "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+  "prompt_sha256": "14f68a36d7ee013eb07fbbef4c214e264a7108d00bc73529f30c9044878efb48",
+  "prompt_bytes": 8089,
+  "expected_sha256": "f86c2b0f8f4c52bfde06062c1f8a52dc385766b64abbb5d03c1d6b15036a0661",
+  "source_file_sha256": {
+    "examples/resume-compact-smoke/N01-readable.json": "cbc22cd338fbf2e097c7cc5786f9bc7c5da3d040a87e3da5fd4d4f3c248a32f9",
+    "examples/resume-compact-smoke/N02-readable.json": "95ef5e631e9fbc736c98e609a1d02187d97725554adaa1f6db2e6fef8ea5debb"
+  },
+  "selected_model": "gpt-6-luna",
+  "selected_reasoning": "low",
+  "execution_method": "Codex native fresh projectless chat",
+  "maximum_initial_turns": 1,
+  "actual_submission_attempts": 0,
+  "actual_outputs": 0,
+  "automatic_retries": 0,
+  "followup_inference_allowed": false,
+  "paid_api_allowed": false,
+  "tools_allowed": false,
+  "subagents_allowed": false,
+  "expected_labels_shared": false,
+  "parent_history_shared": false,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "soft_output_tokens": 1536,
+  "renewable_automatically": false,
+  "human_gold_approval": false
+}
