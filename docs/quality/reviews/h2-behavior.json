@@ -1,0 +1,40 @@
+{
+  "format": "decivora-human-behavior-review-1",
+  "review_id": "H2-BEHAVIOR-001",
+  "revision": 1,
+  "date": "2026-10-12",
+  "reviewer": {
+    "identity": "project_owner_current_chat",
+    "role": "product_owner",
+    "provenance": "explicit clarification and affirmative user reply in current chat; not production IAM"
+  },
+  "initial_question_item_id": "[\"request_user_input_async\",\"call_4dc6702bc8f34145833e2845afb5a8ce\",0]",
+  "initial_reply": "diğer kabul kriterleri neden doğrulanmadı? neden bir şey yarım kalarak ilerlesin ki?",
+  "clarification": "Bu bir hata senaryosu testi; işi yarım bırakma önerisi değil. Diğer testler henüz çalışmamış, başarısız olmuş veya kanıtı gelmemiş olabilir. Geçici durumda görev açık kalır ve sistem kalan doğrulamayı takip eder; bütün zorunlu kriterler doğrulanınca kapatır.",
+  "clarified_question": "Bu geçici durumda görev açık kalsın ve sistem kalan doğrulamayı takip etsin yaklaşımı uygun mu?",
+  "answer": "evet",
+  "status": "approved_behavior_partial_case_review",
+  "bindings": {
+    "source_path": "examples/corpus/sources/s02.json",
+    "source_sha256": "69330e5c2d003463f86421a20e54713ea7a6b886929ffe9c58713824dfafbdc9",
+    "source_message_id": "S02-m09",
+    "oracle_path": "examples/corpus/oracles/s02.json",
+    "oracle_sha256": "8a6db61aed45bbdd342d0b6cdc8d96b55ae8e901fac86345f1ef65294b19d433"
+  },
+  "approved_scope": [
+    "Individually verified rollback criterion can pass while other mandatory criteria remain unverified",
+    "Keep task open, expose missing criteria and next verification action; continue remaining verification",
+    "Complete task only after all mandatory acceptance criteria are verified"
+  ],
+  "not_reviewed": [
+    "exact extraction kinds/quotes/spans/attributes",
+    "complete H2 oracle and production verifier implementation",
+    "other corpus cases",
+    "second reviewer/adjudication",
+    "sealed holdout"
+  ],
+  "corpus_gold": false,
+  "oracle_modified": false,
+  "model_dispatch_authorized": false,
+  "paid_api_authorized": false
+}

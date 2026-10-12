@@ -58,8 +58,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
-- **Son ilerleme:** 2026-10-12 · H1 karar seçimi ve ayrı görev etkisi onayı davranışı kullanıcı tarafından onaylandı; [source/oracle hash bağlı partial review](../quality/reviews/h1-behavior.json) kaydedildi. Exact extraction/task impact etiketleri ve corpus bütünü henüz incelenmedi; gold/holdout iddiası yok, oracle değişmedi.
-- **Sıradaki adım:** H2 kısmi kabul kriteri incelemesi soruldu; H3 ve exact candidate/domain etiketleri sırada. İnsan inceleme kuyruğu ve gerçek model kalite ölçümü ayrı kapılar; T01 IN_PROGRESS.
+- **Son ilerleme:** 2026-10-12 · H1 karar/ayrı impact ve H2 kısmi AC davranışları kullanıcı tarafından onaylandı. H2 açıklama sonrası kabul: tek criterion passed, görev açık, kalan doğrulama takip edilir. [H2 partial review](../quality/reviews/h2-behavior.json) source/oracle hash ve soru/açıklama/yanıt taşır. Exact extraction/impact etiketleri ve tam corpus gold değil; oracle değişmedi.
+- **Sıradaki adım:** H3 belirsiz harf davranışı, ardından exact candidate/domain etiket incelemesi ve gerçek model ölçümü. H1/H2 behavior reviewed; kalan kalite/holdout/karşılaştırma kapıları açık, T01 IN_PROGRESS.
 
 ## T02 — İki coding yüzeyinde capability spike
 

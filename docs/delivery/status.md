@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — H2 açıklama sonrası insan incelemesi
+
+- Kullanıcı kısmi kriterin nedenini sorguladı; geçici durum/hata senaryosu ve kalan doğrulamayı sürdürme açıklandı, ardından “evet” ile kabul edildi. [Review kaydı](../quality/reviews/h2-behavior.json) soru/itiraz/açıklama/yanıt ve source/oracle hashlerini korur. Bir passed criterion bütün görevi kapatmaz; eksikler ve next verification takip edilir.
+- H1/H2 behavior reviewed, H3 ve exact etiket/corpus gold pending. Source/oracle değişmedi; yeni model/ücret izni yok, T01 IN_PROGRESS ve dört scoped Done teslimi korunur.
+
+
 ### 2026-10-12 — H1 insan davranış incelemesi
 
 - Kullanıcı doğrulanmış geç cevapla karar seçimi ve görev etkisinin ayrı onayı davranışını kabul etti. [Sürümlü review](../quality/reviews/h1-behavior.json) exact soru/yanıt ve source/oracle hash içerir. Yalnız sorulan davranış reviewed; task impact/extraction etiketleri veya bütün corpus gold yapılmadı, oracle değiştirilmedi.

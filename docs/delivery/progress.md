@@ -30,7 +30,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 ### T01 · Golden corpus ve karşılaştırma protokolü
 
-2026-10-12 · H1 karar seçimi ve ayrı görev etkisi onayı davranışı kullanıcı tarafından onaylandı; [source/oracle hash bağlı partial review](../quality/reviews/h1-behavior.json) kaydedildi. Exact extraction/task impact etiketleri ve corpus bütünü henüz incelenmedi; gold/holdout iddiası yok, oracle değişmedi.
+2026-10-12 · H1 karar/ayrı impact ve H2 kısmi AC davranışları kullanıcı tarafından onaylandı. H2 açıklama sonrası kabul: tek criterion passed, görev açık, kalan doğrulama takip edilir. [H2 partial review](../quality/reviews/h2-behavior.json) source/oracle hash ve soru/açıklama/yanıt taşır. Exact extraction/impact etiketleri ve tam corpus gold değil; oracle değişmedi.
 
 **Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
 
@@ -38,7 +38,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: H2 kısmi kabul kriteri incelemesi soruldu; H3 ve exact candidate/domain etiketleri sırada. İnsan inceleme kuyruğu ve gerçek model kalite ölçümü ayrı kapılar; T01 IN_PROGRESS.
+Sıradaki adım: H3 belirsiz harf davranışı, ardından exact candidate/domain etiket incelemesi ve gerçek model ölçümü. H1/H2 behavior reviewed; kalan kalite/holdout/karşılaştırma kapıları açık, T01 IN_PROGRESS.
 
 ### T02 · İki coding yüzeyinde capability spike
 
@@ -90,7 +90,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
 | Geçerli gerçek model output’u ve bağımsız ölçüm | Bir gerçek output alındı, strict validator 10/11 kaynak konumu hatasında reddetti; semantik kalite hâlâ not_measured | [Yeni teslim](../quality/source-anchor-adapter.md): bounded adapter/negatifler, quote-only contract ve candidate scorer uygulandı; sırada yetkili gerçek inference ve insan review. Orijinal sonuç korunur, Q03-R5 tüketildi; otomatik tekrar yok, provider token upper bound unknown |
-| Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1 davranışı partial reviewed](../quality/reviews/h1-behavior.json); H2/H3, exact etiketler ve tam kritik set pending |
+| Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1](../quality/reviews/h1-behavior.json) / [H2](../quality/reviews/h2-behavior.json) davranışları partial reviewed; H3, exact etiketler ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
 | Production stack/build | T04–T24 bağımsız ürün başlangıcı | T03c açık; fixture Python/SQLite önerilen üretim stack’i değil |
@@ -138,4 +138,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `5274579082861404144aa39669e8353206807912d696f19cf62555721d27eeb6`
+Kaynak fingerprint: `dcd885a13582d545921cced3eb863d86f36bebf143b9630a46ba66b95a7f4127`
