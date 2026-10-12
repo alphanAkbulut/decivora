@@ -1,5 +1,7 @@
 # RECEIVER-002 hazırlığı — model çalıştırılmadı
 
+
+**Güncel actual durum:** [RECEIVER-002 tek native run](../../docs/quality/receiver-002-result.md) tamamlandı, invalid_contract; [ayrı onay](authorization.json) tüketildi. Aşağıdaki request/manifest/scorer örneği frozen hazırlık snapshot'ıdır; actual başarı veya yeni dispatch izni değildir.
 [Plan ve sınırlar](../../docs/quality/receiver-next-plan.md) · [Yerel hazırlık raporu](../../docs/quality/receiver-next-preparation-results.json).
 
 - `request.json`: yeni identity, pinned source sidecar, projection/schema ve gönderimsiz metadata.

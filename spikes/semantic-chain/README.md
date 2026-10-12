@@ -128,3 +128,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Wire-2 bağımsız proje incelemesi — T03z DONE
 
 [`project_review_next.py` / doğrulama](../../docs/quality/project-review-next.md), aynı wire-2/request kimliği ve source guard ile Q14-A ayrımı; global kimlik/access ret, teknik hata/abstain/missing ve atomic bekleme.14 yeni/206 semantik test; kalite scorer değişmedi, model/API/mutation0. V1 raw/ID/format onarılmaz; context yalnız caller fixture, gerçek IAM/Inbox değil.
+
+## RECEIVER-002 gerçek native run — Q03-R6 tüketildi
+
+[İlk tam çıktı ve tanı](../../docs/quality/receiver-002-result.md): tek Luna/Low turn, wire-2 JSONvalid fakat N01 required next_actions yok/N02 ambiguous soru bağı yanlış; trial invalid_contract, iki proje unreviewed.3 yeni saved-output testi/209 semantik test; raw/manifest/old scorer korunur. Yeni model/API0 (actual trial1; retry0), token/backend unknown. Sonraki yerel iş typed facts readback/action taslağını modelden isteme tekrarını azaltmak; implemented diye sunulmaz.

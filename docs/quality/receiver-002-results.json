@@ -1,0 +1,150 @@
+{
+  "experiment_id": "RECEIVER-002",
+  "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+  "prompt_sha256": "14f68a36d7ee013eb07fbbef4c214e264a7108d00bc73529f30c9044878efb48",
+  "prompt_bytes": 8089,
+  "raw_sha256": "3e72906a5f34c00863e64245b954f443fd200f4502352b051788df1e605c101a",
+  "raw_bytes": 1488,
+  "raw_characters": 1488,
+  "raw_json_syntax": "valid",
+  "score": {
+    "status": "invalid_contract",
+    "validation_error": "schema oneOf at $.responses[0]",
+    "readback_score": null,
+    "action_score": null
+  },
+  "project_review": {
+    "format": "receiver-project-review-2",
+    "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+    "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+    "raw_sha256": "3e72906a5f34c00863e64245b954f443fd200f4502352b051788df1e605c101a",
+    "projects": [
+      {
+        "project_id": "prj_storage_review",
+        "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+        "status": "invalid_project_output",
+        "review": null,
+        "clarifications": [],
+        "diagnostics": [
+          {
+            "kind": "technical_output_error",
+            "reason": "schema oneOf at $.responses[0]"
+          }
+        ]
+      },
+      {
+        "project_id": "prj_ui_review",
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+        "status": "invalid_project_output",
+        "review": null,
+        "clarifications": [],
+        "diagnostics": [
+          {
+            "kind": "technical_output_error",
+            "reason": "action contradicts record status or question binding"
+          }
+        ]
+      }
+    ],
+    "status": "awaiting_resolution",
+    "atomic_groups": [],
+    "quality_scored": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "pre_dispatch_commit": "70941bf8ffe6cb93f5f1816ac532f48db2e6b52f",
+  "configured_model": "gpt-6-luna",
+  "configured_reasoning": "low",
+  "actual_backend_model": null,
+  "actual_initial_turns": 1,
+  "actual_final_outputs": 1,
+  "actual_followup_turns": 0,
+  "actual_model_retries": 0,
+  "observed_receiver_tool_calls": 0,
+  "host_injection_marker_observed": true,
+  "turn_duration_ms": 5802,
+  "turn_started_at": 1791845252,
+  "turn_completed_at": 1791845258,
+  "parent_history_forwarded": false,
+  "oracle_forwarded": false,
+  "hidden_host_context_not_excluded": true,
+  "raw_capture_method": "read_thread full final_answer text; not wait summary or provider transport",
+  "transport_diagnostic": {
+    "wait_snapshot_equal_full_message": false,
+    "wait_snapshot_json_valid": false
+  },
+  "usage": {
+    "provider_input_tokens": null,
+    "provider_output_tokens": null,
+    "provider_reasoning_tokens": null,
+    "provider_cached_tokens": null,
+    "provider_total_tokens": null,
+    "visible_text_tokens": null,
+    "cost": null,
+    "soft_output_target_tokens": 1536,
+    "hard_token_cap_verified": false,
+    "hard_context_cap_verified": false,
+    "token_overrun_status": "not_evaluable",
+    "quota_before": {
+      "ordinary_usage_allowed": true,
+      "scope": "rounded_shared_account_not_trial_tokens",
+      "windows": [
+        {
+          "limit_id": "codex",
+          "primary": {
+            "used_percent": 85,
+            "window_duration_mins": 10080,
+            "resets_at": 1792312842
+          }
+        }
+      ]
+    },
+    "quota_after": {
+      "ordinary_usage_allowed": true,
+      "scope": "rounded_shared_account_not_trial_tokens",
+      "windows": [
+        {
+          "limit_id": "codex",
+          "primary": {
+            "used_percent": 85,
+            "window_duration_mins": 10080,
+            "resets_at": 1792312842
+          }
+        }
+      ]
+    },
+    "quota_delta_attribution": "not attributable to trial; rounded account snapshot includes other tasks"
+  },
+  "canonical_mutations": 0,
+  "paid_api_calls": 0,
+  "human_gold": false,
+  "production_runtime": false,
+  "next_model_dispatch_authorized": false,
+  "semantic_suite_tests": 209,
+  "new_saved_output_tests": 3,
+  "diagnostics_not_scored": [
+    "N01 next_actions required field absent; no silent empty default",
+    "N02 unbound ambiguous N02-m04 given Q_UI association contrary to record; no guessed question",
+    "current Q_STORE/Q_UI, numeric criterion revision and not_run visibly preserved; diagnostic only"
+  ],
+  "limitations": [
+    "one exposed source-bound development run; same fixture as previous run, not generalization/holdout",
+    "typed source facts supplied; not discovery extraction test",
+    "whole-trial invalid; no repaired or successful subset model score",
+    "configured model only; backend/hidden context/usage/cost unknown"
+  ],
+  "file_sha256": {
+    "examples/receiver-next-smoke/request.json": "6e76ad0485a0f2ca7d0f174846cb090cb29d58d20641b4a020844b9783946893",
+    "examples/receiver-next-smoke/prompt.txt": "14f68a36d7ee013eb07fbbef4c214e264a7108d00bc73529f30c9044878efb48",
+    "examples/receiver-next-smoke/response.schema.json": "21262b2cb3f461cc2e84e20f0fbe745990a2ce33568d42f060f37c17b546cf92",
+    "examples/receiver-next-smoke/expected.json": "f86c2b0f8f4c52bfde06062c1f8a52dc385766b64abbb5d03c1d6b15036a0661",
+    "examples/receiver-next-smoke/manifest.json": "5204089f8363829e1e4689f1d620d04a051b5ef53f0671b6805358858ff456bf",
+    "examples/receiver-next-smoke/review-context.fixture.json": "c6997b3e759367a3952c1c67c9126619ac507781e19de9e1e0a1c5d23458ad62",
+    "spikes/semantic-chain/receiver_next.py": "f4892cd4fc94eaf2e9cde937ab33092814def7ccf759993247154ec229f743bb",
+    "spikes/semantic-chain/project_review_next.py": "0411615ea4e803ef3d067abaca1d7b348aa5ea230f078be121d317babce8873d",
+    "spikes/semantic-chain/test_receiver_next_run.py": "87cdc8da0a76be5302e72df72f7734ce77d9ab7a7968d25ee6d0d56d23579d00"
+  }
+}

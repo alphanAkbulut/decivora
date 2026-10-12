@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — RECEIVER-002 tek run tamamlandı; kalite geçmedi
+
+- [İlk tam wire-2 çıktı](../quality/receiver-002-result.md) kaydedildi:1488byte/JSONvalid, storage next_actions missing, UI ambiguous Q_UI bind source ret; trial invalid_contract/unscored. İki proje review yok; raw onarılmadı, canonical mutation0.
+- Q03-R6 cevaplandı/tüketildi; artık pending izin kapısı değil. Tek Luna/Low turn, follow-up/retry/tools/subagents/paidAPI0; usage/backend unknown, shared kota85→85 sıfır tüketim demek değil.209 semantik/15 karar/40 repo test passed; ana T01/T02/T03 açık, T04 başlamadı. Sırada aynı tipli gerçeklerin modelce tekrar üretilmesini azaltan yerel deterministic taslak; yeni model çağrısı yok.
+
 ### 2026-10-13 — Q03-R6 tek yeni deneme onayı
 
 - Kullanıcı “Bu tek yeni denemeyi onaylıyorum” yanıtını açık RECEIVER-002 sorusuna verdi. Source-bound [authorization](../../examples/receiver-next-smoke/authorization.json) kaydedildi; yalnız exact8089-byte sentetik isteğin tek yeni projectless Luna/Low turn'ü, retry/tools/subagents/paidAPI0.

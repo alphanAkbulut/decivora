@@ -29,7 +29,7 @@ python3 -B spikes/semantic-chain/project_review_next.py --request examples/recei
 
 **Review uygunluğu ≠ kalite skoru.** Katman `quality_scored:false`, `canonical_mutations:0`, `model_dispatches:0` döndürür. Tam deney kalite scorer'ı [`receiver_next.py`](../../spikes/semantic-chain/receiver_next.py) bütün çıktı için strict kalır; bir satır başarısızsa geçerli alt parçayı genel başarılı model run diye sunmaz. Eksik next-action recall'ı review kabulüyle ölçülmüş olmaz.
 
-Yeni model/API/target erişimi yok. RECEIVER-002'nin prompt/request/schema/oracle/manifest hazırlık snapshot'ları aynı; yeni context yan dosyası inference prompt'una eklenmez. Q03-R6 tek yeni model izni açık. Human gold/native/ROI/production stack T03c kapıları kapanmadı; T04 başlamadı.
+Yeni model/API/target erişimi yok. RECEIVER-002'nin prompt/request/schema/oracle/manifest hazırlık snapshot'ları aynı; yeni context yan dosyası inference prompt'una eklenmez. Sonraki [RECEIVER-002 actual run](receiver-002-result.md) iki satırda da ret verdi; Q03-R6 kabul edildi/tüketildi, artık yanıt beklemiyor. Human gold/native/ROI/production stack T03c kapıları kapanmadı; T04 başlamadı.
 
 ## Ana işleri bitirmek için kalanlar
 

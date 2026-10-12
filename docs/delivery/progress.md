@@ -73,15 +73,15 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-13 · T03z DONE: wire-2 için bağımsız proje incelemesi;14 yeni/206 semantik test. [Kanıt](../quality/project-review-next.md). T03y exact prompt/scorer hazır; actualsend0/modelquality not_run, eski raw/failure korunur.
+2026-10-13 · [RECEIVER-002](../quality/receiver-002-result.md) gerçek run ve3 saved-output regresyonu/209 semantik test. Trial invalid_contract, iki bağımsız proje de ret; Q03-R6 tüketildi. T03z local review DONE; eski raw/failure korunur.
 
 **Aktif teknik risk:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 
-**Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 hazırlanmış/not_run. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
+**Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 
 **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 
-Sıradaki adım: Q03-R6 tek yeni run onayı alındı; exact RECEIVER-002 promptunu bir yeni native Luna/Low sohbette gönder, yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review T03z DONE, v1 ID/format onarımı yok; trial scorer ile review uygunluğu ayrı. Production/native/gold/ROI/T03c açık.
+Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. [Bulgu ve küçük yerel devam](../quality/receiver-002-result.md): typed/source-bound record'lardan deterministic readback/action taslağı üretimini sınayarak modelce tekrarı azalt; ilk raw/strict scorer değiştirilmez. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
 ## Mevcut teslim parçaları
@@ -116,7 +116,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **İlk native receiver run kaydı / T03v DONE** — Tek configured Luna/Low turn ve actual firstoutput; source/contract gate ve model-token/context kaydı; [136 test/2 yeni guard](../quality/receiver-001-result.md); syntaxvalid/schemainvalid, usageunknown, actualquality gate açık
 - **Receiver shape/source guard / T03w DONE** — Request bağlı makine schema; current question ve ambiguous record ayrı, strict integer/abstention/record-action/evidence kontrolü; [152 test/16 yeni](../quality/receiver-contract.md); ilk gerçek çıktı failed kalır, provider conformance/model kalite yeniden sınanmadı
 - **Q14-A bağımsız proje review / T03x DONE** — Global envelope/current binding preflight, per-project shape/source sonucu, atomic group ve stable clarification reply association; [172 test/20 yeni](../quality/project-review.md); fixture context, durable Inbox/gerçek IAM/UI/host resume ve model kalitesi açık
-- **Yeni machine-schema receiver isteği / T03y DONE** — 8source/6record,8089byte yeni kimlikli prompt ve ayrı oracle/scorer; hermetik3file source-only hazırlık; [192 test/20 yeni](../quality/receiver-next-plan.md); actualsend0/izin yok, provider/model kalite not_run
+- **Yeni machine-schema receiver isteği / T03y DONE** — 8source/6record,8089byte yeni kimlikli prompt ve ayrı oracle/scorer; hermetik3file source-only hazırlık; [192 test/20 yeni](../quality/receiver-next-plan.md); hazırlık snapshot send0 korunur; sonraki [RECEIVER-002 tek run](../quality/receiver-002-result.md) invalid_contract, provider-enforced schema not_run
 - **Wire-2 bağımsız proje incelemesi / T03z DONE** — Exact yeni request/source binding, global preflight ve yerel teknik hata ayrımı; atomic grup bölünmez; [206 semantik test/14 yeni](../quality/project-review-next.md); raw/format onarımı yok, strict whole-trial scorer ayrı, gerçek model/IAM/UI not_run
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
@@ -124,8 +124,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| RECEIVER-002 tek-run izni / Q03-R6 | T03y kaynak/schema/scorer hazır; yeni model çağrısı başlatma izni yok. Bağımsız yerel kod işleri için bu izin gerekmez | [Exact paket ve sınırlar](../quality/receiver-next-plan.md), [Q03-R6](decision-brief.md): actualsend0; tek native Luna/Low turn önerisi, retry/paidAPI0; yanıt henüz yok |
-| Receiver model kalitesi ve genelleme | RECEIVER-001 invalid_contract; T03w/x/y yerel düzeltmeleri gerçek modelde henüz sınanmadı. Dar MEMBERSHIP-002/003 source/type draft eşleşmesi genel kalite değildir | [İlk failure](../quality/receiver-001-result.md); yeni RECEIVER-002 not_run. R22 multi-answer fixture toplama T03r DONE; production reconciliation, gold/native/ROI açık |
+| Receiver model kalitesi ve genelleme | RECEIVER-002 düzeltmeli tek run da invalid_contract; missing required field ve ambiguous-question binding kaynak retleri gözlendi. Dar MEMBERSHIP-002/003 source/type draft eşleşmesi genel kalite değildir | [İlk failure](../quality/receiver-001-result.md), [ikinci gerçek failure](../quality/receiver-002-result.md); ham çıktılar değişmedi. R22 multi-answer fixture toplama T03r DONE; production reconciliation, gold/native/ROI açık |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
@@ -174,4 +173,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `69d47f02648ab1933bb006e60a4f4198dee69800115b9b5daa2175e26f9c9800`
+Kaynak fingerprint: `a2ecc95480a6760947968a84583f346490015b0f9f8359ba45af4ea353cf881b`

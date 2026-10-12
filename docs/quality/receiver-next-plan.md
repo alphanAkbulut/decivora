@@ -1,6 +1,6 @@
 # RECEIVER-002: makine şemalı yeni istek
 
-**2026-10-13 · T03y / P0 hazırlık DONE; gerçek model deneyi not_run.** [Önceki başarısız ilk çıktı](receiver-001-result.md) korunur; yeni request kimliği, wire formatı ve scorer ayrı. [İncelenebilir paket](../../examples/receiver-next-smoke/README.md) · [Yerel hazırlık kanıtı](receiver-next-preparation-results.json).
+**2026-10-13 · T03y / P0 hazırlık DONE. Sonraki gerçek [RECEIVER-002 run](receiver-002-result.md) invalid_contract/unscored; Q03-R6 tüketildi.** Aşağıdaki hazırlık karşılaştırması ve frozen manifest dispatch öncesi snapshot'tır; güncel actual sonucu ayrı rapordan oku. [Önceki başarısız ilk çıktı](receiver-001-result.md) korunur; yeni request kimliği, wire formatı ve scorer ayrı. [İncelenebilir paket](../../examples/receiver-next-smoke/README.md) · [Yerel hazırlık kanıtı](receiver-next-preparation-results.json).
 
 ## Neyi değiştirdik?
 
@@ -30,7 +30,7 @@ Sekiz source message'ın text/actor/revision'ı, tüm fixture state, soru sunuml
 
 **192 semantik /15 karar /40 takip testi geçti;20 semantik test yeni.** Saved hash/no-overwrite, foreign/duplicate/schema/source, type/abstention, current question vs ambiguity, stale/future/false verification, budget/no truncation ve oracle/file read sınırları. Prompt/expected/readback schema pinned; tokenizer kurulu değil, token/para/ROI null. Schema interpreter yalnız mevcut dar keyword kümesi; genel standard conformance ve provider schema acceptance not_run.
 
-Bu evaluator **bütün deney çıktısı için strict kalite kapısıdır**, ürün Q14-A review politikası değildir. Önceki T03x wrapper v1 input'uyla aynı kalır; v2 wire'ı onun içine ID/format değiştirerek sokmayız. Yeni gerçek run'da row diagnostics ve gerekiyorsa v2 review bağlama ayrı sürümlü iş olarak hazırlanır; primary trial skorunu başarılı alt parça seçerek değiştirmeyiz. Product UI/durable Inbox/IAM/host resume/atomic graph üretimi henüz yok.
+Bu evaluator **bütün deney çıktısı için strict kalite kapısıdır**, ürün Q14-A review politikası değildir. Önceki T03x wrapper v1 input'uyla aynı kalır; v2 wire'ı onun içine ID/format değiştirerek sokmayız. Wire-2 review bağlama [T03z](project-review-next.md) ile tamamlandı; gerçek run'ın iki satırı da invalid, tanılar ayrı raporda; primary trial skorunu başarılı alt parça seçerek değiştirmeyiz. Product UI/durable Inbox/IAM/host resume/atomic graph üretimi henüz yok.
 
 ```sh
 python3 -B spikes/semantic-chain/receiver_next.py prepare
@@ -40,7 +40,7 @@ python3 -B -m unittest discover -s spikes/semantic-chain -p 'test_receiver_next.
 
 Bu komutlar model/network/target erişimi yapmaz. Prepare response/expected parametresi kabul etmez; CLI mevcut output dosyasını overwrite etmez. Prompt-only schema modelin uyması istenen sözleşmedir, provider-enforced JSON output değildir.
 
-## Hazır tek-run önerisi — yetki verilmedi
+## Hazırlık anındaki tek-run önerisi — tarihsel snapshot
 
 | Alan | Öneri / mevcut durum |
 |---|---|

@@ -1,6 +1,6 @@
 {
   "experiment_id": "RECEIVER-002",
-  "authorization_status": "authorized_one_initial_submission",
+  "authorization_status": "consumed_one_submission_attempt",
   "question_id": "Q03-R6",
   "permission_evidence": "Bu tek yeni denemeyi onaylıyorum",
   "permission_source": {
@@ -19,8 +19,8 @@
   "selected_reasoning": "low",
   "execution_method": "Codex native fresh projectless chat",
   "maximum_initial_turns": 1,
-  "actual_submission_attempts": 0,
-  "actual_outputs": 0,
+  "actual_submission_attempts": 1,
+  "actual_outputs": 1,
   "automatic_retries": 0,
   "followup_inference_allowed": false,
   "paid_api_allowed": false,
@@ -32,5 +32,10 @@
   "hard_context_cap_verified": false,
   "soft_output_tokens": 1536,
   "renewable_automatically": false,
-  "human_gold_approval": false
+  "human_gold_approval": false,
+  "remaining_submission_attempts": 0,
+  "execution_status": "completed_first_output_invalid_contract",
+  "actual_initial_turns": 1,
+  "actual_followup_turns": 0,
+  "actual_model_retries": 0
 }
