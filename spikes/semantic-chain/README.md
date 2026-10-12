@@ -92,3 +92,8 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Çoklu cevap koleksiyonu — T03r DONE
 
 `python3 -B spikes/semantic-chain/collect_membership.py [--out NEWPATH]`: MEMBERSHIP-003 tam response'ları `bridge.collect_proposals(chain,request,response_text,project_id)` ile ayrı source-bound adaylara ayırır; raw/request değişmez. Old revision stale, current ayrı onay önerisi, bağsız B clarification; conflict/duplicate/agent/foreign/no-context ayrı.102 suite/9 yeni test, model/selection0; eski `propose` tek-cevap sözleşmesi korunur. [Sözleşme, kanıt ve sınırlar](../../docs/quality/proposal-collection.md). Her fixture tek pending question; production multiquestion DB/IAM veya kalıcı reconciliation değil. Sırada kayıtlı bilgiyle devam paketi/dosya baseline'ı; native gerçek host ayrı erişim ister.
+
+
+## Resume ve eşit bilgiyle dosya — T03s DONE
+
+`python3 -B spikes/semantic-chain/compare_resume.py [--out NEWPATH] [--export-dir NEWDIR]`: deterministic resume/source/state exports, ayrı read-access fixture ve fresh source/state/access bağları. [Altı örnek](../../examples/resume-smoke/README.md)/[110 test,8 yeni ve rapor](../../docs/quality/resume-file-comparison.md). Her iki JSON aynı core/checklist; source-only farklı capability. Byte ölçümü token tasarrufu veya receiving-model başarısı değildir; model/selection/paidAPI0. Sırada duplicate context azaltımı; yeni canlı test ayrı onay gerektirir.

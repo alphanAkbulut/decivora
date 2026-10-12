@@ -1,0 +1,24 @@
+{
+  "N01": {
+    "question_id": "Q_STORE",
+    "question_revision": 2,
+    "question_state": "pending",
+    "answer_statuses": {"N01-m01": "stale_question_revision", "N01-m02": "pending_trusted_selection"},
+    "source_message_count": 4,
+    "record_count": 2,
+    "verified": false,
+    "approved_decision_from_source": false
+  },
+  "N02": {
+    "question_id": "Q_UI",
+    "question_revision": 1,
+    "question_state": "pending",
+    "answer_statuses": {"N02-m01": "pending_trusted_selection", "N02-m04": "needs_clarification"},
+    "source_message_count": 4,
+    "record_count": 4,
+    "verified": false,
+    "approved_decision_from_source": false,
+    "upload_claims": 1,
+    "reported_criterion_result": "not_run"
+  }
+}

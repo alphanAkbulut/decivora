@@ -1,0 +1,117 @@
+{
+  "experiment_id": "RESUME-FILE-001",
+  "origin_run": "MEMBERSHIP-003",
+  "status": "offline_serialization_and_guards_only",
+  "human_gold": false,
+  "receiver_model_test": "not_run",
+  "native_host_test": "not_run",
+  "package_score": {
+    "status": "passed",
+    "missing": [],
+    "mismatches": []
+  },
+  "simple_file_score": {
+    "status": "passed",
+    "missing": [],
+    "mismatches": []
+  },
+  "same_core_information": true,
+  "bytes": {
+    "N01": {
+      "resume": 5385,
+      "simple_file": 4731,
+      "source_only": 922
+    },
+    "N02": {
+      "resume": 5750,
+      "simple_file": 5101,
+      "source_only": 741
+    }
+  },
+  "actual": {
+    "resume": {
+      "N01": {
+        "question_id": "Q_STORE",
+        "question_revision": 2,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N01-m02": "pending_trusted_selection",
+          "N01-m01": "stale_question_revision"
+        },
+        "source_message_count": 4,
+        "record_count": 2,
+        "verified": false,
+        "approved_decision_from_source": false
+      },
+      "N02": {
+        "question_id": "Q_UI",
+        "question_revision": 1,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N02-m04": "needs_clarification",
+          "N02-m01": "pending_trusted_selection"
+        },
+        "source_message_count": 4,
+        "record_count": 4,
+        "verified": false,
+        "approved_decision_from_source": false,
+        "reported_criterion_result": "not_run",
+        "upload_claims": 1
+      }
+    },
+    "simple_file": {
+      "N01": {
+        "question_id": "Q_STORE",
+        "question_revision": 2,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N01-m02": "pending_trusted_selection",
+          "N01-m01": "stale_question_revision"
+        },
+        "source_message_count": 4,
+        "record_count": 2,
+        "verified": false,
+        "approved_decision_from_source": false
+      },
+      "N02": {
+        "question_id": "Q_UI",
+        "question_revision": 1,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N02-m04": "needs_clarification",
+          "N02-m01": "pending_trusted_selection"
+        },
+        "source_message_count": 4,
+        "record_count": 4,
+        "verified": false,
+        "approved_decision_from_source": false,
+        "reported_criterion_result": "not_run",
+        "upload_claims": 1
+      }
+    }
+  },
+  "token_counts": null,
+  "cost": null,
+  "human_correction_time": null,
+  "new_model_dispatches": 0,
+  "selection_dispatches": 0,
+  "paid_api_calls": 0,
+  "canonical_mutations": 0,
+  "production_runtime": false,
+  "fixture_only_access": true,
+  "conclusions": [
+    "Equal facts survive both representations; no superiority shown",
+    "Resume adds a checked snapshot envelope; simple files can implement the same guards",
+    "Byte size is measured, token/cost/receiving-model behavior is not"
+  ],
+  "hashes": {
+    "examples/adversarial-smoke/requests.json": "de376ba51e94fe22d823549cb2ce2e9f7c444039810842df2a0180a269a306ae",
+    "docs/quality/model-runs/membership-003-response.txt": "0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb",
+    "spikes/semantic-chain/fixtures/resume-checkpoints.json": "f621d035e2a30c422a7389eb19e007d907fa8d89a2fac87111e7005c712b3d20",
+    "spikes/semantic-chain/resume_package.py": "21dfe7e822af8db1bbe222187367966a13ec57c01081af6eb157e05c7280a5bf",
+    "spikes/semantic-chain/compare_resume.py": "ade2203a32053165a08598c8eacaf5b8e3c5a947ceba274fc37577a353096c93",
+    "spikes/semantic-chain/bridge.py": "6d153494bbc5b7a8b6bc0e34f2b524ee802036ac730238a197230db9bc434015",
+    "spikes/semantic-chain/protocol.py": "ceae096b7c6b5b8b3dc7b78dc5e336ca557c2897baaea99e6565c718579f27fd",
+    "spikes/decision-chain/chain.py": "04c517f4f560e153bb870906359b9dac6217560b7af0aafc2e73e3377bf64041"
+  }
+}

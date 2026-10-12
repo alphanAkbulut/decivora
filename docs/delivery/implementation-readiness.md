@@ -32,6 +32,7 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 | Same-source kıyas / T03p DONE | Aynı dört mesajda lexical ve saved-model shared span/kind skorları; capability farkı açık | [91 semantik test/5 yeni harness testi](../quality/same-source-comparison.md); yeni model0, native/domain/ekonomi kıyası değil |
 | Yeni aile gerçek ölçümü ve H4 review / T03q,T01i DONE | Onaylı tek çıktı6 draft aday/2 scope-no-candidate; source/type ve partial behavior review hash bağlı | [93 test/guard sonuçları](../quality/membership-003-result.md); whole-batch çok-aday blok, production reconciliation açık, izin tüketildi |
 | Çoklu cevap koleksiyonu / T03r DONE | Her cevabın message/question revision'ı ayrı; tam response validation, source kimliği ve read-only proposal | [102 test/9 yeni ve stored raw replay](../quality/proposal-collection.md); stale/conflict/ambiguity korunur, production çok-soru/IAM değil |
+| Resume/export ve eşit bilgi dosya kıyası / T03s DONE | Bounded deterministic core, source/state/access freshness, inspectable altı synthetic dosya | [110 test/8 yeni ve byte ölçümü](../quality/resume-file-comparison.md); iki temsil checklist geçti, receiver/native/token/user burden not_run |
 | Yerel token/bağlam preflight kodu | Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı | [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil |
 
 Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. Ürün graph/IAM/API/UI hazır olmadı; model input/output kapısı ve fixture karar bağlantısı gerçekten kodlandı.
@@ -60,7 +61,7 @@ MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verifi
 
 ## Sıradaki uygulanabilir adım
 
-[MEMBERSHIP-003](../quality/membership-003-result.md) yeni8-message typed output ile6 authored_draft aday/2scope-no-candidate beklentisini eşleştirdi. H4 partial review tamamlandı; bütün labels/gold değil. R22 için P0 read-only koleksiyon kodu ve negatifleri tamamlandı; [kanıt](../quality/proposal-collection.md). Sırada kayıtlı bilgiyle kaynak bağlı devam paketi/basit dosya offline kıyası; native gerçek host kolu ayrı izin ister. Yeni live izin tüketildi, ücretli API kapalı; production IAM/criterion revision/lineage ve T03c stack açık.
+[MEMBERSHIP-003](../quality/membership-003-result.md) yeni8-message typed output ile6 authored_draft aday/2scope-no-candidate beklentisini eşleştirdi. H4 partial review tamamlandı; bütün labels/gold değil. R22 için P0 read-only koleksiyon kodu ve negatifleri tamamlandı; [kanıt](../quality/proposal-collection.md). Kaynak bağlı resume/simple-file offline serialization kıyası da [T03s](../quality/resume-file-comparison.md) ile tamamlandı; sırada tekrar eden context azaltımı. Gerçek alıcı model/native host kolu ayrı izin ister. Yeni live izin tüketildi, ücretli API kapalı; production IAM/criterion revision/lineage ve T03c stack açık.
 
 
 **Güncel kaynak düzeltmesi:** [ANCHOR-ADAPTER-01](../quality/source-anchor-adapter.md) önceki offline adapter önerisini kodla tamamladı. Tarihsel deneme sonuçları korunur; quote-only v1/v2 artık gerçek modelde çalıştı; son ölçüm MEMBERSHIP-003, genel kalite kapısı açık. API yöntem önerisi harcama izni değildir.
