@@ -1,5 +1,20 @@
 # Owner soruları ve teknik karar hazırlığı
 
+## Güncel odak — Q14 bekliyor / 2026-10-12
+
+Kullanıcı gri alanların sessiz varsayımlarla şekillenmemesini istedi. Teknik ayrıntı, deney sınırı ve kullanıcıya görünen davranış farklı kayıtlar olmalı. [P0 receiver guard](../quality/receiver-contract.md) genel production kararı değildir: bir mesajda çoklu preserved record şu anda unsupported, kayıt başına bir next-action mevcut deney sınırı, küçük keyword schema interpreter genel validator değildir. Bu sınırlara kullanıcı ürünü olarak onay verilmiş sayılmaz. Gerçek token/cost, IAM/adapter, nihai stack/lisans ve yatırım sonucu açık; eski geçici seçimleri accepted ADR diye ilerletme.
+
+**Q14 — Birden fazla bağımsız projenin review çıktısında bir proje hatalıysa diğerinin geçerli taslakları nasıl gösterilsin? Durum: soruldu, yanıt bekliyor; varsayılan seçilmedi.**
+
+- **A — Öneri:** Her proje ayrı değerlendirilir; kendi source/shape/yetki kontrollerinden geçen bağımsız projenin taslakları incelemeye sunulur. Hatalı proje görünür biçimde bekler. Toplam değerlendirme partial/failed kalır; geçerli taslak otomatik karar/apply değildir.
+- **B:** İki proje de inceleme için bütün çıktı düzelene kadar bekler; kaynağın alındığı ve hangi projenin hatalı olduğu gösterilir.
+
+Örnek: depolama projesinin cevabı geçerli, UI projesinde yanlış revision var. A depolama taslağını review'da gösterir, UI düzeltme bekler. B ikisini review'a açmaz. Hiçbiri yanlış cevabı düzeltip başarılı saymaz, yeni model çağrısı veya gerçek iş onayı vermez.
+
+**Sınır:** A yalnız kimliği ve kaynak yetkisi doğrulanmış ortak envelope içindeki bağımsız proje birimleri için öneridir. Envelope/request/project kimliği ya da access belirsizse kısmi kabul yok. Aynı atomik ChangeSet veya birbirine bağlı karar/görev etkileri bölünemez. Ham çıktı korunur; eski RECEIVER-001 ve scorer sonucu değişmez. Güncel P0 validator bütün output'u fail-closed kontrol eder; Q14 cevabı gelmeden bunu değiştirme. Yanıt gecikirse Q14 kimliğine bağla; yeni soru veya onay sanma.
+
+Bu MVP review/error UX davranışıdır; OPEN-07 ile ilişkilidir. Yeni request'in bağımsız yerel hazırlığını durdurmaz. Uygulama, format sürümü, kaynak izolasyonu ve valid/invalid/mixed/atomic negatif testleri somut tasarımda hazırlanır. Nihai stack, lisans, gerçek veri saklama ve model/bütçe sonraki etki kapılarında ayrıca ele alınır; hepsini bugün seçtirmeye gerek yok.
+
 **2026-10-09.** Amaç kullanıcıya bütün teknik tasarımı seçtirmek değil; yalnız ihtiyaç, erişim, veri ve maliyet tercihlerini almak. Cevap alınmaması karar veya izin sayılmaz. Bu kayıt geçici karar kuyruğudur; AGENTS.md içine taşınmaz.
 
 ## Şimdi sorulan üç konu

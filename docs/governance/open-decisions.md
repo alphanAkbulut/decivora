@@ -1,5 +1,11 @@
 # Açık kararlar ve varsayımlar
 
+## Güncel gri alan kontrolü — 2026-10-12
+
+**Q14 yanıt bekliyor:** Bağımsız proje birimlerinden biri hatalıyken diğerinin geçerli taslaklarının review'da gösterilmesi veya bütün output'un bekletilmesi. [Somut A/B önerisi ve sınırlar](../delivery/decision-brief.md). Henüz kullanıcı kararı yok; OPEN-07'yi kapatmaz, atomik ChangeSet'i bölmez veya P0 scorer sonucunu onarmaz. Eski onaylar tüketilmiş model denemesine aittir; yeni model/API izni çıkarılamaz.
+
+Üç kayıt düzeyi: accepted kullanıcı ilkesi, proposed teknik çözüm, scoped P0 deney sınırlaması. Bir mesajda tek preserved record / kayıt başına tek next-action ve sınırlı yerel schema interpreter yalnız son düzeydedir; final ürün kuralı sayılmaz. Local Python/SQLite da production ADR seçimi değildir. Bu inceleme yeni runtime/DB/UI/lisans kararını kabul etmedi. Güvenli bağımsız hazırlık devam eder; kullanıcıya görünen davranış, veri/erişim, ücret veya geri dönüşü zor mimari seçim etkili olduğu adımda karara bağlanır.
+
 | ID | Soru | Önerilen yön | Ne zaman / kanıt |
 |---|---|---|---|
 | OPEN-01 | Build mi extend mi? | Özgün domain/impact; lisanslı adapter reuse | P0 karşılaştırmalı deney sonrası |
