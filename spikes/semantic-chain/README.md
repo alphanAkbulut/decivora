@@ -124,3 +124,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Yeni machine-schema receiver hazırlığı — T03y DONE
 
 [`receiver_next.py` / RECEIVER-002 planı](../../docs/quality/receiver-next-plan.md), yeni identity/wire2/8089-byte source-only prompt; ortak typed machine schema, whole-message projection ve hermetik3file prepare. `check_receiver_next.py` scripted scorer-only kanıtı;20 yeni/192 semantik test. Model0/output0/paidAPI0/izin yok; golden/model/provider/runtime başarı değil. Oldraw/request/prompt/evaluator/proof değişmedi; v1 Q14wrapper ayrı kalır, format/ID rewrite yapılmaz.
+
+## Wire-2 bağımsız proje incelemesi — T03z DONE
+
+[`project_review_next.py` / doğrulama](../../docs/quality/project-review-next.md), aynı wire-2/request kimliği ve source guard ile Q14-A ayrımı; global kimlik/access ret, teknik hata/abstain/missing ve atomic bekleme.14 yeni/206 semantik test; kalite scorer değişmedi, model/API/mutation0. V1 raw/ID/format onarılmaz; context yalnız caller fixture, gerçek IAM/Inbox değil.

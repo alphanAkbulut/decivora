@@ -20,7 +20,7 @@ Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/promp
 | Veri, status ve ilişkiler ne demek? | [Domain](../architecture/domain-model.md), [event log](../architecture/event-log.md) |
 | Neyi rakiplerden farklı hedefliyoruz? | [Farklılaşma](../product/differentiation.md), [kanıt seviyeli benchmark](../discovery/benchmark.md) |
 | Şimdi ne yapılacak, nasıl bitecek? | [Status](status.md), [backlog](backlog.md), [kısa yönetim planı](project-management.md) |
-| Receiver/yenichat ne durumda; hangi kod çalıştı? | [İlk gerçek failed run](../quality/receiver-001-result.md), [yerel schema/source guard ve akış](../quality/receiver-contract.md), [yeni RECEIVER-002 hazırlığı](../quality/receiver-next-plan.md); actualsend0/izin yok, model kalitesi yeniden test edilmedi |
+| Receiver/yenichat ne durumda; hangi kod çalıştı? | [İlk gerçek failed run](../quality/receiver-001-result.md), [yerel schema/source guard ve akış](../quality/receiver-contract.md), [yeni RECEIVER-002 hazırlığı](../quality/receiver-next-plan.md), [wire-2 proje incelemesi](../quality/project-review-next.md); actualsend0/izin yok, model kalitesi yeniden test edilmedi |
 | Hangi sonuç kanıt sayılır? | [Doğrulama](../quality/verification.md), [ölçüm](../quality/measurement.md) |
 | Hangi eksikler bulundu ve hangileri hâlâ açık? | [Kapsam/mimari incelemesi](../quality/completeness-review.md) |
 | İnsanların hangi şikâyetleri bu yönü destekliyor; karşı kanıt ne? | [Kullanıcı araştırması ve ters düşünme](../discovery/user-research.md) |
