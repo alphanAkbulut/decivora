@@ -1,0 +1,23 @@
+{
+  "format": "decivora-membership-batch-2",
+  "attribute_contract_id": "bd416736dc3419d8ba166545e0fa22683845be0bcafce889c381547b5b6aece7",
+  "prompt_sha256": "4812b31a0bb68a504dd214c0c178ae0841d697930e967a3e0bbf7860a78b7e8c",
+  "prompt_bytes": 5321,
+  "dispatch": "not_run",
+  "dispatch_authorized": false,
+  "usage": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "proposed_submissions": 1,
+  "automatic_retries": 0,
+  "paid_api_allowed": false,
+  "attempt_id": "MEMBERSHIP-003-PROPOSED",
+  "status": "prepared_pending_new_single_send_authorization",
+  "actual_submissions": 0,
+  "actual_outputs": 0,
+  "actual_retries": 0,
+  "proposed_output_tokens": 2048,
+  "proposed_route": "existing ChatGPT subscription; fresh temporary non-personalized normal Chrome chat",
+  "scope": "eight synthetic messages; two request packets; first output only; no tools/subagents/regenerate/model switch",
+  "human_expectation_review_pending": true
+}

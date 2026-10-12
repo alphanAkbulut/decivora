@@ -13,9 +13,15 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On küçük teslim DONE (T01g ve T03g–T03o); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; sırada yeni soru aileleri/insan exact etiket incelemesi ve native karşılaştırma. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On iki küçük teslim DONE (T01g/T01h ve T03g–T03p); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message paket hazır, H4 review ve tek-send onayı pending, native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — Ortak kaynak kıyası ve iki yeni aile hazırlığı
+
+- T03p scoped DONE: [aynı dört mesajda ölçüm](../quality/same-source-comparison.md), lexical/model shared-field skorları ve unsupported tür farkı açık. Yeni model çağrısı0; native/ekonomi veya genel quality değil.
+- T01h scoped DONE: [sekiz yeni sentetik mesaj](../../examples/adversarial-smoke/README.md),6 draft candidate ve2 scope-no-candidate vaka;5321-byte frozen prompt, source/quote/hash consistency. H4 quoted/planned review pending; MEMBERSHIP-003-PROPOSED için tek-send onayı yok, sent0.91 semantik test passed; eski raw/corpus/rubric ve onaylı36 Mermaid değişmedi.
+
 
 ### 2026-10-12 — Gerçek kayıtlı adaydan tam kontrollü zincir
 

@@ -1,0 +1,33 @@
+{
+  "format": "decivora-new-development-family-1",
+  "family_ids": [
+    "N01-stale-quoted-planned",
+    "N02-en-report-ambiguous"
+  ],
+  "source_messages": 8,
+  "authored_expected_candidates": 6,
+  "explicit_no_candidate_message_ids": [
+    "N01-m03",
+    "N01-m04"
+  ],
+  "review_status": "authored_draft",
+  "model_exposure": "not_sent",
+  "holdout_status": "development_authored_and_exposed_to_preparing_agent_not_sealed",
+  "family_separation": "new question/session/project identifiers; prior frozen corpus unchanged",
+  "scope": "AnswerRecord/ImplementationClaim/Evidence only; no candidate in this scope does not mean full source contains no project knowledge",
+  "pending_human_review": [
+    "H4 quoted/planned utterances are not actual selection/upload",
+    "Exact candidate labels and full gold review pending"
+  ],
+  "case_limits": [
+    "Two conflicting/old-current answers are candidates only; no last-answer-wins authority inferred",
+    "N02 has two question presentations and no trusted selection receipt; earlier text cannot silently resolve one question",
+    "Future plans may be Task/DocumentInstruction in the full product; outside this three-kind pilot"
+  ],
+  "artifact_sha256": {
+    "requests.json": "de376ba51e94fe22d823549cb2ce2e9f7c444039810842df2a0180a269a306ae",
+    "candidate-rubrics.json": "2c0a2033bcbf86eb5754ac7f8e90c88199c36c34467d71feca60bf6df8562276",
+    "prompt.txt": "4812b31a0bb68a504dd214c0c178ae0841d697930e967a3e0bbf7860a78b7e8c",
+    "plan.json": "585bfd113b6896b61f63505a0704fe4c35a1765a4dab63dc2eca42fc11154a5f"
+  }
+}

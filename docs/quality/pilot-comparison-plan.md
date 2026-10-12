@@ -1,12 +1,12 @@
 # İlk değer karşılaştırması: ortak çalışma düzeni
 
-**P0 · uygulanacak protokol; native/semantik kıyas sonuçları henüz yok.** Otomatik semantik extraction zorunlu iş; yalnız yöntemi, veri ve bütçesi açık. Karşılaştırma bütçe veya provider izni değildir.
+**P0 · ortak protokol; dar same-source lexical/kayıtlı-model ölçümü var, native/ekonomi kıyası henüz yok.** Otomatik semantik extraction zorunlu iş; yalnız yöntemi, veri ve bütçesi açık. Karşılaştırma bütçe veya provider izni değildir.
 
 | Kol | Aynı senaryoda uygulanacak yöntem | Bugünkü kanıt |
 |---|---|---|
 | Kural tabanlı baseline | Source-only Spike-0 lexical extraction; bağımsız draft scorer | [Çalıştırıldı, zayıf sonuç](lexical-baseline-results.json) |
 | Decivora zincir deney düzeneği | Structured karar/gerekçe/target/AC command’ları | [Typed fixture geçti](decision-chain-results.json); metin çıkarımı karşılaştırması değil |
-| Zorunlu semantik extractor | Kaynak chunk + ilgili pending question/karar; typed prediction ve abstention | not_run; yöntem/veri/bütçe kaydı bekliyor |
+| Zorunlu semantik extractor | Kaynak chunk + ilgili pending question/karar; typed prediction ve abstention | [MEMBERSHIP-002](membership-002-result.md): dört draft aday ve source/type geçti; [aynı dört mesaj kıyası](same-source-comparison.md) yerelde çalıştı. Human gold/genel kalite açık |
 | Devam paketi | Onaylı kararlar + kaynak pointer’ları + unknown uygulama/AC + bekleyen soru | not_run; yeni oturumda doğru sonraki adım ölçülecek |
 | Basit dosya yöntemi | Aynı bilgilerle insanın güncel tuttuğu küçük karar/task/kanıt dosyası | not_run; dosya hazırlama/güncelleme yükü dahil |
 | Native araçlar | Kullanıcının erişebildiği belirli Projects/host build’i ve izinli proje bilgisi | not_run; erişilemeyen yetenek unknown/unsupported olarak kaydedilecek |
@@ -28,3 +28,9 @@ S01→S02: eski Markdown → Q_STORE → başka chat’ten gecikmiş B → SQLit
 - Kapsam/adillik: yöntemlerin ulaşabildiği aynı bilgi ve target izinleri; manuel hazırlık yükü dahil. Bir native yöntem otomatik source capture yapamıyorsa manuel import biçimi ve kapsam farkı raporlanır.
 
 Şimdiki scorer yalnız exact source span ve coarse tür tanısıdır; yukarıdaki tüm kriterler uygulanmış değildir. [Ölçüm protokolü](evaluation-protocol.md) release/quality kurallarının otoritesidir. Sonuçlar ve owner yatırım kararı T03c’de; otomatik build veya scope daraltma yok.
+
+## İlk aynı-source tanısı — 2026-10-12
+
+[T03p](same-source-comparison.md): aynı iki request/dört mesaj, eski kayıtlı ilk model output ve source-only lexical. Shared span/kind score model4TP/0FP/0FN, lexical0TP/1FP/4FN. AnswerRecord/Evidence eksik baseline capability açıkça kaydedilir; attributes/domain/native/metrik superiority yok. Cost/latency unknown; model yeniden çağrılmadı. Bu kaydın varlığı bütün protokolün çalıştırılmış olduğu anlamına gelmez.
+
+[T01h yeni development paketi](../../examples/adversarial-smoke/README.md): sekiz yeni sentetik mesaj,6 drafted candidate ve2 scope-no-candidate vaka; eski/current question revisions,quoted/planned veEN örnekler. Gönderilmedi, H4 review/tek-send izin pending; sealed holdout/gold değil.

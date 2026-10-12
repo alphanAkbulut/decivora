@@ -1,0 +1,70 @@
+[
+  {
+    "format": "decivora-candidate-rubric-1",
+    "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+    "review_status": "authored_draft",
+    "expected": [
+      {
+        "message_id": "N01-m01",
+        "kind": "AnswerRecord",
+        "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.",
+        "attributes": {
+          "question_id": "Q_STORE",
+          "option_id": "B",
+          "presentation_revision": 1
+        }
+      },
+      {
+        "message_id": "N01-m02",
+        "kind": "AnswerRecord",
+        "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam.",
+        "attributes": {
+          "question_id": "Q_STORE",
+          "option_id": "A",
+          "presentation_revision": 2
+        }
+      }
+    ]
+  },
+  {
+    "format": "decivora-candidate-rubric-1",
+    "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+    "review_status": "authored_draft",
+    "expected": [
+      {
+        "message_id": "N02-m01",
+        "kind": "AnswerRecord",
+        "quote": "For Q_UI revision 1, my answer is B: timeline.",
+        "attributes": {
+          "question_id": "Q_UI",
+          "option_id": "B",
+          "presentation_revision": 1
+        }
+      },
+      {
+        "message_id": "N02-m02",
+        "kind": "ImplementationClaim",
+        "quote": "The file has been uploaded.",
+        "attributes": {
+          "claim_type": "upload"
+        }
+      },
+      {
+        "message_id": "N02-m03",
+        "kind": "Evidence",
+        "quote": "AC_SMOKE revision 2: the test was not run.",
+        "attributes": {
+          "criterion_id": "AC_SMOKE",
+          "criterion_revision": 2,
+          "result": "not_run"
+        }
+      },
+      {
+        "message_id": "N02-m04",
+        "kind": "AnswerRecord",
+        "quote": "B.",
+        "attributes": {}
+      }
+    ]
+  }
+]

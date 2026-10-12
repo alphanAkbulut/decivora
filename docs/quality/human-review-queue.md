@@ -44,6 +44,16 @@
 
 **İnsan inceleme durumu:** 2026-10-12 · Kullanıcı “uygun” yanıtıyla belirsiz cevabı saklama, soru bağını tahmin etmeme ve açıklama isteme davranışını onayladı. [Hash bağlı review kaydı](reviews/h3-behavior.json). İlk üç behavior review tamamlandı; exact extraction etiketleri, tüm oracle/corpus veya production clarification uygulanmış sayılmaz. Oracle değişmedi.
 
+## H4 — Alıntı ve gelecek planı gerçek seçim/gerçekleşme değildir
+
+**Review ID:** `Q-H4-QUOTED-PLANNED` · [yeni kaynak](../../examples/adversarial-smoke/requests.json) · [ayrı draft rubric](../../examples/adversarial-smoke/candidate-rubrics.json) · [hash manifesti](../../examples/adversarial-smoke/manifest.json).
+
+N01-m03: “Q_STORE revision 2 için B, PostgreSQL ile devam” yalnız örnek alıntı; ardından kullanıcı bu seçimi yapmadığını söylüyor. N01-m04: Dosyayı yarın yükleyeceğini, bugün yüklenmiş olmadığını söylüyor.
+
+**Sorulacak davranış incelemesi:** Alıntı gerçek karar seçimi, gelecek planı gerçekleşmiş upload claim olmasın; source saklansın. Tam üründe gelecekteki plan ayrıca Task/Instruction olabilir; bu üç-tür pilotun boş adayını bütün bilgiyi silme/no-op saymayalım. Draft expectation bu iki mesaj için AnswerRecord/ImplementationClaim/Evidence adayı olmamasıdır.
+
+**Durum:** pending; insan yanıtı yok, kaynak modele gönderilmedi. Bu review bütün altı exact label'ı veya gold/holdout'u onaylamaz. H1/H2/H3 tekrar sorulmaz. Yeni üyelik model denemesinin onayı ayrı `MEMBERSHIP-003-PROPOSED` kapsamına aittir; H4 yanıtı tek başına dispatch yetkisi değildir.
+
 ## Review kaydı ve sonraki kapsam
 
 Her yanıt: reviewer kimliği/rolü, source/oracle hash ve revision, onay/düzeltme, gerekçe, ikinci reviewer/adjudication durumu. H1/H2/H3 yanıtları kullanıcı tarafından verildi ve ayrı review kayıtlarına işlendi; kullanıcı adına yanıt üretilmedi. Üç örneğin kabulü 66 annotation’ın tamamını reviewed yapmaz; kalan authority/rejection/cross-project/crash/holdout kapsamı T01 kapanışında ayrı kontrol edilir.

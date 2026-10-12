@@ -1,8 +1,10 @@
 # Karar → etki → gerçekleşme: teknik ölçüm protokolü
 
-2026-10-11 — **Önerilen ölçüm sözleşmesi; harness ve ürün runtime'ı uygulanmadı.** [Metrik ve pilot hedefleri](measurement.md) otoritedir. Bu belge hedefleri değiştirmez; nasıl ölçüleceklerini uygulama seviyesinde açıklar. T01/T03a/T03b/T24 kapsamına bağlıdır. Araştırma sonucu değil, kontrollü deney tasarımıdır.
+2026-10-12 — **Ölçüm sözleşmesi; dar P0 harness parçaları çalışıyor, production runtime ve geniş/native ölçüm açık.** [Metrik ve pilot hedefleri](measurement.md) otoritedir. Bu belge hedefleri değiştirmez; nasıl ölçüleceklerini uygulama seviyesinde açıklar. T01/T03a/T03b/T24 kapsamına bağlıdır. Araştırma sonucu değil, kontrollü deney tasarımıdır.
 
 ## Net olan, eksik olan
+
+**Güncel uygulama kapsamı:** [13 controlled state checkpoint replay](membership-chain-replay.md) ve [aynı dört kaynakta lexical/kayıtlı-model shared-field kıyası](same-source-comparison.md) çalıştı. Aşağıdaki geniş skor/telemetry/UI/istatistik sözleşmesinin tamamı uygulanmış değildir; aynı development kaynakları, authored_draft, production/human gold/holdout/ekonomi gate açık. Yeni8-message paket hazırlanmış ama gönderilmemiştir.
 
 | Alan | Mevcut netlik | Kalan somut iş |
 |---|---|---|

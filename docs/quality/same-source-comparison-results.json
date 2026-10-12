@@ -1,0 +1,176 @@
+{
+  "kind": "same_source_membership_comparison",
+  "date": "2026-10-12",
+  "status": "development_diagnostic_not_release_or_native_benchmark",
+  "origin_run": "MEMBERSHIP-002",
+  "response_origin": "known_saved_UI_capture",
+  "requests": 2,
+  "source_messages": 4,
+  "request_ids": [
+    "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+    "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333"
+  ],
+  "review_statuses": [
+    "authored_draft",
+    "authored_draft"
+  ],
+  "human_gold": false,
+  "holdout": "same_reused_development_messages_not_sealed",
+  "shared_fields": [
+    "project_id",
+    "message_id",
+    "kind",
+    "start",
+    "end"
+  ],
+  "predictions": {
+    "lexical": [
+      {
+        "project_id": "prj_memory",
+        "message_id": "S02-m01",
+        "kind": "Decision",
+        "start": 0,
+        "end": 47,
+        "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam."
+      }
+    ],
+    "saved_model": [
+      {
+        "project_id": "prj_memory",
+        "message_id": "S02-m01",
+        "kind": "AnswerRecord",
+        "start": 0,
+        "end": 47,
+        "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam."
+      },
+      {
+        "project_id": "prj_memory",
+        "message_id": "S02-m05",
+        "kind": "ImplementationClaim",
+        "start": 0,
+        "end": 9,
+        "quote": "Yükledim."
+      },
+      {
+        "project_id": "prj_memory",
+        "message_id": "S02-m09",
+        "kind": "Evidence",
+        "start": 0,
+        "end": 84,
+        "quote": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı."
+      },
+      {
+        "project_id": "prj_release",
+        "message_id": "S03-m04",
+        "kind": "AnswerRecord",
+        "start": 0,
+        "end": 2,
+        "quote": "A."
+      }
+    ]
+  },
+  "methods": {
+    "lexical": {
+      "status": "scored_development_only",
+      "score": {
+        "strict_span": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 4,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "message_kind_only": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 4,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "critical_domain_gate": "incomplete",
+        "not_scored": [
+          "entity identity",
+          "attributes",
+          "relations",
+          "authority",
+          "impact",
+          "state",
+          "target/AC correctness"
+        ]
+      },
+      "model_dispatches": 0
+    },
+    "saved_model": {
+      "status": "scored_development_only",
+      "score": {
+        "strict_span": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "message_kind_only": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "critical_domain_gate": "incomplete",
+        "not_scored": [
+          "entity identity",
+          "attributes",
+          "relations",
+          "authority",
+          "impact",
+          "state",
+          "target/AC correctness"
+        ]
+      },
+      "new_model_dispatches": 0,
+      "actual_model_identity": null,
+      "usage": null
+    }
+  },
+  "capability_differences": {
+    "lexical_mapped_kinds": [
+      "Decision",
+      "Task",
+      "Idea",
+      "ImplementationClaim"
+    ],
+    "lexical_missing_candidate_kinds": [
+      "AnswerRecord",
+      "Evidence"
+    ],
+    "lexical_claim_actor": "assistant only; human upload report not supported by this rule",
+    "lexical_context_use": "context available in shared source; existing rules ignore it",
+    "semantic_attributes_scored": false
+  },
+  "input_sha256": {
+    "requests": "d7f2482425e82eba5d183443aeb5c570de49af28b64904ee12991563ff934788",
+    "response": "e3941c35f39cdf4117bec100e01249a6eb3ec23b82b263e9998d8371ffc862da",
+    "rubrics": "a13d11edd8c60ae2418e69ea6481674b778e57597726d7c2ab4aaef144515d3b"
+  },
+  "component_sha256": {
+    "scripts/evaluate_corpus.py": "fbcec666d254efec05f92055a60ec1970685b3aa60cbdcfe652f20290a9e492a",
+    "spikes/spike-0/spike0/extract.py": "a4d4bc5249c348c0d591260dcc5af22f34cea1c0f81426310a97040f1a2de165"
+  },
+  "new_model_dispatches": 0,
+  "paid_api_requests": 0,
+  "canonical_mutations": 0,
+  "native_comparison": "not_run",
+  "latency_comparison": "not_measured",
+  "cost_comparison": "unknown",
+  "limitations": [
+    "Baseline lacks AnswerRecord/Evidence; this is an explicit capability gap, not a general semantic ranking",
+    "Saved model output reused after v1 diagnosis; no independent fresh replicate",
+    "Attributes, authority, graph, verification and human correction burden not compared",
+    "No native tool output, paired inference latency or measured token/cost benefit"
+  ],
+  "semantic_suite_tests_passed": 91,
+  "delivery": "T03p",
+  "comparator_sha256": "24a37c21b9b13679e1724c2989aa6e9eb0e53cbe0cb05a09edf9a6c1190098bb",
+  "test_sha256": "7880610bf2c078e78034b7621ce56fb3eb512f99a357d5b10b11511be6d1682a"
+}

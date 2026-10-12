@@ -79,3 +79,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Kaydedilmiş gerçek adaylardan zincir replay — T03o DONE
 
 `python3 -B spikes/semantic-chain/replay_membership.py` source-bound MEMBERSHIP-002 raw'ı kendi request kimliğiyle işler; bağımsız fixture receipt, ayrı impact, eski/güncel gerçek temporary içerik, partial/full AC ve backup/reopen. Yeni model/egress0; [13 checkpoint ve sınırlar](../../docs/quality/membership-chain-replay.md), 86 semantik suite/6 yeni test. `run.py --response` ile smoke response'ı eski request'e yeniden bind etme. CLI `--out` mevcut dosyayı değiştirmez. Production IAM/criterion revision/full lineage/native kalite bu fixture kapsamında değildir.
+
+## Same-source tanısı ve yeni paket — T03p/T01h DONE
+
+`python3 -B spikes/semantic-chain/compare_membership.py` aynı dört source üzerinde lexical/saved-model shared span/kind skorlarını üretir; [scope/kanıt](../../docs/quality/same-source-comparison.md). Attribute/domain/native/latency/cost değil; source-only baseline, old raw değişmez.91 suite/5 yeni test. [Yeni8-message paket](../../examples/adversarial-smoke/README.md) no-dispatch5321byte, authored_draft, H4 review ve yeni tek-send izin pending; API/model çağrısı yapılmadı.
