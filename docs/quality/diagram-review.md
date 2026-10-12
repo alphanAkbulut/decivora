@@ -1,8 +1,8 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 15 belgede 35 Mermaid şeması — tasarım revizyonu 03, görsel inceleme 2026-10-11.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 16 belgede 36 Mermaid şeması — yeni deney şeması kontrolü 2026-10-12; önceki 35 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
-## Güncel inventory — 2026-10-11
+## Güncel inventory — 2026-10-12
 
 <!-- diagram-inventory:start -->
 | Belge | Mermaid sayısı |
@@ -22,7 +22,17 @@
 | [docs/product/graph-experience.md](../../docs/product/graph-experience.md) | 2 |
 | [docs/product/intent-to-reality-gap.md](../../docs/product/intent-to-reality-gap.md) | 2 |
 | [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
+| [docs/quality/membership-002-result.md](membership-002-result.md) | 1 |
 <!-- diagram-inventory:end -->
+
+## 2026-10-12 — MEMBERSHIP-002 şeması GitHub'da doğrulandı
+
+- Önceki file:// önizlemesi tarayıcı URL güvenlik politikasıyla engellendi. Bu engel değiştirilmedi; kullanıcı şemanın doğrulanarak yayımlanmasını istedi. Yeni kaynak private `review-membership-002-diagram-87853c5` inceleme branch'inde hazırlandı; ana branch doğrulama tamamlanana kadar korunuyordu.
+- Immutable inceleme ref'i `e491fd09590499c27305ec5519281e50fa330bda`: GitHub Preview'de native Mermaid iframe ve `graphics-document document` SVG çıktı gözlendi. Başlık/açıklama ve 15 düğüm / 16 ok kaynakla karşılaştırıldı; syntax/render hata metni görülmedi. Renderer'ın tam sürümü unknown; yerel cached bundle kullanılmadı.
+- Kaynak→sözleşme→tek çıktı→kod kontrolü→dört candidate; bağlı/belirsiz cevap, claim/Evidence ve ayrı fixture guard sonuçları incelendi. Model adayından canonical karar/verification'a doğrudan geçiş çizilmedi. Mavi aday, yeşil gözlenen/fixture, sarı açıklama UX ihtiyacı, mor/kesik ok production adımlarıdır.
+- Geniş görünümde başlangıç zinciri ve sonuç dalları görsel kontrol edildi; title/desc ve bütün SVG etiketleri DOM'dan okundu. Dark/desktop doğrulaması; tam mobil, her zoom düzeyinde okunabilirlik veya runtime kabul testi değildir. Şema uzun olduğu için GitHub geniş görünüm/zoom kullanılabilir.
+- Source SHA-256 ve yerel SVG snapshot hash'i [render raporuna](diagram-render-results.json) ayrı provenance ile eklendi. Önceki 35 kaynak/render satırı değişmeden kaldı; hepsi bu tur tekrar render edilmiş gösterilmedi. Yeni toplam 36 kaynak /16 belge; model raw/rubric değişmedi.
+- İnceleme branch'i yalnız çizim kontrolü hazırlığıdır; repository kapsam/enventory kontrolleri tamamlanmış ana commit'te çalıştırılır. Şema doğrulaması semantic model, üretim yetki/target/AC doğruluğu değildir.
 
 ## 2026-10-11 — Güncel görsel ve semantik yeniden inceleme
 

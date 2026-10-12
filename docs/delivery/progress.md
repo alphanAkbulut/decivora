@@ -59,7 +59,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · T03n gerçek v2 tek girişim/ölçüm teslimi DONE: geç cevap doğru alanlarla eşleşti, upload yalnız claim, test raporu Evidence, belirsiz A association olmadan korundu. 80 semantik test; iki ayrı fixture guard projection unchanged. [Rapor](../quality/membership-002-result.md).
+2026-10-12 · T03n gerçek v2 tek girişim/ölçüm teslimi DONE: geç cevap doğru alanlarla eşleşti, upload yalnız claim, test raporu Evidence, belirsiz A association olmadan korundu. 80 semantik test; iki ayrı fixture guard projection unchanged. Kaynak/aday/guard Mermaid şeması GitHub native renderer ile doğrulandı; inventory/provenance güncellendi. [Rapor](../quality/membership-002-result.md).
 
 **Aktif teknik risk:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 
@@ -146,4 +146,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `47cb67702417697119405d59813089ea7d746ac08c66d539fd83156b52129642`
+Kaynak fingerprint: `a4a55298edcdcc3e2afc5a7483f41070e1d979a1ebb7e2fd52dea9fbbc852048`

@@ -15,9 +15,43 @@
 
 İki request/contract/source binding ve dört exact quote doğrulandı; karakter konumlarını kod hesapladı. **Önceden hazırlanmış authored_draft candidate beklentileri: S02 TP=3/FP=0/FN=0; S03 TP=1/FP=0/FN=0.** Tür, message_id, quote ve attributes ölçülüyor. Entity kimliği, authority, relation/impact, gerçek hedef ve AC doğruluğu bu skorun dışındadır. Dört aday eşleşmesi genel model accuracy veya release gate başarısı değildir.
 
-Akış: source paketleri → hash/açık sözleşme → tek model çıktısı → exact quote/tip/revision kontrolü → dört aday. Bağlı cevap ayrı authenticated seçim önerisine gider; belirsiz cevap açıklama gerektirir; upload/test raporu ayrı hedef/AC kanıtı ister. İki ayrı request için SQLite fixture guard çalıştı; iki pending soruyu aynı anda yöneten production question engine veya project IAM testi değildir. Her iki projection değişmedi, canonical mutations=0; task verified olmadı.
+## Kaynak, aday ve yetki akışı
 
-Ek Mermaid önizlemesini yerel file:// sayfasında açma girişimi tarayıcı URL güvenlik politikasıyla engellendi. Doğrulanmamış yeni blok yayımlanmadı; mevcut 35 Mermaid kaynağı değiştirilmedi. Bu görsel erişim engeli model veya scorer başarısızlığı değildir.
+```mermaid
+flowchart TD
+  accTitle: MEMBERSHIP-002 kaynak ve güven sınırı
+  accDescr: Gözlenen dört aday kaynak ve tip kontrolünden geçer; karar, impact ve hedef kabulü ayrı yetki ve kanıt gerektirir
+  S["İki source paketi / dört sentetik mesaj"] -->|"Dondurulmuş source-only prompt"| C["Hash ve açık alan sözleşmesi"]
+  C -->|"Tek onaylı UI gönderimi / retry 0"| M["İlk v2 model çıktısı"]
+  M -->|"Deterministik kod"| V["Exact quote, request ve tip kontrolü"]
+  V -->|"TP 4 / FP 0 / FN 0 · draft beklenti"| A["Dört candidate / semantic onarım yok"]
+  A --> Q["Q_STORE / B / revision 1"]
+  A --> U["A. / association boş"]
+  A --> E["Upload claim ve rollback raporu"]
+  Q --> G1["Ayrı fixture: pending_trusted_selection"]
+  U --> G2["Ayrı fixture: unmatched_or_stale"]
+  E --> G3["Claim ve Evidence kabul kanıtı değil"]
+  G1 --> N["Fixture projection değişmedi / mutation 0"]
+  G2 --> N
+  G3 --> N
+  G1 -.->|"Production için gerekli"| H["Authenticated seçim ve ayrı impact onayı"]
+  G2 -.->|"UI için gerekli"| X["Hangi soruya ait? / açıklama iste"]
+  G3 -.->|"Production için gerekli"| O["İzinli hedef observer ve AC verifier"]
+  classDef observed fill:#dcfce7,stroke:#15803d,color:#14532d;
+  classDef candidate fill:#dbeafe,stroke:#1d4ed8,color:#1e3a8a;
+  classDef pending fill:#fef3c7,stroke:#b45309,color:#78350f;
+  classDef planned fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
+  class S,C,M,V,A,G1,G2,G3,N observed;
+  class Q,U,E candidate;
+  class X pending;
+  class H,O planned;
+```
+
+Yeşil: bu run'da veya ayrı kontrollü fixture guard'larında gözlenen sonuç. Mavi: çıkarılmış aday, canonical karar veya doğrulama değildir. Sarı: gerekli açıklama UX'i bu testte çalıştırılmadı. Mor ve kesik ok: production authenticated seçim/impact/hedef/AC uygulaması bu run'da sınanmadı. İki ayrı request için SQLite fixture kullanıldı; iki pending soruyu aynı anda yöneten production question engine veya project IAM testi değildir. Her iki projection değişmedi, canonical mutations=0; task verified olmadı.
+
+**Çizim doğrulandı — 2026-10-12.** Private GitHub inceleme ref'i `e491fd09590499c27305ec5519281e50fa330bda` üzerinde native Mermaid iframe/SVG, başlık/açıklama ve bütün düğüm/ok etiketleri okundu; sözdizimi hatası görülmedi. Geniş görünümde kaynak zinciri ve sonuç dalları ayrıca görsel incelendi. Kaynak hash'i ve renderer kanıtı [diyagram kontrol kaydında](diagram-render-results.json), kapsam [inceleme belgesinde](diagram-review.md). GitHub renderer sürümü unknown; dark/desktop önizleme, tüm mobil ekranlar veya runtime kanıtı değildir. Uzun şema GitHub'ın geniş görünüm/zoom kontrolleriyle incelenebilir.
+
+Önceki yerel file:// önizlemesi URL güvenlik politikasıyla engellenmişti; o hata tarihsel olarak korunur. Bu tur izinli private GitHub doküman önizlemesi kullanıldı; yerel erişim kısıtı değiştirilmedi. Model/scorer kanıtı, diyagram çizim kanıtından ayrıdır.
 
 ## Önceki run ile değişen ne?
 

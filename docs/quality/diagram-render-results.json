@@ -532,6 +532,28 @@
       "canvas_background": "rgba(0, 0, 0, 0)",
       "artifact": "35",
       "error": null
+    },
+    {
+      "path": "docs/quality/membership-002-result.md",
+      "block": 1,
+      "source_sha256": "7814338eeb8c6f56cb32c042ff234f72be4f9b8877118af08d293982cea9f340",
+      "status": "rendered",
+      "title": "MEMBERSHIP-002 kaynak ve güven sınırı",
+      "description_present": true,
+      "view_box": "-36 -36 841.4354248046875 1600",
+      "error": null,
+      "renderer": "GitHub native Mermaid renderer; exact version unknown",
+      "browser": "Chrome through cua_repl",
+      "checked_at": "2026-10-12",
+      "input_ref": "e491fd09590499c27305ec5519281e50fa330bda",
+      "artifact": "local membership-002-native.svg",
+      "svg_snapshot_sha256": "86f44ca3b836757e777351b031e1e837100ce6171b402c965969cc18d81b65a6",
+      "render_scope": "GitHub dark desktop preview and expanded view; SVG metadata and all node/edge text; source and result branches visually reviewed",
+      "product_runtime_tested": false,
+      "node_count": 15,
+      "edge_count": 16,
+      "network_requests_allowed": true,
+      "network_scope": "Existing private GitHub Preview/native viewscreen renderer; no local file URL or model API"
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -545,5 +567,17 @@
     "local renderer 11.17.2, not proof of GitHub version compatibility",
     "fixed light palette; no full mobile or UI accessibility test",
     "product runtime, database, adapters, model quality not tested"
-  ]
+  ],
+  "incremental_checks": [
+    {
+      "checked_at": "2026-10-12",
+      "new_sources": 1,
+      "unchanged_prior_sources": 35,
+      "document": "docs/quality/membership-002-result.md",
+      "input_ref": "e491fd09590499c27305ec5519281e50fa330bda",
+      "renderer": "GitHub native Mermaid renderer; exact version unknown",
+      "prior_record_policy": "35 historical source hash/render records preserved; not freshly rendered in this run"
+    }
+  ],
+  "record_provenance": "Top-level renderer/date/bundle describe the historical 35-source run. New records specify their own renderer/date/ref; do not treat all 36 as a fresh local render."
 }

@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-12 — Deney şeması doğrulandı
+
+- Kullanıcının talebiyle MEMBERSHIP-002 kaynak/aday/guard akışı Mermaid olarak geri eklendi. Private GitHub inceleme ref'inde native SVG/metadata/bütün etiketler ve geniş görünüm kontrol edildi; önceki file:// erişim engeli değiştirilmedi.
+- [Güncel şema](../quality/membership-002-result.md) ve [provenance](../quality/diagram-review.md): 36 kaynak /16 belge; önceki35 çizim hash'leri korundu. Bu doküman teslimi yeni model veya runtime testi değildir; ana görevler/sıradaki offline chain replay değişmedi.
+
+
 ### 2026-10-12 — MEMBERSHIP-002 gerçek typed çıktı ölçümü
 
 - Kullanıcı yeni tek-send v2 isteğini onayladı; [izin](../../examples/membership-smoke-v2/authorization.json) tüketildi. Aynı dört sentetik mesaj, boş geçici/kişiselleştirilmemiş normal Chrome sohbeti, Instant UI etiketi; retry/paid API 0.
