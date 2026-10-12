@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On altı küçük teslim DONE (T01g/T01h/T01i ve T03g–T03s); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume ve eşit bilgi dosya serialization kıyası tamamlandı; gerçek receiving-model/native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On yedi küçük teslim DONE (T01g/T01h/T01i ve T03g–T03t); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; gerçek receiving-model/native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — Kayıpsız paket küçültme ve readable view
+
+- T03t scoped DONE: [inline kaynak/record table, decoder ve readable view](../quality/resume-compaction.md). Frozen önceki core exact; üç temsil aynı bağımsız authored checklist, alıntılar kodla çözülür, alıcı modele karakter saydırılmaz.
+- 121 semantik test/11 yeni, byte azalması N01%31,79/N02%35,20. Missing source/ref, stale/source/access, no-truncation/no-authority testleri geçti; model/API/selection0. Gerçek receiver/native/token/gold kapıları açık; sırada bounded receiver test contract/evaluator hazırlığı.
 
 ### 2026-10-12 — Devam paketi ve dosya serialization kıyası
 

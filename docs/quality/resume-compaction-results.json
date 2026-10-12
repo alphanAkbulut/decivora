@@ -1,0 +1,165 @@
+{
+  "experiment_id": "RESUME-COMPACTION-001",
+  "origin_run": "MEMBERSHIP-003",
+  "baseline": "frozen RESUME-FILE-001 exported files",
+  "status": "lossless_offline_byte_comparison",
+  "package_score": {
+    "status": "passed",
+    "missing": [],
+    "mismatches": []
+  },
+  "simple_file_score": {
+    "status": "passed",
+    "missing": [],
+    "mismatches": []
+  },
+  "readable_score": {
+    "status": "passed",
+    "missing": [],
+    "mismatches": []
+  },
+  "actual": {
+    "resume": {
+      "N01": {
+        "question_id": "Q_STORE",
+        "question_revision": 2,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N01-m02": "pending_trusted_selection",
+          "N01-m01": "stale_question_revision"
+        },
+        "source_message_count": 4,
+        "record_count": 2,
+        "verified": false,
+        "approved_decision_from_source": false
+      },
+      "N02": {
+        "question_id": "Q_UI",
+        "question_revision": 1,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N02-m04": "needs_clarification",
+          "N02-m01": "pending_trusted_selection"
+        },
+        "source_message_count": 4,
+        "record_count": 4,
+        "verified": false,
+        "approved_decision_from_source": false,
+        "reported_criterion_result": "not_run",
+        "upload_claims": 1
+      }
+    },
+    "simple_file": {
+      "N01": {
+        "question_id": "Q_STORE",
+        "question_revision": 2,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N01-m02": "pending_trusted_selection",
+          "N01-m01": "stale_question_revision"
+        },
+        "source_message_count": 4,
+        "record_count": 2,
+        "verified": false,
+        "approved_decision_from_source": false
+      },
+      "N02": {
+        "question_id": "Q_UI",
+        "question_revision": 1,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N02-m04": "needs_clarification",
+          "N02-m01": "pending_trusted_selection"
+        },
+        "source_message_count": 4,
+        "record_count": 4,
+        "verified": false,
+        "approved_decision_from_source": false,
+        "reported_criterion_result": "not_run",
+        "upload_claims": 1
+      }
+    },
+    "readable": {
+      "N01": {
+        "question_id": "Q_STORE",
+        "question_revision": 2,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N01-m02": "pending_trusted_selection",
+          "N01-m01": "stale_question_revision"
+        },
+        "source_message_count": 4,
+        "record_count": 2,
+        "verified": false,
+        "approved_decision_from_source": false
+      },
+      "N02": {
+        "question_id": "Q_UI",
+        "question_revision": 1,
+        "question_state": "pending",
+        "answer_statuses": {
+          "N02-m04": "needs_clarification",
+          "N02-m01": "pending_trusted_selection"
+        },
+        "source_message_count": 4,
+        "record_count": 4,
+        "verified": false,
+        "approved_decision_from_source": false,
+        "reported_criterion_result": "not_run",
+        "upload_claims": 1
+      }
+    }
+  },
+  "metrics": {
+    "N01": {
+      "full_resume_bytes": 5385,
+      "compact_resume_bytes": 3673,
+      "bytes_removed": 1712,
+      "byte_reduction_percent": 31.79,
+      "full_simple_file_bytes": 4731,
+      "compact_simple_file_bytes": 3005,
+      "readable_view_bytes": 3265,
+      "exact_core_equal": true,
+      "projection_unchanged": true
+    },
+    "N02": {
+      "full_resume_bytes": 5750,
+      "compact_resume_bytes": 3726,
+      "bytes_removed": 2024,
+      "byte_reduction_percent": 35.2,
+      "full_simple_file_bytes": 5101,
+      "compact_simple_file_bytes": 3063,
+      "readable_view_bytes": 3110,
+      "exact_core_equal": true,
+      "projection_unchanged": true
+    }
+  },
+  "external_source_reads": 0,
+  "new_model_dispatches": 0,
+  "selection_dispatches": 0,
+  "paid_api_calls": 0,
+  "canonical_mutations": 0,
+  "production_runtime": false,
+  "human_gold": false,
+  "receiver_model_test": "not_run",
+  "native_host_test": "not_run",
+  "token_counts": null,
+  "cost": null,
+  "limitation": "Byte reduction only; machine tables decoded in code, resolved readable view not receiving-model tested; no token/accuracy/ROI claim",
+  "hashes": {
+    "examples/adversarial-smoke/requests.json": "de376ba51e94fe22d823549cb2ce2e9f7c444039810842df2a0180a269a306ae",
+    "docs/quality/model-runs/membership-003-response.txt": "0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb",
+    "examples/resume-smoke/N01-resume.json": "5d0cc2631550cbc37dfda63fb737f9e12bd5bff6263f4414894aa7d892dba159",
+    "examples/resume-smoke/N01-state.json": "ceae774f02812302e19aadc0b83938d450eb44dbd79e759b77ac11edbc7b8d4a",
+    "examples/resume-smoke/N02-resume.json": "275fd0e9a2a29f6f201a1de6eb575afc4cc5069b1765bf5f1fd304b6bb64c7cc",
+    "examples/resume-smoke/N02-state.json": "9d26bb508bd0e488e6a8d41a1ab3329615dfce268c5f5145374640d175e41889",
+    "spikes/semantic-chain/fixtures/resume-checkpoints.json": "f621d035e2a30c422a7389eb19e007d907fa8d89a2fac87111e7005c712b3d20",
+    "spikes/semantic-chain/resume_compact.py": "101cf7350eefa6cfeb87df8003da6375024f7e1c5024921f962483d24054168f",
+    "spikes/semantic-chain/compare_compact_resume.py": "27c2008ab4d2dd8010f4e0adcf7e242b1ea9d4f722dca46f24062a28e90b003a",
+    "spikes/semantic-chain/resume_package.py": "21dfe7e822af8db1bbe222187367966a13ec57c01081af6eb157e05c7280a5bf",
+    "spikes/semantic-chain/bridge.py": "6d153494bbc5b7a8b6bc0e34f2b524ee802036ac730238a197230db9bc434015",
+    "spikes/semantic-chain/protocol.py": "ceae096b7c6b5b8b3dc7b78dc5e336ca557c2897baaea99e6565c718579f27fd",
+    "spikes/semantic-chain/membership_typed.py": "7438ed62b4ac702eb8d0fa2711eccb68844bd40c20e9ca88ae56ec0a129445a8",
+    "spikes/decision-chain/chain.py": "04c517f4f560e153bb870906359b9dac6217560b7af0aafc2e73e3377bf64041"
+  }
+}

@@ -97,3 +97,8 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Resume ve eşit bilgiyle dosya — T03s DONE
 
 `python3 -B spikes/semantic-chain/compare_resume.py [--out NEWPATH] [--export-dir NEWDIR]`: deterministic resume/source/state exports, ayrı read-access fixture ve fresh source/state/access bağları. [Altı örnek](../../examples/resume-smoke/README.md)/[110 test,8 yeni ve rapor](../../docs/quality/resume-file-comparison.md). Her iki JSON aynı core/checklist; source-only farklı capability. Byte ölçümü token tasarrufu veya receiving-model başarısı değildir; model/selection/paidAPI0. Sırada duplicate context azaltımı; yeni canlı test ayrı onay gerektirir.
+
+
+## Kayıpsız resume + readable view — T03t DONE
+
+`python3 -B spikes/semantic-chain/compare_compact_resume.py [--out NEWPATH] [--export-dir NEWDIR]`: inline source/record table, strict decoder, source/state/access preflight ve exact literal quotes içeren model-visible view. [Örnekler](../../examples/resume-compact-smoke/README.md)/[rapor](../../docs/quality/resume-compaction.md):121 suite/11 yeni, frozen core exact, üç checklist, byte%31,79/%35,20 azaldı. Token/model/ROI değildir; codec'i genel modele çözdürme. Next: bounded receiver request + ayrı evaluator, gerçek send yeni somut onayla.

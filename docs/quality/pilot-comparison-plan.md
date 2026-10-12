@@ -39,3 +39,8 @@ S01→S02: eski Markdown → Q_STORE → başka chat’ten gecikmiş B → SQLit
 ## Resume/file yerel serialization tanısı — 2026-10-12
 
 [T03s](resume-file-comparison.md) aynı MEMBERSHIP-003 kaynak/aday/current fixture bilgisini resume envelope ve simple-state JSON içinde eşit core ile taşıdı; bağımsız authored checklist iki kolda da geçti. Source-only ayrı capability koludur. Simple-file daha küçük; token/maliyet/LLM next-action veya kullanıcı yönetim yükü ölçülmedi. Snapshot wrapper freshness kontrolü basit dosya aracına da eklenebilir; ürün farklılaşması/üstünlüğü bu kıyasla kanıtlanmaz. RES-08 fresh-session/native ana kapısı açık.
+
+
+## Kayıpsız paket küçültme — 2026-10-12
+
+[T03t](resume-compaction.md): N01/N02 byte boyutu%31,79/%35,20 azaldı; compact paketten ve simple-file'dan frozen önceki core exact restored. Receiver-facing view quote'ları kodla çözer; değişmemiş authored checklist üç kolda geçti. Token/para veya gerçek alıcı/model/native sonucu değil. Sonraki model deneyi decoded readable view ile hazırlanır; LLM'e offset/record tablosu çözdürmek default yol sayılmaz. Yeni live izin yok.
