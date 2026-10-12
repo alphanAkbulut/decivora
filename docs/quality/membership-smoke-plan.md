@@ -1,12 +1,12 @@
 # Mevcut üyelikle quote-only smoke planı
 
-**2026-10-12 · T03k DONE: gönderimsiz paket/harness hazır. Gerçek deney NOT_RUN.** Ek API bakiyesi/anahtarı gerekmeden mevcut ChatGPT arayüzünde tek manual submission önerisidir; route/model/dispatch henüz onaylanmış veya çalıştırılmış değildir.
+**2026-10-12 · T03k DONE: ön-hazırlık paket/harness. MEMBERSHIP-001 artık bir kez çalıştırıldı.** [Güncel gerçek run](membership-001-result.md): kullanıcı onayı alındı ve tüketildi; üç source quote geçti, exact candidate gate incomplete. Aşağıdaki input/plan dosyaları çağrı öncesi snapshot'ıdır; bunları sonradan başarılı test olacak şekilde değiştirmedik.
 
 ## Somut deney paketi
 
 - [Prompt](../../examples/membership-smoke/prompt.txt): **3330 UTF-8 byte**, dört sentetik mesaj. S02: geç Q_STORE/B cevabı, “Yükledim”, AC_ROLLBACK geçti bildirimi. S03: iki açık A/B soru context'i ve “A” cevabı.
 - [Requests](../../examples/membership-smoke/requests.json): iki farklı projenin ayrı request/source/contract kimliği; dört mesajın source revision'ı korunur. İki packet tek UI submission önerisidir; iki gerçek inference garantisi veya bütün corpus değildir.
-- [Plan](../../examples/membership-smoke/plan.json): MEMBERSHIP-001, proposed_manual_submissions=1, automatic_retries=0, actual_submissions=0; dispatch_authorized=false, paid_api_allowed=false.
+- [Plan](../../examples/membership-smoke/plan.json): MEMBERSHIP-001, proposed_manual_submissions=1, automatic_retries=0, actual_submissions=0; dispatch_authorized=false, paid_api_allowed=false **ön-hazırlık snapshot değerleri**; gerçek onay/tüketim ve tek submission [authorization kaydında](../../examples/membership-smoke/authorization.json).
 - [Ayrı candidate beklentileri](../../examples/membership-smoke/candidate-rubrics.json): authored_draft. **Bu dosya modele gönderilmez.** H1/H2/H3 insan review'u davranışları onayladı; exact kind/quote/attributes beklentilerini human-gold yapmadı. Corpus oracles/ham eski sonuçlar değiştirilmedi.
 - [Hashli hazırlık kanıtı](membership-smoke-preparation.json): 72 semantic suite testi, altı yeni batch testi; gerçek accuracy ve usage ölçülmedi.
 
@@ -14,7 +14,7 @@
 
 **Önerilen kapsam:** normal ChatGPT hesabında boş geçici oturum; yalnız prompt.txt; tek gönderim/ilk çıktı; browser tools/browsing/subagent yok, retry/regenerate/model-switch ikinci gönderim yok. Yeni maliyet veya API bağlantısı açılmaz. Model UI etiketi, gerçek kaynak/çıktı transferi ve session isolation o anda gözlenir; bugün doğrulanmış sayılmaz.
 
-Prompt'taki **2048 output token hedefi soft talimattır**, garanti/hard cap değil. 3330 byte token sayısı değildir. Tam input, gizli framing/reasoning, hesap kotası ve kesin context üst sınırı unknown. Hesabın normal kullanım kotası harcanabilir; per-run token veya parasal tavan bu arayüzde doğrulanmadı. Eski iki tek-send onayı tüketildi. **Yeni sınırlı manual-risk onayı gelmeden gönderim yapılmaz.** Bu istisna product hard-cap gereksinimini değiştirmez; production uygulama için uygun limiter gerekir.
+Prompt'taki **2048 output token hedefi soft talimattır**, garanti/hard cap değil. 3330 byte token sayısı değildir. Tam input, gizli framing/reasoning, hesap kotası ve kesin context üst sınırı unknown. Hesabın normal kullanım kotası harcanabilir; per-run token veya parasal tavan bu arayüzde doğrulanmadı. Eski iki tek-send onayı tüketildi. **MEMBERSHIP-001 için bu onay alındı ve tek gönderimde tüketildi. Yeni/v2 gönderim ayrıca onay ister; otomatik tekrar yok.** Bu istisna product hard-cap gereksinimini değiştirmez; production uygulama için uygun limiter gerekir.
 
 İlk challenge/refusal/timeout/incomplete output'ta stop: başarısız veya unknown olarak kaydet, otomatik tekrar yok. Kısmi batch başarılı tam deney diye sunulmaz. Raw output değiştirilmez; source span'ını kod bulur, şema ve authority retleri korunur. Eksik/missing quote'u elle “başarılı” olacak biçimde tamamlama.
 

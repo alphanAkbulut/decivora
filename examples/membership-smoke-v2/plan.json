@@ -1,0 +1,20 @@
+{
+  "format": "decivora-membership-batch-2",
+  "attribute_contract_id": "8ffde7478c945224428793b0485ed1a6be6ba7df45b4c6e836d7dbcc4af55895",
+  "prompt_sha256": "e6b052490e35f05b9e71f9a1c113ce03da995718a08858838ac2a8688cef61a3",
+  "prompt_bytes": 4708,
+  "dispatch": "not_run",
+  "dispatch_authorized": false,
+  "usage": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "proposed_submissions": 1,
+  "automatic_retries": 0,
+  "paid_api_allowed": false,
+  "attempt_id": "MEMBERSHIP-002-PROPOSED",
+  "status": "offline_prepared_not_authorized",
+  "basis": "MEMBERSHIP-001 observed attribute/type mismatch; independent narrow contract, no repair",
+  "actual_submissions": 0,
+  "request_source": "examples/membership-smoke/requests.json",
+  "request_file_sha256": "d7f2482425e82eba5d183443aeb5c570de49af28b64904ee12991563ff934788"
+}

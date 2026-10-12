@@ -67,3 +67,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Mevcut üyelik smoke hazırlığı — T03k DONE
 
 `membership_batch.py` tek proposed manual submission için source-only batch hazırlar ve saved quote output'unu ayrı authored rubric ile değerlendirir. [Prompt, plan, import komutları ve izin sınırı](../../docs/quality/membership-smoke-plan.md). 72 suite testi passed; gerçek model send/accuracy/usage not_run.
+
+## MEMBERSHIP-001 gerçek run ve ayrı typed contract
+
+[Ham run, incomplete skor ve offline v2](../../docs/quality/membership-001-result.md) kaydedildi. `membership_typed.py` v1 raw'ı değiştirmeden ayrı field/type contract sağlar; no-dispatch CLI, 78 semantik test. T03l/T03m scoped DONE, v2 gerçek test/quality not_run; tek onay tüketildi.

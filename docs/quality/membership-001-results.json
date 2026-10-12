@@ -1,0 +1,357 @@
+{
+  "attempt_id": "MEMBERSHIP-001",
+  "date": "2026-10-12",
+  "observed_submission_at_utc": "2026-10-12 07:52:25 UTC",
+  "route": "normal_Chrome_fresh_temporary_nonpersonalized_ChatGPT",
+  "model_ui_label": "Instant, 3 seçenek arasında 1. sırada",
+  "actual_model_identity": null,
+  "submissions": 1,
+  "retries": 0,
+  "outputs_received": 1,
+  "paid_api_requests": 0,
+  "actual_usage": null,
+  "actual_monetary_cost": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "manual_risk_exception": "explicit human approval; consumed",
+  "prompt_sha256": "b4693ef6a48be8e64547e899ecf942bfdf9baf0d833c6a39ba05e3c8ccaa66db",
+  "prompt_bytes": 3330,
+  "raw_path": "docs/quality/model-runs/membership-001-response.txt",
+  "raw_sha256": "e3f3ae3f0b4d6a71837f6ac073fcd5b68979c26f8214c903d9def11cb8aab953",
+  "raw_bytes": 2012,
+  "raw_capture": "UI Copy button clipboard text, byte-preserved; not provider transport bytes",
+  "source_validation": "passed_3_records_2_bound_response_envelopes",
+  "exact_candidate_gate": "incomplete",
+  "candidate_counts": {
+    "tp": 0,
+    "fp": 3,
+    "fn": 4
+  },
+  "semantic_quality": "not_release_validated; authored_draft development expectations; n=1",
+  "domain_application": "not_run; controlled guard probe only",
+  "canonical_mutations": 0,
+  "guard_probe": {
+    "fixture_only": true,
+    "source_model_is_not_authentication": true,
+    "projection_unchanged": true,
+    "results": [
+      {
+        "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+        "proposal": {
+          "status": "unmatched_or_stale",
+          "canonical_mutations": 0
+        }
+      },
+      {
+        "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+        "proposal": {
+          "status": "needs_context",
+          "canonical_mutations": 0
+        }
+      }
+    ]
+  },
+  "posthoc_diagnostics": {
+    "status": "exploratory_not_primary_metric",
+    "observations": [
+      "3/3 candidate quotes exact; computed positions valid",
+      "AnswerRecord uses question_revision/selected_option instead of presentation_revision/option_id",
+      "Upload report classified Execution instead of draft ImplementationClaim; action remains reported_upload",
+      "Evidence attribute names differ from declared draft expectations; no verified state claimed",
+      "S03 abstained; no guessed question/approval, but expected AnswerRecord missing"
+    ]
+  },
+  "audit": {
+    "format": "decivora-membership-import-1",
+    "raw_sha256": "e3f3ae3f0b4d6a71837f6ac073fcd5b68979c26f8214c903d9def11cb8aab953",
+    "status": "source_validated",
+    "missing": [],
+    "derived": [
+      {
+        "policy": "unique-exact-quote-1",
+        "input_mode": "quote_only",
+        "contract_id": "34d78677257bfb591bdc09387878a9950538d97fe6aef064de11feacadd5c004",
+        "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+        "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+        "raw_sha256": "4427e95e4cbafd2832df04fbdc1fe922cc899adf16fcf14ec0bfbf06e627a236",
+        "derived_sha256": "739095d0f54bb436cd516fe8756252f198245795e98350ced2625aa7be26f270",
+        "changes": [
+          {
+            "record_index": 0,
+            "previous_span": null,
+            "span": [
+              0,
+              47
+            ]
+          },
+          {
+            "record_index": 1,
+            "previous_span": null,
+            "span": [
+              0,
+              9
+            ]
+          },
+          {
+            "record_index": 2,
+            "previous_span": null,
+            "span": [
+              0,
+              84
+            ]
+          }
+        ],
+        "response": {
+          "format": "decivora-candidates-1",
+          "records": [
+            {
+              "attributes": {
+                "option_value": "D_SQLITE",
+                "project_id": "prj_memory",
+                "question_id": "Q_STORE",
+                "question_revision": 1,
+                "selected_option": "B"
+              },
+              "entity_key": "prj_memory:Q_STORE:r1",
+              "kind": "AnswerRecord",
+              "message_id": "S02-m01",
+              "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam.",
+              "start": 0,
+              "end": 47
+            },
+            {
+              "attributes": {
+                "action": "reported_upload",
+                "actor_type": "human_owner",
+                "project_id": "prj_memory",
+                "target": "unspecified"
+              },
+              "entity_key": "prj_memory:S02-m05:upload",
+              "kind": "Execution",
+              "message_id": "S02-m05",
+              "quote": "Yükledim.",
+              "start": 0,
+              "end": 9
+            },
+            {
+              "attributes": {
+                "actor_type": "tool",
+                "criterion": "rollback",
+                "evidence_reference": "AC_ROLLBACK",
+                "evidence_revision": 1,
+                "project_id": "prj_memory",
+                "reported_result": "passed",
+                "test_scope": "isolated_fixture"
+              },
+              "entity_key": "prj_memory:AC_ROLLBACK:r1",
+              "kind": "Evidence",
+              "message_id": "S02-m09",
+              "quote": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.",
+              "start": 0,
+              "end": 84
+            }
+          ],
+          "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+          "status": "ok"
+        },
+        "validation": {
+          "status": "ok",
+          "records": [
+            {
+              "attributes": {
+                "option_value": "D_SQLITE",
+                "project_id": "prj_memory",
+                "question_id": "Q_STORE",
+                "question_revision": 1,
+                "selected_option": "B"
+              },
+              "end": 47,
+              "entity_key": "prj_memory:Q_STORE:r1",
+              "kind": "AnswerRecord",
+              "message_id": "S02-m01",
+              "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam.",
+              "start": 0,
+              "project_id": "prj_memory",
+              "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+              "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "action": "reported_upload",
+                "actor_type": "human_owner",
+                "project_id": "prj_memory",
+                "target": "unspecified"
+              },
+              "end": 9,
+              "entity_key": "prj_memory:S02-m05:upload",
+              "kind": "Execution",
+              "message_id": "S02-m05",
+              "quote": "Yükledim.",
+              "start": 0,
+              "project_id": "prj_memory",
+              "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+              "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "actor_type": "tool",
+                "criterion": "rollback",
+                "evidence_reference": "AC_ROLLBACK",
+                "evidence_revision": 1,
+                "project_id": "prj_memory",
+                "reported_result": "passed",
+                "test_scope": "isolated_fixture"
+              },
+              "end": 84,
+              "entity_key": "prj_memory:AC_ROLLBACK:r1",
+              "kind": "Evidence",
+              "message_id": "S02-m09",
+              "quote": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.",
+              "start": 0,
+              "project_id": "prj_memory",
+              "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+              "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+              "lifecycle": "candidate"
+            }
+          ],
+          "coverage": "model_reported",
+          "canonical_mutations": 0
+        },
+        "canonical_mutations": 0,
+        "model_calls": 0
+      },
+      {
+        "policy": "unique-exact-quote-1",
+        "input_mode": "quote_only",
+        "contract_id": "15dee808073a83f1487d188a8b8359a8fed87389a05d1f9fe27fb796210ea6f6",
+        "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+        "source_sha256": "6da3c65682e0bd46868367efbd7b6ffc2f67d2ad7b522cbc80db23a85a59abe8",
+        "raw_sha256": "fbc6e60f524277bb5f001ec5184f93b1a27e4c7101cfb1c54c2e477d551a021a",
+        "derived_sha256": "e1bc70dc9dada5c476173e94360f3bfb084bce7292a6c722b5c1a9ebccc0b090",
+        "changes": [],
+        "response": {
+          "format": "decivora-candidates-1",
+          "records": [],
+          "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+          "status": "abstain"
+        },
+        "validation": {
+          "status": "abstain",
+          "records": [],
+          "coverage": "abstained",
+          "canonical_mutations": 0
+        },
+        "canonical_mutations": 0,
+        "model_calls": 0
+      }
+    ],
+    "canonical_mutations": 0,
+    "model_calls": 0,
+    "usage": null,
+    "semantic_accuracy": "not_scored",
+    "response_origin": "caller_imported_unverified",
+    "evaluation": {
+      "status": "incomplete",
+      "scores": [
+        {
+          "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+          "score": {
+            "format": "decivora-candidate-score-1",
+            "review_status": "authored_draft",
+            "status": "evaluated",
+            "true_positive": 0,
+            "false_positive": 3,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "scored_fields": [
+              "attributes",
+              "kind",
+              "message_id",
+              "quote"
+            ],
+            "canonical_mutations": 0,
+            "unscored": [
+              "entity_identity",
+              "canonical_state",
+              "authority",
+              "relations",
+              "impact",
+              "target_verification",
+              "acceptance_criteria"
+            ],
+            "missing": [
+              "{\"attributes\":{\"option_id\":\"B\",\"presentation_revision\":1,\"question_id\":\"Q_STORE\"},\"kind\":\"AnswerRecord\",\"message_id\":\"S02-m01\",\"quote\":\"Önceki Q_STORE sorusundaki B, SQLite ile devam.\"}",
+              "{\"attributes\":{\"claim_type\":\"upload\"},\"kind\":\"ImplementationClaim\",\"message_id\":\"S02-m05\",\"quote\":\"Yükledim.\"}",
+              "{\"attributes\":{\"criterion_id\":\"AC_ROLLBACK\",\"criterion_revision\":1,\"result\":\"passed\"},\"kind\":\"Evidence\",\"message_id\":\"S02-m09\",\"quote\":\"İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.\"}"
+            ],
+            "extra": [
+              "{\"attributes\":{\"option_value\":\"D_SQLITE\",\"project_id\":\"prj_memory\",\"question_id\":\"Q_STORE\",\"question_revision\":1,\"selected_option\":\"B\"},\"kind\":\"AnswerRecord\",\"message_id\":\"S02-m01\",\"quote\":\"Önceki Q_STORE sorusundaki B, SQLite ile devam.\"}",
+              "{\"attributes\":{\"action\":\"reported_upload\",\"actor_type\":\"human_owner\",\"project_id\":\"prj_memory\",\"target\":\"unspecified\"},\"kind\":\"Execution\",\"message_id\":\"S02-m05\",\"quote\":\"Yükledim.\"}",
+              "{\"attributes\":{\"actor_type\":\"tool\",\"criterion\":\"rollback\",\"evidence_reference\":\"AC_ROLLBACK\",\"evidence_revision\":1,\"project_id\":\"prj_memory\",\"reported_result\":\"passed\",\"test_scope\":\"isolated_fixture\"},\"kind\":\"Evidence\",\"message_id\":\"S02-m09\",\"quote\":\"İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.\"}"
+            ]
+          }
+        },
+        {
+          "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+          "score": {
+            "format": "decivora-candidate-score-1",
+            "review_status": "authored_draft",
+            "status": "incomplete",
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 1,
+            "precision": null,
+            "recall": 0.0,
+            "scored_fields": [
+              "attributes",
+              "kind",
+              "message_id",
+              "quote"
+            ],
+            "canonical_mutations": 0,
+            "unscored": [
+              "entity_identity",
+              "canonical_state",
+              "authority",
+              "relations",
+              "impact",
+              "target_verification",
+              "acceptance_criteria"
+            ],
+            "missing": [
+              "{\"attributes\":{},\"kind\":\"AnswerRecord\",\"message_id\":\"S03-m04\",\"quote\":\"A.\"}"
+            ],
+            "extra": []
+          }
+        }
+      ],
+      "corpus_gold": false,
+      "canonical_domain": "unscored",
+      "limitation": "partial human behavior review does not approve exact candidate labels"
+    }
+  },
+  "semantic_suite_tests_passed": 78,
+  "code_sha256": {
+    "spikes/semantic-chain/membership_batch.py": "c616362819547c783aab499e46a278964bd3ba72a6ac2de6bca4b42c54f45acb",
+    "spikes/semantic-chain/test_membership_batch.py": "9c14b511191a36867dae55348202b340af939de3f506e27b6ed6ba1c2b6f4f32",
+    "spikes/semantic-chain/anchors.py": "558abf7fb516354f7f1f1d3abc090fee6c7bc5159aca0d84438b6eb7ab5ca72f",
+    "spikes/semantic-chain/bridge.py": "7b882b27d5608475176b8d902969116759ea74591f9875e139b34bf370e6d04d",
+    "spikes/semantic-chain/membership_typed.py": "7438ed62b4ac702eb8d0fa2711eccb68844bd40c20e9ca88ae56ec0a129445a8",
+    "spikes/semantic-chain/test_membership_typed.py": "45a0c8e7a6e3ff4015d3ac5ce8d87912bcc521212e7ba8fafa61c6f48dd57e55"
+  },
+  "v2": {
+    "status": "offline_prepared_not_dispatched",
+    "prompt_bytes": 4708,
+    "authorization": false,
+    "scope": "three explicit candidate kinds and declared attribute fields, no automatic alias/semantic repair"
+  },
+  "redaction": [
+    "private ChatGPT conversation ID/URL not exported",
+    "screenshot kept outside repo"
+  ],
+  "root_tests_passed": 40,
+  "docs_anchors_progress": "passed"
+}

@@ -40,6 +40,7 @@ Risk kapanışı: kanıt → etkilenen iş → düzeltme → anlamlı negatif/po
 | R18 | Verifier transcript komutunu yetkisiz çalıştırır | Ayrı runner capability, izinli workspace/check, timeout | V24; ilk verifier diliminde engineering |
 | R19 | Restore/replay dış işlemi tekrar gönderir | Etkisiz replay, delivery ledger, restore sonrası outbox pause | V27; ADR-0007; operations |
 | R20 | Model kaynak span/offset yanlış üretir; bütün batch kullanım dışı kalır | Message ID + tekil exact quote ile kodda konum; revision binding, ambiguous rejection; strict validator korunur | S02-002 Observed; ANCHOR-ADAPTER-01 offline kod/negatifler teslim; yeni contract gerçek inference ve production doğrulaması açık; T03/T09 |
+| R21 | Serbest candidate attributes/tür adları producer ile bridge/scorer sözleşmesini ayırır | Ayrı typed v2 contract, explicit field/type rules, alias/authority retleri; raw ve primary score korunur | MEMBERSHIP-001 Observed: source geçti, exact candidate gate incomplete; [rapor](../quality/membership-001-result.md). V2 offline hazır, gerçek kalite not_run; n=1 genel hata oranı değil; T03/T09 |
 
 Queue kapasitesi, lease, recovery ve purge ayrıntıları [runtime sözleşmesinde](../architecture/runtime-contracts.md). Roller sorumluluk önerisidir; bağımsız güvenlik/operasyon ekibinin atanmış olduğu iddia edilmez. Özellikle R16/R18 son release hardening'ine ertelenmez.
 

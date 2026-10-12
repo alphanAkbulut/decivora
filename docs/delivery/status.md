@@ -8,7 +8,7 @@
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
 | Ürün MVP / adapter / dashboard | Production ürün MVP’si başlamadı; üç P0 kod düzeneği ve ayrı geliştirme tracker’ı mevcut, gerçek host/ürün dashboard’u test edilmedi |
-| Semantik model / tasarruf / kullanıcı talebi | Ölçülmedi; lexical baseline ayrı draft oracle üzerinde ölçüldü, başarı kapısı değil |
+| Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-001](../quality/membership-001-result.md): gerçek n=1 source geçti, exact draft candidate gate incomplete; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
@@ -16,6 +16,13 @@
 **Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain fixture bağlantısı çalışıyor; ayrı gerçek inference bir output verdi, strict kaynak konumu kontrolü reddetti; semantik skor/zincir çalışmadı. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. Bounded offline source anchoring teslim edildi; yeni quote-only contract üzerinde gerçek model ölçümü → insan etiket incelemesi → adil native karşılaştırma sıradadır. [Yeni teslim](../quality/source-anchor-adapter.md). **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — MEMBERSHIP-001 gerçek çıktı ve offline typed düzeltme
+
+- Kullanıcı kesin token/context cap unknown riskini not ederek tek denemeyi onayladı. [Onay](../../examples/membership-smoke/authorization.json) tüketildi: tek normal Chrome geçici/nonpersonalized ChatGPT gönderimi, Instant UI etiketi; gerçek sürüm/usage unknown, paid API yok, retry 0.
+- [Sonuç](../quality/membership-001-result.md): üç source quote geçti; farklı association/criterion attribute adları ve Execution upload türü, S03 abstain. Exact gate incomplete; controlled guard canonical mutation 0. Raw/primary rubric korunur; n=1 authored draft genel accuracy değildir.
+- T03l run kayıt/ölçüm teslimi DONE; T03m ayrı typed v2/negatif test/paket DONE. 78 semantik suite testi passed; v2 gönderilmedi. R21 observed ve ana T03 kalite/native kapıları açık.
+
 
 ### 2026-10-12 — Mevcut üyelik gerçek test paketi hazır
 
