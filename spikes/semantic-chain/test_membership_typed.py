@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 from pathlib import Path
 import unittest
@@ -61,6 +62,46 @@ class TestTypedMembership(unittest.TestCase):
         with self.assertRaises(ValueError):derive_typed(self.requests,canonical(bad))
         bad=copy.deepcopy(b);bad['responses'][0]['records'][1]['attributes']['claim_type']='download'
         with self.assertRaises(ValueError):derive_typed(self.requests,canonical(bad))
+
+    def test_saved_single_v2_output_matches_draft_without_gold_or_state_promotion(self):
+        from membership_batch import score_batch
+        raw=(ROOT/'docs/quality/model-runs/membership-002-response.txt').read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),
+            'e3941c35f39cdf4117bec100e01249a6eb3ec23b82b263e9998d8371ffc862da')
+        result=derive_typed(self.requests,raw.decode('utf-8'))
+        rubrics=json.loads((ROOT/'examples/membership-smoke/candidate-rubrics.json').read_text())
+        score=score_batch(self.requests,result,rubrics)
+        self.assertEqual([s['score']['true_positive'] for s in score['scores']],[3,1])
+        self.assertTrue(all(s['score']['false_positive']==s['score']['false_negative']==0 for s in score['scores']))
+        self.assertFalse(score['corpus_gold'])
+        self.assertEqual(score['canonical_domain'],'unscored')
+        self.assertFalse(result['semantic_fields_repaired'])
+        self.assertEqual(result['canonical_mutations'],0)
+
+    def test_saved_v2_proposals_cannot_apply_selection_or_verify_claims(self):
+        import sys
+        import tempfile
+        sys.path.insert(0,str(ROOT/'spikes/decision-chain'))
+        from chain import Chain
+        from bridge import propose
+        raw=(ROOT/'docs/quality/model-runs/membership-002-response.txt').read_text()
+        result=derive_typed(self.requests,raw)
+        with tempfile.TemporaryDirectory() as tmp:
+            for i,request in enumerate(self.requests):
+                chain=Chain(Path(tmp)/f'{i}.db')
+                try:
+                    chain.dispatch('seed',dict(decision='markdown',active=['markdown'],tasks={},
+                        criteria=['rollback','migration']),'human',0,'seed')
+                    q='Q_STORE' if i==0 else 'Q_UI'
+                    options={'A':'markdown','B':'sqlite'} if i==0 else {'A':'board','B':'timeline'}
+                    chain.dispatch('ask',dict(question_id=q,option_revision=1,options=options),'human',1,'ask')
+                    before=chain.snapshot()
+                    proposal=propose(chain,request,canonical(result['derived'][i]['response']))
+                    self.assertEqual(proposal['status'],['pending_trusted_selection','unmatched_or_stale'][i])
+                    self.assertEqual(proposal['canonical_mutations'],0)
+                    self.assertEqual(chain.snapshot(),before)
+                    self.assertFalse(chain.snapshot()['verified'])
+                finally:chain.close()
 
 
 if __name__=='__main__':unittest.main()

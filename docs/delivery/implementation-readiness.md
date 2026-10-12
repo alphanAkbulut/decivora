@@ -1,6 +1,6 @@
 # Kod geliştirme hazırlığı: gerçek blocker ve bağımsız işler
 
-**2026-10-11 · P0.** Kullanıcı insan bağımlılığı olmayan işleri tamamlamamızı, teknik belirsizlikleri somutlaştırmamızı istedi. Bu talep mevcut P0 zincirini geliştirme yetkisidir; ayrı ücret, dış model aktarımı, gerçek host ayarı veya production stack kabulü değildir.
+**2026-10-12 · P0.** Kullanıcı insan bağımlılığı olmayan işleri tamamlamamızı, teknik belirsizlikleri somutlaştırmamızı istedi. Bu talep mevcut P0 zincirini geliştirme yetkisidir; ayrı ücret, dış model aktarımı, gerçek host ayarı veya production stack kabulü değildir.
 
 ## “Deney” tam olarak ne?
 
@@ -24,8 +24,9 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 | Quote-only API deney paketi | Strict schema taslağı, source-only payload, pending bütçe/onay manifesti ve saved response importer | [56 semantik test / 8 yeni](../quality/quote-api-package.md); gerçek provider dispatch/schema/kalite not_run |
 | Seçilmiş yerel hedef observer | Tek dosya real filesystem read, bounded no-follow/hash/change kontrolü; source metninden komut çalıştırılmaz | [65 semantik test ve ayrı gerçek yerel gözlem](../quality/local-observer.md); remote upload/task acceptance veya production IAM değil |
 | Tek komutluk integrated zincir / T03j DONE | Quote-only adapter ve bounded observer mevcut decision/impact/AC/restore akışına bağlandı | [66 semantik test ve yedi checkpoint](../quality/integrated-chain.md); T03g/h/i de scoped DONE, ana T03 ve gerçek model kalite kapısı açık |
-| Mevcut üyelik smoke paket/harness / T03k DONE | 3330-byte source-only prompt, dört mesaj/iki project, ayrı candidate expectations, batch import/score | [72 semantik test / 6 yeni](../quality/membership-smoke-plan.md); manual submit onayı pending, hard cap/usage/real accuracy not_run |
+| Mevcut üyelik smoke paket/harness / T03k DONE | 3330-byte source-only prompt, dört mesaj/iki project, ayrı candidate expectations, batch import/score | [72 semantik test / 6 yeni](../quality/membership-smoke-plan.md); hazırlık tarihsel; MEMBERSHIP-001 run tamamlandı, genel kalite/hard cap/usage açık |
 | Gerçek üyelik run kaydı ve typed v2 / T03l,T03m DONE | Bir gerçek output: source doğrulaması passed, candidate gate incomplete; alias/tür sorunu ayrı açık v2 contract ile sınırlandı | [78 semantik test ve run kanıtı](../quality/membership-001-result.md); v2 dispatch 0, primary skor/gold/production gate korunur |
+| Gerçek typed v2 ölçümü / T03n DONE | Tek yeni model output; dört draft aday eşleşti, source/type pass; isolated guards mutation 0 | [80 semantik test ve ilk çıktı](../quality/membership-002-result.md); yeni send izni tüketildi, insan gold/production kalite değil |
 | Yerel token/bağlam preflight kodu | Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı | [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil |
 
 Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. Ürün graph/IAM/API/UI hazır olmadı; model input/output kapısı ve fixture karar bağlantısı gerçekten kodlandı.
@@ -36,7 +37,7 @@ Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. �
 
 | Konu | Tür | Neden gerekli / neyi durdurur? | Durum |
 |---|---|---|---|
-| Geçerli gerçek model output’u ve bağımsız ölçüm | Typed semantic sözleşme uyumu; yeni inference ayrıca izinli | MEMBERSHIP-001 source bağlama geçti; üç candidate exact rubric'e uymadı, bir response abstain; gerçek genel kalite hâlâ açık | [Run ve typed v2](../quality/membership-001-result.md): n=1 raw/primary score korunur, v2 offline hazır. Tek onay tüketildi, yeni dispatch yok; usage/hard cap unknown |
+| Geçerli gerçek model output’u ve bağımsız ölçüm | Dar development ölçümü var; genelleme ve domain bağlantısı açık | MEMBERSHIP-002 source/typed/dört draft aday geçti; exact insan gold ve kör yeni aile ölçümü yok | [V2 run](../quality/membership-002-result.md): ayrı fixture guard, canonical mutation 0; sırada recorded-output zincir replay ve kıyas. Usage/hard cap unknown |
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1](../quality/reviews/h1-behavior.json) / [H2](../quality/reviews/h2-behavior.json) / [H3](../quality/reviews/h3-behavior.json) behavior review tamamlandı (T01g DONE); exact etiketler ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Erişilebilir ürün/build, aynı koşullar ve veri izni | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -54,7 +55,7 @@ MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verifi
 
 ## Sıradaki uygulanabilir adım
 
-Yeni quote-only contract üzerinde yetkili gerçek semantik inference ve bağımsız candidate/domain ölçümü sıradadır. [ANCHOR-ADAPTER-01](../quality/source-anchor-adapter.md) bounded adapter ve negatiflerini tamamladı; aynı ham output korunarak ayrı türev doğrulandı. Yeni inference/otomatik retry izni yok. API için model/veri/token/context/run/para tavanı sabitlenmeli. İnsan review ve yeni sealed family ile kalite; ardından native/dosya/resume aynı sınırlar altında kıyaslanır. T03c production yatırım kararı açık; zorunlu semantik doğrulama iptal edilmedi.
+[MEMBERSHIP-002](../quality/membership-002-result.md) tek gerçek typed output ile dört development adayını eşleştirdi. Sırada kaydedilmiş adaylardan ayrı fixture receipt ile karar/impact/hedef/AC/restore replay; model ve fixture kanıtları ayrılmalı. Sonra exact label insan review, farklı sealed family ve native/dosya/resume kıyası. Yeni model send onayı tüketildi; offline replay için API bakiyesi gerekmez. T03c production yatırım/stack kararı açık.
 
 
-**Güncel kaynak düzeltmesi:** [ANCHOR-ADAPTER-01](../quality/source-anchor-adapter.md) önceki offline adapter önerisini kodla tamamladı. Tarihsel deneme sonuçları korunur; yeni quote-only contract gerçek modelde henüz çalışmadı. API yöntem önerisi harcama izni değildir.
+**Güncel kaynak düzeltmesi:** [ANCHOR-ADAPTER-01](../quality/source-anchor-adapter.md) önceki offline adapter önerisini kodla tamamladı. Tarihsel deneme sonuçları korunur; quote-only v1/v2 artık gerçek modelde çalıştı; son ölçüm MEMBERSHIP-002, genel kalite kapısı açık. API yöntem önerisi harcama izni değildir.

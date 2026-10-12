@@ -12,7 +12,7 @@
 ## Çalışmanın neresindeyiz?
 
 > [!WARNING]
-> **Kaynak konumu engeli için offline kod teslim edildi; gerçek semantik kalite kapısı açık.** Ham S02-002 sonucu 10/11 span hatasında reddedildi. Bounded adapter yalnız bu konumları ayrı türevde düzeltir; 11 aday strict kontrolden geçer. Ayrı quote-only contract, candidate rubric ve 48 semantik suite testi var; yeni gerçek inference yok. [Teslim/API değerlendirmesi](docs/quality/source-anchor-adapter.md) · [Aktif riskler](docs/governance/risks.md).
+> **Gerçek typed model çıktısında dört draft aday eşleşti; genel kalite kapısı açık.** Tek onaylı MEMBERSHIP-002 çıktısı exact quote/alan/tür kontrolünü geçti; upload yalnız iddia, belirsiz cevap association olmadan korundu, guard durum değiştirmedi. Aynı development örnekleri; human gold veya production kanıtı değil. [Güncel ölçüm](docs/quality/membership-002-result.md) · [Aktif riskler](docs/governance/risks.md).
 
 
 **[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) Board/Liste görünümü, görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.

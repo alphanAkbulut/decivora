@@ -1,6 +1,6 @@
 # Mevcut durum
 
-2026-10-11 — **P0 / Product Definition + kontrollü deneyler**.
+2026-10-12 — **P0 / Product Definition + kontrollü deneyler**.
 
 | Alan | Durum |
 |---|---|
@@ -8,14 +8,21 @@
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
 | Ürün MVP / adapter / dashboard | Production ürün MVP’si başlamadı; üç P0 kod düzeneği ve ayrı geliştirme tracker’ı mevcut, gerçek host/ürün dashboard’u test edilmedi |
-| Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-001](../quality/membership-001-result.md): gerçek n=1 source geçti, exact draft candidate gate incomplete; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
+| Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-002](../quality/membership-002-result.md): tek v2 output, dört draft aday/source/type geçti; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Kod hazırlığı/blocker matrisi](implementation-readiness.md): source→model output contract→candidate→ayrı trusted selection→chain fixture bağlantısı çalışıyor; ayrı gerçek inference bir output verdi, strict kaynak konumu kontrolü reddetti; semantik skor/zincir çalışmadı. [Audit düzeltmeleri](../quality/audit-remediation.md) ve P0 çalışan deneyleri mevcut; hiçbir ana kapı kapanmadı. Bounded offline source anchoring teslim edildi; yeni quote-only contract üzerinde gerçek model ölçümü → insan etiket incelemesi → adil native karşılaştırma sıradadır. [Yeni teslim](../quality/source-anchor-adapter.md). **T01** — [ilk corpus ve kontrol raporu](../quality/baseline.md) hazır; insan etiket incelemesi ve kalan corpus/karşılaştırma protokolü tamamlanacak. Ardından T02 adapter fizibilitesi. T03a geçici deney yöntemi, T03b yetkili prototip/native kıyas, T03c sonuç sonrası yatırım kararıdır; production uygulama bağımsız build seçilirse ilgili kapıdan sonra gelir. Bu paketin GitHub'da bulunması ürün MVP'sinin tamamlandığını göstermez.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. Dokuz küçük teslim DONE (T01g ve T03g–T03n); hiçbir ana production gate kapanmadı. Sırada recorded-output karar/impact/hedef/AC/restore replay, insan exact etiket incelemesi ve native karşılaştırma. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — MEMBERSHIP-002 gerçek typed çıktı ölçümü
+
+- Kullanıcı yeni tek-send v2 isteğini onayladı; [izin](../../examples/membership-smoke-v2/authorization.json) tüketildi. Aynı dört sentetik mesaj, boş geçici/kişiselleştirilmemiş normal Chrome sohbeti, Instant UI etiketi; retry/paid API 0.
+- [Sonuç](../quality/membership-002-result.md): dört exact quote/typed aday authored_draft beklentileriyle eşleşti; TP4/FP0/FN0. Alanlar değiştirilmedi, önceki raw/rubric korundu. Ayrı request guard'larında proposal pending_trusted_selection/unmatched_or_stale, projection unchanged; upload veya task verified olmadı.
+- T03n scoped DONE; 80 semantik test. Genel accuracy/holdout/human gold/production IAM/domain target kapıları açık. Sıradaki offline replay beklemiyor; yeni model send yetkisi yok.
+
 
 ### 2026-10-12 — MEMBERSHIP-001 gerçek çıktı ve offline typed düzeltme
 

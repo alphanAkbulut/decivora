@@ -1,5 +1,7 @@
 # MEMBERSHIP-001 — ilk gerçek quote-only çıktı
 
+> Bu kayıt v1 girişiminin tarihsel ölçümüdür. Sonradan ayrı onayla çalıştırılan v2 için [MEMBERSHIP-002](membership-002-result.md) raporuna bak; aşağıdaki v1 ham çıktı/skor ve hazırlık bilgileri korunur.
+
 **2026-10-12 · Tek UI gönderimi, tek ilk çıktı, retry 0.** Kullanıcı kesin token/context cap'in doğrulanmadığı riskini açıkça kabul etti; [onay kaydı](../../examples/membership-smoke/authorization.json) bu girişimde tüketildi. Mevcut normal Chrome ChatGPT hesabında boş geçici/kişiselleştirilmemiş oturum; UI model etiketi **Instant, 3 seçenek arasında 1. sırada**. Gerçek model sürümü, token/kota ve parasal maliyet unknown. Paid API çağrısı açılmadı. Model tools/subagent kullanımına talimat verilmedi; UI'de tool çıktısı gözlenmedi, gizli provider işlemleri hakkında kesin sayı iddia edilmez.
 
 [Ham UI-copy çıktı](model-runs/membership-001-response.txt) · [makine ölçümü ve guard probe](membership-001-results.json) · [önceden hazırlanan input](../../examples/membership-smoke/prompt.txt). UI clipboard biçimi byte-preserved kaydedildi; provider'ın transport byte'ları değildir. Accessibility text'te görünen çift boşluklar clipboard'da yoktu; import için clipboard metni kullanıldı. Ham veri elle düzeltilmedi. Private conversation ID/URL repo raporuna taşınmadı; screenshot yerelde repo dışında tutuldu.

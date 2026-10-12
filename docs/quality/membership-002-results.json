@@ -1,0 +1,360 @@
+{
+  "attempt_id": "MEMBERSHIP-002",
+  "date": "2026-10-12",
+  "observed_submission_at_utc": "2026-10-12 08:27:56 UTC",
+  "route": "normal_Chrome_fresh_temporary_nonpersonalized_ChatGPT",
+  "model_ui_label": "Instant, 3 seçenek arasında 1. sırada",
+  "actual_model_identity": null,
+  "submissions": 1,
+  "retries": 0,
+  "outputs_received": 1,
+  "paid_api_requests": 0,
+  "actual_usage": null,
+  "actual_monetary_cost": null,
+  "hard_token_cap_verified": false,
+  "hard_context_cap_verified": false,
+  "manual_risk_exception": "explicit human approval; consumed",
+  "prompt_sha256": "e6b052490e35f05b9e71f9a1c113ce03da995718a08858838ac2a8688cef61a3",
+  "prompt_bytes": 4708,
+  "request_file_sha256": "d7f2482425e82eba5d183443aeb5c570de49af28b64904ee12991563ff934788",
+  "rubric_file_sha256": "a13d11edd8c60ae2418e69ea6481674b778e57597726d7c2ab4aaef144515d3b",
+  "raw_path": "docs/quality/model-runs/membership-002-response.txt",
+  "raw_sha256": "e3941c35f39cdf4117bec100e01249a6eb3ec23b82b263e9998d8371ffc862da",
+  "raw_bytes": 1897,
+  "raw_capture": "UI Copy button clipboard text, byte-preserved; not provider transport bytes",
+  "source_validation": "passed_4_records_2_bound_response_envelopes",
+  "typed_contract_validation": "passed",
+  "exact_candidate_gate": "passed_authored_draft_development_expectations_only",
+  "candidate_counts": {
+    "tp": 4,
+    "fp": 0,
+    "fn": 0
+  },
+  "semantic_quality": "not_release_validated; reused development sources; authored_draft; n=1",
+  "semantic_fields_repaired": false,
+  "domain_application": "not_run; isolated per-request controlled guard probe only",
+  "canonical_mutations": 0,
+  "guard_probe": {
+    "fixture_only": true,
+    "source_model_is_not_authentication": true,
+    "projection_unchanged": true,
+    "results": [
+      {
+        "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+        "fixture_question_id": "Q_STORE",
+        "proposal": {
+          "status": "pending_trusted_selection",
+          "project_id": "prj_memory",
+          "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+          "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+          "source_session": "S02",
+          "message_id": "S02-m01",
+          "question_id": "Q_STORE",
+          "option_revision": 1,
+          "option": "B",
+          "base_revision": 2,
+          "canonical_mutations": 0,
+          "proposal_digest": "ea9808e7d8770010320af1692a27ec9c4ab14eec04b6f1bfd5bf92a44b1827b7"
+        },
+        "projection_unchanged": true
+      },
+      {
+        "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+        "fixture_question_id": "Q_UI",
+        "proposal": {
+          "status": "unmatched_or_stale",
+          "canonical_mutations": 0
+        },
+        "projection_unchanged": true
+      }
+    ],
+    "limitation": "single-current-question fixture per request; not concurrent pending-question engine or production project IAM"
+  },
+  "audit": {
+    "format": "decivora-membership-import-1",
+    "raw_sha256": "fb7d4cde2d0dd5e47eae69f1d23fbc17f9095b54ad6acc337c9b948a6dfa0b18",
+    "status": "source_validated",
+    "missing": [],
+    "derived": [
+      {
+        "policy": "unique-exact-quote-1",
+        "input_mode": "quote_only",
+        "contract_id": "34d78677257bfb591bdc09387878a9950538d97fe6aef064de11feacadd5c004",
+        "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+        "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+        "raw_sha256": "4d1a799b65bb4f174d8133e0548cedd8cb1611078fc5a722361b2e9b15fc075f",
+        "derived_sha256": "a83a9e7efc6c467728213a45f63ea1099d36a0701baa2a5a5851e2cb2bd409f0",
+        "changes": [
+          {
+            "record_index": 0,
+            "previous_span": null,
+            "span": [
+              0,
+              47
+            ]
+          },
+          {
+            "record_index": 1,
+            "previous_span": null,
+            "span": [
+              0,
+              9
+            ]
+          },
+          {
+            "record_index": 2,
+            "previous_span": null,
+            "span": [
+              0,
+              84
+            ]
+          }
+        ],
+        "response": {
+          "format": "decivora-candidates-1",
+          "records": [
+            {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_STORE"
+              },
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "S02-m01",
+              "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam.",
+              "start": 0,
+              "end": 47
+            },
+            {
+              "attributes": {
+                "claim_type": "upload"
+              },
+              "entity_key": "upload:S02-m05",
+              "kind": "ImplementationClaim",
+              "message_id": "S02-m05",
+              "quote": "Yükledim.",
+              "start": 0,
+              "end": 9
+            },
+            {
+              "attributes": {
+                "criterion_id": "AC_ROLLBACK",
+                "criterion_revision": 1,
+                "result": "passed"
+              },
+              "entity_key": "AC_ROLLBACK",
+              "kind": "Evidence",
+              "message_id": "S02-m09",
+              "quote": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.",
+              "start": 0,
+              "end": 84
+            }
+          ],
+          "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+          "status": "ok"
+        },
+        "validation": {
+          "status": "ok",
+          "records": [
+            {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_STORE"
+              },
+              "end": 47,
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "S02-m01",
+              "quote": "Önceki Q_STORE sorusundaki B, SQLite ile devam.",
+              "start": 0,
+              "project_id": "prj_memory",
+              "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+              "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "claim_type": "upload"
+              },
+              "end": 9,
+              "entity_key": "upload:S02-m05",
+              "kind": "ImplementationClaim",
+              "message_id": "S02-m05",
+              "quote": "Yükledim.",
+              "start": 0,
+              "project_id": "prj_memory",
+              "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+              "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+              "lifecycle": "candidate"
+            },
+            {
+              "attributes": {
+                "criterion_id": "AC_ROLLBACK",
+                "criterion_revision": 1,
+                "result": "passed"
+              },
+              "end": 84,
+              "entity_key": "AC_ROLLBACK",
+              "kind": "Evidence",
+              "message_id": "S02-m09",
+              "quote": "İzole fixture testinde rollback kriteri geçti; kanıt AC_ROLLBACK revision 1'e bağlı.",
+              "start": 0,
+              "project_id": "prj_memory",
+              "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+              "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+              "lifecycle": "candidate"
+            }
+          ],
+          "coverage": "model_reported",
+          "canonical_mutations": 0
+        },
+        "canonical_mutations": 0,
+        "model_calls": 0
+      },
+      {
+        "policy": "unique-exact-quote-1",
+        "input_mode": "quote_only",
+        "contract_id": "15dee808073a83f1487d188a8b8359a8fed87389a05d1f9fe27fb796210ea6f6",
+        "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+        "source_sha256": "6da3c65682e0bd46868367efbd7b6ffc2f67d2ad7b522cbc80db23a85a59abe8",
+        "raw_sha256": "645c8c2747af75cdb4bc5851f23fb24184099935e3541db2405ca9bdd7477efb",
+        "derived_sha256": "ad791cc3e6a8c6479065197ed42647ddd21b7ff02e41b6f5baf37a96b5a9af75",
+        "changes": [
+          {
+            "record_index": 0,
+            "previous_span": null,
+            "span": [
+              0,
+              2
+            ]
+          }
+        ],
+        "response": {
+          "format": "decivora-candidates-1",
+          "records": [
+            {
+              "attributes": {},
+              "entity_key": "ambiguous-answer:S03-m04",
+              "kind": "AnswerRecord",
+              "message_id": "S03-m04",
+              "quote": "A.",
+              "start": 0,
+              "end": 2
+            }
+          ],
+          "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+          "status": "ok"
+        },
+        "validation": {
+          "status": "ok",
+          "records": [
+            {
+              "attributes": {},
+              "end": 2,
+              "entity_key": "ambiguous-answer:S03-m04",
+              "kind": "AnswerRecord",
+              "message_id": "S03-m04",
+              "quote": "A.",
+              "start": 0,
+              "project_id": "prj_release",
+              "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+              "source_sha256": "6da3c65682e0bd46868367efbd7b6ffc2f67d2ad7b522cbc80db23a85a59abe8",
+              "lifecycle": "candidate"
+            }
+          ],
+          "coverage": "model_reported",
+          "canonical_mutations": 0
+        },
+        "canonical_mutations": 0,
+        "model_calls": 0
+      }
+    ],
+    "canonical_mutations": 0,
+    "model_calls": 0,
+    "usage": null,
+    "semantic_accuracy": "not_scored",
+    "response_origin": "caller_imported_unverified",
+    "typed_contract_id": "8ffde7478c945224428793b0485ed1a6be6ba7df45b4c6e836d7dbcc4af55895",
+    "typed_raw_sha256": "e3941c35f39cdf4117bec100e01249a6eb3ec23b82b263e9998d8371ffc862da",
+    "semantic_fields_repaired": false
+  },
+  "candidate_score": {
+    "status": "scored",
+    "scores": [
+      {
+        "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+        "score": {
+          "format": "decivora-candidate-score-1",
+          "review_status": "authored_draft",
+          "status": "evaluated",
+          "true_positive": 3,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "scored_fields": [
+            "attributes",
+            "kind",
+            "message_id",
+            "quote"
+          ],
+          "canonical_mutations": 0,
+          "unscored": [
+            "entity_identity",
+            "canonical_state",
+            "authority",
+            "relations",
+            "impact",
+            "target_verification",
+            "acceptance_criteria"
+          ],
+          "missing": [],
+          "extra": []
+        }
+      },
+      {
+        "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+        "score": {
+          "format": "decivora-candidate-score-1",
+          "review_status": "authored_draft",
+          "status": "evaluated",
+          "true_positive": 1,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "scored_fields": [
+            "attributes",
+            "kind",
+            "message_id",
+            "quote"
+          ],
+          "canonical_mutations": 0,
+          "unscored": [
+            "entity_identity",
+            "canonical_state",
+            "authority",
+            "relations",
+            "impact",
+            "target_verification",
+            "acceptance_criteria"
+          ],
+          "missing": [],
+          "extra": []
+        }
+      }
+    ],
+    "corpus_gold": false,
+    "canonical_domain": "unscored",
+    "limitation": "partial human behavior review does not approve exact candidate labels"
+  },
+  "limitations": [
+    "Exact candidate expectations were authored before inference, not sealed human gold",
+    "Same development messages reused after v1 diagnosis; no blind or holdout estimate",
+    "Entity identity, graph impacts, real target and AC verification not scored",
+    "Model text is not authenticated approval or proof of upload",
+    "Exact backend, internal provider calls, tokens and cost unobserved; UI submissions counted"
+  ]
+}

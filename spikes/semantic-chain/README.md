@@ -71,3 +71,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## MEMBERSHIP-001 gerçek run ve ayrı typed contract
 
 [Ham run, incomplete skor ve offline v2](../../docs/quality/membership-001-result.md) kaydedildi. `membership_typed.py` v1 raw'ı değiştirmeden ayrı field/type contract sağlar; no-dispatch CLI, 78 semantik test. T03l/T03m scoped DONE, v2 gerçek test/quality not_run; tek onay tüketildi.
+
+## MEMBERSHIP-002 gerçek typed ölçüm — T03n DONE
+
+[İlk v2 çıktı/rapor](../../docs/quality/membership-002-result.md): tek yeni onaylı UI send, retry/paid API 0; dört exact source/typed aday authored_draft beklentiyle eşleşti. 80 semantik test; stored raw hash/scoring ve ayrı no-mutation guard regresyonları. Genel model doğruluğu/insan gold/domain execution değil; eski v1 kayıtlar korunur. Sırada kaydedilmiş v2 adaylarıyla fixture zincir replay; yeni canlı çağrı izni tüketildi.

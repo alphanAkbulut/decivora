@@ -86,15 +86,15 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Risk durumu:** Observed / High · R20: quote-only kaynak kontrolü MEMBERSHIP-001'de üç record için geçti, production/genelleme açık. R21: alan/tür sözleşmesi farklı, exact candidate gate incomplete; typed v2 offline hazır, gerçek modelde not_run. [Riskler](../governance/risks.md), [run ve düzeltme](../quality/membership-001-result.md). Token/context cap ve usage unknown; tek onay tüketildi.
-- **Denemeler / sonuç:** S02-001 erişim hatası/output yok; S02-002 source span reddi; ANCHOR-ADAPTER offline teslim. MEMBERSHIP-001 tek gerçek output: üç source quote/iki binding passed, exact candidate gate incomplete; raw/primary skor korunur, mutation 0. Ayrı typed v2 offline hazır, gönderim 0. [Güncel run](../quality/membership-001-result.md), [eski S02](../quality/s02-second-attempt-result.md).
-- **Etkilenen iş:** T03 gerçek source-bound output gördü; typed semantic uyum/quality ve native kıyas açık. T09 production extraction contract/source bağlama entegrasyonu gerekli. Offline parçalar korunur; n=1 candidate/source sonucu ana kalite/production görevini kapatmaz.
-- **Son ilerleme:** 2026-10-12 · MEMBERSHIP-001 onaylı tek gönderimde gerçek output verdi: üç quote/source doğru, association alan adları ve upload türü farklı, S03 abstain; strict candidate gate incomplete. Hiçbir canonical değişiklik yok. T03l tek girişim kayıt/ölçümü DONE; T03m ayrı typed v2 contract/paket hazır DONE. 78 semantik suite testi; yeni v2 inference 0. [Rapor/kanıt](../quality/membership-001-result.md).
-- **Sıradaki adım:** Typed v2 (4708-byte source-only prompt) üzerinde yeni sınırlı onayla gerçek ölçüm; mevcut MEMBERSHIP-001 onayı tüketildi, otomatik retry veya paid API yok. V2 gerçek quality, exact label human review, domain/target/AC ve native/economic kapıları açık; source pass genel semantic başarı değildir.
+- **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
+- **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
+- **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
+- **Son ilerleme:** 2026-10-12 · T03n gerçek v2 tek girişim/ölçüm teslimi DONE: geç cevap doğru alanlarla eşleşti, upload yalnız claim, test raporu Evidence, belirsiz A association olmadan korundu. 80 semantik test; iki ayrı fixture guard projection unchanged. [Rapor](../quality/membership-002-result.md).
+- **Sıradaki adım:** Kaydedilmiş v2 adaylarını ayrı fixture receipt ile karar→AND/OR impact→hedef/AC→restore zincirinde yürüt; inference ve scripted verification sınırlarını ayır. Sonra exact label insan incelemesi/farklı soru aileleri ve native kıyası. Yeni model send bu tüketilmiş izinle yapılamaz; offline iş beklemiyor.
 
 ### T03 altında tamamlanan küçük teslimler
 
-Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen offline scope ve kabul koşuluna aittir; production/model/native testleri T03f/T03b'de açık kalır.
+Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim scope ve kabul koşuluna aittir; production/model/native testleri T03f/T03b'de açık kalır.
 
 | Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
 |---|---|---|
@@ -105,6 +105,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen offlin
 | T03k / T03g,T03h | DONE / P0: mevcut üyelik source-only paket ve batch import/score | Dört synthetic mesaj, iki ayrı proje/contract, oracle dışarıda; 6 negatif/pozitif test ve 72 suite passed; [plan/kanıt](../quality/membership-smoke-plan.md). Gerçek model send/usage/accuracy kapsam dışı |
 | T03l / T03k | DONE / P0: onaylı MEMBERSHIP-001 tek gönderim ve değişmez ölçüm kaydı | Raw UI-copy hash, iki source binding/üç quote pass; exact candidate gate incomplete ve no-mutation guard kaydedildi; [run](../quality/membership-001-result.md). Başarı/kabul gate'i bu kapanışla kapanmaz |
 | T03m / T03l | DONE / P0: separate typed v2 field/type contract ve offline paket | Dört typed negatif/pozitif test, ayrı contract ID ve 4708-byte prompt; 78 suite passed; [v2/kanıt](../quality/membership-001-result.md). Gerçek v2 model davranışı not_run; no semantic alias repair |
+| T03n / T03m | DONE / P0: onaylı MEMBERSHIP-002 gerçek typed çıktı ve ölçüm | Tek gönderim, dört authored_draft aday eşleşti, source/type/hash pass; iki ayrı guard no-mutation ve iki yeni regresyon testi, 80 suite passed; [run](../quality/membership-002-result.md). Human gold/production/domain doğruluğu kapsam dışı |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

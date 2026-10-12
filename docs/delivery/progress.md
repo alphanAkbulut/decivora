@@ -27,6 +27,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03k | T03 | DONE | DONE / P0: mevcut üyelik source-only paket ve batch import/score |
 | T03l | T03 | DONE | DONE / P0: onaylı MEMBERSHIP-001 tek gönderim ve değişmez ölçüm kaydı |
 | T03m | T03 | DONE | DONE / P0: separate typed v2 field/type contract ve offline paket |
+| T03n | T03 | DONE | DONE / P0: onaylı MEMBERSHIP-002 gerçek typed çıktı ve ölçüm |
 
 ## Açık fazda neler değişti?
 
@@ -58,15 +59,15 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · MEMBERSHIP-001 onaylı tek gönderimde gerçek output verdi: üç quote/source doğru, association alan adları ve upload türü farklı, S03 abstain; strict candidate gate incomplete. Hiçbir canonical değişiklik yok. T03l tek girişim kayıt/ölçümü DONE; T03m ayrı typed v2 contract/paket hazır DONE. 78 semantik suite testi; yeni v2 inference 0. [Rapor/kanıt](../quality/membership-001-result.md).
+2026-10-12 · T03n gerçek v2 tek girişim/ölçüm teslimi DONE: geç cevap doğru alanlarla eşleşti, upload yalnız claim, test raporu Evidence, belirsiz A association olmadan korundu. 80 semantik test; iki ayrı fixture guard projection unchanged. [Rapor](../quality/membership-002-result.md).
 
-**Aktif teknik risk:** Observed / High · R20: quote-only kaynak kontrolü MEMBERSHIP-001'de üç record için geçti, production/genelleme açık. R21: alan/tür sözleşmesi farklı, exact candidate gate incomplete; typed v2 offline hazır, gerçek modelde not_run. [Riskler](../governance/risks.md), [run ve düzeltme](../quality/membership-001-result.md). Token/context cap ve usage unknown; tek onay tüketildi.
+**Aktif teknik risk:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 
-**Denemeler / sonuç:** S02-001 erişim hatası/output yok; S02-002 source span reddi; ANCHOR-ADAPTER offline teslim. MEMBERSHIP-001 tek gerçek output: üç source quote/iki binding passed, exact candidate gate incomplete; raw/primary skor korunur, mutation 0. Ayrı typed v2 offline hazır, gönderim 0. [Güncel run](../quality/membership-001-result.md), [eski S02](../quality/s02-second-attempt-result.md).
+**Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
 
-**Etkilenen iş:** T03 gerçek source-bound output gördü; typed semantic uyum/quality ve native kıyas açık. T09 production extraction contract/source bağlama entegrasyonu gerekli. Offline parçalar korunur; n=1 candidate/source sonucu ana kalite/production görevini kapatmaz.
+**Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
 
-Sıradaki adım: Typed v2 (4708-byte source-only prompt) üzerinde yeni sınırlı onayla gerçek ölçüm; mevcut MEMBERSHIP-001 onayı tüketildi, otomatik retry veya paid API yok. V2 gerçek quality, exact label human review, domain/target/AC ve native/economic kapıları açık; source pass genel semantic başarı değildir.
+Sıradaki adım: Kaydedilmiş v2 adaylarını ayrı fixture receipt ile karar→AND/OR impact→hedef/AC→restore zincirinde yürüt; inference ve scripted verification sınırlarını ayır. Sonra exact label insan incelemesi/farklı soru aileleri ve native kıyası. Yeni model send bu tüketilmiş izinle yapılamaz; offline iş beklemiyor.
 
 
 ## Mevcut teslim parçaları
@@ -87,15 +88,16 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Quote-only API deney paketi** — Strict schema taslağı, source-only payload, pending bütçe/onay manifesti ve saved response importer; [56 semantik test / 8 yeni](../quality/quote-api-package.md); gerçek provider dispatch/schema/kalite not_run
 - **Seçilmiş yerel hedef observer** — Tek dosya real filesystem read, bounded no-follow/hash/change kontrolü; source metninden komut çalıştırılmaz; [65 semantik test ve ayrı gerçek yerel gözlem](../quality/local-observer.md); remote upload/task acceptance veya production IAM değil
 - **Tek komutluk integrated zincir / T03j DONE** — Quote-only adapter ve bounded observer mevcut decision/impact/AC/restore akışına bağlandı; [66 semantik test ve yedi checkpoint](../quality/integrated-chain.md); T03g/h/i de scoped DONE, ana T03 ve gerçek model kalite kapısı açık
-- **Mevcut üyelik smoke paket/harness / T03k DONE** — 3330-byte source-only prompt, dört mesaj/iki project, ayrı candidate expectations, batch import/score; [72 semantik test / 6 yeni](../quality/membership-smoke-plan.md); manual submit onayı pending, hard cap/usage/real accuracy not_run
+- **Mevcut üyelik smoke paket/harness / T03k DONE** — 3330-byte source-only prompt, dört mesaj/iki project, ayrı candidate expectations, batch import/score; [72 semantik test / 6 yeni](../quality/membership-smoke-plan.md); hazırlık tarihsel; MEMBERSHIP-001 run tamamlandı, genel kalite/hard cap/usage açık
 - **Gerçek üyelik run kaydı ve typed v2 / T03l,T03m DONE** — Bir gerçek output: source doğrulaması passed, candidate gate incomplete; alias/tür sorunu ayrı açık v2 contract ile sınırlandı; [78 semantik test ve run kanıtı](../quality/membership-001-result.md); v2 dispatch 0, primary skor/gold/production gate korunur
+- **Gerçek typed v2 ölçümü / T03n DONE** — Tek yeni model output; dört draft aday eşleşti, source/type pass; isolated guards mutation 0; [80 semantik test ve ilk çıktı](../quality/membership-002-result.md); yeni send izni tüketildi, insan gold/production kalite değil
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Geçerli gerçek model output’u ve bağımsız ölçüm | MEMBERSHIP-001 source bağlama geçti; üç candidate exact rubric'e uymadı, bir response abstain; gerçek genel kalite hâlâ açık | [Run ve typed v2](../quality/membership-001-result.md): n=1 raw/primary score korunur, v2 offline hazır. Tek onay tüketildi, yeni dispatch yok; usage/hard cap unknown |
+| Geçerli gerçek model output’u ve bağımsız ölçüm | MEMBERSHIP-002 source/typed/dört draft aday geçti; exact insan gold ve kör yeni aile ölçümü yok | [V2 run](../quality/membership-002-result.md): ayrı fixture guard, canonical mutation 0; sırada recorded-output zincir replay ve kıyas. Usage/hard cap unknown |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | [H1](../quality/reviews/h1-behavior.json) / [H2](../quality/reviews/h2-behavior.json) / [H3](../quality/reviews/h3-behavior.json) behavior review tamamlandı (T01g DONE); exact etiketler ve tam kritik set pending |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı; gerçek config’e dokunulmadı |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md), not_run |
@@ -107,7 +109,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 3 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 11 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 12 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -144,4 +146,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `16fa6da69bdf14fb851baab2393d34237c1be0df449c92062fead192afa74873`
+Kaynak fingerprint: `47cb67702417697119405d59813089ea7d746ac08c66d539fd83156b52129642`
