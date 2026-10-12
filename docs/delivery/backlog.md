@@ -58,8 +58,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
-- **Son ilerleme:** 2026-10-12 · T03w DONE: yerel makine schema ve source guard; [rapor](../quality/receiver-contract.md). Bilinen soru/ambiguous record ayrımı, integer/abstention/record-action scope;16 yeni/152 semantik test geçti. RECEIVER-001 raw/prompt/oracle aynı ve failed; model/API0, ürün kalite kapısı açık.
-- **Sıradaki adım:** Yeni ayrı request kimliğiyle schema bağlı, per-record açıklaması net receiver isteğini yerelde hazırlayın; frozen RECEIVER-001 korunur. Yeni model çağrısı izni tüketildi; otomatik retry/paidAPI yok. Production IAM/gold/native/user burden ve T03c yatırım/stack açık.
+- **Son ilerleme:** 2026-10-13 · T01g/H1-H3 ve T01i/H4 partial davranış review tamamlandı; source/rubric/cevap kayıtları korunur. T03y receiver hazırlığı tamamlandı; bu T01 exact gold/adjudication/holdout kapanışı değildir.
+- **Sıradaki adım:** Exact kaynak/etiket inceleme ve adjudication kuyruğundaki kalanları küçük örneklerle tamamla; human gold/holdout gate açık. Receiver isteği tekrar hazırlanmayacak: T03y DONE, Q03-R6 yalnız yeni model run onayı bekliyor.
 
 
 ### İlk üç davranış incelemesi kapanışı
@@ -89,9 +89,9 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
-- **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
-- **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
+- **Risk durumu:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
+- **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 hazırlanmış/not_run. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
+- **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 - **Son ilerleme:** 2026-10-13 · T03y DONE: RECEIVER-002 ayrı kimlik/wire ve machine schema,8089-byte source-only prompt, bağımsız authored oracle/scorer;20 yeni/192 semantik test. [Plan](../quality/receiver-next-plan.md). Yeni actualsend0/modelquality not_run; önceki raw ve failure korunur.
 - **Sıradaki adım:** Hazır RECEIVER-002 önerisinin exact prompt/scope için yeni tek-run iznini al; yalnız ilk full final output ve strict scorer, retry/paidAPI0. Model hatası raw olarak kalır; v2 row-review bağlama gerekiyorsa ayrı sürümlü local iş, v1 ID/format onarımı yok. Production/native/gold/ROI/T03c açık.
 

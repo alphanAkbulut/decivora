@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Takip kayıtlarının güncellik incelemesi
+
+- [Denetim](../quality/tracker-status-audit.md):3 IN_PROGRESS/27 TODO ve22 küçük DONE doğru; açık kapılar tablosu ve T01 sonraki adımı eski kalmıştı. Q03-R6 tek-run onayı görünür, R22 fixture düzeltmesi ve T03y hazırlığı tekrar açık iş gösterilmez.
+- Ana status/engine/production kabulü değiştirilmedi.6 aktif karar/doğrulama kapısı; bütün unanswered question envanteri değil. Açık tarayıcı sekmesi eski HTML tuttuğu için güncel Board/İngilizce status için reload; eski91test/stale checkpoint raporu yeni247test veya CI diye onarılmaz. Yeni model/API çağrısı yok.
+
 ### 2026-10-13 — Yeni source-only receiver isteği hazır
 
 - T03y scoped DONE: [RECEIVER-002](../quality/receiver-next-plan.md), farklı request/wire sürümü, typed ortak machine schema ve açık per-record kurallar;8source mesajı tam,8089byte/8192tavan. No-oracle3file prepare, bağımsız authored scorer, no-overwrite ve20 yeni test;192 semantik/15 karar/40 takip geçti.

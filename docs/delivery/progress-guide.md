@@ -19,7 +19,7 @@
 | Engine haritası | 10 production sorumluluğu, ilişkili görevler ve sınırlar | [Engine sözleşmesi](../architecture/engines.md) |
 | Kanıt | Kayıtlı suite sonucu/tarihi, raporda listeli kod hash kontrolü ve not_run/pending durumları | [Sonuç JSON’u](../quality/semantic-readiness-results.json) |
 
-`IN_PROGRESS` görev kaydıdır: agent’ın bu saniye çalıştığına dair telemetry değildir. Plan ön koşulundan otomatik BLOCKED/ready hükmü çıkarılmaz. Bir deney dilimi uygulanmış olsa da ana görev ancak tüm AC ve kapanış kanıtıyla kapanır. 91 kayıtlı test ürün tamamlanma yüzdesi değildir. Eksik kanıt unknown; değişmiş kanıt kodu stale; tutarsız suite toplamı incomplete görünür. Hash denetimi yalnız raporun kapsamıdır.
+`IN_PROGRESS` görev kaydıdır: agent’ın bu saniye çalıştığına dair telemetry değildir. Plan ön koşulundan otomatik BLOCKED/ready hükmü çıkarılmaz. Bir deney dilimi uygulanmış olsa da ana görev ancak tüm AC ve kapanış kanıtıyla kapanır. Kanıt alanındaki tarihsel test sayısı ürün tamamlanma yüzdesi değildir. Eksik kanıt unknown; değişmiş kanıt kodu stale; tutarsız suite toplamı incomplete görünür. Hash denetimi yalnız raporun kapsamıdır.
 
 ## Nasıl güncellenir?
 
@@ -40,3 +40,9 @@ Doğrulama: parser/otorite, değişen kaynağın yeniden okunması, eksik/stale/
 Board sütunları: **To Do / In Progress / Blocked / Done**. Kartlar aynı ana görevleri gösterir; faz/durum/arama filtreleri ve AC/alt dilim detayı her iki görünümde de çalışır. Sürükleyerek durum değiştirme yoktur; yeni task otoritesi oluşturulmadı. Hazırlık/deney parçaları bitmiş ana görev gibi Done sütununa alınmaz. Gerçek BLOCKED kaydı yoksa Blocked boş kalır; açık insan/ölçüm kapıları ayrı paneldedir.
 
 2026-10-11 kullanıcı tercihi: görünen status adları İngilizce; kanonik TODO/IN_PROGRESS/BLOCKED/DONE değerleri ve görev durumları değişmedi. [Atlassian workflow belgesi](https://support.atlassian.com/jira-software-cloud/docs/manage-how-work-flows-in-your-team-managed-project/) varsayılan To do/In progress/Done'u açıklar; Blocked bizde mevcut özel durumun İngilizce etiketidir, bütün Jira kurulumlarının zorunlu varsayılanı değildir.
+
+## 2026-10-13 kayıt doğruluğu kontrolü
+
+[İnceleme kaydı](../quality/tracker-status-audit.md):3 In Progress ana görev,27 To Do (21 MVP/P1,6 gelecekteki faz),22 küçük DONE. Açık kapı sayısı6 aktif konu satırıdır; bütün OPEN/Q kayıtlarının otomatik toplamı veya altı kullanıcı sorusu değildir. Q03-R6 tek-run izni ayrıca görünür; receiver kalitesi, gold, capture, native kıyas ve stack/investment ayrı kapılar.
+
+To Do hemen başlanabilir anlamına gelmez; ön koşullar/ilgili izin ve kabul kapıları geçerlidir. In Progress ana işin kapanmadığını gösterir, aynı anda çalışan agent sayısı değildir. Eski açılmış sekme veri sorgularını yeniler ama HTML/JavaScript dosyası değişikliklerini yüklemez; eski durum adları veya Board yoksa sayfayı bir kez yenile. “Şimdi yenile” yalnız veriyi okur.
