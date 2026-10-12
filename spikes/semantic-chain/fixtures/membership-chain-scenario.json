@@ -1,0 +1,106 @@
+{
+  "format": "membership-chain-fixture-1",
+  "fixture_trust_only": true,
+  "request_id": "332692edfeb4b30b975e0d57cf1178d5868116f41a8cc76240c825be95b5c08f",
+  "project_id": "prj_memory",
+  "seed": {
+    "decision": "D_MARKDOWN",
+    "active": [
+      "D_MARKDOWN",
+      "security"
+    ],
+    "tasks": {
+      "sync": {
+        "expr": "D_MARKDOWN",
+        "status": "todo"
+      },
+      "export": {
+        "expr": {
+          "any": [
+            "D_MARKDOWN",
+            "D_SQLITE"
+          ]
+        },
+        "status": "todo"
+      },
+      "combined": {
+        "expr": {
+          "all": [
+            "D_MARKDOWN",
+            "security"
+          ]
+        },
+        "status": "todo"
+      },
+      "watch": {
+        "expr": null,
+        "status": "todo"
+      }
+    },
+    "criteria": [
+      "AC_ROLLBACK",
+      "AC_MIGRATION"
+    ]
+  },
+  "question": {
+    "question_id": "Q_STORE",
+    "option_revision": 1,
+    "options": {
+      "A": "D_MARKDOWN",
+      "B": "D_SQLITE"
+    }
+  },
+  "selection_receipt": {
+    "authenticated": true,
+    "permission": "decision.approve",
+    "project_id": "prj_memory",
+    "source_sha256": "0466dcfe036422288f67a643de2bbce088f0887bdaa8da3aa3235b7da83dd09d",
+    "message_id": "S02-m01",
+    "question_id": "Q_STORE",
+    "option_revision": 1,
+    "option": "B",
+    "base_revision": 2
+  },
+  "impact_receipt": {
+    "authenticated": true,
+    "permission": "impact.approve",
+    "project_id": "prj_memory",
+    "base_revision": 3,
+    "preview_digest": "c3f63234d1fde21677e209d31d616a2b627a77e6649fbde903166b879dfb043f",
+    "actions": {
+      "sync": "obsolete",
+      "export": "retained",
+      "combined": "review",
+      "watch": "review"
+    }
+  },
+  "target": {
+    "path": "bundle.md",
+    "artifact_revision": 2,
+    "ref": "fixture-ref-2",
+    "old_ref": "fixture-ref-1",
+    "old_content": "Markdown migration contract fixture",
+    "content": "SQLite migration contract fixture"
+  },
+  "verifier_results": [
+    {
+      "AC_ROLLBACK": "passed"
+    },
+    {
+      "AC_MIGRATION": "passed"
+    }
+  ],
+  "ambiguity": {
+    "request_id": "777a6d62b20865bf407690a5618cdd089269a89ff621d1fa74423288184c1333",
+    "project_id": "prj_release",
+    "question": {
+      "question_id": "Q_UI",
+      "option_revision": 1,
+      "options": {
+        "A": "board",
+        "B": "timeline"
+      }
+    }
+  },
+  "raw_sha256": "e3941c35f39cdf4117bec100e01249a6eb3ec23b82b263e9998d8371ffc862da"
+}

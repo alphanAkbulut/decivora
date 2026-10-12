@@ -1,0 +1,79 @@
+{
+  "proposal": {
+    "status": "pending_trusted_selection",
+    "decision": "D_MARKDOWN",
+    "revision": 2,
+    "canonical_mutations": 0
+  },
+  "denied_selection": {
+    "rejected": true,
+    "canonical_mutations": 0
+  },
+  "decision": {
+    "decision": "D_SQLITE",
+    "task_statuses": [
+      "todo"
+    ],
+    "impact": {
+      "sync": "obsolete_candidate",
+      "export": "retained",
+      "combined": "obsolete_candidate",
+      "watch": "review_unknown"
+    }
+  },
+  "selection_retry": {
+    "same_event": true,
+    "canonical_mutations": 0
+  },
+  "impact": {
+    "statuses": {
+      "sync": "obsolete",
+      "export": "retained",
+      "combined": "review",
+      "watch": "review"
+    }
+  },
+  "reported_evidence": {
+    "claims": 1,
+    "evidence_candidates": 1,
+    "verified": false,
+    "evidence": {},
+    "observation": null
+  },
+  "old_target": {
+    "status": "stale",
+    "verified": false
+  },
+  "wrong_content": {
+    "status": "mismatch",
+    "verified": false
+  },
+  "current_target": {
+    "status": "observed_match",
+    "verified": false
+  },
+  "partial": {
+    "verified": false,
+    "evidence": {
+      "AC_ROLLBACK": "passed"
+    }
+  },
+  "complete": {
+    "verified": true,
+    "evidence": {
+      "AC_ROLLBACK": "passed",
+      "AC_MIGRATION": "passed"
+    }
+  },
+  "restore": {
+    "same_projection": true,
+    "same_event_count": true,
+    "external_dispatches": 0
+  },
+  "ambiguous": {
+    "status": "unmatched_or_stale",
+    "answer_candidates": 1,
+    "canonical_mutations": 0,
+    "question_state": "pending"
+  }
+}

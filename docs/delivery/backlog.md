@@ -89,8 +89,9 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 - **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
 - **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
-- **Son ilerleme:** 2026-10-12 · T03n gerçek v2 tek girişim/ölçüm teslimi DONE: geç cevap doğru alanlarla eşleşti, upload yalnız claim, test raporu Evidence, belirsiz A association olmadan korundu. 80 semantik test; iki ayrı fixture guard projection unchanged. Kaynak/aday/guard Mermaid şeması GitHub native renderer ile doğrulandı; inventory/provenance güncellendi. [Rapor](../quality/membership-002-result.md).
-- **Sıradaki adım:** Kaydedilmiş v2 adaylarını ayrı fixture receipt ile karar→AND/OR impact→hedef/AC→restore zincirinde yürüt; inference ve scripted verification sınırlarını ayır. Sonra exact label insan incelemesi/farklı soru aileleri ve native kıyası. Yeni model send bu tüketilmiş izinle yapılamaz; offline iş beklemiyor.
+- **Son ilerleme:** 2026-10-12 · T03o kayıtlı gerçek v2 adaylarından ayrı fixture selection/impact→eski/güncel içerik→partial/full AC→restore zinciri DONE; 13 checkpoint passed, 86 semantik/15 decision/40 root test. Yeni model veya dış target çağrısı0. Tam source kimliği ve önceki raw/skor/şema korunur. [Replay raporu](../quality/membership-chain-replay.md).
+- **Sıradaki adım:** Yeni soru aileleri/exact label review ve aynı bilgiyle devam-paketi/basit-dosya/native kıyasını hazırla. Fixture receipt, criterion revision ve event lineage üretim boşlukları T05/T07/T13/T14 kapsamındadır; bunları production tamamlandı sayma. Yeni live model/paid API izni yok. T03c yatırım/stack kapısı açık.
+
 
 ### T03 altında tamamlanan küçük teslimler
 
@@ -106,6 +107,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | T03l / T03k | DONE / P0: onaylı MEMBERSHIP-001 tek gönderim ve değişmez ölçüm kaydı | Raw UI-copy hash, iki source binding/üç quote pass; exact candidate gate incomplete ve no-mutation guard kaydedildi; [run](../quality/membership-001-result.md). Başarı/kabul gate'i bu kapanışla kapanmaz |
 | T03m / T03l | DONE / P0: separate typed v2 field/type contract ve offline paket | Dört typed negatif/pozitif test, ayrı contract ID ve 4708-byte prompt; 78 suite passed; [v2/kanıt](../quality/membership-001-result.md). Gerçek v2 model davranışı not_run; no semantic alias repair |
 | T03n / T03m | DONE / P0: onaylı MEMBERSHIP-002 gerçek typed çıktı ve ölçüm | Tek gönderim, dört authored_draft aday eşleşti, source/type/hash pass; iki ayrı guard no-mutation ve iki yeni regresyon testi, 80 suite passed; [run](../quality/membership-002-result.md). Human gold/production/domain doğruluğu kapsam dışı |
+| T03o / T03n | DONE / P0: gerçek kayıtlı candidate → controlled karar/impact/hedef/AC/restore replay | Kendi request/source kimliği, bağımsız fixture receipt ve13 authored checkpoint; 6 negatif/pozitif test, 86 suite passed; [rapor](../quality/membership-chain-replay.md). Yeni inference/production IAM/remote uygulama/human gold değil |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

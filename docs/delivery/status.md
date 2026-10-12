@@ -13,9 +13,15 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. Dokuz küçük teslim DONE (T01g ve T03g–T03n); hiçbir ana production gate kapanmadı. Sırada recorded-output karar/impact/hedef/AC/restore replay, insan exact etiket incelemesi ve native karşılaştırma. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On küçük teslim DONE (T01g ve T03g–T03o); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; sırada yeni soru aileleri/insan exact etiket incelemesi ve native karşılaştırma. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — Gerçek kayıtlı adaydan tam kontrollü zincir
+
+- T03o scoped DONE: [replay](../quality/membership-chain-replay.md), 13 authored checkpoint; source/karar kimliği değiştirilmedi. Ayrı fixture selection/impact, üç bounded gerçek temp dosya okuması, partial/full verifier fixture ve SQLite backup/reopen birlikte çalıştı.
+- 86 semantik/15 decision/40 root test passed. Yetkisiz selection/impact, stale graph, değiştirilmiş raw/rebinding ve eksik expectations retleri; yeni model/paid API/egress0. Production IAM/criterion revision/full lineage ve geniş kalite açık; ana task statusları değişmedi.
+
 
 ### 2026-10-12 — Deney şeması doğrulandı
 

@@ -72,6 +72,8 @@ python3 -B -m unittest discover -s spikes/semantic-chain -p test_membership_type
 
 ## Tamamlanan ve sıradaki iş
 
+**Sonraki teslim tamamlandı:** [T03o kayıtlı aday zincir replay](membership-chain-replay.md), 13 kontrollü checkpoint passed. Aşağıdaki paragraf ilk model ölçümünün kapanış anındaki sırayı anlatır; yeni live model çağrısı yapılmadı. Mermaid bu ilk run/guard kanıtını gösterir; source bloğu değiştirilmedi.
+
 T03n bu **tek gerçek girişimin ölçüm ve koruma teslimi** olarak DONE. Ana T03 açık; production MVP tamamlanmadı. 80 semantik regresyon testi passed; bu test sayısı ürün yüzdesi veya canlı kalite örneklem büyüklüğü değildir.
 
 Sıradaki bağımsız iş: gerçek v2 adaylarını ayrı fixture receipt ile mevcut karar→AND/OR impact→hedef/AC→restore zincirinde tekrar yürütmek; model ve scripted verification kanıtlarını ayrı raporlamak. Daha sonra exact label insan incelemesi, farklı soru aileleri ve native/dosya/resume kıyası gerekir. H1/H2/H3 davranış onayları korunur; kullanıcıya aynı davranışları tekrar sormak gerekmez. Yeni canlı model isteği bu izinle gönderilemez. R21 için bu dar örnekte mitigation kanıtı oluştu; risk genel olarak kapanmadı.

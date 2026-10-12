@@ -75,3 +75,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## MEMBERSHIP-002 gerçek typed ölçüm — T03n DONE
 
 [İlk v2 çıktı/rapor](../../docs/quality/membership-002-result.md): tek yeni onaylı UI send, retry/paid API 0; dört exact source/typed aday authored_draft beklentiyle eşleşti. 80 semantik test; stored raw hash/scoring ve ayrı no-mutation guard regresyonları. Genel model doğruluğu/insan gold/domain execution değil; eski v1 kayıtlar korunur. Sırada kaydedilmiş v2 adaylarıyla fixture zincir replay; yeni canlı çağrı izni tüketildi.
+
+## Kaydedilmiş gerçek adaylardan zincir replay — T03o DONE
+
+`python3 -B spikes/semantic-chain/replay_membership.py` source-bound MEMBERSHIP-002 raw'ı kendi request kimliğiyle işler; bağımsız fixture receipt, ayrı impact, eski/güncel gerçek temporary içerik, partial/full AC ve backup/reopen. Yeni model/egress0; [13 checkpoint ve sınırlar](../../docs/quality/membership-chain-replay.md), 86 semantik suite/6 yeni test. `run.py --response` ile smoke response'ı eski request'e yeniden bind etme. CLI `--out` mevcut dosyayı değiştirmez. Production IAM/criterion revision/full lineage/native kalite bu fixture kapsamında değildir.
