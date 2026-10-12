@@ -1,0 +1,395 @@
+{
+  "status": "passed_local_project_isolation_examples",
+  "version": "receiver-project-review-1",
+  "clarification_review": {
+    "format": "receiver-project-review-1",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "context_sha256": "ac4a93cf2164952afbec466bcbaf70b9d4be0fd92b5d69707edb55f90d9dd086",
+    "raw_sha256": "4b4bf061af81247f5693b5800c76fd60a0fbeb38084e93bc576f87627743a3c8",
+    "status": "partial_review",
+    "projects": [
+      {
+        "project_id": "prj_storage_review",
+        "status": "ready_for_review",
+        "review": {
+          "project_id": "prj_storage_review",
+          "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+          "status": "ok",
+          "readback": {
+            "question_id": "Q_STORE",
+            "question_revision": 2,
+            "question_state": "pending",
+            "approved_real_decision": false,
+            "task_verified": false,
+            "upload_verification": "unknown",
+            "answer_states": [
+              {
+                "message_id": "N01-m01",
+                "status": "stale_question_revision"
+              },
+              {
+                "message_id": "N01-m02",
+                "status": "pending_trusted_selection"
+              }
+            ],
+            "reported_test_results": []
+          },
+          "next_actions": [
+            {
+              "type": "preserve_history",
+              "message_id": "N01-m01",
+              "question_id": "Q_STORE"
+            },
+            {
+              "type": "request_selection_confirmation",
+              "message_id": "N01-m02",
+              "question_id": "Q_STORE"
+            }
+          ]
+        },
+        "clarifications": [],
+        "diagnostics": [],
+        "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268"
+      },
+      {
+        "project_id": "prj_ui_review",
+        "status": "needs_clarification",
+        "review": {
+          "project_id": "prj_ui_review",
+          "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+          "status": "ok",
+          "readback": {
+            "question_id": "Q_UI",
+            "question_revision": 1,
+            "question_state": "pending",
+            "approved_real_decision": false,
+            "task_verified": false,
+            "upload_verification": "reported_only",
+            "answer_states": [
+              {
+                "message_id": "N02-m01",
+                "status": "pending_trusted_selection"
+              },
+              {
+                "message_id": "N02-m04",
+                "status": "needs_clarification"
+              }
+            ],
+            "reported_test_results": [
+              {
+                "criterion_id": "AC_SMOKE",
+                "criterion_revision": 2,
+                "result": "not_run"
+              }
+            ]
+          },
+          "next_actions": [
+            {
+              "type": "request_selection_confirmation",
+              "message_id": "N02-m01",
+              "question_id": "Q_UI"
+            },
+            {
+              "type": "request_clarification",
+              "message_id": "N02-m04",
+              "question_id": null
+            },
+            {
+              "type": "request_target_verification",
+              "message_id": "N02-m02",
+              "question_id": null
+            },
+            {
+              "type": "request_test_execution_permission",
+              "message_id": "N02-m03",
+              "question_id": null
+            }
+          ]
+        },
+        "clarifications": [
+          {
+            "clarification_id": "29886f32ae8a9659e064610f393120bbf7782824e1a3883323e04f2c0858ac1d",
+            "project_id": "prj_ui_review",
+            "message_id": "N02-m04",
+            "quote": "B.",
+            "status": "needs_clarification",
+            "reason": "needs_clarification",
+            "question_presentations": [
+              {
+                "options": {
+                  "A": "board",
+                  "B": "timeline"
+                },
+                "question_id": "Q_UI",
+                "revision": 1
+              },
+              {
+                "options": {
+                  "A": "canary",
+                  "B": "all_users"
+                },
+                "question_id": "Q_RELEASE",
+                "revision": 1
+              }
+            ],
+            "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+            "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+            "execution_authorized": false
+          }
+        ],
+        "diagnostics": [],
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+      }
+    ],
+    "atomic_groups": [],
+    "quality_scored": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "mixed_review": {
+    "format": "receiver-project-review-1",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "context_sha256": "ac4a93cf2164952afbec466bcbaf70b9d4be0fd92b5d69707edb55f90d9dd086",
+    "raw_sha256": "b55a04d73b89974c3884d35eb89d80518a5c772e7263348e391616fa59aa5b88",
+    "status": "partial_review",
+    "projects": [
+      {
+        "project_id": "prj_storage_review",
+        "status": "ready_for_review",
+        "review": {
+          "project_id": "prj_storage_review",
+          "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+          "status": "ok",
+          "readback": {
+            "question_id": "Q_STORE",
+            "question_revision": 2,
+            "question_state": "pending",
+            "approved_real_decision": false,
+            "task_verified": false,
+            "upload_verification": "unknown",
+            "answer_states": [
+              {
+                "message_id": "N01-m01",
+                "status": "stale_question_revision"
+              },
+              {
+                "message_id": "N01-m02",
+                "status": "pending_trusted_selection"
+              }
+            ],
+            "reported_test_results": []
+          },
+          "next_actions": [
+            {
+              "type": "preserve_history",
+              "message_id": "N01-m01",
+              "question_id": "Q_STORE"
+            },
+            {
+              "type": "request_selection_confirmation",
+              "message_id": "N01-m02",
+              "question_id": "Q_STORE"
+            }
+          ]
+        },
+        "clarifications": [],
+        "diagnostics": [],
+        "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268"
+      },
+      {
+        "project_id": "prj_ui_review",
+        "status": "invalid_project_output",
+        "review": null,
+        "clarifications": [],
+        "diagnostics": [
+          {
+            "kind": "technical_output_error",
+            "reason": "schema oneOf at $.responses[0]"
+          }
+        ],
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+      }
+    ],
+    "atomic_groups": [],
+    "quality_scored": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "delayed_reply": {
+    "format": "receiver-clarification-association-fixture-1",
+    "proposal_id": "7a30902bd0e77f1b1375ec9337945660362ead9c85244021eab0f327cd152420",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "context_sha256": "ac4a93cf2164952afbec466bcbaf70b9d4be0fd92b5d69707edb55f90d9dd086",
+    "binding": {
+      "authz_revision": 1,
+      "base_revision": 2,
+      "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+      "project_id": "prj_ui_review",
+      "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+      "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+      "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+      "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+    },
+    "clarification_id": "29886f32ae8a9659e064610f393120bbf7782824e1a3883323e04f2c0858ac1d",
+    "project_id": "prj_ui_review",
+    "source_sha256": "64155f6e1c1135c656896fdfd44be17f342f8b2005be6cfdf4901913686f1e65",
+    "source_message_id": "delayed-human-01",
+    "source_revision": 1,
+    "question_id": "Q_UI",
+    "question_revision": 1,
+    "option_id": "B",
+    "status": "pending_trusted_selection",
+    "clarification_resolved": false,
+    "approved_real_decision": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "atomic_review": {
+    "format": "receiver-project-review-1",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "context_sha256": "a403b96ede79a68ceb8cf7dc7535ec2df0446b53427672fda06b5c522634426a",
+    "raw_sha256": "4b4bf061af81247f5693b5800c76fd60a0fbeb38084e93bc576f87627743a3c8",
+    "status": "awaiting_resolution",
+    "projects": [
+      {
+        "project_id": "prj_storage_review",
+        "status": "blocked_atomic_group",
+        "review": null,
+        "clarifications": [],
+        "diagnostics": [
+          {
+            "kind": "atomic_group_waiting",
+            "project_ids": [
+              "prj_ui_review"
+            ]
+          }
+        ],
+        "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268"
+      },
+      {
+        "project_id": "prj_ui_review",
+        "status": "blocked_atomic_group",
+        "review": null,
+        "clarifications": [
+          {
+            "clarification_id": "29886f32ae8a9659e064610f393120bbf7782824e1a3883323e04f2c0858ac1d",
+            "project_id": "prj_ui_review",
+            "message_id": "N02-m04",
+            "quote": "B.",
+            "status": "needs_clarification",
+            "reason": "needs_clarification",
+            "question_presentations": [
+              {
+                "options": {
+                  "A": "board",
+                  "B": "timeline"
+                },
+                "question_id": "Q_UI",
+                "revision": 1
+              },
+              {
+                "options": {
+                  "A": "canary",
+                  "B": "all_users"
+                },
+                "question_id": "Q_RELEASE",
+                "revision": 1
+              }
+            ],
+            "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+            "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+            "execution_authorized": false
+          }
+        ],
+        "diagnostics": [
+          {
+            "kind": "atomic_group_waiting",
+            "project_ids": [
+              "prj_ui_review"
+            ]
+          }
+        ],
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+      }
+    ],
+    "atomic_groups": [
+      [
+        "prj_storage_review",
+        "prj_ui_review"
+      ]
+    ],
+    "quality_scored": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "first_actual_output_still_rejected": {
+    "format": "receiver-project-review-1",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "context_sha256": "ac4a93cf2164952afbec466bcbaf70b9d4be0fd92b5d69707edb55f90d9dd086",
+    "raw_sha256": "f17e134b68bec39cf7d5539cc812db7a87bd970a851aa30ecf2b43aaeaac4b03",
+    "status": "awaiting_resolution",
+    "projects": [
+      {
+        "project_id": "prj_storage_review",
+        "status": "invalid_project_output",
+        "review": null,
+        "clarifications": [],
+        "diagnostics": [
+          {
+            "kind": "technical_output_error",
+            "reason": "action must reference one preserved record once"
+          }
+        ],
+        "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268"
+      },
+      {
+        "project_id": "prj_ui_review",
+        "status": "invalid_project_output",
+        "review": null,
+        "clarifications": [],
+        "diagnostics": [
+          {
+            "kind": "technical_output_error",
+            "reason": "schema oneOf at $.responses[0]"
+          }
+        ],
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e"
+      }
+    ],
+    "atomic_groups": [],
+    "quality_scored": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "file_sha256": {
+    "examples/project-review-smoke/context.fixture.json": "e17b9dd9b6aa53ddbaa3e260a85931f5f6c397429f5be4456963390aa11803d3",
+    "examples/project-review-smoke/mixed-response.json": "b55a04d73b89974c3884d35eb89d80518a5c772e7263348e391616fa59aa5b88",
+    "examples/project-review-smoke/delayed-reply.fixture.json": "3fd6d29f6a3b0a5c888aeed791632c4221586c799f2d6682a32724d2ea32cdb3",
+    "spikes/semantic-chain/project_review.py": "bbcfa463c811551a28445779d42c5381df51eeee26cbba21b35e1c3283982458",
+    "spikes/semantic-chain/test_project_review.py": "6a12726f24b11864299a49fd8ae2c36d4e63b81a15cfc40f076ad2f0ce393ff7",
+    "spikes/semantic-chain/check_project_review.py": "3ab2d72e01584bad6ade6198618d57c502310c6fdb1c70e9834cf1470abac9eb"
+  },
+  "model_quality": "not_retested",
+  "human_gold": false,
+  "production_authorization": false,
+  "persistent_inbox": "not_implemented; descriptors saved only in this offline report",
+  "host_capture_resume": "not_tested",
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "canonical_mutations": 0,
+  "usage": null
+}

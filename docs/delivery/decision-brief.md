@@ -11,7 +11,7 @@ Kullanıcı gri alanların sessiz varsayımlarla şekillenmemesini istedi. Tekni
 
 Örnek: depolama projesinin cevabı geçerli, UI projesinde yanlış revision var. A depolama taslağını review'da gösterir, UI düzeltme bekler. B ikisini review'a açmaz. Hiçbiri yanlış cevabı düzeltip başarılı saymaz, yeni model çağrısı veya gerçek iş onayı vermez.
 
-**Sınır:** A yalnız kimliği ve kaynak yetkisi doğrulanmış ortak envelope içindeki bağımsız proje birimleri için kabul edilmiş review ilkesidir. Envelope/request/project kimliği ya da access belirsizse kısmi kabul yok. Aynı atomik ChangeSet veya birbirine bağlı karar/görev etkileri bölünemez. Ham çıktı korunur; eski RECEIVER-001 ve scorer sonucu değişmez. Güncel P0 validator bütün output'u fail-closed kontrol eder; Q14-A'nın proje bazında ayrımı henüz uygulanmadı. Ayrı sürümlü guard ve mixed-result testleri gerekir; eski evaluator/rapor değiştirilmez. Yanıt gecikirse Q14 kimliğine bağla; yeni soru veya onay sanma.
+**Sınır:** A yalnız kimliği ve kaynak yetkisi doğrulanmış ortak envelope içindeki bağımsız proje birimleri için kabul edilmiş review ilkesidir. Envelope/request/project kimliği ya da access belirsizse kısmi kabul yok. Aynı atomik ChangeSet veya birbirine bağlı karar/görev etkileri bölünemez. Ham çıktı korunur; eski RECEIVER-001 ve scorer sonucu değişmez. Güncel P0 validator bütün output'u fail-closed kontrol eder; Q14-A'nın ayrı fixture wrapper'ı [T03x](../quality/project-review.md) ile uygulandı; whole-output guard/scorer tarihsel yol olarak korunur. Gerçek UI/IAM/durable Inbox henüz yok. Yanıt gecikirse Q14 kimliğine bağla; yeni soru veya onay sanma.
 
 ### Proje 2'nin devamı — kabul edilen ayrımın yaşam döngüsü
 
@@ -22,7 +22,7 @@ Kullanıcı gri alanların sessiz varsayımlarla şekillenmemesini istedi. Tekni
 5. Cevap gelmezse bekleyen kayıt Inbox/devam paketinde kalır; sessizlik onay veya otomatik iptal sayılmaz. Bildirim kanalı/sıklığı mevcut açık policy kapsamındadır; A seçimi yeni otomatik mesaj izni değildir.
 6. Sorun anlam belirsizliği değil `criterion_revision` string gibi teknik çıktı hatasıysa kullanıcıdan ürün kararı istenmez: teknik hata/onarım işi olarak gösterilir, output bozuk haliyle korunur. Yerel düzeltme yapılabilir; yeni model çağrısı ancak mevcut kapsam/bütçe/yetki içinde, sınırsız retry yok.
 
-[Kalıcı soru/geç yanıt](../product/pending-questions-and-late-answers.md) ve [Review Inbox](../product/approval-ux.md) sözleşmelerini tamamlar. Bu kayıt çalışan UI, otomatik takip veya yeniden başlama capability kanıtı değildir. Proje bazında fixture guard uygulaması T03x TODO; production T13/T19/T24 kapıları açık.
+[Kalıcı soru/geç yanıt](../product/pending-questions-and-late-answers.md) ve [Review Inbox](../product/approval-ux.md) sözleşmelerini tamamlar. Bu kayıt çalışan UI, otomatik takip veya yeniden başlama capability kanıtı değildir. Proje bazında fixture guard uygulaması T03x scoped DONE;20 yeni test ve [kod raporu](../quality/project-review.md). Durable Inbox henüz uygulanmadı; production T13/T19/T24 kapıları açık.
 
 Bu MVP review/error UX davranışıdır; OPEN-07 ile ilişkilidir. Yeni request'in bağımsız yerel hazırlığını durdurmaz. Uygulama, format sürümü, kaynak izolasyonu ve valid/invalid/mixed/atomic negatif testleri somut tasarımda hazırlanır. Nihai stack, lisans, gerçek veri saklama ve model/bütçe sonraki etki kapılarında ayrıca ele alınır; hepsini bugün seçtirmeye gerek yok.
 

@@ -1,0 +1,94 @@
+{
+  "format": "decivora-receiver-review-1",
+  "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+  "responses": [
+    {
+      "project_id": "prj_storage_review",
+      "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+      "status": "ok",
+      "readback": {
+        "question_id": "Q_STORE",
+        "question_revision": 2,
+        "question_state": "pending",
+        "approved_real_decision": false,
+        "task_verified": false,
+        "upload_verification": "unknown",
+        "answer_states": [
+          {
+            "message_id": "N01-m01",
+            "status": "stale_question_revision"
+          },
+          {
+            "message_id": "N01-m02",
+            "status": "pending_trusted_selection"
+          }
+        ],
+        "reported_test_results": []
+      },
+      "next_actions": [
+        {
+          "type": "preserve_history",
+          "message_id": "N01-m01",
+          "question_id": "Q_STORE"
+        },
+        {
+          "type": "request_selection_confirmation",
+          "message_id": "N01-m02",
+          "question_id": "Q_STORE"
+        }
+      ]
+    },
+    {
+      "project_id": "prj_ui_review",
+      "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+      "status": "ok",
+      "readback": {
+        "question_id": "Q_UI",
+        "question_revision": 1,
+        "question_state": "pending",
+        "approved_real_decision": false,
+        "task_verified": false,
+        "upload_verification": "reported_only",
+        "answer_states": [
+          {
+            "message_id": "N02-m01",
+            "status": "pending_trusted_selection"
+          },
+          {
+            "message_id": "N02-m04",
+            "status": "needs_clarification"
+          }
+        ],
+        "reported_test_results": [
+          {
+            "criterion_id": "AC_SMOKE",
+            "criterion_revision": "2",
+            "result": "not_run"
+          }
+        ]
+      },
+      "next_actions": [
+        {
+          "type": "request_selection_confirmation",
+          "message_id": "N02-m01",
+          "question_id": "Q_UI"
+        },
+        {
+          "type": "request_clarification",
+          "message_id": "N02-m04",
+          "question_id": null
+        },
+        {
+          "type": "request_target_verification",
+          "message_id": "N02-m02",
+          "question_id": null
+        },
+        {
+          "type": "request_test_execution_permission",
+          "message_id": "N02-m03",
+          "question_id": null
+        }
+      ]
+    }
+  ]
+}

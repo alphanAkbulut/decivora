@@ -1,6 +1,6 @@
 # Mevcut durum
 
-2026-10-12 — **P0 / Product Definition + kontrollü deneyler**.
+2026-10-13 — **P0 / Product Definition + kontrollü deneyler**.
 
 | Alan | Durum |
 |---|---|
@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. Yirmi küçük teslim DONE (T01g/T01h/T01i ve T03g–T03w); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard tamamlandı, yeni model ve native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. Yirmi bir küçük teslim DONE (T01g/T01h/T01i ve T03g–T03x); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-13 — Q14-A proje ayrımı ve açıklama cevabı kodu
+
+- T03x scoped DONE: [ayrı per-project review katmanı](../quality/project-review.md). Bağımsız valid proje taslağı korunur; teknik hata/abstain/missing/ambiguity görünür, atomic group bölünmez, global kimlik/access hatasında ret. Sabit clarification ID ve explicit geç cevap association; gerçek approval/resolved yapılmaz.
+- 20 yeni/172 semantik,15 karar,40 takip testi geçti. Yeni model/API/target/mutation0; ilk failed raw/scorer aynı. Descriptor/report var; durable Inbox, gerçek IAM/host resume/UI henüz yok. Sıra yeni ayrı source-only receiver isteği; T03c/main quality gate açık.
 
 ### 2026-10-12 — Receiver yerel sözleşme düzeltmesi
 

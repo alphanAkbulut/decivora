@@ -116,3 +116,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Receiver yerel schema ve kaynak guard — T03w DONE
 
 [Kurallar ve tekrar üretim](../../docs/quality/receiver-contract.md); `receiver_contract.py` eski frozen evaluator yanında ayrı offline doğrulayıcı. `check_receiver_contract.py` geçerli sentetik review/6 invalid örnek/frozen hash kontrol raporunu tekrar üretir.16 yeni/152 semantik test; model/API0, actual failed run onarılmaz. JSON Schema genel conformance/provider kabulü not_run; sınırlı yerel interpreter ile kaynak bağları ayrı kontrol edilir. Sonraki iş yeni ayrı source-only schema bağlı request hazırlığı; eski izin tüketildi.
+
+## Q14-A bağımsız proje review — T03x DONE
+
+[`project_review.py` ve tekrar üretim](../../docs/quality/project-review.md), global source/identity/access fixture preflight ve ayrı per-project guard; valid diğer proje, technical/missing/abstain/ambiguous sonuçları, atomic-group bekleme ve stable clarification reply association. `check_project_review.py` saved JSON raporunu üretir.20 yeni/172 semantik test; eski raw/whole-output evaluator/proof'lar aynı, yeni model/API/mutation0. Descriptor/report kalıcı Inbox servisi değildir; gerçek UI/IAM/host capture/resume ve kalite gate açık.

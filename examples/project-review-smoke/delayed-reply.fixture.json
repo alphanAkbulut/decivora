@@ -1,0 +1,12 @@
+{
+  "clarification_id": "29886f32ae8a9659e064610f393120bbf7782824e1a3883323e04f2c0858ac1d",
+  "project_id": "prj_ui_review",
+  "question_id": "Q_UI",
+  "question_revision": 1,
+  "option_id": "B",
+  "source_message_id": "delayed-human-01",
+  "source_revision": 1,
+  "text": "My earlier B was for Q_UI revision 1: timeline.",
+  "actor_type": "human_owner",
+  "source_sha256": "64155f6e1c1135c656896fdfd44be17f342f8b2005be6cfdf4901913686f1e65"
+}

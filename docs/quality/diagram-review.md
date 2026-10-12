@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 17 belgede 37 Mermaid şeması — receiver yerel doğrulama akışı eklendi, 2026-10-12; önceki 36 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 18 belgede 38 Mermaid şeması — Q14-A proje review akışı eklendi, 2026-10-13; önceki 37 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 ## Güncel inventory — 2026-10-12
 
@@ -24,7 +24,14 @@
 | [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
 | [docs/quality/membership-002-result.md](membership-002-result.md) | 1 |
 | [docs/quality/receiver-contract.md](receiver-contract.md) | 1 |
+| [docs/quality/project-review.md](project-review.md) | 1 |
 <!-- diagram-inventory:end -->
+
+## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
+
+- [Yeni kod yolu](project-review.md): global identity/current-access preflight, per-project shape/source result, caller atomic-group, stable clarification ve explicit reply association. Eski bütün-output şema değişmedi.
+- Yeni kaynak cached Mermaid11.17.2/bundled headless Chrome ile ağ kapalı render edildi. Son SVG XML/title/desc ve16node/17edge kontrolü geçti; final PNG light/desktop görsel inceleme. İlk çizimde eksik güncel-soru-context dalı ikinci kaynak/render ile eklendi; syntax failure yok. İki yerel render, yeni model/API0.
+- Önceki37 source/hash/render kayıtları korunur; tüm38 yeniden render edilmiş değildir. GitHub dark/mobile uyumu, gerçek UI, kalıcı Inbox, IAM/adapter veya model kalite kabulü bu görsel testle doğrulanmaz.
 
 ## 2026-10-12 — Receiver yerel doğrulama akışı
 

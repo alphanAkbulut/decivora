@@ -581,6 +581,33 @@
       "xml_parse": "passed after browser DOM XMLSerializer export",
       "render_scope": "local light desktop PNG visual check, DOM metadata and XML title/node/edge validation; not GitHub/mobile/runtime",
       "product_runtime_tested": false
+    },
+    {
+      "path": "docs/quality/project-review.md",
+      "block": 1,
+      "source_sha256": "a58e25636b26356a7ddcd867c92111eb073ecfaa34a3774279836bfdb0acc13a",
+      "status": "rendered",
+      "title": "Q14-A bağımsız proje review ve Proje 2 bekleme",
+      "description_present": true,
+      "view_box": "0 0 1023.70703125 1205.4000244140625",
+      "viewport_width": 1440,
+      "svg_css_width": 1023.703125,
+      "svg_css_height": 1205.390625,
+      "canvas_background": "rgba(0, 0, 0, 0)",
+      "artifact": "local project-review-render/final/01.svg and 01.png",
+      "error": null,
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
+      "browser": "Google Chrome via bundled Playwright",
+      "checked_at": "2026-10-13",
+      "input_base_ref": "08a9e337fe328e7df7f3fbf980790dbc0558dece",
+      "network_requests_allowed": false,
+      "svg_snapshot_sha256": "3cb795d451a0446836ac62da17f7b1dfe5fdb8d0d0c876eefcb5b8344488a08f",
+      "node_count": 16,
+      "edge_count": 17,
+      "xml_parse": "passed with DOM XMLSerializer export",
+      "render_scope": "local light desktop PNG visual review and XML/title/description/node/edge check; not GitHub/mobile/product",
+      "product_runtime_tested": false
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -617,7 +644,19 @@
       "first_render": "passed; supplemental raw SVG XML parse failed on HTML br serialization",
       "final_export": "DOM XMLSerializer and XML parse passed",
       "prior_record_policy": "36 historical source hash/render records unchanged; not freshly rendered"
+    },
+    {
+      "checked_at": "2026-10-13",
+      "new_sources": 1,
+      "unchanged_prior_sources": 37,
+      "document": "docs/quality/project-review.md",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "local_render_attempts": 2,
+      "source_iteration": "second source adds known presentation/current question missing branch; both renders passed",
+      "input_base_ref": "08a9e337fe328e7df7f3fbf980790dbc0558dece",
+      "prior_record_policy": "37 historical source hash/render records preserved; not freshly rendered"
     }
   ],
-  "record_provenance": "Top-level renderer/date/bundle describe the historical 35-source run. Incremental records specify their own renderer/date/ref; all 37 are not a fresh render."
+  "record_provenance": "Top-level renderer/date/bundle describe historical35 run. Each incremental record has its own date/renderer/ref; all38 are not a fresh render."
 }

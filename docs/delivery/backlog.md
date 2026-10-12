@@ -92,8 +92,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 - **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
 - **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
-- **Son ilerleme:** 2026-10-12 · T03w DONE: yerel makine schema ve source guard; [rapor](../quality/receiver-contract.md). Bilinen soru/ambiguous record ayrımı, integer/abstention/record-action scope;16 yeni/152 semantik test geçti. RECEIVER-001 raw/prompt/oracle aynı ve failed; model/API0, ürün kalite kapısı açık.
-- **Sıradaki adım:** Q14-A kabul edildi: T03x ayrı sürümlü per-project review guard, mixed-output/source/access/atomic negatifleri; ardından yeni kimlikli schema bağlı receiver isteği. Belirsiz bölüm kalıcı açıklama bekler; sadece bağımlı işler bekletilir. Eski raw/prompt/oracle/scorer aynı; model/API izni yok, production/native/gold/T03c açık.
+- **Son ilerleme:** 2026-10-13 · T03x DONE: Q14-A per-project review ve clarification association;20 yeni/172 semantik test, source/access/atomic/mixed/late/stale negatifleri. [Rapor](../quality/project-review.md). Caller fixture yetkisi, gerçek UI/IAM veya yeni model başarısı değildir.
+- **Sıradaki adım:** Ayrı request kimliğiyle daha açık per-record talimatı ve schema bağlı source-only receiver isteği hazırlayın. Eski raw/prompt/oracle/scorer aynı; yeni model/API izni yok. Durable Inbox/gerçek yetki/host resume/UI, native/gold/ROI ve T03c stack kapıları açık.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -120,11 +120,11 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | T03v / T03u | DONE / P0: tek configured Luna/Low native run ve first-output kanıtı | Dispatch öncesi belge/permission, actualraw immutable/fullmessagecapture, invalidabstention ret/2regression/136suite, tokenunknown; [sonuç](../quality/receiver-001-result.md). Model kabul/gold/production gate değil |
 | T03w / T03v | DONE / P0: offline strict shape schema ve kaynak bağlı receiver guard |16 yeni/152 semantik test;6 incelenebilir invalid örnek, known-question/ambiguous/type/record-action/false-evidence retleri; [rapor](../quality/receiver-contract.md). Eski raw/prompt/oracle/evaluator aynı; model/provider kabulü yeniden test edilmedi |
 
-### T03 altında sıradaki küçük uygulama
+### T03 altında son küçük uygulama
 
 | Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
 |---|---|---|
-| T03x / T03w | TODO / P0: Q14-A bağımsız proje review guard ve Proje 2 clarification sonucu | Valid proje taslağı review-only, hatalı/ambiguous bölüm görünür pending; global partial/incomplete; envelope/identity/access hatasında ret, atomic group bölünmez. Mixed valid/invalid/abstain/missing/foreign/duplicate ve geç/stale cevap negatifleri; eski raw/scorer unchanged, model/API/mutation0. Product UI/IAM/host auto-resume production kapıları açık |
+| T03x / T03w | DONE / P0: Q14-A bağımsız proje review ve açıklama cevabı descriptor |20 yeni/172 semantik test; valid diğer proje korunur, technical/missing/abstain/ambiguous görünür; global source/access/kimlik ret ve atomic-group birlikte bekleme; explicit late/stale/agent/source/idempotent association. [Rapor](../quality/project-review.md). Frozen raw/scorer unchanged, model/API/mutation0; durable Inbox/UI/IAM/host resume kapsam dışı |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

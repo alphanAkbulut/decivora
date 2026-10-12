@@ -39,6 +39,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03u | T03 | DONE | DONE / P0: bounded fresh-session receiver request ve bağımsız saved-output evaluator hazırlığı |
 | T03v | T03 | DONE | DONE / P0: tek configured Luna/Low native run ve first-output kanıtı |
 | T03w | T03 | DONE | DONE / P0: offline strict shape schema ve kaynak bağlı receiver guard |
+| T03x | T03 | DONE | DONE / P0: Q14-A bağımsız proje review ve açıklama cevabı descriptor |
 
 ## Açık fazda neler değişti?
 
@@ -70,7 +71,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · T03w DONE: yerel makine schema ve source guard; [rapor](../quality/receiver-contract.md). Bilinen soru/ambiguous record ayrımı, integer/abstention/record-action scope;16 yeni/152 semantik test geçti. RECEIVER-001 raw/prompt/oracle aynı ve failed; model/API0, ürün kalite kapısı açık.
+2026-10-13 · T03x DONE: Q14-A per-project review ve clarification association;20 yeni/172 semantik test, source/access/atomic/mixed/late/stale negatifleri. [Rapor](../quality/project-review.md). Caller fixture yetkisi, gerçek UI/IAM veya yeni model başarısı değildir.
 
 **Aktif teknik risk:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 
@@ -78,7 +79,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
 
-Sıradaki adım: Q14-A kabul edildi: T03x ayrı sürümlü per-project review guard, mixed-output/source/access/atomic negatifleri; ardından yeni kimlikli schema bağlı receiver isteği. Belirsiz bölüm kalıcı açıklama bekler; sadece bağımlı işler bekletilir. Eski raw/prompt/oracle/scorer aynı; model/API izni yok, production/native/gold/T03c açık.
+Sıradaki adım: Ayrı request kimliğiyle daha açık per-record talimatı ve schema bağlı source-only receiver isteği hazırlayın. Eski raw/prompt/oracle/scorer aynı; yeni model/API izni yok. Durable Inbox/gerçek yetki/host resume/UI, native/gold/ROI ve T03c stack kapıları açık.
 
 
 ## Mevcut teslim parçaları
@@ -112,6 +113,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Receiver bounded request/evaluator / T03u DONE** — İki readable view, ayrı readback/next-action oracle,7950-byte frozen prompt; source/schema/critical guards; [134 test/13 yeni ve hazırlık planı](../quality/receiver-smoke-plan.md); actual send0/onay bekler, scripted positive model kanıtı değil
 - **İlk native receiver run kaydı / T03v DONE** — Tek configured Luna/Low turn ve actual firstoutput; source/contract gate ve model-token/context kaydı; [136 test/2 yeni guard](../quality/receiver-001-result.md); syntaxvalid/schemainvalid, usageunknown, actualquality gate açık
 - **Receiver shape/source guard / T03w DONE** — Request bağlı makine schema; current question ve ambiguous record ayrı, strict integer/abstention/record-action/evidence kontrolü; [152 test/16 yeni](../quality/receiver-contract.md); ilk gerçek çıktı failed kalır, provider conformance/model kalite yeniden sınanmadı
+- **Q14-A bağımsız proje review / T03x DONE** — Global envelope/current binding preflight, per-project shape/source sonucu, atomic group ve stable clarification reply association; [172 test/20 yeni](../quality/project-review.md); fixture context, durable Inbox/gerçek IAM/UI/host resume ve model kalitesi açık
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -167,4 +169,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `21cfaf226cb469d71a15fca6c22547ba490b46a8470c8ac3303f7aa832571128`
+Kaynak fingerprint: `f8dc650bcaa30ab39546461dea2bd83907bb9ef27c653e0fb2bad7384d85476f`
