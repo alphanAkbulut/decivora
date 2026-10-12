@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On dört küçük teslim DONE (T01g/T01h/T01i ve T03g–T03q); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday read-only proposal toplama ve native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On beş küçük teslim DONE (T01g/T01h/T01i ve T03g–T03r); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; devam paketi/dosya/native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — Çoklu cevap koleksiyonu
+
+- T03r scoped DONE: [çalışan collector ve rapor](../quality/proposal-collection.md). MEMBERSHIP-003 tam response'ları source binding korunarak işlendi; old/current/ambiguous ayrı, upload claim/not_run evidence kaydı korunur. Projection unchanged/selection0/model0/paidAPI0.
+- 102 semantik test/9 yeni: conflict, duplicate, wrong source/project, agent authority, abstention, separate receipt, retry/stale base. R22 gözlenen P0 bloklama yeni collector yolunda giderildi; single-answer API/tarihsel kanıt korundu. Single-current-question fixture production reconciliation değildir; ana görevler/kalite/stack gate açık.
 
 ### 2026-10-12 — H4 ve MEMBERSHIP-003 tek yeni run
 

@@ -86,4 +86,9 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 
 ## Yeni family gerçek run — T03q/T01i DONE
 
-[MEMBERSHIP-003](../../docs/quality/membership-003-result.md): tek yeni onaylı UI send,6 draft aday/2scope-no-candidate; H4 partial review, raw değişmedi.93 semantic test, iki yeni raw/guard regression. Whole-batch ikiAnswerRecord güvenli bloke; ayrı response-subset tanısı current/stale ayrımını no-mutation gösterir, production reconcile değil. R22 read-only proposal koleksiyonu sıradadır; yeni canlı izin tüketildi.
+[MEMBERSHIP-003](../../docs/quality/membership-003-result.md): tek yeni onaylı UI send,6 draft aday/2scope-no-candidate; H4 partial review, raw değişmedi.93 semantic test, iki yeni raw/guard regression. Whole-batch ikiAnswerRecord güvenli bloke; ayrı response-subset tanısı current/stale ayrımını no-mutation gösterir, production reconcile değil. R22 için [ayrı read-only collector](../../docs/quality/proposal-collection.md) tamamlandı; yeni canlı izin tüketildi.
+
+
+## Çoklu cevap koleksiyonu — T03r DONE
+
+`python3 -B spikes/semantic-chain/collect_membership.py [--out NEWPATH]`: MEMBERSHIP-003 tam response'ları `bridge.collect_proposals(chain,request,response_text,project_id)` ile ayrı source-bound adaylara ayırır; raw/request değişmez. Old revision stale, current ayrı onay önerisi, bağsız B clarification; conflict/duplicate/agent/foreign/no-context ayrı.102 suite/9 yeni test, model/selection0; eski `propose` tek-cevap sözleşmesi korunur. [Sözleşme, kanıt ve sınırlar](../../docs/quality/proposal-collection.md). Her fixture tek pending question; production multiquestion DB/IAM veya kalıcı reconciliation değil. Sırada kayıtlı bilgiyle devam paketi/dosya baseline'ı; native gerçek host ayrı erişim ister.

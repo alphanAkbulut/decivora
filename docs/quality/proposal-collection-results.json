@@ -1,0 +1,273 @@
+{
+  "experiment_id": "PROPOSAL-COLLECTION-001",
+  "source_run": "MEMBERSHIP-003",
+  "raw_sha256": "0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb",
+  "results": [
+    {
+      "collection": {
+        "status": "evaluated",
+        "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+        "project_id": "prj_storage_review",
+        "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+        "base_revision": 2,
+        "answer_candidates": [
+          {
+            "candidate_id": "03a8bd47d36e8e06291980e65ddf02a8ae11c7a49212bb2a79a9c5df13a861dc",
+            "candidate": {
+              "attributes": {
+                "option_id": "A",
+                "presentation_revision": 2,
+                "question_id": "Q_STORE"
+              },
+              "end": 51,
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "N01-m02",
+              "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam.",
+              "start": 0,
+              "project_id": "prj_storage_review",
+              "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+              "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+              "lifecycle": "candidate"
+            },
+            "source_actor_type": "human_owner",
+            "status": "pending_trusted_selection",
+            "proposal": {
+              "status": "pending_trusted_selection",
+              "project_id": "prj_storage_review",
+              "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+              "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+              "source_session": "N01",
+              "message_id": "N01-m02",
+              "question_id": "Q_STORE",
+              "option_revision": 2,
+              "option": "A",
+              "base_revision": 2,
+              "candidate_id": "03a8bd47d36e8e06291980e65ddf02a8ae11c7a49212bb2a79a9c5df13a861dc",
+              "canonical_mutations": 0,
+              "proposal_digest": "b8dfc0437743b59e82d7e3372ff5953a9585d436bd248e6d5dd83af37a74713b"
+            },
+            "canonical_mutations": 0
+          },
+          {
+            "candidate_id": "93efd69f8d373a6802106d3ac0999de654199a40c18bbb7e9f13080bb1a71561",
+            "candidate": {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_STORE"
+              },
+              "end": 59,
+              "entity_key": "Q_STORE",
+              "kind": "AnswerRecord",
+              "message_id": "N01-m01",
+              "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.",
+              "start": 0,
+              "project_id": "prj_storage_review",
+              "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+              "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+              "lifecycle": "candidate"
+            },
+            "source_actor_type": "human_owner",
+            "status": "stale_question_revision",
+            "proposal": null,
+            "canonical_mutations": 0
+          }
+        ],
+        "preserved_records": [
+          {
+            "attributes": {
+              "option_id": "B",
+              "presentation_revision": 1,
+              "question_id": "Q_STORE"
+            },
+            "end": 59,
+            "entity_key": "Q_STORE",
+            "kind": "AnswerRecord",
+            "message_id": "N01-m01",
+            "quote": "Q_STORE revision 1 için önceki B cevabım: SQLite ile devam.",
+            "start": 0,
+            "project_id": "prj_storage_review",
+            "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+            "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+            "lifecycle": "candidate"
+          },
+          {
+            "attributes": {
+              "option_id": "A",
+              "presentation_revision": 2,
+              "question_id": "Q_STORE"
+            },
+            "end": 51,
+            "entity_key": "Q_STORE",
+            "kind": "AnswerRecord",
+            "message_id": "N01-m02",
+            "quote": "Güncel Q_STORE revision 2 için A, SQLite ile devam.",
+            "start": 0,
+            "project_id": "prj_storage_review",
+            "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+            "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+            "lifecycle": "candidate"
+          }
+        ],
+        "coverage": "model_reported",
+        "canonical_mutations": 0
+      },
+      "projection_unchanged": true,
+      "question_still_pending": true
+    },
+    {
+      "collection": {
+        "status": "evaluated",
+        "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+        "project_id": "prj_ui_review",
+        "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+        "base_revision": 2,
+        "answer_candidates": [
+          {
+            "candidate_id": "320b128252e55d4c783d6784fba402a6614b71c4eb190b534787451625e2882d",
+            "candidate": {
+              "attributes": {},
+              "end": 2,
+              "entity_key": "unassociated_answer_N02-m04",
+              "kind": "AnswerRecord",
+              "message_id": "N02-m04",
+              "quote": "B.",
+              "start": 0,
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "lifecycle": "candidate"
+            },
+            "source_actor_type": "human_owner",
+            "status": "needs_clarification",
+            "proposal": null,
+            "canonical_mutations": 0
+          },
+          {
+            "candidate_id": "7bbdda2a6ed230c9f7f356ab7f01572da86abea232c22b6ff44aacf81d38a5ab",
+            "candidate": {
+              "attributes": {
+                "option_id": "B",
+                "presentation_revision": 1,
+                "question_id": "Q_UI"
+              },
+              "end": 46,
+              "entity_key": "Q_UI",
+              "kind": "AnswerRecord",
+              "message_id": "N02-m01",
+              "quote": "For Q_UI revision 1, my answer is B: timeline.",
+              "start": 0,
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "lifecycle": "candidate"
+            },
+            "source_actor_type": "human_owner",
+            "status": "pending_trusted_selection",
+            "proposal": {
+              "status": "pending_trusted_selection",
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "source_session": "N02",
+              "message_id": "N02-m01",
+              "question_id": "Q_UI",
+              "option_revision": 1,
+              "option": "B",
+              "base_revision": 2,
+              "candidate_id": "7bbdda2a6ed230c9f7f356ab7f01572da86abea232c22b6ff44aacf81d38a5ab",
+              "canonical_mutations": 0,
+              "proposal_digest": "02ff4dae6153c44d815e1b629149f2db25f2e79c67cc950aafef6ed1aa74efc3"
+            },
+            "canonical_mutations": 0
+          }
+        ],
+        "preserved_records": [
+          {
+            "attributes": {
+              "option_id": "B",
+              "presentation_revision": 1,
+              "question_id": "Q_UI"
+            },
+            "end": 46,
+            "entity_key": "Q_UI",
+            "kind": "AnswerRecord",
+            "message_id": "N02-m01",
+            "quote": "For Q_UI revision 1, my answer is B: timeline.",
+            "start": 0,
+            "project_id": "prj_ui_review",
+            "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+            "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+            "lifecycle": "candidate"
+          },
+          {
+            "attributes": {
+              "claim_type": "upload"
+            },
+            "end": 27,
+            "entity_key": "file_upload",
+            "kind": "ImplementationClaim",
+            "message_id": "N02-m02",
+            "quote": "The file has been uploaded.",
+            "start": 0,
+            "project_id": "prj_ui_review",
+            "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+            "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+            "lifecycle": "candidate"
+          },
+          {
+            "attributes": {
+              "criterion_id": "AC_SMOKE",
+              "criterion_revision": 2,
+              "result": "not_run"
+            },
+            "end": 42,
+            "entity_key": "AC_SMOKE",
+            "kind": "Evidence",
+            "message_id": "N02-m03",
+            "quote": "AC_SMOKE revision 2: the test was not run.",
+            "start": 0,
+            "project_id": "prj_ui_review",
+            "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+            "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+            "lifecycle": "candidate"
+          },
+          {
+            "attributes": {},
+            "end": 2,
+            "entity_key": "unassociated_answer_N02-m04",
+            "kind": "AnswerRecord",
+            "message_id": "N02-m04",
+            "quote": "B.",
+            "start": 0,
+            "project_id": "prj_ui_review",
+            "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+            "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+            "lifecycle": "candidate"
+          }
+        ],
+        "coverage": "model_reported",
+        "canonical_mutations": 0
+      },
+      "projection_unchanged": true,
+      "question_still_pending": true
+    }
+  ],
+  "canonical_mutations": 0,
+  "model_dispatches": 0,
+  "selection_dispatches": 0,
+  "paid_api_calls": 0,
+  "production_runtime": false,
+  "single_current_question_per_fixture": true,
+  "expected_statuses_authored": true,
+  "human_gold": false,
+  "hashes": {
+    "spikes/semantic-chain/bridge.py": "6d153494bbc5b7a8b6bc0e34f2b524ee802036ac730238a197230db9bc434015",
+    "spikes/semantic-chain/collect_membership.py": "bcd26f53ccdba067bf590e4d58ac8187324e0f54e6c57c0eee0c65eb4d30d973",
+    "spikes/semantic-chain/protocol.py": "ceae096b7c6b5b8b3dc7b78dc5e336ca557c2897baaea99e6565c718579f27fd",
+    "spikes/semantic-chain/membership_typed.py": "7438ed62b4ac702eb8d0fa2711eccb68844bd40c20e9ca88ae56ec0a129445a8",
+    "examples/adversarial-smoke/requests.json": "de376ba51e94fe22d823549cb2ce2e9f7c444039810842df2a0180a269a306ae",
+    "docs/quality/model-runs/membership-003-response.txt": "0adebd7574175b5c2b4508b926930da78a6ba61947ea79028b8695a1e2ebf3cb"
+  }
+}
