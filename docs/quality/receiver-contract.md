@@ -76,4 +76,6 @@ Tekrar üretilebilir örnek raporu: `python3 -B spikes/semantic-chain/check_rece
 
 ## Sıradaki gerekli iş
 
+**2026-10-13 güncellemesi:** [Q14-A](../delivery/decision-brief.md) bağımsız proje taslağını review'da gösterme ve belirsiz Proje 2 bölümünü kalıcı açıklama kuyruğunda tutma ilkesi kabul edildi. Yukarıdaki diagram mevcut whole-output P0 kodunu anlatır, yeni product davranışının uygulanmış çizimi değildir. Proje bazında ayrı bounded guard/receipt ve mixed-result negatifleri T03x'te hazırlanacak; envelope/access ve atomic grup hatasında partial kabul yok. Eski model çıktısı, schema/evaluator ve skor unchanged; yeni guard ayrı sürüm taşımalı.
+
 Bu guard yeni model çıktısını **ürettirmez**; yalnız yanlış çıktının ilerlemesini önler. Sonraki yerel teslim: yeni ayrı request kimliğiyle daha açık per-record talimatı ve schema bağlı receiver isteği hazırlamak; byte/context sınırını kontrol etmek, source ile oracle'ı ayrı tutmak. RECEIVER-001'i yeniden adlandırıp onarmayız. Yeni prompt-only native deneme veya provider-enforced schema çağrısı ayrı somut yöntem/tek-call yetkisi ister; önceki izin tüketildi, yeni API harcaması yok. Provider structured output kabulü biçim hatasını azaltabilir; soru/kanıt semantiğini tek başına çözmez. Ürün/native kıyası, kullanıcı yükü, token ROI, production IAM ve T03c yatırım/stack kapıları açık.

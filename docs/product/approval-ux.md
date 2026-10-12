@@ -66,3 +66,9 @@ Bilgi isteği, danışma, yetki içi teknik seçim ve insan onayı gerektiren ka
 [GAP review](intent-to-reality-gap.md) dört ayrı bilgiyi gösterir: öneri, güvenilir insan seçimi, generated artifact, hedef uygulama assessment'ı; AC/DoD kabulü ayrıca. “B'yi seçiyorum” kapsamı/kimliği açıksa mevcut policy'yle kaydedilir; her açık seçim tekrar sorulmaz. Yeni soru/sessizlik/agent özeti onay değildir.
 
 Minimal eylemler izinli kontrol, kanıtla yükledim, henüz uygulamadım, öneriyi seçmedim ve ertele olabilir; varsayılan otomatik kontrol veya yeni erişim onayı kabul edilmedi. Sonraki iş bu uygulamaya gerçekten bağlıysa odaklı durum sorusu; bağımsız işleri bloke etme. Hedef durumunu görmek yeni LLM çağrısı gerektirmez.
+
+## Q14-A — bağımsız review ve Proje 2 bekleme kartı
+
+**2026-10-13 · seçilen MVP davranışı; UI henüz uygulanmadı.** Proje 1'in geçerli bağımsız taslağı incelemeye açılır. Proje 2'deki belirsiz cevap `Needs clarification` kartında kalır: kaynak cevap, soru/seçenekler, yetkili responder, bekleyen task'lar ve bağımsız ilerleyen işler gösterilir. Proje tümüyle frozen/cancelled/Done olmaz. Kullanıcı yanıtı ertelerse soru Inbox ve devam paketinde korunur. Geç yanıt aynı question/presentation revision'a bağlı kontrol edilir; ardından gereken karar/onay/verification adımları ayrıca geçer. Otomatik uygulama veya host resume desteği varsayılmaz.
+
+Bozuk schema/alan tipi teknik hata kartıdır; anlam sorusu diye kullanıcıya devredilmez. Retry/düzeltme yetkili bütçe ve policy içinde; başarısız çıktı ve geçmiş saklanır. Global durum hatalı/eksik bölüm varken tamamen başarılı değildir. Ortak envelope/access kimliği belirsizse kısmi review yapılmaz, bağlı atomic gruplar bölünmez. [Q14 kabul kaydı](../delivery/decision-brief.md), [kalıcı soru sözleşmesi](pending-questions-and-late-answers.md); P0 T03x ve production T13/T19/T24 testleri bekliyor.

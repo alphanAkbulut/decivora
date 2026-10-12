@@ -82,3 +82,9 @@ Mevcut T13e/T18e/T24f referansları backlog'da somut dilimlerle eşleştirilir; 
 | LATE-08 | Host annotation/reply metadata'sı vermez veya capture gap vardır: coverage/manual fallback görünür; unmatched cevap sessiz kaybolmaz, bütün geçmiş tekrar analiz edilmez |
 
 **Hepsi not_run.** Ölçüm: açık soruların coverage'ı, doğru hedef eşleme/yanlış karar, unknown/clarification sayısı, receipt→association→resolution gecikmesi, duplicate etkiler, insan düzeltme yükü, toplam çağrı/token. Yanlış korunan karar kabulü engelleyici regresyondur; sayısal kalite ve bildirim eşikleri ölçüm/owner kapısında seçilir. Gerçek bu sohbetin gecikmesi için süre veya başarı yüzdesi uydurulmaz.
+
+## 6. Q14-A: bağımsız proje ilerlerken belirsiz bölüm kaybolmaz
+
+**2026-10-13 — ürün davranışı kabul edildi, runtime uygulaması bekliyor.** Bir projenin bilinen/valid review taslağı gösterilirken diğer projenin “B” cevabı hangi soruya ait olduğu belirsiz kalabilir. İkinci proje iptal veya tamamlandı sayılmaz. Kaynak cevap ve izinli olası sorular tutulur; Inbox'ta `Needs clarification`, kalıcı soru ID'si, gereken yanıt, bağlı task'lar ve bekleme nedeni görünür. Yalnız karara bağlı iş bekler, aynı projenin bağımsız işleri de ilerleyebilir.
+
+Geç cevap aynı soru/seçenek sürümüne bağlanır ve authority/freshness yeniden kontrol edilir; cevap önceki bağlamdan kopmuşsa tahmin edilmez. Cevap yoksa kayıt açık kalır; timeout otomatik karar/iptal değildir. Reminder policy ayrı; bu seçim mesaj gönderme veya yeni model bütçesi izni değildir. Teknik output tipi/schema hatası insanın belirsiz tercihi gibi sorulmaz, teknik düzeltme işine gider. [Q14 seçenekleri ve kayıt](../delivery/decision-brief.md). Yeni bağımsız proje ayrımı T03x'te test edilecek; P0 whole-output validator ve ilk failed run aynı kalır.

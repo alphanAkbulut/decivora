@@ -78,7 +78,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
 
-Sıradaki adım: Yeni ayrı request kimliğiyle schema bağlı, per-record açıklaması net receiver isteğini yerelde hazırlayın; frozen RECEIVER-001 korunur. Yeni model çağrısı izni tüketildi; otomatik retry/paidAPI yok. Production IAM/gold/native/user burden ve T03c yatırım/stack açık.
+Sıradaki adım: Q14-A kabul edildi: T03x ayrı sürümlü per-project review guard, mixed-output/source/access/atomic negatifleri; ardından yeni kimlikli schema bağlı receiver isteği. Belirsiz bölüm kalıcı açıklama bekler; sadece bağımlı işler bekletilir. Eski raw/prompt/oracle/scorer aynı; model/API izni yok, production/native/gold/T03c açık.
 
 
 ## Mevcut teslim parçaları
@@ -130,7 +130,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 21 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 22 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -167,4 +167,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `442da7111f1a11e8de145db5320613186466631270bc0a4e1d072aab942c5590`
+Kaynak fingerprint: `21cfaf226cb469d71a15fca6c22547ba490b46a8470c8ac3303f7aa832571128`

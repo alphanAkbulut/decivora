@@ -1,17 +1,28 @@
 # Owner soruları ve teknik karar hazırlığı
 
-## Güncel odak — Q14 bekliyor / 2026-10-12
+## Güncel odak — Q14-A kabul edildi / 2026-10-13
 
 Kullanıcı gri alanların sessiz varsayımlarla şekillenmemesini istedi. Teknik ayrıntı, deney sınırı ve kullanıcıya görünen davranış farklı kayıtlar olmalı. [P0 receiver guard](../quality/receiver-contract.md) genel production kararı değildir: bir mesajda çoklu preserved record şu anda unsupported, kayıt başına bir next-action mevcut deney sınırı, küçük keyword schema interpreter genel validator değildir. Bu sınırlara kullanıcı ürünü olarak onay verilmiş sayılmaz. Gerçek token/cost, IAM/adapter, nihai stack/lisans ve yatırım sonucu açık; eski geçici seçimleri accepted ADR diye ilerletme.
 
-**Q14 — Birden fazla bağımsız projenin review çıktısında bir proje hatalıysa diğerinin geçerli taslakları nasıl gösterilsin? Durum: soruldu, yanıt bekliyor; varsayılan seçilmedi.**
+**Q14 — Birden fazla bağımsız projenin review çıktısında bir proje hatalıysa diğerinin geçerli taslakları nasıl gösterilsin? Durum: A kabul edildi. Kullanıcının yanıtı: “A. AMA PROJE 2 NE OLACZAK BU senaryodA?”; ek soru Proje 2 yaşam döngüsünü açıklamayı ister, A seçimini geri almaz.**
 
-- **A — Öneri:** Her proje ayrı değerlendirilir; kendi source/shape/yetki kontrollerinden geçen bağımsız projenin taslakları incelemeye sunulur. Hatalı proje görünür biçimde bekler. Toplam değerlendirme partial/failed kalır; geçerli taslak otomatik karar/apply değildir.
-- **B:** İki proje de inceleme için bütün çıktı düzelene kadar bekler; kaynağın alındığı ve hangi projenin hatalı olduğu gösterilir.
+- **A — Seçildi:** Her proje ayrı değerlendirilir; kendi source/shape/yetki kontrollerinden geçen bağımsız projenin taslakları incelemeye sunulur. Hatalı/belirsiz bölüm görünür biçimde bekler; aynı projenin bağımsız işleri de ilerleyebilir. Toplam değerlendirme partial/failed kalır; geçerli taslak otomatik karar/apply değildir.
+- **B — Seçilmedi:** İki proje de inceleme için bütün çıktı düzelene kadar bekler; kaynağın alındığı ve hangi projenin hatalı olduğu gösterilir.
 
 Örnek: depolama projesinin cevabı geçerli, UI projesinde yanlış revision var. A depolama taslağını review'da gösterir, UI düzeltme bekler. B ikisini review'a açmaz. Hiçbiri yanlış cevabı düzeltip başarılı saymaz, yeni model çağrısı veya gerçek iş onayı vermez.
 
-**Sınır:** A yalnız kimliği ve kaynak yetkisi doğrulanmış ortak envelope içindeki bağımsız proje birimleri için öneridir. Envelope/request/project kimliği ya da access belirsizse kısmi kabul yok. Aynı atomik ChangeSet veya birbirine bağlı karar/görev etkileri bölünemez. Ham çıktı korunur; eski RECEIVER-001 ve scorer sonucu değişmez. Güncel P0 validator bütün output'u fail-closed kontrol eder; Q14 cevabı gelmeden bunu değiştirme. Yanıt gecikirse Q14 kimliğine bağla; yeni soru veya onay sanma.
+**Sınır:** A yalnız kimliği ve kaynak yetkisi doğrulanmış ortak envelope içindeki bağımsız proje birimleri için kabul edilmiş review ilkesidir. Envelope/request/project kimliği ya da access belirsizse kısmi kabul yok. Aynı atomik ChangeSet veya birbirine bağlı karar/görev etkileri bölünemez. Ham çıktı korunur; eski RECEIVER-001 ve scorer sonucu değişmez. Güncel P0 validator bütün output'u fail-closed kontrol eder; Q14-A'nın proje bazında ayrımı henüz uygulanmadı. Ayrı sürümlü guard ve mixed-result testleri gerekir; eski evaluator/rapor değiştirilmez. Yanıt gecikirse Q14 kimliğine bağla; yeni soru veya onay sanma.
+
+### Proje 2'nin devamı — kabul edilen ayrımın yaşam döngüsü
+
+1. Belirsiz kaynak mesajı/cevap, proje ve erişilebilir soru bağlamı korunur. Proje iptal veya completed yapılmaz; otomatik seçenek tahmini yok.
+2. Review Inbox'ta `Needs clarification` gösterilir: belirsiz cevap, olası sorular, gereken yetkili yanıt ve bu yanıta bağlı bekleyen işler. Tek odaklı soru aynı kalıcı question ID/presentation revision'a bağlıdır; bütün sohbet yeniden okutulmaz.
+3. Yalnız bu karara/yanıta gerçekten bağımlı işler bekler. Proje 1 ve Proje 2 içindeki bağımsız yetkili işler ilerleyebilir; aynı atomic ChangeSet ve ortak bağımlılıklar ayrı tutulmaz.
+4. Kullanıcı başka chatte/gecikerek cevap verebilir; source binding, yetki ve soru/seçenek revision kontrol edilerek aynı kayda bağlanır. Eski/değişmiş seçeneklere yanıt yeni seçenekmiş gibi uygulanmaz. Yanıt association, karar onayı, hedef uygulama ve AC ayrı kalır.
+5. Cevap gelmezse bekleyen kayıt Inbox/devam paketinde kalır; sessizlik onay veya otomatik iptal sayılmaz. Bildirim kanalı/sıklığı mevcut açık policy kapsamındadır; A seçimi yeni otomatik mesaj izni değildir.
+6. Sorun anlam belirsizliği değil `criterion_revision` string gibi teknik çıktı hatasıysa kullanıcıdan ürün kararı istenmez: teknik hata/onarım işi olarak gösterilir, output bozuk haliyle korunur. Yerel düzeltme yapılabilir; yeni model çağrısı ancak mevcut kapsam/bütçe/yetki içinde, sınırsız retry yok.
+
+[Kalıcı soru/geç yanıt](../product/pending-questions-and-late-answers.md) ve [Review Inbox](../product/approval-ux.md) sözleşmelerini tamamlar. Bu kayıt çalışan UI, otomatik takip veya yeniden başlama capability kanıtı değildir. Proje bazında fixture guard uygulaması T03x TODO; production T13/T19/T24 kapıları açık.
 
 Bu MVP review/error UX davranışıdır; OPEN-07 ile ilişkilidir. Yeni request'in bağımsız yerel hazırlığını durdurmaz. Uygulama, format sürümü, kaynak izolasyonu ve valid/invalid/mixed/atomic negatif testleri somut tasarımda hazırlanır. Nihai stack, lisans, gerçek veri saklama ve model/bütçe sonraki etki kapılarında ayrıca ele alınır; hepsini bugün seçtirmeye gerek yok.
 
