@@ -92,8 +92,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 - **Denemeler / sonuç:** S02-001 erişim/output yok; S02-002 span reddi; MEMBERSHIP-001 source geçti, draft candidate incomplete. MEMBERSHIP-002 tek yeni onaylı output: dört draft aday eşleşti (TP4/FP0/FN0), source/typed contract passed, guard mutations 0. Önceki ham sonuçlar korunur; paid API/retry 0.
 - **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
-- **Son ilerleme:** 2026-10-12 · T03u bounded receiver request + ayrı readback/next-action oracle/evaluator hazırlığı DONE.7950-byte frozen prompt/iki readable view;134 semantik test/13 yeni; critical false approval/done/upload/not_run/ambiguity/stale guardları. [Plan](../quality/receiver-smoke-plan.md); actual model send0, hazırlık başarıları model accuracy değil.
-- **Sıradaki adım:** RECEIVER-001 için somut tek-send/ilk-output/0retry/0paidAPI/unknown hardcap scope'u kullanıcıya onaya sun. Yeni onay olmadan send yok; onay sonrası raw/UI capture ve readback/action ayrı ölçüm/kayıt. Production IAM/criterion revision/lineage, insan gold/native/user burden ve T03c yatırım/stack açık.
+- **Son ilerleme:** 2026-10-12 · Kullanıcı ayrı Luna/Low chat deneyini yetkilendirdi; T03v IN_PROGRESS. Model/reasoning/token/context ve native host değişikliği [dispatch öncesi not edildi](../quality/receiver-execution-notes.md). Frozen7950byte/source/expected aynı; actualoutput0, yanlış hardcap/token sayısı iddiası yok.
+- **Sıradaki adım:** Tek authorized local projectless Codex chat, configured gpt-6-luna/low, yalnız exact prompt/ilkoutput/0retry/0follow-up/0paidAPI. Source-bound evaluator ve raw/provenance sonucu; quota yüzdesinden token türetme. Ana context burada kalır; production IAM/gold/native/user burden ve T03c yatırım açık.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -117,6 +117,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | T03s / T03r | DONE / P0: deterministic kaynak bağlı resume ve eşit bilgiyle dosya serialization kıyası | İki temsil aynı core/checklist, stale source/state/access/tamper/byte/no-overwrite;8 yeni test/110 suite; [rapor](../quality/resume-file-comparison.md). Gerçek alıcı model/native/user burden/production RES gate değil |
 | T03t / T03s | DONE / P0: kayıpsız inline source/record table ve çözülmüş readable model view | Frozen core exact, üç temsil aynı authored checklist;11 yeni test/121 suite; byte azalması ve missing source/stale/reference/no-truncation negatifleri; [rapor](../quality/resume-compaction.md). Model/token/production/native gate değil |
 | T03u / T03t | DONE / P0: bounded fresh-session receiver request ve bağımsız saved-output evaluator hazırlığı | 7950byte kaynak-only prompt, ayrı authored oracle,13 yeni test/134suite; strict source/schema/critical negative/incomplete/no-dispatch; [plan](../quality/receiver-smoke-plan.md). Gerçek send/not_run, gold/kalite gate değil |
+| T03v / T03u | IN_PROGRESS / P0: kullanıcı yetkili tek Luna/Low receiver run ve kayıt | Dispatch öncesi model/token/context/host notları; actual run ilk output/source-bound readback/actions, retries0/rawimmutable/usageunknown ayrımı; [execution kaydı](../quality/receiver-execution-notes.md) |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

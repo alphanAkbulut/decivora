@@ -68,7 +68,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-12 · T03u bounded receiver request + ayrı readback/next-action oracle/evaluator hazırlığı DONE.7950-byte frozen prompt/iki readable view;134 semantik test/13 yeni; critical false approval/done/upload/not_run/ambiguity/stale guardları. [Plan](../quality/receiver-smoke-plan.md); actual model send0, hazırlık başarıları model accuracy değil.
+2026-10-12 · Kullanıcı ayrı Luna/Low chat deneyini yetkilendirdi; T03v IN_PROGRESS. Model/reasoning/token/context ve native host değişikliği [dispatch öncesi not edildi](../quality/receiver-execution-notes.md). Frozen7950byte/source/expected aynı; actualoutput0, yanlış hardcap/token sayısı iddiası yok.
 
 **Aktif teknik risk:** Observed / High · R20/R21 için MEMBERSHIP-002'de dört quote ve açık attribute contract geçti; mitigation bu küçük development run ile sınırlı, release kalite/genelleme açık. Token/context cap ve usage unknown. [Güncel ölçüm](../quality/membership-002-result.md).
 
@@ -76,7 +76,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 gerçek typed/source-bound model çıktısı gördü; T09 contract sınırı için dar kanıt var. Entity/impact/hedef/AC, insan exact label ve native kıyas açık; üretim IAM veya kalite kapısı bu skorla kapanmaz.
 
-Sıradaki adım: RECEIVER-001 için somut tek-send/ilk-output/0retry/0paidAPI/unknown hardcap scope'u kullanıcıya onaya sun. Yeni onay olmadan send yok; onay sonrası raw/UI capture ve readback/action ayrı ölçüm/kayıt. Production IAM/criterion revision/lineage, insan gold/native/user burden ve T03c yatırım/stack açık.
+Sıradaki adım: Tek authorized local projectless Codex chat, configured gpt-6-luna/low, yalnız exact prompt/ilkoutput/0retry/0follow-up/0paidAPI. Source-bound evaluator ve raw/provenance sonucu; quota yüzdesinden token türetme. Ana context burada kalır; production IAM/gold/native/user burden ve T03c yatırım açık.
 
 
 ## Mevcut teslim parçaları
@@ -126,7 +126,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 19 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 20 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -163,4 +163,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `902476c345adeef98fd3fbac1c6da5531b2f75498a8786df5c14629ebe7f2dfb`
+Kaynak fingerprint: `0b85a52e875b9afbfde90f7d59812bb43d11e35c20372011c1a6b95029f6c84d`

@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On sekiz küçük teslim DONE (T01g/T01h/T01i ve T03g–T03u); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver request/evaluator hazır, gerçek send onay bekliyor; native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On sekiz küçük teslim DONE (T01g/T01h/T01i ve T03g–T03u); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver request/evaluator hazır, tek Luna/Low yeni chat run'ı kullanıcı yetkili; native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — Receiver çalıştırma öncesi model/kullanım/context kaydı
+
+- Kullanıcı yeni Luna/Low chat deneyini ve önce kayıt alınmasını istedi. [Execution notu](../quality/receiver-execution-notes.md), source-bound one-turn authorization dispatch'ten önce yazıldı. Model/tool/token/host sınırları ve ana sohbetin korunması açık.
+- T03v IN_PROGRESS; henüz gerçek output yok. Native projectless yöntem önceki Chrome hazırlık önerisinden ayrı. Frozen prompt/expected/manifest/önceki model run'ları değişmedi; tokenizer/actual token usage unknown, paylaşılmış kota yüzdesi per-trial tüketim değildir.
 
 ### 2026-10-12 — Receiver isteği ve bağımsız evaluator
 

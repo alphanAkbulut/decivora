@@ -59,3 +59,8 @@ Imported output her zaman `caller_imported_unverified` diye etiketlenir; CLI can
 Yeni somut onay gelirse önce izin scope/prompt hash kaydı; ilk send/ilk output copy byte'ları değiştirilmeden saklanır. Source metadata/contract/readback/actions ayrı score; yanlış source hash, alan veya critical error düzeltilemez, aynen kayıt edilir. İlk failure/incomplete sonucu yatırım kararına girer; otomatik daha fazla model isteği yok. Canlı test n=1 iki synthetic development proje, genel accuracy/tasarruf/ürün satış değeri değil.
 
 RES-08 için bu dar yeni-sohbet readback deneyinin ardından aynı information/config ile baseline/user burden/native ve kaynak gaps negatifleri hâlâ gerekir. Production IAM/criterion revision/source-receipt lineage, T03c yatırım/stack ve T04 açık. Gerekli işi opsiyonlaştırmıyoruz; bu soru yalnız sınırlı yeni run yetkisini çözmek içindir.
+
+
+## Kullanıcının yeni oturum talebi — 2026-10-12
+
+Kullanıcı ayrı chat'i açıp Luna/Low deneyini yapmamızı ve önce model/reasoning/token/context notlarını kaydetmemizi istedi. [Execution notu](receiver-execution-notes.md) ve [yeni tek-turn scope izni](../../examples/receiver-smoke/authorization.json) gerçek dispatch'ten önce kaydedildi. Yöntem artık local projectless Codex chat +explicit gpt-6-luna/low; eski Chrome önerisi historical manifestte korunur. Frozen7950-byte prompt/expected/source değişmedi. Ana geliştirme burada, deney chat'i sadece ilk test output'u içindir. Sonuç henüz not_run; izin grant'i başarı veya gold onayı değildir.
