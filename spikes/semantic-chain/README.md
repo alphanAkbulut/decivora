@@ -112,3 +112,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## İlk native receiver output — T03v DONE kayıt scope'u
 
 [RECEIVER-001](../../docs/quality/receiver-001-result.md): tek configuredgpt-6-luna/low native projectless chat, exact7950-byte prompt; firstfullmessage1739byte syntaxvalid/schemainvalidabstention.136suite/2 new guard, no rawrepair/retry/selection/paidAPI. Toolsummary null/false kaybı model syntax hatası sayılmaz; exactactualcaptureread_thread. Token/usage/aşımunknown, sharedquota74→74 zero-consumption değildir; planfullexecutionnotları [burada](../../docs/quality/receiver-execution-notes.md). Next offline strictschema/scope/abstention; yeni send izni yok.
+
+## Receiver yerel schema ve kaynak guard — T03w DONE
+
+[Kurallar ve tekrar üretim](../../docs/quality/receiver-contract.md); `receiver_contract.py` eski frozen evaluator yanında ayrı offline doğrulayıcı. `check_receiver_contract.py` geçerli sentetik review/6 invalid örnek/frozen hash kontrol raporunu tekrar üretir.16 yeni/152 semantik test; model/API0, actual failed run onarılmaz. JSON Schema genel conformance/provider kabulü not_run; sınırlı yerel interpreter ile kaynak bağları ayrı kontrol edilir. Sonraki iş yeni ayrı source-only schema bağlı request hazırlığı; eski izin tüketildi.

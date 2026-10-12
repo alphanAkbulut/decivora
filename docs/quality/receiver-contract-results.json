@@ -1,0 +1,71 @@
+{
+  "status": "passed_local_contract_examples",
+  "guard_version": "receiver-source-guard-1",
+  "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+  "schema_sha256": "3d638c187e4dce975c42119173b09850880b8de675286a822580e477d2dac95f",
+  "valid_review": {
+    "status": "validated_review_only",
+    "guard_version": "receiver-source-guard-1",
+    "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+    "schema_sha256": "3d638c187e4dce975c42119173b09850880b8de675286a822580e477d2dac95f",
+    "response_value_sha256": "5677c7c2a3fd51c16f672cadcd5437a767e791fadfa69bc111e95a6006978341",
+    "response_coverage_complete": true,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0
+  },
+  "invalid_examples": [
+    {
+      "case_id": "abstain_with_data",
+      "status": "rejected",
+      "reason": "schema oneOf at $.responses[1]"
+    },
+    {
+      "case_id": "string_revision",
+      "status": "rejected",
+      "reason": "schema oneOf at $.responses[1]"
+    },
+    {
+      "case_id": "erased_known_question",
+      "status": "rejected",
+      "reason": "known current question must be preserved"
+    },
+    {
+      "case_id": "future_plan_action",
+      "status": "rejected",
+      "reason": "action must reference one preserved record once"
+    },
+    {
+      "case_id": "ambiguous_assigned",
+      "status": "rejected",
+      "reason": "action contradicts record status or question binding"
+    },
+    {
+      "case_id": "not_run_marked_passed",
+      "status": "rejected",
+      "reason": "reported tests differ from selected evidence"
+    }
+  ],
+  "frozen_sha256": {
+    "examples/receiver-smoke/prompt.txt": "a4a636ecd53aee80ea74ef21608e26cdb50cc65f1f1da434a9cf9294d2073b6b",
+    "examples/receiver-smoke/expected.json": "6e8762caf6dddf0c900b84a87a37bfbea0f21b3e4984fc8771727a9cfbf0277a",
+    "docs/quality/model-runs/receiver-001-response.txt": "f17e134b68bec39cf7d5539cc812db7a87bd970a851aa30ecf2b43aaeaac4b03"
+  },
+  "first_actual_output": "still_rejected_unmodified",
+  "file_sha256": {
+    "examples/receiver-contract/response.schema.json": "6a34f39fd6e6d14b45b46eb779853501b2636357d3170eda76e2b85a8367550f",
+    "examples/receiver-contract/valid-review.json": "4b4bf061af81247f5693b5800c76fd60a0fbeb38084e93bc576f87627743a3c8",
+    "examples/receiver-contract/invalid-reviews.json": "6bc1e5c4796e46e05c119d23dc4b74553f8d12ed0c7b00e714f037bf6715d916",
+    "spikes/semantic-chain/receiver_contract.py": "93febf9d74a6dc690b0801bab05b431ac1bd36fc51dba6251d042567d861bc25",
+    "spikes/semantic-chain/test_receiver_contract.py": "dd13073ede82762784d86f9ad6a7c3eac7314d5de328331b07d2d1ebeba0d580",
+    "spikes/semantic-chain/check_receiver_contract.py": "d1722a70ff0267d4e92fa6746b7ed01b7ecbee0d41c08aa2583365d5dad4d554"
+  },
+  "schema_validator_scope": "only generated keyword subset; not general standards conformance",
+  "provider_schema_acceptance": "not_run",
+  "model_quality": "not_retested",
+  "human_gold": false,
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "canonical_mutations": 0,
+  "usage": null
+}
