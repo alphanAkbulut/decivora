@@ -1,6 +1,6 @@
 # RECEIVER-001 — yeni sohbet okuma deneyi hazırlığı
 
-**Prepared / gönderilmedi; yeni model izni yok.** [Deney planı ve sınırlar](../../docs/quality/receiver-smoke-plan.md).
+**Hazırlık snapshot'ı korundu; ilk native run yapıldı fakat contract geçmedi.** [Güncel sonuç](../../docs/quality/receiver-001-result.md); tek-send izni tüketildi, yeni deneme yetkisi yok. [Deney planı ve sınırlar](../../docs/quality/receiver-smoke-plan.md).
 
 | Dosya | Kullanımı | Modele gönderilir mi? |
 |---|---|---|
@@ -21,3 +21,8 @@ python3 -B spikes/semantic-chain/receiver_smoke.py evaluate --request examples/r
 Komutlar model çağırmaz, anahtar istemez, mevcut output'u değiştirmez. Evaluator exact source/project/package binding'i, bool/revision/list tiplerini ve aliases/duplicates kontrol eder; code-fence veya anlamsal alanları gizlice düzeltmez. Bozuk raw ayrı korunup validation hatası kaydedilir; yeniden deneme otomatik değildir.
 
 **Önerilen gerçek run:** Normal Chrome'da tek boş geçici/kişiselleştirilmemiş ChatGPT oturumu, yalnız prompt.txt, bir gönderim/ilk çıktı/0retry; tools/agents/paid API yok. Hedef UI capability ve boş session run sırasında doğrulanır; backend/usage/gerçek hard token-context cap unknown. Soft1536 output talimatı hard cap değildir; mevcut hesabın ortak kotası tüketilebilir. Bu öneri henüz kullanıcı izni sayılmaz.
+
+
+## Actual run eki — 2026-10-12
+
+Kullanıcı yeni local chat'i açıp configuredLuna/Low deneyini yapmamızı istedi. [İzin](authorization.json) tüketildi; [ilk native sonuç](../../docs/quality/receiver-001-result.md) syntaxvalid/schemainvalidabstention, retry/paidAPI0, scoresunscored/usageunknown. Başlangıç manifesti/readme hazırlık sent0/onaypending/Chrome satırları tarihsel snapshot; değiştirilmedi. Exactprompt7950byte ve ayrı expected aynı kaldı. Gerçek model kalite kapısı açık; actualraw'a alias/type/status düzeltmesi yapılmaz. Geliştirme ana sohbette devam eder, deney chat'ine yeni prompt gönderilmez.

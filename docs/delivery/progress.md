@@ -37,6 +37,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03s | T03 | DONE | DONE / P0: deterministic kaynak bağlı resume ve eşit bilgiyle dosya serialization kıyası |
 | T03t | T03 | DONE | DONE / P0: kayıpsız inline source/record table ve çözülmüş readable model view |
 | T03u | T03 | DONE | DONE / P0: bounded fresh-session receiver request ve bağımsız saved-output evaluator hazırlığı |
+| T03v | T03 | DONE | DONE / P0: tek configured Luna/Low native run ve first-output kanıtı |
 
 ## Açık fazda neler değişti?
 
@@ -44,7 +45,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 ### T01 · Golden corpus ve karşılaştırma protokolü
 
-2026-10-12 · Kullanıcı H4 quoted/planned davranışına1-EVET dedi; [hash bağlı review](../quality/reviews/h4-behavior.json) partial case olarak kaydedildi, T01i DONE. Yeni ailede tek model run'ı6 draft candidate/2 scope-no-candidate beklentisiyle eşleşti; corpus/exact gold veya sealed holdout değil, source/rubric değişmedi.
+2026-10-12 · T03v tek configured Luna/Low native run kayıt teslimi DONE; [ilk sonuç](../quality/receiver-001-result.md). Raw1739byte syntaxvalid fakat invalid receiver abstention; readonlyfullmessagevswaitsummary ayrı.136 semantik/2 yeni test; scoresunscored/usageunknown/mutation0, model kalite kapısı açık.
 
 **Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
 
@@ -52,7 +53,7 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Tam exact label/ikinci review/adjudication ve gerçekten ayrılmış yeni sealed-family kapıları açık; H1–H4 partial behavior tekrar sorulmaz. Yeni inference izni tüketildi; mevcut30 anlamlı kayıt koşulu korunur.
+Sıradaki adım: Frozen raw/prompt/expected'ı değiştirmeden offline strict JSON Schema + valid/invalid synthetic örnekleri ile per-record action scope/abstention/type sözleşmesini sınayın. Yeni model izni tüketildi; otomatik retry/paidAPI yok. Parent context mevcut sohbette kalır; R23/R24/production IAM/gold/native/user burden ve T03c yatırım açık.
 
 ### T02 · İki coding yüzeyinde capability spike
 
@@ -108,6 +109,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Resume/export ve eşit bilgi dosya kıyası / T03s DONE** — Bounded deterministic core, source/state/access freshness, inspectable altı synthetic dosya; [110 test/8 yeni ve byte ölçümü](../quality/resume-file-comparison.md); iki temsil checklist geçti, receiver/native/token/user burden not_run
 - **Kayıpsız resume table + okunabilir view / T03t DONE** — Tek inline source, source-span/record references; code-decoded literal quotes ve current-snapshot export guard; [121 test/11 yeni, exact frozen core ve byte ölçümü](../quality/resume-compaction.md); üç checklist geçti, receiving-model/token/production IAM değil
 - **Receiver bounded request/evaluator / T03u DONE** — İki readable view, ayrı readback/next-action oracle,7950-byte frozen prompt; source/schema/critical guards; [134 test/13 yeni ve hazırlık planı](../quality/receiver-smoke-plan.md); actual send0/onay bekler, scripted positive model kanıtı değil
+- **İlk native receiver run kaydı / T03v DONE** — Tek configured Luna/Low turn ve actual firstoutput; source/contract gate ve model-token/context kaydı; [136 test/2 yeni guard](../quality/receiver-001-result.md); syntaxvalid/schemainvalid, usageunknown, actualquality gate açık
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -163,4 +165,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `0b85a52e875b9afbfde90f7d59812bb43d11e35c20372011c1a6b95029f6c84d`
+Kaynak fingerprint: `750aec667c45c47f3aaec3b0789ff0f86f7cd495c2a9ff86b7f14c0fb19ba829`

@@ -1,6 +1,6 @@
 # Fresh-session receiver deneyi — RECEIVER-001 hazırlığı
 
-**2026-10-12 · T03u scoped DONE yalnız hazırlık kodu ve doğrulama.** Gerçek yeni sohbet run'ı **not_run / onay bekliyor**. [Dondurulmuş istek ve ayrı oracle](../../examples/receiver-smoke/README.md) · [Hazırlık ölçümü](receiver-smoke-preparation-results.json) · [Önceki küçültme kanıtı](resume-compaction.md).
+**2026-10-12 · T03u hazırlık DONE; T03v ilk native run kayıt teslimi DONE.** Güncel [RECEIVER-001 sonucu](receiver-001-result.md) **invalid_contract**, tek-send izni tüketildi. Aşağıdaki hazırlık tablosu/limitler dispatch öncesi snapshot'tır; güncel run ile karıştırılmamalı. [Dondurulmuş istek ve ayrı oracle](../../examples/receiver-smoke/README.md) · [Hazırlık ölçümü](receiver-smoke-preparation-results.json) · [Önceki küçültme kanıtı](resume-compaction.md).
 
 ## Testin hedefi ve kapsamadıkları
 
@@ -64,3 +64,8 @@ RES-08 için bu dar yeni-sohbet readback deneyinin ardından aynı information/c
 ## Kullanıcının yeni oturum talebi — 2026-10-12
 
 Kullanıcı ayrı chat'i açıp Luna/Low deneyini yapmamızı ve önce model/reasoning/token/context notlarını kaydetmemizi istedi. [Execution notu](receiver-execution-notes.md) ve [yeni tek-turn scope izni](../../examples/receiver-smoke/authorization.json) gerçek dispatch'ten önce kaydedildi. Yöntem artık local projectless Codex chat +explicit gpt-6-luna/low; eski Chrome önerisi historical manifestte korunur. Frozen7950-byte prompt/expected/source değişmedi. Ana geliştirme burada, deney chat'i sadece ilk test output'u içindir. Sonuç henüz not_run; izin grant'i başarı veya gold onayı değildir.
+
+
+## İlk run tamamlandı — 2026-10-12
+
+[RECEIVER-001 actual sonuç](receiver-001-result.md): kullanıcı yeni local chat'i açıkça istedi, tek configured gpt-6-luna/low turn çalıştı. İlk raw1739byte syntax valid, schema invalid receiver abstention; scoresunscored/usageunknown, retry0/paidAPI0. İzin tüketildi. Frozen hazırlık request/prompt/oracle/manifest değişmedi; yukarıdaki hazırlık not_run/onaypending satırları tarihsel snapshot'tır. Native host/extra injected wrapper tarayıcı planından ayrıdır; summary yerine fullmessagecapture kullanıldı. Bu güncel sonuç model/gold/native/production kapısını kapatmaz.

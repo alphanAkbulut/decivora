@@ -107,3 +107,8 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Receiver yeni-sohbet hazırlığı — T03u DONE
 
 `python3 -B spikes/semantic-chain/receiver_smoke.py prepare [--out NEWPATH]`; `evaluate --request examples/receiver-smoke/request.json --response FIRST_OUTPUT --expected examples/receiver-smoke/expected.json [--out NEWPATH]`. [Paket](../../examples/receiver-smoke/README.md)/[plan ve134 test/13 yeni](../../docs/quality/receiver-smoke-plan.md). Source-only7950-byte prompt, separate authored oracle, readback/actions/criticalerrors; import unverified/notrealrun, mutation0/model0. Tek-send gerçek model onayı henüz yok; eski izinleri kullanma.
+
+
+## İlk native receiver output — T03v DONE kayıt scope'u
+
+[RECEIVER-001](../../docs/quality/receiver-001-result.md): tek configuredgpt-6-luna/low native projectless chat, exact7950-byte prompt; firstfullmessage1739byte syntaxvalid/schemainvalidabstention.136suite/2 new guard, no rawrepair/retry/selection/paidAPI. Toolsummary null/false kaybı model syntax hatası sayılmaz; exactactualcaptureread_thread. Token/usage/aşımunknown, sharedquota74→74 zero-consumption değildir; planfullexecutionnotları [burada](../../docs/quality/receiver-execution-notes.md). Next offline strictschema/scope/abstention; yeni send izni yok.

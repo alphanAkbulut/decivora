@@ -32,3 +32,8 @@ Sonuç burada ilk-output saved evaluator ile ölçülür; aynı source/question/
 İki readback ve altı proposed next-action authored_draft; N01 eski1/B korunur/current2/A yalnız confirmation, N02 explicit UI/B confirmation/bindlessB clarification; upload yalnız reported, AC_SMOKE/rev2not_run. Fixture_initial gerçek human-approved karar değildir. True approval/verified/upload proof, not_run→passed, ambiguous mapping, stale selection kritik hata. Schema/source-binding bozuksa raw değiştirilmez; first failure/incomplete raporlanır. Gerçek sonuç test bitince ayrı run raporuna yazılacak; burada önceden tahmin başarı diye sunulmaz.
 
 Bu n=1 development receiver deneyi source extraction accuracy, native/file baseline üstünlüğü, gerçek target/AC veya tokenROI/genel kalite kanıtı değildir. AnaT01/T02/T03 ve production T03c yatırım/stack açık kalır.
+
+
+## İlk run sonrası ek — 2026-10-12
+
+[RECEIVER-001](receiver-001-result.md) tek configured Luna/Low native turn'de completed; model contract invalid abstention nedeniyle geçmedi.136 semantik test actualraw guardlarını doğrular; model başarısı değildir. Read-thread full final text syntax valid; wait summary null/false kaybı ayrı taşıma bulgusudur. Usage/token aşımı unknown/not_evaluable; quota immediate74→74 shared/rounded, consumption0 diye sunulmaz. Native UI screenshot erişimi güvenlik kısıtıyla reddedildi; configured model ile backend doğrulaması ayrı. Ana geliştirme mevcut sohbette sürer; deney chat'inde yeni inference yapılmaz. Yukarıdaki notlar gerçek dispatch'ten önceki snapshot, bu bölüm actualrun kanıtıdır.

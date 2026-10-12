@@ -1,0 +1,113 @@
+{
+  "experiment_id": "RECEIVER-001",
+  "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
+  "prompt_sha256": "a4a636ecd53aee80ea74ef21608e26cdb50cc65f1f1da434a9cf9294d2073b6b",
+  "prompt_bytes": 7950,
+  "raw_sha256": "f17e134b68bec39cf7d5539cc812db7a87bd970a851aa30ecf2b43aaeaac4b03",
+  "raw_bytes": 1739,
+  "raw_characters": 1739,
+  "raw_capture_method": "read_thread full final_answer text; not wait summary or provider transport",
+  "raw_json_syntax": "valid",
+  "score": {
+    "status": "invalid_contract",
+    "validation_error": "invalid receiver abstention",
+    "readback_score": null,
+    "action_score": null
+  },
+  "configured_model": "gpt-6-luna",
+  "configured_reasoning": "low",
+  "model_selection_source": "create_thread explicit accepted configuration; backend not exposed",
+  "actual_backend_model": null,
+  "execution_method": "Codex local projectless fresh chat; injected delegation wrapper observed",
+  "actual_initial_turns": 1,
+  "actual_final_outputs": 1,
+  "actual_followup_turns": 0,
+  "actual_model_retries": 0,
+  "observed_receiver_tool_calls": 0,
+  "host_injection_marker_observed": true,
+  "turn_duration_ms": 6660,
+  "turn_started_at": 1791832635,
+  "turn_completed_at": 1791832641,
+  "pre_dispatch_commit": "0e9164b5c9f45b27963e89a1b57606e0f86f998d",
+  "parent_history_forwarded": false,
+  "oracle_forwarded": false,
+  "hidden_host_context_not_excluded": true,
+  "transport_diagnostic": {
+    "full_message_source": "read_thread final_answer text; untruncated message capture",
+    "wait_snapshot_equal_full_message": false,
+    "wait_snapshot_json_valid": false
+  },
+  "usage": {
+    "provider_input_tokens": null,
+    "provider_output_tokens": null,
+    "provider_reasoning_tokens": null,
+    "provider_cached_tokens": null,
+    "provider_total_tokens": null,
+    "visible_text_tokens": null,
+    "tokenizer_available": false,
+    "token_overrun_status": "not_evaluable",
+    "soft_output_target_tokens": 1536,
+    "hard_token_cap_verified": false,
+    "hard_context_cap_verified": false,
+    "cost": null,
+    "quota_before": {
+      "observed_at_utc": "2026-10-12 19:16:55 UTC",
+      "ordinary_usage_allowed": true,
+      "windows": [
+        {
+          "limit_id": "codex",
+          "primary": {
+            "used_percent": 74,
+            "window_duration_mins": 10080,
+            "resets_at": 1792312842
+          }
+        }
+      ],
+      "scope": "shared_account_not_trial_tokens"
+    },
+    "quota_after": {
+      "observed_at_utc": "2026-10-12 19:21:04 UTC",
+      "ordinary_usage_allowed": true,
+      "windows": [
+        {
+          "limit_id": "codex",
+          "primary": {
+            "used_percent": 74,
+            "window_duration_mins": 10080,
+            "resets_at": 1792312842
+          }
+        }
+      ],
+      "scope": "shared_account_not_trial_tokens"
+    },
+    "quota_delta_attribution": "not attributable to trial; rounded shared-account snapshot includes parent/other tasks"
+  },
+  "canonical_mutations": 0,
+  "paid_api_calls": 0,
+  "human_gold": false,
+  "semantic_suite_tests": 136,
+  "new_saved_output_tests": 2,
+  "production_runtime": false,
+  "next_model_dispatch_authorized": false,
+  "diagnostics_not_scored": [
+    "N01 old/current correct, extra future-plan action outside preserved-record scope",
+    "N02 current Q_UI replaced with unknown/abstain despite explicit current fixture question",
+    "N02 abstain includes readback and nonempty actions, violating contract",
+    "N02 criterion_revision is string 2 instead of integer",
+    "N02 not_run evidence maps to preserve_history rather than requested test permission"
+  ],
+  "limitations": [
+    "one exposed development run, not general Luna evaluation",
+    "native host differs from old Chrome plan; configured model not provider-reported backend",
+    "contract rejection prevents whole-run domain/action scores; no silent repair or successful subset promotion",
+    "exact tokens/cost/soft-cap compliance unknown"
+  ],
+  "hashes": {
+    "spikes/semantic-chain/receiver_smoke.py": "be472dad1dee5fdfb88543ad87d131be8159817019db8786d4d20d1a344a069a",
+    "spikes/semantic-chain/test_receiver_run.py": "dded2440399a2e73bf714c1b40d0827f1b6dc017de6206aa342798052c462a81",
+    "examples/receiver-smoke/request.json": "b3346d88fc4a1cdec0d9eea61f4e901b0daec1f084fc6331aa9da07cc62b155e",
+    "examples/receiver-smoke/prompt.txt": "a4a636ecd53aee80ea74ef21608e26cdb50cc65f1f1da434a9cf9294d2073b6b",
+    "examples/receiver-smoke/expected.json": "6e8762caf6dddf0c900b84a87a37bfbea0f21b3e4984fc8771727a9cfbf0277a",
+    "docs/quality/model-runs/receiver-001-response.txt": "f17e134b68bec39cf7d5539cc812db7a87bd970a851aa30ecf2b43aaeaac4b03"
+  }
+}

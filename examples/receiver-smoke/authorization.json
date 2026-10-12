@@ -1,6 +1,6 @@
 {
   "experiment_id": "RECEIVER-001",
-  "authorization_status": "accepted_for_one_new_local_session",
+  "authorization_status": "consumed_one_submission_attempt",
   "permission_evidence": "diğer oturumu sen aç ancak buradaki contexti kaybetme ki orada deneyini düzgün yap. orada deneyi yaptıktan sonra konuşmaya buradan mı devam edelim oradan mı,* ayrıca yeni chat açmadan önce burada token kullanımı ve model seçimi ile ilgili şeylerin ve reasoningle ilgili şeylerin ne yaptıgımız deneyı neyle denediğimiz sonuçları beklentıler vs bunolar gibi şeylerın dökumante edılmesı gerekıyorsa önce bu contextte et.",
   "referenced_selection": "separate clean session GPT-6 Luna / Low",
   "request_id": "f5da3c5442475bbfdae423fbff1cfea8bdd3e0125d4c9168958666e870940833",
@@ -16,9 +16,9 @@
   "execution_method": "Codex app create_thread local projectless",
   "preparation_method": "normal Chrome temporary ChatGPT proposed; superseded by explicit separate-session request",
   "maximum_initial_turns": 1,
-  "actual_submission_attempts": 0,
-  "actual_outputs": 0,
-  "remaining_submission_attempts": 1,
+  "actual_submission_attempts": 1,
+  "actual_outputs": 1,
+  "remaining_submission_attempts": 0,
   "automatic_retries": 0,
   "followup_inference_allowed": false,
   "paid_api_allowed": false,
@@ -32,6 +32,9 @@
   "soft_output_tokens": 1536,
   "renewable_automatically": false,
   "human_gold_approval": false,
-  "execution_status": "preflight_documented_not_dispatched",
-  "usage": null
+  "execution_status": "completed_first_output_invalid_contract",
+  "usage": null,
+  "actual_initial_turns": 1,
+  "actual_followup_turns": 0,
+  "actual_model_retries": 0
 }

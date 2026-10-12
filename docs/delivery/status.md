@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On sekiz küçük teslim DONE (T01g/T01h/T01i ve T03g–T03u); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver request/evaluator hazır, tek Luna/Low yeni chat run'ı kullanıcı yetkili; native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. On dokuz küçük teslim DONE (T01g/T01h/T01i ve T03g–T03v); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-12 — RECEIVER-001 native ilk çıktı ve context/usage kaydı
+
+- T03v scoped DONE yalnız [ilk configured Luna/Low native run kayıt/ölçümü](../quality/receiver-001-result.md). Tekturn/ilkoutput/retry0/paidAPI0; rawsyntaxvalid/schema invalidabstention, readback/action scoresunscored. UI model-label screenshot erişimi güvenlik kısıtıyla yok; backendunknown.
+- 136 semantik test/2 yeni saved-output guard; frozen prompt/expected/manifest değişmedi. Full-messagecapture ile waitsummary farkı R23; receiver type/scope/abstention R24. Token/cost/aşımunknown; immediate sharedquota74→74 tüketim0 değildir. Ana context bu sohbet/devir dosyasında, yeni model izni tüketildi; sıra offline strict-schema örnekleri.
 
 ### 2026-10-12 — Receiver çalıştırma öncesi model/kullanım/context kaydı
 

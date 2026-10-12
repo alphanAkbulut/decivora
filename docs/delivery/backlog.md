@@ -58,8 +58,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
-- **Son ilerleme:** 2026-10-12 · Kullanıcı H4 quoted/planned davranışına1-EVET dedi; [hash bağlı review](../quality/reviews/h4-behavior.json) partial case olarak kaydedildi, T01i DONE. Yeni ailede tek model run'ı6 draft candidate/2 scope-no-candidate beklentisiyle eşleşti; corpus/exact gold veya sealed holdout değil, source/rubric değişmedi.
-- **Sıradaki adım:** Tam exact label/ikinci review/adjudication ve gerçekten ayrılmış yeni sealed-family kapıları açık; H1–H4 partial behavior tekrar sorulmaz. Yeni inference izni tüketildi; mevcut30 anlamlı kayıt koşulu korunur.
+- **Son ilerleme:** 2026-10-12 · T03v tek configured Luna/Low native run kayıt teslimi DONE; [ilk sonuç](../quality/receiver-001-result.md). Raw1739byte syntaxvalid fakat invalid receiver abstention; readonlyfullmessagevswaitsummary ayrı.136 semantik/2 yeni test; scoresunscored/usageunknown/mutation0, model kalite kapısı açık.
+- **Sıradaki adım:** Frozen raw/prompt/expected'ı değiştirmeden offline strict JSON Schema + valid/invalid synthetic örnekleri ile per-record action scope/abstention/type sözleşmesini sınayın. Yeni model izni tüketildi; otomatik retry/paidAPI yok. Parent context mevcut sohbette kalır; R23/R24/production IAM/gold/native/user burden ve T03c yatırım açık.
 
 
 ### İlk üç davranış incelemesi kapanışı
@@ -117,7 +117,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | T03s / T03r | DONE / P0: deterministic kaynak bağlı resume ve eşit bilgiyle dosya serialization kıyası | İki temsil aynı core/checklist, stale source/state/access/tamper/byte/no-overwrite;8 yeni test/110 suite; [rapor](../quality/resume-file-comparison.md). Gerçek alıcı model/native/user burden/production RES gate değil |
 | T03t / T03s | DONE / P0: kayıpsız inline source/record table ve çözülmüş readable model view | Frozen core exact, üç temsil aynı authored checklist;11 yeni test/121 suite; byte azalması ve missing source/stale/reference/no-truncation negatifleri; [rapor](../quality/resume-compaction.md). Model/token/production/native gate değil |
 | T03u / T03t | DONE / P0: bounded fresh-session receiver request ve bağımsız saved-output evaluator hazırlığı | 7950byte kaynak-only prompt, ayrı authored oracle,13 yeni test/134suite; strict source/schema/critical negative/incomplete/no-dispatch; [plan](../quality/receiver-smoke-plan.md). Gerçek send/not_run, gold/kalite gate değil |
-| T03v / T03u | IN_PROGRESS / P0: kullanıcı yetkili tek Luna/Low receiver run ve kayıt | Dispatch öncesi model/token/context/host notları; actual run ilk output/source-bound readback/actions, retries0/rawimmutable/usageunknown ayrımı; [execution kaydı](../quality/receiver-execution-notes.md) |
+| T03v / T03u | DONE / P0: tek configured Luna/Low native run ve first-output kanıtı | Dispatch öncesi belge/permission, actualraw immutable/fullmessagecapture, invalidabstention ret/2regression/136suite, tokenunknown; [sonuç](../quality/receiver-001-result.md). Model kabul/gold/production gate değil |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 
