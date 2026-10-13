@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Soru lifecycle ve kaybolmayan geç cevap
+
+- [Soru lifecycle](../quality/question-lifecycle-runtime.md): cancel/defer/resume, gerekçeli yeni revision/superseded history, original cevap silinmeden explicit orphan reassociation, presentation retry;13yeni/221runtime test. Tarayıcıda ertele→devam→iptal→reload ve eski Decision korunumu geçti.
+- T13/T13e ana kapanışı değil; ASK/LATE agent-routing/source/policy eşlemesi ayrıca açık. Ana7Done/8InProgress/15ToDo; yeni task/model/API/ücret yok.
+
 ### 2026-10-13 — T13e cevaptan ayrı onaylı canonical karar
 
 - [Karar runtime](../quality/question-decision-runtime.md):11 yeni/208runtime test; actual UI prepare→approve→apply→reload; same-question/current-revision, authority/base, generic bypass ve iki bağlantı tek effect. Görevleri değiştirmez; otomatik capture/model/Done hâlâ açık.

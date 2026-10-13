@@ -146,7 +146,7 @@ Son ilerleme kaydı yok.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: T13e soru lifecycle/cancel/superseded/orphan kabulünü tamamla; ardından T14 evidence/Done.
+Sıradaki adım: T13e ASK/LATE kapsam eşlemesini ve agent-question routing sınırını doğrula; ardından T14 evidence/Done.
 
 ### T19 · Proje seçimi ve Review Inbox UI
 
@@ -177,7 +177,7 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
-- **T13e soru→karar dilimi** — Kalıcı manual soru/cevap→gerekçeli proposal→ayrı human approve/apply→Decision; stale ve tek resolution guards; [208runtime + gerçek browser](../quality/question-decision-runtime.md); cancel/superseded/orphan/fullT13e kabulü açık
+- **T13e soru→karar dilimi** — Kalıcı manual soru/cevap→gerekçeli proposal→ayrı human approve/apply→Decision; stale ve tek resolution guards; [208runtime + gerçek browser](../quality/question-decision-runtime.md); [cancel/defer/revise/orphan](../quality/question-lifecycle-runtime.md)221runtime testli; fullT13e agent-routing/source kabulü açık
 - **Yerel program/T13c** — Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package; [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık
 - **T13b lifecycle** — Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history; [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık
 - **T13a review kernel** — Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply; [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık
@@ -276,4 +276,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `22a6e1a4dd8f81d7c1c8e7c32715cbef6cadd0e8c55ddeed3ce6ed0b7c3277b2`
+Kaynak fingerprint: `f8fb795d47918bc05ff0e5bf32f8add1132d6509b5f418fe22f9f5f201a5f997`

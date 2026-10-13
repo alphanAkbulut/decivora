@@ -22,4 +22,4 @@ Gerçek tarayıcıda soru→seçenek→gerekçe→öneri→onay→uygulama→rel
 
 ## Kalanlar
 
-T13e'nin cancel/superseded/defer, external presentation/source ref normalizasyonu ve orphan yeniden eşleme kabulü açık. T18e capture/MCP ve T24f gerçek/pilot soru coverage kapıları ayrıdır. Bu akış ilk tam ürün MVP kabulü veya gerçek host semantic matching değildir. Sonraki yerel iş kalan soru lifecycle; sonra T14 kriter bazlı gerçek evidence/Done ve T15 bütün zincir. Full review Inbox/graph/task impact apply UI de ilgili mevcut görevlerde açık kalır.
+Cancel/superseded/defer ve explicit orphan yeniden eşleme sonraki [lifecycle diliminde](question-lifecycle-runtime.md) uygulandı. T13e'nin tam ASK/LATE agent-routing ve external presentation/source ref normalizasyonu kabulü açık. T18e capture/MCP ve T24f gerçek/pilot soru coverage kapıları ayrıdır. Bu akış ilk tam ürün MVP kabulü veya gerçek host semantic matching değildir. Sonraki yerel iş kalan soru lifecycle; sonra T14 kriter bazlı gerçek evidence/Done ve T15 bütün zincir. Full review Inbox/graph/task impact apply UI de ilgili mevcut görevlerde açık kalır.

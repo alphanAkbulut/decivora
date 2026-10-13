@@ -67,3 +67,10 @@ class LocalAppTests(unittest.TestCase):
         self.assertEqual(self.call('/api/command',dict(action='apply_decision',key='d1',approval=token))[0],200)
         self.assertEqual(self.call('/api/state')[1]['decision_proposals'][0]['state'],'Applied')
         self.assertEqual(self.call('/api/state')[1]['tasks'],[])
+
+    def test_http_orphan_reassociation_and_cancelled_answer(self):
+        self.assertEqual(self.call('/api/command',dict(action='answer_question',request_id='a1',question='Q1',revision=1,option='sqlite'))[1]['status'],'Unmatched')
+        self.call('/api/command',dict(action='ask_question',request_id='Q1',text='Storage?',options=[dict(id='sqlite',label='SQLite'),dict(id='files',label='Files')]))
+        self.assertEqual(self.call('/api/command',dict(action='associate_answer',request_id='link',answer_id='a1'))[1]['status'],'Selected')
+        self.assertEqual(self.call('/api/command',dict(action='question_state',request_id='cancel',question='Q1',revision=1,base_state=0,status='Cancelled',reason='Stopped'))[0],200)
+        self.assertEqual(self.call('/api/command',dict(action='answer_question',request_id='a2',question='Q1',revision=1,option='files'))[1]['status'],'Cancelled')

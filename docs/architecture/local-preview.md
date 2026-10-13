@@ -11,6 +11,10 @@ flowchart TB
     G --> T["Manuel Task oluştur<br/>To Do kartı"]
     G --> Q["Manuel soru + seçenek snapshot<br/>exact ID / revision cevap"]
     Q --> R[("Kalıcı question audit<br/>Open / Answered / stale / conflict")]
+    R --> Z["Cancel / defer / resume / new revision<br/>reason + lifecycle revision; history retained"]
+    Z --> R
+    G --> U["Orphan cevap: original korunur<br/>explicit exact-ID yeniden eşleme"]
+    U --> R
     R --> N["Seçim kaydı<br/>canonical apply veya execution izni değil"]
     N --> P["Gerekçeli Decision önerisi<br/>Prepare: canonical mutation yok"]
     P --> O["Ayrı human approve<br/>question + knowledge + authz revision"]
@@ -20,15 +24,15 @@ flowchart TB
     D --> W["Current contract kontrolü<br/>task_work_started audit"]
     W --> B["In Progress kartı<br/>implementation claim"]
     D --> H["Eski kriterler ve gerekçeler<br/>reload / restart / replay"]
-    B -. henüz yok .-> V["T14 gerçek kanıt + Done<br/>T13e lifecycle/orphan, T18 MCP, otomatik capture"]
+    B -. henüz yok .-> V["T14 gerçek kanıt + Done<br/>T13e agent/source, T18 MCP, otomatik capture"]
     classDef launcher fill:#e8f1ff,stroke:#315c9b,color:#132b50;
     classDef guard fill:#eee7ff,stroke:#7853a7,color:#33204b;
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O guard;
+    class G,A,O,Z guard;
     class D,W,B,H,R,N stored;
-    class Q,P launcher;
+    class Q,P,U launcher;
     class C stored;
     class V pending;
 ```
@@ -53,6 +57,8 @@ T19 project selector/PendingDecision/Review Inbox, T20 graph/timeline/active-his
 
 ## Manuel soru dilimi
 
-[QuestionService](../../packages/domain/questions.py) mevcut audit tablosunda question_presented/question_answered append-only kayıtlarını saklar; events/graph canonical kararları değiştirmez. SQL schema1 aynı. Her read/write current project ACL, yazma local human owner + active project ister. Exact revision, stable option ID ve request-ID retry korunur; aynı ID farklı cevapta reddedilir. Stale/unknown/conflicting cevap saklanır fakat seçimi değiştirmez.100 soru/512 toplam question-history kaydı geliştirme profilinin sınırıdır; kapasite aşımı yeni yazımı reddeder, geçmişi silmez. Soru sunumu sürüm kontrollüdür fakat sunum retry idempotency ve tam cancel/superseded/orphan-review henüz açık; canonical binding ayrı human prepare/approve/apply ile [uygulandı](../quality/question-decision-runtime.md); bu sınırlar [raporda](../quality/pending-question-runtime.md) izlenir. UI manual source olduğundan external message/span uydurulmaz.
+[QuestionService](../../packages/domain/questions.py) mevcut audit tablosunda question_presented/question_answered append-only kayıtlarını saklar; events/graph canonical kararları değiştirmez. SQL schema1 aynı. Her read/write current project ACL, yazma local human owner + active project ister. Exact revision, stable option ID ve request-ID retry korunur; aynı ID farklı cevapta reddedilir. Stale/unknown/conflicting cevap saklanır fakat seçimi değiştirmez.100 soru/512 toplam question-history kaydı geliştirme profilinin sınırıdır; kapasite aşımı yeni yazımı reddeder, geçmişi silmez. Soru sunumu sürüm kontrollüdür; retry ve [cancel/defer/resume/revise/orphan reassociation](../quality/question-lifecycle-runtime.md) manuel profile eklendi; canonical binding ayrı human prepare/approve/apply ile [uygulandı](../quality/question-decision-runtime.md); bu sınırlar [raporda](../quality/pending-question-runtime.md) izlenir. UI manual source olduğundan external message/span uydurulmaz.
 
 Decision bridge mevcut create event ve question_decision_* audit kullanır; plan/approval question snapshot bağını taşır, core generic apply bu guard atlanırsa reddeder. Soru cevabının tek başına canonical mutation üretmemesi korunur; ayrı apply sadece Decision oluşturur. Task/edge etki uygulaması ayrı T12/T13 review yoludur.
+
+Question state_revision onay dayanağına bağlanır; defer→resume eski approval'ı canlandırmaz. Yeni question revision seçimi sıfırlar, eski snapshot Superseded olarak history'de kalır. question_answer_associated orijinal cevabı silmez/değiştirmez, yeni assessment ekler. Bu yeniden eşleme kimlik/sürüm/option ile deterministiktir; serbest metin semantic matching veya dış host receipt değildir.

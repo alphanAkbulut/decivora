@@ -31,10 +31,19 @@ class LocalApp:
                 tasks.append(dict(r,acceptance=acceptance,lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
             return dict(project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
     def command(self,body):
-        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
-            if action in ('prepare_decision','approve_decision','apply_decision'):
+            if action=='question_state':
+                if set(body)!={'action','request_id','question','revision','base_state','status','reason'}:raise ContractError('invalid_request','Exact lifecycle fields required.')
+                return QuestionService(core).transition(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
+            if action=='associate_answer':
+                if set(body)!={'action','request_id','answer_id'}:raise ContractError('invalid_request','Exact association fields required.')
+                return QuestionService(core).associate(owner,'personal',request_id=body['request_id'],answer_id=body['answer_id'])
+            if action=='revise_question':
+                if set(body)!={'action','question','base_revision','text','options','task','reason'}:raise ContractError('invalid_request','Exact revision fields required.')
+                return QuestionService(core).present(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
+            if action in ('prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question'):
                 fields={'action','key','answer_id','reason'} if action=='prepare_decision' else {'action','key'} if action=='approve_decision' else {'action','key','approval'}
                 if set(body)!=fields:raise ContractError('invalid_request','Exact decision fields required.')
                 service=QuestionDecisionService(core)

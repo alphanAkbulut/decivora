@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local question lifecycle HTTP commands; runtime validates current authority and snapshots",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "request_id",
+        "question",
+        "revision",
+        "base_state",
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "action": {
+          "const": "question_state"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+        },
+        "question": {
+          "type": "string",
+          "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "base_state": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "enum": [
+            "Cancelled",
+            "Deferred",
+            "Resumed"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 1024,
+          "pattern": "\\S"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "request_id",
+        "answer_id"
+      ],
+      "properties": {
+        "action": {
+          "const": "associate_answer"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+        },
+        "answer_id": {
+          "type": "string",
+          "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "question",
+        "base_revision",
+        "text",
+        "options",
+        "task",
+        "reason"
+      ],
+      "properties": {
+        "action": {
+          "const": "revise_question"
+        },
+        "question": {
+          "type": "string",
+          "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+        },
+        "base_revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 2048,
+          "pattern": "\\S"
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "label"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 512,
+                "pattern": "\\S"
+              }
+            }
+          }
+        },
+        "task": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 1024,
+          "pattern": "\\S"
+        }
+      }
+    }
+  ]
+}

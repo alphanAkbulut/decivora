@@ -58,3 +58,14 @@ class QuestionDecisionTests(unittest.TestCase):
         for t in threads:t.start()
         for t in threads:t.join(timeout=10)
         self.assertEqual(errors,[]);self.assertEqual(len(results),2);self.assertEqual(results[0],results[1]);self.assertEqual(len(self.core.records(self.owner,'p')['records']),1)
+
+    def test_defer_resume_does_not_revive_previous_approval(self):
+        p=self.prepare();a=self.d.approve(self.owner,'p',p['id'])
+        self.s.transition(self.owner,'p',request_id='defer',question='Q1',revision=1,base_state=0,status='Deferred',reason='Waiting')
+        self.s.transition(self.owner,'p',request_id='resume',question='Q1',revision=1,base_state=1,status='Resumed',reason='Continue')
+        with self.assertRaises(ContractError):self.d.apply(self.owner,'p',p['id'],a)
+        self.assertEqual(self.d.view(self.owner,'p')[0]['state'],'Stale')
+    def test_reassociated_orphan_can_propose_but_not_auto_apply(self):
+        self.answer();self.present();r=self.s.associate(self.owner,'p',request_id='linked',answer_id='a1');d=QuestionDecisionService(self.core);p=d.prepare(self.owner,'p',key='proposal',answer_id=r['request_id'],reason='Persistence')
+        self.assertEqual(self.core.records(self.owner,'p')['records'],[])
+        result=d.apply(self.owner,'p',p['id'],d.approve(self.owner,'p',p['id']));self.assertEqual(len(result['event_sequences']),1)

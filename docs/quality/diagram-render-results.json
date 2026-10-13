@@ -684,14 +684,14 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "220d1eb65e1dbea54ee2a6dbed4f8c23b4ab00e2980bf266b43c30f1ec86092e",
+      "source_sha256": "b058785a7f0071086f23c930a7d3dc0f4aae0cab5ff8401f692299d20292f265",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 882.9453125 1431.2794189453125",
+      "view_box": "0 0 900.59375 1455.2794189453125",
       "artifact": "assets/diagrams/local-preview-1.svg",
       "error": null,
-      "svg_sha256": "ccd271cee96867c8eaa457bf77f475ce014730edefa469a175964afd0770d46f",
+      "svg_sha256": "30e9d9bdfa202dfaaf486647367991154afe9c346c0a01140a73cc3d36355aa5",
       "checked_at": "2026-10-13",
       "renderer": "Mermaid 11.17.2 cached bundle",
       "network_requests_allowed": false
@@ -884,6 +884,23 @@
       "network_requests_allowed": false,
       "superseded_at": "2026-10-13",
       "reason": "Separate question Decision proposal, approval and atomic apply path added."
+    },
+    {
+      "path": "docs/architecture/local-preview.md",
+      "block": 1,
+      "source_sha256": "220d1eb65e1dbea54ee2a6dbed4f8c23b4ab00e2980bf266b43c30f1ec86092e",
+      "status": "rendered",
+      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+      "description_present": true,
+      "view_box": "0 0 882.9453125 1431.2794189453125",
+      "artifact": "assets/diagrams/local-preview-1.svg",
+      "error": null,
+      "svg_sha256": "ccd271cee96867c8eaa457bf77f475ce014730edefa469a175964afd0770d46f",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "superseded_at": "2026-10-13",
+      "reason": "Question lifecycle and explicit orphan reassociation implemented."
     }
   ],
   "incremental_reviews": [

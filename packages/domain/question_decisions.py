@@ -24,7 +24,7 @@ class QuestionDecisionService:
         self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
         if p['actor']!=scope.principal_id:raise ContractError('invalid_approval','Proposal belongs to a different actor.')
         q=next((q for q in QuestionService(self.core)._view(project)['questions'] if q['id']==p['question']),None)
-        if q is None or q['revision']!=p['revision'] or q['status']!='Answered' or q['selection']!=p['option']:raise ContractError('stale_question','Current question selection changed.')
+        if q is None or q['revision']!=p['revision'] or q['status']!='Answered' or q['selection']!=p['option'] or q['state_revision']!=p.get('state_revision',0):raise ContractError('stale_question','Current question selection changed.')
         if any(r['question']==p['question'] and r['revision']==p['revision'] for r in rows(self.core,project,'question_decision_applied')):raise ContractError('question_already_resolved','Question revision already has an applied Decision.')
     def view(self,scope,project):
         with self.core.read_snapshot():
@@ -33,7 +33,7 @@ class QuestionDecisionService:
             for p in rows(self.core,project,'question_decision_proposed'):
                 a=next((a for a in approved if a['id']==p['id']),None);r=next((r for r in applied if r['id']==p['id']),None)
                 q=next((q for q in QuestionService(self.core)._view(project)['questions'] if q['id']==p['question']),None)
-                stale=q is None or q['revision']!=p['revision'] or self.core.project(scope,project)['knowledge_revision']!=p['plan']['base_revision']
+                stale=q is None or q['revision']!=p['revision'] or q['status']!='Answered' or q['state_revision']!=p.get('state_revision',0) or self.core.project(scope,project)['knowledge_revision']!=p['plan']['base_revision']
                 result.append(dict(p,state='Applied' if r else 'Stale' if stale else 'Approved' if a else 'Prepared',approval=a['approval'] if a else None,result=r['result'] if r else None))
             return result
     def prepare(self,scope,project,*,key,answer_id,reason):
@@ -48,7 +48,7 @@ class QuestionDecisionService:
             view=QuestionService(self.core)._view(project);answer=next((a['payload'] for a in view['answers'] if a['payload']['request_id']==answer_id),None)
             if answer is None or answer['status']!='Selected':raise ContractError('answer_not_selected','A valid explicit selected answer is required.')
             q=next((q for q in view['questions'] if q['id']==answer['question']),None)
-            p=dict(id=key,actor=scope.principal_id,question=answer['question'],revision=answer['revision'],option=answer['option'],answer=answer_id,reason=reason)
+            p=dict(id=key,actor=scope.principal_id,question=answer['question'],revision=answer['revision'],option=answer['option'],answer=answer_id,reason=reason,state_revision=q['state_revision'] if q else 0)
             self._current(scope,project,p)
             option=next(o for o in q['options'] if o['id']==answer['option'])
             body=dict(type='Decision',title=q['text'][:256],description=canonical(dict(question=q['id'],question_revision=q['revision'],question_text=q['text'],option=option,answer=answer_id,reason=reason,source_kind=q['source_kind'],task=q['task'])))

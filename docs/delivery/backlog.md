@@ -275,8 +275,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `apps/hub/; packages/domain/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
-- **Son ilerleme:**2026-10-13 · [Kalıcı cevaptan karar](../quality/question-decision-runtime.md): separate prepare/approve/apply ve revision/authority/duplicate guard,208runtime test + gerçek browser akışı geçti.
-- **Sıradaki adım:** T13e soru lifecycle/cancel/superseded/orphan kabulünü tamamla; ardından T14 evidence/Done.
+- **Son ilerleme:**2026-10-13 · [Kalıcı cevaptan karar](../quality/question-decision-runtime.md): separate prepare/approve/apply; [soru lifecycle](../quality/question-lifecycle-runtime.md) cancel/defer/resume/revise/orphan association,221runtime test + gerçek browser akışı geçti.
+- **Sıradaki adım:** T13e ASK/LATE kapsam eşlemesini ve agent-question routing sınırını doğrula; ardından T14 evidence/Done.
 - **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
 
 ## T14 — Evidence ve false-done düzeltmesi

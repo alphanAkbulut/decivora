@@ -1,0 +1,21 @@
+{
+  "scope": "Manual owner question lifecycle and exact reassociation; full agent/capture/MVP acceptance not established",
+  "runtime_tests": 221,
+  "new_tests": 13,
+  "browser": {
+    "defer_resume_cancel": true,
+    "reload_preserved": true,
+    "applied_decision_history_preserved": true,
+    "task_regression": true,
+    "model_calls": 0
+  },
+  "source_sha256": {
+    "packages/domain/questions.py": "e91e121f21614912eb0529017f0aabd87264dfdf3a487d7dc7e275c0bd767616",
+    "packages/domain/question_decisions.py": "c1eb3b002aaa2e5e9f128da0f2bd41d1e0f00ff7758f0428c50240c8b9e6e39a",
+    "apps/local_ui/server.py": "1cc06ea12a8e5ad34d46867b0b5d4ce537da5d4f225bbedcce8835338370c66c",
+    "apps/local_ui/app.js": "c75bffbcfa8676e7a2d4770e28285b09497df13402cea08e018f91b54ecfa5fa",
+    "tests/runtime/test_questions.py": "321fab44b91754e464e6d0dc56ad917e6b1f4a866f993f1285c2908ce009efdd",
+    "tests/runtime/test_question_decisions.py": "941ad99d06721397ac589fadcdf78cf670abc93a74bcd7cac3ee59df3d620708",
+    "tests/runtime/test_local_app.py": "c7fabeefcdb845258c73a1dfbc66f2e4bac659455516f9b9e052493c93ea3727"
+  }
+}

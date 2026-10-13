@@ -1141,7 +1141,7 @@
       "classification": "task_local",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Manual durable questions and separate revision-bound Decision proposal/approval/apply verified; cancel/superseded/defer, external presentation/source and orphan reassociation remain open.",
+      "reason": "Manual owner question/answer/Decision and cancel/defer/resume/revision/orphan lifecycle verified; full ASK/LATE agent question routing and source/policy acceptance mapping remain open.",
       "required_for_parent_closure": true
     },
     "T14a": {
