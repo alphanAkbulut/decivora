@@ -71,3 +71,8 @@ Question state_revision onay dayanağına bağlanır; defer→resume eski approv
 ## Ana konuşma/öneri arayüzü
 
 [ConversationService](../../packages/capture/conversations.py) manuel gerçek kaynak için ayrı bounded receipt saklar; eski synthetic SourceEvent'e gerçek metin diye synthetic=True basmaz. [Responses adapter](../../packages/capture/responses_extractor.py) request schema ve response parser sağlar; actual network transport, account/grant/price/token cap aktivasyonu henüz yok. DefaultUI providerNone ile Waiting for model. Testte trusted injected fixture kullanılır; semantic kalite kabulü değildir. Candidate accept yalnız typed create/source attachment, current human scope/base revision ve atomic audit kullanır; Task Done veya impact cancellation üretmez. [Teslim ve sınırlar](../quality/conversation-review-runtime.md).
+
+
+## UI locale sunum sınırı
+
+UI düğümü yerel `locales.js` + `i18n.js` ile EN-default/TR/ES/PT-BR/AR sunar. Dil tercihi browser-local; Arabic `dir=rtl`. Dil değiştirmek domain command, DB/event/schema değişimi, approval, model veya dış servis çağrısı değildir. Taslak/kaynak/seçim korunur; task statü kodları İngilizce kalır. [Karar, kaynak ve doğrulama](../product/language-and-localization.md). Mevcut Mermaid akışı/domain şeması bu değişiklikte aynı; yeni engine veya servis eklenmedi.

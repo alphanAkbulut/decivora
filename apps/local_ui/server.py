@@ -102,8 +102,8 @@ def make_server(path,port=0,extractor=None):
             value=cookie.get('decivora_session');return bool(value and secrets.compare_digest(value.value,app.cookie))
         def do_GET(self):
             if not self.gate():return self.answer(403,dict(error='origin_denied'))
-            if self.path in ('/','/app.js'):
-                file=ROOT/('index.html' if self.path=='/' else 'app.js');return self.answer(200,file.read_bytes(),'text/html; charset=utf-8' if self.path=='/' else 'application/javascript')
+            if self.path in ('/','/app.js','/i18n.js','/locales.js'):
+                file=ROOT/('index.html' if self.path=='/' else self.path[1:]);return self.answer(200,file.read_bytes(),'text/html; charset=utf-8' if self.path=='/' else 'application/javascript')
             if self.path!='/api/state':return self.answer(404,dict(error='not_found'))
             if not self.authenticated():return self.answer(401,dict(error='session_required'))
             try:self.answer(200,app.state())

@@ -1,6 +1,6 @@
 # Konuşma dili, proje içeriği ve yerelleştirme
 
-**2026-10-11 — Kullanıcı ihtiyacı ve Q12-A ürün tercihi kabul edildi; teknik çözüm/faz ayrıntıları öneri, uygulanmadı.** Kullanıcı herkesin İngilizce konuşmadığını, konuşma dilinin tespit edilip not/proje içeriğinin o dilde hazırlanmasını istedi; maliyetli otomasyon P2'ye bırakılabilir. Bu, yalnız İngilizceye göre tasarım yapmama gereksinimidir. [Kapsam](full-scope.md), [token ekonomisi](../architecture/routing-token-economy.md), [lexical adaylar](../architecture/lexical-prefilter.md) ve [Q12](../delivery/decision-brief.md) ile birlikte geçerlidir.
+**2026-10-13 — Q12-A çıktı dili ilkesi kabul edildi; yerel UI için beş locale uygulandı. Otomatik dil tespiti, çıktı policy ve çok dilli model kalitesi hâlâ plan/ölçüm konusu.** Kullanıcı herkesin İngilizce konuşmadığını, konuşma dilinin tespit edilip not/proje içeriğinin o dilde hazırlanmasını istedi; maliyetli otomasyon P2'ye bırakılabilir. Bu, yalnız İngilizceye göre tasarım yapmama gereksinimidir. [Kapsam](full-scope.md), [token ekonomisi](../architecture/routing-token-economy.md), [lexical adaylar](../architecture/lexical-prefilter.md) ve [Q12](../delivery/decision-brief.md) ile birlikte geçerlidir.
 
 ## Üç farklı dil kavramı
 
@@ -54,7 +54,7 @@ UI'nin sabit metinleri sürümlü locale kataloglarından gelir; her ekran açı
 
 ## Sentetik örnekler ve planlı kabul
 
-Bunlar beklenen davranışlardır; detector/parser/model/UI çalıştırılmadı.
+Bunlar geniş ürün kabul senaryolarıdır; detector/çok dilli model testleri çalıştırılmadı. Yerel UI LANG-05 dilimi aşağıdaki browser kontrolüyle ayrıca doğrulandı.
 
 | ID | Örnek ve beklenen kabul |
 |---|---|
@@ -78,3 +78,25 @@ T01 corpus'una dil örnekleri eklenir. T05e/T24p temel dilimleri ile P2 T25a/T26
 Kullanıcı seçili A açıklamasına “a ile devam et” yanıtını verdi. Q12-A kabul edildi; session bazlı otomatik dil değişimi (B) varsayılan seçilmedi. Gerekçe: ortak görev/karar/AC dili tutarlı kalır, farklı sohbetler kontrolsüz dil değişimi yaratmaz; eski geçmişin çeviri maliyeti ve anlam değişimi önlenir. Bedel: sonraki sohbetin diliyle proje çıktısı farklı olabilir; değişim önerisi kullanıcının seçimini gerektirir. Bu gerekçe önerinin değerlendirmesidir; kullanıcının belirtmediği kişisel motivasyon olarak sunulmaz.
 
 Seçim ürün davranışını karara bağlar; detector/library, desteklenen diller, ücret/egress, sayısal eşik veya genel dil desteği onayı değildir. Teknik tasarım ve P1/P2 ayrımı öneri/plan olarak kalır; LANG senaryoları not_run. Yeni output policy onayı geçmişi çevirme, kaynak metni değiştirme veya yeni modele veri aktarma izni vermez. Uygulama T05e/T24p/T25a/T26c üzerinden doğrulanır.
+
+
+## Yerel UI dilimi — kullanıcı tercihi ve uygulama (2026-10-13)
+
+**Kabul edilmiş tercih:** İngilizce her zaman başlangıç/default ve fallback dilidir; Türkçe ikinci dil olarak sunulur. Kullanıcı ayrıca AI kullanımına göre 2–3 dil eklemeyi istedi. İspanyolca, Portekizce (Brezilya kataloğu) ve Arapça eklendi. [OpenAI Signals, 30 Haziran 2026](https://openai.com/index/how-chatgpt-adoption-has-expanded/) bireysel ChatGPT kullanıcılarında İngilizce dışındaki başlıca dilleri Spanish/Portuguese/Arabic olarak bildirir. Bu bütün AI ürünleri veya Decivora hedef kitlesi için pazar sıralaması değildir. pt-BR, Portekizcenin ilk katalog varyantıdır; araştırma varyantları sıralamıyor. ES genel İspanyolca, AR genel Arapça katalogdur; ülke/diyalekt üstünlüğü iddiası yok.
+
+| UI locale | Başlangıç / yön | Kalite sınırı |
+|---|---|---|
+| en | Yeni tarayıcı tercihinde default; LTR ve fallback | Ana UI metin kataloğu |
+| tr | Açık seçim; LTR | Türkçe katalog |
+| es | Açık seçim; LTR | Taslak çeviri; native dil uzmanı incelemesi yapılmadı |
+| pt-BR | Açık seçim; LTR | Taslak Brezilya Portekizcesi; native inceleme yok |
+| ar | Açık seçim; RTL | Taslak çeviri; gerçek desktop/mobile RTL layout kontrolü var, native inceleme yok |
+
+- Dil seçici header'da autonym kullanır. Browser/konuşma dili İngilizce default'u sessiz değiştirmez. Açık seçim bu origin'in localStorage'ında `decivora.ui.locale.v1` olarak saklanır; bilgisayarlar/projeler arası hesap senkronizasyonu yok. Storage kapalıysa sayfa çalışır; yeni açılış İngilizceye döner. Desteklenmeyen değer İngilizce fallback; gelecekte eksik mesaj yine İngilizce.
+- 122 anahtar beş katalogda eşleşir. Menü, form label/placeholder, kaynak inceleme açıklaması, düğme ve UI bildirimleri lokal dosyalardan gelir. Tarih görünümü UI locale ile biçimlenir; timestamp değişmez. Türkçe eski label stringleri lookup kimliğidir, `en` değerleri ana fallback'tir; yeni katalog eksikliği testte hata verir.
+- Dil değişimi hiçbir request/model/command/approval üretmez. Mevcut kaynak, task başlığı/açıklaması, soru/seçenek, gerekçe, AC/DoD ve canonical kimlikler çevrilmez. Düzenlenen taslaklar, öneri checkbox seçimi ve açık details alanları değişim boyunca korunur. Kaydedilmemiş taslakların browser reload'dan korunması bu dilimin garantisi değildir.
+- Önceki kullanıcının İngilizce Jira statü tercihi korunur: To Do/In Progress/Done/Cancelled, domain status/revision/ID ve not_run gibi teknik durum kodları İngilizce kalır. Provider/servis hata ayrıntıları ve son işlem bildirimi dil değişiminde yeniden yazılmaz; gelecekte kodlu hata kataloğu ayrı geliştirme olabilir. Bütün kullanıcı/model çıktısının çevrilmiş olduğu iddia edilmez.
+- İlk kişisel projede mevcut AC/DoD **içerik şablonları Türkçe** kalır; UI dilinden bağımsızdır ve açıkça düzenlenip onaylanır. Bu, otomatik dil algılama/çıktı policy uygulaması değildir. Q12-A değişmez; eski notları/kanıtları çevirmiyoruz.
+- Runtime dependency yok; plain JS katalog + locale modülü, strict allowlist ile `/locales.js` ve `/i18n.js`. ZIP `.js` dosyalarını içerir. SQLite schema, MCP ve domain approval sözleşmeleri değişmedi; mevcut mimari diagramdaki UI düğümünün sunum özelliğidir, yeni servis/engine yok.
+
+**Doğrulama:** `tests/runtime/test_localization.py` katalog/placeholder/declared UI keys; `test_local_app.py` static asset allowlist/unknown path. İsteğe bağlı gerçek browser: `scripts/check_localization_ui.py` (Node + Playwright + browser gerekir; `DECIVORA_NODE`, `DECIVORA_PLAYWRIGHT_MODULE`, `DECIVORA_BROWSER_PATH` ile runtime seçilebilir). İzole fixture DB, sentetik model; 5 locale, browser Türkçe olsa da English default, AR RTL desktop/390px mobile, tüm dillerde mobile overflow, reload locale persistence, storage unavailable/invalid fallback, kaynak/AC/draft/checkbox korunumu; locale değişiminde POST=0, dış model çağrısı=0. Bu native çeviri sertifikası veya beş dilde semantic extraction kalite sonucu değildir. T19/T20 UI mevcut kapsamında dilim; parent Done/MVP bitmiş sayılmaz. P2 otomatik tespit/çok dilli model ölçümü aynı kalır; sabit UI kataloglarını kullanıcı önceliğiyle erkene aldık.

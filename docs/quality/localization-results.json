@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-13",
+  "scope": "local UI presentation only",
+  "locales": [
+    "en",
+    "tr",
+    "es",
+    "pt-BR",
+    "ar"
+  ],
+  "default": "en",
+  "catalog_keys": 122,
+  "runtime_tests_passed": 240,
+  "tracker_tests_passed": 46,
+  "browser": {
+    "five_locales": true,
+    "english_default_even_with_turkish_browser": true,
+    "rtl_desktop_mobile": true,
+    "mobile_overflow": false,
+    "drafts_and_selection_preserved": true,
+    "locale_reload_persisted": true,
+    "storage_failure_and_unknown_locale_fallback": true,
+    "manual_task_acceptance_question_decision_regression": true
+  },
+  "external_model_calls": 0,
+  "fixture_model": true,
+  "native_translation_review": "not_run",
+  "multilingual_semantic_quality": "not_run",
+  "schema_changes": false,
+  "diagram_changes": false
+}

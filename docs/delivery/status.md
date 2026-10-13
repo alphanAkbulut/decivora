@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — EN-default beş UI dili
+
+- [Yerel UI dilimi](../product/language-and-localization.md): İngilizce varsayılan/fallback; TR/ES/PT-BR/AR katalogları ve Arabic RTL. Yerel dil değişimi model/command çağırmaz, kaynak ve düzenlenen taslak/checkbox seçimini korur. Çok dilli model kalitesi/otomatik çıktı dili P2'de açık; ana görev kapanışı yok.
+- [Doğrulama kaydı](../quality/localization-results.json):240runtime/46tracker test ve gerçek browser fixture; beş dil, persistence/storage fallback, RTL desktop/mobile, içerik korunumu ve mevcut manuel karar akışı geçti; gerçek API0. ES/PT/AR native inceleme bekliyor, kataloglar taslak.
+
 ### 2026-10-13 — Konuşma aktarımı birinci öncelik; UX düzenlemesi
 
 - [Konuşma→öneri→pano](../quality/conversation-review-runtime.md): gerçek manuel kaynak ayrı tutulur, provider payload/parser, exact quote kodla span, candidate review/comparison/explicit accept.16yeni/237runtime test; browser kontrollü model3aday→Taskpanoya→reload. Gerçek semantic kalite/network dispatch yok; model/veri/bütçe etkinleştirmesi açık, API yarına ertelendi.

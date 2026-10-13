@@ -19,6 +19,15 @@ class LocalAppTests(unittest.TestCase):
         self.assertEqual(self.call('/api/state',headers={})[0],401)
         self.assertEqual(self.call('/api/command',dict(action='start',task='x'),dict(self.headers,Origin='https://evil.example'))[0],403)
         self.assertEqual(self.call('/api/command',{},dict(self.headers,**{'X-CSRF-Token':''}))[0],403)
+    def test_locale_assets_allowlisted_and_unknown_files_denied(self):
+        for path in ('/i18n.js','/locales.js'):
+            code,body,headers=self.call(path,headers={})
+            self.assertEqual(code,200);self.assertIn(b'Decivora',body)
+            self.assertIn('javascript',headers['Content-Type'])
+        self.assertEqual(self.call('/server.py')[0],404)
+        self.assertEqual(self.call('/locales.js/../server.py')[0],404)
+        self.assertEqual(self.call('/api/state')[1]['tasks'],[])
+
     def test_bad_host_and_unknown_path_denied(self):
         self.assertEqual(self.call('/api/state',headers=dict(self.headers,Host='evil.example'))[0],403)
         self.assertEqual(self.call('/../../workspace.sqlite')[0],404)
