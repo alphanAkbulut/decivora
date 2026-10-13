@@ -1,0 +1,342 @@
+{
+  "status": "passed_local_review_persistence",
+  "version": "durable-review-snapshot-1",
+  "first_receipt": {
+    "format": "durable-review-snapshot-1",
+    "record_id": "747ffe0a18585afa5f38300afd870d010137fd99ce2d369554bab347a5a76a7b",
+    "status": "stored_review_snapshot",
+    "duplicate": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "duplicate_receipt": {
+    "format": "durable-review-snapshot-1",
+    "record_id": "747ffe0a18585afa5f38300afd870d010137fd99ce2d369554bab347a5a76a7b",
+    "status": "stored_review_snapshot",
+    "duplicate": true,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "resumed_review": {
+    "format": "durable-review-snapshot-1",
+    "record_id": "747ffe0a18585afa5f38300afd870d010137fd99ce2d369554bab347a5a76a7b",
+    "status": "current_review_snapshot",
+    "review": {
+      "bindings": [
+        {
+          "authz_revision": 1,
+          "base_revision": 2,
+          "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+          "project_id": "prj_storage_review",
+          "request_id": "d9236d93e8d6b0069a62a0c93bdc88d09318249d075ce520e826e19beaacb160",
+          "response_sha256": "03a25039896378bba5de9341609fd0dfa545741c231fa0f615ab249a76b55fb3",
+          "source_sha256": "726fc6cbc044508ddcee8853a54812ee767cc9769d4f532510ce8dd3ad252f41",
+          "state_sha256": "24474d40ee51086c967f42765b1dae25d0ee994d8a3bd5575a9aeb87ea581129"
+        },
+        {
+          "authz_revision": 1,
+          "base_revision": 2,
+          "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+          "project_id": "prj_ui_review",
+          "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+          "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+          "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+          "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+        }
+      ],
+      "canonical_mutations": 0,
+      "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+      "execution_authorized": false,
+      "format": "deterministic-typed-review-1",
+      "input_origin": "selected source-bound model-reported records plus fixture state; not independently verified",
+      "model_dispatches": 0,
+      "new_call_required_for_this_transform": false,
+      "output_origin": "deterministic_selected_typed_records",
+      "paid_api_calls": 0,
+      "production_authorization": false,
+      "project_review": {
+        "atomic_groups": [],
+        "canonical_mutations": 0,
+        "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+        "execution_authorized": false,
+        "format": "receiver-project-review-2",
+        "model_dispatches": 0,
+        "paid_api_calls": 0,
+        "production_authorization": false,
+        "projects": [
+          {
+            "clarifications": [],
+            "diagnostics": [],
+            "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+            "project_id": "prj_storage_review",
+            "review": {
+              "next_actions": [
+                {
+                  "message_id": "N01-m01",
+                  "question_id": "Q_STORE",
+                  "type": "preserve_history"
+                },
+                {
+                  "message_id": "N01-m02",
+                  "question_id": "Q_STORE",
+                  "type": "request_selection_confirmation"
+                }
+              ],
+              "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+              "project_id": "prj_storage_review",
+              "readback": {
+                "answer_states": [
+                  {
+                    "message_id": "N01-m02",
+                    "status": "pending_trusted_selection"
+                  },
+                  {
+                    "message_id": "N01-m01",
+                    "status": "stale_question_revision"
+                  }
+                ],
+                "approved_real_decision": false,
+                "question_id": "Q_STORE",
+                "question_revision": 2,
+                "question_state": "pending",
+                "reported_test_results": [],
+                "task_verified": false,
+                "upload_verification": "unknown"
+              },
+              "status": "ok"
+            },
+            "status": "ready_for_review"
+          },
+          {
+            "clarifications": [
+              {
+                "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+                "execution_authorized": false,
+                "message_id": "N02-m04",
+                "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+                "project_id": "prj_ui_review",
+                "question_presentations": [
+                  {
+                    "options": {
+                      "A": "board",
+                      "B": "timeline"
+                    },
+                    "question_id": "Q_UI",
+                    "revision": 1
+                  },
+                  {
+                    "options": {
+                      "A": "canary",
+                      "B": "all_users"
+                    },
+                    "question_id": "Q_RELEASE",
+                    "revision": 1
+                  }
+                ],
+                "quote": "B.",
+                "reason": "needs_clarification",
+                "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+                "status": "needs_clarification"
+              }
+            ],
+            "diagnostics": [],
+            "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+            "project_id": "prj_ui_review",
+            "review": {
+              "next_actions": [
+                {
+                  "message_id": "N02-m01",
+                  "question_id": "Q_UI",
+                  "type": "request_selection_confirmation"
+                },
+                {
+                  "message_id": "N02-m02",
+                  "question_id": null,
+                  "type": "request_target_verification"
+                },
+                {
+                  "message_id": "N02-m03",
+                  "question_id": null,
+                  "type": "request_test_execution_permission"
+                },
+                {
+                  "message_id": "N02-m04",
+                  "question_id": null,
+                  "type": "request_clarification"
+                }
+              ],
+              "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+              "project_id": "prj_ui_review",
+              "readback": {
+                "answer_states": [
+                  {
+                    "message_id": "N02-m04",
+                    "status": "needs_clarification"
+                  },
+                  {
+                    "message_id": "N02-m01",
+                    "status": "pending_trusted_selection"
+                  }
+                ],
+                "approved_real_decision": false,
+                "question_id": "Q_UI",
+                "question_revision": 1,
+                "question_state": "pending",
+                "reported_test_results": [
+                  {
+                    "criterion_id": "AC_SMOKE",
+                    "criterion_revision": 2,
+                    "result": "not_run"
+                  }
+                ],
+                "task_verified": false,
+                "upload_verification": "reported_only"
+              },
+              "status": "ok"
+            },
+            "status": "needs_clarification"
+          }
+        ],
+        "quality_scored": false,
+        "raw_sha256": "18bc94b7c47fc6f9a6c86e41019ca5b60d5e051bfe5d8f9e7f648e75f64d9dd9",
+        "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+        "status": "partial_review"
+      },
+      "raw_model_output_consumed": false,
+      "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+      "response": {
+        "format": "decivora-receiver-review-2",
+        "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+        "responses": [
+          {
+            "next_actions": [
+              {
+                "message_id": "N01-m01",
+                "question_id": "Q_STORE",
+                "type": "preserve_history"
+              },
+              {
+                "message_id": "N01-m02",
+                "question_id": "Q_STORE",
+                "type": "request_selection_confirmation"
+              }
+            ],
+            "package_digest": "8cf1d639aa9f679272c145ecee5fd6ef18824472c257a8097798a717f041d268",
+            "project_id": "prj_storage_review",
+            "readback": {
+              "answer_states": [
+                {
+                  "message_id": "N01-m02",
+                  "status": "pending_trusted_selection"
+                },
+                {
+                  "message_id": "N01-m01",
+                  "status": "stale_question_revision"
+                }
+              ],
+              "approved_real_decision": false,
+              "question_id": "Q_STORE",
+              "question_revision": 2,
+              "question_state": "pending",
+              "reported_test_results": [],
+              "task_verified": false,
+              "upload_verification": "unknown"
+            },
+            "status": "ok"
+          },
+          {
+            "next_actions": [
+              {
+                "message_id": "N02-m01",
+                "question_id": "Q_UI",
+                "type": "request_selection_confirmation"
+              },
+              {
+                "message_id": "N02-m02",
+                "question_id": null,
+                "type": "request_target_verification"
+              },
+              {
+                "message_id": "N02-m03",
+                "question_id": null,
+                "type": "request_test_execution_permission"
+              },
+              {
+                "message_id": "N02-m04",
+                "question_id": null,
+                "type": "request_clarification"
+              }
+            ],
+            "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+            "project_id": "prj_ui_review",
+            "readback": {
+              "answer_states": [
+                {
+                  "message_id": "N02-m04",
+                  "status": "needs_clarification"
+                },
+                {
+                  "message_id": "N02-m01",
+                  "status": "pending_trusted_selection"
+                }
+              ],
+              "approved_real_decision": false,
+              "question_id": "Q_UI",
+              "question_revision": 1,
+              "question_state": "pending",
+              "reported_test_results": [
+                {
+                  "criterion_id": "AC_SMOKE",
+                  "criterion_revision": 2,
+                  "result": "not_run"
+                }
+              ],
+              "task_verified": false,
+              "upload_verification": "reported_only"
+            },
+            "status": "ok"
+          }
+        ]
+      },
+      "response_value_sha256": "18bc94b7c47fc6f9a6c86e41019ca5b60d5e051bfe5d8f9e7f648e75f64d9dd9",
+      "source_snapshot_sha256": "7ec2ea395415094f72ebeea5b5d973dfc81570f7cec83e620e22543cd63da0dc",
+      "usage": null
+    },
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "changed_context_view": {
+    "format": "durable-review-snapshot-1",
+    "record_id": "34c2f106746a81609307ea6793fd2dce10e0463d3edd8694ee7ba5afe3847fa3",
+    "status": "current_snapshot_not_stored",
+    "review": null,
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "revoked_access_rejected": true,
+  "file_sha256": {
+    "spikes/semantic-chain/review_store.py": "971ef46a629e1e7f59ffd0f58c3350fcef76a5a3b72272f57842c8b3a1ce6831",
+    "spikes/semantic-chain/test_review_store.py": "6cd1e8b7290061c011ec21da21e19f5ef6a0a7f1160c2e0dcf6ff0b041ad6f49",
+    "spikes/semantic-chain/check_review_store.py": "fbaea4978f8dee1f5b63c757fdfdc98e4f8d677d9882be81af40665e3a40ec1d",
+    "examples/receiver-next-smoke/request.json": "6e76ad0485a0f2ca7d0f174846cb090cb29d58d20641b4a020844b9783946893",
+    "examples/receiver-next-smoke/review-context.fixture.json": "c6997b3e759367a3952c1c67c9126619ac507781e19de9e1e0a1c5d23458ad62"
+  },
+  "tested_scope": "temporary SQLite database; two fixed synthetic projects; restart, not power-loss recovery",
+  "input_origin": "model-reported typed source facts plus caller authority fixture",
+  "canonical_mutations": 0,
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "production_authorization": false,
+  "human_gold": false,
+  "human_reply_resolution": "not_implemented",
+  "host_capture": "not_tested",
+  "usage": null
+}

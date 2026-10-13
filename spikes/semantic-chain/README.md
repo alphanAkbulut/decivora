@@ -136,3 +136,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Tipli veriden model çağrısız taslak — T03aa DONE
 
 [`typed_review.py` / çalışan kod ve sınırlar](../../docs/quality/typed-review.md); pinned source/context fixture'dan6record readback/action, candidate/source/read-access ve atomic review guard. Generated origin deterministic_selected_typed_records; modelraw/oracle build input değil.13 yeni/222 semantik test ve bağımsız authored kıyas; inference/mutation0, geçmiş failures aynı. CLI --out yeni dosya, overwrite yok. Model extraction/gold/native/production gate değildir.
+
+## Kalıcı inceleme snapshot — T03ab DONE
+
+[`review_store.py` / kod ve sınırlar](../../docs/quality/review-store.md): typed review'ı SQLite'a atomic append, unique ID/retry, restart ve current scope/access kontrolü;12 yeni/234 semantik test. `check_review_store.py` temporary DB örneğini üretir. Pending descriptor kalıcıdır; human reply resolve/production Inbox/IAM/host entegrasyonu değildir. Model/runner/canonical mutation0; eski proof'lar korunur.

@@ -78,7 +78,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Yeni mesaj, final output, tool failure, kapanışsız session ve offline deneyi.
 - **Beklenen dosya alanı:** `docs/discovery/adapter-feasibility.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Yüzey başına küçük deney.
-- **Son ilerleme:** 2026-10-11 · Capture kodu: Spike-0 kaynak/session, geciken delta ve kısa cevap kontrolleri 40 fixture testine sahip. Son token-limit çalışması gerçek host kurulumu veya capture testi eklemedi.
+- **Son ilerleme:** 2026-10-13 · Salt okunur host inventory: PATH Codex CLI0.162.0-alpha.17.2 version çıktı; sandbox alias yazımını reddetti. Claude command PATH'te yok, installation unknown. Capture40fixture korunur; gerçek hook/session/transcript veya model çalıştırılmadı.
 - **Sıradaki adım:** [Hazırlık kapısında](implementation-readiness.md) seçilmiş Codex/Claude host ve scoped grant ile gerçek capability kontrolü. MCP erişimi tam otomatik capture kanıtı değil.
 
 ## T03 — Native/extend/build ve teknoloji kararı
@@ -92,7 +92,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 - **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
-- **Son ilerleme:** 2026-10-13 · T03aa [deterministic typed review](../quality/typed-review.md) DONE;13 yeni/222 semantik test,6typed action ayrı authored beklentiyle eşleşti. Actual RECEIVER-002 failed/raw aynı; yeni generated origin ayrı. Model/API/mutation0; Q03-R6 tüketildi.
+- **Son ilerleme:** 2026-10-13 · T03ab [kalıcı review snapshot](../quality/review-store.md) DONE;12 yeni/234 semantik test. Restart, dedup, append-only, revoked/current context ret ve iki writer passed; production Inbox/human reply çözümü değil. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
 - **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki ana kapanış: T01 exact-label inceleme, T02 izinli gerçek capture ve T03 native/ROI/yatırım karşılaştırmasını mevcut kanıt düzeyleriyle tamamla. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
@@ -143,6 +143,12 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
 |---|---|---|
 | T03aa / T03z | DONE / P0: selected typed record'dan readback ve safe action taslağı |13 yeni/222 semantik test;6record bağımsız authored kıyas, null ambiguous binding, access/freshness/atomic/no-oracle/no-raw/no-overwrite. [Rapor](../quality/typed-review.md). Yeni inference0; free-text extraction/human gold/IAM/production kabulü değil |
+
+### T03 altında tamamlanan kalıcı inceleme snapshot
+
+| Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
+|---|---|---|
+| T03ab / T03aa | DONE / P0: SQLite inceleme snapshot deposu |12 yeni/234 semantik test; restart aynı pending descriptor, current scope/access, unique/dedup/rollback/append-only/tamper/two-writer. [Rapor](../quality/review-store.md). Human reply resolution/UI/production IAM/backup/crash ayrı; canonical mutation/model0 |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

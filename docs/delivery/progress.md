@@ -43,6 +43,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03y | T03 | DONE | DONE / P0: yeni source-only receiver isteği ve ortak makine schema/scorer |
 | T03z | T03 | DONE | DONE / P0: wire-2 için Q14-A bağımsız proje incelemesi |
 | T03aa | T03 | DONE | DONE / P0: selected typed record'dan readback ve safe action taslağı |
+| T03ab | T03 | DONE | DONE / P0: SQLite inceleme snapshot deposu |
 
 ## Açık fazda neler değişti?
 
@@ -62,7 +63,7 @@ Sıradaki adım: Exact kaynak/etiket inceleme ve adjudication kuyruğundaki kala
 
 ### T02 · İki coding yüzeyinde capability spike
 
-2026-10-11 · Capture kodu: Spike-0 kaynak/session, geciken delta ve kısa cevap kontrolleri 40 fixture testine sahip. Son token-limit çalışması gerçek host kurulumu veya capture testi eklemedi.
+2026-10-13 · Salt okunur host inventory: PATH Codex CLI0.162.0-alpha.17.2 version çıktı; sandbox alias yazımını reddetti. Claude command PATH'te yok, installation unknown. Capture40fixture korunur; gerçek hook/session/transcript veya model çalıştırılmadı.
 
 **Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
 
@@ -74,7 +75,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-13 · T03aa [deterministic typed review](../quality/typed-review.md) DONE;13 yeni/222 semantik test,6typed action ayrı authored beklentiyle eşleşti. Actual RECEIVER-002 failed/raw aynı; yeni generated origin ayrı. Model/API/mutation0; Q03-R6 tüketildi.
+2026-10-13 · T03ab [kalıcı review snapshot](../quality/review-store.md) DONE;12 yeni/234 semantik test. Restart, dedup, append-only, revoked/current context ret ve iki writer passed; production Inbox/human reply çözümü değil. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
 
 **Aktif teknik risk:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 
@@ -120,6 +121,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Yeni machine-schema receiver isteği / T03y DONE** — 8source/6record,8089byte yeni kimlikli prompt ve ayrı oracle/scorer; hermetik3file source-only hazırlık; [192 test/20 yeni](../quality/receiver-next-plan.md); hazırlık snapshot send0 korunur; sonraki [RECEIVER-002 tek run](../quality/receiver-002-result.md) invalid_contract, provider-enforced schema not_run
 - **Wire-2 bağımsız proje incelemesi / T03z DONE** — Exact yeni request/source binding, global preflight ve yerel teknik hata ayrımı; atomic grup bölünmez; [206 semantik test/14 yeni](../quality/project-review-next.md); raw/format onarımı yok, strict whole-trial scorer ayrı, gerçek model/IAM/UI not_run
 - **Tipli record'dan deterministic review / T03aa DONE** — Source-bound6record, bilinen state ve candidate status'tan yeni kökenli6action; oracle/model raw input değil; [222 test/13 yeni ve authored kıyas](../quality/typed-review.md); model çağrısı0, geçmiş actual failures aynı, extraction/IAM/ekonomi gate açık
+- **Kalıcı review snapshot / T03ab DONE** — Typed review store için SQLite append/transaction ve restart sonrası pending clarification geri okuma; [234 test/12 yeni](../quality/review-store.md); dedup/current scope/access/tamper/rollback/two-writer, gerçek insan reply çözümü/UI/IAM değil
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -138,7 +140,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
-| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 25 |
+| T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 26 |
 | T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
@@ -175,4 +177,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `f4754827a363fd5ad43ca2447b5a2a115f041428b64c12fd214be32ccb48da89`
+Kaynak fingerprint: `4e59197c7b581316e26ee0bc9c6a06fe201933ad731a7257b399ef330ec077b6`
