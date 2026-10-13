@@ -104,8 +104,10 @@
     },
     "T12": {
       "core_acceptance": "Keep/update/review/obsolete gerekçeli; tamamlanmış geçmiş korunur; eksik frontier görünür.",
-      "core_verified": false,
-      "evidence": [],
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/impact-preview-results.json"
+      ],
       "release_scope": "MVP"
     },
     "T13": {
@@ -1061,14 +1063,14 @@
     "T12a": {
       "parent": "T12",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T12"
       ],
       "classification": "task_local",
       "owner": "T12",
       "first_use_gate": "T12",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "Existing T12 snapshot/traversal core verified by impact-preview tests; separate application approval remains T13.",
       "required_for_parent_closure": true
     },
     "T13a": {

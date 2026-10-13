@@ -487,6 +487,87 @@ class Workspace:
             graph.revision=self.project(scope,project)['knowledge_revision']
             return graph
 
+    def impact_preview(self,scope,project,run_id,trigger,annotations,facts_before,facts_after,*,max_nodes=100,max_edges=500):
+        """Explicit manual hypothetical inputs; persisted preview, never task mutation."""
+        from packages.impact.preview import preview
+        identifier(run_id)
+        raw=canonical(dict(trigger=trigger,annotations=annotations,facts_before=facts_before,facts_after=facts_after,max_nodes=max_nodes,max_edges=max_edges))
+        if len(raw.encode())>32768:raise ContractError('impact_limit','Impact input exceeds the local preview ceiling.')
+        with self.transaction():
+            self.scope(scope,project,write=True);self.active(scope,project)
+            revision=self.project(scope,project)['knowledge_revision']
+            input_digest=digest(raw)
+            prior=self._impact_run(project,run_id)
+            if prior is not None:
+                if prior['input_digest']!=input_digest or prior['actor']!=scope.principal_id:
+                    raise ContractError('idempotency_conflict','Impact run identity was reused with changed input or actor.')
+                self._current_impact(scope,project,prior)
+                return prior['result']
+            rows=self.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id',(self.workspace,project)).fetchall()
+            if len(rows)>1000:raise ContractError('impact_limit','Manual snapshot exceeds the local impact metadata limit.')
+            if type(annotations) is not dict or any(rid not in {r[0] for r in rows} for rid in annotations):
+                raise ContractError('invalid_snapshot','Impact annotations must belong to the selected project.')
+            metadata={}
+            for rid,version,body in rows:
+                note=annotations.get(rid,dict(version=version,required_when=None,historically_completed=False,replacement=None))
+                if type(note) is not dict or set(note)!={'version','required_when','historically_completed','replacement'} or note['version']!=version:
+                    raise ContractError('stale_record','Impact annotation record version changed.')
+                metadata[rid]=dict(note,type=json.loads(body)['type'])
+            graph=self._graph(project);graph.revision=revision
+            source_snapshot,coverage=self._impact_coverage(scope,project)
+            graph.complete=coverage
+            result=preview(graph,trigger,metadata,facts_before,facts_after,max_nodes=max_nodes,max_edges=max_edges)
+            result.update(run_id=run_id,project=project,input_digest=input_digest,input_method='explicit_manual_hypothesis',
+                source_snapshot=source_snapshot,authority_revision=self.authority.revision())
+            result['digest']=digest(canonical(result))
+            stored=dict(run_id=run_id,actor=scope.principal_id,input_digest=input_digest,result=result)
+            payload=canonical(stored)
+            if len(payload.encode())>65536:raise ContractError('impact_limit','Preview result exceeds the local persisted limit; reduce traversal scope.')
+            if self.db.execute("SELECT count(*) FROM audit WHERE workspace=? AND project=? AND action='impact_preview'",(self.workspace,project)).fetchone()[0]>=128:
+                raise ContractError('impact_limit','Local manual preview retention ceiling reached.')
+            self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,project,scope.principal_id,'impact_preview',payload))
+            return result
+
+    def _impact_run(self,project,run_id):
+        for raw, in self.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC",(self.workspace,project)):
+            stored=json.loads(raw)
+            if stored['run_id']==run_id:return stored
+        return None
+
+    def _impact_coverage(self,scope,project):
+        rows=[];sessions=set()
+        for seq,owner,payload,sha,status,provider,account,session,epoch in self.db.execute('SELECT seq,project,payload,hash,status,provider,account,session,epoch FROM sources WHERE workspace=? ORDER BY seq',(self.workspace,)).fetchall():
+            if owner!=project and not (owner is None and json.loads(payload)['project_id']==project):continue
+            self.source(scope,seq)
+            job=self.db.execute('SELECT status FROM jobs WHERE source_seq=?',(seq,)).fetchone()
+            rows.append((seq,sha,status,job[0] if job else None))
+            sessions.add((provider,account,session,epoch))
+        frontiers=[(key,self.frontier(scope,SessionKey(*key),project)) for key in sorted(sessions)]
+        return digest(canonical(dict(rows=rows,frontiers=frontiers))),all(r[3]=='succeeded' for r in rows) and all(f['complete'] for _,f in frontiers)
+
+    def _current_impact(self,scope,project,stored):
+        result=stored['result']
+        if result['knowledge_revision']!=self.project(scope,project)['knowledge_revision'] or result['authority_revision']!=self.authority.revision():
+            raise ContractError('stale_impact','Project knowledge or authority changed; prepare a new impact preview.')
+        # A source receipt/worker completion changes coverage without changing knowledge.
+        source_snapshot,_=self._impact_coverage(scope,project)
+        if result['source_snapshot']!=source_snapshot:
+            raise ContractError('stale_impact','Processing coverage changed; prepare a new impact preview.')
+
+    def impact_run(self,scope,project,run_id):
+        identifier(run_id)
+        with self.read_snapshot():
+            self.scope(scope,project)
+            stored=self._impact_run(project,run_id)
+            if stored is None:raise ContractError('impact_unavailable','Selected impact run is unavailable.')
+            try:
+                self._current_impact(scope,project,stored)
+                stale=False
+            except ContractError as error:
+                if error.code!='stale_impact':raise
+                stale=True
+            return dict(result=stored['result'],stale=stale,canonical_mutations=0)
+
     def historical_edges(self,scope,project,snapshot_seq):
         integer(snapshot_seq)
         with self.transaction():

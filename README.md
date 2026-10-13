@@ -11,7 +11,7 @@
 
 ## Çalışmanın neresindeyiz?
 
-**6 Done / 5 In Progress / 19 To Do.** Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo](docs/quality/integrated-core.md) + [109 test ve kritik düzeltmeler](docs/quality/core-critical-review.md): `python3.12 -B -m apps.hub core-demo`. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
+**7 Done / 5 In Progress / 18 To Do.** Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo](docs/quality/integrated-core.md) + [kritik düzeltmeler](docs/quality/core-critical-review.md): `python3.12 -B -m apps.hub core-demo`. [T12 impact preview](docs/quality/impact-preview.md) ve `python3.12 -B -m apps.hub impact-demo` tamamlandı;130runtime test. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
 
 
 > [!WARNING]

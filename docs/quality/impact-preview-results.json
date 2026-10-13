@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-13",
+  "profile": "explicit_synthetic_manual_impact",
+  "core_tasks": [
+    "T12",
+    "T12a"
+  ],
+  "runtime_suite": {
+    "tests": 130,
+    "failures": 0,
+    "errors": 0,
+    "new_tests": 21
+  },
+  "source_sha256": {
+    "packages/impact/preview.py": "6812841355e125274463ea5f0c2ca4c366da4cd8f071291848f921967de13fed",
+    "packages/storage/workspace.py": "7a270cedab444b5c2f56f0be3581c72d9f3fceb215317cb2f22ca183a86b57c7",
+    "apps/hub/impact_demo.py": "2bf3ce158133fc6d73d1b5c41b335cfd23b3b4b161b1c67dba23a4353ac9b149",
+    "apps/hub/runtime.py": "07b7cba2c8717f98759683f1d7c37b4974fea8357e74faf9f9a57c834b2ff083",
+    "tests/runtime/test_impact_preview.py": "f0356fa756e752ba7db15d47085e92e99002f3371f78aea98a2927e51fa277c6"
+  },
+  "demo": {
+    "status": "passed_manual_impact_preview",
+    "cases": {
+      "T1": "review",
+      "T3": "obsolete_candidate",
+      "T2": "update",
+      "T5": "update",
+      "T4": "keep",
+      "T6": "review"
+    },
+    "coverage": "complete_snapshot",
+    "frontier": [],
+    "domain_unchanged": true,
+    "restore_matches": true,
+    "canonical_mutations_from_preview": 0,
+    "model_dispatches": 0,
+    "real_semantic_extraction": false,
+    "task_completion_verified_by_demo": false,
+    "input_method": "explicit_synthetic_manual_metadata",
+    "task_changes_applied": false
+  },
+  "canonical_mutations_from_preview": 0,
+  "paid_api_calls": 0,
+  "model_dispatches": 0,
+  "conversation_usage": "unknown",
+  "mvp_acceptance": false,
+  "real_semantic_extraction": false,
+  "human_login": false,
+  "tracker_suite": {
+    "tests": 46,
+    "failures": 0,
+    "errors": 0
+  }
+}

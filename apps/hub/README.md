@@ -57,3 +57,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## Birleşik çalışan çekirdek
 
 `python3.12 -B -m apps.hub core-demo`: ayrı yeni synthetic/manual SQLite workspace içinde stableproject/binding → receipt/job/lease → manual typed plan → local human approval → atomic record/link/source joins → replay → backup/restore → duplicate/graph akışı. [95 test, beş ana çekirdek ve açık kalanlar](../../docs/quality/integrated-core.md). New normalized core profile eski DB'leri silently migrate etmez. `status` capability listesi aktif status-only profile'a aittir; implemented_components mevcut kodu ayrıca gösterir. Real provider/semantic model/runner/network listener/user UI çalıştırılmaz.
+
+## T12 impact önizleme demosu
+
+`python3.12 -B -m apps.hub impact-demo` temporary SQLite DB'de altı eski storage-change oracle'ını değerlendirir; keep/update/review/obsolete adayını gösterir, task state değiştirmez. Preview kalıcı audit, digest ve snapshot ile korunur; backuprestore eşleşir. [21yeni test ve kabul sınırı](../../docs/quality/impact-preview.md). Otomatik metin çıkarımı, gerçek completion veya T13 kullanıcı onayı değildir.

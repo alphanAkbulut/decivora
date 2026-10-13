@@ -10,9 +10,9 @@
 
 | Ana görev durumu | Sayı |
 |---|---|
-| DONE | 6 |
+| DONE | 7 |
 | IN_PROGRESS | 5 |
-| TODO | 19 |
+| TODO | 18 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -67,6 +67,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T08c | T08 | DONE | DONE / P1a: Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı |
 | T11c | T11 | DONE | DONE / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream |
 | T11b | T11 | DONE | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği |
+| T12a | T12 | DONE | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision |
 
 ## Açık fazda neler değişti?
 
@@ -137,6 +138,7 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T12/T12a impact preview** — Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard; [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14
 - **Beş ana yerel çekirdek teslimi** — T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph; [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok
 - **T09/T10 çalışan hazırlık** — Structured source-span validator/lexical context/exact duplicate relationship review; [Kod ve açık kalite sınırı](../quality/integrated-core.md); semantic inference/FTS/gold ölçümü açık, ana görevler In Progress
 - **T05c connection izin schema/rule** — Bounded immutable receipt, scope/current-context/action/expiry review gate; activation daima false; [9 test ve CLI demo](../quality/connection-authorization.md); gerçek provider/approval/audit/receipt persistence yok
@@ -203,7 +205,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T09 | P1a | IN_PROGRESS | Extraction ve bounded retrieval | T08 | 4 |
 | T10 | P1a | IN_PROGRESS | Temel reconciliation | T09 | 2 |
 | T11 | P1a | DONE | Tipli gerekçe graph | T10 | 2 |
-| T12 | P1a | TODO | Impact preview ve apply planı | T11 | 1 |
+| T12 | P1a | DONE | Impact preview ve apply planı | T11 | 1 |
 | T13 | P1a | TODO | Review işlemi ve güvenilir onay | T12 | 5 |
 | T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 | 4 |
 | T15 | P1a | TODO | Teknik kanıt kapısı | T14, T07c | 1 |
@@ -231,4 +233,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `432c2b23c633a3cf5026c53783bd639ad1f21b51f363dff00065cbe7dcd7e77d`
+Kaynak fingerprint: `2ff31c74ae59aff087b5ca5392e77b40b8447aad055bd9dc72514634a35fdf1f`

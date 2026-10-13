@@ -257,12 +257,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T12 — Impact preview ve apply planı
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T11. **Kapsam ID:** IMP-01,IMP-02.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T11. **Kapsam ID:** IMP-01,IMP-02.
 - **İş:** Trigger/version bazlı bounded traversal, reason path ve etki proposals üret.
 - **Kabul:** Keep/update/review/obsolete gerekçeli; tamamlanmış geçmiş korunur; eksik frontier görünür.
 - **Doğrulama:** AC-05; missing-link ve traversal-limit.
 - **Beklenen dosya alanı:** `packages/impact/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Teslim:** [T12/T12a local manual preview](../quality/impact-preview.md);21yeni/130runtime test, `impact-demo`; task mutation0, ayrı T13 onayı ve T14 verification açık.
 
 ## T13 — Review işlemi ve güvenilir onay
 
@@ -444,7 +446,7 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | T07c / T06,T07a | DONE / P1a: ** Minimal çekirdek DB+payload backup/restore | Tutarlı checkpoint, source payload manifest/hash, event sequence ve projection digest; boş hedefe restore, eksik/uyumsuz veri fail closed; replay sıfır dış dispatch; V17/V27. T15a bunu sınar; T23a migration/privacy/export/operasyon kapsamını tamamlar | storage |
 | T08a / T08 | DONE / P1a: Command identity, key/digest ve policy capability | Aynı key güvenli; spoofed human reddi; V03/V23 | domain/hub |
 | T10a / T10 | Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
-| T12a / T12 | ImpactRun snapshot, visited/frontier ve knowledge revision | Yeni OR edge eski preview'yu stale yapar; V22 ve limit testi | impact/storage |
+| T12a / T12 | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision | [21test/impact-demo](../quality/impact-preview.md): OR edge/gap/ACL/restart/limit; source snapshot da bağlı | impact/storage |
 | T13a / T13 | Onay token'ı snapshot/policy/digest ile bağla | Partial selection yeni digest; iki onay tek effect; V04/V15/V23 | hub/domain |
 | T14a / T14 | Evidence authority ve izinli runner arayüzü | Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 | verification |
 | T15a / T15 | Crash/restore/replay proof dilimi | V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder | quality fixtures |

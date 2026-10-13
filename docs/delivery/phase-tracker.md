@@ -62,7 +62,7 @@ Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtil
 | T09 | P1a | IN_PROGRESS | Extraction ve bounded retrieval | T08 |
 | T10 | P1a | IN_PROGRESS | Temel reconciliation | T09 |
 | T11 | P1a | DONE | Tipli gerekçe graph | T10 |
-| T12 | P1a | TODO | Impact preview ve apply planı | T11 |
+| T12 | P1a | DONE | Impact preview ve apply planı | T11 |
 | T13 | P1a | TODO | Review işlemi ve güvenilir onay | T12 |
 | T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 |
 | T15 | P1a | TODO | Teknik kanıt kapısı | T14,T07c |
@@ -156,7 +156,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 4. Bir task veya fazın kapanışında [AC/DoD ve kaynaklı bağlam](../product/task-context-and-acceptance.md) güncellenir. İptal/erteleme gerekçesi ve tarihçesi korunur.
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
-Bugünkü snapshot'ta T04/T05/T06/T07/T08/T11 DONE, T01/T02/T03/T09/T10 IN_PROGRESS,19 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
+Bugünkü snapshot'ta T04/T05/T06/T07/T08/T11/T12 DONE, T01/T02/T03/T09/T10 IN_PROGRESS,18 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
 
 ### P0 karşılaştırma havuzu eki: WrongStack
 

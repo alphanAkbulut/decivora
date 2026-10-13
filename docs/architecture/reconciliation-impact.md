@@ -27,6 +27,10 @@ Preview, önerilen yeni kararın **varsayımsal** etkisini gösterebilir. Apply 
 
 Pending impact, etkilenen işin uygulanabilirliği belirsiz demektir; next-ready/auto verification bunu geçmez. Preview `knowledge_revision` taşır; sonradan eklenen veya değişen gerekçe/edge varsa eski onay reddedilir. [ADR-0008](adr/0008-approval-snapshot-authority.md) bu yarışın korumasını, [diyagram 5](diagrams.md) örneğini açıklar. Bilinen etki kümesinin dışındaki eksik bağlar için coverage ve periodic audit gerekliliği sürer.
 
+## Çalışan yerel dilim ve önerilen ileri entegrasyonlar
+
+[T12/T12a](../quality/impact-preview.md) deterministic/manual trigger + bounded traversal + rationale proposals ve SQLite snapshot/persistence olarak uygulandı. `impact_preview` canonical kayıt değiştirmez; T13 ayrı selection/approval, T14 verification ve T09/T10 semantik trigger üretimi açıktır. Aşağıdaki algoritmanın semantic evaluation/onay/apply adımları bu teslimde uygulanmış sayılmaz.
+
 ## Önerilen algoritma
 
 ```text
