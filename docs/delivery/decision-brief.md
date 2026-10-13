@@ -1,5 +1,11 @@
 # Owner soruları ve teknik karar hazırlığı
 
+## T09 gerçek model deneyi öncesi API finansman hatırlatması
+
+**2026-10-13 · Kullanıcı koşullu niyeti kaydedildi.** Yanıt: “bunun mecburi hale geldiği nokta burası ise, geldiğimizde bana hatırlat api bakiyesi alayım artık o zaman devam ederız ona”. İlk gerçek API-backed serbest metin extraction ölçümü bağımsız kodla artık ikame edilemediğinde, çağrıdan önce kullanıcıya hatırlat. Şimdiki deterministic/fixture/graph/impact işleri bu niyeti beklemez. Finansman, provider erişimi ve kullanıcının açık bütçe/veri sınırı tamamlanmadan model dispatch disabled kalır.
+
+Hatırlatma somut hazırlanmış deneyle yapılır: provider/model ve sürüm, gönderilecek sentetik/izinli veri, beklenen çıktı ve bağımsız oracle, input/output/context tavanı, toplam çağrı/retry ve harcama üst sınırı. Hazırlık kodu tamamlanmadan satın alma baskısı veya belirsiz “API lazım” sorusu üretme. Şimdi bakiye yüklendiği, key hazır olduğu veya ücretli çağrı yetkisi verildiği varsayılmaz. Önceki tek-run izinleri tüketilmiş kalır; bu not sınırsız deneme izni değildir. Bu geliştirme checkpoint kaydıdır, zamanlanmış otomatik bildirim değildir.
+
 ## Q16 — Görev çekirdeği ve sonraki entegrasyonların kapanış sınırı
 
 **2026-10-13 · Q16-A kabul edildi.** Kullanıcı çalışma rehberine gerekli kuralı eklememizi ve “önerini de uygulayalım” dedi. [Uygulanan kapanış manifesti](task-closure.md). [CL01–08 denetimi](../quality/task-closure-audit.md) 30 ana/117 backlog alt satırı inceledi. T05'in downstream T08/T06 entegrasyonlarını kendi kapanışına bağlamak döngü yaratıyor; T04 startup Done iken network/transport alt kayıtları da genel all-child kuralında kalıyor. Bu durum kabul eşiğini düşürerek veya testleri silerek çözülmez.

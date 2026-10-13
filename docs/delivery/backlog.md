@@ -229,6 +229,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `packages/capture/; packages/reconciliation/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **API finansman kontrol noktası:** Kullanıcı gerçek model testinin mecburi olduğu aşamada hatırlatılmasını ve o zaman bakiye yüklemeyi istedi. İlk API-backed semantic run öncesi hazır input/data scope, sağlayıcı/model, input-output/context/call/retry ve toplam harcama tavanını somut sun; kullanıcı bakiye/erişim ve sınırları teyit etmeden dispatch yapma. Bu koşullu niyet harcama izni değildir; bağımsız deterministik işler beklemez. [Kayıt](decision-brief.md#t09-gerçek-model-deneyi-öncesi-api-finansman-hatırlatması).
+
 - **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
 
 ## T10 — Temel reconciliation
