@@ -125,3 +125,8 @@ Tam graph'ta önerilen görsel ayrım: artifact node'u **üretildi**, target ass
 ## Uygulama notu — T13b local çekirdek
 
 [Çalışan lifecycle](../quality/task-lifecycle.md) Task/edge/history ayrımını uygular; runtime event kind `task_lifecycle`, state cancelled/todo, versioned reason/impact ref. Üstteki `task.cancelled` ürün event adıyla birebir transport enum iddiası değildir. Cancelled current graph/active rank'te ayrılır; ekran ikonu/strike-through ve klavye UI kabulü T20'de açık. Aktif gerekçe/downstream olan cancellation bu dilimde reject/review kalır.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Current recorded dependency UI](../quality/workflow-ui-runtime.md): prerequisite chooser explicit human onayı ve cycle/base guard; Blocks/Blocked by rozetleri ve gate açıklaması. Genel görsel graph/timeline/full context list acceptance hâlâ açık.

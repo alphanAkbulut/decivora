@@ -50,17 +50,17 @@ class AcceptanceService:
             row=self.core.db.execute('SELECT version,body FROM records WHERE workspace=? AND project=? AND id=?',(self.core.workspace,project,task)).fetchone()
             if row is None or json.loads(row[1])['type']!='Task':raise ContractError('task_unavailable','Task unavailable.')
             rows=history(self.core,project,task);latest=rows[-1] if rows else None
-            return dict(task=task,history=rows,current=latest,stale=bool(latest and latest['contract']['task_version']!=row[0]),results=[dict(id=r['id'],status='not_run') for r in latest['contract']['criteria']+latest['contract']['dod']] if latest else [],completed=False)
+            from packages.domain.task_workflow import TaskWorkflowService
+            workflow=TaskWorkflowService(self.core);verification=workflow._verification(project,task)
+            return dict(task=task,history=rows,current=latest,stale=bool(latest and latest['contract']['task_version']!=row[0]),results=verification['results'],completed=workflow._stage(project,task)['stage']=='Done')
     def start(self,scope,project,task):
-        with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
-            from packages.domain.task_blockers import TaskBlockerService
-            if TaskBlockerService(self.core)._view(project,task)['blocked']:raise ContractError('task_blocked','Resolve the recorded impediment before starting work.')
-            contract=self.view(scope,project,task)
-            if contract['current'] is None or contract['stale']:raise ContractError('acceptance_required','Approve current acceptance criteria before starting work.')
-            row=self.core.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.core.workspace,project,task)).fetchone()
-            if json.loads(row[0]).get('execution')=='cancelled':raise ContractError('task_cancelled','Cancelled task cannot start.')
-            ref=canonical(dict(task=task,contract_version=contract['current']['version'],task_version=contract['current']['contract']['task_version']))
-            if not self.core.db.execute("SELECT 1 FROM audit WHERE workspace=? AND project=? AND action='task_work_started' AND ref=?",(self.core.workspace,project,ref)).fetchone():
-                self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,'task_work_started',ref))
+        from packages.domain.task_workflow import TaskWorkflowService
+        service=TaskWorkflowService(self.core)
+        current=service.view(scope,project,task)
+        if current['stage']=='Cancelled':raise ContractError('task_cancelled','Cancelled task cannot start.')
+        if current['stage']=='In Progress':
+            with self.core.read_snapshot():self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             return dict(implementation_claim='in_progress',completed=False)
+        record=service._task(project,task)
+        service.transition(scope,project,task=task,task_version=record['version'],base_revision=current['revision'],stage='In Progress',reason='Explicit work start',key='start_'+digest(canonical([task,record['version'],current['revision']]))[:24])
+        return dict(implementation_claim='in_progress',completed=False)

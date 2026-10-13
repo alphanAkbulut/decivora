@@ -119,7 +119,9 @@
     "T14": {
       "core_acceptance": "Agent done sözü verified olmaz; failed test yeni event ile reopen eder.",
       "core_verified": false,
-      "evidence": [],
+      "evidence": [
+        "docs/quality/workflow-ui-runtime.md"
+      ],
       "release_scope": "MVP"
     },
     "T15": {
@@ -1160,7 +1162,7 @@
     "T14b": {
       "parent": "T14",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T13c",
         "T14"
@@ -1353,7 +1355,7 @@
     "T20e": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T11c",
         "T13",

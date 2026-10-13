@@ -119,3 +119,8 @@ Child tamamlanması: kendi güncel AC/DoD/kanıt kapıları. Parent tamamlanmas�
 | CTX-06 | Dosya üretimi başarısızlığı görünür; false test sonucu yok; yeniden açılmada geçmiş snapshot korunur | T20c |
 
 Kontroller planlıdır; bağımsız test veya bağlam dosyası generator'ı yok. [Q04–Q06](../delivery/decision-brief.md), [Graph](graph-experience.md), [verification](../quality/verification.md) ve [token bütçesi](../architecture/routing-token-economy.md) ile birlikte uygulanır.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Current local completion](../quality/workflow-ui-runtime.md): versioned AC/DoD ve human_review criterion sonuçları kodda; gerekli current maddeler passed + explicit scope review + finish gates ile Done. Automatic test/file-check/remote artifact observer ve ana task context/export/parent automation hâlâ açık. Üstteki genel uygulanmadı ibaresi bu future kapsamı anlatır; AC/DoD manuel dilimi uygulanmıştır.

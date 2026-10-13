@@ -165,3 +165,8 @@ Task bağlaması henüz belli olmayan capture/quarantine gözlemleri bu bağlı 
 EvidenceLink burada **typed** application-assessment referansıyla yalnız ilgili “hedefte beklenen dosya var” kriterini destekleyebilir. Herhangi bir observation tüm AC'leri destekler demek değildir. Acceptance VerificationAssessment ER-02'de ayrı kalır; test/deploy not_run iken observed upload completion sağlamaz. Schema uygulamasında typed FK/association bütünlüğü açık validator ve composite keys ile korunacak; serbest string FK yeterli değil.
 
 Expectation/target/observation/assessment revision'ları aynı workspace/project kapsamını taşır. Yeni assessment append event + projection + gereken audit/job ile atomik; dış okuma transaction dışındadır. Authorization ve freshness commit'te tekrar kontrol edilir. Farklı branch, partial bundle, response kaybı, revoked grant ve yeni karar fixture'ları GAP-03–07/10 ve DBR-01/03/04/05'i birlikte sınar. Fiziksel migration ve query indeksleri T03/T04'ten sonra; bu tur migration/test çalışmadı.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+Task mevcut audit üzerinden TaskStage ve criterion_evidence ile1:N geçmiş taşır; acceptance_contract event revision ve Task version’a bağlıdır. Physical yeni tablo yok. Canonical depends_on Task→prerequisite ve QuestionRequest.task bağları finish gate’e okunur. [Yeni payload/sınır](../quality/workflow-ui-runtime.md).

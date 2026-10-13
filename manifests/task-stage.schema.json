@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TaskStage local audit payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "task_version",
+    "stage",
+    "revision",
+    "reason",
+    "key",
+    "request_digest",
+    "contract_version",
+    "recorded_at",
+    "format",
+    "completion_basis"
+  ],
+  "properties": {
+    "task": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "task_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "stage": {
+      "enum": [
+        "Backlog",
+        "To Do",
+        "In Progress",
+        "In Review",
+        "Awaiting Verification",
+        "Done"
+      ]
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "request_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "contract_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "recorded_at": {
+      "type": "number"
+    },
+    "format": {
+      "const": "decivora-task-stage-1"
+    },
+    "completion_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

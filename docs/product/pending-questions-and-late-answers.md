@@ -92,3 +92,8 @@ Geç cevap aynı soru/seçenek sürümüne bağlanır ve authority/freshness yen
 ## Güncel kod sınırı — 2026-10-13
 
 [Manuel runtime](../quality/pending-question-runtime.md): izinli UI sorusu/seçenek snapshot ve exact revision yanıtı kalıcı audit history içinde tutulur. Open/Answered ve Selected/Stale/Unmatched/Conflict/Duplicate ayrı; kaynak manual_ui, assistant transcript veya host authority değildir. [Canonical Decision/Approval bağı](../quality/question-decision-runtime.md) manuel profil için uygulandı; [iptal/erteleme/yeni sürüm ve orphan yeniden eşleme](../quality/question-lifecycle-runtime.md) manuel profil için uygulandı. Agent proposal/capture ve tam ASK/LATE kabulü açık. Ana T13 veya T13e bu kısmi dilimle Done değildir.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Current UI](../quality/workflow-ui-runtime.md): manual question-task binding açık soru/Deferred için yalnız completion gate oluşturur; bağımsız hazırlık ve başka proje taskları kilitlenmez. Q14/semantic source matching ve native agent resume işi aynı şekilde açık.

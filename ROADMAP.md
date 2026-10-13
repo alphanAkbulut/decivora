@@ -107,3 +107,8 @@ P1'de tenant/agent kimliği, dar izin, kalıcı audit ve retention/recovery teme
 
 
 **Restore sırası açıklaması:** P1a T07c çekirdek DB+payload restore’u üretir, T15/T15a sınar; şemadaki P1b restore etiketi T23’ün kapsamlı migration/privacy/export ve operasyon devamıdır. Teknik kalite kapısı P1b’yi beklemez. Mevcut Mermaid/SVG kaynağı değişmedi.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Workflow/UX yönü](docs/architecture/adr/0013-task-workflow-and-familiar-ui.md)14Ekim2026 onaylı; yerel human-review dilimi P1a/P1b, native verifier/model gates açık. Full workflow configurator/sync P2+, yeni paralel ürün/faz yok.

@@ -1,12 +1,12 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 21 belgede42 Mermaid şeması — çalışan local preview +AC akışı eklendi, 2026-10-13; önceki41 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 22 belgede 43 Mermaid şeması — onaylı workflow ve insan incelemesi akışı, 2026-10-14.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
 **2026-10-13 Blocker UI:** local-preview1 human block/resolve→append-only audit→board/start gate ile güncellendi;42/21sayımı aynı. Cached Mermaid gerçek render + SVG XML/source hash kaydı; önceki proof superseded history’de korundu.
 
-## Güncel inventory — 2026-10-13
+## Güncel inventory — 2026-10-14
 
 <!-- diagram-inventory:start -->
 | Belge | Mermaid sayısı |
@@ -18,20 +18,21 @@
 | [docs/architecture/diagrams.md](../../docs/architecture/diagrams.md) | 13 |
 | [docs/architecture/execution-and-integrations.md](../../docs/architecture/execution-and-integrations.md) | 3 |
 | [docs/architecture/identity-access.md](../../docs/architecture/identity-access.md) | 1 |
+| [docs/architecture/local-preview.md](../../docs/architecture/local-preview.md) | 1 |
 | [docs/architecture/logging-audit.md](../../docs/architecture/logging-audit.md) | 1 |
 | [docs/architecture/overview.md](../../docs/architecture/overview.md) | 1 |
+| [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
 | [docs/architecture/storage-memory-capacity.md](../../docs/architecture/storage-memory-capacity.md) | 1 |
+| [docs/architecture/task-lifecycle.md](../../docs/architecture/task-lifecycle.md) | 1 |
 | [docs/delivery/team-data-plan.md](../../docs/delivery/team-data-plan.md) | 1 |
+| [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
 | [docs/product/decision-map.md](../../docs/product/decision-map.md) | 2 |
 | [docs/product/graph-experience.md](../../docs/product/graph-experience.md) | 2 |
 | [docs/product/intent-to-reality-gap.md](../../docs/product/intent-to-reality-gap.md) | 2 |
-| [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
-| [docs/quality/membership-002-result.md](membership-002-result.md) | 1 |
-| [docs/quality/receiver-contract.md](receiver-contract.md) | 1 |
-| [docs/quality/project-review.md](project-review.md) | 1 |
-| [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
-| [docs/architecture/task-lifecycle.md](../../docs/architecture/task-lifecycle.md) | 1 |
-| [docs/architecture/local-preview.md](../../docs/architecture/local-preview.md) | 1 |
+| [docs/quality/membership-002-result.md](../../docs/quality/membership-002-result.md) | 1 |
+| [docs/quality/project-review.md](../../docs/quality/project-review.md) | 1 |
+| [docs/quality/receiver-contract.md](../../docs/quality/receiver-contract.md) | 1 |
+| [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -158,3 +159,7 @@ Bir yeni [lifecycle](../architecture/task-lifecycle.md) ve2changed [review](../a
 ## Çalışan yerel arayüz — 2026-10-13
 
 Bir yeni [local preview](../architecture/local-preview.md) kaynağı cached11.17.2 ile dış ağ kapalı render edildi; XML/sourcehash/title/desc kontrol edildi. Önceki41 kaynak aynı. Gerçek UI create/approve/start/reload testi Mermaid render'ından ayrı [local preview kanıtındadır](local-preview.md).42source/21belge; full ürün UI/pilot kabulü değildir.
+
+## 2026-10-14 — onaylı workflow ve UI
+
+43 kaynak / 22 belge envanteri karşılaştırıldı. Değişen local-preview ve yeni workflow-ui-runtime gerçek cached Mermaid render, SVG XML ve kaynak/artefakt hash ile doğrulandı. Önceki değişmeyen kaynakların hash/provenance kayıtları korunur; hepsi yeniden render edilmiş sayılmaz. README, roadmap, karar haritası ve ER/sequence kaynaklarının vizyon sınırları korunur; fiziksel SQL değişmedi. Otomatik verifier/native erişim ileriki iş olarak kalır.

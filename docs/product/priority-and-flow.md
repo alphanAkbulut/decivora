@@ -129,3 +129,8 @@ Kullanıcı dört sütunun nihai sınır olmamasını ve blocker görünürlüğ
 **Uygulanan yaklaşım:** ilerleme statüsü ile impediment ayrı eksendir. Örneğin In Progress + Blocked, işin başladığını fakat şimdi engellendiğini korur. Üst Blockers listesi ve kırmızı kart işareti; gerekçe, çözüm adımı, açık insan çözümü ve kalıcı geçmiş. “Blocker” engeli/engelleyen işi, “Blocked” engellenen görevi anlatır; yüksek öncelik tek başına blocked değildir. Yanıt/model/verifier bekleme otomatik olarak aynı durum sayılmaz. Bugünkü manual slice otomatik graph değerlendirmesi değil; graph/core T11c mevcut, UI entegrasyonu T20e/T24d açık. Engeli çözen görev otomatik olarak blocked sayılmaz ve dependency plan sırası kanıt yerine geçmez.
 
 Gelecek workflow için In Review / Awaiting Verification / On Hold gibi durumlar ilgili gerçek işlemler ve geçiş/AC kurallarıyla eklenecek; yalnız sütun çoğaltıp doğrulayıcı varmış gibi göstermeyeceğiz. Cancelled başarı değildir; Done kanıt/AC gate'i korunur. Kullanıcıya özel workflow configurator/kanban mapping henüz uygulandı sayılmaz. Yeni main task veya approval scope eklenmedi.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md) kabul edildi. Local UI altı ana stage + ayrı Cancelled filtre, Blocks/Blocked by, manual start/finish/both gate ve linked soru finish engeli sunar. Recorded dependency assessment UI’ya bağlandı; exhaustive semantic capture/PO priority otomasyonu değil. Daha önceki “otomatik graph UI yok” ifadesi semantic/source-aware tam kapsam için geçerlidir; kayıtlı ilişkiler dilimi artık vardır.

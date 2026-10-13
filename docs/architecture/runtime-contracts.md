@@ -109,3 +109,8 @@ Bu gereksinimlerin uygulanma sırası [backlog ek sözleşmelerinde](../delivery
 ## Uygulama notu — T13a local review
 
 [ReviewService](review-runtime.md) current manual T13a dilimini uygular: group dependencies ve subset digest, ayrı owner approval, source/knowledge/authz/policy recheck, atomic command+review audit. Genel Workspace.apply review token ile bu guard'ı atlayamaz. T13b/c/e ve T14 açık; tüm yukarıdaki proposed sözleşmeler uygulanmış sayılmaz.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[TaskStage](../../manifests/task-stage.schema.json) ve [criterion evidence](../../manifests/criterion-evidence.schema.json) versioned local audit payloadları; schema/SQLformat1 değişmez. [Workflow kodu/sınırlar](../quality/workflow-ui-runtime.md). Stage/verification/approval/job state birbirinden ayrıdır.

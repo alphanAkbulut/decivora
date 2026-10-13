@@ -13,11 +13,12 @@ class TaskBlockerService:
             if value['task']==task:rows.append(dict(sequence=seq,actor=actor,**value))
         return dict(revision=len(rows),blocked=bool(rows and rows[-1]['blocked']),current=rows[-1] if rows else None,history=rows)
     def view(self,scope,project,task):
-        with self.core.transaction():
+        with self.core.read_snapshot():
             self.core.scope(scope,project);self.core.active(scope,project)
             return self._view(project,identifier(task))
-    def set(self,scope,project,*,task,task_version,base_revision,blocked,reason,next_action):
+    def set(self,scope,project,*,task,task_version,base_revision,blocked,reason,next_action,gate="both",waiting_kind="manual",owner="unassigned"):
         with self.core.transaction():
+            if gate not in ('start','finish','both') or waiting_kind not in ('manual','decision','approval','input','permission','budget','retry') or type(owner) is not str or not owner.strip() or len(owner)>128:raise ContractError('invalid_blocker','Invalid blocker gate, reason class or owner label.')
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);identifier(task)
             if type(task_version) is not int or task_version<1 or type(base_revision) is not int or base_revision<0 or type(blocked) is not bool:raise ContractError('invalid_blocker','Typed blocker revision and state required.')
             for value in (reason,next_action):
@@ -30,6 +31,6 @@ class TaskBlockerService:
             if view['revision']!=base_revision:raise ContractError('stale_blocker','Blocker changed; refresh before applying.')
             if view['blocked']==blocked:raise ContractError('blocker_unchanged','Choose the opposite state; prior history remains unchanged.')
             if self.core.db.execute("SELECT COUNT(*) FROM audit WHERE workspace=? AND project=? AND action='task_blocker'",(self.core.workspace,project)).fetchone()[0]>=512:raise ContractError('blocker_history_limit','Local impediment history limit reached; prior records remain intact.')
-            value=dict(task=task,task_version=task_version,revision=base_revision+1,blocked=blocked,reason=reason.strip(),next_action=next_action.strip(),recorded_at=time.time(),origin='manual_human')
+            value=dict(task=task,task_version=task_version,revision=base_revision+1,blocked=blocked,reason=reason.strip(),next_action=next_action.strip(),recorded_at=time.time(),origin='manual_human',gate=gate,waiting_kind=waiting_kind,owner=owner)
             self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,'task_blocker',canonical(value)))
             return self._view(project,task)

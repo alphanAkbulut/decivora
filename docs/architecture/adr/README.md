@@ -23,3 +23,8 @@ ADR-0012, Q15-A ile ilk runtime/koşullu build için kabul edildi; diğer ADR'le
 0011, 0005/0008/0010'u tamamlar; mevcut event/kimlik/impact ilkelerini iptal etmez. [Güncel tasarım revizyonu](../../product/current-direction.md) ilk yatırım odağını belirtir; Q15-A/ADR-0012 koşullu ilk build/runtime kabulüdür; diğer mimari ayrıntıların statüleri ve native/ROI kapıları korunur. Genel mimariyi komple tekrar sürüm kopyasına dönüştürmeyin.
 
 - [ADR-0012 — Koşullu yerel MVP çekirdeği ve Python runtime](0012-conditional-python-runtime.md): accepted Q15-A; T01/T02/T03 kalite/ROI kapıları açık.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[ADR-0013](0013-task-workflow-and-familiar-ui.md): accepted task workflow ve tanıdık UI; physical schema1 korunur, local human verifier ile native/automatic doğrulama sınırı ayrıdır.

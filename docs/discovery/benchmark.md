@@ -60,3 +60,8 @@ Fixture görevleri: yeni fikir, duplicate, geri çekilen öneri, forgotten appro
 [T03e araştırması](ecosystem-research.md) WrongStack dışında 10 ek adayı sabit commit/root lisansla tarar: Graphiti, Mem0, Cognee, Letta, LangGraph, Temporal, OpenFGA, Cedar, LiteLLM, Langfuse. Beşinde seçili kaynak/test tanımı okundu; **S = statik seçili source incelemesi**, D/V/U/O ayrımına ek kanıt düzeyidir, V değildir. [Kayıt](ecosystem-candidates.json) scope/okunan yolları tutar. Önceki tarihteki benchmark sonuçları yeniden yazılmaz.
 
 Graphiti temporal invalidation, LangGraph durable interrupt/resume ve LiteLLM budget reservation için yeni karşı kanıt var; bu bileşenleri tek başına özgün saymayız. Product baseline ile component test ayrı; runtime, tasarruf ve üstünlük not_run. Üç öncelikli derin inceleme adayını lisans/contract/aynı oracle kapısına bağladık; yeni mimari/dependency kararı yok.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+Jira/Linear/ClickUp/Asana workflow ve UI örüntüleri [odaklı benchmark](workflow-status-benchmark.md) içinde; genel layout uyarlanır, vendor code/assets alınmaz. Kullanıcı onayı14Ekim2026; runtime karşılaştırma üstünlüğü iddiası yok.

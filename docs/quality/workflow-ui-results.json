@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-14",
+  "status": "passed_local_scope",
+  "runtime_tests": 258,
+  "tracker_tests": 46,
+  "browser": {
+    "isolated_fixture": true,
+    "workflow": true,
+    "required_criteria_gate": true,
+    "separate_scope_review": true,
+    "question_answer_approval_application": true,
+    "completion_basis_recheck": true,
+    "board_list_search": true,
+    "history_reload": true,
+    "escape_close": true,
+    "locales": 5,
+    "rtl": true,
+    "mobile_overflow": false,
+    "draft_preservation": true,
+    "selection_preservation": true,
+    "storage_fallback": true,
+    "locale_commands": 0,
+    "external_model_calls": 0
+  },
+  "diagrams": {
+    "source_blocks": 43,
+    "documents": 22,
+    "changed_blocks_rendered": 2,
+    "unchanged_hashes_preserved": true
+  },
+  "schemas": {
+    "real_event_fields_and_enums_checked": true,
+    "full_json_schema_validator": "not_installed"
+  },
+  "paid_model_calls": 0,
+  "automatic_runner": "not_configured",
+  "semantic_quality": "not_run",
+  "production_release": false,
+  "source_sha256": {
+    "packages/domain/task_workflow.py": "085415867ee1b64e82952391afd78e6c819d2339cac7864a8d2ee21940854027",
+    "packages/domain/acceptance.py": "e346f2e375e9d128da578cb8ff50519f1109b06edf421029c85137f9feb95fa5",
+    "packages/domain/task_blockers.py": "8fee3103ec58aeb2a0d03489eed603e5f15f89b94cdd39cffe47ba4da0bcf8f7",
+    "packages/domain/task_lifecycle.py": "b007e2772722b0a3b7a57870ccc2586894a4f9e347239436db647f48420c3a31",
+    "apps/local_ui/server.py": "bc3d55fc0c7384a3ddfd446f136a09de3a5f9a9106448467b016411a5926eb95",
+    "apps/local_ui/app.js": "3901634c5b5fcab18f2b7c9fed6df9f38284e771f662f634d3ab65013e28e999",
+    "apps/local_ui/index.html": "bbed49b9757be2118c6ff18ec90e81fd7a709994eeff0dde64b9c13e915f3492",
+    "apps/local_ui/workspace.css": "21a8fc6d8ee99c744511287e58e9bad48a3ae0cfb36afcef5a1858c96c3d251b",
+    "apps/local_ui/locales.js": "54f2059ae8630eb40076a8c5a867a6cba5c56906a06f870fb704a4aa538e91be",
+    "manifests/task-stage.schema.json": "ef2aaaf46d3799418cc1ed0a2b5b0e46f542c95f3ab0004cda3f475711cb9b84",
+    "manifests/criterion-evidence.schema.json": "450a88e496bfd4a3f56ccb7d03d9f2a43d19595af7065a7917477e1d601db105",
+    "tests/runtime/test_task_workflow.py": "5c1e65293a1f89201e800830af79b7a01c6de7b511a057d8525b090f8ed22c1a",
+    "tests/runtime/test_local_app.py": "bfa71775111b100dd160c0bac4c727861b07e647dc8637c3a418527a55022204",
+    "tests/ui-workflow.cjs": "7a2ea39632d1a84fa72ef9c8fff2fd37dab23c21e67d674c9c00bd5d697ea9e3",
+    "tests/ui-localization.cjs": "0145eae28ab2789c33041c9d81dbe4c2a875dd0d27b996353c7b8deac5f6b5da"
+  },
+  "package": {
+    "artifact": "Decivora-local-workflow.zip",
+    "files": 35,
+    "sha256": "d03945ada46cafd3fbd9aac1fd030fcbfb201857e12053bedaec8eeb36f0708b",
+    "contains_user_data": false
+  },
+  "initial_sandbox_socket_test_failure": "Local socket denied; rerun with localhost permission passed. Not a product runtime defect."
+}

@@ -254,3 +254,8 @@ Somut soru: Bu exactpaketi ayrı yeni GPT-6 Luna/Low sohbetinde tek gönderim/0r
 **2026-10-13 · Q15-A kabul edildi.** Kullanıcı “onay bekleyen iş varsa senin. önerin ne ise o öneri ile ilerleyelım…” yanıtını verdi; [exact onay kaydı](../quality/reviews/q15-build-approval.json), [ADR-0012](../architecture/adr/0012-conditional-python-runtime.md). Kullanıcı ana To Do işlerinin neden sabit kaldığını sorup ilerleme istedi. [Somut öneri](build-transition-proposal.md): A Python3.12/stdlib SQLite yerel MVP çekirdeği build'i; T04 başlangıcını koşullu owner kararı + runtime ADR kabulüne bağla, T01/T02/T03 ölçüm ve tüm MVP release kapıları açık kalsın. B mevcut T03 kapanışını bekleme düzenini koru. Genel önceki “devam” yeni stack/dependency kabulü diye kaydedilmedi.
 
 Mevcut durum→tespit→değişiklik→fayda/risk→etkilenen hedefler→doğrulama öneride hazır. Python bundled3.12.14/SQLite3.53.1 version gözlemi ve248 semantik test bu runtime'da passed; T04 clean-start/test/scaffold henüz yok. Model/API/gerçek data/connector/deploy izni istenmiyor. Bu yeni explicit cevapla T03c koşullu yatırım kararı kayıtlandı ve T04 başladı; T01/T02/T03 evidence ve release kapıları kapanmış sayılmaz. Yeni model/API izni yok.
+
+
+## Workflow ve UI onayı — 14 Ekim 2026
+
+Kullanıcı: “onaylıyorum. ancak tüm doküman diagram şema ve githubdakileri de kontrol et; gerekiyorsa güncelle”. Önceki benchmark + dört teslim ve tanıdık UI önerisi kabul edildi; [DEC-22/ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md). Model harcaması/newaccount/public/gerçek veri dış transfer kapsam dışında. Alternatif ve gerekçeler [benchmark](../discovery/workflow-status-benchmark.md) içinde korunur.

@@ -1,21 +1,26 @@
 # Mevcut durum
 
-2026-10-13 — **P1a çekirdek geliştirme + açık P0 kanıt işleri**.
+2026-10-14 — **P1a çekirdek geliştirme + açık P0 kanıt işleri**.
 
 | Alan | Durum |
 |---|---|
 | Kaynak konuşma derlemesi, vizyon/MVP/karar haritası | Bu dokümantasyon paketinde hazırlanmış |
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
-| Ürün MVP / adapter / dashboard | Yerel sentetik/manual runtime: T04/T05/T06/T07/T08/T11/T12 DONE;185runtime test; local app+AC contract, diğer core demos. T09/T10 kalite ve ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
+| Ürün MVP / adapter / dashboard | Yerel sentetik/manual runtime: T04/T05/T06/T07/T08/T11/T12 DONE; local workflow/human verification dahil güncel runtime testi; local app+AC contract, diğer core demos. T09/T10 kalite ve ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
 | Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-002](../quality/membership-002-result.md): tek v2 output, dört draft aday/source/type geçti; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T04/T05/T06/T07/T08/T11/T12 DONE; T01/T02/T03/T09/T10/T13/T19/T20/T22 IN_PROGRESS; diğer14 TODO.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T04/T05/T06/T07/T08/T11/T12 DONE; T01/T02/T03/T09/T10/T13/T14/T19/T20/T22 IN_PROGRESS; diğer13 TODO.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-14 — Onaylı workflow ve familiar UI
+
+- [Teslim](../quality/workflow-ui-runtime.md):6stage + Closed filter, current lifecycle projection, dependency/question/manual start-finish assessment, human criterion evidence + guarded Done; Board/List/search/filter/end panel. Kullanıcı14Ekim2026 onayı DEC-22/ADR-0013. Ana7Done/10InProgress/13ToDo; T14 başladı, parent kapanmadı. Paid API0; automatic/target/native/semantic kabul açık.
+
 
 ### 2026-10-13 — Görünür Blocked / çözüm akışı
 

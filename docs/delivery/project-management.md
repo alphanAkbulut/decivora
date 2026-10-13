@@ -118,3 +118,8 @@ MVP için deterministik blocker/dependency ve basit board; P2 için context-awar
 ## Yatırım ve sürüm kontrolü
 
 Önce sonuç sorusu sabitlenir; sınırlı deney yapılabiliyorsa prototip yöntemi seçilir, uygulama yetkisi içinde deney çalıştırılır, sonra bağımsız ürün yatırımı değerlendirilir. Claude Projects release'i tek başına iptal gerekçesi veya bizim üstünlük kanıtımız değildir. [Güncel yön](../product/current-direction.md) karar seçeneklerini; [versioning](../governance/versioning.md) tek canonical doküman setini tanımlar. Repo bugün dokümantasyon; bütçe/takvim taahhüdü yok.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md) durum sözlüğü ilerleme, impediment, approval, verification ve resolution’u ayırır. Bu değişim bütün vendor statülerini/Scrum rollerini kopyalamaz; current proof ve küçük teslim kuralı korunur.

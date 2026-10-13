@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 9 |
-| TODO | 14 |
+| IN_PROGRESS | 10 |
+| TODO | 13 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -148,6 +148,18 @@ Son ilerleme kaydı yok.
 
 Sıradaki adım: T13e ASK/LATE kapsam eşlemesini ve agent-question routing sınırını doğrula; ardından T14 evidence/Done.
 
+### T14 · Evidence ve false-done düzeltmesi
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 ### T19 · Proje seçimi ve Review Inbox UI
 
 Son ilerleme kaydı yok.
@@ -263,7 +275,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T11 | P1a | DONE | Tipli gerekçe graph | T10 | 2 |
 | T12 | P1a | DONE | Impact preview ve apply planı | T11 | 1 |
 | T13 | P1a | IN_PROGRESS | Review işlemi ve güvenilir onay | T12 | 5 |
-| T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 | 4 |
+| T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 | 4 |
 | T15 | P1a | TODO | Teknik kanıt kapısı | T14, T07c | 1 |
 | T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
 | T17 | P1b | TODO | Codex adapter | T16 | 0 |
@@ -289,4 +301,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `4db39e3c139e64730b4b0b98ddbcba92cad4553a1a0bd08e8d8b79d699db9018`
+Kaynak fingerprint: `7fff1e5f0ba02f167814eff4510f86f91ccdd55da8f531f1b21b20794ca22e14`

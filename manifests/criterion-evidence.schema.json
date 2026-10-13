@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Current human-review criterion evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "task_version",
+    "contract_version",
+    "criterion",
+    "status",
+    "reference",
+    "note",
+    "key",
+    "request_digest",
+    "recorded_at",
+    "authority",
+    "format"
+  ],
+  "properties": {
+    "task": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "task_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contract_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "criterion": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "pending",
+        "not_run",
+        "unknown"
+      ]
+    },
+    "reference": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "request_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "recorded_at": {
+      "type": "number"
+    },
+    "authority": {
+      "const": "local_human_review"
+    },
+    "format": {
+      "const": "decivora-criterion-evidence-1"
+    }
+  }
+}

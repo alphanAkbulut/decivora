@@ -2,7 +2,7 @@
 
 2026-10-13 — **uygulama sırası**, yeni görev listesi veya altı ayrı program değildir. Mevcut Python 3.12/SQLite çekirdeği ve yerel web arayüzü büyütülecek. Tam vizyon korunur; paketler MVP teslimini yönetir. [Backlog](backlog.md) görev otoritesidir; paket adı yeni task sayılmaz.
 
-Bugün 7 ana iş Done, 9 In Progress, 14 To Do. To Do'nun **8'i MVP (T14–T18, T21,T23,T24), 6'sı sonraki fazlar (T25–T30)**. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
+Bugün 7 ana iş Done, 10 In Progress, 13 To Do. To Do'nun **7'si MVP (T15–T18, T21,T23,T24), 6'sı sonraki fazlar (T25–T30)**. T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
 
 | Paket | Kod işi / mevcut görevler | Mevcut kodu güncelleme ve yeni modül | Kullanıcının göreceği teslim | Paket kabulü |
 |---|---|---|---|---|
@@ -32,3 +32,8 @@ Her teslimde kod, ilgili davranış testleri, güncel status/backlog, gerekiyors
 Paket 1'in yerel deterministik geliştirmesi API bakiyesine bağlı değil. Paket 2'nin gerçek semantik doğrulaması için yeni model çalıştırma yetkisi gerekecek; bugün ücretli API yetkisi/bakiye varsayılmaz. Paket 3 gerçek host erişimi/izinine, paket 4 ilgili istemcinin MCP desteğine bağlı. Bu dış bağımlılıklar güvenli yerel kod hazırlığını durdurmaz; fixture testi gerçek entegrasyon kabulü sayılmaz.
 
 T25–T30 ekip/cloud, ileri bağlam, gelişmiş adapter/dil ve sonraki büyüme işleridir; ilk kullanılabilir MVP'ye hepsini yüklemeyiz. Kabul kapıları ve tam vizyon silinmez. Takvim, doğruluk ve maliyet garantisi verilmez; her paketin sonucu çalışan davranış ve kalan engelle raporlanır.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+14Ekim2026 kullanıcı workflow/UX önceliğini onayladı: [yerel teslim](../quality/workflow-ui-runtime.md) mevcut T13/T14/T19/T20 kapsamında. Otomatik capture/real semantic model ve hedef verifier kapıları ayrı; altı paket planı silinmedi.

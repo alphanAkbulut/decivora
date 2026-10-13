@@ -39,6 +39,9 @@ def guard(core,project,operations,bound):
         row=core.db.execute('SELECT version,body FROM records WHERE workspace=? AND project=? AND id=?',(core.workspace,project,op['id'])).fetchone()
         if row is None or row[0]!=op['base_version']:raise ContractError('stale_record','Task version changed.')
         transition(json.loads(row[1]),op)
+        if op['state']=='cancelled':
+            from packages.domain.task_workflow import TaskWorkflowService
+            if TaskWorkflowService(core)._stage(project,op['id'])['stage']=='Done':raise ContractError('lifecycle_review','Verified current completion must not be relabeled as cancellation.')
         proposal=proposals.get(op['id'])
         if op['impact_run']!=packet['impact_run'] or proposal is None or proposal['record_version']!=op['base_version'] or proposal['preserve_historical_completion']:
             raise ContractError('invalid_lifecycle','Task transition is not bound to its current impact proposal.')

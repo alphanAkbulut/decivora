@@ -87,3 +87,8 @@ MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verifi
 
 
 **Güncel kaynak düzeltmesi:** [ANCHOR-ADAPTER-01](../quality/source-anchor-adapter.md) önceki offline adapter önerisini kodla tamamladı. Tarihsel deneme sonuçları korunur; quote-only v1/v2 artık gerçek modelde çalıştı; son ölçüm MEMBERSHIP-003, genel kalite kapısı açık. API yöntem önerisi harcama izni değildir.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Workflow/UI gerçek dilimi](../quality/workflow-ui-runtime.md): T14 IP; human criterion evidence/completion, stage projection, recorded dependency assessment ve end-panel vardır. Automatic runner/artifact binding/native capture/full parent completion/semantic gold açık; hiçbir parent Done ilan edilmedi.

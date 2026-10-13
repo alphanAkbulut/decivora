@@ -90,3 +90,8 @@ Başarısız test kapsamı daraltılarak saklanmaz. P1a raporu ürün doğruluğ
 [Teknik değerlendirme protokolü](evaluation-protocol.md) bağımsız oracle/scorer, typed-domain ile chat extraction ayrımı, exact target/authority binding ve telemetry/payda contract'ını tanımlar. [CHAIN-01 örneği](../../examples/decision-impact-evaluation-case.json) human selection→impact proposal→reported/old/current target→replay için yedi checkpoint ve dört negatif varyant planlar. Bu ilk taslak positive verified, tam AND/OR truth suite veya holdout corpus yerine geçmez; result_status not_run.
 
 Critical scorer error/missing score release gate'i incomplete yapar; sessiz pass/başarı yüzdesi yok. T01f case/rubric, T03f minimal harness tasarımı ve T24q katman/uçtan uca raporu üzerinden ilerle. Source/test tanımı okuması veya fixture şema kontrolü CHAIN-01/ER-T testleri geçti demek değildir.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Workflow/UI kanıtı](workflow-ui-runtime.md) partial criterion, evidence staleness, start/finish, dependency direction, old start→cancel→reopen, agent/retry, replay/restore ve keyboard/mobile/view regression ekler. Bu testler full V/GAP/ASK/LATE/14MVP AC oracle veya real provider testi değildir.

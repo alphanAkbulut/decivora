@@ -10,7 +10,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 | T05g / T05 | DONE / P1a: kalıcı project/binding snapshot store | Restart/idempotency/rollback/two-connection stale/foreign-scope ret; [11 test](../quality/project-store.md). Authz lifecycle/source receipt/backup açık |
 | T05f / T05 | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo | Aynı ad farklı ID, çapraz scope read/write ret, revision-bound tarihçe, belirsizde mutation yok; [11 test](../quality/project-binding-core.md). Kalıcı store/auth/ingress tamamlanmadı |
 | T11c / T11 | DONE / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
-| T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş |
+| T20e / T11c,T13,T20 | IN_PROGRESS / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş |
 | T24d / T20e,T24 | TODO / P1b: sentetik oracle ve owner pilotu | FLOW-01–15; 40+ sentetik task; zorunlu sette yanlış ready/yetkisiz mutation 0; bekleme, next-action seçimi ve uyarı yükü baseline |
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
@@ -281,12 +281,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T14 — Evidence ve false-done düzeltmesi
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T13. **Kapsam ID:** VER-01,VER-02.
+- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T13. **Kapsam ID:** VER-01,VER-02.
 - **İş:** AC/artifact revision-bound evidence, claim ve verification state ekle.
 - **Kabul:** Agent done sözü verified olmaz; failed test yeni event ile reopen eder.
 - **Doğrulama:** AC-04/08; eski commit kanıtı ve partial AC.
 - **Beklenen dosya alanı:** `packages/verification/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Son ilerleme:**14Ekim2026 · [Yerel human-verifier + workflow](../quality/workflow-ui-runtime.md): current criterion evidence, completion guard ve yeni UI. Automatic runner/target artifact/parent/policy tüm kabulü açık; T14 Done değil.
 
 ## T15 — Teknik kanıt kapısı
 
@@ -498,7 +500,7 @@ T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatc
 | Alt dilim / bağımlılık | Teslim | Kabul |
 |---|---|---|
 | T13c / T08,T13 | DONE — İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi | [9test+local app](../quality/local-preview.md): diff acknowledgment, start guard, history/restore; sessiz kriter düşürme yok |
-| T14b / T13c,T14 | AC/DoD→evidence matrisi ve current completion predicate | CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir |
+| T14b / T13c,T14 | IN_PROGRESS: AC/DoD→evidence matrisi ve current completion predicate | CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir |
 | T20c / T07,T14b,T20b | Ana task context snapshot, evrim sekmesi, template ve seçilen export yolu | CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen |
 
 T20c ilk sürümde deterministik kaynaklı şablondur; modelle anlatı güzelleştirme opsiyonel ve bütçeli kalır. Otomatik Markdown Q06'ya bağlıdır; kullanıcı reposuna otomatik commit/push yetkisi çıkarılmaz.

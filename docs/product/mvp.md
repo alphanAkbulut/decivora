@@ -51,3 +51,8 @@ P1b: Tek kullanıcının yerel uygulamada birden fazla projeyi takip edebildiği
 Tüm web sohbetlerine pasif erişim; gelişmiş embedding retrieval; derin code graph; IDE panelinin her host'a gömülmesi; otomatik model optimizasyonu; ücret/maliyet dashboard'u; çift yönlü Jira/Linear senkronizasyonu; takım/organization/cloud sync; enterprise audit ve managed orchestration sonraki fazlardır. [Tam kapsam](full-scope.md) bu fikirlerin kaybolmamasını sağlar.
 
 Takvim taahhüdü yoktur. Çıkış kriteri [doğrulama planı](../quality/verification.md) ve [ölçüm kapılarıdır](../quality/measurement.md).
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Yerel UI workflow](../quality/workflow-ui-runtime.md) AC-04/08/12 için manuel human-review dilimini sağlar;14MVP kriterinin native/semantic/target/parent kabulü tamamlanmış değildir. Phase2 configurable workflows ve dış senkronizasyon kapsam dışı/MVP dışında kalır.

@@ -64,7 +64,7 @@ Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtil
 | T11 | P1a | DONE | Tipli gerekçe graph | T10 |
 | T12 | P1a | DONE | Impact preview ve apply planı | T11 |
 | T13 | P1a | IN_PROGRESS | Review işlemi ve güvenilir onay | T12 |
-| T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 |
+| T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 |
 | T15 | P1a | TODO | Teknik kanıt kapısı | T14,T07c |
 
 T07c erken minimal DB+payload restore teslimidir; T15a bunu teknik kapıda sınar; T23a kapsamlı operasyon/migration/privacy restore devamıdır.

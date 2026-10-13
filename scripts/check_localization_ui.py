@@ -13,6 +13,6 @@ def main():
         config=Path(directory)/'session.json'
         config.write_text(json.dumps(dict(origin=server.origin,bootstrap=server.app.bootstrap)));config.chmod(0o600)
         env=dict(os.environ,DECIVORA_UI_TEST_CONFIG=str(config),DECIVORA_SCREENSHOT_DIR=os.environ.get('DECIVORA_SCREENSHOT_DIR',directory))
-        try:return subprocess.run([env.get('DECIVORA_NODE','node'),str(ROOT/'tests/ui-localization.cjs')],env=env).returncode
+        try:return subprocess.run([env.get('DECIVORA_NODE','node'),str(ROOT/env.get('DECIVORA_UI_TEST_SCRIPT','tests/ui-localization.cjs'))],env=env).returncode
         finally:server.shutdown();server.server_close();thread.join()
 if __name__=='__main__':raise SystemExit(main())

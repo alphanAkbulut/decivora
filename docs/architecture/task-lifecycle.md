@@ -42,3 +42,8 @@ flowchart TB
 ## Açık sınırlar
 
 Force-cancel/override ve aktif gereksinimi başka işe aktarma politikası bu dilimde yoktur; desteklenmeyen durumda ret/review korunur. Facts/rationale manual hypothetical input'tur; gerçek semantik doğruluk T09/T10 ve ürün pilotunda ölçülecek. UI strike-through/icon, AC/DoD, QuestionRequest ve completion evidence uygulanmış sayılmaz. Aynı Task'ın metadata update'i ile lifecycle'ı ayrı revision isteyen aynı plan'a koymak stale/version conflict olarak tümüyle geri alınabilir; bu çekirdek tek Task için aynı command'da tek transition hedefler. Aynı command ayrıca rationale referansının record revision'ını değiştirecekse lifecycle guard ret verir; önce gerekçe değişimi uygulanır ve yeni current impact hazırlanır. Prospective rationale revision'larını birlikte değerlendiren advanced atomic decision+impact yolu bu manual dilimde yoktur. Tek güncel plan/revision hazırlanır, kalite kapısı gevşetilmez.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Workflow projection](../quality/workflow-ui-runtime.md) lifecycle sonrasındaki stage’leri okur: eski start, cancelled→todo sonrasında yeniden kullanılmaz. Current verified Done cancellation guard’ı geçemez; geçmiş başarı silinmez. Lifecycle enum todo/cancelled ile workflow stage ayrı, metadata update stage event’i değildir.

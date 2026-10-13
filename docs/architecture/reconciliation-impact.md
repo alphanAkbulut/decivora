@@ -68,3 +68,8 @@ Geliştirilen çıktı yeni karar altında yanlış olabilir; geçmiş olay ile 
 [GAP sözleşmesinde](../product/intent-to-reality-gap.md) yeni upload report veya artifact observation ENG-03'te doğru task/proposal/target/revision ile eşleştirilir. Metinsel benzerlik human adoption veya exact target eşleşmesi sağlamaz. Yeni karar kabulünde ApplicationExpectation/ApplicationAssessment current uygunluğu da IMP-02/VER-02 kapsamında değerlendirilir; eski artifact uygulanmış olsa bile yeni planın uygulanması sayılmaz.
 
 Karar current, uygulama unknown veya impact pending olduğunda context bunları ayrı taşır. Bilinen gerekli ön koşul unknown ise ilgili iş ready olmaz; bu belirsizlik bağımsız işleri kapatmaz. Source/event tarihçesi, AND/OR ve historical completion korunur; hedef değişimi bütün task'ları otomatik obsolete yapmaz.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Workflow/verification UI](../quality/workflow-ui-runtime.md): candidate review canonical stage transition veya completion değildir. Obsolete candidate ayrı current impact+approval olmadan Cancelled üretmez; human verification recorded scope assessment’ıyla sınırlıdır.

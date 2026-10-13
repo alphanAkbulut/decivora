@@ -84,3 +84,8 @@ Bu doldurulmamış şablon sonuç değildir. Ölçülen sıfır `0`, ölçülmey
 [Ekosistem taraması](ecosystem-research.md) kaynakla destekli üç yeni örtüşmeyi kaydeder: Graphiti fact validity/supersession; LangGraph persistent wait/resume; LiteLLM çağrı öncesi rezervasyon/uzlaştırma. Kalıcı hafıza, soru bekleme veya bütçe rezervasyonu tek başına farklılaşma değildir. Domain karar yetkisi, exact uygulama kanıtı ve downstream etki birlikte aynı fixture'da sınanmalı.
 
 Mem0 managed benchmark'ının OSS'den ayrılması, LiteLLM enterprise yolu/premium priority feature ve Langfuse ticari klasörleri adil karşılaştırma/alım için önemlidir. Root lisans okuması tüm dependency/model/feature uygunluğu değildir. 10 root belge/lisans, beş seçili kaynak okuması; bütün repo audit'i ve runtime yok. T03e ilk masa başı çıktısı hazır; derin closure, deney ve owner adoption kararı bekler. Native/config/extension/own seçenekleri korunur.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Workflow/UX benchmark](workflow-status-benchmark.md): küçük preset + bağımsız blocker/approval/evidence/resolution seçildi. Kaynaklar ve screenshot tarih sınırları korunur; dört üründe hesap testi veya performans kıyası yapılmadı.

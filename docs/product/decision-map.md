@@ -30,6 +30,8 @@
 
 | DEC-21 | Accepted conditional build: Q15-A, Python3.12/SQLite ilk çekirdek; T04 başlangıcı T03c/ADR-0012 | [İnsan yanıtı](../quality/reviews/q15-build-approval.json); model/capture/native/ROI/14AC kapıları açık, release başarısı değil |
 
+| DEC-22 | Accepted direction: altı stage preset + ayrı blocker/approval/verification/resolution, familiar UI | 14Ekim2026 kullanıcı workflow/UX paketini ve doküman/schema/diagram/GitHub güncellemesini onayladı. [ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md); native capture/paid API/final MVP onayı değildir |
+
 **Kabul edilen ürün niyetleri:** aşağıdaki oklar düşüncenin gelişimini anlatır; task dependency veya tamamlanma kanıtı değildir. Her DEC'nin ayrı gerekçesi üst tablodadır.
 
 ```mermaid

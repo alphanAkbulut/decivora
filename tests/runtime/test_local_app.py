@@ -93,3 +93,22 @@ class LocalAppTests(unittest.TestCase):
         state=self.call('/api/state')[1];candidate=state['conversation_review']['imports'][0]['candidates'][0]
         self.assertEqual(self.call('/api/command',dict(action='accept_candidates',source_id=result['source']['id'],key='accept',selected=[candidate['id']],base_revision=state['conversation_review']['knowledge_revision']))[0],200)
         task=self.call('/api/state')[1]['tasks'][0];self.assertEqual(task['lane'],'To Do');self.assertFalse(task['acceptance']['completed'])
+
+    def test_dependency_http_approval_retry_and_cycle(self):
+        self.call('/api/command',dict(action='create_task',title='A',description=''))
+        self.call('/api/command',dict(action='create_task',title='B',description=''))
+        state=self.call('/api/state')[1];a,b=[t['id'] for t in state['tasks']]
+        command=dict(action='link_dependency',task=a,target=b,base_revision=state['snapshot'],key='dep1')
+        first=self.call('/api/command',command);self.assertEqual(first[0],200);self.assertEqual(self.call('/api/command',command)[1],first[1])
+        view=self.call('/api/state')[1];by_id={t['id']:t for t in view['tasks']}
+        self.assertEqual(by_id[a]['workflow']['assessment']['dependencies'][0]['id'],b)
+        self.assertIn(a,by_id[b]['workflow']['assessment']['blocks'])
+        cycle=dict(action='link_dependency',task=b,target=a,base_revision=view['snapshot'],key='dep2')
+        self.assertEqual(self.call('/api/command',cycle)[0],409)
+    def test_workflow_http_extra_fields_and_fake_verifier_denied(self):
+        self.call('/api/command',dict(action='create_task',title='A',description=''))
+        task=self.call('/api/state')[1]['tasks'][0]
+        command=dict(action='workflow_transition',task=task['id'],task_version=1,base_revision=0,stage='Done',reason='Agent says done',key='fake',scope_reviewed=True)
+        self.assertEqual(self.call('/api/command',command)[0],409)
+        self.assertEqual(self.call('/api/command',dict(command,project='other'))[0],409)
+        self.assertEqual(self.call('/api/state')[1]['tasks'][0]['lane'],'To Do')

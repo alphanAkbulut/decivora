@@ -7,6 +7,7 @@ from packages.storage.workspace import Workspace
 from packages.storage.project_store import canonical
 from packages.domain.acceptance import AcceptanceService
 from packages.domain.task_blockers import TaskBlockerService
+from packages.domain.task_workflow import TaskWorkflowService
 from packages.domain.questions import QuestionService
 from packages.domain.question_decisions import QuestionDecisionService
 from packages.domain.source_event import ContractError
@@ -24,21 +25,53 @@ class LocalApp:
                 core.create_project(a.issue_scope('local_owner'),'personal','Benim projem');self.path.chmod(0o600)
     def core(self):return Workspace(self.path,'local_ui_workspace')
     def state(self):
-        with self.core() as core:
-            owner=core.authority.issue_scope('local_owner');records=core.records(owner,'personal',limit=100)
-            started={json.loads(raw)['task'] for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='task_work_started'",(core.workspace,'personal'))}
+        with self.core() as core,core.read_snapshot():
+            owner=core.authority.issue_scope('local_owner');core.scope(owner,'personal');core.active(owner,'personal')
+            project=core.project(owner,'personal')
+            rows=core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id LIMIT 101',(core.workspace,'personal')).fetchall()
             tasks=[]
-            for r in records['records']:
-                if r['body']['type']!='Task':continue
-                acceptance=AcceptanceService(core).view(owner,'personal',r['id'])
-                tasks.append(dict(r,acceptance=acceptance,blocker=TaskBlockerService(core).view(owner,'personal',r['id']),lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
-            return dict(conversation_review=ConversationService(core).view(owner,'personal'),model_ready=self.extractor is not None,project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
+            for rid,version,raw in rows[:100]:
+                body=json.loads(raw)
+                if body['type']!='Task':continue
+                workflow=TaskWorkflowService(core).view(owner,'personal',rid)
+                tasks.append(dict(id=rid,version=version,body=body,acceptance=AcceptanceService(core).view(owner,'personal',rid),workflow=workflow,blocker=TaskBlockerService(core).view(owner,'personal',rid),lane=workflow['stage']))
+            task_sources={}
+            for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_candidates_applied'",(core.workspace,'personal')):
+                receipt=json.loads(raw)
+                for rid in receipt['result'].get('temp_ids',{}).values():task_sources.setdefault(rid,[]).append(receipt['source'])
+                for attachment in receipt.get('attached',[]):
+                    for match in attachment['matches']:
+                        rid=match['id'] if isinstance(match,dict) else match
+                        task_sources.setdefault(rid,[]).append(receipt['source'])
+            return dict(task_sources=task_sources,conversation_review=ConversationService(core).view(owner,'personal'),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review'],automatic_verifier=False),csrf=self.csrf)
     def command(self,body):
-        if type(body) is not dict or body.get('action') not in ('task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action=='link_dependency':
+                if set(body)!={'action','task','target','base_revision','key'}:raise ContractError('invalid_request','Exact dependency approval fields required.')
+                with core.transaction():
+                    core.scope(owner,'personal',write=True,human=True);core.active(owner,'personal')
+                    service=TaskWorkflowService(core);service._task('personal',body['task']);service._task('personal',body['target'])
+                    from packages.storage.project_store import digest
+                    signature=digest(canonical(body))
+                    prior=next((json.loads(raw) for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='task_dependency_approved'",(core.workspace,'personal')) if json.loads(raw)['key']==body['key']),None)
+                    if prior:
+                        if prior['signature']!=signature:raise ContractError('idempotency_conflict','Dependency identity changed.')
+                        return prior['result']
+                    if type(body['base_revision']) is not int or body['base_revision']!=core.project(owner,'personal')['knowledge_revision']:raise ContractError('stale_base','Refresh the dependency preview.')
+                    if service._stage('personal',body['task'])['stage']=='Cancelled':raise ContractError('task_cancelled','Cancelled task cannot add an active dependency.')
+                    plan=core.plan(owner,'personal',body['key'],[dict(op='link',origin=body['task'],target=body['target'],kind='depends_on')])
+                    result=core._apply(owner,plan,core._approve(owner,plan))
+                    core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(core.workspace,'personal',owner.principal_id,'task_dependency_approved',canonical(dict(key=body['key'],signature=signature,result=result))))
+                    return result
+            if action in ('workflow_transition','criterion_evidence'):
+                fields={'action','task','task_version','base_revision','stage','reason','key','scope_reviewed'} if action=='workflow_transition' else {'action','task','task_version','contract_version','criterion','status','reference','note','key'}
+                if set(body)!=fields:raise ContractError('invalid_request','Exact workflow/evidence fields required.')
+                service=TaskWorkflowService(core)
+                return (service.transition if action=='workflow_transition' else service.evidence)(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
             if action=='task_blocker':
-                if set(body)!={'action','task','task_version','base_revision','blocked','reason','next_action'}:raise ContractError('invalid_request','Exact blocker fields required.')
+                if set(body) not in ({'action','task','task_version','base_revision','blocked','reason','next_action'},{'action','task','task_version','base_revision','blocked','reason','next_action','gate','waiting_kind','owner'}):raise ContractError('invalid_request','Exact blocker fields required.')
                 return TaskBlockerService(core).set(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
             if action in ('import_conversation','analyze_conversation','accept_candidates'):
                 service=ConversationService(core)
@@ -68,8 +101,8 @@ class LocalApp:
                 if action=='approve_decision':return dict(approval=service.approve(owner,'personal',body['key']))
                 return service.apply(owner,'personal',body['key'],body['approval'])
             if action=='ask_question':
-                if set(body)!={'action','request_id','text','options'}:raise ContractError('invalid_request','Exact question fields required.')
-                return QuestionService(core).present(owner,'personal',question=body['request_id'],base_revision=0,text=body['text'],options=body['options'])
+                if set(body) not in ({'action','request_id','text','options'},{'action','request_id','text','options','task'}):raise ContractError('invalid_request','Exact question fields required.')
+                return QuestionService(core).present(owner,'personal',question=body['request_id'],base_revision=0,text=body['text'],options=body['options'],task=body.get('task'))
             if action=='answer_question':
                 if set(body)!={'action','request_id','question','revision','option'}:raise ContractError('invalid_request','Exact answer fields required.')
                 return QuestionService(core).answer(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
@@ -106,8 +139,8 @@ def make_server(path,port=0,extractor=None):
             value=cookie.get('decivora_session');return bool(value and secrets.compare_digest(value.value,app.cookie))
         def do_GET(self):
             if not self.gate():return self.answer(403,dict(error='origin_denied'))
-            if self.path in ('/','/app.js','/i18n.js','/locales.js'):
-                file=ROOT/('index.html' if self.path=='/' else self.path[1:]);return self.answer(200,file.read_bytes(),'text/html; charset=utf-8' if self.path=='/' else 'application/javascript')
+            if self.path in ('/','/app.js','/i18n.js','/locales.js','/workspace.css'):
+                file=ROOT/('index.html' if self.path=='/' else self.path[1:]);return self.answer(200,file.read_bytes(),'text/html; charset=utf-8' if self.path=='/' else 'text/css' if self.path=='/workspace.css' else 'application/javascript')
             if self.path!='/api/state':return self.answer(404,dict(error='not_found'))
             if not self.authenticated():return self.answer(401,dict(error='session_required'))
             try:self.answer(200,app.state())

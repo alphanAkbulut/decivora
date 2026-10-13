@@ -5,7 +5,7 @@
 ```mermaid
 flowchart TB
     accTitle: Çalışan yerel program, onaylı AC ve kalıcı kayıt
-    accDescr: Launcher yalnız loopback server açar. Ephemeral yerel session ve CSRF kontrolü gerekir. Manuel görev ve AC kalıcı SQLite'a yazılır. In Progress çalışma beyanıdır, Done doğrulama modülü açık olduğu için üretilemez.
+    accDescr: Launcher yalnız loopback server açar. Ephemeral yerel session ve CSRF kontrolü gerekir. Manuel görev ve AC kalıcı SQLite'a yazılır. In Progress çalışma beyanıdır, Done yalnız güncel yerel human-review kriterleri ve finish gates geçince üretilir; automatic verifier açık kalır.
     L["Decivora.command<br/>Python 3.12 + tarayıcı"] --> S["127.0.0.1 local UI<br/>ephemeral session cookie"]
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
     G --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
@@ -33,7 +33,11 @@ flowchart TB
     D --> W["Current contract kontrolü<br/>task_work_started audit"]
     W --> B["In Progress kartı<br/>implementation claim"]
     D --> H["Eski kriterler ve gerekçeler<br/>reload / restart / replay"]
-    B -. henüz yok .-> V["T14 gerçek kanıt + Done<br/>T13e agent/source, T18 MCP, otomatik capture"]
+    B --> IR["In Review - implementation handoff<br/>Awaiting Verification"]
+    IR --> HV["Human criterion evidence<br/>required current AC + DoD"]
+    HV --> CD["Explicit scope + finish gate review<br/>Done / current basis hash"]
+    CD -->|basis changed| IR
+    HV -. future .-> V["Automatic / file verifier<br/>native artifact observation not configured"]
     classDef launcher fill:#e8f1ff,stroke:#315c9b,color:#132b50;
     classDef guard fill:#eee7ff,stroke:#7853a7,color:#33204b;
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
@@ -85,3 +89,8 @@ UI düğümü yerel `locales.js` + `i18n.js` ile EN-default/TR/ES/PT-BR/AR sunar
 ## Blocker görünümü (2026-10-13)
 
 Yerel UI'da `TaskBlockerService` açık insan işaretlemesi/çözümü ve reason/next_action saklar. Task version + blocker revision guard; unknown/cancelled task veya stale write reddedilir. Audit geçmişi append-only,512yerel blocker olayı sınırı geçmişi silmez. Görev kendi To Do/In Progress sütununda kalır; kırmızı Blocked badge ve ayrı üst Blockers listesi gösterilir. Aktif blocker yeni start'ı durdurur; çözüm otomatik start/Done üretmez. Bu manuel beyan katmanıdır; `DependencyGraph.assessment/rank` otomatik edge→UI bağlama henüz yapılmadı. Otomatik task/decision/permission blocker tespiti ve kaynak kanıtı mevcut T20e/T24d kapsamındadır. Şema1/audit aynı; yeni tablo yok.
+
+
+## 14 Ekim 2026 — Onaylı workflow ve UI
+
+[ADR-0013](adr/0013-task-workflow-and-familiar-ui.md): altı stage, end-side panel, Board/List/search/filter ve human criterion evidence uygulanmıştır. Önceki manual-only/Done disabled ifadeleri önceki teslimin tarihsel sınırıdır; güncel durum [workflow raporudur](../quality/workflow-ui-runtime.md). Physical schema1 aynı; TaskStage/criterion_evidence audit payloadları şema olarak yayınlanır. T14 parent, automatic/file runner/native artifact/semantic extraction kabulü açık; local human passed sonucu distant target scan değildir.

@@ -4,7 +4,7 @@
   "renderer": "Mermaid 11.17.2 cached bundle",
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
-  "checked_at": "2026-10-11",
+  "checked_at": "2026-10-14",
   "input_base_ref": "58fc6832f7de4a0d605e2c9887d61dde1ad166ca",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
@@ -684,14 +684,26 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "d6233b13a89bf4b6a853d1cce275759d27d169564cb24679db27959d6016ad78",
+      "source_sha256": "e9a79dbd2b68421ad29950201f6428f3ced1380d8659446c65c950d5314a845d",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 1782.98046875 1807.2794189453125",
+      "view_box": "0 0 1652.609375 2087.279296875",
       "artifact": "assets/diagrams/local-preview-1.svg",
       "error": null,
-      "svg_sha256": "00ae469ed91b23b928f9990b90ea9f9047059d7279f1672398442d760971e7b1"
+      "svg_sha256": "0712af6d56cbec62eb0d20783c1ab81b323307fb97695529ca0b5a5fce762bf7"
+    },
+    {
+      "path": "docs/quality/workflow-ui-runtime.md",
+      "block": 1,
+      "source_sha256": "465511350fd504ad97a56aad2823cb268123ab0c37c100f90171ac202c62e9ca",
+      "status": "rendered",
+      "title": "Current local task workflow and human evidence",
+      "description_present": true,
+      "view_box": "0 0 2140.71875 536",
+      "artifact": "assets/diagrams/workflow-ui-runtime-1.svg",
+      "error": null,
+      "svg_sha256": "4fa46585499b53e679855d8a73dd8b2ecb5834588356420685319bc4b21d4bca"
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -990,6 +1002,26 @@
       "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
       "source_documents": [
         "docs/architecture/local-preview.md"
+      ]
+    }
+  ],
+  "superseded_history": [
+    {
+      "date": "2026-10-14",
+      "reason": "Approved task workflow and current local human verification UI",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "d6233b13a89bf4b6a853d1cce275759d27d169564cb24679db27959d6016ad78",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 1782.98046875 1807.2794189453125",
+          "artifact": "assets/diagrams/local-preview-1.svg",
+          "error": null,
+          "svg_sha256": "00ae469ed91b23b928f9990b90ea9f9047059d7279f1672398442d760971e7b1"
+        }
       ]
     }
   ]

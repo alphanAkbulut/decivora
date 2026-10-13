@@ -88,3 +88,8 @@ Projenin bırakılması, yeni MVP veya prototip execution talimatı bu belgeyle 
 ## 2026-10-13 — Koşullu çekirdek build seçimi
 
 [Q15-A](../delivery/build-transition-proposal.md) kabul edildi. İlk runtime Python3.12/SQLite; T04 artık bütün keşif sonuçlarını beklemez. Model/capture/native/ROI ve14MVP AC açık; tam vizyon korunur. Bu yatırımın kendisi ekonominin veya ürün doğruluğunun kanıtı değildir.
+
+
+## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
+
+[Kabul edilmiş workflow + UI yönü](../architecture/adr/0013-task-workflow-and-familiar-ui.md): kaynak→karar→gerçek kanıt zinciri tanıdık board ve detail panelde sunulur. Ana capture önceliği korunur; yeni paid model/teknoloji yatırımı yok.
