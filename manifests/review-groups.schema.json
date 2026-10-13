@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Manual local review groups",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 32,
+  "items": {
+    "$ref": "#/$defs/group"
+  },
+  "$defs": {
+    "body": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "description"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "Artifact",
+            "Decision",
+            "DocumentInstruction",
+            "Finding",
+            "Idea",
+            "PendingDecision",
+            "Prompt",
+            "Requirement",
+            "Risk",
+            "Task"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 8192
+        }
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "depends_on",
+        "records",
+        "operations"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "depends_on": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          }
+        },
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/create"
+              },
+              {
+                "$ref": "#/$defs/update"
+              },
+              {
+                "$ref": "#/$defs/link"
+              },
+              {
+                "$ref": "#/$defs/end_link"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "create": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "id",
+        "body"
+      ],
+      "properties": {
+        "op": {
+          "const": "create"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "body": {
+          "$ref": "#/$defs/body"
+        },
+        "source_seq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        }
+      }
+    },
+    "update": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "id",
+        "base_version",
+        "body"
+      ],
+      "properties": {
+        "op": {
+          "const": "update"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "base_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        },
+        "body": {
+          "$ref": "#/$defs/body"
+        }
+      }
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "origin",
+        "target",
+        "kind"
+      ],
+      "properties": {
+        "op": {
+          "const": "link"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "kind": {
+          "enum": [
+            "conflicts_with",
+            "depends_on",
+            "implements",
+            "part_of",
+            "refines",
+            "related_to",
+            "required_by",
+            "supersedes"
+          ]
+        }
+      }
+    },
+    "end_link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "origin",
+        "target",
+        "kind",
+        "base_version",
+        "state"
+      ],
+      "properties": {
+        "op": {
+          "const": "end_link"
+        },
+        "origin": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+        },
+        "kind": {
+          "enum": [
+            "conflicts_with",
+            "depends_on",
+            "implements",
+            "part_of",
+            "refines",
+            "related_to",
+            "required_by",
+            "supersedes"
+          ]
+        },
+        "base_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        },
+        "state": {
+          "enum": [
+            "ended",
+            "invalidated"
+          ]
+        }
+      }
+    }
+  },
+  "$comment": "Artifact for existing custom Python validation, not a generic JSON Schema certification. Runtime additionally enforces UTF-8 bytes, current ACL/snapshot, group cycles and references. No public transport is activated."
+}

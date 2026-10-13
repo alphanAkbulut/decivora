@@ -1,6 +1,6 @@
 # ADR-0008 — Snapshot'a bağlı onay ve ayrı çalıştırma yetkisi
 
-**Durum: öneri; 2026-10-09 mimari incelemesinde eklendi.** ADR-0004/0005'i tamamlar; kullanıcı ilkeleri ile teknik kontrol tasarımı ayrı tutulur. Onaylayan ve runtime kanıtı henüz yoktur.
+**Durum: öneri; 2026-10-09 mimari incelemesinde eklendi.** ADR-0004/0005'i tamamlar; kullanıcı ilkeleri ile teknik kontrol tasarımı ayrı tutulur. Local T08/T12/T13a snapshot/onay diliminin [uygulama kanıtı](../../quality/review-kernel.md) artık vardır; tam ADR/policy, gerçek login/runner ve T13b/c/e–T14 kabulü açıktır.
 
 ## Problem
 

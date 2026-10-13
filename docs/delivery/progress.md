@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 5 |
-| TODO | 18 |
+| IN_PROGRESS | 6 |
+| TODO | 17 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -68,6 +68,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T11c | T11 | DONE | DONE / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream |
 | T11b | T11 | DONE | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği |
 | T12a | T12 | DONE | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision |
+| T13a | T13 | DONE | DONE — Onay token'ı snapshot/policy/digest ile bağla |
 
 ## Açık fazda neler değişti?
 
@@ -133,11 +134,24 @@ Son ilerleme kaydı yok.
 
 Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
+### T13 · Review işlemi ve güvenilir onay
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 
 ## Mevcut teslim parçaları
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T13a review kernel** — Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply; [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık
 - **T12/T12a impact preview** — Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard; [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14
 - **Beş ana yerel çekirdek teslimi** — T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph; [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok
 - **T09/T10 çalışan hazırlık** — Structured source-span validator/lexical context/exact duplicate relationship review; [Kod ve açık kalite sınırı](../quality/integrated-core.md); semantic inference/FTS/gold ölçümü açık, ana görevler In Progress
@@ -206,7 +220,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T10 | P1a | IN_PROGRESS | Temel reconciliation | T09 | 2 |
 | T11 | P1a | DONE | Tipli gerekçe graph | T10 | 2 |
 | T12 | P1a | DONE | Impact preview ve apply planı | T11 | 1 |
-| T13 | P1a | TODO | Review işlemi ve güvenilir onay | T12 | 5 |
+| T13 | P1a | IN_PROGRESS | Review işlemi ve güvenilir onay | T12 | 5 |
 | T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 | 4 |
 | T15 | P1a | TODO | Teknik kanıt kapısı | T14, T07c | 1 |
 | T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
@@ -233,4 +247,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `2ff31c74ae59aff087b5ca5392e77b40b8447aad055bd9dc72514634a35fdf1f`
+Kaynak fingerprint: `01ee96c344b7b463fe7c5c957519ac0fc18daf589cf9cf74cb17f1062e850b69`

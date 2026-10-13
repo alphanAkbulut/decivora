@@ -105,3 +105,7 @@ Bu gereksinimlerin uygulanma sırası [backlog ek sözleşmelerinde](../delivery
 ## Ortak executable sözleşmeye geçiş
 
 [IC-01–08](implementation-contracts.md) bu sınırların stack'e aktarılırken netleştirilecek serialization, span coordinate, decoder, exact cost/period, target consistency ve completion freshness ayrıntılarını sunar. Öneri statüsündedir; deploy edilmiş API/DB/schema değildir. [TG-01–24 incelemesi](../quality/technical-gap-analysis.md) doküman hatası, teknik detay, owner ve implementasyon/deney açıklarını ayrı kaydeder; ilk kullanım kapıları G0–G6 ile bağlıdır.
+
+## Uygulama notu — T13a local review
+
+[ReviewService](review-runtime.md) current manual T13a dilimini uygular: group dependencies ve subset digest, ayrı owner approval, source/knowledge/authz/policy recheck, atomic command+review audit. Genel Workspace.apply review token ile bu guard'ı atlayamaz. T13b/c/e ve T14 açık; tüm yukarıdaki proposed sözleşmeler uygulanmış sayılmaz.

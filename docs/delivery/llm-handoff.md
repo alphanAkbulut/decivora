@@ -4,6 +4,8 @@ Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed m
 
 [T12/T12a](../quality/impact-preview.md) local manual preview tamamlandı:130runtime test, immutable persisted proposals, source/graph/authz snapshot ve stale guard. `impact-demo` altı oracle case'ini gerçekten çalıştırır; task state değişmez. Sıradaki mevcut iş T13 ayrı review/onay; T14 gerçek evidence/completion.
 
+[T13a](../quality/review-kernel.md) seçim/ayrı approval/atomic apply çekirdeği uygulandı;148runtime test, yeni [schema/sequence](../architecture/review-runtime.md). Ana T13 In Progress; T13b/c/e açık, sıradaki cancellation lifecycle.
+
 ## Kısa giriş
 
 Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/prompt/yarım işlerin kaybolması ve yeni karar sonrası gereksiz işlerin açık kalmasıdır. Kullanıcı kart/DoD yazmak istemez, hazırlanmış onay vermeye razıdır. Ürün bütün çıktıları yakalamayı, eski bilgiyle uzlaştırmayı, gerekçe grafiğinde etkisini çıkarmayı ve revision'a bağlı kanıtla ilerlemeyi göstermeyi hedefler. Çok proje ve repo olmayan araştırma projeleri kapsamdadır. İlk tasarım local-first; Q15-A/ADR-0012 koşullu ilk çekirdek build'i ve Python3.12/SQLite runtime'ını kabul eder; frontend/ekip/cloud ve native/ROI sonuçları açık.

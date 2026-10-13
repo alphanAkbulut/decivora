@@ -268,12 +268,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T13 — Review işlemi ve güvenilir onay
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T12. **Kapsam ID:** APR-01,APR-02.
+- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T12. **Kapsam ID:** APR-01,APR-02.
 - **İş:** Accept/reject/defer/compare, digest-bound approval ve dependent operation group ekle.
 - **Kabul:** Serbest metin gerektirmez; stale/double approval güvenli; partial selection referansları bozmaz.
 - **Doğrulama:** AC-06/07; stale approval ve role testleri.
 - **Beklenen dosya alanı:** `apps/hub/; packages/domain/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13b/c/e ve ana kabul açık; seçim/onay/apply ayrıdır.
 
 ## T14 — Evidence ve false-done düzeltmesi
 
@@ -447,7 +449,7 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | T08a / T08 | DONE / P1a: Command identity, key/digest ve policy capability | Aynı key güvenli; spoofed human reddi; V03/V23 | domain/hub |
 | T10a / T10 | Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
 | T12a / T12 | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision | [21test/impact-demo](../quality/impact-preview.md): OR edge/gap/ACL/restart/limit; source snapshot da bağlı | impact/storage |
-| T13a / T13 | Onay token'ı snapshot/policy/digest ile bağla | Partial selection yeni digest; iki onay tek effect; V04/V15/V23 | hub/domain |
+| T13a / T13 | DONE — Onay token'ı snapshot/policy/digest ile bağla | [18test/review-demo](../quality/review-kernel.md): partial reference, stale source/policy, double connection tek effect | hub/domain |
 | T14a / T14 | Evidence authority ve izinli runner arayüzü | Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 | verification |
 | T15a / T15 | Crash/restore/replay proof dilimi | V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder | quality fixtures |
 | T18a / T18 | Scope/snapshot-bound query cursor ve context limits | Başka projeye cursor taşınamaz; truncated sonuç açık; V25 | mcp/storage |

@@ -632,6 +632,38 @@
       "xml_parse": "passed with DOM XMLSerializer export",
       "render_scope": "local light desktop PNG visual review and XML/title/description/node/edge check; not GitHub/mobile/product",
       "product_runtime_tested": false
+    },
+    {
+      "path": "docs/architecture/review-runtime.md",
+      "block": 1,
+      "source_sha256": "006af687a63b7cbabd410195945b39fc4243c502c23d81e375d958fef028c389",
+      "status": "rendered",
+      "title": "Uygulanan yerel review ve ayrı onay akışı",
+      "description_present": true,
+      "view_box": "-50 -10 1190 1271",
+      "artifact": "assets/diagrams/review-runtime-1.svg",
+      "error": null,
+      "svg_sha256": "ba2e211705ccbeef2bae58886a761cb45a8e947bacb990afa29cbf0c6a8afc3a",
+      "export_normalization": "Self-closed HTML br tags for standalone SVG XML; visual meaning unchanged.",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false
+    },
+    {
+      "path": "docs/architecture/review-runtime.md",
+      "block": 2,
+      "source_sha256": "2d25b4ac56009dce7210b35e6c60a04c436a4737870d1352ba2ce8a3adbe0c33",
+      "status": "rendered",
+      "title": "Review payload bağları ve fiziksel storage",
+      "description_present": true,
+      "view_box": "0 0 1089.140625 1166.3734130859375",
+      "artifact": "assets/diagrams/review-runtime-2.svg",
+      "error": null,
+      "svg_sha256": "96bc8b0133604abc1a350615a5324b7696df49037c1481523dc09b3c8f31415a",
+      "export_normalization": "Self-closed HTML br tags for standalone SVG XML; visual meaning unchanged.",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -768,6 +800,20 @@
       "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
       "xml_validated": true,
       "visual_review": "current direction, decision map technical block and delivery flow inspected; unchanged intent block also rendered"
+    },
+    {
+      "reason": "T13a actual local review sequence/storage",
+      "checked_at": "2026-10-13",
+      "rendered_blocks": 2,
+      "changed_blocks": 0,
+      "new_blocks": 2,
+      "source_documents": [
+        "docs/architecture/review-runtime.md"
+      ],
+      "network_requests_allowed": false,
+      "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
+      "xml_validated": true,
+      "visual_review": "Both desktop screenshots inspected; storage changed to vertical layout for readable labels; not product UI acceptance."
     }
   ]
 }

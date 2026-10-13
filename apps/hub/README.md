@@ -61,3 +61,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## T12 impact önizleme demosu
 
 `python3.12 -B -m apps.hub impact-demo` temporary SQLite DB'de altı eski storage-change oracle'ını değerlendirir; keep/update/review/obsolete adayını gösterir, task state değiştirmez. Preview kalıcı audit, digest ve snapshot ile korunur; backuprestore eşleşir. [21yeni test ve kabul sınırı](../../docs/quality/impact-preview.md). Otomatik metin çıkarımı, gerçek completion veya T13 kullanıcı onayı değildir.
+
+## T13a review demosu
+
+`python3.12 -B -m apps.hub review-demo`: compare→group selection→ayrı human approval→atomic metadata apply. Onay öncesi domain değişmez; retry/replay eşleşir. [Kabul/test/sınır](../../docs/quality/review-kernel.md); task cancel/AC/DoD/pending question veya gerçek login/UI değildir.

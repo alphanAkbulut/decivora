@@ -1076,14 +1076,14 @@
     "T13a": {
       "parent": "T13",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T13"
       ],
       "classification": "task_local",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "Existing review selection/approval kernel verified by review-kernel tests; T13b/c/e still open, parent not closed.",
       "required_for_parent_closure": true
     },
     "T13b": {

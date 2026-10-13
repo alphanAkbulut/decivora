@@ -1,10 +1,10 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 18 belgede 38 Mermaid şeması — Q14-A proje review akışı eklendi, 2026-10-13; önceki 37 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 19 belgede 40 Mermaid şeması — T13a local review sequence/storage eklendi, 2026-10-13; önceki38 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
-## Güncel inventory — 2026-10-12
+## Güncel inventory — 2026-10-13
 
 <!-- diagram-inventory:start -->
 | Belge | Mermaid sayısı |
@@ -27,6 +27,7 @@
 | [docs/quality/membership-002-result.md](membership-002-result.md) | 1 |
 | [docs/quality/receiver-contract.md](receiver-contract.md) | 1 |
 | [docs/quality/project-review.md](project-review.md) | 1 |
+| [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -141,3 +142,7 @@ Değişen 13 dosya GitHub'dan aynı ref ile geri okunup yerel içerikle eşleşt
 Karar değişikliği yapan görev ilgili metin, diyagram, backlog ve acceptance etkisini birlikte değerlendirir. Değişmeyen diyagramı sırf tarih yenilemek için çizme. Etkilenen graph/node/edge etiketleri, phase ve accepted/proposed statüsü kontrol edilir; Mermaid render sonucu ayrı raporlanır. Bütün diyagramların sonsuza kadar güncel kalacağı garantisi verilmez.
 
 **Checker regresyon kontrolü:** geçici kopyada README Mermaid label'ı değiştirildiğinde render source hash uyumsuzluğu; SVG byte'ı değiştirildiğinde fallback hash uyumsuzluğu beklenen hata ile reddedildi. Asıl kaynaklar değiştirilmedi. Pozitif docs kontrolü 88 Markdown/931 yerel bağlantı ve 35 Mermaid inventory ile geçti. Recorded render doğrulaması canlı renderer veya ürün testi yerine geçmez.
+
+## T13a runtime görsel kontrolü — 2026-10-13
+
+İki yeni sequence/storage kaynak cached11.17.2, ayrı headless Chrome, dış ağ kapalı render edildi; XML/title/description/hash ve masaüstü görseller kontrol edildi. Storage dikey yerleşime alındı. [Şema ve SVG bağlantıları](../architecture/review-runtime.md), [runtime testlerinden ayrı sınırlar](review-kernel.md). Eski38 kaynak değişmedi ve bu tur tekrar render edilmiş sayılmaz.40source/19belge; ürün UI/mobil kabulü değildir.

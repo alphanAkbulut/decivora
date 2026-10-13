@@ -7,15 +7,20 @@
 | Kaynak konuşma derlemesi, vizyon/MVP/karar haritası | Bu dokümantasyon paketinde hazırlanmış |
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
-| Ürün MVP / adapter / dashboard | Yerel sentetik/manual runtime: T04/T05/T06/T07/T08/T11/T12 DONE;130runtime test/core-demo/impact-demo. T09/T10 kalite ve ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
+| Ürün MVP / adapter / dashboard | Yerel sentetik/manual runtime: T04/T05/T06/T07/T08/T11/T12 DONE;148runtime test/core-demo/impact-demo/review-demo. T09/T10 kalite ve ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
 | Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-002](../quality/membership-002-result.md): tek v2 output, dört draft aday/source/type geçti; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T04/T05/T06/T07/T08/T11/T12 DONE; T01/T02/T03/T09/T10 IN_PROGRESS; diğer18 TODO.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T04/T05/T06/T07/T08/T11/T12 DONE; T01/T02/T03/T09/T10/T13 IN_PROGRESS; diğer17 TODO.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-13 — T13a kalıcı review/onay çekirdeği
+
+- [Review kernel](../quality/review-kernel.md): compare/select/reject/defer, dependent partial groups, ayrı human approval, policy/source/graph/authz snapshot, atomic apply/audit ve çift bağlantı tek effect.18yeni/148runtime test +review-demo; SQLschema1 aynı. Yeni JSONschema ve2Mermaid gerçek render/görsel kontrol;40kaynak/19belge.
+- Ana7DONE/6IN_PROGRESS/17TODO; T13 başladı, T13a Done. T13b cancellation, T13c AC/DoD, T13e pending question ve14MVP AC açık; ana T13 kapanmadı. Ücretli API/model/gerçek kaynak yok; tarihsel kanıtlar korunur.
 
 ### 2026-10-13 — T12/T12a çalışan impact preview
 

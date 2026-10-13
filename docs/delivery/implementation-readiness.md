@@ -10,6 +10,7 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 
 | İş | Çıktı | Doğrulama |
 |---|---|---|
+| T13a review kernel | Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply | [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık |
 | T12/T12a impact preview | Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard | [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14 |
 | Beş ana yerel çekirdek teslimi | T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph | [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok |
 | T09/T10 çalışan hazırlık | Structured source-span validator/lexical context/exact duplicate relationship review | [Kod ve açık kalite sınırı](../quality/integrated-core.md); semantic inference/FTS/gold ölçümü açık, ana görevler In Progress |

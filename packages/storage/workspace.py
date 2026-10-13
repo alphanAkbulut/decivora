@@ -318,75 +318,86 @@ class Workspace:
     def approve(self,scope,plan):
         self._check_plan(plan)
         with self.transaction():
-            self.scope(scope,plan['project'],write=True,human=True)
-            self.active(scope,plan['project'])
-            if self.project(scope,plan['project'])['knowledge_revision']!=plan['base_revision']:
-                raise ContractError('stale_base','Project knowledge changed after preview.')
-            approval='approval_'+uuid.uuid4().hex
-            self.db.execute('INSERT INTO approvals VALUES (?,?,?,?,?,?,?,?)',(approval,self.workspace,plan['project'],scope.principal_id,plan['digest'],plan['base_revision'],self.authority.revision(),plan['key']))
-            self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,plan['project'],scope.principal_id,'approve',approval))
+            return self._approve(scope,plan)
+
+    def _approve(self,scope,plan):
+        self.scope(scope,plan['project'],write=True,human=True)
+        self.active(scope,plan['project'])
+        if self.project(scope,plan['project'])['knowledge_revision']!=plan['base_revision']:
+            raise ContractError('stale_base','Project knowledge changed after preview.')
+        approval='approval_'+uuid.uuid4().hex
+        self.db.execute('INSERT INTO approvals VALUES (?,?,?,?,?,?,?,?)',(approval,self.workspace,plan['project'],scope.principal_id,plan['digest'],plan['base_revision'],self.authority.revision(),plan['key']))
+        self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,plan['project'],scope.principal_id,'approve',approval))
         return approval
 
     def apply(self,scope,plan,approval):
         self._check_plan(plan)
         project=plan['project']
         with self.transaction():
-            self.scope(scope,project,write=True,human=True)
-            prior=self.db.execute('SELECT actor,digest,result FROM commands WHERE workspace=? AND project=? AND key=?',(self.workspace,project,plan['key'])).fetchone()
-            if prior:
-                if prior[:2]!=(scope.principal_id,plan['digest']):raise ContractError('idempotency_conflict','Command key conflicts with prior content.')
-                return json.loads(prior[2])
-            self.active(scope,project)
-            expected=(self.workspace,project,scope.principal_id,plan['digest'],plan['base_revision'],self.authority.revision(),plan['key'])
-            if self.db.execute('SELECT workspace,project,approver,digest,base_revision,authz_revision,command_key FROM approvals WHERE id=?',(approval,)).fetchone()!=expected:
-                raise ContractError('invalid_approval','Approval does not match current identity, scope or authority.')
-            if self.project(scope,project)['knowledge_revision']!=plan['base_revision']:
-                raise ContractError('stale_base','Project knowledge changed after approval.')
-            operations=plan['operations'];temp={}
-            for op in operations:
-                if type(op) is not dict or op.get('op') not in ('create','update','link','end_link'):
-                    raise ContractError('invalid_operation','Only typed create/update/link operations are supported.')
-                if op['op']=='create':
-                    identifier(op['id'])
-                    if op['id'] in temp:raise ContractError('duplicate_temp_id','Temporary ID repeated.')
-                    temp[op['id']]='record_'+digest(canonical([self.workspace,project,plan['key'],op['id']]))[:24]
-            sequences=[]
-            for op in sorted(operations,key=lambda item:item['op'] in ('link','end_link')):
-                op=dict(op)
-                if op['op']=='create':
-                    if set(op) not in ({'op','id','body'},{'op','id','body','source_seq'}):raise ContractError('invalid_operation','Create fields are invalid.')
-                    if 'source_seq' in op:integer(op['source_seq'],1)
-                    op['id']=temp[op['id']]
-                    self._body(op['body'])
-                    stream=op['id'];version=1
-                elif op['op']=='update':
-                    if set(op)!={'op','id','base_version','body'}:raise ContractError('invalid_operation','Update fields are invalid.')
-                    identifier(op['id']);integer(op['base_version'],1);self._body(op['body'])
-                    record=self.db.execute('SELECT version FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()
-                    if record is None or record[0]!=op['base_version']:raise ContractError('stale_record','Record version changed.')
-                    stream=op['id'];version=record[0]+1
-                else:
-                    fields={'op','origin','target','kind'} if op['op']=='link' else {'op','origin','target','kind','base_version','state'}
-                    if set(op)!=fields or op['kind'] not in RELATIONS:
-                        raise ContractError('invalid_operation','Link fields are invalid.')
-                    op['origin']=temp.get(op['origin'],op['origin']);op['target']=temp.get(op['target'],op['target'])
-                    identifier(op['origin']);identifier(op['target'])
-                    previous=self.db.execute('SELECT revision,state FROM edges WHERE workspace=? AND project=? AND origin=? AND target=? AND kind=?',(self.workspace,project,op['origin'],op['target'],op['kind'])).fetchone()
-                    if op['op']=='end_link':
-                        integer(op['base_version'],1)
-                        if previous is None or previous[0]!=op['base_version'] or previous[1]!='asserted' or op['state'] not in ('ended','invalidated'):
-                            raise ContractError('stale_edge','Edge revision or requested lifecycle is invalid.')
-                    elif previous and previous[1]=='asserted':raise ContractError('edge_conflict','Relationship is already asserted.')
-                    stream='edge_'+digest(canonical([op['origin'],op['target'],op['kind']]))[:24];version=previous[0]+1 if previous else 1
-                seq=self.db.execute('INSERT INTO events(workspace,project,stream,version,kind,payload) VALUES (?,?,?,?,?,?)',(self.workspace,project,stream,version,op['op'],canonical(op))).lastrowid
-                self._project_event(op,project,seq)
-                sequences.append(seq)
-            # Validate typed graph invariants BEFORE committing canonical events.
-            self._graph(project)
-            self.db.execute('UPDATE projects SET knowledge_revision=knowledge_revision+1 WHERE workspace=? AND id=?',(self.workspace,project))
-            result=dict(status='applied',event_sequences=sequences,temp_ids=temp,knowledge_revision=plan['base_revision']+1)
-            self.db.execute('INSERT INTO commands VALUES (?,?,?,?,?,?)',(self.workspace,project,plan['key'],scope.principal_id,plan['digest'],canonical(result)))
-            self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,project,scope.principal_id,'apply',approval))
+            return self._apply(scope,plan,approval)
+
+    def _apply(self,scope,plan,approval,*,review_digest=None):
+        project=plan['project']
+        self.scope(scope,project,write=True,human=True)
+        prior=self.db.execute('SELECT actor,digest,result FROM commands WHERE workspace=? AND project=? AND key=?',(self.workspace,project,plan['key'])).fetchone()
+        if prior:
+            if prior[:2]!=(scope.principal_id,plan['digest']):raise ContractError('idempotency_conflict','Command key conflicts with prior content.')
+            return json.loads(prior[2])
+        self.active(scope,project)
+        from packages.domain.review import review_approval
+        bound=review_approval(self,project,approval)
+        if bound is not None and bound['selection_digest']!=review_digest:
+            raise ContractError('review_approval_required','Review-bound approval must pass through its current impact guard.')
+        expected=(self.workspace,project,scope.principal_id,plan['digest'],plan['base_revision'],self.authority.revision(),plan['key'])
+        if self.db.execute('SELECT workspace,project,approver,digest,base_revision,authz_revision,command_key FROM approvals WHERE id=?',(approval,)).fetchone()!=expected:
+            raise ContractError('invalid_approval','Approval does not match current identity, scope or authority.')
+        if self.project(scope,project)['knowledge_revision']!=plan['base_revision']:
+            raise ContractError('stale_base','Project knowledge changed after approval.')
+        operations=plan['operations'];temp={}
+        for op in operations:
+            if type(op) is not dict or op.get('op') not in ('create','update','link','end_link'):
+                raise ContractError('invalid_operation','Only typed create/update/link operations are supported.')
+            if op['op']=='create':
+                identifier(op['id'])
+                if op['id'] in temp:raise ContractError('duplicate_temp_id','Temporary ID repeated.')
+                temp[op['id']]='record_'+digest(canonical([self.workspace,project,plan['key'],op['id']]))[:24]
+        sequences=[]
+        for op in sorted(operations,key=lambda item:item['op'] in ('link','end_link')):
+            op=dict(op)
+            if op['op']=='create':
+                if set(op) not in ({'op','id','body'},{'op','id','body','source_seq'}):raise ContractError('invalid_operation','Create fields are invalid.')
+                if 'source_seq' in op:integer(op['source_seq'],1)
+                op['id']=temp[op['id']]
+                self._body(op['body'])
+                stream=op['id'];version=1
+            elif op['op']=='update':
+                if set(op)!={'op','id','base_version','body'}:raise ContractError('invalid_operation','Update fields are invalid.')
+                identifier(op['id']);integer(op['base_version'],1);self._body(op['body'])
+                record=self.db.execute('SELECT version FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()
+                if record is None or record[0]!=op['base_version']:raise ContractError('stale_record','Record version changed.')
+                stream=op['id'];version=record[0]+1
+            else:
+                fields={'op','origin','target','kind'} if op['op']=='link' else {'op','origin','target','kind','base_version','state'}
+                if set(op)!=fields or op['kind'] not in RELATIONS:
+                    raise ContractError('invalid_operation','Link fields are invalid.')
+                op['origin']=temp.get(op['origin'],op['origin']);op['target']=temp.get(op['target'],op['target'])
+                identifier(op['origin']);identifier(op['target'])
+                previous=self.db.execute('SELECT revision,state FROM edges WHERE workspace=? AND project=? AND origin=? AND target=? AND kind=?',(self.workspace,project,op['origin'],op['target'],op['kind'])).fetchone()
+                if op['op']=='end_link':
+                    integer(op['base_version'],1)
+                    if previous is None or previous[0]!=op['base_version'] or previous[1]!='asserted' or op['state'] not in ('ended','invalidated'):
+                        raise ContractError('stale_edge','Edge revision or requested lifecycle is invalid.')
+                elif previous and previous[1]=='asserted':raise ContractError('edge_conflict','Relationship is already asserted.')
+                stream='edge_'+digest(canonical([op['origin'],op['target'],op['kind']]))[:24];version=previous[0]+1 if previous else 1
+            seq=self.db.execute('INSERT INTO events(workspace,project,stream,version,kind,payload) VALUES (?,?,?,?,?,?)',(self.workspace,project,stream,version,op['op'],canonical(op))).lastrowid
+            self._project_event(op,project,seq)
+            sequences.append(seq)
+        # Validate typed graph invariants BEFORE committing canonical events.
+        self._graph(project)
+        self.db.execute('UPDATE projects SET knowledge_revision=knowledge_revision+1 WHERE workspace=? AND id=?',(self.workspace,project))
+        result=dict(status='applied',event_sequences=sequences,temp_ids=temp,knowledge_revision=plan['base_revision']+1)
+        self.db.execute('INSERT INTO commands VALUES (?,?,?,?,?,?)',(self.workspace,project,plan['key'],scope.principal_id,plan['digest'],canonical(result)))
+        self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,project,scope.principal_id,'apply',approval))
         return result
 
     @staticmethod

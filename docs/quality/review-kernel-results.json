@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-13",
+  "profile": "synthetic_manual_local_review",
+  "completed_subtasks": [
+    "T13a"
+  ],
+  "main_task": "T13",
+  "main_status": "IN_PROGRESS",
+  "runtime_suite": {
+    "tests": 148,
+    "new_tests": 18,
+    "failures": 0,
+    "errors": 0
+  },
+  "source_sha256": {
+    "packages/domain/review.py": "4291ef36d5870f16433424a1f80f3919d62b22d4fb0f8491b87f40f1921ec7b9",
+    "packages/storage/workspace.py": "a5d9daa99974e26167a958529d0edb18fc98ddfc8c82c61c9e80461a010d976e",
+    "apps/hub/review_demo.py": "c6fb6f13cb794413680c1fb6acb371b6ebd7c7ec49790ca6047ca562a7926ee4",
+    "apps/hub/runtime.py": "4143e18495cbfe861883127608f08afa2089107bab2b0dd045d05cf73ab4ce23",
+    "tests/runtime/test_review_service.py": "c1f5e9243b746eedd62318c0d23bd67b26c1846be37892e31d4c76200ce76656",
+    "manifests/review-groups.schema.json": "f97bac100582c7f6e465e957b6db83d1d1ad0169e98256191f3b25dd19d55a82"
+  },
+  "demo": {
+    "status": "passed_local_review_kernel",
+    "selection_groups": [
+      "scope_update"
+    ],
+    "compare_mutations": 0,
+    "unchanged_until_separate_apply": true,
+    "applied_events": 1,
+    "retry_same_result": true,
+    "replay_matches": true,
+    "model_dispatches": 0,
+    "human_login": false,
+    "task_cancellation_implemented": false,
+    "task_completion_verified": false
+  },
+  "paid_api_calls": 0,
+  "model_dispatches": 0,
+  "human_login": false,
+  "task_cancellation": false,
+  "versioned_ac_dod": false,
+  "pending_question_resolution": false,
+  "product_ui_tested": false,
+  "json_schema_engine_tested": false,
+  "tracker_suite": {
+    "tests": 46,
+    "failures": 0,
+    "errors": 0
+  },
+  "diagrams": {
+    "new_rendered": 2,
+    "total_sources": 40,
+    "documents": 19,
+    "xml_validated": true,
+    "desktop_visual_review": true,
+    "product_ui_tested": false
+  }
+}
