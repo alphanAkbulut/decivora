@@ -50,6 +50,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T05h | T05 | DONE | DONE / P1a: kalıcı local principal/grant revision ve transaction guard |
 | T05g | T05 | DONE | DONE / P1a: kalıcı project/binding snapshot store |
 | T05f | T05 | DONE | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo |
+| T05c | T05 | DONE | DONE / P1a: kaynak/hedef binding ve versioned izin makbuzu schema/rule fixture |
 
 ## Açık fazda neler değişti?
 
@@ -108,6 +109,7 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T05c connection izin schema/rule** — Bounded immutable receipt, scope/current-context/action/expiry review gate; activation daima false; [9 test ve CLI demo](../quality/connection-authorization.md); gerçek provider/approval/audit/receipt persistence yok
 - **T05h yerel izin iptali** — Persisted authority revision + transaction scoped guard; actor claim yetki değil; [8 yeni test](../quality/local-authority.md); login/token/ACL/production IAM yok
 - **T05g kalıcı proje/binding** — SQLite snapshot/command store; memory state restart sonrası korunur, T05 açık; [11 yeni test ve restart demo](../quality/project-store.md); backup/power-loss/gerçek IAM/ingress yok
 - **T05f proje/binding çekirdeği** — Scope kontrollü memory-only servis ve CLI sentetik demo; T05 ana görev In Progress; [11 yeni runtime testi](../quality/project-binding-core.md); kalıcılık/gerçek IAM/ingress yok
@@ -199,4 +201,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `48916927c6faec1db3c9e03454b5f949552d49cfc6ed1a4eaa2ee20250c2743d`
+Kaynak fingerprint: `be52380fdf8f1d4391a4a45b394b52c31561e017132b3bc4a33d7d819fdc1b9e`

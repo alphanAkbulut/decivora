@@ -1,0 +1,35 @@
+{
+  "task_id": "T05c",
+  "status": "DONE_scoped_schema_rule_fixture",
+  "main_task_status": "IN_PROGRESS",
+  "tests": {
+    "new_connection_tests": 9,
+    "total_runtime_tests": 51,
+    "status": "passed"
+  },
+  "demo": {
+    "status": "passed_connection_contract_demo",
+    "context_authority": "synthetic_fixture",
+    "contract_digest": "dc10c3fe98b29ec7b62eda066a47e1be44e736787c26614692ebc8eaa31a0d35",
+    "valid_review": "review_ready",
+    "source_permission_missing": "review_denied",
+    "stale_authority": "review_denied",
+    "connection_activated": false,
+    "source_read_performed": false,
+    "model_dispatches": 0
+  },
+  "actual_source_permission_verified": false,
+  "actual_human_approval_verified": false,
+  "actual_audit_implemented": false,
+  "receipt_persistence": false,
+  "full_ac01_accepted": false,
+  "paid_api_calls": 0,
+  "file_sha256": {
+    "packages/domain/connection_authorization.py": "6c5f466f16528a64c052f67167a1211f659b48ec2107a24e1ca56e07eb23a9b4",
+    "apps/hub/connection_demo.py": "87d05c55e3145ed104e99bc308a1d0393fa3a018c6976902ea528822c6d7a0cc",
+    "apps/hub/runtime.py": "0405891d2745f7b5acc2dd8467644cc6ecb1bfa547784541130abc160522b538",
+    "tests/runtime/test_connection_authorization.py": "306bd75ab5fde1bc0f44c7e20a55051a49d23f5f0caec21bcdf5f9e3de2c0769",
+    "manifests/connection-authorization.schema.json": "c12c784475a96c7245bca3d5ab120b212c4af2275f4f85392f6f2d4faebb31fb",
+    "examples/runtime/connection-authorization.json": "699486e2399bf0b22e3fb4b778a759522bfcc0daa83bfdc6dd86164e91a8d72a"
+  }
+}

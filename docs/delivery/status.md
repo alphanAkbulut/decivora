@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — T05c izin makbuzu sözleşmesi
+
+- [T05c](../quality/connection-authorization.md) mevcut schema/rule alt görevi DONE; typed immutable makbuz, exported schema, scope-digest/current-context/action intersection/expiry gate ve çalışan connection-demo.9 yeni/51 runtime test; actual activation/read/model0.
+- Ana1DONE/4IN_PROGRESS/25TODO aynı. T05a/b tenant-FK ve güvenilir binding core kabulü açık; actual source/audit/login entegrasyonları kendi kapılarında kalır. Yeni task ID yok.
+
+
 ### 2026-10-13 — Q16-A kabulü ve uygulaması
 
 - [Kapanış manifesti](task-closure.md):30 ana/129 mevcut cross-file alt kayıt;7 downstream entegrasyonun sahip/first-use gate'i ayrı, core/PROPOSED korunur.6 planning testi ve closure cycle/missing owner/evidence/AC drift kontrolleri uygulandı. Ana1DONE/4IN_PROGRESS/25TODO ve14AC aynı.

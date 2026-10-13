@@ -182,7 +182,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Son ilerleme:** T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
 - **Son kalıcı teslim:** T05g [SQLite project store](../quality/project-store.md);11 yeni/34 toplam runtime test; restart/idempotency/rollback geçti.
 - **Son yetki teslimi:** T05h [yerel authority](../quality/local-authority.md);8 yeni/42 toplam runtime test, revocation/read/write/cache/restart ret.
-- **Kalan:** T05a/b/c core binding/kimlik/connection izin makbuzu kabulü; durable source receipt/quarantine T06, cross-source lineage T05d integration sahibi T10; gerçek login/resource ACL/T08b action policy ayrı açık. T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
+- **Son izin makbuzu teslimi:** T05c [schema/rule fixture](../quality/connection-authorization.md) DONE;9 yeni/51 runtime test. Gerçek provider/activation/audit hazır sayılmaz.
+- **Kalan:** T05a/b core binding/kimlik/compound tenant FK kabulü; durable source receipt/quarantine T06, cross-source lineage T05d integration sahibi T10; gerçek login/resource ACL/T08b action policy ayrı açık. T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
 
 ## T06 — Source ingress ve checkpoint
 
@@ -503,7 +504,7 @@ P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yön
 
 | Dilim / bağımlılık | Somut teslim | Kabul |
 |---|---|---|
-| T05c / T05b | P1a kaynak/hedef binding ve versioned izin makbuzu şeması; grantor/active gate kural fixture'ı | ACC-01/03/07'nin veri/kural örnekleri; gerçek activation yetki/audit entegrasyonu T08b/T07b sonrasında |
+| T05c / T05b | DONE / P1a: kaynak/hedef binding ve versioned izin makbuzu schema/rule fixture | [9 test ve demo](../quality/connection-authorization.md): ACC-01/03/07 ayrı source/target/grantor/digest/revision ret; actual activation T08b/T07b sonrasında, makbuz persistence ayrı |
 | T16b / T02b,T05c,T08b,T07b,T16 | P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü | ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular |
 | T20g / T05c,T16b,T20f | P1b proje bağlantı envanteri, kurulum soruları ve izin farkı önizlemesi | ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur |
 | T24h / T16b,T17,T20g | Yerel/sentetik erişim oracle ve UX pilotu | ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu |

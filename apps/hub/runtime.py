@@ -57,7 +57,7 @@ def read_selected_input(path):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Decivora local runtime scaffold')
-    parser.add_argument('command', nargs='?', choices=['status', 'validate', 'binding-demo', 'project-store-demo', 'authority-demo'], default='status')
+    parser.add_argument('command', nargs='?', choices=['status', 'validate', 'binding-demo', 'project-store-demo', 'authority-demo', 'connection-demo'], default='status')
     parser.add_argument('--input', type=Path)
     args = parser.parse_args(argv)
     if (args.command == 'validate') != (args.input is not None):
@@ -74,6 +74,9 @@ def main(argv=None):
             result = run_demo()
         elif args.command == 'authority-demo':
             from .authority_demo import run_demo
+            result = run_demo()
+        elif args.command == 'connection-demo':
+            from .connection_demo import run_demo
             result = run_demo()
         else:
             event = parse_source_event(read_selected_input(args.input))

@@ -49,3 +49,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## Yerel izin iptali demosu
 
 `python3.12 -B -m apps.hub authority-demo` owner/agent sentetik scope kurar, erişimi iptal eder, eski read/write bağlamlarını reddeder ve DB yeniden açılışında iptalin korunduğunu gösterir. [8 test ve yetki sınırı](../../docs/quality/local-authority.md). Bu login/OAuth değildir; source-facing endpoint yok, authority issue API yalnız trusted local caller içindir.
+
+## Kaynak bağlantı izin sözleşmesi
+
+`python3.12 -B -m apps.hub connection-demo` kendi sentetik makbuz/context fixture'ı üzerinde source izin eksikliğini ve stale authority'yi reddeder; source read/connection activation/model0. [9 test ve sınırlar](../../docs/quality/connection-authorization.md). Gerçek source ACL/insan approval/audit doğrulaması değildir.

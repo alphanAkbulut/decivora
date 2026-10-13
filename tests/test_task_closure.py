@@ -60,7 +60,7 @@ class ClosureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'acceptance'):
             closure.validate(ROOT, self.manifest)
         self.setUp()
-        self.manifest['subtasks']['T05c']['status'] = 'DONE'
+        self.manifest['subtasks']['T05c']['status'] = 'TODO'
         with self.assertRaisesRegex(ValueError, 'status'):
             closure.validate(ROOT, self.manifest)
 

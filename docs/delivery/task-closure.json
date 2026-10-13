@@ -760,7 +760,7 @@
     "T05c": {
       "parent": "T05",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T05b"
       ],

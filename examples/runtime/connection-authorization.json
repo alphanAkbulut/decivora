@@ -1,0 +1,41 @@
+{
+  "format": "decivora-connection-authorization-1",
+  "authorization_id": "authorization_demo",
+  "revision": 1,
+  "workspace_id": "workspace_demo",
+  "project_id": "p1",
+  "binding_id": "binding_demo",
+  "binding_revision": 1,
+  "source_epoch": "epoch_demo",
+  "provider": "manual",
+  "account_id": "account_demo",
+  "resource_id": "resource_demo",
+  "grantor_id": "owner_demo",
+  "source_evidence_ref": "evidence_demo",
+  "approval_ref": "approval_demo",
+  "policy_ref": "policy_demo",
+  "visibility_ref": "visibility_demo",
+  "retention_ref": "retention_demo",
+  "egress_ref": "egress_demo",
+  "authz_revision": 1,
+  "policy_revision": 1,
+  "requested_actions": [
+    "list_resources",
+    "read_source"
+  ],
+  "externally_granted_actions": [
+    "read_source"
+  ],
+  "application_allowed_actions": [
+    "read_source"
+  ],
+  "include_refs": [
+    "resource_demo"
+  ],
+  "exclude_refs": [],
+  "source_from": 0,
+  "source_to": 300,
+  "approved_at": 100,
+  "expires_at": 200,
+  "status": "granted"
+}

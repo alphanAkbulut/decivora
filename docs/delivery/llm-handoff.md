@@ -148,4 +148,4 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 
 ## Kapanış sınırı
 
-[CL01–08/Q16](../quality/task-closure-audit.md) parent/integration gate çelişkilerini kaydeder; first-use güvenlik kontrolünü kaldırma veya future işleri bugünkü parent kapanışına yükleme. Q16-A kabul edildi; [manifest ve validator](task-closure.md) uygulanır. T05 otomatik Done yapılmaz; core T05a/b/c gerçek kanıtı bekler.
+[CL01–08/Q16](../quality/task-closure-audit.md) parent/integration gate çelişkilerini kaydeder; first-use güvenlik kontrolünü kaldırma veya future işleri bugünkü parent kapanışına yükleme. Q16-A kabul edildi; [manifest ve validator](task-closure.md) uygulanır. T05 otomatik Done yapılmaz; T05c schema/rule fixture tamamlandı; core T05a/b tenant FK ve binding kanıtı bekler.

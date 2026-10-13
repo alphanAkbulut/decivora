@@ -20,7 +20,7 @@ Diğer mevcut alt işler task-local veya kayıtlı PROPOSED sınıfında tutulur
 
 ## Mevcut kapanışlar
 
-T04 startup/source-contract kapsamı Done; mevcut12test kabul raporu korunur. T04a/b/c/d tamamlanmış sayılmadı; açık durumları ve sorumluları manifestte görülür. T05f/g/h Done, T05 parent In Progress: T05a/b/c core kalanları hâlâ açık; bu politika T05'i otomatik kapatmaz. T05e PROPOSED kendi statüsünü korur. T05d downstream entegrasyonu parent kapanışını döngüye sokmaz. T01 gold/T02 actual capture/T03 semantic-native-ROI açık kanıt kapılarıdır, Q15 core build başlangıcını tekrar bekletmez.
+T04 startup/source-contract kapsamı Done; mevcut12test kabul raporu korunur. T04a/b/c/d tamamlanmış sayılmadı; açık durumları ve sorumluları manifestte görülür. T05f/g/h Done, T05 parent In Progress: T05c schema/rule fixture kendi9test kapsamında tamamlandı; T05a/b core kalanları açık; bu politika T05'i otomatik kapatmaz. T05e PROPOSED kendi statüsünü korur. T05d downstream entegrasyonu parent kapanışını döngüye sokmaz. T01 gold/T02 actual capture/T03 semantic-native-ROI açık kanıt kapılarıdır, Q15 core build başlangıcını tekrar bekletmez.
 
 ## Kontrolün kapsamı ve sınırı
 
