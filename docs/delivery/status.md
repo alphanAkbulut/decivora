@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Ana To Do geçişindeki plan engeli görünür
+
+- T04 parent T03 kapanışına, T03 da henüz kapanmayan corpus/capture/native/ROI koşullarına bağlı;26 küçük P0 DONE ana MVP işlerini açmadı. Daha fazla küçük alt görev bu bağımlılığı çözmez.
+- [Q15 kontrollü build önerisi](build-transition-proposal.md) hazır: yerel Python3.12/SQLite çekirdeğine başlayıp bağımsız kalite/release kapılarını açık tutma. Yeni stack/dependency kararı kullanıcı yanıtı bekliyor; henüz T04/phase/ADR değişmedi, bu yeni DONE kod işi değil. Bundled3.12.14/SQLite3.53.1 okundu,248 semantik test aynı runtime'da geçti; model/ücret/API yok.
+
 ### 2026-10-13 — Kalıcı explicit geç cevap önerisi tamamlandı
 
 - T03ac scoped DONE: [reply store](../quality/reply-store.md), stored current snapshot/CID/soru-revision/source binding, SQLite reply append ve restart; duplicate kaynak tek receipt, çelişki last-writer seçilmez.14 yeni/248 semantik,15 karar,40 repo test geçti.

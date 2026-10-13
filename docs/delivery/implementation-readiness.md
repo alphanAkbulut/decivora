@@ -57,7 +57,7 @@ Bu dilim algoritma/entity linkage/prompt semantik başarısı kanıtı değil. �
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
 | Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
 | Native/dosya/resume kıyas | Adil koşullar ve gerçek ölçüm | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
-| Production stack/build | Owner yatırım kararı + deney sonucu | T04–T24 bağımsız ürün başlangıcı | T03c açık; fixture Python/SQLite önerilen üretim stack'i değil |
+| Production stack/build | Owner yatırım kararı + deney sonucu | T04–T24 bağımsız ürün başlangıcı | T03c açık; [Q15 somut karar](build-transition-proposal.md) yanıt bekliyor: Python3.12/SQLite ilk çekirdek + T04 start dependency ayrımı; mevcut fixture stack kabul edilmiş runtime sayılmaz |
 
 MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verification invariant’ları önceden uygulanabilir sözleşmelere bağlandı; doğru runtime/host davranışları testlerle kanıtlanacak. Ekip/cloud ve ileri dil/connector detaylarının tamamını şimdi seçmek gerekmiyor.
 

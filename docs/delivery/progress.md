@@ -84,7 +84,7 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 
-Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki ana kapanış: T01 exact-label inceleme, T02 izinli gerçek capture ve T03 native/ROI/yatırım karşılaştırmasını mevcut kanıt düzeyleriyle tamamla. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
+Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki owner kararı [Q15 koşullu build geçişi](build-transition-proposal.md): T04 bağımlılığı/runtime seçimini incele; cevap gelmeden mevcut gate değişmez. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
 ## Mevcut teslim parçaları
@@ -134,7 +134,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
-| Production stack/build | T04–T24 bağımsız ürün başlangıcı | T03c açık; fixture Python/SQLite önerilen üretim stack'i değil |
+| Production stack/build | T04–T24 bağımsız ürün başlangıcı | T03c açık; [Q15 somut karar](build-transition-proposal.md) yanıt bekliyor: Python3.12/SQLite ilk çekirdek + T04 start dependency ayrımı; mevcut fixture stack kabul edilmiş runtime sayılmaz |
 
 ## Fazlara göre tüm ana işler
 
@@ -179,4 +179,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `b85cc78d8abf62456e86bd70af3c3563722644463b7b92e79d8aac3fc8fab163`
+Kaynak fingerprint: `7a82b3b0f5e8a6a2919996fcb4c36c63327055ba3a9c969c6ce40738a98707ce`
