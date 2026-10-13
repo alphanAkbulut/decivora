@@ -74,3 +74,13 @@ class LocalAppTests(unittest.TestCase):
         self.assertEqual(self.call('/api/command',dict(action='associate_answer',request_id='link',answer_id='a1'))[1]['status'],'Selected')
         self.assertEqual(self.call('/api/command',dict(action='question_state',request_id='cancel',question='Q1',revision=1,base_state=0,status='Cancelled',reason='Stopped'))[0],200)
         self.assertEqual(self.call('/api/command',dict(action='answer_question',request_id='a2',question='Q1',revision=1,option='files'))[1]['status'],'Cancelled')
+
+    def test_actual_manual_import_waits_without_configured_model(self):
+        code,result,_=self.call('/api/command',dict(action='import_conversation',text='Please add a backup test.'))
+        self.assertEqual(code,200);self.assertEqual(result['analysis']['status'],'Waiting for model');state=self.call('/api/state')[1];self.assertFalse(state['model_ready']);self.assertEqual(state['tasks'],[]);self.assertEqual(len(state['conversation_review']['imports']),1)
+    def test_fixture_extractor_import_review_to_board(self):
+        from test_conversations import Extractor,TEXT
+        self.server.app.extractor=Extractor();result=self.call('/api/command',dict(action='import_conversation',text=TEXT))[1];self.assertEqual(result['analysis']['status'],'Ready for review')
+        state=self.call('/api/state')[1];candidate=state['conversation_review']['imports'][0]['candidates'][0]
+        self.assertEqual(self.call('/api/command',dict(action='accept_candidates',source_id=result['source']['id'],key='accept',selected=[candidate['id']],base_revision=state['conversation_review']['knowledge_revision']))[0],200)
+        task=self.call('/api/state')[1]['tasks'][0];self.assertEqual(task['lane'],'To Do');self.assertFalse(task['acceptance']['completed'])

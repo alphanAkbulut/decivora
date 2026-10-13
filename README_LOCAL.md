@@ -4,7 +4,11 @@ Mac'te **Decivora.command** dosyasına çift tıkla. Terminal açılır ve yerel
 
 **İki ayrı ekran var:** Bu program kendi görevlerini eklediğin ürün önizlemesidir; ilk açılışta “Benim projem” boş gelir ve sütunlar0 gösterir. Decivora’nın geliştirme backlog/teslim kayıtları ayrı [geliştirme takip ekranındadır](https://github.com/alphanAkbulut/decivora/blob/main/docs/delivery/progress-guide.md); geliştirme görevleri kişisel veritabanına otomatik kopyalanmaz.
 
-1. Görev ekle ve kartı aç.
+Ana ekran **Konuşmalar ve öneriler**dir: seçtiğin konuşma parçasını aktar. Kaynak yerel olarak korunur. Model bağlantısı henüz varsayılan olarak kapalıdır; **Model bağlantısı bekleniyor** görünür, otomatik anlam çıkarımı çalıştırılmaz. API key/bakiye/izin verilmiş varsayılmaz. Provider yapılandırıldıktan sonra kaynaklı adaylar, mevcut kayıt karşılaştırması ve seçili önerileri kaydetme bu ekranda çalışacaktır. Bugünkü browser testi kontrollü model kullanır; gerçek semantic kalite kanıtı değildir.
+
+Elle görev/soru ekleme yardımcı alanlardadır; ana ürün amacı konuşmalardan otomatik öneri üretmektir. Sidebar/metrikler yalnız kişisel workspace kayıtlarını gösterir.
+
+1. Yardımcı görev bölümünü aç, görev ekle ve kartı aç.
 2. Göreve göre düzenlenebilir AC/DoD şablonlarını incele; **Kriterleri onayla**.
 3. **Çalışmaya başla**: kart In Progress'e geçer.
 4. Sekmeyi veya programı yeniden açınca SQLite kayıtları korunur. Kriter değiştirirken gerekçe ve diff onayı gerekir; önceki sürümler silinmez.

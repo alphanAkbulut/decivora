@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string"
+    },
+    "coverage": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "partial",
+        "unknown"
+      ]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Decision",
+              "PendingDecision",
+              "Task"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "intent": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "reported",
+              "planned",
+              "rejected"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "title",
+          "quote",
+          "intent"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "source_id",
+    "source_sha256",
+    "coverage",
+    "candidates"
+  ],
+  "additionalProperties": false
+}

@@ -81,7 +81,7 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 |
 | T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 |
-| T22 | P1b | TODO | Chat import ve prompt lineage | T21 |
+| T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 |
 | T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 |
 

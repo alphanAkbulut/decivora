@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 8 |
-| TODO | 15 |
+| IN_PROGRESS | 9 |
+| TODO | 14 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -172,11 +172,24 @@ Son ilerleme kaydı yok.
 
 Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
+### T22 · Chat import ve prompt lineage
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Onaylı model/veri/bütçe ile gerçek provider transport ve kalite; message/prompt lineage ve coverage kabulü açık.
+
 
 ## Mevcut teslim parçaları
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T09/T10/T22 konuşma→öneri→pano** — Manual conversation receipts, Responses request/parser, source quote binding, reconciliation/review; main UX konuşma alanı; [237runtime + browser fixture](../quality/conversation-review-runtime.md); real model/transport/grant/kalite/MCP/capture açık
 - **T13e soru→karar dilimi** — Kalıcı manual soru/cevap→gerekçeli proposal→ayrı human approve/apply→Decision; stale ve tek resolution guards; [208runtime + gerçek browser](../quality/question-decision-runtime.md); [cancel/defer/revise/orphan](../quality/question-lifecycle-runtime.md)221runtime testli; fullT13e agent-routing/source kabulü açık
 - **Yerel program/T13c** — Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package; [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık
 - **T13b lifecycle** — Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history; [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık
@@ -258,7 +271,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
 | T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 | 2 |
-| T22 | P1b | TODO | Chat import ve prompt lineage | T21 | 1 |
+| T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 | 1 |
 | T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 | 3 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 | 15 |
 | T25 | P2 | TODO | Chat yüzeyleri ve cross-provider adapter araştırması | T24 | 1 |
@@ -276,4 +289,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `f8fb795d47918bc05ff0e5bf32f8add1132d6509b5f418fe22f9f5f201a5f997`
+Kaynak fingerprint: `4db39e3c139e64730b4b0b98ddbcba92cad4553a1a0bd08e8d8b79d699db9018`

@@ -10,6 +10,7 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 
 | İş | Çıktı | Doğrulama |
 |---|---|---|
+| T09/T10/T22 konuşma→öneri→pano | Manual conversation receipts, Responses request/parser, source quote binding, reconciliation/review; main UX konuşma alanı | [237runtime + browser fixture](../quality/conversation-review-runtime.md); real model/transport/grant/kalite/MCP/capture açık |
 | T13e soru→karar dilimi | Kalıcı manual soru/cevap→gerekçeli proposal→ayrı human approve/apply→Decision; stale ve tek resolution guards | [208runtime + gerçek browser](../quality/question-decision-runtime.md); [cancel/defer/revise/orphan](../quality/question-lifecycle-runtime.md)221runtime testli; fullT13e agent-routing/source kabulü açık |
 | Yerel program/T13c | Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package | [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık |
 | T13b lifecycle | Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history | [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık |

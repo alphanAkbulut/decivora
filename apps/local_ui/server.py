@@ -9,10 +9,12 @@ from packages.domain.acceptance import AcceptanceService
 from packages.domain.questions import QuestionService
 from packages.domain.question_decisions import QuestionDecisionService
 from packages.domain.source_event import ContractError
+from packages.capture.conversations import ConversationService
 
 ROOT=Path(__file__).parent
 class LocalApp:
-    def __init__(self,path):
+    def __init__(self,path,extractor=None):
+        self.extractor=extractor
         self.path=Path(path);fresh=not self.path.exists();self.path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
         self.cookie=secrets.token_urlsafe(32);self.csrf=secrets.token_urlsafe(32);self.bootstrap=secrets.token_urlsafe(32);self.rate_lock=threading.Lock();self.window=0;self.writes=0
         with Workspace(self.path,'local_ui_workspace',owner='local_owner' if fresh else None) as core:
@@ -29,11 +31,22 @@ class LocalApp:
                 if r['body']['type']!='Task':continue
                 acceptance=AcceptanceService(core).view(owner,'personal',r['id'])
                 tasks.append(dict(r,acceptance=acceptance,lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
-            return dict(project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
+            return dict(conversation_review=ConversationService(core).view(owner,'personal'),model_ready=self.extractor is not None,project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
     def command(self,body):
-        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action in ('import_conversation','analyze_conversation','accept_candidates'):
+                service=ConversationService(core)
+                if action=='import_conversation':
+                    if set(body)!={'action','text'}:raise ContractError('invalid_request','Exact conversation fields required.')
+                    source=service.ingest(owner,'personal',text=body['text'])
+                    return dict(source=source,analysis=service.analyze(owner,'personal',source['id'],self.extractor))
+                if action=='analyze_conversation':
+                    if set(body)!={'action','source_id'}:raise ContractError('invalid_request','Exact source ID required.')
+                    return service.analyze(owner,'personal',body['source_id'],self.extractor)
+                if set(body)!={'action','source_id','key','selected','base_revision'}:raise ContractError('invalid_request','Exact candidate review required.')
+                return service.accept(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
             if action=='question_state':
                 if set(body)!={'action','request_id','question','revision','base_state','status','reason'}:raise ContractError('invalid_request','Exact lifecycle fields required.')
                 return QuestionService(core).transition(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
@@ -68,8 +81,8 @@ class LocalApp:
             plan=core.plan(owner,'personal','ui_'+uuid.uuid4().hex,ops);token=core.approve(owner,plan)
             return core.apply(owner,plan,token)
 
-def make_server(path,port=0):
-    app=LocalApp(path)
+def make_server(path,port=0,extractor=None):
+    app=LocalApp(path,extractor=extractor)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
         def answer(self,code,body,kind='application/json',cookie=False):

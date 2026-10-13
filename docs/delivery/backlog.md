@@ -357,11 +357,13 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T22 — Chat import ve prompt lineage
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T21. **Kapsam ID:** CAP-03,CAP-04.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T21. **Kapsam ID:** CAP-03,CAP-04.
 - **İş:** İzinli metin/export importu, message refs, prompt→execution→artifact ilişkisi.
 - **Kabul:** Chat→Code aktarımı izlenir; manuel import otomatik capture diye gösterilmez. Q07/1C izinli geçmiş manifest'i, aktif iş önceliği, kalan coverage ve tarihsel öneri ayrımı T22b ile doğrulanır.
 - **Doğrulama:** AC-03/11; tekrar import ve farklı source IDs.
 - **Beklenen dosya alanı:** `packages/capture/import/` (henüz oluşmamış yollar uygulama sırasında açılır).
+- **Son ilerleme:**2026-10-13 · [Konuşma aktarımı ve model-adapter inceleme zinciri](../quality/conversation-review-runtime.md),237runtime test + gerçek browser fixture akışı. Gerçek provider dispatch kapalı; API hazırlığı kullanıcı tarafından yarına bırakıldı.
+- **Sıradaki adım:** Onaylı model/veri/bütçe ile gerçek provider transport ve kalite; message/prompt lineage ve coverage kabulü açık.
 - **Boyut:** 1 küçük PR.
 
 ## T23 — Backup, export ve yerel güvenlik

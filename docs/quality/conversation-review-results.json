@@ -1,0 +1,24 @@
+{
+  "runtime_tests": 237,
+  "new_tests": 16,
+  "real_model_calls": 0,
+  "semantic_accuracy": "not_run",
+  "actual_provider_transport": "not_configured",
+  "browser": {
+    "fixture_model": true,
+    "source_candidates": 3,
+    "selected_task_on_board": true,
+    "reload_preserved": true,
+    "manual_regression": true,
+    "desktop_mobile_checked": true
+  },
+  "source_sha256": {
+    "packages/capture/conversations.py": "88229f08f0272ef8d075ab9a035c831280d45713a8d0c98a2e811849dc2dd590",
+    "packages/capture/responses_extractor.py": "23863e1ca11887ed85882dd6b2da33e538d3f4a3b4091775bceb4f1c620a1f57",
+    "apps/local_ui/server.py": "98fff1a7483ca2ff8bca5de3baa136f6550e2d496b7e4015fa9efa5fdae42f30",
+    "apps/local_ui/app.js": "02feb1034d2b8fc872f7a928017f3b15ab7a59d1f70ba6992836147985dde36f",
+    "apps/local_ui/index.html": "fc00084998030a839578fd797d5212a1026f60ac53a94ccfa23acd5e54585a1b",
+    "tests/runtime/test_conversations.py": "4f067a80bb3cf234951a01ad1b4acd75200cd842de272ca5a11d8099b1630358",
+    "tests/runtime/test_local_app.py": "1922d0b055c873a7a575166ef17007e2761b1c33af5f42ed0585e2fa6bd0ecb5"
+  }
+}

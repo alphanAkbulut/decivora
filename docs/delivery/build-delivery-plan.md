@@ -2,7 +2,7 @@
 
 2026-10-13 — **uygulama sırası**, yeni görev listesi veya altı ayrı program değildir. Mevcut Python 3.12/SQLite çekirdeği ve yerel web arayüzü büyütülecek. Tam vizyon korunur; paketler MVP teslimini yönetir. [Backlog](backlog.md) görev otoritesidir; paket adı yeni task sayılmaz.
 
-Bugün 7 ana iş Done, 8 In Progress, 15 To Do. To Do'nun **9'u MVP (T14–T18, T21–T24), 6'sı sonraki fazlar (T25–T30)**. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
+Bugün 7 ana iş Done, 9 In Progress, 14 To Do. To Do'nun **8'i MVP (T14–T18, T21,T23,T24), 6'sı sonraki fazlar (T25–T30)**. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
 
 | Paket | Kod işi / mevcut görevler | Mevcut kodu güncelleme ve yeni modül | Kullanıcının göreceği teslim | Paket kabulü |
 |---|---|---|---|---|
@@ -17,11 +17,13 @@ Arayüzü paket 5'e kadar bekletmeyiz: her paketin davranışı mevcut programa 
 
 ## Şimdi yapılacak kod sırası
 
-1. T13e: kalıcı soru/seçenek snapshot'ı ve exact soru/sürüm cevap kaydı; uygulama Inbox'ına bağla.
-2. Cevap kaydını kaynaklı karar önerisi ve ayrı review/apply ile birleştir; iptal/superseded/orphan durumlarını tamamla. Ancak sonra T13e/T13 kapanış kontrolü.
-3. T14: gerçek kanıtı görev/AC/hedef revision'ına bağla; criterion sonuçları ve current completion predicate. Agent iddiasını evidence yerine kullanma; transcript'ten komut çalıştırma.
-4. T15: aynı uygulamada cevap → karar → etki → ayrı onay → hedef kanıtı → kriter → düzeltme ve restore zinciri.
-5. Paket 2'ye geç; gerçek model çağrısı hazır olduğunda sağlayıcı/veri/bütçe yetkisini somut run kapsamıyla netleştir.
+2026-10-13: kullanıcı asıl değer olan otomatik konuşma çıkarımını öne aldı; API hazırlığını yarına bıraktı ve önce UX istedi. Paket numaraları korunur, paket2'nin konuşma/çıkarım dilimi paket1 tam kapanmadan öne alındı. Tam vizyon/14AC/gerçek çıkarım kalite kapısı kaldırılmadı.
+
+1. Konuşma aktarımı ve kaynaklı aday incelemesini uygulamaya bağla; manuel görev/soru girişi yardımcı alan olur. [Kod teslimi](../quality/conversation-review-runtime.md).
+2. Konuşma/öneri odaklı masaüstü/mobil UX; model bekleme, hata, kaynak ve onay durumlarını dürüst göster.
+3. API erişimi hazır olunca model, exact data/target ve somut çağrı/para/token tavanı onayını netleştir; bounded gerçek provider transport ve zorunlu semantic kalite ölçümünü yap. Payload/parser fixture başarıları gerçek model doğruluğu değildir.
+4. T13e agent/source acceptance eşlemesini, T14 revision-bound Evidence/Done ve T15 bütün zinciri tamamla. Bugüne kadar yapılan core/history/approval kodu bu akışta kullanılır.
+5. T16/T17 capture ve T18 MCP kapılarına ilerle; tek paste alanı sürekli otomatik capture diye sunulmaz.
 
 ## İlerleme ve dış bağımlılıklar
 

@@ -8,6 +8,11 @@ flowchart TB
     accDescr: Launcher yalnız loopback server açar. Ephemeral yerel session ve CSRF kontrolü gerekir. Manuel görev ve AC kalıcı SQLite'a yazılır. In Progress çalışma beyanıdır, Done doğrulama modülü açık olduğu için üretilemez.
     L["Decivora.command<br/>Python 3.12 + tarayıcı"] --> S["127.0.0.1 local UI<br/>ephemeral session cookie"]
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
+    G --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
+    I0 --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
+    M0 --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
+    K0 --> E0["Mevcut kayıt karşılaştırması<br/>explicit seçili öneri onayı"]
+    E0 --> D
     G --> T["Manuel Task oluştur<br/>To Do kartı"]
     G --> Q["Manuel soru + seçenek snapshot<br/>exact ID / revision cevap"]
     Q --> R[("Kalıcı question audit<br/>Open / Answered / stale / conflict")]
@@ -30,9 +35,9 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z guard;
+    class G,A,O,Z,K0,E0 guard;
     class D,W,B,H,R,N stored;
-    class Q,P,U launcher;
+    class Q,P,U,I0,M0 launcher;
     class C stored;
     class V pending;
 ```
@@ -62,3 +67,7 @@ T19 project selector/PendingDecision/Review Inbox, T20 graph/timeline/active-his
 Decision bridge mevcut create event ve question_decision_* audit kullanır; plan/approval question snapshot bağını taşır, core generic apply bu guard atlanırsa reddeder. Soru cevabının tek başına canonical mutation üretmemesi korunur; ayrı apply sadece Decision oluşturur. Task/edge etki uygulaması ayrı T12/T13 review yoludur.
 
 Question state_revision onay dayanağına bağlanır; defer→resume eski approval'ı canlandırmaz. Yeni question revision seçimi sıfırlar, eski snapshot Superseded olarak history'de kalır. question_answer_associated orijinal cevabı silmez/değiştirmez, yeni assessment ekler. Bu yeniden eşleme kimlik/sürüm/option ile deterministiktir; serbest metin semantic matching veya dış host receipt değildir.
+
+## Ana konuşma/öneri arayüzü
+
+[ConversationService](../../packages/capture/conversations.py) manuel gerçek kaynak için ayrı bounded receipt saklar; eski synthetic SourceEvent'e gerçek metin diye synthetic=True basmaz. [Responses adapter](../../packages/capture/responses_extractor.py) request schema ve response parser sağlar; actual network transport, account/grant/price/token cap aktivasyonu henüz yok. DefaultUI providerNone ile Waiting for model. Testte trusted injected fixture kullanılır; semantic kalite kabulü değildir. Candidate accept yalnız typed create/source attachment, current human scope/base revision ve atomic audit kullanır; Task Done veya impact cancellation üretmez. [Teslim ve sınırlar](../quality/conversation-review-runtime.md).
