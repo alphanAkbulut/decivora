@@ -41,3 +41,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## T05 binding çekirdeği demosu
 
 `python3.12 -B -m apps.hub binding-demo` sabit sentetik iki projeyi bellekte oluşturur; aynı ad/farklı ID, explicit session revision, eski binding korunumu ve çapraz proje query reddini çalıştırır. Dosya/DB yazmaz, gerçek kaynak okumaz. Bu demo login/authenticated principal, kalıcı binding/receipt veya otomatik proje tahmini değildir; runtime `project_binding` capability gerçek ingress entegrasyonuna kadar false kalır. [Kabul ve kalanlar](../../docs/quality/project-binding-core.md).
+
+## T05 kalıcı project store demosu
+
+`python3.12 -B -m apps.hub project-store-demo` ayrı temporary DB içinde dört command commit eder, kapatır/açar ve retry/history sonucunu doğrular; kendi temporary dosyalarını temizler. Kullanıcı DB/source taramaz. [Kalıcı API ve11test](../../docs/quality/project-store.md). Bu gerçek SQLite yazma kodudur; login, source receipt, full canonical knowledge store/backup değildir.

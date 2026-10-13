@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — T05 kalıcı kayıt dilimi
+
+- [T05g project store](../quality/project-store.md): SQLite restart, command retry/dedup, rollback, stale writer ve scope query testleri geçti;11 yeni/34 toplam runtime test. Gerçek temp DB ile `project-store-demo` çalıştı.
+- Ana sayım1 DONE/4 IN_PROGRESS/25 TODO; T05 grant/authz lifecycle ve ingress kabulü açık. Yeni model/API/gerçek kaynak yok.
+
+
 ### 2026-10-13 — T05 gerçek kod geliştirmesi başladı
 
 - [T05f binding çekirdeği](../quality/project-binding-core.md): aynı adlı projelerde ayrı kimlik, scope kontrollü CRUD/archive, versioned session binding ve quarantine sonucu; çalışan `binding-demo` CLI.11 yeni test; runtime toplam23.

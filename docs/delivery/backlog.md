@@ -6,6 +6,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 | Yeni alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
+| T05g / T05 | DONE / P1a: kalıcı project/binding snapshot store | Restart/idempotency/rollback/two-connection stale/foreign-scope ret; [11 test](../quality/project-store.md). Authz lifecycle/source receipt/backup açık |
 | T05f / T05 | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo | Aynı ad farklı ID, çapraz scope read/write ret, revision-bound tarihçe, belirsizde mutation yok; [11 test](../quality/project-binding-core.md). Kalıcı store/auth/ingress tamamlanmadı |
 | T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
 | T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş |
@@ -178,7 +179,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:** T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
-- **Kalan:** Kalıcı project/binding store, restart/recovery, grant/authz revision ve gerçek ingress entegrasyonu; T05 ana görevi açık.
+- **Son kalıcı teslim:** T05g [SQLite project store](../quality/project-store.md);11 yeni/34 toplam runtime test; restart/idempotency/rollback geçti.
+- **Kalan:** Persist edilmiş membership/grant/authz revision yaşam döngüsü ve gerçek ingress entegrasyonu; T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
 
 ## T06 — Source ingress ve checkpoint
 

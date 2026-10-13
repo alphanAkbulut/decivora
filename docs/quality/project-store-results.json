@@ -1,0 +1,36 @@
+{
+  "task_id": "T05g",
+  "main_task_status": "IN_PROGRESS",
+  "tests": {
+    "new_store_tests": 11,
+    "total_runtime_tests": 34,
+    "status": "passed"
+  },
+  "demo": {
+    "status": "passed_synthetic_project_store_demo",
+    "storage": "temporary_sqlite",
+    "restart_preserved": true,
+    "idempotent_retry": true,
+    "project_count": 2,
+    "binding_revisions": 2,
+    "committed_commands": 4,
+    "temporary_demo_removed": true,
+    "real_source_capture": false,
+    "production_authentication": false,
+    "durable_source_receipt": false,
+    "model_dispatches": 0
+  },
+  "scope": "controlled local project snapshots; not source/domain event store",
+  "production_authentication": false,
+  "power_loss_tested": false,
+  "backup_restore_tested": false,
+  "full_ac01_accepted": false,
+  "paid_api_calls": 0,
+  "file_sha256": {
+    "packages/storage/__init__.py": "f613da6fe8b595a463c6c038b6c29077c0b68022f10e08a72e9695724a47f298",
+    "packages/storage/project_store.py": "9ffbb7875c78fab4c22cae41eea6e0f1d3764fa0482c91e46fa4323f29dc532c",
+    "apps/hub/project_store_demo.py": "4fb717e2185d6338562dfb32524123fd13f4810eb4a1915fded7609c6774d419",
+    "apps/hub/runtime.py": "2bc25a322644aef88f7f9da9bab211f5a1c08cab4d9544882d8918aaa099652a",
+    "tests/runtime/test_project_store.py": "3466259a4b7d5c0f598adc3a6347e029f3bf134effe0e28417b0b2345941f1b9"
+  }
+}

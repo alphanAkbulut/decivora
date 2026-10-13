@@ -11,7 +11,7 @@
 
 ## Çalışmanın neresindeyiz?
 
-**İlk ana teslim T04 Done.** [Çalıştırılabilir runtime ve başlangıç komutları](apps/hub/README.md) · [12test/clean-start kabulü](docs/quality/runtime-scaffold.md). [T05 proje kimliği/binding](docs/quality/project-binding-core.md) In Progress; çalışan sentetik demo hazır, kalıcı store açık. Başlangıç programı CLI/source-contract doğrulaması yapar; diğer capabilities kapalıdır.
+**İlk ana teslim T04 Done.** [Çalıştırılabilir runtime ve başlangıç komutları](apps/hub/README.md) · [12test/clean-start kabulü](docs/quality/runtime-scaffold.md). [T05 proje kimliği/binding](docs/quality/project-binding-core.md) In Progress; [kalıcı SQLite store/restart demo](docs/quality/project-store.md) da hazır; gerçek authz/ingress kabulü açık. Başlangıç programı CLI/source-contract doğrulaması yapar; diğer capabilities kapalıdır.
 
 
 > [!WARNING]
