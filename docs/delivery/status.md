@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Altı kod teslim planı ve manuel pending soru dilimi
+
+- [Altı paket](build-delivery-plan.md): mevcut kodu geliştiren uygulama sırası;15To Do=9MVP+6future, yeni görev yok.
+- [Question runtime](../quality/pending-question-runtime.md): kalıcı soru/seçenek snapshot, exact ID/revision cevap, stale/unmatched/conflict/retry ve UI pending listesi.12yeni/197runtime test; T13e In Progress, canonical karar/apply bağı hâlâ açık. Ana7Done/8InProgress/15ToDo; packet1 tamamlanmadı, ücretli model/API0.
+
 ### 2026-10-13 — T13c + çift tıklamayla başlayan yerel yazılım
 
 - [Local preview](../quality/local-preview.md): versioned AC/DoD/check/approval/history, manual Task board+prepared AC card, actual localhost session/CSRF/Origin/rate limit; launcher+standalone ZIP.185runtime test; gerçek browser create→approve→start→reload flow geçti. T13c Done; T19/T20 gerçek koduyla In Progress.

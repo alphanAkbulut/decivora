@@ -1,0 +1,29 @@
+{
+  "scope": "Manual local question/answer slice; not full T13e acceptance",
+  "runtime_tests": 197,
+  "new_tests": 12,
+  "tracker_tests": 46,
+  "browser": {
+    "manual_question": true,
+    "explicit_selection": true,
+    "reload_persisted": true,
+    "task_acceptance_start_regression": true,
+    "done_cards": 0,
+    "external_network": false
+  },
+  "limitations": [
+    "canonical decision/approval binding incomplete",
+    "manual source only",
+    "cancel/superseded/defer/orphan reassociation incomplete",
+    "presentation retry incomplete",
+    "no semantic/model/native/MCP validation"
+  ],
+  "source_sha256": {
+    "packages/domain/questions.py": "b67941ff1118f8f7f6822ea6b1fb64f058e72e44364895d3d0beb24112eda868",
+    "apps/local_ui/server.py": "aa5beac158e2b57a0ec362c44821e364fbadb552563292a5c4441a2ef59aebb7",
+    "apps/local_ui/app.js": "44e94e4c5ad3b31ecd80cca7cd22eb05a314f0b14c6141ff4672ff407d63d771",
+    "apps/local_ui/index.html": "c15ce5f43eabe9500a1e6e0d0c83baf1a0c2486a8d96b8adb287ec2f3b3363b6",
+    "tests/runtime/test_questions.py": "102f6be8edd09a8d4b176a195540aba83888c9f479b641f6a376cd6097f0aa30",
+    "tests/runtime/test_local_app.py": "3422e5843b40748764dfb3f6775882605f41f55d27e73b03ce03e75c469741c1"
+  }
+}

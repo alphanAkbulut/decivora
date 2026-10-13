@@ -9,19 +9,23 @@ flowchart TB
     L["Decivora.command<br/>Python 3.12 + tarayıcı"] --> S["127.0.0.1 local UI<br/>ephemeral session cookie"]
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
     G --> T["Manuel Task oluştur<br/>To Do kartı"]
+    G --> Q["Manuel soru + seçenek snapshot<br/>exact ID / revision cevap"]
+    Q --> R[("Kalıcı question audit<br/>Open / Answered / stale / conflict")]
+    R --> N["Seçim kaydı<br/>canonical apply veya execution izni değil"]
     T --> A["AC + DoD şablonunu incele<br/>ayrı açık onay + version + reason"]
     A --> D[("Private SQLite<br/>Task records + acceptance_contract events")]
     D --> W["Current contract kontrolü<br/>task_work_started audit"]
     W --> B["In Progress kartı<br/>implementation claim"]
     D --> H["Eski kriterler ve gerekçeler<br/>reload / restart / replay"]
-    B -. henüz yok .-> V["T14 gerçek kanıt + Done<br/>T13e soru, T18 MCP, otomatik capture"]
+    B -. henüz yok .-> V["T14 gerçek kanıt + Done<br/>T13e tam karar bağı, T18 MCP, otomatik capture"]
     classDef launcher fill:#e8f1ff,stroke:#315c9b,color:#132b50;
     classDef guard fill:#eee7ff,stroke:#7853a7,color:#33204b;
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
     class G,A guard;
-    class D,W,B,H stored;
+    class D,W,B,H,R,N stored;
+    class Q launcher;
     class V pending;
 ```
 
@@ -42,3 +46,7 @@ Browser reload session cookie ile devam eder; program restart yeni session üret
 ## Açık kalan UI ve sınırlar
 
 T19 project selector/PendingDecision/Review Inbox, T20 graph/timeline/active-history full UI açık; ilk board+AC card dilimi çalışır. İlk100 record scoped liste sınırı, tek proje; multiuser/cloud/autocapture/native/MCP ve token dispatcher yok. Done disabled; cancelled state storage'da varsa görünür, advanced lifecycle preview UI henüz eklenmedi. Kullanım dosyasının sınırları programın banner'ında da görünür. Bu program geliştirme tracker8765 değildir; ayrı port/DB ile çalışır.
+
+## Manuel soru dilimi
+
+[QuestionService](../../packages/domain/questions.py) mevcut audit tablosunda question_presented/question_answered append-only kayıtlarını saklar; events/graph canonical kararları değiştirmez. SQL schema1 aynı. Her read/write current project ACL, yazma local human owner + active project ister. Exact revision, stable option ID ve request-ID retry korunur; aynı ID farklı cevapta reddedilir. Stale/unknown/conflicting cevap saklanır fakat seçimi değiştirmez.100 soru/512 toplam question-history kaydı geliştirme profilinin sınırıdır; kapasite aşımı yeni yazımı reddeder, geçmişi silmez. Soru sunumu sürüm kontrollüdür fakat sunum retry idempotency ve tam cancel/superseded/orphan-review/canonical binding henüz açık; bu sınırlar [raporda](../quality/pending-question-runtime.md) izlenir. UI manual source olduğundan external message/span uydurulmaz.

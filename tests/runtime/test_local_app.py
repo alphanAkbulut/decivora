@@ -47,3 +47,12 @@ class LocalAppTests(unittest.TestCase):
     def test_private_new_db_and_default_scaffold_has_no_server_side_effects(self):
         self.assertEqual(self.path.stat().st_mode&0o777,0o600)
         self.assertFalse(self.call('/api/state')[1]['capabilities']['semantic_extraction'])
+
+    def test_question_http_flow_and_reload_preserve_selection(self):
+        body=dict(action='ask_question',request_id='Q1',text='Storage?',options=[dict(id='sqlite',label='SQLite'),dict(id='files',label='Files')])
+        self.assertEqual(self.call('/api/command',body)[0],200)
+        self.assertEqual(self.call('/api/state')[1]['question_inbox']['questions'][0]['status'],'Open')
+        answer=dict(action='answer_question',request_id='a1',question='Q1',revision=1,option='sqlite')
+        code,result,_=self.call('/api/command',answer);self.assertEqual(code,200);self.assertEqual(result['status'],'Selected');self.assertFalse(result['canonical_apply'])
+        self.assertEqual(LocalApp(self.path).state()['question_inbox']['questions'][0]['selection'],'sqlite')
+        self.assertEqual(self.call('/api/command',answer)[1],result)

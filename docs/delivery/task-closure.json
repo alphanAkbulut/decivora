@@ -1131,7 +1131,7 @@
     "T13e": {
       "parent": "T13",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T13",
         "T07",
@@ -1141,7 +1141,7 @@
       "classification": "task_local",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "Manual durable question/answer slice verified; canonical Decision/Approval binding, cancel/superseded/orphan reassociation remain open.",
       "required_for_parent_closure": true
     },
     "T14a": {

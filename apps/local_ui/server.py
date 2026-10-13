@@ -6,6 +6,7 @@ import json,secrets,threading,uuid,webbrowser,argparse,time,sys
 from packages.storage.workspace import Workspace
 from packages.storage.project_store import canonical
 from packages.domain.acceptance import AcceptanceService
+from packages.domain.questions import QuestionService
 from packages.domain.source_event import ContractError
 
 ROOT=Path(__file__).parent
@@ -27,11 +28,17 @@ class LocalApp:
                 if r['body']['type']!='Task':continue
                 acceptance=AcceptanceService(core).view(owner,'personal',r['id'])
                 tasks.append(dict(r,acceptance=acceptance,lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
-            return dict(project=core.project(owner,'personal'),tasks=tasks,truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
+            return dict(project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
     def command(self,body):
-        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action=='ask_question':
+                if set(body)!={'action','request_id','text','options'}:raise ContractError('invalid_request','Exact question fields required.')
+                return QuestionService(core).present(owner,'personal',question=body['request_id'],base_revision=0,text=body['text'],options=body['options'])
+            if action=='answer_question':
+                if set(body)!={'action','request_id','question','revision','option'}:raise ContractError('invalid_request','Exact answer fields required.')
+                return QuestionService(core).answer(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
             if action=='create_task':
                 if set(body)!={'action','title','description'}:raise ContractError('invalid_request','Exact task fields required.')
                 ops=[dict(op='create',id='task',body=dict(type='Task',title=body['title'],description=body['description']))]

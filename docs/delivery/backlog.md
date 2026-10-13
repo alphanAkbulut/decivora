@@ -677,7 +677,7 @@ Kullanıcının Q12'ye geç verdiği yanıt [somut sözleşmede](../product/pend
 
 | Alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
-| T13e / T13,T07,T08,T05 | TODO / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm | ASK-01–06/08 + LATE-01–07 uygulanabilir core; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur |
+| T13e / T13,T07,T08,T05 | IN_PROGRESS / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm | [Manuel kalıcı soru dilimi](../quality/pending-question-runtime.md); ASK-01–06/08 + LATE-01–07 tam core kabulü açık; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur |
 | T18e / T13e,T18,T06 | TODO / P1b: host soru/cevap metadata coverage, exact reply/selection normalizasyonu ve delivery capability | ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok |
 | T24f / T13e,T18e,T19,T20i,T24 | TODO / P1b: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması | ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon |
 
