@@ -1,0 +1,2017 @@
+{
+  "format": "decivora-task-closure-1",
+  "policy": "Q16-A accepted",
+  "owner_reply": "gereksiz. ekleme yaratmaması ve gerçek eksiklerin saptanabilmesi için. izim bi dosyamız vardı çalışma ve yaklaşımı ai a verdiğimiz ve dikkat etmesi gereken seyler. oraya bi ekleme yapmzmız gerekıyorsa ekle. önerini de uygulayalım",
+  "authority": "conversation governance approval; not product authentication",
+  "sources": [
+    "docs/delivery/backlog.md",
+    "docs/delivery/team-data-plan.md"
+  ],
+  "mvp_criteria": [
+    "AC-01",
+    "AC-02",
+    "AC-03",
+    "AC-04",
+    "AC-05",
+    "AC-06",
+    "AC-07",
+    "AC-08",
+    "AC-09",
+    "AC-10",
+    "AC-11",
+    "AC-12",
+    "AC-13",
+    "AC-14"
+  ],
+  "tasks": {
+    "T01": {
+      "core_acceptance": "Her örneğin source span'ı ve beklenen sonucu var; model geliştirmede kullanılmayan holdout ayrılmış; kişisel veri yok.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P0"
+    },
+    "T02": {
+      "core_acceptance": "Her yüzey için version, olay, payload, izin, truncation ve coverage raporu var; erişilemeyenler unsupported/unknown.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P0"
+    },
+    "T03": {
+      "core_acceptance": "Native/config/custom/unknown matrisi, GAP/RES sonuçları ve kullanıcı yönetim yükü kanıtı var; native/extend/build/ek deney/durdur seçenekleri gerekçeli. Owner kararı ilgili ADR'lere işlenir; deneme yapılamayanlar not_run. T03a prototype yöntemi production stack onayı değildir; build seçilmeden T04 başlamaz.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P0"
+    },
+    "T04": {
+      "core_acceptance": "Tek yerel başlatma yolu; sentetik input dışında veri yok; CI/test komutları belgelendi.",
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/runtime-scaffold-results.json"
+      ],
+      "release_scope": "MVP"
+    },
+    "T05": {
+      "core_acceptance": "Aynı adlı projeler ayrılır; belirsiz binding yazma yapmaz; query de scope denetler.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T06": {
+      "core_acceptance": "Aynı event iki kez bir etki; aynı metin farklı mesajda korunur; crash cursor atlatmaz.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T07": {
+      "core_acceptance": "UPDATE/DELETE event API yok; replay aynı digest; migration sürümü kayıtlı.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T08": {
+      "core_acceptance": "Yarım graph oluşmaz; key/digest çakışması conflict; agent onay taklit edemez.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T09": {
+      "core_acceptance": "Desteksiz model sonucu canonical state yazamaz; truncation ve missing source görünür. Önceden etiketli/mock adayların işlenmesi otomatik anlam çıkarımının tamamlandığı sayılmaz; yöntem ve kapsam belirtilir.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T10": {
+      "core_acceptance": "Aynı fikir tekrar task olmaz; onaylı karar doğrudan overwrite edilmez.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T11": {
+      "core_acceptance": "OR kalan gerekçeyi korur; boş gerekçe unknown; supersession cycle reddi.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T12": {
+      "core_acceptance": "Keep/update/review/obsolete gerekçeli; tamamlanmış geçmiş korunur; eksik frontier görünür.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T13": {
+      "core_acceptance": "Serbest metin gerektirmez; stale/double approval güvenli; partial selection referansları bozmaz.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T14": {
+      "core_acceptance": "Agent done sözü verified olmaz; failed test yeni event ile reopen eder.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T15": {
+      "core_acceptance": "Import→impact→onay→state→düzeltme zinciri kanıtlı; başarısız kriter gizlenmez.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T16": {
+      "core_acceptance": "Gerçek fixture session otomatik yakalanır; başarısız hook sağlıklı sayılmaz.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T17": {
+      "core_acceptance": "Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T18": {
+      "core_acceptance": "Bir agent kaydını diğeri aynı project/revision ile okur; admin SQL exposed değil.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T19": {
+      "core_acceptance": "Metin yazmadan happy-path review; keyboard erişimi ve error/empty/loading state.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T20": {
+      "core_acceptance": "Aynı kaydın durumu tutarlı; graph reason path; historical done korunur.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T21": {
+      "core_acceptance": "İnsan basit işi seçebilir; unknown usage 0 değil; limit aşımı deferred.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T22": {
+      "core_acceptance": "Chat→Code aktarımı izlenir; manuel import otomatik capture diye gösterilmez. Q07/1C izinli geçmiş manifest'i, aktif iş önceliği, kalan coverage ve tarihsel öneri ayrımı T22b ile doğrulanır.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T23": {
+      "core_acceptance": "Secret fixture dışa çıkmaz; backup restore digest eşleşir; unauthorized request reddedilir.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T24": {
+      "core_acceptance": "Tüm zorunlu kapılar geçer veya sınırlı pilot adıyla açık istisna kararı; MVP iddiası kanıta bağlı.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "MVP"
+    },
+    "T25": {
+      "core_acceptance": "Her yüzeyde documented/verified/unsupported ayrımı; kaynak taşıma zinciri bozulmaz.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P2"
+    },
+    "T26": {
+      "core_acceptance": "İyileşme holdout ile ölçülür; unsupported certainty yok.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P2"
+    },
+    "T27": {
+      "core_acceptance": "PR varlığı AC geçişi sayılmaz; panel olmayan host'ta açık fallback.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P2"
+    },
+    "T28": {
+      "core_acceptance": "Quality eşitliğinde maliyet raporu; retry external duplicate üretmez; scope açık.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P3"
+    },
+    "T29": {
+      "core_acceptance": "Public için explicit owner onayı; test edilmeyen claim yok; dependency/license inventory tam.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P3"
+    },
+    "T30": {
+      "core_acceptance": "gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.",
+      "core_verified": false,
+      "evidence": [],
+      "release_scope": "P4"
+    }
+  },
+  "subtasks": {
+    "T01g": {
+      "parent": "T01",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [],
+      "classification": "task_local",
+      "owner": "T01",
+      "first_use_gate": "T01",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T01h": {
+      "parent": "T01",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T01g"
+      ],
+      "classification": "task_local",
+      "owner": "T01",
+      "first_use_gate": "T01",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T01i": {
+      "parent": "T01",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T01h"
+      ],
+      "classification": "task_local",
+      "owner": "T01",
+      "first_use_gate": "T01",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T01e": {
+      "parent": "T01",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T01"
+      ],
+      "classification": "task_local",
+      "owner": "T01",
+      "first_use_gate": "T01",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T01f": {
+      "parent": "T01",
+      "source": "docs/delivery/backlog.md",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "T01"
+      ],
+      "classification": "task_local",
+      "owner": "T01",
+      "first_use_gate": "T01",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T02b": {
+      "parent": "T02",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T02"
+      ],
+      "classification": "task_local",
+      "owner": "T02",
+      "first_use_gate": "T02",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T02d": {
+      "parent": "T02",
+      "source": "docs/delivery/backlog.md",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "T01"
+      ],
+      "classification": "task_local",
+      "owner": "T02",
+      "first_use_gate": "T02",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03g": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03f"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03h": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03g"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03i": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03f"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03j": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03g",
+        "T03i"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03k": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03g",
+        "T03h"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03l": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03k"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03m": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03l"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03n": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03m"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03o": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03n"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03p": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03o"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03q": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03p",
+        "T01h"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03r": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03q"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03s": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03r"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03t": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03s"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03u": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03t"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03v": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03u"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03w": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03v"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03x": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03w"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03y": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03x"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03z": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03y"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03aa": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03z"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03ab": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03aa"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03ac": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T03ab"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03a": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "T01",
+        "T02d"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03b": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "T03a"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03c": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T03f": {
+      "parent": "T03",
+      "source": "docs/delivery/backlog.md",
+      "status": "IN_PROGRESS",
+      "dependencies": [
+        "T01f",
+        "T02",
+        "T03a"
+      ],
+      "classification": "task_local",
+      "owner": "T03",
+      "first_use_gate": "T03",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T04a": {
+      "parent": "T04",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04"
+      ],
+      "classification": "integration",
+      "owner": "T08",
+      "first_use_gate": "T08",
+      "reason": "general command/query contract; T04 startup source validation is narrower",
+      "required_for_parent_closure": false
+    },
+    "T04b": {
+      "parent": "T04",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04"
+      ],
+      "classification": "integration",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "before first network ingress; disabled transport must remain disabled",
+      "required_for_parent_closure": false
+    },
+    "T04c": {
+      "parent": "T04",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04a"
+      ],
+      "classification": "integration",
+      "owner": "T07",
+      "first_use_gate": "T07",
+      "reason": "physical event/relationship schema before canonical persistence",
+      "required_for_parent_closure": false
+    },
+    "T04d": {
+      "parent": "T04",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04b",
+        "T04c"
+      ],
+      "classification": "integration",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "first ingress admission; unsupported network must not be activated",
+      "required_for_parent_closure": false
+    },
+    "T05h": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T05"
+      ],
+      "classification": "task_local",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T05g": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T05"
+      ],
+      "classification": "task_local",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T05f": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "DONE",
+      "dependencies": [
+        "T05"
+      ],
+      "classification": "task_local",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T05a": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T05"
+      ],
+      "classification": "task_local",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T05c": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T05b"
+      ],
+      "classification": "task_local",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T05d": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T05c",
+        "T08b"
+      ],
+      "classification": "integration",
+      "owner": "T10",
+      "first_use_gate": "T10",
+      "reason": "cross-source lineage/reconciliation integration after T08b policy; T06 still pins source/session binding",
+      "required_for_parent_closure": false
+    },
+    "T05e": {
+      "parent": "T05",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T05",
+        "T04c"
+      ],
+      "classification": "future_proposed",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T06a": {
+      "parent": "T06",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T06b": {
+      "parent": "T06",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T06c": {
+      "parent": "T06",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T06e": {
+      "parent": "T06",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04c",
+        "T06a",
+        "T06b",
+        "T06c"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T06f": {
+      "parent": "T06",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04d",
+        "T06d",
+        "T06e",
+        "T05b"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T06g": {
+      "parent": "T06",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06f"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T07a": {
+      "parent": "T07",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T07"
+      ],
+      "classification": "task_local",
+      "owner": "T07",
+      "first_use_gate": "T07",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T07c": {
+      "parent": "T07",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T06",
+        "T07a"
+      ],
+      "classification": "task_local",
+      "owner": "T07",
+      "first_use_gate": "T07",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T08a": {
+      "parent": "T08",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T08"
+      ],
+      "classification": "task_local",
+      "owner": "T08",
+      "first_use_gate": "T08",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T08c": {
+      "parent": "T08",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06f",
+        "T08b",
+        "T07b"
+      ],
+      "classification": "task_local",
+      "owner": "T08",
+      "first_use_gate": "T08",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T09b": {
+      "parent": "T09",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06",
+        "T09"
+      ],
+      "classification": "task_local",
+      "owner": "T09",
+      "first_use_gate": "T09",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T09c": {
+      "parent": "T09",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06e",
+        "T09b"
+      ],
+      "classification": "task_local",
+      "owner": "T09",
+      "first_use_gate": "T09",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T09d": {
+      "parent": "T09",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T09b",
+        "T08c"
+      ],
+      "classification": "task_local",
+      "owner": "T09",
+      "first_use_gate": "T09",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T09e": {
+      "parent": "T09",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T01e",
+        "T09b",
+        "T09c"
+      ],
+      "classification": "future_proposed",
+      "owner": "T09",
+      "first_use_gate": "T09",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T10a": {
+      "parent": "T10",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T10"
+      ],
+      "classification": "task_local",
+      "owner": "T10",
+      "first_use_gate": "T10",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T10b": {
+      "parent": "T10",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T10",
+        "T05d"
+      ],
+      "classification": "task_local",
+      "owner": "T10",
+      "first_use_gate": "T10",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T11c": {
+      "parent": "T11",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T11"
+      ],
+      "classification": "task_local",
+      "owner": "T11",
+      "first_use_gate": "T11",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T11b": {
+      "parent": "T11",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T07",
+        "T11"
+      ],
+      "classification": "task_local",
+      "owner": "T11",
+      "first_use_gate": "T11",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T12a": {
+      "parent": "T12",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T12"
+      ],
+      "classification": "task_local",
+      "owner": "T12",
+      "first_use_gate": "T12",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T13a": {
+      "parent": "T13",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T13"
+      ],
+      "classification": "task_local",
+      "owner": "T13",
+      "first_use_gate": "T13",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T13b": {
+      "parent": "T13",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T11b",
+        "T13"
+      ],
+      "classification": "task_local",
+      "owner": "T13",
+      "first_use_gate": "T13",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T13c": {
+      "parent": "T13",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T08",
+        "T13"
+      ],
+      "classification": "task_local",
+      "owner": "T13",
+      "first_use_gate": "T13",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T13d": {
+      "parent": "T13",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T11b",
+        "T13c"
+      ],
+      "classification": "future_proposed",
+      "owner": "T13",
+      "first_use_gate": "T13",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T13e": {
+      "parent": "T13",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T13",
+        "T07",
+        "T08",
+        "T05"
+      ],
+      "classification": "task_local",
+      "owner": "T13",
+      "first_use_gate": "T13",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T14a": {
+      "parent": "T14",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T14"
+      ],
+      "classification": "task_local",
+      "owner": "T14",
+      "first_use_gate": "T14",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T14b": {
+      "parent": "T14",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T13c",
+        "T14"
+      ],
+      "classification": "task_local",
+      "owner": "T14",
+      "first_use_gate": "T14",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T14c": {
+      "parent": "T14",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T14a",
+        "T14b",
+        "T08b"
+      ],
+      "classification": "task_local",
+      "owner": "T14",
+      "first_use_gate": "T14",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T14d": {
+      "parent": "T14",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T14b",
+        "T05c",
+        "T08b"
+      ],
+      "classification": "task_local",
+      "owner": "T14",
+      "first_use_gate": "T14",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T15a": {
+      "parent": "T15",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T15"
+      ],
+      "classification": "task_local",
+      "owner": "T15",
+      "first_use_gate": "T15",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T16b": {
+      "parent": "T16",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T02b",
+        "T05c",
+        "T08b",
+        "T07b",
+        "T16"
+      ],
+      "classification": "task_local",
+      "owner": "T16",
+      "first_use_gate": "T16",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18a": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18c": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18a",
+        "T18b"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18f": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18c",
+        "T06e"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18g": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18c",
+        "T10b",
+        "T20g",
+        "T06g"
+      ],
+      "classification": "integration",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "resume inventory UI integration; source ACL/read guards remain required before retrieval",
+      "required_for_parent_closure": false
+    },
+    "T18h": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18g",
+        "T14b",
+        "T08b",
+        "T09d"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18i": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18h",
+        "T14d",
+        "T10b"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18e": {
+      "parent": "T18",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T13e",
+        "T18",
+        "T06"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T19b": {
+      "parent": "T19",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T09d",
+        "T19",
+        "T08b",
+        "T07b"
+      ],
+      "classification": "task_local",
+      "owner": "T19",
+      "first_use_gate": "T19",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20e": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T11c",
+        "T13",
+        "T20"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20a": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T20"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20b": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T11b",
+        "T13b",
+        "T19"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20c": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T07",
+        "T14b",
+        "T20b"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20d": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T13d",
+        "T14b",
+        "T20b"
+      ],
+      "classification": "future_proposed",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T20f": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T07b",
+        "T08b",
+        "T20a"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20g": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T05c",
+        "T16b",
+        "T20f"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20h": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T20e",
+        "T14b",
+        "T06g"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T20i": {
+      "parent": "T20",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T20h",
+        "T14d",
+        "T13"
+      ],
+      "classification": "task_local",
+      "owner": "T20",
+      "first_use_gate": "T20",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T21b": {
+      "parent": "T21",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T08b",
+        "T09b",
+        "T21"
+      ],
+      "classification": "task_local",
+      "owner": "T21",
+      "first_use_gate": "T21",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T21c": {
+      "parent": "T21",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T08b",
+        "T21b"
+      ],
+      "classification": "task_local",
+      "owner": "T21",
+      "first_use_gate": "T21",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T22b": {
+      "parent": "T22",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T06",
+        "T09b",
+        "T18c",
+        "T21b",
+        "T22"
+      ],
+      "classification": "task_local",
+      "owner": "T22",
+      "first_use_gate": "T22",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T23a": {
+      "parent": "T23",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T23"
+      ],
+      "classification": "task_local",
+      "owner": "T23",
+      "first_use_gate": "T23",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T23b": {
+      "parent": "T23",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T23"
+      ],
+      "classification": "task_local",
+      "owner": "T23",
+      "first_use_gate": "T23",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T23e": {
+      "parent": "T23",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T20f",
+        "T21c",
+        "T23c",
+        "T23d"
+      ],
+      "classification": "task_local",
+      "owner": "T23",
+      "first_use_gate": "T23",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24d": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T20e",
+        "T24"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24a": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T24"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24c": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18c",
+        "T20b",
+        "T21b"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24g": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T20f",
+        "T21c",
+        "T23e"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24h": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T16b",
+        "T17",
+        "T20g"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24i": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T09c",
+        "T14c",
+        "T18f",
+        "T21b",
+        "T23a"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24j": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T08c",
+        "T21b",
+        "T21c",
+        "T23e"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24k": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T19b",
+        "T21b",
+        "T21c"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24l": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18g",
+        "T06g",
+        "T24k"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24m": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T20h",
+        "T18h",
+        "T24l"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24n": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18i",
+        "T20i",
+        "T24m"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24o": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T09e",
+        "T24"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24p": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T05e",
+        "T24"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24f": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T13e",
+        "T18e",
+        "T19",
+        "T20i",
+        "T24"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24q": {
+      "parent": "T24",
+      "source": "docs/delivery/backlog.md",
+      "status": "TODO",
+      "dependencies": [
+        "T03f",
+        "T24"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T25a": {
+      "parent": "T25",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T24p",
+        "T25",
+        "T05e"
+      ],
+      "classification": "future_proposed",
+      "owner": "T25",
+      "first_use_gate": "T25",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T26b": {
+      "parent": "T26",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T24d",
+        "T26",
+        "T18c",
+        "T21b"
+      ],
+      "classification": "future_proposed",
+      "owner": "T26",
+      "first_use_gate": "T26",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T26c": {
+      "parent": "T26",
+      "source": "docs/delivery/backlog.md",
+      "status": "PROPOSED",
+      "dependencies": [
+        "T25a",
+        "T26",
+        "T20",
+        "T18c",
+        "T21b"
+      ],
+      "classification": "future_proposed",
+      "owner": "T26",
+      "first_use_gate": "T26",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": false
+    },
+    "T28c": {
+      "parent": "T28",
+      "source": "docs/delivery/backlog.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T28b"
+      ],
+      "classification": "task_local",
+      "owner": "T28",
+      "first_use_gate": "T28",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T05b": {
+      "parent": "T05",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T04a",
+        "T05a"
+      ],
+      "classification": "task_local",
+      "owner": "T05",
+      "first_use_gate": "T05",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T08b": {
+      "parent": "T08",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T05b",
+        "T08a"
+      ],
+      "classification": "task_local",
+      "owner": "T08",
+      "first_use_gate": "T08",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T06d": {
+      "parent": "T06",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T06a",
+        "T05b"
+      ],
+      "classification": "task_local",
+      "owner": "T06",
+      "first_use_gate": "T06",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T07b": {
+      "parent": "T07",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T07a",
+        "T08b"
+      ],
+      "classification": "integration",
+      "owner": "T08",
+      "first_use_gate": "T08",
+      "reason": "atomic security audit before domain command apply; T07 log/replay core remains required",
+      "required_for_parent_closure": false
+    },
+    "T18b": {
+      "parent": "T18",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18a",
+        "T08b"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T23c": {
+      "parent": "T23",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T23a",
+        "T23b"
+      ],
+      "classification": "task_local",
+      "owner": "T23",
+      "first_use_gate": "T23",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T23d": {
+      "parent": "T23",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T23c"
+      ],
+      "classification": "task_local",
+      "owner": "T23",
+      "first_use_gate": "T23",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24b": {
+      "parent": "T24",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T23d",
+        "T18b"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T28b": {
+      "parent": "T28",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T28",
+        "T08b"
+      ],
+      "classification": "task_local",
+      "owner": "T28",
+      "first_use_gate": "T28",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T02c": {
+      "parent": "T02",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T02"
+      ],
+      "classification": "task_local",
+      "owner": "T02",
+      "first_use_gate": "T02",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T18d": {
+      "parent": "T18",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T05b",
+        "T08b",
+        "T18b",
+        "T18c",
+        "T02c"
+      ],
+      "classification": "task_local",
+      "owner": "T18",
+      "first_use_gate": "T18",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    },
+    "T24e": {
+      "parent": "T24",
+      "source": "docs/delivery/team-data-plan.md",
+      "status": "UNSPECIFIED",
+      "dependencies": [
+        "T18d",
+        "T24b"
+      ],
+      "classification": "task_local",
+      "owner": "T24",
+      "first_use_gate": "T24",
+      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "required_for_parent_closure": true
+    }
+  }
+}

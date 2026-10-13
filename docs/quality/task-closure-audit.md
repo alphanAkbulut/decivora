@@ -2,6 +2,10 @@
 
 **2026-10-13 · Mevcut kayıt denetimi; kapanış düzeni önerisi henüz kabul edilmedi.** [Makine okunur envanter](task-closure-audit-results.json). İncelenen başlangıç ref'i: `3e2bbb209f9ba60e3108fb4f4cdd5454fdff9f25`. Kapsam: 30 ana görev, backlog'da tracker'ın gördüğü117 alt dilim; MVP14AC, faz ağacı, bağlı team/data planı, açık kararlar, güncel handoff ve readiness. Bu doküman repo çapında kod güvenliği veya bütün kaynakların semantic audit'i değildir. Yeni runtime/model deneyi yapılmadı.
 
+## Uygulama sonrası güncelleme
+
+Q16-A kullanıcı tarafından kabul edildi. [Kapanış manifesti/validator](../delivery/task-closure.md) uygulandı; güncel cross-file envanter129 alt kayıt, 6 negatif/pozitif planning testi. Aşağıdaki117-satır audit ve pending ifadeleri inceleme anının tarihsel kaydıdır; task-closure.json güncel otoritedir. Gereksinimler ve14MVP AC silinmedi; ana status değişmedi.
+
 ## Sonuç
 
 Gerçek ürün boşlukları vardır; her `açık` metni bugünkü kod geliştirmeyi durduran iş değildir. Bir feature olmadan ürün eksik olabilir; aynı feature'ın ilerideki entegrasyonunun eksik olması bugünkü modülün çekirdek teslimini sonsuza kadar açık tutmamalıdır. Kapanış kanıtı, ilk kullanımdaki güvenlik kapısı ve MVP release kabulü ayrı izlenmelidir. Gereksinim silme veya başarı eşiğini düşürme önerilmiyor.

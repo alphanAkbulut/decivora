@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Q16-A kabulü ve uygulaması
+
+- [Kapanış manifesti](task-closure.md):30 ana/129 mevcut cross-file alt kayıt;7 downstream entegrasyonun sahip/first-use gate'i ayrı, core/PROPOSED korunur.6 planning testi ve closure cycle/missing owner/evidence/AC drift kontrolleri uygulandı. Ana1DONE/4IN_PROGRESS/25TODO ve14AC aynı.
+- Ortak çalışma rehberi ve proje AGENTS kısa kapanış/dedup/stale kontrol kuralıyla güncellendi. T04 startup kabulü korunur; T05a/b/c core kalanları kanıtla tamamlanacak, future team/login işleri T05'e yüklenmez. Yeni runtime/model/ücret yok.
+
+
 ### 2026-10-13 — Görev kapanış denetimi
 
 - [CL01–08](../quality/task-closure-audit.md):30 ana/117 backlog alt satır; gerçek release eksikleri, future/integration ve stale karar/sayım ayrıldı. Parent-all-child gate yorumunda T05→T08→T06→T05 döngüsü, T04 Done/child belirsizliği var.

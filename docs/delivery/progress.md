@@ -151,7 +151,6 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 
 | Konu | Etkisi | Sonraki adım |
 |---|---|---|
-| Q16 görev kapanış sınırı | Parent-all-child yorumundaki T05/downstream döngüsü ve T04/child tutarsızlığı; bütün bağımsız kodu veya model çalışmasını bekletmez | [Somut A/B önerisi ve CL01–08](../quality/task-closure-audit.md); yanıt pending, status/14AC değişmedi |
 | Receiver model kalitesi ve genelleme | RECEIVER-002 düzeltmeli tek run da invalid_contract; missing required field ve ambiguous-question binding kaynak retleri gözlendi. Dar MEMBERSHIP-002/003 source/type draft eşleşmesi genel kalite değildir | [İlk failure](../quality/receiver-001-result.md), [ikinci gerçek failure](../quality/receiver-002-result.md); ham çıktılar değişmedi. R22 multi-answer fixture toplama T03r DONE; production reconciliation, gold/native/ROI açık |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
@@ -200,4 +199,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `0f2484eb6d1e1ac7d6858816122a59fe054297b89daee43d9de6e1c97082f8a8`
+Kaynak fingerprint: `48916927c6faec1db3c9e03454b5f949552d49cfc6ed1a4eaa2ee20250c2743d`

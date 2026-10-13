@@ -2,7 +2,7 @@
 
 ## Güncel gri alan kontrolü — 2026-10-13
 
-**Q15-A kabul edildi:** [ADR-0012](../architecture/adr/0012-conditional-python-runtime.md) ilk Python3.12/SQLite çekirdeği ve conditional build kararı accepted. OPEN-01 native/ROI yeniden değerlendirmesi; OPEN-02 frontend/transport/release dependency ayrıntıları için kısmen açık. [Q16 kapanış düzeni](../quality/task-closure-audit.md) owner yanıtı bekler; status/acceptance değiştirilmedi.
+**Q15-A kabul edildi:** [ADR-0012](../architecture/adr/0012-conditional-python-runtime.md) ilk Python3.12/SQLite çekirdeği ve conditional build kararı accepted. OPEN-01 native/ROI yeniden değerlendirmesi; OPEN-02 frontend/transport/release dependency ayrıntıları için kısmen açık. [Q16-A kapanış düzeni](../delivery/task-closure.md) kabul edildi ve uygulandı; scoped task/integration ayrımı var, ana status ve14MVP AC değiştirilmedi.
 
 **Q14-A kabul edildi:** Kullanıcı A'yı seçti ve Proje 2'nin devamını sordu. Kimlik/kaynak/yetki kontrollerinden geçen bağımsız proje taslakları review'a açılabilir; belirsiz bölüm açıklama, bozuk teknik çıktı düzeltme bekler. Yalnız gerçekten bağımlı işler bekler; diğer projeler ve aynı projenin bağımsız işleri ilerleyebilir. [Seçenekler, gerekçe ve Proje 2 yaşam döngüsü](../delivery/decision-brief.md). Bir engelin başka bağımsız işi bekletmemesi seçimin gerekçesidir. OPEN-07'nin bütün auto-apply seçenekleri kapanmadı; atomic ChangeSet bölünmez, eski P0 skor/ham çıktı onarılmaz. Yeni model/API izni verilmedi. T03x fixture wrapper'ı [20 yeni test](../quality/project-review.md) ile tamamlandı; kabul edilen ürün kararı ve fixture kodu çalışan UI/durable Inbox/gerçek IAM değildir.
 

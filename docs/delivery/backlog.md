@@ -182,7 +182,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Son ilerleme:** T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
 - **Son kalıcı teslim:** T05g [SQLite project store](../quality/project-store.md);11 yeni/34 toplam runtime test; restart/idempotency/rollback geçti.
 - **Son yetki teslimi:** T05h [yerel authority](../quality/local-authority.md);8 yeni/42 toplam runtime test, revocation/read/write/cache/restart ret.
-- **Kalan:** ConnectionAuthorization/source binding izin makbuzu/session-source metadata ve ingress entegrasyonu; gerçek login/resource ACL/T08b action policy ayrı açık. T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
+- **Kalan:** T05a/b/c core binding/kimlik/connection izin makbuzu kabulü; durable source receipt/quarantine T06, cross-source lineage T05d integration sahibi T10; gerçek login/resource ACL/T08b action policy ayrı açık. T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
 
 ## T06 — Source ingress ve checkpoint
 
@@ -411,9 +411,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## Sistem sözleşmesi alt dilimleri
 
-**Güncel audit notu:** Genel parent-all-child kapanış cümlesi downstream entegrasyonlarla CL01/02/07 çelişkisi taşıyor. [Q16 kapanış denetimi](../quality/task-closure-audit.md) ayrım önerir; owner onayı gelmeden dependency/status/acceptance değiştirilmedi. Her açık alt iş bugünkü build başlangıcının blocker'ı değildir.
+**Q16-A kabul edildi:** [Çekirdek/entegrasyon kapanış manifesti](task-closure.md) ve [30 ana/129 alt kayıt kontrolü](../../scripts/check_task_closure.py) uygulanır. Aşağıdaki mevcut ID ve gereksinimler korunur; owner/first-use gate manifestte ayrıdır. Sonraki modüle bağlı iş bugünkü parent'ın kapanışını döngüye sokmaz; ilgili kabiliyet gate geçmeden açılmaz.
 
-Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere bağlar. Her alt dilim **TODO**; parent görev ancak bütün ilgili dilimler ve kendi AC'leri geçince kapanır. Sıra parent backlog sırası, sonra a→b→c'dir. “Kanıt” sütunu beklenen çıktıdır, mevcut test sonucu değildir.
+Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere bağlar. Alt dilimin status'u satır/manifestte ayrıca tutulur; belirtilmemiş durum Done değildir. Parent yalnız kendi task-local kabulü ve kendisine atanmış integration gate kanıtıyla kapanır. Sonraki sahip görevde kalan iş açık izlenir; plan sırası teknik blocker ile aynı değildir. “Kanıt” sütunu beklenen çıktıdır, mevcut test sonucu değildir.
 
 | Alt dilim / parent | Küçük uygulanabilir iş | Kabul kriteri / doğrulama | Dosya alanı |
 |---|---|---|---|

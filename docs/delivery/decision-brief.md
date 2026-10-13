@@ -2,12 +2,12 @@
 
 ## Q16 — Görev çekirdeği ve sonraki entegrasyonların kapanış sınırı
 
-**2026-10-13 · Somut öneri hazır; owner yanıtı bekliyor.** [CL01–08 denetimi](../quality/task-closure-audit.md) 30 ana/117 backlog alt satırı inceledi. T05'in downstream T08/T06 entegrasyonlarını kendi kapanışına bağlamak döngü yaratıyor; T04 startup Done iken network/transport alt kayıtları da genel all-child kuralında kalıyor. Bu durum kabul eşiğini düşürerek veya testleri silerek çözülmez.
+**2026-10-13 · Q16-A kabul edildi.** Kullanıcı çalışma rehberine gerekli kuralı eklememizi ve “önerini de uygulayalım” dedi. [Uygulanan kapanış manifesti](task-closure.md). [CL01–08 denetimi](../quality/task-closure-audit.md) 30 ana/117 backlog alt satırı inceledi. T05'in downstream T08/T06 entegrasyonlarını kendi kapanışına bağlamak döngü yaratıyor; T04 startup Done iken network/transport alt kayıtları da genel all-child kuralında kalıyor. Bu durum kabul eşiğini düşürerek veya testleri silerek çözülmez.
 
 - **A — Önerilen:** Task-local core acceptance + açık integration/first-use/release gate manifesti. Sonraki modüle ait iş kendi kaydında açık kalır; çekirdek parent yalnız kendi kanıtıyla kapanır. MVP14AC, source activation yetkisi ve first-use security değişmez. T05 otomatik Done yapılmaz; manifest kanıt review'u gerekir.
 - **B:** Mevcut bütün-child kapanışını koru; dependency loop/parent scope çelişkilerini kapsamlı dependency refactor ile çöz, T04 kapanış yorumunu da yeniden değerlendir.
 
-Etkilenecekler: canonical backlog/faz/team-data/kapanış validator'ı ve ilgili gate açıklamaları. Fayda: gerçek teslim görünürlüğü ve döngüsüz sıra. Risk: yanlış sınıflamanın first-use korumasını geciktirmesi; validator ownership/AC/gate/cycle ve runtime negatif kanıtı kontrol etmelidir. Bu kapanış/kabul politikası değişikliği olduğu için owner onayı olmadan uygulanmadı. Bu soru yeni model, ücret, kaynak erişimi veya silme izni istemez. Salt clerical stale karar/sayım düzeltmeleri ayrıca yapıldı; ana status'lar aynı.
+Etkilenecekler: canonical backlog/faz/team-data/kapanış validator'ı ve ilgili gate açıklamaları. Fayda: gerçek teslim görünürlüğü ve döngüsüz sıra. Risk: yanlış sınıflamanın first-use korumasını geciktirmesi; validator ownership/AC/gate/cycle ve runtime negatif kanıtı kontrol etmelidir. Owner Q16-A yanıtıyla bu kapanış/kabul politikası değişikliği yetkilendirildi; core/integration ayrımı uygulandı. Ana durumlar ve14AC kanıtı değişmedi. Bu soru yeni model, ücret, kaynak erişimi veya silme izni istemez. Salt clerical stale karar/sayım düzeltmeleri ayrıca yapıldı; ana status'lar aynı.
 
 ## Güncel odak — Q14-A kabul edildi / 2026-10-13
 

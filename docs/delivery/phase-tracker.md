@@ -91,7 +91,7 @@ T24 çıkışı: [AC-01–14](../product/mvp.md), iki ayrı gerçek coding-adapt
 
 ### MVP içindeki alt işler
 
-Aşağıdaki gruplar **önemli örneklerdir**, bütün alt görevlerin kopyası değildir. Parent'ın backlog ve team/data planında tanımlanan bütün ilgili dilimleri kendi kabulüyle birlikte tamamlanır. PROPOSED alt dilim kabul edilmiş implementation taahhüdü sayılmaz.
+Aşağıdaki gruplar **önemli örneklerdir**, bütün alt görevlerin kopyası değildir. Parent kapanışı [Q16-A manifestindeki](task-closure.md) kendi task-local ve kendisine atanan integration gate'lerinin kanıtıyla değerlendirilir; sonraki sahip görevde kalan işler açık kalır. PROPOSED alt dilim kabul edilmiş implementation taahhüdü sayılmaz.
 
 | Grup | Mevcut alt dilim örnekleri | Kanıt ailesi / ayrıntı |
 |---|---|---|
@@ -152,7 +152,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 
 1. Backlog'da işin alt dilimini, ön koşullarını, ilgili AC'leri ve gerçek izinleri kontrol et; yalnız plan sırasını teknik blocker sayma.
 2. Aktif işin owner/executor, durum, engel, kanıt ref'i, çalıştırılan test ve sonraki adımını status veya tarihli delivery kaydına yaz. Rol/başlama izni atanmadan hazır olduğunu varsayma.
-3. Parent durumunu yalnız bütün ilgili kabul/dilim kanıtıyla güncelle; ana tablonun bu faz görünümünü aynı değişiklikte eşleştir. Doküman hazır olması runtime görevi done yapmaz.
+3. Parent durumunu yalnız Q16-A scoped kapanış kabulü ve kendi gate kanıtıyla güncelle; ana tablonun bu faz görünümünü aynı değişiklikte eşleştir. Doküman hazır olması runtime görevi done yapmaz.
 4. Bir task veya fazın kapanışında [AC/DoD ve kaynaklı bağlam](../product/task-context-and-acceptance.md) güncellenir. İptal/erteleme gerekçesi ve tarihçesi korunur.
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
@@ -167,4 +167,4 @@ Bugünkü snapshot'ta T04 DONE, T01/T02/T03/T05 IN_PROGRESS, 25 ana geliştirme 
 
 ## Kapanış denetimi
 
-[30 ana/117 alt satır denetimi ve Q16](../quality/task-closure-audit.md): gerçek release eksikleri, downstream entegrasyon ve stale kayıtlar ayrıldı. Closure policy henüz kabul edilmedi; ana status ve14AC değişmedi.
+[30 ana/117 alt satır denetimi ve Q16](../quality/task-closure-audit.md): gerçek release eksikleri, downstream entegrasyon ve stale kayıtlar ayrıldı. Q16-A kabul edildi; [129 cross-file alt kayıt manifesti](task-closure.md) ile closure policy uygulandı. Ana status ve14AC değişmedi.

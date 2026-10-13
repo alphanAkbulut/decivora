@@ -8,6 +8,7 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 
 - Yeni uygulama/entegrasyon yatırımlarında `docs/governance/evidence-first-development.md` rehberini oku: en riskli varsayımı küçük çalışan dilimle sına, kanıt düzeylerini ayır ve onaylı bütçede dur. Rehber kullanıcı yetkisini genişletmez.
 - Güncel aşama ve sıradaki iş için `docs/delivery/status.md` ve `docs/delivery/backlog.md` oku. Geçici görev/branch bilgilerini bu dosyaya ekleme.
+- Kapanışta `docs/delivery/task-closure.json` ve `scripts/check_task_closure.py` kullan: çekirdek kabul, entegrasyon sahibi ve first-use/release kapısı ayrı kalır. Yeni eksik etiketi üretmeden mevcut kanıt/karar/işi kontrol et; future/proposed veya stale metni bugünkü blocker sayma. Bu hedefli kontrol her mesajda tam repo taraması gerektirmez.
 - Kullanıcının tam vizyonunu `docs/product/full-scope.md` içinde koru. MVP dışında kalan fikirleri silme; açık fazla ilişkilendir.
 - Değiştireceğin dosyanın güncel halini yeniden oku; kullanıcı ve diğer agent değişikliklerini koru. Küçük, incelenebilir değişiklik yap.
 - Ürün ilkesi, teknik öneri, doğrulanmış davranış ve açık soruyu ayır. ADR önerilerini sessizce kabul edilmiş sayma.

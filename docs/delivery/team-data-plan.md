@@ -17,7 +17,7 @@
 
 ## P1'de küçük uygulanabilir dilimler
 
-Ana görevler [T01–T30](backlog.md) korunur. Bu alt dilimler ilgili ana görevin kabulüne eklenir; tamamlanmış sayılmaz. Her dilim bir review edilebilir değişiklik; süre taahhüdü yok.
+Ana görevler [T01–T30](backlog.md) korunur. Bu mevcut alt dilimler [Q16-A manifestinde](task-closure.md) task-local veya sahibi/first-use gate belirli entegrasyon olarak sınıflanır; tamamlanmış sayılmaz. Her dilim bir review edilebilir değişiklik; süre taahhüdü yok.
 
 | Dilim / bağımlılık | Somut çıktı | Kabul / kapı |
 |---|---|---|

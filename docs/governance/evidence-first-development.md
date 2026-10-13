@@ -18,6 +18,14 @@
 - Yanlış davranış, belirsizlik, duplicate, stale revision, yetkisiz actor, eksik cevap ve timeout örneklerini çalıştır. Geçmesi için validator/policy/kalite kapısını gevşetme.
 - Engeli, denemeyi ve sonraki uygulanabilir adımı takip kaydında görünür tut. Fixture teslimi ana ürün görevini otomatik kapatmaz.
 
+## Görev kapsamı ve kapanış kontrolü
+
+- Yeni açık iş eklemeden önce mevcut görev, karar ve kanıtı kontrol et. Gerçek eksik, sonraki entegrasyon, release kapısı, öneri ve eski durum metnini ayır; aynı eksik için ikinci görev üretme.
+- Görevin çekirdek kabulünü işe başlarken sabitle. Sonraki modüle bağlı entegrasyonu kendi sahibi ve ilk kullanım kapısıyla açık izle; bütün gelecek işleri bugünkü parent kapanışına yükleme. Güvenlik, izin ve veri-koruma kontrolleri ilgili işlem kullanılmadan geçmelidir.
+- Parent/child, teknik bağımlılık ve teslim sırasını ayrı tut. Parent'ın kapanışı kendi downstream entegrasyonuna bağlıysa döngüyü göster; gereksinimi silmeden sahiplik/kapanış sınırını düzelt. Kabul politikasını değiştirmek yetki gerektiriyorsa somut öneriyi önce hazırla.
+- Done yalnız belirtilen kapsamın kanıtıdır; eksik entegrasyon veya MVP kabulü bitmiş sayılmaz. Bilinmeyen status başarısızlık veya yeni eksik görev değildir. Kabul edilmiş kararı tekrar açık soru, tüketilmiş izni bekleyen onay olarak gösterme.
+- Kanıt/scope değişiminde veya görev kapanışında hedefli kontrol yap; her mesajda tüm repo/rehberi yeniden tarama. Geçmiş raporları koru, güncel görünümü mevcut kayıtlarda düzelt.
+
 ## Durma ve yatırım kararı
 
 Timebox sonunda: **çalışan çıktı → kanıt → kalan risk → sonraki en küçük iş → gerekli karar**. Başarısızlık yeni bir haftalık araştırmaya otomatik dönüşmez. Devam, küçük extension/native çözüm, yeniden tasarım veya durdurma seçeneklerini kanıtla değerlendir. Yeni harcama/erişim/kapsam gerekiyorsa önce somut öneri hazırla.
