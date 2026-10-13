@@ -132,3 +132,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## RECEIVER-002 gerçek native run — Q03-R6 tüketildi
 
 [İlk tam çıktı ve tanı](../../docs/quality/receiver-002-result.md): tek Luna/Low turn, wire-2 JSONvalid fakat N01 required next_actions yok/N02 ambiguous soru bağı yanlış; trial invalid_contract, iki proje unreviewed.3 yeni saved-output testi/209 semantik test; raw/manifest/old scorer korunur. Yeni model/API0 (actual trial1; retry0), token/backend unknown. Sonraki yerel iş typed facts readback/action taslağını modelden isteme tekrarını azaltmak; implemented diye sunulmaz.
+
+## Tipli veriden model çağrısız taslak — T03aa DONE
+
+[`typed_review.py` / çalışan kod ve sınırlar](../../docs/quality/typed-review.md); pinned source/context fixture'dan6record readback/action, candidate/source/read-access ve atomic review guard. Generated origin deterministic_selected_typed_records; modelraw/oracle build input değil.13 yeni/222 semantik test ve bağımsız authored kıyas; inference/mutation0, geçmiş failures aynı. CLI --out yeni dosya, overwrite yok. Model extraction/gold/native/production gate değildir.

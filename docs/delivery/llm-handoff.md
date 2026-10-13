@@ -21,6 +21,7 @@ Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/promp
 | Neyi rakiplerden farklı hedefliyoruz? | [Farklılaşma](../product/differentiation.md), [kanıt seviyeli benchmark](../discovery/benchmark.md) |
 | Şimdi ne yapılacak, nasıl bitecek? | [Status](status.md), [backlog](backlog.md), [kısa yönetim planı](project-management.md) |
 | Receiver/yenichat ne durumda; hangi kod çalıştı? | [İlk gerçek failed run](../quality/receiver-001-result.md), [yerel schema/source guard ve akış](../quality/receiver-contract.md), [yeni RECEIVER-002 hazırlığı](../quality/receiver-next-plan.md), [wire-2 proje incelemesi](../quality/project-review-next.md); [RECEIVER-002 actual tek run](../quality/receiver-002-result.md) invalid_contract; Q03-R6 tüketildi, yeni inference izni yok |
+| Tipli veriler için receiver hatası nasıl azaltıldı? | [T03aa kod/kanıt](../quality/typed-review.md): source-only deterministic taslak, model0; önceki failed actual raw ayrı, free-text extraction başarı iddiası yok |
 | Hangi sonuç kanıt sayılır? | [Doğrulama](../quality/verification.md), [ölçüm](../quality/measurement.md) |
 | Hangi eksikler bulundu ve hangileri hâlâ açık? | [Kapsam/mimari incelemesi](../quality/completeness-review.md) |
 | İnsanların hangi şikâyetleri bu yönü destekliyor; karşı kanıt ne? | [Kullanıcı araştırması ve ters düşünme](../discovery/user-research.md) |

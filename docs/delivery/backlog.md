@@ -92,8 +92,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 - **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
-- **Son ilerleme:** 2026-10-13 · [RECEIVER-002](../quality/receiver-002-result.md) gerçek run ve3 saved-output regresyonu/209 semantik test. Trial invalid_contract, iki bağımsız proje de ret; Q03-R6 tüketildi. T03z local review DONE; eski raw/failure korunur.
-- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. [Bulgu ve küçük yerel devam](../quality/receiver-002-result.md): typed/source-bound record'lardan deterministic readback/action taslağı üretimini sınayarak modelce tekrarı azalt; ilk raw/strict scorer değiştirilmez. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
+- **Son ilerleme:** 2026-10-13 · T03aa [deterministic typed review](../quality/typed-review.md) DONE;13 yeni/222 semantik test,6typed action ayrı authored beklentiyle eşleşti. Actual RECEIVER-002 failed/raw aynı; yeni generated origin ayrı. Model/API/mutation0; Q03-R6 tüketildi.
+- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki ana kapanış: T01 exact-label inceleme, T02 izinli gerçek capture ve T03 native/ROI/yatırım karşılaştırmasını mevcut kanıt düzeyleriyle tamamla. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -137,6 +137,12 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
 |---|---|---|
 | T03z / T03y | DONE / P0: wire-2 için Q14-A bağımsız proje incelemesi |14 yeni/206 semantik test; global identity/access/source preflight, local type/source error, clean/invalid abstain/missing, atomic bekleme, immutable v1 ret. [Rapor](../quality/project-review-next.md). Strict kalite scorer aynı; model/API/mutation0, durable Inbox/late-reply uygulama/production kapsam dışı |
+
+### T03 altında tamamlanan model çağrısız tipli dönüşüm
+
+| Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
+|---|---|---|
+| T03aa / T03z | DONE / P0: selected typed record'dan readback ve safe action taslağı |13 yeni/222 semantik test;6record bağımsız authored kıyas, null ambiguous binding, access/freshness/atomic/no-oracle/no-raw/no-overwrite. [Rapor](../quality/typed-review.md). Yeni inference0; free-text extraction/human gold/IAM/production kabulü değil |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 
