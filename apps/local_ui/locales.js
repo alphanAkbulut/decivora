@@ -122,7 +122,18 @@ window.DecivoraCatalogs = {
     "Görev sürümü: {version} · {lane}": "Task version: {version} · {lane}",
     "Kriter geçmişi ({count} sürüm)": "Criteria history ({count} versions)",
     "Cevap kaydedildi: {status}. Uygulama onayı ayrı kalır.": "Answer saved: {status}. Application approval is separate.",
-    "karar kaydı": "decision record"
+    "karar kaydı": "decision record",
+    "No recorded blockers.": "No recorded blockers.",
+    "Blocked is independent of workflow status.": "Blocked is independent of workflow status.",
+    "Next action: ": "Next action: ",
+    "Review blocker": "Review blocker",
+    "Blocker management and history": "Blocker management and history",
+    "Reason / resolution evidence": "Reason / resolution evidence",
+    "Next action": "Next action",
+    "Resolve blocker": "Resolve blocker",
+    "Mark as Blocked": "Mark as Blocked",
+    "Blocker recorded; workflow status is unchanged.": "Blocker recorded; workflow status is unchanged.",
+    "Resolved": "Resolved"
   },
   "tr": {
     "Dil": "Dil",
@@ -246,7 +257,18 @@ window.DecivoraCatalogs = {
     "Görev sürümü: {version} · {lane}": "Görev sürümü: {version} · {lane}",
     "Kriter geçmişi ({count} sürüm)": "Kriter geçmişi ({count} sürüm)",
     "Cevap kaydedildi: {status}. Uygulama onayı ayrı kalır.": "Cevap kaydedildi: {status}. Uygulama onayı ayrı kalır.",
-    "karar kaydı": "karar kaydı"
+    "karar kaydı": "karar kaydı",
+    "No recorded blockers.": "Kayıtlı blocker yok.",
+    "Blocked is independent of workflow status.": "Blocked, görev ilerleme statüsünden bağımsızdır.",
+    "Next action: ": "Çözüm adımı: ",
+    "Review blocker": "Blocker’ı incele",
+    "Blocker management and history": "Blocker yönetimi ve geçmiş",
+    "Reason / resolution evidence": "Gerekçe / çözüm kanıtı",
+    "Next action": "Çözüm adımı",
+    "Resolve blocker": "Blocker’ı çöz",
+    "Mark as Blocked": "Blocked olarak işaretle",
+    "Blocker recorded; workflow status is unchanged.": "Blocker kaydedildi; görev ilerleme statüsü değişmedi.",
+    "Resolved": "Çözüldü"
   },
   "es": {
     "Dil": "Idioma",
@@ -370,7 +392,18 @@ window.DecivoraCatalogs = {
     "Görev sürümü: {version} · {lane}": "Versión de tarea: {version} · {lane}",
     "Kriter geçmişi ({count} sürüm)": "Historial de criterios ({count} versiones)",
     "Cevap kaydedildi: {status}. Uygulama onayı ayrı kalır.": "Respuesta guardada: {status}. La aprobación para aplicar es independiente.",
-    "karar kaydı": "registro de decisión"
+    "karar kaydı": "registro de decisión",
+    "No recorded blockers.": "No hay bloqueos registrados.",
+    "Blocked is independent of workflow status.": "Blocked es independiente del estado de trabajo.",
+    "Next action: ": "Próximo paso: ",
+    "Review blocker": "Revisar bloqueo",
+    "Blocker management and history": "Gestión e historial de bloqueos",
+    "Reason / resolution evidence": "Motivo / evidencia de resolución",
+    "Next action": "Próximo paso",
+    "Resolve blocker": "Resolver bloqueo",
+    "Mark as Blocked": "Marcar como Blocked",
+    "Blocker recorded; workflow status is unchanged.": "Bloqueo registrado; el estado no cambió.",
+    "Resolved": "Resuelto"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -494,7 +527,18 @@ window.DecivoraCatalogs = {
     "Görev sürümü: {version} · {lane}": "Versão da tarefa: {version} · {lane}",
     "Kriter geçmişi ({count} sürüm)": "Histórico de critérios ({count} versões)",
     "Cevap kaydedildi: {status}. Uygulama onayı ayrı kalır.": "Resposta salva: {status}. A aprovação para aplicar é separada.",
-    "karar kaydı": "registro de decisão"
+    "karar kaydı": "registro de decisão",
+    "No recorded blockers.": "Não há bloqueios registrados.",
+    "Blocked is independent of workflow status.": "Blocked é independente do estado do trabalho.",
+    "Next action: ": "Próxima ação: ",
+    "Review blocker": "Revisar bloqueio",
+    "Blocker management and history": "Gestão e histórico de bloqueios",
+    "Reason / resolution evidence": "Motivo / evidência da resolução",
+    "Next action": "Próxima ação",
+    "Resolve blocker": "Resolver bloqueio",
+    "Mark as Blocked": "Marcar como Blocked",
+    "Blocker recorded; workflow status is unchanged.": "Bloqueio registrado; o estado não mudou.",
+    "Resolved": "Resolvido"
   },
   "ar": {
     "Dil": "اللغة",
@@ -618,6 +662,17 @@ window.DecivoraCatalogs = {
     "Görev sürümü: {version} · {lane}": "نسخة المهمة: {version} · {lane}",
     "Kriter geçmişi ({count} sürüm)": "سجل المعايير ({count} نسخ)",
     "Cevap kaydedildi: {status}. Uygulama onayı ayrı kalır.": "حُفظت الإجابة: {status}. الموافقة على التطبيق منفصلة.",
-    "karar kaydı": "سجل القرار"
+    "karar kaydı": "سجل القرار",
+    "No recorded blockers.": "لا توجد عوائق مسجلة.",
+    "Blocked is independent of workflow status.": "Blocked مستقل عن حالة سير العمل.",
+    "Next action: ": "الخطوة التالية: ",
+    "Review blocker": "مراجعة العائق",
+    "Blocker management and history": "إدارة العوائق وسجلها",
+    "Reason / resolution evidence": "السبب / دليل الحل",
+    "Next action": "الخطوة التالية",
+    "Resolve blocker": "حل العائق",
+    "Mark as Blocked": "وضع علامة Blocked",
+    "Blocker recorded; workflow status is unchanged.": "حُفظ العائق؛ لم تتغير حالة سير العمل.",
+    "Resolved": "تم الحل"
   }
 };

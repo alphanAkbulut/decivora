@@ -4,6 +4,8 @@
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
+**2026-10-13 Blocker UI:** local-preview1 human block/resolve→append-only audit→board/start gate ile güncellendi;42/21sayımı aynı. Cached Mermaid gerçek render + SVG XML/source hash kaydı; önceki proof superseded history’de korundu.
+
 ## Güncel inventory — 2026-10-13
 
 <!-- diagram-inventory:start -->

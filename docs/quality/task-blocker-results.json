@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-13",
+  "scope": "local human impediment overlay",
+  "runtime_tests_passed": 244,
+  "new_blocker_tests": 4,
+  "browser_block_mark_reload_resolve": true,
+  "locale_regression_passed": true,
+  "workflow_lane_preserved": true,
+  "history_preserved": true,
+  "start_blocked": true,
+  "auto_start_on_resolution": false,
+  "model_calls": 0,
+  "automatic_graph_ui_binding": "not_implemented",
+  "schema_changes": false,
+  "updated_mermaid": "docs/architecture/local-preview.md#block-1"
+}

@@ -13,6 +13,10 @@ flowchart TB
     M0 --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
     K0 --> E0["Mevcut kayıt karşılaştırması<br/>explicit seçili öneri onayı"]
     E0 --> D
+    G --> F0["Human Blocked / resolve<br/>task + blocker revision; reason + next action"]
+    F0 --> F1[("Append-only task_blocker audit<br/>workflow lane unchanged; history retained")]
+    F1 --> B
+    F1 -. active impediment gates new start .-> W
     G --> T["Manuel Task oluştur<br/>To Do kartı"]
     G --> Q["Manuel soru + seçenek snapshot<br/>exact ID / revision cevap"]
     Q --> R[("Kalıcı question audit<br/>Open / Answered / stale / conflict")]
@@ -76,3 +80,8 @@ Question state_revision onay dayanağına bağlanır; defer→resume eski approv
 ## UI locale sunum sınırı
 
 UI düğümü yerel `locales.js` + `i18n.js` ile EN-default/TR/ES/PT-BR/AR sunar. Dil tercihi browser-local; Arabic `dir=rtl`. Dil değiştirmek domain command, DB/event/schema değişimi, approval, model veya dış servis çağrısı değildir. Taslak/kaynak/seçim korunur; task statü kodları İngilizce kalır. [Karar, kaynak ve doğrulama](../product/language-and-localization.md). Mevcut Mermaid akışı/domain şeması bu değişiklikte aynı; yeni engine veya servis eklenmedi.
+
+
+## Blocker görünümü (2026-10-13)
+
+Yerel UI'da `TaskBlockerService` açık insan işaretlemesi/çözümü ve reason/next_action saklar. Task version + blocker revision guard; unknown/cancelled task veya stale write reddedilir. Audit geçmişi append-only,512yerel blocker olayı sınırı geçmişi silmez. Görev kendi To Do/In Progress sütununda kalır; kırmızı Blocked badge ve ayrı üst Blockers listesi gösterilir. Aktif blocker yeni start'ı durdurur; çözüm otomatik start/Done üretmez. Bu manuel beyan katmanıdır; `DependencyGraph.assessment/rank` otomatik edge→UI bağlama henüz yapılmadı. Otomatik task/decision/permission blocker tespiti ve kaynak kanıtı mevcut T20e/T24d kapsamındadır. Şema1/audit aynı; yeni tablo yok.

@@ -6,6 +6,7 @@ import json,secrets,threading,uuid,webbrowser,argparse,time,sys
 from packages.storage.workspace import Workspace
 from packages.storage.project_store import canonical
 from packages.domain.acceptance import AcceptanceService
+from packages.domain.task_blockers import TaskBlockerService
 from packages.domain.questions import QuestionService
 from packages.domain.question_decisions import QuestionDecisionService
 from packages.domain.source_event import ContractError
@@ -30,12 +31,15 @@ class LocalApp:
             for r in records['records']:
                 if r['body']['type']!='Task':continue
                 acceptance=AcceptanceService(core).view(owner,'personal',r['id'])
-                tasks.append(dict(r,acceptance=acceptance,lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
+                tasks.append(dict(r,acceptance=acceptance,blocker=TaskBlockerService(core).view(owner,'personal',r['id']),lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
             return dict(conversation_review=ConversationService(core).view(owner,'personal'),model_ready=self.extractor is not None,project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
     def command(self,body):
-        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action=='task_blocker':
+                if set(body)!={'action','task','task_version','base_revision','blocked','reason','next_action'}:raise ContractError('invalid_request','Exact blocker fields required.')
+                return TaskBlockerService(core).set(owner,'personal',**{k:v for k,v in body.items() if k!='action'})
             if action in ('import_conversation','analyze_conversation','accept_candidates'):
                 service=ConversationService(core)
                 if action=='import_conversation':

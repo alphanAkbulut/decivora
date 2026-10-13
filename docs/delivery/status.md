@@ -17,6 +17,10 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Görünür Blocked / çözüm akışı
+
+- Task'ın ilerleme sütunundan ayrı kırmızı Blocked işareti + üst Blockers listesi, gerekçe/next action, explicit human çözümü, revision ve append-only audit uygulandı. [Kanıt](../quality/task-blocker-results.json):4yeni/244runtime test, browser mark→reload→resolve ve5locale regresyonu geçti. Aktif blocker yeni start'ı durdurur; çözüm otomatik start/Done üretmez. [Sınırlar](../architecture/local-preview.md): otomatik graph/capture blocker UI bağlama açık; T20e/T24d mevcut kapsam, yeni ana görev yok.
+
 ### 2026-10-13 — EN-default beş UI dili
 
 - [Yerel UI dilimi](../product/language-and-localization.md): İngilizce varsayılan/fallback; TR/ES/PT-BR/AR katalogları ve Arabic RTL. Yerel dil değişimi model/command çağırmaz, kaynak ve düzenlenen taslak/checkbox seçimini korur. Çok dilli model kalitesi/otomatik çıktı dili P2'de açık; ana görev kapanışı yok.

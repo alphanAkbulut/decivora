@@ -54,6 +54,8 @@ class AcceptanceService:
     def start(self,scope,project,task):
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+            from packages.domain.task_blockers import TaskBlockerService
+            if TaskBlockerService(self.core)._view(project,task)['blocked']:raise ContractError('task_blocked','Resolve the recorded impediment before starting work.')
             contract=self.view(scope,project,task)
             if contract['current'] is None or contract['stale']:raise ContractError('acceptance_required','Approve current acceptance criteria before starting work.')
             row=self.core.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.core.workspace,project,task)).fetchone()

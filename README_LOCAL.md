@@ -23,3 +23,6 @@ CLI alternatif: `python3.12 -B -m apps.local_ui.server`. `--data-dir` ile kendi 
 
 
 **Arayüz dili:** Header'daki Language seçicisinden English (varsayılan), Türkçe, Español, Português (Brasil) veya العربية seç. Seçim bu tarayıcıda hatırlanır; Arapça sağdan sola yerleşir. Menüler yerel katalogdan gelir ve model/token harcamaz. Görev, konuşma, gerekçe ve AC/DoD içerikleri çevrilmez; ilk proje şablonları Türkçe kalır. Pano statüleri İngilizcedir. ES/PT/AR çevirileri taslaktır; native inceleme yapılmadı. [Dil kararı ve test sınırları](https://github.com/alphanAkbulut/decivora/blob/main/docs/product/language-and-localization.md).
+
+
+**Blockers:** Panonun üst listesi ve karttaki kırmızı Blocked işareti engellenen işleri gösterir. Kartı açıp “Blocker management and history” bölümünde gerekçe ve çözüm adımıyla işaretle/çöz. Görev kendi ilerleme sütununda kalır; aktif blocker yeni işe başlama işlemini durdurur. Geçmiş silinmez. Bu dilim açık insan beyanıdır; konuşma/dependency kaynaklı otomatik blocker bağlama henüz tamamlanmadı. Dört sütun nihai workflow sınırı değildir.

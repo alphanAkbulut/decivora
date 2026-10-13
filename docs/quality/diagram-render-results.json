@@ -684,17 +684,14 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "a77508bbd0695c2edaf7466fff072c053a6ee68f5c50b98cdee4aa54c9b99929",
+      "source_sha256": "d6233b13a89bf4b6a853d1cce275759d27d169564cb24679db27959d6016ad78",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 1428.53125 1759.2794189453125",
+      "view_box": "0 0 1782.98046875 1807.2794189453125",
       "artifact": "assets/diagrams/local-preview-1.svg",
       "error": null,
-      "svg_sha256": "1341fc67bbc3313f8335404556893d251919ad39e0b9ca9af27ad18fe7def057",
-      "checked_at": "2026-10-13",
-      "renderer": "Mermaid 11.17.2 cached bundle",
-      "network_requests_allowed": false
+      "svg_sha256": "00ae469ed91b23b928f9990b90ea9f9047059d7279f1672398442d760971e7b1"
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -918,6 +915,23 @@
       "network_requests_allowed": false,
       "superseded_at": "2026-10-13",
       "reason": "Conversation import/model adapter/candidate review now primary UI."
+    },
+    {
+      "path": "docs/architecture/local-preview.md",
+      "block": 1,
+      "source_sha256": "a77508bbd0695c2edaf7466fff072c053a6ee68f5c50b98cdee4aa54c9b99929",
+      "status": "rendered",
+      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+      "description_present": true,
+      "view_box": "0 0 1428.53125 1759.2794189453125",
+      "artifact": "assets/diagrams/local-preview-1.svg",
+      "error": null,
+      "svg_sha256": "1341fc67bbc3313f8335404556893d251919ad39e0b9ca9af27ad18fe7def057",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "superseded_at": "2026-10-13",
+      "superseded_reason": "Local UI explicit blocker and resolution audit added"
     }
   ],
   "incremental_reviews": [
