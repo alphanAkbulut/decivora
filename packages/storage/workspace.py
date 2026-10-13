@@ -112,6 +112,20 @@ class Workspace:
                 raise ContractError('storage_failure','Workspace transaction was not committed.') from None
             raise
 
+    @contextmanager
+    def read_snapshot(self):
+        """Bind authorization and data reads to one SQLite snapshot; reuse outer TX."""
+        owned = not self.db.in_transaction
+        if owned: self.db.execute('BEGIN')
+        try:
+            yield
+        finally:
+            if owned and self.db.in_transaction: self.db.execute('ROLLBACK')
+
+    def active(self, scope, project):
+        if self.project(scope, project)['archived']:
+            raise ContractError('project_archived', 'Project is archived; accepted history remains.')
+
     def scope(self, scope, project=None, *, write=False, human=False):
         self.authority._validate_scope(scope)
         if project is not None:
@@ -124,10 +138,11 @@ class Workspace:
                 raise ContractError('human_approval_required','A current local human owner approval is required.')
 
     def project(self, scope, project):
-        self.scope(scope,project)
-        row=self.db.execute('SELECT name,revision,archived,knowledge_revision FROM projects WHERE workspace=? AND id=?',(self.workspace,project)).fetchone()
-        if row is None: raise ContractError('project_unavailable','Selected project is unavailable.')
-        return dict(id=project,name=row[0],revision=row[1],archived=bool(row[2]),knowledge_revision=row[3])
+        with self.read_snapshot():
+            self.scope(scope,project)
+            row=self.db.execute('SELECT name,revision,archived,knowledge_revision FROM projects WHERE workspace=? AND id=?',(self.workspace,project)).fetchone()
+            if row is None: raise ContractError('project_unavailable','Selected project is unavailable.')
+            return dict(id=project,name=row[0],revision=row[1],archived=bool(row[2]),knowledge_revision=row[3])
 
     def create_project(self,scope,project,name):
         from packages.domain.project_binding import ProjectRegistry
@@ -144,7 +159,13 @@ class Workspace:
         with self.transaction():
             self.scope(scope,project,write=True,human=True)
             if self.project(scope,project)['revision']!=base_revision:raise ContractError('stale_base','Project revision changed.')
-            self.db.execute('UPDATE projects SET name=?,archived=?,revision=revision+1 WHERE workspace=? AND id=?',(name,int(archived),self.workspace,project))
+            previous=self.project(scope,project)
+            changed=previous['archived'] != archived
+            self.db.execute('UPDATE projects SET name=?,archived=?,revision=revision+1,knowledge_revision=knowledge_revision+? WHERE workspace=? AND id=?',(name,int(archived),int(changed),self.workspace,project))
+            if changed:
+                # Invalidate pre-archive approvals and workers, including after reopening.
+                self.db.execute("UPDATE jobs SET status='queued',fencing=fencing+1,lease_until=0 WHERE project=? AND status='leased'",(project,))
+                self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,project,scope.principal_id,'project_lifecycle',canonical(dict(archived=archived,revision=base_revision+1))))
         return self.project(scope,project)
 
     def bind(self,scope,key,project,base_revision):
@@ -203,26 +224,35 @@ class Workspace:
         return dict(seq=seq,project=project,binding_revision=revision,status='quarantined' if reason else 'accepted_pending',reason=reason,duplicate=False,durable_receipt=True)
 
     def frontier(self,scope,key,project):
-        if type(key) is not SessionKey:raise ContractError('invalid_session','Explicit session key required.')
-        self.scope(scope,project)
-        rows=self.db.execute('SELECT s.position,s.project,j.status FROM sources s LEFT JOIN jobs j ON j.source_seq=s.seq WHERE s.workspace=? AND s.provider=? AND s.account=? AND s.session=? AND s.epoch=? ORDER BY s.position',
-            (self.workspace,key.provider,key.account_id,key.session_id,key.source_epoch)).fetchall()
-        # Session history may cross projects; do not reveal another project's offsets.
-        for _,owner,_ in rows:
-            if owner: self.scope(scope,owner)
-        received={r[0] for r in rows};completed={r[0] for r in rows if r[2]=='succeeded'}
-        def contiguous(items):
-            n=0
-            while n+1 in items:n+=1
-            return n
-        gaps=max(received,default=0)-len(received)
-        return dict(received=contiguous(received),processed=contiguous(completed),complete=received==completed and gaps==0,
-                    pending=len(received-completed),missing_positions=gaps)
+        with self.read_snapshot():
+            if type(key) is not SessionKey:raise ContractError('invalid_session','Explicit session key required.')
+            self.scope(scope,project)
+            rows=self.db.execute('SELECT s.position,s.project,j.status,s.payload,s.binding_revision,s.provider,s.account,s.session,s.epoch FROM sources s LEFT JOIN jobs j ON j.source_seq=s.seq WHERE s.workspace=? AND s.provider=? AND s.account=? AND s.session=? AND s.epoch=? ORDER BY s.position',
+                (self.workspace,key.provider,key.account_id,key.session_id,key.source_epoch)).fetchall()
+            # Session history may cross projects; do not reveal another project's offsets.
+            for row in rows:
+                if row[1]: self.scope(scope,row[1])
+                else:
+                    self.scope(scope,human=True)
+                    event=validate_source_event(json.loads(row[3]))
+                    self.scope(scope,event.project_id)
+                    if row[4] is not None:
+                        bound=self.db.execute('SELECT project FROM bindings WHERE workspace=? AND provider=? AND account=? AND session=? AND epoch=? AND revision=?',(self.workspace,*row[5:9],row[4])).fetchone()
+                        if bound:self.scope(scope,bound[0])
+            received={r[0] for r in rows};completed={r[0] for r in rows if r[2]=='succeeded'}
+            def contiguous(items):
+                n=0
+                while n+1 in items:n+=1
+                return n
+            gaps=max(received,default=0)-len(received)
+            return dict(received=contiguous(received),processed=contiguous(completed),complete=received==completed and gaps==0,
+                        pending=len(received-completed),missing_positions=gaps)
 
     def lease(self,scope,project,*,now,ttl=30,max_attempts=3):
         integer(now);integer(ttl,1);integer(max_attempts,1)
         with self.transaction():
             self.scope(scope,project,write=True)
+            self.active(scope,project)
             row=self.db.execute("SELECT source_seq,attempt,fencing FROM jobs WHERE project=? AND due<=? AND (status IN ('queued','retry_wait') OR (status='leased' AND lease_until<=?)) ORDER BY due,source_seq LIMIT 1",(project,now,now)).fetchone()
             if row is None:return None
             seq,attempt,fence=row
@@ -230,6 +260,7 @@ class Workspace:
                 self.db.execute("UPDATE jobs SET status='failed',fencing=fencing+1 WHERE source_seq=?",(seq,))
                 return dict(source_seq=seq,status='failed')
             self.db.execute("UPDATE jobs SET status='leased',attempt=?,fencing=?,lease_until=?,lease_actor=? WHERE source_seq=?",(attempt+1,fence+1,now+ttl,scope.principal_id,seq))
+            self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,project,scope.principal_id,'lease_granted',canonical(dict(source_seq=seq,fencing=fence+1,authz_revision=self.authority.revision()))))
             return dict(source_seq=seq,project=project,fencing=fence+1,lease_until=now+ttl,attempt=attempt+1)
 
     def finish(self,scope,lease,result,*,now,success=True,retry_delay=5):
@@ -239,6 +270,10 @@ class Workspace:
         if len(raw.encode())>32768:raise ContractError('result_too_large','Worker result exceeds local limit.')
         with self.transaction():
             self.scope(scope,lease['project'],write=True)
+            self.active(scope,lease['project'])
+            stamp=canonical(dict(source_seq=lease['source_seq'],fencing=lease['fencing'],authz_revision=self.authority.revision()))
+            if not self.db.execute("SELECT 1 FROM audit WHERE workspace=? AND project=? AND actor=? AND action='lease_granted' AND ref=?",(self.workspace,lease['project'],scope.principal_id,stamp)).fetchone():
+                raise ContractError('stale_lease','Lease authority changed; a fresh lease is required.')
             row=self.db.execute('SELECT project,status,fencing,lease_until,lease_actor FROM jobs WHERE source_seq=?',(lease['source_seq'],)).fetchone()
             if row is None or row!=(lease['project'],'leased',lease['fencing'],lease['lease_until'],scope.principal_id) or now>=row[3]:
                 raise ContractError('stale_lease','Worker lease expired or was replaced.')
@@ -246,24 +281,29 @@ class Workspace:
 
     def source(self,scope,seq):
         integer(seq,1)
-        with self.transaction():
+        with self.read_snapshot():
             row=self.db.execute('SELECT project,payload,hash,binding_revision FROM sources WHERE seq=? AND workspace=?',(seq,self.workspace)).fetchone()
             self.scope(scope,human=row is not None and row[0] is None)
             if row is None:raise ContractError('source_unavailable','Selected source is unavailable.')
             if row[0]:self.scope(scope,row[0])
             if digest(row[1])!=row[2]:raise ContractError('source_corrupt','Source payload failed integrity validation.')
             event=validate_source_event(json.loads(row[1]))
+            self.scope(scope,event.project_id)
+            if row[0] is None and row[3] is not None:
+                bound=self.db.execute('SELECT project FROM bindings WHERE workspace=? AND provider=? AND account=? AND session=? AND epoch=? AND revision=?',(self.workspace,*self.db.execute('SELECT provider,account,session,epoch FROM sources WHERE seq=?',(seq,)).fetchone(),row[3])).fetchone()
+                if bound:self.scope(scope,bound[0])
             return dict(event=event,project=row[0],binding_revision=row[3])
 
     def plan(self,scope,project,key,operations):
-        self.scope(scope,project,write=True);identifier(key)
-        if type(operations) is not list or not 1<=len(operations)<=64:
-            raise ContractError('invalid_change','Bounded nonempty operations required.')
-        raw=canonical(operations)
-        if len(raw.encode())>32768:raise ContractError('change_too_large','Change set exceeds local limit.')
-        base=self.project(scope,project)['knowledge_revision']
-        plan=dict(format='decivora-change-1',project=project,key=key,base_revision=base,operations=json.loads(raw))
-        return dict(plan,digest=digest(canonical(plan)))
+        with self.read_snapshot():
+            self.scope(scope,project,write=True);self.active(scope,project);identifier(key)
+            if type(operations) is not list or not 1<=len(operations)<=64:
+                raise ContractError('invalid_change','Bounded nonempty operations required.')
+            raw=canonical(operations)
+            if len(raw.encode())>32768:raise ContractError('change_too_large','Change set exceeds local limit.')
+            base=self.project(scope,project)['knowledge_revision']
+            plan=dict(format='decivora-change-1',project=project,key=key,base_revision=base,operations=json.loads(raw))
+            return dict(plan,digest=digest(canonical(plan)))
 
     def _check_plan(self,plan):
         if type(plan) is not dict or set(plan)!={'format','project','key','base_revision','operations','digest'} or plan['format']!='decivora-change-1':
@@ -279,6 +319,7 @@ class Workspace:
         self._check_plan(plan)
         with self.transaction():
             self.scope(scope,plan['project'],write=True,human=True)
+            self.active(scope,plan['project'])
             if self.project(scope,plan['project'])['knowledge_revision']!=plan['base_revision']:
                 raise ContractError('stale_base','Project knowledge changed after preview.')
             approval='approval_'+uuid.uuid4().hex
@@ -295,6 +336,7 @@ class Workspace:
             if prior:
                 if prior[:2]!=(scope.principal_id,plan['digest']):raise ContractError('idempotency_conflict','Command key conflicts with prior content.')
                 return json.loads(prior[2])
+            self.active(scope,project)
             expected=(self.workspace,project,scope.principal_id,plan['digest'],plan['base_revision'],self.authority.revision(),plan['key'])
             if self.db.execute('SELECT workspace,project,approver,digest,base_revision,authz_revision,command_key FROM approvals WHERE id=?',(approval,)).fetchone()!=expected:
                 raise ContractError('invalid_approval','Approval does not match current identity, scope or authority.')
@@ -387,12 +429,14 @@ class Workspace:
         if token_cap>100000:raise ContractError('budget_limit','Local synthetic run cap exceeds the development ceiling.')
         with self.transaction():
             self.scope(scope,project,write=True,human=True)
+            self.active(scope,project)
             self.db.execute('INSERT INTO run_budgets VALUES (?,?,?,?)',(self.workspace,project,run,token_cap))
 
     def reserve(self,scope,project,root_run,key,tokens):
         identifier(root_run);identifier(key);integer(tokens,1)
         with self.transaction():
             self.scope(scope,project,write=True)
+            self.active(scope,project)
             cap=self.db.execute('SELECT token_cap FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.workspace,project,root_run)).fetchone()
             if cap is None:raise ContractError('budget_unavailable','A human-created shared run budget is required.')
             previous=self.db.execute('SELECT tokens,status,actual FROM reservations WHERE workspace=? AND project=? AND run=? AND key=?',(self.workspace,project,root_run,key)).fetchone()
@@ -419,11 +463,12 @@ class Workspace:
             self.db.execute('UPDATE reservations SET status=?,actual=? WHERE workspace=? AND project=? AND run=? AND key=?',('unknown' if actual is None else 'settled',actual,self.workspace,project,root_run,key))
 
     def projection_digest(self,scope,project):
-        self.scope(scope,project)
-        records=self.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id',(self.workspace,project)).fetchall()
-        edges=self.db.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? ORDER BY origin,target,kind',(self.workspace,project)).fetchall()
-        sources=self.db.execute('SELECT record,source_seq FROM record_sources WHERE workspace=? AND project=? ORDER BY record,source_seq',(self.workspace,project)).fetchall()
-        return digest(canonical(dict(records=records,edges=edges,sources=sources)))
+        with self.read_snapshot():
+            self.scope(scope,project)
+            records=self.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id',(self.workspace,project)).fetchall()
+            edges=self.db.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? ORDER BY origin,target,kind',(self.workspace,project)).fetchall()
+            sources=self.db.execute('SELECT record,source_seq FROM record_sources WHERE workspace=? AND project=? ORDER BY record,source_seq',(self.workspace,project)).fetchall()
+            return digest(canonical(dict(records=records,edges=edges,sources=sources)))
 
     def _graph(self,project):
         from packages.impact.graph import DependencyGraph
@@ -455,40 +500,89 @@ class Workspace:
                     state='asserted' if kind=='link' else op['state'],sequence=seq)
             return list(edges.values())
 
+    def _replay_operation(self,project,stream,version,kind,raw):
+        try:
+            op=json.loads(raw)
+            if type(op) is not dict or op.get('op')!=kind:
+                raise ValueError()
+            integer(version,1)
+            if kind in ('create','update'):
+                fields={'op','id','body'} if kind=='create' else {'op','id','base_version','body'}
+                if set(op)!=fields and not (kind=='create' and set(op)==fields|{'source_seq'}):raise ValueError()
+                identifier(op['id']);self._body(op['body'])
+                if 'source_seq' in op:integer(op['source_seq'],1)
+                if stream!=op['id']:raise ValueError()
+                previous=self.db.execute('SELECT version FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()
+                if kind=='create':
+                    if previous is not None or version!=1:raise ValueError()
+                else:
+                    integer(op['base_version'],1)
+                    if previous!=(op['base_version'],) or version!=op['base_version']+1:raise ValueError()
+            elif kind in ('link','end_link'):
+                fields={'op','origin','target','kind'}
+                if kind=='end_link':fields|={'base_version','state'}
+                if set(op)!=fields or op['kind'] not in RELATIONS:raise ValueError()
+                identifier(op['origin']);identifier(op['target'])
+                if stream!='edge_'+digest(canonical([op['origin'],op['target'],op['kind']]))[:24]:raise ValueError()
+                previous=self.db.execute('SELECT revision,state FROM edges WHERE workspace=? AND project=? AND origin=? AND target=? AND kind=?',(self.workspace,project,op['origin'],op['target'],op['kind'])).fetchone()
+                if version!=(previous[0]+1 if previous else 1):raise ValueError()
+                if kind=='end_link':
+                    integer(op['base_version'],1)
+                    if previous!=(op['base_version'],'asserted') or op['state'] not in ('ended','invalidated'):raise ValueError()
+                elif previous and previous[1]=='asserted':raise ValueError()
+            else:raise ValueError()
+            return op
+        except (ValueError,TypeError,KeyError,ContractError):
+            raise ContractError('unsupported_event','Event schema, stream or revision is inconsistent; replay stopped.') from None
+
+    def _rebuild(self,scope,project):
+        rows=self.db.execute('SELECT seq,stream,version,kind,payload FROM events WHERE workspace=? AND project=? ORDER BY seq',(self.workspace,project)).fetchall()
+        self.db.execute('DELETE FROM edges WHERE workspace=? AND project=?',(self.workspace,project))
+        self.db.execute('DELETE FROM record_sources WHERE workspace=? AND project=?',(self.workspace,project))
+        self.db.execute('DELETE FROM records WHERE workspace=? AND project=?',(self.workspace,project))
+        for seq,stream,version,kind,raw in rows:
+            op=self._replay_operation(project,stream,version,kind,raw)
+            self._project_event(op,project,seq)
+        self._graph(project)
+        result=self.projection_digest(scope,project)
+        return dict(digest=result,events=len(rows),model_dispatches=0,external_dispatches=0)
+
     def replay(self,scope,project):
         with self.transaction():
             self.scope(scope,project,write=True,human=True)
-            rows=self.db.execute('SELECT seq,kind,payload FROM events WHERE workspace=? AND project=? ORDER BY seq',(self.workspace,project)).fetchall()
-            for _,kind,raw in rows:
-                op=json.loads(raw)
-                if op.get('op')!=kind or kind not in ('create','update','link','end_link'):
-                    raise ContractError('unsupported_event','Unknown event version or kind; replay stopped.')
-            self.db.execute('DELETE FROM edges WHERE workspace=? AND project=?',(self.workspace,project))
-            self.db.execute('DELETE FROM record_sources WHERE workspace=? AND project=?',(self.workspace,project))
-            self.db.execute('DELETE FROM records WHERE workspace=? AND project=?',(self.workspace,project))
-            for seq,_,raw in rows:self._project_event(json.loads(raw),project,seq)
-            result=self.projection_digest(scope,project)
-        return dict(digest=result,events=len(rows),model_dispatches=0,external_dispatches=0)
+            return self._rebuild(scope,project)
 
     def backup(self,scope,target):
-        self.scope(scope,human=True)
-        for project, in self.db.execute('SELECT id FROM projects WHERE workspace=?',(self.workspace,)):
-            self.scope(scope,project)
-        target=Path(target)
-        fd=os.open(target,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600);os.close(fd)
-        destination=sqlite3.connect(target)
-        try:
-            self.db.backup(destination)
-            if destination.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or destination.execute('PRAGMA foreign_key_check').fetchall():
-                raise ContractError('backup_invalid','Backup integrity failed.')
-            projections={}
-            for project, in destination.execute('SELECT id FROM projects WHERE workspace=?',(self.workspace,)):
-                records=destination.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id',(self.workspace,project)).fetchall()
-                edges=destination.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? ORDER BY origin,target,kind',(self.workspace,project)).fetchall()
-                sources=destination.execute('SELECT record,source_seq FROM record_sources WHERE workspace=? AND project=? ORDER BY record,source_seq',(self.workspace,project)).fetchall()
-                projections[project]=digest(canonical(dict(records=records,edges=edges,sources=sources)))
-        finally:destination.close()
-        return dict(format=FORMAT,workspace=self.workspace,sha256=hashlib.sha256(target.read_bytes()).hexdigest(),projection_digests=projections,external_dispatches=0)
+        if self.db.in_transaction:
+            raise ContractError('backup_busy','Backup requires a separate read snapshot, not a pending write transaction.')
+        with self.read_snapshot():
+            self.scope(scope,human=True)
+            for project, in self.db.execute('SELECT id FROM projects WHERE workspace=?',(self.workspace,)):
+                self.scope(scope,project)
+            # Quarantine rows are not attached to a canonical project but still carry ACLs.
+            for seq, in self.db.execute('SELECT seq FROM sources WHERE workspace=?',(self.workspace,)).fetchall():
+                self.source(scope,seq)
+            target=Path(target)
+            fd=os.open(target,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600);os.close(fd)
+            destination=None
+            try:
+                destination=sqlite3.connect(target)
+                self.db.backup(destination)
+                if destination.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or destination.execute('PRAGMA foreign_key_check').fetchall():
+                    raise ContractError('backup_invalid','Backup integrity failed.')
+                projections={}
+                for project, in destination.execute('SELECT id FROM projects WHERE workspace=?',(self.workspace,)):
+                    records=destination.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id',(self.workspace,project)).fetchall()
+                    edges=destination.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? ORDER BY origin,target,kind',(self.workspace,project)).fetchall()
+                    sources=destination.execute('SELECT record,source_seq FROM record_sources WHERE workspace=? AND project=? ORDER BY record,source_seq',(self.workspace,project)).fetchall()
+                    projections[project]=digest(canonical(dict(records=records,edges=edges,sources=sources)))
+            except Exception:
+                if destination is not None: destination.close()
+                target.unlink(missing_ok=True)
+                raise
+            finally:
+                if destination is not None: destination.close()
+            return dict(format=FORMAT,workspace=self.workspace,sha256=hashlib.sha256(target.read_bytes()).hexdigest(),projection_digests=projections,external_dispatches=0)
 
     @classmethod
     def restore(cls,backup,target,manifest):
@@ -497,23 +591,35 @@ class Workspace:
         if manifest.get('format')!=FORMAT or hashlib.sha256(raw).hexdigest()!=manifest.get('sha256'):
             raise ContractError('backup_invalid','Backup manifest/content mismatch.')
         identifier(manifest['workspace'])
-        fd=os.open(target,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
-        with os.fdopen(fd,'wb') as output:output.write(raw)
+        restored=None
+        created=False
         try:
+            fd=os.open(target,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+            created=True
+            with os.fdopen(fd,'wb') as output:output.write(raw)
             restored=cls(target,manifest['workspace'])
             if restored.db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':
-                restored.close();raise ContractError('backup_invalid','Restored database integrity failed.')
+                raise ContractError('backup_invalid','Restored database integrity failed.')
             for payload,sha in restored.db.execute('SELECT payload,hash FROM sources'):
                 if digest(payload)!=sha:
-                    restored.close();raise ContractError('backup_invalid','Restored source payload is missing or corrupt.')
+                    raise ContractError('backup_invalid','Restored source payload is missing or corrupt.')
             projects={p for p, in restored.db.execute('SELECT id FROM projects WHERE workspace=?',(restored.workspace,))}
             if set(manifest.get('projection_digests',{}))!=projects:
-                restored.close();raise ContractError('backup_invalid','Backup projection manifest is incomplete.')
+                raise ContractError('backup_invalid','Backup projection manifest is incomplete.')
             owner=restored.authority.issue_scope(restored.authority.owner_id)
             for project in projects:
-                if restored.projection_digest(owner,project)!=manifest['projection_digests'][project]:
-                    restored.close();raise ContractError('backup_invalid','Restored projection differs from backup manifest.')
+                expected=manifest['projection_digests'][project]
+                if restored.projection_digest(owner,project)!=expected:
+                    raise ContractError('backup_invalid','Restored projection differs from backup manifest.')
+                # Offline integrity validation does not grant canonical write authority.
+                with restored.transaction():
+                    restored.scope(owner,project)
+                    if restored._rebuild(owner,project)['digest']!=expected:
+                        raise ContractError('backup_invalid','Restored projection differs from canonical events.')
             return restored
         except Exception:
-            Path(target).unlink()
+            if restored is not None: restored.close()
+            if created:
+                for suffix in ('','-wal','-shm','-journal'):
+                    Path(str(target)+suffix).unlink(missing_ok=True)
             raise

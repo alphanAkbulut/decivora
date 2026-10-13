@@ -1,0 +1,90 @@
+{
+  "profile": "synthetic_manual_local_core",
+  "date": "2026-10-13",
+  "baseline_ref": "595a4060ce0851cd6d0d5560b999defde4e4be5d",
+  "baseline_module_sha256": "7101612b47d260e712aacc0be45a3b7a21d3312497f9002df5766c5548bd606d",
+  "baseline_regressions": {
+    "tests": 10,
+    "failures": 10,
+    "errors": 0,
+    "test_names": [
+      "test_archive_blocks_new_and_preapproved_changes",
+      "test_archive_keeps_receipt_but_fences_worker_after_reopening",
+      "test_authority_refresh_cannot_reauthorize_old_worker_lease",
+      "test_quarantine_source_and_frontier_respect_claimed_project_acl",
+      "test_mismatch_quarantine_also_respects_pinned_binding_acl",
+      "test_backup_cannot_copy_project_created_after_authorized_snapshot",
+      "test_replay_rejects_version_gap_and_keeps_previous_projection",
+      "test_replay_does_not_silently_accept_update_of_missing_record",
+      "test_restore_rejects_projection_inconsistent_with_canonical_events",
+      "test_failed_restore_closes_connection_and_preserves_existing_target"
+    ],
+    "mode": "immutable baseline module imported into isolated temporary DBs; not a real model run"
+  },
+  "current_runtime_suite": {
+    "tests": 109,
+    "failures": 0,
+    "errors": 0
+  },
+  "tracker_suite": {
+    "tests": 46,
+    "failures": 0,
+    "errors": 0,
+    "local_server_permission_required": true
+  },
+  "regression_tests": [
+    "test_archive_blocks_new_and_preapproved_changes",
+    "test_archive_keeps_receipt_but_fences_worker_after_reopening",
+    "test_authority_refresh_cannot_reauthorize_old_worker_lease",
+    "test_quarantine_source_and_frontier_respect_claimed_project_acl",
+    "test_mismatch_quarantine_also_respects_pinned_binding_acl",
+    "test_backup_cannot_copy_project_created_after_authorized_snapshot",
+    "test_replay_rejects_version_gap_and_keeps_previous_projection",
+    "test_replay_does_not_silently_accept_update_of_missing_record",
+    "test_restore_rejects_projection_inconsistent_with_canonical_events",
+    "test_failed_restore_closes_connection_and_preserves_existing_target",
+    "test_backup_checks_quarantine_acl_even_without_registered_project",
+    "test_backup_rejects_pending_write_transaction_instead_of_hanging",
+    "test_failed_backup_connection_removes_new_partial_file",
+    "test_readonly_project_backup_can_restore_without_granting_write"
+  ],
+  "source_sha256": {
+    "packages/storage/workspace.py": "8d153bf6c13ab9b0b1dbd0834300000872f8fd37a6a8338814667262f314c5d5",
+    "tests/runtime/test_core_regressions.py": "20e7c57650309869f9649f3770dd1b64b10a599761e44f1798db6897936969f1"
+  },
+  "demo": {
+    "status": "passed_integrated_local_core",
+    "profile": "synthetic_manual_only",
+    "durable_receipt": true,
+    "retry_same_receipt": true,
+    "processing_frontier": {
+      "received": 1,
+      "processed": 1,
+      "complete": true,
+      "pending": 0,
+      "missing_positions": 0
+    },
+    "atomic_records": 2,
+    "events": 3,
+    "replay_matches": true,
+    "restore_matches": true,
+    "reconciliation": "attach_source",
+    "context_records": 1,
+    "graph_revision": 1,
+    "alternative_rationale_preserved": true,
+    "real_semantic_extraction": false,
+    "provider_capture": false,
+    "human_login": false,
+    "model_dispatches": 0
+  },
+  "main_task_counts": {
+    "done": 6,
+    "in_progress": 5,
+    "todo": 19
+  },
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "conversation_usage": "unknown",
+  "production_acceptance": false,
+  "full_repository_security_certification": false
+}

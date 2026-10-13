@@ -1,6 +1,6 @@
 # Toplu çalışan çekirdek teslimi
 
-**Yerel, sentetik ve manuel profil.** Beş ana çekirdek teslimi: T05 proje/binding, T06 receipt/jobs, T07 event/projection/recovery, T08 atomic approval/policy, T11 typed graph. T09 ve T10 için çalışan hazırlık kodu da var; gerçek semantik extraction/gold değerlendirmesi tamamlanmadığından bu iki görev Done değildir. [Kod](../../packages/storage/workspace.py), [31+ test ve integrated CLI](../../tests/runtime/test_workspace_core.py), [graph testleri](../../tests/runtime/test_dependency_graph.py), [hash/sonuç](integrated-core-results.json).
+**Yerel, sentetik ve manuel profil.** İlk teslimin aşağıdaki hash/95-test sonucu tarihsel snapshot'tır; güncel [kritik düzeltmeler ve109test](core-critical-review.md) CR01–06 ile eklenmiştir. Beş ana çekirdek teslimi: T05 proje/binding, T06 receipt/jobs, T07 event/projection/recovery, T08 atomic approval/policy, T11 typed graph. T09 ve T10 için çalışan hazırlık kodu da var; gerçek semantik extraction/gold değerlendirmesi tamamlanmadığından bu iki görev Done değildir. [Kod](../../packages/storage/workspace.py), [31+ test ve integrated CLI](../../tests/runtime/test_workspace_core.py), [graph testleri](../../tests/runtime/test_dependency_graph.py), [hash/sonuç](integrated-core-results.json).
 
 ```sh
 python3.12 -B -m apps.hub core-demo
