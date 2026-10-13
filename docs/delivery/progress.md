@@ -10,8 +10,9 @@
 
 | Ana görev durumu | Sayı |
 |---|---|
+| DONE | 1 |
 | IN_PROGRESS | 3 |
-| TODO | 27 |
+| TODO | 26 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -45,6 +46,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03aa | T03 | DONE | DONE / P0: selected typed record'dan readback ve safe action taslağı |
 | T03ab | T03 | DONE | DONE / P0: SQLite inceleme snapshot deposu |
 | T03ac | T03 | DONE | DONE / P0: persisted clarification'a explicit source-bound reply proposal |
+| T03c | T03 | DONE | DONE: kabul edilmiş koşullu çekirdek build seçimi; Python3.12/SQLite, ADR-0012 |
 
 ## Açık fazda neler değişti?
 
@@ -78,13 +80,13 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 2026-10-13 · T03ac [kalıcı explicit reply proposal](../quality/reply-store.md) DONE;14 yeni/248 semantik test. Late source binding/restart/dedup/conflict/current-context/atomic no-resume; gerçek approval, UI/IAM/semantik reply parsing yok. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
 
-**Aktif teknik risk:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
+**Aktif teknik risk:** Observed / High · R23/R24: iki actual receiver çıktı contract/source gate geçmedi. Tipli dönüşüm/durable reply fixture kodu çalışıyor; genel model/capture/native kalite kapıları açık. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 
 **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 
 **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 
-Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki owner kararı [Q15 koşullu build geçişi](build-transition-proposal.md): T04 bağımlılığı/runtime seçimini incele; cevap gelmeden mevcut gate değişmez. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
+Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
 ## Mevcut teslim parçaları
@@ -124,6 +126,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 - **Tipli record'dan deterministic review / T03aa DONE** — Source-bound6record, bilinen state ve candidate status'tan yeni kökenli6action; oracle/model raw input değil; [222 test/13 yeni ve authored kıyas](../quality/typed-review.md); model çağrısı0, geçmiş actual failures aynı, extraction/IAM/ekonomi gate açık
 - **Kalıcı review snapshot / T03ab DONE** — Typed review store için SQLite append/transaction ve restart sonrası pending clarification geri okuma; [234 test/12 yeni](../quality/review-store.md); dedup/current scope/access/tamper/rollback/two-writer, gerçek insan reply çözümü/UI/IAM değil
 - **Kalıcı explicit cevap önerisi / T03ac DONE** — Stored snapshot'a CID/source/question revision ile late reply; ayrı append-only SQLite extension; [248 test/14 yeni](../quality/reply-store.md); restart/retry/conflict/current access/atomic no-resume. Actor fixture; actual approval/resolved/UI/IAM değil
+- **T04 uygulama runtime iskeleti DONE** — Apps/hub CLI, ayrı domain contract, sürüm/lisans manifest/schema ve sentetik bounded input validation; [12runtime test ve clean-start](../quality/runtime-scaffold.md); model/runner/server/auth/storage/UI disabled, ilk ana görev kabulü. P0 replay/model başarısı değil
 - **Yerel token/bağlam preflight kodu** — Manifestteki bütün çağrıların input/generation/context/run/parent bütçe hesaplaması; unknown/risk/hard cap ayrımı; [17 fixture testi ve S02 no-dispatch sonucu](../quality/token-preflight.md); gerçek para/atomik rezervasyon/provider limiter değil
 
 ## Açık karar ve doğrulama kapıları
@@ -134,7 +137,6 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
 | Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
 | Native/dosya/resume kıyas | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
-| Production stack/build | T04–T24 bağımsız ürün başlangıcı | T03c açık; [Q15 somut karar](build-transition-proposal.md) yanıt bekliyor: Python3.12/SQLite ilk çekirdek + T04 start dependency ayrımı; mevcut fixture stack kabul edilmiş runtime sayılmaz |
 
 ## Fazlara göre tüm ana işler
 
@@ -143,7 +145,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
 | T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 27 |
-| T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 | 4 |
+| T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c | 4 |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
 | T07 | P1a | TODO | Domain log ve projector | T06 | 2 |
@@ -179,4 +181,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `7a82b3b0f5e8a6a2919996fcb4c36c63327055ba3a9c969c6ce40738a98707ce`
+Kaynak fingerprint: `72b7e393920a00d309ea30be1ab44d2c37167ca19cd8aaa1b44a6c8c66482b75`

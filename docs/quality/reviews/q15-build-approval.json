@@ -1,0 +1,24 @@
+{
+  "question_id": "Q15",
+  "selected_option": "A",
+  "decision_status": "accepted_conditional_core_build",
+  "evidence_source": "direct human user message in active project chat",
+  "human_response": "onay bekleyen iş varsa senin. önerin ne ise o öneri ile ilerleyelım. mediuma aldım artık devam et hadi yoksa bitmez bu proje ve nerede problemle karşılaşacağımızı ön göremıyorm. çalışan kod parçaları ile ilerlememız gerekıyor. sureklı teorik seylerle deüğil",
+  "proposal_ref": "c42988c9faac5be5ec6337403c16a75ff8dd5610",
+  "proposal_path": "docs/delivery/build-transition-proposal.md",
+  "proposal_sha256": "ec5f8115110f0c2337155c9f7ab5a0bc9ed250a248aed74130ef89b6d8e05263",
+  "accepted_runtime": "Python3.12 and standard-library SQLite",
+  "dependency_change": "T04 start requires accepted T03c conditional build decision and ADR-0012, not all parent T03 evidence complete",
+  "release_gates_retained": [
+    "T01 gold/holdout",
+    "T02 real capture",
+    "semantic quality",
+    "native/ROI comparison",
+    "MVP14AC"
+  ],
+  "paid_api_authorized": false,
+  "new_model_turn_authorized": false,
+  "real_source_scan_authorized": false,
+  "public_release_authorized": false,
+  "product_iam_verified": false
+}

@@ -21,7 +21,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 | T01 | P0 | — | Golden corpus ve karşılaştırma protokolü |
 | T02 | P0 | T01 | İki coding yüzeyinde capability spike |
 | T03 | P0 | T01,T02 | Native/extend/build ve teknoloji kararı |
-| T04 | P1a | T03 | Runtime iskeleti ve sözleşme doğrulayıcıları |
+| T04 | P1a | T03c | Runtime iskeleti ve sözleşme doğrulayıcıları |
 | T05 | P1a | T04 | Proje kimliği ve binding |
 | T06 | P1a | T05 | Source ingress ve checkpoint |
 | T07 | P1a | T06 | Domain log ve projector |
@@ -89,11 +89,11 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Risk durumu:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
+- **Risk durumu:** Observed / High · R23/R24: iki actual receiver çıktı contract/source gate geçmedi. Tipli dönüşüm/durable reply fixture kodu çalışıyor; genel model/capture/native kalite kapıları açık. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 - **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 - **Son ilerleme:** 2026-10-13 · T03ac [kalıcı explicit reply proposal](../quality/reply-store.md) DONE;14 yeni/248 semantik test. Late source binding/restart/dedup/conflict/current-context/atomic no-resume; gerçek approval, UI/IAM/semantik reply parsing yok. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
-- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki owner kararı [Q15 koşullu build geçişi](build-transition-proposal.md): T04 bağımlılığı/runtime seçimini incele; cevap gelmeden mevcut gate değişmez. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
+- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -158,11 +158,13 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T03. **Kapsam ID:** PRJ-01,AUD-01.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T03c. **Kapsam ID:** PRJ-01,AUD-01.
 - **İş:** Onaylı stack için domain/storage sınırı, package sürümleri, lisans envanteri ve test komutları oluştur.
 - **Kabul:** Tek yerel başlatma yolu; sentetik input dışında veri yok; CI/test komutları belgelendi.
 - **Doğrulama:** Temiz kurulum ve schema-invalid payload reddi.
-- **Beklenen dosya alanı:** `apps/hub/; packages/domain/; manifests` (henüz oluşmamış yollar uygulama sırasında açılır).
+- **Teslim edilen dosya alanı:** `apps/hub/; packages/domain/; manifests/; tests/runtime/`. [Çalıştırma](../../apps/hub/README.md), [12 test ve temiz başlangıç kabulü](../quality/runtime-scaffold.md). Storage/identity/ingress henüz yok; T05/T06/T07 kapsamı.
+- **Son ilerleme:** 2026-10-13 · T04 startup/contract/manifest/clean-copy koşulları geçti; app0.1.0-dev/Python3.12, actual model/network/canonical mutation0.
+- **Sıradaki adım:** T05 proje kimliği/binding; T04 scope'u tekrar deney hazırlığı olarak açma.
 - **Boyut:** 1 küçük PR.
 
 ## T05 — Proje kimliği ve binding
@@ -597,7 +599,7 @@ T01 ilk hazır iş olarak korunur; GAP/RES sentetik oracle örnekleri geniş cor
 | T02d / T01 | IN_PROGRESS (manuel target + synthetic measurement; gerçek host kısmi): selected kaynak, trustworthy human selection ve tek local/repo target capability | [READBACK-01](../quality/first-target-readback.md) tek GitHub dokümanında manuel happy-path eşleşmesi; otomatik capability, missing/permission/partial/stale ve kaynak coverage henüz not_run. Capture/target izinleri ayrı; ücret/erişim ayrıca |
 | T03a / T01,T02d | IN_PROGRESS: kullanıcı yetkili P0 fixture yöntemi, Python stdlib/SQLite, paid dispatch yok; production stack/lisans açık | Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil |
 | T03b / T03a | IN_PROGRESS: yetkilendirilmiş typed zincir + lexical baseline çalıştı; semantik/native deneyi açık | GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok |
-| T03c / T03b,T02 | TODO: sonuç, yönetim/kurulum/bakım maliyeti ve yatırım seçenekleri | Owner native/extend/build/ek deney/durdur kararı; build'de production stack ADR ve T04 kapısı, native/extend'de uygun teslim planı |
+| T03c / Q15 | DONE: kabul edilmiş koşullu çekirdek build seçimi; Python3.12/SQLite, ADR-0012 | [Exact owner onayı](../quality/reviews/q15-build-approval.json); T04 başlangıcı açıldı. Native/ROI/model/capture sonuçları açık; yalnız yatırım tercihi, genel ürün kanıtı veya T03 parent kapanışı değil |
 
 T02'nin iki coding yüzeyi kapsamı korunur; prototip tek hedefle sınırlı olabilir. T14d/T18i/T20i/T24n üretim entegrasyonunun bağımlılıklarıdır; P0 prototip bütün bu görevlerin tamamlandığını iddia etmez. T03b çalıştırma onayı/veri veya bütçe izni bu tabloyla oluşmaz.
 

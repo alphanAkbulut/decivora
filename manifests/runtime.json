@@ -1,0 +1,34 @@
+{
+  "manifest_version": 1,
+  "application": "Decivora",
+  "artifact_version": "0.1.0-dev",
+  "status": "development_scaffold",
+  "runtime": {
+    "python_requires": ">=3.12,<3.13",
+    "ci_python": "3.12",
+    "sqlite": "Python standard-library sqlite3; installed library version reported at startup"
+  },
+  "observed_development_versions": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1"
+  },
+  "third_party_python_packages": [],
+  "dependencies": [
+    {
+      "component": "CPython and standard library",
+      "license": "PSF License Version 2 and incorporated licenses",
+      "source": "https://docs.python.org/3.12/license.html",
+      "vendored": false
+    },
+    {
+      "component": "SQLite via Python sqlite3",
+      "license": "Public-domain dedication; see authoritative notice",
+      "source": "https://sqlite.org/copyright.html",
+      "vendored": false
+    }
+  ],
+  "project_public_license": "not_selected; private development only",
+  "provider_dispatch_enabled": false,
+  "real_source_input_enabled": false,
+  "network_server_enabled": false
+}

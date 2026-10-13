@@ -19,7 +19,7 @@
 | DEC-10 | Accepted intent: yeni ad, ayrı private repo ve profesyonel devir | Decivora çalışma adı; public ve lisans ayrı karar |
 | DEC-11 | Proposed: SQLite canonical state + event projection | Markdown çalışma planı bootstrap; runtime store değil |
 | DEC-12 | Proposed: kendi domain/impact çekirdeği, adapter üzerinden yeniden kullanım | Build/extend deneyi sonrası ADR kesinleşir |
-| DEC-13 | Proposed: yerel tek servis + TypeScript/React | Runtime sürümleri ve UI framework seçimi açık |
+| DEC-13 | Historical backend candidate: TypeScript; React UI adayı açık | Q15-A/DEC-21 ilk backend için Python3.12/SQLite seçti; frontend framework henüz seçilmedi |
 | DEC-14 | Proposed: AGPLv3 adayı; Apache-2.0 alternatif | Public release öncesi lisans/katkı hakları kontrolü |
 | DEC-15 | Accepted intent: 1C, izinli/erişilebilir geçmişi aşamalı işle; aktif işleri öne al | Kaynak korunur, hedefli context kullanılır; 1A/1B alternatifleri ve gerekçe [Q07 kaydında](../delivery/decision-brief.md). Egress/harcama veya sınırsız saklama onayı değildir |
 | DEC-16 | Proposed: anlamlı alt görevler + checklist; isteğe bağlı bölme önizlemesi | Kullanıcının Q08 fikrinin tasarımı; ayrı AC/kanıt ve parent takibi. Varsayılan otomatik bölme henüz kabul edilmedi |
@@ -27,6 +27,8 @@
 | DEC-18 | Accepted problem intent: gerçek insan seçimi ve dosyanın hedefe uygulanması kaybolmasın | 2026-10-11 kullanıcı örneği; generated/sessizlik yükleme veya kabul kanıtı değildir. [GAP sözleşmesi](intent-to-reality-gap.md); mekanizma teknik öneri |
 | DEC-19 | Proposed investment path: ilk sınırlı gerçekleşme/devam deneyi + native karşılaştırması | [Güncel yön](current-direction.md); build/extend/native/durdur sonuçları açık. Son belge güncelleme isteği runtime yatırımını kabul etmiş sayılmaz |
 | DEC-20 | Accepted intent: Q12-A, proje çıktı dili sabit; dil değişimi insan seçimiyle | 2026-10-11 doğrudan “a ile devam et” yanıtı; başka session dili yalnız öneri, eski notlar otomatik çevrilmez. [Seçenek/gerekçe ve kabul](language-and-localization.md#q12--karma-projede-çıktı-dili-değişimi); detector/faz ayrıntıları öneri |
+
+| DEC-21 | Accepted conditional build: Q15-A, Python3.12/SQLite ilk çekirdek; T04 başlangıcı T03c/ADR-0012 | [İnsan yanıtı](../quality/reviews/q15-build-approval.json); model/capture/native/ROI/14AC kapıları açık, release başarısı değil |
 
 **Kabul edilen ürün niyetleri:** aşağıdaki oklar düşüncenin gelişimini anlatır; task dependency veya tamamlanma kanıtı değildir. Her DEC'nin ayrı gerekçesi üst tablodadır.
 
@@ -56,18 +58,20 @@ flowchart TB
     class HANDOFF store
 ```
 
-**Teknik öneriler:** SQLite, stack, reuse, split, lisans ve yatırım yolu henüz seçilmiş runtime değildir. Ayrı çizim, niyet kabulünü teknoloji onayıyla karıştırmayı önler.
+**Teknik seçim ve öneriler:** DEC-21/Q15-A ilk Python3.12/SQLite runtime'ını kabul etti; domain/reuse/split/public lisans ve native/ROI koşulları kendi statülerini korur. Kabul implemented/release anlamına gelmez.
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
 flowchart TB
-    accTitle: Teknik öneriler ve açık owner kapıları
+    accTitle: Kabul edilmiş çekirdek ve açık ürün kapıları
     accDescr: Karar tablosundaki niyet ve teknik öneriler ayrıdır. Renk accepted teknoloji veya runtime başarısı kanıtı değildir.
-    NEED[Ürün niyetleri kabul edildi - teknoloji seçimleri açık] --> CORE[DEC-11 SQLite event projection önerisi]
-    CORE -.-> REUSE[DEC-12 Kendi çekirdek ve adapter reuse önerisi]
-    REUSE -.-> STACK[DEC-13 Yerel servis ve TS React önerisi]
-    STACK -.-> TEST[DEC-19 Sınırlı deney ve native karşılaştırma önerisi]
-    TEST --> OWNER[T03c Owner yatırım kararı - build veya extend henüz seçilmedi]
+    NEED[Ürün niyetleri kabul edildi] --> CORE[DEC-11 Domain event projection tasarımı]
+    CORE -.-> REUSE[DEC-12 Domain ve adapter reuse koşulları açık]
+    NEED --> OWNER[Q15-A Koşullu çekirdek build kabul edildi]
+    OWNER --> STACK[DEC-21 Python 3.12 ve SQLite seçildi]
+    STACK --> APP[T04 Uygulama iskeleti]
+    CORE -.-> TEST[DEC-19 Native ve model kalite ölçümleri açık]
+    TEST -.-> PILOT[Pilot ve release kabulü henüz yok]
     NEED --> SPLIT[DEC-16 Alt görev bölme önerisi - Q08 açık]
     SPLIT -.-> OWNER
     NEED --> LICENSE[DEC-14 AGPL adayı - Apache alternatif]
@@ -76,7 +80,9 @@ flowchart TB
     classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
     class NEED source
     classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
-    class CORE,REUSE,STACK,TEST,SPLIT,LICENSE,GOV,RELEASE future
+    class CORE,REUSE,TEST,SPLIT,LICENSE,GOV,RELEASE,PILOT future
+    classDef accepted fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    class STACK,APP accepted
     classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
     class OWNER gate
 ```

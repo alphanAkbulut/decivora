@@ -1,10 +1,10 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
-Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed mimarisi ve sıradaki işi anlaşılabilecek şekilde hazırlanmıştır. **Doküman tamlığı, uygulama doğruluğu veya modelin mutlaka doğru anlayacağı garantisi değildir.** Çalışan uygulama yok; yeni LLM uygulama varmış gibi kurulum/test sonucu üretmemelidir.
+Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed mimarisi ve sıradaki işi anlaşılabilecek şekilde hazırlanmıştır. **Doküman tamlığı, uygulama doğruluğu veya modelin mutlaka doğru anlayacağı garantisi değildir.** Q15-A ile ilk uygulama iskeleti [T04](../../apps/hub/README.md) kendi12test/clean-start kabulüyle tamamlandı; source contract validation dışında özellikleri tamamlanmış varsayma. Model/capture/native/ROI/gerçek kullanıcı UI kabulü açık.
 
 ## Kısa giriş
 
-Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/prompt/yarım işlerin kaybolması ve yeni karar sonrası gereksiz işlerin açık kalmasıdır. Kullanıcı kart/DoD yazmak istemez, hazırlanmış onay vermeye razıdır. Ürün bütün çıktıları yakalamayı, eski bilgiyle uzlaştırmayı, gerekçe grafiğinde etkisini çıkarmayı ve revision'a bağlı kanıtla ilerlemeyi göstermeyi hedefler. Çok proje ve repo olmayan araştırma projeleri kapsamdadır. İlk tasarım local-first; stack ve build/extend seçimi henüz öneridir.
+Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/prompt/yarım işlerin kaybolması ve yeni karar sonrası gereksiz işlerin açık kalmasıdır. Kullanıcı kart/DoD yazmak istemez, hazırlanmış onay vermeye razıdır. Ürün bütün çıktıları yakalamayı, eski bilgiyle uzlaştırmayı, gerekçe grafiğinde etkisini çıkarmayı ve revision'a bağlı kanıtla ilerlemeyi göstermeyi hedefler. Çok proje ve repo olmayan araştırma projeleri kapsamdadır. İlk tasarım local-first; Q15-A/ADR-0012 koşullu ilk çekirdek build'i ve Python3.12/SQLite runtime'ını kabul eder; frontend/ekip/cloud ve native/ROI sonuçları açık.
 
 ## Soru → yetkili belge
 

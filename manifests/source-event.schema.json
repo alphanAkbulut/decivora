@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "actor_type",
+    "event_id",
+    "format",
+    "project_id",
+    "session_id",
+    "source_revision",
+    "synthetic",
+    "text"
+  ],
+  "properties": {
+    "format": {
+      "type": "string",
+      "const": "decivora-source-event-1"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "source_revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "actor_type": {
+      "type": "string",
+      "enum": [
+        "human",
+        "assistant",
+        "tool",
+        "unknown"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16384
+    },
+    "synthetic": {
+      "type": "boolean",
+      "const": true
+    }
+  }
+}

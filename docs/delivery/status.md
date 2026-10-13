@@ -1,21 +1,31 @@
 # Mevcut durum
 
-2026-10-13 — **P0 / Product Definition + kontrollü deneyler**.
+2026-10-13 — **P1a çekirdek geliştirme + açık P0 kanıt işleri**.
 
 | Alan | Durum |
 |---|---|
 | Kaynak konuşma derlemesi, vizyon/MVP/karar haritası | Bu dokümantasyon paketinde hazırlanmış |
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
-| Ürün MVP / adapter / dashboard | Production ürün MVP’si başlamadı; üç P0 kod düzeneği ve ayrı geliştirme tracker’ı mevcut, gerçek host/ürün dashboard’u test edilmedi |
+| Ürün MVP / adapter / dashboard | P1a runtime iskeleti T04 DONE; startup/contract12test, diğer ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
 | Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-002](../quality/membership-002-result.md): tek v2 output, dört draft aday/source/type geçti; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T01/T02/T03 IN_PROGRESS; diğer 27 TODO.** [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. Yirmi altı küçük teslim DONE (T01g/T01h/T01i ve T03g–T03ac); hiçbir ana production gate kapanmadı. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. T03c production yatırım/stack kararı açık; T04 başlamadı. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: T04 DONE; T01/T02/T03 IN_PROGRESS; diğer 26 TODO.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-13 — İlk ana MVP işi T04 Done
+
+- [T04 kabulü](../quality/runtime-scaffold.md): çalışan CLI entrypoint ve immutable domain source contract, manifest/schema,12 runtime test ve clean copied-package startup. `apps/hub`/`packages/domain` gerçek kod; spike import yok, diğer capabilities disabled.
+- Ana sayım1 DONE/3 IN_PROGRESS/26TODO; T03c yalnız koşullu owner seçim kapanışı, P0 kalite/capture/native/ROI sonuçları açık. Sonraki ana iş T05. Yeni model/API/connector/gerçek source/ücret yok.
+
+### 2026-10-13 — Q15-A kabul edildi, T04 uygulaması başladı
+
+- [İnsan onayı](../quality/reviews/q15-build-approval.json), [ADR-0012](../architecture/adr/0012-conditional-python-runtime.md): Python3.12/SQLite ilk çekirdek ve T04 başlangıç bağımlılığı T03c. Diğer P0 evidence ve release kapıları açık; model/ücret/gerçek data izni yok.
+- Yeni apps/hub ve packages/domain kodu açılıyor; önceki spike/raw/kanıtlar korunur. T04 In Progress; startup/source-contract testleri gerçek runtime kabulüne bağlanacak.
 
 ### 2026-10-13 — Ana To Do geçişindeki plan engeli görünür
 

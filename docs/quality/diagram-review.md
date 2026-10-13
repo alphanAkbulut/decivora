@@ -2,6 +2,8 @@
 
 **Güncel inventory: 18 belgede 38 Mermaid şeması — Q14-A proje review akışı eklendi, 2026-10-13; önceki 37 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
+
+**Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
 ## Güncel inventory — 2026-10-12
 
 <!-- diagram-inventory:start -->

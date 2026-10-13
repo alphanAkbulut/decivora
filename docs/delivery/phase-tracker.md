@@ -1,6 +1,6 @@
 # Faz bazlı proje ağacı ve takip görünümü
 
-**2026-10-11 — P0 / kontrollü deney kodu var; ürün MVP uygulaması başlamadı.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
+**2026-10-13 — Q15-A ile P1a çekirdek başladı; P0 kanıt işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
 
 **Otorite:** İşin tanımı, ana/alt görev, bağımlılık ve kabul kriterleri [backlog](backlog.md) ve bağlı [ekip/veri planında](team-data-plan.md); gerçekleşen ilerleme/kanıt [status](status.md); ürün çıkış sınırı [MVP](../product/mvp.md) ve [roadmap](../../ROADMAP.md) içindedir. Aşağıdaki 30 ana görev satırı backlog'dan türetilmiştir; doküman kontrolü ID/faz/durum/başlık/ön koşul eşleşmesini denetler. Bunları bağımsız güncelleme.
 
@@ -34,7 +34,7 @@ Decivora
     └── Talep, merkezi veri, davet/roller, sync ve ekip işletimi
 ```
 
-Bu ağaç ürün teslim ağacıdır; çalışan kaynak kodu dizinleri değildir. T03c native/extension/ek deney/durdur sonucunu da seçebilir; o durumda bağımsız T04–T30 yolu otomatik başlamaz.
+Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtilir. apps/hub/packages/domain T04 ile başladı; diğer alanları var sayma. Q15-A koşullu build seçildi; kalite/ROI yeniden değerlendirmesi açıktır. T03c native/extension/ek deney/durdur sonucunu da seçebilir; o durumda bağımsız T04–T30 yolu otomatik başlamaz.
 
 ## P0 — Başlangıç kapısı
 
@@ -54,7 +54,7 @@ Bu ağaç ürün teslim ağacıdır; çalışan kaynak kodu dizinleri değildir.
 
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
-| T04 | P1a | TODO | Runtime iskeleti ve sözleşme doğrulayıcıları | T03 |
+| T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c |
 | T05 | P1a | TODO | Proje kimliği ve binding | T04 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 |
 | T07 | P1a | TODO | Domain log ve projector | T06 |

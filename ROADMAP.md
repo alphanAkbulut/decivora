@@ -12,7 +12,10 @@ flowchart TB
     accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     P0[P0 Oracle ve kaynak hedef fizibilitesi] --> E[P0 Sınırlı gerçekleşme devam deneyi]
     E --> G{Native extend veya build kararı}
-    G -->|Build kanıtlı ve owner seçti| P1A[P1a Teknik kanıt]
+    G -->|Q15-A Koşullu build seçildi| P1A[P1a Çekirdek geliştirme başladı]
+    P0 -.-> OPEN[Model capture ve native ROI kanıtı açık]
+    OPEN -.-> PILOT[Pilot ve release kabulü ayrı]
+    P1B -.-> PILOT
     G -->|Native yeterli| N[Mevcut çözüm veya entegrasyon]
     G -->|Dar açık| X[Extension deneyi]
     G -->|Kanıt yetersiz| W[Ek deney veya bekleme]
@@ -28,7 +31,10 @@ flowchart TB
     classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
     class P0,E process
     class G gate
-    class P1A,P1B,P2,P3,P4,N,X future
+    class P1B,P2,P3,P4,N,X,PILOT future
+    classDef accepted fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    class P1A accepted
+    class OPEN warning
     class W warning
     class S history
 ```
@@ -48,7 +54,7 @@ MVP, P2 ve P3 ana görevleri ayrı tablolarla [faz bazlı proje ağacı ve takip
 
 Dil ihtiyacı: P1'de source/Unicode/metadata ve açık pilot dili korunur; P2'de otomatik dil tespiti, mixed fallback, locale katalogları ve çok dilli kalite önerilir. [Dil sözleşmesi](docs/product/language-and-localization.md); Q12-A kabul edildi: proje çıktı dili sabit, dil değişimi yalnız öneri, toplu çeviri varsayılan değil.
 
-Kritik sıra: [T01 → T02 → T03](docs/delivery/backlog.md) → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
+Q15-A ile ilk build sırası: T03c/ADR-0012 → T04 → çekirdek veri/olay → reconciliation/impact → approval/verification → görsel MVP. [T01/T02/T03](docs/delivery/backlog.md) model/capture/native/ROI kanıtları paralel açık kalır; release/pilot kapıları korunur. Tek adapter'lı P1a bütün MVP diye adlandırılmaz. Sonraki fazlara geçmek için bütün vizyonu gerçekleştirmiş olmak gerekmez.
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
@@ -59,7 +65,8 @@ flowchart TB
     C --> A[T02 Gerçek adapter capability]
     A --> PLAN[T03a Geçici deney yöntemi]
     PLAN --> PROTO[T03b İzinli sınırlı prototip ve native baseline]
-    PROTO --> D{T03c Yatırım kararı}
+    PROTO -.-> QUALITY[Kalite ve native ROI kanıtları açık]
+    S --> D{Q15-A Koşullu build kabulü}
     D -->|Build seçildi ve izinler hazır| CORE[T04-T08 Kimlik, kalıcı source, log, policy]
     D -->|Native veya extend| ALT[İlgili entegrasyon veya extension yolu]
     D -->|Owner durdurma kararı| STOP[Gerekçe ve kanıtla kapanış]
@@ -71,6 +78,7 @@ flowchart TB
     G -->|Başarısız| FIX[Kanıta bağlı küçük düzeltme]
     FIX --> G
     MVP --> PILOT{T24 MVP ve kullanıcı pilotu}
+    QUALITY -.-> PILOT
     PILOT -->|AC ve kalite kanıtlı| NEXT[T25-T30 Chat, entegrasyon, release, ekip]
     PILOT -->|Eksik capability| LIMITED[Sınırlı pilot ve açık gap]
     classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a

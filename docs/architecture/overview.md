@@ -70,7 +70,7 @@ flowchart TB
 
 ## Önerilen teknoloji ve paket sınırları
 
-TypeScript + Node LTS, SQLite; React web UI, graph için React Flow adayı; board için dnd-kit adayı; MCP SDK ve SSE adayları. **Sürüm pinleri ve bağımlılık lisansları P0/P1a görevinde seçilecek.** Next.js ile hafif React/Vite seçimi açık; SSR zorunluluğu yok. SQLite transaction/recovery prototipi teknoloji kararını test eder. PostgreSQL yalnız çok cihaz/çok kullanıcı gereksinimi kanıtlandığında değerlendirilir.
+[Q15-A/ADR-0012](adr/0012-conditional-python-runtime.md): ilk backend Python3.12 + stdlib SQLite. Önceki TypeScript/Node backend adayı bu ilk çekirdek için seçilmedi; React UI/React Flow/dnd-kit/MCP SDK/SSE adayları henüz kabul edilmedi. **Sürüm pinleri ve bağımlılık lisansları P0/P1a görevinde seçilecek.** Next.js ile hafif React/Vite seçimi açık; SSR zorunluluğu yok. SQLite transaction/recovery prototipi teknoloji kararını test eder. PostgreSQL yalnız çok cihaz/çok kullanıcı gereksinimi kanıtlandığında değerlendirilir.
 
 İleride önerilen dizinler: `apps/hub`, `apps/web`, `packages/domain`, `packages/storage`, `packages/capture`, `packages/reconciliation`, `packages/impact`, `packages/verification`, `packages/mcp`. Bu dizinler bugün boş iskelet olarak yaratılmadı; ilgili görev sırasında oluşacak.
 

@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**2026-10-11 / P0 Discovery / runtime yok.** Kullanıcı son evrimin bütün belgelere yansıtılmasını ve eski/güncel yaklaşımın karşılaştırılmasını istedi. Bu kayıt güncel araştırma odağını toplar; bağımsız ürün geliştirme, teknoloji seçimi, ücret veya gerçek hesap erişiminin kabulü değildir. Tam kapsam [full-scope](full-scope.md), P1b kabulü [MVP](mvp.md), gerçekleşmiş ilerleme [status](../delivery/status.md) otoritesindedir.
+**2026-10-13 / Q15-A koşullu P1a çekirdek build'i başladı; P0 kanıt işleri açık.** 2026-10-11 araştırma odağı aşağıda tarihsel gerekçesiyle korunur. Güncel Python3.12/SQLite seçimi ADR-0012 ile kabul edildi; ücret/gerçek hesap/model izni ve genel ürün başarısı değildir. Tam kapsam [full-scope](full-scope.md), P1b kabulü [MVP](mvp.md), gerçekleşmiş ilerleme [status](../delivery/status.md) otoritesindedir.
 
 ## Şimdi hangi problemi sınayacağız?
 
@@ -42,8 +42,11 @@ flowchart TD
     T1["T01 Kaynak ve bağımsız oracle"] --> T2["T02 Kaynak ve tek hedef capability"]
     T2 --> A["T03a Sınırlı deney yöntemi ve geçici stack önerisi"]
     A --> P["T03b Yetkilendirilirse prototip ve native baseline"]
-    P --> R["T03c Sonuç ve owner yatırım kararı"]
-    R -->|Ek değer ve erişim kanıtlı| B["Bağımsız çekirdek için P1a ve P1b"]
+    P -.-> Q["Native ve model kalite kanıtları açık"]
+    T1 --> R["Q15-A Koşullu owner build kabulü"]
+    R -->|ADR-0012 Python ve SQLite| B["P1a çekirdek geliştirme başladı"]
+    B -.-> Q
+    Q -.-> PILOT["Pilot ve release kabulü ayrı"]
     R -->|Native yeterli| N["Mevcut ürünü kullan veya entegrasyon"]
     R -->|Sınırlı açık var| E["Küçük extension ve bakım testi"]
     R -->|Kanıt yetersiz| U["Belirli ek deney veya bekleme"]
@@ -55,12 +58,14 @@ flowchart TD
     classDef history fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-dasharray:5 3
     class T1,T2,A,P process
     class R gate
-    class B,N,E future
+    class N,E,Q,PILOT future
+    classDef accepted fill:#ccfbf1,stroke:#0f766e,color:#0f172a
+    class B accepted
     class U warning
     class S history
 ```
 
-T03a geçici prototype yöntemini seçer; production stack ADR'sini accepted yapmaz. Böylece T03'ü bitirmek için gereken prototipin önce bitmiş T03 istemesi önlenir. Prototip önerisi [mevcut Spike-1 planında](../delivery/spike-1-v1.md) tutulur; ikinci bir v2/v3 plan kopyası yok. T03b henüz yetkilendirilmiş/başlatılmış değildir. Gerçek veri/hesap/model/runner kapıları ayrıca geçerlidir.
+T03a geçici prototype yöntemini seçer; production stack ADR'sini accepted yapmaz. Böylece T03'ü bitirmek için gereken prototipin önce bitmiş T03 istemesi önlenir. Prototip önerisi [mevcut Spike-1 planında](../delivery/spike-1-v1.md) tutulur; ikinci bir v2/v3 plan kopyası yok. T03b P0 sınırlı kod parçaları çalıştı; gerçek native/kalite kapanışı açık. Q15-A/ADR-0012 ilk runtime'ı kabul etti ve T04 başlangıcını açtı; T03 parent evidence kapanışı beklenmez. Gerçek veri/hesap/model/runner kapıları ayrıca geçerlidir.
 
 ## İlk deneyin sınırı ve çıkış kararı
 
@@ -79,3 +84,7 @@ Projenin bırakılması, yeni MVP veya prototip execution talimatı bu belgeyle 
 ## Sürümün anlamı
 
 **Tasarım revizyonu 03, ürün v3 değildir.** Tek güncel belge seti main'de; önceki içerik commit geçmişinde. [Sürüm ve otorite düzeni](../governance/versioning.md) ürün release'i, DB migration'ı, event şeması ve task snapshot'ını ayırır.
+
+## 2026-10-13 — Koşullu çekirdek build seçimi
+
+[Q15-A](../delivery/build-transition-proposal.md) kabul edildi. İlk runtime Python3.12/SQLite; T04 artık bütün keşif sonuçlarını beklemez. Model/capture/native/ROI ve14MVP AC açık; tam vizyon korunur. Bu yatırımın kendisi ekonominin veya ürün doğruluğunun kanıtı değildir.

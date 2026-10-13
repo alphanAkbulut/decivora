@@ -1,0 +1,73 @@
+{
+  "task_id": "T04",
+  "status": "accepted_runtime_scaffold",
+  "acceptance_scope": "CLI boot/source contract/manifest/clean copied-package run; not full product",
+  "governance_approval": "Q15-A / ADR-0012",
+  "runtime_status": {
+    "application": "Decivora",
+    "version": "0.1.0-dev",
+    "stage": "development_scaffold",
+    "python": "3.12.14",
+    "sqlite_available_version": "3.53.1",
+    "capabilities": {
+      "source_contract_validation": true,
+      "source_capture": false,
+      "project_binding": false,
+      "durable_ingress": false,
+      "canonical_storage": false,
+      "human_authentication": false,
+      "human_approval": false,
+      "semantic_extraction": false,
+      "model_dispatch": false,
+      "tool_execution": false,
+      "network_server": false,
+      "product_ui": false
+    },
+    "synthetic_only": true,
+    "canonical_mutations": 0,
+    "model_dispatches": 0
+  },
+  "fixture_validation": {
+    "status": "validated_only",
+    "content_sha256": "71d106edbdb927e3557445e9af8b8aa59c58c82c632bb0cd59c982decf9bf542",
+    "actor_identity_verified": false,
+    "durable_receipt": false,
+    "canonical_mutations": 0
+  },
+  "tests": {
+    "runtime": 12,
+    "status": "passed",
+    "command": "python3.12 -B -m unittest discover -s tests/runtime -q"
+  },
+  "clean_start": {
+    "status": "passed",
+    "method": "fresh temp root containing only apps/packages/manifests/runtime example; Python -S -B; no runtime files created"
+  },
+  "unsupported_host_python": {
+    "observed": "3.9.6",
+    "status": "rejected",
+    "exit_code": 2,
+    "error_code": "unsupported_python"
+  },
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "real_source_capture": false,
+  "product_ui": false,
+  "full_mvp_accepted": false,
+  "usage": null,
+  "file_sha256": {
+    "apps/__init__.py": "47480264075ce6ee19e6323a443e3aee5bee93efad8c45475f33aaae9616b022",
+    "apps/hub/__init__.py": "aed9a407261741329c7d21c3644b09136303bb159c1cfcb9f2da02a9216a80e7",
+    "apps/hub/__main__.py": "740311bda05ccaa4d8b6f545ece164b5ada970fbca892be7e0858b5c29efdec1",
+    "apps/hub/runtime.py": "f7b8422a3aeaeec7f9184940c5f5ec45a988f4e161abccf9074573e334585700",
+    "apps/hub/README.md": "c18b581c5c44ab2c64845ed0095b3f7fcf32e07d83e498e0e366680e4ff8148f",
+    "packages/__init__.py": "b6b9fb48eee9ae9ccd0e0dff4bffdb4c6855690a006ebd61ce0af8a3433ba8c4",
+    "packages/domain/__init__.py": "98c0f3770f3e3831c40ea6431b1e6e1fa37b3a53fe8beb1c320d43b536d69f22",
+    "packages/domain/source_event.py": "5ded937a3ada173fdefdbb0bbb2e0f8232be88c085be25bcc2ee38f00ed1163c",
+    "manifests/runtime.json": "099e176f2383cf83c281c21350dd2c468f1578ac24afcf42be876cc4b0a732ee",
+    "manifests/source-event.schema.json": "95791de923607e77329e491f017b352e62a86ed0f54f64c7fc1a8392dcea08ec",
+    "examples/runtime/source-event.json": "01d9543bce061fca7cfb85e97c65c67bcc225a43e30fd2a66cc5a39d3460fa41",
+    "tests/runtime/test_runtime.py": "9cc4fc5af1ca0f1243843c164b86d77fb836ea1984a5229b90ba10986365f296",
+    ".github/workflows/validation.yml": "5f0e4dc65708fae450d55db0506154e5df76a5d0a4071b2117b17de6f0c92d30"
+  }
+}

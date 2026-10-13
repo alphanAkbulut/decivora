@@ -1,6 +1,6 @@
 # ADR dizini
 
-ADR'ler henüz uygulanan teknoloji kararları değildir. Kabul edilmiş kullanıcı ilkesi ile önerilen teknik çözüm her dosyada ayrılır. Karar değiştiğinde eski ADR silinmez; yeni ADR supersedes bağlantısı taşır.
+ADR-0012, Q15-A ile ilk runtime/koşullu build için kabul edildi; diğer ADR'lerin kapsam/statüleri kendi dosyalarında korunur. Kabul edilmiş seçim uygulanmış özellik demek değildir. Kabul edilmiş kullanıcı ilkesi ile önerilen teknik çözüm her dosyada ayrılır. Karar değiştiğinde eski ADR silinmez; yeni ADR supersedes bağlantısı taşır.
 
 - [ADR-0001 — Yerel canonical store](0001-local-canonical-store.md)
 - [ADR-0002 — Append-only log ve current projection](0002-event-log-projections.md)
@@ -20,4 +20,6 @@ ADR'ler henüz uygulanan teknoloji kararları değildir. Kabul edilmiş kullanı
 
 - [ADR-0011 — Hedef uygulama gözlemi ve ayrı kabul kanıtı](0011-target-application-evidence.md)
 
-0011, 0005/0008/0010'u tamamlar; mevcut event/kimlik/impact ilkelerini iptal etmez. [Güncel tasarım revizyonu](../../product/current-direction.md) ilk yatırım odağını belirtir; stack ve build/extend ADR'leri hâlâ proposed. Genel mimariyi komple tekrar sürüm kopyasına dönüştürmeyin.
+0011, 0005/0008/0010'u tamamlar; mevcut event/kimlik/impact ilkelerini iptal etmez. [Güncel tasarım revizyonu](../../product/current-direction.md) ilk yatırım odağını belirtir; Q15-A/ADR-0012 koşullu ilk build/runtime kabulüdür; diğer mimari ayrıntıların statüleri ve native/ROI kapıları korunur. Genel mimariyi komple tekrar sürüm kopyasına dönüştürmeyin.
+
+- [ADR-0012 — Koşullu yerel MVP çekirdeği ve Python runtime](0012-conditional-python-runtime.md): accepted Q15-A; T01/T02/T03 kalite/ROI kapıları açık.

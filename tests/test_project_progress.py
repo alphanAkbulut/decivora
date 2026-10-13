@@ -36,7 +36,9 @@ class ProgressTests(unittest.TestCase):
     def test_canonical_status_and_acceptance_not_inferred_from_test_pass(self):
         data = progress.build(self.root)
         self.assertEqual(len(data["tasks"]), 30)
-        self.assertEqual(data["counts"], {"IN_PROGRESS": 3, "TODO": 27})
+        self.assertEqual(data["counts"], {"IN_PROGRESS": 3, "DONE": 1, "TODO": 26})
+        self.assertEqual(data["tasks"][3]["status"], "DONE")
+        self.assertEqual(data["tasks"][3]["dependencies"], ["T03c"])
         self.assertEqual(data["worker_activity"], "unknown")
         self.assertEqual(data["evidence"]["status"], "recorded")
         self.assertFalse(data["evidence"]["production"])
@@ -66,7 +68,9 @@ class ProgressTests(unittest.TestCase):
             self.assertEqual(scoped[sid]['status'], 'DONE')
             self.assertIn('| '+sid+' | T03 | DONE |', progress.markdown(data))
         self.assertEqual(task['status'], 'IN_PROGRESS')
-        self.assertNotIn('DONE', data['counts'])
+        self.assertEqual(data['counts'].get('DONE', 0),
+                         sum(t['status'] == 'DONE' for t in data['tasks']))
+        self.assertNotIn('T03', [t['id'] for t in data['tasks'] if t['status'] == 'DONE'])
 
     def test_backlog_change_refreshes_data_and_generated_snapshot(self):
         before = progress.build(self.root)
@@ -169,7 +173,7 @@ class ProgressTests(unittest.TestCase):
         with urlopen(base + "/api/status") as response:
             second = json.load(response)
         self.assertNotEqual(first["fingerprint"], second["fingerprint"])
-        self.assertEqual(second["counts"]["DONE"], 1)
+        self.assertEqual(second["counts"]["DONE"], first["counts"].get("DONE", 0) + 1)
         self.assertEqual(second["evidence"]["model"], "not_run")
 
     def test_api_has_no_write_filesystem_or_cross_origin_access(self):

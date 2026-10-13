@@ -1,0 +1,1 @@
+"""Decivora application entry points."""

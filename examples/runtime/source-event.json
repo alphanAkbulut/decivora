@@ -1,0 +1,10 @@
+{
+  "format": "decivora-source-event-1",
+  "event_id": "evt_fixture_001",
+  "project_id": "prj_fixture",
+  "session_id": "session_fixture",
+  "source_revision": 1,
+  "actor_type": "human",
+  "text": "SQLite önerisini konuşuyoruz; bu mesaj tek başına onay veya tamamlanma değildir.",
+  "synthetic": true
+}

@@ -1,6 +1,6 @@
 # Q15 — P0'dan MVP çekirdeğine kontrollü geçiş
 
-**2026-10-13 · ÖNERİ / kullanıcı kararı bekliyor.** Bu belge dependency/stack kabulü veya tamamlanmış production uygulaması değildir. User “To Do'daki işler neden sabit?” diye sordu. Yanıt: 26 küçük P0 teslimi var; T04 hâlâ tüm T03 kapanışına bağlı, T03 de tamamlanmamış T01/T02/karşılaştırma/yatırım koşullarına bağlı. Bu planı uygulamadan ana To Do sayısı düşmez.
+**2026-10-13 · Q15-A kabul edildi.** [Doğrudan insan onay kaydı](../quality/reviews/q15-build-approval.json) ve [ADR-0012](../architecture/adr/0012-conditional-python-runtime.md) runtime/dependency seçimini kabul eder; uygulama kabulü her görevin kendi kanıtıdır. Aşağıdaki alternatifler karar hazırlığının gerekçesini korur. User “To Do'daki işler neden sabit?” diye sordu. Yanıt: 26 küçük P0 teslimi var; T04 hâlâ tüm T03 kapanışına bağlı, T03 de tamamlanmamış T01/T02/karşılaştırma/yatırım koşullarına bağlı. Bu planı uygulamadan ana To Do sayısı düşmez.
 
 ## Mevcut durum → tespit
 
@@ -47,4 +47,4 @@ Etkilenecek kod alanları: `apps/hub`, `packages/domain`, başlangıç/manifest/
 
 T04 doğrulaması: temiz geçici çalışma dizininde başlangıç, valid/invalid sözleşme, gerçek model/runner çağrısı olmaması, repo CI ve belgeli sürüm/lisans envanteri. T01/T02/model/native/ROI ve MVP14AC bağımsız release/pilot kapıları olarak görünür; yatırım kararı onların başarı kanıtı değildir.
 
-**Sorulacak tek karar:** A koşullu MVP çekirdeğine Python3.12/SQLite ile geçiş mi, B mevcut P0 kapanışını beklemek mi? Henüz kullanıcı cevabı yok. Eski genel “devam” bu yeni dependency/stack kararı olarak geri tarihli kaydedilmez.
+**Sorulacak tek karar:** A koşullu MVP çekirdeğine Python3.12/SQLite ile geçiş mi, B mevcut P0 kapanışını beklemek mi? Kullanıcı öneriyle ilerlemeyi açıkça istedi ve A kabul edildi. Eski genel “devam” bu yeni dependency/stack kararı olarak geri tarihli kaydedilmedi; güncel cevap ayrı kaynak kaydıdır.
