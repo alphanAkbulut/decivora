@@ -92,7 +92,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Risk durumu:** Observed / High · R23/R24: ilk receiver tam çıktı JSON geçerli, abstention/type/record-action contract failed. T03w/x/y yerel guard ve yeni istek hazır; gerçek yeniden ölçüm henüz yok. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 - **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
-- **Son ilerleme:** 2026-10-13 · T03ab [kalıcı review snapshot](../quality/review-store.md) DONE;12 yeni/234 semantik test. Restart, dedup, append-only, revoked/current context ret ve iki writer passed; production Inbox/human reply çözümü değil. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
+- **Son ilerleme:** 2026-10-13 · T03ac [kalıcı explicit reply proposal](../quality/reply-store.md) DONE;14 yeni/248 semantik test. Late source binding/restart/dedup/conflict/current-context/atomic no-resume; gerçek approval, UI/IAM/semantik reply parsing yok. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
 - **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. Sıradaki ana kapanış: T01 exact-label inceleme, T02 izinli gerçek capture ve T03 native/ROI/yatırım karşılaştırmasını mevcut kanıt düzeyleriyle tamamla. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
 
@@ -149,6 +149,12 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 | Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
 |---|---|---|
 | T03ab / T03aa | DONE / P0: SQLite inceleme snapshot deposu |12 yeni/234 semantik test; restart aynı pending descriptor, current scope/access, unique/dedup/rollback/append-only/tamper/two-writer. [Rapor](../quality/review-store.md). Human reply resolution/UI/production IAM/backup/crash ayrı; canonical mutation/model0 |
+
+### T03 altında tamamlanan kalıcı explicit cevap önerisi
+
+| Alt görev / ön koşul | Durum / teslim | Kabul ve doğrulama |
+|---|---|---|
+| T03ac / T03ab | DONE / P0: persisted clarification'a explicit source-bound reply proposal |14 yeni/248 semantik test; current record/CID/question revision/source, restart/unique/retry/conflict/actor/access/rollback/tamper/two-writer. [Rapor](../quality/reply-store.md). Actual approval/resolved/job resume/semantic parsing/production IAM yok |
 
 ## T04 — Runtime iskeleti ve sözleşme doğrulayıcıları
 

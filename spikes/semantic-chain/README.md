@@ -140,3 +140,7 @@ Human gold review kalite iddiasını, T03c owner kararı production teknoloji/ya
 ## Kalıcı inceleme snapshot — T03ab DONE
 
 [`review_store.py` / kod ve sınırlar](../../docs/quality/review-store.md): typed review'ı SQLite'a atomic append, unique ID/retry, restart ve current scope/access kontrolü;12 yeni/234 semantik test. `check_review_store.py` temporary DB örneğini üretir. Pending descriptor kalıcıdır; human reply resolve/production Inbox/IAM/host entegrasyonu değildir. Model/runner/canonical mutation0; eski proof'lar korunur.
+
+## Kalıcı explicit geç cevap — T03ac DONE
+
+[`reply_store.py` / kod ve sınırlar](../../docs/quality/reply-store.md): mevcut stored review/CID/source/questionrevision bağında append-only reply proposals;14 yeni/248 semantik test. Restart/retry/conflicting choices/current access/tamper/two-writer; original snapshot untouched. Q_UI explicit fixture pending_trusted_selection, missing current Q_RELEASE needs_question_context. Actor/access controlled fixture, actual approval/resolved/model/runner yok. `check_reply_store.py` temp DB örneği; production Inbox değildir.

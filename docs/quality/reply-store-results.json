@@ -1,0 +1,316 @@
+{
+  "status": "passed_local_durable_reply_proposals",
+  "version": "durable-clarification-reply-1",
+  "pending_before": {
+    "format": "durable-clarification-reply-1",
+    "record_id": "747ffe0a18585afa5f38300afd870d010137fd99ce2d369554bab347a5a76a7b",
+    "clarifications": [
+      {
+        "descriptor": {
+          "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+          "execution_authorized": false,
+          "message_id": "N02-m04",
+          "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+          "project_id": "prj_ui_review",
+          "question_presentations": [
+            {
+              "options": {
+                "A": "board",
+                "B": "timeline"
+              },
+              "question_id": "Q_UI",
+              "revision": 1
+            },
+            {
+              "options": {
+                "A": "canary",
+                "B": "all_users"
+              },
+              "question_id": "Q_RELEASE",
+              "revision": 1
+            }
+          ],
+          "quote": "B.",
+          "reason": "needs_clarification",
+          "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+          "status": "needs_clarification"
+        },
+        "status": "awaiting_reply",
+        "answer_proposals": [],
+        "clarification_resolved": false,
+        "approved_real_decision": false
+      }
+    ],
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "reply_receipt": {
+    "format": "durable-clarification-reply-1",
+    "reply_receipt_id": "969dc64b0462d7dc3574960cf7d6a7836356a72accc6c9f2d4634019589a4d52",
+    "duplicate": false,
+    "association": {
+      "format": "durable-clarification-reply-1",
+      "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+      "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+      "binding": {
+        "authz_revision": 1,
+        "base_revision": 2,
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+        "project_id": "prj_ui_review",
+        "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+        "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+        "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+        "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+      },
+      "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+      "project_id": "prj_ui_review",
+      "question_id": "Q_UI",
+      "question_revision": 1,
+      "option_id": "B",
+      "source_message_id": "late-human-01",
+      "source_revision": 1,
+      "source_sha256": "e3538d77d31cf272deadf4ff28ef4fca76fa163dc2ca0425b8e6121b9390bd96",
+      "status": "pending_trusted_selection",
+      "clarification_resolved": false,
+      "approved_real_decision": false,
+      "execution_authorized": false,
+      "production_authorization": false
+    },
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0
+  },
+  "duplicate_receipt": {
+    "format": "durable-clarification-reply-1",
+    "reply_receipt_id": "969dc64b0462d7dc3574960cf7d6a7836356a72accc6c9f2d4634019589a4d52",
+    "duplicate": true,
+    "association": {
+      "format": "durable-clarification-reply-1",
+      "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+      "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+      "binding": {
+        "authz_revision": 1,
+        "base_revision": 2,
+        "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+        "project_id": "prj_ui_review",
+        "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+        "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+        "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+        "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+      },
+      "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+      "project_id": "prj_ui_review",
+      "question_id": "Q_UI",
+      "question_revision": 1,
+      "option_id": "B",
+      "source_message_id": "late-human-01",
+      "source_revision": 1,
+      "source_sha256": "e3538d77d31cf272deadf4ff28ef4fca76fa163dc2ca0425b8e6121b9390bd96",
+      "status": "pending_trusted_selection",
+      "clarification_resolved": false,
+      "approved_real_decision": false,
+      "execution_authorized": false,
+      "production_authorization": false
+    },
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0
+  },
+  "pending_after_reopen": {
+    "format": "durable-clarification-reply-1",
+    "record_id": "747ffe0a18585afa5f38300afd870d010137fd99ce2d369554bab347a5a76a7b",
+    "clarifications": [
+      {
+        "descriptor": {
+          "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+          "execution_authorized": false,
+          "message_id": "N02-m04",
+          "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+          "project_id": "prj_ui_review",
+          "question_presentations": [
+            {
+              "options": {
+                "A": "board",
+                "B": "timeline"
+              },
+              "question_id": "Q_UI",
+              "revision": 1
+            },
+            {
+              "options": {
+                "A": "canary",
+                "B": "all_users"
+              },
+              "question_id": "Q_RELEASE",
+              "revision": 1
+            }
+          ],
+          "quote": "B.",
+          "reason": "needs_clarification",
+          "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+          "status": "needs_clarification"
+        },
+        "status": "pending_trusted_selection",
+        "answer_proposals": [
+          {
+            "approved_real_decision": false,
+            "binding": {
+              "authz_revision": 1,
+              "base_revision": 2,
+              "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+            },
+            "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+            "clarification_resolved": false,
+            "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+            "execution_authorized": false,
+            "format": "durable-clarification-reply-1",
+            "option_id": "B",
+            "production_authorization": false,
+            "project_id": "prj_ui_review",
+            "question_id": "Q_UI",
+            "question_revision": 1,
+            "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+            "source_message_id": "late-human-01",
+            "source_revision": 1,
+            "source_sha256": "e3538d77d31cf272deadf4ff28ef4fca76fa163dc2ca0425b8e6121b9390bd96",
+            "status": "pending_trusted_selection"
+          }
+        ],
+        "clarification_resolved": false,
+        "approved_real_decision": false
+      }
+    ],
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "conflicting_replies": {
+    "format": "durable-clarification-reply-1",
+    "record_id": "747ffe0a18585afa5f38300afd870d010137fd99ce2d369554bab347a5a76a7b",
+    "clarifications": [
+      {
+        "descriptor": {
+          "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+          "execution_authorized": false,
+          "message_id": "N02-m04",
+          "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+          "project_id": "prj_ui_review",
+          "question_presentations": [
+            {
+              "options": {
+                "A": "board",
+                "B": "timeline"
+              },
+              "question_id": "Q_UI",
+              "revision": 1
+            },
+            {
+              "options": {
+                "A": "canary",
+                "B": "all_users"
+              },
+              "question_id": "Q_RELEASE",
+              "revision": 1
+            }
+          ],
+          "quote": "B.",
+          "reason": "needs_clarification",
+          "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+          "status": "needs_clarification"
+        },
+        "status": "conflicting_reply_proposals",
+        "answer_proposals": [
+          {
+            "approved_real_decision": false,
+            "binding": {
+              "authz_revision": 1,
+              "base_revision": 2,
+              "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+            },
+            "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+            "clarification_resolved": false,
+            "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+            "execution_authorized": false,
+            "format": "durable-clarification-reply-1",
+            "option_id": "B",
+            "production_authorization": false,
+            "project_id": "prj_ui_review",
+            "question_id": "Q_UI",
+            "question_revision": 1,
+            "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+            "source_message_id": "late-human-01",
+            "source_revision": 1,
+            "source_sha256": "e3538d77d31cf272deadf4ff28ef4fca76fa163dc2ca0425b8e6121b9390bd96",
+            "status": "pending_trusted_selection"
+          },
+          {
+            "approved_real_decision": false,
+            "binding": {
+              "authz_revision": 1,
+              "base_revision": 2,
+              "package_digest": "67522936b9ba0fa7c8a736cb6ff9e92f0f4b78a2b11a0a8959a54bc5570ec37e",
+              "project_id": "prj_ui_review",
+              "request_id": "72518df4d244368f8b80f0863efce99cbcb22e71d69a1e82eadd1cb846060ea7",
+              "response_sha256": "9c5e5576de0ea0f97c877f26b70c4510537e005134ded6fb50140b0bf21d4b3f",
+              "source_sha256": "79fe65ccdd458cab61d01cb521696808563a4169b34e9468da2b582f43776648",
+              "state_sha256": "a325ae0e6dd79cbde0549888d14648dcc045525618e96c29d8b8184e6572f0d7"
+            },
+            "clarification_id": "7bfcdd4e970315c8f61d3b4324b05e8315b09e495026969089d00f7df9c0c858",
+            "clarification_resolved": false,
+            "context_sha256": "f311b307e9b34db5dad69c098d1ee24d515b26a76a47a5344f56b584b3a3238a",
+            "execution_authorized": false,
+            "format": "durable-clarification-reply-1",
+            "option_id": "A",
+            "production_authorization": false,
+            "project_id": "prj_ui_review",
+            "question_id": "Q_UI",
+            "question_revision": 1,
+            "request_id": "f60e6a29a6b475a3cfc9b97162a6caf0ebdd3bfd91e6e8045fee7b4eb1a9c42f",
+            "source_message_id": "late-human-02",
+            "source_revision": 1,
+            "source_sha256": "d0a9a100e009a73290dccf0e2579b1263ce2e7922ec9aaab361113d923e102b3",
+            "status": "pending_trusted_selection"
+          }
+        ],
+        "clarification_resolved": false,
+        "approved_real_decision": false
+      }
+    ],
+    "canonical_mutations": 0,
+    "model_dispatches": 0,
+    "paid_api_calls": 0,
+    "execution_authorized": false,
+    "production_authorization": false
+  },
+  "file_sha256": {
+    "spikes/semantic-chain/reply_store.py": "7df21b6a2a785e86b8f86a994887c35f49494a91be9a61b01be61ebcd63b28a6",
+    "spikes/semantic-chain/test_reply_store.py": "da599fa4ca23c0f80d1ba17d4d8af1fa93ddb1c712a3c5f027ed90a0538b26cc",
+    "spikes/semantic-chain/check_reply_store.py": "be3a1ad44d1d5f8e12f195000bf6177c5fcee36c0430f40a43fb81b452606957",
+    "examples/durable-reply-smoke/reply.fixture.json": "460c5d286bb1bdd2218b8374cdc4b89c6efab774f6d9464d84ea9719103a1ea4",
+    "examples/receiver-next-smoke/request.json": "6e76ad0485a0f2ca7d0f174846cb090cb29d58d20641b4a020844b9783946893",
+    "examples/receiver-next-smoke/review-context.fixture.json": "c6997b3e759367a3952c1c67c9126619ac507781e19de9e1e0a1c5d23458ad62"
+  },
+  "scope": "two pinned synthetic projects; explicit transport fixture fields, not text inference",
+  "actual_human_approval": false,
+  "canonical_mutations": 0,
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "production_authorization": false,
+  "host_capture": "not_tested",
+  "usage": null
+}

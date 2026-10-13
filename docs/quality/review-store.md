@@ -2,6 +2,8 @@
 
 **2026-10-13 · T03ab / P0, küçük kod teslimi DONE.** [`review_store.py`](../../spikes/semantic-chain/review_store.py) hazır source-bound typed review taslağını SQLite'da saklar. Programı kapatıp yeniden açınca aynı bekleyen inceleme ve açıklama descriptor'ı geri okunur. [Tekrar üretilebilir kanıt](review-store-results.json).
 
+**Sonraki ayrı katman:** [T03ac explicit geç cevap deposu](reply-store.md) pending descriptor'a kalıcı fixture cevap önerisi ekler; actual insan approval/resolution değildir. T03ab kaynak kodu ve önceki kanıt snapshot'ı değişmedi.
+
 ## Çalışan kapsam
 
 `request + güncel caller context → typed review guard → atomik SQLite append → kapanış → yeniden açılış → güncel access/source/context guard → kayıt bütünlüğü → mevcut taslak`
