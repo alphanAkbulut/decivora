@@ -275,6 +275,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `apps/hub/; packages/domain/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **Son ilerleme:**2026-10-13 · [Kalıcı cevaptan karar](../quality/question-decision-runtime.md): separate prepare/approve/apply ve revision/authority/duplicate guard,208runtime test + gerçek browser akışı geçti.
+- **Sıradaki adım:** T13e soru lifecycle/cancel/superseded/orphan kabulünü tamamla; ardından T14 evidence/Done.
 - **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
 
 ## T14 — Evidence ve false-done düzeltmesi
@@ -677,7 +679,7 @@ Kullanıcının Q12'ye geç verdiği yanıt [somut sözleşmede](../product/pend
 
 | Alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
-| T13e / T13,T07,T08,T05 | IN_PROGRESS / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm | [Manuel kalıcı soru dilimi](../quality/pending-question-runtime.md); ASK-01–06/08 + LATE-01–07 tam core kabulü açık; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur |
+| T13e / T13,T07,T08,T05 | IN_PROGRESS / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm | [Manuel kalıcı soru dilimi](../quality/pending-question-runtime.md) + [ayrı onaylı karar bağı](../quality/question-decision-runtime.md); ASK-01–06/08 + LATE-01–07 tam core kabulü açık; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur |
 | T18e / T13e,T18,T06 | TODO / P1b: host soru/cevap metadata coverage, exact reply/selection normalizasyonu ve delivery capability | ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok |
 | T24f / T13e,T18e,T19,T20i,T24 | TODO / P1b: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması | ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon |
 

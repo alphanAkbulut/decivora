@@ -7,6 +7,7 @@ from packages.storage.workspace import Workspace
 from packages.storage.project_store import canonical
 from packages.domain.acceptance import AcceptanceService
 from packages.domain.questions import QuestionService
+from packages.domain.question_decisions import QuestionDecisionService
 from packages.domain.source_event import ContractError
 
 ROOT=Path(__file__).parent
@@ -28,11 +29,18 @@ class LocalApp:
                 if r['body']['type']!='Task':continue
                 acceptance=AcceptanceService(core).view(owner,'personal',r['id'])
                 tasks.append(dict(r,acceptance=acceptance,lane='Cancelled' if r['body'].get('execution')=='cancelled' else 'In Progress' if r['id'] in started else 'To Do'))
-            return dict(project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
+            return dict(project=core.project(owner,'personal'),tasks=tasks,question_inbox=QuestionService(core).view(owner,'personal'),decision_proposals=QuestionDecisionService(core).view(owner,'personal'),truncated=records['truncated'],capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=False),csrf=self.csrf)
     def command(self,body):
-        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action in ('prepare_decision','approve_decision','apply_decision'):
+                fields={'action','key','answer_id','reason'} if action=='prepare_decision' else {'action','key'} if action=='approve_decision' else {'action','key','approval'}
+                if set(body)!=fields:raise ContractError('invalid_request','Exact decision fields required.')
+                service=QuestionDecisionService(core)
+                if action=='prepare_decision':return service.prepare(owner,'personal',key=body['key'],answer_id=body['answer_id'],reason=body['reason'])
+                if action=='approve_decision':return dict(approval=service.approve(owner,'personal',body['key']))
+                return service.apply(owner,'personal',body['key'],body['approval'])
             if action=='ask_question':
                 if set(body)!={'action','request_id','text','options'}:raise ContractError('invalid_request','Exact question fields required.')
                 return QuestionService(core).present(owner,'personal',question=body['request_id'],base_revision=0,text=body['text'],options=body['options'])

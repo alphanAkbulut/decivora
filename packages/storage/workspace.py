@@ -336,7 +336,7 @@ class Workspace:
         with self.transaction():
             return self._apply(scope,plan,approval)
 
-    def _apply(self,scope,plan,approval,*,review_digest=None):
+    def _apply(self,scope,plan,approval,*,review_digest=None,question_digest=None):
         project=plan['project']
         self.scope(scope,project,write=True,human=True)
         prior=self.db.execute('SELECT actor,digest,result FROM commands WHERE workspace=? AND project=? AND key=?',(self.workspace,project,plan['key'])).fetchone()
@@ -353,6 +353,11 @@ class Workspace:
             raise ContractError('invalid_approval','Approval does not match current identity, scope or authority.')
         if self.project(scope,project)['knowledge_revision']!=plan['base_revision']:
             raise ContractError('stale_base','Project knowledge changed after approval.')
+        from packages.domain.question_decisions import proposal_for_plan,QuestionDecisionService
+        question_proposal=proposal_for_plan(self,project,plan)
+        if question_proposal is not None:
+            if question_proposal['plan']!=plan or question_proposal['digest']!=question_digest:raise ContractError('question_approval_required','Question-bound proposal requires its current selection guard.')
+            QuestionDecisionService(self)._current(scope,project,question_proposal)
         operations=plan['operations'];temp={}
         from packages.domain.task_lifecycle import guard
         guard(self,project,operations,bound)

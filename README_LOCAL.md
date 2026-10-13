@@ -13,6 +13,6 @@ Veri uygulama kaynak klasörünün yanında `decivora-local-data/workspace.sqlit
 
 **Çalışan:** kalıcı manuel soru/seçenek/cevap listesi, kalıcı manuel görev board'u, kriter/DoD onayı ve sürüm geçmişi, iş başlangıç kaydı, reload/restart, local session/CSRF/Origin/Host/body ve rate sınırları. **Hazır olmayan:** otomatik chat capture, LLM çıkarımı, MCP, graph/timeline/review inbox, kanıtla Done. Done boş ve disabled kalır; In Progress yalnız çalışma beyanıdır. Bu programa henüz “tam AI-native otomatik hafıza MVP” denmez. Para/ücretli API çağrısı yok.
 
-Bekleyen karar soruları bölümünde soru ve 2–8 seçeneği kaydet; seçenek düğmesine bastığında soru ID/sürümüyle seçim tutulur. Başka konuya geçmek veya programı kapatmak soruyu silmez. Bu seçim kaydı görev iptali, kod çalıştırma veya dış erişim onayı değildir. Serbest sohbetten otomatik soru yakalama/eşleme henüz yok.
+Bekleyen karar soruları bölümünde soru ve 2–8 seçeneği kaydet; seçenek düğmesine bastığında soru ID/sürümüyle seçim tutulur. Başka konuya geçmek veya programı kapatmak soruyu silmez. Seçimden sonra gerekçe girip **Karar önerisi hazırla → Karar önerisini onayla → Onaylı kararı uygula** adımlarını ayrı tamamlayabilirsin. Decision yerel hafızaya kaydedilir; görevler otomatik değiştirilmez. Bu seçim kaydı görev iptali, kod çalıştırma veya dış erişim onayı değildir. Serbest sohbetten otomatik soru yakalama/eşleme henüz yok.
 
 CLI alternatif: `python3.12 -B -m apps.local_ui.server`. `--data-dir` ile kendi private veri dizinini seçebilirsin; desteklenmeyen eski DB profile'ı sessiz migrate edilmez.

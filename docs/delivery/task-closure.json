@@ -1141,7 +1141,7 @@
       "classification": "task_local",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Manual durable question/answer slice verified; canonical Decision/Approval binding, cancel/superseded/orphan reassociation remain open.",
+      "reason": "Manual durable questions and separate revision-bound Decision proposal/approval/apply verified; cancel/superseded/defer, external presentation/source and orphan reassociation remain open.",
       "required_for_parent_closure": true
     },
     "T14a": {

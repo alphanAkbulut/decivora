@@ -56,3 +56,14 @@ class LocalAppTests(unittest.TestCase):
         code,result,_=self.call('/api/command',answer);self.assertEqual(code,200);self.assertEqual(result['status'],'Selected');self.assertFalse(result['canonical_apply'])
         self.assertEqual(LocalApp(self.path).state()['question_inbox']['questions'][0]['selection'],'sqlite')
         self.assertEqual(self.call('/api/command',answer)[1],result)
+
+    def test_http_decision_requires_separate_approval_and_apply(self):
+        self.call('/api/command',dict(action='ask_question',request_id='Q1',text='Storage?',options=[dict(id='sqlite',label='SQLite'),dict(id='files',label='Files')]))
+        self.call('/api/command',dict(action='answer_question',request_id='a1',question='Q1',revision=1,option='sqlite'))
+        self.assertEqual(self.call('/api/command',dict(action='prepare_decision',key='d1',answer_id='a1',reason='Persistent data'))[0],200)
+        self.assertEqual(self.call('/api/command',dict(action='apply_decision',key='d1',approval='forged'))[0],409)
+        token=self.call('/api/command',dict(action='approve_decision',key='d1'))[1]['approval']
+        self.assertEqual(self.call('/api/state')[1]['decision_proposals'][0]['state'],'Approved')
+        self.assertEqual(self.call('/api/command',dict(action='apply_decision',key='d1',approval=token))[0],200)
+        self.assertEqual(self.call('/api/state')[1]['decision_proposals'][0]['state'],'Applied')
+        self.assertEqual(self.call('/api/state')[1]['tasks'],[])

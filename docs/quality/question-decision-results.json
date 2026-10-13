@@ -1,0 +1,21 @@
+{
+  "runtime_tests": 208,
+  "new_tests": 11,
+  "source_sha256": {
+    "packages/domain/question_decisions.py": "8ae4514e01502762a82f58b13d3369c806f361491196a182d9fd4158521a204d",
+    "packages/storage/workspace.py": "121d18c22ea63d8b0caa17fec77a957f131d2ef12799f89f796e2fa0ff63f8b5",
+    "apps/local_ui/server.py": "593094fef7c8d73b6dba42c0bd33334a3edb329a9e78055258d0d60bd6141cb9",
+    "apps/local_ui/app.js": "3faa17ad9aaf01ac680250fdd1aed23f878fef7d5335df65e3a3e98e94c6cd48",
+    "tests/runtime/test_question_decisions.py": "dee32dbd5c7777ef78ef8985e18add05ea6724ed9065624096a5d8c084043fab",
+    "tests/runtime/test_local_app.py": "b881c0a041c31f01f578bc96daf6e21d457c91e98ff30df22c9a099b3372b94b"
+  },
+  "browser": {
+    "decision_applied": true,
+    "questions_persisted": true,
+    "task_regression": true,
+    "reload_persisted": true,
+    "done_cards": 0,
+    "outside_network": false
+  },
+  "scope": "Manual question selection to separate human approval and canonical Decision; full T13e/MVP still open"
+}

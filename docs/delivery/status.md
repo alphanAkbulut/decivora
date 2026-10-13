@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — T13e cevaptan ayrı onaylı canonical karar
+
+- [Karar runtime](../quality/question-decision-runtime.md):11 yeni/208runtime test; actual UI prepare→approve→apply→reload; same-question/current-revision, authority/base, generic bypass ve iki bağlantı tek effect. Görevleri değiştirmez; otomatik capture/model/Done hâlâ açık.
+- Ana7Done/8InProgress/15ToDo aynı; T13e soru lifecycle/orphan/source normalize kalanları mevcut kapsamda izlenir. Yeni task/model/API/ücret yok.
+
 ### 2026-10-13 — Altı kod teslim planı ve manuel pending soru dilimi
 
 - [Altı paket](build-delivery-plan.md): mevcut kodu geliştiren uygulama sırası;15To Do=9MVP+6future, yeni görev yok.

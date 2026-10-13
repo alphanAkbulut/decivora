@@ -684,14 +684,14 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "7c5064d6b433908ba5edfa744334d4614e5c109e423173ae31830872e7146065",
+      "source_sha256": "220d1eb65e1dbea54ee2a6dbed4f8c23b4ab00e2980bf266b43c30f1ec86092e",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 710.62109375 1350.8529052734375",
+      "view_box": "0 0 882.9453125 1431.2794189453125",
       "artifact": "assets/diagrams/local-preview-1.svg",
       "error": null,
-      "svg_sha256": "a1d3e1717d1e4da3e6965a073c3dbbcec48d219111c010cc1781d7f14aba5d6a",
+      "svg_sha256": "ccd271cee96867c8eaa457bf77f475ce014730edefa469a175964afd0770d46f",
       "checked_at": "2026-10-13",
       "renderer": "Mermaid 11.17.2 cached bundle",
       "network_requests_allowed": false
@@ -867,6 +867,23 @@
       "network_requests_allowed": false,
       "superseded_at": "2026-10-13",
       "reason": "Manual durable question/answer path added to running local UI."
+    },
+    {
+      "path": "docs/architecture/local-preview.md",
+      "block": 1,
+      "source_sha256": "7c5064d6b433908ba5edfa744334d4614e5c109e423173ae31830872e7146065",
+      "status": "rendered",
+      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+      "description_present": true,
+      "view_box": "0 0 710.62109375 1350.8529052734375",
+      "artifact": "assets/diagrams/local-preview-1.svg",
+      "error": null,
+      "svg_sha256": "a1d3e1717d1e4da3e6965a073c3dbbcec48d219111c010cc1781d7f14aba5d6a",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "superseded_at": "2026-10-13",
+      "reason": "Separate question Decision proposal, approval and atomic apply path added."
     }
   ],
   "incremental_reviews": [

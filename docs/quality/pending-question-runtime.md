@@ -12,4 +12,4 @@ SQLite mevcut audit içinde question_presented ve question_answered kayıtları;
 
 ## Kalan kabul
 
-Canonical Decision/Approval proposal bağlantısı ve ayrı apply, explicit source/presentation refs, cancelled/superseded/deferred, orphan yeniden eşleme, eşzamanlı farklı bağlantı testi, presentation retry ve tam ASK/LATE kabulü açık. Agent proposal/capture/MCP bu manuel owner profilinde yok. Hiçbir Task bu cevapla otomatik Done/Cancelled olmaz. Bu dilim ana T13/T13e kapanışı değildir; verifier/Done T14 sırada. Yeni ücretli model/API/gerçek transcript çağrısı yapılmadı.
+Canonical Decision/Approval proposal bağlantısı ve ayrı apply sonraki [çalışan dilimde](question-decision-runtime.md) tamamlandı. Explicit source/presentation refs, cancelled/superseded/deferred, orphan yeniden eşleme, eşzamanlı farklı bağlantı testi, presentation retry ve tam ASK/LATE kabulü açık. Agent proposal/capture/MCP bu manuel owner profilinde yok. Hiçbir Task bu cevapla otomatik Done/Cancelled olmaz. Bu dilim ana T13/T13e kapanışı değildir; verifier/Done T14 sırada. Yeni ücretli model/API/gerçek transcript çağrısı yapılmadı.
