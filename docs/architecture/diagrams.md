@@ -552,3 +552,7 @@ Config apply beklenen revision ile atomiktir; rollback yeni revision olur. Dış
 ## Uygulanan T13b lifecycle dilimi
 
 [Lifecycle şeması](task-lifecycle.md) cancel/edge ending/reopen ayrımını ve canlı gerekçe/downstream ret yolunu gösterir. İki current [review çizimi](review-runtime.md) lifecycle guard ve kalan T13c/e–T14 kapsamına güncellendi; diğer product çizimleri bu tur değişmedi.
+
+## Çalışan ilk yerel uygulama
+
+[Local preview](local-preview.md) launcher/session/CSRF→manual Task→AC contract→In Progress ve kalıcı SQLite akışını gösterir. Bu gerçek program dilimidir; otomatik capture/MCP/Done ve full product UI açık kalır.

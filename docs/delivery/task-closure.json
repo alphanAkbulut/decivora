@@ -1103,7 +1103,7 @@
     "T13c": {
       "parent": "T13",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T08",
         "T13"
@@ -1111,7 +1111,7 @@
       "classification": "task_local",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "Versioned acceptance contract, applicability reasons and work-start guard verified; T13e remains open.",
       "required_for_parent_closure": true
     },
     "T13d": {

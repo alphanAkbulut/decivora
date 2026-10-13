@@ -680,6 +680,21 @@
       "renderer": "Mermaid 11.17.2 cached bundle",
       "network_requests_allowed": false,
       "export_normalization": "Self-closed HTML br for standalone SVG XML."
+    },
+    {
+      "path": "docs/architecture/local-preview.md",
+      "block": 1,
+      "source_sha256": "89fadc78182cd74f35cae0b83192543bf2feca48c273b620c3475ff23b3a2bdf",
+      "status": "rendered",
+      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+      "description_present": true,
+      "view_box": "0 0 572.9453125 1294.426513671875",
+      "artifact": "assets/diagrams/local-preview-1.svg",
+      "error": null,
+      "svg_sha256": "4e6dae8361af3ad494a34df58c9a5b1dadf3c3d4ed47ade1bd4928089085fac3",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -881,6 +896,19 @@
       "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
       "xml_validated": true,
       "visual_review": "Lifecycle and current storage screenshots inspected; current sequence labels/source/render checked. Other38 sources unchanged."
+    },
+    {
+      "reason": "Runnable local UI and versioned acceptance",
+      "checked_at": "2026-10-13",
+      "rendered_blocks": 1,
+      "new_blocks": 1,
+      "changed_blocks": 0,
+      "xml_validated": true,
+      "network_requests_allowed": false,
+      "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
+      "source_documents": [
+        "docs/architecture/local-preview.md"
+      ]
     }
   ]
 }

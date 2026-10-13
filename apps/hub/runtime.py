@@ -30,7 +30,7 @@ def runtime_status():
         synthetic_only=True, canonical_mutations=0, model_dispatches=0,
         implemented_components=['source_contract','local_authority','normalized_workspace',
             'durable_manual_receipts','leased_jobs','event_projection','atomic_approval',
-            'backup_restore','typed_dependency_graph','bounded_impact_preview','local_review_selection','task_lifecycle','bounded_lexical_review'],
+            'backup_restore','typed_dependency_graph','bounded_impact_preview','local_review_selection','task_lifecycle','versioned_acceptance','local_ui_preview','bounded_lexical_review'],
         active_profile='status_only; use core-demo for isolated synthetic end-to-end flow')
 
 

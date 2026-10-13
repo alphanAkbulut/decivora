@@ -357,7 +357,7 @@ class Workspace:
         from packages.domain.task_lifecycle import guard
         guard(self,project,operations,bound)
         for op in operations:
-            if type(op) is not dict or op.get('op') not in ('create','update','link','end_link','task_lifecycle'):
+            if type(op) is not dict or op.get('op') not in ('create','update','link','end_link','task_lifecycle','acceptance_contract'):
                 raise ContractError('invalid_operation','Only typed create/update/link operations are supported.')
             if op['op']=='create':
                 identifier(op['id'])
@@ -372,6 +372,9 @@ class Workspace:
                 op['id']=temp[op['id']]
                 self._body(op['body'])
                 stream=op['id'];version=1
+            elif op['op']=='acceptance_contract':
+                from packages.domain.acceptance import check,stream as acceptance_stream
+                version=check(self,project,op);stream=acceptance_stream(op['task'])
             elif op['op']=='task_lifecycle':
                 from packages.domain.task_lifecycle import operation
                 operation(op)
@@ -417,6 +420,8 @@ class Workspace:
         if op['op']=='create':
             self.db.execute('INSERT INTO records VALUES (?,?,?,?,?)',(self.workspace,project,op['id'],1,canonical(op['body'])))
             if 'source_seq' in op:self.db.execute('INSERT INTO record_sources VALUES (?,?,?,?)',(self.workspace,project,op['id'],op['source_seq']))
+        elif op['op']=='acceptance_contract':
+            return
         elif op['op']=='task_lifecycle':
             from packages.domain.task_lifecycle import transition
             previous=json.loads(self.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()[0])
@@ -619,7 +624,7 @@ class Workspace:
                     state='asserted' if kind=='link' else op['state'],sequence=seq)
             return list(edges.values())
 
-    def _replay_operation(self,project,stream,version,kind,raw):
+    def _replay_operation(self,project,stream,version,kind,raw,sequence):
         try:
             op=json.loads(raw)
             if type(op) is not dict or op.get('op')!=kind:
@@ -637,6 +642,12 @@ class Workspace:
                 else:
                     integer(op['base_version'],1)
                     if previous!=(op['base_version'],) or version!=op['base_version']+1:raise ValueError()
+            elif kind=='acceptance_contract':
+                from packages.domain.acceptance import validate,stream as acceptance_stream
+                validate(op)
+                row=self.db.execute('SELECT version,body FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['task'])).fetchone()
+                previous=self.db.execute("SELECT coalesce(max(version),0) FROM events WHERE workspace=? AND project=? AND stream=? AND kind='acceptance_contract' AND seq<?",(self.workspace,project,stream,sequence)).fetchone()[0]
+                if row is None or row[0]!=op['task_version'] or json.loads(row[1])['type']!='Task' or stream!=acceptance_stream(op['task']) or version!=op['base_contract']+1 or previous!=op['base_contract']:raise ValueError()
             elif kind=='task_lifecycle':
                 from packages.domain.task_lifecycle import operation,transition
                 operation(op)
@@ -666,7 +677,7 @@ class Workspace:
         self.db.execute('DELETE FROM record_sources WHERE workspace=? AND project=?',(self.workspace,project))
         self.db.execute('DELETE FROM records WHERE workspace=? AND project=?',(self.workspace,project))
         for seq,stream,version,kind,raw in rows:
-            op=self._replay_operation(project,stream,version,kind,raw)
+            op=self._replay_operation(project,stream,version,kind,raw,seq)
             self._project_event(op,project,seq)
         self._graph(project)
         result=self.projection_digest(scope,project)

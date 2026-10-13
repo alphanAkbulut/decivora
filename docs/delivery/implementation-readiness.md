@@ -10,6 +10,7 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 
 | İş | Çıktı | Doğrulama |
 |---|---|---|
+| Yerel program/T13c | Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package | [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık |
 | T13b lifecycle | Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history | [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık |
 | T13a review kernel | Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply | [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık |
 | T12/T12a impact preview | Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard | [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14 |

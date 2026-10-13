@@ -78,8 +78,8 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | T16 | P1b | TODO | Claude Code adapter | T15 |
 | T17 | P1b | TODO | Codex adapter | T16 |
 | T18 | P1b | TODO | Minimal MCP ve cross-agent read | T17 |
-| T19 | P1b | TODO | Proje seçimi ve Review Inbox UI | T18 |
-| T20 | P1b | TODO | Board, Graph ve Timeline | T19 |
+| T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 |
+| T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 |
 | T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 |
 | T22 | P1b | TODO | Chat import ve prompt lineage | T21 |
 | T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 |
@@ -156,7 +156,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 4. Bir task veya fazın kapanışında [AC/DoD ve kaynaklı bağlam](../product/task-context-and-acceptance.md) güncellenir. İptal/erteleme gerekçesi ve tarihçesi korunur.
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
-Bugünkü snapshot'ta T04/T05/T06/T07/T08/T11/T12 DONE, T01/T02/T03/T09/T10/T13 IN_PROGRESS,17 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
+Bugünkü snapshot'ta T04/T05/T06/T07/T08/T11/T12 DONE, T01/T02/T03/T09/T10/T13/T19/T20 IN_PROGRESS,15 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
 
 ### P0 karşılaştırma havuzu eki: WrongStack
 

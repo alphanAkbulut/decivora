@@ -275,7 +275,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `apps/hub/; packages/domain/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
-- **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13c/e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
+- **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
 
 ## T14 — Evidence ve false-done düzeltmesi
 
@@ -324,21 +324,25 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T19 — Proje seçimi ve Review Inbox UI
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T18. **Kapsam ID:** UX-01,APR-01.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T18. **Kapsam ID:** UX-01,APR-01.
 - **İş:** Project selector, prepared cards, PendingDecision ve coverage göstergesi.
 - **Kabul:** Metin yazmadan happy-path review; keyboard erişimi ve error/empty/loading state.
 - **Doğrulama:** AC-07/12/14; gerçek browser flow.
 - **Beklenen dosya alanı:** `apps/web/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **İlk çalışan UI dilimi:** [Yerel program](../quality/local-preview.md); manuel tek proje/AC card/board. Full selector/inbox/graph/timeline açık; native/MCP bağımlılığı kaldırılmadı, disabled manual slice önce kuruldu.
+
 ## T20 — Board, Graph ve Timeline
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T19. **Kapsam ID:** UX-01,UX-02.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T19. **Kapsam ID:** UX-01,UX-02.
 - **İş:** Aynı projection revision üstünden üç görünüm; active/history ve list fallback.
 - **Kabul:** Aynı kaydın durumu tutarlı; graph reason path; historical done korunur.
 - **Doğrulama:** AC-09; dar ekran/uzun metin/keyboard.
 - **Beklenen dosya alanı:** `apps/web/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **İlk çalışan UI dilimi:** [Yerel program](../quality/local-preview.md); manuel tek proje/AC card/board. Full selector/inbox/graph/timeline açık; native/MCP bağımlılığı kaldırılmadı, disabled manual slice önce kuruldu.
 
 ## T21 — Routing etiketleri ve usage kaydı
 
@@ -489,7 +493,7 @@ T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatc
 
 | Alt dilim / bağımlılık | Teslim | Kabul |
 |---|---|---|
-| T13c / T08,T13 | İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi | [CTX-03](../product/task-context-and-acceptance.md); sonuca göre sessiz kriter düşürme yok |
+| T13c / T08,T13 | DONE — İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi | [9test+local app](../quality/local-preview.md): diff acknowledgment, start guard, history/restore; sessiz kriter düşürme yok |
 | T14b / T13c,T14 | AC/DoD→evidence matrisi ve current completion predicate | CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir |
 | T20c / T07,T14b,T20b | Ana task context snapshot, evrim sekmesi, template ve seçilen export yolu | CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen |
 

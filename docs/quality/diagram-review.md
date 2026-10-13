@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 20 belgede 41 Mermaid şeması — T13b lifecycle eklendi ve2review çizimi güncellendi, 2026-10-13; diğer38 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 21 belgede42 Mermaid şeması — çalışan local preview +AC akışı eklendi, 2026-10-13; önceki41 kaynak değişmedi.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -29,6 +29,7 @@
 | [docs/quality/project-review.md](project-review.md) | 1 |
 | [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
 | [docs/architecture/task-lifecycle.md](../../docs/architecture/task-lifecycle.md) | 1 |
+| [docs/architecture/local-preview.md](../../docs/architecture/local-preview.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -151,3 +152,7 @@ Karar değişikliği yapan görev ilgili metin, diyagram, backlog ve acceptance 
 ## T13b lifecycle render — 2026-10-13
 
 Bir yeni [lifecycle](../architecture/task-lifecycle.md) ve2changed [review](../architecture/review-runtime.md) cached11.17.2/ağkapalı render edildi; XML/hash/title/desc geçti. Lifecycle/storage masaüstü görselleri incelendi; sequence current guard etiketleri render/source üzerinde kontrol edildi. Önceki2render satırı superseded history'de saklandı; diğer38 aynı ve bu tur yeniden render edilmedi.41source/20belge, ürün UI kabulü değil.
+
+## Çalışan yerel arayüz — 2026-10-13
+
+Bir yeni [local preview](../architecture/local-preview.md) kaynağı cached11.17.2 ile dış ağ kapalı render edildi; XML/sourcehash/title/desc kontrol edildi. Önceki41 kaynak aynı. Gerçek UI create/approve/start/reload testi Mermaid render'ından ayrı [local preview kanıtındadır](local-preview.md).42source/21belge; full ürün UI/pilot kabulü değildir.

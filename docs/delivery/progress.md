@@ -2,7 +2,7 @@
 
 > Otomatik üretilir. Ana kaynak backlog’dur; bu dosyayı elle düzenleme.
 
-**Açık çalışma fazı: P0, P1a**
+**Açık çalışma fazı: P0, P1a, P1b**
 
 [Canlı yerel ekranı açma ve güncelleme rehberi](progress-guide.md). GitHub bu Markdown görünümünü gösterir; canlı ekran yerel dosyaları izler.
 
@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 6 |
-| TODO | 17 |
+| IN_PROGRESS | 8 |
+| TODO | 15 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -70,6 +70,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T12a | T12 | DONE | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision |
 | T13a | T13 | DONE | DONE — Onay token'ı snapshot/policy/digest ile bağla |
 | T13b | T13 | DONE | DONE — Task cancel ve edge ending için farklı impact preview/compensating olay |
+| T13c | T13 | DONE | DONE — İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi |
 
 ## Açık fazda neler değişti?
 
@@ -147,11 +148,36 @@ Son ilerleme kaydı yok.
 
 Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
+### T19 · Proje seçimi ve Review Inbox UI
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T20 · Board, Graph ve Timeline
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 
 ## Mevcut teslim parçaları
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **Yerel program/T13c** — Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package; [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık
 - **T13b lifecycle** — Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history; [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık
 - **T13a review kernel** — Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply; [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık
 - **T12/T12a impact preview** — Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard; [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14
@@ -228,8 +254,8 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
 | T17 | P1b | TODO | Codex adapter | T16 | 0 |
 | T18 | P1b | TODO | Minimal MCP ve cross-agent read | T17 | 7 |
-| T19 | P1b | TODO | Proje seçimi ve Review Inbox UI | T18 | 1 |
-| T20 | P1b | TODO | Board, Graph ve Timeline | T19 | 9 |
+| T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
+| T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
 | T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 | 2 |
 | T22 | P1b | TODO | Chat import ve prompt lineage | T21 | 1 |
 | T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 | 3 |
@@ -249,4 +275,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `b512c4244b4946a9e126ff83907abb91978da32c7d60bb3c21923364f6698c02`
+Kaynak fingerprint: `df8a97db0909a7e87d942e7f4465beadd921b991b8f407c4c3c00a772d6f6c57`

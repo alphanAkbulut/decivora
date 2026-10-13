@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-13",
+  "profile": "single_user_manual_local_preview",
+  "core_completed": [
+    "T13c"
+  ],
+  "started_main_tasks": [
+    "T19",
+    "T20"
+  ],
+  "runtime_suite": {
+    "tests": 185,
+    "new_tests": 17,
+    "failures": 0,
+    "errors": 0
+  },
+  "source_sha256": {
+    "packages/domain/acceptance.py": "de0430929696413077a60d510014260e7e1a5f9bfb68c0097f82b247a35c1668",
+    "packages/storage/workspace.py": "6a2eb706b86413ddd15e53dbc2a0762d63e417d9c7eb3581d686064fd57cea08",
+    "apps/local_ui/server.py": "eaded91ac1b91ff6d4f76b2d43574b37fdbf2541e17b947d77747b7f6d6a755d",
+    "apps/local_ui/app.js": "ffddcf676c5c1827717c84205d43b2b77bd6b34fa56a6dfe1c5e4154c8507df7",
+    "apps/local_ui/index.html": "13d5a7ceaa6a0989b6bce124b368eb7b0f87c3d51e95a776f8efc6bb99190827",
+    "Decivora.command": "f064d4921269bde53cfe9f4e643beeb60d4f1bc4c54780442d5d32ae7a28eed1",
+    "tests/runtime/test_acceptance.py": "63286d5a3792fede0cfd09df3de364080db70acd8eed9c615fa4533399d8d4f8",
+    "tests/runtime/test_local_app.py": "8fee1e012f5027134133b25f02c100b9a7fd818c32e213259928fe8086347079",
+    "scripts/package_local_preview.py": "d6cf6c6df43590a4d6692d2d8f98a87e74866478b982d79f8743179c668a3542"
+  },
+  "browser_flow": {
+    "created": true,
+    "approval_gate": true,
+    "approved": true,
+    "started": true,
+    "reload_persisted": true,
+    "done_cards": 0,
+    "desktop_visual_review": true,
+    "mobile_visual_review": true,
+    "outside_network": false
+  },
+  "package_test": {
+    "unzip_extracted": true,
+    "executable_launcher": true,
+    "standalone_server": true,
+    "html200": true
+  },
+  "paid_api_calls": 0,
+  "model_dispatches": 0,
+  "verified_completion": false,
+  "full_mvp_acceptance": false,
+  "tracker_suite": {
+    "tests": 46,
+    "failures": 0,
+    "errors": 0
+  },
+  "diagram_render": {
+    "new": 1,
+    "total": 42,
+    "documents": 21,
+    "xml_validated": true
+  }
+}

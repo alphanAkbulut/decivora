@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "application": "Decivora",
   "artifact_version": "0.1.0-dev",
-  "status": "development_scaffold",
+  "status": "development_local_preview",
   "runtime": {
     "python_requires": ">=3.12,<3.13",
     "ci_python": "3.12",
