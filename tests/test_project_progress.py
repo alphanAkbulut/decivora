@@ -36,7 +36,7 @@ class ProgressTests(unittest.TestCase):
     def test_canonical_status_and_acceptance_not_inferred_from_test_pass(self):
         data = progress.build(self.root)
         self.assertEqual(len(data["tasks"]), 30)
-        self.assertEqual(data["counts"], {"IN_PROGRESS": 10, "DONE": 7, "TODO": 13})
+        self.assertEqual(data["counts"], {"IN_PROGRESS": 11, "DONE": 7, "TODO": 12})
         self.assertEqual(next(t for t in data['tasks'] if t['id']=='T12')['status'], 'DONE')
         self.assertEqual(next(t for t in data['tasks'] if t['id']=='T13')['status'], 'IN_PROGRESS')
         self.assertEqual(data["tasks"][3]["status"], "DONE")

@@ -94,3 +94,7 @@ Yerel UI'da `TaskBlockerService` açık insan işaretlemesi/çözümü ve reason
 ## 14 Ekim 2026 — Onaylı workflow ve UI
 
 [ADR-0013](adr/0013-task-workflow-and-familiar-ui.md): altı stage, end-side panel, Board/List/search/filter ve human criterion evidence uygulanmıştır. Önceki manual-only/Done disabled ifadeleri önceki teslimin tarihsel sınırıdır; güncel durum [workflow raporudur](../quality/workflow-ui-runtime.md). Physical schema1 aynı; TaskStage/criterion_evidence audit payloadları şema olarak yayınlanır. T14 parent, automatic/file runner/native artifact/semantic extraction kabulü açık; local human passed sonucu distant target scan değildir.
+
+## 14 October 2026 — private backup UI
+
+[Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.

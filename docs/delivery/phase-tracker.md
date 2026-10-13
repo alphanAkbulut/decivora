@@ -82,7 +82,7 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 |
 | T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 |
-| T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 |
+| T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 |
 
 P1 temel dil dilimleri T05e/T24p: Unicode/source/ref korunumu ve açık pilot dili. Otomatik çok dil desteği P2 T25a/T26c önerisidir; MVP'de teslim edilmiş sayılmaz.

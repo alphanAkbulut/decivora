@@ -31,3 +31,7 @@ CLI alternatif: `python3.12 -B -m apps.local_ui.server`. `--data-dir` ile kendi 
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 Yeni görünüm: sidebar Conversations/Review inbox/Task board/Questions and decisions/Sources; Board/List/search/filter; task seç→yan panel Overview/AC-DoD/Sources/History, Escape/Close ile geri dön. Human-review kriterini açık reference/note ile passed/failed/pending/not_run/unknown kaydet; bütün gerekli current maddeler geçtiğinde Awaiting Verification’dan Done için ayrı scope review gerekir. Bu uzaktaki dosyayı kendi tarayan verifier değildir; automatic_test/file_check yapılandırılmadıkça endpoint reddeder. Blocker start/finish/both kapısını açık seçer; dependency finish gate ve linked pending soru görünür. Done/Closed/Blocked farklıdır; yeni UI task geçmişini değiştirmez.
+
+## 14 October 2026 — private backup UI
+
+[Current bounded backup download](docs/quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.

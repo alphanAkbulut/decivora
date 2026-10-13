@@ -1,4 +1,3 @@
-/* Versioned UI catalogs. No user content or model calls. */
 window.DecivoraCatalogs = {
   "en": {
     "Dil": "Language",
@@ -166,7 +165,14 @@ window.DecivoraCatalogs = {
     "No task binding": "No task binding",
     "Completion prerequisite": "Completion prerequisite",
     "Approve dependency": "Approve dependency",
-    "Linked task": "Linked task"
+    "Linked task": "Linked task",
+    "Private backup": "Private backup",
+    "Backup privacy notice": "Includes original conversations, decisions, tasks and local permissions. Unencrypted: keep private. This is not a redacted shareable export.",
+    "Backup acknowledgment": "I understand this file contains private workspace data.",
+    "Backup limit notice": "8 MiB database limit for this local preview. A restore into a temporary new file is checked before download. The active database is never overwritten.",
+    "Download checked backup": "Download checked backup",
+    "Backup acknowledgment required": "Acknowledge private backup contents before downloading.",
+    "Backup download prepared": "Checked backup prepared for download. Keep this unencrypted file private."
   },
   "tr": {
     "Dil": "Dil",
@@ -334,7 +340,14 @@ window.DecivoraCatalogs = {
     "No task binding": "Göreve bağlama yok",
     "Completion prerequisite": "Tamamlanma ön koşulu",
     "Approve dependency": "Bağımlılığı onayla",
-    "Linked task": "Bağlı görev"
+    "Linked task": "Bağlı görev",
+    "Private backup": "Özel yedek",
+    "Backup privacy notice": "Orijinal konuşmaları, kararları, görevleri ve yerel yetkileri içerir. Şifrelenmez: özel sakla. Paylaşım için anonimleştirilmiş bir dışa aktarım değildir.",
+    "Backup acknowledgment": "Bu dosyanın özel çalışma alanı verilerini içerdiğini anlıyorum.",
+    "Backup limit notice": "Yerel önizlemede veritabanı sınırı 8 MiB. İndirme öncesi geçici yeni dosyaya geri yükleme kontrol edilir. Aktif veritabanının üzerine yazılmaz.",
+    "Download checked backup": "Kontrol edilmiş yedeği indir",
+    "Backup acknowledgment required": "İndirmeden önce yedeğin özel veriler içerdiğini onayla.",
+    "Backup download prepared": "Kontrol edilmiş yedek indirmeye hazırlandı. Şifrelenmeyen bu dosyayı özel sakla."
   },
   "es": {
     "Dil": "Idioma",
@@ -502,7 +515,14 @@ window.DecivoraCatalogs = {
     "No task binding": "Sin tarea vinculada",
     "Completion prerequisite": "Requisito de finalización",
     "Approve dependency": "Aprobar dependencia",
-    "Linked task": "Tarea vinculada"
+    "Linked task": "Tarea vinculada",
+    "Private backup": "Copia privada",
+    "Backup privacy notice": "Incluye conversaciones originales, decisiones, tareas y permisos locales. Sin cifrar: mantener privado. No es una exportación anonimizada para compartir.",
+    "Backup acknowledgment": "Entiendo que el archivo contiene datos privados.",
+    "Backup limit notice": "Límite local de 8 MiB. Se verifica la restauración en un archivo temporal nuevo antes de descargar. No se sobrescribe la base activa.",
+    "Download checked backup": "Descargar copia verificada",
+    "Backup acknowledgment required": "Confirma el contenido privado antes de descargar.",
+    "Backup download prepared": "Copia verificada lista. Mantén privado el archivo sin cifrar."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -670,7 +690,14 @@ window.DecivoraCatalogs = {
     "No task binding": "Sem tarefa vinculada",
     "Completion prerequisite": "Pré-requisito de conclusão",
     "Approve dependency": "Aprovar dependência",
-    "Linked task": "Tarefa vinculada"
+    "Linked task": "Tarefa vinculada",
+    "Private backup": "Backup privado",
+    "Backup privacy notice": "Inclui conversas originais, decisões, tarefas e permissões locais. Sem criptografia: mantenha privado. Não é uma exportação anonimizada para compartilhar.",
+    "Backup acknowledgment": "Entendo que este arquivo contém dados privados.",
+    "Backup limit notice": "Limite local de 8 MiB. A restauração é verificada em um novo arquivo temporário antes do download. O banco ativo não é sobrescrito.",
+    "Download checked backup": "Baixar backup verificado",
+    "Backup acknowledgment required": "Confirme os dados privados antes de baixar.",
+    "Backup download prepared": "Backup verificado pronto. Mantenha privado o arquivo sem criptografia."
   },
   "ar": {
     "Dil": "اللغة",
@@ -838,6 +865,13 @@ window.DecivoraCatalogs = {
     "No task binding": "لا توجد مهمة مرتبطة",
     "Completion prerequisite": "شرط الإنجاز",
     "Approve dependency": "الموافقة على التبعية",
-    "Linked task": "المهمة المرتبطة"
+    "Linked task": "المهمة المرتبطة",
+    "Private backup": "نسخة احتياطية خاصة",
+    "Backup privacy notice": "تشمل المحادثات الأصلية والقرارات والمهام والصلاحيات المحلية. غير مشفرة: احتفظ بها خاصة. ليست تصديراً منقحاً للمشاركة.",
+    "Backup acknowledgment": "أفهم أن هذا الملف يحتوي على بيانات خاصة.",
+    "Backup limit notice": "الحد المحلي 8 MiB. يتم التحقق من الاستعادة في ملف مؤقت جديد قبل التنزيل. لا يتم استبدال قاعدة البيانات النشطة.",
+    "Download checked backup": "تنزيل النسخة المتحقق منها",
+    "Backup acknowledgment required": "أكد المحتوى الخاص قبل التنزيل.",
+    "Backup download prepared": "النسخة المتحقق منها جاهزة. احتفظ بالملف غير المشفر خاصاً."
   }
 };

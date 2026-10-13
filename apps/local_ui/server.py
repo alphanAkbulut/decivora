@@ -18,12 +18,22 @@ class LocalApp:
     def __init__(self,path,extractor=None):
         self.extractor=extractor
         self.path=Path(path);fresh=not self.path.exists();self.path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
-        self.cookie=secrets.token_urlsafe(32);self.csrf=secrets.token_urlsafe(32);self.bootstrap=secrets.token_urlsafe(32);self.rate_lock=threading.Lock();self.window=0;self.writes=0
+        self.cookie=secrets.token_urlsafe(32);self.csrf=secrets.token_urlsafe(32);self.bootstrap=secrets.token_urlsafe(32);self.backup_lock=threading.Lock();self.rate_lock=threading.Lock();self.window=0;self.writes=0
         with Workspace(self.path,'local_ui_workspace',owner='local_owner' if fresh else None) as core:
             if fresh:
                 a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'local_owner',kind='human',readable=frozenset({'personal'}),writable=frozenset({'personal'}),active=True,base_revision=1)
                 core.create_project(a.issue_scope('local_owner'),'personal','Benim projem');self.path.chmod(0o600)
     def core(self):return Workspace(self.path,'local_ui_workspace')
+    def backup_bundle(self,body):
+        if type(body) is not dict or set(body)!={'acknowledge_private_data'} or body['acknowledge_private_data'] is not True:
+            raise ContractError('backup_ack_required','Explicit acknowledgment of private backup contents required.')
+        if not self.backup_lock.acquire(blocking=False):raise ContractError('backup_busy','Another backup is already running.')
+        try:
+            from packages.storage.local_backup import create_bundle
+            with self.core() as core:
+                owner=core.authority.issue_scope('local_owner');core.scope(owner,'personal');core.active(owner,'personal')
+                return create_bundle(core,owner)
+        finally:self.backup_lock.release()
     def state(self):
         with self.core() as core,core.read_snapshot():
             owner=core.authority.issue_scope('local_owner');core.scope(owner,'personal');core.active(owner,'personal')
@@ -151,7 +161,7 @@ def make_server(path,port=0,extractor=None):
                 if not secrets.compare_digest(self.headers.get('Authorization',''),'Bearer '+app.bootstrap):return self.answer(401,dict(error='session_required'))
                 self.close_connection=True
                 return self.answer(200,dict(csrf=app.csrf),cookie=True)
-            if self.path not in ('/api/command','/api/shutdown'):return self.answer(404,dict(error='not_found'))
+            if self.path not in ('/api/command','/api/shutdown','/api/backup'):return self.answer(404,dict(error='not_found'))
             if not self.authenticated() or not secrets.compare_digest(self.headers.get('X-CSRF-Token',''),app.csrf):return self.answer(403,dict(error='session_or_csrf_required'))
             if self.path=='/api/shutdown':
                 self.answer(200,dict(status='stopping'));threading.Thread(target=self.server.shutdown,daemon=True).start();return
@@ -163,7 +173,9 @@ def make_server(path,port=0,extractor=None):
             length=self.headers.get('Content-Length','')
             if not length.isdecimal() or not 0<int(length)<=32768 or self.headers.get('Content-Type')!='application/json':return self.answer(413,dict(error='bounded_json_required'))
             try:
-                body=json.loads(self.rfile.read(int(length)));result=app.command(body);self.answer(200,result)
+                body=json.loads(self.rfile.read(int(length)))
+                if self.path=='/api/backup':return self.answer(200,app.backup_bundle(body),'application/zip')
+                result=app.command(body);self.answer(200,result)
             except ContractError as e:self.answer(409,dict(error=e.code,message=str(e)))
             except (ValueError,TypeError,KeyError):self.answer(400,dict(error='invalid_request'))
             except Exception:self.answer(503,dict(error='storage_unavailable'))

@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-14 — Özel yedek indirme
+
+- [T23a teslimi](../quality/private-backup-runtime.md): UI private backup, bounded authenticated download, temporary offline restore verification. T23 In Progress; ana7Done/11InProgress/12ToDo. Public/redacted export/purge/migration/active restore açık.
+
+
 ### 2026-10-14 — Onaylı workflow ve familiar UI
 
 - [Teslim](../quality/workflow-ui-runtime.md):6stage + Closed filter, current lifecycle projection, dependency/question/manual start-finish assessment, human criterion evidence + guarded Done; Board/List/search/filter/end panel. Kullanıcı14Ekim2026 onayı DEC-22/ADR-0013. Ana7Done/10InProgress/13ToDo; T14 başladı, parent kapanmadı. Paid API0; automatic/target/native/semantic kabul açık.

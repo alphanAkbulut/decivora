@@ -175,7 +175,9 @@
     "T23": {
       "core_acceptance": "Secret fixture dışa çıkmaz; backup restore digest eşleşir; unauthorized request reddedilir.",
       "core_verified": false,
-      "evidence": [],
+      "evidence": [
+        "docs/quality/private-backup-runtime.md"
+      ],
       "release_scope": "MVP"
     },
     "T24": {
@@ -1534,7 +1536,7 @@
     "T23a": {
       "parent": "T23",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T23"
       ],

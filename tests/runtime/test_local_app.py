@@ -112,3 +112,54 @@ class LocalAppTests(unittest.TestCase):
         self.assertEqual(self.call('/api/command',command)[0],409)
         self.assertEqual(self.call('/api/command',dict(command,project='other'))[0],409)
         self.assertEqual(self.call('/api/state')[1]['tasks'][0]['lane'],'To Do')
+
+    def test_private_backup_http_restore_round_trip_and_no_source_mutation(self):
+        import io,zipfile,hashlib
+        from packages.storage.local_backup import inspect_bundle
+        self.call('/api/command',dict(action='create_task',title='Backup fixture task',description='Private scope'))
+        self.call('/api/command',dict(action='import_conversation',text='Private backup source fixture marker'))
+        self.call('/api/command',dict(action='ask_question',request_id='backup_question',text='Keep this scope?',options=[dict(id='yes',label='Keep'),dict(id='no',label='Review')]))
+        before=self.call('/api/state')[1]
+        code,raw,headers=self.call('/api/backup',dict(acknowledge_private_data=True))
+        self.assertEqual(code,200);self.assertEqual(headers['Content-Type'],'application/zip')
+        checked=inspect_bundle(raw);self.assertTrue(checked['restore_checked']);self.assertEqual(checked['external_dispatches'],0)
+        with zipfile.ZipFile(io.BytesIO(raw)) as z:
+            self.assertEqual(set(z.namelist()),{'workspace.sqlite','manifest.json'})
+            self.assertEqual(hashlib.sha256(z.read('workspace.sqlite')).hexdigest(),checked['manifest']['sha256'])
+            self.assertNotIn(self.server.app.cookie.encode(),z.read('workspace.sqlite'))
+            self.assertNotIn(self.server.app.bootstrap.encode(),z.read('workspace.sqlite'))
+            self.assertIn(b'Private backup source fixture marker',z.read('workspace.sqlite'))
+            self.assertIn(b'Keep this scope?',z.read('workspace.sqlite'))
+        after=self.call('/api/state')[1];self.assertEqual(before['tasks'],after['tasks']);self.assertEqual(before['snapshot'],after['snapshot'])
+    def test_backup_ack_scope_auth_and_get_denied(self):
+        self.assertEqual(self.call('/api/backup')[0],404)
+        self.assertEqual(self.call('/api/backup',dict(acknowledge_private_data=True),{'Origin':self.origin,'Content-Type':'application/json'})[0],403)
+        for body in ({},{'acknowledge_private_data':False},{'acknowledge_private_data':True,'path':'/tmp/arbitrary'}):self.assertEqual(self.call('/api/backup',body)[0],409)
+        self.assertEqual(self.call('/api/backup',dict(acknowledge_private_data=True),dict(self.headers,Origin='https://other.example'))[0],403)
+        self.assertEqual(self.call('/api/backup',dict(acknowledge_private_data=True),dict(self.headers,**{'X-CSRF-Token':''}))[0],403)
+    def test_backup_busy_limit_and_current_acl_fail_closed(self):
+        self.server.app.backup_lock.acquire()
+        try:self.assertEqual(self.call('/api/backup',dict(acknowledge_private_data=True))[1]['error'],'backup_busy')
+        finally:self.server.app.backup_lock.release()
+        self.server.app.window=int(time.monotonic()//60);self.server.app.writes=30
+        self.assertEqual(self.call('/api/backup',dict(acknowledge_private_data=True))[0],429)
+        self.server.app.writes=0
+        with self.server.app.core() as core:
+            a=core.authority;owner=a.issue_scope('local_owner');a.replace_grant(owner,'local_owner',kind='human',readable=frozenset(),writable=frozenset(),active=True,base_revision=a.revision())
+        self.assertEqual(self.call('/api/backup',dict(acknowledge_private_data=True))[0],409)
+    def test_backup_cannot_export_another_workspace_from_same_file(self):
+        from packages.storage.workspace import Workspace
+        with self.server.app.core() as core:
+            core.db.execute("INSERT INTO core_meta SELECT format,'foreign_workspace',schema_version FROM core_meta LIMIT 1")
+        code,result,_=self.call('/api/backup',dict(acknowledge_private_data=True));self.assertEqual(code,409);self.assertEqual(result['error'],'unsupported_storage')
+    def test_offline_backup_inspection_rejects_corruption_extra_paths_and_bomb(self):
+        import io,zipfile
+        from packages.storage.local_backup import inspect_bundle,MAX_DATABASE_BYTES
+        from packages.domain.source_event import ContractError
+        code,valid,_=self.call('/api/backup',dict(acknowledge_private_data=True));self.assertEqual(code,200)
+        with zipfile.ZipFile(io.BytesIO(valid)) as z:database=z.read('workspace.sqlite');manifest=z.read('manifest.json')
+        for name,data in [('corrupt',b'changed'),('../workspace.sqlite',database),('workspace.sqlite',b'x'*(MAX_DATABASE_BYTES+1))]:
+            out=io.BytesIO()
+            with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED) as z:z.writestr(name,data);z.writestr('manifest.json',manifest)
+            with self.assertRaises(ContractError):inspect_bundle(out.getvalue())
+        with self.assertRaises(ContractError):inspect_bundle(b'not a zip')

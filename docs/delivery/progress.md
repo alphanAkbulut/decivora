@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 10 |
-| TODO | 13 |
+| IN_PROGRESS | 11 |
+| TODO | 12 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -196,6 +196,18 @@ Son ilerleme kaydı yok.
 
 Sıradaki adım: Onaylı model/veri/bütçe ile gerçek provider transport ve kalite; message/prompt lineage ve coverage kabulü açık.
 
+### T23 · Backup, export ve yerel güvenlik
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 
 ## Mevcut teslim parçaları
 
@@ -284,7 +296,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
 | T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 | 2 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 | 1 |
-| T23 | P1b | TODO | Backup, export ve yerel güvenlik | T22 | 3 |
+| T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 | 3 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 | 15 |
 | T25 | P2 | TODO | Chat yüzeyleri ve cross-provider adapter araştırması | T24 | 1 |
 | T26 | P2 | TODO | Gelişmiş reconciliation ve orphan audit | T25 | 2 |
@@ -301,4 +313,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `7fff1e5f0ba02f167814eff4510f86f91ccdd55da8f531f1b21b20794ca22e14`
+Kaynak fingerprint: `8191f6156a6056e1458c15bf6da2ce6278026c741f80ebc78b9027b625b521ea`

@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-14",
+  "kind": "private_backup_local_slice",
+  "runtime_tests": 263,
+  "tracker_tests": 46,
+  "browser": {
+    "isolated_fixture": true,
+    "ack_without_request": true,
+    "download_saved": true,
+    "download_requests": 1,
+    "desktop_mobile_no_overflow": true,
+    "downloaded_package_offline_restore_checked": true
+  },
+  "source_sha256": {
+    "packages/storage/local_backup.py": "762229a3399866c5aab8c29aa24566b478f114a91df2993627853fb8fb56f2fa",
+    "apps/local_ui/server.py": "5464c1973011145b6a5113e0754e1ff99d3a3071450a173df93574657e545d57",
+    "apps/local_ui/index.html": "677c75aecb539a92b4a8b8716369e018120bb5fe554414b5a9feee40bc64a76c",
+    "apps/local_ui/app.js": "eb1f3c665e69041e58f7c2b00173f8dbd140eec5b3b47182bc40a5f91d81c91f",
+    "apps/local_ui/locales.js": "a0921ab45a9a89370306f2cdcb2b78333f5cbc83462492da78adb1a9c8ff9291",
+    "tests/runtime/test_local_app.py": "7c990e86b085b6d822927896a720400e55141a980fec6d87422f6eafe6b9d852",
+    "tests/ui-backup.cjs": "1f0d38781c4ed7a564b8b75dadb1a5ae0ab5b7c88dc74d8dcce87ee71b3e505b"
+  },
+  "archive_is_unencrypted_private": true,
+  "redacted_export": false,
+  "active_database_restore": false,
+  "paid_model_calls": 0,
+  "new_external_connections": 0,
+  "production_release": false,
+  "package": {
+    "name": "Decivora-local-backup.zip",
+    "files": 36,
+    "sha256": "31de7641d98292db98aa58eeca82b745de13593b782e34ee814ff1a7e2c9c470",
+    "contains_user_data": false
+  }
+}

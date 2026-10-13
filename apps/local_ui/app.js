@@ -99,3 +99,13 @@ $('import-shortcut').onclick=()=>{setView('conversations');$('conversation-text'
 $('blocked-filter').onclick=()=>{$('task-filter').value='blocked';render();};$('task-search').oninput=render;$('task-filter').onchange=render;
 $('board-toggle').onclick=()=>{layout='board';$('board-toggle').setAttribute('aria-pressed','true');$('list-toggle').setAttribute('aria-pressed','false');render();};$('list-toggle').onclick=()=>{layout='list';$('board-toggle').setAttribute('aria-pressed','false');$('list-toggle').setAttribute('aria-pressed','true');render();};
 try{const saved=localStorage.getItem('decivora.ui.view.v1');setView(['conversations','review','board','questions','sources'].includes(saved)?saved:'conversations');}catch{setView('conversations');}
+
+$('backup-download').onclick=async()=>{
+ const button=$('backup-download');if(!$('backup-ack').checked){message(t('Backup acknowledgment required'),true);return;}
+ button.disabled=true;
+ try{
+  const response=await fetch('/api/backup',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({acknowledge_private_data:true})});
+  if(!response.ok){const error=await response.json();throw Error(error.message||error.error);}
+  const blob=await response.blob(),url=URL.createObjectURL(blob),link=el('a');link.href=url;link.download='Decivora-private-backup.zip';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);message(t('Backup download prepared'));
+ }catch(error){message(error.message,true);}finally{button.disabled=false;}
+};

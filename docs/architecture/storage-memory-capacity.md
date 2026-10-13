@@ -122,3 +122,7 @@ SQLite→Postgres migration: sürüm eşleşmesini denetle → yazıları durdur
 Aktif SQLite dosyasını sıradan kopyalamak yerine [online backup API](https://www.sqlite.org/backup.html) ile tutarlı snapshot; snapshot'a ait blob manifest ve schema/projector sürümü birlikte alınır. Önerilen yerel disaster hedefi günlük backup ile RPO ≤24 saat, restore RTO ≤1 saat; henüz ölçülmedi. Commit dayanıklılığı ayrı crash testidir, bu RPO geçmiş onayların günlük olarak kaybolmasının normal olduğu anlamına gelmez.
 
 Ekip aşamasında [Postgres base backup + WAL arşivleme/PITR](https://www.postgresql.org/docs/current/continuous-archiving.html) değerlendirilir; daha sık yedek hedefi maliyet/iş ihtiyacıyla seçilir. DB PITR object storage'ı geri sarmaz; blob manifest/version tutarlılığı doğrulanır. Restore sonrasında grant/session/secret durumu güncel olarak uzlaştırılır, dış delivery durur, purge tombstone'ları uygulanır. Anahtar yokken backup'ın kullanılabilirliği kanıtlanmış sayılmaz. Tatbikat: disk dolması, process crash, WAL/checkpoint baskısı, DB corruption, kayıp blob, stale permission ve expired backup.
+
+## 14 October 2026 — private backup UI
+
+[Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.

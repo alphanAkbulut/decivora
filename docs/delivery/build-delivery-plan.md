@@ -2,7 +2,7 @@
 
 2026-10-13 — **uygulama sırası**, yeni görev listesi veya altı ayrı program değildir. Mevcut Python 3.12/SQLite çekirdeği ve yerel web arayüzü büyütülecek. Tam vizyon korunur; paketler MVP teslimini yönetir. [Backlog](backlog.md) görev otoritesidir; paket adı yeni task sayılmaz.
 
-Bugün 7 ana iş Done, 10 In Progress, 13 To Do. To Do'nun **7'si MVP (T15–T18, T21,T23,T24), 6'sı sonraki fazlar (T25–T30)**. T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
+Bugün 7 ana iş Done, 11 In Progress, 12 To Do. To Do'nun **6'sı MVP (T15–T18, T21,T24), 6'sı sonraki fazlar (T25–T30)**. T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
 
 | Paket | Kod işi / mevcut görevler | Mevcut kodu güncelleme ve yeni modül | Kullanıcının göreceği teslim | Paket kabulü |
 |---|---|---|---|---|
@@ -37,3 +37,7 @@ T25–T30 ekip/cloud, ileri bağlam, gelişmiş adapter/dil ve sonraki büyüme 
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 14Ekim2026 kullanıcı workflow/UX önceliğini onayladı: [yerel teslim](../quality/workflow-ui-runtime.md) mevcut T13/T14/T19/T20 kapsamında. Otomatik capture/real semantic model ve hedef verifier kapıları ayrı; altı paket planı silinmedi.
+
+## 14 October 2026 — private backup UI
+
+[Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.
