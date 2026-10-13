@@ -68,4 +68,4 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 
 ## T13b lifecycle demosu
 
-`python3.12 -B -m apps.hub lifecycle-demo`: yeni temporary DB'de onaylı cancel→yeni onaylı reopen. Task ve ilişkiler silinmez, history/replay korunur. [19yeni test/guard sınırı](../../docs/quality/task-lifecycle.md); completion/force-cancel veya UI değildir.
+`python3.12 -B -m apps.hub lifecycle-demo`: yeni temporary DB'de onaylı cancel→yeni onaylı reopen. Task ve ilişkiler silinmez, history/replay korunur. [20yeni test/guard sınırı](../../docs/quality/task-lifecycle.md); completion/force-cancel veya UI değildir.

@@ -137,4 +137,9 @@ class TaskLifecycleTests(unittest.TestCase):
         self.code('lifecycle_blocker',lambda:self.service.apply(self.owner,'p1',selected['id'],token))
         self.assertEqual(self.core.db.execute('SELECT count(*) FROM edges').fetchone()[0],0)
 
+    def test_same_changeset_changed_rationale_revision_requires_fresh_impact(self):
+        selected,token=self.prepare(additional_ops=[dict(op='update',id=self.d,base_version=1,body=dict(type='Decision',title='Changed basis',description='New revision'))])
+        self.code('lifecycle_review',lambda:self.service.apply(self.owner,'p1',selected['id'],token))
+        self.assertEqual(self.version(self.d),1);self.assertEqual(self.core.task_history(self.owner,'p1',self.t)['execution'],'todo')
+
 if __name__=='__main__':unittest.main()

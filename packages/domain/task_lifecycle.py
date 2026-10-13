@@ -42,6 +42,9 @@ def guard(core,project,operations,bound):
         proposal=proposals.get(op['id'])
         if op['impact_run']!=packet['impact_run'] or proposal is None or proposal['record_version']!=op['base_version'] or proposal['preserve_historical_completion']:
             raise ContractError('invalid_lifecycle','Task transition is not bound to its current impact proposal.')
+        changed_facts={v.get('id') for v in operations if type(v) is dict and v.get('op') in ('update','task_lifecycle')}
+        if any(v['ref'] in changed_facts for v in proposal.get('justification_facts',[])):
+            raise ContractError('lifecycle_review','The same command changes a rationale revision; apply that change and prepare a fresh impact first.')
         if op['state']=='todo':
             if proposal['after'] is not True:raise ContractError('lifecycle_review','Reopening requires an explicitly valid current rationale.')
             continue

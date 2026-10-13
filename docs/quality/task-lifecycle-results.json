@@ -6,20 +6,20 @@
   ],
   "main_status": "IN_PROGRESS",
   "runtime_suite": {
-    "tests": 167,
-    "new_tests": 19,
+    "tests": 168,
+    "new_tests": 20,
     "failures": 0,
     "errors": 0
   },
   "source_sha256": {
-    "packages/domain/task_lifecycle.py": "1b03ee94c933ca357a32582d41c16122b848cbee4f6ca58c3843540bf4e95ebb",
+    "packages/domain/task_lifecycle.py": "21a8d5b52d35244750fdb170b450ff14af4d13dcd5bedb71c4b10c2dad8ab56e",
     "packages/domain/review.py": "2113a75dd10f0b383f3b15041f9aa7fb0bf4fc67ee4fa70a227dd9d2a317f562",
     "packages/storage/workspace.py": "216622766094a6b206bf8dcac6b4cfae87057e0d6c68aa2b60229dfe3ce57160",
     "packages/impact/preview.py": "d5be53a9df74595af9d9f74dab616d91a11fa679c9d5e45b60781fb63e520f1e",
     "packages/impact/graph.py": "455b99fb7d85bd1d1120192f8cd2df2d3da3e9eedbb6681bb8513fbdd2a17e70",
     "apps/hub/lifecycle_demo.py": "846b02decb103e8f27c8aae77ae364e813c701305b260aa4a17ffea1ab740f9e",
     "apps/hub/runtime.py": "bccb98a7f3d5f4e7009a02c7bcec367552b7545ecdad9f2af94fc3054557f2b2",
-    "tests/runtime/test_task_lifecycle.py": "5a30322a98dcbc414263a34c8e190c5867ba69e103e8cff2d9880909ffa7bea2",
+    "tests/runtime/test_task_lifecycle.py": "bc5fe0e0604b7b936c8c5c5bd2a04a54d7c0db11bbee58da88ca2679af0e5efc",
     "manifests/task-lifecycle-event.schema.json": "d6ebdf5c1251cda5661d46d94a9722956ff0387db78d8a07b5dec1f0f3c095f0",
     "manifests/review-groups.schema.json": "cd6e0bcdf72a75bfb98df2a51223b982ee91ce79c0706bf70513aacae10b8018"
   },

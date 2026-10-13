@@ -6,7 +6,7 @@ Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed m
 
 [T13a](../quality/review-kernel.md) seçim/ayrı approval/atomic apply çekirdeği uygulandı;148runtime test, yeni [schema/sequence](../architecture/review-runtime.md). Ana T13 In Progress; T13b/c/e açık, sıradaki cancellation lifecycle.
 
-[T13b lifecycle](../quality/task-lifecycle.md) uygulandı;167runtime test. cancel/edge ending/compensating reopen ayrı; current schema/diyagram [burada](../architecture/task-lifecycle.md). Sırada T13c versioned AC/DoD, sonra T13e pending question. Ana T13 hâlâ açık.
+[T13b lifecycle](../quality/task-lifecycle.md) uygulandı;168runtime test. cancel/edge ending/compensating reopen ayrı; current schema/diyagram [burada](../architecture/task-lifecycle.md). Sırada T13c versioned AC/DoD, sonra T13e pending question. Ana T13 hâlâ açık.
 
 ## Kısa giriş
 

@@ -1,6 +1,6 @@
 # T13b — İptal, edge ending ve compensating dönüş
 
-**Tamamlandı: local/manual T13b çekirdeği. Ana T13 In Progress.** [Guard kodu](../../packages/domain/task_lifecycle.py), [19 yeni regression](../../tests/runtime/test_task_lifecycle.py), [sonuç/hash](task-lifecycle-results.json), [şema/diyagram](../architecture/task-lifecycle.md). T13c versioned AC/DoD ve T13e question/late-answer çözümü açık; yeni görev ID'si yok. Gerçek UI/host/semantic inference/verification kabulü değildir.
+**Tamamlandı: local/manual T13b çekirdeği. Ana T13 In Progress.** [Guard kodu](../../packages/domain/task_lifecycle.py), [20 yeni regression](../../tests/runtime/test_task_lifecycle.py), [sonuç/hash](task-lifecycle-results.json), [şema/diyagram](../architecture/task-lifecycle.md). T13c versioned AC/DoD ve T13e question/late-answer çözümü açık; yeni görev ID'si yok. Gerçek UI/host/semantic inference/verification kabulü değildir.
 
 ```sh
 python3.12 -B -m apps.hub lifecycle-demo
@@ -24,7 +24,7 @@ Demo real isolated SQLite'de ayrı impact/seçim/onay ile todo→cancelled→tod
 | Rollback / replay / restore | Audit failure lifecycle version/event/projection değişimini geri alır; retry tek effect, restart/replay/backuprestore state ve history'yi korur |
 | Aktif sıra / scope | Cancelled Task ready olmaz ve aktif rank'ten çıkar; task_history project ACL'si taşır. Cancelled dependency passed sayılmaz |
 
-19yeni/167 toplam runtime test geçti. T13a stale/source/policy/role/concurrent approval testleri de bu suite'te korunur. Root takip kontrolleri teslimde ayrıca yürütülür. Ücretli model/API veya gerçek kaynak çağrısı0; geliştirme sohbetinin kullanım miktarı unknown.
+20yeni/168 toplam runtime test geçti. Aynı changeset'te rationale revision değişimi de eski kanıtla cancellation/reopen yapamaz; tümüyle ret ve fresh impact gerekir. T13a stale/source/policy/role/concurrent approval testleri de bu suite'te korunur. Root takip kontrolleri teslimde ayrıca yürütülür. Ücretli model/API veya gerçek kaynak çağrısı0; geliştirme sohbetinin kullanım miktarı unknown.
 
 ## Depolama ve sürüm sınırı
 

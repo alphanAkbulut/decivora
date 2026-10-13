@@ -7,7 +7,7 @@
 | Kaynak konuşma derlemesi, vizyon/MVP/karar haritası | Bu dokümantasyon paketinde hazırlanmış |
 | Mimari, ADR, görev ve kabul planları | Production önerisi; P0 fixture zinciri test edildi |
 | Benchmark | Birincil belge incelemesi; runtime karşılaştırma bekliyor |
-| Ürün MVP / adapter / dashboard | Yerel sentetik/manual runtime: T04/T05/T06/T07/T08/T11/T12 DONE;167runtime test/core-demo/impact-demo/review-demo/lifecycle-demo. T09/T10 kalite ve ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
+| Ürün MVP / adapter / dashboard | Yerel sentetik/manual runtime: T04/T05/T06/T07/T08/T11/T12 DONE;168runtime test/core-demo/impact-demo/review-demo/lifecycle-demo. T09/T10 kalite ve ürün/adapter/UI işleri açık. P0 kodu ve tracker ayrı; gerçek host/ürün dashboard kabulü yok |
 | Semantik model / tasarruf / kullanıcı talebi | [MEMBERSHIP-002](../quality/membership-002-result.md): tek v2 output, dört draft aday/source/type geçti; production doğruluk/tasarruf/talep ölçülmedi; lexical baseline ayrı |
 | İlk gerçek hedef gözlemi | [READBACK-01](../quality/first-target-readback.md): tek GitHub rehberi exact içerik eşleşti; manuel kontrol, ürün adapter testi değil |
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
@@ -19,7 +19,7 @@
 
 ### 2026-10-13 — T13b Task iptali ve compensating geri dönüş
 
-- [Task lifecycle](../quality/task-lifecycle.md): separate impact+human review token, reason/downstream/parent guards, cancel≠edge ending, metadata update state korunumu ve compensating event.19yeni/167runtime test; lifecycle-demo cancel→reopen/history/replay geçer. SQLschema1 aynı; yeni event/operation artifact ve3diagram render (1new/2changed),41source/20belge.
+- [Task lifecycle](../quality/task-lifecycle.md): separate impact+human review token, reason/downstream/parent guards, cancel≠edge ending, metadata update state korunumu ve compensating event.20yeni/168runtime test; lifecycle-demo cancel→reopen/history/replay geçer. SQLschema1 aynı; yeni event/operation artifact ve3diagram render (1new/2changed),41source/20belge.
 - Ana7DONE/6IN_PROGRESS/17TODO aynı; T13a/b Done, T13c/e ve T14 hâlâ açık. Ücretli API/model/gerçek kaynak yok; önceki rapor/hashler tarihsel olarak korunur.
 
 ### 2026-10-13 — T13a kalıcı review/onay çekirdeği
