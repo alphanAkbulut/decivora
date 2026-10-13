@@ -2,6 +2,8 @@
 
 Mac'te **Decivora.command** dosyasına çift tıkla. Terminal açılır ve yerel uygulama tarayıcıda başlar. Terminal uygulama açıkken çalışır; UI'daki “Uygulamayı kapat” düğmesiyle durdurabilirsin. Python3.12 gerekir; bu Mac'teki Codex runtime'ı launcher tarafından bulunur. Başka bir Mac'te kurulu Codex runtime veya `python3.12` gerekir. Signed installer / tam MVP değildir.
 
+**İki ayrı ekran var:** Bu program kendi görevlerini eklediğin ürün önizlemesidir; ilk açılışta “Benim projem” boş gelir ve sütunlar0 gösterir. Decivora’nın geliştirme backlog/teslim kayıtları ayrı [geliştirme takip ekranındadır](https://github.com/alphanAkbulut/decivora/blob/main/docs/delivery/progress-guide.md); geliştirme görevleri kişisel veritabanına otomatik kopyalanmaz.
+
 1. Görev ekle ve kartı aç.
 2. Göreve göre düzenlenebilir AC/DoD şablonlarını incele; **Kriterleri onayla**.
 3. **Çalışmaya başla**: kart In Progress'e geçer.
