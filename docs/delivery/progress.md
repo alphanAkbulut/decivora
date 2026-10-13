@@ -2,7 +2,7 @@
 
 > Otomatik üretilir. Ana kaynak backlog’dur; bu dosyayı elle düzenleme.
 
-**Açık çalışma fazı: P0**
+**Açık çalışma fazı: P0, P1a**
 
 [Canlı yerel ekranı açma ve güncelleme rehberi](progress-guide.md). GitHub bu Markdown görünümünü gösterir; canlı ekran yerel dosyaları izler.
 
@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 1 |
-| IN_PROGRESS | 3 |
-| TODO | 26 |
+| IN_PROGRESS | 4 |
+| TODO | 25 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -47,6 +47,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03ab | T03 | DONE | DONE / P0: SQLite inceleme snapshot deposu |
 | T03ac | T03 | DONE | DONE / P0: persisted clarification'a explicit source-bound reply proposal |
 | T03c | T03 | DONE | DONE: kabul edilmiş koşullu çekirdek build seçimi; Python3.12/SQLite, ADR-0012 |
+| T05f | T05 | DONE | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo |
 
 ## Açık fazda neler değişti?
 
@@ -88,11 +89,24 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
 
+### T05 · Proje kimliği ve binding
+
+T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 
 ## Mevcut teslim parçaları
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T05f proje/binding çekirdeği** — Scope kontrollü memory-only servis ve CLI sentetik demo; T05 ana görev In Progress; [11 yeni runtime testi](../quality/project-binding-core.md); kalıcılık/gerçek IAM/ingress yok
 - **Capture ölçüm düzeneği** — Spike-0 kaynak/session kimliği, kapanışsız delta ve kısa cevap gözlemi; production adapter değil; 40 fixture/regresyon testi; gerçek host capability açık
 - **Kaynak-only model input’u** — 6 session istek hazırlayıcı; 58 mesaj; source metadata auth ve oracle dışarıda; exact hash/version/proje kimliği; Protocol input/leak/cache/namespace testleri
 - **Semantik çıktı sözleşmesi** — JSON envelope, 14 aday türü, Unicode source span, tip/byte/record limiti, duplicate ve abstention; Hatalı/stale/yetki iddialı çıktı reddediliyor
@@ -146,7 +160,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
 | T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 27 |
 | T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c | 4 |
-| T05 | P1a | TODO | Proje kimliği ve binding | T04 | 4 |
+| T05 | P1a | IN_PROGRESS | Proje kimliği ve binding | T04 | 5 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
 | T07 | P1a | TODO | Domain log ve projector | T06 | 2 |
 | T08 | P1a | TODO | Atomic change set ve policy | T07 | 2 |
@@ -181,4 +195,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `72b7e393920a00d309ea30be1ab44d2c37167ca19cd8aaa1b44a6c8c66482b75`
+Kaynak fingerprint: `5016092d074388b814105531b34b563a68673001883984d414a796b1c277144e`

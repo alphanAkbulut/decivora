@@ -55,7 +55,7 @@ Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtil
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
 | T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c |
-| T05 | P1a | TODO | Proje kimliği ve binding | T04 |
+| T05 | P1a | IN_PROGRESS | Proje kimliği ve binding | T04 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 |
 | T07 | P1a | TODO | Domain log ve projector | T06 |
 | T08 | P1a | TODO | Atomic change set ve policy | T07 |

@@ -1,0 +1,39 @@
+{
+  "task_id": "T05f",
+  "main_task_status": "IN_PROGRESS",
+  "acceptance_scope": "in-memory project/session binding; not durable ingress/authentication",
+  "tests": {
+    "new_binding_tests": 11,
+    "total_runtime_tests": 23,
+    "status": "passed"
+  },
+  "demo": {
+    "status": "passed_synthetic_binding_demo",
+    "storage": "in_memory",
+    "principal_source": "fixed_fixture_not_authentication",
+    "same_name_distinct_ids": true,
+    "unbound": "project_unbound",
+    "initial": "p1",
+    "historical": "p1",
+    "new_binding_old_source": "project_mismatch",
+    "current": "p2",
+    "cross_project_read": "forbidden",
+    "durable_receipt": false,
+    "human_approval": false,
+    "source_capture": false,
+    "canonical_mutations": 0,
+    "model_dispatches": 0
+  },
+  "model_dispatches": 0,
+  "paid_api_calls": 0,
+  "real_source_capture": false,
+  "durable_binding": false,
+  "production_authentication": false,
+  "full_ac01_accepted": false,
+  "file_sha256": {
+    "packages/domain/project_binding.py": "a2c2ed812c3cc8331b08d0d426fc6c33999f0e2617532026d5d2c97c692c6aca",
+    "apps/hub/binding_demo.py": "326f77b1972e31e3cd1f74b6511cf0e813fd9b58a4dd92074860f33cf5c5df7e",
+    "apps/hub/runtime.py": "d0fe344eeec874edf38669bbdd7290665e6333563d5895245e45195208320b6d",
+    "tests/runtime/test_project_binding.py": "de62eeaa54fb7489c6b133f4d7aed0b92a24dd0f1ffc6b14c8de29230f1f52d1"
+  }
+}

@@ -57,7 +57,7 @@ def read_selected_input(path):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Decivora local runtime scaffold')
-    parser.add_argument('command', nargs='?', choices=['status', 'validate'], default='status')
+    parser.add_argument('command', nargs='?', choices=['status', 'validate', 'binding-demo'], default='status')
     parser.add_argument('--input', type=Path)
     args = parser.parse_args(argv)
     if (args.command == 'validate') != (args.input is not None):
@@ -66,6 +66,9 @@ def main(argv=None):
         ensure_runtime()
         if args.command == 'status':
             result = runtime_status()
+        elif args.command == 'binding-demo':
+            from .binding_demo import run_demo
+            result = run_demo()
         else:
             event = parse_source_event(read_selected_input(args.input))
             result = dict(status='validated_only', format=event.format, source_revision=event.source_revision,

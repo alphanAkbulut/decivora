@@ -37,3 +37,7 @@ python3.12 -B -m unittest discover -s tests/runtime -v
 ```
 
 T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T05–T24 ve tüm MVP14AC açık; bu README diğer özellikler için kurulum/başarı vaadi değildir.
+
+## T05 binding çekirdeği demosu
+
+`python3.12 -B -m apps.hub binding-demo` sabit sentetik iki projeyi bellekte oluşturur; aynı ad/farklı ID, explicit session revision, eski binding korunumu ve çapraz proje query reddini çalıştırır. Dosya/DB yazmaz, gerçek kaynak okumaz. Bu demo login/authenticated principal, kalıcı binding/receipt veya otomatik proje tahmini değildir; runtime `project_binding` capability gerçek ingress entegrasyonuna kadar false kalır. [Kabul ve kalanlar](../../docs/quality/project-binding-core.md).

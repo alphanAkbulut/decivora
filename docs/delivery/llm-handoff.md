@@ -1,6 +1,6 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
-Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed mimarisi ve sıradaki işi anlaşılabilecek şekilde hazırlanmıştır. **Doküman tamlığı, uygulama doğruluğu veya modelin mutlaka doğru anlayacağı garantisi değildir.** Q15-A ile ilk uygulama iskeleti [T04](../../apps/hub/README.md) kendi12test/clean-start kabulüyle tamamlandı; source contract validation dışında özellikleri tamamlanmış varsayma. Model/capture/native/ROI/gerçek kullanıcı UI kabulü açık.
+Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed mimarisi ve sıradaki işi anlaşılabilecek şekilde hazırlanmıştır. **Doküman tamlığı, uygulama doğruluğu veya modelin mutlaka doğru anlayacağı garantisi değildir.** Q15-A ile ilk uygulama iskeleti [T04](../../apps/hub/README.md) kendi12test/clean-start kabulüyle tamamlandı; T05f in-memory project/binding çekirdeği ve CLI demo da [uygulandı](../quality/project-binding-core.md); kalıcı store/gerçek IAM/ingress hazır sayılmaz. Model/capture/native/ROI/gerçek kullanıcı UI kabulü açık.
 
 ## Kısa giriş
 

@@ -6,13 +6,14 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 | Yeni alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
+| T05f / T05 | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo | Aynı ad farklı ID, çapraz scope read/write ret, revision-bound tarihçe, belirsizde mutation yok; [11 test](../quality/project-binding-core.md). Kalıcı store/auth/ingress tamamlanmadı |
 | T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
 | T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş |
 | T24d / T20e,T24 | TODO / P1b: sentetik oracle ve owner pilotu | FLOW-01–15; 40+ sentetik task; zorunlu sette yanlış ready/yetkisiz mutation 0; bekleme, next-action seçimi ve uyarı yükü baseline |
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
-**T01/T02/T03 IN_PROGRESS; diğer 27 ana görev TODO.** P0 deney kodu var; hiçbir ana görev kapanmadı. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
+**T04 DONE; T01/T02/T03/T05 IN_PROGRESS; diğer 25 ana görev TODO.** İlk uygulama iskeleti tamamlandı; T05 proje binding kodu geliştiriliyor. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.
 
@@ -169,12 +170,15 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T05 — Proje kimliği ve binding
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T04. **Kapsam ID:** PRJ-01,GOV-01.
+- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T04. **Kapsam ID:** PRJ-01,GOV-01.
 - **İş:** Project CRUD kapsamını minimum tut; değişmeyen ID, session binding ve quarantine uygula.
 - **Kabul:** Aynı adlı projeler ayrılır; belirsiz binding yazma yapmaz; query de scope denetler.
 - **Doğrulama:** AC-01; çapraz proje read/write reddi.
 - **Beklenen dosya alanı:** `packages/domain/; packages/storage/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Son ilerleme:** T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
+- **Kalan:** Kalıcı project/binding store, restart/recovery, grant/authz revision ve gerçek ingress entegrasyonu; T05 ana görevi açık.
 
 ## T06 — Source ingress ve checkpoint
 

@@ -18,6 +18,10 @@ T04 başlangıç komutu CLI olarak açılıp sonlanır; backgroundHTTP server ve
 
 Manuel validator yalnız kendi source contract'ını doğrular; JSON Schema artifact genel evaluator veya provider schema enforcement değil. File read caller-selected regular file/bounded/no-follow; malicious filesystem concurrency/TOCTOU ve production security garantisi değildir. Bytes/token/kota tasarrufu çıkarılmadı; bu geliştirme chat'inin usage'ı unknown.
 
+## Kanıt sürümü
+
+T04 hash raporu [fbd780f commitindeki](https://github.com/alphanAkbulut/decivora/tree/fbd780f0b9bcb0ee4fe2abca756105ce5c543bd1) kabul edilen kaynakları gösterir. Sonraki CLI/binding değişiklikleri bu tarihsel raporu yeniden yazmaz; [güncel T05f kanıtı](project-binding-core.md) ayrı tutulur.
+
 ## Sonraki ana iş
 
 T04 Done olması yalnız bu startup/contract/manifest/clean-run kabulündendir. **T05 proje kimliği/binding** sıradadır; T06 kalıcı alım, T07 log/projector/backup, T08 policy sonrasında kendi AC'leriyle ilerler. T03 parent ve T01/T02 model/capture/native/ROI kanıtları açık; full vision ve14MVP AC korunur. İlk receiver failures/raw ve code proof'ları aynı kalır.
