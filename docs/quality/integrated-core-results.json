@@ -1,0 +1,65 @@
+{
+  "profile": "synthetic_manual_local_core",
+  "closed_core_tasks": [
+    "T05",
+    "T06",
+    "T07",
+    "T08",
+    "T11"
+  ],
+  "in_progress_extraction_reconciliation": [
+    "T09",
+    "T10"
+  ],
+  "tests": {
+    "new_runtime_tests": 44,
+    "total_runtime_tests": 95,
+    "status": "passed"
+  },
+  "demo": {
+    "status": "passed_integrated_local_core",
+    "profile": "synthetic_manual_only",
+    "durable_receipt": true,
+    "retry_same_receipt": true,
+    "processing_frontier": {
+      "received": 1,
+      "processed": 1,
+      "complete": true,
+      "pending": 0,
+      "missing_positions": 0
+    },
+    "atomic_records": 2,
+    "events": 3,
+    "replay_matches": true,
+    "restore_matches": true,
+    "reconciliation": "attach_source",
+    "context_records": 1,
+    "graph_revision": 1,
+    "alternative_rationale_preserved": true,
+    "real_semantic_extraction": false,
+    "provider_capture": false,
+    "human_login": false,
+    "model_dispatches": 0
+  },
+  "actual_provider_capture": false,
+  "actual_human_login": false,
+  "real_semantic_extraction": false,
+  "gold_precision_recall_measured": false,
+  "full_mvp_accepted": false,
+  "new_model_dispatches": 0,
+  "paid_api_calls": 0,
+  "usage": null,
+  "file_sha256": {
+    "packages/storage/workspace.py": "17ea26f2d3fe759be145753eb6671d774426565f18fa7514d3e00fafd75e0b5c",
+    "packages/capture/__init__.py": "2c1f8b75cba5ad569e9cd257317f5d8f16183345e3b8453449c89d64ac49fe3c",
+    "packages/capture/extraction.py": "5a91b79e0c436758de7555d62c7ac32a487d51f62afe9ecb5cd78e6816bc96ed",
+    "packages/reconciliation/__init__.py": "fc21c5fd07949aa20a282204e8dc8871e1c7848f04b09b0b84d98027a1efb1e8",
+    "packages/reconciliation/core.py": "bca7bb1df002994d27e0e5054d7c13eafd9e78e8fae8b5805d664f8c8dec86c1",
+    "packages/impact/__init__.py": "49ac11bf90a410b14dbb7ccd10e61dd201757bd924b20fadd8fef7b665fdbb7d",
+    "packages/impact/graph.py": "f109b824359fc93b64fa85adf9de7cb144955a12d8cb6acfe9df74a34e842d88",
+    "apps/hub/core_demo.py": "0dd25f52aeb288e8ae1a52cb21da6ac1d2e1aa04a3ad0b7d4d074708646ee7c7",
+    "apps/hub/runtime.py": "4f522a5490499180c5a804d15f3ab3adadf7031cf2b30fdf32db939275dd24a1",
+    "tests/runtime/test_workspace_core.py": "6da0d8f754e66fea313fce9e66852b9323c2a0cf8dfb8094928f730b44ab1d21",
+    "tests/runtime/test_dependency_graph.py": "e4e2b998f1c502d902953c78c855268f0d474655ed695d25312ff28953f4bbaf"
+  }
+}

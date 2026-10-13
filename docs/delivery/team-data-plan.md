@@ -21,10 +21,10 @@ Ana görevler [T01–T30](backlog.md) korunur. Bu mevcut alt dilimler [Q16-A man
 
 | Dilim / bağımlılık | Somut çıktı | Kabul / kapı |
 |---|---|---|
-| T05b / T04a,T05a | Kişisel workspace, human/agent ID, compound tenant FK, session binding şeması | Tek owner modu ve cross-project negatif test; MU01 |
-| T08b / T05b,T08a | `authorize(action,resource,context)` sınırı, dar grant, authz revision/commit kontrolü | Spoof/revoke/stale run reddi; MU02–MU04/MU06 |
-| T06d / T06a,T05b | Receipt/dedup ömrünü raw payload'dan ayır; bounded spool/backpressure | Ack olmayan veri TTL ile kaybolmaz; MU11 |
-| T07b / T07a,T08b | Domain command + güvenlik audit atomikliği; güvenli structured logger | Audit arızası mutation'ı durdurur; log secret içermez; MU08/MU09 |
+| T05b / T04a,T05a | DONE / P1a: Kişisel workspace, human/agent ID, compound tenant FK, session binding şeması | Tek owner modu ve cross-project negatif test; MU01 |
+| T08b / T05b,T08a | DONE / P1a: `authorize(action,resource,context)` sınırı, dar grant, authz revision/commit kontrolü | Spoof/revoke/stale run reddi; MU02–MU04/MU06 |
+| T06d / T06a,T05b | DONE / P1a: Receipt/dedup ömrünü raw payload'dan ayır; bounded spool/backpressure | Ack olmayan veri TTL ile kaybolmaz; MU11 |
+| T07b / T07a,T08b | DONE / P1a: Domain command + güvenlik audit atomikliği; güvenli structured logger | Audit arızası mutation'ı durdurur; log secret içermez; MU08/MU09 |
 | T18b / T18a,T08b | ACL-aware retrieval/context; personal→project paylaşım proposal'ı | Private özet/citation sızmaz; MU05/MU10 |
 | T23c / T23a,T23b | Versioned retention, expiry preview, türev invalidation, purge/restore manifest | TTL ve restore drill; MU11/MU12; OPEN-08 gerçek veri öncesi |
 | T23d / T23c | Tutarlı DB+blob snapshot; disk/WAL/backup health; sentetik load harness | Hata ve capacity raporu, ölçülmüş RPO/RTO; MU15/MU16 |

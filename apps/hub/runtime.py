@@ -27,7 +27,11 @@ def runtime_status():
             project_binding=False, durable_ingress=False, canonical_storage=False,
             human_authentication=False, human_approval=False, semantic_extraction=False,
             model_dispatch=False, tool_execution=False, network_server=False, product_ui=False),
-        synthetic_only=True, canonical_mutations=0, model_dispatches=0)
+        synthetic_only=True, canonical_mutations=0, model_dispatches=0,
+        implemented_components=['source_contract','local_authority','normalized_workspace',
+            'durable_manual_receipts','leased_jobs','event_projection','atomic_approval',
+            'backup_restore','typed_dependency_graph','bounded_lexical_review'],
+        active_profile='status_only; use core-demo for isolated synthetic end-to-end flow')
 
 
 def read_selected_input(path):
@@ -57,7 +61,7 @@ def read_selected_input(path):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Decivora local runtime scaffold')
-    parser.add_argument('command', nargs='?', choices=['status', 'validate', 'binding-demo', 'project-store-demo', 'authority-demo', 'connection-demo'], default='status')
+    parser.add_argument('command', nargs='?', choices=['status', 'validate', 'binding-demo', 'project-store-demo', 'authority-demo', 'connection-demo', 'core-demo'], default='status')
     parser.add_argument('--input', type=Path)
     args = parser.parse_args(argv)
     if (args.command == 'validate') != (args.input is not None):
@@ -77,6 +81,9 @@ def main(argv=None):
             result = run_demo()
         elif args.command == 'connection-demo':
             from .connection_demo import run_demo
+            result = run_demo()
+        elif args.command == 'core-demo':
+            from .core_demo import run_demo
             result = run_demo()
         else:
             event = parse_source_event(read_selected_input(args.input))

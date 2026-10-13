@@ -56,7 +56,7 @@ Güncel yetkili kullanıcı talimatı ve uygulanabilir AGENTS kuralları izlenir
 3. Yeni OR edge preview sonrası eklendiyse? **Stale impact.** Yeni snapshot/diff; eski onay taşınmaz.
 4. Model kapalı veya budget doluysa? **Kaynak korunur.** Deterministik işler yapılabilir; semantik iş deferred/unknown görünür.
 5. ChatGPT Chat içeriğine otomatik erişim garanti mi? **Hayır.** Yüzey/izin/build bazlı capability testi; açık import fallback.
-6. Çalışan çekirdek veya onaylı stack var mı? **Sınırlı evet:** Q15-A/ADR0012 Python3.12/SQLite; T04 CLI ve T05f/g/h yerel code/test. Tam ürün MVP, login/adapter/UI/model kalite kabulü yok; T01–T03 evidence açık.
+6. Çalışan çekirdek veya onaylı stack var mı? **Sınırlı evet:** Q15-A/ADR0012 Python3.12/SQLite; T04 CLI ve T05/T06/T07/T08/T11 yerel normalized core code/test. Tam ürün MVP, login/adapter/UI/model kalite kabulü yok; T01–T03 evidence açık.
 7. Knowledge Evolution Engine eksik bir ayrı servis mi? **Hayır.** ENG-03/04/05/06/07 birleşik davranışının kaynak konuşmadaki adı.
 8. Üstünlük ve tasarruf kanıtlandı mı? **Hayır.** Hipotez/ölçüm planı var; benchmark runtime sonucu yok.
 
@@ -148,4 +148,4 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 
 ## Kapanış sınırı
 
-[CL01–08/Q16](../quality/task-closure-audit.md) parent/integration gate çelişkilerini kaydeder; first-use güvenlik kontrolünü kaldırma veya future işleri bugünkü parent kapanışına yükleme. Q16-A kabul edildi; [manifest ve validator](task-closure.md) uygulanır. T05 otomatik Done yapılmaz; T05c schema/rule fixture tamamlandı; core T05a/b tenant FK ve binding kanıtı bekler.
+[CL01–08/Q16](../quality/task-closure-audit.md) parent/integration gate çelişkilerini kaydeder; first-use güvenlik kontrolünü kaldırma veya future işleri bugünkü parent kapanışına yükleme. Q16-A kabul edildi; [manifest ve validator](task-closure.md) uygulanır. T05 otomatik Done yapılmaz; T05/T06/T07/T08/T11 [yerel sentetik/manual core kabulüyle](../quality/integrated-core.md) tamamlandı; T09/T10 In Progress, actual adapter/login/model/UI/release açık.

@@ -10,9 +10,9 @@
 
 | Ana görev durumu | Sayı |
 |---|---|
-| DONE | 1 |
-| IN_PROGRESS | 4 |
-| TODO | 25 |
+| DONE | 6 |
+| IN_PROGRESS | 5 |
+| TODO | 19 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -47,10 +47,26 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03ab | T03 | DONE | DONE / P0: SQLite inceleme snapshot deposu |
 | T03ac | T03 | DONE | DONE / P0: persisted clarification'a explicit source-bound reply proposal |
 | T03c | T03 | DONE | DONE: kabul edilmiş koşullu çekirdek build seçimi; Python3.12/SQLite, ADR-0012 |
+| T04a | T04 | DONE | DONE / P1a: Versioned envelope/command/query şemaları ve error taxonomy |
+| T04c | T04 | DONE | DONE / P1a: Source, command, trigger ve async result şemaları; ER composite key/N:M ilişki kontratı |
+| T04d | T04 | DONE | DONE / P1a: Sonlu request/body/burst/concurrency config, erken admission, güvenli hata/transport eşlemesi |
 | T05h | T05 | DONE | DONE / P1a: kalıcı local principal/grant revision ve transaction guard |
 | T05g | T05 | DONE | DONE / P1a: kalıcı project/binding snapshot store |
 | T05f | T05 | DONE | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo |
+| T05a | T05 | DONE | DONE / P1a: Immutable project binding epoch ve quarantine |
 | T05c | T05 | DONE | DONE / P1a: kaynak/hedef binding ve versioned izin makbuzu schema/rule fixture |
+| T06a | T06 | DONE | DONE / P1a: Source+job atomic receipt ve ingest cursor |
+| T06b | T06 | DONE | DONE / P1a: Worker lease/fencing ve job transitions |
+| T06c | T06 | DONE | DONE / P1a: Processing intervals, idle flush, bounded retry/quarantine |
+| T06e | T06 | DONE | DONE / P1a: Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression |
+| T06f | T06 | DONE | DONE / P1a: Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure |
+| T06g | T06 | DONE | DONE / P1a: Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü |
+| T07a | T07 | DONE | DONE / P1a: Replay mode ve projector version gate |
+| T07c | T07 | DONE | DONE / P1a: ** Minimal çekirdek DB+payload backup/restore |
+| T08a | T08 | DONE | DONE / P1a: Command identity, key/digest ve policy capability |
+| T08c | T08 | DONE | DONE / P1a: Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı |
+| T11c | T11 | DONE | DONE / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream |
+| T11b | T11 | DONE | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği |
 
 ## Açık fazda neler değişti?
 
@@ -92,9 +108,21 @@ Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmi�
 
 Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI kanıtları açık; T03c koşullu karar kapandı.
 
-### T05 · Proje kimliği ve binding
+### T09 · Extraction ve bounded retrieval
 
-T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T10 · Temel reconciliation
+
+Son ilerleme kaydı yok.
 
 **Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
 
@@ -109,6 +137,8 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **Beş ana yerel çekirdek teslimi** — T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph; [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok
+- **T09/T10 çalışan hazırlık** — Structured source-span validator/lexical context/exact duplicate relationship review; [Kod ve açık kalite sınırı](../quality/integrated-core.md); semantic inference/FTS/gold ölçümü açık, ana görevler In Progress
 - **T05c connection izin schema/rule** — Bounded immutable receipt, scope/current-context/action/expiry review gate; activation daima false; [9 test ve CLI demo](../quality/connection-authorization.md); gerçek provider/approval/audit/receipt persistence yok
 - **T05h yerel izin iptali** — Persisted authority revision + transaction scoped guard; actor claim yetki değil; [8 yeni test](../quality/local-authority.md); login/token/ACL/production IAM yok
 - **T05g kalıcı proje/binding** — SQLite snapshot/command store; memory state restart sonrası korunur, T05 açık; [11 yeni test ve restart demo](../quality/project-store.md); backup/power-loss/gerçek IAM/ingress yok
@@ -166,13 +196,13 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
 | T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 27 |
 | T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c | 4 |
-| T05 | P1a | IN_PROGRESS | Proje kimliği ve binding | T04 | 7 |
-| T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
-| T07 | P1a | TODO | Domain log ve projector | T06 | 2 |
-| T08 | P1a | TODO | Atomic change set ve policy | T07 | 2 |
-| T09 | P1a | TODO | Extraction ve bounded retrieval | T08 | 4 |
-| T10 | P1a | TODO | Temel reconciliation | T09 | 2 |
-| T11 | P1a | TODO | Tipli gerekçe graph | T10 | 2 |
+| T05 | P1a | DONE | Proje kimliği ve binding | T04 | 7 |
+| T06 | P1a | DONE | Source ingress ve checkpoint | T05 | 6 |
+| T07 | P1a | DONE | Domain log ve projector | T06 | 2 |
+| T08 | P1a | DONE | Atomic change set ve policy | T07 | 2 |
+| T09 | P1a | IN_PROGRESS | Extraction ve bounded retrieval | T08 | 4 |
+| T10 | P1a | IN_PROGRESS | Temel reconciliation | T09 | 2 |
+| T11 | P1a | DONE | Tipli gerekçe graph | T10 | 2 |
 | T12 | P1a | TODO | Impact preview ve apply planı | T11 | 1 |
 | T13 | P1a | TODO | Review işlemi ve güvenilir onay | T12 | 5 |
 | T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 | 4 |
@@ -201,4 +231,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `be52380fdf8f1d4391a4a45b394b52c31561e017132b3bc4a33d7d819fdc1b9e`
+Kaynak fingerprint: `3355986b2610a855cc8a5e9e89fa9a13d8e5f1fadf6ad975bf5b9bcd45097ef3`

@@ -5,13 +5,13 @@
 **Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
 
 > [!NOTE]
-> **Aşama: P1a çekirdek başladı, T04 runtime iskeleti tamamlandı; P0 kalite kanıtları açık.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri, source-bound semantik çıktı bağlantısı ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+> **Aşama: P1a yerel çekirdekte6 ana görev Done; P0 kalite kanıtları açık.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri, source-bound semantik çıktı bağlantısı ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
 
 **Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Q15-A kabul edildi: Python3.12/SQLite ile koşullu yerel MVP çekirdeği başladı. T01/T02/T03 model/capture/native/ROI kanıtları açık; bütün MVP kabulü değil. [Runtime başlangıcı](apps/hub/README.md) · [Kabul edilmiş ADR-0012](docs/architecture/adr/0012-conditional-python-runtime.md). [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
 
 ## Çalışmanın neresindeyiz?
 
-**İlk ana teslim T04 Done.** [Çalıştırılabilir runtime ve başlangıç komutları](apps/hub/README.md) · [12test/clean-start kabulü](docs/quality/runtime-scaffold.md). [T05 proje kimliği/binding](docs/quality/project-binding-core.md) In Progress; [kalıcı SQLite store/restart demo](docs/quality/project-store.md) da hazır; [yerel izin iptali](docs/quality/local-authority.md) de çalışıyor; gerçek login/bağlantı/ingress kabulü açık. Başlangıç programı CLI/source-contract doğrulaması yapar; diğer capabilities kapalıdır.
+**6 Done / 5 In Progress / 19 To Do.** Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo ve95test](docs/quality/integrated-core.md): `python3.12 -B -m apps.hub core-demo`. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
 
 
 > [!WARNING]

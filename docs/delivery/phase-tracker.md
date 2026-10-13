@@ -34,7 +34,7 @@ Decivora
     └── Talep, merkezi veri, davet/roller, sync ve ekip işletimi
 ```
 
-Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtilir. apps/hub/packages/domain T04 ile başladı; diğer alanları var sayma. Q15-A koşullu build seçildi; kalite/ROI yeniden değerlendirmesi açıktır. T03c/Q15-A koşullu çekirdek build kararı kabul edildi; native/ROI yeniden değerlendirmesi ileride ayrı karar üretebilir, mevcut kabulü pending yapmaz.
+Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtilir. apps/hub/packages/domain T04 ile başladı; normalized storage/capture/reconciliation/impact yerel çekirdek kodu [toplu teslimde](../quality/integrated-core.md) eklendi. Gerçek adapter/UI/model kalitesi var sayılmaz. Q15-A koşullu build seçildi; kalite/ROI yeniden değerlendirmesi açıktır. T03c/Q15-A koşullu çekirdek build kararı kabul edildi; native/ROI yeniden değerlendirmesi ileride ayrı karar üretebilir, mevcut kabulü pending yapmaz.
 
 ## P0 — Başlangıç kapısı
 
@@ -55,13 +55,13 @@ Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtil
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
 | T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c |
-| T05 | P1a | IN_PROGRESS | Proje kimliği ve binding | T04 |
-| T06 | P1a | TODO | Source ingress ve checkpoint | T05 |
-| T07 | P1a | TODO | Domain log ve projector | T06 |
-| T08 | P1a | TODO | Atomic change set ve policy | T07 |
-| T09 | P1a | TODO | Extraction ve bounded retrieval | T08 |
-| T10 | P1a | TODO | Temel reconciliation | T09 |
-| T11 | P1a | TODO | Tipli gerekçe graph | T10 |
+| T05 | P1a | DONE | Proje kimliği ve binding | T04 |
+| T06 | P1a | DONE | Source ingress ve checkpoint | T05 |
+| T07 | P1a | DONE | Domain log ve projector | T06 |
+| T08 | P1a | DONE | Atomic change set ve policy | T07 |
+| T09 | P1a | IN_PROGRESS | Extraction ve bounded retrieval | T08 |
+| T10 | P1a | IN_PROGRESS | Temel reconciliation | T09 |
+| T11 | P1a | DONE | Tipli gerekçe graph | T10 |
 | T12 | P1a | TODO | Impact preview ve apply planı | T11 |
 | T13 | P1a | TODO | Review işlemi ve güvenilir onay | T12 |
 | T14 | P1a | TODO | Evidence ve false-done düzeltmesi | T13 |
@@ -156,7 +156,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 4. Bir task veya fazın kapanışında [AC/DoD ve kaynaklı bağlam](../product/task-context-and-acceptance.md) güncellenir. İptal/erteleme gerekçesi ve tarihçesi korunur.
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
-Bugünkü snapshot'ta T04 DONE, T01/T02/T03/T05 IN_PROGRESS, 25 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
+Bugünkü snapshot'ta T04/T05/T06/T07/T08/T11 DONE, T01/T02/T03/T09/T10 IN_PROGRESS,19 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
 
 ### P0 karşılaştırma havuzu eki: WrongStack
 

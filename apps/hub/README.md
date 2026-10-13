@@ -53,3 +53,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## Kaynak bağlantı izin sözleşmesi
 
 `python3.12 -B -m apps.hub connection-demo` kendi sentetik makbuz/context fixture'ı üzerinde source izin eksikliğini ve stale authority'yi reddeder; source read/connection activation/model0. [9 test ve sınırlar](../../docs/quality/connection-authorization.md). Gerçek source ACL/insan approval/audit doğrulaması değildir.
+
+## Birleşik çalışan çekirdek
+
+`python3.12 -B -m apps.hub core-demo`: ayrı yeni synthetic/manual SQLite workspace içinde stableproject/binding → receipt/job/lease → manual typed plan → local human approval → atomic record/link/source joins → replay → backup/restore → duplicate/graph akışı. [95 test, beş ana çekirdek ve açık kalanlar](../../docs/quality/integrated-core.md). New normalized core profile eski DB'leri silently migrate etmez. `status` capability listesi aktif status-only profile'a aittir; implemented_components mevcut kodu ayrıca gösterir. Real provider/semantic model/runner/network listener/user UI çalıştırılmaz.

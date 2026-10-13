@@ -9,7 +9,7 @@ Ana görev, manifestte kendi çekirdek kabulü ve zorunlu task-local işlerinin 
 | Mevcut alt iş | Kapanış sahibi / kapı | Korunan gerçek eksik |
 |---|---|---|
 | T04a genel command/query contract | T08 | T04 bounded source/startup kabulü geniş sözleşmeyi bitirmez |
-| T04b network ingress güvenliği | T06, network ilk kullanımı | Disabled transport sessizce açılamaz |
+| T04b network/native ingress güvenliği | T16, ilk native/network activation | Disabled transport sessizce açılamaz |
 | T04c fiziksel ER/event ilişki kontratı | T07 | Kalıcı event/relation DB öncesi test gerekir |
 | T04d admission/transport limitleri | T06 | İlk ingress admission geçmeden receipt yok |
 | T05d cross-source/record ilişki entegrasyonu | T10, T08b policy sonrası | T06 source/session pinlemesi ayrıca kendi kabulüdür; ACL atlanmaz |
@@ -20,10 +20,12 @@ Diğer mevcut alt işler task-local veya kayıtlı PROPOSED sınıfında tutulur
 
 ## Mevcut kapanışlar
 
-T04 startup/source-contract kapsamı Done; mevcut12test kabul raporu korunur. T04a/b/c/d tamamlanmış sayılmadı; açık durumları ve sorumluları manifestte görülür. T05f/g/h Done, T05 parent In Progress: T05c schema/rule fixture kendi9test kapsamında tamamlandı; T05a/b core kalanları açık; bu politika T05'i otomatik kapatmaz. T05e PROPOSED kendi statüsünü korur. T05d downstream entegrasyonu parent kapanışını döngüye sokmaz. T01 gold/T02 actual capture/T03 semantic-native-ROI açık kanıt kapılarıdır, Q15 core build başlangıcını tekrar bekletmez.
+T04 startup/source-contract kapsamı Done; mevcut12test kabul raporu korunur. T04a/b/c/d tamamlanmış sayılmadı; açık durumları ve sorumluları manifestte görülür. T05f/g/h/c ve T05a/b scoped core kanıtları toplu teslimle tamamlandı; T05 parent kendi normalized identity/binding/quarantine/query kabulüyle Done oldu. T06/T07/T08/T11 çekirdekleri de [toplu test](../quality/integrated-core.md) kanıtıyla kapandı; policy otomatik state üretemez. T05e PROPOSED kendi statüsünü korur. T05d downstream entegrasyonu parent kapanışını döngüye sokmaz. T01 gold/T02 actual capture/T03 semantic-native-ROI açık kanıt kapılarıdır, Q15 core build başlangıcını tekrar bekletmez.
 
 ## Kontrolün kapsamı ve sınırı
 
 Validator canonical acceptance/status/dependency değişimini, eksik cross-file alt işi, sınıflandırma/owner/gate kaybını, Done için eksik evidence/unfinished required child ve kapanış graph cycle'ını reddeder. Evidence dosyasının varlığı ve scoped_verified kaydı runtime doğruluğu değildir; runtime test/gerçek hedef/ürün AC ayrı değerlendirilir. İlk kullanımın çalışırken authorization enforcement'ı bu planning script tarafından yapılmaz. Actual product closure motoru değildir; development CI korumasıdır.
 
 Yeni eksik eklemeden mevcut kayıt/kanıt/kararı kontrol et. Kalan işi aynı ID'de kanıt ve doğru sahibiyle güncelle; scope değişimi gerçekten yeni gerekliyse somut gerekçeyle ayrı öner. Manifest status kayıtları kanıt yerine geçmez; source row değiştiğinde manifest aynı review'da eşleşmeli. Kaynak metinleri/historical proof'ları yeniden yazıp başarı üretme. Bu kontrol görev/scope/kanıt değişiminde veya kapanışta çalışır, her sohbet mesajında bütün repo taraması istemez.
+
+Toplu manual/synthetic profile network ingress açmadığı için T04b owner/first-use T16 olarak netleştirildi; gereksinim ve açık durum korunur. T09/T10 kalite işleri bitmeden typed/manual graph kernel test edilebilir; plan sırası gerçek çalışma engeli değildir, full14MVP AC karşılanmış sayılmaz.

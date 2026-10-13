@@ -9,13 +9,13 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 | T05h / T05 | DONE / P1a: kalıcı local principal/grant revision ve transaction guard | Eski scope read/write/cache ret, owner-only grant, restart/rollback; [8 test](../quality/local-authority.md). Login/agent token/resource ACL/audit açık |
 | T05g / T05 | DONE / P1a: kalıcı project/binding snapshot store | Restart/idempotency/rollback/two-connection stale/foreign-scope ret; [11 test](../quality/project-store.md). Authz lifecycle/source receipt/backup açık |
 | T05f / T05 | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo | Aynı ad farklı ID, çapraz scope read/write ret, revision-bound tarihçe, belirsizde mutation yok; [11 test](../quality/project-binding-core.md). Kalıcı store/auth/ingress tamamlanmadı |
-| T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
+| T11c / T11 | DONE / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
 | T20e / T11c,T13,T20 | TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u | FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş |
 | T24d / T20e,T24 | TODO / P1b: sentetik oracle ve owner pilotu | FLOW-01–15; 40+ sentetik task; zorunlu sette yanlış ready/yetkisiz mutation 0; bekleme, next-action seçimi ve uyarı yükü baseline |
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
-**T04 DONE; T01/T02/T03/T05 IN_PROGRESS; diğer 25 ana görev TODO.** İlk uygulama iskeleti tamamlandı; T05 proje binding kodu geliştiriliyor. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
+**T04/T05/T06/T07/T08/T11 DONE; T01/T02/T03/T09/T10 IN_PROGRESS; diğer19 ana görev TODO.** İlk uygulama iskeleti tamamlandı; T05 proje binding kodu geliştiriliyor. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.
 
@@ -172,7 +172,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T05 — Proje kimliği ve binding
 
-- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T04. **Kapsam ID:** PRJ-01,GOV-01.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T04. **Kapsam ID:** PRJ-01,GOV-01.
 - **İş:** Project CRUD kapsamını minimum tut; değişmeyen ID, session binding ve quarantine uygula.
 - **Kabul:** Aynı adlı projeler ayrılır; belirsiz binding yazma yapmaz; query de scope denetler.
 - **Doğrulama:** AC-01; çapraz proje read/write reddi.
@@ -183,61 +183,75 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Son kalıcı teslim:** T05g [SQLite project store](../quality/project-store.md);11 yeni/34 toplam runtime test; restart/idempotency/rollback geçti.
 - **Son yetki teslimi:** T05h [yerel authority](../quality/local-authority.md);8 yeni/42 toplam runtime test, revocation/read/write/cache/restart ret.
 - **Son izin makbuzu teslimi:** T05c [schema/rule fixture](../quality/connection-authorization.md) DONE;9 yeni/51 runtime test. Gerçek provider/activation/audit hazır sayılmaz.
-- **Kalan:** T05a/b core binding/kimlik/compound tenant FK kabulü; durable source receipt/quarantine T06, cross-source lineage T05d integration sahibi T10; gerçek login/resource ACL/T08b action policy ayrı açık. T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
+- **Kalan:** Çekirdek kabulü tamamlandı; gerçek adapter/login/semantic inference ve ürün UI kendi first-use/release görevlerinde açık. [Toplu kanıt](../quality/integrated-core.md).
+
+- **Toplu ana kabul:** [Integrated local core](../quality/integrated-core.md) ve `core-demo`; normalized synthetic/manual profile, 95runtime test. Bu ana çekirdek Done, gerçek capture/model/MVP release kabulü değil.
 
 ## T06 — Source ingress ve checkpoint
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T05. **Kapsam ID:** CAP-01,CAP-05.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T05. **Kapsam ID:** CAP-01,CAP-05.
 - **İş:** Normalize source zarfı, safe payload ref, kalıcı ack, source dedup ve cursor tut.
 - **Kabul:** Aynı event iki kez bir etki; aynı metin farklı mesajda korunur; crash cursor atlatmaz.
 - **Doğrulama:** AC-02, AC-14; retry/rotation/truncation.
 - **Beklenen dosya alanı:** `packages/capture/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **Toplu ana kabul:** [Integrated local core](../quality/integrated-core.md) ve `core-demo`; normalized synthetic/manual profile, 95runtime test. Bu ana çekirdek Done, gerçek capture/model/MVP release kabulü değil.
+
 ## T07 — Domain log ve projector
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T06. **Kapsam ID:** AUD-01,KNO-01.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T06. **Kapsam ID:** AUD-01,KNO-01.
 - **İş:** Event append, optimistic stream version, projection ve replay uygula.
 - **Kabul:** UPDATE/DELETE event API yok; replay aynı digest; migration sürümü kayıtlı.
 - **Doğrulama:** AC-10; crash ve late-event testleri.
 - **Beklenen dosya alanı:** `packages/storage/; packages/domain/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **Toplu ana kabul:** [Integrated local core](../quality/integrated-core.md) ve `core-demo`; normalized synthetic/manual profile, 95runtime test. Bu ana çekirdek Done, gerçek capture/model/MVP release kabulü değil.
+
 ## T08 — Atomic change set ve policy
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T07. **Kapsam ID:** APR-01,CAP-05.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T07. **Kapsam ID:** APR-01,CAP-05.
 - **İş:** Temp ID çözümü, create/link atomicity, digest/base revision ve idempotency uygula.
 - **Kabul:** Yarım graph oluşmaz; key/digest çakışması conflict; agent onay taklit edemez.
 - **Doğrulama:** AC-03, AC-06; iki yazar ve double submit.
 - **Beklenen dosya alanı:** `packages/domain/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **Toplu ana kabul:** [Integrated local core](../quality/integrated-core.md) ve `core-demo`; normalized synthetic/manual profile, 95runtime test. Bu ana çekirdek Done, gerçek capture/model/MVP release kabulü değil.
+
 ## T09 — Extraction ve bounded retrieval
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T08. **Kapsam ID:** CAP-01,CST-01.
+- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T08. **Kapsam ID:** CAP-01,CST-01.
 - **İş:** Önce fixture/deterministic extractor; ardından gerçek serbest metinden kaynaklı tip/karar/görev/soru/ilişki adayları çıkaran çalışan extraction yolu. Provider arayüzü, FTS ve source span doğrulama; Q03-R1 yalnız ilk no-model dilimin sırasıdır, otomatik extraction'ı opsiyonel yapmaz.
 - **Kabul:** Desteksiz model sonucu canonical state yazamaz; truncation ve missing source görünür. Önceden etiketli/mock adayların işlenmesi otomatik anlam çıkarımının tamamlandığı sayılmaz; yöntem ve kapsam belirtilir.
 - **Doğrulama:** CAP tipleri ve invalid structured output fixture; gerçek extractor/holdout ölçümü T03f/T24q kapısına bağlanır. İzin/bütçe eksikse test not_run/blocked, fixture pass ile kapanmaz.
 - **Beklenen dosya alanı:** `packages/capture/; packages/reconciliation/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
+
 ## T10 — Temel reconciliation
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T09. **Kapsam ID:** KNO-02,KNO-03.
+- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T09. **Kapsam ID:** KNO-02,KNO-03.
 - **İş:** Exact duplicate, related/refines/conflict/rejected revival önerisi ve evaluation kaydı.
 - **Kabul:** Aynı fikir tekrar task olmaz; onaylı karar doğrudan overwrite edilmez.
 - **Doğrulama:** Golden corpus precision/recall; new-is-not-true senaryosu.
 - **Beklenen dosya alanı:** `packages/reconciliation/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
+- **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
+
 ## T11 — Tipli gerekçe graph
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T10. **Kapsam ID:** GRF-01,GRF-02.
+- **Durum / faz:** DONE / P1a. **Bağımlılık:** T10. **Kapsam ID:** GRF-01,GRF-02.
 - **İş:** required_by/dependency ayrımı, AND/OR/unknown evaluator ve cycle kontrolü.
 - **Kabul:** OR kalan gerekçeyi korur; boş gerekçe unknown; supersession cycle reddi.
 - **Doğrulama:** Truth table ve examples/impact-scenario.json oracle.
 - **Beklenen dosya alanı:** `packages/impact/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Toplu ana kabul:** [Integrated local core](../quality/integrated-core.md) ve `core-demo`; normalized synthetic/manual profile, 95runtime test. Bu ana çekirdek Done, gerçek capture/model/MVP release kabulü değil.
 
 ## T12 — Impact preview ve apply planı
 
@@ -418,15 +432,15 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 
 | Alt dilim / parent | Küçük uygulanabilir iş | Kabul kriteri / doğrulama | Dosya alanı |
 |---|---|---|---|
-| T04a / T04 | Versioned envelope/command/query şemaları ve error taxonomy | Unsupported schema ve invalid input state değiştirmez; snapshot/cursor alanları şema testli | domain |
+| T04a / T04 | DONE / P1a: Versioned envelope/command/query şemaları ve error taxonomy | Unsupported schema ve invalid input state değiştirmez; snapshot/cursor alanları şema testli | domain |
 | T04b / T04 | İlk network ingress için loopback/auth/origin ve bounded config | Yetkisiz kaynak/command reddedilir; payload/queue limiti tanımlı; V10/V23 | hub/capture |
-| T05a / T05 | Immutable project binding epoch ve quarantine | Binding değişimi yeni event'leri etkiler; geçmiş transfer ayrı correction; V18/V25 | domain/storage |
-| T06a / T06 | Source+job atomic receipt ve ingest cursor | Disk/response kaybı senaryoları V19 geçer | capture/storage |
-| T06b / T06 | Worker lease/fencing ve job transitions | Expired worker sonuç yazamaz; V20 geçer | capture/storage |
-| T06c / T06 | Processing intervals, idle flush, bounded retry/quarantine | Boşluk üstünden watermark atlamaz; V11/V21 ve rotation geçer | capture |
-| T07a / T07 | Replay mode ve projector version gate | Bilinmeyen event sessiz atlanmaz; replay aynı digest, sıfır dış yan etki; V14/V27 | storage |
-| T07c / T06,T07a | **TODO / P1a:** Minimal çekirdek DB+payload backup/restore | Tutarlı checkpoint, source payload manifest/hash, event sequence ve projection digest; boş hedefe restore, eksik/uyumsuz veri fail closed; replay sıfır dış dispatch; V17/V27. T15a bunu sınar; T23a migration/privacy/export/operasyon kapsamını tamamlar | storage |
-| T08a / T08 | Command identity, key/digest ve policy capability | Aynı key güvenli; spoofed human reddi; V03/V23 | domain/hub |
+| T05a / T05 | DONE / P1a: Immutable project binding epoch ve quarantine | Binding değişimi yeni event'leri etkiler; geçmiş transfer ayrı correction; V18/V25 | domain/storage |
+| T06a / T06 | DONE / P1a: Source+job atomic receipt ve ingest cursor | Disk/response kaybı senaryoları V19 geçer | capture/storage |
+| T06b / T06 | DONE / P1a: Worker lease/fencing ve job transitions | Expired worker sonuç yazamaz; V20 geçer | capture/storage |
+| T06c / T06 | DONE / P1a: Processing intervals, idle flush, bounded retry/quarantine | Boşluk üstünden watermark atlamaz; V11/V21 ve rotation geçer | capture |
+| T07a / T07 | DONE / P1a: Replay mode ve projector version gate | Bilinmeyen event sessiz atlanmaz; replay aynı digest, sıfır dış yan etki; V14/V27 | storage |
+| T07c / T06,T07a | DONE / P1a: ** Minimal çekirdek DB+payload backup/restore | Tutarlı checkpoint, source payload manifest/hash, event sequence ve projection digest; boş hedefe restore, eksik/uyumsuz veri fail closed; replay sıfır dış dispatch; V17/V27. T15a bunu sınar; T23a migration/privacy/export/operasyon kapsamını tamamlar | storage |
+| T08a / T08 | DONE / P1a: Command identity, key/digest ve policy capability | Aynı key güvenli; spoofed human reddi; V03/V23 | domain/hub |
 | T10a / T10 | Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
 | T12a / T12 | ImpactRun snapshot, visited/frontier ve knowledge revision | Yeni OR edge eski preview'yu stale yapar; V22 ve limit testi | impact/storage |
 | T13a / T13 | Onay token'ı snapshot/policy/digest ile bağla | Partial selection yeni digest; iki onay tek effect; V04/V15/V23 | hub/domain |
@@ -456,7 +470,7 @@ Bunlar mevcut ana görevlerin detaylarıdır; yeni servis veya bağımsız ürü
 |---|---|---|
 | T02b / T02 | Seçilen host/build MCP+hook+transcript capability raporu; tools-only/remote smoke test | [CON-01/02/07](../architecture/connection-and-context.md); Q02 yanıtı gerçek yüzey seçimini belirler |
 | T09b / T06,T09 | No-op/structured duplicate bypass; chunk manifest; evaluation fingerprint | [TOK-01/02/03](../architecture/routing-token-economy.md); recall ölçümü; model hatası no-op olmaz |
-| T11b / T07,T11 | Edge revision, ended/invalidated ve sequence geçerliliği | [GUX-03](../product/graph-experience.md); replay, current traversal ve knowledge revision |
+| T11b / T07,T11 | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği | [GUX-03](../product/graph-experience.md); replay, current traversal ve knowledge revision |
 | T13b / T11b,T13 | Task cancel ve edge ending için farklı impact preview/compensating olay | GUX-02/05/08; aktif gereksinim veya downstream iş sessiz kapanmaz |
 | T18c / T18a,T18b | Kısa brief, since_revision/tombstone, bounded resync ve ayrıntı getir | CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz |
 | T20b / T11b,T13b,T19 | Graph durum sözlüğü, seçili task bağlamı, history/diff ve liste alternatifi | GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı |
@@ -517,8 +531,8 @@ P4 C03/C05 aynı sözleşmeyi farklı kaynak sahibi ve ekip yöneticisiyle doğr
 
 | Dilim / bağımlılık | Küçük teslim | Kabul ve faz |
 |---|---|---|
-| T04c / T04a | Source, command, trigger ve async result şemaları; ER composite key/N:M ilişki kontratı | P1a: DBR-01/02/03 fixture tanımı; HTTP/MCP mapping seçilen transport'ta açık |
-| T06e / T04c,T06a,T06b,T06c | Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression | P1a: SEQ-03/04/08, DBR-04; domain commit entegrasyonu T07/T08'de, erken scheduler ücretli çağrı açmaz |
+| T04c / T04a | DONE / P1a: Source, command, trigger ve async result şemaları; ER composite key/N:M ilişki kontratı | P1a: DBR-01/02/03 fixture tanımı; HTTP/MCP mapping seçilen transport'ta açık |
+| T06e / T04c,T06a,T06b,T06c | DONE / P1a: Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression | P1a: SEQ-03/04/08, DBR-04; domain commit entegrasyonu T07/T08'de, erken scheduler ücretli çağrı açmaz |
 | T09c / T06e,T09b | TRG-02 deterministik bypass, profil ve izin/rezervasyon kapısından koşullu semantik dispatch | P1a/P1b profil tamamlaması: SEQ-02/03/05/06; no-op/duplicate/manual mod çağrı sayacı; minimum bütçe guard önce |
 | T14c / T14a,T14b,T08b | Run sonucu→evidence→AC/DoD assessment→completion command akışı | P1a: SEQ-01/06, DBR-02/03; parent ve stale kanıt; runner yoksa not_run |
 | T18f / T18c,T06e | Query/result/notification cursor ve reconnect contract fixture | P1b: SEQ-02/08; UI fallback policy, stale görünümü; host otomatik tool çağırır varsayımı yok |
@@ -543,9 +557,9 @@ P2 yerleşimi takvim veya uygulama taahhüdü değildir. Faz yalnız feasibility
 
 | Dilim / bağımlılık | Küçük teslim | Kabul ve faz |
 |---|---|---|
-| T04d / T04b,T04c | Sonlu request/body/burst/concurrency config, erken admission, güvenli hata/transport eşlemesi | P1a ilk ingress: LIM-01/03/04 temel fixture; input limitleri pahalı parse/LLM'den önce, ret domain mutasyonu yapmaz |
-| T06f / T04d,T06d,T06e,T05b | Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure | P1a: LIM-05/08/09 yerel kısmı; receipt sonrası iş kaybolmaz, replay yan etkisiz |
-| T08c / T06f,T08b,T07b | Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı | P1a: LIM-02/06/07/08 sentetik; ilk model dispatch'i bu minimum rezervasyon guard'ına bağlı, T21b raporlama/settlement'i tamamlar |
+| T04d / T04b,T04c | DONE / P1a: Sonlu request/body/burst/concurrency config, erken admission, güvenli hata/transport eşlemesi | P1a ilk ingress: LIM-01/03/04 temel fixture; input limitleri pahalı parse/LLM'den önce, ret domain mutasyonu yapmaz |
+| T06f / T04d,T06d,T06e,T05b | DONE / P1a: Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure | P1a: LIM-05/08/09 yerel kısmı; receipt sonrası iş kaybolmaz, replay yan etkisiz |
+| T08c / T06f,T08b,T07b | DONE / P1a: Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı | P1a: LIM-02/06/07/08 sentetik; ilk model dispatch'i bu minimum rezervasyon guard'ına bağlı, T21b raporlama/settlement'i tamamlar |
 | T24j / T08c,T21b,T21c,T23e | Etkin limit/ret/rezervasyon admin görünümü ve tekrar üretilebilir limit-aşımı pilot raporu | P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run |
 
 T08c/T09b ilk model dispatch'inde provider/account ortak çıkış sınırını ve 429/retry davranışını da uygular. T28c bunu P3 dış yazma connector'larına taşır; C06 dağıtık atomik sayaç, tenant yük izolasyonu ve hosted ağ sınırını P4'te doğrular. T04/T06 temel ilkeleri, T08c tam kimlik/maliyet entegrasyonunu sağlar; deployment bu kapıları atlayamaz. Sayısal eşikler OPEN-12/16 ile seçilecek; ücretli veya dış sisteme yük testi yetkisi verilmiş değildir.
@@ -570,7 +584,7 @@ T09b'nin minimum bütçe guard'ı korunur; T09d bunun risk değerlendirmesini ta
 |---|---|---|---|
 | T05d / T05c,T08b | Session/span binding, konu segmenti ve kaynak→aday→record ilişki sözleşmesi | P1a: CHAT-01/04/05; seçilmemiş session, karışık proje, yanlış binding düzeltmesi ve ACL |
 | T10b / T10,T05d | Chat'ler arası duplicate/refinement/conflict ve geç kaynak reconciliation corpus'u | P1a: CHAT-02/03/04; kaynaklar korunur, benzerlik tek başına merge/approval değildir |
-| T06g / T06f | Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü | P1a: LAG-01–05 sentetik/crash; queue dolunca sahte receipt ve sessiz source drop yok |
+| T06g / T06f | DONE / P1a: Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü | P1a: LAG-01–05 sentetik/crash; queue dolunca sahte receipt ve sessiz source drop yok |
 | T18g / T18c,T10b,T20g,T06g | Bounded proje context/delta ve chat→task kaynak görünümü; stale/coverage UX | P1b: CHAT-05/06, LAG-06; host desteklenmiyorsa sync/stop iddiası yok |
 | T24l / T18g,T06g,T24k | Çoklu chat + burst/uzun yük + geciken provider/onay corpus raporu | P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı |
 

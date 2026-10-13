@@ -52,26 +52,34 @@
     },
     "T05": {
       "core_acceptance": "Aynı adlı projeler ayrılır; belirsiz binding yazma yapmaz; query de scope denetler.",
-      "core_verified": false,
-      "evidence": [],
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
       "release_scope": "MVP"
     },
     "T06": {
       "core_acceptance": "Aynı event iki kez bir etki; aynı metin farklı mesajda korunur; crash cursor atlatmaz.",
-      "core_verified": false,
-      "evidence": [],
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
       "release_scope": "MVP"
     },
     "T07": {
       "core_acceptance": "UPDATE/DELETE event API yok; replay aynı digest; migration sürümü kayıtlı.",
-      "core_verified": false,
-      "evidence": [],
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
       "release_scope": "MVP"
     },
     "T08": {
       "core_acceptance": "Yarım graph oluşmaz; key/digest çakışması conflict; agent onay taklit edemez.",
-      "core_verified": false,
-      "evidence": [],
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
       "release_scope": "MVP"
     },
     "T09": {
@@ -88,8 +96,10 @@
     },
     "T11": {
       "core_acceptance": "OR kalan gerekçeyi korur; boş gerekçe unknown; supersession cycle reddi.",
-      "core_verified": false,
-      "evidence": [],
+      "core_verified": true,
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
       "release_scope": "MVP"
     },
     "T12": {
@@ -655,7 +665,7 @@
     "T04a": {
       "parent": "T04",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T04"
       ],
@@ -673,15 +683,15 @@
         "T04"
       ],
       "classification": "integration",
-      "owner": "T06",
-      "first_use_gate": "T06",
-      "reason": "before first network ingress; disabled transport must remain disabled",
+      "owner": "T16",
+      "first_use_gate": "T16",
+      "reason": "Manual synthetic core exposes no network ingress; genuine transport/origin/consent gate remains before first native adapter activation.",
       "required_for_parent_closure": false
     },
     "T04c": {
       "parent": "T04",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T04a"
       ],
@@ -694,7 +704,7 @@
     "T04d": {
       "parent": "T04",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T04b",
         "T04c"
@@ -747,7 +757,7 @@
     "T05a": {
       "parent": "T05",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T05"
       ],
@@ -801,7 +811,7 @@
     "T06a": {
       "parent": "T06",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T06"
       ],
@@ -814,7 +824,7 @@
     "T06b": {
       "parent": "T06",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T06"
       ],
@@ -827,7 +837,7 @@
     "T06c": {
       "parent": "T06",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T06"
       ],
@@ -840,7 +850,7 @@
     "T06e": {
       "parent": "T06",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T04c",
         "T06a",
@@ -856,7 +866,7 @@
     "T06f": {
       "parent": "T06",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T04d",
         "T06d",
@@ -872,7 +882,7 @@
     "T06g": {
       "parent": "T06",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T06f"
       ],
@@ -885,7 +895,7 @@
     "T07a": {
       "parent": "T07",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T07"
       ],
@@ -898,7 +908,7 @@
     "T07c": {
       "parent": "T07",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "DONE",
       "dependencies": [
         "T06",
         "T07a"
@@ -912,7 +922,7 @@
     "T08a": {
       "parent": "T08",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T08"
       ],
@@ -925,7 +935,7 @@
     "T08c": {
       "parent": "T08",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T06f",
         "T08b",
@@ -1024,7 +1034,7 @@
     "T11c": {
       "parent": "T11",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "DONE",
       "dependencies": [
         "T11"
       ],
@@ -1037,7 +1047,7 @@
     "T11b": {
       "parent": "T11",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T07",
         "T11"
@@ -1847,7 +1857,7 @@
     "T05b": {
       "parent": "T05",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T04a",
         "T05a"
@@ -1861,7 +1871,7 @@
     "T08b": {
       "parent": "T08",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T05b",
         "T08a"
@@ -1875,7 +1885,7 @@
     "T06d": {
       "parent": "T06",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T06a",
         "T05b"
@@ -1889,7 +1899,7 @@
     "T07b": {
       "parent": "T07",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T07a",
         "T08b"

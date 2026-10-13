@@ -14,9 +14,10 @@ def validate(root=ROOT, manifest=None):
     tasks = {t['id']: t for t in data['tasks']}
     rows = {s['id']: s for t in data['tasks'] for s in t['subtasks']}
     for line in (root / 'docs/delivery/team-data-plan.md').read_text().splitlines():
-        match = re.match(r'^\| (T\d+[a-z]+) / ([^|]+) \|', line)
+        match = re.match(r'^\| (T\d+[a-z]+) / ([^|]+) \| ([^|]+)', line)
         if match and match[1] not in rows:
-            rows[match[1]] = dict(status='UNSPECIFIED', dependencies=match[2])
+            state=re.search(r'\b(DONE|TODO|IN_PROGRESS|PROPOSED|BLOCKED|CANCELLED)\b',match[3])
+            rows[match[1]] = dict(status=state[0] if state else 'UNSPECIFIED', dependencies=match[2])
     if manifest['format'] != 'decivora-task-closure-1' or set(manifest['tasks']) != set(tasks) or set(manifest['subtasks']) != set(rows):
         raise ValueError('Closure manifest must cover exact canonical task/subtask inventory.')
     if manifest['mvp_criteria'] != [f'AC-{i:02}' for i in range(1, 15)]:
@@ -51,6 +52,21 @@ def validate(root=ROOT, manifest=None):
             graph[parent].append(sid)
         elif classification in ('integration', 'release'):
             graph[row['owner']].append(sid)
+    visiting, visited = set(), set()
+    def walk(node):
+        if node in visiting:
+            raise ValueError('Closure dependency cycle: ' + node)
+        if node in visited:
+            return
+        visiting.add(node)
+        for dep in graph.get(node, []):
+            if dep not in graph:
+                raise ValueError('Unresolved task dependency: ' + dep)
+            walk(dep)
+        visiting.remove(node)
+        visited.add(node)
+    for node in graph:
+        walk(node)
     for tid, task in tasks.items():
         record = manifest['tasks'][tid]
         if record['core_acceptance'] != task['details']['Kabul']:
@@ -67,21 +83,6 @@ def validate(root=ROOT, manifest=None):
                 required |= row['owner'] == tid and row['classification'] in ('integration', 'release')
                 if required and row['status'] != 'DONE':
                     raise ValueError('Done has unfinished required work: ' + sid)
-    visiting, visited = set(), set()
-    def walk(node):
-        if node in visiting:
-            raise ValueError('Closure dependency cycle: ' + node)
-        if node in visited:
-            return
-        visiting.add(node)
-        for dep in graph.get(node, []):
-            if dep not in graph:
-                raise ValueError('Unresolved task dependency: ' + dep)
-            walk(dep)
-        visiting.remove(node)
-        visited.add(node)
-    for node in graph:
-        walk(node)
     return dict(main_tasks=len(tasks), subtasks=len(rows), dependency_cycles=0,
                 scope='planning consistency only; runtime/first-use/release evidence still required')
 
