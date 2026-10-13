@@ -77,3 +77,7 @@ Bozuk schema/alan tipi teknik hata kartıdır; anlam sorusu diye kullanıcıya d
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [Yerel workflow/UI](../quality/workflow-ui-runtime.md) uygulandı: Review inbox / Board-List / end-panel / source-history / current human-verification. ASK/LATE tam agent/host UI hâlâ açık; manuel soru/cevap/lifecycle/decision UI artık var. Stage değişimi scope/ücret/erişim onayı değildir; ayrı digest/authority kuralları korunur.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

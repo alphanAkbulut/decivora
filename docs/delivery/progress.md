@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 11 |
-| TODO | 12 |
+| IN_PROGRESS | 14 |
+| TODO | 9 |
 
 ## Tamamlanmış küçük teslimler
 
@@ -71,6 +71,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T13a | T13 | DONE | DONE — Onay token'ı snapshot/policy/digest ile bağla |
 | T13b | T13 | DONE | DONE — Task cancel ve edge ending için farklı impact preview/compensating olay |
 | T13c | T13 | DONE | DONE — İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi |
+| T18a | T18 | DONE | DONE / P1b: Scope/snapshot-bound query cursor ve context limits |
 
 ## Açık fazda neler değişti?
 
@@ -160,6 +161,30 @@ Son ilerleme kaydı yok.
 
 Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
+### T15 · Teknik kanıt kapısı
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T18 · Minimal MCP ve cross-agent read
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 ### T19 · Proje seçimi ve Review Inbox UI
 
 Son ilerleme kaydı yok.
@@ -173,6 +198,18 @@ Son ilerleme kaydı yok.
 Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 ### T20 · Board, Graph ve Timeline
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T21 · Routing etiketleri ve usage kaydı
 
 Son ilerleme kaydı yok.
 
@@ -288,13 +325,13 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T12 | P1a | DONE | Impact preview ve apply planı | T11 | 1 |
 | T13 | P1a | IN_PROGRESS | Review işlemi ve güvenilir onay | T12 | 5 |
 | T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 | 4 |
-| T15 | P1a | TODO | Teknik kanıt kapısı | T14, T07c | 1 |
+| T15 | P1a | IN_PROGRESS | Teknik kanıt kapısı | T14, T07c | 1 |
 | T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
 | T17 | P1b | TODO | Codex adapter | T16 | 0 |
-| T18 | P1b | TODO | Minimal MCP ve cross-agent read | T17 | 7 |
+| T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 | 7 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
-| T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 | 2 |
+| T21 | P1b | IN_PROGRESS | Routing etiketleri ve usage kaydı | T20 | 2 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 | 1 |
 | T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 | 3 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 | 15 |
@@ -313,4 +350,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `8191f6156a6056e1458c15bf6da2ce6278026c741f80ebc78b9027b625b521ea`
+Kaynak fingerprint: `d0f561f2e2c92bde9e1a8eb08ec6223816e04a639291177906009bf519ad5294`

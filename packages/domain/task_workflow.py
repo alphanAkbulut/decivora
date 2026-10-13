@@ -25,27 +25,73 @@ class TaskWorkflowService:
         self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,action,canonical(value)))
     def _verification(self,project,task):
         record=self._task(project,task);cs=contracts(self.core,project,task);contract=cs[-1] if cs else None
-        evidence=self._rows(project,task,'criterion_evidence');rows=[]
+        evidence=sorted(self._rows(project,task,'criterion_evidence')+self._rows(project,task,'file_criterion_evidence'),key=lambda r:r['sequence']);rows=[]
         if contract:
             for criterion in contract['contract']['criteria']+contract['contract']['dod']:
                 candidates=[e for e in evidence if e['criterion']==criterion['id']]
                 latest=candidates[-1] if candidates else None
+                file_unknown=False
                 current=bool(latest and latest['task_version']==record['version'] and latest['contract_version']==contract['version'])
-                result='stale' if latest and not current else latest['status'] if current else 'not_run'
+                if current and criterion['method']=='file_check':
+                    from packages.verification.files import FileVerificationService
+                    file_state=FileVerificationService(self.core).current(project,task,criterion['id'],latest) if latest.get('authority')=='local_file_observer' else False
+                    file_unknown=file_state is None;current=file_state is True
+                result='unknown' if file_unknown else 'stale' if latest and not current else latest['status'] if current else 'not_run'
                 rows.append(dict(criterion,status=result,evidence=latest))
         stale=bool(contract and contract['contract']['task_version']!=record['version'])
         required=[r for r in rows if r['required'] and r['applicable']]
         # No vacuous Done: at least one applicable required acceptance/DoD item.
         passed=bool(contract and not stale and required and all(r['status']=='passed' for r in required))
         return dict(contract_version=contract['version'] if contract else 0,stale=stale,results=rows,passed=passed,history=evidence)
-    def _completion_basis(self,project,task):
+    def _context_component(self,project,task):
+        cache=getattr(self.core,'workflow_context_cache',{})
+        if project not in cache:
+            edges=self.core.db.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? LIMIT 1001',(self.core.workspace,project)).fetchall()
+            rows=self.core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? LIMIT 2001',(self.core.workspace,project)).fetchall()
+            complete=len(edges)<=1000 and len(rows)<=2000
+            cache[project]=dict(complete=complete,edges=edges,records={rid:[version,digest(body)] for rid,version,body in rows})
+            self.core.workflow_context_cache=cache
+        data=cache[project]
+        if not data['complete']:return dict(complete=False,records=[],relations=[],knowledge_revision=self.core.db.execute('SELECT knowledge_revision FROM projects WHERE workspace=? AND id=?',(self.core.workspace,project)).fetchone()[0])
+        reached={task};pending=[task];out={};replacement={}
+        for e in data['edges']:
+            if e[4]=='asserted':
+                out.setdefault(e[0],[]).append(e[1])
+                if e[2]=='supersedes':replacement.setdefault(e[1],[]).append(e[0])
+        while pending:
+            rid=pending.pop()
+            for neighbor in out.get(rid,[])+replacement.get(rid,[]):
+                if neighbor not in reached:reached.add(neighbor);pending.append(neighbor)
+        relations=sorted(e for e in data['edges'] if e[0] in reached or e[2]=='supersedes' and e[1] in reached)
+        return dict(complete=True,records=[dict(id=rid,record=data['records'].get(rid)) for rid in sorted(reached)],relations=relations)
+    def _legacy_context_changed(self,project,task,done):
+        context=self._context_component(project,task)
+        if not context['complete']:return True
+        reached={r['id'] for r in context['records']}
+        for approval, in self.core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='apply' AND seq>?",(self.core.workspace,project,done['sequence'])).fetchall():
+            command=self.core.db.execute('SELECT command_key FROM approvals WHERE id=? AND workspace=? AND project=?',(approval,self.core.workspace,project)).fetchone()
+            if not command:continue
+            result=self.core.db.execute('SELECT result FROM commands WHERE workspace=? AND project=? AND key=?',(self.core.workspace,project,command[0])).fetchone()
+            if not result:continue
+            for seq in json.loads(result[0])['event_sequences']:
+                row=self.core.db.execute('SELECT payload FROM events WHERE workspace=? AND project=? AND seq=?',(self.core.workspace,project,seq)).fetchone()
+                if not row:continue
+                op=json.loads(row[0])
+                if op['op'] in ('link','end_link'):
+                    if op['origin'] in reached or op['kind']=='supersedes' and op['target'] in reached:return True
+                elif op.get('id',op.get('task')) in reached:return True
+        return False
+    def _completion_basis(self,project,task,*,legacy=False):
         from packages.domain.questions import QuestionService
         dependencies=[]
         for target,revision in self.core.db.execute("SELECT target,revision FROM edges WHERE workspace=? AND project=? AND origin=? AND kind='depends_on' AND state='asserted' ORDER BY target",(self.core.workspace,project,task)):
             row=self.core.db.execute('SELECT version,body FROM records WHERE workspace=? AND project=? AND id=?',(self.core.workspace,project,target)).fetchone()
             dependencies.append(dict(target=target,revision=revision,record=list(row) if row else None,stages=self._rows(project,target,'task_stage'),evidence=self._rows(project,target,'criterion_evidence'),contracts=contracts(self.core,project,target)))
         questions=[q for q in QuestionService(self.core)._view(project)['questions'] if q.get('task')==task]
-        return digest(canonical(dict(record=self._task(project,task),contracts=contracts(self.core,project,task),evidence=self._rows(project,task,'criterion_evidence'),blocker=TaskBlockerService(self.core)._view(project,task),dependencies=dependencies,questions=questions,question_resolutions=[json.loads(raw) for raw, in self.core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='question_decision_applied'",(self.core.workspace,project)) if json.loads(raw).get('question') in {q['id'] for q in questions}])))
+        value=dict(record=self._task(project,task),contracts=contracts(self.core,project,task),evidence=self._rows(project,task,'criterion_evidence'),blocker=TaskBlockerService(self.core)._view(project,task),dependencies=dependencies,questions=questions,question_resolutions=[json.loads(raw) for raw, in self.core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='question_decision_applied'",(self.core.workspace,project)) if json.loads(raw).get('question') in {q['id'] for q in questions}])
+        if not legacy:value.update(context_component=self._context_component(project,task),evidence=value['evidence']+self._rows(project,task,'file_criterion_evidence'),file_bindings=self._rows(project,task,'file_criterion_binding'))
+        return digest(canonical(value))
+
     def _stage(self,project,task):
         record=self._task(project,task);rows=self._rows(project,task,'task_stage')
         lifecycle=self.core.db.execute("SELECT version,payload FROM events WHERE workspace=? AND project=? AND stream=? AND kind='task_lifecycle' ORDER BY seq DESC LIMIT 1",(self.core.workspace,project,task)).fetchone()
@@ -60,7 +106,7 @@ class TaskWorkflowService:
         elif not current and lifecycle:origin='lifecycle_reopened'
         verification=self._verification(project,task)
         # New evidence failure or changed task/contract invalidates CURRENT success.
-        if stage=='Done' and (not verification['passed'] or current[-1]['contract_version']!=verification['contract_version'] or current[-1].get('completion_basis')!=self._completion_basis(project,task)):stage='Awaiting Verification';origin='completion_stale'
+        if stage=='Done' and (not verification['passed'] or current[-1]['contract_version']!=verification['contract_version'] or current[-1].get('completion_basis')!=self._completion_basis(project,task,legacy=current[-1].get('format')=='decivora-task-stage-1') or current[-1].get('format')=='decivora-task-stage-1' and self._legacy_context_changed(project,task,current[-1])):stage='Awaiting Verification';origin='completion_stale'
         return dict(stage=stage,revision=len(rows),origin=origin,history=rows,verification=verification)
     def _assessment(self,project,task):
         record=self._task(project,task);manual=TaskBlockerService(self.core)._view(project,task);blockers=[]
@@ -81,6 +127,7 @@ class TaskWorkflowService:
             if q.get('task')==task and (q['status'] in ('Open','Deferred') or q['status']=='Answered' and (q['id'],q['revision']) not in resolved):
                 blockers.append(dict(kind='approval' if q['status']=='Answered' else 'decision',gate='finish',reason=q['text'],next_action='Approve and apply the linked decision.' if q['status']=='Answered' else 'Answer the linked decision question.',owner='unassigned',source=q['id']))
         blocks=[r[0] for r in self.core.db.execute("SELECT origin FROM edges WHERE workspace=? AND project=? AND target=? AND kind='depends_on' AND state='asserted'",(self.core.workspace,project,task))]
+        if not self._context_component(project,task)['complete']:blockers.append(dict(kind='context',gate='finish',reason='Recorded context exceeds local assessment bounds.',next_action='Review or narrow context before completion.',owner='unassigned',source='recorded_context_limit'))
         start=any(b['gate'] in ('start','both') for b in blockers);finish=any(b["gate"] in ("finish","both") for b in blockers)
         return dict(blocked=bool(blockers),start_blocked=start,finish_blocked=finish,blockers=blockers,dependencies=dependencies,blocks=blocks,readiness='Blocked' if start else 'Needs Review' if dependencies and any(d['status']=='unknown' for d in dependencies) else 'Ready' if contracts(self.core,project,task) and not self._verification(project,task)['stale'] else 'Needs Review',coverage='recorded_relations_only')
     def view(self,scope,project,task):
@@ -108,7 +155,7 @@ class TaskWorkflowService:
                 if not verification['passed']:raise ContractError('verification_required','All required current AC/DoD evidence must pass.')
                 if assessment['finish_blocked']:raise ContractError('task_blocked','Resolve completion-gate impediments first.')
                 if not scope_reviewed:raise ContractError('scope_review_required','Explicit current scope/impact review acknowledgment required.')
-            self._save(scope,project,'task_stage',dict(task=task,task_version=task_version,stage=stage,revision=base_revision+1,reason=reason,key=key,request_digest=digest(canonical(request)),contract_version=verification['contract_version'],recorded_at=time.time(),format='decivora-task-stage-1',completion_basis=self._completion_basis(project,task) if stage=='Done' else None))
+            self._save(scope,project,'task_stage',dict(task=task,task_version=task_version,stage=stage,revision=base_revision+1,reason=reason,key=key,request_digest=digest(canonical(request)),contract_version=verification['contract_version'],recorded_at=time.time(),format='decivora-task-stage-2',basis_version=2,completion_basis=self._completion_basis(project,task) if stage=='Done' else None))
             return self.view(scope,project,task)
     def evidence(self,scope,project,*,task,task_version,contract_version,criterion,status,reference,note,key):
         with self.core.transaction():

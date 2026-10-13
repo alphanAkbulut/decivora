@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 22 belgede 43 Mermaid şeması — onaylı workflow ve insan incelemesi akışı, 2026-10-14.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 23 belgede 44 Mermaid şeması — API-independent local delivery, 2026-10-14.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -24,6 +24,7 @@
 | [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
 | [docs/architecture/storage-memory-capacity.md](../../docs/architecture/storage-memory-capacity.md) | 1 |
 | [docs/architecture/task-lifecycle.md](../../docs/architecture/task-lifecycle.md) | 1 |
+| [docs/delivery/api-independent-development.md](../../docs/delivery/api-independent-development.md) | 1 |
 | [docs/delivery/team-data-plan.md](../../docs/delivery/team-data-plan.md) | 1 |
 | [docs/product/current-direction.md](../../docs/product/current-direction.md) | 1 |
 | [docs/product/decision-map.md](../../docs/product/decision-map.md) | 2 |
@@ -163,3 +164,7 @@ Bir yeni [local preview](../architecture/local-preview.md) kaynağı cached11.17
 ## 2026-10-14 — onaylı workflow ve UI
 
 43 kaynak / 22 belge envanteri karşılaştırıldı. Değişen local-preview ve yeni workflow-ui-runtime gerçek cached Mermaid render, SVG XML ve kaynak/artefakt hash ile doğrulandı. Önceki değişmeyen kaynakların hash/provenance kayıtları korunur; hepsi yeniden render edilmiş sayılmaz. README, roadmap, karar haritası ve ER/sequence kaynaklarının vizyon sınırları korunur; fiziksel SQL değişmedi. Otomatik verifier/native erişim ileriki iş olarak kalır.
+
+## 2026-10-14 — API-independent delivery
+
+Changed local-preview + new api-independent-development blocks rendered with cached Mermaid11.17.2, XML/hash/title/description and visual review. All44source hashes/inventory verified; unchanged records keep original provenance, not claimed rerendered. No product/model/native success inferred from diagrams.

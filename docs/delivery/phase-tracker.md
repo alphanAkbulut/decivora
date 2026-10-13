@@ -65,7 +65,7 @@ Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtil
 | T12 | P1a | DONE | Impact preview ve apply planı | T11 |
 | T13 | P1a | IN_PROGRESS | Review işlemi ve güvenilir onay | T12 |
 | T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 |
-| T15 | P1a | TODO | Teknik kanıt kapısı | T14,T07c |
+| T15 | P1a | IN_PROGRESS | Teknik kanıt kapısı | T14,T07c |
 
 T07c erken minimal DB+payload restore teslimidir; T15a bunu teknik kapıda sınar; T23a kapsamlı operasyon/migration/privacy restore devamıdır.
 
@@ -77,10 +77,10 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 |---|---|---|---|---|
 | T16 | P1b | TODO | Claude Code adapter | T15 |
 | T17 | P1b | TODO | Codex adapter | T16 |
-| T18 | P1b | TODO | Minimal MCP ve cross-agent read | T17 |
+| T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 |
-| T21 | P1b | TODO | Routing etiketleri ve usage kaydı | T20 |
+| T21 | P1b | IN_PROGRESS | Routing etiketleri ve usage kaydı | T20 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 |
 | T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 |
 | T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 |

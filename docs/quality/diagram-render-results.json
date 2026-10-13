@@ -682,18 +682,6 @@
       "export_normalization": "Self-closed HTML br for standalone SVG XML."
     },
     {
-      "path": "docs/architecture/local-preview.md",
-      "block": 1,
-      "source_sha256": "e9a79dbd2b68421ad29950201f6428f3ced1380d8659446c65c950d5314a845d",
-      "status": "rendered",
-      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
-      "description_present": true,
-      "view_box": "0 0 1652.609375 2087.279296875",
-      "artifact": "assets/diagrams/local-preview-1.svg",
-      "error": null,
-      "svg_sha256": "0712af6d56cbec62eb0d20783c1ab81b323307fb97695529ca0b5a5fce762bf7"
-    },
-    {
       "path": "docs/quality/workflow-ui-runtime.md",
       "block": 1,
       "source_sha256": "465511350fd504ad97a56aad2823cb268123ab0c37c100f90171ac202c62e9ca",
@@ -704,6 +692,30 @@
       "artifact": "assets/diagrams/workflow-ui-runtime-1.svg",
       "error": null,
       "svg_sha256": "4fa46585499b53e679855d8a73dd8b2ecb5834588356420685319bc4b21d4bca"
+    },
+    {
+      "path": "docs/architecture/local-preview.md",
+      "block": 1,
+      "source_sha256": "cf5dfd7ff6bd3a73bda42f03c508b09be61cde0a7865e78ee0ab5ac2d514208b",
+      "status": "rendered",
+      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+      "description_present": true,
+      "view_box": "0 0 1660.09375 2135.279296875",
+      "artifact": "assets/diagrams/local-preview-1.svg",
+      "error": null,
+      "svg_sha256": "62d578fb9745a7a74e02c30c4a455807cc0d1b11ea567af054083c0bcdb9f045"
+    },
+    {
+      "path": "docs/delivery/api-independent-development.md",
+      "block": 1,
+      "source_sha256": "75da6e2937b6b3b53cd215e78433da6ee36e8cf42c6f1ccdb167e7d21c8c55f3",
+      "status": "rendered",
+      "title": "API-independent local implementation and explicit activation gates",
+      "description_present": true,
+      "view_box": "0 0 896 1085.4720458984375",
+      "artifact": "assets/diagrams/api-independent-1.svg",
+      "error": null,
+      "svg_sha256": "9f6fefae4ab3db5085f28918546079d725e7faa26a8af7f6a61f4a638ad7c6b6"
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -1021,6 +1033,24 @@
           "artifact": "assets/diagrams/local-preview-1.svg",
           "error": null,
           "svg_sha256": "00ae469ed91b23b928f9990b90ea9f9047059d7279f1672398442d760971e7b1"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "reason": "API-independent local MCP/file/project/routing implementation",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "e9a79dbd2b68421ad29950201f6428f3ced1380d8659446c65c950d5314a845d",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 1652.609375 2087.279296875",
+          "artifact": "assets/diagrams/local-preview-1.svg",
+          "error": null,
+          "svg_sha256": "0712af6d56cbec62eb0d20783c1ab81b323307fb97695529ca0b5a5fce762bf7"
         }
       ]
     }

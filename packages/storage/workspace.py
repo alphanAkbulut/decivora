@@ -104,6 +104,7 @@ class Workspace:
     def transaction(self):
         try:
             self.db.execute('BEGIN IMMEDIATE')
+            self.file_observation_cache={};self.file_read_limit_reached=False;self.workflow_context_cache={};self.mcp_visibility_cache={}
             yield
             self.db.execute('COMMIT')
         except Exception as error:
@@ -116,7 +117,8 @@ class Workspace:
     def read_snapshot(self):
         """Bind authorization and data reads to one SQLite snapshot; reuse outer TX."""
         owned = not self.db.in_transaction
-        if owned: self.db.execute('BEGIN')
+        if owned:
+            self.db.execute('BEGIN');self.file_observation_cache={};self.file_read_limit_reached=False;self.workflow_context_cache={};self.mcp_visibility_cache={}
         try:
             yield
         finally:
@@ -422,6 +424,7 @@ class Workspace:
             raise ContractError('invalid_record','Record text is invalid or exceeds limits.')
 
     def _project_event(self,op,project,seq):
+        self.workflow_context_cache={};self.mcp_visibility_cache={}
         if op['op']=='create':
             self.db.execute('INSERT INTO records VALUES (?,?,?,?,?)',(self.workspace,project,op['id'],1,canonical(op['body'])))
             if 'source_seq' in op:self.db.execute('INSERT INTO record_sources VALUES (?,?,?,?)',(self.workspace,project,op['id'],op['source_seq']))

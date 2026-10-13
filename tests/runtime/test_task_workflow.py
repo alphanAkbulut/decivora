@@ -95,7 +95,7 @@ class WorkflowTests(unittest.TestCase):
     def test_published_payload_required_fields_and_statuses_match_real_events(self):
         self.complete()
         root=Path(__file__).resolve().parents[2]
-        for action,name in [('task_stage','task-stage'),('criterion_evidence','criterion-evidence')]:
+        for action,name in [('task_stage','task-stage-v2'),('criterion_evidence','criterion-evidence')]:
             schema=json.loads((root/'manifests'/f'{name}.schema.json').read_text())
             rows=self.core.db.execute('SELECT ref FROM audit WHERE action=?',(action,)).fetchall()
             self.assertTrue(rows)
@@ -107,3 +107,18 @@ class WorkflowTests(unittest.TestCase):
                     if 'enum' in spec:self.assertIn(payload[key],spec['enum'])
                     if 'const' in spec:self.assertEqual(payload[key],spec['const'])
             self.assertFalse(schema['additionalProperties'])
+
+    def test_related_decision_change_invalidates_completion_but_unrelated_change_does_not(self):
+        decision=self.apply([dict(op='create',id='d',body=dict(type='Decision',title='Storage choice',description='SQLite'))])['temp_ids']['d'];self.apply([dict(op='link',origin=self.task,target=decision,kind='required_by')]);self.complete()
+        downstream=self.create('Unrelated task');self.apply([dict(op='link',origin=downstream,target=self.task,kind='depends_on')]);self.assertEqual(self.s.view(self.owner,'p',self.task)['stage'],'Done')
+        self.apply([dict(op='update',id=decision,base_version=1,body=dict(type='Decision',title='New storage choice',description='Changed scope'))]);self.assertEqual(self.s.view(self.owner,'p',self.task)['stage'],'Awaiting Verification')
+
+    def test_legacy_done_receipt_survives_upgrade_until_its_reason_changes(self):
+        decision=self.apply([dict(op='create',id='d',body=dict(type='Decision',title='Legacy reason',description='SQLite'))])['temp_ids']['d'];self.apply([dict(op='link',origin=self.task,target=decision,kind='required_by')])
+        original=self.s._save
+        def legacy_save(scope,project,action,value):
+            if action=='task_stage' and value['stage']=='Done':value=dict(value);value.pop('basis_version');value['format']='decivora-task-stage-1';value['completion_basis']=self.s._completion_basis(project,self.task,legacy=True)
+            return original(scope,project,action,value)
+        self.s._save=legacy_save;self.complete();self.s._save=original
+        self.assertEqual(self.s.view(self.owner,'p',self.task)['stage'],'Done');downstream=self.create('Downstream');self.apply([dict(op='link',origin=downstream,target=self.task,kind='depends_on')]);self.assertEqual(self.s.view(self.owner,'p',self.task)['stage'],'Done')
+        self.apply([dict(op='update',id=decision,base_version=1,body=dict(type='Decision',title='Changed reason',description='Changed architecture'))]);self.assertEqual(self.s.view(self.owner,'p',self.task)['stage'],'Awaiting Verification')

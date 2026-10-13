@@ -114,3 +114,9 @@ Bu gereksinimlerin uygulanma sırası [backlog ek sözleşmelerinde](../delivery
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [TaskStage](../../manifests/task-stage.schema.json) ve [criterion evidence](../../manifests/criterion-evidence.schema.json) versioned local audit payloadları; schema/SQLformat1 değişmez. [Workflow kodu/sınırlar](../quality/workflow-ui-runtime.md). Stage/verification/approval/job state birbirinden ayrıdır.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.
+
+Current [TaskStage v2 payload](../../manifests/task-stage-v2.schema.json) preserves v1 compatibility. [File binding](../../manifests/file-criterion-binding.schema.json), [file evidence](../../manifests/file-criterion-evidence.schema.json), [routing](../../manifests/work-routing.schema.json) and [five stdio tools](../../manifests/local-mcp-tools.json) are current local contracts. Full JSON Schema certification/native interoperability not claimed.

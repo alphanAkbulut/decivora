@@ -163,3 +163,58 @@ class LocalAppTests(unittest.TestCase):
             with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED) as z:z.writestr(name,data);z.writestr('manifest.json',manifest)
             with self.assertRaises(ContractError):inspect_bundle(out.getvalue())
         with self.assertRaises(ContractError):inspect_bundle(b'not a zip')
+
+    def test_file_check_http_recipe_and_criterion_results(self):
+        import hashlib
+        from packages.verification.files import FileChecker
+        root=Path(self.temp.name)/'approved-root';root.mkdir();(root/'output.txt').write_bytes(b'approved');self.server.app.file_checker=FileChecker(root)
+        self.call('/api/command',dict(action='create_task',title='File criterion',description='Exact file content only'));task=self.call('/api/state')[1]['tasks'][0];row=lambda rid:dict(id=rid,statement='Expected exact file content',method='file_check',required=True,applicable=True,applicability_reason='')
+        self.assertEqual(self.call('/api/command',dict(action='acceptance',task=task['id'],task_version=1,base_contract=0,criteria=[row('AC1')],dod=[row('DOD1')],reason='Check coverage approved',acknowledged_changes=[]))[0],200)
+        self.call('/api/command',dict(action='start',task=task['id']))
+        self.assertEqual(self.call('/api/command',dict(action='workflow_transition',task=task['id'],task_version=1,base_revision=1,stage='In Review',reason='Implementation handed off',key='handoff',scope_reviewed=False))[0],200)
+        for rid in ('AC1','DOD1'):
+            self.assertEqual(self.call('/api/command',dict(action='bind_file_check',task=task['id'],task_version=1,contract_version=1,criterion=rid,path='output.txt',expected_sha256=hashlib.sha256(b'approved').hexdigest(),reason='This criterion means exactly this file hash',key='bind'+rid))[0],200)
+            code,result,_=self.call('/api/command',dict(action='run_file_check',task=task['id'],task_version=1,contract_version=1,criterion=rid,binding_revision=1,key='check'+rid));self.assertEqual(code,200);self.assertEqual(result['status'],'passed')
+        current=self.call('/api/state')[1]['tasks'][0];self.assertTrue(current['workflow']['verification']['passed']);self.assertFalse(current['acceptance']['completed'])
+        (root/'output.txt').write_bytes(b'changed');self.assertFalse(self.call('/api/state')[1]['tasks'][0]['workflow']['verification']['passed'])
+    def test_mcp_proposal_http_review_is_separate_and_agent_role_guarded(self):
+        from packages.mcp.server import Server
+        with self.server.app.core() as core:
+            a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'coding_agent',kind='agent',readable=frozenset({'personal'}),writable=frozenset({'personal'}),active=True,base_revision=a.revision());revision=core.project(a.issue_scope('local_owner'),'personal')['knowledge_revision']
+        Server(self.path,'local_ui_workspace','coding_agent').call('submit_changeset',dict(project_id='personal',key='draft',base_revision=revision,operations=[dict(op='create',id='t',body=dict(type='Task',title='Agent draft',description='Human review required'))]))
+        self.assertEqual(self.call('/api/state')[1]['agent_proposals'][0]['state'],'Prepared');self.assertEqual(self.call('/api/state')[1]['tasks'],[])
+        self.assertEqual(self.call('/api/command',dict(action='apply_agent_proposal',key='draft'))[0],409)
+        self.assertEqual(self.call('/api/command',dict(action='approve_agent_proposal',key='draft'))[0],200);self.assertEqual(self.call('/api/state')[1]['tasks'],[])
+        self.assertEqual(self.call('/api/command',dict(action='apply_agent_proposal',key='draft'))[0],200);self.assertEqual(len(self.call('/api/state')[1]['tasks']),1)
+
+    def test_recent_health_errors_are_bounded_and_never_store_request_text(self):
+        marker='sensitive_payload_marker'
+        self.call('/api/command',dict(action='unknown',text=marker))
+        for i in range(30):self.call('/private/'+marker+str(i))
+        health=self.call('/api/state')[1]['health'];self.assertFalse(health['persistent']);self.assertEqual(len(health['recent_errors']),25);self.assertNotIn(marker,json.dumps(health));self.assertTrue(all(e['endpoint']=='other' for e in health['recent_errors']))
+
+    def test_project_selection_scope_is_explicit_and_tabs_do_not_share_an_active_project(self):
+        with self.server.app.core() as core:
+            a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'local_owner',kind='human',readable=frozenset({'personal','other'}),writable=frozenset({'personal','other'}),active=True,base_revision=a.revision());core.create_project(a.issue_scope('local_owner'),'other','Same name')
+        self.assertEqual(self.call('/api/command',dict(project_id='other',command=dict(action='create_task',title='Other task',description='Only other')))[0],200)
+        self.assertEqual(self.call('/api/state')[1]['tasks'],[]);self.assertEqual(self.call('/api/state?project_id=other')[1]['tasks'][0]['body']['title'],'Other task')
+        self.assertEqual(len(self.call('/api/state')[1]['project_choices']),2)
+        self.assertEqual(self.call('/api/state?project_id=foreign')[0],409)
+        self.assertEqual(self.call('/api/state?project_id=other&project_id=personal')[0],400)
+        self.assertEqual(self.call('/api/command',dict(project_id='foreign',command=dict(action='create_task',title='Denied',description='')))[0],409)
+        self.assertEqual(self.call('/api/state')[1]['tasks'],[])
+    def test_project_envelope_extra_fields_and_cross_project_task_id_rejected(self):
+        self.call('/api/command',dict(action='create_task',title='Personal task',description=''));task=self.call('/api/state')[1]['tasks'][0]
+        with self.server.app.core() as core:
+            a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'local_owner',kind='human',readable=frozenset({'personal','other'}),writable=frozenset({'personal','other'}),active=True,base_revision=a.revision());core.create_project(a.issue_scope('local_owner'),'other','Other')
+        self.assertEqual(self.call('/api/command',dict(project_id='other',command=dict(action='start',task=task['id'])))[0],409)
+        self.assertEqual(self.call('/api/command',dict(project_id='other',command=dict(action='create_task',title='A',description=''),approved=True))[0],409)
+        self.assertEqual(self.call('/api/state?project_id=other')[1]['tasks'],[])
+
+    def test_duplicate_source_attachment_preserves_task_links_without_breaking_state(self):
+        from test_conversations import Extractor,TEXT
+        self.server.app.extractor=Extractor()
+        for index,text in enumerate([TEXT,'Extra context. '+TEXT]):
+            code,response,_=self.call('/api/command',dict(action='import_conversation',text=text));self.assertEqual(code,200);state=self.call('/api/state')[1];source=response['source']['id'];cid=response['analysis']['candidates'][0]['id']
+            self.assertEqual(self.call('/api/command',dict(action='accept_candidates',source_id=source,key='review'+str(index),selected=[cid],base_revision=state['snapshot']))[0],200)
+        code,state,_=self.call('/api/state');self.assertEqual(code,200);self.assertEqual(len(state['tasks']),1);self.assertEqual(len(state['task_sources'][state['tasks'][0]['id']]),2)

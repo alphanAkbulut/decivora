@@ -130,3 +130,7 @@ Tam graph'ta önerilen görsel ayrım: artifact node'u **üretildi**, target ass
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [Current recorded dependency UI](../quality/workflow-ui-runtime.md): prerequisite chooser explicit human onayı ve cycle/base guard; Blocks/Blocked by rozetleri ve gate açıklaması. Genel görsel graph/timeline/full context list acceptance hâlâ açık.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

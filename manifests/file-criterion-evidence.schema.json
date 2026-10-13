@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "file-criterion-evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "task_version",
+    "contract_version",
+    "criterion",
+    "status",
+    "key",
+    "binding_revision",
+    "request_digest",
+    "observation",
+    "failure",
+    "reference",
+    "note",
+    "authority",
+    "format"
+  ],
+  "properties": {
+    "task": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "task_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contract_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "criterion": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "unknown"
+      ]
+    },
+    "key": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "binding_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "request_digest": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "observation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Exact SHA/root/file revision observation; never test or deployment proof."
+    },
+    "failure": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reference": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "note": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "authority": {
+      "const": "local_file_observer"
+    },
+    "format": {
+      "const": "decivora-file-evidence-1"
+    }
+  }
+}

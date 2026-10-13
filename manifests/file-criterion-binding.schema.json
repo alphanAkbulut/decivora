@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "file-criterion-binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task",
+    "task_version",
+    "contract_version",
+    "criterion",
+    "path",
+    "expected_sha256",
+    "reason",
+    "key",
+    "root_id",
+    "revision",
+    "request_digest",
+    "authority_revision",
+    "format"
+  ],
+  "properties": {
+    "task": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "task_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contract_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "criterion": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "path": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "expected_sha256": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "key": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "root_id": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "request_digest": {
+      "type": "string",
+      "maxLength": 1024
+    },
+    "authority_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "format": {
+      "const": "decivora-file-binding-1"
+    }
+  }
+}

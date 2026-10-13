@@ -194,3 +194,7 @@ B, A'daki aynı onaylı karar/artifact/AC/kanıt modelini kullanır; ikinci bir 
 ## Aynı projeye bağlı farklı chat'ler
 
 [Çoklu chat ve işleme gecikmesi sözleşmesi](multi-chat-and-processing-lag.md) sabit session kimliği/binding, chat içi konu segmenti, mesaj→aday→task/karar provenance'ı ve N:M ilişkileri tanımlar. Proje ortak olsa da kaynak ACL'leri korunur; benzer başlıkla otomatik proje veya task birleştirme yoktur. Q10-A yeni session'ın ayrıca izin kapsamını denetler. Yeni chat sınırlı güncel brief/delta alabilir; host'un bunu gerçekten tükettiği doğrulanmadan otomatik bağlam senkronu iddia edilmez.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

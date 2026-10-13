@@ -157,3 +157,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Kapanış sınırı
 
 [CL01–08/Q16](../quality/task-closure-audit.md) parent/integration gate çelişkilerini kaydeder; first-use güvenlik kontrolünü kaldırma veya future işleri bugünkü parent kapanışına yükleme. Q16-A kabul edildi; [manifest ve validator](task-closure.md) uygulanır. T05 otomatik Done yapılmaz; T05/T06/T07/T08/T11 [yerel sentetik/manual core kabulüyle](../quality/integrated-core.md) tamamlandı; T09/T10 In Progress, actual adapter/login/model/UI/release açık.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

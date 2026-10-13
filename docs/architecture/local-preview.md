@@ -37,7 +37,9 @@ flowchart TB
     IR --> HV["Human criterion evidence<br/>required current AC + DoD"]
     HV --> CD["Explicit scope + finish gate review<br/>Done / current basis hash"]
     CD -->|basis changed| IR
-    HV -. future .-> V["Automatic / file verifier<br/>native artifact observation not configured"]
+    G --> VF["Optional selected local root + human file recipe<br/>bounded exact SHA observation"]
+    VF --> HV
+    HV -. future .-> V["Automatic test / deploy / native capture<br/>execution and host gates outstanding"]
     classDef launcher fill:#e8f1ff,stroke:#315c9b,color:#132b50;
     classDef guard fill:#eee7ff,stroke:#7853a7,color:#33204b;
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
@@ -52,15 +54,15 @@ flowchart TB
 
 ## Depolama ve onay
 
-`acceptance_contract` mevcut events tablosunda task için ayrı stream/version taşır; SQL FORMAT/schema1 aynı. Payload task/task_version/base_contract/criteria/dod/reason/acknowledged_changes alanlarıyla bind edilir. AC1.. ve DOD1.. gibi ID'ler unique, statement/method/required/applicable/applicability_reason exact typed. Not-applicable ancak açık reason ile hazırlanabilir; runtime API destekler, basit UI şu an yalnız required+applicable human_review şablonlarını düzenler. Empty AC/DoD ret.
+`acceptance_contract` mevcut events tablosunda task için ayrı stream/version taşır; SQL FORMAT/schema1 aynı. Payload task/task_version/base_contract/criteria/dod/reason/acknowledged_changes alanlarıyla bind edilir. AC1.. ve DOD1.. gibi ID'ler unique, statement/method/required/applicable/applicability_reason exact typed. Not-applicable ancak açık reason ile hazırlanabilir; runtime API destekler, basit UI required+applicable şablonlarını düzenler; yöntem değişimi ayrı version/diff onayı ister, file_check izinli root ve recipe gerektirir, automatic_test yapılandırılmadı. Empty AC/DoD ret.
 
-Açık local human approval değişiklik planının digest/base knowledge/authz/key bağını taşır. Önceki kriteri değiştirme/kaldırma için diff ID acknowledgment ve reason gerekir; eski event silinmez. Başlatmadan önce current Task version'a ait onaylı contract gerekir. Metadata revision değiştiyse contract stale; çalışmaya başlatılmaz. Work-start audit'i uygulama beyanıdır; verification/completion değildir. Sonuçlar not_run, completed=false; T14 genuine evidence açık kalır. Project DoD template editor yok; UI düzenlenebilir basit başlangıç şablonu verir, AI extraction değildir.
+Açık local human approval değişiklik planının digest/base knowledge/authz/key bağını taşır. Önceki kriteri değiştirme/kaldırma için diff ID acknowledgment ve reason gerekir; eski event silinmez. Başlatmadan önce current Task version'a ait onaylı contract gerekir. Metadata revision değiştiyse contract stale; çalışmaya başlatılmaz. Work-start audit'i uygulama beyanıdır; verification/completion değildir. Sonuçlar kriter bazındadır; güncel human/file kanıtı ve ayrı scope/finish gate kontrolü Done için gerekir. T14 tam test/native/deploy kanıtı açık kalır. Project DoD template editor yok; UI düzenlenebilir basit başlangıç şablonu verir, AI extraction değildir.
 
 Replay acceptance payload/stream/contract version ve o andaki Task version'ını kontrol eder; yeni apply/approval/notification/model çalıştırmaz. Backuprestore kontratı event history'den tutar. Eski runtime yeni event kind'ını sessiz atlayamaz; yeni event yazılan profil güncel runtime ister.
 
 ## Yerel arayüz ve erişim
 
-Single-user/single-project preview: LocalApp browser session trusted local_owner issuer'a bağlanır. Gerçek OAuth/login/ekip yetkisi değildir. Server sadece IPv4 loopback'e bind olur; kullanıcı dışa dinleme seçeneği yok. Generated bootstrap nonce URL fragment'tadır, query/log'a yazılmaz; JS history'den çıkarır. HttpOnly/SameSite=Strict session, CSRF token, exact Host/Origin, no CORS, CSP/frame denial ve bounded body uygulanır. Scriptler yalnız localdir; dış font/model/CDN yok. Authenticated write cap30/minute; retry politikası API ücret bütçesi değildir. Scope personal dışında query/mutation yok; filesystem/SQL/shell API açılmaz. Body extra/actionunknown ret; HTTP log private payload yazmaz.
+Single-user/single-project preview: LocalApp browser session trusted local_owner issuer'a bağlanır. Gerçek OAuth/login/ekip yetkisi değildir. Server sadece IPv4 loopback'e bind olur; kullanıcı dışa dinleme seçeneği yok. Generated bootstrap nonce URL fragment'tadır, query/log'a yazılmaz; JS history'den çıkarır. HttpOnly/SameSite=Strict session, CSRF token, exact Host/Origin, no CORS, CSP/frame denial ve bounded body uygulanır. Scriptler yalnız localdir; dış font/model/CDN yok. Authenticated write cap30/minute; retry politikası API ücret bütçesi değildir. Scope personal dışında query/mutation yok; arbitrary filesystem/SQL/shell API açılmaz; açık startup root ve ayrıca onaylı relatif dosya için dar SHA observer yolu vardır. Body extra/actionunknown ret; HTTP log private payload yazmaz.
 
 Browser reload session cookie ile devam eder; program restart yeni session üretir, launcher doğru nonce ile açar. SQLite veri sources reposunun yanında private local-data klasöründedir; user data/source transcript/keys ZIP veya GitHub'a otomatik eklenmez. Standalone package yalnız launcher, kullanım belgesi ve gerekli app/packages source'ları içerir. Python3.12 gerekir; dependency install/model/account bağlantısı yok. Kaynağın public release/lisans/installer gate'i bu preview ile kapatılmaz.
 
@@ -98,3 +100,5 @@ Yerel UI'da `TaskBlockerService` açık insan işaretlemesi/çözümü ve reason
 ## 14 October 2026 — private backup UI
 
 [Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.
+
+[Current stdio / file / graph / health limits](../delivery/api-independent-development.md). No runtime source scan or user grant was activated implicitly.

@@ -2,7 +2,7 @@
 
 2026-10-13 — **uygulama sırası**, yeni görev listesi veya altı ayrı program değildir. Mevcut Python 3.12/SQLite çekirdeği ve yerel web arayüzü büyütülecek. Tam vizyon korunur; paketler MVP teslimini yönetir. [Backlog](backlog.md) görev otoritesidir; paket adı yeni task sayılmaz.
 
-Bugün 7 ana iş Done, 11 In Progress, 12 To Do. To Do'nun **6'sı MVP (T15–T18, T21,T24), 6'sı sonraki fazlar (T25–T30)**. T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
+Bugün 7 ana iş Done, 14 In Progress, 9 To Do. To Do'nun **3'ü MVP (T16,T17,T24), 6'sı sonraki fazlar (T25–T30)**. T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
 
 | Paket | Kod işi / mevcut görevler | Mevcut kodu güncelleme ve yeni modül | Kullanıcının göreceği teslim | Paket kabulü |
 |---|---|---|---|---|
@@ -41,3 +41,7 @@ T25–T30 ekip/cloud, ileri bağlam, gelişmiş adapter/dil ve sonraki büyüme 
 ## 14 October 2026 — private backup UI
 
 [Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

@@ -13,9 +13,14 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: T04/T05/T06/T07/T08/T11/T12 DONE; T01/T02/T03/T09/T10/T13/T14/T19/T20/T22 IN_PROGRESS; diğer13 TODO.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: 7 Done / 14 In Progress / 9 To Do. T15/T18/T21 kod dilimleri başladı; native/model/target/release kabulü açık.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
+
+### 2026-10-14 — API-bağımsız geliştirme
+
+- [Kod, bulgular ve M01–M14 takip kapıları](api-independent-development.md): stdioMCP/durable agent review, file observer/current proof, graph/timeline/routing/unknown usage/sanitized health ve teknik restore zinciri. Kaynaklar private/source-linked ise MCP varsayılanı deny. Gerçek host ve paid model aktive edilmedi.
+
 
 ### 2026-10-14 — Özel yedek indirme
 

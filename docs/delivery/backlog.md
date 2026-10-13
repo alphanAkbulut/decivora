@@ -292,12 +292,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T15 — Teknik kanıt kapısı
 
-- **Durum / faz:** TODO / P1a. **Bağımlılık:** T14,T07c. **Kapsam ID:** EVAL-01,AUD-01.
+- **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T14,T07c. **Kapsam ID:** EVAL-01,AUD-01.
 - **İş:** Sentetik uçtan uca senaryoyu ve restore/replay'i çalıştır; sonuçları kaydet.
 - **Kabul:** Import→impact→onay→state→düzeltme zinciri kanıtlı; başarısız kriter gizlenmez.
 - **Doğrulama:** AC-01..08/10/14 ve adversarial set.
 - **Beklenen dosya alanı:** `docs/quality/poc-results.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 kontrol oturumu.
+
+- **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
 
 ## T16 — Claude Code adapter
 
@@ -319,12 +321,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T18 — Minimal MCP ve cross-agent read
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T17. **Kapsam ID:** INT-02,CST-01.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T17. **Kapsam ID:** INT-02,CST-01.
 - **İş:** 5 temel tool, proje yetkisi, cursor/limit, bounded brief; write yalnız proposal/evidence.
 - **Kabul:** Bir agent kaydını diğeri aynı project/revision ile okur; admin SQL exposed değil.
 - **Doğrulama:** AC-01/13; tool schema token ölçümü.
 - **Beklenen dosya alanı:** `packages/mcp/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
 
 ## T19 — Proje seçimi ve Review Inbox UI
 
@@ -350,12 +354,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T21 — Routing etiketleri ve usage kaydı
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T20. **Kapsam ID:** ROU-01,CST-02.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T20. **Kapsam ID:** ROU-01,CST-02.
 - **İş:** Class/executor/human-suitable, deterministic bypass, nullable usage ve limit.
 - **Kabul:** İnsan basit işi seçebilir; unknown usage 0 değil; limit aşımı deferred.
 - **Doğrulama:** AC-13; budget/retry/cached kullanım.
 - **Beklenen dosya alanı:** `packages/domain/; apps/web/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
 
 ## T22 — Chat import ve prompt lineage
 
@@ -462,9 +468,9 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | T10a / T10 | Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
 | T12a / T12 | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision | [21test/impact-demo](../quality/impact-preview.md): OR edge/gap/ACL/restart/limit; source snapshot da bağlı | impact/storage |
 | T13a / T13 | DONE — Onay token'ı snapshot/policy/digest ile bağla | [18test/review-demo](../quality/review-kernel.md): partial reference, stale source/policy, double connection tek effect | hub/domain |
-| T14a / T14 | Evidence authority ve izinli runner arayüzü | Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 | verification |
-| T15a / T15 | Crash/restore/replay proof dilimi | V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder | quality fixtures |
-| T18a / T18 | Scope/snapshot-bound query cursor ve context limits | Başka projeye cursor taşınamaz; truncated sonuç açık; V25 | mcp/storage |
+| T14a / T14 | IN_PROGRESS: Evidence authority ve izinli runner arayüzü | Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 | verification |
+| T15a / T15 | IN_PROGRESS: Crash/restore/replay proof dilimi | V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder | quality fixtures |
+| T18a / T18 | DONE / P1b: Scope/snapshot-bound query cursor ve context limits | Başka projeye cursor taşınamaz; truncated sonuç açık; V25 | mcp/storage |
 | T20a / T20 | Health ve ready oracle | Pending impact/unknown prerequisite ready olmaz; aynı snapshot UI; V28 | domain/web |
 | T23a / T23 | IN_PROGRESS: DB+payload tutarlı backup/migration/restore | Hash/sequence/digest kanıtı, uyumsuz schema guard, dış delivery varsayılan durur; V17/V27 | storage |
 | T23b / T23 | Payload purge ve türev cache/export retention akışı | Redaction/tombstone izlenir; ilgili index/cache/backup politikası V26 ile kanıtlı | storage/governance |
@@ -490,9 +496,9 @@ Bunlar mevcut ana görevlerin detaylarıdır; yeni servis veya bağımsız ürü
 | T09b / T06,T09 | No-op/structured duplicate bypass; chunk manifest; evaluation fingerprint | [TOK-01/02/03](../architecture/routing-token-economy.md); recall ölçümü; model hatası no-op olmaz |
 | T11b / T07,T11 | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği | [GUX-03](../product/graph-experience.md); replay, current traversal ve knowledge revision |
 | T13b / T11b,T13 | DONE — Task cancel ve edge ending için farklı impact preview/compensating olay | [20test/lifecycle-demo](../quality/task-lifecycle.md): aktif gerekçe/downstream ret, history/restore, ayrı onaylı reopen |
-| T18c / T18a,T18b | Kısa brief, since_revision/tombstone, bounded resync ve ayrıntı getir | CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz |
-| T20b / T11b,T13b,T19 | Graph durum sözlüğü, seçili task bağlamı, history/diff ve liste alternatifi | GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı |
-| T21b / T08b,T09b,T21 | Usage sınıfları, dönem/run limitleri, atomik reservation ve unknown settlement | TOK-03–07; eşzamanlı harcama, timeout/retry ve limit-deferred testleri |
+| T18c / T18a,T18b | IN_PROGRESS: Kısa brief, since_revision/tombstone, bounded resync ve ayrıntı getir | CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz |
+| T20b / T11b,T13b,T19 | IN_PROGRESS: Graph durum sözlüğü, seçili task bağlamı, history/diff ve liste alternatifi | GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı |
+| T21b / T08b,T09b,T21 | IN_PROGRESS: Usage sınıfları, dönem/run limitleri, atomik reservation ve unknown settlement | TOK-03–07; eşzamanlı harcama, timeout/retry ve limit-deferred testleri |
 | T24c / T18c,T20b,T21b | Eşit corpus/kalite ile maliyet ve graph anlaşılabilirliği pilotu | TOK-08 + GUX; token azalırken recall/false closure korunmalı |
 
 T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatch'i başlamadan önce minimum budget/data-egress guard bulunmalı; T21b tam dönem/usage arayüzünü tamamlar. Ücretli model yokken sentetik/fake provider testleriyle budget concurrency doğrulanabilir; gerçek provider harcaması için Q03 gerekir.
@@ -523,7 +529,7 @@ Q08 yanıtı beklerken T13d/T20d tamamlandı veya kesin MVP taahhüdü sayılmaz
 
 | Dilim / bağımlılık | Küçük teslim | Kabul |
 |---|---|---|
-| T20f / T07b,T08b,T20a | Owner yerel sağlık/hata görünümü; sıradan kullanıcı için güvenli hata ve referans | ADM-01/05/06; rol negatif API ve temel UI akışı, incident kapanınca task değişmez |
+| T20f / T07b,T08b,T20a | IN_PROGRESS: Owner yerel sağlık/hata görünümü; sıradan kullanıcı için güvenli hata ve referans | ADM-01/05/06; rol negatif API ve temel UI akışı, incident kapanınca task değişmez |
 | T21c / T08b,T21b | Parametre sicili; miras/etkin değer, tavan, config önizleme ve revision/audit | ADM-03/04; concurrent config, rollback ve in-flight reservation testi |
 | T23e / T20f,T21c,T23c,T23d | Kapsamlı pause/retry, bounded hata kaydı, yedek/recovery görünümü | ADM-07/08/09; disk/audit arızası, archive TTL ve sıfır replay yan etkisi |
 | T24g / T20f,T21c,T23e | Owner “neden bekliyor/ne değiştirebilirim?” pilotu ve yerel admin negatif fixture'ları | ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run |
@@ -626,7 +632,7 @@ S1-01–06 deney adları ana 30 göreve yeni task sayısı eklemez. Ayrı sentet
 
 | Dilim / bağımlılık | Teslim | Kabul / faz |
 |---|---|---|
-| T14d / T14b,T05c,T08b | Artifact expected-effect ve exact hedefe bağlı read-back assessment; human reported ayrı | P1a: GAP-01/03/04/05/07/10; gözlem AC/deploy yerine geçmez; yetkisiz okuma/yazma yok |
+| T14d / T14b,T05c,T08b | IN_PROGRESS: Artifact expected-effect ve exact hedefe bağlı read-back assessment; human reported ayrı | P1a: GAP-01/03/04/05/07/10; gözlem AC/deploy yerine geçmez; yetkisiz okuma/yazma yok |
 | T18i / T18h,T14d,T10b | Güncel context'te kabul/uygulama/unknown ve alternatiflerin kaynağı | P1b: GAP-02/05/06/09; host desteklenmiyorsa teslim/kullanım garantisi yok |
 | T20i / T20h,T14d,T13 | Karar ve teslim durumu ayrı görünüm; ön koşul olduğunda odaklı durum sorusu | P1b: GAP-03/08/10; tekrarlı nag/model çağrısı yok; independent işler açık |
 | T24n / T18i,T20i,T24m | Aynı sentetik görevden fresh-session + dış hedef belirsizliği karşılaştırması | GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run |

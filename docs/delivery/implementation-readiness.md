@@ -92,3 +92,7 @@ MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verifi
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [Workflow/UI gerçek dilimi](../quality/workflow-ui-runtime.md): T14 IP; human criterion evidence/completion, stage projection, recorded dependency assessment ve end-panel vardır. Automatic runner/artifact binding/native capture/full parent completion/semantic gold açık; hiçbir parent Done ilan edilmedi.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

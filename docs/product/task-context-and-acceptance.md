@@ -124,3 +124,7 @@ Kontroller planlıdır; bağımsız test veya bağlam dosyası generator'ı yok.
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [Current local completion](../quality/workflow-ui-runtime.md): versioned AC/DoD ve human_review criterion sonuçları kodda; gerekli current maddeler passed + explicit scope review + finish gates ile Done. Automatic test/file-check/remote artifact observer ve ana task context/export/parent automation hâlâ açık. Üstteki genel uygulanmadı ibaresi bu future kapsamı anlatır; AC/DoD manuel dilimi uygulanmıştır.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

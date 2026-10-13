@@ -173,3 +173,7 @@ T21b ek kabulü: project/task inheritance doğru; override hard-cap aşamaz; mod
 [Dil sözleşmesinde](../product/language-and-localization.md) ilk tercih açık çıktı dili veya hafif yerel detector adayıdır; yalnız dil tespiti için varsayılan LLM çağrısı yok. Gerekli extraction/generation çağrısı doğrudan etkin dilde üretebilir; İngilizce ara çıktı + ayrı çeviri çağrısı varsayılan değil. Dil/karakter sayısı aynı token maliyetini garanti etmez; provider/model/locale bazlı input-output/retry ve kalite ölçülür.
 
 Sabit UI metinleri locale kataloglarından çizilir. Tüm geçmişi çevirme, çok dilli embedding/reranking veya çok dilli türev üretme ayrı ihtiyaç/egress/bütçe ve risk onayı gerektirir. Cache language/policy revision'a bağlı, source ACL korunur; model kapalıyken fallback/coverage görünür. P2 otomasyon önerisi T25a/T26c ve LANG-01–08 ile ölçülecek; tasarruf sonucu yok.
+
+## Current local delivery — 14 October 2026
+
+[API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.

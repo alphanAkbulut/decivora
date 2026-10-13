@@ -127,7 +127,9 @@
     "T15": {
       "core_acceptance": "Import→impact→onay→state→düzeltme zinciri kanıtlı; başarısız kriter gizlenmez.",
       "core_verified": false,
-      "evidence": [],
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ],
       "release_scope": "MVP"
     },
     "T16": {
@@ -145,7 +147,9 @@
     "T18": {
       "core_acceptance": "Bir agent kaydını diğeri aynı project/revision ile okur; admin SQL exposed değil.",
       "core_verified": false,
-      "evidence": [],
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ],
       "release_scope": "MVP"
     },
     "T19": {
@@ -163,7 +167,9 @@
     "T21": {
       "core_acceptance": "İnsan basit işi seçebilir; unknown usage 0 değil; limit aşımı deferred.",
       "core_verified": false,
-      "evidence": [],
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ],
       "release_scope": "MVP"
     },
     "T22": {
@@ -1151,7 +1157,7 @@
     "T14a": {
       "parent": "T14",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T14"
       ],
@@ -1193,7 +1199,7 @@
     "T14d": {
       "parent": "T14",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T14b",
         "T05c",
@@ -1208,7 +1214,7 @@
     "T15a": {
       "parent": "T15",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T15"
       ],
@@ -1238,7 +1244,7 @@
     "T18a": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T18"
       ],
@@ -1251,7 +1257,7 @@
     "T18c": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T18a",
         "T18b"
@@ -1385,7 +1391,7 @@
     "T20b": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T11b",
         "T13b",
@@ -1430,7 +1436,7 @@
     "T20f": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T07b",
         "T08b",
@@ -1490,7 +1496,7 @@
     "T21b": {
       "parent": "T21",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T08b",
         "T09b",
