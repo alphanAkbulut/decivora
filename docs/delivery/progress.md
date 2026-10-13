@@ -47,6 +47,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T03ab | T03 | DONE | DONE / P0: SQLite inceleme snapshot deposu |
 | T03ac | T03 | DONE | DONE / P0: persisted clarification'a explicit source-bound reply proposal |
 | T03c | T03 | DONE | DONE: kabul edilmiş koşullu çekirdek build seçimi; Python3.12/SQLite, ADR-0012 |
+| T05h | T05 | DONE | DONE / P1a: kalıcı local principal/grant revision ve transaction guard |
 | T05g | T05 | DONE | DONE / P1a: kalıcı project/binding snapshot store |
 | T05f | T05 | DONE | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo |
 
@@ -107,6 +108,7 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T05h yerel izin iptali** — Persisted authority revision + transaction scoped guard; actor claim yetki değil; [8 yeni test](../quality/local-authority.md); login/token/ACL/production IAM yok
 - **T05g kalıcı proje/binding** — SQLite snapshot/command store; memory state restart sonrası korunur, T05 açık; [11 yeni test ve restart demo](../quality/project-store.md); backup/power-loss/gerçek IAM/ingress yok
 - **T05f proje/binding çekirdeği** — Scope kontrollü memory-only servis ve CLI sentetik demo; T05 ana görev In Progress; [11 yeni runtime testi](../quality/project-binding-core.md); kalıcılık/gerçek IAM/ingress yok
 - **Capture ölçüm düzeneği** — Spike-0 kaynak/session kimliği, kapanışsız delta ve kısa cevap gözlemi; production adapter değil; 40 fixture/regresyon testi; gerçek host capability açık
@@ -162,7 +164,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
 | T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 27 |
 | T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c | 4 |
-| T05 | P1a | IN_PROGRESS | Proje kimliği ve binding | T04 | 6 |
+| T05 | P1a | IN_PROGRESS | Proje kimliği ve binding | T04 | 7 |
 | T06 | P1a | TODO | Source ingress ve checkpoint | T05 | 6 |
 | T07 | P1a | TODO | Domain log ve projector | T06 | 2 |
 | T08 | P1a | TODO | Atomic change set ve policy | T07 | 2 |
@@ -197,4 +199,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `d3f8711af070675d02ecc9b3dc464531a112b055e0caf23404e4cc94836838e6`
+Kaynak fingerprint: `7dc915f0b10b9fcf511ddb64c3f66e726f7efd31ee7c54bb272b779c09c17ff6`

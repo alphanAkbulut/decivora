@@ -6,6 +6,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 | Yeni alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
+| T05h / T05 | DONE / P1a: kalıcı local principal/grant revision ve transaction guard | Eski scope read/write/cache ret, owner-only grant, restart/rollback; [8 test](../quality/local-authority.md). Login/agent token/resource ACL/audit açık |
 | T05g / T05 | DONE / P1a: kalıcı project/binding snapshot store | Restart/idempotency/rollback/two-connection stale/foreign-scope ret; [11 test](../quality/project-store.md). Authz lifecycle/source receipt/backup açık |
 | T05f / T05 | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo | Aynı ad farklı ID, çapraz scope read/write ret, revision-bound tarihçe, belirsizde mutation yok; [11 test](../quality/project-binding-core.md). Kalıcı store/auth/ingress tamamlanmadı |
 | T11c / T11 | TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream | FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez |
@@ -180,7 +181,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **Son ilerleme:** T05f deterministik çekirdek ve CLI demo tamamlandı;11 yeni test. [Kabul/sınırlar](../quality/project-binding-core.md).
 - **Son kalıcı teslim:** T05g [SQLite project store](../quality/project-store.md);11 yeni/34 toplam runtime test; restart/idempotency/rollback geçti.
-- **Kalan:** Persist edilmiş membership/grant/authz revision yaşam döngüsü ve gerçek ingress entegrasyonu; T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
+- **Son yetki teslimi:** T05h [yerel authority](../quality/local-authority.md);8 yeni/42 toplam runtime test, revocation/read/write/cache/restart ret.
+- **Kalan:** ConnectionAuthorization/source binding izin makbuzu/session-source metadata ve ingress entegrasyonu; gerçek login/resource ACL/T08b action policy ayrı açık. T05 ana görevi açık. Backup/restore ve power-loss kabulü sonraki storage kapsamlarında açık.
 
 ## T06 — Source ingress ve checkpoint
 

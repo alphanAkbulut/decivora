@@ -31,6 +31,7 @@ class ProjectStore:
         self.workspace_id = identifier(workspace_id)
         self.path = Path(path)
         self.connection = None
+        self._scope_guard = None
         created = False
         try:
             try:
@@ -151,6 +152,8 @@ class ProjectStore:
             raise ContractError('invalid_command', 'Project command must contain valid structured arguments.') from None
         try:
             self.connection.execute('BEGIN IMMEDIATE')
+            if self._scope_guard is not None:
+                self._scope_guard(scope)
             registry = self._load()
             if operation == 'bind':
                 # Retry must not reveal/move an earlier project after revocation.
@@ -191,7 +194,16 @@ class ProjectStore:
             raise ContractError('invalid_query', 'Unsupported project query.')
         ProjectRegistry(self.workspace_id)._scope(scope)
         try:
+            self.connection.execute('BEGIN IMMEDIATE')
+            if self._scope_guard is not None:
+                self._scope_guard(scope)
             registry = self._load()
-            return getattr(registry, operation)(scope, *args, **kwargs)
-        except sqlite3.Error:
+            result = getattr(registry, operation)(scope, *args, **kwargs)
+            self.connection.execute('COMMIT')
+            return result
+        except (ContractError, sqlite3.Error) as error:
+            if self.connection.in_transaction:
+                self.connection.execute('ROLLBACK')
+            if isinstance(error, ContractError):
+                raise
             raise ContractError('storage_failure', 'Project query is unavailable.') from None

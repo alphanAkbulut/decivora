@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**Statü: önerilen sözleşme; uygulanmadı.** İlk pilot tek insanla yapılacak. Aşağıdaki veri sınırları P1 çekirdeğine, davet/ekip yönetimi ise P4'e aittir. [Benchmark](../discovery/collaboration-storage-benchmark.md), [ADR-0009](adr/0009-scoped-principals.md), [uygulama dilimleri](../delivery/team-data-plan.md) ve [MU doğrulama senaryoları](../quality/collaboration-validation.md) birlikte okunmalı.
+**Statü: tam kimlik/ekip sözleşmesi öneri.** [T05h yerel authority alt kümesi](../quality/local-authority.md) persisted human/agent grant revision, owner-only management ve scoped transaction deny ile uygulanmıştır; login/token/resource ACL/ekip rolleri henüz yok. Aşağıdaki diagram tam tasarım önerisini gösterir. İlk pilot tek insanla yapılacak. Aşağıdaki veri sınırları P1 çekirdeğine, davet/ekip yönetimi ise P4'e aittir. [Benchmark](../discovery/collaboration-storage-benchmark.md), [ADR-0009](adr/0009-scoped-principals.md), [uygulama dilimleri](../delivery/team-data-plan.md) ve [MU doğrulama senaryoları](../quality/collaboration-validation.md) birlikte okunmalı.
 
 ## Kimlik ve sahiplik
 

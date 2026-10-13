@@ -1,0 +1,32 @@
+{
+  "task_id": "T05h",
+  "main_task_status": "IN_PROGRESS",
+  "tests": {
+    "new_authority_tests": 8,
+    "total_runtime_tests": 42,
+    "status": "passed"
+  },
+  "demo": {
+    "status": "passed_local_authority_demo",
+    "authentication": "trusted_local_fixture_only",
+    "stale_read_rejected": true,
+    "stale_write_rejected": true,
+    "revocation_survived_restart": true,
+    "project_unchanged": true,
+    "authority_revision": 4,
+    "source_capture": false,
+    "model_dispatches": 0
+  },
+  "production_authentication": false,
+  "external_token_validation": false,
+  "resource_acl": false,
+  "full_ac01_accepted": false,
+  "paid_api_calls": 0,
+  "file_sha256": {
+    "packages/storage/local_authority.py": "33891b2d3f39287edc4d770343479013864c2ca083c09f551328e1957d1f7267",
+    "packages/storage/project_store.py": "37715ba9896e61c2d3d3f7e45ec5e4104047c135999712cd42242a12bfbcdef3",
+    "apps/hub/authority_demo.py": "b5b23af83821960673fbda56822c7bac1278928069d3e110d586551aa4fd7d1c",
+    "apps/hub/runtime.py": "7c3ecfacf98956cf53e33e6ef7f8ab893a0609f1da2026c2df34a769c3ac6271",
+    "tests/runtime/test_local_authority.py": "7731494638a0b1c322ee7760f975ef3061affdadf06ad05f18a800564f499552"
+  }
+}

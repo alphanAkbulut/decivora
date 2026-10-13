@@ -17,6 +17,12 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — T05 yerel izin iptali
+
+- [T05h](../quality/local-authority.md): DB authority revision, issued scope/current grant guard, owner-only management ve restart/rollback.8 yeni/42 toplam runtime test; authority-demo gerçekten çalıştı.
+- Ana sayım1 DONE/4 IN_PROGRESS/25TODO korunur. T05 bağlantı/session izin makbuzu ve ingress kapsamı açık; gerçek authentication, role UI veya production IAM yok.
+
+
 ### 2026-10-13 — T05 kalıcı kayıt dilimi
 
 - [T05g project store](../quality/project-store.md): SQLite restart, command retry/dedup, rollback, stale writer ve scope query testleri geçti;11 yeni/34 toplam runtime test. Gerçek temp DB ile `project-store-demo` çalıştı.

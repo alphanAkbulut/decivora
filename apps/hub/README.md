@@ -45,3 +45,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## T05 kalıcı project store demosu
 
 `python3.12 -B -m apps.hub project-store-demo` ayrı temporary DB içinde dört command commit eder, kapatır/açar ve retry/history sonucunu doğrular; kendi temporary dosyalarını temizler. Kullanıcı DB/source taramaz. [Kalıcı API ve11test](../../docs/quality/project-store.md). Bu gerçek SQLite yazma kodudur; login, source receipt, full canonical knowledge store/backup değildir.
+
+## Yerel izin iptali demosu
+
+`python3.12 -B -m apps.hub authority-demo` owner/agent sentetik scope kurar, erişimi iptal eder, eski read/write bağlamlarını reddeder ve DB yeniden açılışında iptalin korunduğunu gösterir. [8 test ve yetki sınırı](../../docs/quality/local-authority.md). Bu login/OAuth değildir; source-facing endpoint yok, authority issue API yalnız trusted local caller içindir.
