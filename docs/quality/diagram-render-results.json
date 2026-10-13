@@ -636,34 +636,50 @@
     {
       "path": "docs/architecture/review-runtime.md",
       "block": 1,
-      "source_sha256": "006af687a63b7cbabd410195945b39fc4243c502c23d81e375d958fef028c389",
+      "source_sha256": "4da260e1093c5a302bf818ea56b0061b7028d05c34434144cfdfb13bc3006c8b",
       "status": "rendered",
       "title": "Uygulanan yerel review ve ayrı onay akışı",
       "description_present": true,
-      "view_box": "-50 -10 1190 1271",
+      "view_box": "-50 -10 1190 1347",
       "artifact": "assets/diagrams/review-runtime-1.svg",
       "error": null,
-      "svg_sha256": "ba2e211705ccbeef2bae58886a761cb45a8e947bacb990afa29cbf0c6a8afc3a",
-      "export_normalization": "Self-closed HTML br tags for standalone SVG XML; visual meaning unchanged.",
+      "svg_sha256": "7875b1a059c0162a809c106600fbdf2bf3f4d20877d7bd126128b0de3e6caacb",
       "checked_at": "2026-10-13",
       "renderer": "Mermaid 11.17.2 cached bundle",
-      "network_requests_allowed": false
+      "network_requests_allowed": false,
+      "export_normalization": "Self-closed HTML br for standalone SVG XML."
     },
     {
       "path": "docs/architecture/review-runtime.md",
       "block": 2,
-      "source_sha256": "2d25b4ac56009dce7210b35e6c60a04c436a4737870d1352ba2ce8a3adbe0c33",
+      "source_sha256": "2426da6d6d01c161e0a260d30ad25779987a04dbbc360c4ad316451a96d4ea02",
       "status": "rendered",
       "title": "Review payload bağları ve fiziksel storage",
       "description_present": true,
       "view_box": "0 0 1089.140625 1166.3734130859375",
       "artifact": "assets/diagrams/review-runtime-2.svg",
       "error": null,
-      "svg_sha256": "96bc8b0133604abc1a350615a5324b7696df49037c1481523dc09b3c8f31415a",
-      "export_normalization": "Self-closed HTML br tags for standalone SVG XML; visual meaning unchanged.",
+      "svg_sha256": "54ae468ab8fecb1245277a6db39aa02c7bf39775d5505c40f611e1f96551e5f3",
       "checked_at": "2026-10-13",
       "renderer": "Mermaid 11.17.2 cached bundle",
-      "network_requests_allowed": false
+      "network_requests_allowed": false,
+      "export_normalization": "Self-closed HTML br for standalone SVG XML."
+    },
+    {
+      "path": "docs/architecture/task-lifecycle.md",
+      "block": 1,
+      "source_sha256": "7248e01eed778daca895818d87cc90a58d3fe57590067890f94691b0816f75fc",
+      "status": "rendered",
+      "title": "İptal, ilişki sonlandırma ve onaylı geri dönüş",
+      "description_present": true,
+      "view_box": "0 0 1174.41015625 1020.6778564453125",
+      "artifact": "assets/diagrams/task-lifecycle-1.svg",
+      "error": null,
+      "svg_sha256": "612ddd471b8cf2484b71ebd01558a41443d4ecbef2cc7e640a8622a9a3a40004",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "export_normalization": "Self-closed HTML br for standalone SVG XML."
     }
   ],
   "artifacts_location": "SVG/PNG review sheets are local delivery artifacts; only README fallback is committed.",
@@ -783,6 +799,42 @@
       "error": null,
       "superseded_reason": "Q15-A conditional runtime/build decision",
       "superseded_at": "2026-10-13"
+    },
+    {
+      "path": "docs/architecture/review-runtime.md",
+      "block": 1,
+      "source_sha256": "006af687a63b7cbabd410195945b39fc4243c502c23d81e375d958fef028c389",
+      "status": "rendered",
+      "title": "Uygulanan yerel review ve ayrı onay akışı",
+      "description_present": true,
+      "view_box": "-50 -10 1190 1271",
+      "artifact": "assets/diagrams/review-runtime-1.svg",
+      "error": null,
+      "svg_sha256": "ba2e211705ccbeef2bae58886a761cb45a8e947bacb990afa29cbf0c6a8afc3a",
+      "export_normalization": "Self-closed HTML br tags for standalone SVG XML; visual meaning unchanged.",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "superseded_reason": "T13b Task lifecycle support",
+      "superseded_at": "2026-10-13"
+    },
+    {
+      "path": "docs/architecture/review-runtime.md",
+      "block": 2,
+      "source_sha256": "2d25b4ac56009dce7210b35e6c60a04c436a4737870d1352ba2ce8a3adbe0c33",
+      "status": "rendered",
+      "title": "Review payload bağları ve fiziksel storage",
+      "description_present": true,
+      "view_box": "0 0 1089.140625 1166.3734130859375",
+      "artifact": "assets/diagrams/review-runtime-2.svg",
+      "error": null,
+      "svg_sha256": "96bc8b0133604abc1a350615a5324b7696df49037c1481523dc09b3c8f31415a",
+      "export_normalization": "Self-closed HTML br tags for standalone SVG XML; visual meaning unchanged.",
+      "checked_at": "2026-10-13",
+      "renderer": "Mermaid 11.17.2 cached bundle",
+      "network_requests_allowed": false,
+      "superseded_reason": "T13b Task lifecycle support",
+      "superseded_at": "2026-10-13"
     }
   ],
   "incremental_reviews": [
@@ -814,6 +866,21 @@
       "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
       "xml_validated": true,
       "visual_review": "Both desktop screenshots inspected; storage changed to vertical layout for readable labels; not product UI acceptance."
+    },
+    {
+      "reason": "T13b lifecycle + current review guards",
+      "checked_at": "2026-10-13",
+      "rendered_blocks": 3,
+      "changed_blocks": 2,
+      "new_blocks": 1,
+      "source_documents": [
+        "docs/architecture/task-lifecycle.md",
+        "docs/architecture/review-runtime.md"
+      ],
+      "network_requests_allowed": false,
+      "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
+      "xml_validated": true,
+      "visual_review": "Lifecycle and current storage screenshots inspected; current sequence labels/source/render checked. Other38 sources unchanged."
     }
   ]
 }

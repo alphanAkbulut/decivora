@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task lifecycle event payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "op",
+    "id",
+    "base_version",
+    "state",
+    "reason",
+    "impact_run"
+  ],
+  "properties": {
+    "op": {
+      "const": "task_lifecycle"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "base_version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "state": {
+      "enum": [
+        "cancelled",
+        "todo"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "\\S"
+    },
+    "impact_run": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    }
+  },
+  "$comment": "Event kind task_lifecycle, not a SQL schema migration. Runtime additionally validates current Task type/state, revision, current approved review and impact blockers. Replay validates stored transition without dispatch."
+}

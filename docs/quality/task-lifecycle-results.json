@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-13",
+  "profile": "synthetic_manual_local_lifecycle",
+  "completed_subtasks": [
+    "T13b"
+  ],
+  "main_status": "IN_PROGRESS",
+  "runtime_suite": {
+    "tests": 167,
+    "new_tests": 19,
+    "failures": 0,
+    "errors": 0
+  },
+  "source_sha256": {
+    "packages/domain/task_lifecycle.py": "1b03ee94c933ca357a32582d41c16122b848cbee4f6ca58c3843540bf4e95ebb",
+    "packages/domain/review.py": "2113a75dd10f0b383f3b15041f9aa7fb0bf4fc67ee4fa70a227dd9d2a317f562",
+    "packages/storage/workspace.py": "216622766094a6b206bf8dcac6b4cfae87057e0d6c68aa2b60229dfe3ce57160",
+    "packages/impact/preview.py": "d5be53a9df74595af9d9f74dab616d91a11fa679c9d5e45b60781fb63e520f1e",
+    "packages/impact/graph.py": "455b99fb7d85bd1d1120192f8cd2df2d3da3e9eedbb6681bb8513fbdd2a17e70",
+    "apps/hub/lifecycle_demo.py": "846b02decb103e8f27c8aae77ae364e813c701305b260aa4a17ffea1ab740f9e",
+    "apps/hub/runtime.py": "bccb98a7f3d5f4e7009a02c7bcec367552b7545ecdad9f2af94fc3054557f2b2",
+    "tests/runtime/test_task_lifecycle.py": "5a30322a98dcbc414263a34c8e190c5867ba69e103e8cff2d9880909ffa7bea2",
+    "manifests/task-lifecycle-event.schema.json": "d6ebdf5c1251cda5661d46d94a9722956ff0387db78d8a07b5dec1f0f3c095f0",
+    "manifests/review-groups.schema.json": "cd6e0bcdf72a75bfb98df2a51223b982ee91ce79c0706bf70513aacae10b8018"
+  },
+  "demo": {
+    "status": "passed_manual_task_lifecycle",
+    "cancelled_state": "cancelled",
+    "current_state": "todo",
+    "history_states": [
+      "cancelled",
+      "todo"
+    ],
+    "relationship_preserved": true,
+    "replay_matches": true,
+    "task_deleted": false,
+    "task_completion_verified": false,
+    "model_dispatches": 0,
+    "human_login": false
+  },
+  "paid_api_calls": 0,
+  "model_dispatches": 0,
+  "task_completion_verified": false,
+  "product_ui_tested": false,
+  "sql_schema_migration": false,
+  "tracker_suite": {
+    "tests": 46,
+    "failures": 0,
+    "errors": 0
+  },
+  "diagrams": {
+    "new_rendered": 1,
+    "changed_rendered": 2,
+    "total_sources": 41,
+    "documents": 20,
+    "xml_validated": true,
+    "product_ui_tested": false
+  }
+}

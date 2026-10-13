@@ -1089,7 +1089,7 @@
     "T13b": {
       "parent": "T13",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "DONE",
       "dependencies": [
         "T11b",
         "T13"
@@ -1097,7 +1097,7 @@
       "classification": "task_local",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "Existing Task lifecycle/edge separation core verified by task-lifecycle tests; T13c/e remain open.",
       "required_for_parent_closure": true
     },
     "T13c": {

@@ -69,6 +69,7 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T11b | T11 | DONE | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği |
 | T12a | T12 | DONE | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision |
 | T13a | T13 | DONE | DONE — Onay token'ı snapshot/policy/digest ile bağla |
+| T13b | T13 | DONE | DONE — Task cancel ve edge ending için farklı impact preview/compensating olay |
 
 ## Açık fazda neler değişti?
 
@@ -151,6 +152,7 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
+- **T13b lifecycle** — Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history; [19yeni/167runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık
 - **T13a review kernel** — Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply; [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık
 - **T12/T12a impact preview** — Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard; [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14
 - **Beş ana yerel çekirdek teslimi** — T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph; [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok
@@ -247,4 +249,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `01ee96c344b7b463fe7c5c957519ac0fc18daf589cf9cf74cb17f1062e850b69`
+Kaynak fingerprint: `d8aa4f09f5c5ed5503170222aa59bae2b99b19e98361956b7e14d1fb7dcd8037`

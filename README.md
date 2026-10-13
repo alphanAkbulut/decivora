@@ -11,7 +11,7 @@
 
 ## Çalışmanın neresindeyiz?
 
-**7 Done / 6 In Progress / 17 To Do.** Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo](docs/quality/integrated-core.md) + [kritik düzeltmeler](docs/quality/core-critical-review.md): `python3.12 -B -m apps.hub core-demo`. [T12 impact preview](docs/quality/impact-preview.md) ve `python3.12 -B -m apps.hub impact-demo` tamamlandı;130runtime test. [T13a review çekirdeği](docs/quality/review-kernel.md), `review-demo` ve [yeni akış/şema](docs/architecture/review-runtime.md) eklendi;148runtime test. Ana T13 devam ediyor. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
+**7 Done / 6 In Progress / 17 To Do.** Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo](docs/quality/integrated-core.md) + [kritik düzeltmeler](docs/quality/core-critical-review.md): `python3.12 -B -m apps.hub core-demo`. [T12 impact preview](docs/quality/impact-preview.md) ve `python3.12 -B -m apps.hub impact-demo` tamamlandı;130runtime test. [T13a review çekirdeği](docs/quality/review-kernel.md), `review-demo` ve [yeni akış/şema](docs/architecture/review-runtime.md) eklendi;148runtime test. [T13b iptal/geri dönüş](docs/quality/task-lifecycle.md) ve `lifecycle-demo` eklendi;167runtime test. Ana T13 devam ediyor. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
 
 
 > [!WARNING]

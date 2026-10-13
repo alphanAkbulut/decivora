@@ -65,3 +65,7 @@ T04'ün kapanışı runtime iskeleti ve contract acceptance'ına bağlıdır. T0
 ## T13a review demosu
 
 `python3.12 -B -m apps.hub review-demo`: compare→group selection→ayrı human approval→atomic metadata apply. Onay öncesi domain değişmez; retry/replay eşleşir. [Kabul/test/sınır](../../docs/quality/review-kernel.md); task cancel/AC/DoD/pending question veya gerçek login/UI değildir.
+
+## T13b lifecycle demosu
+
+`python3.12 -B -m apps.hub lifecycle-demo`: yeni temporary DB'de onaylı cancel→yeni onaylı reopen. Task ve ilişkiler silinmez, history/replay korunur. [19yeni test/guard sınırı](../../docs/quality/task-lifecycle.md); completion/force-cancel veya UI değildir.

@@ -1,6 +1,6 @@
 # T13a — Kalıcı seçim ve ayrı onay çekirdeği
 
-**Uygulandı: T13a. Ana T13 In Progress.** [ReviewService](../../packages/domain/review.py), [workspace atomic helpers](../../packages/storage/workspace.py), [18 yeni regression](../../tests/runtime/test_review_service.py), [sonuç/hash](review-kernel-results.json). T13b iptal/compensating lifecycle, T13c versioned AC/DoD ve T13e kalıcı soru/geç cevap çözümü açık olduğundan ana görev kapanmadı. Bu teslim terminal/API çağrısı üzerinden no-text review çekirdeğidir; kullanıcı UI kabulü değildir.
+**İlk T13a tesliminin tarihsel kanıtı. Ana T13 In Progress.** Sonraki [T13b lifecycle](task-lifecycle.md) uygulanmıştır; aşağıdaki148test/hash ve o günün açık iş listesi önceki snapshot'tır. [ReviewService](../../packages/domain/review.py), [workspace atomic helpers](../../packages/storage/workspace.py), [18 yeni regression](../../tests/runtime/test_review_service.py), [sonuç/hash](review-kernel-results.json). T13b iptal/compensating lifecycle, T13c versioned AC/DoD ve T13e kalıcı soru/geç cevap çözümü açık olduğundan ana görev kapanmadı. Bu teslim terminal/API çağrısı üzerinden no-text review çekirdeğidir; kullanıcı UI kabulü değildir.
 
 ```sh
 python3.12 -B -m apps.hub review-demo

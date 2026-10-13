@@ -6,6 +6,8 @@ Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed m
 
 [T13a](../quality/review-kernel.md) seçim/ayrı approval/atomic apply çekirdeği uygulandı;148runtime test, yeni [schema/sequence](../architecture/review-runtime.md). Ana T13 In Progress; T13b/c/e açık, sıradaki cancellation lifecycle.
 
+[T13b lifecycle](../quality/task-lifecycle.md) uygulandı;167runtime test. cancel/edge ending/compensating reopen ayrı; current schema/diyagram [burada](../architecture/task-lifecycle.md). Sırada T13c versioned AC/DoD, sonra T13e pending question. Ana T13 hâlâ açık.
+
 ## Kısa giriş
 
 Decivora geçici çalışma adıdır. Problem AI sohbetlerinde fikir/karar/prompt/yarım işlerin kaybolması ve yeni karar sonrası gereksiz işlerin açık kalmasıdır. Kullanıcı kart/DoD yazmak istemez, hazırlanmış onay vermeye razıdır. Ürün bütün çıktıları yakalamayı, eski bilgiyle uzlaştırmayı, gerekçe grafiğinde etkisini çıkarmayı ve revision'a bağlı kanıtla ilerlemeyi göstermeyi hedefler. Çok proje ve repo olmayan araştırma projeleri kapsamdadır. İlk tasarım local-first; Q15-A/ADR-0012 koşullu ilk çekirdek build'i ve Python3.12/SQLite runtime'ını kabul eder; frontend/ekip/cloud ve native/ROI sonuçları açık.

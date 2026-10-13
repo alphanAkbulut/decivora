@@ -548,3 +548,7 @@ Config apply beklenen revision ile atomiktir; rollback yeni revision olur. Dış
 ## Uygulanan T13a yerel review dilimi
 
 [Review runtime](review-runtime.md) iki yeni renkli kaynakla current code sequence ve mevcut audit/approval/domain storage bağlarını gösterir. Üstteki product mimarisi ile uygulanan local profil ayrı okunmalı; task cancellation, AC/DoD, question resolution ve evidence açık olarak etiketlenir. SQL schema veya public endpoint eklenmedi.
+
+## Uygulanan T13b lifecycle dilimi
+
+[Lifecycle şeması](task-lifecycle.md) cancel/edge ending/reopen ayrımını ve canlı gerekçe/downstream ret yolunu gösterir. İki current [review çizimi](review-runtime.md) lifecycle guard ve kalan T13c/e–T14 kapsamına güncellendi; diğer product çizimleri bu tur değişmedi.

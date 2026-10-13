@@ -121,3 +121,7 @@ Henüz test edilmedi. Q04 görünüm tercihi alındı; T19/T20'de sentetik etkil
 [Domain uygulama kaydı](../architecture/domain-model.md#artifact-ve-hedef-uygulama-gözlemi) generated artifact'i, uygulama expectation'ını, hedef gözlemini ve AC assessment'ını ayrı bağlar. İlk prototip liste/ayrıntı olabilir; bütün graph UI uygulaması ön koşul değildir.
 
 Tam graph'ta önerilen görsel ayrım: artifact node'u **üretildi**, target assessment **bildirildi / gözlendi / kısmi / bilinmiyor / stale**; acceptance ayrı rozet. Observation edge'i exact ref/snapshot ve kaynak kapsamını gösterir, karar approved edge'iyle aynı semantik değildir. Aynı artifact çok hedefe uygulanabilir; bir hedefin başarı rengi diğerlerine taşınmaz. Eski artifact uygulaması tarihçede durur, yeni karara uygun değilse current uyarısı alır. Renk yanında metin/ikon gerekir; bilinmeyene iptal çarpısı konmaz. Mevcut iptal ve ended/invalidated kuralları değişmez; GAP-04/05/06/10 bu görünümün planlı oracle'ıdır.
+
+## Uygulama notu — T13b local çekirdek
+
+[Çalışan lifecycle](../quality/task-lifecycle.md) Task/edge/history ayrımını uygular; runtime event kind `task_lifecycle`, state cancelled/todo, versioned reason/impact ref. Üstteki `task.cancelled` ürün event adıyla birebir transport enum iddiası değildir. Cancelled current graph/active rank'te ayrılır; ekran ikonu/strike-through ve klavye UI kabulü T20'de açık. Aktif gerekçe/downstream olan cancellation bu dilimde reject/review kalır.

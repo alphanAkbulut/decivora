@@ -90,6 +90,9 @@
               },
               {
                 "$ref": "#/$defs/end_link"
+              },
+              {
+                "$ref": "task-lifecycle-event.schema.json"
               }
             ]
           }

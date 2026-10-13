@@ -7,7 +7,7 @@
 ```mermaid
 sequenceDiagram
     accTitle: Uygulanan yerel review ve ayrı onay akışı
-    accDescr: Önizleme kalıcıdır. İnsan seçim ve onayı ayrı yapar. Kaynak graph yetki ve policy değiştiyse uygulama durur. Task cancellation ve verification bu çekirdekte yoktur.
+    accDescr: Önizleme kalıcıdır. İnsan seçim ve onayı ayrı yapar. Kaynak graph yetki ve policy değiştiyse uygulama durur. Görev iptali ayrıca lifecycle korumasından geçer, verification henüz yoktur.
     participant P as Manual proposal
     participant H as Local human owner
     participant R as ReviewService
@@ -29,6 +29,7 @@ sequenceDiagram
     H->>R: Apply selection + approval
     R->>S: BEGIN IMMEDIATE
     R->>S: Source frontier + knowledge + authz + policy recheck
+    R->>R: Lifecycle varsa gerekçe ve downstream koruması
     alt Stale veya eksik kapsam
         R->>S: ROLLBACK
         R-->>H: Yeni preview veya seçim gerekiyor
@@ -62,7 +63,7 @@ flowchart TB
     X --> E[("Mevcut events / records / edges<br/>command idempotency")]
     P --> D["Reject / Defer<br/>review_decision payload"]
     D -. eski seçimi geçersiz kılar .-> C
-    F["Açık T13b/c/e ve T14<br/>cancel, AC/DoD, geç cevap, evidence"]
+    F["Açık T13c/e ve T14<br/>AC/DoD, geç cevap, evidence"]
     X -. tamamlandı anlamına gelmez .-> F
     classDef persisted fill:#e8f1ff,stroke:#315c9b,color:#132b50;
     classDef approved fill:#eee7ff,stroke:#7853a7,color:#33204b;
@@ -74,4 +75,4 @@ flowchart TB
     class D,F pending;
 ```
 
-Ana mimari ve README şemaları ürün vizyonunu anlatır; bu iki çizim uygulanan local dilimi açıkça ayırır. Yeni tablo/migration/HTTP endpoint veya otomatik görev iptali çizilmez. T13b task cancellation/edge lifecycle, T13c versioned AC/DoD, T13e pending question + late answer ve T14 completion/evidence hâlâ açık; bu yüzden ana T13 Done değildir.
+Ana mimari ve README şemaları ürün vizyonunu anlatır; bu iki çizim uygulanan local dilimi açıkça ayırır. Yeni tablo/migration/HTTP endpoint veya otomatik görev iptali çizilmez. [T13b lifecycle](task-lifecycle.md) uygulandı; T13c versioned AC/DoD, T13e pending question + late answer ve T14 completion/evidence hâlâ açık; bu yüzden ana T13 Done değildir.

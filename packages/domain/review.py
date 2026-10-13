@@ -62,8 +62,11 @@ class ReviewService:
                 if type(g['operations']) is not list or not 1<=len(g['operations'])<=64:raise ContractError('invalid_review','Nonempty bounded typed operations required.')
                 from packages.storage.workspace import RELATIONS,integer
                 for op in g['operations']:
-                    if type(op) is not dict or op.get('op') not in ('create','update','link','end_link'):raise ContractError('invalid_operation','Only typed domain operations are allowed.')
+                    if type(op) is not dict or op.get('op') not in ('create','update','link','end_link','task_lifecycle'):raise ContractError('invalid_operation','Only typed domain operations are allowed.')
                     kind=op['op']
+                    if kind=='task_lifecycle':
+                        from .task_lifecycle import operation
+                        operation(op);continue
                     fields={'op','id','body'} if kind=='create' else {'op','id','base_version','body'} if kind=='update' else {'op','origin','target','kind'}
                     if kind=='end_link':fields|={'base_version','state'}
                     if set(op)!=fields and not (kind=='create' and set(op)==fields|{'source_seq'}):raise ContractError('invalid_operation','Exact operation fields required.')

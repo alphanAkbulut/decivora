@@ -354,8 +354,10 @@ class Workspace:
         if self.project(scope,project)['knowledge_revision']!=plan['base_revision']:
             raise ContractError('stale_base','Project knowledge changed after approval.')
         operations=plan['operations'];temp={}
+        from packages.domain.task_lifecycle import guard
+        guard(self,project,operations,bound)
         for op in operations:
-            if type(op) is not dict or op.get('op') not in ('create','update','link','end_link'):
+            if type(op) is not dict or op.get('op') not in ('create','update','link','end_link','task_lifecycle'):
                 raise ContractError('invalid_operation','Only typed create/update/link operations are supported.')
             if op['op']=='create':
                 identifier(op['id'])
@@ -370,6 +372,10 @@ class Workspace:
                 op['id']=temp[op['id']]
                 self._body(op['body'])
                 stream=op['id'];version=1
+            elif op['op']=='task_lifecycle':
+                from packages.domain.task_lifecycle import operation
+                operation(op)
+                stream=op['id'];version=op['base_version']+1
             elif op['op']=='update':
                 if set(op)!={'op','id','base_version','body'}:raise ContractError('invalid_operation','Update fields are invalid.')
                 identifier(op['id']);integer(op['base_version'],1);self._body(op['body'])
@@ -411,8 +417,18 @@ class Workspace:
         if op['op']=='create':
             self.db.execute('INSERT INTO records VALUES (?,?,?,?,?)',(self.workspace,project,op['id'],1,canonical(op['body'])))
             if 'source_seq' in op:self.db.execute('INSERT INTO record_sources VALUES (?,?,?,?)',(self.workspace,project,op['id'],op['source_seq']))
+        elif op['op']=='task_lifecycle':
+            from packages.domain.task_lifecycle import transition
+            previous=json.loads(self.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()[0])
+            body=transition(previous,op)
+            self.db.execute('UPDATE records SET version=?,body=? WHERE workspace=? AND project=? AND id=?',(op['base_version']+1,canonical(body),self.workspace,project,op['id']))
         elif op['op']=='update':
-            self.db.execute('UPDATE records SET version=?,body=? WHERE workspace=? AND project=? AND id=?',(op['base_version']+1,canonical(op['body']),self.workspace,project,op['id']))
+            body=dict(op['body'])
+            previous=json.loads(self.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()[0])
+            if 'execution' in previous:
+                if body['type']!='Task':raise ContractError('invalid_lifecycle','Lifecycle Task cannot be converted to another record type.')
+                body['execution']=previous['execution']
+            self.db.execute('UPDATE records SET version=?,body=? WHERE workspace=? AND project=? AND id=?',(op['base_version']+1,canonical(body),self.workspace,project,op['id']))
         elif op['op']=='link':
             self.db.execute("INSERT INTO edges VALUES (?,?,?,?,?,1,'asserted',?,NULL) ON CONFLICT(workspace,project,origin,target,kind) DO UPDATE SET revision=revision+1,state='asserted',valid_from=excluded.valid_from,valid_to=NULL",(self.workspace,project,op['origin'],op['target'],op['kind'],seq))
         else:
@@ -483,9 +499,9 @@ class Workspace:
 
     def _graph(self,project):
         from packages.impact.graph import DependencyGraph
-        nodes=self.db.execute('SELECT id FROM records WHERE workspace=? AND project=?',(self.workspace,project)).fetchall()
+        nodes=self.db.execute('SELECT id,body FROM records WHERE workspace=? AND project=?',(self.workspace,project)).fetchall()
         pending=self.db.execute("SELECT count(*) FROM jobs WHERE project=? AND status!='succeeded'",(project,)).fetchone()[0]
-        graph=DependencyGraph({r[0]:{'eligible':False,'verification':'unknown'} for r in nodes},complete=pending==0,
+        graph=DependencyGraph({r[0]:{'eligible':False,'verification':'unknown','execution':json.loads(r[1]).get('execution','todo')} for r in nodes},complete=pending==0,
             revision=self.db.execute('SELECT knowledge_revision FROM projects WHERE workspace=? AND id=?',(self.workspace,project)).fetchone()[0]+1)
         for origin,target,kind in self.db.execute("SELECT origin,target,kind FROM edges WHERE workspace=? AND project=? AND state='asserted'",(self.workspace,project)):
             graph.add(origin,target,kind)
@@ -579,6 +595,17 @@ class Workspace:
                 stale=True
             return dict(result=stored['result'],stale=stale,canonical_mutations=0)
 
+    def task_history(self,scope,project,task):
+        identifier(task)
+        with self.read_snapshot():
+            self.scope(scope,project)
+            row=self.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,task)).fetchone()
+            if row is None or json.loads(row[0])['type']!='Task':raise ContractError('task_unavailable','Selected task unavailable.')
+            events=[]
+            for seq,version,raw in self.db.execute("SELECT seq,version,payload FROM events WHERE workspace=? AND project=? AND stream=? AND kind='task_lifecycle' ORDER BY seq",(self.workspace,project,task)):
+                op=json.loads(raw);events.append(dict(sequence=seq,version=version,state=op['state'],reason=op['reason'],impact_run=op['impact_run']))
+            return dict(task=task,execution=json.loads(row[0]).get('execution','todo'),events=events,canonical_mutations=0)
+
     def historical_edges(self,scope,project,snapshot_seq):
         integer(snapshot_seq)
         with self.transaction():
@@ -610,6 +637,12 @@ class Workspace:
                 else:
                     integer(op['base_version'],1)
                     if previous!=(op['base_version'],) or version!=op['base_version']+1:raise ValueError()
+            elif kind=='task_lifecycle':
+                from packages.domain.task_lifecycle import operation,transition
+                operation(op)
+                row=self.db.execute('SELECT version,body FROM records WHERE workspace=? AND project=? AND id=?',(self.workspace,project,op['id'])).fetchone()
+                if row is None or row[0]!=op['base_version'] or version!=op['base_version']+1 or stream!=op['id']:raise ValueError()
+                transition(json.loads(row[1]),op)
             elif kind in ('link','end_link'):
                 fields={'op','origin','target','kind'}
                 if kind=='end_link':fields|={'base_version','state'}

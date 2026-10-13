@@ -53,15 +53,15 @@ class DependencyGraph:
         if task not in self.nodes:raise ContractError('node_unavailable','Selected task is unavailable.')
         dependencies=self.prerequisites(task)
         blockers=[d for d in dependencies if self.nodes[d].get('verification')!='passed']
-        ready=self.complete and not blockers and self.nodes[task].get('eligible') is True
+        ready=self.nodes[task].get('execution')!='cancelled' and self.complete and not blockers and self.nodes[task].get('eligible') is True
         return dict(task=task,ready=ready,blockers=blockers,coverage='complete_snapshot' if self.complete else 'incomplete',
-                    graph_revision=self.revision,reason='prerequisites_verified' if ready else 'review_or_dependency_pending',canonical_mutations=0)
+                    graph_revision=self.revision,execution=self.nodes[task].get('execution','unknown'),reason='task_cancelled' if self.nodes[task].get('execution')=='cancelled' else 'prerequisites_verified' if ready else 'review_or_dependency_pending',canonical_mutations=0)
 
     def rank(self):
         """Unique downstream unblock count; never a schedule/critical-path estimate."""
         result=[]
         for task,node in self.nodes.items():
-            if node.get('verification')=='passed':continue
+            if node.get('verification')=='passed' or node.get('execution')=='cancelled':continue
             pending=[task];downstream=set()
             while pending:
                 current=pending.pop()

@@ -98,6 +98,7 @@ def preview(graph,trigger,records,facts_before,facts_after,*,max_nodes=100,max_e
         refs=_refs(expression)
         proposals.append(dict(record=rid,record_version=record['version'],action=action,reason=reason,
             reason_path=paths.get(rid,[]),before=before,after=after,
+            justification_facts=[dict(ref=ref,revision=facts_after.get(ref,{}).get('revision'),valid=facts_after.get(ref,{}).get('valid')) for ref in sorted(refs)],
             counter_evidence=sorted(ref for ref in refs if facts_after.get(ref,{}).get('valid') is True),
             preserve_historical_completion=record['historically_completed'],requires_approval=True))
     return dict(trigger=dict(trigger),knowledge_revision=graph.revision,coverage='complete_snapshot' if complete else 'incomplete',
