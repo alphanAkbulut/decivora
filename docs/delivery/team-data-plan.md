@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**Durum: tasarım tamamlayıcısı; kod ve runtime testleri yapılmadı.** İlk kullanıcı owner, sonra benzer bireysel kullanıcılar. Ekip özellikleri tam vizyonda korunur; bu plan ilk pilotu sessizce SaaS'a dönüştürmez. Temel kimlik/veri sınırları erken; davet ve çok insanlı yönetim daha sonra gelir.
+**Durum: tam ekip/veri planı öneri; yerel alt küme kodlandı.** T05f/g/h project/binding/SQLite/local grant-revocation testleri geçti; compound tenant FK/tam role/ACL/audit/ekip henüz yok. [Kapanış denetimi](../quality/task-closure-audit.md) downstream gate ve metadata eksiklerini gösterir. İlk kullanıcı owner, sonra benzer bireysel kullanıcılar. Ekip özellikleri tam vizyonda korunur; bu plan ilk pilotu sessizce SaaS'a dönüştürmez. Temel kimlik/veri sınırları erken; davet ve çok insanlı yönetim daha sonra gelir.
 
 ## Şimdi tasarlanan kararlar
 

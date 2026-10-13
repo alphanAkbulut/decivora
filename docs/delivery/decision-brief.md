@@ -1,5 +1,14 @@
 # Owner soruları ve teknik karar hazırlığı
 
+## Q16 — Görev çekirdeği ve sonraki entegrasyonların kapanış sınırı
+
+**2026-10-13 · Somut öneri hazır; owner yanıtı bekliyor.** [CL01–08 denetimi](../quality/task-closure-audit.md) 30 ana/117 backlog alt satırı inceledi. T05'in downstream T08/T06 entegrasyonlarını kendi kapanışına bağlamak döngü yaratıyor; T04 startup Done iken network/transport alt kayıtları da genel all-child kuralında kalıyor. Bu durum kabul eşiğini düşürerek veya testleri silerek çözülmez.
+
+- **A — Önerilen:** Task-local core acceptance + açık integration/first-use/release gate manifesti. Sonraki modüle ait iş kendi kaydında açık kalır; çekirdek parent yalnız kendi kanıtıyla kapanır. MVP14AC, source activation yetkisi ve first-use security değişmez. T05 otomatik Done yapılmaz; manifest kanıt review'u gerekir.
+- **B:** Mevcut bütün-child kapanışını koru; dependency loop/parent scope çelişkilerini kapsamlı dependency refactor ile çöz, T04 kapanış yorumunu da yeniden değerlendir.
+
+Etkilenecekler: canonical backlog/faz/team-data/kapanış validator'ı ve ilgili gate açıklamaları. Fayda: gerçek teslim görünürlüğü ve döngüsüz sıra. Risk: yanlış sınıflamanın first-use korumasını geciktirmesi; validator ownership/AC/gate/cycle ve runtime negatif kanıtı kontrol etmelidir. Bu kapanış/kabul politikası değişikliği olduğu için owner onayı olmadan uygulanmadı. Bu soru yeni model, ücret, kaynak erişimi veya silme izni istemez. Salt clerical stale karar/sayım düzeltmeleri ayrıca yapıldı; ana status'lar aynı.
+
 ## Güncel odak — Q14-A kabul edildi / 2026-10-13
 
 Kullanıcı gri alanların sessiz varsayımlarla şekillenmemesini istedi. Teknik ayrıntı, deney sınırı ve kullanıcıya görünen davranış farklı kayıtlar olmalı. [P0 receiver guard](../quality/receiver-contract.md) genel production kararı değildir: bir mesajda çoklu preserved record şu anda unsupported, kayıt başına bir next-action mevcut deney sınırı, küçük keyword schema interpreter genel validator değildir. Bu sınırlara kullanıcı ürünü olarak onay verilmiş sayılmaz. Gerçek token/cost, IAM/adapter, nihai stack/lisans ve yatırım sonucu açık; eski geçici seçimleri accepted ADR diye ilerletme.

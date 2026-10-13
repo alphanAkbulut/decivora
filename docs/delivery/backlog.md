@@ -62,7 +62,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
 - **Son ilerleme:** 2026-10-13 · T01g/H1-H3 ve T01i/H4 partial davranış review tamamlandı; source/rubric/cevap kayıtları korunur. T03y receiver hazırlığı tamamlandı; bu T01 exact gold/adjudication/holdout kapanışı değildir.
-- **Sıradaki adım:** Exact kaynak/etiket inceleme ve adjudication kuyruğundaki kalanları küçük örneklerle tamamla; human gold/holdout gate açık. Receiver isteği tekrar hazırlanmayacak: T03y DONE, Q03-R6 yalnız yeni model run onayı bekliyor.
+- **Sıradaki adım:** Exact kaynak/etiket inceleme ve adjudication kuyruğundaki kalanları küçük örneklerle tamamla; human gold/holdout gate açık. Receiver isteği tekrar hazırlanmayacak: T03y DONE, Q03-R6 RECEIVER-002 tek run için tüketildi; yeni run izni yok.
 
 
 ### İlk üç davranış incelemesi kapanışı
@@ -94,9 +94,9 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Boyut:** Karşılaştırma başına küçük deney.
 - **Risk durumu:** Observed / High · R23/R24: iki actual receiver çıktı contract/source gate geçmedi. Tipli dönüşüm/durable reply fixture kodu çalışıyor; genel model/capture/native kalite kapıları açık. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
-- **Etkilenen iş:** T03 semantik receiver kalite, gerçek capture/native kıyas ve T03c yatırım/stack kapıları açık. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
+- **Etkilenen iş:** T03 semantik receiver kalite ve gerçek capture/native-ROI kıyası açık; T03c/Q15-A conditional yatırım/runtime kararı kabul edildi. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 - **Son ilerleme:** 2026-10-13 · T03ac [kalıcı explicit reply proposal](../quality/reply-store.md) DONE;14 yeni/248 semantik test. Late source binding/restart/dedup/conflict/current-context/atomic no-resume; gerçek approval, UI/IAM/semantik reply parsing yok. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
-- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI/T03c açık.
+- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI kanıtları açık; T03c koşullu karar kapandı.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -165,7 +165,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **İş:** Onaylı stack için domain/storage sınırı, package sürümleri, lisans envanteri ve test komutları oluştur.
 - **Kabul:** Tek yerel başlatma yolu; sentetik input dışında veri yok; CI/test komutları belgelendi.
 - **Doğrulama:** Temiz kurulum ve schema-invalid payload reddi.
-- **Teslim edilen dosya alanı:** `apps/hub/; packages/domain/; manifests/; tests/runtime/`. [Çalıştırma](../../apps/hub/README.md), [12 test ve temiz başlangıç kabulü](../quality/runtime-scaffold.md). Storage/identity/ingress henüz yok; T05/T06/T07 kapsamı.
+- **Teslim edilen dosya alanı:** `apps/hub/; packages/domain/; manifests/; tests/runtime/`. [Çalıştırma](../../apps/hub/README.md), [12 test ve temiz başlangıç kabulü](../quality/runtime-scaffold.md). T04 kabul anında storage/identity/ingress kapsamı yoktu; güncel T05f/g/h ayrı kanıtla kodlandı, ingress T06 açık.
 - **Son ilerleme:** 2026-10-13 · T04 startup/contract/manifest/clean-copy koşulları geçti; app0.1.0-dev/Python3.12, actual model/network/canonical mutation0.
 - **Sıradaki adım:** T05 proje kimliği/binding; T04 scope'u tekrar deney hazırlığı olarak açma.
 - **Boyut:** 1 küçük PR.
@@ -410,6 +410,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** Önce keşif.
 
 ## Sistem sözleşmesi alt dilimleri
+
+**Güncel audit notu:** Genel parent-all-child kapanış cümlesi downstream entegrasyonlarla CL01/02/07 çelişkisi taşıyor. [Q16 kapanış denetimi](../quality/task-closure-audit.md) ayrım önerir; owner onayı gelmeden dependency/status/acceptance değiştirilmedi. Her açık alt iş bugünkü build başlangıcının blocker'ı değildir.
 
 Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere bağlar. Her alt dilim **TODO**; parent görev ancak bütün ilgili dilimler ve kendi AC'leri geçince kapanır. Sıra parent backlog sırası, sonra a→b→c'dir. “Kanıt” sütunu beklenen çıktıdır, mevcut test sonucu değildir.
 
@@ -701,6 +703,6 @@ TG-01/02 belge düzeltmeleri runtime görevlerini complete yapmaz. TG-12–23 ca
 
 ## İnsan kararından bağımsız P0 bağlantı teslimi — 2026-10-11
 
-T03f/T03b kısmi kod teslimi: [source-only request, output validator, candidate bridge, evaluator ve checkpoint kodu](../../spikes/semantic-chain/README.md) uygulandı. T01f gold/human ve T03c production yatırım kapıları kapanmadı. [Hazırlık/blocker matrisi](implementation-readiness.md) teknik işi gerçek erişim/model/maliyet ve insan kalite incelemesinden ayırır. Bu işler için bütün gold veya future fazların tamamlanması beklenmez. 28 yeni test ve [sonuç](../quality/semantic-readiness-results.json); sonraki gerçek model dispatch/not_run/usage sınırı açık. AI-authored S02 candidate draft contract/import proof’udur; model kalite benchmark’ı değildir.
+T03f/T03b kısmi kod teslimi: [source-only request, output validator, candidate bridge, evaluator ve checkpoint kodu](../../spikes/semantic-chain/README.md) uygulandı. T01f gold/human ve native/ROI kanıtları açık; T03c/Q15-A conditional yatırım/runtime kararı kabul edildi. [Hazırlık/blocker matrisi](implementation-readiness.md) teknik işi gerçek erişim/model/maliyet ve insan kalite incelemesinden ayırır. Bu işler için bütün gold veya future fazların tamamlanması beklenmez. 28 yeni test ve [sonuç](../quality/semantic-readiness-results.json); sonraki gerçek model dispatch/not_run/usage sınırı açık. AI-authored S02 candidate draft contract/import proof’udur; model kalite benchmark’ı değildir.
 
 T03f/T03b ek P0 dilimi: [token/context preflight](../quality/token-preflight.md) ve 17 fixture testi uygulandı. Mevcut S02 hashleri değişmedi; unknown cap/bütçe blocked sonucunu veriyor, gerçek inference yok. T09d/T21b/T21c için çağrı öncesi hesaplama örüntüsü sınandı; gerçek adapter, trusted policy, atomik reservation, para ve dispatch enforcement işleri TODO kalır. Rapor [ayrı sonuç kaydı](../quality/token-preflight-results.json) taşır.

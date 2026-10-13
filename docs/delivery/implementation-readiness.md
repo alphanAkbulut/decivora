@@ -57,10 +57,11 @@ T04 runtime source contract ve CLI gerçekten kodlandı; graph/IAM/API/UI/semant
 
 | Konu | Tür | Neden gerekli / neyi durdurur? | Durum |
 |---|---|---|---|
+| Q16 görev kapanış sınırı | Owner kabul politikası | Parent-all-child yorumundaki T05/downstream döngüsü ve T04/child tutarsızlığı; bütün bağımsız kodu veya model çalışmasını bekletmez | [Somut A/B önerisi ve CL01–08](../quality/task-closure-audit.md); yanıt pending, status/14AC değişmedi |
 | Receiver model kalitesi ve genelleme | Gerçek model ölçümü bekliyor | RECEIVER-002 düzeltmeli tek run da invalid_contract; missing required field ve ambiguous-question binding kaynak retleri gözlendi. Dar MEMBERSHIP-002/003 source/type draft eşleşmesi genel kalite değildir | [İlk failure](../quality/receiver-001-result.md), [ikinci gerçek failure](../quality/receiver-002-result.md); ham çıktılar değişmedi. R22 multi-answer fixture toplama T03r DONE; production reconciliation, gold/native/ROI açık |
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
 | Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
-| Native/dosya/resume kıyas | Adil koşullar ve gerçek ölçüm | Üstünlük ve T03c yatırım kararı | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
+| Native/dosya/resume kıyas | Adil koşullar ve gerçek ölçüm | Üstünlük ve yatırım yeniden değerlendirmesi; Q15-A core start değil | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
 
 MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verification invariant’ları önceden uygulanabilir sözleşmelere bağlandı; doğru runtime/host davranışları testlerle kanıtlanacak. Ekip/cloud ve ileri dil/connector detaylarının tamamını şimdi seçmek gerekmiyor.
 

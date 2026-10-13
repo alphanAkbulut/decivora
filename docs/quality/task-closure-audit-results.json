@@ -1,0 +1,1280 @@
+{
+  "source_ref": "3e2bbb209f9ba60e3108fb4f4cdd5454fdff9f25",
+  "scope": "planning/closure records, not full code/model audit",
+  "main_counts": {
+    "IN_PROGRESS": 4,
+    "DONE": 1,
+    "TODO": 25
+  },
+  "main_tasks": 30,
+  "backlog_subtasks": 117,
+  "subtask_states": {
+    "DONE": 30,
+    "TODO": 12,
+    "IN_PROGRESS": 5,
+    "UNSPECIFIED": 63,
+    "PROPOSED": 7
+  },
+  "cross_file_inventory_complete": false,
+  "unspecified_is_not_proven_missing": true,
+  "conditional_closure_cycle": [
+    "T05",
+    "T05d",
+    "T08b",
+    "T08",
+    "T07",
+    "T06",
+    "T05"
+  ],
+  "cycle_assumption": "all child/integration acceptance is required before parent completion",
+  "proposal": "Q16-A pending; not applied",
+  "runtime_tests_rerun": false,
+  "model_dispatches": 0,
+  "baseline_file_sha256": {
+    "docs/delivery/backlog.md": "26080ba6d5676e341042996f0cf7c3336522ac79515780d64b0f2791fa38b06e",
+    "docs/delivery/phase-tracker.md": "6806d9622cb3269dc1baab95f802c96b5978cabed51548da0b8c4db8e4cd4c5e",
+    "docs/delivery/team-data-plan.md": "ab1ce2b3215609c5ac022eb61ceba278d5a3c2a618cc88f82def5ebbd43fa781",
+    "docs/delivery/implementation-readiness.md": "8b472fabaf29c8e0fa2c0a5a1bc0a2e8d18339d0134373b114c23c09f91c53da",
+    "docs/delivery/llm-handoff.md": "f5ea960e1330c7a55747d29779e957ce9c22093071c030cbb5e8f19e734c6921",
+    "docs/governance/open-decisions.md": "30d372261d3728c7ddc301507aa05eb0fef1bf34d01310f08c02748a6e746070",
+    "docs/product/mvp.md": "e3e8d46101e476cb3eed82d5c44c7a7d9e6f57281cc1a85fd24692b80cb19d69",
+    "scripts/project_progress.py": "71a9d89e264d89a28e89a6e7480bde9d2350de925f423a75e16e4792c69d0ed9"
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Golden corpus ve karşılaştırma protokolü",
+      "status": "IN_PROGRESS",
+      "phase": "P0",
+      "dependencies": [],
+      "classification": "open_evidence_gate",
+      "acceptance": "Her örneğin source span'ı ve beklenen sonucu var; model geliştirmede kullanılmayan holdout ayrılmış; kişisel veri yok.",
+      "subtasks": [
+        {
+          "id": "T01g",
+          "dependencies": "—",
+          "status": "DONE",
+          "scope": "DONE / P0: H1/H2/H3 ilk davranış incelemesi",
+          "acceptance": "Üç açık insan yanıtı, soru/açıklama/kapsam ve source/oracle hash bağlı ayrı review kayıtları mevcut; [kuyruk](../quality/human-review-queue.md). Exact candidate etiketleri, tam oracle/adjudication/gold/holdout bu kapanışın dışında"
+        },
+        {
+          "id": "T01h",
+          "dependencies": "T01g",
+          "status": "DONE",
+          "scope": "DONE / P0: iki yeni development family ve ayrı kaynak/rubric paket",
+          "acceptance": "Sekiz sentetik mesaj/iki proje; eski-güncel soru revision,quoted/planned,EN claim/not_run/ambiguous; hash/source/schema consistency ve5 harness testi; [paket](../../examples/adversarial-smoke/README.md). İnsan exact gold/holdout/gerçek inference değil"
+        },
+        {
+          "id": "T01i",
+          "dependencies": "T01h",
+          "status": "DONE",
+          "scope": "DONE / P0: H4 quoted/planned partial insan review",
+          "acceptance": "Kullanıcı1-EVET, source/rubric hash ve explicit kapsam [review kaydında](../quality/reviews/h4-behavior.json); tam6label/gold/holdout veya dispatch yetkisi değil"
+        },
+        {
+          "id": "T01e",
+          "dependencies": "T01",
+          "status": "TODO",
+          "scope": "TODO / P0: TR/EN claim/request/negation/quote/future/implicit karar etiketleri ve holdout; izin varsa ayrıca redakte gerçek çıktı örneklemi",
+          "acceptance": "LEX-01–04/07; örnekler source span/actor taşır, gerçek veri yoksa sıklık/tasarruf unknown; mevcut corpus şartı korunur"
+        },
+        {
+          "id": "T01f",
+          "dependencies": "T01",
+          "status": "IN_PROGRESS",
+          "scope": "IN_PROGRESS / P0 (draft oracle + bağımsız source-span scorer; insan/critical domain kapsamı açık): frozen checkpoint/identity/source-span oracle, bağımsız rubric ve error taxonomy",
+          "acceptance": "6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T02",
+      "title": "İki coding yüzeyinde capability spike",
+      "status": "IN_PROGRESS",
+      "phase": "P0",
+      "dependencies": [
+        "T01"
+      ],
+      "classification": "open_evidence_gate",
+      "acceptance": "Her yüzey için version, olay, payload, izin, truncation ve coverage raporu var; erişilemeyenler unsupported/unknown.",
+      "subtasks": [
+        {
+          "id": "T02b",
+          "dependencies": "T02",
+          "status": "UNSPECIFIED",
+          "scope": "Seçilen host/build MCP+hook+transcript capability raporu; tools-only/remote smoke test",
+          "acceptance": "[CON-01/02/07](../architecture/connection-and-context.md); Q02 yanıtı gerçek yüzey seçimini belirler"
+        },
+        {
+          "id": "T02d",
+          "dependencies": "T01",
+          "status": "IN_PROGRESS",
+          "scope": "IN_PROGRESS (manuel target + synthetic measurement; gerçek host kısmi): selected kaynak, trustworthy human selection ve tek local/repo target capability",
+          "acceptance": "[READBACK-01](../quality/first-target-readback.md) tek GitHub dokümanında manuel happy-path eşleşmesi; otomatik capability, missing/permission/partial/stale ve kaynak coverage henüz not_run. Capture/target izinleri ayrı; ücret/erişim ayrıca"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T03",
+      "title": "Native/extend/build ve teknoloji kararı",
+      "status": "IN_PROGRESS",
+      "phase": "P0",
+      "dependencies": [
+        "T01",
+        "T02"
+      ],
+      "classification": "open_evidence_gate",
+      "acceptance": "Native/config/custom/unknown matrisi, GAP/RES sonuçları ve kullanıcı yönetim yükü kanıtı var; native/extend/build/ek deney/durdur seçenekleri gerekçeli. Owner kararı ilgili ADR'lere işlenir; deneme yapılamayanlar not_run. T03a prototype yöntemi production stack onayı değildir; build seçilmeden T04 başlamaz.",
+      "subtasks": [
+        {
+          "id": "T03g",
+          "dependencies": "T03f",
+          "status": "DONE",
+          "scope": "DONE / P0: bounded quote adapter ve ayrı candidate rubric",
+          "acceptance": "Negatif source/type/authority/stale/duplicate kontrolleri passed; immutable raw korunur; [kanıt](../quality/source-anchor-adapter.md). Gerçek model quality kapsam dışı"
+        },
+        {
+          "id": "T03h",
+          "dependencies": "T03g",
+          "status": "DONE",
+          "scope": "DONE / P0: gönderimsiz API paket ve saved response import",
+          "acceptance": "Schema/payload/source sınırı, refusal/incomplete/unknown ve no-overwrite testleri passed; [kanıt](../quality/quote-api-package.md). Provider/schema acceptance ve bütçe enforcement kapsam dışı"
+        },
+        {
+          "id": "T03i",
+          "dependencies": "T03f",
+          "status": "DONE",
+          "scope": "DONE / P0: tek selected local file observer",
+          "acceptance": "Dokuz negatif/pozitif test ve önceki belgeyle gerçek local hash match; [kanıt](../quality/local-observer.md). GitHub upload/AC/production IAM kapsam dışı"
+        },
+        {
+          "id": "T03j",
+          "dependencies": "T03g,T03i",
+          "status": "DONE",
+          "scope": "DONE / P0: tek komutluk integrated zincir",
+          "acceptance": "Quote-only → ayrı seçim → AND/OR impact → bounded local read → partial/full AC → restore; yedi checkpoint ve 66 suite testi passed; [kanıt](../quality/integrated-chain.md). Model/gerçek grant/remote target kapsam dışı"
+        },
+        {
+          "id": "T03k",
+          "dependencies": "T03g,T03h",
+          "status": "DONE",
+          "scope": "DONE / P0: mevcut üyelik source-only paket ve batch import/score",
+          "acceptance": "Dört synthetic mesaj, iki ayrı proje/contract, oracle dışarıda; 6 negatif/pozitif test ve 72 suite passed; [plan/kanıt](../quality/membership-smoke-plan.md). Gerçek model send/usage/accuracy kapsam dışı"
+        },
+        {
+          "id": "T03l",
+          "dependencies": "T03k",
+          "status": "DONE",
+          "scope": "DONE / P0: onaylı MEMBERSHIP-001 tek gönderim ve değişmez ölçüm kaydı",
+          "acceptance": "Raw UI-copy hash, iki source binding/üç quote pass; exact candidate gate incomplete ve no-mutation guard kaydedildi; [run](../quality/membership-001-result.md). Başarı/kabul gate'i bu kapanışla kapanmaz"
+        },
+        {
+          "id": "T03m",
+          "dependencies": "T03l",
+          "status": "DONE",
+          "scope": "DONE / P0: separate typed v2 field/type contract ve offline paket",
+          "acceptance": "Dört typed negatif/pozitif test, ayrı contract ID ve 4708-byte prompt; 78 suite passed; [v2/kanıt](../quality/membership-001-result.md). Gerçek v2 model davranışı not_run; no semantic alias repair"
+        },
+        {
+          "id": "T03n",
+          "dependencies": "T03m",
+          "status": "DONE",
+          "scope": "DONE / P0: onaylı MEMBERSHIP-002 gerçek typed çıktı ve ölçüm",
+          "acceptance": "Tek gönderim, dört authored_draft aday eşleşti, source/type/hash pass; iki ayrı guard no-mutation ve iki yeni regresyon testi, 80 suite passed; [run](../quality/membership-002-result.md). Human gold/production/domain doğruluğu kapsam dışı"
+        },
+        {
+          "id": "T03o",
+          "dependencies": "T03n",
+          "status": "DONE",
+          "scope": "DONE / P0: gerçek kayıtlı candidate → controlled karar/impact/hedef/AC/restore replay",
+          "acceptance": "Kendi request/source kimliği, bağımsız fixture receipt ve13 authored checkpoint; 6 negatif/pozitif test, 86 suite passed; [rapor](../quality/membership-chain-replay.md). Yeni inference/production IAM/remote uygulama/human gold değil"
+        },
+        {
+          "id": "T03p",
+          "dependencies": "T03o",
+          "status": "DONE",
+          "scope": "DONE / P0: aynı source'ta lexical ve saved-model dar ölçüm",
+          "acceptance": "Dört mesaj/iki request, shared span/kind skorları, source-only extraction ve capability farkı kaydı;5 yeni harness testi/91 suite passed; [rapor](../quality/same-source-comparison.md). Genel/native/domain/para üstünlük değil"
+        },
+        {
+          "id": "T03q",
+          "dependencies": "T03p,T01h",
+          "status": "DONE",
+          "scope": "DONE / P0: yeni8-message MEMBERSHIP-003 gerçek typed output ve ölçüm",
+          "acceptance": "Tek onaylı send/retry0,6 draft aday/2 scope-no-candidate,source/hash/type pass; whole-batch ve per-candidate no-mutation guard/93suite; [sonuç](../quality/membership-003-result.md). Çok-aday production reconcile/human gold/native/cost gate değil"
+        },
+        {
+          "id": "T03r",
+          "dependencies": "T03q",
+          "status": "DONE",
+          "scope": "DONE / P0: birden fazla source-bound cevap için read-only öneri koleksiyonu",
+          "acceptance": "Eski/current/ambiguous ayrı; conflict/duplicate/agent/foreign/stale/no-mutation ve separate receipt negatifleri;9 yeni test/102 suite; [rapor](../quality/proposal-collection.md). Kalıcı çok-soru production reconcile veya model kalite gate değil"
+        },
+        {
+          "id": "T03s",
+          "dependencies": "T03r",
+          "status": "DONE",
+          "scope": "DONE / P0: deterministic kaynak bağlı resume ve eşit bilgiyle dosya serialization kıyası",
+          "acceptance": "İki temsil aynı core/checklist, stale source/state/access/tamper/byte/no-overwrite;8 yeni test/110 suite; [rapor](../quality/resume-file-comparison.md). Gerçek alıcı model/native/user burden/production RES gate değil"
+        },
+        {
+          "id": "T03t",
+          "dependencies": "T03s",
+          "status": "DONE",
+          "scope": "DONE / P0: kayıpsız inline source/record table ve çözülmüş readable model view",
+          "acceptance": "Frozen core exact, üç temsil aynı authored checklist;11 yeni test/121 suite; byte azalması ve missing source/stale/reference/no-truncation negatifleri; [rapor](../quality/resume-compaction.md). Model/token/production/native gate değil"
+        },
+        {
+          "id": "T03u",
+          "dependencies": "T03t",
+          "status": "DONE",
+          "scope": "DONE / P0: bounded fresh-session receiver request ve bağımsız saved-output evaluator hazırlığı",
+          "acceptance": "7950byte kaynak-only prompt, ayrı authored oracle,13 yeni test/134suite; strict source/schema/critical negative/incomplete/no-dispatch; [plan](../quality/receiver-smoke-plan.md). Gerçek send/not_run, gold/kalite gate değil"
+        },
+        {
+          "id": "T03v",
+          "dependencies": "T03u",
+          "status": "DONE",
+          "scope": "DONE / P0: tek configured Luna/Low native run ve first-output kanıtı",
+          "acceptance": "Dispatch öncesi belge/permission, actualraw immutable/fullmessagecapture, invalidabstention ret/2regression/136suite, tokenunknown; [sonuç](../quality/receiver-001-result.md). Model kabul/gold/production gate değil"
+        },
+        {
+          "id": "T03w",
+          "dependencies": "T03v",
+          "status": "DONE",
+          "scope": "DONE / P0: offline strict shape schema ve kaynak bağlı receiver guard",
+          "acceptance": "16 yeni/152 semantik test;6 incelenebilir invalid örnek, known-question/ambiguous/type/record-action/false-evidence retleri; [rapor](../quality/receiver-contract.md). Eski raw/prompt/oracle/evaluator aynı; model/provider kabulü yeniden test edilmedi"
+        },
+        {
+          "id": "T03x",
+          "dependencies": "T03w",
+          "status": "DONE",
+          "scope": "DONE / P0: Q14-A bağımsız proje review ve açıklama cevabı descriptor",
+          "acceptance": "20 yeni/172 semantik test; valid diğer proje korunur, technical/missing/abstain/ambiguous görünür; global source/access/kimlik ret ve atomic-group birlikte bekleme; explicit late/stale/agent/source/idempotent association. [Rapor](../quality/project-review.md). Frozen raw/scorer unchanged, model/API/mutation0; durable Inbox/UI/IAM/host resume kapsam dışı"
+        },
+        {
+          "id": "T03y",
+          "dependencies": "T03x",
+          "status": "DONE",
+          "scope": "DONE / P0: yeni source-only receiver isteği ve ortak makine schema/scorer",
+          "acceptance": "20 yeni/192 semantik test;8 exactsource/6record,8089byte/8192tavan, hermetik3file preparation, typed/source/duplicate/abstention/no-overwrite. [Plan](../quality/receiver-next-plan.md). Actualsend0/izin yok, provider/model/gold/ROI kapısı açık; eski raw/prompt/scorer aynı"
+        },
+        {
+          "id": "T03z",
+          "dependencies": "T03y",
+          "status": "DONE",
+          "scope": "DONE / P0: wire-2 için Q14-A bağımsız proje incelemesi",
+          "acceptance": "14 yeni/206 semantik test; global identity/access/source preflight, local type/source error, clean/invalid abstain/missing, atomic bekleme, immutable v1 ret. [Rapor](../quality/project-review-next.md). Strict kalite scorer aynı; model/API/mutation0, durable Inbox/late-reply uygulama/production kapsam dışı"
+        },
+        {
+          "id": "T03aa",
+          "dependencies": "T03z",
+          "status": "DONE",
+          "scope": "DONE / P0: selected typed record'dan readback ve safe action taslağı",
+          "acceptance": "13 yeni/222 semantik test;6record bağımsız authored kıyas, null ambiguous binding, access/freshness/atomic/no-oracle/no-raw/no-overwrite. [Rapor](../quality/typed-review.md). Yeni inference0; free-text extraction/human gold/IAM/production kabulü değil"
+        },
+        {
+          "id": "T03ab",
+          "dependencies": "T03aa",
+          "status": "DONE",
+          "scope": "DONE / P0: SQLite inceleme snapshot deposu",
+          "acceptance": "12 yeni/234 semantik test; restart aynı pending descriptor, current scope/access, unique/dedup/rollback/append-only/tamper/two-writer. [Rapor](../quality/review-store.md). Human reply resolution/UI/production IAM/backup/crash ayrı; canonical mutation/model0"
+        },
+        {
+          "id": "T03ac",
+          "dependencies": "T03ab",
+          "status": "DONE",
+          "scope": "DONE / P0: persisted clarification'a explicit source-bound reply proposal",
+          "acceptance": "14 yeni/248 semantik test; current record/CID/question revision/source, restart/unique/retry/conflict/actor/access/rollback/tamper/two-writer. [Rapor](../quality/reply-store.md). Actual approval/resolved/job resume/semantic parsing/production IAM yok"
+        },
+        {
+          "id": "T03a",
+          "dependencies": "T01,T02d",
+          "status": "IN_PROGRESS",
+          "scope": "IN_PROGRESS: kullanıcı yetkili P0 fixture yöntemi, Python stdlib/SQLite, paid dispatch yok; production stack/lisans açık",
+          "acceptance": "Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil"
+        },
+        {
+          "id": "T03b",
+          "dependencies": "T03a",
+          "status": "IN_PROGRESS",
+          "scope": "IN_PROGRESS: yetkilendirilmiş typed zincir + lexical baseline çalıştı; semantik/native deneyi açık",
+          "acceptance": "GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok"
+        },
+        {
+          "id": "T03c",
+          "dependencies": "Q15",
+          "status": "DONE",
+          "scope": "DONE: kabul edilmiş koşullu çekirdek build seçimi; Python3.12/SQLite, ADR-0012",
+          "acceptance": "[Exact owner onayı](../quality/reviews/q15-build-approval.json); T04 başlangıcı açıldı. Native/ROI/model/capture sonuçları açık; yalnız yatırım tercihi, genel ürün kanıtı veya T03 parent kapanışı değil"
+        },
+        {
+          "id": "T03f",
+          "dependencies": "T01f,T02,T03a",
+          "status": "IN_PROGRESS",
+          "scope": "IN_PROGRESS / P0 (P0 harness/scorer kısmi; gerçek adapter/telemetry açık): sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama",
+          "acceptance": "One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T04",
+      "title": "Runtime iskeleti ve sözleşme doğrulayıcıları",
+      "status": "DONE",
+      "phase": "P1a",
+      "dependencies": [
+        "T03c"
+      ],
+      "classification": "accepted_startup_with_unclassified_children",
+      "acceptance": "Tek yerel başlatma yolu; sentetik input dışında veri yok; CI/test komutları belgelendi.",
+      "subtasks": [
+        {
+          "id": "T04a",
+          "dependencies": "T04",
+          "status": "UNSPECIFIED",
+          "scope": "Versioned envelope/command/query şemaları ve error taxonomy",
+          "acceptance": "Unsupported schema ve invalid input state değiştirmez; snapshot/cursor alanları şema testli · domain"
+        },
+        {
+          "id": "T04b",
+          "dependencies": "T04",
+          "status": "UNSPECIFIED",
+          "scope": "İlk network ingress için loopback/auth/origin ve bounded config",
+          "acceptance": "Yetkisiz kaynak/command reddedilir; payload/queue limiti tanımlı; V10/V23 · hub/capture"
+        },
+        {
+          "id": "T04c",
+          "dependencies": "T04a",
+          "status": "UNSPECIFIED",
+          "scope": "Source, command, trigger ve async result şemaları; ER composite key/N:M ilişki kontratı",
+          "acceptance": "P1a: DBR-01/02/03 fixture tanımı; HTTP/MCP mapping seçilen transport'ta açık"
+        },
+        {
+          "id": "T04d",
+          "dependencies": "T04b,T04c",
+          "status": "UNSPECIFIED",
+          "scope": "Sonlu request/body/burst/concurrency config, erken admission, güvenli hata/transport eşlemesi",
+          "acceptance": "P1a ilk ingress: LIM-01/03/04 temel fixture; input limitleri pahalı parse/LLM'den önce, ret domain mutasyonu yapmaz"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T05",
+      "title": "Proje kimliği ve binding",
+      "status": "IN_PROGRESS",
+      "phase": "P1a",
+      "dependencies": [
+        "T04"
+      ],
+      "classification": "in_progress_core_with_downstream_gate_ambiguity",
+      "acceptance": "Aynı adlı projeler ayrılır; belirsiz binding yazma yapmaz; query de scope denetler.",
+      "subtasks": [
+        {
+          "id": "T05h",
+          "dependencies": "T05",
+          "status": "DONE",
+          "scope": "DONE / P1a: kalıcı local principal/grant revision ve transaction guard",
+          "acceptance": "Eski scope read/write/cache ret, owner-only grant, restart/rollback; [8 test](../quality/local-authority.md). Login/agent token/resource ACL/audit açık"
+        },
+        {
+          "id": "T05g",
+          "dependencies": "T05",
+          "status": "DONE",
+          "scope": "DONE / P1a: kalıcı project/binding snapshot store",
+          "acceptance": "Restart/idempotency/rollback/two-connection stale/foreign-scope ret; [11 test](../quality/project-store.md). Authz lifecycle/source receipt/backup açık"
+        },
+        {
+          "id": "T05f",
+          "dependencies": "T05",
+          "status": "DONE",
+          "scope": "DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo",
+          "acceptance": "Aynı ad farklı ID, çapraz scope read/write ret, revision-bound tarihçe, belirsizde mutation yok; [11 test](../quality/project-binding-core.md). Kalıcı store/auth/ingress tamamlanmadı"
+        },
+        {
+          "id": "T05a",
+          "dependencies": "T05",
+          "status": "UNSPECIFIED",
+          "scope": "Immutable project binding epoch ve quarantine",
+          "acceptance": "Binding değişimi yeni event'leri etkiler; geçmiş transfer ayrı correction; V18/V25 · domain/storage"
+        },
+        {
+          "id": "T05c",
+          "dependencies": "T05b",
+          "status": "UNSPECIFIED",
+          "scope": "P1a kaynak/hedef binding ve versioned izin makbuzu şeması; grantor/active gate kural fixture'ı",
+          "acceptance": "ACC-01/03/07'nin veri/kural örnekleri; gerçek activation yetki/audit entegrasyonu T08b/T07b sonrasında"
+        },
+        {
+          "id": "T05d",
+          "dependencies": "T05c,T08b",
+          "status": "UNSPECIFIED",
+          "scope": "Session/span binding, konu segmenti ve kaynak→aday→record ilişki sözleşmesi",
+          "acceptance": "P1a: CHAT-01/04/05; seçilmemiş session, karışık proje, yanlış binding düzeltmesi ve ACL"
+        },
+        {
+          "id": "T05e",
+          "dependencies": "T05,T04c",
+          "status": "PROPOSED",
+          "scope": "PROPOSED / P1a: source/record dil metadata'sı ve sürümlü output policy; Unicode/source/ref korunumu",
+          "acceptance": "LANG-01/04/07; şema provenance alanları, ayrı UI locale; fiziksel stack seçimi ayrıca"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T06",
+      "title": "Source ingress ve checkpoint",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T05"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Aynı event iki kez bir etki; aynı metin farklı mesajda korunur; crash cursor atlatmaz.",
+      "subtasks": [
+        {
+          "id": "T06a",
+          "dependencies": "T06",
+          "status": "UNSPECIFIED",
+          "scope": "Source+job atomic receipt ve ingest cursor",
+          "acceptance": "Disk/response kaybı senaryoları V19 geçer · capture/storage"
+        },
+        {
+          "id": "T06b",
+          "dependencies": "T06",
+          "status": "UNSPECIFIED",
+          "scope": "Worker lease/fencing ve job transitions",
+          "acceptance": "Expired worker sonuç yazamaz; V20 geçer · capture/storage"
+        },
+        {
+          "id": "T06c",
+          "dependencies": "T06",
+          "status": "UNSPECIFIED",
+          "scope": "Processing intervals, idle flush, bounded retry/quarantine",
+          "acceptance": "Boşluk üstünden watermark atlamaz; V11/V21 ve rotation geçer · capture"
+        },
+        {
+          "id": "T06e",
+          "dependencies": "T04c,T06a,T06b,T06c",
+          "status": "UNSPECIFIED",
+          "scope": "Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression",
+          "acceptance": "P1a: SEQ-03/04/08, DBR-04; domain commit entegrasyonu T07/T08'de, erken scheduler ücretli çağrı açmaz"
+        },
+        {
+          "id": "T06f",
+          "dependencies": "T04d,T06d,T06e,T05b",
+          "status": "UNSPECIFIED",
+          "scope": "Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure",
+          "acceptance": "P1a: LIM-05/08/09 yerel kısmı; receipt sonrası iş kaybolmaz, replay yan etkisiz"
+        },
+        {
+          "id": "T06g",
+          "dependencies": "T06f",
+          "status": "UNSPECIFIED",
+          "scope": "Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü",
+          "acceptance": "P1a: LAG-01–05 sentetik/crash; queue dolunca sahte receipt ve sessiz source drop yok"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T07",
+      "title": "Domain log ve projector",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T06"
+      ],
+      "classification": "pending_core",
+      "acceptance": "UPDATE/DELETE event API yok; replay aynı digest; migration sürümü kayıtlı.",
+      "subtasks": [
+        {
+          "id": "T07a",
+          "dependencies": "T07",
+          "status": "UNSPECIFIED",
+          "scope": "Replay mode ve projector version gate",
+          "acceptance": "Bilinmeyen event sessiz atlanmaz; replay aynı digest, sıfır dış yan etki; V14/V27 · storage"
+        },
+        {
+          "id": "T07c",
+          "dependencies": "T06,T07a",
+          "status": "TODO",
+          "scope": "**TODO / P1a:** Minimal çekirdek DB+payload backup/restore",
+          "acceptance": "Tutarlı checkpoint, source payload manifest/hash, event sequence ve projection digest; boş hedefe restore, eksik/uyumsuz veri fail closed; replay sıfır dış dispatch; V17/V27. T15a bunu sınar; T23a migration/privacy/export/operasyon kapsamını tamamlar · storage"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T08",
+      "title": "Atomic change set ve policy",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T07"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Yarım graph oluşmaz; key/digest çakışması conflict; agent onay taklit edemez.",
+      "subtasks": [
+        {
+          "id": "T08a",
+          "dependencies": "T08",
+          "status": "UNSPECIFIED",
+          "scope": "Command identity, key/digest ve policy capability",
+          "acceptance": "Aynı key güvenli; spoofed human reddi; V03/V23 · domain/hub"
+        },
+        {
+          "id": "T08c",
+          "dependencies": "T06f,T08b,T07b",
+          "status": "UNSPECIFIED",
+          "scope": "Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı",
+          "acceptance": "P1a: LIM-02/06/07/08 sentetik; ilk model dispatch'i bu minimum rezervasyon guard'ına bağlı, T21b raporlama/settlement'i tamamlar"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T09",
+      "title": "Extraction ve bounded retrieval",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T08"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Desteksiz model sonucu canonical state yazamaz; truncation ve missing source görünür. Önceden etiketli/mock adayların işlenmesi otomatik anlam çıkarımının tamamlandığı sayılmaz; yöntem ve kapsam belirtilir.",
+      "subtasks": [
+        {
+          "id": "T09b",
+          "dependencies": "T06,T09",
+          "status": "UNSPECIFIED",
+          "scope": "No-op/structured duplicate bypass; chunk manifest; evaluation fingerprint",
+          "acceptance": "[TOK-01/02/03](../architecture/routing-token-economy.md); recall ölçümü; model hatası no-op olmaz"
+        },
+        {
+          "id": "T09c",
+          "dependencies": "T06e,T09b",
+          "status": "UNSPECIFIED",
+          "scope": "TRG-02 deterministik bypass, profil ve izin/rezervasyon kapısından koşullu semantik dispatch",
+          "acceptance": "P1a/P1b profil tamamlaması: SEQ-02/03/05/06; no-op/duplicate/manual mod çağrı sayacı; minimum bütçe guard önce"
+        },
+        {
+          "id": "T09d",
+          "dependencies": "T09b,T08c",
+          "status": "UNSPECIFIED",
+          "scope": "Deterministik assessment, toplam plan tahmini, reason codes ve dispatch risk kapısı",
+          "acceptance": "P1a: TRA-01–07/09 çekirdek fixture; missing policy/unknown cap otomatik dispatch açmaz; ilk gerçek model çağrısından önce"
+        },
+        {
+          "id": "T09e",
+          "dependencies": "T01e,T09b,T09c",
+          "status": "PROPOSED",
+          "scope": "PROPOSED / P1a: sürümlü rule config, guard'lar ve structured-first candidate yolu; shadow mode, bounded matcher ve provenance dedup",
+          "acceptance": "LEX-01–06/08; unmatched içerik kaybolmaz, hiçbir keyword doğrudan command/onay üretmez; negatif örneklerle runtime test gerekir"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T10",
+      "title": "Temel reconciliation",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T09"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Aynı fikir tekrar task olmaz; onaylı karar doğrudan overwrite edilmez.",
+      "subtasks": [
+        {
+          "id": "T10a",
+          "dependencies": "T10",
+          "status": "UNSPECIFIED",
+          "scope": "Idea Evaluation için gerekçe ve karşı kanıt alanları",
+          "acceptance": "New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 · reconciliation"
+        },
+        {
+          "id": "T10b",
+          "dependencies": "T10,T05d",
+          "status": "UNSPECIFIED",
+          "scope": "Chat'ler arası duplicate/refinement/conflict ve geç kaynak reconciliation corpus'u",
+          "acceptance": "P1a: CHAT-02/03/04; kaynaklar korunur, benzerlik tek başına merge/approval değildir"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T11",
+      "title": "Tipli gerekçe graph",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T10"
+      ],
+      "classification": "pending_core",
+      "acceptance": "OR kalan gerekçeyi korur; boş gerekçe unknown; supersession cycle reddi.",
+      "subtasks": [
+        {
+          "id": "T11c",
+          "dependencies": "T11",
+          "status": "TODO",
+          "scope": "TODO / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream",
+          "acceptance": "FLOW-01–04/09–11/14; deterministik rank, aging ve neden/next actionable; eksik graph/ACL/context yanlış ready veya tamlık üretmez"
+        },
+        {
+          "id": "T11b",
+          "dependencies": "T07,T11",
+          "status": "UNSPECIFIED",
+          "scope": "Edge revision, ended/invalidated ve sequence geçerliliği",
+          "acceptance": "[GUX-03](../product/graph-experience.md); replay, current traversal ve knowledge revision"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T12",
+      "title": "Impact preview ve apply planı",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T11"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Keep/update/review/obsolete gerekçeli; tamamlanmış geçmiş korunur; eksik frontier görünür.",
+      "subtasks": [
+        {
+          "id": "T12a",
+          "dependencies": "T12",
+          "status": "UNSPECIFIED",
+          "scope": "ImpactRun snapshot, visited/frontier ve knowledge revision",
+          "acceptance": "Yeni OR edge eski preview'yu stale yapar; V22 ve limit testi · impact/storage"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T13",
+      "title": "Review işlemi ve güvenilir onay",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T12"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Serbest metin gerektirmez; stale/double approval güvenli; partial selection referansları bozmaz.",
+      "subtasks": [
+        {
+          "id": "T13a",
+          "dependencies": "T13",
+          "status": "UNSPECIFIED",
+          "scope": "Onay token'ı snapshot/policy/digest ile bağla",
+          "acceptance": "Partial selection yeni digest; iki onay tek effect; V04/V15/V23 · hub/domain"
+        },
+        {
+          "id": "T13b",
+          "dependencies": "T11b,T13",
+          "status": "UNSPECIFIED",
+          "scope": "Task cancel ve edge ending için farklı impact preview/compensating olay",
+          "acceptance": "GUX-02/05/08; aktif gereksinim veya downstream iş sessiz kapanmaz"
+        },
+        {
+          "id": "T13c",
+          "dependencies": "T08,T13",
+          "status": "UNSPECIFIED",
+          "scope": "İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi",
+          "acceptance": "[CTX-03](../product/task-context-and-acceptance.md); sonuca göre sessiz kriter düşürme yok"
+        },
+        {
+          "id": "T13d",
+          "dependencies": "Q08,T11b,T13c",
+          "status": "PROPOSED",
+          "scope": "**PROPOSED / P1b:** isteğe bağlı split önizlemesi, part_of, AC eşlemesi ve atomik onay",
+          "acceptance": "[Split sözleşmesi](../product/task-context-and-acceptance.md): cycle/ACL/stale/retry/yarım işlem; mevcut parent/kanıt korunur"
+        },
+        {
+          "id": "T13e",
+          "dependencies": "T13,T07,T08,T05",
+          "status": "TODO",
+          "scope": "TODO / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm",
+          "acceptance": "ASK-01–06/08 + LATE-01–07 uygulanabilir core; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T14",
+      "title": "Evidence ve false-done düzeltmesi",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T13"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Agent done sözü verified olmaz; failed test yeni event ile reopen eder.",
+      "subtasks": [
+        {
+          "id": "T14a",
+          "dependencies": "T14",
+          "status": "UNSPECIFIED",
+          "scope": "Evidence authority ve izinli runner arayüzü",
+          "acceptance": "Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 · verification"
+        },
+        {
+          "id": "T14b",
+          "dependencies": "T13c,T14",
+          "status": "UNSPECIFIED",
+          "scope": "AC/DoD→evidence matrisi ve current completion predicate",
+          "acceptance": "CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir"
+        },
+        {
+          "id": "T14c",
+          "dependencies": "T14a,T14b,T08b",
+          "status": "UNSPECIFIED",
+          "scope": "Run sonucu→evidence→AC/DoD assessment→completion command akışı",
+          "acceptance": "P1a: SEQ-01/06, DBR-02/03; parent ve stale kanıt; runner yoksa not_run"
+        },
+        {
+          "id": "T14d",
+          "dependencies": "T14b,T05c,T08b",
+          "status": "UNSPECIFIED",
+          "scope": "Artifact expected-effect ve exact hedefe bağlı read-back assessment; human reported ayrı",
+          "acceptance": "P1a: GAP-01/03/04/05/07/10; gözlem AC/deploy yerine geçmez; yetkisiz okuma/yazma yok"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T15",
+      "title": "Teknik kanıt kapısı",
+      "status": "TODO",
+      "phase": "P1a",
+      "dependencies": [
+        "T14",
+        "T07c"
+      ],
+      "classification": "pending_core",
+      "acceptance": "Import→impact→onay→state→düzeltme zinciri kanıtlı; başarısız kriter gizlenmez.",
+      "subtasks": [
+        {
+          "id": "T15a",
+          "dependencies": "T15",
+          "status": "UNSPECIFIED",
+          "scope": "Crash/restore/replay proof dilimi",
+          "acceptance": "V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder · quality fixtures"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T16",
+      "title": "Claude Code adapter",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T15"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Gerçek fixture session otomatik yakalanır; başarısız hook sağlıklı sayılmaz.",
+      "subtasks": [
+        {
+          "id": "T16b",
+          "dependencies": "T02b,T05c,T08b,T07b,T16",
+          "status": "UNSPECIFIED",
+          "scope": "P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü",
+          "acceptance": "ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T17",
+      "title": "Codex adapter",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T16"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.",
+      "subtasks": [],
+      "status_changed": false
+    },
+    {
+      "id": "T18",
+      "title": "Minimal MCP ve cross-agent read",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T17"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Bir agent kaydını diğeri aynı project/revision ile okur; admin SQL exposed değil.",
+      "subtasks": [
+        {
+          "id": "T18a",
+          "dependencies": "T18",
+          "status": "UNSPECIFIED",
+          "scope": "Scope/snapshot-bound query cursor ve context limits",
+          "acceptance": "Başka projeye cursor taşınamaz; truncated sonuç açık; V25 · mcp/storage"
+        },
+        {
+          "id": "T18c",
+          "dependencies": "T18a,T18b",
+          "status": "UNSPECIFIED",
+          "scope": "Kısa brief, since_revision/tombstone, bounded resync ve ayrıntı getir",
+          "acceptance": "CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz"
+        },
+        {
+          "id": "T18f",
+          "dependencies": "T18c,T06e",
+          "status": "UNSPECIFIED",
+          "scope": "Query/result/notification cursor ve reconnect contract fixture",
+          "acceptance": "P1b: SEQ-02/08; UI fallback policy, stale görünümü; host otomatik tool çağırır varsayımı yok"
+        },
+        {
+          "id": "T18g",
+          "dependencies": "T18c,T10b,T20g,T06g",
+          "status": "UNSPECIFIED",
+          "scope": "Bounded proje context/delta ve chat→task kaynak görünümü; stale/coverage UX",
+          "acceptance": "P1b: CHAT-05/06, LAG-06; host desteklenmiyorsa sync/stop iddiası yok"
+        },
+        {
+          "id": "T18h",
+          "dependencies": "T18g,T14b,T08b,T09d",
+          "status": "UNSPECIFIED",
+          "scope": "Revision/ACL bağlı deterministic resume şablonu, bounded önizle/kopyala; Q11 tercihi doğrultusunda",
+          "acceptance": "P1b adayı: RES-02–07; copy model/runner başlatmaz, kritik eksik context görünür; yeni özet metered gate'e tabidir"
+        },
+        {
+          "id": "T18i",
+          "dependencies": "T18h,T14d,T10b",
+          "status": "UNSPECIFIED",
+          "scope": "Güncel context'te kabul/uygulama/unknown ve alternatiflerin kaynağı",
+          "acceptance": "P1b: GAP-02/05/06/09; host desteklenmiyorsa teslim/kullanım garantisi yok"
+        },
+        {
+          "id": "T18e",
+          "dependencies": "T13e,T18,T06",
+          "status": "TODO",
+          "scope": "TODO / P1b: host soru/cevap metadata coverage, exact reply/selection normalizasyonu ve delivery capability",
+          "acceptance": "ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T19",
+      "title": "Proje seçimi ve Review Inbox UI",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T18"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Metin yazmadan happy-path review; keyboard erişimi ve error/empty/loading state.",
+      "subtasks": [
+        {
+          "id": "T19b",
+          "dependencies": "T09d,T19,T08b,T07b",
+          "status": "UNSPECIFIED",
+          "scope": "Yetkili insan risk kartı, sınırlı plan approval ve audit; ertele/reddet/küçült",
+          "acceptance": "P1b: TRA-05/06/08/10; stale/revoked/duplicate; UI hazır değilken yüksek riskli iş bekler"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T20",
+      "title": "Board, Graph ve Timeline",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T19"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Aynı kaydın durumu tutarlı; graph reason path; historical done korunur.",
+      "subtasks": [
+        {
+          "id": "T20e",
+          "dependencies": "T11c,T13,T20",
+          "status": "TODO",
+          "scope": "TODO / P1b: açıklamalı öncelik, inbox/board/graph ve sıra değişimi review'u",
+          "acceptance": "FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş"
+        },
+        {
+          "id": "T20a",
+          "dependencies": "T20",
+          "status": "UNSPECIFIED",
+          "scope": "Health ve ready oracle",
+          "acceptance": "Pending impact/unknown prerequisite ready olmaz; aynı snapshot UI; V28 · domain/web"
+        },
+        {
+          "id": "T20b",
+          "dependencies": "T11b,T13b,T19",
+          "status": "UNSPECIFIED",
+          "scope": "Graph durum sözlüğü, seçili task bağlamı, history/diff ve liste alternatifi",
+          "acceptance": "GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı"
+        },
+        {
+          "id": "T20c",
+          "dependencies": "T07,T14b,T20b",
+          "status": "UNSPECIFIED",
+          "scope": "Ana task context snapshot, evrim sekmesi, template ve seçilen export yolu",
+          "acceptance": "CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen"
+        },
+        {
+          "id": "T20d",
+          "dependencies": "Q08,T13d,T14b,T20b",
+          "status": "PROPOSED",
+          "scope": "**PROPOSED / P1b:** parent/child liste+graph, sayım ve iptal/blocked görünümü",
+          "acceptance": "Gerekli child iptali başarı sayılmaz; tüm child'lar passed olsa da parent AC/DoD eksikse completed olmaz; değişen payda ve toplam bütçe görünür"
+        },
+        {
+          "id": "T20f",
+          "dependencies": "T07b,T08b,T20a",
+          "status": "UNSPECIFIED",
+          "scope": "Owner yerel sağlık/hata görünümü; sıradan kullanıcı için güvenli hata ve referans",
+          "acceptance": "ADM-01/05/06; rol negatif API ve temel UI akışı, incident kapanınca task değişmez"
+        },
+        {
+          "id": "T20g",
+          "dependencies": "T05c,T16b,T20f",
+          "status": "UNSPECIFIED",
+          "scope": "P1b proje bağlantı envanteri, kurulum soruları ve izin farkı önizlemesi",
+          "acceptance": "ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur"
+        },
+        {
+          "id": "T20h",
+          "dependencies": "T20e,T14b,T06g",
+          "status": "UNSPECIFIED",
+          "scope": "Bekleyen işler için kaynaklı yaş/kanıt/coverage görünümü ve ertele/incele",
+          "acceptance": "P1b adayı: RES-01/05; yaş tek başına unutuldu/obsolete/priority değildir"
+        },
+        {
+          "id": "T20i",
+          "dependencies": "T20h,T14d,T13",
+          "status": "UNSPECIFIED",
+          "scope": "Karar ve teslim durumu ayrı görünüm; ön koşul olduğunda odaklı durum sorusu",
+          "acceptance": "P1b: GAP-03/08/10; tekrarlı nag/model çağrısı yok; independent işler açık"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T21",
+      "title": "Routing etiketleri ve usage kaydı",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T20"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "İnsan basit işi seçebilir; unknown usage 0 değil; limit aşımı deferred.",
+      "subtasks": [
+        {
+          "id": "T21b",
+          "dependencies": "T08b,T09b,T21",
+          "status": "UNSPECIFIED",
+          "scope": "Usage sınıfları, dönem/run limitleri, atomik reservation ve unknown settlement",
+          "acceptance": "TOK-03–07; eşzamanlı harcama, timeout/retry ve limit-deferred testleri"
+        },
+        {
+          "id": "T21c",
+          "dependencies": "T08b,T21b",
+          "status": "UNSPECIFIED",
+          "scope": "Parametre sicili; miras/etkin değer, tavan, config önizleme ve revision/audit",
+          "acceptance": "ADM-03/04; concurrent config, rollback ve in-flight reservation testi"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T22",
+      "title": "Chat import ve prompt lineage",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T21"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Chat→Code aktarımı izlenir; manuel import otomatik capture diye gösterilmez. Q07/1C izinli geçmiş manifest'i, aktif iş önceliği, kalan coverage ve tarihsel öneri ayrımı T22b ile doğrulanır.",
+      "subtasks": [
+        {
+          "id": "T22b",
+          "dependencies": "T06,T09b,T18c,T21b,T22",
+          "status": "TODO",
+          "scope": "**TODO / P1b:** kabul edilen Q07/1C için kaynak manifest'i ve checkpoint; aktif iş önceliği; geçmiş intake öncesi OPEN-08 retention kapısı",
+          "acceptance": "[1C sözleşmesi](../architecture/connection-and-context.md): tekrar import, restart, eski kararın geç gelmesi, eksik coverage, bütçe defer ve işlenmemiş arşiv korunumu"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T23",
+      "title": "Backup, export ve yerel güvenlik",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T22"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Secret fixture dışa çıkmaz; backup restore digest eşleşir; unauthorized request reddedilir.",
+      "subtasks": [
+        {
+          "id": "T23a",
+          "dependencies": "T23",
+          "status": "UNSPECIFIED",
+          "scope": "DB+payload tutarlı backup/migration/restore",
+          "acceptance": "Hash/sequence/digest kanıtı, uyumsuz schema guard, dış delivery varsayılan durur; V17/V27 · storage"
+        },
+        {
+          "id": "T23b",
+          "dependencies": "T23",
+          "status": "UNSPECIFIED",
+          "scope": "Payload purge ve türev cache/export retention akışı",
+          "acceptance": "Redaction/tombstone izlenir; ilgili index/cache/backup politikası V26 ile kanıtlı · storage/governance"
+        },
+        {
+          "id": "T23e",
+          "dependencies": "T20f,T21c,T23c,T23d",
+          "status": "UNSPECIFIED",
+          "scope": "Kapsamlı pause/retry, bounded hata kaydı, yedek/recovery görünümü",
+          "acceptance": "ADM-07/08/09; disk/audit arızası, archive TTL ve sıfır replay yan etkisi"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T24",
+      "title": "MVP kabul ve kullanıcı pilotu",
+      "status": "TODO",
+      "phase": "P1b",
+      "dependencies": [
+        "T23"
+      ],
+      "classification": "pending_mvp_integration",
+      "acceptance": "Tüm zorunlu kapılar geçer veya sınırlı pilot adıyla açık istisna kararı; MVP iddiası kanıta bağlı.",
+      "subtasks": [
+        {
+          "id": "T24d",
+          "dependencies": "T20e,T24",
+          "status": "TODO",
+          "scope": "TODO / P1b: sentetik oracle ve owner pilotu",
+          "acceptance": "FLOW-01–15; 40+ sentetik task; zorunlu sette yanlış ready/yetkisiz mutation 0; bekleme, next-action seçimi ve uyarı yükü baseline"
+        },
+        {
+          "id": "T24a",
+          "dependencies": "T24",
+          "status": "UNSPECIFIED",
+          "scope": "Yeni güvenilirlik ve UX ölçümleri",
+          "acceptance": "V19–V28 MVP yollarında raporlu; false-stale, pending age ve no-text review yükü ölçülmüş · quality"
+        },
+        {
+          "id": "T24c",
+          "dependencies": "T18c,T20b,T21b",
+          "status": "UNSPECIFIED",
+          "scope": "Eşit corpus/kalite ile maliyet ve graph anlaşılabilirliği pilotu",
+          "acceptance": "TOK-08 + GUX; token azalırken recall/false closure korunmalı"
+        },
+        {
+          "id": "T24g",
+          "dependencies": "T20f,T21c,T23e",
+          "status": "UNSPECIFIED",
+          "scope": "Owner “neden bekliyor/ne değiştirebilirim?” pilotu ve yerel admin negatif fixture'ları",
+          "acceptance": "ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run"
+        },
+        {
+          "id": "T24h",
+          "dependencies": "T16b,T17,T20g",
+          "status": "UNSPECIFIED",
+          "scope": "Yerel/sentetik erişim oracle ve UX pilotu",
+          "acceptance": "ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu"
+        },
+        {
+          "id": "T24i",
+          "dependencies": "T09c,T14c,T18f,T21b,T23a",
+          "status": "UNSPECIFIED",
+          "scope": "Fake-clock/crash/replay/ilişki corpus'u ve izinli gerçek yüzey raporu",
+          "acceptance": "P1b: SEQ-01–06/08 + DBR-01–06; P3 dış teslim SEQ-07 açık not_run"
+        },
+        {
+          "id": "T24j",
+          "dependencies": "T08c,T21b,T21c,T23e",
+          "status": "UNSPECIFIED",
+          "scope": "Etkin limit/ret/rezervasyon admin görünümü ve tekrar üretilebilir limit-aşımı pilot raporu",
+          "acceptance": "P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run"
+        },
+        {
+          "id": "T24k",
+          "dependencies": "T19b,T21b,T21c",
+          "status": "UNSPECIFIED",
+          "scope": "Risk corpus'u, yanlış uyarı/tahmin sapması ve onay yükü pilot raporu",
+          "acceptance": "P1b: TRA-01–10; gerçek provider yalnız ayrı izinle, aksi halde sentetik/not_run"
+        },
+        {
+          "id": "T24l",
+          "dependencies": "T18g,T06g,T24k",
+          "status": "UNSPECIFIED",
+          "scope": "Çoklu chat + burst/uzun yük + geciken provider/onay corpus raporu",
+          "acceptance": "P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı"
+        },
+        {
+          "id": "T24m",
+          "dependencies": "T20h,T18h,T24l",
+          "status": "UNSPECIFIED",
+          "scope": "Fresh-session oracle, prompt/paket/full-source koşulları ve izinli deney raporu",
+          "acceptance": "RES-08 + RES-01–07 regresyonları; model/gerçek veri izni yoksa yalnız hazır sentetik protokol + not_run"
+        },
+        {
+          "id": "T24n",
+          "dependencies": "T18i,T20i,T24m",
+          "status": "UNSPECIFIED",
+          "scope": "Aynı sentetik görevden fresh-session + dış hedef belirsizliği karşılaştırması",
+          "acceptance": "GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run"
+        },
+        {
+          "id": "T24o",
+          "dependencies": "T09e,T24",
+          "status": "TODO",
+          "scope": "TODO / P1b: uygun batch baseline / lexical+fallback / structured-first hibrit kıyası",
+          "acceptance": "LEX-07/08; aynı holdout/kalite/coverage; bütün token/çağrı/false-done/review ve bakım yükü; ücretli model için Q03 ayrıca"
+        },
+        {
+          "id": "T24p",
+          "dependencies": "T05e,T24",
+          "status": "TODO",
+          "scope": "TODO / P1b: açık pilot dili ve source/ref korunumu fixture'ı",
+          "acceptance": "LANG-01/04/05/07/08 uygulanabilir temel yollar; otomatik çok dil/mixed kalite P2 not_run, 14 MVP AC korunur"
+        },
+        {
+          "id": "T24f",
+          "dependencies": "T13e,T18e,T19,T20i,T24",
+          "status": "TODO",
+          "scope": "TODO / P1b: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması",
+          "acceptance": "ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon"
+        },
+        {
+          "id": "T24q",
+          "dependencies": "T03f,T24",
+          "status": "TODO",
+          "scope": "TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem",
+          "acceptance": "Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T25",
+      "title": "Chat yüzeyleri ve cross-provider adapter araştırması",
+      "status": "TODO",
+      "phase": "P2",
+      "dependencies": [
+        "T24"
+      ],
+      "classification": "future_phase_not_mvp_gate",
+      "acceptance": "Her yüzeyde documented/verified/unsupported ayrımı; kaynak taşıma zinciri bozulmaz.",
+      "subtasks": [
+        {
+          "id": "T25a",
+          "dependencies": "T24p,T25,T05e",
+          "status": "PROPOSED",
+          "scope": "PROPOSED / P2: hafif detector, mixed/short fallback, insan dili odaklı öneri ve kabul edilmiş Q12-A policy",
+          "acceptance": "LANG-01–03/08; Q12-A dil önerisi/ret/yanıtsız/onay ve revision yolları; seçilen diller/model/host için destek matrisi"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T26",
+      "title": "Gelişmiş reconciliation ve orphan audit",
+      "status": "TODO",
+      "phase": "P2",
+      "dependencies": [
+        "T25"
+      ],
+      "classification": "future_phase_not_mvp_gate",
+      "acceptance": "İyileşme holdout ile ölçülür; unsupported certainty yok.",
+      "subtasks": [
+        {
+          "id": "T26b",
+          "dependencies": "T24d,T26,T18c,T21b",
+          "status": "PROPOSED",
+          "scope": "**PROPOSED / P2 adayı:** context-aware, açıklanabilir çok faktörlü scoring, critical-path veri yeterliliği, what-if ve gelişmiş ranking UX deneyi",
+          "acceptance": "FLOW-16–17 + FLOW-01–15 regresyonu; factor contribution/unknown, veri kalitesi, deterministik baseline kıyası, süre/maliyet/UX ölçümü, go/no-go ve fallback"
+        },
+        {
+          "id": "T26c",
+          "dependencies": "T25a,T26,T20,T18c,T21b",
+          "status": "PROPOSED",
+          "scope": "PROPOSED / P2: etkin dilde çıkarım/brief, locale katalogları, cross-language reconciliation/retrieval; kontrollü türev çeviri",
+          "acceptance": "LANG-01–08; holdout/quality-cost-recall ve kullanıcı review; bütün geçmişi yeniden çevirmeme, egress/usage/ACL kapıları"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T27",
+      "title": "GitHub evidence ve görünür panel deneyi",
+      "status": "TODO",
+      "phase": "P2",
+      "dependencies": [
+        "T26"
+      ],
+      "classification": "future_phase_not_mvp_gate",
+      "acceptance": "PR varlığı AC geçişi sayılmaz; panel olmayan host'ta açık fallback.",
+      "subtasks": [],
+      "status_changed": false
+    },
+    {
+      "id": "T28",
+      "title": "Maliyet raporu ve kontrollü entegrasyonlar",
+      "status": "TODO",
+      "phase": "P3",
+      "dependencies": [
+        "T27"
+      ],
+      "classification": "future_phase_not_mvp_gate",
+      "acceptance": "Quality eşitliğinde maliyet raporu; retry external duplicate üretmez; scope açık.",
+      "subtasks": [
+        {
+          "id": "T28c",
+          "dependencies": "T28b",
+          "status": "UNSPECIFIED",
+          "scope": "Outbox→API→callback/poll korelasyonu, unknown reconciliation ve endpoint sözleşmesi",
+          "acceptance": "P3: SEQ-05/07, DBR-04; provider bazında idempotency/Retry-After/permission kanıtı"
+        }
+      ],
+      "status_changed": false
+    },
+    {
+      "id": "T29",
+      "title": "Public release hazırlığı",
+      "status": "TODO",
+      "phase": "P3",
+      "dependencies": [
+        "T28"
+      ],
+      "classification": "future_phase_not_mvp_gate",
+      "acceptance": "Public için explicit owner onayı; test edilmeyen claim yok; dependency/license inventory tam.",
+      "subtasks": [],
+      "status_changed": false
+    },
+    {
+      "id": "T30",
+      "title": "Ekip/cloud/open-core keşfi",
+      "status": "TODO",
+      "phase": "P4",
+      "dependencies": [
+        "T29"
+      ],
+      "classification": "future_phase_not_mvp_gate",
+      "acceptance": "gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.",
+      "subtasks": [],
+      "status_changed": false
+    }
+  ]
+}

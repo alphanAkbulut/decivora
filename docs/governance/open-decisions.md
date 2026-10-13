@@ -2,14 +2,16 @@
 
 ## Güncel gri alan kontrolü — 2026-10-13
 
+**Q15-A kabul edildi:** [ADR-0012](../architecture/adr/0012-conditional-python-runtime.md) ilk Python3.12/SQLite çekirdeği ve conditional build kararı accepted. OPEN-01 native/ROI yeniden değerlendirmesi; OPEN-02 frontend/transport/release dependency ayrıntıları için kısmen açık. [Q16 kapanış düzeni](../quality/task-closure-audit.md) owner yanıtı bekler; status/acceptance değiştirilmedi.
+
 **Q14-A kabul edildi:** Kullanıcı A'yı seçti ve Proje 2'nin devamını sordu. Kimlik/kaynak/yetki kontrollerinden geçen bağımsız proje taslakları review'a açılabilir; belirsiz bölüm açıklama, bozuk teknik çıktı düzeltme bekler. Yalnız gerçekten bağımlı işler bekler; diğer projeler ve aynı projenin bağımsız işleri ilerleyebilir. [Seçenekler, gerekçe ve Proje 2 yaşam döngüsü](../delivery/decision-brief.md). Bir engelin başka bağımsız işi bekletmemesi seçimin gerekçesidir. OPEN-07'nin bütün auto-apply seçenekleri kapanmadı; atomic ChangeSet bölünmez, eski P0 skor/ham çıktı onarılmaz. Yeni model/API izni verilmedi. T03x fixture wrapper'ı [20 yeni test](../quality/project-review.md) ile tamamlandı; kabul edilen ürün kararı ve fixture kodu çalışan UI/durable Inbox/gerçek IAM değildir.
 
-Üç kayıt düzeyi: accepted kullanıcı ilkesi, proposed teknik çözüm, scoped P0 deney sınırlaması. Bir mesajda tek preserved record / kayıt başına tek next-action ve sınırlı yerel schema interpreter yalnız son düzeydedir; final ürün kuralı sayılmaz. Local Python/SQLite da production ADR seçimi değildir. Bu inceleme yeni runtime/DB/UI/lisans kararını kabul etmedi. Güvenli bağımsız hazırlık devam eder; kullanıcıya görünen davranış, veri/erişim, ücret veya geri dönüşü zor mimari seçim etkili olduğu adımda karara bağlanır.
+Üç kayıt düzeyi: accepted kullanıcı ilkesi, proposed teknik çözüm, scoped P0 deney sınırlaması. Bir mesajda tek preserved record / kayıt başına tek next-action ve sınırlı yerel schema interpreter yalnız son düzeydedir; final ürün kuralı sayılmaz. P0 tarihsel Python/SQLite yöntemi tek başına runtime kabulü değildi; sonraki Q15-A/ADR-0012 ilk çekirdeği kabul etti. UI/public lisans seçimi açık. Güvenli bağımsız hazırlık devam eder; kullanıcıya görünen davranış, veri/erişim, ücret veya geri dönüşü zor mimari seçim etkili olduğu adımda karara bağlanır.
 
 | ID | Soru | Önerilen yön | Ne zaman / kanıt |
 |---|---|---|---|
-| OPEN-01 | Build mi extend mi? | Özgün domain/impact; lisanslı adapter reuse | P0 karşılaştırmalı deney sonrası |
-| OPEN-02 | Kesin runtime/DB/UI paketleri? | TypeScript, yerel servis, SQLite, React aday | P1a başlamadan version/license spike |
+| OPEN-01 | Yatırım yeniden değerlendirmesi? | Q15-A conditional build accepted; native/ROI kanıtları açık | Sonraki ölçüm, mevcut start gate tekrar pending değil |
+| OPEN-02 | Kalan UI/transport/dependency paketleri? | Python3.12/SQLite ADR-0012 accepted; UI/transport/release paketleri açık | İlgili entegrasyon öncesi version/license/kabul |
 | OPEN-03 | İlk coding adapter sırası? | İki yüzeyi test et; daha erişilebilir olanla P1a | P0 gerçek capability sonuçları |
 | OPEN-04 | Chat otomasyon seviyesi? | P1b provenance koruyan açık aktarım | Hesap/host izin testi; P2 otomasyon |
 | OPEN-05 | Lisans? | AGPLv3 ilk aday; Apache-2.0 alternatif | Public release öncesi owner |

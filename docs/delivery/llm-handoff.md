@@ -56,7 +56,7 @@ Güncel yetkili kullanıcı talimatı ve uygulanabilir AGENTS kuralları izlenir
 3. Yeni OR edge preview sonrası eklendiyse? **Stale impact.** Yeni snapshot/diff; eski onay taşınmaz.
 4. Model kapalı veya budget doluysa? **Kaynak korunur.** Deterministik işler yapılabilir; semantik iş deferred/unknown görünür.
 5. ChatGPT Chat içeriğine otomatik erişim garanti mi? **Hayır.** Yüzey/izin/build bazlı capability testi; açık import fallback.
-6. Şimdi kurulabilir bir uygulama veya onaylı stack var mı? **Hayır.** P0; T01–T03 kanıt kapıları önde.
+6. Çalışan çekirdek veya onaylı stack var mı? **Sınırlı evet:** Q15-A/ADR0012 Python3.12/SQLite; T04 CLI ve T05f/g/h yerel code/test. Tam ürün MVP, login/adapter/UI/model kalite kabulü yok; T01–T03 evidence açık.
 7. Knowledge Evolution Engine eksik bir ayrı servis mi? **Hayır.** ENG-03/04/05/06/07 birleşik davranışının kaynak konuşmadaki adı.
 8. Üstünlük ve tasarruf kanıtlandı mı? **Hayır.** Hipotez/ölçüm planı var; benchmark runtime sonucu yok.
 
@@ -111,7 +111,7 @@ Güncel kontrol toplamı **25**; önceki toplamlar tarihsel ekleme kayıtlarıd�
 
 ## Ürün değerlendirmesi ve kaynak alımı için ek okuma
 
-[Portföy vaka çalışması](../portfolio/product-evaluation-case-study.md), owner rolünü ve AI destekli katkıyı gerçek kanıt sınırıyla gösterir. [Kod/teknoloji raporu](../discovery/code-reuse-assessment.md) tüm manifest alanlarının yapısal taraması ile R01–24 seçili davranış okumalarını ayırır. 9.657 dosya indeksi semantic audit veya test sonucu değildir. Governance ve contract graph örtüşmesi önceki hedefli benchmark'ı genişletir; EvidenceValidator bulgusunu bütün upstream verification yüzeyine genelleme. A/B/C owner seçimi, nihai stack ve runtime kod alımı henüz yok. T03d öneri ve T01 sırası korunur.
+[Portföy vaka çalışması](../portfolio/product-evaluation-case-study.md), owner rolünü ve AI destekli katkıyı gerçek kanıt sınırıyla gösterir. [Kod/teknoloji raporu](../discovery/code-reuse-assessment.md) tüm manifest alanlarının yapısal taraması ile R01–24 seçili davranış okumalarını ayırır. 9.657 dosya indeksi semantic audit veya test sonucu değildir. Governance ve contract graph örtüşmesi önceki hedefli benchmark'ı genişletir; EvidenceValidator bulgusunu bütün upstream verification yüzeyine genelleme. Upstream reuse A/B/C seçimi ve runtime kod alımı henüz yok; ilk kendi çekirdeğimiz için Python3.12/SQLite Q15-A ile seçildi, frontend/lisans açık. T03d öneri ve T01 sırası korunur.
 
 ## Ekosistem araştırması devir notu
 
@@ -145,3 +145,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 
 
 **Güncel P0 kod devamı:** [Implementation readiness](implementation-readiness.md) ve [semantik bağlantı](../../spikes/semantic-chain/README.md) source-only prepare/output import/validation/selection bridge/checkpoint testlerini gösterir. İnsan incelemesi bu hazırlığı bekletmez. Ayrı model provider dispatch, production auth, gerçek target ve native kıyas not_run; T01/T02/T03 ana kapıları açık.
+
+## Kapanış sınırı
+
+[CL01–08/Q16](../quality/task-closure-audit.md) parent/integration gate çelişkilerini kaydeder; first-use güvenlik kontrolünü kaldırma veya future işleri bugünkü parent kapanışına yükleme. Owner policy kararı henüz alınmadı.

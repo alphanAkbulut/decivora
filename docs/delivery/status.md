@@ -17,6 +17,11 @@
 
 ## İlerleme kaydetme düzeni
 
+### 2026-10-13 — Görev kapanış denetimi
+
+- [CL01–08](../quality/task-closure-audit.md):30 ana/117 backlog alt satır; gerçek release eksikleri, future/integration ve stale karar/sayım ayrıldı. Parent-all-child gate yorumunda T05→T08→T06→T05 döngüsü, T04 Done/child belirsizliği var.
+- Güncel stale Q03-R6/T03c/OPEN02/snapshot/handoff metinleri düzeltildi. Tarihsel run/hashler, ana1DONE/4IN_PROGRESS/25TODO ve14AC korunur. Q16 closure önerisi henüz uygulanmadı; yeni runtime/model yok.
+
 ### 2026-10-13 — T05 yerel izin iptali
 
 - [T05h](../quality/local-authority.md): DB authority revision, issued scope/current grant guard, owner-only management ve restart/rollback.8 yeni/42 toplam runtime test; authority-demo gerçekten çalıştı.

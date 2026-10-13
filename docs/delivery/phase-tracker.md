@@ -8,11 +8,11 @@
 
 ```text
 Decivora
-├── P0 — İlk değer ve yatırım doğrulaması [şu an]
+├── P0 — Açık kalite/değer doğrulaması [P1a ile paralel]
 │   ├── T01: corpus, oracle ve karşılaştırma protokolü
 │   ├── T02: kaynak + hedef erişim fizibilitesi
 │   └── T03a → T03b → T03c: yöntem → yetkili deney → yatırım kararı
-├── MVP yolu [bağımsız build seçilirse]
+├── MVP yolu [Q15-A çekirdek build seçildi]
 │   ├── P1a — Teknik çekirdek [T04–T15]
 │   │   ├── Runtime, proje/kimlik, kalıcı alım, event log, policy
 │   │   ├── Extraction, reconciliation ve karar bağımlılık grafiği
@@ -34,7 +34,7 @@ Decivora
     └── Talep, merkezi veri, davet/roller, sync ve ekip işletimi
 ```
 
-Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtilir. apps/hub/packages/domain T04 ile başladı; diğer alanları var sayma. Q15-A koşullu build seçildi; kalite/ROI yeniden değerlendirmesi açıktır. T03c native/extension/ek deney/durdur sonucunu da seçebilir; o durumda bağımsız T04–T30 yolu otomatik başlamaz.
+Bu ağaç ürün teslim ağacıdır; uygulanan alanlar task kanıtında belirtilir. apps/hub/packages/domain T04 ile başladı; diğer alanları var sayma. Q15-A koşullu build seçildi; kalite/ROI yeniden değerlendirmesi açıktır. T03c/Q15-A koşullu çekirdek build kararı kabul edildi; native/ROI yeniden değerlendirmesi ileride ayrı karar üretebilir, mevcut kabulü pending yapmaz.
 
 ## P0 — Başlangıç kapısı
 
@@ -156,7 +156,7 @@ C01–C06 ayrıntısı [ekip/veri planında](team-data-plan.md); ekip/cloud öze
 4. Bir task veya fazın kapanışında [AC/DoD ve kaynaklı bağlam](../product/task-context-and-acceptance.md) güncellenir. İptal/erteleme gerekçesi ve tarihçesi korunur.
 5. `python3 scripts/check_docs.py` ile ana satırların bu görünümle eşleşmesini kontrol et. Bu statik kontrol uygulama testini veya otomatik project-management servisini çalıştırmaz.
 
-Bugünkü snapshot'ta T01/T02/T03 IN_PROGRESS, 27 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
+Bugünkü snapshot'ta T04 DONE, T01/T02/T03/T05 IN_PROGRESS, 25 ana geliştirme görevi TODO; bazı alt dilimler PROPOSED. Tarih, efor taahhüdü ve ilerleme yüzdesi seçilmedi. Görev sayısı zaman veya ürün tamamlanma oranı değildir; güncel gerçekleşme status'tan okunur.
 
 ### P0 karşılaştırma havuzu eki: WrongStack
 
@@ -164,3 +164,7 @@ Bugünkü snapshot'ta T01/T02/T03 IN_PROGRESS, 27 ana geliştirme görevi TODO; 
 
 
 **Güncel P0 kod devamı:** [Implementation readiness](implementation-readiness.md) ve [semantik bağlantı](../../spikes/semantic-chain/README.md) source-only prepare/output import/validation/selection bridge/checkpoint testlerini gösterir. İnsan incelemesi bu hazırlığı bekletmez. Ayrı model provider dispatch, production auth, gerçek target ve native kıyas not_run; T01/T02/T03 ana kapıları açık.
+
+## Kapanış denetimi
+
+[30 ana/117 alt satır denetimi ve Q16](../quality/task-closure-audit.md): gerçek release eksikleri, downstream entegrasyon ve stale kayıtlar ayrıldı. Closure policy henüz kabul edilmedi; ana status ve14AC değişmedi.
