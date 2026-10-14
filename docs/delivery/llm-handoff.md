@@ -169,3 +169,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Local response timings —14October2026
 
 [Measured report](../quality/local-performance.md): live tracker API5.203ms median, empty product1.236ms;100synthetic returnedTasks43.494ms and4452SQLite queries/state;150stored truncates100. Real reload browser product133.47ms/tracker34.34ms median. No user mutation/model call/runtime optimization. Small fixture/tail/Chrome-vsIAB/100record coverage limits stated; future dense-source/file/concurrency/model tests open, existingT23d/T24l ownership. Do not infer production capacity or call rejected hash-navigation2.57ms a reload result.
+
+## Mixed-load early measurement —14October2026
+
+[Source/graph/history/concurrency report](../quality/mixed-load.md) and JSON: three temporary fixtures, no model/user mutation. Dense100tasks10decisions32sources394edges1409events2327audits: single438.581msmedian/four-readers1097.918ms; full measured run all200, nofalseDone, sources retained, oversized/overflow rejected. Prior overlapHTTP503remains unresolved/notfixed; later diagnostic run noexception.100record preview truncates; ASCII payload volume, nosemantic/Unicode/capture/cost proof. T20/T23d profiling and T15/T23d503reproducer now; T24l longload/release and T09/T21 actualmodel timing later. No runtime/config/status change or source authorization. Do not postpone all testing until finalrelease.

@@ -197,15 +197,15 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 ### T15 · Teknik kanıt kapısı
 
-Son ilerleme kaydı yok.
+14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Observed / unresolved · Önceki fixture okuma/yazma koşusunda HTTP503; kök neden doğrulanmadı. Son tam ölçümde tüm yanıtlar200; bu eski hatanın düzeldiği anlamına gelmez.
 
-**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+**Denemeler / sonuç:** Uzun kaynak,394ilişki,1409event/2327audit; yoğun profil tek okuma439ms/eşzamanlı1.1smedyan. Kaynaklar korundu, falseDone0;100record preview truncated.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T23d ile dar 503reproducer ve transaction/hata korelasyonu; T20 ile snapshot sorgu maliyeti profili. Runtime değişikliği somut kapsam/test planıyla; kalite/permission kapıları korunur.
 
 ### T18 · Minimal MCP ve cross-agent read
 
@@ -384,4 +384,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `1bf10e9ca6a5af61255d4a7d712d405a195818dc9d56af83010867bdfddf9cce`
+Kaynak fingerprint: `a64ea34726946527f6d0c659724c2626b0bbdfb8e05d1d2c109b8c65786424c6`

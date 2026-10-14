@@ -299,7 +299,10 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `docs/quality/poc-results.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 kontrol oturumu.
 
-- **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
+- **Son ilerleme:** 14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
+- **Risk durumu:** Observed / unresolved · Önceki fixture okuma/yazma koşusunda HTTP503; kök neden doğrulanmadı. Son tam ölçümde tüm yanıtlar200; bu eski hatanın düzeldiği anlamına gelmez.
+- **Denemeler / sonuç:** Uzun kaynak,394ilişki,1409event/2327audit; yoğun profil tek okuma439ms/eşzamanlı1.1smedyan. Kaynaklar korundu, falseDone0;100record preview truncated.
+- **Sıradaki adım:** T23d ile dar 503reproducer ve transaction/hata korelasyonu; T20 ile snapshot sorgu maliyeti profili. Runtime değişikliği somut kapsam/test planıyla; kalite/permission kapıları korunur.
 
 ## T16 — Claude Code adapter
 

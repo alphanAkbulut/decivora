@@ -1,0 +1,332 @@
+{
+  "date": "2026-10-14",
+  "workload": "isolated sources, graph, revisions, partial criteria, concurrent reads/writes",
+  "model_calls": 0,
+  "user_database_modified": false,
+  "profiles": [
+    {
+      "profile": {
+        "name": "small_mixed",
+        "tasks": 30,
+        "decisions": 5,
+        "sources": 4,
+        "source_bytes": 1000,
+        "history": 100,
+        "fanout": 1
+      },
+      "setup_ms": 1409.16,
+      "history_setup_ms": 688.91,
+      "database_bytes": 434176,
+      "stored": {
+        "records": 35,
+        "events": 199,
+        "audit": 409,
+        "edges": 59
+      },
+      "sources_preserved": 4,
+      "source_total_bytes": 4000,
+      "returned_tasks": 30,
+      "returned_records": 35,
+      "truncated": false,
+      "sequential": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 20,
+        "status_counts": {
+          "200": 20
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 20,
+          "median_ms": 59.966,
+          "p95_ms": 83.743,
+          "max_ms": 105.388
+        },
+        "all_timing": {
+          "samples": 20,
+          "median_ms": 59.966,
+          "p95_ms": 83.743,
+          "max_ms": 105.388
+        },
+        "response_bytes_max": 124591
+      },
+      "concurrent_reads": {
+        "path": "/api/state",
+        "workers": 4,
+        "samples": 24,
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 24,
+          "median_ms": 457.256,
+          "p95_ms": 663.535,
+          "max_ms": 667.418
+        },
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 457.256,
+          "p95_ms": 663.535,
+          "max_ms": 667.418
+        },
+        "response_bytes_max": 124591
+      },
+      "read_during_write": {
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 834.438,
+          "p95_ms": 1167.194,
+          "max_ms": 1167.587
+        },
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0
+      },
+      "writer": {
+        "samples": 12,
+        "median_ms": 7.18,
+        "p95_ms": 780.793,
+        "max_ms": 780.793
+      },
+      "observed_snapshot_min": 170,
+      "observed_snapshot_max": 182,
+      "server_exception_counts": [],
+      "oversized_source_rejected": true,
+      "source_overflow_rejected": null,
+      "false_done_count": 0,
+      "paid_model_calls": 0
+    },
+    {
+      "profile": {
+        "name": "medium_mixed",
+        "tasks": 60,
+        "decisions": 10,
+        "sources": 12,
+        "source_bytes": 6000,
+        "history": 300,
+        "fanout": 2
+      },
+      "setup_ms": 4638.82,
+      "history_setup_ms": 3365.02,
+      "database_bytes": 868352,
+      "stored": {
+        "records": 70,
+        "events": 552,
+        "audit": 947,
+        "edges": 177
+      },
+      "sources_preserved": 12,
+      "source_total_bytes": 72000,
+      "returned_tasks": 60,
+      "returned_records": 70,
+      "truncated": false,
+      "sequential": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 20,
+        "status_counts": {
+          "200": 20
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 20,
+          "median_ms": 181.556,
+          "p95_ms": 246.495,
+          "max_ms": 277.256
+        },
+        "all_timing": {
+          "samples": 20,
+          "median_ms": 181.556,
+          "p95_ms": 246.495,
+          "max_ms": 277.256
+        },
+        "response_bytes_max": 288139
+      },
+      "concurrent_reads": {
+        "path": "/api/state",
+        "workers": 4,
+        "samples": 24,
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 24,
+          "median_ms": 923.1,
+          "p95_ms": 1038.276,
+          "max_ms": 1046.171
+        },
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 923.1,
+          "p95_ms": 1038.276,
+          "max_ms": 1046.171
+        },
+        "response_bytes_max": 288139
+      },
+      "read_during_write": {
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 1591.204,
+          "p95_ms": 1904.491,
+          "max_ms": 2736.128
+        },
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0
+      },
+      "writer": {
+        "samples": 12,
+        "median_ms": 5.659,
+        "p95_ms": 1019.646,
+        "max_ms": 1019.646
+      },
+      "observed_snapshot_min": 435,
+      "observed_snapshot_max": 447,
+      "server_exception_counts": [],
+      "oversized_source_rejected": true,
+      "source_overflow_rejected": null,
+      "false_done_count": 0,
+      "paid_model_calls": 0
+    },
+    {
+      "profile": {
+        "name": "dense_mixed",
+        "tasks": 100,
+        "decisions": 10,
+        "sources": 32,
+        "source_bytes": 11900,
+        "history": 900,
+        "fanout": 3
+      },
+      "setup_ms": 45743.63,
+      "history_setup_ms": 43463.69,
+      "database_bytes": 1986560,
+      "stored": {
+        "records": 110,
+        "events": 1409,
+        "audit": 2327,
+        "edges": 394
+      },
+      "sources_preserved": 32,
+      "source_total_bytes": 380800,
+      "returned_tasks": 90,
+      "returned_records": 100,
+      "truncated": true,
+      "sequential": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 20,
+        "status_counts": {
+          "200": 20
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 20,
+          "median_ms": 438.581,
+          "p95_ms": 504.272,
+          "max_ms": 677.963
+        },
+        "all_timing": {
+          "samples": 20,
+          "median_ms": 438.581,
+          "p95_ms": 504.272,
+          "max_ms": 677.963
+        },
+        "response_bytes_max": 739112
+      },
+      "concurrent_reads": {
+        "path": "/api/state",
+        "workers": 4,
+        "samples": 24,
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 24,
+          "median_ms": 1097.918,
+          "p95_ms": 1453.509,
+          "max_ms": 1460.668
+        },
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 1097.918,
+          "p95_ms": 1453.509,
+          "max_ms": 1460.668
+        },
+        "response_bytes_max": 739112
+      },
+      "read_during_write": {
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 1141.775,
+          "p95_ms": 1352.113,
+          "max_ms": 1992.968
+        },
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0
+      },
+      "writer": {
+        "samples": 12,
+        "median_ms": 282.701,
+        "p95_ms": 2008.546,
+        "max_ms": 2008.546
+      },
+      "observed_snapshot_min": 1115,
+      "observed_snapshot_max": 1122,
+      "server_exception_counts": [],
+      "oversized_source_rejected": true,
+      "source_overflow_rejected": true,
+      "false_done_count": 0,
+      "paid_model_calls": 0
+    }
+  ],
+  "script_sha256": "0b480546947b3fe5c6680bab15334e456b8348fbe5e53c8610b097869547ab60",
+  "status": "bounded_measurement_completed_with_prior_unresolved_503",
+  "source_commit_before_measurement": "0bfa039fdf342b1acabb53afb748cee81d7f117b",
+  "limits": {
+    "read_samples_sequential": 20,
+    "read_samples_parallel": 24,
+    "parallel_readers": 4,
+    "mixed_readers_plus_writer_workers": 5,
+    "writer_operations": 12,
+    "http_timeout_seconds": 10,
+    "mixed_timeout_seconds": 15,
+    "fixture_source_max_bytes": 11900,
+    "preview_record_cap": 100,
+    "payload_content": "ASCII synthetic byte-volume filler with unique source prefix; no semantic extraction"
+  },
+  "prior_attempts": [
+    {
+      "layer": "fixture_setup",
+      "result": "evidence_stage_required",
+      "action": "Corrected fixture handoff; product gate unchanged"
+    },
+    {
+      "layer": "measurement_harness",
+      "result": "dictionary shadowed concurrent module",
+      "action": "Renamed metrics variable; product runtime unchanged"
+    },
+    {
+      "layer": "product_http_read_during_write",
+      "result": "503 Service Unavailable",
+      "profile": "not captured in complete results",
+      "root_cause": "unknown",
+      "action": "Added safe fixture state exception counters; subsequent complete run not reproduced"
+    }
+  ],
+  "code_sha256": {
+    "apps/local_ui/server.py": "64979c5f6d962f5b7d1bb4f28def2ef1dbdd06e747adddfc781532dcc998455d",
+    "packages/storage/project_store.py": "37715ba9896e61c2d3d3f7e45ec5e4104047c135999712cd42242a12bfbcdef3",
+    "packages/storage/workspace.py": "d1604e00681ccd7fbf737b0d439759726dba4988efdcb7006f4b43feeaa7baea",
+    "packages/domain/task_workflow.py": "56af708d233381f925a626efae0cbc1bdc148e22f6b7302480fc38844efb6406",
+    "packages/capture/conversations.py": "88229f08f0272ef8d075ab9a035c831280d45713a8d0c98a2e811849dc2dd590",
+    "scripts/measure_mixed_load.py": "0b480546947b3fe5c6680bab15334e456b8348fbe5e53c8610b097869547ab60"
+  }
+}
