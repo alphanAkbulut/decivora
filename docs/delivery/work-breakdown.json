@@ -1,0 +1,138 @@
+{
+  "format": "decivora-work-breakdown-1",
+  "date": "2026-10-14",
+  "method": "Manually reviewed primary output of each completed subtask. One category per ID; development includes runtime, prototype, validation tooling and executable schemas, not only shipped product. Tests and documentation accompanying code are not extra tasks. Counts are not hours, effort or product completion percentages.",
+  "labels": {
+    "development": "Kod geliştirme / araç / sözleşme",
+    "test_experiment": "Test / deney / değerlendirme hazırlığı",
+    "analysis_decision": "Analiz / teknik karar",
+    "unclassified": "Henüz türü sınıflanmamış"
+  },
+  "completed_categories": {
+    "T01g": "test_experiment",
+    "T01h": "test_experiment",
+    "T01i": "test_experiment",
+    "T03g": "development",
+    "T03h": "development",
+    "T03i": "development",
+    "T03j": "test_experiment",
+    "T03k": "test_experiment",
+    "T03l": "test_experiment",
+    "T03m": "development",
+    "T03n": "test_experiment",
+    "T03o": "test_experiment",
+    "T03p": "test_experiment",
+    "T03q": "test_experiment",
+    "T03r": "development",
+    "T03s": "development",
+    "T03t": "development",
+    "T03u": "test_experiment",
+    "T03v": "test_experiment",
+    "T03w": "development",
+    "T03x": "development",
+    "T03y": "test_experiment",
+    "T03z": "development",
+    "T03aa": "development",
+    "T03ab": "development",
+    "T03ac": "development",
+    "T03c": "analysis_decision",
+    "T04a": "development",
+    "T04c": "development",
+    "T04d": "development",
+    "T05h": "development",
+    "T05g": "development",
+    "T05f": "development",
+    "T05a": "development",
+    "T05c": "development",
+    "T06a": "development",
+    "T06b": "development",
+    "T06c": "development",
+    "T06e": "development",
+    "T06f": "development",
+    "T06g": "development",
+    "T07a": "development",
+    "T07c": "development",
+    "T08a": "development",
+    "T08c": "development",
+    "T11c": "development",
+    "T11b": "development",
+    "T12a": "development",
+    "T13a": "development",
+    "T13b": "development",
+    "T13c": "development",
+    "T18a": "development",
+    "T05b": "development",
+    "T08b": "development",
+    "T06d": "development",
+    "T07b": "development"
+  },
+  "owner_gates": [
+    {
+      "id": "G-API",
+      "topic": "Gerçek model deneyi",
+      "needs": "API erişimi, provider/model, gönderilecek veri ve toplam harcama tavanı",
+      "timing": "İlk ücretli dispatch öncesi",
+      "tasks": [
+        "T09",
+        "T10"
+      ],
+      "status": "Activation not authorized"
+    },
+    {
+      "id": "G-HOST",
+      "topic": "Gerçek coding/MCP kaynağı",
+      "needs": "Seçilen istemci/oturum ve dar erişim izni",
+      "timing": "Gerçek host bağlantısı öncesi",
+      "tasks": [
+        "T02",
+        "T16",
+        "T17",
+        "T18"
+      ],
+      "status": "First-use gate"
+    },
+    {
+      "id": "G-TARGET",
+      "topic": "Gerçek dosya hedefi",
+      "needs": "Seçilen kök, dosya, beklenen içerik ve kriter kapsamı",
+      "timing": "Kullanıcı dosyasını okumadan önce",
+      "tasks": [
+        "T14"
+      ],
+      "status": "First-use gate"
+    },
+    {
+      "id": "G-GOLD",
+      "topic": "İnsan doğruluk incelemesi",
+      "needs": "Hazırlanmış exact etiket/holdout incelemesi; önceki H1–H4 yeniden sorulmaz",
+      "timing": "Kalite/ürün kabulü öncesi",
+      "tasks": [
+        "T01",
+        "T24"
+      ],
+      "status": "Human review work"
+    }
+  ],
+  "deferred_choices": [
+    {
+      "id": "Q06",
+      "topic": "Milestone bağlamını otomatik Markdown üretme veya istek üzerine dışa aktarma"
+    },
+    {
+      "id": "Q08",
+      "topic": "İsteğe bağlı bölme yanında varsayılan task boyutu/otomatik bölme politikası"
+    },
+    {
+      "id": "Q09",
+      "topic": "Bildirim kanalı ve sıklığı; blocker önceliği zaten kabul edildi"
+    }
+  ],
+  "approval_note": "Bunlar dört gruplanmış insan katkısı/izin kapısıdır; şu anda sana sorulmuş dört cevapsız onay değildir. Üç sonraki ürün tercihi ayrıdır. Saklama/paylaşım, lisans/marka ve ekip/cloud seçimleri ilgili gelecek aşamada ele alınır. Bağımsız kod işleri beklemez.",
+  "recorded_validation": {
+    "date": "2026-10-14",
+    "runtime_tests": 309,
+    "tracker_evaluation_tests": 48,
+    "browser_fixture_flows": 6,
+    "scope": "Kayıtlı sonuç; ekran testi yeniden çalıştırmaz. Gerçek semantik kalite veya tam MVP kabulü değildir."
+  }
+}

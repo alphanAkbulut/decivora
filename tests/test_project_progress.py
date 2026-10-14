@@ -18,6 +18,22 @@ spec.loader.exec_module(progress)
 
 
 class ProgressTests(unittest.TestCase):
+    def test_additional_team_slices_are_visible_and_counted_once(self):
+        data=progress.build()
+        rows=[s for t in data['tasks'] for s in t['subtasks']]
+        self.assertEqual(len(rows),129)
+        self.assertEqual(len({s['id'] for s in rows}),129)
+        self.assertIn('T05b',{s['id'] for s in rows})
+        self.assertEqual(data['work_summary']['statuses']['DONE'],56)
+        self.assertEqual(data['work_summary']['statuses']['UNSPECIFIED'],42)
+
+    def test_completed_primary_types_do_not_double_count_test_functions(self):
+        summary=progress.build()['work_summary']
+        self.assertEqual(summary['completed_types'],{'test_experiment':13,'development':42,'analysis_decision':1})
+        self.assertEqual(sum(summary['completed_types'].values()),summary['statuses']['DONE'])
+        self.assertEqual(len(summary['breakdown']['owner_gates']),4)
+        self.assertEqual(len(summary['breakdown']['deferred_choices']),3)
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)

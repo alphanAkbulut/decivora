@@ -14,6 +14,36 @@
 | IN_PROGRESS | 14 |
 | TODO | 9 |
 
+## İş türü ve bekleyen insan kapıları
+
+Ana görev ve alt teslim sayıları toplanmaz. Tür, tamamlanan alt teslimin birincil çıktısıdır; efor veya ürün yüzdesi değildir.
+
+| Alt teslim durumu | Sayı |
+|---|---|
+| DONE | 56 |
+| IN_PROGRESS | 16 |
+| PROPOSED | 7 |
+| TODO | 8 |
+| UNSPECIFIED | 42 |
+
+| Tamamlanan alt teslimin türü | Sayı |
+|---|---|
+| Test / deney / değerlendirme hazırlığı | 13 |
+| Kod geliştirme / araç / sözleşme | 42 |
+| Analiz / teknik karar | 1 |
+
+Kod kategorisi prototipleri, araçları ve executable sözleşmeleri de kapsar; hepsi son ürün özelliği değildir. Bağımsız doküman sayısı ve test fonksiyonu sayısı görev sayısına eklenmez.
+
+| İnsan katkısı/izni gereken kapı | Gereken | Ne zaman |
+|---|---|---|
+| Gerçek model deneyi | API erişimi, provider/model, gönderilecek veri ve toplam harcama tavanı | İlk ücretli dispatch öncesi |
+| Gerçek coding/MCP kaynağı | Seçilen istemci/oturum ve dar erişim izni | Gerçek host bağlantısı öncesi |
+| Gerçek dosya hedefi | Seçilen kök, dosya, beklenen içerik ve kriter kapsamı | Kullanıcı dosyasını okumadan önce |
+| İnsan doğruluk incelemesi | Hazırlanmış exact etiket/holdout incelemesi; önceki H1–H4 yeniden sorulmaz | Kalite/ürün kabulü öncesi |
+
+Bunlar dört gruplanmış insan kapısıdır; dört açık onay penceresi değildir. Bağımsız kod işleri beklemez. Daha sonra netleştirilecek ürün tercihleri: Q06 Milestone bağlamını otomatik Markdown üretme veya istek üzerine dışa aktarma, Q08 İsteğe bağlı bölme yanında varsayılan task boyutu/otomatik bölme politikası, Q09 Bildirim kanalı ve sıklığı; blocker önceliği zaten kabul edildi.
+
+
 ## Tamamlanmış küçük teslimler
 
 Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı ve kanıt backlog’da kayıtlıdır.
@@ -55,16 +85,20 @@ Alt teslim kapanışı ana görev veya MVP kapanışı değildir. Kabul kapsamı
 | T05f | T05 | DONE | DONE / P1a: scope kontrollü in-memory proje/binding çekirdeği ve çalışan CLI demo |
 | T05a | T05 | DONE | DONE / P1a: Immutable project binding epoch ve quarantine |
 | T05c | T05 | DONE | DONE / P1a: kaynak/hedef binding ve versioned izin makbuzu schema/rule fixture |
+| T05b | T05 | DONE | DONE / P1a: Kişisel workspace, human/agent ID, compound tenant FK, session binding şeması |
 | T06a | T06 | DONE | DONE / P1a: Source+job atomic receipt ve ingest cursor |
 | T06b | T06 | DONE | DONE / P1a: Worker lease/fencing ve job transitions |
 | T06c | T06 | DONE | DONE / P1a: Processing intervals, idle flush, bounded retry/quarantine |
 | T06e | T06 | DONE | DONE / P1a: Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression |
 | T06f | T06 | DONE | DONE / P1a: Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure |
 | T06g | T06 | DONE | DONE / P1a: Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü |
+| T06d | T06 | DONE | DONE / P1a: Receipt/dedup ömrünü raw payload'dan ayır; bounded spool/backpressure |
 | T07a | T07 | DONE | DONE / P1a: Replay mode ve projector version gate |
 | T07c | T07 | DONE | DONE / P1a: ** Minimal çekirdek DB+payload backup/restore |
+| T07b | T07 | DONE | DONE / P1a: Domain command + güvenlik audit atomikliği; güvenli structured logger |
 | T08a | T08 | DONE | DONE / P1a: Command identity, key/digest ve policy capability |
 | T08c | T08 | DONE | DONE / P1a: Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı |
+| T08b | T08 | DONE | DONE / P1a: `authorize(action,resource,context)` sınırı, dar grant, authz revision/commit kontrolü |
 | T11c | T11 | DONE | DONE / P1a: başlangıç-bitiş gate'i, blocker assessment, revision bağlı traversal, benzersiz downstream |
 | T11b | T11 | DONE | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği |
 | T12a | T12 | DONE | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision |
@@ -312,13 +346,13 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | ID | Faz | Durum | İş | Plan ön koşulu | Alt dilim |
 |---|---|---|---|---|---|
 | T01 | P0 | IN_PROGRESS | Golden corpus ve karşılaştırma protokolü |  | 5 |
-| T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 2 |
+| T02 | P0 | IN_PROGRESS | İki coding yüzeyinde capability spike | T01 | 3 |
 | T03 | P0 | IN_PROGRESS | Native/extend/build ve teknoloji kararı | T01, T02 | 27 |
 | T04 | P1a | DONE | Runtime iskeleti ve sözleşme doğrulayıcıları | T03c | 4 |
-| T05 | P1a | DONE | Proje kimliği ve binding | T04 | 7 |
-| T06 | P1a | DONE | Source ingress ve checkpoint | T05 | 6 |
-| T07 | P1a | DONE | Domain log ve projector | T06 | 2 |
-| T08 | P1a | DONE | Atomic change set ve policy | T07 | 2 |
+| T05 | P1a | DONE | Proje kimliği ve binding | T04 | 8 |
+| T06 | P1a | DONE | Source ingress ve checkpoint | T05 | 7 |
+| T07 | P1a | DONE | Domain log ve projector | T06 | 3 |
+| T08 | P1a | DONE | Atomic change set ve policy | T07 | 3 |
 | T09 | P1a | IN_PROGRESS | Extraction ve bounded retrieval | T08 | 4 |
 | T10 | P1a | IN_PROGRESS | Temel reconciliation | T09 | 2 |
 | T11 | P1a | DONE | Tipli gerekçe graph | T10 | 2 |
@@ -328,17 +362,17 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T15 | P1a | IN_PROGRESS | Teknik kanıt kapısı | T14, T07c | 1 |
 | T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
 | T17 | P1b | TODO | Codex adapter | T16 | 0 |
-| T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 | 7 |
+| T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 | 9 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
 | T21 | P1b | IN_PROGRESS | Routing etiketleri ve usage kaydı | T20 | 2 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 | 1 |
-| T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 | 3 |
-| T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 | 15 |
+| T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 | 5 |
+| T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 | 17 |
 | T25 | P2 | TODO | Chat yüzeyleri ve cross-provider adapter araştırması | T24 | 1 |
 | T26 | P2 | TODO | Gelişmiş reconciliation ve orphan audit | T25 | 2 |
 | T27 | P2 | TODO | GitHub evidence ve görünür panel deneyi | T26 | 0 |
-| T28 | P3 | TODO | Maliyet raporu ve kontrollü entegrasyonlar | T27 | 1 |
+| T28 | P3 | TODO | Maliyet raporu ve kontrollü entegrasyonlar | T27 | 2 |
 | T29 | P3 | TODO | Public release hazırlığı | T28 | 0 |
 | T30 | P4 | TODO | Ekip/cloud/open-core keşfi | T29 | 0 |
 
@@ -350,4 +384,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `d0f561f2e2c92bde9e1a8eb08ec6223816e04a639291177906009bf519ad5294`
+Kaynak fingerprint: `1bf10e9ca6a5af61255d4a7d712d405a195818dc9d56af83010867bdfddf9cce`

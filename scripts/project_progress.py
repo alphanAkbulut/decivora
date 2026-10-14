@@ -15,6 +15,7 @@ REPO_URL = "https://github.com/alphanAkbulut/decivora/blob/main/"
 SOURCES = (
     "docs/delivery/backlog.md", "docs/delivery/implementation-readiness.md",
     "docs/architecture/engines.md", "docs/quality/semantic-readiness-results.json",
+    "docs/delivery/team-data-plan.md", "docs/delivery/work-breakdown.json",
 )
 OUTPUT = "docs/delivery/progress.md"
 
@@ -36,6 +37,7 @@ def build(root=ROOT):
     raw = {name: (root / name).read_bytes() for name in SOURCES[:3]}
     report_path = root / SOURCES[3]
     raw[SOURCES[3]] = report_path.read_bytes() if report_path.exists() else b""
+    raw.update({name: (root / name).read_bytes() for name in SOURCES[4:]})
     texts = {name: value.decode("utf-8") for name, value in raw.items()}
     backlog = texts[SOURCES[0]]
     headings = list(re.finditer(r"^## (T\d+) — ([^\n]+)\n", backlog, re.M))
@@ -70,6 +72,27 @@ def build(root=ROOT):
         by_id[parent]["subtasks"].append({"id": sid, "dependencies": deps,
             "status": state.group() if state else "UNSPECIFIED", "scope": cells[0],
             "acceptance": " · ".join(cells[1:])})
+    # The team/data plan owns additional slices; duplicate references retain backlog authority.
+    for line in texts[SOURCES[4]].splitlines():
+        match = re.match(r"^\| (T\d+[a-z]+) / ([^|]+) \| (.+)$", line)
+        if not match or match[1] in seen:
+            continue
+        sid, deps, rest = match.groups()
+        seen.add(sid)
+        parent = re.match(r"T\d+", sid).group()
+        if parent not in by_id:
+            raise ValueError("Additional subtask parent unavailable: " + sid)
+        cells = [c.strip() for c in rest.rstrip("|").split("|")]
+        state = re.search(r"\b(IN_PROGRESS|TODO|DONE|COMPLETED|PROPOSED|BLOCKED|CANCELLED)\b", cells[0])
+        by_id[parent]["subtasks"].append(dict(id=sid, dependencies=deps,
+            status=state.group() if state else "UNSPECIFIED", scope=cells[0], acceptance=" · ".join(cells[1:])))
+    breakdown = json.loads(texts[SOURCES[5]])
+    subtasks = [s for t in tasks for s in t["subtasks"]]
+    completed = [s for s in subtasks if s["status"] in ("DONE", "COMPLETED")]
+    categories = Counter(breakdown["completed_categories"].get(s["id"], "unclassified") for s in completed)
+    summary = dict(total=len(subtasks), statuses=dict(Counter(s["status"] for s in subtasks)),
+        completed_types=dict(categories), breakdown=breakdown,
+        phases={phase: dict(Counter(t["status"] for t in tasks if t["phase"]==phase)) for phase in sorted({t["phase"] for t in tasks})})
     readiness = texts[SOURCES[1]]
     delivered = [{"title": row[0], "output": row[1], "verification": row[2],
                   "url": REPO_URL + SOURCES[1]} for row in table(readiness, "## Beklemeyen işler: uygulandı")]
@@ -109,7 +132,7 @@ def build(root=ROOT):
     return {"schema_version": 1, "fingerprint": fingerprint, "source_hashes": hashes,
             "stage": "Açık çalışma fazı: " + (", ".join(sorted({t["phase"] for t in tasks if t["status"] == "IN_PROGRESS"})) or "kayıt yok"), "tasks": tasks,
             "counts": dict(Counter(t["status"] for t in tasks)), "delivered": delivered,
-            "pending": pending, "engines": engines, "worker_activity": "unknown",
+            "pending": pending, "engines": engines, "work_summary": summary, "worker_activity": "unknown",
             "evidence": {"status": evidence_state, "date": report.get("date"), "tests": total,
                 "suites": suites, "stale_code": stale,
                 "model": report.get("semantic_model_dispatch", "unknown"),
@@ -125,6 +148,17 @@ def markdown(data):
         "`IN_PROGRESS` açık çalışma kaydıdır; bir agent’ın şu anda çalıştığını göstermez. Plan ön koşulları otomatik teknik blocker değildir. Test sayısı ürün tamamlanma yüzdesi değildir.", "",
         "| Ana görev durumu | Sayı |", "|---|---|"]
     lines += ["| " + status + " | " + str(count) + " |" for status, count in sorted(data["counts"].items())]
+    summary = data['work_summary']; meta = summary['breakdown']
+    lines += ['', '## İş türü ve bekleyen insan kapıları', '',
+              'Ana görev ve alt teslim sayıları toplanmaz. Tür, tamamlanan alt teslimin birincil çıktısıdır; efor veya ürün yüzdesi değildir.', '',
+              '| Alt teslim durumu | Sayı |', '|---|---|']
+    lines += ['| '+status+' | '+str(count)+' |' for status,count in sorted(summary['statuses'].items())]
+    lines += ['', '| Tamamlanan alt teslimin türü | Sayı |', '|---|---|']
+    lines += ['| '+meta['labels'][kind]+' | '+str(count)+' |' for kind,count in summary['completed_types'].items()]
+    lines += ['', 'Kod kategorisi prototipleri, araçları ve executable sözleşmeleri de kapsar; hepsi son ürün özelliği değildir. Bağımsız doküman sayısı ve test fonksiyonu sayısı görev sayısına eklenmez.', '',
+              '| İnsan katkısı/izni gereken kapı | Gereken | Ne zaman |', '|---|---|---|']
+    lines += ['| '+gate['topic']+' | '+gate['needs']+' | '+gate['timing']+' |' for gate in meta['owner_gates']]
+    lines += ['', 'Bunlar dört gruplanmış insan kapısıdır; dört açık onay penceresi değildir. Bağımsız kod işleri beklemez. Daha sonra netleştirilecek ürün tercihleri: '+', '.join(c['id']+' '+c['topic'] for c in meta['deferred_choices'])+'.', '']
     completed = [(task, sub) for task in data['tasks'] for sub in task['subtasks']
                  if sub['status'] in ('DONE', 'COMPLETED')]
     lines += ['', '## Tamamlanmış küçük teslimler', '',
