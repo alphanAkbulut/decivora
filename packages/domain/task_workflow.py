@@ -1,5 +1,5 @@
 """Versioned local workflow and human evidence; no model or arbitrary command execution."""
-import json,time
+import json,time,copy
 from packages.domain.source_event import ContractError
 from packages.domain.project_binding import identifier
 from packages.storage.project_store import canonical,digest
@@ -18,7 +18,16 @@ class TaskWorkflowService:
         if not row or json.loads(row[1])['type']!='Task':raise ContractError('task_unavailable','Task unavailable.')
         return dict(id=task,version=row[0],body=json.loads(row[1]))
     def _rows(self,project,task,action):
-        return [dict(sequence=seq,actor=actor,**json.loads(raw)) for seq,actor,raw in self.core.db.execute('SELECT seq,actor,ref FROM audit WHERE workspace=? AND project=? AND action=? ORDER BY seq',(self.core.workspace,project,action)) if json.loads(raw)['task']==task]
+        # Only the current owned read snapshot may reuse audit data. Writes and
+        # later queries always read current rows; authority checks remain intact.
+        cache=getattr(self.core,'workflow_audit_read_cache',None)
+        key=(project,action)
+        if cache is not None and key in cache:return copy.deepcopy(cache[key].get(task,[]))
+        groups={}
+        for seq,actor,raw in self.core.db.execute('SELECT seq,actor,ref FROM audit WHERE workspace=? AND project=? AND action=? ORDER BY seq',(self.core.workspace,project,action)):
+            value=json.loads(raw);groups.setdefault(value['task'],[]).append(dict(sequence=seq,actor=actor,**value))
+        if cache is not None:cache[key]=groups
+        return copy.deepcopy(groups.get(task,[]))
     def _save(self,scope,project,action,value):
         count=self.core.db.execute("SELECT count(*) FROM audit WHERE workspace=? AND project=? AND action IN ('task_stage','criterion_evidence')",(self.core.workspace,project)).fetchone()[0]
         if count>=2048:raise ContractError('workflow_history_limit','Local workflow history limit reached; existing records remain intact.')

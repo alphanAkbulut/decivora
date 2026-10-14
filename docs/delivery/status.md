@@ -696,3 +696,7 @@ Ana durumlar T01/T02/T03 IN_PROGRESS, diğer 27 TODO. [Sonuç kaydı](../quality
 
 
 Ek aynı-tur gözlem: [seçili corpus README için gerçek GitHub readback](../quality/semantic-target-readback.json), iki immutable ref, aynı blob; eski ref stale/seçili ref observed_match. Scope/hash kontrol kodu ve dört negatif/pozitif test eklendi. Task verification veya production target adapter iddiası yok.
+
+## Current concurrent storage and manual impact UI —14October2026
+
+[Working delivery and limitations](../quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.

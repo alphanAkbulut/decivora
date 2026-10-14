@@ -39,3 +39,7 @@ Yeni görünüm: sidebar Conversations/Review inbox/Task board/Questions and dec
 ## Current local delivery — 14 October 2026
 
 [API-independent implementation and follow-up gates](docs/delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.
+
+## Current concurrent storage and manual impact UI —14October2026
+
+[Working delivery and limitations](docs/quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.

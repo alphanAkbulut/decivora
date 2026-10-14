@@ -12,6 +12,11 @@ def main():
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
         server=make_server(Path(directory)/'fixture.sqlite',extractor=Extractor(),verification_root=file_root)
+        if os.environ.get('DECIVORA_IMPACT_UI_FIXTURE')=='1':
+            with server.app.core() as core:
+                owner=core.authority.issue_scope('local_owner')
+                plan=core.plan(owner,'personal','impact_fixture',[dict(op='create',id='d',body=dict(type='Decision',title='Storage decision fixture',description='Synthetic')),dict(op='create',id='t',body=dict(type='Task',title='Affected task fixture',description='Synthetic')),dict(op='link',origin='t',target='d',kind='required_by')])
+                core.apply(owner,plan,core.approve(owner,plan))
         if os.environ.get('DECIVORA_MCP_UI_FIXTURE')=='1':
             from packages.mcp.server import Server
             with server.app.core() as core:

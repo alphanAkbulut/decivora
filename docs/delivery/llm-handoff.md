@@ -173,3 +173,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Mixed-load early measurement —14October2026
 
 [Source/graph/history/concurrency report](../quality/mixed-load.md) and JSON: three temporary fixtures, no model/user mutation. Dense100tasks10decisions32sources394edges1409events2327audits: single438.581msmedian/four-readers1097.918ms; full measured run all200, nofalseDone, sources retained, oversized/overflow rejected. Prior overlapHTTP503remains unresolved/notfixed; later diagnostic run noexception.100record preview truncates; ASCII payload volume, nosemantic/Unicode/capture/cost proof. T20/T23d profiling and T15/T23d503reproducer now; T24l longload/release and T09/T21 actualmodel timing later. No runtime/config/status change or source authorization. Do not postpone all testing until finalrelease.
+
+## Current concurrent storage and manual impact UI —14October2026
+
+[Working delivery and limitations](../quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.

@@ -217,7 +217,14 @@ window.DecivoraCatalogs = {
     "Session-only service health": "Session-only service health",
     "Health history resets on restart.": "Health history resets on restart.",
     "Project": "Project",
-    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured."
+    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured.",
+    "Decision impact preview": "Decision impact preview",
+    "Decision hypothesis notice": "Manual hypothesis only: if this decision stops being valid, which recorded work needs review? No decision changes or task cancellations are applied.",
+    "Select a recorded decision": "Select a recorded decision",
+    "Preview decision impact": "Preview decision impact",
+    "Stale impact preview": "Stale impact preview",
+    "Recorded impact preview": "Recorded impact preview",
+    "Impact preview saved; no task changed.": "Impact preview saved; no task changed."
   },
   "tr": {
     "Dil": "Dil",
@@ -437,7 +444,14 @@ window.DecivoraCatalogs = {
     "Session-only service health": "Bu oturumun servis sağlığı",
     "Health history resets on restart.": "Hata geçmişi yalnız bu çalışma oturumunda tutulur; yeniden başlatınca sıfırlanır.",
     "Project": "Proje",
-    "Human review and approved file checks. Automatic tests remain unconfigured.": "İnsan incelemesi ve onaylı dosya kontrolleri. Otomatik testler yapılandırılmadı."
+    "Human review and approved file checks. Automatic tests remain unconfigured.": "İnsan incelemesi ve onaylı dosya kontrolleri. Otomatik testler yapılandırılmadı.",
+    "Decision impact preview": "Karar etkisi önizlemesi",
+    "Decision hypothesis notice": "Yalnız elle seçilmiş varsayım: bu karar geçerliliğini yitirirse hangi kayıtlı işler incelenmeli? Karar değişikliği veya görev iptali uygulanmaz.",
+    "Select a recorded decision": "Kayıtlı bir karar seç",
+    "Preview decision impact": "Karar etkisini önizle",
+    "Stale impact preview": "Güncelliğini yitirmiş etki önizlemesi",
+    "Recorded impact preview": "Kayıtlı etki önizlemesi",
+    "Impact preview saved; no task changed.": "Etki önizlemesi kaydedildi; hiçbir görev değişmedi."
   },
   "es": {
     "Dil": "Idioma",
@@ -657,7 +671,14 @@ window.DecivoraCatalogs = {
     "Session-only service health": "Session-only service health",
     "Health history resets on restart.": "Health history resets on restart.",
     "Project": "Proyecto",
-    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured."
+    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured.",
+    "Decision impact preview": "Decision impact preview",
+    "Decision hypothesis notice": "Manual hypothesis only: if this decision stops being valid, which recorded work needs review? No decision changes or task cancellations are applied.",
+    "Select a recorded decision": "Select a recorded decision",
+    "Preview decision impact": "Preview decision impact",
+    "Stale impact preview": "Stale impact preview",
+    "Recorded impact preview": "Recorded impact preview",
+    "Impact preview saved; no task changed.": "Impact preview saved; no task changed."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -877,7 +898,14 @@ window.DecivoraCatalogs = {
     "Session-only service health": "Session-only service health",
     "Health history resets on restart.": "Health history resets on restart.",
     "Project": "Projeto",
-    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured."
+    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured.",
+    "Decision impact preview": "Decision impact preview",
+    "Decision hypothesis notice": "Manual hypothesis only: if this decision stops being valid, which recorded work needs review? No decision changes or task cancellations are applied.",
+    "Select a recorded decision": "Select a recorded decision",
+    "Preview decision impact": "Preview decision impact",
+    "Stale impact preview": "Stale impact preview",
+    "Recorded impact preview": "Recorded impact preview",
+    "Impact preview saved; no task changed.": "Impact preview saved; no task changed."
   },
   "ar": {
     "Dil": "اللغة",
@@ -1097,6 +1125,13 @@ window.DecivoraCatalogs = {
     "Session-only service health": "Session-only service health",
     "Health history resets on restart.": "Health history resets on restart.",
     "Project": "المشروع",
-    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured."
+    "Human review and approved file checks. Automatic tests remain unconfigured.": "Human review and approved file checks. Automatic tests remain unconfigured.",
+    "Decision impact preview": "Decision impact preview",
+    "Decision hypothesis notice": "Manual hypothesis only: if this decision stops being valid, which recorded work needs review? No decision changes or task cancellations are applied.",
+    "Select a recorded decision": "Select a recorded decision",
+    "Preview decision impact": "Preview decision impact",
+    "Stale impact preview": "Stale impact preview",
+    "Recorded impact preview": "Recorded impact preview",
+    "Impact preview saved; no task changed.": "Impact preview saved; no task changed."
   }
 };

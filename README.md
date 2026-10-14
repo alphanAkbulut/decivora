@@ -201,3 +201,7 @@ Başlangıç repository'si private olarak tasarlanmıştır. Açık kaynak yayı
 ## Güvenlik durumu —14Ekim2026
 
 [Güvenlik politikası](SECURITY.md) ve [yerel korumalar, kanıtlar ve açık geliştirme kapıları](docs/quality/security-current-status.md). Yerel session/scope/approval/audit/MCP/file-boundary kontrolleri vardır; tam kullanıcı/ekip/cloud güvenliği, secret/provider-egress, retention/purge ve kalıcı incident işletimi açık. Yedekler şu anda özel ve şifrelenmemiştir. Karışık yükteki önceki503kök nedeni çözülmedi. Bu belge güncellemesi güvenlik audit’i veya production onayı değildir.
+
+## Current concurrent storage and manual impact UI —14October2026
+
+[Working delivery and limitations](docs/quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.

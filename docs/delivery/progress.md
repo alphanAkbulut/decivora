@@ -199,13 +199,13 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
 
-**Aktif teknik risk:** Observed / unresolved · Önceki fixture okuma/yazma koşusunda HTTP503; kök neden doğrulanmadı. Son tam ölçümde tüm yanıtlar200; bu eski hatanın düzeldiği anlamına gelmez.
+**Aktif teknik risk:** Reproduced mechanism corrected / historical trace unknown · Kontrollü SQLite rollback-mode kilit sırası503üretti; WAL startup aynı sırada200verdi. İlk uninstrumented koşunun birebir kök nedeni kanıtlanmadı; tüm503nedenleri kapanmış sayılmaz.
 
-**Denemeler / sonuç:** Uzun kaynak,394ilişki,1409event/2327audit; yoğun profil tek okuma439ms/eşzamanlı1.1smedyan. Kaynaklar korundu, falseDone0;100record preview truncated.
+**Denemeler / sonuç:** Aynı394ilişki/1409event/2327audit yükünde WAL + snapshot audit reuse:133ms/260msmedyan; kaynak korunumu/falseDone0,100record preview truncated. [318runtime/7browser ve teslim](../quality/concurrency-impact-delivery.md).
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: T23d ile dar 503reproducer ve transaction/hata korelasyonu; T20 ile snapshot sorgu maliyeti profili. Runtime değişikliği somut kapsam/test planıyla; kalite/permission kapıları korunur.
+Sıradaki adım: Kontrollü503düzeltmesi ve snapshot audit optimizasyonu testli; T23d uzun soak/disk ve remaining503korelasyonu açık. T13/T19 karar etkisi önizlemesi çalışıyor; tam etki/onay/apply ve gerçek extraction/native kabulü açık.
 
 ### T18 · Minimal MCP ve cross-agent read
 
@@ -384,4 +384,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `a64ea34726946527f6d0c659724c2626b0bbdfb8e05d1d2c109b8c65786424c6`
+Kaynak fingerprint: `59d21b6a742c39b4d3228b04be6670e02d6241ae570980439f6cdf48830a2216`

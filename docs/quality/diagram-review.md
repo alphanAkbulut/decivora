@@ -168,3 +168,7 @@ Bir yeni [local preview](../architecture/local-preview.md) kaynağı cached11.17
 ## 2026-10-14 — API-independent delivery
 
 Changed local-preview + new api-independent-development blocks rendered with cached Mermaid11.17.2, XML/hash/title/description and visual review. All44source hashes/inventory verified; unchanged records keep original provenance, not claimed rerendered. No product/model/native success inferred from diagrams.
+
+## 14Ekim2026 — WAL/concurrency and manual decision hypothesis
+
+Local-preview1 adds startup WAL and human-selected persisted impact review (no task mutation); rendered with cached11.17.2, XML/title/description/hash and visual inspection.44source/23documents unchanged; previous record archived. API-independent diagram/source unchanged, no new full-model/host success implied.

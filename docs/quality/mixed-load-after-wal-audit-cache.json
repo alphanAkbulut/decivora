@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-14",
+  "workload": "isolated sources, graph, revisions, partial criteria, concurrent reads/writes",
+  "model_calls": 0,
+  "user_database_modified": false,
+  "profiles": [
+    {
+      "profile": {
+        "name": "small_mixed",
+        "tasks": 30,
+        "decisions": 5,
+        "sources": 4,
+        "source_bytes": 1000,
+        "history": 100,
+        "fanout": 1
+      },
+      "setup_ms": 205.62,
+      "history_setup_ms": 59.33,
+      "database_bytes": 434176,
+      "stored": {
+        "records": 35,
+        "events": 199,
+        "audit": 409,
+        "edges": 59
+      },
+      "sources_preserved": 4,
+      "source_total_bytes": 4000,
+      "returned_tasks": 30,
+      "returned_records": 35,
+      "truncated": false,
+      "sequential": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 20,
+        "status_counts": {
+          "200": 20
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 20,
+          "median_ms": 15.587,
+          "p95_ms": 15.888,
+          "max_ms": 16.027
+        },
+        "all_timing": {
+          "samples": 20,
+          "median_ms": 15.587,
+          "p95_ms": 15.888,
+          "max_ms": 16.027
+        },
+        "response_bytes_max": 124590
+      },
+      "concurrent_reads": {
+        "path": "/api/state",
+        "workers": 4,
+        "samples": 24,
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 24,
+          "median_ms": 88.243,
+          "p95_ms": 95.948,
+          "max_ms": 100.081
+        },
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 88.243,
+          "p95_ms": 95.948,
+          "max_ms": 100.081
+        },
+        "response_bytes_max": 124590
+      },
+      "read_during_write": {
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 287.86,
+          "p95_ms": 482.982,
+          "max_ms": 502.095
+        },
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0
+      },
+      "writer": {
+        "samples": 12,
+        "median_ms": 8.359,
+        "p95_ms": 12.698,
+        "max_ms": 12.698
+      },
+      "observed_snapshot_min": 170,
+      "observed_snapshot_max": 182,
+      "server_exception_counts": [],
+      "oversized_source_rejected": true,
+      "source_overflow_rejected": null,
+      "false_done_count": 0,
+      "paid_model_calls": 0
+    },
+    {
+      "profile": {
+        "name": "medium_mixed",
+        "tasks": 60,
+        "decisions": 10,
+        "sources": 12,
+        "source_bytes": 6000,
+        "history": 300,
+        "fanout": 2
+      },
+      "setup_ms": 1420.03,
+      "history_setup_ms": 1043.31,
+      "database_bytes": 872448,
+      "stored": {
+        "records": 70,
+        "events": 552,
+        "audit": 947,
+        "edges": 177
+      },
+      "sources_preserved": 12,
+      "source_total_bytes": 72000,
+      "returned_tasks": 60,
+      "returned_records": 70,
+      "truncated": false,
+      "sequential": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 20,
+        "status_counts": {
+          "200": 20
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 20,
+          "median_ms": 50.551,
+          "p95_ms": 52.053,
+          "max_ms": 61.156
+        },
+        "all_timing": {
+          "samples": 20,
+          "median_ms": 50.551,
+          "p95_ms": 52.053,
+          "max_ms": 61.156
+        },
+        "response_bytes_max": 288139
+      },
+      "concurrent_reads": {
+        "path": "/api/state",
+        "workers": 4,
+        "samples": 24,
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 24,
+          "median_ms": 160.29,
+          "p95_ms": 167.413,
+          "max_ms": 167.47
+        },
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 160.29,
+          "p95_ms": 167.413,
+          "max_ms": 167.47
+        },
+        "response_bytes_max": 288139
+      },
+      "read_during_write": {
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 304.483,
+          "p95_ms": 337.529,
+          "max_ms": 342.797
+        },
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0
+      },
+      "writer": {
+        "samples": 12,
+        "median_ms": 16.188,
+        "p95_ms": 18.248,
+        "max_ms": 18.248
+      },
+      "observed_snapshot_min": 435,
+      "observed_snapshot_max": 447,
+      "server_exception_counts": [],
+      "oversized_source_rejected": true,
+      "source_overflow_rejected": null,
+      "false_done_count": 0,
+      "paid_model_calls": 0
+    },
+    {
+      "profile": {
+        "name": "dense_mixed",
+        "tasks": 100,
+        "decisions": 10,
+        "sources": 32,
+        "source_bytes": 11900,
+        "history": 900,
+        "fanout": 3
+      },
+      "setup_ms": 32103.68,
+      "history_setup_ms": 30602.22,
+      "database_bytes": 1986560,
+      "stored": {
+        "records": 110,
+        "events": 1409,
+        "audit": 2327,
+        "edges": 394
+      },
+      "sources_preserved": 32,
+      "source_total_bytes": 380800,
+      "returned_tasks": 90,
+      "returned_records": 100,
+      "truncated": true,
+      "sequential": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 20,
+        "status_counts": {
+          "200": 20
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 20,
+          "median_ms": 132.969,
+          "p95_ms": 135.599,
+          "max_ms": 140.66
+        },
+        "all_timing": {
+          "samples": 20,
+          "median_ms": 132.969,
+          "p95_ms": 135.599,
+          "max_ms": 140.66
+        },
+        "response_bytes_max": 739089
+      },
+      "concurrent_reads": {
+        "path": "/api/state",
+        "workers": 4,
+        "samples": 24,
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0,
+        "success_timing": {
+          "samples": 24,
+          "median_ms": 259.569,
+          "p95_ms": 301.531,
+          "max_ms": 306.214
+        },
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 259.569,
+          "p95_ms": 301.531,
+          "max_ms": 306.214
+        },
+        "response_bytes_max": 739089
+      },
+      "read_during_write": {
+        "all_timing": {
+          "samples": 24,
+          "median_ms": 444.861,
+          "p95_ms": 881.465,
+          "max_ms": 883.755
+        },
+        "status_counts": {
+          "200": 24
+        },
+        "failed_requests": 0
+      },
+      "writer": {
+        "samples": 12,
+        "median_ms": 48.781,
+        "p95_ms": 56.127,
+        "max_ms": 56.127
+      },
+      "observed_snapshot_min": 1115,
+      "observed_snapshot_max": 1127,
+      "server_exception_counts": [],
+      "oversized_source_rejected": true,
+      "source_overflow_rejected": true,
+      "false_done_count": 0,
+      "paid_model_calls": 0
+    }
+  ],
+  "script_sha256": "0b480546947b3fe5c6680bab15334e456b8348fbe5e53c8610b097869547ab60"
+}

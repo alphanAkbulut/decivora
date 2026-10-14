@@ -104,6 +104,7 @@ class Workspace:
     def transaction(self):
         try:
             self.db.execute('BEGIN IMMEDIATE')
+            self.workflow_audit_read_cache=None
             self.file_observation_cache={};self.file_read_limit_reached=False;self.workflow_context_cache={};self.mcp_visibility_cache={}
             yield
             self.db.execute('COMMIT')
@@ -119,10 +120,13 @@ class Workspace:
         owned = not self.db.in_transaction
         if owned:
             self.db.execute('BEGIN');self.file_observation_cache={};self.file_read_limit_reached=False;self.workflow_context_cache={};self.mcp_visibility_cache={}
+            self.workflow_audit_read_cache={}
         try:
             yield
         finally:
-            if owned and self.db.in_transaction: self.db.execute('ROLLBACK')
+            if owned:
+                self.workflow_audit_read_cache=None
+                if self.db.in_transaction:self.db.execute('ROLLBACK')
 
     def active(self, scope, project):
         if self.project(scope, project)['archived']:
@@ -527,7 +531,7 @@ class Workspace:
             graph.revision=self.project(scope,project)['knowledge_revision']
             return graph
 
-    def impact_preview(self,scope,project,run_id,trigger,annotations,facts_before,facts_after,*,max_nodes=100,max_edges=500):
+    def impact_preview(self,scope,project,run_id,trigger,annotations,facts_before,facts_after,*,max_nodes=100,max_edges=500,expected_revision=None):
         """Explicit manual hypothetical inputs; persisted preview, never task mutation."""
         from packages.impact.preview import preview
         identifier(run_id)
@@ -536,6 +540,9 @@ class Workspace:
         with self.transaction():
             self.scope(scope,project,write=True);self.active(scope,project)
             revision=self.project(scope,project)['knowledge_revision']
+            if expected_revision is not None:
+                integer(expected_revision)
+                if expected_revision!=revision:raise ContractError('stale_base','Project changed before the impact preview; refresh.')
             input_digest=digest(raw)
             prior=self._impact_run(project,run_id)
             if prior is not None:

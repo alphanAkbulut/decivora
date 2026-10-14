@@ -300,9 +300,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 kontrol oturumu.
 
 - **Son ilerleme:** 14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
-- **Risk durumu:** Observed / unresolved · Önceki fixture okuma/yazma koşusunda HTTP503; kök neden doğrulanmadı. Son tam ölçümde tüm yanıtlar200; bu eski hatanın düzeldiği anlamına gelmez.
-- **Denemeler / sonuç:** Uzun kaynak,394ilişki,1409event/2327audit; yoğun profil tek okuma439ms/eşzamanlı1.1smedyan. Kaynaklar korundu, falseDone0;100record preview truncated.
-- **Sıradaki adım:** T23d ile dar 503reproducer ve transaction/hata korelasyonu; T20 ile snapshot sorgu maliyeti profili. Runtime değişikliği somut kapsam/test planıyla; kalite/permission kapıları korunur.
+- **Risk durumu:** Reproduced mechanism corrected / historical trace unknown · Kontrollü SQLite rollback-mode kilit sırası503üretti; WAL startup aynı sırada200verdi. İlk uninstrumented koşunun birebir kök nedeni kanıtlanmadı; tüm503nedenleri kapanmış sayılmaz.
+- **Denemeler / sonuç:** Aynı394ilişki/1409event/2327audit yükünde WAL + snapshot audit reuse:133ms/260msmedyan; kaynak korunumu/falseDone0,100record preview truncated. [318runtime/7browser ve teslim](../quality/concurrency-impact-delivery.md).
+- **Sıradaki adım:** Kontrollü503düzeltmesi ve snapshot audit optimizasyonu testli; T23d uzun soak/disk ve remaining503korelasyonu açık. T13/T19 karar etkisi önizlemesi çalışıyor; tam etki/onay/apply ve gerçek extraction/native kabulü açık.
 
 ## T16 — Claude Code adapter
 

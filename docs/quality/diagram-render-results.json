@@ -696,14 +696,14 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "cf5dfd7ff6bd3a73bda42f03c508b09be61cde0a7865e78ee0ab5ac2d514208b",
+      "source_sha256": "3f1228115bfaa2efac38e14c27e44fb411d55219afbede461cfd1ca86b22cfe5",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 1660.09375 2135.279296875",
+      "view_box": "0 0 1855.03125 2183.279296875",
       "artifact": "assets/diagrams/local-preview-1.svg",
       "error": null,
-      "svg_sha256": "62d578fb9745a7a74e02c30c4a455807cc0d1b11ea567af054083c0bcdb9f045"
+      "svg_sha256": "03279df4a7429257c5675aabed186384a76dd10ab19de737a9d294085c86a923"
     },
     {
       "path": "docs/delivery/api-independent-development.md",
@@ -1053,6 +1053,19 @@
           "svg_sha256": "0712af6d56cbec62eb0d20783c1ab81b323307fb97695529ca0b5a5fce762bf7"
         }
       ]
+    },
+    {
+      "path": "docs/architecture/local-preview.md",
+      "block": 1,
+      "source_sha256": "cf5dfd7ff6bd3a73bda42f03c508b09be61cde0a7865e78ee0ab5ac2d514208b",
+      "status": "rendered",
+      "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+      "description_present": true,
+      "view_box": "0 0 1660.09375 2135.279296875",
+      "artifact": "assets/diagrams/local-preview-1.svg",
+      "error": null,
+      "svg_sha256": "62d578fb9745a7a74e02c30c4a455807cc0d1b11ea567af054083c0bcdb9f045",
+      "superseded_reason": "WAL startup and decision hypothesis UI update"
     }
   ]
 }

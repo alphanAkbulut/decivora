@@ -6,6 +6,16 @@ from urllib.error import HTTPError
 from apps.local_ui.server import make_server,LocalApp
 
 class LocalAppTests(unittest.TestCase):
+    def test_decision_impact_http_is_separate_from_task_mutation(self):
+        with self.server.app.core() as core:
+            owner=core.authority.issue_scope('local_owner')
+            plan=core.plan(owner,'personal','impact_seed',[dict(op='create',id='d',body=dict(type='Decision',title='Storage',description='Synthetic')),dict(op='create',id='t',body=dict(type='Task',title='Dependent',description='Synthetic')),dict(op='link',origin='t',target='d',kind='required_by')])
+            ids=core.apply(owner,plan,core.approve(owner,plan))['temp_ids'];revision=core.project(owner,'personal')['knowledge_revision']
+        request=dict(action='preview_decision_change',decision=ids['d'],decision_version=1,base_revision=revision,key='http_impact')
+        code,result,_=self.call('/api/command',request);self.assertEqual(code,200);self.assertEqual(result['canonical_mutations'],0)
+        state=self.call('/api/state')[1];self.assertEqual(state['snapshot'],revision);self.assertEqual(state['tasks'][0]['lane'],'To Do');self.assertEqual(len(state['impact_reviews']),1)
+        self.assertEqual(self.call('/api/command',dict(request,base_revision=revision-1))[0],409)
+
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.path=Path(self.temp.name)/'app.sqlite';self.server=make_server(self.path);self.thread=threading.Thread(target=self.server.serve_forever,daemon=True);self.thread.start();self.addCleanup(self.stop)
         self.origin=self.server.origin;self.headers={'Origin':self.origin,'Cookie':'decivora_session='+self.server.app.cookie,'X-CSRF-Token':self.server.app.csrf,'Content-Type':'application/json'}

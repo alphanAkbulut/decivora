@@ -13,6 +13,7 @@ from packages.domain.task_blockers import TaskBlockerService
 from packages.domain.task_workflow import TaskWorkflowService
 from packages.domain.work_routing import RoutingService
 from packages.domain.agent_proposals import AgentProposalService
+from packages.domain.decision_impact import DecisionImpactService
 from packages.domain.questions import QuestionService
 from packages.domain.question_decisions import QuestionDecisionService
 from packages.domain.source_event import ContractError
@@ -30,6 +31,11 @@ class LocalApp:
             if fresh:
                 a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'local_owner',kind='human',readable=frozenset({'personal'}),writable=frozenset({'personal'}),active=True,base_revision=1)
                 core.create_project(a.issue_scope('local_owner'),'personal','Benim projem');self.path.chmod(0o600)
+            # The local service has overlapping readers and one SQLite writer.
+            # Configure once at startup, never during a query or transaction.
+            mode=core.db.execute('PRAGMA journal_mode=WAL').fetchone()[0]
+            if mode!='wal':raise ContractError('storage_configuration_failed','Local concurrent storage profile could not be enabled.')
+            self.storage_journal_mode=mode
     def record_error(self,endpoint,code):
         endpoint=endpoint if endpoint in ('/api/state','/api/command','/api/backup','/api/session','/api/shutdown') else 'other'
         code=code if type(code) is str and re.fullmatch('[a-z_]{1,64}',code) else 'application_error'
@@ -75,16 +81,22 @@ class LocalApp:
             audit_timeline=[]
             for seq,action,raw in core.db.execute("SELECT seq,action,ref FROM audit WHERE workspace=? AND project=? AND action IN ('task_stage','criterion_evidence','file_criterion_evidence','file_criterion_binding','work_routing','agent_changeset_submitted','agent_changeset_approved','agent_changeset_applied','agent_changeset_rejected') ORDER BY seq DESC LIMIT 100",(core.workspace,selected)):
                 item=json.loads(raw);audit_timeline.append(dict(sequence=seq,action=action,task=item.get('task'),status=item.get('stage',item.get('status'))))
+            impact_reviews=[]
+            for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC LIMIT 5",(core.workspace,selected)):
+                impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
             with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
-            return dict(selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+            return dict(impact_reviews=impact_reviews,selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
     def command(self,body):
         selected='personal'
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
             selected=identifier(body['project_id']);body=body['command']
-        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','work_routing','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','preview_decision_change','work_routing','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action=='preview_decision_change':
+                if set(body)!={'action','decision','decision_version','base_revision','key'}:raise ContractError('invalid_request','Exact decision-preview fields required.')
+                return DecisionImpactService(core).preview(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action in ('bind_file_check','run_file_check'):
                 fields={'action','task','task_version','contract_version','criterion','path','expected_sha256','reason','key'} if action=='bind_file_check' else {'action','task','task_version','contract_version','criterion','binding_revision','key'}
                 if set(body)!=fields:raise ContractError('invalid_request','Exact local file-check fields required.')

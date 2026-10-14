@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-14",
+  "status": "local_regression_passed",
+  "runtime_tests": 318,
+  "tracking_evaluation_tests": 48,
+  "browser_fixture_flows": 7,
+  "paid_model_calls": 0,
+  "live_journal_mode": "wal",
+  "reproducer_before": {
+    "status": 503,
+    "elapsed_ms": 2126,
+    "error": "OperationalError:database is locked"
+  },
+  "reproducer_after": {
+    "status": 200,
+    "elapsed_ms": 20,
+    "error": null
+  },
+  "original_uninstrumented_503_exact_cause": "not_proven",
+  "database_schema_version": 1,
+  "manual_impact": "hypothesis_only_no_canonical_mutation",
+  "schema_verification": "published fields matched service arguments; not full external schema conformance",
+  "package": {
+    "name": "Decivora-local-concurrency-impact.zip",
+    "files": 43,
+    "sha256": "889843848d77e6e74130728d5918850b74bfd10d19cd1213e046876d042b0c82"
+  },
+  "code_sha256": {
+    "apps/local_ui/server.py": "95d273872f0c926a4efd6b2e259d2f207d26068ace882c38195a7fc37068c9be",
+    "apps/local_ui/app.js": "c15e843e43e52b7bbef6f35072c4cfe99a383160bc3e2abfce3fc754f335554f",
+    "apps/local_ui/index.html": "fafb447ed67b402f898d03eac2e24c071ec616fae88401ad338e18d172c32504",
+    "apps/local_ui/locales.js": "77f1e69ff819c84bd6aaf40c983c685bc05ea725434bb001fcb39f6531dbabdb",
+    "packages/domain/task_workflow.py": "3bc5464f415f09707d195b338f0f4556ae062c3499b36437bc8d6bf63158a2d0",
+    "packages/domain/decision_impact.py": "67943778622837958d5e60e8f208d3a647b17a2d60944e30f4c5b571871ed4b4",
+    "packages/storage/workspace.py": "1a7b57db2f6885e9a1ebaea92ddf2e3e481763cd0e25e37245298062072b692c",
+    "tests/runtime/test_storage_read_write.py": "1caca2fd73c150f96f9c0fe1c7759d7e33f9ccc77ee63581820a873006013214",
+    "tests/runtime/test_decision_impact.py": "27d327c3afe8b776a04544f6b0d00ad4b41fcca94be08b78e9c2409f985bb069",
+    "tests/runtime/test_independent_schemas.py": "66fb88f9749c5ba96297aa72d1949a58fd925053f691cb58e24d8a8604ae3fec",
+    "tests/runtime/test_task_workflow.py": "a7b35a084aadd83523521ece8cfe418cb3dcdd2607932cdee74d8f2b18e72bbe",
+    "tests/runtime/test_local_app.py": "82359c0d7d63057161d668f3d360e03e0acb15fce843f11d31bd5355c12562ec",
+    "tests/ui-impact.cjs": "5c7dddfcb0eb201c6b70d2e410f5743ffc6fdcae533940e3aa481a5dd18502f0"
+  }
+}

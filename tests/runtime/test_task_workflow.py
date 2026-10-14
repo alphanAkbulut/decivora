@@ -9,6 +9,21 @@ from packages.domain.task_blockers import TaskBlockerService
 from packages.domain.source_event import ContractError
 
 class WorkflowTests(unittest.TestCase):
+    def test_audit_reuse_is_read_snapshot_only_and_result_cannot_poison_cache(self):
+        self.ready_for_verification();self.evidence('AC1')
+        with self.core.read_snapshot():
+            first=self.s._rows('p',self.task,'criterion_evidence')
+            first[0]['status']='failed'
+            self.assertEqual(self.s._rows('p',self.task,'criterion_evidence')[0]['status'],'passed')
+            self.assertIn(('p','criterion_evidence'),self.core.workflow_audit_read_cache)
+        self.assertIsNone(self.core.workflow_audit_read_cache)
+        self.evidence('AC1',status='failed')
+        with self.core.read_snapshot():
+            self.assertEqual(self.s._rows('p',self.task,'criterion_evidence')[-1]['status'],'failed')
+        with self.core.transaction():
+            self.s._rows('p',self.task,'criterion_evidence')
+            self.assertIsNone(self.core.workflow_audit_read_cache)
+
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.path=Path(self.temp.name)/'workflow.sqlite'
         self.core=Workspace(self.path,'w',owner='owner');self.addCleanup(self.core.close);a=self.core.authority;a.replace_grant(a.issue_scope('owner'),'owner',kind='human',readable=frozenset({'p'}),writable=frozenset({'p'}),active=True,base_revision=1);self.owner=a.issue_scope('owner');self.core.create_project(self.owner,'p','Project')

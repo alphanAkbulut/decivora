@@ -29,7 +29,10 @@ flowchart TB
     P --> O["Ayrı human approve<br/>question + knowledge + authz revision"]
     O --> C[("Apply: Decision event + resolution audit<br/>atomic / retry tek effect")]
     T --> A["AC + DoD şablonunu incele<br/>ayrı açık onay + version + reason"]
-    A --> D[("Private SQLite<br/>Task records + acceptance_contract events")]
+    A --> D[("Private SQLite / WAL at startup<br/>Task records + acceptance_contract events")]
+    G --> IP["Human selected decision hypothesis<br/>record + knowledge + authz recheck"]
+    IP --> IX[("Persisted impact preview<br/>unknown rationale stays review; no task mutation")]
+    IX --> H
     D --> W["Current contract kontrolü<br/>task_work_started audit"]
     W --> B["In Progress kartı<br/>implementation claim"]
     D --> H["Eski kriterler ve gerekçeler<br/>reload / restart / replay"]
@@ -102,3 +105,7 @@ Yerel UI'da `TaskBlockerService` açık insan işaretlemesi/çözümü ve reason
 [Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.
 
 [Current stdio / file / graph / health limits](../delivery/api-independent-development.md). No runtime source scan or user grant was activated implicitly.
+
+## 14Ekim2026 — Concurrent storage and decision hypothesis
+
+LocalApp startup configures WAL before serving; no per-request journal changes or timeout increase. Audit rows are grouped/reused only inside the current owned read snapshot; writes and later queries reread, with authority checks unchanged. The schema1/TaskStage payloads remain unchanged. [WAL/concurrency and preview delivery evidence](../quality/concurrency-impact-delivery.md) distinguishes a reproduced lock mechanism from the original uninstrumented503. Questions/decisions view offers a manual decision-retirement hypothesis; record/knowledge/authz/source coverage bind the persisted result. Missing AND/OR rationale remains review; no cancellation/decision apply is exposed by this action. [Request schema](../../manifests/local-decision-impact.schema.json).
