@@ -302,6 +302,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Son ilerleme:** 14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
 - **Risk durumu:** Reproduced mechanism corrected / historical trace unknown · Kontrollü SQLite rollback-mode kilit sırası503üretti; WAL startup aynı sırada200verdi. İlk uninstrumented koşunun birebir kök nedeni kanıtlanmadı; tüm503nedenleri kapanmış sayılmaz.
 - **Denemeler / sonuç:** Aynı394ilişki/1409event/2327audit yükünde WAL + snapshot audit reuse:133ms/260msmedyan; kaynak korunumu/falseDone0,100record preview truncated. [318runtime/7browser ve teslim](../quality/concurrency-impact-delivery.md).
+- **Güncel kanıt:** 319 runtime test; uncheckpointed WAL→private backup→offline restore aynı event/projection. Populated impact-history mixed-load ve sınırlar [takip raporunda](../quality/concurrency-impact-delivery.md#follow-up-wal-recovery-and-populated-impact-history). Bu alt kanıt T15/T23 release kabulünü tek başına kapatmaz.
 - **Sıradaki adım:** Kontrollü503düzeltmesi ve snapshot audit optimizasyonu testli; T23d uzun soak/disk ve remaining503korelasyonu açık. T13/T19 karar etkisi önizlemesi çalışıyor; tam etki/onay/apply ve gerçek extraction/native kabulü açık.
 
 ## T16 — Claude Code adapter

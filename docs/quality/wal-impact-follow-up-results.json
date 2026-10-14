@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-14",
+  "runtime_tests": 319,
+  "targeted_storage_tests_after_strengthening": 3,
+  "paid_model_calls": 0,
+  "user_database_modified": false,
+  "wal_backup": "uncheckpointed commit preserved; bare main-file copy lacks record; offline event/projection equality",
+  "populated_impact_profiles": 3,
+  "previews_per_profile": 12,
+  "returned_preview_window": 5,
+  "api_schema_changed": false,
+  "sql_schema_changed": false,
+  "diagram_source_changed": false,
+  "browser_flows": "previous seven; not rerun this delivery",
+  "remaining": [
+    "long soak",
+    "disk failure",
+    "backup crash",
+    "native host",
+    "actual semantic inference"
+  ],
+  "source_sha256": {
+    "scripts/measure_mixed_load.py": "05c9038bd1da1905e29a196cd62f6a167e9c2b9dd9f720f96bfe0e509ac115a4",
+    "tests/runtime/test_storage_read_write.py": "fa0961e86a3bc8434ecdf9c53b99ed79f23f9234cec4616b2f09c1eb8e5f09ae"
+  },
+  "tracker_first_attempt": "45 tests passed; 3 localhost server tests blocked by sandbox socket permission",
+  "tracker_authorized_rerun_tests": 48,
+  "tracker_authorized_rerun": "passed"
+}

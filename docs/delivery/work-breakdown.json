@@ -130,7 +130,7 @@
   "approval_note": "Bunlar dört gruplanmış insan katkısı/izin kapısıdır; şu anda sana sorulmuş dört cevapsız onay değildir. Üç sonraki ürün tercihi ayrıdır. Saklama/paylaşım, lisans/marka ve ekip/cloud seçimleri ilgili gelecek aşamada ele alınır. Bağımsız kod işleri beklemez.",
   "recorded_validation": {
     "date": "2026-10-14",
-    "runtime_tests": 318,
+    "runtime_tests": 319,
     "tracker_evaluation_tests": 48,
     "browser_fixture_flows": 7,
     "scope": "Kayıtlı sonuç; ekran testi yeniden çalıştırmaz. Gerçek semantik kalite veya tam MVP kabulü değildir."

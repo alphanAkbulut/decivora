@@ -8,6 +8,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from apps.local_ui.server import make_server
 from packages.capture.conversations import ConversationService
 from packages.domain.task_workflow import TaskWorkflowService
+from packages.domain.decision_impact import DecisionImpactService
 from packages.domain.source_event import ContractError
 from measure_local_performance import stats
 
@@ -29,7 +30,7 @@ PROFILES=[dict(name='small_mixed',tasks=30,decisions=5,sources=4,source_bytes=10
           dict(name='medium_mixed',tasks=60,decisions=10,sources=12,source_bytes=6000,history=300,fanout=2),
           dict(name='dense_mixed',tasks=100,decisions=10,sources=32,source_bytes=11900,history=900,fanout=3)]
 
-def run(profile):
+def run(profile,impact_previews=0):
     with tempfile.TemporaryDirectory() as folder:
         path=Path(folder)/'synthetic.sqlite';server=make_server(path);app=server.app;seq=0;diagnostics=[]
         original_state=app.state
@@ -84,6 +85,10 @@ def run(profile):
             try:service.ingest(owner,'personal',text='x'*12001)
             except ContractError as error:oversized=error.code=='conversation_limit'
             assert oversized
+            projection_before=core.projection_digest(owner,'personal')
+            for i in range(impact_previews):
+                DecisionImpactService(core).preview(owner,'personal',decision=decisions[i%len(decisions)],decision_version=1,base_revision=core.project(owner,'personal')['knowledge_revision'],key='load_impact_'+str(i))
+            assert core.projection_digest(owner,'personal')==projection_before
         setup_ms=(time.perf_counter()-setup_start)*1000
         thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         try:
@@ -110,20 +115,22 @@ def run(profile):
             with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
                 future=pool.submit(writer);rows=list(pool.map(read,range(24)));writes=future.result(timeout=30)
             snapshot=app.state()
+            assert len(snapshot['impact_reviews'])==min(impact_previews,5)
+            assert all(item['stale'] for item in snapshot['impact_reviews'])
             with app.core() as core:
                 owner=core.authority.issue_scope('local_owner');end_sources=len(ConversationService(core)._rows('personal','conversation_imported'))
                 assert end_sources==received
                 assessment=TaskWorkflowService(core).view(owner,'personal',tasks[-1])
                 assert assessment['assessment']['finish_blocked'] is True and assessment['stage']!='Done'
             revisions=[x[1] for x in rows if x[2]==200]
-            return dict(profile=profile,setup_ms=round(setup_ms,2),history_setup_ms=round(history_setup_ms,2),database_bytes=path.stat().st_size,stored=counts,sources_preserved=end_sources,source_total_bytes=profile['sources']*profile['source_bytes'],returned_tasks=len(snapshot['tasks']),returned_records=len(snapshot['records']),truncated=snapshot['truncated'],sequential=sequential,concurrent_reads=concurrent_read_metrics,read_during_write=dict(all_timing=stats([x[0] for x in rows]),status_counts=dict(Counter(str(x[2]) for x in rows)),failed_requests=sum(x[2]!=200 for x in rows)),writer=stats(writes),observed_snapshot_min=min(revisions) if revisions else None,observed_snapshot_max=max(revisions) if revisions else None,server_exception_counts=[dict(type=t,reason=r,count=n) for (t,r),n in Counter((d['type'],d['reason']) for d in diagnostics).items()],oversized_source_rejected=oversized,source_overflow_rejected=overflow if profile['sources']==32 else None,false_done_count=sum(task['lane']=='Done' for task in snapshot['tasks']),paid_model_calls=0)
+            return dict(impact_previews_seeded=impact_previews,impact_reviews_returned=len(snapshot['impact_reviews']),impact_reviews_stale_after_write=all(item['stale'] for item in snapshot['impact_reviews']),profile=profile,setup_ms=round(setup_ms,2),history_setup_ms=round(history_setup_ms,2),database_bytes=path.stat().st_size,stored=counts,sources_preserved=end_sources,source_total_bytes=profile['sources']*profile['source_bytes'],returned_tasks=len(snapshot['tasks']),returned_records=len(snapshot['records']),truncated=snapshot['truncated'],sequential=sequential,concurrent_reads=concurrent_read_metrics,read_during_write=dict(all_timing=stats([x[0] for x in rows]),status_counts=dict(Counter(str(x[2]) for x in rows)),failed_requests=sum(x[2]!=200 for x in rows)),writer=stats(writes),observed_snapshot_min=min(revisions) if revisions else None,observed_snapshot_max=max(revisions) if revisions else None,server_exception_counts=[dict(type=t,reason=r,count=n) for (t,r),n in Counter((d['type'],d['reason']) for d in diagnostics).items()],oversized_source_rejected=oversized,source_overflow_rejected=overflow if profile['sources']==32 else None,false_done_count=sum(task['lane']=='Done' for task in snapshot['tasks']),paid_model_calls=0)
         finally:server.shutdown();server.server_close();thread.join(timeout=3)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--impact-previews',type=int,default=0,choices=range(0,33));args=parser.parse_args()
     result=dict(date='2026-10-14',workload='isolated sources, graph, revisions, partial criteria, concurrent reads/writes',model_calls=0,user_database_modified=False,profiles=[])
     for profile in PROFILES:
-        row=run(profile)
+        row=run(profile,args.impact_previews)
         result['profiles'].append(row);args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(dict(profile=profile['name'],sequential=row['sequential']['all_timing'],concurrent=row['concurrent_reads']['all_timing'],read_write_status=row['read_during_write']['status_counts'],diagnostics=row['server_exception_counts'],sources=row['sources_preserved'],records=row['stored']['records'],events=row['stored']['events'],audit=row['stored']['audit'],edges=row['stored']['edges'],truncated=row['truncated'])),flush=True)
     result['script_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();args.output.write_text(json.dumps(result,indent=2)+'\n')
 if __name__=='__main__':main()

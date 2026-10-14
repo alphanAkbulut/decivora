@@ -1,10 +1,34 @@
 """Local service WAL startup and reader/writer isolation, with real HTTP/SQLite."""
 from pathlib import Path
-import json,sqlite3,tempfile,threading,unittest
+import json,shutil,sqlite3,tempfile,threading,unittest
 from urllib.request import Request,urlopen
 from apps.local_ui.server import make_server,LocalApp
+from packages.storage.workspace import Workspace
 
 class LocalReadWriteTests(unittest.TestCase):
+    def test_backup_includes_uncheckpointed_wal_and_restores_offline(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'app.sqlite';app=LocalApp(path)
+            with app.core() as core:
+                owner=core.authority.issue_scope('local_owner')
+                core.db.execute('PRAGMA wal_autocheckpoint=0')
+                plan=core.plan(owner,'personal','wal_task',[dict(op='create',id='t',body=dict(type='Task',title='WAL-only task',description='Synthetic'))])
+                core.apply(owner,plan,core.approve(owner,plan))
+                self.assertGreater(Path(str(path)+'-wal').stat().st_size,0)
+                # A bare main-file copy misses the commit; SQLite backup must not.
+                main_only=Path(folder)/'unsafe-main-only.sqlite'
+                shutil.copyfile(path,main_only)
+                with sqlite3.connect(main_only) as copied:
+                    self.assertEqual(copied.execute('SELECT count(*) FROM records').fetchone()[0],0)
+                projection=core.projection_digest(owner,'personal')
+                event_count=core.db.execute('SELECT count(*) FROM events').fetchone()[0]
+                backup=Path(folder)/'backup.sqlite';manifest=core.backup(owner,backup)
+                with Workspace.restore(backup,Path(folder)/'restored.sqlite',manifest) as restored:
+                    scope=restored.authority.issue_scope('local_owner')
+                    self.assertEqual(restored.projection_digest(scope,'personal'),projection)
+                    self.assertEqual(restored.db.execute('SELECT count(*) FROM events').fetchone()[0],event_count)
+                    self.assertEqual(manifest['external_dispatches'],0)
+
     def test_startup_enables_wal_and_preserves_existing_workspace(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'app.sqlite';app=LocalApp(path)

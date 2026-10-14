@@ -700,3 +700,7 @@ Ek aynı-tur gözlem: [seçili corpus README için gerçek GitHub readback](../q
 ## Current concurrent storage and manual impact UI —14October2026
 
 [Working delivery and limitations](../quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.
+
+## 2026-10-14 — WAL recovery and populated impact load
+
+319 runtime regressions passed, including uncheckpointed WAL backup→offline restore/event/projection preservation. The mixed-load harness now accepts bounded `--impact-previews` fixtures and checks latest-five history, stale-after-write, unchanged projection and no false Done. [Current findings and checks](../quality/concurrency-impact-delivery.md#follow-up-wal-recovery-and-populated-impact-history). No new model/root/host permissions; previous 7 browser/48 tracker results remain historical. Main task closure unchanged.
