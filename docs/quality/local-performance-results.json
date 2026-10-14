@@ -1,0 +1,609 @@
+{
+  "date": "2026-10-14",
+  "measurement": "localhost development snapshot",
+  "model_calls": 0,
+  "user_mutations": 0,
+  "live_task_count": 0,
+  "live_truncated": false,
+  "http": [
+    {
+      "surface": "tracker",
+      "path": "/",
+      "workers": 1,
+      "samples": 30,
+      "median_ms": 0.496,
+      "p95_ms": 1.93,
+      "max_ms": 2.944,
+      "ttfb": {
+        "samples": 30,
+        "median_ms": 0.48,
+        "p95_ms": 1.894,
+        "max_ms": 2.931
+      },
+      "response_bytes_min": 22881,
+      "response_bytes_max": 22881,
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "surface": "tracker",
+      "path": "/api/status",
+      "workers": 1,
+      "samples": 30,
+      "median_ms": 5.203,
+      "p95_ms": 12.31,
+      "max_ms": 13.868,
+      "ttfb": {
+        "samples": 30,
+        "median_ms": 5.163,
+        "p95_ms": 12.258,
+        "max_ms": 13.824
+      },
+      "response_bytes_min": 106372,
+      "response_bytes_max": 106372,
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "surface": "product",
+      "path": "/",
+      "workers": 1,
+      "samples": 30,
+      "median_ms": 0.381,
+      "p95_ms": 2.89,
+      "max_ms": 12.167,
+      "ttfb": {
+        "samples": 30,
+        "median_ms": 0.368,
+        "p95_ms": 2.862,
+        "max_ms": 12.151
+      },
+      "response_bytes_min": 9775,
+      "response_bytes_max": 9775,
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "surface": "product",
+      "path": "/app.js",
+      "workers": 1,
+      "samples": 30,
+      "median_ms": 0.306,
+      "p95_ms": 0.959,
+      "max_ms": 1.515,
+      "ttfb": {
+        "samples": 30,
+        "median_ms": 0.291,
+        "p95_ms": 0.935,
+        "max_ms": 1.496
+      },
+      "response_bytes_min": 48002,
+      "response_bytes_max": 48002,
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "surface": "product",
+      "path": "/api/state",
+      "workers": 1,
+      "samples": 30,
+      "median_ms": 1.236,
+      "p95_ms": 4.339,
+      "max_ms": 14.922,
+      "ttfb": {
+        "samples": 30,
+        "median_ms": 1.226,
+        "p95_ms": 4.329,
+        "max_ms": 14.91
+      },
+      "response_bytes_min": 1545,
+      "response_bytes_max": 1545,
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "surface": "tracker",
+      "path": "/api/status",
+      "workers": 4,
+      "samples": 32,
+      "median_ms": 20.562,
+      "p95_ms": 55.315,
+      "max_ms": 55.951,
+      "ttfb": {
+        "samples": 32,
+        "median_ms": 20.534,
+        "p95_ms": 55.281,
+        "max_ms": 55.929
+      },
+      "response_bytes_min": 106372,
+      "response_bytes_max": 106372,
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "surface": "product",
+      "path": "/api/state",
+      "workers": 4,
+      "samples": 32,
+      "median_ms": 4.411,
+      "p95_ms": 16.597,
+      "max_ms": 16.731,
+      "ttfb": {
+        "samples": 32,
+        "median_ms": 4.371,
+        "p95_ms": 16.544,
+        "max_ms": 16.678
+      },
+      "response_bytes_min": 1545,
+      "response_bytes_max": 1545,
+      "statuses": [
+        200
+      ]
+    }
+  ],
+  "synthetic": [
+    {
+      "stored_tasks": 10,
+      "returned_tasks": 10,
+      "truncated": false,
+      "http": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 12,
+        "median_ms": 3.094,
+        "p95_ms": 3.739,
+        "max_ms": 3.739,
+        "ttfb": {
+          "samples": 12,
+          "median_ms": 3.078,
+          "p95_ms": 3.724,
+          "max_ms": 3.724
+        },
+        "response_bytes_min": 13583,
+        "response_bytes_max": 13583,
+        "statuses": [
+          200
+        ]
+      },
+      "profile_top": [
+        {
+          "file": "server.py",
+          "line": 49,
+          "function": "state",
+          "calls": 1,
+          "cumulative_ms": 5.147
+        },
+        {
+          "file": "workspace.py",
+          "line": 131,
+          "function": "scope",
+          "calls": 82,
+          "cumulative_ms": 1.726
+        },
+        {
+          "file": "local_authority.py",
+          "line": 100,
+          "function": "_validate_scope",
+          "calls": 82,
+          "cumulative_ms": 1.581
+        },
+        {
+          "file": "local_authority.py",
+          "line": 64,
+          "function": "_current",
+          "calls": 85,
+          "cumulative_ms": 1.581
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 133,
+          "function": "view",
+          "calls": 10,
+          "cumulative_ms": 1.559
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 492,
+          "cumulative_ms": 1.386
+        },
+        {
+          "file": "acceptance.py",
+          "line": 46,
+          "function": "view",
+          "calls": 10,
+          "cumulative_ms": 1.054
+        },
+        {
+          "file": "workspace.py",
+          "line": 142,
+          "function": "project",
+          "calls": 36,
+          "cumulative_ms": 0.965
+        },
+        {
+          "file": "workspace.py",
+          "line": 127,
+          "function": "active",
+          "calls": 33,
+          "cumulative_ms": 0.902
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 95,
+          "function": "_stage",
+          "calls": 20,
+          "cumulative_ms": 0.846
+        },
+        {
+          "file": "__init__.py",
+          "line": 299,
+          "function": "loads",
+          "calls": 265,
+          "cumulative_ms": 0.747
+        },
+        {
+          "file": "work_routing.py",
+          "line": 13,
+          "function": "view",
+          "calls": 10,
+          "cumulative_ms": 0.711
+        }
+      ]
+    },
+    {
+      "stored_tasks": 50,
+      "returned_tasks": 50,
+      "truncated": false,
+      "http": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 12,
+        "median_ms": 15.728,
+        "p95_ms": 16.265,
+        "max_ms": 16.265,
+        "ttfb": {
+          "samples": 12,
+          "median_ms": 15.676,
+          "p95_ms": 16.239,
+          "max_ms": 16.239
+        },
+        "response_bytes_min": 61863,
+        "response_bytes_max": 61863,
+        "statuses": [
+          200
+        ]
+      },
+      "profile_top": [
+        {
+          "file": "server.py",
+          "line": 49,
+          "function": "state",
+          "calls": 1,
+          "cumulative_ms": 24.428
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 2252,
+          "cumulative_ms": 9.528
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 133,
+          "function": "view",
+          "calls": 50,
+          "cumulative_ms": 9.113
+        },
+        {
+          "file": "workspace.py",
+          "line": 131,
+          "function": "scope",
+          "calls": 362,
+          "cumulative_ms": 6.974
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 95,
+          "function": "_stage",
+          "calls": 100,
+          "cumulative_ms": 6.531
+        },
+        {
+          "file": "acceptance.py",
+          "line": 46,
+          "function": "view",
+          "calls": 50,
+          "cumulative_ms": 6.44
+        },
+        {
+          "file": "local_authority.py",
+          "line": 100,
+          "function": "_validate_scope",
+          "calls": 362,
+          "cumulative_ms": 6.362
+        },
+        {
+          "file": "local_authority.py",
+          "line": 64,
+          "function": "_current",
+          "calls": 365,
+          "cumulative_ms": 6.064
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 26,
+          "function": "_verification",
+          "calls": 150,
+          "cumulative_ms": 4.601
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 20,
+          "function": "_rows",
+          "calls": 500,
+          "cumulative_ms": 4.136
+        },
+        {
+          "file": "workspace.py",
+          "line": 142,
+          "function": "project",
+          "calls": 156,
+          "cumulative_ms": 3.767
+        },
+        {
+          "file": "workspace.py",
+          "line": 127,
+          "function": "active",
+          "calls": 153,
+          "cumulative_ms": 3.748
+        }
+      ]
+    },
+    {
+      "stored_tasks": 100,
+      "returned_tasks": 100,
+      "truncated": false,
+      "http": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 12,
+        "median_ms": 43.494,
+        "p95_ms": 50.89,
+        "max_ms": 50.89,
+        "ttfb": {
+          "samples": 12,
+          "median_ms": 43.444,
+          "p95_ms": 50.825,
+          "max_ms": 50.825
+        },
+        "response_bytes_min": 122217,
+        "response_bytes_max": 122217,
+        "statuses": [
+          200
+        ]
+      },
+      "profile_top": [
+        {
+          "file": "server.py",
+          "line": 49,
+          "function": "state",
+          "calls": 1,
+          "cumulative_ms": 71.256
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 4452,
+          "cumulative_ms": 34.142
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 133,
+          "function": "view",
+          "calls": 100,
+          "cumulative_ms": 28.9
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 95,
+          "function": "_stage",
+          "calls": 200,
+          "cumulative_ms": 20.448
+        },
+        {
+          "file": "acceptance.py",
+          "line": 46,
+          "function": "view",
+          "calls": 100,
+          "cumulative_ms": 19.924
+        },
+        {
+          "file": "workspace.py",
+          "line": 131,
+          "function": "scope",
+          "calls": 712,
+          "cumulative_ms": 18.131
+        },
+        {
+          "file": "local_authority.py",
+          "line": 100,
+          "function": "_validate_scope",
+          "calls": 712,
+          "cumulative_ms": 16.719
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 20,
+          "function": "_rows",
+          "calls": 1000,
+          "cumulative_ms": 16.155
+        },
+        {
+          "file": "local_authority.py",
+          "line": 64,
+          "function": "_current",
+          "calls": 715,
+          "cumulative_ms": 16.125
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 26,
+          "function": "_verification",
+          "calls": 300,
+          "cumulative_ms": 15.504
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 111,
+          "function": "_assessment",
+          "calls": 100,
+          "cumulative_ms": 11.768
+        },
+        {
+          "file": "workspace.py",
+          "line": 142,
+          "function": "project",
+          "calls": 306,
+          "cumulative_ms": 9.282
+        }
+      ]
+    },
+    {
+      "stored_tasks": 150,
+      "returned_tasks": 100,
+      "truncated": true,
+      "http": {
+        "path": "/api/state",
+        "workers": 1,
+        "samples": 12,
+        "median_ms": 57.076,
+        "p95_ms": 194.892,
+        "max_ms": 194.892,
+        "ttfb": {
+          "samples": 12,
+          "median_ms": 57.024,
+          "p95_ms": 194.844,
+          "max_ms": 194.844
+        },
+        "response_bytes_min": 122354,
+        "response_bytes_max": 122354,
+        "statuses": [
+          200
+        ]
+      },
+      "profile_top": [
+        {
+          "file": "server.py",
+          "line": 49,
+          "function": "state",
+          "calls": 1,
+          "cumulative_ms": 117.978
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 4452,
+          "cumulative_ms": 69.583
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 133,
+          "function": "view",
+          "calls": 100,
+          "cumulative_ms": 50.711
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 95,
+          "function": "_stage",
+          "calls": 200,
+          "cumulative_ms": 34.695
+        },
+        {
+          "file": "acceptance.py",
+          "line": 46,
+          "function": "view",
+          "calls": 100,
+          "cumulative_ms": 34.364
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 20,
+          "function": "_rows",
+          "calls": 1000,
+          "cumulative_ms": 29.163
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 111,
+          "function": "_assessment",
+          "calls": 100,
+          "cumulative_ms": 27.338
+        },
+        {
+          "file": "task_workflow.py",
+          "line": 26,
+          "function": "_verification",
+          "calls": 300,
+          "cumulative_ms": 25.76
+        },
+        {
+          "file": "workspace.py",
+          "line": 131,
+          "function": "scope",
+          "calls": 712,
+          "cumulative_ms": 24.122
+        },
+        {
+          "file": "local_authority.py",
+          "line": 100,
+          "function": "_validate_scope",
+          "calls": 712,
+          "cumulative_ms": 22.569
+        },
+        {
+          "file": "local_authority.py",
+          "line": 64,
+          "function": "_current",
+          "calls": 715,
+          "cumulative_ms": 20.344
+        },
+        {
+          "file": "work_routing.py",
+          "line": 13,
+          "function": "view",
+          "calls": 100,
+          "cumulative_ms": 14.333
+        }
+      ]
+    }
+  ],
+  "source_commit_before_measurement": "61d312d442954070c7f911be205f578af9f8513f",
+  "environment": {
+    "platform": "macOS local developer machine",
+    "python": "3.12",
+    "browser": "headless installed Chrome through Playwright",
+    "network": "loopback only",
+    "cache": "one excluded HTTP warm-up per group; not cold OS/disk cache"
+  },
+  "code_sha256": {
+    "apps/local_ui/server.py": "64979c5f6d962f5b7d1bb4f28def2ef1dbdd06e747adddfc781532dcc998455d",
+    "apps/local_ui/app.js": "7641a897beeed98eeff2ee58677d4cc96590909319eed1005da89a83f69d125c",
+    "packages/domain/task_workflow.py": "56af708d233381f925a626efae0cbc1bdc148e22f6b7302480fc38844efb6406",
+    "packages/storage/workspace.py": "d1604e00681ccd7fbf737b0d439759726dba4988efdcb7006f4b43feeaa7baea",
+    "scripts/project_progress.py": "04920d49b6d1f7e47e024b89b75fcfbd6e63325c70cc986e2943973a16f0147b",
+    "scripts/measure_local_performance.py": "973b234613832e74f4ba41ff081cc7c3bd932fbb25897d1ba3f03dc5f5cc81c5",
+    "tests/ui-performance.cjs": "4445727aa14f8a4c9e9d9e4651d23d95088aefe24dd1d373c0634fe97ca069b1"
+  }
+}

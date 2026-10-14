@@ -165,3 +165,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Task Master targeted review — 14 October 2026
 
 [Review](../discovery/task-master-review.md) and snapshot metadata record17read files/pinned commit. Recommendations only: existing next-action explanationT20e, bounded tool profilesT18/T21, original restricted CLI extractor feasibilityT09/T03f, optional splitT13d/T20d afterQ08, atomic exportT23. Paid API is not the only conceivable selected local pilot transport; CLI subscription integration and service eligibility are unverified, no call/config grant. MIT+Commons Clause prevents assuming unrestricted code/prompt reuse; none copied. Legacy findings do not generalize to modern paths. No main/subtask status change or runtime redesign from this research.
+
+## Local response timings —14October2026
+
+[Measured report](../quality/local-performance.md): live tracker API5.203ms median, empty product1.236ms;100synthetic returnedTasks43.494ms and4452SQLite queries/state;150stored truncates100. Real reload browser product133.47ms/tracker34.34ms median. No user mutation/model call/runtime optimization. Small fixture/tail/Chrome-vsIAB/100record coverage limits stated; future dense-source/file/concurrency/model tests open, existingT23d/T24l ownership. Do not infer production capacity or call rejected hash-navigation2.57ms a reload result.

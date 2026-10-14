@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-14",
+  "synthetic_browser_context": true,
+  "actual_local_services": true,
+  "model_calls": 0,
+  "user_record_writes": 0,
+  "surfaces": [
+    {
+      "surface": "tracker",
+      "first_load_ready_ms": 193.13,
+      "subsequent_ready": {
+        "samples": 10,
+        "median_ms": 34.34,
+        "p95_ms": 49.75,
+        "max_ms": 49.75
+      },
+      "subsequent_domcontentloaded": {
+        "samples": 10,
+        "median_ms": 14.07,
+        "p95_ms": 25.2,
+        "max_ms": 25.2
+      },
+      "board_navigation": null,
+      "page_errors": 0
+    },
+    {
+      "surface": "product",
+      "first_load_ready_ms": 169.49,
+      "subsequent_ready": {
+        "samples": 10,
+        "median_ms": 133.47,
+        "p95_ms": 188.81,
+        "max_ms": 188.81
+      },
+      "subsequent_domcontentloaded": {
+        "samples": 10,
+        "median_ms": 83.44,
+        "p95_ms": 144.96,
+        "max_ms": 144.96
+      },
+      "board_navigation": {
+        "samples": 10,
+        "median_ms": 34.37,
+        "p95_ms": 71.19,
+        "max_ms": 71.19
+      },
+      "page_errors": 0
+    }
+  ]
+}
