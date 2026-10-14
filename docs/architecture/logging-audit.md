@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**Öneri; logger, dashboard veya audit servisi henüz uygulanmadı.** Saklama sürelerinin tek referansı [veri yaşam döngüsü](storage-memory-capacity.md); erişim kuralları [kimlik/yetki modelidir](identity-access.md).
+**14Ekim2026 — Yerel domain/audit ve sınırlı operasyon görünümü kodlandı; tam operasyon sözleşmesi öneridir.** Canonical değişikliklerle atomik, uygulama düzeyinde append-only audit; onay/grant/işlem makbuzları ve replay koruması vardır. UI son25güvenli hata kodunu yalnız süreç belleğinde gösterir; restart sonrası sıfırlanır. Ham istek/credential/prompt operational loga yazılmaz. Kalıcı redakte incident deposu, genel denied-access olay kapsamı, merkezi log/OTel, alert ve retention henüz tamamlanmadı. DB/OS yöneticisine karşı kriptografik değiştirilemezlik iddiası yok. [Güncel durum ve kanıt](../quality/security-current-status.md). Saklama sürelerinin tek referansı [veri yaşam döngüsü](storage-memory-capacity.md); erişim kuralları [kimlik/yetki modelidir](identity-access.md).
 
 ## Dört kayıt sınıfı
 

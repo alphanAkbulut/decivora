@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**Statü: tam kimlik/ekip sözleşmesi öneri.** [T05h yerel authority alt kümesi](../quality/local-authority.md) persisted human/agent grant revision, owner-only management ve scoped transaction deny ile uygulanmıştır; login/token/resource ACL/ekip rolleri henüz yok. Aşağıdaki diagram tam tasarım önerisini gösterir. İlk pilot tek insanla yapılacak. Aşağıdaki veri sınırları P1 çekirdeğine, davet/ekip yönetimi ise P4'e aittir. [Benchmark](../discovery/collaboration-storage-benchmark.md), [ADR-0009](adr/0009-scoped-principals.md), [uygulama dilimleri](../delivery/team-data-plan.md) ve [MU doğrulama senaryoları](../quality/collaboration-validation.md) birlikte okunmalı.
+**14Ekim2026 — Yerel alt küme kodlandı; tam kimlik/ekip sözleşmesi öneridir.** Kalıcı human/agent grant revision, owner-only grant yönetimi, güncel scope/transaction kontrolleri, proje seçiminde scoped okuma/yazma ve yerel HTTP oturum/Host/Origin/CSRF kontrolleri uygulanmıştır. Dar MCP agent kimliği ve private-source bağlı context withholding vardır; tam resource paylaşım editörü, kullanıcı login/token yaşam döngüsü, davet ve ekip rolleri tamamlanmadı. [Güncel kontrol/kanıt/açık iş matrisi](../quality/security-current-status.md). Aşağıdaki diagram tam tasarım önerisini gösterir. İlk pilot tek insanla yapılacak. Aşağıdaki veri sınırları P1 çekirdeğine, davet/ekip yönetimi ise P4'e aittir. [Benchmark](../discovery/collaboration-storage-benchmark.md), [ADR-0009](adr/0009-scoped-principals.md), [uygulama dilimleri](../delivery/team-data-plan.md) ve [MU doğrulama senaryoları](../quality/collaboration-validation.md) birlikte okunmalı.
 
 ## Kimlik ve sahiplik
 
@@ -101,7 +101,7 @@ Tek kişilik pilotta owner kendi önerisini onaylayabilir; bu açık `single_own
 
 ## Kullanıcı yönetimi ve UX
 
-[Proje erişim sözleşmesi](connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) dış kaynak izni, hedef projeye bağlama izni ve agent yetkisini ayırır. “Bağlantılar ve izinler” ekranı verilen ve fiilen kullanılabilen scope'u, kimin izin verdiğini, son doğrulamayı ve revocation durumunu gösterir. ACC-01–08 kaynak/hedef yetki çatışması, scope artışı, path kaçışı ve izin makbuzu testleridir; uygulanmadı.
+[Proje erişim sözleşmesi](connection-and-context.md#proje-erişim-sözleşmesi-ve-izin-ekranı) dış kaynak izni, hedef projeye bağlama izni ve agent yetkisini ayırır. “Bağlantılar ve izinler” ekranı verilen ve fiilen kullanılabilen scope'u, kimin izin verdiğini, son doğrulamayı ve revocation durumunu gösterir. ACC-01–08 tam bağlantı/izin envanteri kabul hedefleridir; yerel grant/revocation/MCP/file-boundary negatifleri vardır, fakat tam kaynak/connector ekranı ve gerçek host kapsamı uygulanmış sayılmaz.
 
 [Yönetim/operasyon merkezi](../product/administration-and-operations.md) bu matrisi installation administrator, platform operator ve workspace/proje ayarlarıyla tamamlar. Sayısal kullanıcı level'ı, L1 destek rolü ve ticari paket birbirine karıştırılmaz. Platform admin'i kaynak ACL'sini aşamaz; P1b minimal owner görünümü, P4 ekip/backoffice. ADM-01/02/03 negatif testleri planlıdır.
 

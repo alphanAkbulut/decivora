@@ -1,6 +1,6 @@
 # İşlem limitleri ve kötüye kullanım kontrolü
 
-**2026-10-10 — Tasarım önerisi; uygulanmadı, yük/güvenlik testi yapılmadı.** Kullanıcı işlem limitleri ve kötü niyetli kullanıma karşı önlem istedi. Aşağıdaki mekanizmalar teknik öneridir; sayısal eşikler, provider bütçesi veya otomatik hesap kapatma kararı kabul edilmiş sayılmaz. Tek kişilik pilotta da hatalı agent döngüsü aynı kaynak sorununu yaratabilir.
+**14Ekim2026 — Sınırlı yerel kontroller kodlandı; tam kötüye kullanım/kapasite sözleşmesi öneridir.** Yerel HTTP32KiB JSON body/30yazma-dakika; stdioMCP32KiB giriş/16KiB tool-content/60çağrı-dakika-süreç; sınırlı graph/query/import/file/backup işlemleri ve managed parent-run rezervasyonları uygulanmıştır. Bunlar hardcoded yerel development tavanlarıdır; owner tarafından onaylanmış üretim SLO/dağıtık kota/provider harcama politikası değildir. Negatif regresyonlar ve [kısa karışık yük ölçümü](../quality/mixed-load.md) vardır; kapsamlı adversarial güvenlik testi, HTTP read/connection/deadline savunması ve gerçek provider bütçe enforcement tamamlanmadı. İlk load koşusundaki503açık güvenilirlik bulgusudur; doğrulanmış güvenlik açığı veya çözülmüş hata değildir. [Güncel kontrol matrisi](../quality/security-current-status.md). Kullanıcı işlem limitleri ve kötü niyetli kullanıma karşı önlem istedi. Aşağıdaki mekanizmalar teknik öneridir; sayısal eşikler, provider bütçesi veya otomatik hesap kapatma kararı kabul edilmiş sayılmaz. Tek kişilik pilotta da hatalı agent döngüsü aynı kaynak sorununu yaratabilir.
 
 ## 1. Neyi sınırlıyoruz?
 

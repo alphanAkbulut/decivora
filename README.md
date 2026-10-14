@@ -197,3 +197,7 @@ Başlangıç repository'si private olarak tasarlanmıştır. Açık kaynak yayı
 ## Current local delivery — 14 October 2026
 
 [API-independent implementation and follow-up gates](docs/delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.
+
+## Güvenlik durumu —14Ekim2026
+
+[Yerel korumalar, kanıtlar ve açık geliştirme kapıları](docs/quality/security-current-status.md). Yerel session/scope/approval/audit/MCP/file-boundary kontrolleri vardır; tam kullanıcı/ekip/cloud güvenliği, secret/provider-egress, retention/purge ve kalıcı incident işletimi açık. Yedekler şu anda özel ve şifrelenmemiştir. Karışık yükteki önceki503kök nedeni çözülmedi. Bu belge güncellemesi güvenlik audit’i veya production onayı değildir.
