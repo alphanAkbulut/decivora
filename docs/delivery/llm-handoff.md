@@ -161,3 +161,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Current local delivery — 14 October 2026
 
 [API-independent implementation and follow-up gates](api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.
+
+## Task Master targeted review — 14 October 2026
+
+[Review](../discovery/task-master-review.md) and snapshot metadata record17read files/pinned commit. Recommendations only: existing next-action explanationT20e, bounded tool profilesT18/T21, original restricted CLI extractor feasibilityT09/T03f, optional splitT13d/T20d afterQ08, atomic exportT23. Paid API is not the only conceivable selected local pilot transport; CLI subscription integration and service eligibility are unverified, no call/config grant. MIT+Commons Clause prevents assuming unrestricted code/prompt reuse; none copied. Legacy findings do not generalize to modern paths. No main/subtask status change or runtime redesign from this research.

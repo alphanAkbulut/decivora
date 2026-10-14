@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-14",
+  "repository": "eyaltoledano/claude-task-master",
+  "commit": "c0c98d367c55296bfe69e65680625b6db437af02",
+  "root_package_version": "0.43.1",
+  "tree_entries": 1522,
+  "review_type": "targeted_static_source_review",
+  "reviewed_files": [
+    {
+      "path": "LICENSE",
+      "lines": 26,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/LICENSE"
+    },
+    {
+      "path": "src/constants/task-status.js",
+      "lines": 33,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/src/constants/task-status.js"
+    },
+    {
+      "path": "scripts/modules/task-manager/find-next-task.js",
+      "lines": 139,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/scripts/modules/task-manager/find-next-task.js"
+    },
+    {
+      "path": "scripts/modules/task-manager/expand-task.js",
+      "lines": 391,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/scripts/modules/task-manager/expand-task.js"
+    },
+    {
+      "path": "src/ai-providers/codex-cli.js",
+      "lines": 196,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/src/ai-providers/codex-cli.js"
+    },
+    {
+      "path": "docs/providers/codex-cli.md",
+      "lines": 516,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/docs/providers/codex-cli.md"
+    },
+    {
+      "path": "tests/unit/scripts/modules/task-manager/expand-task.test.js",
+      "lines": 1412,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/tests/unit/scripts/modules/task-manager/expand-task.test.js"
+    },
+    {
+      "path": "mcp-server/src/tools/index.js",
+      "lines": 241,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/mcp-server/src/tools/index.js"
+    },
+    {
+      "path": "scripts/modules/task-manager/set-task-status.js",
+      "lines": 183,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/scripts/modules/task-manager/set-task-status.js"
+    },
+    {
+      "path": "scripts/modules/dependency-manager.js",
+      "lines": 1861,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/scripts/modules/dependency-manager.js"
+    },
+    {
+      "path": "packages/tm-core/src/modules/storage/adapters/file-storage/file-operations.ts",
+      "lines": 289,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/packages/tm-core/src/modules/storage/adapters/file-storage/file-operations.ts"
+    },
+    {
+      "path": "apps/cli/src/ui/formatters/status-formatters.ts",
+      "lines": 180,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/apps/cli/src/ui/formatters/status-formatters.ts"
+    },
+    {
+      "path": "src/ai-providers/claude-code.js",
+      "lines": 177,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/src/ai-providers/claude-code.js"
+    },
+    {
+      "path": "mcp-server/src/tools/tool-registry.js",
+      "lines": 188,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/mcp-server/src/tools/tool-registry.js"
+    },
+    {
+      "path": "scripts/modules/task-manager/update-single-task-status.js",
+      "lines": 134,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/scripts/modules/task-manager/update-single-task-status.js"
+    },
+    {
+      "path": "docs/README.md",
+      "lines": 24,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/docs/README.md"
+    },
+    {
+      "path": "scripts/modules/task-manager/list-tasks.js",
+      "lines": 1088,
+      "url": "https://github.com/eyaltoledano/claude-task-master/blob/c0c98d367c55296bfe69e65680625b6db437af02/scripts/modules/task-manager/list-tasks.js"
+    }
+  ],
+  "unavailable_paths": [
+    "packages/tm-core/src/modules/tasks/types.ts"
+  ],
+  "runtime_installed": false,
+  "upstream_tests_executed": false,
+  "provider_calls": 0,
+  "code_prompt_asset_copies": 0,
+  "recommendations_status": "proposed_existing_backlog_mapping",
+  "limitations": [
+    "Not all repository files reviewed",
+    "Legacy and modern paths differ",
+    "No model/cost/host benchmark",
+    "Licensing reuse not authorized"
+  ]
+}

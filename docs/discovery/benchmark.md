@@ -65,3 +65,7 @@ Graphiti temporal invalidation, LangGraph durable interrupt/resume ve LiteLLM bu
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 Jira/Linear/ClickUp/Asana workflow ve UI örüntüleri [odaklı benchmark](workflow-status-benchmark.md) içinde; genel layout uyarlanır, vendor code/assets alınmaz. Kullanıcı onayı14Ekim2026; runtime karşılaştırma üstünlüğü iddiası yok.
+
+## 14 October 2026 — Task Master source review
+
+[Targeted source review](task-master-review.md), commit c0c98d367c55296bfe69e65680625b6db437af02/package0.43.1:17selected files, source/test definitions read, runtime not_run. Learn separate task/subtask statistics, dependency-aware next action, complexity preview and selectable core7/standard14tools. Legacy0/missing fallback, parent Done cascade and all-tool error fallback require different Decivora invariants. Codex CLI subscription transport is an additional feasibility candidate, not an activated provider or supported unattended service claim. MIT+Commons Clause; no copied code/prompts/assets. ExistingT09/T13d/T18/T20e/T21/T23 mapping; no new task/architecture adoption.

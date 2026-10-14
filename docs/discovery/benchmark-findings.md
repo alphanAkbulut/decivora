@@ -89,3 +89,7 @@ Mem0 managed benchmark'ının OSS'den ayrılması, LiteLLM enterprise yolu/premi
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [Workflow/UX benchmark](workflow-status-benchmark.md): küçük preset + bağımsız blocker/approval/evidence/resolution seçildi. Kaynaklar ve screenshot tarih sınırları korunur; dört üründe hesap testi veya performans kıyası yapılmadı.
+
+## 14 October 2026 — Task Master lessons
+
+[Source review and action mapping](task-master-review.md) confirms useful core-tool profiles, task/subtask separation and deterministic next-task selection at a pinned commit. Legacy expansion truthiness still distinguishes explicit0 from report0; no runtime reproduction. Do not import parent Done cascade or missing-status→pending into our evidence model. New TypeScript/legacy JavaScript paths differ; one source cannot establish whole-product support. Subscription-backed CLI code motivates a bounded original transport feasibility check before declaring paid API the only possible pilot route; official auth and programmatic-use guidance remain separate. No installation/model calls/reuse.
