@@ -33,7 +33,7 @@ Eksik implementasyon API-blocked veya kullanıcı onayı bekleyen iş olarak oto
 
 ## Kök SECURITY.md durumu
 
-Policy inventory bu tur boş döndü; root/nested SECURITY.md bulunmadı. Root taslak hazırlanıp kullanıcıya tam diff ile sunuldu; define-security-policy skill'i onay sonrası yazılmasını gerektirir. Bu taslak onaylanana kadar repository-wide scanner policy kurulmuş sayılmaz. Yeni accepted-risk veya bulgu istisnası önerilmedi; özel raporlama kanalı/SLA/bug bounty veya stable supported version uydurulmadı.
+14Ekim2026 · Kullanıcı tam diff ile sunulan taslağı ‘Taslağı SECURITY.md olarak uygula’ yanıtıyla onayladı. [Kök SECURITY.md](../../SECURITY.md) onaylanan içerikle birebir uygulandı; repository ve alt dizinleri için güvenlik review bağlamıdır. Yeni accepted-risk veya bulgu istisnası getirilmedi; özel raporlama kanalı/SLA/bug bounty veya stable supported version uydurulmadı. Policy dosyasının varlığı güvenlik kontrollerinin tümünün uygulanmış veya bağımsız scan yapılmış olduğu anlamına gelmez.
 
 ## Referanslar / doküman kapsamı
 

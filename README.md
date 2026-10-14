@@ -200,4 +200,4 @@ Başlangıç repository'si private olarak tasarlanmıştır. Açık kaynak yayı
 
 ## Güvenlik durumu —14Ekim2026
 
-[Yerel korumalar, kanıtlar ve açık geliştirme kapıları](docs/quality/security-current-status.md). Yerel session/scope/approval/audit/MCP/file-boundary kontrolleri vardır; tam kullanıcı/ekip/cloud güvenliği, secret/provider-egress, retention/purge ve kalıcı incident işletimi açık. Yedekler şu anda özel ve şifrelenmemiştir. Karışık yükteki önceki503kök nedeni çözülmedi. Bu belge güncellemesi güvenlik audit’i veya production onayı değildir.
+[Güvenlik politikası](SECURITY.md) ve [yerel korumalar, kanıtlar ve açık geliştirme kapıları](docs/quality/security-current-status.md). Yerel session/scope/approval/audit/MCP/file-boundary kontrolleri vardır; tam kullanıcı/ekip/cloud güvenliği, secret/provider-egress, retention/purge ve kalıcı incident işletimi açık. Yedekler şu anda özel ve şifrelenmemiştir. Karışık yükteki önceki503kök nedeni çözülmedi. Bu belge güncellemesi güvenlik audit’i veya production onayı değildir.
