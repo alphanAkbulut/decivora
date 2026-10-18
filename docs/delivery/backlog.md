@@ -770,3 +770,7 @@ T03f/T03b ek P0 dilimi: [token/context preflight](../quality/token-preflight.md)
 ### 19 Ekim — T20/T21/T23/T24 Operations alt teslimi
 
 Operations okuma ekranı, ayrı kalıcı safe diagnostic sidecar, command boundary spans/operation-ID, test ortamı başlatıcısı ve normal/test cookie ayrımı kodlandı. Canonical audit, üretim retention, incident yönetimi ve end-to-end trace kabulü ayrı; parent görevler kapatılmadı. [Kod kapsamı ve doğrulama](../quality/operations-runtime.md).
+
+### 19 Ekim — log teşhis ve manuel kontrol sözleşmesi
+
+Yeni bir ana görev oluşturulmadı. T20f/T21c/T23c/T23d/T23e/T24 altında eksik correlation/engine spans, incident/manual-question routing, retention/loss/alert ve recovery kabul bağlantıları [log rehberinde](../architecture/logging-audit.md#log-geliştirmesinde-sıradaki-teknik-parçalar) ayrıldı. Bu doküman teslimi runtime kodu veya otomatik on-call/alert motoru geliştirilmiş sayılmaz; ebeveyn statüleri değişmez.

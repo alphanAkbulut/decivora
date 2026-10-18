@@ -47,6 +47,13 @@ Değişiklik riskine göre `docs/quality/verification.md` senaryolarını kullan
 
 Sonuçta ne değişti, ne doğrulandı, açık kalanlar ve sıradaki iş yaz. Benchmark özelliği README'de varsa documented de; çalıştırmadan verified deme. Kaynak/lisans koşulu incelenmeden kod, prompt, logo veya asset kopyalama. Yeni runtime dependency için sürüm, gerekçe ve lisans kaydı tut.
 
+## Runtime tanısı ve insan kontrolü
+
+- Runtime hata bildirimi, başarısız davranış testi veya ilgili entegrasyon tesliminde önce ortam/proje/sürüm ve varsa operation ID'yi doğrula; [teşhis rehberini](docs/architecture/logging-audit.md#teşhis-ve-geliştirme-çalışma-rehberi) hedefli uygula. Her mesajda log/rehber taraması veya kendiliğinden arka plan polling/model çağrısı yapma.
+- Yetkili Operations kaydını önce oku; trace/error kapsamı, lost/evicted ve unknown durumlarını belirt. Komut success/HTTP200'ü task Done veya gerçek hedef kanıtı sayma; canonical makbuz/revision ve AC'yi ayrıca kontrol et. Belirsiz dış sonucu kör retry etme.
+- Otomatik yapabileceğin teknik teşhis ve TEST doğrulamasını kullanıcıya yükleme. İnsan kararı/gerçek kullanıcı değerlendirmesi/yeni erişim veya ücret gerektiğinde somut kontrol talebi hazırla: neden, ortam/revision, mevcut task/question ID, adımlar, beklenen sonuç, neyin beklediği. Mevcut seçim/onayı tekrar açık soru yapma.
+- Logdan otomatik incident/soru/uyarı üretimi henüz varmış gibi davranma. Gerçek eksik ve kullanıcı katkısını mevcut backlog/QA/soru authority'sinde kaynaklı izle; duplicate iş üretme. Secret/raw transcript/DB dump'ını tanı raporuna veya dış sisteme taşıma.
+
 ## Erişim ve hafıza sınırları
 
 - Workspace/project kimliği, kaynak ACL'si ve güncel authz revision her query/command/dispatch için geçerlidir. Agent grant'i insan onayı, runner veya dış yazma izni yerine geçmez.

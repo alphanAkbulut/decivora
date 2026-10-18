@@ -2,6 +2,10 @@
 
 **19 October 2026 — implemented local slice, not complete platform administration.** User approved the proposed Operations screen, persistent safe diagnostics, stage tracing and separate test launcher. Existing T20/T21/T23/T24 ownership and all MVP acceptance gates remain; this is not a new microservice product or parent-task closure.
 
+## How developers and agents use the records
+
+The [diagnosis and development runbook](../architecture/logging-audit.md#teşhis-ve-geliştirme-çalışma-rehberi) defines environment/project/revision checks, authorized trace lookup, loss/coverage review, canonical outcome verification, TEST reproduction and closure evidence. It also separates agent-owned technical checks from necessary human decisions/subjective review/new permissions. [Manual review criteria and open implementation work](../architecture/logging-audit.md#manuel-kontrol-ne-zaman-gerçekten-gerekli) are explicit: automatic incident/task/question generation, alerts and end-to-end correlation are not implemented. AGENTS.md points to this conditional workflow; no per-message log polling or new model work is implied.
+
 ## What the user can do
 
 Open **Operations** in the sidebar. Read selected-project command traces, expand authorization/command execution boundaries, inspect duration and safe result codes, search an operation ID, filter by outcome and refresh without dispatching a model. HTTP command responses expose `X-Decivora-Operation-ID`. Successful command execution is not whole-task completion, model correctness or external artifact verification.
@@ -88,3 +92,9 @@ A browser check exposed overflowing retention JSON; the view now uses readable l
 Existing historical commands are not backfilled with fabricated timing/phase logs. Traces begin when this implementation receives new commands. Reading empty Operations does not imply a failed logger or missing historical canonical audit.
 
 Final local verification:382runtime tests (14operations/environment checks),48root tests,11browser fixture flows and47Mermaid sources passed. Actual normal53610andTEST53611servers were read through one cookie jar; normal canonical DB logical digest was unchanged. Both environments start without configured model/file target. [Machine record/source hashes](operations-results.json). No test records were seeded into either live user workspace.
+
+## 19 October — diagnosis workflow clarification
+
+The repository now defines the conditional agent diagnosis runbook and human-review handoff fields. This is documentation/working-agreement clarification, not a new alert engine or tracing-code delivery. A scoped read of the live TEST/personal Operations snapshot found the store available,0visible command traces,0process-local lost writes, no eviction counter and one content-free `other / not_found` HTTP group (count1). That group cannot establish the requested path, caller or root cause; no service-failure or model-quality conclusion follows. No synthetic command, source import, retry or mutation was executed for this inspection. The snapshot is historical and not ongoing monitoring.
+
+Markdown/local-link/anchor, canonical planning and unchanged Mermaid source-hash checks passed for this clarification. Runtime code and Mermaid sources did not change; the prior382runtime/48root/11browser/47render record remains dated evidence, not a newly executed full suite.

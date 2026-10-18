@@ -1,5 +1,8 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+Runtime teşhisi: [log çalışma rehberi](../architecture/logging-audit.md#teşhis-ve-geliştirme-çalışma-rehberi) ve [insan kontrol ayrımı](../architecture/logging-audit.md#manuel-kontrol-ne-zaman-gerçekten-gerekli). Operations local command sınırlarını izler; başarısız testte önce izinli tanı+canonical sonuç+TEST reproducer'ı incele. Kullanıcıdan yalnız gerçekten insan katkısı gereken kararı iste; otomatik incident/alert/correlation uygulanmış deme.
+
+
 Güncel 19 Ekim ek teslim: [Operations ve TEST ortamı](../quality/operations-runtime.md). Komut sınırları izlenir; bütün pipeline izleniyor deme.
 
 Son durum özeti: [current-state.md](current-state.md). Kanonik ana durum7Done/14InProgress/9ToDo; MVPye giden17ana iş,6gelecek faz. Q06/Q08 kabul edilmiş; work-breakdown deferred_choices listesinden çıkarıldı.

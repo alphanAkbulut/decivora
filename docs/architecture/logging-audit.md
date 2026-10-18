@@ -3,11 +3,71 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**14Ekim2026 — Yerel domain/audit ve sınırlı operasyon görünümü kodlandı; tam operasyon sözleşmesi öneridir.** Canonical değişikliklerle atomik, uygulama düzeyinde append-only audit; onay/grant/işlem makbuzları ve replay koruması vardır. UI son25güvenli hata kodunu yalnız süreç belleğinde gösterir; restart sonrası sıfırlanır. Ham istek/credential/prompt operational loga yazılmaz. Kalıcı redakte incident deposu, genel denied-access olay kapsamı, merkezi log/OTel, alert ve retention henüz tamamlanmadı. DB/OS yöneticisine karşı kriptografik değiştirilemezlik iddiası yok. [Güncel durum ve kanıt](../quality/security-current-status.md). Saklama sürelerinin tek referansı [veri yaşam döngüsü](storage-memory-capacity.md); erişim kuralları [kimlik/yetki modelidir](identity-access.md).
+**19 Ekim2026 — mevcut kod ve önerilen tam işletim tasarımı ayrıdır.** Kalıcı domain/audit çekirdeği ve ayrı bounded operasyon tanısı uygulanmıştır. Komut izleri ve güvenli HTTP hata grupları Operations ekranında bulunur; her engine'in içi veya bütün source→job→model→review→evidence zinciri henüz izlenmez. Aşağıdaki geniş güvenlik/telemetry sözleşmelerinin tamamını uygulanmış sayma. [Çalışan kod, şema, diagram ve kanıt](../quality/operations-runtime.md), [güvenlik durum kaydı](../quality/security-current-status.md), [erişim sınırı](identity-access.md) ve [veri yaşam döngüsü](storage-memory-capacity.md).
 
-## 19 Ekim — güncel yerel uygulama
+## Nerede ne tutuluyor ve build hangi aşamada?
 
-[Operations ekranı ve TEST ortamı](../quality/operations-runtime.md) kodlandı.200bounded command run/100safe HTTP error-group tutan ayrı private SQLite sidecar, request operation ID, authorization/dispatch span süreleri, persisted hata grupları ve degraded/lost/eviction görünümü var. Önceki paragraftaki25hata view'u eski session-only özettir; yeni ekran restart sonrası kayıtları korur. Tam receipt→job→model→review→evidence trace, merkezi OTel/alert/retention yönetimi ve security audit konsolu hâlâ açık. Operational row eviction canonical history'yi silmez.
+| Kayıt / soru | Bugünkü uygulama | Nereden kontrol edilir? | Açık kalan |
+|---|---|---|---|
+| Projede gerçekten ne değişti? | `workspace.sqlite` içinde `events`, `records`, `edges` | Görev History, proje Timeline ve izinli domain query | İşlem trace'iyle event sequence arasında genel bağ |
+| Kim hangi değişikliği onayladı/uyguladı? | Aynı workspace DB'sindeki sürümlü `audit`, `approvals`, command makbuzları | İlgili review kartı ve izinli audit incelemesi | Tam security-event/operator konsolu |
+| Hangi uygulama bileşenine hangi komut girdi? | Ayrı `workspace.operations.sqlite`: `op_runs` + `op_spans` | Operations → Command traces | Engine içi adımlar, CLI/MCP/worker instrumentation |
+| HTTP sınırında hangi hata tekrarlandı? | Aynı diagnostics DB'sinde `op_errors`; endpoint/kod bazında gruplama | Operations → Persistent safe errors | Incident sahibi/durumu/resolve/reopen ve uyarılar |
+| Kayıt kaçırılıyor veya sınır doluyor mu? | `op_meta` eviction sayacı; süreç belleğinde lost-write sayacı ve available durumu | Operations özetindeki uyarılar | Süreçler arası kayıp sürekliliği ve merkezi retention yönetimi |
+| Konuşma içeriği/araç çıktısı nerede? | İzinli kaynak deposu ve domain referansları | Gerekirse ayrıca yetkili Sources görünümü | Operational log bu içeriğin ikinci kopyası olmaz |
+
+`workspace.operations.sqlite` adı varsayılan `workspace.sqlite` için geçerlidir; özel DB adında kod `.operations.sqlite` suffix'i kullanır. NORMAL ve TEST veri klasörleri/diagnostics DB'leri ayrıdır. Workspace yedeği bugün diagnostics sidecar'ını içermez. Dosya varlığı, içinde aranan olayın bulunduğunu veya kaydın eksiksiz olduğunu kanıtlamaz. Normal engine sayısı on mantıksal sorumluluktur; logdaki component adı ayrı mikroservis çalıştığı anlamına gelmez.
+
+## İşlem kimliği ve logun neyi kanıtladığı
+
+Yetkilendirilmiş yeni bir LocalApp command `op_…` kimliği alır. HTTP command yanıtında `X-Decivora-Operation-ID` bulunabilir. Kimliği Operations aramasına yapıştır; başlangıç/bitiş, ölçülen süre, action/component ve iki gerçek sınırı incele: `authorize_project`, `execute_command`. Bazı hatalar project authorization veya JSON/HTTP kontrolünde trace başlamadan reddedilir; bu durumda command trace veya operation header bekleme, güvenli HTTP hata grubunu kontrol et.
+
+- `succeeded`: bu komut dönmüş; bütün task/AC, model anlamı veya dış hedef tamamlandı demek değildir. Canonical makbuz ve kabul kanıtı ayrıca okunur.
+- `failed`: bu izlenen sınır hata dönmüş; hata bir beklenen policy reddi de olabilir. Örneğin `acceptance_required` veya `verification_required` doğru bir koruma sonucu olabilir; doğrudan ürün bug'ı veya servis çökmesi diye sınıflandırma.
+- `started`: bitişi henüz kaydedilmemiş; işin kesin çalışıyor veya kesin başarısız olduğu bilinmez.
+- `unknown`: yeni logger oturumu/süreci önceki bitmemiş kaydı kesinleştirememiş. Crash kök nedeni veya yeniden yürütme izni değildir.
+
+Eksik span, boş panel, `application_error` ya da düşen tanı yazımı başarı kanıtı değildir. Sabit güvenli hata allowlist'i dışındaki kodlar `application_error` olarak genellenir; ham exception/stack veya source metni bu yoldan elde edilmez. Teşhis için gerekirse TEST'te kontrollü tekrar üretim gerekir. Aynı conversation/task üzerinde farklı command'lar **bugün farklı operation ID'leri taşır**; genel pipeline correlation, source/job/changeset/event/evidence join'i açık geliştirmedir. Geçmiş işlemlerin süreleri/trace'leri sonradan uydurulmaz.
+
+## Teşhis ve geliştirme çalışma rehberi
+
+Bu bölüm agent ve geliştirici için uygulanacak inceleme yöntemidir; otomatik arka plan izleyicisi veya uygulanmış alert motoru değildir. Her mesajda bütün logları okuma. Kullanıcı runtime sorunu bildirdiğinde, davranış testi başarısız olduğunda, entegrasyon değiştiğinde veya ilgili teslimi doğrularken hedefli uygula:
+
+1. **Ortam ve kapsamı doğrula:** LOCAL/TEST etiketi, seçili proje, çalıştırılan kaynak sürümü, olay zamanı ve varsa operation ID. Eski tarayıcı görüntüsünü çalışan yeni backend kanıtı sayma. Normal/test cookie ve veri ayrımını koru.
+2. **Önce izinli, içeriksiz tanıyı oku:** UI veya authenticated `/api/operations?project_id=…` üzerinden ilgili trace ve HTTP grubunu incele. Geçerli yerel session ve güncel insan proje izni gerekir; bir URL bilmek erişim izni değildir. Tek trace için bütün kaynak/audit DB'sini dump etme.
+3. **Kapsama bak:** kayıt erişilebilir mi, lost/evicted var mı, aranan dönem hâlâ tutuluyor mu? Bugünkü sınır200installation run/100error group; görünüm50project run/25error group. Eski kayıt düşmüşse veya logger yeniden başlamışsa bunu açıkça not et. Bütün geçmiş incelendi deme.
+4. **Olgu ile yorumu ayır:** action/component, outcome, süre ve güvenli kod gözlemdir. Yetki reddi, eksik AC, timeout, storage arızası ve model yanlışı aynı kök neden değildir. İlk hatanın oluştuğu sınırla kullanıcının gördüğü son belirtiyi ayır.
+5. **İş sonucunu ayrı doğrula:** task/decision revision, command/review makbuzu, event ve AC/verification sonucunu izinli kaynakta karşılaştır. Trace `succeeded` veya HTTP200, Done/başarılı yükleme/deploy kanıtı değildir. Log yazımı kaybında domain sonucu hâlâ uygulanmış olabilir.
+6. **Gerekeni TEST'te yeniden üret:** minimum sentetik örnek ve ilgili negatif/regresyon testi kullan. Gerçek transcript, credential, hedef dosya kökü veya ücretli model izni taşınmaz. Belirsiz dış etkiyi yeni key ile kör retry etme; mevcut idempotency/result yolunu kontrol et.
+7. **Yetkili kapsamda düzelt ve yeniden doğrula:** ilgili test/trace/domain makbuzunu karşılaştır. Otomatik bakabileceğin teknik kontrolü kullanıcıya yükleme. Kanıt yoksa unknown/açık engel olarak bırak; sırf kontrol geçsin diye guard veya kabul kriterini gevşetme.
+8. **Kapanışta kısa kayıt bırak:** ortam, source revision, operation/ref veya sentetik case, gözlenen bulgu, etkilenen mevcut task, uygulanan düzeltme, geçen kontroller ve kalan kullanıcı kararı. Secret/raw log veya tekrar yeni backlog otoritesi oluşturma. Kayıt retention ile düşebilecekse yalnız gereken güvenli bulguyu mevcut QA/teslim kaydına geçir; kanıt kimliğini koru.
+
+Agent'ın belirli bir kurulumun tanı erişimi yoksa varmış gibi davranması veya yetkiyi sessizce genişletmesi yasaktır. Salt okunur inceleme/düzeltme mevcut yetki sınırlarında yapılır. Bu yönerge otomatik polling/hatırlatma, sürekli model çağrısı veya üçüncü tarafa log gönderimi yetkisi değildir.
+
+## Manuel kontrol ne zaman gerçekten gerekli?
+
+| Durum | Önce geliştirici/agent ne yapar? | İnsan katkısı / sınır |
+|---|---|---|
+| Eksik AC yüzünden start/Done reddi | Kriter ve mevcut kanıtı kontrol eder; kalan otomatik doğrulamayı tamamlar | Yalnız gerçek insan incelemesi gerektiren kriter veya scope kararı için sorar; bütün task'ı tamamlandı saymaz |
+| İzlenen komutta hata veya sıra dışı süre | İlgili trace, error group, güncel domain sonucu ve sentetik reproducer'ı inceler | Kök neden bilinmeden kullanıcıdan “devam edelim mi?” onayı istemez; erişemediği gerçek senaryo gerekiyorsa neyi kontrol edeceğini söyler |
+| Belirsiz/çelişkili ürün kararı veya geç cevap | Mevcut soru ID/revision'ını ve seçimi kontrol eder | Gerçek karar sahibine kaynak, seçenek ve etkiyle tek odaklı soru; eski soruyu kopyalayıp kaybettirmez |
+| Yeni ücret, veri paylaşımı, izin genişlemesi veya gerçek hedef | Ücretsiz/izinsiz bağımsız hazırlığı ve kapsam/tahmin riskini tamamlar | Model/veri/harcama/target yetkisi somut kapsamla ayrıca alınır; bir log retry yetkisi değildir |
+| Öznel UX/pilot veya yalnız insanın görebildiği dış sonuç | Teknik kontrolleri ve incelenebilir ekran/örneği hazırlar | Ortam, beklenen sonuç, kontrol adımı ve kayıt yeriyle insan değerlendirmesi ister |
+| Unknown dış sonuç veya eksik telemetry | Makbuz/idempotency ve izinli gerçek hedeften read-back arar | Belirsizliği otomatik başarı/başarısızlık saymaz; yeniden maliyet veya dış etki doğuracak adımı ayrı onaya bağlar |
+
+Kalıcı manuel sorular için üründe mevcut QuestionRequest ID/revision ve task bağlantısı kullanılabilir; insan seçimi, kararın uygulanması ve completion ayrı kalır. **Logdan otomatik incident/task/manuel soru üretimi, owner'a otomatik bildirim ve answer→incident çözümleme bugün kodlanmadı.** Bunları yalnız doküman yazıldığı için var sayma. Şimdilik ilgili talep mevcut task/QA kaydında ve gerekiyorsa açık soru akışında izlenir. İnsan kontrol talebi; neden gerekli, ne denendi, tam kontrol adımı, beklenen sonuç, ortam/revision, ilgili soru/task/ref ve işi durdurup durdurmadığını içermelidir. İnsan doğrulamadan passed veya Done yazılmaz.
+
+## Log geliştirmesinde sıradaki teknik parçalar
+
+Bu bir ikinci backlog değildir; mevcut işlerin eksik kabul bağlantılarını gösterir:
+
+| Mevcut sahiplik | Kalan somut geliştirme | Kabulde aranacak kanıt |
+|---|---|---|
+| T20f / T21c | Source receipt/job/model/review/event/evidence arasında scope-safe correlation ve engine içi span'ler | İzinli aynı zincir bulunur; unobserved aşama success sayılmaz; başka proje/private source sızmaz |
+| T20f / T23e | Incident lifecycle, owner, kontrollü yeniden açılma ve manuel kontrol talebi | Tekrarlanan olay gerekçeli izlenir; incident resolve task/job completion üretmez; soru/cevap kalıcı ID'ye bağlı |
+| T21c / T23c | Süreçler arası loss/retention/alert politikası ve ölçülmüş eşikler | Kayıp ve eviction görünür; politika sahibi onayı ve değer revision'ı korunur; spam/sürekli model tüketimi yok |
+| T23d / T23e | Diagnostics recovery/backup kapsamı, disk/uzun yük, atomik audit ile telemetry arıza ayrımı | Domain/audit kaybı gizlenmez; offline restore/replay dış çağrı doğurmaz; sidecar eksikliği açık |
+| T24 / T20f | Operatörün izden teşhis ve gerekli insan incelemesini tamamlaması | Sentetik hata→teşhis→gerekli review→ayrı doğrulama; gerçek model/host/target acceptance kendi kapısında |
 
 ## Dört kayıt sınıfı
 
