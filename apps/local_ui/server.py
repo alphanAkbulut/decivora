@@ -128,7 +128,7 @@ class LocalApp:
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
             selected=identifier(body['project_id']);body=body['command']
-        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
             if action in ('prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes'):
@@ -190,6 +190,10 @@ class LocalApp:
             if action=='task_blocker':
                 if set(body) not in ({'action','task','task_version','base_revision','blocked','reason','next_action'},{'action','task','task_version','base_revision','blocked','reason','next_action','gate','waiting_kind','owner'}):raise ContractError('invalid_request','Exact blocker fields required.')
                 return TaskBlockerService(core).set(owner,selected,**{k:v for k,v in body.items() if k!='action'})
+            if action=='review_dialogue_relation':
+                if set(body)!={'action','source_id','proposal_id','decision','key','reason'}:raise ContractError('invalid_request','Exact relation review fields required.')
+                from packages.capture.dialogue_relations import DialogueRelationService
+                return DialogueRelationService(core).review(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action in ('prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer'):
                 from packages.capture.dialogue_review import DialogueReviewService
                 fields={'review_dialogue_answer':{'action','source_id','proposal_id','decision','key','reason'},'prepare_dialogue_review':{'action','source_id'},'import_dialogue_response':{'action','source_id','response_text'},'review_dialogue_status':{'action','source_id','proposal_id','decision','key','reason','scope_reviewed'}}

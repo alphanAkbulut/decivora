@@ -74,3 +74,7 @@ T13/T19 kapsamında artık impact kartından revize task description hazırlanı
 ### 19 Ekim devamı — geç cevap önerisi köprüsü
 
 Soru/geç cevap satırındaki manuel-only sınırının bir bölümü kapandı: güncel context soru kimlik/sürüm/seçeneklerine kaynak alıntılı model önerisi bağlanır; insan ayrı doğrular ve cevap ile review makbuzu atomik kaydedilir. Eski veya cevaplanmış soru değiştirilemez. Gerçek semantik eşleştirme kalitesi, konuşmadan yeni QuestionRequest, relation/decision-change planı ve native capture hâlâ açık. [Güncel kod sözleşmesi](dialogue-status-runtime.md#19-ekim--kaynaklı-geç-cevap-önerisi).
+
+### 19 Ekim devamı — mevcut kayıtlar için relation→impact köprüsü
+
+Dialogue/model JSON artık source quote ile mevcut Task→Decision required_by ve Task→Task depends_on önerisini taşır. İnsan review sonrası gerçek graph event ve kaynaklı makbuz atomik uygulanır. Uygulanan rationale kartı açık insan retirement hipoteziyle mevcut impact önizlemesine götürür. Genel AND/OR gerekçe, yeni candidate endpoint, supersession/decision change ve gerçek model kalitesi henüz kapanmadı. [Güncel uygulama](dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine).

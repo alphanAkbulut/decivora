@@ -42,6 +42,11 @@ class Server:
                         target=match.get('record_id',match.get('id')) if type(match) is dict else match
                         if not target:return False
                         blocked.add(target)
+            # Conversation-derived edges inherit source privacy; a public endpoint
+            # does not make the private rationale safe for another agent.
+            for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_relation_reviewed'",(core.workspace,project)).fetchall():
+                receipt=json.loads(raw)
+                if receipt.get('state')=='Applied':blocked.update((receipt['origin'],receipt['target']))
             edges=core.db.execute('SELECT origin,target FROM edges WHERE workspace=? AND project=? LIMIT 501',(core.workspace,project)).fetchall()
             if len(edges)>500:return False
             changed=True

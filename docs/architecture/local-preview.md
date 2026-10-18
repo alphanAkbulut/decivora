@@ -18,6 +18,10 @@ flowchart TB
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
     M0 --> US["Record actual or unknown usage<br/>overrun persists and blocks workspace dispatch"]
     US --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
+    K0 --> RP["Source-bound relation suggestion<br/>Task required_by Decision / Task depends_on Task"]
+    RP --> RH["Separate human review<br/>current endpoints / edge / authority / graph guards"]
+    RH --> D
+    RH -. explicit later retirement hypothesis .-> IP
     K0 --> AP["Source-bound delayed answer suggestion<br/>exact question / revision / option / quote"]
     AP --> AH["Separate human confirmation<br/>current question snapshot + authority recheck"]
     AH --> R
@@ -68,9 +72,9 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH guard;
+    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH guard;
     class D,W,B,H,R,N stored;
-    class Q,P,U,I0,M0,DQ,SP,AP launcher;
+    class Q,P,U,I0,M0,DQ,SP,AP,RP launcher;
     class EX pending;
     class C stored;
     class V pending;
@@ -147,3 +151,5 @@ The local task panel can approve a recorded task→Decision rationale link. The 
 Read-only authenticated `/api/operations` returns selected-project command boundary traces and content-free installation HTTP error groups from a separate bounded sidecar; canonical event/audit data remains separate. Operations spans do not authorize work or prove complete pipeline execution. `Decivora Test.command` uses an explicitly marked separate database, environment label and session-cookie name, with model/file targets disabled. [Architecture and sequence diagrams](../quality/operations-runtime.md). Full engine tracing and platform administration remain open.
 
 19 Ekim geç cevap: AP→AH→question audit yolu kodlandı; onay yalnız cevap eşlemesini kaydeder. Karar apply/task değişikliği ayrı kalır. [Sözleşme](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-geç-cevap-önerisi).
+
+19 Ekim relation köprüsü: öneri tek başına graph değişikliği değildir. Human relation apply sonrası explicit retirement hypothesis mevcut impact kartına gider; otomatik karar/görev iptali değildir. [Sözleşme](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine).

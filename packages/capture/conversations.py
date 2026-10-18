@@ -128,8 +128,9 @@ class ConversationService:
                         typed=dict(type=c['type'],title=c['title'],description=c['quote'],intent=c['intent'],source_ref=source['id'])
                         candidates.append(dict(c,comparison=reconcile(typed,existing['records']),applied=any(c['id'] in a['selected'] for a in applied if a['source']==source['id'])))
                 from packages.capture.dialogue_review import DialogueReviewService
+                from packages.capture.dialogue_relations import DialogueRelationService
                 status_changes=DialogueReviewService(self.core).statuses(scope,project,source['id'],analysis or {})
-                result.append(dict(source=source,analysis=analysis,candidates=candidates,status_changes=status_changes,answer_proposals=DialogueReviewService(self.core).answers(scope,project,source['id'],analysis or {}),status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
+                result.append(dict(source=source,analysis=analysis,candidates=candidates,relation_proposals=DialogueRelationService(self.core).view(scope,project,source['id'],analysis or {}),status_changes=status_changes,answer_proposals=DialogueReviewService(self.core).answers(scope,project,source['id'],analysis or {}),status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
             return dict(imports=result,knowledge_revision=existing['knowledge_revision'],automatic_capture=False)
     def accept(self,scope,project,*,source_id,key,selected,base_revision):
         identifier(source_id);identifier(key)

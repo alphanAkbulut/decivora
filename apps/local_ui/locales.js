@@ -313,7 +313,14 @@ window.DecivoraCatalogs = {
     "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
     "Confirm answer association": "Confirm answer association",
     "Reject answer suggestion": "Reject answer suggestion",
-    "Defer answer suggestion": "Defer answer suggestion"
+    "Defer answer suggestion": "Defer answer suggestion",
+    "Relationship proposal": "Relationship proposal",
+    "Approving adds this relationship only. It does not cancel tasks or retire decisions.": "Approving adds this relationship only. It does not cancel tasks or retire decisions.",
+    "Relationship context changed. Prepare a fresh request.": "Relationship context changed. Prepare a fresh request.",
+    "Approve relationship": "Approve relationship",
+    "Reject relationship": "Reject relationship",
+    "Defer relationship": "Defer relationship",
+    "Review impact if this decision is retired": "Review impact if this decision is retired"
   },
   "tr": {
     "Dil": "Dil",
@@ -629,7 +636,14 @@ window.DecivoraCatalogs = {
     "Question changed. Prepare a fresh request; this suggestion stays in history.": "Soru değişti. Yeni istek hazırlayın; bu öneri geçmişte korunur.",
     "Confirm answer association": "Cevap eşlemesini onayla",
     "Reject answer suggestion": "Cevap önerisini reddet",
-    "Defer answer suggestion": "Cevap önerisini ertele"
+    "Defer answer suggestion": "Cevap önerisini ertele",
+    "Relationship proposal": "İlişki önerisi",
+    "Approving adds this relationship only. It does not cancel tasks or retire decisions.": "Onay yalnız bu ilişkiyi ekler. Görev iptal etmez veya kararı geçersiz kılmaz.",
+    "Relationship context changed. Prepare a fresh request.": "İlişki bağlamı değişti. Yeni istek hazırlayın.",
+    "Approve relationship": "İlişkiyi onayla",
+    "Reject relationship": "İlişkiyi reddet",
+    "Defer relationship": "İlişkiyi ertele",
+    "Review impact if this decision is retired": "Bu karar kaldırılırsa etkisini incele"
   },
   "es": {
     "Dil": "Idioma",
@@ -945,7 +959,14 @@ window.DecivoraCatalogs = {
     "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
     "Confirm answer association": "Confirm answer association",
     "Reject answer suggestion": "Reject answer suggestion",
-    "Defer answer suggestion": "Defer answer suggestion"
+    "Defer answer suggestion": "Defer answer suggestion",
+    "Relationship proposal": "Relationship proposal",
+    "Approving adds this relationship only. It does not cancel tasks or retire decisions.": "Approving adds this relationship only. It does not cancel tasks or retire decisions.",
+    "Relationship context changed. Prepare a fresh request.": "Relationship context changed. Prepare a fresh request.",
+    "Approve relationship": "Approve relationship",
+    "Reject relationship": "Reject relationship",
+    "Defer relationship": "Defer relationship",
+    "Review impact if this decision is retired": "Review impact if this decision is retired"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1261,7 +1282,14 @@ window.DecivoraCatalogs = {
     "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
     "Confirm answer association": "Confirm answer association",
     "Reject answer suggestion": "Reject answer suggestion",
-    "Defer answer suggestion": "Defer answer suggestion"
+    "Defer answer suggestion": "Defer answer suggestion",
+    "Relationship proposal": "Relationship proposal",
+    "Approving adds this relationship only. It does not cancel tasks or retire decisions.": "Approving adds this relationship only. It does not cancel tasks or retire decisions.",
+    "Relationship context changed. Prepare a fresh request.": "Relationship context changed. Prepare a fresh request.",
+    "Approve relationship": "Approve relationship",
+    "Reject relationship": "Reject relationship",
+    "Defer relationship": "Defer relationship",
+    "Review impact if this decision is retired": "Review impact if this decision is retired"
   },
   "ar": {
     "Dil": "اللغة",
@@ -1577,6 +1605,13 @@ window.DecivoraCatalogs = {
     "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
     "Confirm answer association": "Confirm answer association",
     "Reject answer suggestion": "Reject answer suggestion",
-    "Defer answer suggestion": "Defer answer suggestion"
+    "Defer answer suggestion": "Defer answer suggestion",
+    "Relationship proposal": "Relationship proposal",
+    "Approving adds this relationship only. It does not cancel tasks or retire decisions.": "Approving adds this relationship only. It does not cancel tasks or retire decisions.",
+    "Relationship context changed. Prepare a fresh request.": "Relationship context changed. Prepare a fresh request.",
+    "Approve relationship": "Approve relationship",
+    "Reject relationship": "Reject relationship",
+    "Defer relationship": "Defer relationship",
+    "Review impact if this decision is retired": "Review impact if this decision is retired"
   }
 };

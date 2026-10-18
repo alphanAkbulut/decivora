@@ -205,3 +205,7 @@ Local-preview akışına hazırlanan source/context isteği, dış yanıt import
 ### 19 Ekim — kaynaklı geç cevap incelemesi
 
 Mevcut local-preview çizimine source-bound answer suggestion→current-question human review→question audit bağlantısı eklendi.50şema/25belge sayısı aynı;50render başarılı. Kimlik/seçim kaydı canonical Decision apply veya görev Done değildir.
+
+### 19 Ekim — kaynaklı ilişki ve etki köprüsü
+
+Local-preview mevcut çiziminde source-bound relation→human review→graph apply ve ayrı explicit impact hypothesis yolu güncellendi.50diagram/25belge render başarılı; bu, gerçek modelin ilişkileri doğru çıkardığı veya kararların otomatik geçersizleştiği anlamına gelmez.

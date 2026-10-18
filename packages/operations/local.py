@@ -10,7 +10,7 @@ ERROR_CODES=frozenset('application_error invalid_request storage_unavailable sto
 COMPONENT_ACTIONS={
  'capture':{'import_conversation'},
  'extraction':{'analyze_conversation','prepare_dialogue_review','import_dialogue_response'},
- 'reconciliation':{'accept_candidates','review_dialogue_status','review_dialogue_answer'},
+ 'reconciliation':{'accept_candidates','review_dialogue_status','review_dialogue_answer','review_dialogue_relation'},
  'impact':{'preview_decision_change','link_task_rationale','link_dependency'},
  'review':{'prepare_impact_updates','prepare_task_lifecycle','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal'},
  'questions':{'ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question'},

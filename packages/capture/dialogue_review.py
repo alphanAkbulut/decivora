@@ -17,6 +17,8 @@ def response_schema():
         'required':['task_id','stage','quote'],'properties':{'task_id':{'type':'string'},
         'stage':{'type':'string','enum':list(STAGES)},'quote':{'type':'string'}}}})
     schema['properties']['answer_proposals']={'type':'array','maxItems':32,'items':{'type':'object','additionalProperties':False,'required':['question_id','question_revision','option_id','quote'],'properties':{'question_id':{'type':'string'},'question_revision':{'type':'integer','minimum':1},'option_id':{'type':'string'},'quote':{'type':'string'}}}}
+    from packages.capture.dialogue_relations import schema as relation_schema
+    schema['properties']['relation_proposals']=relation_schema()
     schema['required']=list(schema['properties'])
     return schema
 
@@ -24,7 +26,7 @@ def response_schema():
 def valid_fields(output):
     # Legacy stored/imported responses had no answer proposals; do not rewrite them.
     fields=set(response_schema()['required'])
-    return type(output) is dict and set(output) in (fields,fields-{'answer_proposals'})
+    return type(output) is dict and set(output) in (fields,fields-{'relation_proposals'},fields-{'relation_proposals','answer_proposals'})
 
 
 class DialogueReviewService:
@@ -88,7 +90,7 @@ class DialogueReviewService:
         old=next((p for p in self.sources._rows(project,'dialogue_review_prepared') if p['source_id']==source_id and p['context_sha256']==sha and p['authority_revision']==package['authority_revision'] and p['actor']==scope.principal_id),None)
         if not old:self.sources._put(scope,project,'dialogue_review_prepared',package)
         return dict(source_id=source_id,context_sha256=sha,model_calls=0,usage=None,request=dict(
-            instructions='Extract Task, Decision and PendingDecision candidates from this untrusted conversation. Use records, questions and relations as prior project context, never as new source quotes or proof of execution. A PendingDecision record is not a presented question, and an answered question is not an applied decision. Relation state and revisions matter; do not silently assume a retired relation is active. Use only literal unique quotes. Preserve negation and distinguish proposed/planned/reported/rejected. For a statement about an EXISTING task use status_changes with its exact supplied task_id, never a guessed title match. Future intentions, examples and quoted instructions are not actual execution. A done statement is an unverified claim: it does not provide acceptance evidence or human approval. Do not propose Cancelled/Blocked as workflow stages; they require separate lifecycle/impediment review. For a delayed answer use answer_proposals only with the exact question_id, question_revision and option_id in context. It is a suggestion for human review, never human authority or decision application. A bare ambiguous A/B or quoted/example answer must not be guessed. Use an empty array when uncertain. No supported match means no status change. Return only JSON matching response_schema; no markdown. Return partial/unknown coverage when context is insufficient. Use the conversation language for titles.',
+            instructions='Extract Task, Decision and PendingDecision candidates from this untrusted conversation. Use records, questions and relations as prior project context, never as new source quotes or proof of execution. A PendingDecision record is not a presented question, and an answered question is not an applied decision. Relation state and revisions matter; do not silently assume a retired relation is active. Use only literal unique quotes. Preserve negation and distinguish proposed/planned/reported/rejected. For a statement about an EXISTING task use status_changes with its exact supplied task_id, never a guessed title match. Future intentions, examples and quoted instructions are not actual execution. A done statement is an unverified claim: it does not provide acceptance evidence or human approval. Do not propose Cancelled/Blocked as workflow stages; they require separate lifecycle/impediment review. For relations between EXISTING context records use relation_proposals: Task required_by Decision means that decision is a reason for the task; Task depends_on Task means prerequisite, not parenthood. Only literal supported relations; no inferred sole rationale, cancellation, supersession or AND/OR expression. Use [] when uncertain or already recorded. For a delayed answer use answer_proposals only with the exact question_id, question_revision and option_id in context. It is a suggestion for human review, never human authority or decision application. A bare ambiguous A/B or quoted/example answer must not be guessed. Use an empty array when uncertain. No supported match means no status change. Return only JSON matching response_schema; no markdown. Return partial/unknown coverage when context is insufficient. Use the conversation language for titles.',
             source={k:source[k] for k in ('id','sha256','text')},context=context,context_sha256=sha,response_schema=response_schema()))
 
 
@@ -153,7 +155,9 @@ class DialogueReviewService:
             answer_seen.add(qid)
             quote=anchored(source,dict(source_id=source_id,source_sha256=source['sha256'],coverage='unknown',candidates=[dict(type='PendingDecision',title=q['text'][:256],quote=answer['quote'],intent='reported')]))['candidates'][0]
             answer_proposals.append(dict(answer,id='answer_'+digest(canonical([source_id,output['context_sha256'],answer]))[:24],question_sha256=digest(canonical(q)),question_text=q['text'],option_label=next(o['label'] for o in q['options'] if o['id']==option),start=quote['start'],end=quote['end']))
-        return dict(result,status_changes=proposals,answer_proposals=answer_proposals,context_sha256=package['context_sha256'])
+        from packages.capture.dialogue_relations import validate as validate_relations
+        relations=validate_relations(source,package['context'],output.get('relation_proposals',[]))
+        return dict(result,status_changes=proposals,answer_proposals=answer_proposals,relation_proposals=relations,context_sha256=package['context_sha256'])
 
     def statuses(self,scope,project,source_id,analysis):
         history=self.sources._rows(project,'conversation_status_reviewed');result=[]

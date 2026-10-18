@@ -742,3 +742,7 @@ Yeni LocalApp izleri trusted preflight actor/workspace/authority revision taşı
 ### 19 Ekim — T09/T10/T13/T19/T22 geç cevap köprüsü
 
 Konuşma/model response → kaynaklı exact soru/sürüm/seçenek önerisi → insan kabul/ret/erteleme → atomik soru cevap kaydı kodlandı. Karar ve task uygulaması ayrı kalır. Eski status-only çıktılar korunur. [Uygulama ve sınırlar](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-geç-cevap-önerisi). Parent durumları ve model/native kalite kapıları açık; yeni ana görev oluşturulmadı.
+
+### 19 Ekim — T09/T10/T11/T13/T19 ilişki önerisi köprüsü
+
+Konuşma çıktısında mevcut kayıtlara source-bound required_by/depends_on önerisi, ayrı human review, atomik graph apply ve karar emekliliği için açık impact hypothesis bağlantısı kodlandı. [Sözleşme ve sınırlar](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine). AND/OR, otomatik decision supersession ve gerçek semantic/native kapıları açık; mevcut parent statüleri korunur, yeni ana iş yok.
