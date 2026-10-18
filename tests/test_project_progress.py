@@ -32,7 +32,8 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual(summary['completed_types'],{'test_experiment':13,'development':42,'analysis_decision':1})
         self.assertEqual(sum(summary['completed_types'].values()),summary['statuses']['DONE'])
         self.assertEqual(len(summary['breakdown']['owner_gates']),4)
-        self.assertEqual(len(summary['breakdown']['deferred_choices']),3)
+        self.assertEqual({c['id'] for c in summary['breakdown']['deferred_choices']},{'Q09'})
+        self.assertEqual({c['id'] for c in summary['breakdown']['resolved_choices']},{'Q06','Q08'})
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

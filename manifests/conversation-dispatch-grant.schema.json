@@ -75,6 +75,11 @@
     "authority_revision": {
       "type": "integer",
       "minimum": 1
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Optional for source-only extraction; required by dialogue-aware dispatch, binding approved current task context."
     }
   }
 }

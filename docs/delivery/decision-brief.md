@@ -82,7 +82,7 @@ Bağlantılar: [açık kararlar](../governance/open-decisions.md), [kullanıcı 
 |---|---|---|---|
 | Q04 | Graph ilk açılış ve olgunlaşma görünümü | **Kabul edildi:** güncel işler + seçili işin bağlamı; fikirlerin evrimi, önemli değişimlerin gerekçesi ve task AC/DoD/test görünürlüğü isteniyor | Default graph + context/acceptance sekmesi; tarihçe korunur |
 | Q05 | Proje/görev analiz sıklığı | **Kabul edildi:** kullanıcı proje başlangıcında seçebilmeli, task bazında değiştirebilmeli ve ileride yeni yaklaşım seçebilmeli | Tek global profil dayatılmaz; tavan/egress onayı değişmez |
-| Q06 | Ana iş milestone'larında context özeti + otomatik sürümlü Markdown mı; yoksa yalnız istek üzerine export mu? | Soruldu; cevap bekleniyor | Uygulama içi context her iki seçenekte var; otomatik Git push yok |
+| Q06 | Ana iş milestone'larında context özeti + otomatik sürümlü Markdown mı; yoksa yalnız istek üzerine export mu? | **18 Ekim kabul edildi: Q06-A.** Önemli karar değişimi/ana görev kapanışında otomatik yerel Markdown snapshot | Uygulama hafızası esas; snapshot türev çıktı, otomatik Git push yok |
 
 Q02 ilk coding/chat yüzeyleri/OS ve Q03 dış model/veri/aylık bütçe soruları hâlâ açık. Tekrar sorularak yeni yanıt varmış gibi yazılmadı. Q05 tercihi Q03'ün yerine geçmez; ücretli arka plan modeli Q03 kararı olmadan açılmaz. Sayısal token/batch sınırlarını kullanıcıya seçtirmek yerine engineering deneyleriyle kalibre edeceğiz.
 
@@ -102,7 +102,7 @@ Q02 ilk coding/chat yüzeyleri/OS ve Q03 dış model/veri/aylık bütçe sorular
 
 | ID / kullanıcı soru no | Seçenekler | Durum |
 |---|---|---|
-| Q08 / 2 — Task boyutu | 2A: anlamlı ana/alt görev + küçük adımlarda checklist; 2B: her küçük adım ayrı task; 2C: yalnız büyük işler | **Öneri: 2A.** Kullanıcı ayrıca “bu taskı alt görevlere böl ve takibi öyle gerçekleştir” seçeneğini değerlendirmemizi istedi. İsteğe bağlı önizlemeli bölme tasarlandı; varsayılan otomatik bölme kararı alınmadı |
+| Q08 / 2 — Task boyutu | 2A: anlamlı ana/alt görev + küçük adımlarda checklist; 2B: her küçük adım ayrı task; 2C: yalnız büyük işler | **18 Ekim Q08-A kabul edildi:** anlamlı ana/alt görev önerisi + küçük adımlarda checklist; tek plan incelemesi/onayı. Kullanıcı ayrıca “bu taskı alt görevlere böl ve takibi öyle gerçekleştir” seçeneğini değerlendirmemizi istedi. İsteğe bağlı önizlemeli bölme tasarlandı; varsayılan öneri yaklaşımı 18 Ekim yanıtıyla kabul edildi; uygulama henüz tamamlanmadı |
 | Q09 / 3 — Dikkat ve iş önceliği | Önceki alternatifler: 3A engelleyici/önemli konular hemen, kalanlar inbox; 3B hepsi inbox; 3C her anlamlı değişimde bildirim | **Öncelik ilkesi kabul edildi:** blocker'lar ve diğer işleri geciktiren bağımlılıklar önce; tüm projede Product Owner ve çevik ürün yaklaşımı. Bu yanıt 3A'nın anlık kanal/zamanlama ayrıntılarını bütünüyle seçmiş sayılmaz; bunlar açık, servis/otomasyon yok |
 
 Q08 önerisinin kazanımları ve sınırları [task bağlamı belgesinde](../product/task-context-and-acceptance.md#isteğe-bağlı-alt-görevlere-böl-ve-takip-et) yer alır. Q06 otomatik Markdown tercihi hâlâ açıktır. Bu kayıt seçeneklerin neden elendiğini korur; henüz cevaplanmayan tercihleri kabul edilmiş göstermez.
@@ -259,3 +259,24 @@ Mevcut durum→tespit→değişiklik→fayda/risk→etkilenen hedefler→doğrul
 ## Workflow ve UI onayı — 14 Ekim 2026
 
 Kullanıcı: “onaylıyorum. ancak tüm doküman diagram şema ve githubdakileri de kontrol et; gerekiyorsa güncelle”. Önceki benchmark + dört teslim ve tanıdık UI önerisi kabul edildi; [DEC-22/ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md). Model harcaması/newaccount/public/gerçek veri dış transfer kapsam dışında. Alternatif ve gerekçeler [benchmark](../discovery/workflow-status-benchmark.md) içinde korunur.
+
+
+## 18 Ekim — iş davranışı için Q06 ve Q08 yeniden sunuldu
+
+Kullanıcı business açısından gri alanları sormamızı ve bağımsız geliştirmeyi bekletmememizi istedi. Yeni task/karar ID'si oluşturulmadı. Tek owner pilotu, otomatik yakalama/çıkarım gereksinimi, proposal/commitment ayrımı, blocker önceliği, kritik insan onayı ve kanıtlı Done yeniden oylamaya açılmadı. Kaynaklı gerekçe, düşük bildirim yükü ve next-session sürekliliği mevcut kapsamın uygulama işidir.
+
+**18 Ekim yanıtı: “1A / 2A” — Q08-A ve Q06-A kabul edildi.** Aşağıdaki alternatifler karar gerekçesinin geçmişidir; B/C seçilmedi. Uygulama tamamlandı sayılmaz.
+
+| Kullanıcıya sunulan soru | Mevcut kayıt | Alternatifler ve öneri | Bekleme kapsamı |
+|---|---|---|---|
+| 1 — Büyük işlerin alt görevlere ayrılması | Q08 | A (öneri): sistem anlamlı ana/alt görev planı önerir, küçük adımlar checklist olur; kullanıcı planı tek incelemede onaylar. B: bütün küçük adımlar ayrı task. C: varsayılan bölme yok, kullanıcı istediğinde öneri | Otomatik bölmenin varsayılanı ve parent/child UI; kaynak yakalama, mevcut typed ilişkiler ve temel impact entegrasyonu beklemez |
+| 2 — Karar olgunlaşmasının dosya çıktısı | Q06 | A (öneri): uygulama geçmişine ek olarak önemli karar değişimi/ana görev kapanışında kaynaklı context snapshot'ı yerel Markdown olarak üretilir; canonical kaynak DB/event log kalır. B: otomatik dosya yok, kullanıcı istediğinde export. C: her küçük görevde dosya | Yerel snapshot üretiminin tetiklenmesi; kalıcı uygulama hafızası ve mevcut replay/approval geliştirmesi beklemez |
+
+Q06-A repo'ya otomatik commit/push veya raw private transcript paylaşımı izni değildir; mevcut yapılandırılmış kayıtlardan üretim tercih edilir, yeni ücretli özetleme yetkisi verilmez. Q08-A her child için yeniden insan onayı veya agent'a yürütme/ücret yetkisi anlamına gelmez. Child görevlerin parent kabulüne etkisi açık kapsam/ilişkiyle gösterilir; otomatik split kabulünden tam task completion sonucu çıkarılmaz. 18 Ekim açık yanıtıyla iki A seçildi; bu kayıt uygulama veya ücret/egress onayı yerine geçmez.
+
+
+### Q08-A ve Q06-A — uygulama kararı
+
+Kullanıcının exact cevabı: **“1A / 2A”**. Soru1→Q08, soru2→Q06 eşlemesi yukarıdaki sunuma bağlıdır. Gerekçe: anlamlı teslimleri izlemek ve mikro task kalabalığını azaltmak; kararların olgunlaşmasını ana milestone'larda kaynaklı dosya olarak korumak. Q08-B her küçük adımı ayrı task yapma ve Q06-C her küçük işte dosya üretme varsayılan seçilmedi. Q08-C yalnız istekte bölme ve Q06-B yalnız istekte export alternatifleri geçmişte korunur.
+
+Mevcut sahiplik: T13d split/atomic plan, T20d parent-child görünümü, T20c context snapshot/export. Yeni ana görev açılmadı. Bu feature'lar etkinleştirilmeden mevcut kabul/güncellik/mahremiyet kapıları tamamlanır; bugünkü ana akış entegrasyonunu bekleten açık kullanıcı kararı kalmadı. Canonical kaynak DB/event log; Markdown türevdir. Raw transcript/secret export'u, GitHub push, agent execution veya ücretli model izni verilmedi.

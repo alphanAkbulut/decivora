@@ -23,3 +23,11 @@ No paid model request. Legacy starts can be read without rewriting history. Curr
 ## Validation
 
 [Runtime/browser proof](../../quality/workflow-ui-runtime.md) and exported [payload schemas](../../../manifests/task-stage.schema.json) distinguish human review, automatic verification and model quality. Test stale/partial/failure/authority/retry, dependency direction, start vs finish, legacy cancel-reopen, replay/restore and all supported view/locale interactions. Publish exact commit readback separately from runtime/visual validation.
+
+## Implementation clarification — 18 October 2026
+
+The selected six stages remain unchanged. Typed waiting labels and filters now expose recorded decision/approval/input/permission/budget/retry impediments; UI columns/transitions are read from the server's authorized state snapshot rather than duplicated in JavaScript. Start and finish gates are displayed separately. Cancelled stays outside the active waiting view. Resolution reasons and clarification automation remain incomplete; On Hold remains P2. Optional approved exact-file observation has since been implemented; earlier “file runners are not” wording describes the original 14 October delivery. See [current implementation scope](../../quality/workflow-ui-runtime.md).
+
+## Implementation clarification — 19 October 2026
+
+A human may now approve an explicit task-to-decision rationale link, confirm a single-decision-only rationale for a bounded hypothetical retirement/restoration preview, and prepare a cancellation/reopening review. Existing selection/approval/apply and lifecycle guards remain authoritative. No task/edge deletion, no Done-to-cancellation conversion, and no automatic rationale extraction. Cancellation/reopening events and reasons are visible in task History. General resolution authoring and semantic clarification remain open. See [delivery detail](../../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).

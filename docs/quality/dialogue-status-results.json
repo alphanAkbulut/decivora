@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-18",
+  "scope": "Source-bound dialogue review and guarded status application; synthetic outputs only",
+  "runtime_tests": {
+    "count": 347,
+    "status": "passed",
+    "log": "local runtime-final log"
+  },
+  "new_runtime_tests": 17,
+  "existing_browser_flows": {
+    "count": 8,
+    "status": "passed"
+  },
+  "dialogue_browser": {
+    "status": "passed",
+    "model_dispatches": 0,
+    "external_response_fixture": true,
+    "new_task_review": true,
+    "existing_task_status_review": true,
+    "reload_source_link": true,
+    "false_done_rejected": true,
+    "mobile_no_overflow": true
+  },
+  "diagrams": {
+    "rendered": 44,
+    "failed": 0,
+    "changed_sources": [
+      "docs/architecture/local-preview.md"
+    ]
+  },
+  "real_semantic_quality": "not_run",
+  "native_capture": "not_run",
+  "paid_calls": 0,
+  "external_model_usage": null,
+  "source_hashes": {
+    "packages/capture/dialogue_review.py": "b4237e00aea7d44cda6ad3e06d5c75064a47b7a13e878aa8b2ab9b6cd7962d5c",
+    "packages/capture/conversations.py": "3088ea3e0bcae6ad95fe787c48101b4ab7c13fef78fc2ba54cbb5584f71041b2",
+    "packages/capture/responses_extractor.py": "ddf48ef002a53bb0f707891ddb3b032f9fd432730ea4849b1dfa4af6d10bd163",
+    "packages/domain/task_workflow.py": "618adc3dbceeed35700a1e6a89db572b3fa097ef252e29847bc4bb372f6e3c1d",
+    "apps/local_ui/server.py": "92b0210a5b59a0c5a54e4a686a7e1efe643435a3902651553cba58cfd8be7cde",
+    "apps/local_ui/app.js": "ef2518c3dd3b11326e2c0313496af50ca3403e544d5f1f98d4b9354baef46633",
+    "apps/local_ui/locales.js": "aef866cd10bc916bac4f97167dc02781098ecd275438a683579b1636ad832f49",
+    "manifests/dialogue-review-response.schema.json": "e0aa2e7f96e2683fe3502c7bb030df76064fbaef4d8750aa9685b04b0719dfac",
+    "manifests/conversation-dispatch-grant.schema.json": "216cb5f718c2a52603bc7a2a042cd42abe52c1125da4a7875c7a5ec23fcb8dc1",
+    "tests/runtime/test_dialogue_review.py": "4822c4889d7b4a8614135fc7fdb874e3e878364b322b5bff8f748a2d110a1280",
+    "tests/ui-dialogue.cjs": "084e5d8da61806e10c8157e9e379743fb1a66a4b02214193a02f9a52732c6e2d"
+  },
+  "root_tests": {
+    "count": 48,
+    "status": "passed"
+  },
+  "browser_run_note": "Original all-case run:8 existing flows passed, new dialogue selector failed; corrected focused dialogue run passed. No product guard relaxed.",
+  "live_local": {
+    "origin": "http://127.0.0.1:53610",
+    "new_code_served": true,
+    "model_enabled": false,
+    "user_database_unchanged": true,
+    "integrity": "ok",
+    "probe": "authenticated read-only browser/HTTP"
+  },
+  "source_package": {
+    "file": "Decivora-local-dialogue.zip",
+    "files": 44,
+    "sha256": "3e1fdb7dd7fb59630ba219cde7b975a5893dbd49e9467df0c15c20c693fb834a",
+    "user_data_included": false
+  },
+  "superseded_source_note": "Historical first dialogue delivery hashes; follow-up current context/readback source inventory and351test results are primary-flow-results.json",
+  "current_followup": "primary-flow-results.json"
+}

@@ -22,7 +22,7 @@
 | DEC-13 | Historical backend candidate: TypeScript; React UI adayı açık | Q15-A/DEC-21 ilk backend için Python3.12/SQLite seçti; frontend framework henüz seçilmedi |
 | DEC-14 | Proposed: AGPLv3 adayı; Apache-2.0 alternatif | Public release öncesi lisans/katkı hakları kontrolü |
 | DEC-15 | Accepted intent: 1C, izinli/erişilebilir geçmişi aşamalı işle; aktif işleri öne al | Kaynak korunur, hedefli context kullanılır; 1A/1B alternatifleri ve gerekçe [Q07 kaydında](../delivery/decision-brief.md). Egress/harcama veya sınırsız saklama onayı değildir |
-| DEC-16 | Proposed: anlamlı alt görevler + checklist; isteğe bağlı bölme önizlemesi | Kullanıcının Q08 fikrinin tasarımı; ayrı AC/kanıt ve parent takibi. Varsayılan otomatik bölme henüz kabul edilmedi |
+| DEC-16 | Accepted intent: anlamlı alt görev önerisi + küçük adımlarda checklist; tek plan incelemesi/onayı | Kullanıcının Q08 fikrinin tasarımı; ayrı AC/kanıt ve parent takibi. 18 Ekim Q08-A kabul edildi; uygulama açık |
 | DEC-17 | Accepted intent: blocker ve downstream gecikmesini önce ele al; Product Owner bakışıyla çevik ilerle | Q09 yanıtı; değer/hedef/riskle açıklanan çözüm sırası, Scrum kaynaklı inceleme/uyarlama. [Akış sözleşmesi](priority-and-flow.md) teknik öneri; bildirim kanalı ve Sprint takvimi ayrı |
 | DEC-18 | Accepted problem intent: gerçek insan seçimi ve dosyanın hedefe uygulanması kaybolmasın | 2026-10-11 kullanıcı örneği; generated/sessizlik yükleme veya kabul kanıtı değildir. [GAP sözleşmesi](intent-to-reality-gap.md); mekanizma teknik öneri |
 | DEC-19 | Proposed investment path: ilk sınırlı gerçekleşme/devam deneyi + native karşılaştırması | [Güncel yön](current-direction.md); build/extend/native/durdur sonuçları açık. Son belge güncelleme isteği runtime yatırımını kabul etmiş sayılmaz |
@@ -74,7 +74,7 @@ flowchart TB
     STACK --> APP[T04 Uygulama iskeleti]
     CORE -.-> TEST[DEC-19 Native ve model kalite ölçümleri açık]
     TEST -.-> PILOT[Pilot ve release kabulü henüz yok]
-    NEED --> SPLIT[DEC-16 Alt görev bölme önerisi - Q08 açık]
+    NEED --> SPLIT[DEC-16 Alt görev ve checklist - Q08-A kabul]
     SPLIT -.-> OWNER
     NEED --> LICENSE[DEC-14 AGPL adayı - Apache alternatif]
     LICENSE -.-> RELEASE[Public release öncesi lisans ve erişim kararı]
@@ -112,3 +112,6 @@ Gerekçe standardı: tetikleyen ihtiyaç/kaynak → tarih ve karar sahibi → ge
 **Accepted intent:** kullanıcı biriken/ilerlemeyen 40+ task için açıklanabilir ranking, downstream etki açıklaması, next actionable ve insan/önceden yetkili üst agent kontrolündeki board yaklaşımının dokümanlara kaydedilmesini istedi. Bu takip, DEC-17'nin 2026-10-09 kabul tarihini değiştirmez; kodlama veya otonom plan değişikliği onayı değildir.
 
 **Proposed:** [ranking sözleşmesindeki](priority-and-flow.md) faktörler ve teknik tasarım; MVP deterministik öneri/board, P2 context-aware scoring/simülasyon/UX ayrımı feasibility ile kesinleşecek. Ağırlıklar, aging eşikleri ve kritik yol tahmin yöntemi henüz seçilmedi. Rank önerisi canonical priority'den ayrı; scope/value ve korunan kararlar insan Product Owner'da. Seçenekler, bedeller ve yeniden değerlendirme kapısı aynı sözleşmede; görevler T11c/T20e/T24d ve önerilen T26b. Kaynak, bu tarihli doğrudan kullanıcı talebidir; önceki konuşmanın eksik önizlemesinden ek kabul çıkarılmadı.
+
+
+18 Ekim Q06-A: önemli karar değişimi/ana görev kapanışında yerel kaynaklı Markdown context snapshot kabul edildi; canonical kaynak DB/event log. [Exact kullanıcı yanıtı, Q08-A ve alternatifler](../delivery/decision-brief.md). Otomatik Git push veya yeni ücret/erişim izni değildir; otomasyon geliştirmesi açık.

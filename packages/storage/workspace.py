@@ -599,7 +599,10 @@ class Workspace:
             rows.append((seq,sha,status,job[0] if job else None))
             sessions.add((provider,account,session,epoch))
         frontiers=[(key,self.frontier(scope,SessionKey(*key),project)) for key in sorted(sessions)]
-        return digest(canonical(dict(rows=rows,frontiers=frontiers))),all(r[3]=='succeeded' for r in rows) and all(f['complete'] for _,f in frontiers)
+        # Manual conversation receipts bypass the synthetic ingress/jobs table,
+        # but new sources or analysis results must still invalidate old approval.
+        conversations=[(seq,action,digest(raw)) for seq,action,raw in self.db.execute("SELECT seq,action,ref FROM audit WHERE workspace=? AND project=? AND action IN ('conversation_imported','conversation_analysis_started','conversation_analysis_finished') ORDER BY seq",(self.workspace,project))]
+        return digest(canonical(dict(rows=rows,frontiers=frontiers,conversations=conversations))),all(r[3]=='succeeded' for r in rows) and all(f['complete'] for _,f in frontiers)
 
     def _current_impact(self,scope,project,stored):
         result=stored['result']

@@ -17,6 +17,7 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 - Repo dışı projeleri, global agent config'lerini veya gerçek transcript/credential'ları bu görev adına değiştirme ya da import etme.
 - Kullanıcı tarafından istenmiş kapsamda olağan güvenli adımları tamamla; gereksiz yeniden onay isteme. Public release, ücret, erişim genişletme ve yetkilendirilmemiş dış sistem yazımı ayrı owner kararıdır.
 - Alt agent kullanımı zorunlu değildir; kullanıcı yetkisi/uygun yönerge olmadan delegasyon başlatma.
+- Ana ürün akışını `docs/quality/primary-flow-audit.md` ile değerlendir: capture→context/extraction→reconciliation/relations→decision impact→human review/apply→verification→next-session context. Alt modül/test/doküman sayısını bu akışın kabulü yerine sunma. Her teslim hangi bağlantıyı kapattığını ve gerçek model/native kanıtı gerektiren açık kapıyı belirt; hedefli kontrol yeterlidir.
 - Product Owner bakışıyla kullanıcı değeri, hedef, risk ve öğrenme sonucunu gözet. Aktif ilerlemeyi engelleyen bağımlılıkların çözümünü öne al; yalnız task sayısı veya meşguliyet için iş üretme. Engellenmiş iş ile engeli çözen uygulanabilir adımı ayır. `docs/product/priority-and-flow.md` ve `docs/delivery/project-management.md` kurallarını kullan; öncelik izin/scope genişletmez.
 
 ## Değişmez domain kuralları

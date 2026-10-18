@@ -22,8 +22,8 @@ Ana görev ve alt teslim sayıları toplanmaz. Tür, tamamlanan alt teslimin bir
 |---|---|
 | DONE | 56 |
 | IN_PROGRESS | 16 |
-| PROPOSED | 7 |
-| TODO | 8 |
+| PROPOSED | 5 |
+| TODO | 10 |
 | UNSPECIFIED | 42 |
 
 | Tamamlanan alt teslimin türü | Sayı |
@@ -41,7 +41,7 @@ Kod kategorisi prototipleri, araçları ve executable sözleşmeleri de kapsar; 
 | Gerçek dosya hedefi | Seçilen kök, dosya, beklenen içerik ve kriter kapsamı | Kullanıcı dosyasını okumadan önce |
 | İnsan doğruluk incelemesi | Hazırlanmış exact etiket/holdout incelemesi; önceki H1–H4 yeniden sorulmaz | Kalite/ürün kabulü öncesi |
 
-Bunlar dört gruplanmış insan kapısıdır; dört açık onay penceresi değildir. Bağımsız kod işleri beklemez. Daha sonra netleştirilecek ürün tercihleri: Q06 Milestone bağlamını otomatik Markdown üretme veya istek üzerine dışa aktarma, Q08 İsteğe bağlı bölme yanında varsayılan task boyutu/otomatik bölme politikası, Q09 Bildirim kanalı ve sıklığı; blocker önceliği zaten kabul edildi.
+Bunlar dört gruplanmış insan kapısıdır; dört açık onay penceresi değildir. Bağımsız kod işleri beklemez. Daha sonra netleştirilecek ürün tercihleri: Q09 Bildirim kanalı ve sıklığı; blocker önceliği zaten kabul edildi.
 
 
 ## Tamamlanmış küçük teslimler
@@ -384,4 +384,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `6390ca3b214b1499adbd8324316158e37119e66fe6c535c9d99f3cd4cd5234bb`
+Kaynak fingerprint: `76e6e7ed23b4300e639969224e1341c211841bc50dab70cb68132a7c0b8bbf37`

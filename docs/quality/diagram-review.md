@@ -1,12 +1,12 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 23 belgede 44 Mermaid şeması — API-independent local delivery, 2026-10-14.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 23 belgede 45 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
 **2026-10-13 Blocker UI:** local-preview1 human block/resolve→append-only audit→board/start gate ile güncellendi;42/21sayımı aynı. Cached Mermaid gerçek render + SVG XML/source hash kaydı; önceki proof superseded history’de korundu.
 
-## Güncel inventory — 2026-10-14
+## Güncel inventory — 2026-10-19
 
 <!-- diagram-inventory:start -->
 | Belge | Mermaid sayısı |
@@ -33,7 +33,7 @@
 | [docs/quality/membership-002-result.md](../../docs/quality/membership-002-result.md) | 1 |
 | [docs/quality/project-review.md](../../docs/quality/project-review.md) | 1 |
 | [docs/quality/receiver-contract.md](../../docs/quality/receiver-contract.md) | 1 |
-| [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 1 |
+| [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 2 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -176,3 +176,18 @@ Local-preview1 adds startup WAL and human-selected persisted impact review (no t
 ## 18 Ekim 2026 — tüm kaynakların yeniden render doğrulaması
 
 44blok/23belge bu tur gerçekten render edildi; SVG XML, başlık/açıklama, viewBox ve source/artifact hashleri doğrulandı. Dört contact sheet ve değişen runtime/workflow görselleri incelendi. İki source/SVG güncellendi;42source aynı kaldı ama yeniden render edildi. Büyük ER/sequence için SVG zoom gerekir. [Bulgu ve düzeltmeler](review-remediation-2026-10-18.md); tekrarlanabilir scripts/render_diagrams.cjs ve CI artifact eklendi. Diyagram doğrulaması ürün/model/native kabulü değildir.
+
+
+## 18 Ekim — diyalogdan mevcut task durumuna
+
+Local-preview akışına hazırlanan source/context isteği, dış yanıt import, ayrı status review ve ortak workflow guard eklendi.44Mermaid yeniden render edildi; başarısızlık0. Değişen SVG/PNG tam görünümü incelendi, local-preview fallback güncellendi. [Ürün akışı ve sınırları](dialogue-status-runtime.md), [kaynak/hash render kaydı](diagram-render-results.json). Gerçek model anlam doğruluğu bu kontrolde ölçülmedi.
+
+
+18 Ekim ana akış denetimi: local-preview prepared request kutusu task+canonical karar/soru/ilişki context'ini gösterecek şekilde güncellendi;44kaynak gerçekten yeniden render edildi, başarısızlık0. [Üründeki açık bağlantılar](primary-flow-audit.md) diagram başarısıyla kapatılmaz.
+
+
+18 Ekim Q08-A/Q06-A: karar haritasındaki Q08 açık etiketi kabul edildi olarak düzeltildi;44kaynak render edildi, başarısızlık0. Bu yalnız ürün kararıdır, split/snapshot otomasyonu doğrulanmış sayılmaz.
+
+## 19 Ekim — lifecycle UI diagramı
+
+45 Mermaid kaynağı yeniden render edildi; başarısızlık0. Yeni workflow-ui-runtime #2 lifecycle diagramı ve gerçek browser cancellation-history ekran görüntüsü görsel olarak incelendi. Mevcut44kaynak değişmedi; eski render kayıtları superseded_history içinde korunur. Yeni diagram açık insan gerekçesi→impact→ayrı review/select/approve/apply→yeni event/History yolunu ve bilinmeyen/stale/bağımlılık reddini gösterir. [Kaynak/hash kaydı](diagram-render-results.json). Model/native/target kabulü değildir.

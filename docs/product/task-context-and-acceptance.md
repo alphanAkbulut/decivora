@@ -1,6 +1,6 @@
 # İşin olgunlaşma hikâyesi ve tamamlanma dosyası
 
-**Durum: kullanıcı ihtiyacına dayalı önerilen tasarım; uygulanmadı.** Kullanıcı güncel/seçili iş görünümünü seçti; fikirlerin neden değiştiğinin, işin hangi yoldan ilerlediğinin ve yapılan testlerin görülebilmesini istedi. Kalıcı olay geçmişine dayalı bağlam özeti öneriyoruz. Otomatik Markdown dosyası mı, isteğe bağlı export mu olacağı Q06'da soruldu; cevap bekliyor.
+**Durum: Q06-A/Q08-A ürün tercihleri 18 Ekim kabul edildi; aşağıdaki snapshot/split otomasyonları henüz uygulanmadı.** Kullanıcı güncel/seçili iş görünümünü seçti; fikirlerin neden değiştiğinin, işin hangi yoldan ilerlediğinin ve yapılan testlerin görülebilmesini istedi. Kalıcı olay geçmişine dayalı bağlam özeti öneriyoruz. Q06-A ile önemli karar değişimi/ana görev kapanışında otomatik yerel Markdown snapshot seçildi; uygulama hafızası esas kalır.
 
 ## İş bağlamı özeti
 
@@ -35,7 +35,7 @@ UI aynı kaydın Graph/Timeline görünümlerine gider. Başlangıçta küçük 
 
 ## Dosya biçimi ve sınırları
 
-Q06 kabul edilirse önerilen local çıktı: kullanıcı tarafından seçilmiş data/export dizininde `context/<project_id>/<task_id>/v0003.md`. Dosya yeni sürüm olarak yazılır; önceki sürüm üzerine yazılmaz. Manifest en güncel yetkili snapshot'ı gösterir. Runtime data/export varsayılan olarak uygulama kaynak reposunun dışında ve private kalır; otomatik Git commit/push, paylaşım veya tüm ekip için erişim açma yoktur.
+Q06-A kabul edildi; önerilen fiziksel çıktı düzeni: kullanıcı tarafından seçilmiş data/export dizininde `context/<project_id>/<task_id>/v0003.md`. Dosya yeni sürüm olarak yazılır; önceki sürüm üzerine yazılmaz. Manifest en güncel yetkili snapshot'ı gösterir. Runtime data/export varsayılan olarak uygulama kaynak reposunun dışında ve private kalır; otomatik Git commit/push, paylaşım veya tüm ekip için erişim açma yoktur.
 
 Kaynak metin, secret ve private konuşma gövdesi dosyaya varsayılan gömülmez; izinli kısa bilgi ve kontrollü referans kullanılır. Birden fazla kaynağın ACL'si türevin erişimini daraltır. Özel sürüm projeye ortak dosya diye kopyalanmaz. Yetki/purge değişikliği türevi stale/restricted yapar; yönetilen export manifest temizliği [retention planına](../architecture/storage-memory-capacity.md) tabidir. Kullanıcının dışarı kopyaladığı dosyaları geri çağırabildiğimiz söylenmez. Eski snapshot güncel karar gibi servis edilmez.
 
@@ -79,7 +79,7 @@ AC ve DoD iş başlamadan önerilir, kaynak gerekçesiyle görünür ve gerekli 
 
 ## İsteğe bağlı: Alt görevlere böl ve takip et
 
-**Q08 / DEC-16 önerisi; varsayılan tercih henüz onaylanmadı.** Task menüsünde `Alt görevlere bölerek takip et` eylemi öneriyoruz. Ayrı teslimi, kabul kriteri, sorumlusu veya bağımlılığı olan anlamlı parçalar task; küçük uygulama adımları checklist olur. Her işi otomatik mikro görevlere bölmek önerilmez.
+**Q08-A / DEC-16 kabul edildi (18 Ekim).** Task menüsünde `Alt görevlere bölerek takip et` eylemi öneriyoruz. Ayrı teslimi, kabul kriteri, sorumlusu veya bağımlılığı olan anlamlı parçalar task; küçük uygulama adımları checklist olur. Her işi otomatik mikro görevlere bölmek önerilmez.
 
 Örnek (sentetik): **“Geçmiş konuşmaları güvenle aktar”** ana işi altında **kaynak/izin önizlemesi**, **tekrarları ayıklayan devam edilebilir import**, **tarihsel kararların uzlaştırılması** ayrı test edilebilir alt çıktılardır. “Dosyayı aç / alanı oku / başlığı göster” gibi adımlar bağımsız çıktı değilse checklist'te kalır. Ana işin ayrıca uçtan uca kabul koşulu bulunur.
 
@@ -105,7 +105,7 @@ Ana işte örneğin **“Gerekli alt işlerin 3/5'i güncel kanıtla doğruland�
 
 Child tamamlanması: kendi güncel AC/DoD/kanıt kapıları. Parent tamamlanması: kendi kapıları **ve** onaylı gerekli child koşulları; yalnız child sayacı yeterli değildir. Child eklemek/silmek execution grant veya bütçe tavanını değiştirmez. Her küçük adım için bildirim/dosya/model üretmek zorunlu değildir; Q06 milestone export ve Q09 bildirim tercihi ayrı kalır.
 
-**Planlı doğrulama:** self-parent/cycle/cross-project reddi; eski onay ve eşzamanlı sonuç; retry ile tek bölme; mevcut child/evidence korunumu; zorunlu child iptali; child passed ama parent entegrasyon kanıtı eksik; sonradan eklenen child ve değişen payda; parent/child toplam bütçe. Uygulama dilimleri T13d ve T20d, Q08 tercih kapısından sonra açılır. Şimdilik tasarım önerisidir; test edilmedi.
+**Planlı doğrulama:** self-parent/cycle/cross-project reddi; eski onay ve eşzamanlı sonuç; retry ile tek bölme; mevcut child/evidence korunumu; zorunlu child iptali; child passed ama parent entegrasyon kanıtı eksik; sonradan eklenen child ve değişen payda; parent/child toplam bütçe. Uygulama dilimleri T13d ve T20d, Q08 tercih kapısı cevaplandı. Teknik otomasyon geliştirmesi açık; bu kabul ile uygulanmış/test edilmiş sayılmaz.
 
 ## Mevcut bağlam ve kabul senaryoları
 

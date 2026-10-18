@@ -13,14 +13,14 @@ class SchemaTests(unittest.TestCase):
   f.core.create_budget(f.owner,'p','r',100)
   value=service.authorize_analysis(f.owner,'p',source_id=source['id'],key='g',root_run='r',reserved_tokens=80,provider='fixture',model='fixture-model',max_output_tokens=40,expires_at=int(time.time())+60,reason='Synthetic scoped approval')
   schema=json.loads((Path(__file__).resolve().parents[2]/'manifests/conversation-dispatch-grant.schema.json').read_text())
-  self.assertEqual(set(value),set(schema['required']));self.assertEqual(set(value),set(schema['properties']));self.assertFalse(schema['additionalProperties'])
+  self.assertEqual(set(value),set(schema['required']));self.assertEqual(set(schema['properties'])-set(value),{'context_sha256'});self.assertFalse(schema['additionalProperties'])
 
  def test_decision_hypothesis_request_matches_actual_service_arguments(self):
   import inspect
   from packages.domain.decision_impact import DecisionImpactService
   schema=json.loads((Path(__file__).resolve().parents[2]/'manifests/local-decision-impact.schema.json').read_text())
   fields=set(inspect.signature(DecisionImpactService.preview).parameters)-{'self','scope','project'}
-  self.assertEqual(set(schema['required']),fields|{'action'})
+  self.assertEqual(set(schema['required']),(fields-{'rationale_tasks','decision_active'})|{'action'})
   self.assertEqual(set(schema['properties']),fields|{'action'})
   self.assertEqual(schema['properties']['action']['const'],'preview_decision_change')
   self.assertFalse(schema['additionalProperties'])

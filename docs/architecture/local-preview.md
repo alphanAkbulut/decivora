@@ -9,11 +9,21 @@ flowchart TB
     L["Decivora.command<br/>Python 3.12 + tarayıcı"] --> S["127.0.0.1 local UI<br/>ephemeral session cookie"]
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
     G --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
-    I0 --> MG["Current human dispatch grant<br/>source hash / provider / model / output cap / run / expiry"]
+    I0 --> DQ["Prepared request: source + tasks + decisions<br/>questions + recorded relations / context hash<br/>No model dispatch or egress permission"]
+    DQ --> EX["User sends to an existing LLM<br/>External identity and usage unverified"]
+    EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]
+    DI --> K0
+    I0 --> MG["Current human dispatch grant<br/>source + approved dialogue context hash / provider / model / output cap / run / expiry"]
     MG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
     M0 --> US["Record actual or unknown usage<br/>overrun persists and blocks workspace dispatch"]
     US --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
+    K0 --> SP["Existing task status proposal<br/>Pending / Deferred / Rejected / Applied"]
+    SP --> SG["Separate human status review<br/>current task + workflow + related context recheck"]
+    SG --> WG["Shared workflow guards<br/>allowed transition + AC + blockers + evidence"]
+    WG --> B
+    WG --> IR
+    WG --> CD
     K0 --> E0["Mevcut kayıt karşılaştırması<br/>explicit seçili öneri onayı"]
     E0 --> D
     G --> F0["Human Blocked / resolve<br/>task + blocker revision; reason + next action"]
@@ -35,6 +45,10 @@ flowchart TB
     A --> D[("Private SQLite / WAL at startup<br/>Task records + acceptance_contract events")]
     G --> IP["Human selected decision hypothesis<br/>record + knowledge + authz recheck"]
     IP --> IX[("Persisted impact preview<br/>unknown rationale stays review; no task mutation")]
+    IX --> IE["Explicit revised task scope<br/>Prepare typed update groups"]
+    IE --> IS["Select groups / reject / defer<br/>separate human approve"]
+    IS --> IA["Apply current review<br/>atomic task version + events + audit"]
+    IA --> D
     IX --> H
     D --> W["Current contract kontrolü<br/>task_work_started audit"]
     W --> B["In Progress kartı<br/>implementation claim"]
@@ -51,9 +65,10 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z,K0,E0,MG,BR,US guard;
+    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA guard;
     class D,W,B,H,R,N stored;
-    class Q,P,U,I0,M0 launcher;
+    class Q,P,U,I0,M0,DQ,SP launcher;
+    class EX pending;
     class C stored;
     class V pending;
 ```
@@ -116,3 +131,10 @@ LocalApp startup configures WAL before serving; no per-request journal changes o
 ## 18 October 2026 — review remediation
 
 Current prerequisite completion is checked recursively in the same read snapshot (64 depth/256 evaluations; incomplete context cannot preserve Done). File-change/blocker/unavailable-checker invalidation propagates; historical Done audits remain. Model analysis additionally requires a current source/hash/provider/model/run/expiry human grant and atomic reservation plus started receipt. Actual usage is recorded; unknown holds its reservation; overrun blocks workspace reservation. No automatic unfreeze, paid activation or SQL schema change. Token reservation is not a verified money ceiling; live provider/policy/price/token estimation remains a separate pilot gate.
+
+
+18 Ekim ana akış denetimi: hazırlanmış context artık canonical karar/gereksinim vb. kayıtları, soru revision/selection ve kayıtlı ilişki state'lerini içerir; tam transcript/history değil, etiketli excerpt ve bounded snapshot'tır. [Açık bağlantılar](../quality/primary-flow-audit.md) native capture, gerçek semantik kalite, kaynaklı ilişki/soru köprüsü, impact UI apply ve izinli next-agent memory'yi ayrı tutar. Bu diagram bütün ürünün uygulandığı iddiası değildir.
+
+## 19 October 2026 — explicit lifecycle review UI
+
+The local task panel can approve a recorded task→Decision rationale link. The decision preview supports an explicit retirement/restoration hypothesis and human-confirmed single-decision task rationale. Complete current impact proposals can prepare a lifecycle group; separate select→approve→apply uses existing guards. Cancelled and reopened task history is projected from canonical events; graph links are retained. No automatic inference, generic resolution editor or canonical decision-retirement command is implied. [Workflow and rendered diagram](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).

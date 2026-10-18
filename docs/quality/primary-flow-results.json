@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-18",
+  "audit_scope": "Primary product seams: capture, extraction/context, reconciliation, graph/impact, review/apply, verification, continuation",
+  "local_mirror_has_git": false,
+  "github_main_checked": "48f4783f1d1007695649cbbee1c60c0c015c58ac",
+  "new_changes_published": false,
+  "product_automatic_flow_complete": false,
+  "claim_basis": "critical-path code inspection plus synthetic seam probes and tests; not exhaustive per-line security review",
+  "runtime_tests": {
+    "passed": 351,
+    "new_this_audit": 4
+  },
+  "browser_tests": {
+    "passed": 9,
+    "real_model_inference": false,
+    "prior_decisions_questions_in_request": true
+  },
+  "diagram_renders": {
+    "total": 44,
+    "failed": 0
+  },
+  "real_model_calls": 0,
+  "paid_calls": 0,
+  "fixes": [
+    "decision_question_relation_context",
+    "latest_analysis_readback"
+  ],
+  "remaining_critical_seams": [
+    "native_capture",
+    "real_model_transport_activation_and_quality",
+    "semantic_relation_and_decision_change_proposals",
+    "pending_question_late_answer_bridge",
+    "impact_review_apply_ui",
+    "source_audience_grant_and_continuation_context"
+  ],
+  "source_hash_inventory": {
+    "apps/__init__.py": "47480264075ce6ee19e6323a443e3aee5bee93efad8c45475f33aaae9616b022",
+    "apps/hub/__init__.py": "aed9a407261741329c7d21c3644b09136303bb159c1cfcb9f2da02a9216a80e7",
+    "apps/hub/__main__.py": "740311bda05ccaa4d8b6f545ece164b5ada970fbca892be7e0858b5c29efdec1",
+    "apps/hub/authority_demo.py": "b5b23af83821960673fbda56822c7bac1278928069d3e110d586551aa4fd7d1c",
+    "apps/hub/binding_demo.py": "326f77b1972e31e3cd1f74b6511cf0e813fd9b58a4dd92074860f33cf5c5df7e",
+    "apps/hub/connection_demo.py": "87d05c55e3145ed104e99bc308a1d0393fa3a018c6976902ea528822c6d7a0cc",
+    "apps/hub/core_demo.py": "0dd25f52aeb288e8ae1a52cb21da6ac1d2e1aa04a3ad0b7d4d074708646ee7c7",
+    "apps/hub/impact_demo.py": "2bf3ce158133fc6d73d1b5c41b335cfd23b3b4b161b1c67dba23a4353ac9b149",
+    "apps/hub/lifecycle_demo.py": "846b02decb103e8f27c8aae77ae364e813c701305b260aa4a17ffea1ab740f9e",
+    "apps/hub/project_store_demo.py": "4fb717e2185d6338562dfb32524123fd13f4810eb4a1915fded7609c6774d419",
+    "apps/hub/review_demo.py": "c6fb6f13cb794413680c1fb6acb371b6ebd7c7ec49790ca6047ca562a7926ee4",
+    "apps/hub/runtime.py": "db1b703196b01cf1cdf4253a7be649168be29fba2298ded4f9eebbf11891c7dd",
+    "apps/local_ui/__init__.py": "de040daeb3189bdc1ea3c24385f94307f76511cf6314a96930bff05b9bd8ebb3",
+    "apps/local_ui/app.js": "fbeffaab0be1f908e59a8f63b91a50a400f53dd4106e2810154903c71fa30a1f",
+    "apps/local_ui/i18n.js": "858827e882b03532fdaffaadbc22aa435d259515bbc9d3639befdf3fe3eb32fd",
+    "apps/local_ui/index.html": "fafb447ed67b402f898d03eac2e24c071ec616fae88401ad338e18d172c32504",
+    "apps/local_ui/locales.js": "6256291319334c5ffc55a29dbb8168852ecf92daa74affd921f93ab8c53892a3",
+    "apps/local_ui/server.py": "92b0210a5b59a0c5a54e4a686a7e1efe643435a3902651553cba58cfd8be7cde",
+    "apps/local_ui/workspace.css": "21a8fc6d8ee99c744511287e58e9bad48a3ae0cfb36afcef5a1858c96c3d251b",
+    "packages/__init__.py": "b6b9fb48eee9ae9ccd0e0dff4bffdb4c6855690a006ebd61ce0af8a3433ba8c4",
+    "packages/capture/__init__.py": "2c1f8b75cba5ad569e9cd257317f5d8f16183345e3b8453449c89d64ac49fe3c",
+    "packages/capture/conversations.py": "315f71ddb8deee93ca35bb503433430f845ab6f596fe2015f7b6c01954a025ed",
+    "packages/capture/dialogue_review.py": "497d0c89863bbcfedeffd887e17cb77306959cd76dfa7c7db022e317fe8d86b0",
+    "packages/capture/extraction.py": "5a91b79e0c436758de7555d62c7ac32a487d51f62afe9ecb5cd78e6816bc96ed",
+    "packages/capture/responses_extractor.py": "ddf48ef002a53bb0f707891ddb3b032f9fd432730ea4849b1dfa4af6d10bd163",
+    "packages/domain/__init__.py": "98c0f3770f3e3831c40ea6431b1e6e1fa37b3a53fe8beb1c320d43b536d69f22",
+    "packages/domain/acceptance.py": "e346f2e375e9d128da578cb8ff50519f1109b06edf421029c85137f9feb95fa5",
+    "packages/domain/agent_proposals.py": "cb4201b45a486eecfc79ed6273cfecf2274de4c71de1e61a1d0150a6fc7dd950",
+    "packages/domain/connection_authorization.py": "6c5f466f16528a64c052f67167a1211f659b48ec2107a24e1ca56e07eb23a9b4",
+    "packages/domain/decision_impact.py": "67943778622837958d5e60e8f208d3a647b17a2d60944e30f4c5b571871ed4b4",
+    "packages/domain/project_binding.py": "a2c2ed812c3cc8331b08d0d426fc6c33999f0e2617532026d5d2c97c692c6aca",
+    "packages/domain/question_decisions.py": "c1eb3b002aaa2e5e9f128da0f2bd41d1e0f00ff7758f0428c50240c8b9e6e39a",
+    "packages/domain/questions.py": "e91e121f21614912eb0529017f0aabd87264dfdf3a487d7dc7e275c0bd767616",
+    "packages/domain/review.py": "2113a75dd10f0b383f3b15041f9aa7fb0bf4fc67ee4fa70a227dd9d2a317f562",
+    "packages/domain/source_event.py": "5ded937a3ada173fdefdbb0bbb2e0f8232be88c085be25bcc2ee38f00ed1163c",
+    "packages/domain/task_blockers.py": "8fee3103ec58aeb2a0d03489eed603e5f15f89b94cdd39cffe47ba4da0bcf8f7",
+    "packages/domain/task_lifecycle.py": "b007e2772722b0a3b7a57870ccc2586894a4f9e347239436db647f48420c3a31",
+    "packages/domain/task_workflow.py": "618adc3dbceeed35700a1e6a89db572b3fa097ef252e29847bc4bb372f6e3c1d",
+    "packages/domain/work_routing.py": "da7ad296b032658bdd53ddde157d87f24162ed6474e4ec83c10a33b36cd0f9ac",
+    "packages/impact/__init__.py": "49ac11bf90a410b14dbb7ccd10e61dd201757bd924b20fadd8fef7b665fdbb7d",
+    "packages/impact/graph.py": "455b99fb7d85bd1d1120192f8cd2df2d3da3e9eedbb6681bb8513fbdd2a17e70",
+    "packages/impact/preview.py": "d5be53a9df74595af9d9f74dab616d91a11fa679c9d5e45b60781fb63e520f1e",
+    "packages/mcp/__init__.py": "bbe9f8b9f94aa02d14fe370dcf62f112d9c9fee1580a2be400ab0f8fd774fa3b",
+    "packages/mcp/server.py": "01cbddca52d3d3df6e0326cdc4ec6a347a6aee60df09c33470230254ac59c037",
+    "packages/reconciliation/__init__.py": "fc21c5fd07949aa20a282204e8dc8871e1c7848f04b09b0b84d98027a1efb1e8",
+    "packages/reconciliation/core.py": "bca7bb1df002994d27e0e5054d7c13eafd9e78e8fae8b5805d664f8c8dec86c1",
+    "packages/storage/__init__.py": "f613da6fe8b595a463c6c038b6c29077c0b68022f10e08a72e9695724a47f298",
+    "packages/storage/local_authority.py": "33891b2d3f39287edc4d770343479013864c2ca083c09f551328e1957d1f7267",
+    "packages/storage/local_backup.py": "762229a3399866c5aab8c29aa24566b478f114a91df2993627853fb8fb56f2fa",
+    "packages/storage/project_store.py": "37715ba9896e61c2d3d3f7e45ec5e4104047c135999712cd42242a12bfbcdef3",
+    "packages/storage/workspace.py": "88cfc192da05aec1c0b84561dcaff7244cfa8dfeda6f5121f2bd30bf5a139b83",
+    "packages/verification/__init__.py": "d2a567f0702337f1bc33465e550b3e698d32b1d2557f690ea44cdaaf27f8c827",
+    "packages/verification/files.py": "30aec653d147d56a3a1965fdf1e4902c8e33b378962c0e8c4fed431a93bbe1b9"
+  },
+  "root_tests": {
+    "passed": 48
+  },
+  "source_package": {
+    "file": "Decivora-local-primary-flow.zip",
+    "files": 44,
+    "contains_user_data": false,
+    "sha256": "8445645e7c9f3c6c86cff96a548aff77cd10e307498dd333d1d3755932e8479f"
+  }
+}

@@ -48,7 +48,7 @@ class ConversationService:
             if len(self._rows(project,'conversation_imported'))>=32:raise ContractError('conversation_limit','Preview supports 32 imports per project; accepted sources remain intact.')
             source=dict(id='source_'+sha[:24],sha256=sha,text=text,source_kind='manual_paste',actor=scope.principal_id,received_at=time.time(),revision=1)
             self._put(scope,project,'conversation_imported',source);return source
-    def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason):
+    def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason,context_sha256=None):
         """Trusted human configuration only; never inferred from source/model text."""
         identifier(source_id);identifier(key);identifier(root_run)
         if type(reserved_tokens) is not int or not 1<=reserved_tokens<=100000 or type(expires_at) is not int or expires_at<=time.time():raise ContractError('invalid_model_grant','Explicit bounded reservation and future expiry required.')
@@ -59,6 +59,11 @@ class ConversationService:
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
             if not self.core.db.execute('SELECT 1 FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.core.workspace,project,root_run)).fetchone():raise ContractError('budget_unavailable','Create the explicit shared run budget first.')
             grant=dict(id=key,source=source_id,sha256=source['sha256'],root_run=root_run,reserved_tokens=reserved_tokens,provider=provider,model=model,max_output_tokens=max_output_tokens,expires_at=expires_at,reason=reason,actor=scope.principal_id,authority_revision=self.core.authority.revision())
+            if context_sha256 is not None:
+                from packages.capture.dialogue_review import DialogueReviewService
+                if type(context_sha256) is not str:raise ContractError('invalid_model_grant','Exact prepared context digest required.')
+                DialogueReviewService(self.core)._package(scope,project,source_id,context_sha256)
+                grant['context_sha256']=context_sha256
             old=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==key),None)
             if old:
                 if old!=grant:raise ContractError('idempotency_conflict','Dispatch grant identity changed.')
@@ -69,13 +74,18 @@ class ConversationService:
         identifier(source_id)
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
-            old=next((a for a in self._rows(project,'conversation_analysis_finished') if a['source']==source_id),None)
+            old=next((a for a in reversed(self._rows(project,'conversation_analysis_finished')) if a['source']==source_id),None)
             if old:return old
             if extractor is None:return dict(source=source_id,status='Waiting for model',reason='Model access and a bounded data/spend grant are not configured.',candidates=[],model_calls=0)
             if getattr(extractor,'authorized',False) is not True:raise ContractError('model_grant_required','Trusted provider/data/budget authorization required.')
             if any(a['source']==source_id for a in self._rows(project,'conversation_analysis_started')):raise ContractError('analysis_unknown','Previous dispatch may have consumed usage; no automatic retry.')
             grant=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==getattr(extractor,'grant_id',None)),None)
             if not grant or grant['source']!=source_id or grant['sha256']!=source['sha256'] or grant['provider']!=extractor.provider or grant['model']!=getattr(extractor,'model',None) or grant['max_output_tokens']!=getattr(extractor,'max_output_tokens',None) or grant['actor']!=scope.principal_id or grant['authority_revision']!=self.core.authority.revision() or grant['expires_at']<=time.time():raise ContractError('model_grant_required','Current source/provider/model/budget grant required.')
+            if getattr(extractor,'dialogue_review',False):
+                from packages.capture.dialogue_review import DialogueReviewService
+                prepared=DialogueReviewService(self.core)._prepare(scope,project,source_id=source_id)
+                if grant.get('context_sha256')!=prepared['context_sha256']:raise ContractError('model_grant_required','This grant does not authorize the exact current task context.')
+                extractor=extractor.bind_dialogue_request(prepared['request'])
             reservation_key='analysis_'+source_id
             self.core._reserve(scope,project,grant['root_run'],reservation_key,grant['reserved_tokens'])
             self._put(scope,project,'conversation_analysis_started',dict(source=source_id,sha256=source['sha256'],provider=extractor.provider,grant=grant['id'],root_run=grant['root_run'],reservation_key=reservation_key))
@@ -84,7 +94,12 @@ class ConversationService:
         try:
             raw=extractor(source);raw_text=canonical(raw)
             if len(raw_text.encode())>16384:raise ContractError('output_limit','Model output exceeds bounded local review size.')
-            result=anchored(source,raw)
+            if getattr(extractor,'dialogue_review',False):
+                from packages.capture.dialogue_review import DialogueReviewService
+                with self.core.read_snapshot():
+                    self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+                    result=DialogueReviewService(self.core).validate_response(scope,project,source,raw)
+            else:result=anchored(source,raw)
             finished=dict(source=source_id,status='Ready for review',**result,model_calls=1,provider=extractor.provider)
         except Exception:
             finished=dict(source=source_id,status='Analysis failed',candidates=[],coverage='unknown',model_calls=1,provider=extractor.provider,reason='Provider response failed the output/source contract; usage may be unknown.')
@@ -107,12 +122,14 @@ class ConversationService:
         with self.core.read_snapshot():
             self.core.scope(scope,project);rows=self.core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id LIMIT 101',(self.core.workspace,project)).fetchall();existing=dict(records=[dict(id=r[0],version=r[1],body=json.loads(r[2])) for r in rows[:100]],truncated=len(rows)>100,knowledge_revision=self.core.project(scope,project)['knowledge_revision']);finished=self._rows(project,'conversation_analysis_finished');started=self._rows(project,'conversation_analysis_started');applied=self._rows(project,'conversation_candidates_applied');result=[]
             for source in self._rows(project,'conversation_imported'):
-                analysis=next((a for a in finished if a['source']==source['id']),None);candidates=[]
+                analysis=next((a for a in reversed(finished) if a['source']==source['id']),None);candidates=[]
                 if analysis:
                     for c in analysis['candidates']:
                         typed=dict(type=c['type'],title=c['title'],description=c['quote'],intent=c['intent'],source_ref=source['id'])
                         candidates.append(dict(c,comparison=reconcile(typed,existing['records']),applied=any(c['id'] in a['selected'] for a in applied if a['source']==source['id'])))
-                result.append(dict(source=source,analysis=analysis,candidates=candidates,status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
+                from packages.capture.dialogue_review import DialogueReviewService
+                status_changes=DialogueReviewService(self.core).statuses(scope,project,source['id'],analysis or {})
+                result.append(dict(source=source,analysis=analysis,candidates=candidates,status_changes=status_changes,status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
             return dict(imports=result,knowledge_revision=existing['knowledge_revision'],automatic_capture=False)
     def accept(self,scope,project,*,source_id,key,selected,base_revision):
         identifier(source_id);identifier(key)

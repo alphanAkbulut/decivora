@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-19",
+  "scope": "Human-confirmed single-decision lifecycle UI, existing guards preserved",
+  "runtime_tests": 368,
+  "root_tests": 48,
+  "browser_flows_passed": 10,
+  "diagrams_rendered": 45,
+  "paid_calls": 0,
+  "automatic_rationale_extraction": false,
+  "model_quality_verified": false,
+  "canonical_decision_mutation": false,
+  "general_resolution_editor": false,
+  "source_hashes": {
+    "packages/domain/decision_impact.py": "442513aa79b23972d852c8818e328111d11497bcceb65b02cd31fba912add3a1",
+    "apps/local_ui/server.py": "93fa1db341df88424196973feae1596185011d606586b395fa0bb3733a3d848f",
+    "apps/local_ui/app.js": "f06b1957cbbdf8fb3c37d9287759f024bcd49e5e7e5b95b860c80df5b2e7d7bc",
+    "tests/runtime/test_lifecycle_ui.py": "00597ece3ff83de6c25f5ce2dcbfe4d8470f638ec6533bc7ce57ede6efb2dbbb",
+    "tests/ui-lifecycle.cjs": "c9290bb5f3ef6f4e22f4be7d53954b548cb92a238cc9b4474368615df59ef41a",
+    "manifests/local-decision-impact.schema.json": "65512b64553a04f2e09a83524ca3497213de350e38cb73a8dc48ca05815850da",
+    "manifests/impact-review-commands.schema.json": "23ca75eba2e50bdf9018ea93df237f53a6c5b123d1570ea6039c8ce4448ea8a8"
+  },
+  "evidence": [
+    "separate prepare/select/approve/apply",
+    "current requirements and downstream cancellation guard",
+    "cancelled closed view and history",
+    "reopen appends event and preserves edges",
+    "typed waiting labels and filters"
+  ],
+  "known_limits": [
+    "single confirmed decision rationale only",
+    "semantic inference and native capture not activated",
+    "other unresolved requirements outside recorded graph require human review"
+  ],
+  "live_local": {
+    "current_service": true,
+    "origin": "http://127.0.0.1:53610",
+    "user_database_unchanged": true,
+    "private_backup_integrity": "ok",
+    "model_active": false
+  }
+}

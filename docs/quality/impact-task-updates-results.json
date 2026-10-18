@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-18",
+  "delivery": "Impact preview to human-edited task scope review and separate select/approve/apply",
+  "runtime_tests": 358,
+  "new_runtime_tests": 7,
+  "browser_flows_passed": 9,
+  "diagrams_rendered": 44,
+  "paid_calls": 0,
+  "model_inference_tested": false,
+  "automatic_semantic_proposals": false,
+  "cancellation_ui": false,
+  "task_changed_before_apply": false,
+  "task_version_after_apply": 2,
+  "source_receipt_invalidates_old_approval": true,
+  "github_published": false,
+  "source_hashes": {
+    "packages/domain/decision_impact.py": "bd8d457680cb3be7d0bf22535f87bfc3dfeaa3475adf939a126601d467effd85",
+    "packages/storage/workspace.py": "3dd7dca3bbbba31ea15de77a668783dbf949292f18864220e214b970a055e5d1",
+    "apps/local_ui/server.py": "769982c31fd1fa41f312627e0527c9f03fd48d3fb654e2d2bc097d5ea8650582",
+    "apps/local_ui/app.js": "176b800b26e695473deeeaf5d98de495ef1879655f18bd6c27ef6b5b4c1ed72a",
+    "apps/local_ui/locales.js": "1fdce550e39d4bd06f908a0b38efaa0bce858c28a2b1854be917cc221976f411",
+    "tests/runtime/test_impact_changes_ui.py": "6f6cd1d01294cc6c5ae1583a6907be5e5cacc119636a0a33b91fcfea9aff3032",
+    "tests/ui-impact.cjs": "e2cf9f78a1059cfba242e59c57a268e6712795f5ad749ba018e23b1a4b064e49",
+    "manifests/impact-review-commands.schema.json": "22aa49798fcdbe6985ab60bcf0123f7dbf61a30412c28ef31f988c1987c1ae87"
+  },
+  "live_local": {
+    "origin": "http://127.0.0.1:53610",
+    "current_code_served": true,
+    "user_database_unchanged": true,
+    "backup_integrity": "ok",
+    "model_active": false
+  },
+  "original_scope_retained_after_apply": true,
+  "last_verification_note": "Full358runtime+9browser before read-only original-scope display refinement; targeted7runtime+impact browser rerun after that refinement."
+}

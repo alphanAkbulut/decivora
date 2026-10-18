@@ -1,5 +1,7 @@
 # Mevcut durum
 
+[Güncel ürün resmi ve kalan kod işleri — 18 Ekim](current-state.md):12geliştirme ana işi,2entegrasyon/release kapısı,3P0 kabul/kalite işi açık;6gelecek-faz işi ayrı. Ana/alt görevler toplanmaz.
+
 2026-10-14 — **P1a çekirdek geliştirme + açık P0 kanıt işleri**.
 
 | Alan | Durum |
@@ -708,3 +710,23 @@ Ek aynı-tur gözlem: [seçili corpus README için gerçek GitHub readback](../q
 ## 18 Ekim 2026 — teyit edilen repo bulguları giderildi
 
 [Altı bulgu ve aksiyon](../quality/review-remediation-2026-10-18.md): effective prerequisite completion, kalıcı overrun/workspace freeze, source/model/output-cap bağlı dispatch grant+budget settlement, partial coverage UX, CI browser/render job ve güncel README_LOCAL.330runtime test;44Mermaid yeniden render. Gerçek model/para/context/policy/host/release kapıları açık; ana task sayımı değişmedi.
+
+## 18 Ekim 2026 — diyalogdan mevcut görev durumuna çalışan dilim
+
+[Dialogue status runtime](../quality/dialogue-status-runtime.md): kullanıcı mevcut LLM'den yapılandırılmış yanıt aktarabilir; aynı schema configured Responses adapter'da da desteklenir. Yeni görev + mevcut task status claim ayrı öneridir; insan kabul/ret/ertelemesi kalıcıdır. Apply kaynak/task/workflow/ilişkili context güncelliğini ve ortak AC/blocker/verification kurallarını kontrol eder. Modeller ve capture varsayılan kapalı; gerçek anlam doğruluğu veya MVP kabulü tamamlanmadı. Ana görev sayımı değiştirilmedi.
+
+## 18 Ekim 2026 — ana ürün yolculuğu yeniden denetlendi
+
+[Ana akış denetimi](../quality/primary-flow-audit.md): source/schema/fixture başarıları otomatik ürün kabulü değildir. Native capture, gerçek çıkarım, kaynaklı semantik ilişki/karar etki köprüleri, impact UI apply ve izinli next-agent context kritik açık bağlantılar. Tekrarlanabilir probe3canonical kayıt→0ilişki,1PendingDecision→0QuestionRequest,UIimpact→review/unknown,MCPprivate→0record üretti. Bu tur model context'ine karar/soru/ilişki snapshot'ı eklendi; cached analyze readback en yeni sürüme düzeltildi. Ana task durumu değiştirilmedi.
+
+## 18 Ekim — Q08-A ve Q06-A açık kullanıcı cevabıyla kabul edildi
+
+Exact cevap “1A / 2A”: anlamlı ana/alt görev planı + checklist + tek inceleme/onay; önemli karar değişimi/ana görev kapanışında kaynaklı yerel Markdown snapshot. T13d/T20d PROPOSED→TODO; T20c snapshot geliştirmesi açık. DB/event log esas, dosya türev; uygulama/ücret/egress/GitHub push yetkisi değildir. Ana işler7/14/9 aynı; iki eski karar beklemesi kaldırıldı.
+
+## 18 Ekim — impact→task scope update kullanıcı akışı kodlandı
+
+T13/T19: etki kartında görev description düzenle, review hazırla, grup seç, ayrı onayla ve uygula; ret/erteleme kalıcı. Prepare/select/approve görevi değiştirmez; Apply atomic yeni version oluşturur. Manual source receipt değişimi eski impact approval'ını invalid eder. [Teslim kaydı](../quality/workflow-ui-runtime.md#18-ekim--etki-kartından-görev-değişikliğini-uygulama). Otomatik semantic proposal/AND-OR authoring/cancel/native açık; ana task Done yapılmadı.
+
+### 19 Ekim — API-bağımsız lifecycle UI
+
+T13/T19/T20: task→Decision gerekçe ilişkisinin açık onayı, tek karar gerekçeli retirement/restoration impact girdisi, ayrı lifecycle select→approve→apply ve iptal/yeniden açma geçmişi kullanıcı arayüzüne bağlandı. Ana görevler kendi tam kabulüyle açık kalır; gerçek model/host/target kapıları kapanmadı. [Kod, sınırlar ve doğrulama](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).

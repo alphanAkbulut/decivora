@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string"
+    },
+    "coverage": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "partial",
+        "unknown"
+      ]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Decision",
+              "PendingDecision",
+              "Task"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "intent": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "reported",
+              "planned",
+              "rejected"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "title",
+          "quote",
+          "intent"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "context_sha256": {
+      "type": "string"
+    },
+    "status_changes": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task_id",
+          "stage",
+          "quote"
+        ],
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "Backlog",
+              "To Do",
+              "In Progress",
+              "In Review",
+              "Awaiting Verification",
+              "Done"
+            ]
+          },
+          "quote": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "source_id",
+    "source_sha256",
+    "coverage",
+    "candidates",
+    "context_sha256",
+    "status_changes"
+  ],
+  "additionalProperties": false
+}

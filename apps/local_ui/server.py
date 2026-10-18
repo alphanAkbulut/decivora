@@ -66,7 +66,7 @@ class LocalApp:
                 body=json.loads(raw)
                 if body['type']!='Task':continue
                 workflow=TaskWorkflowService(core).view(owner,selected,rid)
-                tasks.append(dict(id=rid,version=version,body=body,acceptance=AcceptanceService(core).view(owner,selected,rid),workflow=workflow,file_bindings=__import__('packages.verification.files',fromlist=['FileVerificationService']).FileVerificationService(core).bindings(selected,rid),routing=RoutingService(core).view(owner,selected,rid),blocker=TaskBlockerService(core).view(owner,selected,rid),lane=workflow['stage']))
+                tasks.append(dict(id=rid,version=version,body=body,lifecycle=core.task_history(owner,selected,rid),acceptance=AcceptanceService(core).view(owner,selected,rid),workflow=workflow,file_bindings=__import__('packages.verification.files',fromlist=['FileVerificationService']).FileVerificationService(core).bindings(selected,rid),routing=RoutingService(core).view(owner,selected,rid),blocker=TaskBlockerService(core).view(owner,selected,rid),lane=workflow['stage']))
             task_sources={}
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_candidates_applied'",(core.workspace,selected)):
                 receipt=json.loads(raw)
@@ -76,26 +76,40 @@ class LocalApp:
                         rid=match.get('record_id',match.get('id')) if isinstance(match,dict) else match
                         if not rid:raise ContractError('source_link_unavailable','Conversation attachment identity is unavailable.')
                         task_sources.setdefault(rid,[]).append(receipt['source'])
+            for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_status_reviewed'",(core.workspace,selected)):
+                receipt=json.loads(raw)
+                if receipt['state']=='Applied':task_sources.setdefault(receipt['task'],[]).append(receipt['source'])
             relations=[dict(origin=o,target=t,kind=k,revision=rev,state=status,valid_from=start,valid_to=end) for o,t,k,rev,status,start,end in core.db.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? ORDER BY origin,target,kind LIMIT 501',(core.workspace,selected))]
             timeline=[dict(sequence=seq,stream=stream,version=v,kind=kind) for seq,stream,v,kind in core.db.execute('SELECT seq,stream,version,kind FROM events WHERE workspace=? AND project=? ORDER BY seq DESC LIMIT 101',(core.workspace,selected))]
             audit_timeline=[]
-            for seq,action,raw in core.db.execute("SELECT seq,action,ref FROM audit WHERE workspace=? AND project=? AND action IN ('task_stage','criterion_evidence','file_criterion_evidence','file_criterion_binding','work_routing','agent_changeset_submitted','agent_changeset_approved','agent_changeset_applied','agent_changeset_rejected') ORDER BY seq DESC LIMIT 100",(core.workspace,selected)):
+            for seq,action,raw in core.db.execute("SELECT seq,action,ref FROM audit WHERE workspace=? AND project=? AND action IN ('conversation_status_reviewed','task_stage','criterion_evidence','file_criterion_evidence','file_criterion_binding','work_routing','agent_changeset_submitted','agent_changeset_approved','agent_changeset_applied','agent_changeset_rejected') ORDER BY seq DESC LIMIT 100",(core.workspace,selected)):
                 item=json.loads(raw);audit_timeline.append(dict(sequence=seq,action=action,task=item.get('task'),status=item.get('stage',item.get('status'))))
             impact_reviews=[]
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC LIMIT 5",(core.workspace,selected)):
                 impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
             with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
-            return dict(impact_reviews=impact_reviews,selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+            return dict(impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
     def command(self,body):
         selected='personal'
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
             selected=identifier(body['project_id']);body=body['command']
-        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','preview_decision_change','work_routing','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action in ('prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes'):
+                from packages.domain.review import ReviewService
+                fields={'prepare_task_lifecycle':{'action','key','impact_run','tasks','state','reason'},'prepare_impact_updates':{'action','key','impact_run','updates'},'select_impact_changes':{'action','key','selection_id','selected'},'approve_impact_changes':{'action','selection_id'},'apply_impact_changes':{'action','selection_id','approval'},'decide_impact_changes':{'action','key','action_id','decision'}}
+                if set(body)!=fields[action]:raise ContractError('invalid_request','Exact impact review fields required.')
+                service=ReviewService(core)
+                if action=='prepare_task_lifecycle':return DecisionImpactService(core).prepare_lifecycle(owner,selected,**{k:v for k,v in body.items() if k!='action'})
+                if action=='prepare_impact_updates':return DecisionImpactService(core).prepare_task_updates(owner,selected,**{k:v for k,v in body.items() if k!='action'})
+                if action=='select_impact_changes':return service.select(owner,selected,body['key'],body['selection_id'],body['selected'])
+                if action=='approve_impact_changes':return dict(approval=service.approve(owner,selected,body['selection_id']))
+                if action=='apply_impact_changes':return service.apply(owner,selected,body['selection_id'],body['approval'])
+                return service.decide(owner,selected,body['key'],body['action_id'],body['decision'])
             if action=='preview_decision_change':
-                if set(body)!={'action','decision','decision_version','base_revision','key'}:raise ContractError('invalid_request','Exact decision-preview fields required.')
+                if set(body) not in ({'action','decision','decision_version','base_revision','key'},{'action','decision','decision_version','base_revision','key','rationale_tasks','decision_active'}):raise ContractError('invalid_request','Exact decision-preview fields required.')
                 return DecisionImpactService(core).preview(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action in ('bind_file_check','run_file_check'):
                 fields={'action','task','task_version','contract_version','criterion','path','expected_sha256','reason','key'} if action=='bind_file_check' else {'action','task','task_version','contract_version','criterion','binding_revision','key'}
@@ -113,22 +127,26 @@ class LocalApp:
             if action=='work_routing':
                 if set(body)!={'action','task','task_version','base_revision','work_class','executor','human_suitable','reason','key'}:raise ContractError('invalid_request','Exact routing fields required.')
                 return RoutingService(core).set(owner,selected,**{k:v for k,v in body.items() if k!='action'})
-            if action=='link_dependency':
+            if action in ('link_dependency','link_task_rationale'):
                 if set(body)!={'action','task','target','base_revision','key'}:raise ContractError('invalid_request','Exact dependency approval fields required.')
                 with core.transaction():
                     core.scope(owner,selected,write=True,human=True);core.active(owner,selected)
-                    service=TaskWorkflowService(core);service._task(selected,body['task']);service._task(selected,body['target'])
+                    service=TaskWorkflowService(core);service._task(selected,body['task'])
+                    if action=='link_dependency':service._task(selected,body['target'])
+                    else:
+                        target=core.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(core.workspace,selected,identifier(body['target']))).fetchone()
+                        if not target or json.loads(target[0])['type']!='Decision':raise ContractError('invalid_rationale','Select a recorded decision in the same project.')
                     from packages.storage.project_store import digest
-                    signature=digest(canonical(body))
-                    prior=next((json.loads(raw) for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='task_dependency_approved'",(core.workspace,selected)) if json.loads(raw)['key']==body['key']),None)
+                    signature=digest(canonical(body));audit_action='task_dependency_approved' if action=='link_dependency' else 'task_rationale_approved'
+                    prior=next((json.loads(raw) for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action=?",(core.workspace,selected,audit_action)) if json.loads(raw)['key']==body['key']),None)
                     if prior:
                         if prior['signature']!=signature:raise ContractError('idempotency_conflict','Dependency identity changed.')
                         return prior['result']
                     if type(body['base_revision']) is not int or body['base_revision']!=core.project(owner,selected)['knowledge_revision']:raise ContractError('stale_base','Refresh the dependency preview.')
                     if service._stage(selected,body['task'])['stage']=='Cancelled':raise ContractError('task_cancelled','Cancelled task cannot add an active dependency.')
-                    plan=core.plan(owner,selected,body['key'],[dict(op='link',origin=body['task'],target=body['target'],kind='depends_on')])
+                    plan=core.plan(owner,selected,body['key'],[dict(op='link',origin=body['task'],target=body['target'],kind='depends_on' if action=='link_dependency' else 'required_by')])
                     result=core._apply(owner,plan,core._approve(owner,plan))
-                    core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(core.workspace,selected,owner.principal_id,'task_dependency_approved',canonical(dict(key=body['key'],signature=signature,result=result))))
+                    core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(core.workspace,selected,owner.principal_id,audit_action,canonical(dict(key=body['key'],signature=signature,result=result))))
                     return result
             if action in ('workflow_transition','criterion_evidence'):
                 fields={'action','task','task_version','base_revision','stage','reason','key','scope_reviewed'} if action=='workflow_transition' else {'action','task','task_version','contract_version','criterion','status','reference','note','key'}
@@ -138,6 +156,13 @@ class LocalApp:
             if action=='task_blocker':
                 if set(body) not in ({'action','task','task_version','base_revision','blocked','reason','next_action'},{'action','task','task_version','base_revision','blocked','reason','next_action','gate','waiting_kind','owner'}):raise ContractError('invalid_request','Exact blocker fields required.')
                 return TaskBlockerService(core).set(owner,selected,**{k:v for k,v in body.items() if k!='action'})
+            if action in ('prepare_dialogue_review','import_dialogue_response','review_dialogue_status'):
+                from packages.capture.dialogue_review import DialogueReviewService
+                fields={'prepare_dialogue_review':{'action','source_id'},'import_dialogue_response':{'action','source_id','response_text'},'review_dialogue_status':{'action','source_id','proposal_id','decision','key','reason','scope_reviewed'}}
+                if set(body)!=fields[action]:raise ContractError('invalid_request','Exact dialogue review fields required.')
+                service=DialogueReviewService(core)
+                method={'prepare_dialogue_review':service.prepare,'import_dialogue_response':service.import_response,'review_dialogue_status':service.review_status}[action]
+                return method(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action in ('import_conversation','analyze_conversation','accept_candidates'):
                 service=ConversationService(core)
                 if action=='import_conversation':

@@ -39,3 +39,20 @@ class TaskBlockerTests(unittest.TestCase):
         with self.assertRaises(ContractError):self.command(task='missing')
         with self.assertRaises(ContractError):self.command(project='other')
         self.assertEqual(self.app.state()['tasks'][0]['blocker']['revision'],0)
+    def test_waiting_labels_follow_current_blocker_and_do_not_change_stage(self):
+        expected={'decision':'Awaiting Decision','approval':'Awaiting Approval','input':'Awaiting External Input','permission':'Awaiting Permission','budget':'Awaiting Budget','retry':'Awaiting Retry','manual':None}
+        for revision,(kind,label) in enumerate(expected.items()):
+            self.command(base_revision=revision*2,waiting_kind=kind,gate='finish',owner='Owner')
+            task=self.app.state()['tasks'][0];assessment=task['workflow']['assessment']
+            self.assertEqual(assessment['waiting_labels'],[label] if label else [])
+            self.assertFalse(assessment['start_blocked']);self.assertTrue(assessment['finish_blocked'])
+            self.assertEqual(task['lane'],'To Do')
+            self.command(base_revision=revision*2+1,blocked=False)
+
+        self.assertEqual(self.app.state()['tasks'][0]['workflow']['assessment']['waiting_labels'],[])
+    def test_server_supplies_authoritative_workflow_preset_and_transitions(self):
+        from packages.domain.task_workflow import STAGES,TRANSITIONS
+        state=self.app.state()
+        self.assertEqual(state['workflow_preset'],list(STAGES))
+        self.assertEqual({k:set(v) for k,v in state['workflow_transitions'].items()},TRANSITIONS)
+        self.assertNotIn('Blocked',state['workflow_preset'])

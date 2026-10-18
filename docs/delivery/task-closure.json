@@ -1127,15 +1127,15 @@
     "T13d": {
       "parent": "T13",
       "source": "docs/delivery/backlog.md",
-      "status": "PROPOSED",
+      "status": "TODO",
       "dependencies": [
         "T11b",
         "T13c"
       ],
-      "classification": "future_proposed",
+      "classification": "integration",
       "owner": "T13",
       "first_use_gate": "T13",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "18 October explicit Q08-A acceptance: planned feature integration, not verified implementation; existing scoped core closure remains separate.",
       "required_for_parent_closure": false
     },
     "T13e": {
@@ -1421,16 +1421,16 @@
     "T20d": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "PROPOSED",
+      "status": "TODO",
       "dependencies": [
         "T13d",
         "T14b",
         "T20b"
       ],
-      "classification": "future_proposed",
+      "classification": "integration",
       "owner": "T20",
       "first_use_gate": "T20",
-      "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
+      "reason": "18 October explicit Q08-A acceptance: planned feature integration, not verified implementation; existing scoped core closure remains separate.",
       "required_for_parent_closure": false
     },
     "T20f": {

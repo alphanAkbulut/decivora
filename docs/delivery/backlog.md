@@ -233,6 +233,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
 
+- **18 Ekim kod teslimi:** [Diyalog→görev/durum](../quality/dialogue-status-runtime.md): kaynak/current task context bağlı yanıt; task create ve status önerileri ayrı review; provider/import ortak doğrulaması. Gerçek serbest metin kalitesi ve otomatik capture açık; ana T09 kapanmadı.
+
 ## T10 — Temel reconciliation
 
 - **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T09. **Kapsam ID:** KNO-02,KNO-03.
@@ -518,17 +520,17 @@ T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatc
 | T14b / T13c,T14 | IN_PROGRESS: AC/DoD→evidence matrisi ve current completion predicate | CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir |
 | T20c / T07,T14b,T20b | Ana task context snapshot, evrim sekmesi, template ve seçilen export yolu | CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen |
 
-T20c ilk sürümde deterministik kaynaklı şablondur; modelle anlatı güzelleştirme opsiyonel ve bütçeli kalır. Otomatik Markdown Q06'ya bağlıdır; kullanıcı reposuna otomatik commit/push yetkisi çıkarılmaz.
+T20c ilk sürümde deterministik kaynaklı şablondur; modelle anlatı güzelleştirme opsiyonel ve bütçeli kalır. Otomatik Markdown Q06-A ile kabul edildi (18 Ekim); uygulama açık; kullanıcı reposuna otomatik commit/push yetkisi çıkarılmaz.
 
 ### İzinli geçmiş ve isteğe bağlı görev bölme
 
 | Alt dilim / bağımlılık | Teslim / durum | Gözlenebilir kabul |
 |---|---|---|
 | T22b / T06,T09b,T18c,T21b,T22 | **TODO / P1b:** kabul edilen Q07/1C için kaynak manifest'i ve checkpoint; aktif iş önceliği; geçmiş intake öncesi OPEN-08 retention kapısı | [1C sözleşmesi](../architecture/connection-and-context.md): tekrar import, restart, eski kararın geç gelmesi, eksik coverage, bütçe defer ve işlenmemiş arşiv korunumu |
-| T13d / Q08,T11b,T13c | **PROPOSED / P1b:** isteğe bağlı split önizlemesi, part_of, AC eşlemesi ve atomik onay | [Split sözleşmesi](../product/task-context-and-acceptance.md): cycle/ACL/stale/retry/yarım işlem; mevcut parent/kanıt korunur |
-| T20d / Q08,T13d,T14b,T20b | **PROPOSED / P1b:** parent/child liste+graph, sayım ve iptal/blocked görünümü | Gerekli child iptali başarı sayılmaz; tüm child'lar passed olsa da parent AC/DoD eksikse completed olmaz; değişen payda ve toplam bütçe görünür |
+| T13d / Q08,T11b,T13c | **TODO / P1b:** onaylı Q08-A split önizlemesi, part_of, AC eşlemesi ve atomik onay | [Split sözleşmesi](../product/task-context-and-acceptance.md): cycle/ACL/stale/retry/yarım işlem; mevcut parent/kanıt korunur |
+| T20d / Q08,T13d,T14b,T20b | **TODO / P1b:** parent/child liste+graph, sayım ve iptal/blocked görünümü | Gerekli child iptali başarı sayılmaz; tüm child'lar passed olsa da parent AC/DoD eksikse completed olmaz; değişen payda ve toplam bütçe görünür |
 
-Q08 yanıtı beklerken T13d/T20d tamamlandı veya kesin MVP taahhüdü sayılmaz; mevcut kapsamın önerilen ayrıntısıdır. T22b gerçek veri veya ücretli analiz izni içermez. T24c geçmiş import ilk maliyetini günlük tüketimden ayırıp aynı kalite ölçütleriyle raporlar.
+Q08-A 18 Ekim kabul edildi: T13d/T20d planlı TODO; uygulanmış veya tamamlanmış sayılmaz. Mevcut çekirdek kapanış sınırları korunur, bu feature etkinleşmeden kendi entegrasyon kabulü gerekir. T22b gerçek veri veya ücretli analiz izni içermez. T24c geçmiş import ilk maliyetini günlük tüketimden ayırıp aynı kalite ölçütleriyle raporlar.
 
 ## Yönetim merkezi ve hata takibi alt dilimleri
 
@@ -752,3 +754,15 @@ TG-01/02 belge düzeltmeleri runtime görevlerini complete yapmaz. TG-12–23 ca
 T03f/T03b kısmi kod teslimi: [source-only request, output validator, candidate bridge, evaluator ve checkpoint kodu](../../spikes/semantic-chain/README.md) uygulandı. T01f gold/human ve native/ROI kanıtları açık; T03c/Q15-A conditional yatırım/runtime kararı kabul edildi. [Hazırlık/blocker matrisi](implementation-readiness.md) teknik işi gerçek erişim/model/maliyet ve insan kalite incelemesinden ayırır. Bu işler için bütün gold veya future fazların tamamlanması beklenmez. 28 yeni test ve [sonuç](../quality/semantic-readiness-results.json); sonraki gerçek model dispatch/not_run/usage sınırı açık. AI-authored S02 candidate draft contract/import proof’udur; model kalite benchmark’ı değildir.
 
 T03f/T03b ek P0 dilimi: [token/context preflight](../quality/token-preflight.md) ve 17 fixture testi uygulandı. Mevcut S02 hashleri değişmedi; unknown cap/bütçe blocked sonucunu veriyor, gerçek inference yok. T09d/T21b/T21c için çağrı öncesi hesaplama örüntüsü sınandı; gerçek adapter, trusted policy, atomik reservation, para ve dispatch enforcement işleri TODO kalır. Rapor [ayrı sonuç kaydı](../quality/token-preflight-results.json) taşır.
+
+
+## 18 Ekim — ana akış entegrasyon denetimi
+
+[Açık bağlantılar ve mevcut görev sahipleri](../quality/primary-flow-audit.md): mevcut görevler korunur, yeni ana görev eklenmedi. T09/T10 context genişletme ve en yeni analiz readback düzeltmesi uygulandı; kaynaklı relation/question/decision-change önerisi, T13/T19 impact review/apply UI ve T18/T22 izinli continuation akışı açık. Native adapter ve gerçek semantik kalite kanıtı yerine fixture başarıları kullanılamaz.
+
+
+18 Ekim T13/T19 task-scope integration: [çalışan UI ve HTTP apply](../quality/workflow-ui-runtime.md#18-ekim--etki-kartından-görev-değişikliğini-uygulama). Mevcut etki kartı explicit task edit planını ReviewService select/approve/apply'a bağlar; lifecycle-cancel ve semantik relation/decision proposal kabulü açık.
+
+### 19 Ekim — T13/T19/T20 entegrasyon teslimi
+
+İnsan doğrulamalı tek karar gerekçesi için task-rationale link→impact→lifecycle group→selection→approval→apply UI eklendi. Cancelled kapalı görünüm ve compensating reopen History'de izlenir; eski dependency/parent/requirement/Done guard'ları korunur. Yeni main task veya parent Done üretilmedi. Otomatik semantik gerekçe/ilişki yazarı ve genel terminal resolution kapsamı bu işlerde açık kalır. [Doğrulama kaydı](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).

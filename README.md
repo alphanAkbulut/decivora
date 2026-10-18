@@ -1,5 +1,12 @@
 # Decivora
 
+19 Ekim yerel kod teslimi: [insan doğrulamalı gerekçeden iptal/yeniden açma](docs/quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü), typed waiting rozetleri ve sunucu kaynaklı workflow. Gerçek model/native capture ve tam MVP kabulü açık.
+
+
+**Ana ürün akışı henüz tamamlanmadı:** [güncel kod denetimi, yeniden üretilen kopukluklar ve öncelikler](docs/quality/primary-flow-audit.md). Çalışan yerel parçalar gerçek native/semantic uçtan uca kabulün yerine geçmez.
+
+18 Ekim çalışan yerel dilim: [konuşmadan yeni görev ve mevcut göreve durum önerisi](docs/quality/dialogue-status-runtime.md). Kaynak/context doğrulaması, ayrı insan incelemesi ve ortak workflow/kanıt kontrolü; gerçek model kalitesi/native capture kabulü açık.
+
 ### Living project memory. Decisions, actions, and evidence stay connected.
 
 **Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.

@@ -8,6 +8,7 @@ from packages.domain.task_blockers import TaskBlockerService
 
 STAGES=('Backlog','To Do','In Progress','In Review','Awaiting Verification','Done')
 TRANSITIONS={'Backlog':{'To Do'},'To Do':{'Backlog','In Progress'},'In Progress':{'In Review'},'In Review':{'In Progress','Awaiting Verification'},'Awaiting Verification':{'In Progress','In Review','Done'},'Done':{'In Progress'}}
+WAITING_LABELS={'decision':'Awaiting Decision','approval':'Awaiting Approval','input':'Awaiting External Input','permission':'Awaiting Permission','budget':'Awaiting Budget','retry':'Awaiting Retry'}
 RESULTS={'passed','failed','pending','not_run','unknown'}
 
 class TaskWorkflowService:
@@ -151,34 +152,37 @@ class TaskWorkflowService:
         blocks=[r[0] for r in self.core.db.execute("SELECT origin FROM edges WHERE workspace=? AND project=? AND target=? AND kind='depends_on' AND state='asserted'",(self.core.workspace,project,task))]
         if not self._context_component(project,task)['complete']:blockers.append(dict(kind='context',gate='finish',reason='Recorded context exceeds local assessment bounds.',next_action='Review or narrow context before completion.',owner='unassigned',source='recorded_context_limit'))
         start=any(b['gate'] in ('start','both') for b in blockers);finish=any(b["gate"] in ("finish","both") for b in blockers)
-        return dict(blocked=bool(blockers),start_blocked=start,finish_blocked=finish,blockers=blockers,dependencies=dependencies,blocks=blocks,readiness='Blocked' if start else 'Needs Review' if dependencies and any(d['status']=='unknown' for d in dependencies) else 'Ready' if contracts(self.core,project,task) and not self._verification(project,task)['stale'] else 'Needs Review',coverage='recorded_relations_only')
+        return dict(waiting_labels=sorted({WAITING_LABELS[b['kind']] for b in blockers if b['kind'] in WAITING_LABELS}) if record['body'].get('execution')!='cancelled' else [],blocked=bool(blockers),start_blocked=start,finish_blocked=finish,blockers=blockers,dependencies=dependencies,blocks=blocks,readiness='Blocked' if start else 'Needs Review' if dependencies and any(d['status']=='unknown' for d in dependencies) else 'Ready' if contracts(self.core,project,task) and not self._verification(project,task)['stale'] else 'Needs Review',coverage='recorded_relations_only')
     def view(self,scope,project,task):
         with self.core.read_snapshot():
             self.core.scope(scope,project);self.core.active(scope,project)
             return dict(self._stage(project,task),assessment=self._assessment(project,task))
     def transition(self,scope,project,*,task,task_version,base_revision,stage,reason,key,scope_reviewed=False):
         with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);identifier(key)
-            if stage not in STAGES or type(scope_reviewed) is not bool or type(task_version) is not int or type(base_revision) is not int:raise ContractError('invalid_workflow','Typed workflow state and revision required.')
-            if type(reason) is not str or not reason.strip() or len(reason)>1024:raise ContractError('invalid_workflow','Explicit transition reason required.')
-            request=dict(task=task,task_version=task_version,base_revision=base_revision,stage=stage,reason=reason,key=key,scope_reviewed=scope_reviewed)
-            rows=self._rows(project,task,'task_stage');old=next((r for r in rows if r['key']==key),None)
-            if old:
-                if old['actor']!=scope.principal_id or old['request_digest']!=digest(canonical(request)):raise ContractError('idempotency_conflict','Workflow identity was reused.')
-                return self.view(scope,project,task)
-            record=self._task(project,task);current=self._stage(project,task)
-            if record['version']!=task_version or current['revision']!=base_revision:raise ContractError('stale_workflow','Task or workflow changed; refresh.')
-            if stage not in TRANSITIONS.get(current['stage'],set()):raise ContractError('invalid_transition','This workflow transition is not available.')
-            verification=current['verification'];assessment=self._assessment(project,task)
-            if stage=='In Progress':
-                if not verification['contract_version'] or verification['stale']:raise ContractError('acceptance_required','Approve current acceptance criteria before starting work.')
-                if assessment['start_blocked']:raise ContractError('task_blocked','Resolve start-gate impediments first.')
-            if stage=='Done':
-                if not verification['passed']:raise ContractError('verification_required','All required current AC/DoD evidence must pass.')
-                if assessment['finish_blocked']:raise ContractError('task_blocked','Resolve completion-gate impediments first.')
-                if not scope_reviewed:raise ContractError('scope_review_required','Explicit current scope/impact review acknowledgment required.')
-            self._save(scope,project,'task_stage',dict(task=task,task_version=task_version,stage=stage,revision=base_revision+1,reason=reason,key=key,request_digest=digest(canonical(request)),contract_version=verification['contract_version'],recorded_at=time.time(),format='decivora-task-stage-2',basis_version=2,completion_basis=self._completion_basis(project,task) if stage=='Done' else None))
+            return self._transition(scope,project,task=task,task_version=task_version,base_revision=base_revision,stage=stage,reason=reason,key=key,scope_reviewed=scope_reviewed)
+
+    def _transition(self,scope,project,*,task,task_version,base_revision,stage,reason,key,scope_reviewed=False):
+        self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);identifier(key)
+        if stage not in STAGES or type(scope_reviewed) is not bool or type(task_version) is not int or type(base_revision) is not int:raise ContractError('invalid_workflow','Typed workflow state and revision required.')
+        if type(reason) is not str or not reason.strip() or len(reason)>1024:raise ContractError('invalid_workflow','Explicit transition reason required.')
+        request=dict(task=task,task_version=task_version,base_revision=base_revision,stage=stage,reason=reason,key=key,scope_reviewed=scope_reviewed)
+        rows=self._rows(project,task,'task_stage');old=next((r for r in rows if r['key']==key),None)
+        if old:
+            if old['actor']!=scope.principal_id or old['request_digest']!=digest(canonical(request)):raise ContractError('idempotency_conflict','Workflow identity was reused.')
             return self.view(scope,project,task)
+        record=self._task(project,task);current=self._stage(project,task)
+        if record['version']!=task_version or current['revision']!=base_revision:raise ContractError('stale_workflow','Task or workflow changed; refresh.')
+        if stage not in TRANSITIONS.get(current['stage'],set()):raise ContractError('invalid_transition','This workflow transition is not available.')
+        verification=current['verification'];assessment=self._assessment(project,task)
+        if stage=='In Progress':
+            if not verification['contract_version'] or verification['stale']:raise ContractError('acceptance_required','Approve current acceptance criteria before starting work.')
+            if assessment['start_blocked']:raise ContractError('task_blocked','Resolve start-gate impediments first.')
+        if stage=='Done':
+            if not verification['passed']:raise ContractError('verification_required','All required current AC/DoD evidence must pass.')
+            if assessment['finish_blocked']:raise ContractError('task_blocked','Resolve completion-gate impediments first.')
+            if not scope_reviewed:raise ContractError('scope_review_required','Explicit current scope/impact review acknowledgment required.')
+        self._save(scope,project,'task_stage',dict(task=task,task_version=task_version,stage=stage,revision=base_revision+1,reason=reason,key=key,request_digest=digest(canonical(request)),contract_version=verification['contract_version'],recorded_at=time.time(),format='decivora-task-stage-2',basis_version=2,completion_basis=self._completion_basis(project,task) if stage=='Done' else None))
+        return self.view(scope,project,task)
     def evidence(self,scope,project,*,task,task_version,contract_version,criterion,status,reference,note,key):
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);identifier(key);identifier(criterion)

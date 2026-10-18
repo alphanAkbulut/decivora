@@ -1,5 +1,15 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+Son durum özeti: [current-state.md](current-state.md). Kanonik ana durum7Done/14InProgress/9ToDo; MVPye giden17ana iş,6gelecek faz. Q06/Q08 kabul edilmiş; work-breakdown deferred_choices listesinden çıkarıldı.
+
+19 Ekim: [gerekçeli lifecycle UI](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü) iptal/yeniden açma ve history kullanıcı bağlantısı tamamlandı; tek karara bağlı gerekçe insan tarafından açıkça doğrulanır. Genel AND/OR yazarı, semantic relation ve resolution editor açık.
+
+Önceki kod teslimi: [impact task scope review/apply](../quality/workflow-ui-runtime.md#18-ekim--etki-kartından-görev-değişikliğini-uygulama). Preview artık explicit task edits→select→separate approve→apply UI/HTTP sunuyor. Önceki “UI yalnız preview” tespiti bu alt kapsamda giderildi; automatic source relation/decision proposal ayrı açık; cancellation/reopen UI 19 Ekim diliminde bağlandı. Manual conversation receipts eski impact approval'ı invalid eder.
+
+Öncelikli güncel devir: [ana ürün akışı denetimi](../quality/primary-flow-audit.md). Asıl kullanıcı değeri zinciri tamamlanmadı; native/model/relation/question/impact-apply/private-resume kopukluklarını oku. Son context düzeltmesini full automatic memory diye sunma.
+
+18 Ekim ek teslim: [diyalogdan görev/durum](../quality/dialogue-status-runtime.md). Yeni import UI + provider context schema ortak doğrulaması; varsayılan model kapalı. Gerçek semantik kalite/native capture ve güvenli ücretli aktivasyon kapıları açık.
+
 Bu repo kaynak sohbet açılmadan ürünün amacı, evrimi, kapsamı, proposed mimarisi ve sıradaki işi anlaşılabilecek şekilde hazırlanmıştır. **Doküman tamlığı, uygulama doğruluğu veya modelin mutlaka doğru anlayacağı garantisi değildir.** Q15-A ile ilk uygulama iskeleti [T04](../../apps/hub/README.md) kendi12test/clean-start kabulüyle tamamlandı; T05f in-memory project/binding çekirdeği ve CLI demo da [uygulandı](../quality/project-binding-core.md); [T05g project store](../quality/project-store.md) restart/idempotency/rollback ile uygulandı; [T05h local authority](../quality/local-authority.md) persisted revision/deny sağlıyor; login/token ve gerçek ingress/production backup hazır sayılmaz. Yerel/manual ACL, queue, backup/restore [integrated core](../quality/integrated-core.md) ile uygulandı; [kritik inceleme](../quality/core-critical-review.md) CR01–06 düzeltmelerini ve109runtime test sınırını tutar. Model/capture/native/ROI/gerçek kullanıcı UI kabulü açık.
 
 [T12/T12a](../quality/impact-preview.md) local manual preview tamamlandı:130runtime test, immutable persisted proposals, source/graph/authz snapshot ve stale guard. `impact-demo` altı oracle case'ini gerçekten çalıştırır; task state değişmez. Sıradaki mevcut iş T13 ayrı review/onay; T14 gerçek evidence/completion.

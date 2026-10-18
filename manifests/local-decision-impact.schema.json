@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Local explicit decision-retirement hypothesis request",
+  "title": "Local explicit decision retirement/restoration hypothesis request",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -29,7 +29,41 @@
     "key": {
       "type": "string",
       "minLength": 1
+    },
+    "decision_active": {
+      "type": "boolean",
+      "default": false
+    },
+    "rationale_tasks": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "task": {
+            "type": "string",
+            "minLength": 1
+          },
+          "task_version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "task",
+          "task_version"
+        ]
+      }
     }
   },
-  "description": "Existing project envelope wraps this command. Human scoped preview only; no decision/task mutation or approval. Server identity, current authority, record and knowledge revisions are independently checked."
+  "description": "Existing project envelope wraps this command. Human scoped preview only; no decision/task mutation or approval. Server identity, current authority, record and knowledge revisions are independently checked.",
+  "dependentRequired": {
+    "decision_active": [
+      "rationale_tasks"
+    ],
+    "rationale_tasks": [
+      "decision_active"
+    ]
+  }
 }

@@ -1,5 +1,17 @@
 # Decivora — İlk yerel uygulama
 
+**Karar etkisinden görev güncelleme:** Questions and decisions → Preview decision impact → etkilenen görevi seç ve önerilen kapsamı düzenle → Prepare task changes → değişiklik grubunu seç → Select task changes → Approve selected changes → Apply approved task changes. Son adıma kadar görev değişmez. Bu dilim görev kapsamını günceller; kararı emekli etmez ve görevi iptal etmez.
+
+**İptal ve yeniden açma (19 Ekim):** Task Overview → Task rationale decision → Approve rationale link ile mevcut karara gerekçe bağlantısı eklenebilir. Questions and decisions ekranında retirement/restoration varsayımını seç; yalnız tek gerekçesi bu karar olan bağlı task'ları Confirm task rationale altında açıkça doğrula ve Preview çalıştır. Uygun adayda Prepare cancellation/reopening review → grup seçimi → ayrı onay → Apply yolu vardır. Başka aktif gereksinim/parent/downstream engeli varsa apply reddedilir. Cancelled Closed work filtresinde, olaylar History'de korunur; yeniden açma To Do'ya yeni event ile döner. Bu, canonical kararı emekli etmez veya semantik gerekçeyi otomatik çıkarmaz.
+
+
+## Konuşmadan görev ve durum önerisi — 18 Ekim
+
+Konuşmayı **Conversations** ekranına aktar. Model bağlantısı kapalıysa kaynak kartındaki **Use a response from your existing LLM** bölümünü aç; **Prepare LLM request** ile seçili metin, proje görevleri, canonical karar/kayıtlar, sorular ve kayıtlı ilişkileri içeren isteği incele. Bunu hangi LLM'ye göndereceğini sen seçersin; uygulama kendiliğinden dışarı göndermez. LLM'nin JSON yanıtını **Validate and import response** ile aktar.
+
+Yeni görev adaylarını seçip kaydet. Mevcut göreve ilişkin durum önerisi için önce/sonra, kaynak alıntısı ve inceleme gerekçesini kontrol et; kabul et, reddet veya ertele. “Done” beyanı kanıt yerine geçmez; mevcut workflow/AC/DoD kuralları uygulanır. Context değişmişse yeni istek/yanıt hazırlanır; eski kayıt korunur. Otomatik session capture ve gerçek model kalite kabulü henüz tamamlanmadı. Dış LLM kullanımının token/para tüketimi bu import yolunda bilinmiyor; Decivora tarafından sınırlandırılamaz.
+
+
 Mac'te **Decivora.command** dosyasına çift tıkla. Terminal açılır ve yerel uygulama tarayıcıda başlar. Terminal uygulama açıkken çalışır; UI'daki “Uygulamayı kapat” düğmesiyle durdurabilirsin. Python3.12 gerekir; bu Mac'teki Codex runtime'ı launcher tarafından bulunur. Başka bir Mac'te kurulu Codex runtime veya `python3.12` gerekir. Signed installer / tam MVP değildir.
 
 **İki ayrı ekran var:** Bu program kendi görevlerini eklediğin ürün önizlemesidir; ilk açılışta “Benim projem” boş gelir ve sütunlar0 gösterir. Decivora’nın geliştirme backlog/teslim kayıtları ayrı [geliştirme takip ekranındadır](https://github.com/alphanAkbulut/decivora/blob/main/docs/delivery/progress-guide.md); geliştirme görevleri kişisel veritabanına otomatik kopyalanmaz.

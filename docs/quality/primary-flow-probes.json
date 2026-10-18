@@ -1,0 +1,31 @@
+{
+  "synthetic": true,
+  "real_model_calls": 0,
+  "source_to_records": {
+    "count": 3,
+    "types": [
+      "Decision",
+      "PendingDecision",
+      "Task"
+    ]
+  },
+  "pending_decision_question_bridge": {
+    "pending_records": 1,
+    "question_inbox_entries": 0
+  },
+  "automatic_relationships": {
+    "edges_after_accept": 0
+  },
+  "ui_impact_adapter": {
+    "action": "review",
+    "after": null,
+    "canonical_state_unchanged": true,
+    "rationale_supplied_by_ui": null
+  },
+  "mcp_private_source_resume": {
+    "canonical_records": 3,
+    "agent_brief_records": 0,
+    "raw_sources_included": false,
+    "privacy_filter_preserved": true
+  }
+}
