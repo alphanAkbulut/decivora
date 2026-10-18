@@ -78,3 +78,7 @@ Soru/geç cevap satırındaki manuel-only sınırının bir bölümü kapandı: 
 ### 19 Ekim devamı — mevcut kayıtlar için relation→impact köprüsü
 
 Dialogue/model JSON artık source quote ile mevcut Task→Decision required_by ve Task→Task depends_on önerisini taşır. İnsan review sonrası gerçek graph event ve kaynaklı makbuz atomik uygulanır. Uygulanan rationale kartı açık insan retirement hipoteziyle mevcut impact önizlemesine götürür. Genel AND/OR gerekçe, yeni candidate endpoint, supersession/decision change ve gerçek model kalitesi henüz kapanmadı. [Güncel uygulama](dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine).
+
+### 19 Ekim devamı — kaynaklı karar replacement
+
+Dar Decision→Decision supersedes önerisi human review ile canonical edge ve kaynaklı makbuza bağlandı. Karttan onay öncesi/sonrası etki önizlemesi var. Eski kayıt/gerekçe/Done geçmişi korunur; yeni graph bağlamı current verification'ı geçersiz kılabilir. Global validity/AND-OR karar planı ve gerçek anlam doğruluğu açık. [Güncel sınır](dialogue-status-runtime.md#19-ekim--konuşmadan-kararın-yerini-alan-seçim).

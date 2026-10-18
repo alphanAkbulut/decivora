@@ -141,7 +141,8 @@
             "type": "string",
             "enum": [
               "required_by",
-              "depends_on"
+              "depends_on",
+              "supersedes"
             ]
           },
           "quote": {

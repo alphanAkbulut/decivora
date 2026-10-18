@@ -790,3 +790,7 @@ Konuşma çıktısında mevcut kayıtlara source-bound required_by/depends_on ö
 ### 19 Ekim — T06/T09/T18/T22/T23 credential koruması
 
 Yeni manuel konuşmada pre-storage redaction, sanitized-source hash/quote, provider/import/context/MCP guard, HTTP display maskesi ve POSIX DB/sidecar izinleri kodlandı. Log gövdesi tutulmaz. Geçmiş DB/yedek purge veya encryption yapılmadı; mevcut lifecycle/release kapıları açık. [Kapsam ve sınırlar](../quality/credential-redaction-runtime.md). Parent durumları değişmez.
+
+### 19 Ekim — T09/T10/T11/T13/T19 karar replacement
+
+Source-bound Decision NEW supersedes OLD önerisi, onay öncesi/sonrası impact önizlemesi, ayrı insan onayıyla atomik lineage kaydı kodlandı. Conflicting replacement/stale endpoint/cycle guard'ları ve tarihsel Done korunarak current verification invalidation doğrulanır. [Kapsam](../quality/dialogue-status-runtime.md#19-ekim--konuşmadan-kararın-yerini-alan-seçim). Genel validity/AND-OR, semantic/native kabulü ve parent görevler açık; yeni ana task yok.

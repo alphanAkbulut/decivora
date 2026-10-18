@@ -16,7 +16,7 @@ def main():
             from packages.domain.questions import QuestionService
             with server.app.core() as core:
                 owner=core.authority.issue_scope('local_owner')
-                plan=core.plan(owner,'personal','dialogue_context_fixture',[dict(op='create',id='d',body=dict(type='Decision',title='Existing storage decision fixture',description='SQLite chosen for local operation'))])
+                plan=core.plan(owner,'personal','dialogue_context_fixture',[dict(op='create',id='d',body=dict(type='Decision',title='Existing storage decision fixture',description='SQLite chosen for local operation')),dict(op='create',id='d2',body=dict(type='Decision',title='Alternative storage fixture',description='Alternative recorded storage choice'))])
                 core.apply(owner,plan,core.approve(owner,plan))
                 QuestionService(core).present(owner,'personal',question='Q_CONTEXT',base_revision=0,text='Which scope follows?',options=[dict(id='a',label='Keep scope'),dict(id='b',label='Review scope')])
         if os.environ.get('DECIVORA_IMPACT_UI_FIXTURE')=='1':

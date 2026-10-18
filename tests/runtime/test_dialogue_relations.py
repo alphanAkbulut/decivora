@@ -13,8 +13,8 @@ class DialogueRelationTests(unittest.TestCase):
  def setUp(self):
   self.fx=fixtures.WorkflowTests();self.fx.setUp();self.addCleanup(self.fx.doCleanups);self.core=self.fx.core;self.owner=self.fx.owner;self.sources=ConversationService(self.core);self.dialogue=DialogueReviewService(self.core);self.relations=DialogueRelationService(self.core)
   self.decision=self.fx.apply([dict(op='create',id='d',body=dict(type='Decision',title='SQLite storage',description='Use SQLite'))])['temp_ids']['d']
- def prepare(self,target=None,kind='required_by'):
-  self.source=self.sources.ingest(self.owner,'p',text='The existing task is required because of the SQLite storage decision.')
+ def prepare(self,target=None,kind='required_by',text='The existing task is required because of the SQLite storage decision.'):
+  self.source=self.sources.ingest(self.owner,'p',text=text)
   request=self.dialogue.prepare(self.owner,'p',source_id=self.source['id']);self.output=dict(source_id=self.source['id'],source_sha256=self.source['sha256'],context_sha256=request['context_sha256'],coverage='complete',candidates=[],status_changes=[],answer_proposals=[],relation_proposals=[dict(origin=self.fx.task,target=target or self.decision,kind=kind,quote=self.source['text'])]);return self.output
  def load(self):return self.dialogue.import_response(self.owner,'p',source_id=self.source['id'],response_text=json.dumps(self.output))['relation_proposals'][0]
  def review(self,p,decision='accept',key='review_relation'):
@@ -75,3 +75,35 @@ class DialogueRelationTests(unittest.TestCase):
   self.assertTrue(server._visible(self.core,agent,'p',self.fx.task));self.prepare();p=self.load();self.review(p)
   with self.core.read_snapshot():
    self.assertFalse(server._visible(self.core,agent,'p',self.fx.task));self.assertFalse(server._visible(self.core,agent,'p',self.decision))
+ def replacement(self):
+  self.new_decision=self.fx.apply([dict(op='create',id='new_d',body=dict(type='Decision',title='New storage decision',description='Use alternative storage'))])['temp_ids']['new_d']
+  self.prepare(text='Replace the old storage choice with the new storage decision.');self.output['relation_proposals']=[dict(origin=self.new_decision,target=self.decision,kind='supersedes',quote=self.source['text'])]
+  return self.load()
+ def test_decision_replacement_preserves_both_records_and_old_rationale(self):
+  self.fx.apply([dict(op='link',origin=self.fx.task,target=self.decision,kind='required_by')]);p=self.replacement();self.assertEqual(self.core.db.execute("SELECT count(*) FROM edges WHERE kind='supersedes'").fetchone()[0],0)
+  before=self.core.records(self.owner,'p');result=self.review(p);self.assertEqual(self.review(p),result);self.assertEqual(self.core.records(self.owner,'p')['records'],before['records'])
+  self.assertEqual(self.core.db.execute("SELECT origin,target FROM edges WHERE kind='supersedes'").fetchone(),(self.new_decision,self.decision));self.assertEqual(self.core.db.execute("SELECT count(*) FROM edges WHERE kind='required_by' AND state='asserted'").fetchone()[0],1)
+  self.assertEqual(self.fx.s.view(self.owner,'p',self.fx.task)['stage'],'To Do')
+  impact=DecisionImpactService(self.core).preview(self.owner,'p',decision=self.decision,decision_version=1,base_revision=self.core.project(self.owner,'p')['knowledge_revision'],key='replacement_impact');self.assertTrue(any(x['record']==self.fx.task for x in impact['proposals']))
+ def test_competing_replacement_after_import_blocks_old_proposal(self):
+  p=self.replacement();other=self.fx.apply([dict(op='create',id='other',body=dict(type='Decision',title='Other alternative',description='Alternative'))])['temp_ids']['other'];self.fx.apply([dict(op='link',origin=other,target=self.decision,kind='supersedes')])
+  with self.assertRaises(ContractError):self.review(p)
+  self.assertEqual(self.core.db.execute("SELECT count(*) FROM edges WHERE kind='supersedes'").fetchone()[0],1)
+ def test_two_replacements_for_one_old_decision_need_clarification(self):
+  self.replacement();other=self.fx.apply([dict(op='create',id='other',body=dict(type='Decision',title='Third decision',description='Alternative'))])['temp_ids']['other'];self.prepare();self.output['relation_proposals']=[dict(origin=self.new_decision,target=self.decision,kind='supersedes',quote=self.source['text']),dict(origin=other,target=self.decision,kind='supersedes',quote=self.source['text'])]
+  with self.assertRaises(ContractError):self.load()
+  self.assertEqual(self.core.db.execute("SELECT count(*) FROM edges WHERE kind='supersedes'").fetchone()[0],0)
+ def test_changed_replacement_record_invalidates_source_bound_review(self):
+  p=self.replacement();self.fx.apply([dict(op='update',id=self.new_decision,base_version=1,body=dict(type='Decision',title='Changed alternative',description='Changed scope'))])
+  with self.assertRaises(ContractError):self.review(p)
+ def test_replacement_cycle_is_rejected_without_canonical_side_effect(self):
+  p=self.replacement();self.fx.apply([dict(op='link',origin=self.decision,target=self.new_decision,kind='supersedes')])
+  with self.assertRaises(ContractError):self.review(p)
+  self.assertEqual(self.core.db.execute("SELECT count(*) FROM edges WHERE kind='supersedes'").fetchone()[0],1)
+ def test_replacement_receipt_failure_rolls_back_edge_and_command(self):
+  p=self.replacement();self.core.db.execute("CREATE TRIGGER fail_replacement_receipt BEFORE INSERT ON audit WHEN NEW.action='conversation_relation_reviewed' BEGIN SELECT RAISE(ABORT,'fixture'); END");before=list(self.core.db.iterdump())
+  with self.assertRaises(ContractError):self.review(p)
+  self.assertEqual(list(self.core.db.iterdump()),before)
+ def test_supersession_invalidates_current_done_basis_but_preserves_historical_completion(self):
+  self.fx.apply([dict(op='link',origin=self.fx.task,target=self.decision,kind='required_by')]);self.fx.complete();p=self.replacement();self.assertEqual(self.fx.s.view(self.owner,'p',self.fx.task)['stage'],'Done');self.review(p)
+  view=self.fx.s.view(self.owner,'p',self.fx.task);self.assertEqual(view['stage'],'Awaiting Verification');self.assertTrue(any(row['stage']=='Done' for row in view['history']))

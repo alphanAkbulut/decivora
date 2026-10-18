@@ -5,7 +5,14 @@ from packages.domain.source_event import ContractError
 from packages.storage.project_store import canonical,digest
 from packages.domain.task_workflow import TaskWorkflowService
 
-KINDS=('required_by','depends_on')
+KINDS=('required_by','depends_on','supersedes')
+
+def valid_types(kind,origin,target):
+    return (origin,target)==(('Decision','Decision') if kind=='supersedes' else ('Task','Decision' if kind=='required_by' else 'Task'))
+
+def replacement_available(edges,origin,target):
+    # No last-write-wins for an old decision or an already-replaced candidate.
+    return not any(e['kind']=='supersedes' and e['state']=='asserted' and e['target'] in (origin,target) for e in edges)
 
 def schema():
     fields={k:{'type':'string'} for k in ('origin','target','kind','quote')};fields['kind']['enum']=list(KINDS)
@@ -14,17 +21,20 @@ def schema():
 def validate(source,context,proposals):
     from packages.capture.conversations import anchored
     if type(proposals) is not list or len(proposals)>32:raise ContractError('invalid_relation_proposal','Bounded relation suggestions required.')
-    records={r['id']:dict(r,type='Task') for r in context['tasks']};records.update({r['id']:r for r in context['records']});seen=set();result=[]
+    records={r['id']:dict(r,type='Task') for r in context['tasks']};records.update({r['id']:r for r in context['records']});seen=set();replacement_targets=set();result=[]
     for p in proposals:
         if type(p) is not dict or set(p)!={'origin','target','kind','quote'}:raise ContractError('invalid_relation_proposal','Exact relationship suggestion fields required.')
         origin=identifier(p['origin']);target=identifier(p['target']);kind=p['kind']
         if type(kind) is not str or kind not in KINDS or origin==target or origin not in records or target not in records:raise ContractError('invalid_relation_proposal','Two distinct current records and a supported relation required.')
         a,b=records[origin],records[target]
-        if a['type']!='Task' or b['type']!=('Decision' if kind=='required_by' else 'Task'):raise ContractError('invalid_relation_proposal','Task-to-decision rationale or task-to-task prerequisite required.')
+        if not valid_types(kind,a['type'],b['type']):raise ContractError('invalid_relation_proposal','Typed task rationale, prerequisite or Decision replacement required.')
+        if kind=='supersedes':
+            if target in replacement_targets or not replacement_available(context['relations'],origin,target):raise ContractError('replacement_conflict','Decision already replaced or conflicting replacements need clarification.')
+            replacement_targets.add(target)
         identity=(origin,target,kind)
         if identity in seen or any((e['origin'],e['target'],e['kind'])==identity for e in context['relations']):raise ContractError('relation_exists','Existing or duplicate relationship needs separate lifecycle review.')
         seen.add(identity)
-        quote=anchored(source,dict(source_id=source['id'],source_sha256=source['sha256'],coverage='unknown',candidates=[dict(type='Task',title=a['title'],quote=p['quote'],intent='proposed')]))['candidates'][0]
+        quote=anchored(source,dict(source_id=source['id'],source_sha256=source['sha256'],coverage='unknown',candidates=[dict(type=a['type'],title=a['title'],quote=p['quote'],intent='proposed')]))['candidates'][0]
         result.append(dict(p,id='relation_'+digest(canonical([source['id'],context,p]))[:24],origin_version=a['version'],target_version=b['version'],origin_title=a['title'],target_title=b['title'],start=quote['start'],end=quote['end']))
     return result
 
@@ -39,7 +49,10 @@ class DialogueRelationService:
             if not row or row[0]!=version:return False
             body=json.loads(row[1]);records.append(body)
             if body['type']=='Task' and TaskWorkflowService(self.core)._stage(project,rid)['stage']=='Cancelled':return False
-        if records[0]['type']!='Task' or records[1]['type']!=('Decision' if p['kind']=='required_by' else 'Task'):return False
+        if not valid_types(p['kind'],records[0]['type'],records[1]['type']):return False
+        if p['kind']=='supersedes':
+            edges=[dict(origin=o,target=t,kind=k,state=s) for o,t,k,s in self.core.db.execute('SELECT origin,target,kind,state FROM edges WHERE workspace=? AND project=? AND kind=?',(self.core.workspace,project,'supersedes'))]
+            if not replacement_available(edges,p['origin'],p['target']):return False
         return self.core.db.execute('SELECT 1 FROM edges WHERE workspace=? AND project=? AND origin=? AND target=? AND kind=?',(self.core.workspace,project,p['origin'],p['target'],p['kind'])).fetchone() is None
     def view(self,scope,project,source_id,analysis):
         self.core.scope(scope,project)

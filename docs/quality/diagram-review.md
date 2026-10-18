@@ -213,3 +213,7 @@ Local-preview mevcut çiziminde source-bound relation→human review→graph app
 ### 19 Ekim — credential source sınırı
 
 Local-preview çizimine manuel konuşmadan önce deterministik redaction adımı eklendi. Kaynak ID/hash/quote sanitized metne aittir.50diagram/25belge yeniden render edildi; maskeleme encryption, eski geçmiş purge veya gerçek model kalite kabulü değildir.
+
+### 19 Ekim — kaynaklı karar replacement
+
+Mevcut local-preview ilişki düğümü Decision NEW supersedes OLD için genişletildi; impact okunun onay öncesi/sonrası açık insan hipotezi olduğu belirtildi.50diagram/25belge render edildi; model doğruluğu veya otomatik karar/task iptal kanıtı değildir.

@@ -321,7 +321,11 @@ window.DecivoraCatalogs = {
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
     "Review impact if this decision is retired": "Review impact if this decision is retired",
-    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.",
+    "Decision replacement proposal": "Decision replacement proposal",
+    "Approving records the replacement relationship. Task changes require separate approval.": "Approving records the replacement relationship. Task changes require separate approval.",
+    "Approve decision replacement": "Approve decision replacement",
+    "Preview replacement impact": "Preview replacement impact"
   },
   "tr": {
     "Dil": "Dil",
@@ -645,7 +649,11 @@ window.DecivoraCatalogs = {
     "Reject relationship": "İlişkiyi reddet",
     "Defer relationship": "İlişkiyi ertele",
     "Review impact if this decision is retired": "Bu karar kaldırılırsa etkisini incele",
-    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Tanınan gizli bilgiler saklanmadan önce maskelendi. Kaynak alıntıları ve hash maskelenmiş metne aittir."
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Tanınan gizli bilgiler saklanmadan önce maskelendi. Kaynak alıntıları ve hash maskelenmiş metne aittir.",
+    "Decision replacement proposal": "Karar değişimi önerisi",
+    "Approving records the replacement relationship. Task changes require separate approval.": "Onay, kararın yerini alan ilişkiyi kaydeder. Görev değişiklikleri ayrı onay gerektirir.",
+    "Approve decision replacement": "Karar değişimini onayla",
+    "Preview replacement impact": "Karar değişiminin etkisini incele"
   },
   "es": {
     "Dil": "Idioma",
@@ -969,7 +977,11 @@ window.DecivoraCatalogs = {
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
     "Review impact if this decision is retired": "Review impact if this decision is retired",
-    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.",
+    "Decision replacement proposal": "Decision replacement proposal",
+    "Approving records the replacement relationship. Task changes require separate approval.": "Approving records the replacement relationship. Task changes require separate approval.",
+    "Approve decision replacement": "Approve decision replacement",
+    "Preview replacement impact": "Preview replacement impact"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1293,7 +1305,11 @@ window.DecivoraCatalogs = {
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
     "Review impact if this decision is retired": "Review impact if this decision is retired",
-    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.",
+    "Decision replacement proposal": "Decision replacement proposal",
+    "Approving records the replacement relationship. Task changes require separate approval.": "Approving records the replacement relationship. Task changes require separate approval.",
+    "Approve decision replacement": "Approve decision replacement",
+    "Preview replacement impact": "Preview replacement impact"
   },
   "ar": {
     "Dil": "اللغة",
@@ -1617,6 +1633,10 @@ window.DecivoraCatalogs = {
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
     "Review impact if this decision is retired": "Review impact if this decision is retired",
-    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.",
+    "Decision replacement proposal": "Decision replacement proposal",
+    "Approving records the replacement relationship. Task changes require separate approval.": "Approving records the replacement relationship. Task changes require separate approval.",
+    "Approve decision replacement": "Approve decision replacement",
+    "Preview replacement impact": "Preview replacement impact"
   }
 };

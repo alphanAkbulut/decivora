@@ -63,18 +63,18 @@ function renderDialogueReview(box,item){
   tools.append(prepare,prompt,el('label',t('Paste structured LLM response')),response,save);box.append(tools);
  }
  for(const proposal of item.relation_proposals||[]){
-  const card=el('section',undefined,'card');card.dataset.relationProposal=proposal.id;
-  card.append(el('h3',t('Relationship proposal')),el('p',`${proposal.origin_title} → ${proposal.kind} → ${proposal.target_title}`),el('p',`${proposal.origin} · v${proposal.origin_version} → ${proposal.target} · v${proposal.target_version}`,'muted'),el('blockquote',proposal.quote),el('p',proposal.state),el('p',t('Approving adds this relationship only. It does not cancel tasks or retire decisions.'),'notice'));
+  const card=el('section',undefined,'card');card.dataset.relationProposal=proposal.id;card.dataset.relationKind=proposal.kind;
+  card.append(el('h3',t(proposal.kind==='supersedes'?'Decision replacement proposal':'Relationship proposal')),el('p',`${proposal.origin_title} → ${proposal.kind} → ${proposal.target_title}`),el('p',`${proposal.origin} · v${proposal.origin_version} → ${proposal.target} · v${proposal.target_version}`,'muted'),el('blockquote',proposal.quote),el('p',proposal.state),el('p',t(proposal.kind==='supersedes'?'Approving records the replacement relationship. Task changes require separate approval.':'Approving adds this relationship only. It does not cancel tasks or retire decisions.'),'notice'));
   if(proposal.stale&&!['Applied','Rejected'].includes(proposal.state))card.append(el('p',t('Relationship context changed. Prepare a fresh request.'),'notice'));
   if(!['Applied','Rejected'].includes(proposal.state)){
    const reason=el('input');reason.id='relation_reason_'+proposal.id;reason.setAttribute('aria-label',t('Review reason'));reason.placeholder=t('Review reason');reason.value=drafts[proposal.id]||'';reason.oninput=()=>drafts[proposal.id]=reason.value;card.append(reason);
    for(const [decision,label] of [['accept','Approve relationship'],['reject','Reject relationship'],['defer','Defer relationship']]){
-    const button=el('button',t(label),'secondary');button.dataset.relationDecision=decision;button.disabled=decision==='accept'&&proposal.stale;
+    const button=el('button',t(decision==='accept'&&proposal.kind==='supersedes'?'Approve decision replacement':label),'secondary');button.dataset.relationDecision=decision;button.disabled=decision==='accept'&&proposal.stale;
     button.onclick=async()=>{button.disabled=true;try{await request('/api/command',{action:'review_dialogue_relation',source_id:item.source.id,proposal_id:proposal.id,decision,key:'rel_'+crypto.randomUUID().replaceAll('-',''),reason:reason.value});await refresh();}catch(e){button.disabled=false;message(e.message,true);}};card.append(button);
    }
   }
-  if(proposal.state==='Applied'&&proposal.kind==='required_by'){
-   const preview=el('button',t('Review impact if this decision is retired'),'secondary');preview.dataset.relationImpact=proposal.id;preview.onclick=async()=>{preview.disabled=true;try{const decision=state.records.find(r=>r.id===proposal.target);if(!decision)throw Error(t('Relationship context changed. Prepare a fresh request.'));await request('/api/command',{action:'preview_decision_change',decision:decision.id,decision_version:decision.version,base_revision:state.snapshot,key:'rel_impact_'+crypto.randomUUID().replaceAll('-','')});await refresh();setView('questions');}catch(e){preview.disabled=false;message(e.message,true);}};card.append(preview);
+  if((proposal.state==='Applied'&&proposal.kind==='required_by')||(proposal.kind==='supersedes'&&!['Rejected','Deferred'].includes(proposal.state))){
+   const preview=el('button',t(proposal.kind==='supersedes'?'Preview replacement impact':'Review impact if this decision is retired'),'secondary');preview.disabled=proposal.state!=='Applied'&&proposal.stale;preview.dataset.relationImpact=proposal.id;preview.onclick=async()=>{preview.disabled=true;try{const decision=state.records.find(r=>r.id===proposal.target);if(!decision)throw Error(t('Relationship context changed. Prepare a fresh request.'));await request('/api/command',{action:'preview_decision_change',decision:decision.id,decision_version:decision.version,base_revision:state.snapshot,key:'rel_impact_'+crypto.randomUUID().replaceAll('-','')});await refresh();setView('questions');}catch(e){preview.disabled=false;message(e.message,true);}};card.append(preview);
   }
   box.append(card);
  }

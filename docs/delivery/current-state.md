@@ -23,7 +23,7 @@ Yeni: tanınan credential'lar yeni manuel kaynakta DB öncesi maskelenir; model/
 - Append-only domain event log, projection/replay, atomik değişiklik ve onay kontrolleri.
 - Tipli ilişki ve AND/OR/unknown impact kernel'i; UI'da kayıtlı ilişkilerin görselleştirilmesi.
 - Manuel konuşma import'u; hash/span bağlı JSON/provider-callback adapter'ı; görev/karar/bekleyen karar adayları. Dialog context artık görevler yanında canonical karar/kayıtları, soruları ve ilişki snapshot'ını da taşır.
-- Kaynaklı mevcut kayıtlara required_by/depends_on ilişki önerisi, ayrı human review ile graph apply ve impact hipotezine geçiş. Genel gerekçe/decision-change planı açık.
+- Kaynaklı mevcut kayıtlara required_by/depends_on ve Decision NEW supersedes OLD önerisi; ayrı human review ile graph apply, replacement öncesi/sonrası impact hipotezi. Genel gerekçe/validity planı açık.
 - Kaynaklı exact soru/sürüm/seçenek geç cevap kartı; ayrı insan onayıyla cevap kaydı, karar uygulaması ayrı.
 - Kaynaklı mevcut-task status önerisi; ayrı accept/reject/defer ve current workflow/AC/verification guard'ları.
 - Karar etki hipotezi → insanın düzenlediği task scope değişikliği → grup seçimi → ayrı approve → apply → yeni task version. Eski description event geçmişinden görünür.

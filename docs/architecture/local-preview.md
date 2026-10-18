@@ -19,10 +19,10 @@ flowchart TB
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
     M0 --> US["Record actual or unknown usage<br/>overrun persists and blocks workspace dispatch"]
     US --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
-    K0 --> RP["Source-bound relation suggestion<br/>Task required_by Decision / Task depends_on Task"]
+    K0 --> RP["Source-bound relation suggestion<br/>Task required_by Decision / Task depends_on Task<br/>Decision NEW supersedes Decision OLD"]
     RP --> RH["Separate human review<br/>current endpoints / edge / authority / graph guards"]
     RH --> D
-    RH -. explicit later retirement hypothesis .-> IP
+    RP -. explicit before or after replacement review .-> IP
     K0 --> AP["Source-bound delayed answer suggestion<br/>exact question / revision / option / quote"]
     AP --> AH["Separate human confirmation<br/>current question snapshot + authority recheck"]
     AH --> R
@@ -156,3 +156,5 @@ Read-only authenticated `/api/operations` returns selected-project command bound
 19 Ekim relation köprüsü: öneri tek başına graph değişikliği değildir. Human relation apply sonrası explicit retirement hypothesis mevcut impact kartına gider; otomatik karar/görev iptali değildir. [Sözleşme](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine).
 
 19 Ekim privacy: yeni manuel konuşma PR maskelemesi sonrasında hash/quote kaynağı olur. Model/context/MCP çıkış guard'ları ve display maskesi ayrı savunmalardır; eski DB/backup purge ve encryption değildir. [Sözleşme](../quality/credential-redaction-runtime.md).
+
+19 Ekim replacement: NEW supersedes OLD, current endpoint/competing-choice guard ve ayrı human approval ile ilişki/event kaydına gider. Impact onaydan önce/sonra salt önizlemedir; task iptal/onay politikası değişmedi. [Sınırlar](../quality/dialogue-status-runtime.md#19-ekim--konuşmadan-kararın-yerini-alan-seçim).
