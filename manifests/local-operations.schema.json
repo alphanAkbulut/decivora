@@ -120,6 +120,37 @@
                 "code"
               ]
             }
+          },
+          "identity": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "workspace": {
+                "type": "string"
+              },
+              "actor_id": {
+                "type": "string"
+              },
+              "actor_type": {
+                "enum": [
+                  "human",
+                  "agent"
+                ]
+              },
+              "authz_revision": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "workspace",
+              "actor_id",
+              "actor_type",
+              "authz_revision"
+            ]
           }
         },
         "required": [
@@ -131,7 +162,8 @@
           "outcome",
           "code",
           "action",
-          "stages"
+          "stages",
+          "identity"
         ]
       }
     },

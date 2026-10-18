@@ -104,7 +104,7 @@ class LocalApp:
             result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=False,queue=queue,model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
             return result
     def command(self,body):
-        from packages.operations.local import ACTIONS
+        from packages.operations.local import ACTIONS,identity_from_scope
         selected='personal';action='unknown';run=None;started=time.monotonic();self.operations_context.last_id=None
         try:
             value=body.get('command') if type(body) is dict and 'project_id' in body else body
@@ -114,7 +114,8 @@ class LocalApp:
             # Scope resolution happens before associating a trace with a project.
             with self.core() as core:
                 identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected,write=True,human=True);core.active(owner,selected)
-            run=self.operations.begin(selected,action);self.operations_context.last_id=run
+                trace_identity=identity_from_scope(core,owner,selected)
+            run=self.operations.begin(selected,action,identity=trace_identity);self.operations_context.last_id=run
             with self.operations.span(run,1,'authorization','authorize_project'):
                 with self.core() as core:core.scope(core.authority.issue_scope('local_owner'),selected,write=True,human=True)
             with self.operations.span(run,2,ACTIONS.get(action,'api'),'execute_command'):result=self._command(body)

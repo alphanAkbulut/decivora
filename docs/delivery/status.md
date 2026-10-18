@@ -1,6 +1,6 @@
 # Mevcut durum
 
-[Güncel ürün resmi ve kalan kod işleri — 18 Ekim](current-state.md):12geliştirme ana işi,2entegrasyon/release kapısı,3P0 kabul/kalite işi açık;6gelecek-faz işi ayrı. Ana/alt görevler toplanmaz.
+[Güncel ürün resmi ve kalan kod işleri — 19 Ekim](current-state.md):12geliştirme ana işi,2entegrasyon/release kapısı,3P0 kabul/kalite işi açık;6gelecek-faz işi ayrı. Ana/alt görevler toplanmaz.
 
 2026-10-14 — **P1a çekirdek geliştirme + açık P0 kanıt işleri**.
 
@@ -734,3 +734,7 @@ T13/T19/T20: task→Decision gerekçe ilişkisinin açık onayı, tek karar gere
 ### 19 Ekim — T20/T21/T23/T24 Operations alt teslimi
 
 Operations okuma ekranı, ayrı kalıcı safe diagnostic sidecar, command boundary spans/operation-ID, test ortamı başlatıcısı ve normal/test cookie ayrımı kodlandı. Canonical audit, üretim retention, incident yönetimi ve end-to-end trace kabulü ayrı; parent görevler kapatılmadı. [Kod kapsamı ve doğrulama](../quality/operations-runtime.md).
+
+### 19 Ekim — log kimliği ve ekip kapısı
+
+Yeni LocalApp izleri trusted preflight actor/workspace/authority revision taşır; eski izler null kimlikte korunur. Operations görünümü, SQL/JSON ve ER/sequence açıklaması birlikte güncellendi.387runtime/48root/11browser geçti;50diagram render edildi. LOCAL/TEST yeniden açıldı ve eski veriler korundu. Ekip login, loga özel yetki ve tenant izolasyonu tamamlanmadan ortak erişim açılmaz. Parent sayıları değişmez. [Kapsam ve kanıt](../quality/operations-runtime.md#yerel-actor-attribution--19-ekim2026).

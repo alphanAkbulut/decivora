@@ -384,4 +384,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `2bb2654629b91bdd65eac9390fb85dea4ce757b5a5303b07fc5ace923696a05f`
+Kaynak fingerprint: `a00b998e465f7e0fe248dff369b1bf38609c3c1f54003cfc21f62cbc295ade0e`

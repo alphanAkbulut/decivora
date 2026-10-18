@@ -72,3 +72,7 @@ Bunlar **planlı**, çalıştırılmış sonuç değildir:
 ## İnceleme sınırı
 
 Mevcut repo kaynakları ve test kodu okundu; yeni multiuser runtime, provider/model deneyi, security scan veya canlı kullanıcı verisi sorgusu yapılmadı. Runtime kodu, log erişimi, retention parametreleri, SQL/JSON şeması ve Mermaid kaynakları değiştirilmedi. Belge/link/anchor ve mevcut plan tutarlılığı hedefli doğrulanır; geçmiş test/render sayıları yeni sonuç diye sunulmaz.
+
+## Takip teslimi — güvenilir yerel attribution
+
+İlk inceleme yukarıda tarihsel olarak korunmuştur. Sonraki kullanıcı talebiyle LG-03 için workspace/actor_id/actor_type/preflight authz_revision kodlandı; `op_identities` nullable read projection, additive migration ve Operations görünümü eklendi. LG-03 **kısmen ilerledi**, on_behalf_of/grant/correlation ve ekip görünürlüğü tamamlanmadı. LG-01/02/04–08 açık; C01/C03/C05/C06 ekip kapısı korunur. Eski backlog girişindeki tüm alanı TODO sayan stale ifade düzeltildi. [Güncel uygulama ve test kaydı](operations-runtime.md#yerel-actor-attribution--19-ekim2026) tarihsel tespitin yerine geçmeden bugünkü kapsamı açıklar.

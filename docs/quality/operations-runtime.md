@@ -72,7 +72,7 @@ sequenceDiagram
     A->>O: Safe HTTP error category only
     A-->>U: Reject, no authorized project trace
   else authorized
-    A->>O: Operation ID + authorization / dispatch spans
+    A->>O: Operation ID + trusted preflight identity / spans
     A->>D: Existing guarded domain operation
     D-->>A: Committed result or unchanged rejection
     A->>O: Safe outcome and duration
@@ -100,3 +100,17 @@ Final local verification:382runtime tests (14operations/environment checks),48ro
 The repository now defines the conditional agent diagnosis runbook and human-review handoff fields. This is documentation/working-agreement clarification, not a new alert engine or tracing-code delivery. A scoped read of the live TEST/personal Operations snapshot found the store available,0visible command traces,0process-local lost writes, no eviction counter and one content-free `other / not_found` HTTP group (count1). That group cannot establish the requested path, caller or root cause; no service-failure or model-quality conclusion follows. No synthetic command, source import, retry or mutation was executed for this inspection. The snapshot is historical and not ongoing monitoring.
 
 Markdown/local-link/anchor, canonical planning and unchanged Mermaid source-hash checks passed for this clarification. Runtime code and Mermaid sources did not change; the prior382runtime/48root/11browser/47render record remains dated evidence, not a newly executed full suite.
+
+## Yerel actor attribution — 19 Ekim2026
+
+**Uygulandı:** yeni LocalApp komut izinde `identity.workspace`, `actor_id`, `actor_type` ve `authz_revision` bulunur. Kimlik, doğrulanmış güncel project-write scope'tan sunucuda alınır; command JSON'undaki actor metni kabul edilmez. HTTP kimliği bugün hâlâ `local_owner` / `human`dır. İç helper yalnız authority tarafından gerçekten verilmiş agent scope'unu da tanıyabilir; bu, MCP/worker'ın zaten instrument edildiği veya bağımsız agent login bulunduğu anlamına gelmez.
+
+`authz_revision` **preflight'ta gözlenen** sürümdür; sonraki domain apply/onay sürümünün veya bütün işlemin tek authority snapshot'ında çalıştığının kanıtı değildir. Asıl domain guard'ları ayrıca güncel yetkiyi kontrol eder. `op_identities` tablosu var olan sidecar'a eklenir; eski run/span/hata satırları yeniden yazılmaz. Eski run'ın `identity` değeri null kalır; sonradan local_owner ataması yapılmaz. Run ve identity başlangıç kaydı tek diagnostics transaction'ındadır; eviction ikisini FK cascade ile kaldırır. Tanı yazımı kaybolursa domain sonucu geri alınmaz ve kayıp görünür tutulur.
+
+**Ekip kapısı açık:** ayrı insan oturumları, loga özel own/shared/project/admin/support yetkileri ve tenant izolasyonu tamamlanıp negatif testleri geçmeden ortak ekip log ekranı açılmayacak. Mevcut C01/C03/C05/C06 ve LG-01–08 sahipliği korunur. `on_behalf_of`, grant referansı, login/agent-run/pipeline correlation, tenant bazlı hata/kota ve onaylı TTL henüz yoktur. Kimlik alanı tek başına bu kapıları kapatmaz. Tek-owner geliştirme sürer; yeni kullanıcı kararı veya ücretli çağrı gerektirmez.
+
+### Attribution doğrulama kaydı
+
+Bu kod tesliminde387runtime testi (19Operations testi dahil),48root kontrolü ve11gerçek browser senaryosu geçti. Yeni negatifler: client actor taklidi, forged/stale/wrong-project scope, revoked agent, eski sidecar'ın additive açılışı, kimlik yazım arızasında atomik rollback ve domain sonucunun korunması, authority revision değişimi ve identity eviction cascade. Tarayıcı aktör/yetki sürümü satırını, filtre/yenileme ve mobil görünümü doğruladı.50Mermaid render başarılı; güncel fiziksel ER görsel incelendi. Bu sayılar bağımsız multiuser veya gerçek model kabulü değildir.
+
+LOCAL53610ve TEST53611yedek/integrity kontrolü sonrası yeni kodla yeniden başlatıldı. İki canonical DB'nin mantıksal içeriği ve eski dört diagnostics tablosu bire bir korundu; eski izlere kimlik doldurulmadı. Gerçek kullanıcı verisine sentetik kayıt eklenmedi, ücretli çağrı yapılmadı. Gerçek ekip login/own/shared/admin/support izin ve tenant testleri, native/MCP instrumentation ve model zinciri hâlâ kendi ilk-kullanım kapılarında açık.

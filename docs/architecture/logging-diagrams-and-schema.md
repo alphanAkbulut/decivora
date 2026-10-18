@@ -23,7 +23,7 @@ flowchart TB
   accDescr: Oturum ve güncel proje izni tanı sorgusunu sınırlar. Seçili proje runları ile kurulumun içeriksiz hata grupları ayrı görünür. Kanonik sonuç ve kabul kanıtı ayrıca kontrol edilir.
   U["İnsan / yetkili tanı istemcisi"] --> G["Local session + Host / Origin<br/>güncel insan proje okuma izni"]
   G --> API["GET /api/operations<br/>seçili project_id"]
-  API --> R["op_runs + op_spans<br/>yalnız seçili proje"]
+  API --> R["op_runs + op_spans + op_identities<br/>yalnız seçili proje"]
   API --> E["op_errors + op_meta<br/>kurulumun güvenli içeriksiz özeti"]
   R --> V["Operations ekranı<br/>kimlik / süre / sonuç / kayıp sınırı"]
   E --> V
@@ -49,8 +49,16 @@ Varsayılan dosyalar: `workspace.sqlite` kanonik kayıtları; **ayrı** `workspa
 ```mermaid
 erDiagram
   accTitle: Mevcut yerel operational SQLite tabloları
-  accDescr: op_runs ve op_spans gerçek run yabancı anahtarıyla bağlıdır. op_errors endpoint ve kodla gruplanır, run yabancı anahtarı yoktur. op_meta saklama sınırında çıkarılan kayıt sayaçlarını tutar. Kanonik DB bu ER kapsamının dışındadır.
+  accDescr: op_runs ve op_spans gerçek run yabancı anahtarıyla bağlıdır. op_errors endpoint ve kodla gruplanır, run yabancı anahtarı yoktur. op_meta saklama sınırında çıkarılan kayıt sayaçlarını tutar. op_identities yeni izlerin trusted preflight kimliğini opsiyonel bire bir ilişkide tutar. Kanonik DB bu ER kapsamının dışındadır.
   OP_RUNS ||--o{ OP_SPANS : "run FK / ON DELETE CASCADE"
+  OP_RUNS ||--o| OP_IDENTITIES : "optional trusted attribution / CASCADE"
+  OP_IDENTITIES {
+    TEXT run PK,FK "op_runs.id"
+    TEXT workspace "trusted scope, dis DB FK degil"
+    TEXT actor_id "trusted principal"
+    TEXT actor_type "human veya agent"
+    INTEGER authz_revision "preflight observed revision"
+  }
   OP_RUNS {
     TEXT id PK "op_ kimligi"
     TEXT session "logger instance kimligi, cookie degil"
@@ -97,7 +105,7 @@ erDiagram
 - `lost_this_process`, SQL tablosu değil logger'ın süreç belleğindeki sayaçtır. Yeniden başlatmada sıfırlanır. Bu ayrım bilinmeden eksiksiz kayıp muhasebesi iddia edilmez.
 - Güncel yazım yolu en fazla iki span oluşturur. Bu, mevcut komut instrumentation'ı ve JSON read sözleşmesidir; SQL'de iki satırlık CHECK constraint bulunduğu anlamına gelmez.
 
-Şema sürümleme/migration veya bu tabloya yeni alan ekleme bu rehberin kapsamı değildir. Kaynak: [gerçek SQL ve okuma kodu](../../packages/operations/local.py), [server yetki/komut sınırı](../../apps/local_ui/server.py).
+`op_identities` additive CREATE IF NOT EXISTS ile eklenir; eski runlar yeniden yazılmaz. Run ile kimlik tek transaction içinde yazılır, eviction FK cascade uygular. Null kimlik sonradan varsayımla doldurulmaz. Kaynak: [gerçek SQL ve okuma kodu](../../packages/operations/local.py), [server yetki/komut sınırı](../../apps/local_ui/server.py).
 
 ## 4. API şeması: alanlar nasıl yorumlanır?
 
@@ -111,6 +119,7 @@ erDiagram
 | `lost_this_process`, `evicted` | Bu sürecin kaydedemediği yazımlar ve kalıcı temizlenen kayıt sayaçları | İkisi aynı sayaç veya tam tarihsel istek toplamı değildir |
 | `coverage` | `local_command_boundaries_only` veya erişim sorunu halinde `unavailable` | Tüm engine veya distributed tracing değildir |
 | `runs[].id` | HTTP command başlığındaki operation ID ile aranabilir | Conversation/task için genel pipeline ID değildir |
+| `runs[].identity` | Trusted preflight workspace/actor_id/actor_type/authz_revision; eski izlerde null | Ayrı login, log-role izni veya apply revision kanıtı değildir |
 | `runs[].action/component` | Allowlist'ten komut ve mantıksal işleme sorumluluğu | Ayrı mikroservis/PID veya kesin LLM çalışması değildir |
 | `runs[].stages[]` | Ölçülen iki gerçek komut sınırı | Capture/extraction/impact/verification zincirinin bütün iç adımları değildir |
 | `started/finished` | Epoch saniyesi; UI tarayıcı yerel tarih biçiminde gösterir | Domain sequence veya kesin nedensel sıra yerine geçmez |
@@ -130,6 +139,7 @@ Aşağıdaki JSON yalnız `runs` dizisindeki **tek bir sentetik elemandır**; ta
 ```json
 {
   "id": "op_synthetic_example",
+  "identity": null,
   "action": "start",
   "component": "verification",
   "started": 1700000000.0,
@@ -210,3 +220,7 @@ flowchart TB
 ### Bu açıklamanın doğrulaması — 19 Ekim2026
 
 Üç yeni diagram dahil50Mermaid kaynağı/25belge yerel renderer ile render edildi; başarısızlık0. Yeni ER ve bitmemiş kayıt yorumu görsel incelendi. Gerçek SQL kolonları, span `(run,position)` PK, run FK/cascade ve error `(endpoint,code)` unique indeksi geçici DB'de kontrol edildi. Sentetik örneğin required run/span alan setleri yayımlanan şemayla eşleşti. `jsonschema` paketi bulunmadığı için tam JSON Schema validation çalıştırılmadı; yeni dependency yüklenmedi. Bu teslim runtime veya fiziksel/API şema değişikliği değildir.
+
+## Güncel kimlik alanının sınırı
+
+Yeni kimlik alanı ve fiziksel ER, [yerel attribution teslimini](../quality/operations-runtime.md#yerel-actor-attribution--19-ekim2026) yansıtır. Yukarıdaki ilk açıklama tesliminin runtime değişikliği yapmadığına ilişkin tarihsel sonuç, bu sonraki additive kod teslimiyle karıştırılmamalı. Ekip erişim kapıları açıktır.

@@ -9,6 +9,15 @@
 
 [Log erişimi/kimlik/saklama boşluk incelemesi](../quality/log-access-retention-gap-review.md) mevcut belgelerin nerede olduğunu, multiuser için eksik actor/visibility/retention kontrollerini ve ilk kullanım kapılarını ayırır. İnceleme yeni erişim veya süre kararı değildir.
 
+
+## Yerel actor attribution — 19 Ekim2026
+
+**Uygulandı:** yeni LocalApp komut izinde `identity.workspace`, `actor_id`, `actor_type` ve `authz_revision` bulunur. Kimlik, doğrulanmış güncel project-write scope'tan sunucuda alınır; command JSON'undaki actor metni kabul edilmez. HTTP kimliği bugün hâlâ `local_owner` / `human`dır. İç helper yalnız authority tarafından gerçekten verilmiş agent scope'unu da tanıyabilir; bu, MCP/worker'ın zaten instrument edildiği veya bağımsız agent login bulunduğu anlamına gelmez.
+
+`authz_revision` **preflight'ta gözlenen** sürümdür; sonraki domain apply/onay sürümünün veya bütün işlemin tek authority snapshot'ında çalıştığının kanıtı değildir. Asıl domain guard'ları ayrıca güncel yetkiyi kontrol eder. `op_identities` tablosu var olan sidecar'a eklenir; eski run/span/hata satırları yeniden yazılmaz. Eski run'ın `identity` değeri null kalır; sonradan local_owner ataması yapılmaz. Run ve identity başlangıç kaydı tek diagnostics transaction'ındadır; eviction ikisini FK cascade ile kaldırır. Tanı yazımı kaybolursa domain sonucu geri alınmaz ve kayıp görünür tutulur.
+
+**Ekip kapısı açık:** ayrı insan oturumları, loga özel own/shared/project/admin/support yetkileri ve tenant izolasyonu tamamlanıp negatif testleri geçmeden ortak ekip log ekranı açılmayacak. Mevcut C01/C03/C05/C06 ve LG-01–08 sahipliği korunur. `on_behalf_of`, grant referansı, login/agent-run/pipeline correlation, tenant bazlı hata/kota ve onaylı TTL henüz yoktur. Kimlik alanı tek başına bu kapıları kapatmaz. Tek-owner geliştirme sürer; yeni kullanıcı kararı veya ücretli çağrı gerektirmez.
+
 ## Nerede ne tutuluyor ve build hangi aşamada?
 
 | Kayıt / soru | Bugünkü uygulama | Nereden kontrol edilir? | Açık kalan |

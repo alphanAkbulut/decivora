@@ -22,6 +22,13 @@ ENDPOINTS={'/api/state','/api/command','/api/backup','/api/session','/api/shutdo
 
 def safe_code(value):return value if type(value) is str and value in ERROR_CODES else 'application_error'
 
+def identity_from_scope(core,scope,project):
+ """Trusted local preflight attribution, never a JSON actor or approval token."""
+ with core.read_snapshot():
+  core.scope(scope,project,write=True);core.active(scope,project)
+  revision,state=core.authority._current()
+  return dict(workspace=core.workspace,actor_id=scope.principal_id,actor_type=state[scope.principal_id]['kind'],authz_revision=revision)
+
 class LocalOperations:
  def __init__(self,path):
   self.path=Path(path);self.session=uuid.uuid4().hex;self.lock=threading.Lock();self.lost=0;self.available=False
@@ -35,6 +42,7 @@ class LocalOperations:
    CREATE TABLE IF NOT EXISTS op_spans(run TEXT,position INTEGER,component TEXT,stage TEXT,started REAL,finished REAL,duration_ms REAL,outcome TEXT,code TEXT,PRIMARY KEY(run,position),FOREIGN KEY(run) REFERENCES op_runs(id) ON DELETE CASCADE);
    CREATE TABLE IF NOT EXISTS op_errors(id TEXT PRIMARY KEY,endpoint TEXT,code TEXT,first_seen REAL,last_seen REAL,count INTEGER,UNIQUE(endpoint,code));
    CREATE TABLE IF NOT EXISTS op_meta(key TEXT PRIMARY KEY,value INTEGER);
+   CREATE TABLE IF NOT EXISTS op_identities(run TEXT PRIMARY KEY,workspace TEXT NOT NULL,actor_id TEXT NOT NULL,actor_type TEXT NOT NULL,authz_revision INTEGER NOT NULL,FOREIGN KEY(run) REFERENCES op_runs(id) ON DELETE CASCADE);
   '''))
  @contextmanager
  def _connect(self):
@@ -49,10 +57,15 @@ class LocalOperations:
     with self._connect() as db:fn(db)
     self.available=True;return True
    except (sqlite3.Error,OSError):self.available=False;self.lost+=1;return False
- def begin(self,project,action):
+ def begin(self,project,action,*,identity=None):
+  if identity is not None:
+   from packages.domain.project_binding import identifier
+   if type(identity) is not dict or set(identity)!={'workspace','actor_id','actor_type','authz_revision'} or identity['actor_type'] not in ('human','agent') or type(identity['authz_revision']) is not int or identity['authz_revision']<1:raise ValueError('Invalid internal trace identity.')
+   identifier(identity['workspace']);identifier(identity['actor_id'])
   run='op_'+uuid.uuid4().hex;action=action if type(action) is str and action in ACTIONS else 'unknown';component=ACTIONS.get(action,'api')
   def write(db):
    db.execute('INSERT INTO op_runs VALUES (?,?,?,?,?,?,?,?,?,?)',(run,self.session,project,action,component,time.time(),None,None,'started',None))
+   if identity is not None:db.execute('INSERT INTO op_identities VALUES (?,?,?,?,?)',(run,identity['workspace'],identity['actor_id'],identity['actor_type'],identity['authz_revision']))
    old=[r[0] for r in db.execute('SELECT id FROM op_runs ORDER BY started DESC,id DESC LIMIT -1 OFFSET ?',(MAX_RUNS,))]
    if old:
     db.executemany('DELETE FROM op_spans WHERE run=?',[(r,) for r in old]);db.executemany('DELETE FROM op_runs WHERE id=?',[(r,) for r in old]);db.execute("INSERT INTO op_meta VALUES ('runs_evicted',?) ON CONFLICT(key) DO UPDATE SET value=value+excluded.value",(len(old),))
@@ -84,6 +97,7 @@ class LocalOperations:
     columns='id,session,action,component,started,finished,duration_ms,outcome,code'.split(',');runs=[]
     for row in db.execute('SELECT '+','.join(columns)+' FROM op_runs WHERE project=? ORDER BY started DESC,id DESC LIMIT 50',(project,)):
      item=dict(zip(columns,row));item['outcome']='unknown' if item['finished'] is None and item['session']!=self.session else item['outcome'];item.pop('session')
+     identity=db.execute('SELECT workspace,actor_id,actor_type,authz_revision FROM op_identities WHERE run=?',(item['id'],)).fetchone();item['identity']=dict(zip(('workspace','actor_id','actor_type','authz_revision'),identity)) if identity else None
      names='position,component,stage,started,finished,duration_ms,outcome,code'.split(',');item['stages']=[dict(zip(names,r)) for r in db.execute('SELECT '+','.join(names)+' FROM op_spans WHERE run=? ORDER BY position',(item['id'],))]
      if item['outcome']=='unknown':
       for span in item['stages']:

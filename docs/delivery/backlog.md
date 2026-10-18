@@ -534,7 +534,7 @@ Q08-A 18 Ekim kabul edildi: T13d/T20d planlı TODO; uygulanmış veya tamamlanm�
 
 ## Yönetim merkezi ve hata takibi alt dilimleri
 
-2026-10-10 takip isteği; tümü **TODO / önerilen P1b ayrıntısı**, çalışan panel değildir. [Yönetim sözleşmesi](../product/administration-and-operations.md) ve ADM-01–10 uygulanacak. Ana 30 görevin kapsamlı alt dilimleridir; yeni motor/servis değildir.
+2026-10-10 takip isteği; bu alt kapsamın bir bölümü uygulanmıştır: T20f IN_PROGRESS altında çalışan yerel Operations/TEST ve güvenilir preflight actor attribution vardır. Tam ekip/admin/policy paneli değildir; ayrı insan kimliği, loga özel yetki ve tenant izolasyonu ilk ortak kullanım kapısıdır. Satırların kendi durumları esas alınır. [Yönetim sözleşmesi](../product/administration-and-operations.md) ve ADM-01–10 uygulanacak. Ana 30 görevin kapsamlı alt dilimleridir; yeni motor/servis değildir.
 
 | Dilim / bağımlılık | Küçük teslim | Kabul |
 |---|---|---|
@@ -774,3 +774,7 @@ Operations okuma ekranı, ayrı kalıcı safe diagnostic sidecar, command bounda
 ### 19 Ekim — log teşhis ve manuel kontrol sözleşmesi
 
 Yeni bir ana görev oluşturulmadı. T20f/T21c/T23c/T23d/T23e/T24 altında eksik correlation/engine spans, incident/manual-question routing, retention/loss/alert ve recovery kabul bağlantıları [log rehberinde](../architecture/logging-audit.md#log-geliştirmesinde-sıradaki-teknik-parçalar) ayrıldı. Bu doküman teslimi runtime kodu veya otomatik on-call/alert motoru geliştirilmiş sayılmaz; ebeveyn statüleri değişmez.
+
+### 19 Ekim — T20f güvenilir log attribution alt teslimi
+
+Trusted preflight actor_id/type/workspace/authz_revision, nullable eski kayıt gösterimi, additive sidecar tablosu ve Operations UI kodlandı. Kaynak: [uygulama ve doğrulama](../quality/operations-runtime.md#yerel-actor-attribution--19-ekim2026). LG-03 kısmi ilerler; ekip kimlik/log yetkisi/tenant kapısı ve mevcut parent durumları korunur. Yeni task veya onay bekleme kaydı üretilmedi.

@@ -27,7 +27,9 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 - Kabul edilmiş altı aşama; ayrı Blocked ve Cancelled; altı tipli bekleme rozeti/filtre; sunucu kaynaklı stage/geçiş listesi. İnsan doğrulamalı tek karar gerekçesiyle guarded cancellation/reopen ve lifecycle history UI kodlandı; genel resolution/clarification kapsamı açık.
 - Board/List/Graph/Timeline, mevcut proje seçimi, özel yedek indirme/offline restore çekirdeği, sınırlı stdio MCP, token reservation/actual/unknown/overrun kaydı.
 
-- Salt okunur Operations ekranı, bounded kalıcı güvenli hata/komut sınırı izleri, duration/operation-ID, degraded kaydı ve ayrı TEST veri/oturum/port başlatıcısı. Tam engine trace/admin/policy yönetimi açık.
+- Salt okunur Operations ekranı, bounded kalıcı güvenli hata/komut sınırı izleri, duration/operation-ID, degraded kaydı ve ayrı TEST veri/oturum/port başlatıcısı. Güvenilir preflight actor/workspace/yetki sürümü artık izde ve ekranda; eski kayıtlar kimliği bilinmiyor kalır. Tam engine trace/admin/policy yönetimi açık.
+
+**Ekip kullanım kapısı:** ayrı kimlik, loga özel yetki ve tenant izolasyonu tamamlanıp doğrulanmadan ortak ekip erişimi açılmayacak. Tek-owner geliştirme sürer; [LG-01–08 ve mevcut C kapıları](../quality/log-access-retention-gap-review.md) açık kalır.
 
 Bunların tamamı aynı olgunlukta değildir. Gerçek model/host/file erişimi olmayan bir yetenek varsayılan programda otomatik çalışıyor diye sunulmaz.
 

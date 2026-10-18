@@ -17,3 +17,7 @@ The initial trace records project authorization and component command execution;
 [Runtime scope, architecture/sequence diagrams and tests](../../quality/operations-runtime.md) document restart, safe-code redaction, authorization, loss, eviction, environment refusal, actual launcher and browser/cookie coexistence checks. A source ZIP contains code/launchers only; real user data, session secrets and private backups are excluded from publication.
 
 [Diagram and physical/read schema guide](../logging-diagrams-and-schema.md) explains the implemented storage/DTO boundaries and synthetic example without adding runtime fields or service commitments.
+
+## Additive trusted attribution
+
+The local trace now stores trusted preflight workspace/principal/type/authority revision in an optional per-run `op_identities` row. Existing traces remain unattributed rather than being backfilled. This adds no log-reading role, team login, support grant or tenant access. The shared-team gate remains blocked until identity, log-specific permissions and isolation pass their own acceptance tests. See the [current scope](../../quality/operations-runtime.md#yerel-actor-attribution--19-ekim2026).

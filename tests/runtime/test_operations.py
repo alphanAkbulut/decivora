@@ -3,7 +3,7 @@ import hashlib,json,os,sqlite3,tempfile,time,unittest
 from pathlib import Path
 from unittest.mock import patch
 from apps.local_ui.server import LocalApp,make_server
-from packages.operations.local import LocalOperations,MAX_RUNS
+from packages.operations.local import LocalOperations,MAX_RUNS,identity_from_scope
 from packages.domain.source_event import ContractError
 
 class OperationsTests(unittest.TestCase):
@@ -96,3 +96,44 @@ class OperationsTests(unittest.TestCase):
   root=Path(__file__).resolve().parents[2];schema=json.loads((root/'manifests/local-operations.schema.json').read_text());self.create();value=self.app.operations_view()
   self.assertLessEqual(set(schema['required']),set(value));self.assertEqual(set(value),set(schema['properties']))
   run=value['runs'][0];expected=schema['properties']['runs']['items'];self.assertEqual(set(run),set(expected['required']));self.assertEqual(set(run['stages'][0]),set(expected['properties']['stages']['items']['required']))
+
+ def test_identity_is_trusted_preflight_not_client_actor(self):
+  self.create();first=self.app.operations_view()['runs'][0]['identity']
+  with self.app.core() as core:
+   self.assertEqual(first,dict(workspace=core.workspace,actor_id='local_owner',actor_type='human',authz_revision=core.authority.revision()))
+  with self.assertRaises(ContractError):self.app.command(dict(action='create_task',title='Spoof',description='Fixture',actor_id='attacker'))
+  self.assertEqual(self.app.operations_view()['runs'][0]['identity'],first);self.assertEqual(len(self.app.state()['tasks']),1)
+  self.assertEqual(LocalApp(self.path).operations_view()['runs'][0]['identity'],first)
+ def test_identity_rejects_forged_stale_and_wrong_project_scopes(self):
+  from packages.domain.project_binding import AccessScope
+  with self.app.core() as core:
+   a=core.authority;owner=a.issue_scope('local_owner')
+   forged=AccessScope(core.workspace,'local_owner',owner.readable_projects,owner.writable_projects)
+   for scope,project in ((forged,'personal'),(owner,'forbidden_project')):
+    with self.assertRaises(ContractError):identity_from_scope(core,scope,project)
+   a.replace_grant(owner,'fixture_agent',kind='agent',readable=frozenset({'personal'}),writable=frozenset({'personal'}),active=True,base_revision=a.revision())
+   with self.assertRaises(ContractError):identity_from_scope(core,owner,'personal')
+   agent=a.issue_scope('fixture_agent');identity=identity_from_scope(core,agent,'personal');self.assertEqual(identity['actor_type'],'agent');self.assertEqual(identity['actor_id'],'fixture_agent');self.assertEqual(identity['authz_revision'],a.revision())
+   a.replace_grant(a.issue_scope('local_owner'),'fixture_agent',kind='agent',readable=frozenset(),writable=frozenset(),active=False,base_revision=a.revision())
+   with self.assertRaises(ContractError):identity_from_scope(core,agent,'personal')
+ def test_additive_legacy_migration_does_not_invent_identity_or_rewrite_history(self):
+  self.create();before=self.app.operations_view()['runs'][0]
+  with sqlite3.connect(self.app.operations.path) as db:
+   history=db.execute('SELECT * FROM op_runs').fetchall();db.execute('DROP TABLE op_identities')
+  reopened=LocalApp(self.path);after=reopened.operations_view()['runs'][0]
+  self.assertIsNone(after['identity']);self.assertEqual(after['stages'],before['stages'])
+  with sqlite3.connect(self.app.operations.path) as db:self.assertEqual(db.execute('SELECT * FROM op_runs').fetchall(),history)
+  self.assertIsNone(LocalApp(self.path).operations_view()['runs'][0]['identity'])
+ def test_identity_insert_failure_is_atomic_and_does_not_undo_domain_result(self):
+  with sqlite3.connect(self.app.operations.path) as db:db.execute("CREATE TRIGGER reject_identity BEFORE INSERT ON op_identities BEGIN SELECT RAISE(ABORT,'PRIVATE'); END")
+  self.create();self.assertEqual(len(self.app.state()['tasks']),1);view=self.app.operations_view();self.assertEqual(view['runs'],[]);self.assertGreater(view['lost_this_process'],0);self.assertNotIn('PRIVATE',json.dumps(view))
+  with sqlite3.connect(self.app.operations.path) as db:self.assertEqual(db.execute('SELECT count(*) FROM op_identities').fetchone()[0],0)
+ def test_identity_eviction_cascades_and_new_revision_does_not_relabel_old_run(self):
+  self.create();original=self.app.operations_view()['runs'][0]
+  with self.app.core() as core:
+   a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'fixture_agent',kind='agent',readable=frozenset({'personal'}),writable=frozenset(),active=True,base_revision=a.revision())
+  self.create();runs=self.app.operations_view()['runs'];self.assertGreater(runs[0]['identity']['authz_revision'],original['identity']['authz_revision']);self.assertEqual(runs[1]['identity'],original['identity'])
+  for _ in range(MAX_RUNS):
+   run=self.app.operations.begin('personal','create_task',identity=runs[0]['identity']);self.app.operations.finish(run,time.monotonic())
+  with sqlite3.connect(self.app.operations.path) as db:
+   self.assertEqual(db.execute('SELECT count(*) FROM op_identities').fetchone()[0],MAX_RUNS);self.assertIsNone(db.execute('SELECT run FROM op_identities WHERE run=?',(original['id'],)).fetchone());self.assertEqual(db.execute('PRAGMA foreign_key_check').fetchall(),[])

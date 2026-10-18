@@ -303,7 +303,11 @@ window.DecivoraCatalogs = {
     "No recorded HTTP errors.": "No recorded HTTP errors.",
     "No queued capture jobs recorded": "No queued capture jobs recorded",
     "Retained traces": "Retained traces",
-    "Retained error groups": "Retained error groups"
+    "Retained error groups": "Retained error groups",
+    "Actor": "Actor",
+    "Workspace": "Workspace",
+    "Observed authorization revision": "Observed authorization revision",
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
   },
   "tr": {
     "Dil": "Dil",
@@ -609,7 +613,11 @@ window.DecivoraCatalogs = {
     "No recorded HTTP errors.": "Kayıtlı HTTP hatası yok.",
     "No queued capture jobs recorded": "Kayıtlı kaynak kuyruk işi yok",
     "Retained traces": "Saklanan iz sınırı",
-    "Retained error groups": "Saklanan hata grubu sınırı"
+    "Retained error groups": "Saklanan hata grubu sınırı",
+    "Actor": "Aktör",
+    "Workspace": "Çalışma alanı",
+    "Observed authorization revision": "Gözlenen yetki sürümü",
+    "Actor identity was not recorded for this trace.": "Bu izde aktör kimliği kaydedilmemiş."
   },
   "es": {
     "Dil": "Idioma",
@@ -915,7 +923,11 @@ window.DecivoraCatalogs = {
     "No recorded HTTP errors.": "No recorded HTTP errors.",
     "No queued capture jobs recorded": "No queued capture jobs recorded",
     "Retained traces": "Retained traces",
-    "Retained error groups": "Retained error groups"
+    "Retained error groups": "Retained error groups",
+    "Actor": "Actor",
+    "Workspace": "Workspace",
+    "Observed authorization revision": "Observed authorization revision",
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1221,7 +1233,11 @@ window.DecivoraCatalogs = {
     "No recorded HTTP errors.": "No recorded HTTP errors.",
     "No queued capture jobs recorded": "No queued capture jobs recorded",
     "Retained traces": "Retained traces",
-    "Retained error groups": "Retained error groups"
+    "Retained error groups": "Retained error groups",
+    "Actor": "Actor",
+    "Workspace": "Workspace",
+    "Observed authorization revision": "Observed authorization revision",
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
   },
   "ar": {
     "Dil": "اللغة",
@@ -1527,6 +1543,10 @@ window.DecivoraCatalogs = {
     "No recorded HTTP errors.": "No recorded HTTP errors.",
     "No queued capture jobs recorded": "No queued capture jobs recorded",
     "Retained traces": "Retained traces",
-    "Retained error groups": "Retained error groups"
+    "Retained error groups": "Retained error groups",
+    "Actor": "Actor",
+    "Workspace": "Workspace",
+    "Observed authorization revision": "Observed authorization revision",
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
   }
 };
