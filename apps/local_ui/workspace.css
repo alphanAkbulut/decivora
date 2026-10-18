@@ -4,3 +4,7 @@
 @media(max-width:800px){body,body.detail-open{display:block}.workspace-nav{position:static;height:auto;display:flex;flex-direction:row;flex-wrap:wrap;padding:12px;border-inline-end:0}.workspace-nav h1{font-size:19px}.workspace-nav p,.nav-label{display:none}.nav-footer{margin:0;display:flex;align-items:center}.nav-footer label>span{display:none}.nav-footer select{width:130px}.workspace-nav>button{font-size:11px}main{padding:0 14px 20px}header{min-height:80px}.detail-shell{position:fixed;inset:0;background:#fff;z-index:20;height:100dvh;border:0;padding:18px}.detail-shell:focus{outline:0}.toolbar{gap:10px}.toolbar input{width:180px}.task-row{flex-wrap:wrap}.lane{flex-basis:240px}.metrics{gap:8px}.metric{padding:10px}}
 
 .waiting-badge{background:#fff3d6;color:#785016;border:1px solid #e5cc8e}
+
+.environment-test{background:#fff1d3;color:#805200;border:2px solid #c58217;font-weight:800}.operation-run summary{overflow-wrap:anywhere}.operation-run p{overflow-wrap:anywhere}
+
+#operations-summary p{overflow-wrap:anywhere}#operations-view{min-width:0}

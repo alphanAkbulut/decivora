@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 23 belgede 45 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 24 belgede 47 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -34,6 +34,7 @@
 | [docs/quality/project-review.md](../../docs/quality/project-review.md) | 1 |
 | [docs/quality/receiver-contract.md](../../docs/quality/receiver-contract.md) | 1 |
 | [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 2 |
+| [docs/quality/operations-runtime.md](operations-runtime.md) | 2 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -191,3 +192,7 @@ Local-preview akışına hazırlanan source/context isteği, dış yanıt import
 ## 19 Ekim — lifecycle UI diagramı
 
 45 Mermaid kaynağı yeniden render edildi; başarısızlık0. Yeni workflow-ui-runtime #2 lifecycle diagramı ve gerçek browser cancellation-history ekran görüntüsü görsel olarak incelendi. Mevcut44kaynak değişmedi; eski render kayıtları superseded_history içinde korunur. Yeni diagram açık insan gerekçesi→impact→ayrı review/select/approve/apply→yeni event/History yolunu ve bilinmeyen/stale/bağımlılık reddini gösterir. [Kaynak/hash kaydı](diagram-render-results.json). Model/native/target kabulü değildir.
+
+## 19 Ekim — Operations ve TEST ortamı
+
+47Mermaid kaynağı/24belge yeniden render edildi; başarısızlık0. Yeni operasyon sequence diagramı ve Operations masaüstü/mobil ekranları incelendi. İlk sequence çizimindeki noktalı virgül ayrıştırma hatası kaynakta düzeltildi; başarısız deneme başarı olarak sunulmadı. Önceki45kaynak aynı kalır; eski render kaydı superseded_history içinde korunur. [Teslim](operations-runtime.md) yeni run/error sidecar ve ayrı test verisi/oturumunu anlatır; bütün engine trace veya model kabulü değildir.

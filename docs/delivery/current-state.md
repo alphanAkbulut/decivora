@@ -1,6 +1,6 @@
 # Güncel ürün ve kalan geliştirme resmi
 
-**19 Ekim 2026 — son impact review/apply, bekleme rozetleri ve iptal/yeniden açma kod teslimi sonrası.** Bu dosya [backlog](backlog.md), [kapanış kaydı](task-closure.json) ve [ana akış denetiminden](../quality/primary-flow-audit.md) türetilen okunabilir özettir; yeni görev otoritesi veya ayrı backlog değildir. Yayın durumu commit/ref readback ile ayrıca doğrulanır; yerel test başarısını GitHub yayını veya MVP kabulü sayma.
+**19 Ekim 2026 — son Operations/TEST ortamı, impact review/apply ve iptal/yeniden açma kod teslimleri sonrası.** Bu dosya [backlog](backlog.md), [kapanış kaydı](task-closure.json) ve [ana akış denetiminden](../quality/primary-flow-audit.md) türetilen okunabilir özettir; yeni görev otoritesi veya ayrı backlog değildir. Yayın durumu commit/ref readback ile ayrıca doğrulanır; yerel test başarısını GitHub yayını veya MVP kabulü sayma.
 
 ## Nerede olduğumuz
 
@@ -26,6 +26,8 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 - AC/DoD, local human review, yapılandırılırsa dar file-SHA verification, blocker/dependency ve false-Done güncellik kontrolleri.
 - Kabul edilmiş altı aşama; ayrı Blocked ve Cancelled; altı tipli bekleme rozeti/filtre; sunucu kaynaklı stage/geçiş listesi. İnsan doğrulamalı tek karar gerekçesiyle guarded cancellation/reopen ve lifecycle history UI kodlandı; genel resolution/clarification kapsamı açık.
 - Board/List/Graph/Timeline, mevcut proje seçimi, özel yedek indirme/offline restore çekirdeği, sınırlı stdio MCP, token reservation/actual/unknown/overrun kaydı.
+
+- Salt okunur Operations ekranı, bounded kalıcı güvenli hata/komut sınırı izleri, duration/operation-ID, degraded kaydı ve ayrı TEST veri/oturum/port başlatıcısı. Tam engine trace/admin/policy yönetimi açık.
 
 Bunların tamamı aynı olgunlukta değildir. Gerçek model/host/file erişimi olmayan bir yetenek varsayılan programda otomatik çalışıyor diye sunulmaz.
 

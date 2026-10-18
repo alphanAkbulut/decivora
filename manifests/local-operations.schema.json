@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Authenticated local Operations projection, not security audit or full pipeline tracing",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "available": {
+      "type": "boolean"
+    },
+    "lost_this_process": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "persistent": {
+      "const": true
+    },
+    "runs": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "component": {
+            "type": "string"
+          },
+          "started": {
+            "type": "number"
+          },
+          "finished": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "duration_ms": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "outcome": {
+            "enum": [
+              "started",
+              "succeeded",
+              "failed",
+              "unknown"
+            ]
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "action": {
+            "type": "string"
+          },
+          "stages": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "position": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "component": {
+                  "type": "string"
+                },
+                "stage": {
+                  "enum": [
+                    "authorize_project",
+                    "execute_command"
+                  ]
+                },
+                "started": {
+                  "type": "number"
+                },
+                "finished": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "duration_ms": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "outcome": {
+                  "enum": [
+                    "started",
+                    "succeeded",
+                    "failed",
+                    "unknown"
+                  ]
+                },
+                "code": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "position",
+                "component",
+                "stage",
+                "started",
+                "finished",
+                "duration_ms",
+                "outcome",
+                "code"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "component",
+          "started",
+          "finished",
+          "duration_ms",
+          "outcome",
+          "code",
+          "action",
+          "stages"
+        ]
+      }
+    },
+    "errors": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "endpoint": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "first_seen": {
+            "type": "number"
+          },
+          "last_seen": {
+            "type": "number"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "endpoint",
+          "code",
+          "first_seen",
+          "last_seen",
+          "count"
+        ]
+      }
+    },
+    "evicted": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "limits": {
+      "type": "object"
+    },
+    "coverage": {
+      "enum": [
+        "local_command_boundaries_only",
+        "unavailable"
+      ]
+    },
+    "environment": {
+      "enum": [
+        "local",
+        "test"
+      ]
+    },
+    "project": {
+      "type": "string"
+    },
+    "uptime_seconds": {
+      "type": "number"
+    },
+    "application_processes": {
+      "const": 1
+    },
+    "background_worker_active": {
+      "const": false
+    },
+    "queue": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "model_configured": {
+      "type": "boolean"
+    },
+    "file_checker_configured": {
+      "type": "boolean"
+    },
+    "native_capture": {
+      "const": false
+    },
+    "external_mcp_host": {
+      "const": "not_verified"
+    }
+  },
+  "required": [
+    "available",
+    "lost_this_process",
+    "persistent",
+    "runs",
+    "errors",
+    "evicted",
+    "coverage",
+    "environment",
+    "project",
+    "uptime_seconds",
+    "application_processes",
+    "background_worker_active",
+    "queue",
+    "model_configured",
+    "file_checker_configured",
+    "native_capture",
+    "external_mcp_host"
+  ]
+}

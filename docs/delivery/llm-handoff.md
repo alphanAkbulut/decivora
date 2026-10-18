@@ -1,5 +1,7 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+Güncel 19 Ekim ek teslim: [Operations ve TEST ortamı](../quality/operations-runtime.md). Komut sınırları izlenir; bütün pipeline izleniyor deme.
+
 Son durum özeti: [current-state.md](current-state.md). Kanonik ana durum7Done/14InProgress/9ToDo; MVPye giden17ana iş,6gelecek faz. Q06/Q08 kabul edilmiş; work-breakdown deferred_choices listesinden çıkarıldı.
 
 19 Ekim: [gerekçeli lifecycle UI](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü) iptal/yeniden açma ve history kullanıcı bağlantısı tamamlandı; tek karara bağlı gerekçe insan tarafından açıkça doğrulanır. Genel AND/OR yazarı, semantic relation ve resolution editor açık.

@@ -65,3 +65,9 @@ Yeni görünüm: sidebar Conversations/Review inbox/Task board/Questions and dec
 ## Current concurrent storage and manual impact UI —14October2026
 
 [Working delivery and limitations](docs/quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.
+
+## Operations ve ayrı test ortamı
+
+Sol menü **Operations**: işlem kimliğiyle ara, sonucu filtrele, komutun authorization/execute aşamalarını aç; süre ve güvenli hata kodunu gör. **Refresh diagnostics** yalnız okur. Kayıtlar restart sonrası korunur; kapsama/saklama sınırı ve kaydedilemeyen yazım uyarıları ekranda görünür. Ham konuşma ve API anahtarı bu logda tutulmaz. Bu ekran tam engine zinciri veya güvenlik audit konsolu değildir.
+
+**Decivora Test.command** dosyasını çalıştır: ayrı53611portu, ayrı test veri klasörü ve belirgin TEST etiketi kullanır. Normal yerel kayıtlar kopyalanmaz; model/file-target bağlantıları kapalıdır. İki ortam aynı tarayıcıda farklı oturum çerezleriyle çalışır. Test işlerini burada elle sentetik veriyle deneyebilirsin. Veri sıfırlama düğmesi veya ücretli model aktivasyonu yoktur. [Ayrıntı](https://github.com/alphanAkbulut/decivora/blob/main/docs/quality/operations-runtime.md).

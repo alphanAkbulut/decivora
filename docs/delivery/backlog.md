@@ -766,3 +766,7 @@ T03f/T03b ek P0 dilimi: [token/context preflight](../quality/token-preflight.md)
 ### 19 Ekim — T13/T19/T20 entegrasyon teslimi
 
 İnsan doğrulamalı tek karar gerekçesi için task-rationale link→impact→lifecycle group→selection→approval→apply UI eklendi. Cancelled kapalı görünüm ve compensating reopen History'de izlenir; eski dependency/parent/requirement/Done guard'ları korunur. Yeni main task veya parent Done üretilmedi. Otomatik semantik gerekçe/ilişki yazarı ve genel terminal resolution kapsamı bu işlerde açık kalır. [Doğrulama kaydı](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).
+
+### 19 Ekim — T20/T21/T23/T24 Operations alt teslimi
+
+Operations okuma ekranı, ayrı kalıcı safe diagnostic sidecar, command boundary spans/operation-ID, test ortamı başlatıcısı ve normal/test cookie ayrımı kodlandı. Canonical audit, üretim retention, incident yönetimi ve end-to-end trace kabulü ayrı; parent görevler kapatılmadı. [Kod kapsamı ve doğrulama](../quality/operations-runtime.md).

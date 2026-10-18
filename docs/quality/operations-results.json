@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-19",
+  "scope": "Local command boundary diagnostics and separate TEST environment",
+  "runtime_tests": 382,
+  "new_operations_tests": 14,
+  "root_tests": 48,
+  "browser_flows_passed": 11,
+  "diagrams_rendered": 47,
+  "paid_calls": 0,
+  "model_inference_tested": false,
+  "complete_pipeline_trace": false,
+  "source_text_in_operational_logs": false,
+  "live_local": {
+    "normal_port": 53610,
+    "test_port": 53611,
+    "both_reachable": true,
+    "cookie_sessions_coexist": true,
+    "canonical_user_database_unchanged": true,
+    "synthetic_records_added": false,
+    "model_and_file_target_disabled": true
+  },
+  "source_hashes": {
+    "packages/operations/local.py": "370436dd7ca43c55ecfb4e73de43db7e66a0627f59219d644a8800b2982ef724",
+    "packages/operations/environment.py": "bb3638032584a5d5bfc8964dd2c91092b7753904434f71167614ab74998e7692",
+    "apps/local_ui/server.py": "61720e332982d1ea55802e1c53c098b52ad771657e34d81c587501d428d0957d",
+    "apps/local_ui/app.js": "692c43e9beed63e474c0ee050f36aac92337bd38327998f8a03c19577f4bef22",
+    "apps/local_ui/index.html": "10100dbe358f90e0cf37d1b5074a71ffb6f398ad73c9ae3212ede54ec87281f2",
+    "tests/runtime/test_operations.py": "a25eceb48144f95cef4b390851af9d11808f4d73b2f66622c0e6519871ee0695",
+    "tests/ui-operations.cjs": "c08572dd3231b97ce84091bffe7bdec5102d5ae7632636a03b9d50627e64148c",
+    "Decivora Test.command": "968d3ae8d791f6928a217125149eae2781e69622cc82d2b7d3efb617cd794b5c",
+    "manifests/local-operations.schema.json": "882a358fa1387ddfbc623a1ec95fc8baaa13aa2d7505d75f4c89f316e67f9852"
+  },
+  "limits": {
+    "retained_runs": 200,
+    "retained_error_groups": 100,
+    "visible_runs": 50,
+    "visible_error_groups": 25,
+    "production_retention_policy": false
+  },
+  "remaining": [
+    "full per-engine and cross-command correlation",
+    "incident lifecycle and notification controls",
+    "team operations roles and hosted staging",
+    "diagnostic backup/retention policy and exports"
+  ]
+}

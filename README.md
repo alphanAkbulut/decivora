@@ -1,5 +1,8 @@
 # Decivora
 
+19 Ekim Operations teslimi: [kalıcı güvenli tanı kayıtları ve ayrı TEST ortamı](docs/quality/operations-runtime.md). Komut sınırları/süreleri izlenir; bütün engine zinciri ve tam backoffice kabulü açık.
+
+
 19 Ekim yerel kod teslimi: [insan doğrulamalı gerekçeden iptal/yeniden açma](docs/quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü), typed waiting rozetleri ve sunucu kaynaklı workflow. Gerçek model/native capture ve tam MVP kabulü açık.
 
 

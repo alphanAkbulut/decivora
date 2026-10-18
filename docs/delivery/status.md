@@ -730,3 +730,7 @@ T13/T19: etki kartında görev description düzenle, review hazırla, grup seç,
 ### 19 Ekim — API-bağımsız lifecycle UI
 
 T13/T19/T20: task→Decision gerekçe ilişkisinin açık onayı, tek karar gerekçeli retirement/restoration impact girdisi, ayrı lifecycle select→approve→apply ve iptal/yeniden açma geçmişi kullanıcı arayüzüne bağlandı. Ana görevler kendi tam kabulüyle açık kalır; gerçek model/host/target kapıları kapanmadı. [Kod, sınırlar ve doğrulama](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).
+
+### 19 Ekim — T20/T21/T23/T24 Operations alt teslimi
+
+Operations okuma ekranı, ayrı kalıcı safe diagnostic sidecar, command boundary spans/operation-ID, test ortamı başlatıcısı ve normal/test cookie ayrımı kodlandı. Canonical audit, üretim retention, incident yönetimi ve end-to-end trace kabulü ayrı; parent görevler kapatılmadı. [Kod kapsamı ve doğrulama](../quality/operations-runtime.md).

@@ -1,0 +1,90 @@
+# Local Operations and isolated TEST environment
+
+**19 October 2026 — implemented local slice, not complete platform administration.** User approved the proposed Operations screen, persistent safe diagnostics, stage tracing and separate test launcher. Existing T20/T21/T23/T24 ownership and all MVP acceptance gates remain; this is not a new microservice product or parent-task closure.
+
+## What the user can do
+
+Open **Operations** in the sidebar. Read selected-project command traces, expand authorization/command execution boundaries, inspect duration and safe result codes, search an operation ID, filter by outcome and refresh without dispatching a model. HTTP command responses expose `X-Decivora-Operation-ID`. Successful command execution is not whole-task completion, model correctness or external artifact verification.
+
+Persistent HTTP error groups show endpoint category, safe code, first/last time and count. They contain no raw URL/query, exception message/stack, request/response body, task title, source text, cookie or credential. This is local installation diagnostics, not the canonical security audit. Existing session-only recent25error view remains a compatibility summary in Usage; Operations is the persistent view. Endpoint session/Host/Origin checks and current human project permission are enforced server-side. There is no new public health endpoint, remote collector or telemetry export.
+
+`packages/operations/local.py` uses a separate owner-only SQLite sidecar beside the selected workspace DB. Canonical records/events/audit stay in their original store. Operational rows may be updated/aggregated/evicted; canonical append-only history is not trimmed. No operational entry grants authority or proves domain mutation. Normal private workspace backup does not include this diagnostics sidecar; diagnostics backup/retention administration remains open.
+
+## Coverage and limits
+
+- One local application process serves UI/API. The ten engines are logical responsibilities, not ten deployed services. The panel reports this application's worker as inactive and external MCP host activation as not verified; it does not discover all OS processes or third-party agents.
+- Tracing currently covers authorized LocalApp command boundaries: project authorization plus dispatch into a named component. It does **not** yet correlate every receipt/job/model call/approval/evidence into one end-to-end pipeline or instrument every engine's internal phase. UI states this explicitly. A phase not observed is not marked successful.
+- `started`, `succeeded`, `failed`, `unknown` are distinct. An unfinished run observed by a new process/session becomes unknown in the read projection, not a claimed crash diagnosis or success. Measured durations use a monotonic clock; dates are separate wall-clock observations.
+- Development storage guards:200runs across the installation,100HTTP error groups; the current view shows up to50selected-project runs and25installation error groups. Eviction totals are persisted. These are bounded local-preview defaults, **not** an agreed production retention policy or complete audit guarantee.
+- Telemetry writes have a short bounded SQLite wait. Failure must not silently undo an already-authorized domain result or enable an unauthorized result. The process records lost-write count and exposes degraded diagnostics; process-local losses cannot be reconstructed after restart. Disk/OS failure can prevent durable diagnostic writes. Canonical security/audit transaction rules remain separate.
+- Denied/malformed requests are grouped under fixed safe endpoint/code labels. Unauthorized project input is not recorded as an authorized project trace. A project-less HTTP group does not disclose another project's content.
+
+## Separate TEST launcher
+
+`Decivora Test.command` starts the same source code with `--environment test --port 53611`. Normal data remains in the normal local data directory; TEST defaults to a separate sibling `decivora-test-data` directory. Ports can be explicitly overridden. `--no-browser` is available for controlled checks.
+
+TEST uses an environment marker bound to its DB, and refuses existing unmarked databases, local-marked data and the default normal data directory. Local mode refuses test-marked data. A TEST label is rendered by the server before JavaScript hydration. TEST and LOCAL use different session-cookie names, because browser cookies are host-scoped rather than port-isolated; CSRF/bootstrap values remain per server. Separate ports also separate browser local storage.
+
+TEST disables configured model extractors and file-target roots at startup. It does not automatically copy real projects, transcripts, credentials, grants or backups. The user can enter synthetic/manual data. This is data/configuration separation, **not** an OS sandbox or container security boundary. External real API calls, shared accounts and production datasets are not enabled. A hosted staging deployment, fixtures/seed UI, reset/delete controls and fault-injection admin buttons are not part of this delivery.
+
+The source ZIP includes both launchers but no databases, markers, telemetry or sessions. Full Python-free/native installation remains a separate release gate.
+
+```mermaid
+flowchart TB
+  accTitle: Local operations and separate test data
+  accDescr: One application serves each environment. Local commands write canonical data separately from safe operational diagnostics. Test uses its own data, session and port and disables model and file-target connections.
+  L["Decivora.command<br/>LOCAL application"] --> LC["Current project authorization<br/>typed command dispatch"]
+  LC --> LD["LOCAL workspace.sqlite<br/>canonical events / audit / records"]
+  LC --> LT["LOCAL operations sidecar<br/>safe spans / bounded errors"]
+  LT --> LV["Read-only Operations<br/>project traces + installation safe errors"]
+  T["Decivora Test.command<br/>TEST label / separate cookie and port"] --> TC["Same application code<br/>model / file target disabled"]
+  TC --> TD["Separate TEST workspace<br/>environment marker checked"]
+  TC --> TT["Separate TEST diagnostics"]
+  TD -. no automatic copying .-> LD
+  X["Diagnostic failure / eviction"] --> V["Degraded / lost-write / eviction counters<br/>not a canonical audit substitute"]
+  LT --> X
+  classDef app fill:#e8f1ff,stroke:#31649b,color:#1b3855;
+  classDef data fill:#e6f4eb,stroke:#357654,color:#214934;
+  classDef guard fill:#fff2d5,stroke:#9b762c,color:#443919;
+  class L,LC,LV app;
+  class LD,LT,TD,TT data;
+  class T,TC,X,V guard;
+```
+
+```mermaid
+sequenceDiagram
+  accTitle: A local command and its independent operational trace
+  accDescr: A project-authorized command has measured boundaries and a safe operation ID. Canonical outcome and diagnostic availability are separate. Reading the panel does not dispatch work.
+  participant U as User UI
+  participant A as Local API
+  participant P as Project authority
+  participant D as Canonical workspace
+  participant O as Operational sidecar
+  U->>A: Typed command + session / CSRF
+  A->>P: Resolve current human project permission
+  alt unauthorized
+    A->>O: Safe HTTP error category only
+    A-->>U: Reject, no authorized project trace
+  else authorized
+    A->>O: Operation ID + authorization / dispatch spans
+    A->>D: Existing guarded domain operation
+    D-->>A: Committed result or unchanged rejection
+    A->>O: Safe outcome and duration
+    Note over A,O: Diagnostic failure exposes loss, it grants no authority
+    A-->>U: Domain response + operation ID header
+  end
+  U->>A: Read Operations for selected project
+  A->>P: Recheck current read permission
+  A->>O: Bounded diagnostic read
+  A-->>U: Trace stages / safe errors / coverage limits
+```
+
+## Verification record
+
+Tests use temporary databases and synthetic values. Required checks cover restart persistence, no prompt/secret leakage, project isolation/revocation, HTTP authentication and trace header, unknown interrupted work, bounded eviction without domain-history loss, telemetry storage failure, TEST marker/path refusal, real launcher start and normal/TEST cookie coexistence. Browser verification covers filter/search, failed stage and duration, refresh/reload, visible TEST label, no source text in Operations and mobile width. [Published read schema](../../manifests/local-operations.schema.json), [Runtime tests](../../tests/runtime/test_operations.py), [browser case](../../tests/ui-operations.cjs). Real semantic inference and external pipeline tracing remain unverified.
+
+A browser check exposed overflowing retention JSON; the view now uses readable labels and wrapping. Another exposed the initial environment badge hydration race; the server now renders the environment label directly. These were fixed without weakening permission or source-verification gates.
+
+Existing historical commands are not backfilled with fabricated timing/phase logs. Traces begin when this implementation receives new commands. Reading empty Operations does not imply a failed logger or missing historical canonical audit.
+
+Final local verification:382runtime tests (14operations/environment checks),48root tests,11browser fixture flows and47Mermaid sources passed. Actual normal53610andTEST53611servers were read through one cookie jar; normal canonical DB logical digest was unchanged. Both environments start without configured model/file target. [Machine record/source hashes](operations-results.json). No test records were seeded into either live user workspace.

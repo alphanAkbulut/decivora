@@ -11,7 +11,7 @@ def main():
         file_root=None
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
-        server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root)
+        server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
         if os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1':
             from packages.domain.questions import QuestionService
             with server.app.core() as core:

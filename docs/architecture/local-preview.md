@@ -138,3 +138,7 @@ Current prerequisite completion is checked recursively in the same read snapshot
 ## 19 October 2026 — explicit lifecycle review UI
 
 The local task panel can approve a recorded task→Decision rationale link. The decision preview supports an explicit retirement/restoration hypothesis and human-confirmed single-decision task rationale. Complete current impact proposals can prepare a lifecycle group; separate select→approve→apply uses existing guards. Cancelled and reopened task history is projected from canonical events; graph links are retained. No automatic inference, generic resolution editor or canonical decision-retirement command is implied. [Workflow and rendered diagram](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü).
+
+## 19 October — Operations and TEST environment
+
+Read-only authenticated `/api/operations` returns selected-project command boundary traces and content-free installation HTTP error groups from a separate bounded sidecar; canonical event/audit data remains separate. Operations spans do not authorize work or prove complete pipeline execution. `Decivora Test.command` uses an explicitly marked separate database, environment label and session-cookie name, with model/file targets disabled. [Architecture and sequence diagrams](../quality/operations-runtime.md). Full engine tracing and platform administration remain open.

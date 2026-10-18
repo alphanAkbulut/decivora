@@ -21,7 +21,11 @@ from packages.capture.conversations import ConversationService
 
 ROOT=Path(__file__).parent
 class LocalApp:
-    def __init__(self,path,extractor=None,verification_root=None):
+    def __init__(self,path,extractor=None,verification_root=None,environment='local'):
+        from packages.operations.environment import bind_environment
+        bind_environment(path,environment)
+        if environment=='test' and (extractor is not None or verification_root is not None):raise ContractError('test_connection_disabled','Test environment disables model and file-target connections.')
+        self.environment=environment;self.cookie_name='decivora_test_session' if environment=='test' else 'decivora_session';self.started_at=time.time();self.started_monotonic=time.monotonic();self.operations_context=threading.local()
         self.extractor=extractor
         from packages.verification.files import FileChecker
         self.file_checker=FileChecker(verification_root) if verification_root is not None else None
@@ -36,9 +40,12 @@ class LocalApp:
             mode=core.db.execute('PRAGMA journal_mode=WAL').fetchone()[0]
             if mode!='wal':raise ContractError('storage_configuration_failed','Local concurrent storage profile could not be enabled.')
             self.storage_journal_mode=mode
+        from packages.operations.local import LocalOperations
+        self.operations=LocalOperations(self.path.with_suffix('.operations.sqlite'))
     def record_error(self,endpoint,code):
         endpoint=endpoint if endpoint in ('/api/state','/api/command','/api/backup','/api/session','/api/shutdown') else 'other'
         code=code if type(code) is str and re.fullmatch('[a-z_]{1,64}',code) else 'application_error'
+        self.operations.error(endpoint,code)
         with self.health_lock:self.recent_errors.append(dict(id='incident_'+uuid.uuid4().hex[:12],endpoint=endpoint,code=code,recorded_at=time.time()))
     def core(self):
         core=Workspace(self.path,'local_ui_workspace');core.file_checker=self.file_checker;return core
@@ -88,8 +95,34 @@ class LocalApp:
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC LIMIT 5",(core.workspace,selected)):
                 impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
             with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
-            return dict(impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+            return dict(environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+    def operations_view(self,selected='personal'):
+        with self.core() as core,core.read_snapshot():
+            identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected,human=True);core.active(owner,selected)
+            queue=dict(core.db.execute('SELECT j.status,count(*) FROM jobs j JOIN sources s ON s.seq=j.source_seq WHERE j.project=? AND s.workspace=? GROUP BY j.status',(selected,core.workspace)))
+            result=self.operations.view(selected)
+            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=False,queue=queue,model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
+            return result
     def command(self,body):
+        from packages.operations.local import ACTIONS
+        selected='personal';action='unknown';run=None;started=time.monotonic();self.operations_context.last_id=None
+        try:
+            value=body.get('command') if type(body) is dict and 'project_id' in body else body
+            candidate=value.get('action') if type(value) is dict else None
+            action=candidate if type(candidate) is str and candidate in ACTIONS else 'unknown'
+            if type(body) is dict and 'project_id' in body:selected=body['project_id']
+            # Scope resolution happens before associating a trace with a project.
+            with self.core() as core:
+                identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected,write=True,human=True);core.active(owner,selected)
+            run=self.operations.begin(selected,action);self.operations_context.last_id=run
+            with self.operations.span(run,1,'authorization','authorize_project'):
+                with self.core() as core:core.scope(core.authority.issue_scope('local_owner'),selected,write=True,human=True)
+            with self.operations.span(run,2,ACTIONS.get(action,'api'),'execute_command'):result=self._command(body)
+        except Exception as error:
+            if run:self.operations.finish(run,started,error)
+            raise
+        else:self.operations.finish(run,started);return result
+    def _command(self,body):
         selected='personal'
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
@@ -208,15 +241,16 @@ class LocalApp:
             plan=core.plan(owner,selected,'ui_'+uuid.uuid4().hex,ops);token=core.approve(owner,plan)
             return core.apply(owner,plan,token)
 
-def make_server(path,port=0,extractor=None,verification_root=None):
-    app=LocalApp(path,extractor=extractor,verification_root=verification_root)
+def make_server(path,port=0,extractor=None,verification_root=None,environment='local'):
+    app=LocalApp(path,extractor=extractor,verification_root=verification_root,environment=environment)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
         def answer(self,code,body,kind='application/json',cookie=False):
             if code>=400:app.record_error(self.path,body.get('error','application_error') if type(body) is dict else 'application_error')
             raw=json.dumps(body,ensure_ascii=False).encode() if kind=='application/json' else body
             self.send_response(code);self.send_header('Content-Type',kind);self.send_header('Content-Length',str(len(raw)));self.send_header('Cache-Control','no-store');self.send_header('X-Content-Type-Options','nosniff');self.send_header('Referrer-Policy','no-referrer');self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
-            if cookie:self.send_header('Set-Cookie','decivora_session='+app.cookie+'; HttpOnly; SameSite=Strict; Path=/')
+            if getattr(self,'operation_id',None):self.send_header('X-Decivora-Operation-ID',self.operation_id)
+            if cookie:self.send_header('Set-Cookie',app.cookie_name+'='+app.cookie+'; HttpOnly; SameSite=Strict; Path=/')
             self.end_headers();self.wfile.write(raw)
         def gate(self,write=False):
             if len(self.headers.get_all('Host',[]))!=1 or self.headers['Host']!=self.server.expected_host:return False
@@ -227,20 +261,24 @@ def make_server(path,port=0,extractor=None,verification_root=None):
             cookie=SimpleCookie()
             try:cookie.load(self.headers.get('Cookie',''))
             except Exception:return False
-            value=cookie.get('decivora_session');return bool(value and secrets.compare_digest(value.value,app.cookie))
+            value=cookie.get(app.cookie_name);return bool(value and secrets.compare_digest(value.value,app.cookie))
         def do_GET(self):
+            self.operation_id=None
             if not self.gate():return self.answer(403,dict(error='origin_denied'))
             if self.path in ('/','/app.js','/i18n.js','/locales.js','/workspace.css'):
-                file=ROOT/('index.html' if self.path=='/' else self.path[1:]);return self.answer(200,file.read_bytes(),'text/html; charset=utf-8' if self.path=='/' else 'text/css' if self.path=='/workspace.css' else 'application/javascript')
+                file=ROOT/('index.html' if self.path=='/' else self.path[1:]);raw=file.read_bytes()
+                if self.path=='/':raw=raw.replace(b'>LOCAL</p>',('>'+app.environment.upper()+'</p>').encode())
+                return self.answer(200,raw,'text/html; charset=utf-8' if self.path=='/' else 'text/css' if self.path=='/workspace.css' else 'application/javascript')
             url=urlsplit(self.path)
-            if url.path!='/api/state':return self.answer(404,dict(error='not_found'))
+            if url.path not in ('/api/state','/api/operations'):return self.answer(404,dict(error='not_found'))
             query=parse_qs(url.query,keep_blank_values=True)
             if set(query)-{'project_id'} or any(len(values)!=1 for values in query.values()):return self.answer(400,dict(error='invalid_request'))
             if not self.authenticated():return self.answer(401,dict(error='session_required'))
-            try:self.answer(200,app.state(query.get('project_id',['personal'])[0]))
+            try:self.answer(200,(app.state if url.path=='/api/state' else app.operations_view)(query.get('project_id',['personal'])[0]))
             except ContractError as error:self.answer(409,dict(error=error.code))
             except Exception:self.answer(503,dict(error='storage_unavailable'))
         def do_POST(self):
+            self.operation_id=None
             if not self.gate(write=True):return self.answer(403,dict(error='origin_denied'))
             if self.path=='/api/session':
                 if not secrets.compare_digest(self.headers.get('Authorization',''),'Bearer '+app.bootstrap):return self.answer(401,dict(error='session_required'))
@@ -260,7 +298,9 @@ def make_server(path,port=0,extractor=None,verification_root=None):
             try:
                 body=json.loads(self.rfile.read(int(length)))
                 if self.path=='/api/backup':return self.answer(200,app.backup_bundle(body),'application/zip')
-                result=app.command(body);self.answer(200,result)
+                try:result=app.command(body)
+                finally:self.operation_id=getattr(app.operations_context,'last_id',None)
+                self.answer(200,result)
             except ContractError as e:self.answer(409,dict(error=e.code,message=str(e)))
             except (ValueError,TypeError,KeyError):self.answer(400,dict(error='invalid_request'))
             except Exception:self.answer(503,dict(error='storage_unavailable'))
@@ -269,9 +309,11 @@ def make_server(path,port=0,extractor=None,verification_root=None):
 
 def main():
     if sys.version_info[:2]!=(3,12):raise SystemExit('Bu sürüm Python 3.12 gerektiriyor.')
-    parser=argparse.ArgumentParser();parser.add_argument('--data-dir',type=Path,default=Path(__file__).resolve().parents[3]/'decivora-local-data');parser.add_argument('--port',type=int,default=0);parser.add_argument('--no-browser',action='store_true');parser.add_argument('--verification-root',type=Path);args=parser.parse_args()
-    server=make_server(args.data_dir/'workspace.sqlite',args.port,verification_root=args.verification_root)
-    print('Decivora local preview: '+server.origin+' — close with Ctrl+C. No model/API calls.',flush=True)
+    parser=argparse.ArgumentParser();parser.add_argument('--data-dir',type=Path);parser.add_argument('--environment',choices=('local','test'),default='local');parser.add_argument('--port',type=int,default=0);parser.add_argument('--no-browser',action='store_true');parser.add_argument('--verification-root',type=Path);args=parser.parse_args()
+    from packages.operations.environment import DEFAULT_DATA_DIR,TEST_DATA_DIR
+    data_dir=args.data_dir or (TEST_DATA_DIR if args.environment=='test' else DEFAULT_DATA_DIR)
+    server=make_server(data_dir/'workspace.sqlite',args.port,verification_root=args.verification_root,environment=args.environment)
+    print('Decivora '+args.environment+' preview: '+server.origin+' — close with Ctrl+C. No model/API calls.',flush=True)
     if not args.no_browser:webbrowser.open(server.origin+'/#'+server.app.bootstrap)
     try:server.serve_forever()
     except KeyboardInterrupt:pass

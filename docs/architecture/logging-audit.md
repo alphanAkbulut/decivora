@@ -5,6 +5,10 @@
 
 **14Ekim2026 — Yerel domain/audit ve sınırlı operasyon görünümü kodlandı; tam operasyon sözleşmesi öneridir.** Canonical değişikliklerle atomik, uygulama düzeyinde append-only audit; onay/grant/işlem makbuzları ve replay koruması vardır. UI son25güvenli hata kodunu yalnız süreç belleğinde gösterir; restart sonrası sıfırlanır. Ham istek/credential/prompt operational loga yazılmaz. Kalıcı redakte incident deposu, genel denied-access olay kapsamı, merkezi log/OTel, alert ve retention henüz tamamlanmadı. DB/OS yöneticisine karşı kriptografik değiştirilemezlik iddiası yok. [Güncel durum ve kanıt](../quality/security-current-status.md). Saklama sürelerinin tek referansı [veri yaşam döngüsü](storage-memory-capacity.md); erişim kuralları [kimlik/yetki modelidir](identity-access.md).
 
+## 19 Ekim — güncel yerel uygulama
+
+[Operations ekranı ve TEST ortamı](../quality/operations-runtime.md) kodlandı.200bounded command run/100safe HTTP error-group tutan ayrı private SQLite sidecar, request operation ID, authorization/dispatch span süreleri, persisted hata grupları ve degraded/lost/eviction görünümü var. Önceki paragraftaki25hata view'u eski session-only özettir; yeni ekran restart sonrası kayıtları korur. Tam receipt→job→model→review→evidence trace, merkezi OTel/alert/retention yönetimi ve security audit konsolu hâlâ açık. Operational row eviction canonical history'yi silmez.
+
 ## Dört kayıt sınıfı
 
 | Sınıf | Amaç / örnek | Kalıcılık ve erişim |

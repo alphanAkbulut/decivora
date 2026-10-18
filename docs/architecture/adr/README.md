@@ -32,3 +32,5 @@ ADR-0012, Q15-A ile ilk runtime/koşullu build için kabul edildi; diğer ADR'le
 ## Current local delivery — 14 October 2026
 
 [API-independent implementation and follow-up gates](../../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.
+
+- [ADR-0014 — Local Operations and separate TEST environment](0014-local-operations-and-test-environment.md): accepted local implementation direction,19October2026; bounded diagnostics, not full end-to-end tracing/platform administration.

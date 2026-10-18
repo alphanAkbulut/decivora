@@ -1,6 +1,8 @@
 # Yönetim merkezi ve sistem işletimi
 
-**2026-10-10 — Önerilen tasarım; ekranlar, yetkiler ve hata servisi uygulanmadı.** Kullanıcı ihtiyacı: ürün sahibinin sistemi yönetebilmesi, günlük kullanıcıların uygun yetkiyle çalışması, hata ve parametrelerin görünür olması. Mevcut TEAM-01/GOV-01/AUD-01/CST kapsamının ayrıntısıdır. Yönetici olmak bütün konuşmaları okuyabilmek veya ürün kararlarını atlayabilmek değildir.
+**19 Ekim2026 — Tam yönetim merkezi öneri; salt okunur yerel Operations alt kümesi uygulandı.** Kullanıcı ihtiyacı: ürün sahibinin sistemi yönetebilmesi, günlük kullanıcıların uygun yetkiyle çalışması, hata ve parametrelerin görünür olması. Mevcut TEAM-01/GOV-01/AUD-01/CST kapsamının ayrıntısıdır. Yönetici olmak bütün konuşmaları okuyabilmek veya ürün kararlarını atlayabilmek değildir.
+
+[Güncel kod ve sınırlar](../quality/operations-runtime.md): proje izinli komut izleri, kalıcı güvenli HTTP hata grupları, süre/sonuç/işlem kimliği, sınırlı queue/capability görünümü, diagnostics loss ve ayrı TEST başlatıcısı var. Kullanıcı/rol/policy yönetimi, incident resolve/retry, merkezi alert ve hosted staging henüz yok. Aşağıdaki tam tasarım bu alt kümeyle tamamlandı sayılmaz.
 
 ## Üç görünüm, ortak yetki katmanı
 
