@@ -2,6 +2,8 @@
 
 **19 October 2026 — implemented local slice, not complete platform administration.** User approved the proposed Operations screen, persistent safe diagnostics, stage tracing and separate test launcher. Existing T20/T21/T23/T24 ownership and all MVP acceptance gates remain; this is not a new microservice product or parent-task closure.
 
+[Diagram/schema guide](../architecture/logging-diagrams-and-schema.md) maps the current SQL tables and API fields to Operations UI, explains unfinished-run projection and distinguishes existing local drawings from proposed full audit/delivery diagrams.
+
 ## How developers and agents use the records
 
 The [diagnosis and development runbook](../architecture/logging-audit.md#teşhis-ve-geliştirme-çalışma-rehberi) defines environment/project/revision checks, authorized trace lookup, loss/coverage review, canonical outcome verification, TEST reproduction and closure evidence. It also separates agent-owned technical checks from necessary human decisions/subjective review/new permissions. [Manual review criteria and open implementation work](../architecture/logging-audit.md#manuel-kontrol-ne-zaman-gerçekten-gerekli) are explicit: automatic incident/task/question generation, alerts and end-to-end correlation are not implemented. AGENTS.md points to this conditional workflow; no per-message log polling or new model work is implied.

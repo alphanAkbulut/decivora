@@ -1,5 +1,8 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+Operations açıklaması: [diagram ve şema okuma rehberi](../architecture/logging-diagrams-and-schema.md). ER gerçek sidecar tablolarını, DTO şeması read çıktısını anlatır. Error group/run correlation veya her engine'in izlenmesi varmış gibi çıkarım yapma.
+
+
 Runtime teşhisi: [log çalışma rehberi](../architecture/logging-audit.md#teşhis-ve-geliştirme-çalışma-rehberi) ve [insan kontrol ayrımı](../architecture/logging-audit.md#manuel-kontrol-ne-zaman-gerçekten-gerekli). Operations local command sınırlarını izler; başarısız testte önce izinli tanı+canonical sonuç+TEST reproducer'ı incele. Kullanıcıdan yalnız gerçekten insan katkısı gereken kararı iste; otomatik incident/alert/correlation uygulanmış deme.
 
 

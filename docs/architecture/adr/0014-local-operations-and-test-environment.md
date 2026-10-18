@@ -15,3 +15,5 @@ For local manual testing, choose a separate TEST DB, marker, port and session-co
 The initial trace records project authorization and component command execution; receipt/job/model/review/evidence joins and inner engine spans remain open.200run/100error-group bounds are development protection defaults, not a production retention decision. Diagnostic backups, incident lifecycle/actions, remote export and team operator-role UI remain open. T20/T21/T23/T24 parent acceptance is not closed by this delivery.
 
 [Runtime scope, architecture/sequence diagrams and tests](../../quality/operations-runtime.md) document restart, safe-code redaction, authorization, loss, eviction, environment refusal, actual launcher and browser/cookie coexistence checks. A source ZIP contains code/launchers only; real user data, session secrets and private backups are excluded from publication.
+
+[Diagram and physical/read schema guide](../logging-diagrams-and-schema.md) explains the implemented storage/DTO boundaries and synthetic example without adding runtime fields or service commitments.

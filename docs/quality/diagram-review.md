@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 24 belgede 47 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 25 belgede 50 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -35,6 +35,7 @@
 | [docs/quality/receiver-contract.md](../../docs/quality/receiver-contract.md) | 1 |
 | [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 2 |
 | [docs/quality/operations-runtime.md](operations-runtime.md) | 2 |
+| [docs/architecture/logging-diagrams-and-schema.md](../architecture/logging-diagrams-and-schema.md) | 3 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -196,3 +197,7 @@ Local-preview akışına hazırlanan source/context isteği, dış yanıt import
 ## 19 Ekim — Operations ve TEST ortamı
 
 47Mermaid kaynağı/24belge yeniden render edildi; başarısızlık0. Yeni operasyon sequence diagramı ve Operations masaüstü/mobil ekranları incelendi. İlk sequence çizimindeki noktalı virgül ayrıştırma hatası kaynakta düzeltildi; başarısız deneme başarı olarak sunulmadı. Önceki45kaynak aynı kalır; eski render kaydı superseded_history içinde korunur. [Teslim](operations-runtime.md) yeni run/error sidecar ve ayrı test verisi/oturumunu anlatır; bütün engine trace veya model kabulü değildir.
+
+## 19 Ekim — log diagram ve şema açıklama rehberi
+
+[Rehber](../architecture/logging-diagrams-and-schema.md) üç yeni çizim ekler: yetkili Operations okuma/kanıt sınırı, gerçek operational SQLite ER ve unfinished→unknown read projection yorumu.50kaynak/25belge gerçekten yeniden render edildi; başarısızlık0. Yeni ER/projection PNG'leri görsel incelendi. Gerçek SQL kolonları, span birleşik PK/run FK-cascade ve error endpoint/code unique kuralı ayrı geçici SQLite'ta kontrol edildi. Sentetik JSON örneğinin required alan setleri read şemasıyla eşleştirildi; jsonschema dependency bulunmadığından tam JSON Schema doğrulaması yapılmadı. Runtime kodu/dependency/SQL şeması değişmedi; eski render kayıtları superseded_history içinde korunur.

@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "909ee0c8c6be255c7c598c9943c20a2ff69d98aed962460147559895f31b20b3",
+      "svg_sha256": "b6d8f783ea0874d7fb81b09217a08a6764044440c35f3afdafcc9bd2aa946067",
       "error": null
     },
     {
@@ -321,6 +321,42 @@
       "error": null
     },
     {
+      "path": "docs/architecture/logging-diagrams-and-schema.md",
+      "block": 1,
+      "source_sha256": "8dfe7708ac9c6cdc3afc8d92cb407c08753d9989029297ccccd8e67b886f7c47",
+      "status": "rendered",
+      "title": "Operations okuma yolu ve kanonik kanıt sınırı",
+      "description_present": true,
+      "view_box": "0 0 695.26171875 974",
+      "artifact": "docs--architecture--logging-diagrams-and-schema--1.svg",
+      "svg_sha256": "7dc983602f2f03aa47eab2c63dc94919a71cd05778b1dcc09aec0e97f95dcbe4",
+      "error": null
+    },
+    {
+      "path": "docs/architecture/logging-diagrams-and-schema.md",
+      "block": 2,
+      "source_sha256": "cd7820f6977108e892296883c46d84893a056109ad8b13c3087ffbee16172e44",
+      "status": "rendered",
+      "title": "Mevcut yerel operational SQLite tabloları",
+      "description_present": true,
+      "view_box": "0 0 1770.09375 1014.75",
+      "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
+      "svg_sha256": "7d1039134999b3df19fc31b861b06e0120f4db35847d47457df3e7e322503f86",
+      "error": null
+    },
+    {
+      "path": "docs/architecture/logging-diagrams-and-schema.md",
+      "block": 3,
+      "source_sha256": "91b193f0460b2fed2d6f181dd0c735b93fa92c2067cfe5193c022f6ca10b61ca",
+      "status": "rendered",
+      "title": "Bitmemiş operational kaydın read projection yorumu",
+      "description_present": true,
+      "view_box": "0 0 739.796875 1142.46875",
+      "artifact": "docs--architecture--logging-diagrams-and-schema--3.svg",
+      "svg_sha256": "ee856327102482c3e7fc1a0ae3f980b46a3660eef33e266aeb6ae11826fe27c9",
+      "error": null
+    },
+    {
       "path": "docs/architecture/overview.md",
       "block": 1,
       "source_sha256": "e351a74ab2276d86bfa08e0e2d27ebe63fadea1d6253d8ba307a065520a3bf9a",
@@ -329,7 +365,7 @@
       "description_present": true,
       "view_box": "0 0 1046.67578125 1376.4000244140625",
       "artifact": "docs--architecture--overview--1.svg",
-      "svg_sha256": "6f92e15e85488791e3ad74b18f44bdbbdd8a1377afe8ad106a8372c1d2652d82",
+      "svg_sha256": "326f5ba51083b5ab44c73fa94588a3c1ba6efa6324d2b9ba0ea18548d47523b9",
       "error": null
     },
     {
@@ -341,7 +377,7 @@
       "description_present": true,
       "view_box": "-50 -10 1248 1311",
       "artifact": "docs--architecture--review-runtime--1.svg",
-      "svg_sha256": "50181d68c97344e062dea61c759b263bef9ab228ac29bbd0e64a9dc36d6c33de",
+      "svg_sha256": "4a130d5bc14c863c8cb7d719710747ee86fa1f423388605a61bb391a8a9fffd0",
       "error": null
     },
     {
@@ -353,7 +389,7 @@
       "description_present": true,
       "view_box": "0 0 1089.140625 1166.3734130859375",
       "artifact": "docs--architecture--review-runtime--2.svg",
-      "svg_sha256": "b604f2e2f2413627847ff02b58bb864ae71566baa424a19f9546e9620877643b",
+      "svg_sha256": "27e4e66308696bf7c409d1564a005eb8713e000dac943ba7fd27d6cb2de6b498",
       "error": null
     },
     {
@@ -365,7 +401,7 @@
       "description_present": true,
       "view_box": "0 0 2498.9736328125 395.5390625",
       "artifact": "docs--architecture--storage-memory-capacity--1.svg",
-      "svg_sha256": "65cb8e32667a96e98cbe0e4397482cd83c32c35e9c0019f95abc39628297c8ab",
+      "svg_sha256": "1b96e8d1a0eb6fba45859a758d07b41f8f0400cc06796d8a78be8f4d940e2d40",
       "error": null
     },
     {
@@ -377,7 +413,7 @@
       "description_present": true,
       "view_box": "0 0 1174.41015625 1020.6778564453125",
       "artifact": "docs--architecture--task-lifecycle--1.svg",
-      "svg_sha256": "b5dcaffe97bf41c6f8b054bcabc56d4a396b2be2b86e44020ea47ea275a81bd2",
+      "svg_sha256": "ea072817cf5328f7273a49136238a01cc9e395f39635364a09f5eb7c74be96f3",
       "error": null
     },
     {
@@ -389,7 +425,7 @@
       "description_present": true,
       "view_box": "0 0 896 1085.4720458984375",
       "artifact": "docs--delivery--api-independent-development--1.svg",
-      "svg_sha256": "5151939d584b852e6a74b5fc89b624928b0e9ab1d03a5cd1db5a02f818487046",
+      "svg_sha256": "f89354bba5cca4f619ad3e23bc161031a28d692d4df654d7df9010d8d5a1c7c0",
       "error": null
     },
     {
@@ -401,7 +437,7 @@
       "description_present": true,
       "view_box": "0 0 2364.25 88",
       "artifact": "docs--delivery--team-data-plan--1.svg",
-      "svg_sha256": "567d2e4c5d5d96a3570269d31d07f5d158090a52d85318a1a6d516665312c29c",
+      "svg_sha256": "8ae3f54566af362c3c1c29e15c86a1d2d777b95e07d49985020f6dd1a9f42c9a",
       "error": null
     },
     {
@@ -413,7 +449,7 @@
       "description_present": true,
       "view_box": "0 0 1741.15625 676",
       "artifact": "docs--product--current-direction--1.svg",
-      "svg_sha256": "b1d9ed7f9ed75dd952e8e334807fdbb28d44ca0f63f27951cb704ecf979425e6",
+      "svg_sha256": "6d6c6696979bb0fd38aa156a189cd2278c6871ba168eb1e05fc571b5e4f7b93b",
       "error": null
     },
     {
@@ -425,7 +461,7 @@
       "description_present": true,
       "view_box": "0 0 896 900",
       "artifact": "docs--product--decision-map--1.svg",
-      "svg_sha256": "91a9bedb00439a317a4979ae4bdbd76324c400d39021f34bff391274abd90ebf",
+      "svg_sha256": "ce4d96010c9a7edb1a6fd5a6c068af21e797d4f9e2a631f3c3eaa32fde4e7a5a",
       "error": null
     },
     {
@@ -437,7 +473,7 @@
       "description_present": true,
       "view_box": "0 0 1526 534",
       "artifact": "docs--product--decision-map--2.svg",
-      "svg_sha256": "3375586487902ab36a2081b0dde234c5664fe564b405307355574f4eda17dee3",
+      "svg_sha256": "7c25dd52469fca126930f502d808079268ba7d5fe8e4f1213fc0aec2cd340c07",
       "error": null
     },
     {
@@ -449,7 +485,7 @@
       "description_present": true,
       "view_box": "0 0 739.4375 435.8500061035156",
       "artifact": "docs--product--graph-experience--1.svg",
-      "svg_sha256": "171c1ed0fb2b92d288a641fdae0d1b6d908fd6fee2019afd66258177a7d0e8f6",
+      "svg_sha256": "e25eeb3f99052c262467aa395ff9ae63a69b904517af3dc0a5062b2b33ce8c99",
       "error": null
     },
     {
@@ -461,7 +497,7 @@
       "description_present": true,
       "view_box": "0 0 606.7734375 655",
       "artifact": "docs--product--graph-experience--2.svg",
-      "svg_sha256": "7451100c9a97de2ea77bb733735d3d97e2295fa00b4f4bb0d38534571f483432",
+      "svg_sha256": "f37863b7bc798b17e9cee5e7b07ae0f7d715c5ef3e14397fe3d54e4341baaa86",
       "error": null
     },
     {
@@ -473,7 +509,7 @@
       "description_present": true,
       "view_box": "0 0 1220.390625 1251.90625",
       "artifact": "docs--product--intent-to-reality-gap--1.svg",
-      "svg_sha256": "515113b5b52cfc0094cc4618df85037f075b8b9cd3d52aa94ceb5aca3687467c",
+      "svg_sha256": "33f76f545a8f1ac48c8b9b67c99910f303d3b4170284881fe82bde20e86d7f1f",
       "error": null
     },
     {
@@ -485,7 +521,7 @@
       "description_present": true,
       "view_box": "-50 -10 851 1190",
       "artifact": "docs--product--intent-to-reality-gap--2.svg",
-      "svg_sha256": "27262749ded214a43526aec9bf1388d873d5d8348602b0839a1160dae6f2d69a",
+      "svg_sha256": "23ca444cd00228399f481c134f5711b1017e4770caee8836e5a2ab620db136b4",
       "error": null
     },
     {
@@ -497,7 +533,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "a21e72fa3bc9c3a9c795db8ae2c49d8fd54a79dc101fe901084469d86acfa9b9",
+      "svg_sha256": "aacb427dbf734407b59e2dd4e379df4b07a0a3342eb235bcfa5d70468d111dc4",
       "error": null
     },
     {
@@ -509,7 +545,7 @@
       "description_present": true,
       "view_box": "0 0 1047.375 902",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "9c50f9e2795e8688e623202417db053c98dd83828b79b23dd95d281a48a5fe13",
+      "svg_sha256": "9d13c37a6042c32d7ad38ddf148e621414ab32b23c5e4366800cbcc4ea6cc769",
       "error": null
     },
     {
@@ -521,7 +557,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "88f6af4565611f2ee9395a9ee8fdbbefaa6bc3d653b5ae3fdcd101427985d824",
+      "svg_sha256": "d8f4b3a27c932c376c9531ba66c0035ac54d741da6e434cab30cab9423c67295",
       "error": null
     },
     {
@@ -533,7 +569,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "d57861769f93bc4fbaeaac68ae2ad847f86fc75c5b87f6a5b34c156ac54ca6e2",
+      "svg_sha256": "0f927dc48435e68b75c68a8d72571352597b4a0e55dd77588450af2aad076d06",
       "error": null
     },
     {
@@ -545,7 +581,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "54b624c67172d0189bf497121002beac14c284b102a36d6ecdff6f3709ecac14",
+      "svg_sha256": "6f77319aa25f452436d0a75d1b8c4116cd5911cca320a2b0f82f2af79c38dd2b",
       "error": null
     },
     {
@@ -557,7 +593,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "4644a17cfecdba82c2fbeda7a69b88abaa6724e36f3eea0169ed9d57168bfc6b",
+      "svg_sha256": "f3ffa8ef0bc34d1d20bc84d49e9573089de9d07352bd7c04af73cc1daa611b40",
       "error": null
     },
     {
@@ -569,7 +605,7 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "3dd760e897a3c9258b963112e7b44a0098395d89cdbbb439161b904be202c0f5",
+      "svg_sha256": "d540368532f4ffb20961d0390a504935888971ae6d2ac7e3bba4e30115430cc2",
       "error": null
     }
   ],
@@ -4848,9 +4884,579 @@
         }
       ],
       "reason": "Operations and TEST environment diagrams added; all current sources rerendered"
+    },
+    {
+      "checked_at": "2026-10-19",
+      "records": [
+        {
+          "path": "README.md",
+          "block": 1,
+          "source_sha256": "0d465c1e6dddca0dd19f15d28bca9822c6a00438ff0dd7c1facaa2e418d671bf",
+          "status": "rendered",
+          "title": "Karar, uygulama ve kanıt döngüsü",
+          "description_present": true,
+          "view_box": "0 0 906.6484375 1058",
+          "artifact": "README--1.svg",
+          "svg_sha256": "3381597d166ecd4f44e5e56b00794407e83901b91c7901f9db3e96117d7ab592",
+          "error": null
+        },
+        {
+          "path": "ROADMAP.md",
+          "block": 1,
+          "source_sha256": "c9d296958c7d9c6d5339db08336e312f65618902cb7fbce80cbadc41c31cce5a",
+          "status": "rendered",
+          "title": "Fazlar ve yatırım alternatifleri",
+          "description_present": true,
+          "view_box": "0 0 1453.2734375 1070.21875",
+          "artifact": "ROADMAP--1.svg",
+          "svg_sha256": "48ba704323ced5ff3aa42bb1d725b363e254b2fe54c13f746da050a3909da2b2",
+          "error": null
+        },
+        {
+          "path": "ROADMAP.md",
+          "block": 2,
+          "source_sha256": "b3c42016b50565a22ad5e54b7360c9d650497ff88431f575e0e49380099dcc46",
+          "status": "rendered",
+          "title": "Küçük teslimler ve kanıt kapıları",
+          "description_present": true,
+          "view_box": "0 0 1536.28125 1419.4375",
+          "artifact": "ROADMAP--2.svg",
+          "svg_sha256": "e55bcb2722e7493172150ed0152adf5083fcb62b095dbbe9267753a43c83a63f",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/connection-and-context.md",
+          "block": 1,
+          "source_sha256": "0c1b286c82669fab3659eff4f83b8c5f9ebc6b9b579e55dd9078b16583f8ca2c",
+          "status": "rendered",
+          "title": "Capture, MCP ve insan UI sınırları",
+          "description_present": true,
+          "view_box": "0 0 1833.796875 269",
+          "artifact": "docs--architecture--connection-and-context--1.svg",
+          "svg_sha256": "a635f69ecb530b68de0fb1e0c5d9d58b308c4eb599bdb07250b36cb450d70f65",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/data-relationships.md",
+          "block": 1,
+          "source_sha256": "955c6655203cd90db18cda3d2b313fba3b2650d8a884d61e66a9079a42145ea4",
+          "status": "rendered",
+          "title": "ER-01 Kaynak ve erişim ilişkileri",
+          "description_present": true,
+          "view_box": "0 0 1123.91015625 1183",
+          "artifact": "docs--architecture--data-relationships--1.svg",
+          "svg_sha256": "cfeb801287c4f97705d3a8b087ec21c5ede2bdbe449a2fd7846b3e570ef452bc",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/data-relationships.md",
+          "block": 2,
+          "source_sha256": "aa2382675769796cc9360a980dc0e99070a2abca9d2e61d9296c99dfed1f89a2",
+          "status": "rendered",
+          "title": "ER-02 Task, run ve kabul kanıtı",
+          "description_present": true,
+          "view_box": "0 0 2522.6328125 640",
+          "artifact": "docs--architecture--data-relationships--2.svg",
+          "svg_sha256": "4db70f8619d1c55b02380acc0f89f9cfc2675c3eceafc38c8ed1dd85998a7cf6",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/data-relationships.md",
+          "block": 3,
+          "source_sha256": "5a4bb522c147af01635ae2795b475723074cba4a5470d4206bf740f9c87c0edc",
+          "status": "rendered",
+          "title": "ER-03 Hedef uygulama gözlemi",
+          "description_present": true,
+          "view_box": "0 0 1507.28515625 821",
+          "artifact": "docs--architecture--data-relationships--3.svg",
+          "svg_sha256": "6a53434419f3e1a10eb0ecd33b92a77ca82fd798f061ecebee32758a32838b74",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 1,
+          "source_sha256": "7cb0ec5462ce7f2dbd4e373f25754f82f3a353283ae3485f17b201d2fecbb233",
+          "status": "rendered",
+          "title": "Sistem bağlamı ve güven sınırları",
+          "description_present": true,
+          "view_box": "0 0 1617.265625 895",
+          "artifact": "docs--architecture--diagrams--1.svg",
+          "svg_sha256": "4fc909a83fefd8ec8eb7c3ef28111590056bc5860860262ed71603f2bf089035",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 2,
+          "source_sha256": "31db8b6db28dc6cd8d55beb2361a94254cd0b02f108c1cf3c2ae973c8175b292",
+          "status": "rendered",
+          "title": "On engine ve ortak policy",
+          "description_present": true,
+          "view_box": "0 0 1022.610595703125 836",
+          "artifact": "docs--architecture--diagrams--2.svg",
+          "svg_sha256": "a8ca8d7bfaac56f8582020e5a11d99ff9c1aed1f5c44e363a2eaf03391ebcafd",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 3,
+          "source_sha256": "d970f1cf2511a3fe35bffb89ca6dfe573557af4bfc0b1ec1255c30614de8b68f",
+          "status": "rendered",
+          "title": "Kanonik mantıksal veri modeli",
+          "description_present": true,
+          "view_box": "0 0 1463.625 2309",
+          "artifact": "docs--architecture--diagrams--3.svg",
+          "svg_sha256": "909ee0c8c6be255c7c598c9943c20a2ff69d98aed962460147559895f31b20b3",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 4,
+          "source_sha256": "8f0031b3d66b6bbc4627e90f4e1801abb6d1c510fd88ae4f2d7559d25affe674",
+          "status": "rendered",
+          "title": "Kalıcı source alımı ve bounded değerlendirme",
+          "description_present": true,
+          "view_box": "-69 -10 1081 1682",
+          "artifact": "docs--architecture--diagrams--4.svg",
+          "svg_sha256": "a4bb0d0c5a27e9fe4fc65f6ce2255c0652c0474cd328204753a47e206d7f0425",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 5,
+          "source_sha256": "7c703f912369a8e4d3b5ea7cdbfaa37b1a5c84c82cc20a5c9d3fc2f1eadb1980",
+          "status": "rendered",
+          "title": "Graph değişiminde stale approval",
+          "description_present": true,
+          "view_box": "-50 -10 861 966",
+          "artifact": "docs--architecture--diagrams--5.svg",
+          "svg_sha256": "b9ec951a407cff1501b1caa0569cfe3d49f356670cfc1020d687eaa238117f87",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 6,
+          "source_sha256": "52fb3568093daa99a4fa96b48c9c8d770a763a3c994a6b37435b116837141a1c",
+          "status": "rendered",
+          "title": "AND OR unknown ve tarihsel completion",
+          "description_present": true,
+          "view_box": "0 0 1680.1953125 331",
+          "artifact": "docs--architecture--diagrams--6.svg",
+          "svg_sha256": "1ebfe158796f41b378f1fc549b1e7984ab4badd466553a15485afa01353890fb",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 7,
+          "source_sha256": "4d82d1ba383a23845b7f67e3c9cccde4d0be6af52fb7d3a888df703b141db833",
+          "status": "rendered",
+          "title": "ChangeSet durumları",
+          "description_present": true,
+          "view_box": "0 0 1199.53125 438",
+          "artifact": "docs--architecture--diagrams--7.svg",
+          "svg_sha256": "3d293b785e8e20b2c855f1c57a43112e6beabfcb82f5d6ca9c4e0123dd0e469d",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 8,
+          "source_sha256": "e4e8704e33f839a8df3e7d09ad0c8d10c85708029b3b9a1c53c20cbf3ec87560",
+          "status": "rendered",
+          "title": "Yan etkisiz replay ve recovery",
+          "description_present": true,
+          "view_box": "0 0 888.71484375 938",
+          "artifact": "docs--architecture--diagrams--8.svg",
+          "svg_sha256": "6863bad30f13ac8b2cb4d79d54e40fba47adbb76815058190aa69eade6b5ebdd",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 9,
+          "source_sha256": "e70c24ce2df85c89978dd6e4de4516d7bdb29d86dacb3aab1956b8c6079705bd",
+          "status": "rendered",
+          "title": "İnsan, agent run ve ürün task ayrımı",
+          "description_present": true,
+          "view_box": "0 0 2404.1875 269",
+          "artifact": "docs--architecture--diagrams--9.svg",
+          "svg_sha256": "f14d85fef97ecb8c4440da10fde81009d6ab3572805c6e34ca4f9d5c0fd0f268",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 10,
+          "source_sha256": "dae7b189436c2e1caa81524fd3dfcb34afbecbf4ecf5b11e5d09485ba4e47604",
+          "status": "rendered",
+          "title": "Soru, yetki ve host delivery",
+          "description_present": true,
+          "view_box": "0 0 867.65234375 1678.546875",
+          "artifact": "docs--architecture--diagrams--10.svg",
+          "svg_sha256": "0889587a8718c6f682f86604c149452e350d3dcf7e5f2e6b0b85e88f4f98566d",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 11,
+          "source_sha256": "2022253f33053846821fc57491a004f59d6a375b7756ce7f230a8cbaf31304e3",
+          "status": "rendered",
+          "title": "Blocker ve açıklanabilir öncelik",
+          "description_present": true,
+          "view_box": "0 0 621 1084.171875",
+          "artifact": "docs--architecture--diagrams--11.svg",
+          "svg_sha256": "51ba8afad34d9410d612261cfb9612ae3b45a59ac9f0aac8bfce769d2b5b62b8",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 12,
+          "source_sha256": "ecb7ec4b68ed497998156b6fd132fedd1b95e214e2518618aefea99e362ce1bf",
+          "status": "rendered",
+          "title": "Kullanıcı, admin ve operatör sınırları",
+          "description_present": true,
+          "view_box": "0 0 1140.8828125 610.4000244140625",
+          "artifact": "docs--architecture--diagrams--12.svg",
+          "svg_sha256": "4b79a821ebf7f91dde2f27009984fed3b4c8054a09c00b883b1092245fe9ef01",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/diagrams.md",
+          "block": 13,
+          "source_sha256": "fdd208532cf59299070095502deb5fb61859778712c255cb2daf6ac269c83190",
+          "status": "rendered",
+          "title": "Incident ve güvenli müdahale",
+          "description_present": true,
+          "view_box": "0 0 997.984375 1141",
+          "artifact": "docs--architecture--diagrams--13.svg",
+          "svg_sha256": "9dd3ea7d66e811f7617d6b72f806be7fdb78f22c9f9437f35e0f962c7d1b42e0",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/execution-and-integrations.md",
+          "block": 1,
+          "source_sha256": "effbb48c80f64a6b01e5d2feddb9f33f0c64084ddea5d6503313401e5303efbb",
+          "status": "rendered",
+          "title": "Task sonucunun ayrı doğrulanması",
+          "description_present": true,
+          "view_box": "-50 -10 1250 1694",
+          "artifact": "docs--architecture--execution-and-integrations--1.svg",
+          "svg_sha256": "a7979c3468ef5d6621b1b7fa964e8c8a104ffff42f6eef4aa42d1f2b6a3f7738",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/execution-and-integrations.md",
+          "block": 2,
+          "source_sha256": "18d5b24f7bd959fcc7976e05d6330c2881c0950a6bb1c71a93578f5eb96a8f33",
+          "status": "rendered",
+          "title": "Deterministik işlem ve koşullu LLM analizi",
+          "description_present": true,
+          "view_box": "-50 -10 1254 1639",
+          "artifact": "docs--architecture--execution-and-integrations--2.svg",
+          "svg_sha256": "c11811eeb929f0aa7a2ceed7af9757248d4f3f825dcb555770822679ceed8cd0",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/execution-and-integrations.md",
+          "block": 3,
+          "source_sha256": "64c71acba488f37d4e36894f19f680797366cc82e301db904bb7f991fa74350a",
+          "status": "rendered",
+          "title": "Outbox ve callback receipt",
+          "description_present": true,
+          "view_box": "-50 -10 1073 1374",
+          "artifact": "docs--architecture--execution-and-integrations--3.svg",
+          "svg_sha256": "ef3acc2b7a418316de57e119d610da42cb6269086c220b86c39c81ca3f70eb76",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/identity-access.md",
+          "block": 1,
+          "source_sha256": "02b786affbe60a54dd91372a6c3dad46f79815300fd891c534f5779a4dacabfb",
+          "status": "rendered",
+          "title": "Üyelik, delegation ve güncel yetki",
+          "description_present": true,
+          "view_box": "0 0 705.33984375 836",
+          "artifact": "docs--architecture--identity-access--1.svg",
+          "svg_sha256": "84fcc7f2d698cbea8b741b43a3e4bf72ca8f68206cf1073d6de76afe6a679919",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "5f8d53b6ce8aebfb0e6749f7e96d15f3915b72887d6a216d538d16750a0f4366",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 2490.58984375 2783.279296875",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "236a66717a8625f1d9f36d62090fddb289681cf06145a787bae8da20190eb0e6",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/logging-audit.md",
+          "block": 1,
+          "source_sha256": "186001b09698c7c3eb88289be2723b7fe6ed70af9d5baec06feacc51a2d35402",
+          "status": "rendered",
+          "title": "Atomik audit ve ayrı dış teslim",
+          "description_present": true,
+          "view_box": "-50 -10 1054 1021",
+          "artifact": "docs--architecture--logging-audit--1.svg",
+          "svg_sha256": "ae0523ba0cdcaf636eb674916d6d9e9bec4f4a1251b897e4fae90fad829fe04b",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/overview.md",
+          "block": 1,
+          "source_sha256": "e351a74ab2276d86bfa08e0e2d27ebe63fadea1d6253d8ba307a065520a3bf9a",
+          "status": "rendered",
+          "title": "Modüller, canonical command ve hedef gözlemi",
+          "description_present": true,
+          "view_box": "0 0 1046.67578125 1376.4000244140625",
+          "artifact": "docs--architecture--overview--1.svg",
+          "svg_sha256": "6f92e15e85488791e3ad74b18f44bdbbdd8a1377afe8ad106a8372c1d2652d82",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/review-runtime.md",
+          "block": 1,
+          "source_sha256": "4da260e1093c5a302bf818ea56b0061b7028d05c34434144cfdfb13bc3006c8b",
+          "status": "rendered",
+          "title": "Uygulanan yerel review ve ayrı onay akışı",
+          "description_present": true,
+          "view_box": "-50 -10 1248 1311",
+          "artifact": "docs--architecture--review-runtime--1.svg",
+          "svg_sha256": "50181d68c97344e062dea61c759b263bef9ab228ac29bbd0e64a9dc36d6c33de",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/review-runtime.md",
+          "block": 2,
+          "source_sha256": "2426da6d6d01c161e0a260d30ad25779987a04dbbc360c4ad316451a96d4ea02",
+          "status": "rendered",
+          "title": "Review payload bağları ve fiziksel storage",
+          "description_present": true,
+          "view_box": "0 0 1089.140625 1166.3734130859375",
+          "artifact": "docs--architecture--review-runtime--2.svg",
+          "svg_sha256": "b604f2e2f2413627847ff02b58bb864ae71566baa424a19f9546e9620877643b",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/storage-memory-capacity.md",
+          "block": 1,
+          "source_sha256": "a85623307e36d01d0474d678f7b674cd67ce78f50ea6d6a39c751b34ec22ea75",
+          "status": "rendered",
+          "title": "Kalıcı kaynak, geçici context ve purge",
+          "description_present": true,
+          "view_box": "0 0 2498.9736328125 395.5390625",
+          "artifact": "docs--architecture--storage-memory-capacity--1.svg",
+          "svg_sha256": "65cb8e32667a96e98cbe0e4397482cd83c32c35e9c0019f95abc39628297c8ab",
+          "error": null
+        },
+        {
+          "path": "docs/architecture/task-lifecycle.md",
+          "block": 1,
+          "source_sha256": "7248e01eed778daca895818d87cc90a58d3fe57590067890f94691b0816f75fc",
+          "status": "rendered",
+          "title": "İptal, ilişki sonlandırma ve onaylı geri dönüş",
+          "description_present": true,
+          "view_box": "0 0 1174.41015625 1020.6778564453125",
+          "artifact": "docs--architecture--task-lifecycle--1.svg",
+          "svg_sha256": "b5dcaffe97bf41c6f8b054bcabc56d4a396b2be2b86e44020ea47ea275a81bd2",
+          "error": null
+        },
+        {
+          "path": "docs/delivery/api-independent-development.md",
+          "block": 1,
+          "source_sha256": "75da6e2937b6b3b53cd215e78433da6ee36e8cf42c6f1ccdb167e7d21c8c55f3",
+          "status": "rendered",
+          "title": "API-independent local implementation and explicit activation gates",
+          "description_present": true,
+          "view_box": "0 0 896 1085.4720458984375",
+          "artifact": "docs--delivery--api-independent-development--1.svg",
+          "svg_sha256": "5151939d584b852e6a74b5fc89b624928b0e9ab1d03a5cd1db5a02f818487046",
+          "error": null
+        },
+        {
+          "path": "docs/delivery/team-data-plan.md",
+          "block": 1,
+          "source_sha256": "6a5a1af2d5f5b31d5bee41a324bb1f79f79795e8cc9857f4ba827b902e4b58fe",
+          "status": "rendered",
+          "title": "Tek owner pilotundan koşullu ekip fazına",
+          "description_present": true,
+          "view_box": "0 0 2364.25 88",
+          "artifact": "docs--delivery--team-data-plan--1.svg",
+          "svg_sha256": "567d2e4c5d5d96a3570269d31d07f5d158090a52d85318a1a6d516665312c29c",
+          "error": null
+        },
+        {
+          "path": "docs/product/current-direction.md",
+          "block": 1,
+          "source_sha256": "3368e6843477a8a8fa9d7dd74bc0009bdd0b2dd22606aa2a33b62296bd77a9c3",
+          "status": "rendered",
+          "title": "Güncel ilk deney ve owner yatırım kararı",
+          "description_present": true,
+          "view_box": "0 0 1741.15625 676",
+          "artifact": "docs--product--current-direction--1.svg",
+          "svg_sha256": "b1d9ed7f9ed75dd952e8e334807fdbb28d44ca0f63f27951cb704ecf979425e6",
+          "error": null
+        },
+        {
+          "path": "docs/product/decision-map.md",
+          "block": 1,
+          "source_sha256": "80983d0e63586a978284ccec26b06e94f2582b451cd0508864da351d8e007583",
+          "status": "rendered",
+          "title": "Kabul edilen ürün niyetlerinin evrimi",
+          "description_present": true,
+          "view_box": "0 0 896 900",
+          "artifact": "docs--product--decision-map--1.svg",
+          "svg_sha256": "91a9bedb00439a317a4979ae4bdbd76324c400d39021f34bff391274abd90ebf",
+          "error": null
+        },
+        {
+          "path": "docs/product/decision-map.md",
+          "block": 2,
+          "source_sha256": "0362af8c3495da60a50b1563ad9a7003bb798bfe4bef357fad2273c4d47af617",
+          "status": "rendered",
+          "title": "Kabul edilmiş çekirdek ve açık ürün kapıları",
+          "description_present": true,
+          "view_box": "0 0 1526 534",
+          "artifact": "docs--product--decision-map--2.svg",
+          "svg_sha256": "3375586487902ab36a2081b0dde234c5664fe564b405307355574f4eda17dee3",
+          "error": null
+        },
+        {
+          "path": "docs/product/graph-experience.md",
+          "block": 1,
+          "source_sha256": "f77319114c689bd7067ff47c637c2b7f6d55c4d98d258d57928a77cd99e3dc8d",
+          "status": "rendered",
+          "title": "Güncel gerekçe ve tarihsel iptal örneği",
+          "description_present": true,
+          "view_box": "0 0 739.4375 435.8500061035156",
+          "artifact": "docs--product--graph-experience--1.svg",
+          "svg_sha256": "171c1ed0fb2b92d288a641fdae0d1b6d908fd6fee2019afd66258177a7d0e8f6",
+          "error": null
+        },
+        {
+          "path": "docs/product/graph-experience.md",
+          "block": 2,
+          "source_sha256": "d490f1b235ced10827c672550826804cab831fa9a9ab370da4f19ca364ba304a",
+          "status": "rendered",
+          "title": "İlişki değişimi, onay ve tarihçe",
+          "description_present": true,
+          "view_box": "0 0 606.7734375 655",
+          "artifact": "docs--product--graph-experience--2.svg",
+          "svg_sha256": "7451100c9a97de2ea77bb733735d3d97e2295fa00b4f4bb0d38534571f483432",
+          "error": null
+        },
+        {
+          "path": "docs/product/intent-to-reality-gap.md",
+          "block": 1,
+          "source_sha256": "48eea78a8e50a3cc11131720355a57d8f3386fa07813c82669af580d6c373623",
+          "status": "rendered",
+          "title": "Öneri, seçim, gerçekleşme ve kabul",
+          "description_present": true,
+          "view_box": "0 0 1220.390625 1251.90625",
+          "artifact": "docs--product--intent-to-reality-gap--1.svg",
+          "svg_sha256": "515113b5b52cfc0094cc4618df85037f075b8b9cd3d52aa94ceb5aca3687467c",
+          "error": null
+        },
+        {
+          "path": "docs/product/intent-to-reality-gap.md",
+          "block": 2,
+          "source_sha256": "6e4a21630d60ac2f8880c4bfe95c5c656ff638ee8c8f175d28b8a95f404c2cd8",
+          "status": "rendered",
+          "title": "Yeni chat için uygulama bilinmeyenini koruma",
+          "description_present": true,
+          "view_box": "-50 -10 851 1190",
+          "artifact": "docs--product--intent-to-reality-gap--2.svg",
+          "svg_sha256": "27262749ded214a43526aec9bf1388d873d5d8348602b0839a1160dae6f2d69a",
+          "error": null
+        },
+        {
+          "path": "docs/quality/membership-002-result.md",
+          "block": 1,
+          "source_sha256": "7814338eeb8c6f56cb32c042ff234f72be4f9b8877118af08d293982cea9f340",
+          "status": "rendered",
+          "title": "MEMBERSHIP-002 kaynak ve güven sınırı",
+          "description_present": true,
+          "view_box": "0 0 1240.828125 1158",
+          "artifact": "docs--quality--membership-002-result--1.svg",
+          "svg_sha256": "a21e72fa3bc9c3a9c795db8ae2c49d8fd54a79dc101fe901084469d86acfa9b9",
+          "error": null
+        },
+        {
+          "path": "docs/quality/operations-runtime.md",
+          "block": 1,
+          "source_sha256": "da964c7e59ceebce843f64983f82452ea935ccf619979a0c11618e6d9998de30",
+          "status": "rendered",
+          "title": "Local operations and separate test data",
+          "description_present": true,
+          "view_box": "0 0 1047.375 902",
+          "artifact": "docs--quality--operations-runtime--1.svg",
+          "svg_sha256": "9c50f9e2795e8688e623202417db053c98dd83828b79b23dd95d281a48a5fe13",
+          "error": null
+        },
+        {
+          "path": "docs/quality/operations-runtime.md",
+          "block": 2,
+          "source_sha256": "6f4607f335fdd940cec087887cc5c2e7335c94d9f946f89462dc91b0d699bfc3",
+          "status": "rendered",
+          "title": "A local command and its independent operational trace",
+          "description_present": true,
+          "view_box": "-50 -10 1454.5 892",
+          "artifact": "docs--quality--operations-runtime--2.svg",
+          "svg_sha256": "88f6af4565611f2ee9395a9ee8fdbbefaa6bc3d653b5ae3fdcd101427985d824",
+          "error": null
+        },
+        {
+          "path": "docs/quality/project-review.md",
+          "block": 1,
+          "source_sha256": "a58e25636b26356a7ddcd867c92111eb073ecfaa34a3774279836bfdb0acc13a",
+          "status": "rendered",
+          "title": "Q14-A bağımsız proje review ve Proje 2 bekleme",
+          "description_present": true,
+          "view_box": "0 0 1023.70703125 1205.4000244140625",
+          "artifact": "docs--quality--project-review--1.svg",
+          "svg_sha256": "d57861769f93bc4fbaeaac68ae2ad847f86fc75c5b87f6a5b34c156ac54ca6e2",
+          "error": null
+        },
+        {
+          "path": "docs/quality/receiver-contract.md",
+          "block": 1,
+          "source_sha256": "765bb15c70daf16f35c4ee2c2bdbcde80fc0598893650fa02738937833f9c686",
+          "status": "rendered",
+          "title": "Receiver yerel doğrulama ve kalite ayrımı",
+          "description_present": true,
+          "view_box": "0 0 823.617431640625 1168",
+          "artifact": "docs--quality--receiver-contract--1.svg",
+          "svg_sha256": "54b624c67172d0189bf497121002beac14c284b102a36d6ecdff6f3709ecac14",
+          "error": null
+        },
+        {
+          "path": "docs/quality/workflow-ui-runtime.md",
+          "block": 1,
+          "source_sha256": "dde36281733bfc93b9c8cd78b20a7080d43461fba2de0bb8ee08786616bf92aa",
+          "status": "rendered",
+          "title": "Current local task workflow and human evidence",
+          "description_present": true,
+          "view_box": "0 0 2244.015625 532",
+          "artifact": "docs--quality--workflow-ui-runtime--1.svg",
+          "svg_sha256": "4644a17cfecdba82c2fbeda7a69b88abaa6724e36f3eea0169ed9d57168bfc6b",
+          "error": null
+        },
+        {
+          "path": "docs/quality/workflow-ui-runtime.md",
+          "block": 2,
+          "source_sha256": "415170359c3942e0767403d92fe0dcdfc40186d15aa19290c906438e23210cad",
+          "status": "rendered",
+          "title": "İnsan incelemesiyle görev iptali ve yeniden açılması",
+          "description_present": true,
+          "view_box": "0 0 2742.90625 286",
+          "artifact": "docs--quality--workflow-ui-runtime--2.svg",
+          "svg_sha256": "3dd760e897a3c9258b963112e7b44a0098395d89cdbbb439161b904be202c0f5",
+          "error": null
+        }
+      ],
+      "reason": "Logging diagram/schema explanatory guide added; all50sources rendered"
     }
   ],
   "all_sources_rendered": true,
-  "visual_review": "New Operations sequence and desktop/mobile Operations screenshots inspected. All47sources rendered; not a full product/model acceptance.",
+  "visual_review": "New diagnostics ER and unfinished-record projection diagrams inspected; all50sources rendered. Documentation-only explanation, not new runtime tracing.",
   "scope_note": "Impact task scope review select/approve/apply UI wired; cancellation and automatic semantic proposals remain separate."
 }

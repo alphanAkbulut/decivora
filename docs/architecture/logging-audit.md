@@ -5,6 +5,8 @@
 
 **19 Ekim2026 — mevcut kod ve önerilen tam işletim tasarımı ayrıdır.** Kalıcı domain/audit çekirdeği ve ayrı bounded operasyon tanısı uygulanmıştır. Komut izleri ve güvenli HTTP hata grupları Operations ekranında bulunur; her engine'in içi veya bütün source→job→model→review→evidence zinciri henüz izlenmez. Aşağıdaki geniş güvenlik/telemetry sözleşmelerinin tamamını uygulanmış sayma. [Çalışan kod, şema, diagram ve kanıt](../quality/operations-runtime.md), [güvenlik durum kaydı](../quality/security-current-status.md), [erişim sınırı](identity-access.md) ve [veri yaşam döngüsü](storage-memory-capacity.md).
 
+[Diagram ve fiziksel/API şema okuma rehberi](logging-diagrams-and-schema.md), mevcut çizimlerin oklarını, gerçek diagnostics ER ilişkilerini, alanların güven anlamını ve sentetik log örneğini açıklar.
+
 ## Nerede ne tutuluyor ve build hangi aşamada?
 
 | Kayıt / soru | Bugünkü uygulama | Nereden kontrol edilir? | Açık kalan |
