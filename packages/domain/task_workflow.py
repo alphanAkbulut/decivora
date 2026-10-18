@@ -101,7 +101,9 @@ class TaskWorkflowService:
         if not legacy:value.update(context_component=self._context_component(project,task),evidence=value['evidence']+self._rows(project,task,'file_criterion_evidence'),file_bindings=self._rows(project,task,'file_criterion_binding'))
         return digest(canonical(value))
 
-    def _stage(self,project,task):
+    def _stage(self,project,task,_visiting=frozenset(),_budget=None):
+        if _budget is None:_budget=[256]
+        _budget[0]-=1
         record=self._task(project,task);rows=self._rows(project,task,'task_stage')
         lifecycle=self.core.db.execute("SELECT version,payload FROM events WHERE workspace=? AND project=? AND stream=? AND kind='task_lifecycle' ORDER BY seq DESC LIMIT 1",(self.core.workspace,project,task)).fetchone()
         floor=lifecycle[0] if lifecycle else 0
@@ -116,6 +118,17 @@ class TaskWorkflowService:
         verification=self._verification(project,task)
         # New evidence failure or changed task/contract invalidates CURRENT success.
         if stage=='Done' and (not verification['passed'] or current[-1]['contract_version']!=verification['contract_version'] or current[-1].get('completion_basis')!=self._completion_basis(project,task,legacy=current[-1].get('format')=='decivora-task-stage-1') or current[-1].get('format')=='decivora-task-stage-1' and self._legacy_context_changed(project,task,current[-1])):stage='Awaiting Verification';origin='completion_stale'
+        if stage=='Done':
+            # Re-evaluate effective prerequisite success, including external file
+            # freshness and blockers that do not change the record version.
+            if task in _visiting or len(_visiting)>=64 or _budget[0]<0:
+                stage='Awaiting Verification';origin='dependency_context_incomplete'
+            else:
+                for target, in self.core.db.execute("SELECT target FROM edges WHERE workspace=? AND project=? AND origin=? AND kind='depends_on' AND state='asserted'",(self.core.workspace,project,task)):
+                    try:passed=self._stage(project,target,_visiting|{task},_budget)['stage']=='Done'
+                    except ContractError:passed=False
+                    if not passed:
+                        stage='Awaiting Verification';origin='dependency_completion_stale';break
         return dict(stage=stage,revision=len(rows),origin=origin,history=rows,verification=verification)
     def _assessment(self,project,task):
         record=self._task(project,task);manual=TaskBlockerService(self.core)._view(project,task);blockers=[]

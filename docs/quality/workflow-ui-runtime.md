@@ -17,26 +17,29 @@ No changed main-task completion is inferred from UI tests. T14 started; automati
 ```mermaid
 flowchart LR
   accTitle: Current local task workflow and human evidence
-  accDescr: Local human commands create versioned audit; current evidence and finish gates govern Done. Automatic verification remains unconfigured.
+  accDescr: Local human commands create versioned audit; current evidence and finish gates govern Done. Approved exact-file observation is optional; arbitrary test execution remains unconfigured.
   UI["Sidebar / Board + List<br/>task end-panel"] --> G["Local human / ACL / CSRF<br/>typed revision-bound commands"]
   G --> W["TaskStage audit<br/>current lifecycle projection"]
-  G --> E["Criterion evidence<br/>human_review authority only"]
+  G --> E["Typed criterion evidence<br/>human review or approved exact file"]
   G --> B["Manual impediment<br/>start / finish / both"]
   R["Recorded dependency / question<br/>finish prerequisites"] --> P
   W --> P["Current completion predicate<br/>required AC + scope + gates"]
   E --> P
   B --> P
   P -->|all current checks pass| D["Done<br/>historical proof retained"]
-  D -->|basis changes| S["Awaiting Verification<br/>old success remains history"]
-  A["Automatic / file runner<br/>not configured"] -. future integration .-> E
+  D -->|own or prerequisite evidence changes| S["Awaiting Verification<br/>old success remains history"]
+  F["Optional exact file SHA<br/>trusted root and explicit binding"] --> E
+  A["Automatic test / deploy runner<br/>not configured"] -. future integration .-> E
   classDef view fill:#e8f1ff,stroke:#31649b,color:#1b3855;
   classDef guard fill:#fff2d5,stroke:#9b762c,color:#443919;
   classDef stored fill:#e5f5eb,stroke:#3b7b53,color:#244634;
   class UI,W view;
-  class G,B,R,P,S,A guard;
+  class G,B,R,P,S,A,F guard;
   class E,D stored;
 ```
 
 ## Validation — 14 October 2026
 
 258 runtime tests and 46 tracker tests passed. Real isolated browser: AC gate, partial evidence refusal, complete human-review evidence + separate scope acknowledgment, stage/history/reload, Board/List/search, linked question answer→proposal→approval→application, completion-basis recheck, Escape, five locales/RTL/mobile/drafts/storage fallback. Expected 409 acceptance_required/verification_required responses are negative guard checks. Schema field/enum/constant matching used real produced events; a full JSON Schema validator was not installed. New/changed Mermaid blocks rendered and XML/hash/visual checked; all43 source blocks inventoried against current hash/provenance. No paid model or user DB fixture. Native translation quality, semantic extraction, automatic target verifier and release are not verified.
+
+18 October2026 follow-up: effective prerequisite Done is checked recursively in the current snapshot, including current file observations and blockers. Historical receipts remain; downstream false completion regression added. See [review remediation](review-remediation-2026-10-18.md).

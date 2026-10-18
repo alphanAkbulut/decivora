@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-18",
+  "base_commit": "dfb942f24fedadc668225714b8e26b49fb762200",
+  "archive_sha256": "17acedbc59f918c32cb2d828493f29b9f40b0729964f74e14c781332a4802689",
+  "runtime_tests": 330,
+  "tracker_tests": 48,
+  "browser_cases": {
+    "fixtures": true,
+    "paid_calls": 0,
+    "results": [
+      {
+        "case": "workflow",
+        "returncode": 0
+      },
+      {
+        "case": "coverage",
+        "returncode": 0
+      },
+      {
+        "case": "impact",
+        "returncode": 0
+      },
+      {
+        "case": "projects",
+        "returncode": 0
+      },
+      {
+        "case": "localization",
+        "returncode": 0
+      },
+      {
+        "case": "backup",
+        "returncode": 0
+      },
+      {
+        "case": "independent",
+        "returncode": 0
+      },
+      {
+        "case": "file-mcp",
+        "returncode": 0
+      }
+    ]
+  },
+  "diagrams_rendered": 44,
+  "svg_xml_checked": 44,
+  "changed_diagram_sources": [
+    "docs/architecture/local-preview.md",
+    "docs/quality/workflow-ui-runtime.md"
+  ],
+  "paid_model_calls": 0,
+  "original_production_data_modified": false,
+  "sql_schema_version": 1,
+  "task_stage_payload_version": 2,
+  "source_sha256": {
+    "packages/domain/task_workflow.py": "52a849b6fbaa22edd565a7956c04bd3bda51f70ebd0863d5c828f1f77f9fbf75",
+    "packages/storage/workspace.py": "88cfc192da05aec1c0b84561dcaff7244cfa8dfeda6f5121f2bd30bf5a139b83",
+    "packages/capture/conversations.py": "c118219b8401604464cab0c5245dd8cd08041ba036b73ff99adce726bfaf0dd4",
+    "packages/capture/responses_extractor.py": "e9b4e0493e3b8363740a094ac8c959d994aff85ea10dae3a233a290259f27d30",
+    "tests/runtime/test_review_remediation.py": "0ef6cfe1da500dcf838871002121819093ccb2703062deff8ed0ff9eed590056"
+  },
+  "before_dependency": [
+    {
+      "downstream_stage": "Done",
+      "scenario": "manual_blocker",
+      "prerequisite_stage": "Awaiting Verification",
+      "dependent_stage": "Done",
+      "dependent_finish_blocked": true,
+      "dependent_verification_passed": true
+    },
+    {
+      "downstream_stage": "Done",
+      "scenario": "file_change",
+      "prerequisite_stage": "Awaiting Verification",
+      "dependent_stage": "Done",
+      "dependent_finish_blocked": true,
+      "dependent_verification_passed": true
+    }
+  ],
+  "before_budget": {
+    "overrun": {
+      "settlement_error": "usage_overrun",
+      "second_reservation": {
+        "root_run": "r",
+        "key": "second",
+        "reserved": 90,
+        "status": "reserved",
+        "actual": null
+      },
+      "usage": [
+        {
+          "run": "r",
+          "cap": 100,
+          "known_tokens": 0,
+          "held_tokens": 100,
+          "actual_tokens": null,
+          "unknown_reservations": 2,
+          "available_tokens": 0,
+          "money": null,
+          "provider_model": null
+        }
+      ]
+    },
+    "dispatch": {
+      "status": "Ready for review",
+      "model_calls": 1,
+      "reservations_after": 2,
+      "reservations_before": 2,
+      "paid_calls": 0
+    }
+  },
+  "package_sha256": "0b84e06d5e69d90d5bfc316885a672401fe2dc6ae425274caf6eaa98bb76c6cc",
+  "limitations": [
+    "real provider/semantic quality not run",
+    "verified tokenizer/context/money/period preflight pending",
+    "no automatic overrun unfreeze",
+    "native host and release gates open"
+  ]
+}

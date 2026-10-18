@@ -704,3 +704,7 @@ Ek aynı-tur gözlem: [seçili corpus README için gerçek GitHub readback](../q
 ## 2026-10-14 — WAL recovery and populated impact load
 
 319 runtime regressions passed, including uncheckpointed WAL backup→offline restore/event/projection preservation. The mixed-load harness now accepts bounded `--impact-previews` fixtures and checks latest-five history, stale-after-write, unchanged projection and no false Done. [Current findings and checks](../quality/concurrency-impact-delivery.md#follow-up-wal-recovery-and-populated-impact-history). No new model/root/host permissions; previous 7 browser/48 tracker results remain historical. Main task closure unchanged.
+
+## 18 Ekim 2026 — teyit edilen repo bulguları giderildi
+
+[Altı bulgu ve aksiyon](../quality/review-remediation-2026-10-18.md): effective prerequisite completion, kalıcı overrun/workspace freeze, source/model/output-cap bağlı dispatch grant+budget settlement, partial coverage UX, CI browser/render job ve güncel README_LOCAL.330runtime test;44Mermaid yeniden render. Gerçek model/para/context/policy/host/release kapıları açık; ana task sayımı değişmedi.

@@ -5,6 +5,16 @@ import test_file_verification as fixtures
 from packages.domain.work_routing import RoutingService
 from packages.mcp.server import TOOLS
 class SchemaTests(unittest.TestCase):
+ def test_source_model_budget_grant_matches_published_fields(self):
+  import time
+  from packages.capture.conversations import ConversationService
+  f=fixtures.FileTests();f.setUp();self.addCleanup(f.doCleanups)
+  service=ConversationService(f.core);source=service.ingest(f.owner,'p',text='Synthetic source approval')
+  f.core.create_budget(f.owner,'p','r',100)
+  value=service.authorize_analysis(f.owner,'p',source_id=source['id'],key='g',root_run='r',reserved_tokens=80,provider='fixture',model='fixture-model',max_output_tokens=40,expires_at=int(time.time())+60,reason='Synthetic scoped approval')
+  schema=json.loads((Path(__file__).resolve().parents[2]/'manifests/conversation-dispatch-grant.schema.json').read_text())
+  self.assertEqual(set(value),set(schema['required']));self.assertEqual(set(value),set(schema['properties']));self.assertFalse(schema['additionalProperties'])
+
  def test_decision_hypothesis_request_matches_actual_service_arguments(self):
   import inspect
   from packages.domain.decision_impact import DecisionImpactService

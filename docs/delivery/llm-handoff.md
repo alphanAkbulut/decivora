@@ -177,3 +177,7 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## Current concurrent storage and manual impact UI —14October2026
 
 [Working delivery and limitations](../quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.
+
+## 18 October2026 review remediation
+
+Read [current fixed findings and remaining gates](../quality/review-remediation-2026-10-18.md) before paid activation: source-bound dispatch grants/reservation/settlement are implemented, but verified tokenizer/context/money limits and trusted overrun reconciliation are still activation work. Do not reactivate from an old authorized=True transport. Prerequisite effective Done now propagates through current file/blocker state. All44diagrams rerendered; two sources changed.

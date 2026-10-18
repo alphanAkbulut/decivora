@@ -13,9 +13,19 @@ Elle görev/soru ekleme yardımcı alanlardadır; ana ürün amacı konuşmalard
 3. **Çalışmaya başla**: kart In Progress'e geçer.
 4. Sekmeyi veya programı yeniden açınca SQLite kayıtları korunur. Kriter değiştirirken gerekçe ve diff onayı gerekir; önceki sürümler silinmez.
 
-Veri uygulama kaynak klasörünün yanında `decivora-local-data/workspace.sqlite` içinde tutulur; ZIP/veri GitHub'a otomatik yüklenmez. Program yeniden başladığında yeni browser session gerekir; launcher doğru oturumu açar. Eski adresi tek başına başka tarayıcıya yapıştırmak oturum açmaz. Tek yerel kullanıcı / tek proje önizlemesidir; farklı projeler/ekip hesabı/invite UI yoktur.
+Veri uygulama kaynak klasörünün yanında `decivora-local-data/workspace.sqlite` içinde tutulur; ZIP/veri GitHub'a otomatik yüklenmez. Program yeniden başladığında yeni browser session gerekir; launcher doğru oturumu açar. Eski adresi tek başına başka tarayıcıya yapıştırmak oturum açmaz. Tek yerel kullanıcı önizlemesidir. Kullanıcının yetkili olduğu mevcut projeler arasında seçim vardır; proje veya grant yaratma, ekip hesabı ve davet arayüzü yoktur.
 
-**Çalışan:** kalıcı manuel soru/seçenek/cevap listesi, kalıcı manuel görev board'u, kriter/DoD onayı ve sürüm geçmişi, iş başlangıç kaydı, reload/restart, local session/CSRF/Origin/Host/body ve rate sınırları. **Güncel ekler:** Board/List, arama/filtre, yan görev paneli, altı çalışma aşaması, kayıtlı bağımlılık ve bekleyen soru kapıları; gerekli güncel AC/DoD insan incelemesi ve ayrı kapsam kontrolü sonrası Done. **Hazır olmayan:** otomatik chat capture, gerçek LLM çıkarımı, MCP, tam graph/timeline, otomatik dosya/test doğrulayıcısı. In Progress yalnız çalışma beyanıdır; insan incelemesi bağımsız hedef taraması değildir. Bu programa henüz “tam AI-native otomatik hafıza MVP” denmez. Para/ücretli API çağrısı yok.
+**Güncel yetenekler (18 Ekim 2026):**
+
+| Alan | Çalışan yerel alt küme | Açık sınır |
+|---|---|---|
+| Görev/karar | Board/List/Graph/Timeline, soru/cevap, ayrı karar onayı, sürümlü AC/DoD ve insan kanıtı | Otomatik chat capture ve gerçek semantik kalite doğrulanmadı |
+| Projeler | Yetkili mevcut projeler arasında seçim | Proje/grant oluşturma ve ekip daveti UI yok |
+| MCP | Bounded stdio araçları, ayrı agent önerisi ve insan onayı | Gerçek native host aktivasyonu ve private paylaşım pilotu açık |
+| Doğrulama | İnsan incelemesi; açıkça seçilmiş root/recipe ile exact file SHA | Arbitrary test/deploy runner yok; dosya eşleşmesi uygulama testi değildir |
+| Model/bütçe | Kaynak/provider/model/run/expiry bağlı izin, atomik rezervasyon, unknown/overrun muhasebesi ve görünür coverage | Varsayılan launcher model açmaz; gerçek erişim/veri/bütçe seçimi ve transport etkinleştirmesi ayrı |
+
+In Progress çalışma beyanıdır; Done güncel kriterler ve bağlı önkoşulların etkili doğrulamasıyla değerlendirilir. Geçerliliğini kaybeden Done geçmişte korunur; güncel görünüm yeniden doğrulama ister. Bu paket tam AI-native otomatik hafıza MVP'si veya imzalı installer değildir.
 
 Bekleyen karar soruları bölümünde soru ve 2–8 seçeneği kaydet; seçenek düğmesine bastığında soru ID/sürümüyle seçim tutulur. Başka konuya geçmek veya programı kapatmak soruyu silmez. Seçimden sonra gerekçe girip **Karar önerisi hazırla → Karar önerisini onayla → Onaylı kararı uygula** adımlarını ayrı tamamlayabilirsin. Decision yerel hafızaya kaydedilir; görevler otomatik değiştirilmez. Bu seçim kaydı görev iptali, kod çalıştırma veya dış erişim onayı değildir. Soru yönetimi ve geçmiş bölümünde gerekçeyle ertele/devam/iptal yapabilir veya yeni soru sürümü kaydedebilirsin. Eski cevaplar yeni seçeneklere taşınmaz; uygulanmış karar geçmişte kalır. Bağlamı sonradan gelen cevabı “Bağlamıyla yeniden değerlendir” düğmesiyle kontrol edebilirsin. Serbest sohbetten otomatik soru yakalama/eşleme henüz yok.
 

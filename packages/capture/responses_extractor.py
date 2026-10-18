@@ -16,10 +16,11 @@ def request_payload(source,*,model,max_output_tokens):
     return dict(model=model,instructions=INSTRUCTIONS,input=canonical({k:source[k] for k in ('id','sha256','text')}),text=dict(format=dict(type='json_schema',name='decivora_conversation',strict=True,schema=output_schema())),max_output_tokens=max_output_tokens,store=False,tools=[],stream=False)
 
 class ResponsesExtractor:
-    def __init__(self,send,*,model,max_output_tokens,authorized=False):
-        self.send=send;self.model=model;self.max_output_tokens=max_output_tokens;self.authorized=authorized;self.usage=None;self.provider='OpenAI Responses configured transport'
+    def __init__(self,send,*,model,max_output_tokens,authorized=False,grant_id=None):
+        self.grant_id=grant_id;self.send=send;self.model=model;self.max_output_tokens=max_output_tokens;self.authorized=authorized;self.usage=None;self.provider='OpenAI Responses configured transport'
     def __call__(self,source):
         if self.authorized is not True:raise ContractError('model_grant_required','No trusted dispatch authorization.')
+        self.usage=None
         response=self.send(request_payload(source,model=self.model,max_output_tokens=self.max_output_tokens))
         self.usage=response.get('usage') if type(response) is dict else None
         if type(response) is not dict or response.get('status')!='completed' or response.get('error') is not None:raise ContractError('provider_incomplete','Provider did not complete.')

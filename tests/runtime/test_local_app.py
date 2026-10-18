@@ -17,6 +17,8 @@ class LocalAppTests(unittest.TestCase):
         self.assertEqual(self.call('/api/command',dict(request,base_revision=revision-1))[0],409)
 
     def setUp(self):
+        from test_conversations import install_fixture_analysis_grants
+        fixture=install_fixture_analysis_grants();fixture.start();self.addCleanup(fixture.stop)
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.path=Path(self.temp.name)/'app.sqlite';self.server=make_server(self.path);self.thread=threading.Thread(target=self.server.serve_forever,daemon=True);self.thread.start();self.addCleanup(self.stop)
         self.origin=self.server.origin;self.headers={'Origin':self.origin,'Cookie':'decivora_session='+self.server.app.cookie,'X-CSRF-Token':self.server.app.csrf,'Content-Type':'application/json'}
     def stop(self):self.server.shutdown();self.server.server_close();self.thread.join(timeout=3)

@@ -6,6 +6,8 @@ from packages.mcp.server import Server,TOOLS,VERSION
 from packages.domain.source_event import ContractError
 class McpTests(unittest.TestCase):
  def setUp(self):
+  from test_conversations import install_fixture_analysis_grants
+  fixture=install_fixture_analysis_grants();fixture.start();self.addCleanup(fixture.stop)
   self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.path=Path(self.temp.name)/'mcp.sqlite';self.core=Workspace(self.path,'w',owner='owner');self.addCleanup(self.core.close);a=self.core.authority
   for principal,kind,projects in [('owner','human',{'p','q'}),('agent1','agent',{'p'}),('agent2','agent',{'p'})]:a.replace_grant(a.issue_scope('owner'),principal,kind=kind,readable=frozenset(projects),writable=frozenset(projects),active=True,base_revision=a.revision())
   self.owner=a.issue_scope('owner');self.core.create_project(self.owner,'p','Project');self.core.create_project(self.owner,'q','Other');self.server=Server(self.path,'w','agent1');self.i=0;self.task=self.create('First');self.create('Second')

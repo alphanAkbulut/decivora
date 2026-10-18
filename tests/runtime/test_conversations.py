@@ -1,4 +1,5 @@
-import unittest,json
+import unittest,json,time
+from unittest.mock import patch
 import test_questions
 from packages.capture.conversations import ConversationService,anchored
 from packages.capture.responses_extractor import ResponsesExtractor,request_payload
@@ -8,13 +9,28 @@ from pathlib import Path
 
 TEXT='We should add a backup test. We chose SQLite. Please ask which output language to use.'
 class Extractor:
-    authorized=True;provider='fixture; no real model'
+    authorized=True;provider='fixture; no real model';model='synthetic-model';max_output_tokens=1024
     def __init__(self):self.calls=0
     def __call__(self,source):
         self.calls+=1
         return dict(source_id=source['id'],source_sha256=source['sha256'],coverage='complete',candidates=[dict(type='Task',title='Backup test',quote='We should add a backup test.',intent='planned'),dict(type='Decision',title='Storage choice',quote='We chose SQLite.',intent='reported'),dict(type='PendingDecision',title='Output language',quote='Please ask which output language to use.',intent='proposed')])
+def install_fixture_analysis_grants():
+    """Synthetic harness explicitly prepares source-bound grants; never production wiring."""
+    original=ConversationService.analyze
+    def configured(service,scope,project,source_id,extractor=None):
+        if isinstance(extractor,Extractor) and extractor.authorized is True:
+            run='fixture_analysis';key='fixture_'+source_id+'_'+str(service.core.authority.revision())
+            if not service.core.db.execute('SELECT 1 FROM run_budgets WHERE workspace=? AND project=? AND run=?',(service.core.workspace,project,run)).fetchone():service.core.create_budget(scope,project,run,100000)
+            if not any(g['id']==key for g in service._rows(project,'conversation_dispatch_authorized')):
+                service.authorize_analysis(scope,project,source_id=source_id,key=key,root_run=run,reserved_tokens=8000,provider=extractor.provider,model=extractor.model,max_output_tokens=extractor.max_output_tokens,expires_at=int(time.time())+3600,reason='Synthetic fixture only; no external calls or human data.')
+            extractor.grant_id=key
+        return original(service,scope,project,source_id,extractor)
+    return patch.object(ConversationService,'analyze',configured)
+
 class ConversationTests(unittest.TestCase):
-    setUp=test_questions.QuestionTests.setUp
+    def setUp(self):
+        test_questions.QuestionTests.setUp(self)
+        fixture=install_fixture_analysis_grants();fixture.start();self.addCleanup(fixture.stop)
     def source(self,text=TEXT):self.service=ConversationService(self.core);return self.service.ingest(self.owner,'p',text=text)
     def test_real_manual_text_is_not_relabelled_synthetic_and_no_model_default(self):
         source=self.source();self.assertEqual(source['source_kind'],'manual_paste');result=self.service.analyze(self.owner,'p',source['id']);self.assertEqual(result['status'],'Waiting for model');self.assertEqual(self.core.records(self.owner,'p')['records'],[])

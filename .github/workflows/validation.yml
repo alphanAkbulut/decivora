@@ -25,3 +25,37 @@ jobs:
       - run: python3 spikes/semantic-chain/run.py
       - run: python3 spikes/semantic-chain/run.py --response spikes/semantic-chain/fixtures/assistant-s02-draft.json
       - run: python3 spikes/semantic-chain/run_anchor_checks.py
+
+  ui-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned development browser dependency
+        run: |
+          npm install --prefix "$RUNNER_TEMP/decivora-ui" --no-save --ignore-scripts playwright@1.62.1 mermaid@11.17.2
+          "$RUNNER_TEMP/decivora-ui/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Run synthetic workflow, coverage, impact and project smoke
+        env:
+          DECIVORA_PLAYWRIGHT_MODULE: ${{ runner.temp }}/decivora-ui/node_modules/playwright
+        run: python3 -B scripts/check_ui_smoke.py --output ui-smoke-results
+      - name: Render every Mermaid diagram without remote assets
+        env:
+          DECIVORA_PLAYWRIGHT_MODULE: ${{ runner.temp }}/decivora-ui/node_modules/playwright
+          DECIVORA_MERMAID_BUNDLE: ${{ runner.temp }}/decivora-ui/node_modules/mermaid/dist/mermaid.min.js
+        run: node scripts/render_diagrams.cjs diagram-render-results
+      - name: Keep screenshots and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-ui-smoke
+          path: |
+            ui-smoke-results
+            diagram-render-results
+          if-no-files-found: warn

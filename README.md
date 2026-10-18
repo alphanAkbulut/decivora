@@ -205,3 +205,7 @@ Başlangıç repository'si private olarak tasarlanmıştır. Açık kaynak yayı
 ## Current concurrent storage and manual impact UI —14October2026
 
 [Working delivery and limitations](docs/quality/concurrency-impact-delivery.md): startupWAL, read-snapshot-only audit grouping,318runtime/48tracker/7browser, identical mixed-fixture improvement and controlled503mechanism regression. Questions/decisions now offers human-selected durable decision-impact hypothesis; no task cancellation/decision mutation, missing rationale review. Full model/host/source-aware approval/application and release checks remain open.
+
+## 18 Ekim 2026 — son teknik inceleme ve düzeltmeler
+
+[Altı teyit edilmiş bulgu ve aksiyon](docs/quality/review-remediation-2026-10-18.md): önkoşul kanıtı değişince current Done zinciri yeniden değerlendirilir; overrun saklanıp yeni workspace rezervasyonu durur; kaynak/model/outputcap/bütçe grant'i olmayan analyze çağrısı çalışmaz. Kısmi çıkarım kapsamı UI'da görünür.44Mermaid yeniden render edildi; iki diyagram güncellendi. Gerçek model/money/context/host/release kabulü hâlâ açık.

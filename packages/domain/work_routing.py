@@ -33,9 +33,10 @@ class RoutingService:
     def usage(self,scope,project):
         with self.core.read_snapshot():
             self.core.scope(scope,project);self.core.active(scope,project)
+            blocked=bool(self.core.db.execute("SELECT 1 FROM reservations WHERE workspace=? AND status='overrun' LIMIT 1",(self.core.workspace,)).fetchone())
             rows=self.core.db.execute('SELECT run,token_cap FROM run_budgets WHERE workspace=? AND project=? ORDER BY run LIMIT 101',(self.core.workspace,project)).fetchall();runs=[]
             for run,cap in rows[:100]:
                 reservations=self.core.db.execute('SELECT tokens,status,actual FROM reservations WHERE workspace=? AND project=? AND run=?',(self.core.workspace,project,run)).fetchall()
                 known=sum(actual for tokens,status,actual in reservations if actual is not None);held=sum(tokens for tokens,status,actual in reservations if actual is None);unresolved=sum(actual is None for tokens,status,actual in reservations)
-                runs.append(dict(run=run,cap=cap,known_tokens=known,held_tokens=held,actual_tokens=None if unresolved else known,unknown_reservations=unresolved,available_tokens=max(0,cap-known-held),money=None,provider_model=None))
-            return dict(runs=runs,truncated=len(rows)>100,external_chat_tokens=None,external_chat_money=None,scope='managed_local_runs_only',automatic_dispatch=False)
+                runs.append(dict(run=run,cap=cap,known_tokens=known,held_tokens=held,actual_tokens=None if unresolved else known,unknown_reservations=unresolved,available_tokens=0 if blocked else max(0,cap-known-held),money=None,provider_model=None))
+            return dict(dispatch_blocked=blocked,block_reason='usage_overrun' if blocked else None,runs=runs,truncated=len(rows)>100,external_chat_tokens=None,external_chat_money=None,scope='managed_local_runs_only',automatic_dispatch=False)

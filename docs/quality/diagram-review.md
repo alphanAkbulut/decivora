@@ -172,3 +172,7 @@ Changed local-preview + new api-independent-development blocks rendered with cac
 ## 14Ekim2026 — WAL/concurrency and manual decision hypothesis
 
 Local-preview1 adds startup WAL and human-selected persisted impact review (no task mutation); rendered with cached11.17.2, XML/title/description/hash and visual inspection.44source/23documents unchanged; previous record archived. API-independent diagram/source unchanged, no new full-model/host success implied.
+
+## 18 Ekim 2026 — tüm kaynakların yeniden render doğrulaması
+
+44blok/23belge bu tur gerçekten render edildi; SVG XML, başlık/açıklama, viewBox ve source/artifact hashleri doğrulandı. Dört contact sheet ve değişen runtime/workflow görselleri incelendi. İki source/SVG güncellendi;42source aynı kaldı ama yeniden render edildi. Büyük ER/sequence için SVG zoom gerekir. [Bulgu ve düzeltmeler](review-remediation-2026-10-18.md); tekrarlanabilir scripts/render_diagrams.cjs ve CI artifact eklendi. Diyagram doğrulaması ürün/model/native kabulü değildir.

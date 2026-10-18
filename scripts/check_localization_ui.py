@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT),str(ROOT/'tests/runtime')]
 from apps.local_ui.server import make_server
-from test_conversations import Extractor
+from test_conversations import Extractor,install_fixture_analysis_grants
 
 def main():
     with tempfile.TemporaryDirectory() as directory:
@@ -25,10 +25,16 @@ def main():
         if os.environ.get('DECIVORA_PROJECT_UI_FIXTURE')=='1':
             with server.app.core() as core:
                 a=core.authority;a.replace_grant(a.issue_scope('local_owner'),'local_owner',kind='human',readable=frozenset({'personal','other'}),writable=frozenset({'personal','other'}),active=True,base_revision=a.revision());core.create_project(a.issue_scope('local_owner'),'other','Other fixture project')
+        if os.environ.get('DECIVORA_COVERAGE_UI_FIXTURE')=='1':
+            original_extract=Extractor.__call__
+            def partial_extract(self,source):
+                result=original_extract(self,source);result['coverage']='partial';return result
+            Extractor.__call__=partial_extract
         thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         config=Path(directory)/'session.json'
         config.write_text(json.dumps(dict(origin=server.origin,bootstrap=server.app.bootstrap,file_fixture=str(file_root) if file_root else None)));config.chmod(0o600)
         env=dict(os.environ,DECIVORA_UI_TEST_CONFIG=str(config),DECIVORA_SCREENSHOT_DIR=os.environ.get('DECIVORA_SCREENSHOT_DIR',directory))
         try:return subprocess.run([env.get('DECIVORA_NODE','node'),str(ROOT/env.get('DECIVORA_UI_TEST_SCRIPT','tests/ui-localization.cjs'))],env=env).returncode
         finally:server.shutdown();server.server_close();thread.join()
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__':
+    with install_fixture_analysis_grants():raise SystemExit(main())

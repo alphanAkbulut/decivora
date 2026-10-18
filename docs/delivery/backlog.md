@@ -292,6 +292,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T15 — Teknik kanıt kapısı
 
+18Ekim2026 hedefli düzeltme kanıtı: [R01–R06 ve açık aktivasyon kapıları](../quality/review-remediation-2026-10-18.md). Yanlış Done zinciri, overrun muhasebesi, source-bound model/budget admission ve UI/CI/diyagram tutarlılığı mevcut sahiplerinde giderildi; tam T15/MVP kapanışı değildir.
+
+
 - **Durum / faz:** IN_PROGRESS / P1a. **Bağımlılık:** T14,T07c. **Kapsam ID:** EVAL-01,AUD-01.
 - **İş:** Sentetik uçtan uca senaryoyu ve restore/replay'i çalıştır; sonuçları kaydet.
 - **Kabul:** Import→impact→onay→state→düzeltme zinciri kanıtlı; başarısız kriter gizlenmez.

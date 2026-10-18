@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Persisted trusted conversation dispatch authorization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source",
+    "sha256",
+    "root_run",
+    "provider",
+    "model",
+    "reason",
+    "actor",
+    "reserved_tokens",
+    "max_output_tokens",
+    "expires_at",
+    "authority_revision"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "root_run": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "reserved_tokens": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "max_output_tokens": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8192
+    },
+    "expires_at": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "authority_revision": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

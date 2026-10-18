@@ -177,3 +177,9 @@ Sabit UI metinleri locale kataloglarından çizilir. Tüm geçmişi çevirme, ç
 ## Current local delivery — 14 October 2026
 
 [API-independent implementation and follow-up gates](../delivery/api-independent-development.md): bounded stdioMCP/create-only human review, optional explicit-root file SHA verification, recorded graph/audit timeline, routing/null usage and session-only health. Historical implementation limits above refer to their original deliveries; current limits and M01–M14 checks are in the linked report. No native capture, full brief/delta, sandbox test/deploy verifier, exact host token savings or global language quality is claimed.
+
+## 18 October 2026 — implemented local dispatch admission
+
+`ConversationService.authorize_analysis` is a trusted Python human-configuration entry, not a transcript command or unauthenticated HTTP/MCP tool. Its [persisted grant schema](../../manifests/conversation-dispatch-grant.schema.json) binds source/hash, actor/current authority, provider/model/output ceiling, root run, total token reservation and expiry. Analyze reserves within the started-receipt transaction and never invokes the provider inside it. Known actual usage is settled; absent/invalid counters remain unknown and held. Actual above reservation is preserved as overrun and blocks all new workspace reservations, including a new root run. There is no automatic unfreeze or budget increase; a controlled reconciliation/owner-review UX remains open before operational use.
+
+This local guard does not implement verified tokenizer/context/price/money/period limits described above and does not activate a real transport. Output cap is checked against the grant, but total reservation is not an exact cost estimator. Real paid activation still requires those provider/preflight and explicit access/data/limit decisions. Synthetic fixtures create their own explicit grants; fixture authorization is never a real user grant.

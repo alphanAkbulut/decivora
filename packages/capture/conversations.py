@@ -48,6 +48,23 @@ class ConversationService:
             if len(self._rows(project,'conversation_imported'))>=32:raise ContractError('conversation_limit','Preview supports 32 imports per project; accepted sources remain intact.')
             source=dict(id='source_'+sha[:24],sha256=sha,text=text,source_kind='manual_paste',actor=scope.principal_id,received_at=time.time(),revision=1)
             self._put(scope,project,'conversation_imported',source);return source
+    def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason):
+        """Trusted human configuration only; never inferred from source/model text."""
+        identifier(source_id);identifier(key);identifier(root_run)
+        if type(reserved_tokens) is not int or not 1<=reserved_tokens<=100000 or type(expires_at) is not int or expires_at<=time.time():raise ContractError('invalid_model_grant','Explicit bounded reservation and future expiry required.')
+        if type(max_output_tokens) is not int or not 1<=max_output_tokens<=min(8192,reserved_tokens):raise ContractError('invalid_model_grant','Output ceiling must fit the explicit total reservation.')
+        for value in (provider,model,reason):
+            if type(value) is not str or not value.strip() or len(value)>1024:raise ContractError('invalid_model_grant','Provider, model and data-sharing reason required.')
+        with self.core.transaction():
+            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
+            if not self.core.db.execute('SELECT 1 FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.core.workspace,project,root_run)).fetchone():raise ContractError('budget_unavailable','Create the explicit shared run budget first.')
+            grant=dict(id=key,source=source_id,sha256=source['sha256'],root_run=root_run,reserved_tokens=reserved_tokens,provider=provider,model=model,max_output_tokens=max_output_tokens,expires_at=expires_at,reason=reason,actor=scope.principal_id,authority_revision=self.core.authority.revision())
+            old=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==key),None)
+            if old:
+                if old!=grant:raise ContractError('idempotency_conflict','Dispatch grant identity changed.')
+                return old
+            self._put(scope,project,'conversation_dispatch_authorized',grant);return grant
+
     def analyze(self,scope,project,source_id,extractor=None):
         identifier(source_id)
         with self.core.transaction():
@@ -57,7 +74,11 @@ class ConversationService:
             if extractor is None:return dict(source=source_id,status='Waiting for model',reason='Model access and a bounded data/spend grant are not configured.',candidates=[],model_calls=0)
             if getattr(extractor,'authorized',False) is not True:raise ContractError('model_grant_required','Trusted provider/data/budget authorization required.')
             if any(a['source']==source_id for a in self._rows(project,'conversation_analysis_started')):raise ContractError('analysis_unknown','Previous dispatch may have consumed usage; no automatic retry.')
-            self._put(scope,project,'conversation_analysis_started',dict(source=source_id,sha256=source['sha256'],provider=extractor.provider))
+            grant=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==getattr(extractor,'grant_id',None)),None)
+            if not grant or grant['source']!=source_id or grant['sha256']!=source['sha256'] or grant['provider']!=extractor.provider or grant['model']!=getattr(extractor,'model',None) or grant['max_output_tokens']!=getattr(extractor,'max_output_tokens',None) or grant['actor']!=scope.principal_id or grant['authority_revision']!=self.core.authority.revision() or grant['expires_at']<=time.time():raise ContractError('model_grant_required','Current source/provider/model/budget grant required.')
+            reservation_key='analysis_'+source_id
+            self.core._reserve(scope,project,grant['root_run'],reservation_key,grant['reserved_tokens'])
+            self._put(scope,project,'conversation_analysis_started',dict(source=source_id,sha256=source['sha256'],provider=extractor.provider,grant=grant['id'],root_run=grant['root_run'],reservation_key=reservation_key))
         # No network/model within a DB transaction; accepted receipt survives timeout/crash.
         raw_text=None
         try:
@@ -69,6 +90,15 @@ class ConversationService:
             finished=dict(source=source_id,status='Analysis failed',candidates=[],coverage='unknown',model_calls=1,provider=extractor.provider,reason='Provider response failed the output/source contract; usage may be unknown.')
         if raw_text is not None:finished.update(raw_output=raw_text if len(raw_text.encode())<=16384 else None,raw_sha256=digest(raw_text))
         finished['usage']=getattr(extractor,'usage',None)
+        usage=finished['usage'];actual=usage.get('total_tokens') if type(usage) is dict else None
+        if type(actual) is not int or actual<0:actual=None
+        try:
+            self.core.settle(scope,project,grant['root_run'],reservation_key,actual)
+            finished['budget_status']='unknown' if actual is None else 'settled'
+        except ContractError as error:
+            if error.code!='usage_overrun':raise
+            finished['budget_status']='overrun'
+        finished['budget_run']=grant['root_run']
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             self._put(scope,project,'conversation_analysis_finished',finished)

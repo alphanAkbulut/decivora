@@ -477,34 +477,43 @@ class Workspace:
             self.db.execute('INSERT INTO run_budgets VALUES (?,?,?,?)',(self.workspace,project,run,token_cap))
 
     def reserve(self,scope,project,root_run,key,tokens):
-        identifier(root_run);identifier(key);integer(tokens,1)
-        with self.transaction():
-            self.scope(scope,project,write=True)
-            self.active(scope,project)
-            cap=self.db.execute('SELECT token_cap FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.workspace,project,root_run)).fetchone()
-            if cap is None:raise ContractError('budget_unavailable','A human-created shared run budget is required.')
-            previous=self.db.execute('SELECT tokens,status,actual FROM reservations WHERE workspace=? AND project=? AND run=? AND key=?',(self.workspace,project,root_run,key)).fetchone()
-            if previous:
-                if previous[0]!=tokens:raise ContractError('idempotency_conflict','Reservation key changed token amount.')
-                return dict(root_run=root_run,key=key,reserved=previous[0],status=previous[1],actual=previous[2])
-            used=self.db.execute('SELECT coalesce(sum(CASE WHEN actual IS NULL THEN tokens ELSE actual END),0) FROM reservations WHERE workspace=? AND project=? AND run=?',(self.workspace,project,root_run)).fetchone()[0]
-            if used+tokens>cap[0]:raise ContractError('budget_exceeded','Shared root-run budget exhausted; no dispatch performed.')
-            total=self.db.execute('SELECT coalesce(sum(CASE WHEN actual IS NULL THEN tokens ELSE actual END),0) FROM reservations WHERE workspace=?',(self.workspace,)).fetchone()[0]
-            if total+tokens>100000:raise ContractError('workspace_budget_exceeded','Local workspace reservation ceiling exhausted; a new root run cannot bypass it.')
-            self.db.execute('INSERT INTO reservations VALUES (?,?,?,?,?,?,NULL)',(self.workspace,project,root_run,key,tokens,'reserved'))
-            return dict(root_run=root_run,key=key,reserved=tokens,status='reserved',actual=None)
+        with self.transaction():return self._reserve(scope,project,root_run,key,tokens)
 
+    def _reserve(self,scope,project,root_run,key,tokens):
+        identifier(root_run);identifier(key);integer(tokens,1)
+        self.scope(scope,project,write=True)
+        self.active(scope,project)
+        if self.db.execute("SELECT 1 FROM reservations WHERE workspace=? AND status='overrun' LIMIT 1",(self.workspace,)).fetchone():raise ContractError('budget_review_required','Known usage overrun blocks workspace dispatch until trusted reconciliation.')
+        cap=self.db.execute('SELECT token_cap FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.workspace,project,root_run)).fetchone()
+        if cap is None:raise ContractError('budget_unavailable','A human-created shared run budget is required.')
+        previous=self.db.execute('SELECT tokens,status,actual FROM reservations WHERE workspace=? AND project=? AND run=? AND key=?',(self.workspace,project,root_run,key)).fetchone()
+        if previous:
+            if previous[0]!=tokens:raise ContractError('idempotency_conflict','Reservation key changed token amount.')
+            return dict(root_run=root_run,key=key,reserved=previous[0],status=previous[1],actual=previous[2])
+        used=self.db.execute('SELECT coalesce(sum(CASE WHEN actual IS NULL THEN tokens ELSE actual END),0) FROM reservations WHERE workspace=? AND project=? AND run=?',(self.workspace,project,root_run)).fetchone()[0]
+        if used+tokens>cap[0]:raise ContractError('budget_exceeded','Shared root-run budget exhausted; no dispatch performed.')
+        total=self.db.execute('SELECT coalesce(sum(CASE WHEN actual IS NULL THEN tokens ELSE actual END),0) FROM reservations WHERE workspace=?',(self.workspace,)).fetchone()[0]
+        if total+tokens>100000:raise ContractError('workspace_budget_exceeded','Local workspace reservation ceiling exhausted; a new root run cannot bypass it.')
+        self.db.execute('INSERT INTO reservations VALUES (?,?,?,?,?,?,NULL)',(self.workspace,project,root_run,key,tokens,'reserved'))
+        return dict(root_run=root_run,key=key,reserved=tokens,status='reserved',actual=None)
     def settle(self,scope,project,root_run,key,actual=None):
         if actual is not None:integer(actual)
+        overrun=False
         with self.transaction():
             self.scope(scope,project,write=True,human=True)
             previous=self.db.execute('SELECT tokens,status,actual FROM reservations WHERE workspace=? AND project=? AND run=? AND key=?',(self.workspace,project,root_run,key)).fetchone()
             if previous is None:raise ContractError('reservation_unavailable','Reservation is unavailable.')
-            if previous[1]=='settled':
-                if previous[2]!=actual:raise ContractError('settlement_conflict','Settled usage cannot be rewritten.')
-                return
-            if actual is not None and actual>previous[0]:raise ContractError('usage_overrun','Actual usage exceeds reservation; requires separate review.')
-            self.db.execute('UPDATE reservations SET status=?,actual=? WHERE workspace=? AND project=? AND run=? AND key=?',('unknown' if actual is None else 'settled',actual,self.workspace,project,root_run,key))
+            if previous[1]=='unknown' and actual is None:return
+            if previous[1] in ('settled','overrun'):
+                if previous[2]!=actual:raise ContractError('settlement_conflict','Recorded actual usage cannot be rewritten.')
+                overrun=previous[1]=='overrun'
+            else:
+                overrun=actual is not None and actual>previous[0]
+                status='overrun' if overrun else 'unknown' if actual is None else 'settled'
+                self.db.execute('UPDATE reservations SET status=?,actual=? WHERE workspace=? AND project=? AND run=? AND key=?',(status,actual,self.workspace,project,root_run,key))
+                self.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.workspace,project,scope.principal_id,'budget_usage_recorded',canonical(dict(run=root_run,key=key,status=status,actual=actual))))
+        # Raise AFTER commit: known overrun must survive and stop later admission.
+        if overrun:raise ContractError('usage_overrun','Actual usage preserved; workspace dispatch requires budget review.')
 
     def projection_digest(self,scope,project):
         with self.read_snapshot():

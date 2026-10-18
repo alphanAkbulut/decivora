@@ -9,8 +9,11 @@ flowchart TB
     L["Decivora.command<br/>Python 3.12 + tarayıcı"] --> S["127.0.0.1 local UI<br/>ephemeral session cookie"]
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
     G --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
-    I0 --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
-    M0 --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
+    I0 --> MG["Current human dispatch grant<br/>source hash / provider / model / output cap / run / expiry"]
+    MG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
+    BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
+    M0 --> US["Record actual or unknown usage<br/>overrun persists and blocks workspace dispatch"]
+    US --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
     K0 --> E0["Mevcut kayıt karşılaştırması<br/>explicit seçili öneri onayı"]
     E0 --> D
     G --> F0["Human Blocked / resolve<br/>task + blocker revision; reason + next action"]
@@ -39,7 +42,7 @@ flowchart TB
     B --> IR["In Review - implementation handoff<br/>Awaiting Verification"]
     IR --> HV["Human criterion evidence<br/>required current AC + DoD"]
     HV --> CD["Explicit scope + finish gate review<br/>Done / current basis hash"]
-    CD -->|basis changed| IR
+    CD -->|own or prerequisite evidence changed| IR
     G --> VF["Optional selected local root + human file recipe<br/>bounded exact SHA observation"]
     VF --> HV
     HV -. future .-> V["Automatic test / deploy / native capture<br/>execution and host gates outstanding"]
@@ -48,7 +51,7 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z,K0,E0 guard;
+    class G,A,O,Z,K0,E0,MG,BR,US guard;
     class D,W,B,H,R,N stored;
     class Q,P,U,I0,M0 launcher;
     class C stored;
@@ -109,3 +112,7 @@ Yerel UI'da `TaskBlockerService` açık insan işaretlemesi/çözümü ve reason
 ## 14Ekim2026 — Concurrent storage and decision hypothesis
 
 LocalApp startup configures WAL before serving; no per-request journal changes or timeout increase. Audit rows are grouped/reused only inside the current owned read snapshot; writes and later queries reread, with authority checks unchanged. The schema1/TaskStage payloads remain unchanged. [WAL/concurrency and preview delivery evidence](../quality/concurrency-impact-delivery.md) distinguishes a reproduced lock mechanism from the original uninstrumented503. Questions/decisions view offers a manual decision-retirement hypothesis; record/knowledge/authz/source coverage bind the persisted result. Missing AND/OR rationale remains review; no cancellation/decision apply is exposed by this action. [Request schema](../../manifests/local-decision-impact.schema.json).
+
+## 18 October 2026 — review remediation
+
+Current prerequisite completion is checked recursively in the same read snapshot (64 depth/256 evaluations; incomplete context cannot preserve Done). File-change/blocker/unavailable-checker invalidation propagates; historical Done audits remain. Model analysis additionally requires a current source/hash/provider/model/run/expiry human grant and atomic reservation plus started receipt. Actual usage is recorded; unknown holds its reservation; overrun blocks workspace reservation. No automatic unfreeze, paid activation or SQL schema change. Token reservation is not a verified money ceiling; live provider/policy/price/token estimation remains a separate pilot gate.
