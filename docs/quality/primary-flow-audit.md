@@ -70,3 +70,7 @@ Ana işler hâlâ açık olduğu halde alt modül/test teslimleri konuşmada kul
 ### Devam teslimi — görev kapsamı değişikliğini uygulama
 
 T13/T19 kapsamında artık impact kartından revize task description hazırlanır, grup seçilir, ayrı onaylanır ve uygulanır; ret/erteleme kalıcıdır. Bu, yukarıdaki UI-apply kopukluğunun task-update alt bölümünü kapatır; automatic relation/decision-change açık kalır. 19 Ekim lifecycle-cancel/reopen UI, insanın doğruladığı tek karar gerekçesi ve mevcut guard'larla ayrıca bağlandı. [Kod teslim kaydı](workflow-ui-runtime.md#18-ekim--etki-kartından-görev-değişikliğini-uygulama).
+
+### 19 Ekim devamı — geç cevap önerisi köprüsü
+
+Soru/geç cevap satırındaki manuel-only sınırının bir bölümü kapandı: güncel context soru kimlik/sürüm/seçeneklerine kaynak alıntılı model önerisi bağlanır; insan ayrı doğrular ve cevap ile review makbuzu atomik kaydedilir. Eski veya cevaplanmış soru değiştirilemez. Gerçek semantik eşleştirme kalitesi, konuşmadan yeni QuestionRequest, relation/decision-change planı ve native capture hâlâ açık. [Güncel kod sözleşmesi](dialogue-status-runtime.md#19-ekim--kaynaklı-geç-cevap-önerisi).

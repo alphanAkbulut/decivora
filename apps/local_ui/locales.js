@@ -307,7 +307,13 @@ window.DecivoraCatalogs = {
     "Actor": "Actor",
     "Workspace": "Workspace",
     "Observed authorization revision": "Observed authorization revision",
-    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace.",
+    "Delayed answer proposal": "Delayed answer proposal",
+    "Confirming records this answer only. Decision application and task changes require separate approval.": "Confirming records this answer only. Decision application and task changes require separate approval.",
+    "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
+    "Confirm answer association": "Confirm answer association",
+    "Reject answer suggestion": "Reject answer suggestion",
+    "Defer answer suggestion": "Defer answer suggestion"
   },
   "tr": {
     "Dil": "Dil",
@@ -617,7 +623,13 @@ window.DecivoraCatalogs = {
     "Actor": "Aktör",
     "Workspace": "Çalışma alanı",
     "Observed authorization revision": "Gözlenen yetki sürümü",
-    "Actor identity was not recorded for this trace.": "Bu izde aktör kimliği kaydedilmemiş."
+    "Actor identity was not recorded for this trace.": "Bu izde aktör kimliği kaydedilmemiş.",
+    "Delayed answer proposal": "Geç cevap önerisi",
+    "Confirming records this answer only. Decision application and task changes require separate approval.": "Onay yalnız bu cevabı kaydeder. Kararın uygulanması ve görev değişiklikleri ayrı onay gerektirir.",
+    "Question changed. Prepare a fresh request; this suggestion stays in history.": "Soru değişti. Yeni istek hazırlayın; bu öneri geçmişte korunur.",
+    "Confirm answer association": "Cevap eşlemesini onayla",
+    "Reject answer suggestion": "Cevap önerisini reddet",
+    "Defer answer suggestion": "Cevap önerisini ertele"
   },
   "es": {
     "Dil": "Idioma",
@@ -927,7 +939,13 @@ window.DecivoraCatalogs = {
     "Actor": "Actor",
     "Workspace": "Workspace",
     "Observed authorization revision": "Observed authorization revision",
-    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace.",
+    "Delayed answer proposal": "Delayed answer proposal",
+    "Confirming records this answer only. Decision application and task changes require separate approval.": "Confirming records this answer only. Decision application and task changes require separate approval.",
+    "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
+    "Confirm answer association": "Confirm answer association",
+    "Reject answer suggestion": "Reject answer suggestion",
+    "Defer answer suggestion": "Defer answer suggestion"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1237,7 +1255,13 @@ window.DecivoraCatalogs = {
     "Actor": "Actor",
     "Workspace": "Workspace",
     "Observed authorization revision": "Observed authorization revision",
-    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace.",
+    "Delayed answer proposal": "Delayed answer proposal",
+    "Confirming records this answer only. Decision application and task changes require separate approval.": "Confirming records this answer only. Decision application and task changes require separate approval.",
+    "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
+    "Confirm answer association": "Confirm answer association",
+    "Reject answer suggestion": "Reject answer suggestion",
+    "Defer answer suggestion": "Defer answer suggestion"
   },
   "ar": {
     "Dil": "اللغة",
@@ -1547,6 +1571,12 @@ window.DecivoraCatalogs = {
     "Actor": "Actor",
     "Workspace": "Workspace",
     "Observed authorization revision": "Observed authorization revision",
-    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace."
+    "Actor identity was not recorded for this trace.": "Actor identity was not recorded for this trace.",
+    "Delayed answer proposal": "Delayed answer proposal",
+    "Confirming records this answer only. Decision application and task changes require separate approval.": "Confirming records this answer only. Decision application and task changes require separate approval.",
+    "Question changed. Prepare a fresh request; this suggestion stays in history.": "Question changed. Prepare a fresh request; this suggestion stays in history.",
+    "Confirm answer association": "Confirm answer association",
+    "Reject answer suggestion": "Reject answer suggestion",
+    "Defer answer suggestion": "Defer answer suggestion"
   }
 };

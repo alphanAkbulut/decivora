@@ -168,3 +168,74 @@ class DialogueReviewTests(unittest.TestCase):
         self.fx.stage('Backlog');fresh=self.service.prepare(self.owner,'p',source_id=self.source['id']);second=self.load(self.output(fresh,stage='To Do'))
         self.assertNotEqual(first['context_sha256'],second['context_sha256'])
         self.assertEqual(self.sources.analyze(self.owner,'p',self.source['id']),second)
+
+    def answer_fixture(self):
+        from packages.domain.questions import QuestionService
+        self.questions=QuestionService(self.core)
+        self.questions.present(self.owner,'p',question='Q_STORE',base_revision=0,text='Which storage?',options=[dict(id='A',label='Markdown'),dict(id='B',label='SQLite')],task=self.fx.task)
+        request=self.prepare('For the earlier Q_STORE question, B: SQLite.');output=self.output(request);output['status_changes']=[];output['answer_proposals']=[dict(question_id='Q_STORE',question_revision=1,option_id='B',quote=self.source['text'])]
+        return request,output
+    def answer_review(self,p,decision='accept',key='answer_review'):
+        return self.service.review_answer(self.owner,'p',source_id=self.source['id'],proposal_id=p['id'],decision=decision,key=key,reason='Human verified exact question and quoted delayed reply')
+    def test_delayed_answer_requires_human_review_and_never_applies_decision_or_task(self):
+        request,output=self.answer_fixture();proposal=self.load(output)['answer_proposals'][0]
+        self.assertEqual(self.questions.view(self.owner,'p')['questions'][0]['status'],'Open')
+        before=self.core.records(self.owner,'p');receipt=self.answer_review(proposal)
+        q=self.questions.view(self.owner,'p')['questions'][0];self.assertEqual((q['status'],q['selection']),('Answered','B'));self.assertFalse(receipt['canonical_apply']);self.assertEqual(self.core.records(self.owner,'p'),before)
+        self.assertEqual(self.answer_review(proposal),receipt)
+        item=self.sources.view(self.owner,'p')['imports'][0]['answer_proposals'][0];self.assertEqual(item['state'],'Recorded');self.assertEqual(item['quote'],self.source['text'])
+    def test_answer_reject_and_defer_do_not_record_selection(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0];self.answer_review(p,'defer');self.assertEqual(self.sources.view(self.owner,'p')['imports'][0]['answer_proposals'][0]['state'],'Deferred')
+        self.answer_review(p,'reject','reject_answer');self.assertIsNone(self.questions.view(self.owner,'p')['questions'][0]['selection'])
+        with self.assertRaises(ContractError):self.answer_review(p,key='closed_answer')
+    def test_question_revision_or_lifecycle_change_blocks_old_answer(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0]
+        self.questions.transition(self.owner,'p',request_id='defer',question='Q_STORE',revision=1,base_state=0,status='Deferred',reason='Waiting for new options')
+        self.assertTrue(self.sources.view(self.owner,'p')['imports'][0]['answer_proposals'][0]['stale'])
+        with self.assertRaises(ContractError):self.answer_review(p)
+        self.assertIsNone(self.questions.view(self.owner,'p')['questions'][0]['selection'])
+    def test_already_answered_question_cannot_be_overwritten_by_delayed_claim(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0]
+        self.questions.answer(self.owner,'p',request_id='manual',question='Q_STORE',revision=1,option='A')
+        with self.assertRaises(ContractError):self.answer_review(p)
+        self.assertEqual(self.questions.view(self.owner,'p')['questions'][0]['selection'],'A')
+    def test_duplicate_question_claims_do_not_choose_last_answer(self):
+        _,output=self.answer_fixture();output['answer_proposals'].append(dict(output['answer_proposals'][0],option_id='A'))
+        with self.assertRaises(ContractError):self.load(output)
+        self.assertEqual(self.sources._rows('p','conversation_analysis_finished'),[])
+    def test_answer_unknown_question_wrong_revision_option_and_quote_rejected(self):
+        _,output=self.answer_fixture()
+        for field,value in [('question_id','foreign'),('question_revision',2),('question_revision',True),('option_id','C'),('quote','invented source')]:
+            changed=json.loads(json.dumps(output));changed['answer_proposals'][0][field]=value
+            with self.subTest(field=field,value=value),self.assertRaises(ContractError):self.load(changed)
+        self.assertEqual(self.questions.view(self.owner,'p')['answers'],[])
+    def test_answer_review_receipt_failure_rolls_back_question_selection(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0]
+        self.core.db.execute("CREATE TRIGGER fail_answer_receipt BEFORE INSERT ON audit WHEN NEW.action='conversation_answer_reviewed' BEGIN SELECT RAISE(ABORT,'fixture'); END")
+        with self.assertRaises(ContractError):self.answer_review(p)
+        self.assertEqual(self.questions.view(self.owner,'p')['answers'],[]);self.assertIsNone(self.questions.view(self.owner,'p')['questions'][0]['selection'])
+    def test_answer_review_agent_or_revoked_authority_cannot_confirm(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0];a=self.core.authority
+        a.replace_grant(self.owner,'agent',kind='agent',readable=frozenset({'p'}),writable=frozenset({'p'}),active=True,base_revision=a.revision());agent=a.issue_scope('agent')
+        with self.assertRaises(ContractError):self.service.review_answer(agent,'p',source_id=self.source['id'],proposal_id=p['id'],decision='accept',key='agent_attempt',reason='Agent cannot impersonate a human')
+        self.owner=a.issue_scope('owner')
+        with self.assertRaises(ContractError):self.answer_review(p)
+        self.assertEqual(self.questions.view(self.owner,'p')['answers'],[])
+    def test_answer_review_survives_restore_with_source_provenance(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0];self.answer_review(p)
+        backup=Path(self.fx.temp.name)/'answer-backup.sqlite';manifest=self.core.backup(self.owner,backup)
+        with Workspace.restore(backup,Path(self.fx.temp.name)/'answer-restored.sqlite',manifest) as restored:
+            owner=restored.authority.issue_scope('owner');item=ConversationService(restored).view(owner,'p')['imports'][0]['answer_proposals'][0]
+            self.assertEqual(item['state'],'Recorded');self.assertEqual(item['history'][0]['actor'],'owner');self.assertEqual(item['history'][0]['source'],self.source['id']);self.assertEqual(item['question_revision'],1)
+
+    def test_revised_options_block_previous_answer_even_if_option_id_is_reused(self):
+        _,output=self.answer_fixture();p=self.load(output)['answer_proposals'][0]
+        self.questions.present(self.owner,'p',question='Q_STORE',base_revision=1,text='Which new storage?',options=[dict(id='A',label='Remote'),dict(id='B',label='Different meaning')],reason='Changed options')
+        with self.assertRaises(ContractError):self.answer_review(p)
+        self.assertEqual(self.questions.view(self.owner,'p')['answers'],[])
+    def test_independent_answers_from_one_source_can_be_confirmed_separately(self):
+        _,_=self.answer_fixture()
+        self.questions.present(self.owner,'p',question='Q_UI',base_revision=0,text='Which UI?',options=[dict(id='A',label='Web'),dict(id='B',label='Desktop')])
+        request=self.prepare('Q_STORE: B SQLite. Q_UI: A Web.');output=self.output(request);output['status_changes']=[];output['answer_proposals']=[dict(question_id='Q_STORE',question_revision=1,option_id='B',quote='Q_STORE: B SQLite.'),dict(question_id='Q_UI',question_revision=1,option_id='A',quote='Q_UI: A Web.')]
+        proposals=self.load(output)['answer_proposals'];self.answer_review(proposals[0]);self.answer_review(proposals[1],key='answer_two')
+        self.assertEqual({q['id']:q['selection'] for q in self.questions.view(self.owner,'p')['questions']},{'Q_STORE':'B','Q_UI':'A'})

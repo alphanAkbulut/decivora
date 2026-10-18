@@ -201,3 +201,7 @@ Local-preview akışına hazırlanan source/context isteği, dış yanıt import
 ## 19 Ekim — log diagram ve şema açıklama rehberi
 
 [Rehber](../architecture/logging-diagrams-and-schema.md) üç yeni çizim ekler: yetkili Operations okuma/kanıt sınırı, gerçek operational SQLite ER ve unfinished→unknown read projection yorumu.50kaynak/25belge gerçekten yeniden render edildi; başarısızlık0. Yeni ER/projection PNG'leri görsel incelendi. Gerçek SQL kolonları, span birleşik PK/run FK-cascade ve error endpoint/code unique kuralı ayrı geçici SQLite'ta kontrol edildi. Sentetik JSON örneğinin required alan setleri read şemasıyla eşleştirildi; jsonschema dependency bulunmadığından tam JSON Schema doğrulaması yapılmadı. Runtime kodu/dependency/SQL şeması değişmedi; eski render kayıtları superseded_history içinde korunur.
+
+### 19 Ekim — kaynaklı geç cevap incelemesi
+
+Mevcut local-preview çizimine source-bound answer suggestion→current-question human review→question audit bağlantısı eklendi.50şema/25belge sayısı aynı;50render başarılı. Kimlik/seçim kaydı canonical Decision apply veya görev Done değildir.

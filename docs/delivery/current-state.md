@@ -21,6 +21,7 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 - Append-only domain event log, projection/replay, atomik değişiklik ve onay kontrolleri.
 - Tipli ilişki ve AND/OR/unknown impact kernel'i; UI'da kayıtlı ilişkilerin görselleştirilmesi.
 - Manuel konuşma import'u; hash/span bağlı JSON/provider-callback adapter'ı; görev/karar/bekleyen karar adayları. Dialog context artık görevler yanında canonical karar/kayıtları, soruları ve ilişki snapshot'ını da taşır.
+- Kaynaklı exact soru/sürüm/seçenek geç cevap kartı; ayrı insan onayıyla cevap kaydı, karar uygulaması ayrı.
 - Kaynaklı mevcut-task status önerisi; ayrı accept/reject/defer ve current workflow/AC/verification guard'ları.
 - Karar etki hipotezi → insanın düzenlediği task scope değişikliği → grup seçimi → ayrı approve → apply → yeni task version. Eski description event geçmişinden görünür.
 - AC/DoD, local human review, yapılandırılırsa dar file-SHA verification, blocker/dependency ve false-Done güncellik kontrolleri.
@@ -39,7 +40,7 @@ Bunların tamamı aynı olgunlukta değildir. Gerçek model/host/file erişimi o
 |---|---|---|---|
 | T09 — çıkarım/bağlam | JSON schema/span doğrulama, import, injected provider callback, current context | Gerçek HTTP/credential aktivasyonu; mevcut kapsamın fikir/gereksinim/prompt/belge talimatı dahil tipleri; kaynaklı AC/ilişki/karar değişimi adayları; bounded retrieval | Hazırlık bağımsız. Gerçek model çalıştırma: model/veri/harcama izni ve erişim |
 | T10 — uzlaştırma | Exact duplicate/source attach; refinement işareti | Yeni/eski karar, refinement/conflict/supersession eşleme ve kullanıcı çözümü; belirsizlikte netleştirme. Yanlış task/karar eşleştirmesi önlenmeli | Yerel kod bağımsız; gerçek semantik davranış modeli ayrıca gerektirir |
-| T13 — karar/onay | Review kernel, task-status review, question-decision ve yeni task-update apply | Konuşmadan QuestionRequest/late-answer önerisi; kaynaklı relation/decision-change planını review'a bağlama; güvenli cancellation/reopen UI; split planının atomik onayı | Yerel kod bağımsız; yeni kaynak/karar eşleştirmesinin kalitesi ayrıca doğrulanır |
+| T13 — karar/onay | Review kernel, task-status review, question-decision ve yeni task-update apply | Kaynaklı late-answer önerisi ve insan doğrulamalı cevap kaydı var; konuşmadan QuestionRequest üretimi; kaynaklı relation/decision-change planını review'a bağlama; güvenli cancellation/reopen UI; split planının atomik onayı | Yerel kod bağımsız; yeni kaynak/karar eşleştirmesinin kalitesi ayrıca doğrulanır |
 | T14 — doğrulama | Human/file-SHA kriterleri ve current Done guard | Verifier configuration/policy, gerçek artifact/hedef bağı, zorunlu parent-child koşulları ve kriter revision entegrasyonları; izinli otomatik verifier yolunun sınırları | Gerçek dosya/çalıştırma hedefi ve izinleri ilk kullanım öncesi |
 | T16 — Claude Code adapter | Capture/queue sözleşmesi ve ölçüm düzeneği | Desteklenen gerçek host/version olaylarını kaydetme; session binding, interruption/recovery, gap/coverage | Seçilen Claude Code kurulumu/oturumu ve kaynak izni; ayrı ücretli model API zorunluluğu değil |
 | T17 — Codex adapter | Kaynak/oturum sözleşmesi ve prototip ölçümleri | Gerçek Codex yüzeyinden olay capture; desktop/CLI destek farkları; session/retry/gap | Seçilen destekli Codex host ve kaynak izni; olmayan hook var sayılmaz |

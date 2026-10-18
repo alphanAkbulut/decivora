@@ -61,20 +61,24 @@ class QuestionService:
             self._save(scope,project,'question_presented',value)
             return value
     def answer(self,scope,project,*,request_id,question,revision,option):
+        with self.core.transaction():return self._answer(scope,project,request_id=request_id,question=question,revision=revision,option=option)
+
+    def _answer(self,scope,project,*,request_id,question,revision,option):
+        """Internal: caller owns the transaction, including any provenance receipt."""
+        if not self.core.db.in_transaction:raise ContractError('transaction_required','Answer requires an atomic workspace transaction.')
         for item in (request_id,question,option):identifier(item)
         if type(revision) is not int or revision<1:raise ContractError('invalid_question','Positive question revision required.')
-        with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
-            view=self._view(project);value=dict(request_id=request_id,question=question,revision=revision,option=option)
-            old=next((r for r in view['answers'] if r['payload']['request_id']==request_id),None)
-            if old:
-                if old['actor']!=scope.principal_id or any(old['payload'][key]!=v for key,v in value.items()):raise ContractError('answer_conflict','Answer request ID was reused with different content.')
-                return old['payload']
-            q=next((q for q in view['questions'] if q['id']==question),None)
-            status=self._status(q,revision,option)
-            value.update(status=status,canonical_apply=False,received_at=time.time())
-            self._save(scope,project,'question_answered',value)
-            return value
+        self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+        view=self._view(project);value=dict(request_id=request_id,question=question,revision=revision,option=option)
+        old=next((r for r in view['answers'] if r['payload']['request_id']==request_id),None)
+        if old:
+            if old['actor']!=scope.principal_id or any(old['payload'][key]!=v for key,v in value.items()):raise ContractError('answer_conflict','Answer request ID was reused with different content.')
+            return old['payload']
+        q=next((q for q in view['questions'] if q['id']==question),None)
+        status=self._status(q,revision,option)
+        value.update(status=status,canonical_apply=False,received_at=time.time())
+        self._save(scope,project,'question_answered',value)
+        return value
 
     @staticmethod
     def _status(q,revision,option):

@@ -88,6 +88,35 @@
           }
         }
       }
+    },
+    "answer_proposals": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_id",
+          "question_revision",
+          "option_id",
+          "quote"
+        ],
+        "properties": {
+          "question_id": {
+            "type": "string"
+          },
+          "question_revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "option_id": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "required": [
@@ -96,7 +125,8 @@
     "coverage",
     "candidates",
     "context_sha256",
-    "status_changes"
+    "status_changes",
+    "answer_proposals"
   ],
   "additionalProperties": false
 }
