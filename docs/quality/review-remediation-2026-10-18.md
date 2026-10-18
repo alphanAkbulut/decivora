@@ -35,3 +35,11 @@ Gerçek model taşıyıcısı/anahtar etkinleştirilmedi ve paid çağrı yapıl
 Yerel test bağımlılıkları uygulamanın runtime bağımlılığı değildir: Playwright1.62.1 (declared Apache-2.0), Mermaid11.17.2 (declared MIT); seçilmiş sürümler kullanılan yerel renderer/harness ile eşleşir. Transitif dağıtım uygunluğu veya Decivora'nın nihai lisansı karara bağlanmış sayılmaz. İlk CI kurulumu ve Linux browser koşusu GitHub sonucuyla ayrıca doğrulanır. Normal ürün kullanımı bu paketleri istemez.
 
 Ana görevler 7 Done / 14 In Progress / 9 To Do; bu hedefli düzeltmeler parent MVP kabulünü veya gelecek fazları kendiliğinden kapatmaz. T14/T15/T19/T21/T22/T24 sahiplikleri korunur; yeni ana görev yaratılmadı.
+
+## Gerçek yerel servis başlatma ve doğrulama
+
+18 Ekim2026: Kullanıcı yeni backend'in gerçekten çalıştırılmasını istedi. Ön kontrol53610portunda connection refused verdi; eski tarayıcı görüntüsü çalışan eski backend kanıtı değildi. Mevcut DB için SQLite API ile private600mode tutarlı yedek alındı; bütünlük geçti. Güncel `db0003df40a339fc9771951e3fb0c14ddc71d62d` kaynakları aynı veri dosyası ve aynı loopback portuyla başlatıldı.
+
+Yeni backend'e özgü `usage.dispatch_blocked` alanı gerçek HTTP yanıtında doğrulandı. Dört eşzamanlı okuyucu/sekiz state isteği200; bu boş çalışma alanında4.93–10.78ms gözlendi (performans SLO'su değil). Invalid Origin403reddedildi; health'teki origin_denied olayı bu bilinçli negatif kontroldür. Başlatma ve kontroller sonrası bütün tablo içeriklerinin digest'i yedekle aynı, integrity ok ve journal WAL. Çalışma alanı önce/sonra boş; test task/conversation eklenmedi. Kaydedilmemiş giriş bulunmayan gerçek browser sekmesi yeni oturumla açıldı; konuşmalar, görev panosu ve kullanım/sağlık görünümleri kontrol edildi.
+
+Model, capture ve file root aktive edilmedi; kullanıcı veritabanında semantik çıkarım veya dosya testi çalıştırıldığı iddia edilmez. Düzeltmelerin davranış testleri önceki330runtime ve8sentetik browser akışıdır; bu kayıt onların yanında gerçek yerel startup/auth/read/UI kanıtıdır. Özel yedek, oturum anahtarı ve yerel veri yolları GitHub'a eklenmedi. Güvenli özet [makine kaydındadır](review-remediation-results.json).

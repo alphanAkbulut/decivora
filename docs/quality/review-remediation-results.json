@@ -115,5 +115,29 @@
     "verified tokenizer/context/money/period preflight pending",
     "no automatic overrun unfreeze",
     "native host and release gates open"
-  ]
+  ],
+  "live_local_service": {
+    "before_http_reachable": false,
+    "before_http_error": "connection_refused",
+    "data_preserved": true,
+    "new_backend_budget_field_verified": true,
+    "http_requests": 8,
+    "all_http_200": true,
+    "four_concurrent_readers": true,
+    "response_ms_min": 4.93,
+    "response_ms_max": 10.78,
+    "invalid_origin_rejected": true,
+    "model_configured": false,
+    "native_capture": false,
+    "file_root_configured": false,
+    "journal_mode": "wal",
+    "integrity": "ok",
+    "source_revision": "db0003df40a339fc9771951e3fb0c14ddc71d62d",
+    "real_browser_views_verified": [
+      "conversations",
+      "task_board",
+      "usage_health"
+    ],
+    "test_records_added": false
+  }
 }
