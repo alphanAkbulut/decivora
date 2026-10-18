@@ -7,6 +7,8 @@
 
 [Diagram ve fiziksel/API şema okuma rehberi](logging-diagrams-and-schema.md), mevcut çizimlerin oklarını, gerçek diagnostics ER ilişkilerini, alanların güven anlamını ve sentetik log örneğini açıklar.
 
+[Log erişimi/kimlik/saklama boşluk incelemesi](../quality/log-access-retention-gap-review.md) mevcut belgelerin nerede olduğunu, multiuser için eksik actor/visibility/retention kontrollerini ve ilk kullanım kapılarını ayırır. İnceleme yeni erişim veya süre kararı değildir.
+
 ## Nerede ne tutuluyor ve build hangi aşamada?
 
 | Kayıt / soru | Bugünkü uygulama | Nereden kontrol edilir? | Açık kalan |

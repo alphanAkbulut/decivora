@@ -1,5 +1,8 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+Log ekip erişimi: [kod/doküman boşluk incelemesi](../quality/log-access-retention-gap-review.md). HTTP hâlâ local_owner; own-user filtre, actor/on_behalf_of, loga özel roller ve zaman bazlı retention uygulanmış sayılmaz. Tasarım rol matrisiyle çalışan local görünümü karıştırma.
+
+
 Operations açıklaması: [diagram ve şema okuma rehberi](../architecture/logging-diagrams-and-schema.md). ER gerçek sidecar tablolarını, DTO şeması read çıktısını anlatır. Error group/run correlation veya her engine'in izlenmesi varmış gibi çıkarım yapma.
 
 
