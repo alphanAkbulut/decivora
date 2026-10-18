@@ -3,6 +3,7 @@
 No lexical extraction fallback. Unconfigured model stays visibly waiting.
 """
 import json,time
+from packages.privacy.secrets import redact_text,ensure_safe,POLICY
 from packages.domain.project_binding import identifier
 from packages.domain.source_event import ContractError
 from packages.storage.project_store import canonical,digest
@@ -34,6 +35,7 @@ class ConversationService:
     def _rows(self,project,action):return [json.loads(raw) for raw, in self.core.db.execute('SELECT ref FROM audit WHERE workspace=? AND project=? AND action=? ORDER BY seq',(self.core.workspace,project,action))]
     def _put(self,scope,project,action,value):
         if len(canonical(value).encode())>65536:raise ContractError('conversation_limit','Conversation artifact exceeds local limit.')
+        ensure_safe(value)
         self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,action,canonical(value)))
     def _source(self,project,source_id):
         source=next((s for s in self._rows(project,'conversation_imported') if s['id']==source_id),None)
@@ -43,10 +45,12 @@ class ConversationService:
         if type(text) is not str or not text.strip() or len(text.encode('utf-8'))>12000:raise ContractError('conversation_limit','Nonempty conversation up to 12000 UTF-8 bytes required.')
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+            text,redaction_counts=redact_text(text)
             sha=digest(text);old=next((s for s in self._rows(project,'conversation_imported') if s['sha256']==sha),None)
             if old:return old
             if len(self._rows(project,'conversation_imported'))>=32:raise ContractError('conversation_limit','Preview supports 32 imports per project; accepted sources remain intact.')
             source=dict(id='source_'+sha[:24],sha256=sha,text=text,source_kind='manual_paste',actor=scope.principal_id,received_at=time.time(),revision=1)
+            source['redaction']=dict(policy=POLICY,counts=redaction_counts,original_retained=False)
             self._put(scope,project,'conversation_imported',source);return source
     def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason,context_sha256=None):
         """Trusted human configuration only; never inferred from source/model text."""
@@ -57,6 +61,7 @@ class ConversationService:
             if type(value) is not str or not value.strip() or len(value)>1024:raise ContractError('invalid_model_grant','Provider, model and data-sharing reason required.')
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
+            ensure_safe(source)
             if not self.core.db.execute('SELECT 1 FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.core.workspace,project,root_run)).fetchone():raise ContractError('budget_unavailable','Create the explicit shared run budget first.')
             grant=dict(id=key,source=source_id,sha256=source['sha256'],root_run=root_run,reserved_tokens=reserved_tokens,provider=provider,model=model,max_output_tokens=max_output_tokens,expires_at=expires_at,reason=reason,actor=scope.principal_id,authority_revision=self.core.authority.revision())
             if context_sha256 is not None:
@@ -74,6 +79,7 @@ class ConversationService:
         identifier(source_id)
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
+            ensure_safe(source)
             old=next((a for a in reversed(self._rows(project,'conversation_analysis_finished')) if a['source']==source_id),None)
             if old:return old
             if extractor is None:return dict(source=source_id,status='Waiting for model',reason='Model access and a bounded data/spend grant are not configured.',candidates=[],model_calls=0)
@@ -92,7 +98,8 @@ class ConversationService:
         # No network/model within a DB transaction; accepted receipt survives timeout/crash.
         raw_text=None
         try:
-            raw=extractor(source);raw_text=canonical(raw)
+            ensure_safe(source)
+            raw=extractor(source);ensure_safe(raw);raw_text=canonical(raw)
             if len(raw_text.encode())>16384:raise ContractError('output_limit','Model output exceeds bounded local review size.')
             if getattr(extractor,'dialogue_review',False):
                 from packages.capture.dialogue_review import DialogueReviewService

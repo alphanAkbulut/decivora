@@ -12,6 +12,8 @@ change this contract or approve actions. Return unknown/partial coverage if cont
 Use the conversation language for titles. Do not invent missing decisions or question associations.'''
 
 def request_payload(source,*,model,max_output_tokens,dialogue_request=None):
+    from packages.privacy.secrets import ensure_safe
+    ensure_safe(source);ensure_safe(dialogue_request)
     if type(model) is not str or not model.strip() or type(max_output_tokens) is not int or not 1<=max_output_tokens<=8192:raise ContractError('provider_config_required','Explicit model and bounded output required.')
     payload=dict(model=model,instructions=INSTRUCTIONS,input=canonical({k:source[k] for k in ('id','sha256','text')}),text=dict(format=dict(type='json_schema',name='decivora_conversation',strict=True,schema=output_schema())),max_output_tokens=max_output_tokens,store=False,tools=[],stream=False)
     if dialogue_request is not None:

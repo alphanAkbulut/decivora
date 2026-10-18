@@ -209,3 +209,7 @@ Mevcut local-preview çizimine source-bound answer suggestion→current-question
 ### 19 Ekim — kaynaklı ilişki ve etki köprüsü
 
 Local-preview mevcut çiziminde source-bound relation→human review→graph apply ve ayrı explicit impact hypothesis yolu güncellendi.50diagram/25belge render başarılı; bu, gerçek modelin ilişkileri doğru çıkardığı veya kararların otomatik geçersizleştiği anlamına gelmez.
+
+### 19 Ekim — credential source sınırı
+
+Local-preview çizimine manuel konuşmadan önce deterministik redaction adımı eklendi. Kaynak ID/hash/quote sanitized metne aittir.50diagram/25belge yeniden render edildi; maskeleme encryption, eski geçmiş purge veya gerçek model kalite kabulü değildir.

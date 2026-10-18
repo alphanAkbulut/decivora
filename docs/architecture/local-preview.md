@@ -8,7 +8,8 @@ flowchart TB
     accDescr: Launcher yalnız loopback server açar. Ephemeral yerel session ve CSRF kontrolü gerekir. Manuel görev ve AC kalıcı SQLite'a yazılır. In Progress çalışma beyanıdır, Done yalnız güncel yerel human-review kriterleri ve finish gates geçince üretilir; automatic verifier açık kalır.
     L["Decivora.command<br/>Python 3.12 + tarayıcı"] --> S["127.0.0.1 local UI<br/>ephemeral session cookie"]
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
-    G --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
+    G --> PR["Credential detection before source persistence<br/>masked text / policy counts / no original secret"]
+    PR --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
     I0 --> DQ["Prepared request: source + tasks + decisions<br/>questions + recorded relations / context hash<br/>No model dispatch or egress permission"]
     DQ --> EX["User sends to an existing LLM<br/>External identity and usage unverified"]
     EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]
@@ -72,7 +73,7 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH guard;
+    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH,PR guard;
     class D,W,B,H,R,N stored;
     class Q,P,U,I0,M0,DQ,SP,AP,RP launcher;
     class EX pending;
@@ -153,3 +154,5 @@ Read-only authenticated `/api/operations` returns selected-project command bound
 19 Ekim geç cevap: AP→AH→question audit yolu kodlandı; onay yalnız cevap eşlemesini kaydeder. Karar apply/task değişikliği ayrı kalır. [Sözleşme](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-geç-cevap-önerisi).
 
 19 Ekim relation köprüsü: öneri tek başına graph değişikliği değildir. Human relation apply sonrası explicit retirement hypothesis mevcut impact kartına gider; otomatik karar/görev iptali değildir. [Sözleşme](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine).
+
+19 Ekim privacy: yeni manuel konuşma PR maskelemesi sonrasında hash/quote kaynağı olur. Model/context/MCP çıkış guard'ları ve display maskesi ayrı savunmalardır; eski DB/backup purge ve encryption değildir. [Sözleşme](../quality/credential-redaction-runtime.md).

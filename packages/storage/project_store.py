@@ -43,6 +43,8 @@ class ProjectStore:
             else:
                 os.close(fd)
                 created = True
+            from packages.storage.private_files import restrict_sqlite_files
+            restrict_sqlite_files(self.path)
             self.connection = sqlite3.connect(self.path, timeout=2, isolation_level=None)
             if created:
                 self.connection.executescript('''BEGIN IMMEDIATE;

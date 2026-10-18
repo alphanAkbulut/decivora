@@ -195,6 +195,8 @@ class Workspace:
         event=validate_source_event(asdict(event))
         integer(position,1);integer(now);integer(queue_limit,1)
         if key.session_id!=event.session_id: raise ContractError('session_mismatch','Source session mismatch.')
+        from packages.privacy.secrets import ensure_safe
+        ensure_safe(event.text)
         raw=canonical(asdict(event));sha=digest(raw)
         prefix=(self.workspace,key.provider,key.account_id,key.session_id,key.source_epoch)
         with self.transaction():
@@ -305,6 +307,8 @@ class Workspace:
             self.scope(scope,project,write=True);self.active(scope,project);identifier(key)
             if type(operations) is not list or not 1<=len(operations)<=64:
                 raise ContractError('invalid_change','Bounded nonempty operations required.')
+            from packages.privacy.secrets import ensure_safe
+            ensure_safe(operations)
             raw=canonical(operations)
             if len(raw.encode())>32768:raise ContractError('change_too_large','Change set exceeds local limit.')
             base=self.project(scope,project)['knowledge_revision']
@@ -422,6 +426,8 @@ class Workspace:
 
     @staticmethod
     def _body(body):
+        from packages.privacy.secrets import ensure_safe
+        ensure_safe(body)
         if type(body) is not dict or set(body)!={'type','title','description'} or body['type'] not in TYPES:
             raise ContractError('invalid_record','Unsupported canonical record body.')
         if type(body['title']) is not str or not 1<=len(body['title'])<=256 or type(body['description']) is not str or len(body['description'])>8192:

@@ -147,3 +147,7 @@ Normal insan/agent API'si event/audit satırı UPDATE/DELETE etmez. Authorized p
 Proje timeline'ı tüm security audit'i göstermez. Project reviewer yalnız izinli karar zincirini; ayrı workspace auditor yetkisi üyelik/erişim hareketlerini görür. Audit izni ham özel sohbeti okuma hakkı vermez. Download/export işlemi de audit'lenir. Platform operasyon ekibi tenant içeriğini sıradan hata logundan görememeli.
 
 İlk operasyon paneli için gereken sinyaller: capture coverage ve son receipt; pending/failed/quarantine iş sayısı/yaşı; writer wait ve transaction latency; stale approval oranı; rejected auth; model token/usage unknown oranı; WAL/disk/backup yaşı; audit export lag. Uyarı bütçesi ve eşikleri pilot baseline sonrası belirlenir. Health endpoint hata detayı/tenant adını halka açmaz. Doğrulama: MU08, MU09, MU15 ve mevcut V17/V19/V26/V27.
+
+## Credential maskeleme sınırı
+
+Operational log içeriksiz allowlist olarak kalır. Yeni konuşma sırları kaynak kaydından önce maskelenir; provider/import/context/MCP/HTTP savunmaları ve DB dosya izinleri [uygulama notunda](../quality/credential-redaction-runtime.md) ayrılır. `sensitive_content` sadece güvenli hata kodudur. Maskeleme DB encryption veya eski yedek temizliği değildir; mevcut raw secret kaydını loga ekleyerek tanı koyma.

@@ -33,6 +33,8 @@ class QuestionService:
             self.core.scope(scope,project);self.core.project(scope,project)
             return self._view(project)
     def _save(self,scope,project,action,value):
+        from packages.privacy.secrets import ensure_safe
+        ensure_safe(value)
         if self.core.db.execute("SELECT COUNT(*) FROM audit WHERE workspace=? AND project=? AND action IN ('question_presented','question_answered','question_state','question_answer_associated')",(self.core.workspace,project)).fetchone()[0]>=512:raise ContractError('question_history_limit','Manual preview history capacity reached; accepted records remain intact.')
         self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,action,canonical(value)))
     def present(self,scope,project,*,question,base_revision,text,options,task=None,reason=''):

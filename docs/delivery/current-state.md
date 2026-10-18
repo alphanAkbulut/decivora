@@ -17,6 +17,8 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 
 ## Elimizde çalışan kod
 
+Yeni: tanınan credential'lar yeni manuel kaynakta DB öncesi maskelenir; model/import/context/MCP çıkış kontrolleri ve POSIX DB izinleri vardır. [Kapsam](../quality/credential-redaction-runtime.md): tam DLP, encryption veya geçmiş yedek purge değildir.
+
 - Kalıcı workspace/project/human-agent scope, kaynak alım/checkpoint/worker çekirdeği; gerçek native adapter kabulü ayrı.
 - Append-only domain event log, projection/replay, atomik değişiklik ve onay kontrolleri.
 - Tipli ilişki ve AND/OR/unknown impact kernel'i; UI'da kayıtlı ilişkilerin görselleştirilmesi.

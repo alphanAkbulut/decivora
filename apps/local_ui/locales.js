@@ -320,7 +320,8 @@ window.DecivoraCatalogs = {
     "Approve relationship": "Approve relationship",
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
-    "Review impact if this decision is retired": "Review impact if this decision is retired"
+    "Review impact if this decision is retired": "Review impact if this decision is retired",
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
   },
   "tr": {
     "Dil": "Dil",
@@ -643,7 +644,8 @@ window.DecivoraCatalogs = {
     "Approve relationship": "İlişkiyi onayla",
     "Reject relationship": "İlişkiyi reddet",
     "Defer relationship": "İlişkiyi ertele",
-    "Review impact if this decision is retired": "Bu karar kaldırılırsa etkisini incele"
+    "Review impact if this decision is retired": "Bu karar kaldırılırsa etkisini incele",
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Tanınan gizli bilgiler saklanmadan önce maskelendi. Kaynak alıntıları ve hash maskelenmiş metne aittir."
   },
   "es": {
     "Dil": "Idioma",
@@ -966,7 +968,8 @@ window.DecivoraCatalogs = {
     "Approve relationship": "Approve relationship",
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
-    "Review impact if this decision is retired": "Review impact if this decision is retired"
+    "Review impact if this decision is retired": "Review impact if this decision is retired",
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1289,7 +1292,8 @@ window.DecivoraCatalogs = {
     "Approve relationship": "Approve relationship",
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
-    "Review impact if this decision is retired": "Review impact if this decision is retired"
+    "Review impact if this decision is retired": "Review impact if this decision is retired",
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
   },
   "ar": {
     "Dil": "اللغة",
@@ -1612,6 +1616,7 @@ window.DecivoraCatalogs = {
     "Approve relationship": "Approve relationship",
     "Reject relationship": "Reject relationship",
     "Defer relationship": "Defer relationship",
-    "Review impact if this decision is retired": "Review impact if this decision is retired"
+    "Review impact if this decision is retired": "Review impact if this decision is retired",
+    "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text.": "Recognized credentials were redacted before storage. Source quotes and hashes refer to the redacted text."
   }
 };

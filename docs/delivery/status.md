@@ -746,3 +746,7 @@ Konuşma/model response → kaynaklı exact soru/sürüm/seçenek önerisi → i
 ### 19 Ekim — T09/T10/T11/T13/T19 ilişki önerisi köprüsü
 
 Konuşma çıktısında mevcut kayıtlara source-bound required_by/depends_on önerisi, ayrı human review, atomik graph apply ve karar emekliliği için açık impact hypothesis bağlantısı kodlandı. [Sözleşme ve sınırlar](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-ilişki-önerisinden-etki-incelemesine). AND/OR, otomatik decision supersession ve gerçek semantic/native kapıları açık; mevcut parent statüleri korunur, yeni ana iş yok.
+
+### 19 Ekim — T06/T09/T18/T22/T23 credential koruması
+
+Yeni manuel konuşmada pre-storage redaction, sanitized-source hash/quote, provider/import/context/MCP guard, HTTP display maskesi ve POSIX DB/sidecar izinleri kodlandı. Log gövdesi tutulmaz. Geçmiş DB/yedek purge veya encryption yapılmadı; mevcut lifecycle/release kapıları açık. [Kapsam ve sınırlar](../quality/credential-redaction-runtime.md). Parent durumları değişmez.

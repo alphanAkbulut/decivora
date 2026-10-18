@@ -3,6 +3,7 @@
 No network, credentials, inference or authority is supplied by this module.
 """
 import json
+from packages.privacy.secrets import ensure_safe
 from packages.capture.conversations import ConversationService, anchored, output_schema
 from packages.domain.source_event import ContractError
 from packages.domain.project_binding import identifier
@@ -85,6 +86,7 @@ class DialogueReviewService:
         if any(a['source']==source_id for a in self.sources._rows(project,'conversation_analysis_started')) or any(a['source']==source_id and a.get('analysis_method')!='external_response_import' for a in self.sources._rows(project,'conversation_analysis_finished')):
             raise ContractError('analysis_exists','A previous analysis exists; it cannot be overwritten by an imported response.')
         context=self._context(scope,project)
+        ensure_safe(source);ensure_safe(context)
         sha=digest(canonical(context))
         package=dict(source_id=source_id,source_sha256=source['sha256'],context_sha256=sha,authority_revision=self.core.authority.revision(),actor=scope.principal_id,context=context)
         old=next((p for p in self.sources._rows(project,'dialogue_review_prepared') if p['source_id']==source_id and p['context_sha256']==sha and p['authority_revision']==package['authority_revision'] and p['actor']==scope.principal_id),None)
@@ -114,6 +116,7 @@ class DialogueReviewService:
         def constant(value):raise ValueError('Nonfinite JSON number')
         try:output=json.loads(response_text,object_pairs_hook=pairs,parse_constant=constant)
         except (ValueError,TypeError):raise ContractError('invalid_output','A valid structured JSON response is required.')
+        ensure_safe(output)
         if not valid_fields(output):raise ContractError('invalid_output','Exact dialogue response fields required.')
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
@@ -131,6 +134,7 @@ class DialogueReviewService:
             return finished
 
     def validate_response(self,scope,project,source,output):
+        ensure_safe(output)
         if not valid_fields(output):raise ContractError('invalid_output','Exact dialogue response fields required.')
         source_id=source['id']
         package=self._package(scope,project,source_id,output['context_sha256'])

@@ -6,7 +6,7 @@ import json,os,sqlite3,threading,time,uuid
 MAX_RUNS=200
 MAX_ERRORS=100
 # Never persist exception text, raw action, URL, user prompt, headers or file paths.
-ERROR_CODES=frozenset('application_error invalid_request storage_unavailable storage_failure origin_denied session_required session_or_csrf_required not_found rate_limited bounded_json_required acceptance_required verification_required task_blocked stale_workflow stale_record stale_base stale_impact invalid_transition invalid_approval review_unavailable lifecycle_blocker lifecycle_review permission_denied scope_denied inactive_principal'.split())
+ERROR_CODES=frozenset('application_error sensitive_content invalid_request storage_unavailable storage_failure origin_denied session_required session_or_csrf_required not_found rate_limited bounded_json_required acceptance_required verification_required task_blocked stale_workflow stale_record stale_base stale_impact invalid_transition invalid_approval review_unavailable lifecycle_blocker lifecycle_review permission_denied scope_denied inactive_principal'.split())
 COMPONENT_ACTIONS={
  'capture':{'import_conversation'},
  'extraction':{'analyze_conversation','prepare_dialogue_review','import_dialogue_response'},
@@ -47,6 +47,8 @@ class LocalOperations:
  @contextmanager
  def _connect(self):
   if self.path.is_symlink():raise OSError('unsafe diagnostics path')
+  from packages.storage.private_files import restrict_sqlite_files
+  restrict_sqlite_files(self.path)
   db=sqlite3.connect(self.path,timeout=.1)
   try:
    db.execute('PRAGMA busy_timeout=100');db.execute('PRAGMA foreign_keys=ON');yield db;db.commit()

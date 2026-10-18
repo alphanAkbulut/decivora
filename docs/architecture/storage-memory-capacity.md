@@ -126,3 +126,7 @@ Ekip aşamasında [Postgres base backup + WAL arşivleme/PITR](https://www.postg
 ## 14 October 2026 — private backup UI
 
 [Current bounded backup download](../quality/private-backup-runtime.md): Sources view, explicit private-data acknowledgment, ZIP + manifest and temporary offline restore validation. Unencrypted source-preserving backup; not a shareable redacted export. Active restore/purge/migration/encryption remain open; no model call or new SQL schema.
+
+## Yerel credential koruması — 19 Ekim
+
+Yeni konuşmalar sanitized source olarak yazılır; POSIX canonical/diagnostics ve SQLite sidecar izinleri600. Eski private backup şifresiz ve eski sırları içerebilir. Automatic purge/encryption/migration yapılmadı. [Çalışan sınırlar ve sonraki recovery işleri](../quality/credential-redaction-runtime.md).

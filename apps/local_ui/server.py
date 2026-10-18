@@ -109,6 +109,9 @@ class LocalApp:
         try:
             value=body.get('command') if type(body) is dict and 'project_id' in body else body
             candidate=value.get('action') if type(value) is dict else None
+            if candidate!='import_conversation':
+                from packages.privacy.secrets import ensure_safe
+                ensure_safe(body)
             action=candidate if type(candidate) is str and candidate in ACTIONS else 'unknown'
             if type(body) is dict and 'project_id' in body:selected=body['project_id']
             # Scope resolution happens before associating a trace with a project.
@@ -252,7 +255,8 @@ def make_server(path,port=0,extractor=None,verification_root=None,environment='l
         def log_message(self,*args):pass
         def answer(self,code,body,kind='application/json',cookie=False):
             if code>=400:app.record_error(self.path,body.get('error','application_error') if type(body) is dict else 'application_error')
-            raw=json.dumps(body,ensure_ascii=False).encode() if kind=='application/json' else body
+            from packages.privacy.secrets import redact_value
+            raw=json.dumps(redact_value(body),ensure_ascii=False).encode() if kind=='application/json' else body
             self.send_response(code);self.send_header('Content-Type',kind);self.send_header('Content-Length',str(len(raw)));self.send_header('Cache-Control','no-store');self.send_header('X-Content-Type-Options','nosniff');self.send_header('Referrer-Policy','no-referrer');self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
             if getattr(self,'operation_id',None):self.send_header('X-Decivora-Operation-ID',self.operation_id)
             if cookie:self.send_header('Set-Cookie',app.cookie_name+'='+app.cookie+'; HttpOnly; SameSite=Strict; Path=/')

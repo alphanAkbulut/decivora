@@ -59,7 +59,10 @@ class Server:
         return rid not in cache
     def _records(self,core,scope,project):
         rows=core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id LIMIT 501',(core.workspace,project)).fetchall()
-        return [dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:500] if self._visible(core,scope,project,rid)]
+        result=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:500] if self._visible(core,scope,project,rid)]
+        from packages.privacy.secrets import ensure_safe
+        ensure_safe(result)
+        return result
     def _cursor(self,value):
         raw=canonical(value).encode();return base64.urlsafe_b64encode(raw).decode()+'.'+hmac.new(self.cursor_key,raw,hashlib.sha256).hexdigest()
     def _read_cursor(self,token):
@@ -70,6 +73,8 @@ class Server:
             return json.loads(raw)
         except Exception:raise ContractError('stale_cursor','Cursor changed or server restarted; resync.') from None
     def call(self,name,args):
+        from packages.privacy.secrets import ensure_safe
+        ensure_safe(args)
         window=int(time.monotonic()//60)
         if window!=self.call_window:self.call_window=window;self.call_count=0
         if self.call_count>=60:raise ContractError('mcp_rate_limited','Local process tool-call limit reached; no new operation admitted.')
@@ -111,6 +116,7 @@ class Server:
                     if body['type']=='Task':
                         from packages.domain.task_workflow import TaskWorkflowService
                         current=TaskWorkflowService(core).view(scope,project,args['id']);result['execution_state']=dict(stage=current['stage'],verification_passed=current['verification']['passed'],coverage='recorded_relations_only',file_observation_available=False)
+                    ensure_safe(result)
                     return result
                 rows=self._records(core,scope,project)
                 if name=='query_records':
