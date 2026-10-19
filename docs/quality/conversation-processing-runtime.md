@@ -28,7 +28,7 @@ Sentetik kontroller: source/outbox atomic rollback ve dedup; read-only privacy; 
 
 İlk doğrulamada Operations DTO şemasının yeni alanı eksikti; şema güncellendi. Yeni browser assertion'da yerel değişken adı çakıştı; kontrol betiği düzeltildi. Assertion kaldırılmadı, model/yetki sınırı gevşetilmedi. Son sonuçlar aşağıda kaydedilir.
 
-**Açık kalan gerçek iş:**32source kapasitesi ve audit taramasının indeksli/paged depoya geçişi; source-specific grant/aktivasyon onboarding; per-source configured transport ve devamlı yetkili worker; live/backfill adaleti; capture pause/revoke/gap kartı ve daha ayrıntılı trace. Gerçek source model paylaşımı için ayrı izin, gerçek host yeniden okuması için yeni dar kapsam gerekir. Bu teslim bunları yapılmış göstermez; T17/T09/T19 ve MVP kapıları açık kalır.
+**Güncel follow-up:** [indeksli1000source kapasitesi ve sayfalı okuma](source-capacity-pagination.md) sonraki teslimde kodlandı. **Açık kalan gerçek iş:** source-specific grant/aktivasyon onboarding; per-source configured transport ve devamlı yetkili worker; live/backfill adaleti; capture pause/revoke/gap kartı ve daha ayrıntılı trace. Gerçek source model paylaşımı için ayrı izin, gerçek host yeniden okuması için yeni dar kapsam gerekir. Bu teslim bunları yapılmış göstermez; T17/T09/T19 ve MVP kapıları açık kalır.
 
 Son doğrulama:524runtime ve48tracker/araç testi geçti.12browser senaryosunun11'i ilk koşuda geçti; yeni diyalog assertion betiğindeki ad çakışması düzeltildikten sonra diyalog senaryosu da geçti. Model dispatch0; yeni queue/Operations kartları ve mobil taşmama kontrol edildi.50diagram render edildi. Yerel normal/TEST uygulama verileri bu testlerde kullanılmadı veya yeniden yazılmadı; çalışan eski süreçler otomatik olarak hot-reload olmuş sayılmaz.
 

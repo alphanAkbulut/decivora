@@ -112,17 +112,21 @@ class CodexAppServerCapture(CodexExecCapture):
             if profile_ref is not None:
                 provenance['profile_ref'] = profile_ref
                 # Scope is already reauthorized; legacy unnamespaced sources stay separate.
-                for prior in self.sources._rows(project, 'conversation_imported'):
-                    origin = prior.get('capture', {})
-                    if all(origin.get(k)==provenance[k] for k in ('profile_ref','thread_id','turn_id','item_id','source_surface')):
-                        if prior['sha256'] != digest(safe_text) or origin.get('observed_actor') != message['observed_actor']:
-                            _fail('capture_item_changed')
-                        source = prior
-                        break
+                from packages.capture.source_pages import origin
+                prior=origin(self.core,project,profile_ref,binding['thread_id'],message['turn_id'],message['item_id'])
+                if prior is not None:
+                    origin_capture=prior.get('capture',{})
+                    if prior['sha256']!=digest(safe_text) or origin_capture.get('observed_actor')!=message['observed_actor'] or origin_capture.get('source_surface')!=self.surface:
+                        _fail('capture_item_changed')
+                    source=prior
             if source is None:
                 source = self.sources._ingest(scope, project, text=message['text'], capture=provenance, in_transaction=True)
             fingerprints[key] = sha; ids.append(source['id'])
-        if len(fingerprints) > 32: _fail('capture_limit')
+        # Recent-page fingerprints stay bounded; durable origin lookup checks
+        # older incremental items even after their fingerprint leaves this window.
+        if len(fingerprints)>32:
+            if profile_ref is None:_fail('capture_limit')
+            fingerprints=dict(list(fingerprints.items())[-32:])
         receipt = dict(id=capture_id, source_ids=ids, fingerprints=fingerprints, **parsed,
                        coverage='partial', missing=['bounded_history','non_text_content','host_continuity_not_verified'])
         if old != receipt:

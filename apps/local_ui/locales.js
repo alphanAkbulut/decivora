@@ -354,7 +354,12 @@ window.DecivoraCatalogs = {
     "Waiting for model": "Waiting for model",
     "Ready for review": "Ready for review",
     "Analysis failed": "Analysis failed",
-    "Analysis unknown": "Analysis unknown"
+    "Analysis unknown": "Analysis unknown",
+    "This page": "This page",
+    "First source page": "First source page",
+    "Previous source page": "Previous source page",
+    "Next source page": "Next source page",
+    "Proposals on this page": "Proposals on this page"
   },
   "tr": {
     "Dil": "Dil",
@@ -711,7 +716,12 @@ window.DecivoraCatalogs = {
     "Waiting for model": "Model bekleniyor",
     "Ready for review": "İncelemeye hazır",
     "Analysis failed": "Analiz başarısız",
-    "Analysis unknown": "Analiz sonucu belirsiz"
+    "Analysis unknown": "Analiz sonucu belirsiz",
+    "This page": "Bu sayfa",
+    "First source page": "İlk kaynak sayfası",
+    "Previous source page": "Önceki kaynak sayfası",
+    "Next source page": "Sonraki kaynak sayfası",
+    "Proposals on this page": "Bu sayfadaki öneriler"
   },
   "es": {
     "Dil": "Idioma",
@@ -1068,7 +1078,12 @@ window.DecivoraCatalogs = {
     "Waiting for model": "Waiting for model",
     "Ready for review": "Ready for review",
     "Analysis failed": "Analysis failed",
-    "Analysis unknown": "Analysis unknown"
+    "Analysis unknown": "Analysis unknown",
+    "This page": "This page",
+    "First source page": "First source page",
+    "Previous source page": "Previous source page",
+    "Next source page": "Next source page",
+    "Proposals on this page": "Proposals on this page"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1425,7 +1440,12 @@ window.DecivoraCatalogs = {
     "Waiting for model": "Waiting for model",
     "Ready for review": "Ready for review",
     "Analysis failed": "Analysis failed",
-    "Analysis unknown": "Analysis unknown"
+    "Analysis unknown": "Analysis unknown",
+    "This page": "This page",
+    "First source page": "First source page",
+    "Previous source page": "Previous source page",
+    "Next source page": "Next source page",
+    "Proposals on this page": "Proposals on this page"
   },
   "ar": {
     "Dil": "اللغة",
@@ -1782,6 +1802,11 @@ window.DecivoraCatalogs = {
     "Waiting for model": "Waiting for model",
     "Ready for review": "Ready for review",
     "Analysis failed": "Analysis failed",
-    "Analysis unknown": "Analysis unknown"
+    "Analysis unknown": "Analysis unknown",
+    "This page": "This page",
+    "First source page": "First source page",
+    "Previous source page": "Previous source page",
+    "Next source page": "Next source page",
+    "Proposals on this page": "Proposals on this page"
   }
 };

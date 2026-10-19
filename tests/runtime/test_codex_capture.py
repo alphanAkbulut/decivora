@@ -152,6 +152,8 @@ class CodexCaptureTests(unittest.TestCase):
         for n in range(30): self.adapter.sources.ingest(self.owner, 'p', text='Source '+str(n))
         raw = stream()+wire(dict(type='item.completed', item=dict(type='agent_message', id='two', text='Second message.')),
                             dict(type='item.completed', item=dict(type='agent_message', id='three', text='Third message.')))
-        with self.assertRaises(ContractError): self.collect(raw)
-        self.assertEqual(len(self.adapter.sources.view(self.owner, 'p')['imports']), 31)
+        from unittest.mock import patch
+        with patch('packages.capture.source_pages.SOURCE_CAPACITY',32),self.assertRaises(ContractError): self.collect(raw)
+        self.assertEqual(self.adapter.sources.view(self.owner, 'p')['total'],31)
+        self.assertEqual(len(self.adapter.sources.view(self.owner, 'p')['imports']),25)
         self.assertEqual(self.adapter.sources._rows('p', 'codex_capture_collected'), [first])

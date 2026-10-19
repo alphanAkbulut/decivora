@@ -86,11 +86,8 @@ class DialogueReviewService:
         context=self._context(scope,project)
         if source.get('source_kind')!='codex_app_server':return context
         capture=source['capture'];prior=[]
-        for other in self.sources._rows(project,'conversation_imported'):
-            if other['id']==source['id']:break
-            other_capture=other.get('capture',{})
-            if other.get('source_kind')=='codex_app_server' and other_capture.get('id')==capture['id'] and other_capture.get('thread_id')==capture['thread_id']:
-                prior.append(other)
+        from packages.capture.source_pages import nearby as prior_sources
+        prior=prior_sources(self.core,project,source)
         remaining=6000;nearby=[]
         for other in reversed(prior[-6:]):
             raw=other['text'].encode();text=raw[:remaining].decode('utf-8',errors='ignore')

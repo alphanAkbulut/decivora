@@ -137,3 +137,25 @@ class CheckpointTests(unittest.TestCase):
             self.assertEqual(result['item_pages'],4)
             self.assertEqual(len(adapter.sources._rows('p','conversation_imported')),2)
         finally: restored.close()
+
+    def test_incremental_capture_over_32_public_items_keeps_old_origin_change_guard(self):
+        class ManyMessages(PagedClient):
+            def read_item_page(inner,thread_id,turn_id,*,cursor):
+                result=super().read_item_page(thread_id,turn_id,cursor=cursor)
+                n=int(cursor or '0')
+                result.update(items=[dict(id='item_'+str(n),type='userMessage',content=[dict(type='text',text='Public message '+str(n))])],ignored_private_items=0)
+                return result
+        client=ManyMessages(50)
+        for _ in range(4):self.run_capture(client)
+        self.assertEqual(len(self.adapter.sources._rows('p','conversation_imported')),50)
+        receipt=self.adapter.sources._rows('p','codex_app_server_collected')[-1]
+        self.assertEqual(len(receipt['fingerprints']),32)
+        self.adapter.disconnect(self.owner,'p',capture_id='capture_1')
+        self.adapter.connect(self.owner,'p',capture_id='capture_2',thread_id='thread_1',provider_version='fixture-2',consent=True)
+        other=ManyMessages(50);original=other.read_item_page
+        def changed(*args,**kwargs):
+            result=original(*args,**kwargs);result['items'][0]['content'][0]['text']='Changed historical text';return result
+        other.read_item_page=changed
+        with self.assertRaises(ContractError) as error:self.run_capture(other,'capture_2')
+        self.assertEqual(error.exception.code,'capture_item_changed')
+        self.assertEqual(len(self.adapter.sources._rows('p','conversation_imported')),50)

@@ -279,7 +279,7 @@
         },
         "items": {
           "type": "array",
-          "maxItems": 32,
+          "maxItems": 25,
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -329,13 +329,16 @@
           "const": false
         },
         "capacity": {
-          "const": 32
+          "const": 1000
         },
         "scope": {
           "const": "selected_project"
         },
         "coverage": {
           "const": "saved_sources_only"
+        },
+        "items_truncated": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -347,7 +350,8 @@
         "automatic_dispatch",
         "capacity",
         "scope",
-        "coverage"
+        "coverage",
+        "items_truncated"
       ]
     }
   },

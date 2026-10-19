@@ -9,6 +9,7 @@ from packages.domain.project_binding import identifier
 from packages.domain.source_event import ContractError
 from packages.storage.project_store import canonical,digest
 from packages.reconciliation.core import reconcile,normalized
+from packages.capture import source_pages
 
 KINDS={'Task','Decision','PendingDecision'}
 def output_schema():
@@ -35,12 +36,16 @@ def anchored(source,output):
 class ConversationService:
     def __init__(self,core):self.core=core
     def _rows(self,project,action):return [json.loads(raw) for raw, in self.core.db.execute('SELECT ref FROM audit WHERE workspace=? AND project=? AND action=? ORDER BY seq',(self.core.workspace,project,action))]
+    def _related(self,project,action,ids):
+        if not ids:return []
+        placeholders=','.join('?' for _ in ids)
+        return [json.loads(raw) for raw, in self.core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action=? AND json_extract(ref,'$.source') IN ("+placeholders+") ORDER BY seq",(self.core.workspace,project,action,*ids))]
     def _put(self,scope,project,action,value):
         if len(canonical(value).encode())>65536:raise ContractError('conversation_limit','Conversation artifact exceeds local limit.')
         ensure_safe(value)
         self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,action,canonical(value)))
     def _source(self,project,source_id):
-        source=next((s for s in self._rows(project,'conversation_imported') if s['id']==source_id),None)
+        source=source_pages.find(self.core,project,source_id)
         if source is None:raise ContractError('source_unavailable','Conversation unavailable.')
         return source
     def ingest(self,scope,project,*,text):
@@ -55,9 +60,10 @@ class ConversationService:
             sha=digest(text)
             identity=sha if capture is None else digest(canonical([capture,sha]))
             source_id='source_'+identity[:24]
-            old=next((s for s in self._rows(project,'conversation_imported') if s['id']==source_id),None)
+            source_pages.install_indexes(self.core)
+            old=source_pages.find(self.core,project,source_id)
             if old:return old
-            if len(self._rows(project,'conversation_imported'))>=32:raise ContractError('conversation_limit','Preview supports 32 imports per project; accepted sources remain intact.')
+            if source_pages.count(self.core,project)>=source_pages.SOURCE_CAPACITY:raise ContractError('conversation_limit','Local source capacity reached; accepted sources remain intact.')
             source=dict(id=source_id,sha256=sha,text=text,source_kind='manual_paste' if capture is None else capture.get('source_surface','codex_exec_jsonl'),actor=scope.principal_id,received_at=time.time(),revision=1)
             if capture is not None:source['capture']=capture
             source['redaction']=dict(policy=POLICY,counts=redaction_counts,original_retained=False)
@@ -137,10 +143,13 @@ class ConversationService:
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             self._put(scope,project,'conversation_analysis_finished',finished)
         return finished
-    def view(self,scope,project):
+    def view(self,scope,project,*,cursor=None,limit=source_pages.PAGE_SIZE,source_id=None):
         with self.core.read_snapshot():
-            self.core.scope(scope,project);rows=self.core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id LIMIT 101',(self.core.workspace,project)).fetchall();existing=dict(records=[dict(id=r[0],version=r[1],body=json.loads(r[2])) for r in rows[:100]],truncated=len(rows)>100,knowledge_revision=self.core.project(scope,project)['knowledge_revision']);finished=self._rows(project,'conversation_analysis_finished');started=self._rows(project,'conversation_analysis_started');applied=self._rows(project,'conversation_candidates_applied');result=[]
-            for source in self._rows(project,'conversation_imported'):
+            self.core.scope(scope,project);rows=self.core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? ORDER BY id LIMIT 101',(self.core.workspace,project)).fetchall();existing=dict(records=[dict(id=r[0],version=r[1],body=json.loads(r[2])) for r in rows[:100]],truncated=len(rows)>100,knowledge_revision=self.core.project(scope,project)['knowledge_revision']);result=[]
+            source_page=source_pages.page(self.core,project,cursor=cursor,limit=limit,source_id=source_id)
+            ids=[source['id'] for source in source_page['sources']]
+            finished=self._related(project,'conversation_analysis_finished',ids);started=self._related(project,'conversation_analysis_started',ids);applied=self._related(project,'conversation_candidates_applied',ids)
+            for source in source_page['sources']:
                 analysis=next((a for a in reversed(finished) if a['source']==source['id']),None);candidates=[]
                 if analysis:
                     for c in analysis['candidates']:
@@ -150,7 +159,7 @@ class ConversationService:
                 from packages.capture.dialogue_relations import DialogueRelationService
                 status_changes=DialogueReviewService(self.core).statuses(scope,project,source['id'],analysis or {})
                 result.append(dict(source=source,analysis=analysis,candidates=candidates,relation_proposals=DialogueRelationService(self.core).view(scope,project,source['id'],analysis or {}),status_changes=status_changes,answer_proposals=DialogueReviewService(self.core).answers(scope,project,source['id'],analysis or {}),status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
-            return dict(imports=result,knowledge_revision=existing['knowledge_revision'],automatic_capture=False)
+            return dict(imports=result,knowledge_revision=existing['knowledge_revision'],automatic_capture=False,total=source_page['total'],next_cursor=source_page['next_cursor'],has_more=source_page['has_more'])
     def accept(self,scope,project,*,source_id,key,selected,base_revision):
         identifier(source_id);identifier(key)
         if type(selected) is not list or not selected or len(selected)>32 or any(type(v) is not str for v in selected) or len(set(selected))!=len(selected):raise ContractError('invalid_selection','Bounded unique candidate IDs required.')
@@ -160,7 +169,7 @@ class ConversationService:
             if old:
                 if old['source']!=source_id or old['selected']!=selected or old['base_revision']!=base_revision:raise ContractError('idempotency_conflict','Review identity changed.')
                 return old['result']
-            view=self.view(scope,project)
+            view=self.view(scope,project,source_id=source_id)
             if type(base_revision) is not int or base_revision!=view['knowledge_revision']:raise ContractError('stale_base','Project changed; refresh candidate comparison before accepting.')
             imported=next((i for i in view['imports'] if i['source']['id']==source_id),None)
             if imported is None or imported['status']!='Ready for review' or imported['comparison_incomplete']:raise ContractError('review_unavailable','Complete local comparison and validated output required.')

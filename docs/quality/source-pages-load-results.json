@@ -1,0 +1,42 @@
+{
+  "code_sha256": {
+    "packages/capture/source_pages.py": "dc7edda395a245797dc2b0d62a030d5868bc7532fbb717cf1a2b07f20378afde",
+    "packages/capture/conversations.py": "78d2fac003884a22bec3076461cfab88b15cfd89b38d486031960a6c33fc59e0",
+    "packages/capture/processing_queue.py": "07812b4b6a950e7f321bfaddddc2d55362d72d461f1acd17fed72c2f63d29777"
+  },
+  "kind": "synthetic_source_pagination",
+  "date": "2026-10-19",
+  "sources": 1000,
+  "message_bytes_approx": 4118,
+  "ingest_seconds": 1.144,
+  "db_bytes": 5349376,
+  "integrity": "ok",
+  "read_results": {
+    "first_page": {
+      "samples": 20,
+      "p50_ms": 1.17,
+      "p95_ms": 1.375
+    },
+    "next_page": {
+      "samples": 20,
+      "p50_ms": 1.242,
+      "p95_ms": 1.423
+    },
+    "exact_source": {
+      "samples": 20,
+      "p50_ms": 0.012,
+      "p95_ms": 0.015
+    },
+    "queue_metadata": {
+      "samples": 20,
+      "p50_ms": 4.713,
+      "p95_ms": 5.469
+    }
+  },
+  "python": "3.12.14",
+  "platform": "Darwin",
+  "model_calls": 0,
+  "real_sources": 0,
+  "concurrency": 1,
+  "scope": "Temporary standalone Workspace SQLite; not HTTP/browser/provider latency, concurrency SLA or RPO/RTO. No comparison speedup is inferred."
+}

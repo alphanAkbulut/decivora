@@ -16,22 +16,11 @@ class ConversationQueue:
     def view(self, scope, project):
         with self.core.read_snapshot():
             self.core.scope(scope,project); self.core.active(scope,project)
-            sources=self.sources._rows(project,'conversation_imported')
-            finished={v['source']:v for v in self.sources._rows(project,'conversation_analysis_finished')}
-            started={v['source'] for v in self.sources._rows(project,'conversation_analysis_started')}
-            applied={v['source'] for v in self.sources._rows(project,'conversation_candidates_applied')}
-            enqueued={v['source'] for v in self.sources._rows(project,'conversation_enqueued')}
-            items=[]
-            for source in sources:
-                result=finished.get(source['id'])
-                status=result['status'] if result else 'Analysis unknown' if source['id'] in started else 'Waiting for model'
-                items.append(dict(source_id=source['id'],source_kind=source['source_kind'],status=status,
-                    received_at=source['received_at'],durable_outbox=source['id'] in enqueued,
-                    applied=source['id'] in applied))
-            counts=dict(Counter(v['status'] for v in items))
-            return dict(total=len(items),counts=counts,applied_sources=len(applied),items=items,
-                        background_worker_active=False,automatic_dispatch=False,
-                        capacity=32,scope='selected_project',coverage='saved_sources_only')
+            from packages.capture.source_pages import queue_summary,SOURCE_CAPACITY
+            summary=queue_summary(self.core,project)
+            for row in summary['items']:row.pop('seq',None)
+            return dict(**summary,background_worker_active=False,automatic_dispatch=False,
+                        capacity=SOURCE_CAPACITY,scope='selected_project',coverage='saved_sources_only')
 
     def process(self, scope, project, *, extractor_factory=None, limit=1):
         if type(limit) is not int or not 1<=limit<=10:
@@ -42,7 +31,11 @@ class ConversationQueue:
         outcomes=[]; attempted=0
         if extractor_factory is None:
             return dict(attempted=0,outcomes=[],status='Waiting for model',queue=snapshot)
-        for item in snapshot['items']:
+        from packages.capture.source_pages import queue_rows,SOURCE_CAPACITY
+        with self.core.read_snapshot():
+            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+            pending=queue_rows(self.core,project,pending_only=True,limit=SOURCE_CAPACITY)
+        for item in pending:
             if item['status']!='Waiting for model':continue
             # Inspect grants before constructing a transport. No model activation from text.
             with self.core.read_snapshot():

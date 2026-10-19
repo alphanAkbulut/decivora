@@ -45,7 +45,7 @@ flowchart TB
   NC["Explicit selected-thread Codex CLI pass<br/>Current human source consent"] --> NR["native_capture run / bounded collect span<br/>Safe success or failure code / no content"]
   NR --> LT
   NC --> LD
-  LD --> CQ["Saved-source queue projection<br/>waiting / review-ready / failed / unknown<br/>Read-only; no model dispatch"]
+  LD --> CQ["Indexed saved-source metadata<br/>1000 source cap / 25 metadata rows<br/>Totals include waiting / ready / failed / unknown"]
   CQ --> LV
   LT --> LV["Read-only Operations<br/>project traces + installation safe errors"]
   T["Decivora Test.command<br/>TEST label / separate cookie and port"] --> TC["Same application code<br/>model / file target disabled"]
@@ -122,3 +122,5 @@ Bu kod tesliminde387runtime testi (19Operations testi dahil),48root kontrolü ve
 LOCAL53610ve TEST53611yedek/integrity kontrolü sonrası yeni kodla yeniden başlatıldı. İki canonical DB'nin mantıksal içeriği ve eski dört diagnostics tablosu bire bir korundu; eski izlere kimlik doldurulmadı. Gerçek kullanıcı verisine sentetik kayıt eklenmedi, ücretli çağrı yapılmadı. Gerçek ekip login/own/shared/admin/support izin ve tenant testleri, native/MCP instrumentation ve model zinciri hâlâ kendi ilk-kullanım kapılarında açık.
 
 19 Ekim [native capture tanısı ve queue görünümü](conversation-processing-runtime.md) eklendi. Normal komut sınırlarının yanında ayrı CLI collect sınırı izlenir; her page/RPC/model span varmış gibi sunulmaz. Yeni `conversation_queue` DTO alanı ve arayüzü içeriksiz source durumlarını gösterir.
+
+19 Ekim [source capacity/pagination](source-capacity-pagination.md): `conversation_queue` artık1000source kurulum sınırı,25metadata row ve `items_truncated` taşır. Bu yeni kapasite/local sınır provider veya token bütçesi değildir; eski32source metinleri ilk teslim sınırı olarak tarihsel kalır.

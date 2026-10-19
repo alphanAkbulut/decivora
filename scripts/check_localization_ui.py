@@ -11,7 +11,12 @@ def main():
         file_root=None
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
-        server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
+        server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_SOURCE_PAGES_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
+        if os.environ.get('DECIVORA_SOURCE_PAGES_UI_FIXTURE')=='1':
+            from packages.capture.conversations import ConversationService
+            with server.app.core() as core:
+                owner=core.authority.issue_scope('local_owner')
+                for i in range(35):ConversationService(core).ingest(owner,'personal',text='Synthetic paged source '+str(i))
         if os.environ.get('DECIVORA_RATIONALE_UI_FIXTURE')=='1':
             with server.app.core() as core:
                 owner=core.authority.issue_scope('local_owner')

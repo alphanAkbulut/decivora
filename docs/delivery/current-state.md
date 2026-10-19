@@ -91,6 +91,8 @@ Alt takipte129kayıt var:56DONE,39IN_PROGRESS,29TODO,5PROPOSED;UNSPECIFIED0. [19
 
 Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenilir yüzde/saat/gün verilmez. Mevcut durum **önemli çekirdeği olan, ana otomatik entegrasyonları hâlâ geliştirilmekte olan ürün**dür; yalnız paketleme veya kozmetik düzeltme kalmadı. Yeni görev veya faz eklenmedi.
 
-19 Ekim T17 ilk iyileştirme teslimi: [kalıcı sayfa ilerlemesi](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october) kodlandı.32source sınırı, progress/gap kartı, indexed queue ve izinli otomatik model zinciri açık; ana sayım değişmedi.
+19 Ekim T17 ilk iyileştirme teslimi: [kalıcı sayfa ilerlemesi](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october) kodlandı.Bu ilk kayıtta açık olan32source sınırı/indexli okuma sonraki capacity tesliminde giderildi. Capture gap/izin kartı ve sürekli otomatik model zinciri açık; ana sayım değişmedi.
 
 19 Ekim ana akış kodu: [source→outbox→izinli queue worker→review ve ilerleme kartı](../quality/conversation-processing-runtime.md) bağlandı. Native CLI collect success/failure Operations trace'i kalıcı. Otomatik grant/background activation yok;32source/indexed kapasite, kaynak onboarding ve gerçek model/native kabulü açık. Yeni parent veya erken Done yaratılmadı.
+
+19 Ekim [kaynak kapasitesi ve sayfalama](../quality/source-capacity-pagination.md) tamamlandı:1000source/proje, indexed origin/ID,25lik source sayfaları, worker'ın ilk sayfa dışındaki izinli source'u işlemesi ve native50public item guard. Bu alt teslim ana iş sayımını veya kalan onboarding/live-backfill/semantic kabulünü kapatmaz.

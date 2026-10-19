@@ -6,7 +6,7 @@ import json,os,sqlite3,threading,time,uuid
 MAX_RUNS=200
 MAX_ERRORS=100
 # Never persist exception text, raw action, URL, user prompt, headers or file paths.
-CAPTURE_CODES=frozenset('codex_read_timeout codex_read_failed codex_transport_failed codex_transport_closed codex_host_unavailable invalid_codex_page invalid_codex_cursor capture_limit conversation_limit capture_binding_mismatch capture_checkpoint_stale capture_pending_turn_unavailable capture_item_changed capture_disconnected capture_permission_changed capture_consent_required'.split())
+CAPTURE_CODES=frozenset('codex_read_timeout codex_read_failed codex_transport_failed codex_transport_closed codex_host_unavailable invalid_codex_page invalid_codex_cursor capture_limit conversation_limit capture_binding_mismatch capture_checkpoint_stale capture_pending_turn_unavailable capture_item_changed capture_disconnected capture_permission_changed capture_consent_required invalid_source_cursor'.split())
 ERROR_CODES=CAPTURE_CODES|frozenset('application_error sensitive_content invalid_request storage_unavailable storage_failure origin_denied session_required session_or_csrf_required not_found rate_limited bounded_json_required acceptance_required verification_required task_blocked stale_workflow stale_record stale_base stale_impact invalid_transition invalid_approval review_unavailable lifecycle_blocker lifecycle_review permission_denied scope_denied inactive_principal'.split())
 COMPONENT_ACTIONS={
  'capture':{'import_conversation','native_capture'},
@@ -19,7 +19,7 @@ COMPONENT_ACTIONS={
  'routing':{'work_routing'},'tasks':{'create_task','task_blocker'},
 }
 ACTIONS={a:c for c,actions in COMPONENT_ACTIONS.items() for a in actions}
-ENDPOINTS={'/api/state','/api/command','/api/backup','/api/session','/api/shutdown','/api/operations'}
+ENDPOINTS={'/api/state','/api/command','/api/backup','/api/session','/api/shutdown','/api/operations','/api/conversations'}
 
 def safe_code(value):return value if type(value) is str and value in ERROR_CODES else 'application_error'
 

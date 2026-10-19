@@ -238,7 +238,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **18 Ekim kod teslimi:** [Diyalog→görev/durum](../quality/dialogue-status-runtime.md): kaynak/current task context bağlı yanıt; task create ve status önerileri ayrı review; provider/import ortak doğrulaması. Gerçek serbest metin kalitesi ve otomatik capture açık; ana T09 kapanmadı.
 - **Son ilerleme:** 19 Ekim2026 — [Source outbox ve izinli bounded worker](../quality/conversation-processing-runtime.md) review ucuna bağlandı; source/context grant ve actual/unknown bütçe guard korunur.
 - **Risk durumu:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
-- **Sıradaki adım:** Kaynak kapasitesi/index/paging ve source-specific model aktivasyonu; ardından bağımsız semantic ölçüm.
+- **Sıradaki adım:** Kaynak kapasitesi/index/paging kodlandı; sırada source-specific model aktivasyonu, ardından bağımsız semantic ölçüm.
 
 ## T10 — Temel reconciliation
 
@@ -346,8 +346,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **Gerçek readback001:** onaylı tek TEST aktarımında6user/assistant source ve UI readback doğrulandı. [Bulgu/sonuç](../quality/codex-real-capture-001.md). Full-turn byte sınırı için metadata+one-item pagination eklendi;1MiB tavanı korunur.32sayfa sonunda iki turn eksik; **Kalıcı item cursor + source/cursor atomik checkpoint + pending assistant/dedup** sonraki kod diliminde uygulandı; gap UI, kapasite ve gerçek host yeniden doğrulaması T17 kapsamında açık. Bir defalık gerçek source izni tüketildi, binding kapalı; model paylaşımı yok.
 - **Son ilerleme:** 19 Ekim2026 — Seçilmiş thread user/assistant capture,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending ve native Operations trace kodlu. [Teslim](../quality/conversation-processing-runtime.md).
-- **Risk durumu:** 32source kapasitesi, onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
-- **Sıradaki adım:** İndeksli/paged kapasite ve bağlantı/izin kartı; sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
+- **Risk durumu:** Source kapasitesi1000ve sayfalı UI kodlandı; onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
+- **Sıradaki adım:** İndeksli/paged kapasite teslim edildi; sırada bağlantı/izin kartı, sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
 
 ## T18 — Minimal MCP ve cross-agent read
 
@@ -844,3 +844,5 @@ Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task ed
 ## 19 Ekim görev durumu teyidi
 
 30ana ve129alt kayıt, kendi kabulü ve mevcut kanıtıyla gözden geçirildi. [Satır bazlı önce/sonra, gerekçe ve kanıt](../quality/task-status-audit.json) · [okunabilir sonuç](../quality/task-status-audit.md).42durumsuz kayıt sınıflandı;4eskiTODO kısmi uygulama kanıtıyla In Progress oldu. Kabul daraltılmadı, yeni görev eklenmedi veya ana görev kapatılmadı.
+
+19 Ekim capacity alt teslimi (T09b/T17/T19/T22b/T23d): [1000source indexed/paged kaynak yolu](../quality/source-capacity-pagination.md). Yeni task eklenmedi; genel chunk manifest, onboarding, arşiv/fairness ve recovery kabulü mevcut sahiplerinde açık.

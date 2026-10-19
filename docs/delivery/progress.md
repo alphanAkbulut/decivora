@@ -156,7 +156,7 @@ Sıradaki adım: Aynı bağımsız beklentilerde tam ürün zincirini ve adil na
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Kaynak kapasitesi/index/paging ve source-specific model aktivasyonu; ardından bağımsız semantic ölçüm.
+Sıradaki adım: Kaynak kapasitesi/index/paging kodlandı; sırada source-specific model aktivasyonu, ardından bağımsız semantic ölçüm.
 
 ### T10 · Temel reconciliation
 
@@ -210,13 +210,13 @@ Sıradaki adım: Aynı kaynak/revision üzerinden tam zinciri ve recovery proof 
 
 19 Ekim2026 — Seçilmiş thread user/assistant capture,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending ve native Operations trace kodlu. [Teslim](../quality/conversation-processing-runtime.md).
 
-**Aktif teknik risk:** 32source kapasitesi, onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
+**Aktif teknik risk:** Source kapasitesi1000ve sayfalı UI kodlandı; onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: İndeksli/paged kapasite ve bağlantı/izin kartı; sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
+Sıradaki adım: İndeksli/paged kapasite teslim edildi; sırada bağlantı/izin kartı, sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
 
 ### T18 · Minimal MCP ve cross-agent read
 
@@ -395,4 +395,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `e0ed60832ed67cd790f1d8ed03fb83cadd91bb6b8dd629821c8e2d42862272ae`
+Kaynak fingerprint: `823bb1f0fe746e92f987abb01b33e0f5400cec47a61897841cb4c4913eb139c9`

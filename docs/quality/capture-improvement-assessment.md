@@ -91,3 +91,5 @@ Birinci teslimin kabulü bütün gelecekteki UI/entegrasyonlara bağlanıp gerek
 İlk analizde kod/yayın yapılmamıştı. Kullanıcının “önerilerinle devam et” onayı sonrası ilk teslim uygulandı; kapsamı ve doğrulaması yukarıdaki uygulama kaydındadır. İkinci ve üçüncü teslim, gerçek kaynak/model yetkisini kendiliğinden açmaz.
 
 İkinci teslim ilerlemesi: [source outbox, izinli worker, ilerleme kartı ve native tanı](conversation-processing-runtime.md) kodlandı. İndeksli kapasite/paging ve live/backfill henüz bu dilime dahil değil. Worker üçüncü teslimin mevcut proposal-review ucuna bağlanır; sürekli otomatik izin/model akışı ve gerçek kalite kabulü açık.
+
+Sonraki uygulama: [source kapasitesi/paging](source-capacity-pagination.md)1000source, indexed lookup, snapshot cursor,25lik UI sayfası, queue metadata ve50public native mesaj korumasını ekledi. İkinci teslimin storage/read dilimi tamamlandı; live/backfill ve kurulum/izin UX hâlâ açık.

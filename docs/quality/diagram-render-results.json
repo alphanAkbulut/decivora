@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "b29e1b195be6c46edb0f0993dbe67144d17c42a2",
+  "input_base_ref": "827fad7907818b3e261b13dfd1295a2e60efe23e",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "dbd3b2a1156ca915ae26e768b16897931a29be9dbac052111ab60494ddf38c37",
+      "svg_sha256": "5c9773370e84b52308388c70b9765726bc6b1a4a114373f3e604803f28247505",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "f1b4d9ab1f62be86b2f84c89c1e1f20e3ae4715a0ba578277a726f7e7dee6f16",
+      "source_sha256": "b2f2834d2a4162e66a9b8e1c9832b931c81cdbd2efb2c9b920964ed6a4e286a6",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 4102.17578125 4743.279296875",
+      "view_box": "0 0 4102.17578125 4767.279296875",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "5c06e3630427a2f5a33d4c75d8256e295da6dd6b9e84492547c5d216f1660ded",
+      "svg_sha256": "24708dd528a9e5a218e7b3b22363f55ea42f35a997fdae05b32b9c36e0145509",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "f3beb02758e6f8cb6c1939b19b51537cd1b8b10859096b0860183816edc93d86",
+      "svg_sha256": "3b544f297f972b4598c6116134bb131b57cf5d9d5812c999f5e28fab734e4155",
       "error": null
     },
     {
@@ -539,13 +539,13 @@
     {
       "path": "docs/quality/operations-runtime.md",
       "block": 1,
-      "source_sha256": "286bcc59a5292848d163efde57dbd03b8c762263f47674861be53fca4e56c09f",
+      "source_sha256": "9700a021eaf1fa1bf78e0365917f895c4a441c314d7f99315b9d0cef52753bb4",
       "status": "rendered",
       "title": "Local operations and separate test data",
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "e7ee97552085e20ba6740a3d45d011bcbb575b58e93ff559ffd211fd8ff0fc57",
+      "svg_sha256": "fc707470162d04c0f7c35231b820d52abb6ce2059060b9f4e30dbeb81bddffb9",
       "error": null
     },
     {
@@ -6304,6 +6304,37 @@
           "view_box": "0 0 1047.375 902",
           "artifact": "docs--quality--operations-runtime--1.svg",
           "svg_sha256": "9d13c37a6042c32d7ad38ddf148e621414ab32b23c5e4366800cbcc4ea6cc769",
+          "error": null
+        }
+      ]
+    },
+    {
+      "checked_at": "2026-10-19",
+      "input_base_ref": "b29e1b195be6c46edb0f0993dbe67144d17c42a2",
+      "reason": "Indexed 1000-source capacity, 25-source UI pages and bounded queue metadata.",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "f1b4d9ab1f62be86b2f84c89c1e1f20e3ae4715a0ba578277a726f7e7dee6f16",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 4102.17578125 4743.279296875",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "5c06e3630427a2f5a33d4c75d8256e295da6dd6b9e84492547c5d216f1660ded",
+          "error": null
+        },
+        {
+          "path": "docs/quality/operations-runtime.md",
+          "block": 1,
+          "source_sha256": "286bcc59a5292848d163efde57dbd03b8c762263f47674861be53fca4e56c09f",
+          "status": "rendered",
+          "title": "Local operations and separate test data",
+          "description_present": true,
+          "view_box": "0 0 1192.375 1174",
+          "artifact": "docs--quality--operations-runtime--1.svg",
+          "svg_sha256": "e7ee97552085e20ba6740a3d45d011bcbb575b58e93ff559ffd211fd8ff0fc57",
           "error": null
         }
       ]

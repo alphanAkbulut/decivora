@@ -43,7 +43,7 @@ class LocalApp:
         from packages.operations.local import LocalOperations
         self.operations=LocalOperations(self.path.with_suffix('.operations.sqlite'))
     def record_error(self,endpoint,code):
-        endpoint=endpoint if endpoint in ('/api/state','/api/command','/api/backup','/api/session','/api/shutdown') else 'other'
+        endpoint=endpoint if endpoint in ('/api/state','/api/command','/api/backup','/api/session','/api/shutdown','/api/conversations') else 'other'
         code=code if type(code) is str and re.fullmatch('[a-z_]{1,64}',code) else 'application_error'
         self.operations.error(endpoint,code)
         with self.health_lock:self.recent_errors.append(dict(id='incident_'+uuid.uuid4().hex[:12],endpoint=endpoint,code=code,recorded_at=time.time()))
@@ -96,6 +96,11 @@ class LocalApp:
                 impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
             with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
             return dict(environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=__import__('packages.capture.processing_queue',fromlist=['ConversationQueue']).ConversationQueue(core).view(owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+    def conversation_page(self,selected='personal',cursor=None,source_id=None):
+        with self.core() as core,core.read_snapshot():
+            identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected);core.active(owner,selected)
+            if source_id is not None:identifier(source_id)
+            return ConversationService(core).view(owner,selected,cursor=cursor,source_id=source_id)
     def operations_view(self,selected='personal'):
         with self.core() as core,core.read_snapshot():
             identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected,human=True);core.active(owner,selected)
@@ -292,11 +297,14 @@ def make_server(path,port=0,extractor=None,verification_root=None,environment='l
                 if self.path=='/':raw=raw.replace(b'>LOCAL</p>',('>'+app.environment.upper()+'</p>').encode())
                 return self.answer(200,raw,'text/html; charset=utf-8' if self.path=='/' else 'text/css' if self.path=='/workspace.css' else 'application/javascript')
             url=urlsplit(self.path)
-            if url.path not in ('/api/state','/api/operations'):return self.answer(404,dict(error='not_found'))
+            if url.path not in ('/api/state','/api/operations','/api/conversations'):return self.answer(404,dict(error='not_found'))
             query=parse_qs(url.query,keep_blank_values=True)
-            if set(query)-{'project_id'} or any(len(values)!=1 for values in query.values()):return self.answer(400,dict(error='invalid_request'))
+            if set(query)-({'project_id','cursor','source_id'} if url.path=='/api/conversations' else {'project_id'}) or any(len(values)!=1 for values in query.values()):return self.answer(400,dict(error='invalid_request'))
             if not self.authenticated():return self.answer(401,dict(error='session_required'))
-            try:self.answer(200,(app.state if url.path=='/api/state' else app.operations_view)(query.get('project_id',['personal'])[0]))
+            if 'cursor' in query and 'source_id' in query:return self.answer(400,dict(error='invalid_request'))
+            try:
+                if url.path=='/api/conversations':return self.answer(200,app.conversation_page(query.get('project_id',['personal'])[0],query.get('cursor',[None])[0],query.get('source_id',[None])[0]))
+                self.answer(200,(app.state if url.path=='/api/state' else app.operations_view)(query.get('project_id',['personal'])[0]))
             except ContractError as error:self.answer(409,dict(error=error.code))
             except Exception:self.answer(503,dict(error='storage_unavailable'))
         def do_POST(self):

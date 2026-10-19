@@ -72,3 +72,12 @@ class QueueTests(unittest.TestCase):
   self.assertEqual(result['status'],'Waiting for model');self.assertEqual(app.state()['tasks'],[])
   operations=app.operations_view();self.assertEqual(operations['conversation_queue']['total'],1)
   self.assertNotIn('Please add',json.dumps(operations));self.assertTrue(any(v['action']=='process_conversation_queue' for v in operations['runs']))
+ def test_worker_reaches_authorized_source_beyond_first_ui_page_and_accepts_it(self):
+  for i in range(30):self.source('Unconfigured source '+str(i))
+  target=self.source('Please add restore support.');model=self.grant(target)
+  self.assertEqual(len(self.sources.view(self.owner,'p')['imports']),25)
+  result=self.queue.process(self.owner,'p',extractor_factory=lambda source,grant:model)
+  self.assertEqual(result['attempted'],1);self.assertEqual(len(self.calls),1)
+  selected=self.sources.view(self.owner,'p',source_id=target['id']);candidate=selected['imports'][0]['candidates'][0]
+  self.sources.accept(self.owner,'p',source_id=target['id'],key='accept_last_source',selected=[candidate['id']],base_revision=selected['knowledge_revision'])
+  self.assertEqual(len(self.core.records(self.owner,'p')['records']),1)

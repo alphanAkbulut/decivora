@@ -17,7 +17,7 @@ flowchart TB
     CK --> CP[("Private checkpoint audit<br/>Selected turn frontier / cursor / last item<br/>Active assistant stays pending until terminal")]
     CP -. next explicitly permitted poll .-> AS
     CK --> DQ
-    CK --> SQ[("Source + minimal outbox receipt<br/>Same transaction as page checkpoint")]
+    CK --> SQ[("Indexed source audit + minimal outbox<br/>1000 sources/project; 25 per UI page<br/>Same transaction as page checkpoint")]
     I0 --> SQ
     SQ --> QW["Explicit bounded queue pass<br/>No default timer or new grants<br/>Unknown call or usage stops; no retry"]
     QW -->|existing exact source and model grant| MG
