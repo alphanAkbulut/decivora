@@ -41,7 +41,9 @@ class PilotWiringTests(unittest.TestCase):
                       context_sha256=data['context_sha256'], coverage='unknown',
                       candidates=[], status_changes=[], answer_proposals=[], relation_proposals=[])
         return dict(status='completed', error=None,
-                    usage=dict(input_tokens=1000, output_tokens=100, total_tokens=1100),
+                    usage=dict(input_tokens=1000, output_tokens=100, total_tokens=1100,
+                               input_tokens_details=dict(cached_tokens=0, cache_write_tokens=0),
+                               output_tokens_details=dict(reasoning_tokens=0)),
                     output=[dict(type='message', role='assistant', status='completed',
                             content=[dict(type='output_text', text=json.dumps(output))])])
 
@@ -70,6 +72,16 @@ class PilotWiringTests(unittest.TestCase):
                 self.assertEqual(len(core.records(scope, 'synthetic')['records']), 1)
         self.pilot.run(self.folder, self.key, self.post)
         self.assertEqual(len(self.calls), 20)
+        # Reporting must use saved usage, never repeat inference or modify receipts/DBs.
+        import hashlib
+        watched = list(self.folder.glob('*.sqlite')) + list(self.folder.glob('*.result.json'))
+        before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in watched}
+        report = load('report_openai_pilot').build(self.folder)
+        self.assertEqual(report['corrected_estimated_cost_microusd'], 15750)
+        self.assertTrue(report['seed_records_unchanged'])
+        self.assertFalse(report['mvp_acceptance'])
+        self.assertEqual(len(self.calls), 20)
+        self.assertEqual(before, {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in watched})
 
     def test_failure_stops_batch_without_retry(self):
         self.pilot.prepare(self.folder)

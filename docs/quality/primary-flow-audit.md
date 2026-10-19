@@ -86,3 +86,7 @@ Dar Decision→Decision supersedes önerisi human review ile canonical edge ve k
 ### 19 Ekim devamı — kalıcı AND/OR
 
 Recorded rationale→human complete review→versioned audit/facts→current impact kernel zinciri bağlandı. Task/Decision/related graph revision, unknown/conflicting validity, stale approval ve Done invalidation korunur. UI düz editor; bounded nested API; otomatik model anlamı ve gerçek validity doğrulaması henüz yok. [Kod ve sınırlar](dialogue-status-runtime.md#19-ekim--kalıcı-andor-gerekçesi-ve-etki-bağlantısı).
+
+## 19 Ekim — gerçek API bağlantısı ilk kez çalıştı
+
+[Pilot001](openai-pilot-001.md): onaylı ayrı sentetik çalışma alanında10model/10count; kaynak-context-schema10/10pass, canonical auto-apply0. Bu eski native capture boşluğunu kapatmaz. Luna kanıtsız completion claim'ini atladı; Sol bunu Pending Done önerisi üretti. Model coverage complete etiketi kalite kanıtı değildir. Cache-write fiyat eksikliği düzeltildi; orijinal21368microusd ledger korunup corrected24165microusd tahmin ayrı raporlandı. İlk20HTTP izni tüketildi. Native kaynak, ana UI ve gerçek review/apply zinciri hâlâ açık; local geliştirme için yeni API izni gerekmiyor.

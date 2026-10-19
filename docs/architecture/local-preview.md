@@ -18,8 +18,8 @@ flowchart TB
     MG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
     M0 -. opt-in isolated synthetic PILOT only .-> PC["Approved exact payload / private key<br/>shared USD + HTTP ledger; reserve before network"]
-    PC --> PT["Count input tokens, then bounded Responses<br/>TLS fixed host / standard tier / no retry"]
-    PT --> PF["Usage unknown or overrun: freeze<br/>No automatic canonical apply; real run pending key"]
+    PC --> PT["Count input tokens, then bounded Responses<br/>TLS fixed host / standard tier / no retry<br/>Highest input tariff reserved incl. cache writes"]
+    PT --> PF["Cache details unknown or overrun: freeze<br/>Pilot001: 10 real generations / no auto apply<br/>Default UI and native capture remain off"]
     M0 --> US["Record actual or unknown usage<br/>overrun persists and blocks workspace dispatch"]
     US --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
     K0 --> RP["Source-bound relation suggestion<br/>Task required_by Decision / Task depends_on Task<br/>Decision NEW supersedes Decision OLD"]
@@ -115,7 +115,7 @@ Question state_revision onay dayanağına bağlanır; defer→resume eski approv
 
 ## Ana konuşma/öneri arayüzü
 
-[ConversationService](../../packages/capture/conversations.py) manuel gerçek kaynak için ayrı bounded receipt saklar; eski synthetic SourceEvent'e gerçek metin diye synthetic=True basmaz. [Responses adapter](../../packages/capture/responses_extractor.py) request schema ve response parser sağlar. [Sınırlı OpenAI pilot transport](../quality/openai-pilot-runtime.md) gerçek TLS bağlantı kodu, exact payload/source/context grant, provider token sayımı ve ortak kalıcı USD/HTTP admission sağlar; yalnız ayrı sentetik PILOT runner'a bağlandı. Gerçek çalışma anahtarı bekler. DefaultUI providerNone ile Waiting for model; normal/test kullanıcı verisi kendiliğinden API'ye gitmez. Testte injected HTTP double kullanılır; semantic kalite kabulü değildir. Candidate accept yalnız typed create/source attachment, current human scope/base revision ve atomic audit kullanır; Task Done veya impact cancellation üretmez. [Temel review sınırları](../quality/conversation-review-runtime.md).
+[ConversationService](../../packages/capture/conversations.py) manuel gerçek kaynak için ayrı bounded receipt saklar; eski synthetic SourceEvent'e gerçek metin diye synthetic=True basmaz. [Responses adapter](../../packages/capture/responses_extractor.py) request schema ve response parser sağlar. [Sınırlı OpenAI pilot transport](../quality/openai-pilot-runtime.md) gerçek TLS bağlantısı, exact payload/source/context grant, provider token sayımı ve ortak kalıcı USD/HTTP admission sağlar; yalnız ayrı sentetik PILOT runner'a bağlandı. [Pilot001](../quality/openai-pilot-001.md) anahtarla10gerçek generation çalıştırdı;10source/schema pass, claim farkı ve cache-write düzeltmesi kaydedildi. DefaultUI providerNone ile Waiting for model; normal/test kullanıcı verisi kendiliğinden API'ye gitmez. Candidate accept yalnız typed create/source attachment, current human scope/base revision ve atomic audit kullanır; Task Done veya impact cancellation üretmez. [Temel review sınırları](../quality/conversation-review-runtime.md).
 
 
 ## UI locale sunum sınırı

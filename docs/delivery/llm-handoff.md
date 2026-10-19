@@ -202,3 +202,9 @@ Graphiti graph-building eval ve Langfuse Python SDK source/test hedefli okundu; 
 ## 18 October2026 review remediation
 
 Read [current fixed findings and remaining gates](../quality/review-remediation-2026-10-18.md) before paid activation: source-bound dispatch grants/reservation/settlement are implemented, but verified tokenizer/context/money limits and trusted overrun reconciliation are still activation work. Do not reactivate from an old authorized=True transport. Prerequisite effective Done now propagates through current file/blocker state. All44diagrams rerendered; two sources changed.
+
+## 19 October2026 — actual OpenAI pilot001 completed
+
+Read [actual pilot and findings](../quality/openai-pilot-001.md) and its JSON before any further model call. Private key is configured, never read or echo it into chat. Owner-approved synthetic-only20HTTP allowance is fully consumed:10count+10generation,0retry. Source/schema10/10passed; canonical seed records unchanged; not native capture or MVP acceptance.13275tokens, cache-aware model-token estimate$0.024165, not invoice. Luna omitted the unverified Done claim; Sol proposed it for review. Decision source also matched an open question; association needs human review.
+
+Cache-write pricing gap was found and fixed after preserving original receipts/ledger. New `openai-standard-cache-aware-2026-10-19` reserves worst-case input tariff and freezes missing/overlapping categories or unpriced tier. Original manifest is historical and must not be silently renewed; read-only report script reproduces the correction without new API calls. LOCAL/TEST UI still has no default extractor. Continue native adapter/UI activation and claim handling locally; a new paid batch needs a new exact grant. No new parent tasks or relaxed MVP criteria.

@@ -1,10 +1,10 @@
 # Gerçek OpenAI bağlantısı: sınırlı sentetik pilot
 
-**19 Ekim 2026 · T09/T15/T21/T23 alt teslimi.** HTTP transport ve kontrollü CLI çalıştırıcı kodlandı. Bu kayıt gerçek modelin başarılı çalıştığı veya otomatik Codex capture'ın tamamlandığı anlamına gelmez. İlk doğrulama offline HTTP doubles ile yapılır; gerçek dispatch için yerel API anahtarı beklenir. Ana tasklar kendi geniş kabulüyle açık kalır.
+**19 Ekim 2026 · T09/T15/T21/T23 alt teslimi.** HTTP transport ve kontrollü CLI çalıştırıcı kodlandı. İlk offline doğrulamadan sonra anahtar kuruldu ve [pilot001gerçek sonucu](openai-pilot-001.md) kaydedildi:10generation+10count,10source/schema pass, semantik farklar ve cache-write muhasebesi düzeltmesi. Native Codex capture veya bütün MVP kabulü değildir. Ana tasklar kendi geniş kabulüyle açık kalır.
 
 ## Kullanıcının verdiği izin
 
-Kullanıcı API bakiyesini yüklediğini bildirdi ve bu sohbette kapsamı açıkça onayladı: yalnız sentetik örnekler; OpenAI `gpt-6-luna` ve `gpt-6.1-sol`; toplam en fazla20istek; retry0; istek başına giriş≤10000 ve toplam çıkış≤2000token; toplam≤$1. Gerçek konuşmalar veya kullanıcı veritabanı bu izin kapsamında gönderilmez. Anahtar henüz oluşturulmadı; kod anahtar keşfetmez, credential dosyalarını taramaz ve kullanıcı hesabında key oluşturmaz.
+Kullanıcı API bakiyesini yüklediğini bildirdi ve bu sohbette kapsamı açıkça onayladı: yalnız sentetik örnekler; OpenAI `gpt-6-luna` ve `gpt-6.1-sol`; toplam en fazla20istek; retry0; istek başına giriş≤10000 ve toplam çıkış≤2000token; toplam≤$1. Gerçek konuşmalar veya kullanıcı veritabanı bu izin kapsamında gönderilmez. Anahtar sonradan yerel yardımcıyla kuruldu ve bu20HTTP izinli pilot tamamlandı. Kod anahtar keşfetmez, credential dosyalarını taramaz ve kullanıcı hesabında key oluşturmaz; yeni batch için bu izin yeniden kullanılmaz.
 
 Token sayımını da20HTTP attempt tavanına dahil ettiğimiz için ilk parti **5senaryo×2model =10generation +10count** üst sınırındadır. Bu azami izin içindedir;20generation+20count gönderilmez. Timeout/crash durumunda ayrılan iki HTTP slotu iade edilmez; sayaç gerçek ağ trafiğinin kesin ölçümü değil, muhafazakâr attempt rezervasyonudur.
 
@@ -20,7 +20,7 @@ Token sayımını da20HTTP attempt tavanına dahil ettiğimiz için ilk parti **
 
 Manifest onayı, expiry, fiyat sürümü ve exact payload hashleriyle bağlanır. SQLite `BEGIN IMMEDIATE` ortak ledger'da count+generation için iki slot ve maksimum input/output maliyetini ağdan **önce** ayırır. Yeni model, başka source veya script restart tavanı sıfırlamaz. Aynı exact payload tekrar gönderilmez. Farklı manifest mevcut ledger'ı devralamaz.
 
-Standart kısa bağlam, uncached liste fiyatı `openai-standard-2026-10-19`:1Minput/output başına Luna $0.10/$0.50, Sol $2/$10. Caching indirimi hesaplanmaz. Token maliyeti USD millionths ile yukarı yuvarlanır; float tutar birikimi yapılmaz. Her generation'ın kullanılabilir maksimum token maliyeti önce ayrılır; usage mevcutsa observed input/output üzerinden ücret **tahmini** saklanır. Bilinmeyen usage rezervasyonu korur ve çalışmayı dondurur. Bilinen overrun actual kayıtla korunur.
+Standart kısa bağlam fiyat revision'ı artık `openai-standard-cache-aware-2026-10-19`:1Muncached/cache-read/cache-write/output başına Luna $0.10/$0.01/$0.125/$0.50, Sol $2/$0.10/$2.50/$10. Admission bütün input'u en yüksek cache-write tarifesinden ayırır; indirim varsayılmaz. Settlement disjoint input kategorilerini kullanır; cache muhasebesi eksik/çelişkiliyse veya tier fiyatı belirsizse dondurur. Token maliyeti USD millionths ile yukarı yuvarlanır. İlk pilotun eski uncached-only hesabındaki eksik ve düzeltmesi [ayrı raporda](openai-pilot-001.md) korunur; eski ledger değiştirilmedi. Bilinmeyen usage rezervasyonu korur ve çalışmayı dondurur; bilinen overrun actual kayıtla korunur.
 
 Bu yalnız bu transport/ledger'dan geçen onaylı pilotu sınırlar; başka programların aynı API hesabını tüketmesini kontrol etmez. Fiyatlar tekrar doğrulanmalı; provider'ın sınıra uymaması, faturalandırma gecikmesi, vergi/kart kuru ve dış çağrılar için kesin banka ekstresi tavanı iddiası yoktur. Token count isteği generation değildir; ayrı arama/araç/storage/paid grader çalıştırılmaz. Count sözleşmesi veya fiyat/usage varsayımı gerçek erişimde tutmazsa durulur, kör fallback/retry yoktur.
 
@@ -36,11 +36,11 @@ Kullanıcı kendi Terminal'inde Python3.12 ile `scripts/setup_openai_key.py` ça
 
 Gerçek çalışmada private raw model output, usage ve sözleşme sonucu korunur. Hazır senaryo beklentileri **AI-authored** taslaktır; bağımsız insan gold/holdout sayılmaz. Kaynaklı iddiayı görev doğrulamasıyla karıştırmadan sonuçlar ayrıca incelenecek; ilk hata batch'i durduracak. Native Codex capture, sürekli otomatik processing, ana UI'da bağlantı ayarları ve tüm MVP kabulü açık kalır.
 
-**Bu teslimde doğrulandı:**17yeni offline transport/wiring/credential testi dahil462runtime ve48repo testi geçti.50Mermaid kaynağı yerel bundle ile render edildi; değişen local-preview şeması görsel kontrol edildi.192Markdown,2206yerel link,103anchor ve30ana/129alt görev tutarlılık kontrolleri geçti. İzole pilot için10exact request hazırlandı; ağ çağrısı0. UI kodu değiştirilmedi; önceki12browser sonucu bu teslimde yeniden koşulmuş gibi sunulmaz. Bu sonuçlar gerçek model kalitesi, gerçek API hesabı/bakiye veya native host kanıtı değildir.
+**İlk hazırlık doğrulaması (gerçek çağrıdan önce):**17yeni offline transport/wiring/credential testi dahil462runtime ve48repo testi geçti.50Mermaid kaynağı yerel bundle ile render edildi; değişen local-preview şeması görsel kontrol edildi.192Markdown,2206yerel link,103anchor ve30ana/129alt görev tutarlılık kontrolleri geçti. İzole pilot için10exact request hazırlandı; ağ çağrısı0. UI kodu değiştirilmedi; önceki12browser sonucu bu teslimde yeniden koşulmuş gibi sunulmaz. Bu sonuçlar gerçek model kalitesi, gerçek API hesabı/bakiye veya native host kanıtı değildir.
 
 ## Resmî kaynaklar
 
 - [OpenAI Responses token counting](https://developers.openai.com/api/docs/guides/token-counting): exact request sayımı, `POST /v1/responses/input_tokens`.
 - [Structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs): strict schema anlam doğruluğu veya yürütme kanıtı değildir.
-- [API fiyatları](https://developers.openai.com/api/docs/pricing): model/fiyat/katman kaynağı;19Ekim2026 kontrol edildi.
+- [API fiyatları](https://developers.openai.com/api/docs/pricing) ve [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching): model/fiyat/katman ve ayrık input kategorileri;19Ekim2026 kontrol edildi.
 - [Prepaid billing](https://help.openai.com/en/articles/8264644-setting-up-and-managing-prepaid-api-billing): bakiye anlık kesin harcama kesicisi değildir.

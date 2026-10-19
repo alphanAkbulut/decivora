@@ -18,6 +18,8 @@ Mac'te **Decivora.command** dosyasına çift tıkla. Terminal açılır ve yerel
 
 Ana ekran **Konuşmalar ve öneriler**dir: seçtiğin konuşma parçasını aktar. Kaynak yerel olarak korunur. Model bağlantısı henüz varsayılan olarak kapalıdır; **Model bağlantısı bekleniyor** görünür, otomatik anlam çıkarımı çalıştırılmaz. API key/bakiye/izin verilmiş varsayılmaz. Provider yapılandırıldıktan sonra kaynaklı adaylar, mevcut kayıt karşılaştırması ve seçili önerileri kaydetme bu ekranda çalışacaktır. Bugünkü browser testi kontrollü model kullanır; gerçek semantic kalite kanıtı değildir.
 
+**19 Ekim güncellemesi:** [ayrı CLI pilotu](docs/quality/openai-pilot-001.md) gerçek API ile10generation/10count tamamladı. Bu, ana UI'da modelin otomatik açıldığı anlamına gelmez; kullanıcı kaynakları paylaşılmadı. İlk20HTTP izin tüketildi, yeniden çalıştırma veya yeni batch kendiliğinden yapılmaz. Anahtar repo dışındaki owner-only dosyadadır; uygulama loglarına konmaz.
+
 Elle görev/soru ekleme yardımcı alanlardadır; ana ürün amacı konuşmalardan otomatik öneri üretmektir. Sidebar/metrikler yalnız kişisel workspace kayıtlarını gösterir.
 
 1. Yardımcı görev bölümünü aç, görev ekle ve kartı aç.

@@ -21,10 +21,11 @@ from packages.privacy.secrets import ensure_safe
 from packages.storage.private_files import restrict_sqlite_files
 from packages.storage.project_store import canonical
 
-# USD millionths per token at standard short-context, uncached list prices.
+# USD millionths per token: uncached input, cache read, cache write, output.
 # Deployment must explicitly adopt this price revision; never choose a fallback.
-PRICE_REVISION = 'openai-standard-2026-10-19'
-RATES = {'gpt-6-luna': (0.1, 0.5), 'gpt-6.1-sol': (2, 10)}
+PRICE_REVISION = 'openai-standard-cache-aware-2026-10-19'
+RATES = {'gpt-6-luna': (0.1, 0.01, 0.125, 0.5),
+         'gpt-6.1-sol': (2, 0.1, 2.5, 10)}
 
 
 def fingerprint(value):
@@ -81,10 +82,16 @@ def http_post(path, payload, key):
         connection.close()
 
 
-def micro_cost(model, input_tokens, output_tokens):
+def micro_cost(model, input_tokens, output_tokens, *, cached_tokens=0, cache_write_tokens=0):
     from decimal import Decimal, ROUND_CEILING
-    inp, out = RATES[model]
-    return int((Decimal(str(inp)) * input_tokens + Decimal(str(out)) * output_tokens)
+    for value in (input_tokens, output_tokens, cached_tokens, cache_write_tokens):
+        if type(value) is not int or value < 0:
+            raise ContractError('pilot_usage_unknown', 'Nonnegative integer token categories required.')
+    if cached_tokens + cache_write_tokens > input_tokens:
+        raise ContractError('pilot_usage_unknown', 'Cache categories exceed total input tokens.')
+    inp, read, write, out = map(lambda value: Decimal(str(value)), RATES[model])
+    return int((inp * (input_tokens - cached_tokens - cache_write_tokens) +
+                read * cached_tokens + write * cache_write_tokens + out * output_tokens)
                .to_integral_value(rounding=ROUND_CEILING))
 
 
@@ -167,7 +174,10 @@ class PilotTransport:
             raise ContractError('pilot_payload_denied', 'Exact payload not approved or approval expired.')
         # Missing key is a local configuration failure, not a dispatched attempt.
         key = read_key(self.key_file)
-        reserve = micro_cost(model, self.manifest['max_input_tokens'], payload['max_output_tokens'])
+        # Cache writes use the highest current input tariff. No cache discount
+        # is assumed at admission, even on the first call or a cold prefix.
+        reserve = micro_cost(model, self.manifest['max_input_tokens'], payload['max_output_tokens'],
+                             cache_write_tokens=self.manifest['max_input_tokens'])
         with self._db() as db:
             db.execute('BEGIN IMMEDIATE')
             rows = db.execute('SELECT state,reserved,attempts,actual FROM dispatch').fetchall()
@@ -197,7 +207,14 @@ class PilotTransport:
                     usage['total_tokens'] != usage['input_tokens'] + usage['output_tokens']):
                 raise ContractError('pilot_usage_unknown', 'Usage unknown; reservation retained and pilot frozen.')
             inp, out = usage['input_tokens'], usage['output_tokens']
-            cost = micro_cost(model, inp, out)
+            details = usage.get('input_tokens_details')
+            if type(details) is not dict or any(type(details.get(k)) is not int or details[k] < 0
+                    for k in ('cached_tokens', 'cache_write_tokens')):
+                raise ContractError('pilot_usage_unknown', 'Cache accounting missing; reservation retained and pilot frozen.')
+            if response.get('service_tier') not in (None, 'default'):
+                raise ContractError('pilot_price_unknown', 'Unexpected service tier; no assumed default-rate settlement.')
+            cost = micro_cost(model, inp, out, cached_tokens=details['cached_tokens'],
+                              cache_write_tokens=details['cache_write_tokens'])
             overrun = inp > n or inp > self.manifest['max_input_tokens'] or out > payload['max_output_tokens'] or cost > reserve
             with self._db() as db:
                 db.execute('UPDATE dispatch SET state=?,input_tokens=?,output_tokens=?,actual=? WHERE hash=?',

@@ -9,7 +9,7 @@ import unittest
 from concurrent.futures import ThreadPoolExecutor
 from threading import Event
 
-from packages.capture.openai_transport import PilotTransport, PRICE_REVISION, fingerprint, read_key
+from packages.capture.openai_transport import PilotTransport, PRICE_REVISION, fingerprint, read_key, micro_cost
 from packages.capture.responses_extractor import ResponsesExtractor, request_payload
 from packages.domain.source_event import ContractError
 
@@ -37,7 +37,8 @@ class PilotTransportTests(unittest.TestCase):
                    coverage='complete', candidates=[dict(type='Task', title='Backup test',
                    quote=self.source['text'], intent='planned')])
         return dict(status='completed', error=None,
-                    usage=dict(input_tokens=inp, output_tokens=out, total_tokens=inp + out),
+                    usage=dict(input_tokens=inp, output_tokens=out, total_tokens=inp + out,
+                               input_tokens_details=dict(cached_tokens=0, cache_write_tokens=0)),
                     output=[dict(type='message', role='assistant', status='completed',
                     content=[dict(type='output_text', text=json.dumps(raw))])])
 
@@ -125,6 +126,45 @@ class PilotTransportTests(unittest.TestCase):
         self.assert_code('pilot_usage_overrun', lambda: transport(self.payload))
         self.assertEqual(transport.snapshot()['states'], ['overrun'])
         self.assert_code('pilot_review_required', lambda: transport(self.other))
+
+    def test_cache_write_and_read_are_disjoint_not_additive(self):
+        self.assertEqual(micro_cost('gpt-6.1-sol', 1000, 100, cached_tokens=200, cache_write_tokens=700), 2970)
+        self.assertEqual(micro_cost('gpt-6-luna', 1061, 357, cache_write_tokens=1058), 312)
+
+    def test_cold_cache_worst_case_is_reserved_before_count(self):
+        # Previous uncached-only admission would have allowed this 42000 limit.
+        manifest = dict(self.manifest, max_cost_microusd=42000)
+        self.assert_code('pilot_budget_exceeded', lambda: self.transport(manifest=manifest)(self.other))
+        self.assertFalse(self.calls)
+
+    def test_missing_cache_details_freezes_without_assuming_zero(self):
+        def post(path, payload, key):
+            if path.endswith('input_tokens'):
+                return dict(object='response.input_tokens', input_tokens=300)
+            response = self.response()
+            del response['usage']['input_tokens_details']
+            return response
+        transport = self.transport(post)
+        self.assert_code('pilot_usage_unknown', lambda: transport(self.payload))
+        self.assertTrue(transport.snapshot()['frozen'])
+
+    def test_overlapping_cache_categories_are_rejected(self):
+        def post(path, payload, key):
+            if path.endswith('input_tokens'):
+                return dict(object='response.input_tokens', input_tokens=300)
+            response = self.response()
+            response['usage']['input_tokens_details'] = dict(cached_tokens=200, cache_write_tokens=200)
+            return response
+        transport = self.transport(post)
+        self.assert_code('pilot_usage_unknown', lambda: transport(self.payload))
+        self.assertTrue(transport.snapshot()['frozen'])
+
+    def test_unpriced_service_tier_freezes(self):
+        def post(path, payload, key):
+            return dict(object='response.input_tokens', input_tokens=300) if path.endswith('input_tokens') else dict(self.response(), service_tier='priority')
+        transport = self.transport(post)
+        self.assert_code('pilot_price_unknown', lambda: transport(self.payload))
+        self.assertTrue(transport.snapshot()['frozen'])
 
     def test_private_key_file_link_and_permission_rejected(self):
         link = self.root / 'link'
