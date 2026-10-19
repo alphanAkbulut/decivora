@@ -372,7 +372,14 @@ window.DecivoraCatalogs = {
     "Blocked over 7 days · {days}d": "Blocked over 7 days · {days}d",
     "Known blocker age · {days}d": "Known blocker age · {days}d",
     "Some blocker start times are unknown.": "Some blocker start times are unknown.",
-    "Elapsed time since the recorded blocker began.": "Elapsed time since the recorded blocker began."
+    "Elapsed time since the recorded blocker began.": "Elapsed time since the recorded blocker began.",
+    "Task clarification": "Task clarification",
+    "Task clarifications": "Task clarifications",
+    "Linked to the existing task. No new task or status change.": "Linked to the existing task. No new task or status change.",
+    "Open clarification": "Open clarification",
+    "Clarification resolution": "Clarification resolution",
+    "Resolve clarification": "Resolve clarification",
+    "Opened": "Opened"
   },
   "tr": {
     "Dil": "Dil",
@@ -747,7 +754,14 @@ window.DecivoraCatalogs = {
     "Blocked over 7 days · {days}d": "7 günü aşan blocker · {days} gün",
     "Known blocker age · {days}d": "Bilinen blocker süresi · {days} gün",
     "Some blocker start times are unknown.": "Bazı blocker başlangıç zamanları bilinmiyor.",
-    "Elapsed time since the recorded blocker began.": "Kayıtlı blocker başlangıcından beri geçen süre."
+    "Elapsed time since the recorded blocker began.": "Kayıtlı blocker başlangıcından beri geçen süre.",
+    "Task clarification": "Göreve bağlı netleştirme",
+    "Task clarifications": "Göreve bağlı netleştirmeler",
+    "Linked to the existing task. No new task or status change.": "Mevcut göreve bağlanır. Yeni görev veya durum değişimi oluşturmaz.",
+    "Open clarification": "Netleştirme kaydını aç",
+    "Clarification resolution": "Netleştirme cevabı",
+    "Resolve clarification": "Netleştirmeyi çöz",
+    "Opened": "Kayıt açıldı"
   },
   "es": {
     "Dil": "Idioma",
@@ -1122,7 +1136,14 @@ window.DecivoraCatalogs = {
     "Blocked over 7 days · {days}d": "Bloqueado más de 7 días · {days}d",
     "Known blocker age · {days}d": "Duración conocida del bloqueo · {days}d",
     "Some blocker start times are unknown.": "Se desconocen algunas fechas de inicio de bloqueo.",
-    "Elapsed time since the recorded blocker began.": "Tiempo desde el inicio del bloqueo registrado."
+    "Elapsed time since the recorded blocker began.": "Tiempo desde el inicio del bloqueo registrado.",
+    "Task clarification": "Aclaración de la tarea",
+    "Task clarifications": "Aclaraciones de la tarea",
+    "Linked to the existing task. No new task or status change.": "Se vincula a la tarea existente. No crea tareas ni cambia el estado.",
+    "Open clarification": "Abrir aclaración",
+    "Clarification resolution": "Respuesta de aclaración",
+    "Resolve clarification": "Resolver aclaración",
+    "Opened": "Abierto"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1497,7 +1518,14 @@ window.DecivoraCatalogs = {
     "Blocked over 7 days · {days}d": "Bloqueado há mais de 7 dias · {days}d",
     "Known blocker age · {days}d": "Duração conhecida do bloqueio · {days}d",
     "Some blocker start times are unknown.": "Algumas datas de início de bloqueio são desconhecidas.",
-    "Elapsed time since the recorded blocker began.": "Tempo desde o início do bloqueio registrado."
+    "Elapsed time since the recorded blocker began.": "Tempo desde o início do bloqueio registrado.",
+    "Task clarification": "Esclarecimento da tarefa",
+    "Task clarifications": "Esclarecimentos da tarefa",
+    "Linked to the existing task. No new task or status change.": "Vinculado à tarefa existente. Não cria tarefa nem altera o estado.",
+    "Open clarification": "Abrir esclarecimento",
+    "Clarification resolution": "Resposta do esclarecimento",
+    "Resolve clarification": "Resolver esclarecimento",
+    "Opened": "Aberto"
   },
   "ar": {
     "Dil": "اللغة",
@@ -1872,6 +1900,13 @@ window.DecivoraCatalogs = {
     "Blocked over 7 days · {days}d": "عائق لأكثر من 7 أيام · {days} يوم",
     "Known blocker age · {days}d": "مدة العائق المعروفة · {days} يوم",
     "Some blocker start times are unknown.": "بعض أوقات بدء العوائق غير معروفة.",
-    "Elapsed time since the recorded blocker began.": "الوقت المنقضي منذ بدء العائق المسجل."
+    "Elapsed time since the recorded blocker began.": "الوقت المنقضي منذ بدء العائق المسجل.",
+    "Task clarification": "استيضاح المهمة",
+    "Task clarifications": "استيضاحات المهمة",
+    "Linked to the existing task. No new task or status change.": "يرتبط بالمهمة الحالية دون إنشاء مهمة أو تغيير حالتها.",
+    "Open clarification": "فتح الاستيضاح",
+    "Clarification resolution": "إجابة الاستيضاح",
+    "Resolve clarification": "حل الاستيضاح",
+    "Opened": "تم الفتح"
   }
 };

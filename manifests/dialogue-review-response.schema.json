@@ -185,6 +185,30 @@
           }
         }
       }
+    },
+    "clarification_proposals": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task_id",
+          "text",
+          "quote"
+        ],
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "required": [
@@ -196,7 +220,8 @@
     "status_changes",
     "answer_proposals",
     "relation_proposals",
-    "question_proposals"
+    "question_proposals",
+    "clarification_proposals"
   ],
   "additionalProperties": false
 }

@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**20Ekim onaylı devam/netleştirme:** Yeni To Do yerine mevcut Task'a bağlı Open→Resolved netleştirme backend/UI/şema kodlandı. İlk grubun devamında8/14yeni istek: J02 ilerleme turu ve J03 ilk5tur geçti; J03_m6 generation socket timeout45sile unknown. J04not_run; root yeni6750toplam rezervle frozen, yerel taahhüt$0.066082. Socket120syapıldı; yeni ücretli çağrıyla doğrulanmadı. [Sonuç, kullanıcı kararı ve kalan6kapısı](../quality/dialogue-batch-001-continuation.md).
+
 **20Ekim ilk gerçek4case batch:** J01 görev/status kontrolleri6/6geçti; J02 kapsam-netleştirme adayı ve4.tur generation unknown ile eksik. J03/J04 çalışmadı.10dispatch/20HTTP bütçe payı; yeni bilinen$0.003136+held$0.002250. Ortak root$0.061326ve frozen; yeni risk onayı yok. Güvenli timeout/TLS/JSON tanısı ayrıldı. [Senaryo tablosu, bulgular ve onay kapısı](../quality/dialogue-batch-001.md).
 
 **20Ekim48case ve blocker timer:**48sentetik çok turlu case/294mesaj; model run'lar not_run. Başlangıcı bilinen blocker7günü aşarsa kart/liste/attention/detayda uyarı; çözülme/iptal uyarıyı kaldırır, yeniden block yeni süre başlatır. Restart başlangıcı korur. Süresi kayıtsız bağımlılıklar unknown; e-posta/OS push yok. [Kod, test ve kapsam](../quality/blocker-aging.md). Yeni API çağrısı0.

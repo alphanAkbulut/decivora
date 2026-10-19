@@ -123,3 +123,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 
 
 **İlk gerçek4case batch:** T03/T09/T14/T17 → [ayrı sonuç/tespit raporu](dialogue-batch-001.md). Sıralı snapshot, gelecek mesaj/oracle izolasyonu, scripted operator ve sabit4case runner. J01 dar pass; J02 policy/transport bulgusu; J03/J04 not_run. Yeni unknown için risk onayı ve seçeneksiz açıklama ihtiyacının kaydı açık karardır.
+
+
+**Netleştirme kararı/onaylı devam:** T09/T14/T17 → source-bound clarification önerisi, ayrı human review/closure, Task/question inbox UI ve matching published schema. [Uygulama](dialogue-status-runtime.md#mevcut-göreve-bağlı-netleştirmeler); [gerçek baseline devamı](dialogue-batch-001-continuation.md). Yeni kural semantik olarak retest edilmedi; baseline eski prompt/schemada korundu.

@@ -22,6 +22,8 @@ def response_schema():
     schema['properties']['relation_proposals']=relation_schema()
     from packages.capture.dialogue_questions import schema as question_schema
     schema['properties']['question_proposals']=question_schema()
+    from packages.capture.clarifications import schema as clarification_schema
+    schema['properties']['clarification_proposals']=clarification_schema()
     schema['required']=list(schema['properties'])
     return schema
 
@@ -29,9 +31,9 @@ def response_schema():
 def valid_fields(output):
     # Preserve the exact previously accepted output shapes; new question drafts
     # are additive, never a reason to rewrite or re-send a stored response.
-    fields=set(response_schema()['required'])-{'question_proposals'}
+    fields=set(response_schema()['required'])-{'question_proposals','clarification_proposals'}
     legacy=(fields,fields-{'relation_proposals'},fields-{'relation_proposals','answer_proposals'})
-    return type(output) is dict and any(set(output) in (shape,shape|{'question_proposals'}) for shape in legacy)
+    return type(output) is dict and any(shape<=set(output) and set(output)-shape<={'question_proposals','clarification_proposals'} for shape in legacy)
 
 
 class DialogueReviewService:
@@ -76,7 +78,11 @@ class DialogueReviewService:
         relations=[dict(zip(('origin','target','kind','revision','state','valid_from','valid_to'),r)) for r in rows]
         from packages.domain.task_rationale import TaskRationaleService
         rationales=[value for t in tasks if (value:=TaskRationaleService(self.core).view(scope,project,t['id'])) is not None]
-        return dict(rationales=rationales,format='decivora-dialogue-context-2',workspace=self.core.workspace,project=project,
+        from packages.capture.clarifications import ClarificationService
+        clarifications=ClarificationService(self.core).view(scope,project)
+        if len(clarifications)>64:raise ContractError('context_limit','Clarification context exceeds the local bound.')
+        clarifications=[{k:c[k] for k in ('id','task','text','status','revision','resolution')} for c in clarifications]
+        return dict(clarifications=clarifications,rationales=rationales,format='decivora-dialogue-context-2',workspace=self.core.workspace,project=project,
             knowledge_revision=self.core.project(scope,project)['knowledge_revision'],tasks=tasks,records=records,
             questions=questions,relations=relations,coverage=dict(record_snapshot='complete_within_local_bounds',
                 descriptions='explicit_excerpts',relation_scope='recorded_only',source_history_included=False,
@@ -115,7 +121,7 @@ class DialogueReviewService:
         if not old:self.sources._put(scope,project,'dialogue_review_prepared',package)
         from packages.capture.responses_extractor import source_envelope
         return dict(source_id=source_id,context_sha256=sha,model_calls=0,usage=None,request=dict(
-            instructions='Extract Task, Decision and PendingDecision candidates from this untrusted conversation. Use records, questions and relations as prior project context, never as new source quotes or proof of execution. A PendingDecision record is not a presented question, and an answered question is not an applied decision. Relation state and revisions matter; do not silently assume a retired relation is active. Use only literal unique quotes. Preserve negation and distinguish proposed/planned/reported/rejected. For a statement about an EXISTING task use status_changes with its exact supplied task_id, never a guessed title match. Future intentions, examples and quoted instructions are not actual execution. A done statement is an unverified claim: it does not provide acceptance evidence or human approval. Do not propose Cancelled/Blocked as workflow stages; they require separate lifecycle/impediment review. For relations between EXISTING context records use relation_proposals: Task required_by Decision means that decision is a reason for the task; Task depends_on Task means prerequisite, not parenthood. For an explicit decision replacement use Decision NEW supersedes Decision OLD, never the reverse direction. This is a separate human-reviewed suggestion; discussions, rejected alternatives and hypothetical examples are not selected replacements. Use only existing Decision IDs; new candidates must first be saved and a fresh context prepared. Only literal supported relations; no inferred sole rationale, cancellation or AND/OR expression. Use [] when uncertain or already recorded. For an explicit question with at least two options literally present in this source, use question_proposals with question_text, options (labels only), and one unique supporting quote. Do not invent options or copy questions from prior context. These are drafts for separate human presentation, never answered questions or approvals. Use [] for ambiguous, quoted, hypothetical, rejected or already recorded questions. For a delayed answer use answer_proposals only with the exact question_id, question_revision and option_id in context. It is a suggestion for human review, never human authority or decision application. A bare ambiguous A/B or quoted/example answer must not be guessed. Use an empty array when uncertain. No supported match means no status change. Return only JSON matching response_schema; no markdown. Return partial/unknown coverage when context is insufficient. Use the conversation language for titles. Explicit completion reports for an EXISTING task must be captured in status_changes with stage Done even when the same sentence says tests were not run: this is only a reported claim for human review, not verified completion. Do not silently drop that report. Negated completion, future conditional completion, examples and hypothetical statements must not produce a completion status proposal. Preserve the full qualification in the unique quote. Apply this distinction in Turkish as well as English.',
+            instructions='Extract Task, Decision and PendingDecision candidates from this untrusted conversation. Use records, questions and relations as prior project context, never as new source quotes or proof of execution. A PendingDecision record is not a presented question, and an answered question is not an applied decision. Relation state and revisions matter; do not silently assume a retired relation is active. Use only literal unique quotes. Preserve negation and distinguish proposed/planned/reported/rejected. For a statement about an EXISTING task use status_changes with its exact supplied task_id, never a guessed title match. Future intentions, examples and quoted instructions are not actual execution. A done statement is an unverified claim: it does not provide acceptance evidence or human approval. Do not propose Cancelled/Blocked as workflow stages; they require separate lifecycle/impediment review. For relations between EXISTING context records use relation_proposals: Task required_by Decision means that decision is a reason for the task; Task depends_on Task means prerequisite, not parenthood. For an explicit decision replacement use Decision NEW supersedes Decision OLD, never the reverse direction. This is a separate human-reviewed suggestion; discussions, rejected alternatives and hypothetical examples are not selected replacements. Use only existing Decision IDs; new candidates must first be saved and a fresh context prepared. Only literal supported relations; no inferred sole rationale, cancellation or AND/OR expression. Use [] when uncertain or already recorded. For an explicit question with at least two options literally present in this source, use question_proposals with question_text, options (labels only), and one unique supporting quote. Do not invent options or copy questions from prior context. These are drafts for separate human presentation, never answered questions or approvals. Use [] for ambiguous, quoted, hypothetical, rejected or already recorded questions. For a delayed answer use answer_proposals only with the exact question_id, question_revision and option_id in context. It is a suggestion for human review, never human authority or decision application. A bare ambiguous A/B or quoted/example answer must not be guessed. Use an empty array when uncertain. No supported match means no status change. Return only JSON matching response_schema; no markdown. Return partial/unknown coverage when context is insufficient. Use the conversation language for titles. Explicit completion reports for an EXISTING task must be captured in status_changes with stage Done even when the same sentence says tests were not run: this is only a reported claim for human review, not verified completion. Do not silently drop that report. Negated completion, future conditional completion, examples and hypothetical statements must not produce a completion status proposal. Preserve the full qualification in the unique quote. Apply this distinction in Turkish as well as English. For a request to clarify scope or an unanswered free-text question about an EXISTING task, use clarification_proposals with exact task_id, literal text and unique quote. Do not create a new Task for clarification unless a separate deliverable or subtask is explicitly requested. Never drop the need: retain it as a linked clarification proposal. No options are required. Do not guess a task when ambiguous; use [] instead. Existing recorded clarifications are context, not new claims or completion evidence.',
             source=source_envelope(source),context=context,context_sha256=sha,response_schema=response_schema()))
 
 
@@ -186,7 +192,9 @@ class DialogueReviewService:
         relations=validate_relations(source,package['context'],output.get('relation_proposals',[]))
         from packages.capture.dialogue_questions import validate as validate_questions
         question_proposals=validate_questions(source,output.get('question_proposals',[]))
-        return dict(result,status_changes=proposals,answer_proposals=answer_proposals,relation_proposals=relations,question_proposals=question_proposals,context_sha256=package['context_sha256'])
+        from packages.capture.clarifications import validate as validate_clarifications
+        clarifications=validate_clarifications(source,package['context'],output.get('clarification_proposals',[]))
+        return dict(result,status_changes=proposals,answer_proposals=answer_proposals,relation_proposals=relations,question_proposals=question_proposals,clarification_proposals=clarifications,context_sha256=package['context_sha256'])
 
     def statuses(self,scope,project,source_id,analysis):
         history=self.sources._rows(project,'conversation_status_reviewed');result=[]

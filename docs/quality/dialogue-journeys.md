@@ -83,4 +83,7 @@ Mevcut3USD root, source/context izni, HTTP/token tavanları ve unknown rezervi k
 
 ## İlk gerçek dört-case batch
 
-[J01–J04 bulgu raporu](dialogue-batch-001.md): J01 altı görev/durum kontrolü geçti; J02 ikinci turda ayrı netleştirme Task'ı önerdi ve dördüncü turda generation unknown nedeniyle yarım kaldı. J03/J04 çalışmadı. Diğer44case için API çağrısı yok. Sonraki adım owner review'a bağlı; runner kendiliğinden sonraki grubu açmaz.
+[J01–J04 bulgu raporu](dialogue-batch-001.md): J01 altı görev/durum kontrolü geçti; J02 ikinci turda ayrı netleştirme Task'ı önerdi ve dördüncü turda generation unknown nedeniyle yarım kaldı. İlk duruşta J03/J04 çalışmadı. Diğer44case için API çağrısı yok. Sonraki adım owner review'a bağlı; runner kendiliğinden sonraki grubu açmaz.
+
+
+**Güncel onaylı devam:** [Ayrı sonuç](dialogue-batch-001-continuation.md): J02 kalan iki ilerleme turu alındı; J03 ilk beş turda doğru ayrım/eşleme verdi, son tur generation timeout nedeniyle unknown. J04henüz çalışmadı. Mevcut Task netleştirme kuralı backend/UI/schema olarak kodlandı; yeni prompt gerçekmodelle henüz retest edilmedi.

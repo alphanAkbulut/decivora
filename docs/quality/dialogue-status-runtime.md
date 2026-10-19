@@ -141,7 +141,7 @@ Yeni provider şemasında `question_proposals` zorunlu; eski kayıtlı/import ç
 ```mermaid
 flowchart TD
   accTitle: Kaynaklı soru taslağı ve ayrı insan kararı
-  accDescr: Kaynak ve seçenek kontrolünden geçen taslak ayrı insan incelemesiyle kalıcı Open soruya dönüşür. Geç cevap ayrı incelemeyle kaydedilir, karar uygulaması ayrıca onay gerektirir.
+  accDescr: Mevcut göreve bağlı seçeneksiz netleştirme ayrı insan incelemesiyle Open kayıt olur. Seçenekli soru yolunda kaynak ve seçenek kontrolünden geçen taslak ayrı insan incelemesiyle kalıcı Open soruya dönüşür. Geç cevap ayrı incelemeyle kaydedilir, karar uygulaması ayrıca onay gerektirir.
   S[İzinli konuşma kaynağı] --> M[Model çıktısı: soru taslağı]
   M --> V{Tek alıntı ve literal seçenekler?}
   V -->|Hayır| X[Ret: soru oluşmaz]
@@ -157,6 +157,16 @@ flowchart TD
   A --> J[Ayrı insan cevap incelemesi]
   J --> K[Answered soru: karar uygulanmış değildir]
   K -.-> P[Ayrı karar hazırlama ve onay ve uygulama]
+  S --> CL[Mevcut Task için netleştirme önerisi]
+  CL --> CV{Literal kaynak ve exact Task ve güncel scope?}
+  CV -->|Evet| CH[Ayrı insan incelemesi]
+  CV -->|Hayır| X
+  CH --> CO[Open netleştirme: yeni Task değil]
+  CO --> CR[İnsan cevabı ve revision kontrolü]
+  CR --> CF[Resolved: kaynak ve tarihçe korunur]
+  class CL input
+  class CV,CH,CR review
+  class CO,CF saved
   classDef input fill:#dbeafe,stroke:#2563eb,color:#172554
   classDef review fill:#fef3c7,stroke:#b45309,color:#451a03
   classDef saved fill:#dcfce7,stroke:#15803d,color:#14532d
@@ -182,3 +192,14 @@ Mevcut gerçek browser diyalog regresyonu da geçti: source→Task review, mevcu
 Eşleşen mevcut soru varsa yeni sunma düğmesi kapalı ve ilgili soruID görünür; ret/erteleme kullanılabilir. Bu UI kontrolü backend duplicate/authority/transaction kontrolünün yerine geçmez. Soru açmak cevap seçmek, bir Decision uygulamak veya task durumunu değiştirmek değildir. Kart bu ayrımı açıklar. Beş katalogda yeni metinler eklendi (EN/TR/ES/PT-BR/AR; ES/PT/AR native dil incelemesi hâlâ açık). Dil değişiminde doldurulan review gerekçesi korunur; yeni model çağrısı yapılmaz.
 
 `tests/ui-dialogue-questions.cjs` gerçek tarayıcı/yerel HTTP/SQLite yolunda sentetik çıktı→taslak→defer→reload→present→reload→duplicate ret→geç cevap incelemesini sınar. Task/Decision kayıtları değişmeden kaldı. TR taslak korunumu ve390pxArabic RTL taşma kontrolü geçti. Yeni case CI smoke listesine eklendi; on ana UI case geçti. Yerel model kapalıdır, gerçek anlam doğruluğu veya sürekli kaynak/model onboarding kabulü değildir. [UI kanıt kaydı](dialogue-question-ui-results.json).
+
+
+## Mevcut göreve bağlı netleştirmeler
+
+20Ekim2026 kullanıcı kararı: “Önce kontrolün kapsamını netleştirelim” ayrı teslim/alt görev istenmedikçe yeni To Do değildir; mevcut Task'a bağlı açık netleştirme ihtiyacıdır. `packages/capture/clarifications.py` source/context exact Task ve literal text/quote kontrol eder. `clarification_proposals` şeması `manifests/dialogue-review-response.schema.json` içinde yayınlandı. Eski response şekilleri korunur; eski result'lar yeniden yazılmaz.
+
+`review_clarification` insan accept/reject/defer makbuzu üretir. Accept için current workflow digest, aynı proje, active task ve duplicate-open kontrolü gerekir. `clarification_reviewed` kaydı Open ihtiyacı taşır. `resolve_clarification` explicit resolution, current clarification revision, owner yetkisi ve idempotency key ile `clarification_state` ekler. Hiçbir çağrı Task/AC/Done/karar uygulamaz veya otomatik blocker yaratmaz. Audit hatasında transaction geri döner;512history sınırı mevcut kayıtları silmez.
+
+Conversations öneri kartı; soru kutusunda açık netleştirme; Task Overview'da metin/kaynak/durum/cevapla çözme; Sources bağlantısı ve pending metric eklendi. Beş UI katalogu güncel. Sonraki model context'i64netleştirme sınırında kayıtları status/revision/resolution ile taşır; taşma silent truncate değil context_limit'tir. Operational log ham kaynak/cevap metni tutmaz, yalnız güvenli işlem/tanı kodları geçerlidir.
+
+Task'a bağlı netleştirmeyi otomatik serbest metin cevapla eşleyip kapatma henüz yok; closure insandadır. Task'sız proje sorularının tümünün yakalandığı veya yeni prompt'un gerçek modelle doğrulandığı iddia edilmez. [İlk devam deneyi ve sürüm ayrımı](dialogue-batch-001-continuation.md).

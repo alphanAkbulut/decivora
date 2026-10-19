@@ -260,3 +260,6 @@ Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç
 
 
 20Ekim blocker aging:57şema/30belge offline render edildi. Yeni akışta aktif/Cancelled ayrımı, bilinen/unknown başlangıç, strict7gün eşiği ve yalnız yerel timer gösterildi. Tam PNG görsel incelendi; ürün runtime ve native model kalitesi kanıtından ayrıdır.
+
+
+20Ekim onaylı netleştirme: dialogue-status-runtime1, seçeneksiz mevcut-Task önerisi→literal/exact-ID kontrolü→ayrı insan review→Open→insan resolution→Resolved yoluyla güncellendi.57Mermaid offline render edildi; source/hash/SVG kaydı ve fallback yenilendi. Native model kalite kabulü değildir.

@@ -116,3 +116,6 @@ Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenili
 ## İlk gerçek çok turlu4case grubu
 
 [J01–J04](../quality/dialogue-batch-001.md): J01 altı turda aynı görev/ilerleme/false-Done guard geçti; J02 ayrı netleştirme görevi önerisi ve generation unknown nedeniyle eksik. J03/J04henüz koşulmadı. Yeni unknown root'u durdurdu; kapsam/netleştirme politikası ve kalan14mesaj için ayrı owner review bekliyor. Bu, tüm48case veya MVP kabulü değildir.
+
+
+**Onaylı devam:** [Kayıt](../quality/dialogue-batch-001-continuation.md):14yeni istek izninin8'i kullanıldı; yeni timeout ile durdu. J01 dar pass, J02/J03 teknik eksik, J04not_run. Mevcut Task netleştirmesi için yeni typed alan/insan review/UI/closure çalışır; yeni prompt henüz gerçekmodelle sınanmadı. Kalan6J04mesajı yeni unknown risk onayını bekler; sonraki gruba geçilmedi.

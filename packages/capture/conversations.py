@@ -169,8 +169,9 @@ class ConversationService:
                 from packages.capture.dialogue_review import DialogueReviewService
                 from packages.capture.dialogue_relations import DialogueRelationService
                 from packages.capture.dialogue_questions import DialogueQuestionService
+                from packages.capture.clarifications import ClarificationService
                 status_changes=DialogueReviewService(self.core).statuses(scope,project,source['id'],analysis or {})
-                result.append(dict(source=source,analysis=analysis,candidates=candidates,relation_proposals=DialogueRelationService(self.core).view(scope,project,source['id'],analysis or {}),status_changes=status_changes,question_proposals=DialogueQuestionService(self.core).view(scope,project,source['id'],analysis or {}),answer_proposals=DialogueReviewService(self.core).answers(scope,project,source['id'],analysis or {}),status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
+                result.append(dict(source=source,analysis=analysis,candidates=candidates,relation_proposals=DialogueRelationService(self.core).view(scope,project,source['id'],analysis or {}),status_changes=status_changes,question_proposals=DialogueQuestionService(self.core).view(scope,project,source['id'],analysis or {}),clarification_proposals=ClarificationService(self.core).proposals(scope,project,source['id'],analysis or {}),answer_proposals=DialogueReviewService(self.core).answers(scope,project,source['id'],analysis or {}),status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
             return dict(imports=result,knowledge_revision=existing['knowledge_revision'],automatic_capture=False,total=source_page['total'],next_cursor=source_page['next_cursor'],has_more=source_page['has_more'])
     def accept(self,scope,project,*,source_id,key,selected,base_revision):
         identifier(source_id);identifier(key)

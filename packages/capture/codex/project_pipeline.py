@@ -29,6 +29,6 @@ class CodexProjectPipeline:
         for outcome in result['outcomes']:
             if outcome['status']!='Ready for review':continue
             current=sources.view(scope,project,source_id=outcome['source_id'])['imports'][0]
-            reviews.append(dict(source_id=outcome['source_id'],candidate_count=len(current['candidates']),status_changes=current['status_changes'],answer_proposals=current['answer_proposals'],question_proposals=current['question_proposals']))
+            reviews.append(dict(source_id=outcome['source_id'],candidate_count=len(current['candidates']),status_changes=current['status_changes'],answer_proposals=current['answer_proposals'],question_proposals=current['question_proposals'],clarification_proposals=current['clarification_proposals']))
         human=bool(roles&{'human','user'})
         return dict(capture=receipt,processing=result,review_ready=reviews,source_scope='selected_codex_thread',public_roles_observed=sorted(roles),human_text_observed=human,warnings=[] if human else ['human_text_not_observed_do_not_claim_full_dialogue'],canonical_mutations=0,automatic_approval=False)

@@ -74,24 +74,46 @@ def contract(core,owner,task,key):
     core.apply(owner,plan,core.approve(owner,plan))
 
 
-def run(folder=DEFAULT,*,ledger_path=LEDGER,key_file=KEY,post=None,progress=None):
+def run(folder=DEFAULT,*,ledger_path=LEDGER,key_file=KEY,post=None,progress=None,continuation_approval=None,continuation_base_sha256=None):
     folder=Path(folder);plan=json.loads((folder/'plan.json').read_text())
     if tuple(c['id'] for c in plan['cases'])!=CASE_IDS or plan['max_generation_calls']!=24 or plan['automatic_next_batch'] is not False:raise ValueError('Only the explicitly prepared first four cases may run.')
-    if (folder/'report.json').exists():return json.loads((folder/'report.json').read_text())
+    continuing=continuation_approval is not None
+    last_only=continuation_approval=='owner-approved-reserve-retained-J04only6'
+    base_path=folder/('continuation-report.json' if last_only else 'report.json')
+    report_path=folder/('j04-report.json' if last_only else 'continuation-report.json' if continuing else 'report.json')
+    if report_path.exists():return json.loads(report_path.read_text())
+    base=None
+    if continuing:
+        if continuation_approval not in ('owner-approved-reserve-retained-unread14','owner-approved-reserve-retained-J04only6'):raise ValueError('Explicit trusted-host continuation approval required.')
+        if hashlib.sha256(base_path.read_bytes()).hexdigest()!=continuation_base_sha256:raise ValueError('Reviewed base report changed.')
+        base=json.loads(base_path.read_text())
+        expected=[('J01',6),('J02',6),('J03',6)] if last_only else [('J01',6),('J02',4)]
+        if (base['dispatches']!=(8 if last_only else 10) or [(c['case_id'],c['processed_turns']) for c in base['cases']]!=expected or base['not_run']!=(['J04'] if last_only else ['J03','J04'])):
+            raise ValueError('Continuation only matches the reviewed first-batch snapshot.')
+        if any((folder/(cid+'.sqlite')).exists() for cid in (('J04',) if last_only else ('J03','J04'))) or (not last_only and (folder/'J02_m5.request.json').exists()):raise ValueError('Partial continuation requires review; no silent restart.')
     # An interrupted batch requires review, never silent rerun/re-seeding.
-    if list(folder.glob('J*.sqlite')):raise ValueError('Partial batch exists: inspect receipts before any further dispatch.')
+    if not continuing and list(folder.glob('J*.sqlite')):raise ValueError('Partial batch exists: inspect receipts before any further dispatch.')
     policy=plan['root_policy']
     if policy['expires_at']<=time.time():raise ValueError('Approval expired; no automatic renewal.')
-    results=[];stop=None;before=None;after=None;dispatches=0
+    results=list(base['cases']) if last_only else [base['cases'][0]] if continuing else [];stop=None;before=None;after=None;dispatches=0
     for case in plan['cases']:
         if stop:break
         cid=case['id'];case_rows=[];roles={};actions=[];question_ids={}
+        if continuing and (cid!='J04' if last_only else cid=='J01'):continue
+        existing=continuing and cid=='J02'
+        if existing:
+            previous=base['cases'][1];case_rows=list(previous['turns']);actions=list(previous['test_operator_actions'])
+            roles=dict(next(a['roles'] for a in reversed(actions) if 'roles' in a))
         with Workspace(folder/(cid+'.sqlite'),'journey',owner='operator') as core:
-            a=core.authority;a.replace_grant(a.issue_scope('operator'),'operator',kind='human',readable=frozenset({'synthetic'}),writable=frozenset({'synthetic'}),active=True,base_revision=1)
-            owner=a.issue_scope('operator');core.create_project(owner,'synthetic','Synthetic dialogue '+cid)
+            a=core.authority
+            if not existing:a.replace_grant(a.issue_scope('operator'),'operator',kind='human',readable=frozenset({'synthetic'}),writable=frozenset({'synthetic'}),active=True,base_revision=1)
+            owner=a.issue_scope('operator')
+            if not existing:core.create_project(owner,'synthetic','Synthetic dialogue '+cid)
             sources=ConversationService(core);review=DialogueReviewService(core)
+            prior_turns=len(case_rows)
             for step,message in enumerate(case['messages'],1):
-                if dispatches>=24:stop='batch_request_limit';break
+                if step<=prior_turns:continue
+                if dispatches>=(6 if last_only else 14 if continuing else 24):stop='batch_request_limit';break
                 source=sources._ingest(owner,'synthetic',text=message['text'],capture=dict(source_surface='synthetic_dialogue',id='batch_001',thread_id=cid,turn_id=message['id'],item_id=message['id'],observed_actor=message['role'],provider_version='authored-not-native',profile_ref='synthetic_batch_001'))
                 prepared=review.prepare(owner,'synthetic',source_id=source['id'])
                 payload=request_payload(source,model=plan['model'],max_output_tokens=2000,dialogue_request=prepared['request'])
@@ -139,9 +161,10 @@ def run(folder=DEFAULT,*,ledger_path=LEDGER,key_file=KEY,post=None,progress=None
                         actions.append(dict(turn=step,action='scripted_answer_review_no_domain_apply'))
                 row['canonical_stages']={role:TaskWorkflowService(core).view(owner,'synthetic',task)['stage'] for role,task in roles.items()}
                 private_json(folder/(stem+'.evaluated.json'),row)
-            results.append(dict(case_id=cid,planned_turns=len(case['messages']),processed_turns=len(case_rows),verdict='incomplete' if len(case_rows)!=len(case['messages']) else 'failed' if any(r['findings'] for r in case_rows) else 'passed_draft_checks',turns=case_rows,test_operator_actions=actions,questions=[dict(id=q['id'],status=q['status'],selection=q['selection']) for q in QuestionService(core).view(owner,'synthetic')['questions']]))
+            results.append(dict(case_id=cid,planned_turns=len(case['messages']),processed_turns=len(case_rows),verdict='incomplete' if len(case_rows)!=len(case['messages']) or any(r['analysis_status']!='Ready for review' for r in case_rows) else 'failed' if any(r['findings'] for r in case_rows) else 'passed_draft_checks',turns=case_rows,test_operator_actions=actions,questions=[dict(id=q['id'],status=q['status'],selection=q['selection']) for q in QuestionService(core).view(owner,'synthetic')['questions']]))
     report=dict(format='decivora-dialogue-batch-result-1',case_ids=list(CASE_IDS),model=plan['model'],cases=results,not_run=[c for c in CASE_IDS if c not in {r['case_id'] for r in results}],stopped=stop,dispatches=dispatches,budget_before=before,budget_after=after,semantic_verdict_authority='strict_AI_authored_draft_checks_require_review',human_gold=False,native_host_test=False,automatic_next_batch=False)
-    private_json(folder/'report.json',report);return report
+    if continuing:report.update(continuation_approval=continuation_approval,base_report_sha256=hashlib.sha256(base_path.read_bytes()).hexdigest(),prior_dispatches=18 if last_only else 10,cumulative_dispatches=(18 if last_only else 10)+dispatches)
+    private_json(report_path,report);return report
 
 
 def main():

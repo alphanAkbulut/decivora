@@ -46,6 +46,58 @@ class DialogueBatchTests(unittest.TestCase):
         self.assertEqual(report['dispatches'],1);self.assertTrue(report['budget_after']['frozen'])
         self.assertEqual(report['not_run'],['J02','J03','J04']);self.assertEqual(self.calls,['failed'])
         self.assertNotIn('private diagnostic',json.dumps(report))
+    def test_reviewed_unread14_continuation_never_retries_unknown_turn(self):
+        import hashlib
+        from packages.capture.openai_transport import PilotTransport,fingerprint
+        folder=self.root/'batch';plan=prepare(folder,self.policy_path)
+        def stop_at_reviewed_point(path,payload,key):
+            if path.endswith('/responses'):
+                source=json.loads(payload['input'])['source']
+                if source['capture']['item_id']=='J02_m4':
+                    self.calls.append(path);raise TimeoutError('private')
+            return self.post(path,payload,key)
+        base=run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=stop_at_reviewed_point)
+        self.assertEqual(base['dispatches'],10)
+        before_hash=hashlib.sha256((folder/'report.json').read_bytes()).hexdigest()
+        payload=json.loads((folder/'J02_m4.request.json').read_text())['payload']
+        transport=PilotTransport(self.root/'ledger',manifest=dict(plan['root_policy'],payloads=[fingerprint(payload)]),key_file=self.key,post=self.post)
+        packet=transport.review_packet();transport.accept_reserved_unknown(fingerprint(payload),snapshot_sha256=packet['snapshot_sha256'],approval_ref='fixture-continued-reserve')
+        with self.assertRaises(ValueError):run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=self.post,continuation_approval='owner-approved-reserve-retained-unread14',continuation_base_sha256='0'*64)
+        report=run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=self.post,continuation_approval='owner-approved-reserve-retained-unread14',continuation_base_sha256=before_hash)
+        self.assertEqual(report['dispatches'],14);self.assertEqual(report['cumulative_dispatches'],24)
+        self.assertEqual(len(self.calls),48);self.assertIsNone(report['stopped'])
+        self.assertEqual(report['cases'][1]['verdict'],'incomplete')
+        self.assertEqual(report['cases'][2]['verdict'],'passed_draft_checks')
+        self.assertEqual(hashlib.sha256((folder/'report.json').read_bytes()).hexdigest(),before_hash)
+
+    def test_j04_only_plan_has_six_calls_and_never_replays_prior_unknowns(self):
+        import hashlib
+        from packages.capture.openai_transport import PilotTransport,fingerprint
+        folder=self.root/'batch';plan=prepare(folder,self.policy_path)
+        def send_until(failed_id):
+            def send(path,payload,key):
+                if path.endswith('/responses') and json.loads(payload['input'])['source']['capture']['item_id']==failed_id:
+                    self.calls.append(path);raise TimeoutError()
+                return self.post(path,payload,key)
+            return send
+        def review_unknown(message):
+            payload=json.loads((folder/(message+'.request.json')).read_text())['payload']
+            transport=PilotTransport(self.root/'ledger',manifest=dict(plan['root_policy'],payloads=[fingerprint(payload)]),key_file=self.key)
+            packet=transport.review_packet();transport.accept_reserved_unknown(fingerprint(payload),snapshot_sha256=packet['snapshot_sha256'],approval_ref='fixture-explicit-'+message)
+        run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=send_until('J02_m4'))
+        review_unknown('J02_m4')
+        base=hashlib.sha256((folder/'report.json').read_bytes()).hexdigest()
+        mid=run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=send_until('J03_m6'),continuation_approval='owner-approved-reserve-retained-unread14',continuation_base_sha256=base)
+        self.assertEqual(mid['dispatches'],8)
+        review_unknown('J03_m6')
+        mid_hash=hashlib.sha256((folder/'continuation-report.json').read_bytes()).hexdigest()
+        final=run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=self.post,continuation_approval='owner-approved-reserve-retained-J04only6',continuation_base_sha256=mid_hash)
+        self.assertEqual(final['dispatches'],6);self.assertEqual(final['cumulative_dispatches'],24)
+        self.assertEqual(len(self.calls),48);self.assertEqual(final['not_run'],[])
+        self.assertEqual(final['cases'][1]['verdict'],'incomplete');self.assertEqual(final['cases'][2]['verdict'],'incomplete')
+        self.assertEqual(final['cases'][3]['verdict'],'passed_draft_checks')
+        self.assertEqual(hashlib.sha256((folder/'continuation-report.json').read_bytes()).hexdigest(),mid_hash)
+
     def test_expired_approval_is_not_renewed(self):
         self.policy_path.write_text(json.dumps(dict(self.policy,expires_at=1)));folder=self.root/'batch';prepare(folder,self.policy_path)
         with self.assertRaises(ValueError):run(folder,ledger_path=self.root/'ledger',key_file=self.key,post=self.post)

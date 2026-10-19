@@ -69,3 +69,6 @@ Tam anlam kalitesi, role/source ayrımı, onaylı gerçek Codex adapter'ı ve an
 ## İlk4case diyalog batch
 
 [Bulgu raporu](dialogue-batch-001.md):10yeni dispatch/20HTTP bütçe payı,9usage yanıtı,1generation unknown. Yeni bilinen3136microusd+rezerv2250=5386yerel taahhüt. Root40dispatch/80HTTP,known56826+held4500=61326microusd.3USD/expiry değişmedi. Eski unknown onayı yeni unknown için kullanılmadı; root frozen ve yeni continuation onayı bekliyor. Fatura doğrulanmadı.
+
+
+**Onaylı devam:** Önceki J02_m4unknown rezervi user onayıyla korundu;8yeni dispatch/16HTTP payı,7usage ve1yeni timeout unknown. Root48dispatch/96HTTP;known59332+held6750=66082microusd. Yeni unknown nedeniyle frozen; diğer iki unknown onayı bunu kapsamaz. Kalan6mesaj çağrılmadı. [Detay ve yeni owner kapısı](dialogue-batch-001-continuation.md).

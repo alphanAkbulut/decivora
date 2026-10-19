@@ -15,5 +15,6 @@ class ProviderDiagnosticTests(unittest.TestCase):
      response=connection.getresponse.return_value;response.status=200;response.read.return_value=b'{bad json}'
     with self.assertRaises(ContractError) as caught:http_post('/v1/responses',{},'fake-private-key')
     self.assertEqual(caught.exception.code,code);self.assertEqual(safe_code(code),code)
+    self.assertEqual(constructor.call_args.kwargs['timeout'],120)
     self.assertNotIn('private-body',str(caught.exception));connection.close.assert_called_once()
 if __name__=='__main__':unittest.main()

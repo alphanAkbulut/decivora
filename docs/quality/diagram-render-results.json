@@ -575,13 +575,13 @@
     {
       "path": "docs/quality/dialogue-status-runtime.md",
       "block": 1,
-      "source_sha256": "8a9b7f3d13d9136b769330b1c275b509fe87c342e0f9ddf0fbfe8ef155a8fc89",
+      "source_sha256": "f081681105cee0aa9b13302e052aef1516d192cf9f25f3c49937dc37211d78f0",
       "status": "rendered",
       "title": "Kaynaklı soru taslağı ve ayrı insan kararı",
       "description_present": true,
-      "view_box": "0 0 930.05859375 1845.46875",
+      "view_box": "0 0 1318.76171875 1869.46875",
       "artifact": "docs--quality--dialogue-status-runtime--1.svg",
-      "svg_sha256": "d55586a8d3f5e0509f8c865bd4559a6e9e07646896a3541868a7fc52779da879",
+      "svg_sha256": "48d6911da4d0ffc034fbb368381c5cbfab39e0e00d660b618c09fb484d1a57fb",
       "error": null
     },
     {
@@ -6245,6 +6245,23 @@
           "error": null
         }
       ]
+    },
+    {
+      "reason": "Owner-approved linked clarification flow,2026-10-20",
+      "records": [
+        {
+          "path": "docs/quality/dialogue-status-runtime.md",
+          "block": 1,
+          "source_sha256": "8a9b7f3d13d9136b769330b1c275b509fe87c342e0f9ddf0fbfe8ef155a8fc89",
+          "status": "rendered",
+          "title": "Kaynaklı soru taslağı ve ayrı insan kararı",
+          "description_present": true,
+          "view_box": "0 0 930.05859375 1845.46875",
+          "artifact": "docs--quality--dialogue-status-runtime--1.svg",
+          "svg_sha256": "d55586a8d3f5e0509f8c865bd4559a6e9e07646896a3541868a7fc52779da879",
+          "error": null
+        }
+      ]
     }
   ],
   "all_sources_rendered": true,
@@ -6481,5 +6498,6 @@
   "todo_delivery_render_note": "55 current Mermaid sources rendered offline; new Claude hook flow visually inspected. This is not native host acceptance.",
   "codex_e2e_render_note": "56 current Mermaid sources rendered offline. New diagram reflects actual partial success and unknown/frozen branch, not full MVP acceptance.",
   "codex_e2e_followup_render_note": "56 current Mermaid sources rendered offline; changed Codex flow visually inspected. Human capture and reserve-retained owner approval are shown; unknown actual usage remains unresolved.",
-  "blocker_age_render_note": "20Oct2026:57current sources rendered offline. New blocker aging flow visually inspected; only local known-onset warning subset implemented."
+  "blocker_age_render_note": "20Oct2026:57current sources rendered offline. New blocker aging flow visually inspected; only local known-onset warning subset implemented.",
+  "clarification_render_note": "57current Mermaid sources rendered offline; changed existing task clarification branch visually reviewed separately from model quality."
 }

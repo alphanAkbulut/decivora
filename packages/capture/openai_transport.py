@@ -26,6 +26,9 @@ from packages.storage.project_store import canonical
 PRICE_REVISION = 'openai-standard-cache-aware-2026-10-19'
 RATES = {'gpt-6-luna': (0.1, 0.01, 0.125, 0.5),
          'gpt-6.1-sol': (2, 0.1, 2.5, 10)}
+# Socket wait only; not an account budget or guaranteed provider deadline.
+# A measured generation exchange exceeded the previous 45-second socket wait.
+HTTP_TIMEOUT_SECONDS = 120
 
 
 def fingerprint(value):
@@ -54,7 +57,7 @@ def http_post(path, payload, key):
     """Fixed TLS host, no proxy discovery, redirects, retries, or response-body logging."""
     if path not in ('/v1/responses/input_tokens', '/v1/responses'):
         raise ContractError('provider_endpoint_denied', 'Unsupported provider endpoint.')
-    connection = http.client.HTTPSConnection('api.openai.com', timeout=45,
+    connection = http.client.HTTPSConnection('api.openai.com', timeout=HTTP_TIMEOUT_SECONDS,
                                               context=ssl.create_default_context())
     try:
         connection.request('POST', path, body=canonical(payload).encode(),

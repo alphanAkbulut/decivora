@@ -1,6 +1,6 @@
 # İlk dört diyalog senaryosu — gerçek model bulguları
 
-**20 Ekim 2026.** Kullanıcı dört senaryo halinde ilerlemeyi, bulguları raporlayıp sonraki adıma onayla geçmeyi istedi. Yalnız J01–J04 hazırlandı; J05–J48 için model çağrısı yapılmadı. [Makine sonuçları](dialogue-batch-001-results.json).
+**İlk duruş raporu —20 Ekim2026. Güncel onaylı devam ve geliştirme [ayrı kayıtta](dialogue-batch-001-continuation.md); aşağıdaki ilk sonuçlar tarihsel olarak korunur.** Kullanıcı dört senaryo halinde ilerlemeyi, bulguları raporlayıp sonraki adıma onayla geçmeyi istedi. Yalnız J01–J04 hazırlandı; J05–J48 için model çağrısı yapılmadı. [Makine sonuçları](dialogue-batch-001-results.json).
 
 ## Sonuç
 

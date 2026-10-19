@@ -34,6 +34,7 @@ Decivora; AI konuşmalarındaki fikir, karar, prompt, belge talimatı ve görevl
 10. Impact onayı graph/justification snapshot'ına da bağlıdır; yalnız task revision'ı kontrol etmek yeni gerekçe edge'i yarışını çözmez.
 11. Source receipt, processing completion ve approval ayrı milestones'dır. Replay model/verifier/dış delivery tetiklemez.
 12. Capture/proposal izni kod çalıştırma izni değildir. Transcript'ten çıkarılan komutu verifier olarak otomatik çalıştırma; runner yetkisini ve revision'ı doğrula.
+13. Mevcut Task'ın kapsamını netleştirme ihtiyacı, ayrı teslim/alt görev açıkça istenmedikçe yeni To Do değildir. Kaynaklı ve exact Task'a bağlı clarification önerisi olarak koru; insan incelemesiyle aç/çöz. Clarification Task durumunu, AC'yi veya blocker'ı kendiliğinden değiştirmez. Ayrıntı: `docs/quality/dialogue-status-runtime.md#mevcut-göreve-bağlı-netleştirmeler`.
 
 ## Doğrulama ve teslim
 

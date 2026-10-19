@@ -3,8 +3,8 @@
 import argparse,hashlib,json
 from pathlib import Path
 
-def build(folder):
-    folder=Path(folder);path=folder/'report.json';report=json.loads(path.read_text())
+def build(folder,*,continuation=False):
+    folder=Path(folder);path=folder/('continuation-report.json' if continuation else 'report.json');report=json.loads(path.read_text())
     if report['case_ids']!=['J01','J02','J03','J04'] or report['human_gold'] is not False:
         raise ValueError('Unexpected batch receipt.')
     cases=[]
@@ -23,7 +23,7 @@ def build(folder):
         requested_model=report['model'],native_host_test=False,human_gold=False,
         grading='Predeclared AI-authored draft checks; inspect findings before product acceptance.',
         automatic_next_batch=False,cases=cases,not_run=report['not_run'],stopped=report['stopped'],
-        dispatches=report['dispatches'],http_budget_slots_delta=None if before is None or after is None else after['http_attempts']-before['http_attempts'],
+        dispatches=report['dispatches'],prior_dispatches=report.get('prior_dispatches',0),cumulative_dispatches=report.get('cumulative_dispatches',report['dispatches']),base_report_sha256=report.get('base_report_sha256'),http_budget_slots_delta=None if before is None or after is None else after['http_attempts']-before['http_attempts'],
         local_committed_microusd_delta=None if before is None or after is None else after['committed_microusd']-before['committed_microusd'],
         invoice_verified=False,budget_before=before,budget_after=after,
         private_batch_report_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
