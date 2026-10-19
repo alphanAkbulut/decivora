@@ -47,3 +47,5 @@ Typed sentetik input ile state testi extraction/capture doğruluğunu kanıtlama
 ## 19 Ekim — mevcut ilk Codex CLI kodu
 
 [Seçilmiş exec JSONL adapter ve kullanım](../quality/codex-exec-capture-runtime.md) public assistant mesajlarını mevcut kaynak/review yoluna yazar. Explicit consent/project/thread/version, append-only prefix kontrolü ve source+cursor transaction uygulanmıştır. Bu bölüm yukarıdaki genel tasarımın dar uygulanmış alt kümesidir; `collect` caller-supplied snapshot alır, kendi başına dosya taramaz veya arka planda tail etmez. Masaüstü, user prompt capture, tam health UI ve gerçek host version probe açık.
+
+19 Ekim ek uygulama: [App Server selected-thread read](../quality/codex-exec-capture-runtime.md#19-october--app-server-user-message-capture-and-bounded-polling) user/assistant metinleri ve bounded polling sağlar; kurulu0.162.0-alpha.17.2şema probe yapıldı, gerçek user thread readback yapılmadı. CLI exec ve App Server binding yüzeyleri karıştırılamaz. Normal UI source/model kurulumu hâlâ kapalı.

@@ -1,5 +1,7 @@
 # Decivora
 
+19 Ekim kullanıcı mesajı bağlantısı: [seçilen Codex oturumunu salt okunur izleme kodu](docs/quality/codex-exec-capture-runtime.md#19-october--app-server-user-message-capture-and-bounded-polling), user/assistant kimlikleri ve sınırlı yakın bağlam eklendi. Gerçek oturum ve UI activation kabulü ayrı; otomatik MVP tamamlandı değildir.
+
 19 Ekim Codex bağlantısı: [seçilmiş CLI olay akışı → kalıcı kaynak → görev incelemesi](docs/quality/codex-exec-capture-runtime.md) kodlandı. Tekrar/güncellik/maskeleme kontrolleri var; masaüstü sohbetlerini canlı yakalama ve tam MVP kabulü hâlâ açık.
 
 19 Ekim Operations teslimi: [kalıcı güvenli tanı kayıtları ve ayrı TEST ortamı](docs/quality/operations-runtime.md). Komut sınırları/süreleri izlenir; bütün engine zinciri ve tam backoffice kabulü açık.

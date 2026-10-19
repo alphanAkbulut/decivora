@@ -58,3 +58,43 @@ Full runtime regression: **489 tests passed** with local loopback allowed. Exist
 5. Complete the separate Claude adapter and the existing native end-to-end MVP acceptance gates. T16 remains open; the independent T17 coding preparation does not waive its release dependency.
 
 No new paid API calls, real-user imports, normal/TEST database mutation, global configuration changes or task auto-apply were performed by this delivery's verification.
+
+
+## 19 October — App Server user-message capture and bounded polling
+
+**New code:** `packages/capture/codex/app_server.py`, `read_client.py`, and `scripts/capture_codex_thread.py`. This is a second capture surface; the existing exec wire parser stays separate. The [official App Server reference](https://developers.openai.com/codex/app-server) documents persisted user/assistant items and read-only turn pagination. Its command/transport has experimental and production-support limitations; this delivery is a controlled integration, not a production compatibility guarantee.
+
+The stdio client exposes only initialization and `thread/turns/list` for one constructor-bound thread. It never sends thread discovery, `thread/start`, `thread/resume`, `turn/start`, steering, approval or execution requests. No API credential environment variables are inherited. The explicitly selected installed executable still runs with local OS access and can load its own configuration/account files; this method filter is not an OS security sandbox. No installed user's thread was read in this delivery.
+
+The request fixes `limit=10`, descending turn order and `itemsView=full`. Summary-only pages are rejected. Public user text is retained with item/turn IDs and observed actor metadata; the user role is not an authenticated human principal or approval. Active-turn assistant text is deferred until the turn becomes terminal. User text can already be captured while its assistant reply is in progress. Images/audio/tool/reasoning bodies are excluded; unknown items and omitted older history are visible. Coverage remains partial even when both text roles are present. Compaction, omitted images and unavailable history cannot be reconstructed by this adapter.
+
+Repeated pages/restarts deduplicate sources. Changed already-captured item text stops instead of silently overwriting history. Source imports and receipt fingerprints share one transaction; current scope is checked before the host request and again before the commit. Revocation during the request prevents persistence. This is bounded newest-page polling, not a complete backfill scheduler: more than ten turns between polls can create an omitted-history gap. Existing32source capacity remains explicit and stops further imports without dropping accepted data.
+
+Prepared dialogue context can include up to six previously captured messages from the same capture/thread, bounded to6,000UTF-8bytes in total. Source IDs, roles, turn/item IDs and truncation flags are included. Arrival order is not claimed to be conversation order; other captures/manual conversations are excluded. Only the current source supplies extractable quotes. Model token admission still applies to the entire prepared request; adding nearby context is not free inference or a token-limit bypass.
+
+Use the following only after selecting and authorizing a real local source. Placeholder values are not the current user's thread:
+
+```sh
+python3.12 -B scripts/capture_codex_thread.py \
+  --db /selected/private/workspace.sqlite --workspace WORKSPACE \
+  --principal OWNER --project PROJECT --capture-id CAPTURE \
+  --thread-id THREAD --provider-version VERIFIED_VERSION \
+  --codex-executable /selected/installed/codex --consent \
+  --polls 30 --interval 2
+```
+
+Default is one read. Repeated polling is explicit and bounded to300polls,0.25–60seconds between successful reads; any timeout/error stops without automatic retry. `--codex-home` can select an explicit host profile; no profile discovery is performed. Do not provide a broad account scope when only one thread is required. Disconnect uses the existing capture disconnect API/command, retaining captured sources; the reader rechecks consent between polls. Closing this command stops its child App Server, not another desktop process. Real captured text is not automatically sent to a model: data-sharing consent and the existing source/context/budget grants are separate.
+
+### Installed interface probe and verification
+
+Installed CLI reports **0.162.0-alpha.17.2**. Its offline schema generator succeeded and confirmed the implemented initialization and turn-list parameter fields plus user/assistant item shapes; no thread was read or model invoked. It printed a sandbox permission warning while attempting PATH alias setup; no PATH change was granted. Generated schemas stayed outside the repo. Fingerprints:
+
+| Generated schema | SHA-256 |
+|---|---|
+| ThreadTurnsListParams | `2a8b93d7d4437cc25e16a1dde16d8db3c338d39e16c5eece2a56e943a21577d7` |
+| ThreadTurnsListResponse | `8a49c6f47284a46bf9f717a1899f153353efd083f454481afd17aa48a53479fc` |
+| InitializeParams | `b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e` |
+
+Twelve additional runtime cases cover both roles→existing Task review/accept, nearby context isolation, active turns, privacy counts, prefix independence/restart/item changes, unsupported/summary/oversized pages, scope/surface and revocation timing, atomic rollback, actual stdio framing against a controlled synthetic child, no inherited API key, timeout/child cleanup/no retry, and bounded CLI polling. These controlled fixtures are not real desktop thread readback or semantic quality evidence. The initial timeout test applied a tiny limit to Python process startup and was made deterministic by applying the short deadline only after initialization; production request limits were not relaxed.
+
+Full runtime regression after this delivery:501tests passed;48tracker/tool tests and12synthetic browser scenarios passed;50diagrams rendered offline. GitHub publication and live host source verification remain separately evidenced. T17 remains In Progress; real selected-thread readback, source consent UI, older-history backfill, desktop availability and end-to-end model automation acceptance are open. No paid calls or actual user conversation imports were made.

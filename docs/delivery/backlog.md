@@ -329,6 +329,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **19 Ekim kod dilimi:** seçilmiş exec JSONL→kalıcı kaynak→mevcut review bağlantısı, cursor/retry/privacy/atomik rollback. [Uygulama ve kalan host kapıları](../quality/codex-exec-capture-runtime.md). Gerçek CLI/desktop capture ve tam konuşma kabulü açık; T16 release bağı kaldırılmadı.
+- **İkinci kod dilimi:** App Server selected-thread user/assistant read ve bounded polling, aynı capture yakın bağlamı; installed offline schema probe0.162.0-alpha.17.2. Gerçek source/model activation ve desktop readback açık.
 
 ## T18 — Minimal MCP ve cross-agent read
 

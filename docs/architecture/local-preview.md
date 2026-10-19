@@ -12,6 +12,8 @@ flowchart TB
     PR --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
     CX["Selected Codex exec JSONL snapshot<br/>explicit project, thread, version and local consent<br/>No desktop discovery or model dispatch"] --> CC["Completed public assistant messages only<br/>prefix/retry guard; partial coverage<br/>mask before persistence; source and cursor commit atomically"]
     CC --> DQ
+    AS["Selected Codex App Server thread<br/>initialize and thread/turns/list only<br/>No thread discovery, resume or turn start"] --> AC["User and terminal-turn assistant text<br/>10 recent turns / bounded polling<br/>Mask, preserve roles, reject changed items"]
+    AC --> DQ
     I0 --> DQ["Prepared request: source + tasks + decisions<br/>questions + recorded relations / context hash<br/>No model dispatch or egress permission"]
     DQ --> EX["User sends to an existing LLM<br/>External identity and usage unverified"]
     EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]

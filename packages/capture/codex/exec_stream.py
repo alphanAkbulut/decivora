@@ -102,6 +102,7 @@ def parse_snapshot(raw, thread):
 
 
 class CodexExecCapture:
+    surface = 'codex_exec_jsonl'
     def __init__(self, core):
         self.core = core
         self.sources = ConversationService(core)
@@ -124,6 +125,7 @@ class CodexExecCapture:
             old = self._binding(project, capture_id)
             binding = dict(id=capture_id, thread_id=thread_id, provider_version=provider_version,
                            actor=scope.principal_id, authority_revision=self.core.authority.revision())
+            if self.surface != 'codex_exec_jsonl':binding['source_surface'] = self.surface
             if old:
                 if old != binding or self._disconnected(project, capture_id):
                     _fail('capture_binding_conflict')
@@ -145,6 +147,8 @@ class CodexExecCapture:
         binding = self._binding(project, capture_id)
         if not binding or self._disconnected(project, capture_id) or binding['actor'] != scope.principal_id or binding['authority_revision'] != self.core.authority.revision():
             _fail('capture_consent_required')
+        if binding.get('source_surface','codex_exec_jsonl') != self.surface:
+            _fail('capture_binding_mismatch')
         return binding
 
     def collect(self, scope, project, *, capture_id, snapshot):

@@ -98,3 +98,5 @@ Recorded rationale→human complete review→versioned audit/facts→current imp
 ## 19 Ekim — T17 ilk capture köprüsü
 
 [Seçilmiş exec JSONL capture](codex-exec-capture-runtime.md) artık source persistence ve mevcut review/apply koduna bağlı. Kontrollü fixture ile capture→prepare→structured proposal→explicit Task accept çalışır; model çıktısı enjekte edildiği için semantik doğruluk kanıtı değildir. Native desktop/user-message capture, canlı scheduling ve gerçek transcript model grant bağlantısı açık. Yeni ücretli çağrı yok; önceki API kullanım kayıtları değişmedi.
+
+19 Ekim ikinci capture dilimi: App Server user/assistant→source→same-capture bounded nearby context→review akışı kodlandı; salt okunur selected-thread client ve bounded polling var. Installed schema probe ve synthetic child wire doğrulandı. Gerçek kullanıcı source consent/readback ve model activation ayrıdır; full automatic product acceptance açık.

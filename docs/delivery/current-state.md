@@ -17,6 +17,8 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 
 **19 Ekim T17 güncellemesi:** [seçilmiş Codex exec JSONL capture](../quality/codex-exec-capture-runtime.md) kaynak/review yoluna bağlandı; T17 artık In Progress. Sadece public assistant mesajları, partial coverage; gerçek masaüstü bağlantısı ve sürekli tam konuşma kabulü açık. Ana sayım güncellendi; ana iş kapanışı veya MVP kabulü yok.
 
+Yeni T17 kodu: App Server üzerinden yalnız seçilen oturumu okumak için stdio client ve bounded polling hazır; user/assistant metinleri ayrı kimlikle mevcut review yoluna bağlanır. Kurulu CLI şeması offline doğrulandı. Gerçek oturum okuması ve normal arayüzden capture kurulumu henüz açılmadı.
+
 ## Elimizde çalışan kod
 
 Yeni: tanınan credential'lar yeni manuel kaynakta DB öncesi maskelenir; model/import/context/MCP çıkış kontrolleri ve POSIX DB izinleri vardır. [Kapsam](../quality/credential-redaction-runtime.md): tam DLP, encryption veya geçmiş yedek purge değildir.
