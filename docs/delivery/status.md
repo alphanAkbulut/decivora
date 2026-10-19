@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**20Ekim48case ve blocker timer:**48sentetik çok turlu case/294mesaj; model run'lar not_run. Başlangıcı bilinen blocker7günü aşarsa kart/liste/attention/detayda uyarı; çözülme/iptal uyarıyı kaldırır, yeniden block yeni süre başlatır. Restart başlangıcı korur. Süresi kayıtsız bağımlılıklar unknown; e-posta/OS push yok. [Kod, test ve kapsam](../quality/blocker-aging.md). Yeni API çağrısı0.
+
 **20Ekim çok turlu diyalog:**12sentetik case/78mesaj ve ayrı draft oracle hazırlandı. Salt okunur `DialogueTraceService` kaynak→aday→record→durum review→canonical stage izini birleştiriyor; mevcut8kaynaklı pilotta çalıştı.5yeni yerel integration testi konu geçişi, aynı task ilerlemesi, test edilmemiş bitirme, uzun/Unicode context, profil izolasyonu ve restart izini kapsıyor. Scripted output semantik doğruluk değildir; yeni API çağrısı0. [Kapsam ve ölçüm planı](../quality/dialogue-journeys.md).
 
 **19Ekim Codex takip aksiyonları:** Aynı izinli test thread'inde native capture2human+6assistant kaynağı doğruladı; ikinci geçiş8→8, duplicate yok. Count/generation/usage hata aşaması ve güvenli review packet kodlandı. Kullanıcı unknown rezerv2250microusd korunarak yalnız yeni izinli işlere devamı onayladı; root freeze kaldırıldı, actual=null ve eski tekrar engeli korundu. Yeni API çağrısı0. [Plan, kanıt ve risk](../quality/codex-e2e-001.md#19-ekim--aksiyon-planı-ve-uygulama-sonucu).

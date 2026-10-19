@@ -679,6 +679,18 @@
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
       "svg_sha256": "9fa47645a97e62692f708577c978ad8c6f0abd87158675571523e94636babe38",
       "error": null
+    },
+    {
+      "path": "docs/quality/blocker-aging.md",
+      "block": 1,
+      "source_sha256": "d90ac27ae9430290f24af19423ce012a82c99aae4021677ee6f64c3a4aecbc87",
+      "status": "rendered",
+      "title": "Blocker yaşının salt okunur hesaplanması ve yerel uyarı",
+      "description_present": true,
+      "view_box": "0 0 824.1328125 1813.046875",
+      "artifact": "docs--quality--blocker-aging--1.svg",
+      "svg_sha256": "0553082ec6fff4d3dbb67773e66fc641afdf8b1b8c5dacedc1d44db8bb664789",
+      "error": null
     }
   ],
   "artifacts_location": "/tmp/decivora-processing-loop-diagrams",
@@ -6468,5 +6480,6 @@
   "question_backend_render_note": "All 54 current sources rendered offline. New question flow visually inspected. No model or new UI card tested.",
   "todo_delivery_render_note": "55 current Mermaid sources rendered offline; new Claude hook flow visually inspected. This is not native host acceptance.",
   "codex_e2e_render_note": "56 current Mermaid sources rendered offline. New diagram reflects actual partial success and unknown/frozen branch, not full MVP acceptance.",
-  "codex_e2e_followup_render_note": "56 current Mermaid sources rendered offline; changed Codex flow visually inspected. Human capture and reserve-retained owner approval are shown; unknown actual usage remains unresolved."
+  "codex_e2e_followup_render_note": "56 current Mermaid sources rendered offline; changed Codex flow visually inspected. Human capture and reserve-retained owner approval are shown; unknown actual usage remains unresolved.",
+  "blocker_age_render_note": "20Oct2026:57current sources rendered offline. New blocker aging flow visually inspected; only local known-onset warning subset implemented."
 }

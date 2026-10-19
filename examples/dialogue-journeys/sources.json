@@ -463,6 +463,1314 @@
           "text": "Anahtarları hata loguna yazma."
         }
       ]
+    },
+    {
+      "id": "J13",
+      "title": "Cancel before start",
+      "messages": [
+        {
+          "id": "J13_m1",
+          "role": "human",
+          "text": "Rapor dışa aktarma görevi açalım."
+        },
+        {
+          "id": "J13_m2",
+          "role": "assistant",
+          "text": "Henüz başlanmadı."
+        },
+        {
+          "id": "J13_m3",
+          "role": "human",
+          "text": "Bu raporu artık istemiyorum."
+        },
+        {
+          "id": "J13_m4",
+          "role": "assistant",
+          "text": "İptal önerisini inceleyelim."
+        },
+        {
+          "id": "J13_m5",
+          "role": "human",
+          "text": "Bu görevi gerekçesiyle iptal etmeyi onaylıyorum."
+        },
+        {
+          "id": "J13_m6",
+          "role": "assistant",
+          "text": "Geçmiş kaydı kalsın."
+        }
+      ]
+    },
+    {
+      "id": "J14",
+      "title": "Cancel in progress",
+      "messages": [
+        {
+          "id": "J14_m1",
+          "role": "human",
+          "text": "İçe aktarıcıya başladım."
+        },
+        {
+          "id": "J14_m2",
+          "role": "assistant",
+          "text": "Durum In Progress."
+        },
+        {
+          "id": "J14_m3",
+          "role": "human",
+          "text": "Sağlayıcıyı değiştirdik, bu uygulamayı durduralım."
+        },
+        {
+          "id": "J14_m4",
+          "role": "assistant",
+          "text": "İptal edilen işin çıktısını koruyalım."
+        },
+        {
+          "id": "J14_m5",
+          "role": "human",
+          "text": "Bu kapsamın iptalini onaylıyorum."
+        },
+        {
+          "id": "J14_m6",
+          "role": "assistant",
+          "text": "Yerine gelen yeni iş ayrı kayıt olsun."
+        }
+      ]
+    },
+    {
+      "id": "J15",
+      "title": "Reopen cancelled task",
+      "messages": [
+        {
+          "id": "J15_m1",
+          "role": "human",
+          "text": "Senkron işi iptal edilmişti."
+        },
+        {
+          "id": "J15_m2",
+          "role": "assistant",
+          "text": "İptal nedeni dosya depolamayı bırakmaktı."
+        },
+        {
+          "id": "J15_m3",
+          "role": "human",
+          "text": "Yeni ihtiyaç çıktı; aynı işi yeniden değerlendirelim."
+        },
+        {
+          "id": "J15_m4",
+          "role": "assistant",
+          "text": "Eski iptali silmeyelim."
+        },
+        {
+          "id": "J15_m5",
+          "role": "human",
+          "text": "Güncel kapsam ve yeniden açmayı onaylıyorum."
+        },
+        {
+          "id": "J15_m6",
+          "role": "assistant",
+          "text": "Henüz tekrar başlamadım."
+        }
+      ]
+    },
+    {
+      "id": "J16",
+      "title": "Cancel while blocked",
+      "messages": [
+        {
+          "id": "J16_m1",
+          "role": "human",
+          "text": "Webhook işi API iznini bekliyor."
+        },
+        {
+          "id": "J16_m2",
+          "role": "assistant",
+          "text": "Blocked; henüz çalışmıyor."
+        },
+        {
+          "id": "J16_m3",
+          "role": "human",
+          "text": "Webhook özelliğini kaldırdık."
+        },
+        {
+          "id": "J16_m4",
+          "role": "assistant",
+          "text": "Görevi iptal etmeyi onaylıyorum."
+        },
+        {
+          "id": "J16_m5",
+          "role": "human",
+          "text": "Sekiz gün sonra kontrol edelim."
+        },
+        {
+          "id": "J16_m6",
+          "role": "assistant",
+          "text": "İptal edilmiş iş için aktif blocker alarmı verme."
+        }
+      ]
+    },
+    {
+      "id": "J17",
+      "title": "Partial obsolescence",
+      "messages": [
+        {
+          "id": "J17_m1",
+          "role": "human",
+          "text": "Markdown yedekleme ve dışa aktarma ayrı işler."
+        },
+        {
+          "id": "J17_m2",
+          "role": "assistant",
+          "text": "İkisi de dosya formatını kullanıyor."
+        },
+        {
+          "id": "J17_m3",
+          "role": "human",
+          "text": "Ana depolama SQLite oldu."
+        },
+        {
+          "id": "J17_m4",
+          "role": "assistant",
+          "text": "Dışa aktarma hâlâ Markdown sağlamalı."
+        },
+        {
+          "id": "J17_m5",
+          "role": "human",
+          "text": "Yalnız gereksiz senkronu iptal için öner."
+        },
+        {
+          "id": "J17_m6",
+          "role": "assistant",
+          "text": "Dışa aktarma görevini açık tut."
+        }
+      ]
+    },
+    {
+      "id": "J18",
+      "title": "Replacement does not finish old work",
+      "messages": [
+        {
+          "id": "J18_m1",
+          "role": "human",
+          "text": "Eski adapter görevi In Review."
+        },
+        {
+          "id": "J18_m2",
+          "role": "assistant",
+          "text": "Yeni sağlayıcıya geçiş önerildi."
+        },
+        {
+          "id": "J18_m3",
+          "role": "human",
+          "text": "Yeni karar kabul edildi."
+        },
+        {
+          "id": "J18_m4",
+          "role": "assistant",
+          "text": "Eski görevin kabulü henüz yapılmadı."
+        },
+        {
+          "id": "J18_m5",
+          "role": "human",
+          "text": "Yeni adapter için ayrı task açalım."
+        },
+        {
+          "id": "J18_m6",
+          "role": "assistant",
+          "text": "Eski task hakkında iptal kararını sonra vereceğim."
+        }
+      ]
+    },
+    {
+      "id": "J19",
+      "title": "Verified journey to Done",
+      "messages": [
+        {
+          "id": "J19_m1",
+          "role": "human",
+          "text": "Geri yükleme görevini ve kriterlerini onayladım."
+        },
+        {
+          "id": "J19_m2",
+          "role": "assistant",
+          "text": "İşe başladım."
+        },
+        {
+          "id": "J19_m3",
+          "role": "human",
+          "text": "Kodu incelemeye gönderdim."
+        },
+        {
+          "id": "J19_m4",
+          "role": "assistant",
+          "text": "İnceleme bitti, doğrulamayı bekliyor."
+        },
+        {
+          "id": "J19_m5",
+          "role": "human",
+          "text": "AC1 ve DOD1 için bağımsız kanıtlar kabul edildi."
+        },
+        {
+          "id": "J19_m6",
+          "role": "assistant",
+          "text": "Tamamlanma kapsamını da inceleyip Done onaylıyorum."
+        }
+      ]
+    },
+    {
+      "id": "J20",
+      "title": "Partial evidence keeps task open",
+      "messages": [
+        {
+          "id": "J20_m1",
+          "role": "human",
+          "text": "Göreve başladım."
+        },
+        {
+          "id": "J20_m2",
+          "role": "assistant",
+          "text": "İncelemeyi bitirdim."
+        },
+        {
+          "id": "J20_m3",
+          "role": "human",
+          "text": "Doğrulamaya geçtik."
+        },
+        {
+          "id": "J20_m4",
+          "role": "assistant",
+          "text": "AC1 geçti."
+        },
+        {
+          "id": "J20_m5",
+          "role": "human",
+          "text": "DOD1 henüz çalışmadı."
+        },
+        {
+          "id": "J20_m6",
+          "role": "assistant",
+          "text": "Eksik kriteri çalıştırmadan Done yapma."
+        }
+      ]
+    },
+    {
+      "id": "J21",
+      "title": "Failed evidence blocks Done",
+      "messages": [
+        {
+          "id": "J21_m1",
+          "role": "human",
+          "text": "Kontrol kodu bitti."
+        },
+        {
+          "id": "J21_m2",
+          "role": "assistant",
+          "text": "İnceleme tamamlandı."
+        },
+        {
+          "id": "J21_m3",
+          "role": "human",
+          "text": "Test ortamında doğrulanıyor."
+        },
+        {
+          "id": "J21_m4",
+          "role": "assistant",
+          "text": "AC1 başarısız oldu."
+        },
+        {
+          "id": "J21_m5",
+          "role": "human",
+          "text": "Diğer kriter geçti."
+        },
+        {
+          "id": "J21_m6",
+          "role": "assistant",
+          "text": "Hata çözülmeden tamamlandı sayma."
+        }
+      ]
+    },
+    {
+      "id": "J22",
+      "title": "Criteria change stales evidence",
+      "messages": [
+        {
+          "id": "J22_m1",
+          "role": "human",
+          "text": "Task doğrulamayı bekliyor."
+        },
+        {
+          "id": "J22_m2",
+          "role": "assistant",
+          "text": "Eski AC1 geçti."
+        },
+        {
+          "id": "J22_m3",
+          "role": "human",
+          "text": "Yeni kapsamda şifreli yedek de gerekli."
+        },
+        {
+          "id": "J22_m4",
+          "role": "assistant",
+          "text": "Kriter sürümünü onaylayarak değiştirdim."
+        },
+        {
+          "id": "J22_m5",
+          "role": "human",
+          "text": "Eski kanıt yeni şifreli kapsamı sınamıyor."
+        },
+        {
+          "id": "J22_m6",
+          "role": "assistant",
+          "text": "Yeni test sonucunu bekleyelim."
+        }
+      ]
+    },
+    {
+      "id": "J23",
+      "title": "Reopen verified Done",
+      "messages": [
+        {
+          "id": "J23_m1",
+          "role": "human",
+          "text": "Task önceki kapsamda Done olmuştu."
+        },
+        {
+          "id": "J23_m2",
+          "role": "assistant",
+          "text": "Bir regresyon tespit edildi."
+        },
+        {
+          "id": "J23_m3",
+          "role": "human",
+          "text": "Yeni düzeltme ihtiyacını inceleyelim."
+        },
+        {
+          "id": "J23_m4",
+          "role": "assistant",
+          "text": "Yeniden açmayı onaylıyorum."
+        },
+        {
+          "id": "J23_m5",
+          "role": "human",
+          "text": "Tekrar çalışmaya başladım."
+        },
+        {
+          "id": "J23_m6",
+          "role": "assistant",
+          "text": "Eski başarılı kanıtın kapsamını da koruyalım."
+        }
+      ]
+    },
+    {
+      "id": "J24",
+      "title": "Prerequisite rollback invalidates completion",
+      "messages": [
+        {
+          "id": "J24_m1",
+          "role": "human",
+          "text": "Alt görev Done, üst görev doğrulanmıştı."
+        },
+        {
+          "id": "J24_m2",
+          "role": "assistant",
+          "text": "Alt görevin yeni testi başarısız."
+        },
+        {
+          "id": "J24_m3",
+          "role": "human",
+          "text": "Alt görev yeniden açıldı."
+        },
+        {
+          "id": "J24_m4",
+          "role": "assistant",
+          "text": "Üst görevin bu bağımlılığı artık güncel değil."
+        },
+        {
+          "id": "J24_m5",
+          "role": "human",
+          "text": "Üstte doğrulama ihtiyacını göster."
+        },
+        {
+          "id": "J24_m6",
+          "role": "assistant",
+          "text": "Geçmişteki Done olayını silme."
+        }
+      ]
+    },
+    {
+      "id": "J25",
+      "title": "Budget blocker over seven days",
+      "messages": [
+        {
+          "id": "J25_m1",
+          "role": "human",
+          "text": "API maliyet onayı bekleniyor."
+        },
+        {
+          "id": "J25_m2",
+          "role": "assistant",
+          "text": "Bütçe blockerı kaydedildi."
+        },
+        {
+          "id": "J25_m3",
+          "role": "human",
+          "text": "İş ilerlemiyor."
+        },
+        {
+          "id": "J25_m4",
+          "role": "assistant",
+          "text": "Sekiz gün geçti, izin gelmedi."
+        },
+        {
+          "id": "J25_m5",
+          "role": "human",
+          "text": "Blocker yaş uyarısını göster."
+        },
+        {
+          "id": "J25_m6",
+          "role": "assistant",
+          "text": "Görevi iptal etme veya otomatik başlatma."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J26",
+      "title": "Exactly seven days boundary",
+      "messages": [
+        {
+          "id": "J26_m1",
+          "role": "human",
+          "text": "Erişim izni bekleniyor."
+        },
+        {
+          "id": "J26_m2",
+          "role": "assistant",
+          "text": "Permission blocker kaydedildi."
+        },
+        {
+          "id": "J26_m3",
+          "role": "human",
+          "text": "Altı gün sonra hâlâ bekliyoruz."
+        },
+        {
+          "id": "J26_m4",
+          "role": "assistant",
+          "text": "Tam yedi gün oldu."
+        },
+        {
+          "id": "J26_m5",
+          "role": "human",
+          "text": "Henüz yedi günü aşmadı."
+        },
+        {
+          "id": "J26_m6",
+          "role": "assistant",
+          "text": "Bir saniye sonra eşik aşıldı."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J27",
+      "title": "Decision waiting duration",
+      "messages": [
+        {
+          "id": "J27_m1",
+          "role": "human",
+          "text": "Depolama sorusu göreve bağlı."
+        },
+        {
+          "id": "J27_m2",
+          "role": "assistant",
+          "text": "Seçenekler sunuldu, cevap bekleniyor."
+        },
+        {
+          "id": "J27_m3",
+          "role": "human",
+          "text": "Taskın bitişini engelliyor."
+        },
+        {
+          "id": "J27_m4",
+          "role": "assistant",
+          "text": "Sekiz gün sonra soru hâlâ açık."
+        },
+        {
+          "id": "J27_m5",
+          "role": "human",
+          "text": "Karar bekleme yaşını göster."
+        },
+        {
+          "id": "J27_m6",
+          "role": "assistant",
+          "text": "Kullanıcı yerine karar seçme."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J28",
+      "title": "Approval wait after selection",
+      "messages": [
+        {
+          "id": "J28_m1",
+          "role": "human",
+          "text": "Kullanıcı SQLite seçti."
+        },
+        {
+          "id": "J28_m2",
+          "role": "assistant",
+          "text": "Seçim kaydı alındı ama karar uygulanmadı."
+        },
+        {
+          "id": "J28_m3",
+          "role": "human",
+          "text": "Onay kapısı açık."
+        },
+        {
+          "id": "J28_m4",
+          "role": "assistant",
+          "text": "Sekiz gün sonra hâlâ uygulanmadı."
+        },
+        {
+          "id": "J28_m5",
+          "role": "human",
+          "text": "Beklemeyi görünür kıl."
+        },
+        {
+          "id": "J28_m6",
+          "role": "assistant",
+          "text": "Seçilmiş cevapla uygulanmış kararı ayır."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J29",
+      "title": "External input wait",
+      "messages": [
+        {
+          "id": "J29_m1",
+          "role": "human",
+          "text": "Üçüncü taraf örnek dosyası bekleniyor."
+        },
+        {
+          "id": "J29_m2",
+          "role": "assistant",
+          "text": "External input blockerı açıldı."
+        },
+        {
+          "id": "J29_m3",
+          "role": "human",
+          "text": "Task çalışması tamamlanamıyor."
+        },
+        {
+          "id": "J29_m4",
+          "role": "assistant",
+          "text": "Dokuz gün geçti."
+        },
+        {
+          "id": "J29_m5",
+          "role": "human",
+          "text": "Sorumlu ve sonraki aksiyon görünmeli."
+        },
+        {
+          "id": "J29_m6",
+          "role": "assistant",
+          "text": "Dosya gelmedi diye Done yapma."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J30",
+      "title": "Retry wait without retry loop",
+      "messages": [
+        {
+          "id": "J30_m1",
+          "role": "human",
+          "text": "Sağlayıcı yanıtı belirsiz."
+        },
+        {
+          "id": "J30_m2",
+          "role": "assistant",
+          "text": "Awaiting Retry inceleme blockerı açıldı."
+        },
+        {
+          "id": "J30_m3",
+          "role": "human",
+          "text": "Otomatik tekrar yasak."
+        },
+        {
+          "id": "J30_m4",
+          "role": "assistant",
+          "text": "Sekiz gün geçti."
+        },
+        {
+          "id": "J30_m5",
+          "role": "human",
+          "text": "İnceleme gerektiren beklemeyi uyar."
+        },
+        {
+          "id": "J30_m6",
+          "role": "assistant",
+          "text": "Timer model çağrısını kendiliğinden tekrar etmesin."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J31",
+      "title": "Resolve then reblock resets episode",
+      "messages": [
+        {
+          "id": "J31_m1",
+          "role": "human",
+          "text": "Permission blocker kaydedildi."
+        },
+        {
+          "id": "J31_m2",
+          "role": "assistant",
+          "text": "Altı gün bekledik."
+        },
+        {
+          "id": "J31_m3",
+          "role": "human",
+          "text": "İzin geldi, blocker çözüldü."
+        },
+        {
+          "id": "J31_m4",
+          "role": "assistant",
+          "text": "Bir gün sonra farklı izin eksikliği çıktı."
+        },
+        {
+          "id": "J31_m5",
+          "role": "human",
+          "text": "Yeni blocker açıldı."
+        },
+        {
+          "id": "J31_m6",
+          "role": "assistant",
+          "text": "Yeni bölümün yaşını sıfırdan hesapla."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J32",
+      "title": "Restart does not reset timer",
+      "messages": [
+        {
+          "id": "J32_m1",
+          "role": "human",
+          "text": "İzin blockerı kaydedildi."
+        },
+        {
+          "id": "J32_m2",
+          "role": "assistant",
+          "text": "Üç gün sonra uygulama kapandı."
+        },
+        {
+          "id": "J32_m3",
+          "role": "human",
+          "text": "Yerel servis yeniden başladı."
+        },
+        {
+          "id": "J32_m4",
+          "role": "assistant",
+          "text": "Altı gün daha geçti."
+        },
+        {
+          "id": "J32_m5",
+          "role": "human",
+          "text": "Toplam dokuz günlük yaş görünmeli."
+        },
+        {
+          "id": "J32_m6",
+          "role": "assistant",
+          "text": "Restart yeni başlangıç sayılmasın."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J33",
+      "title": "Archived cancellation suppression",
+      "messages": [
+        {
+          "id": "J33_m1",
+          "role": "human",
+          "text": "Task budget yüzünden blocked."
+        },
+        {
+          "id": "J33_m2",
+          "role": "assistant",
+          "text": "Sekiz gündür bekliyor."
+        },
+        {
+          "id": "J33_m3",
+          "role": "human",
+          "text": "Owner görevi iptal etti."
+        },
+        {
+          "id": "J33_m4",
+          "role": "assistant",
+          "text": "Kapalı işler görünümüne taşındı."
+        },
+        {
+          "id": "J33_m5",
+          "role": "human",
+          "text": "Uygulama yeniden açıldı."
+        },
+        {
+          "id": "J33_m6",
+          "role": "assistant",
+          "text": "Aktif bekleme uyarısı hâlâ kapalı kalmalı."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J34",
+      "title": "Unknown dependency onset",
+      "messages": [
+        {
+          "id": "J34_m1",
+          "role": "human",
+          "text": "Task bağlı olduğu işi bekliyor."
+        },
+        {
+          "id": "J34_m2",
+          "role": "assistant",
+          "text": "Bağımlılık beklemesinin başlangıç zamanı kayıtlı değil."
+        },
+        {
+          "id": "J34_m3",
+          "role": "human",
+          "text": "İşin eski olduğunu düşünüyorum."
+        },
+        {
+          "id": "J34_m4",
+          "role": "assistant",
+          "text": "Kesin süreyi bilmiyoruz."
+        },
+        {
+          "id": "J34_m5",
+          "role": "human",
+          "text": "Süreyi unknown göster."
+        },
+        {
+          "id": "J34_m6",
+          "role": "assistant",
+          "text": "Sahte sekiz gün veya sıfır gün üretme."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J35",
+      "title": "Clock moves backwards",
+      "messages": [
+        {
+          "id": "J35_m1",
+          "role": "human",
+          "text": "Blocker başlangıcı saat kaydında mevcut."
+        },
+        {
+          "id": "J35_m2",
+          "role": "assistant",
+          "text": "Bilgisayarın saati geri alındı."
+        },
+        {
+          "id": "J35_m3",
+          "role": "human",
+          "text": "Başlangıç şimdiki zamandan ileride görünüyor."
+        },
+        {
+          "id": "J35_m4",
+          "role": "assistant",
+          "text": "Negatif bekleme süresi üretme."
+        },
+        {
+          "id": "J35_m5",
+          "role": "human",
+          "text": "Süreyi doğrulanamıyor diye göster."
+        },
+        {
+          "id": "J35_m6",
+          "role": "assistant",
+          "text": "Saat düzelince yeniden hesapla."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J36",
+      "title": "Multiple blockers with mixed age",
+      "messages": [
+        {
+          "id": "J36_m1",
+          "role": "human",
+          "text": "İzin blockerı sekiz gün önce başladı."
+        },
+        {
+          "id": "J36_m2",
+          "role": "assistant",
+          "text": "Bağlı başka bir iş de tamamlanmadı."
+        },
+        {
+          "id": "J36_m3",
+          "role": "human",
+          "text": "Bağımlılığın bekleme başlangıcı bilinmiyor."
+        },
+        {
+          "id": "J36_m4",
+          "role": "assistant",
+          "text": "İzin blockerı için uyarı göster."
+        },
+        {
+          "id": "J36_m5",
+          "role": "human",
+          "text": "Diğerinin süresinin bilinmediğini de göster."
+        },
+        {
+          "id": "J36_m6",
+          "role": "assistant",
+          "text": "Tüm bekleme geçmişini bildiğini iddia etme."
+        }
+      ],
+      "virtual_clock_required": true
+    },
+    {
+      "id": "J37",
+      "title": "AND reasons become invalid",
+      "messages": [
+        {
+          "id": "J37_m1",
+          "role": "human",
+          "text": "Task için A ve B kararları birlikte gerekli."
+        },
+        {
+          "id": "J37_m2",
+          "role": "assistant",
+          "text": "A yeni kararla geçersiz oldu."
+        },
+        {
+          "id": "J37_m3",
+          "role": "human",
+          "text": "B hâlâ geçerli."
+        },
+        {
+          "id": "J37_m4",
+          "role": "assistant",
+          "text": "AND gerekçesini yeniden değerlendirelim."
+        },
+        {
+          "id": "J37_m5",
+          "role": "human",
+          "text": "İptal yalnız insan incelemesiyle olsun."
+        },
+        {
+          "id": "J37_m6",
+          "role": "assistant",
+          "text": "Eski gerekçe ilişkileri geçmişte kalsın."
+        }
+      ]
+    },
+    {
+      "id": "J38",
+      "title": "OR reason still valid",
+      "messages": [
+        {
+          "id": "J38_m1",
+          "role": "human",
+          "text": "Task A veya B nedeniyle gerekli."
+        },
+        {
+          "id": "J38_m2",
+          "role": "assistant",
+          "text": "A artık geçerli değil."
+        },
+        {
+          "id": "J38_m3",
+          "role": "human",
+          "text": "B gereksinimi sürüyor."
+        },
+        {
+          "id": "J38_m4",
+          "role": "assistant",
+          "text": "OR koşulu hâlâ sağlanıyor."
+        },
+        {
+          "id": "J38_m5",
+          "role": "human",
+          "text": "Task devam etsin."
+        },
+        {
+          "id": "J38_m6",
+          "role": "assistant",
+          "text": "Gereksiz iptal önerme."
+        }
+      ]
+    },
+    {
+      "id": "J39",
+      "title": "Permission revoked mid dialogue",
+      "messages": [
+        {
+          "id": "J39_m1",
+          "role": "human",
+          "text": "Bu sohbeti izlemeye izin verdim."
+        },
+        {
+          "id": "J39_m2",
+          "role": "assistant",
+          "text": "İlk görev önerisi geldi."
+        },
+        {
+          "id": "J39_m3",
+          "role": "human",
+          "text": "Kaynak erişimini şimdi iptal ediyorum."
+        },
+        {
+          "id": "J39_m4",
+          "role": "assistant",
+          "text": "Daha sonra yeni mesaj var."
+        },
+        {
+          "id": "J39_m5",
+          "role": "human",
+          "text": "Eski izinle bu mesajı modele yollama."
+        },
+        {
+          "id": "J39_m6",
+          "role": "assistant",
+          "text": "Mevcut kayıtları da güncel ACL ile sorgula."
+        }
+      ]
+    },
+    {
+      "id": "J40",
+      "title": "Cross-chat delayed scoped answer",
+      "messages": [
+        {
+          "id": "J40_m1",
+          "role": "human",
+          "text": "Sohbet birde Q_STORE sorusu açık."
+        },
+        {
+          "id": "J40_m2",
+          "role": "assistant",
+          "text": "İkinci sohbette aynı proje için konuşuyoruz."
+        },
+        {
+          "id": "J40_m3",
+          "role": "human",
+          "text": "Q_STORE sürüm bir için SQLite seçiyorum."
+        },
+        {
+          "id": "J40_m4",
+          "role": "assistant",
+          "text": "Kaynak ve proje yetkisini doğrula."
+        },
+        {
+          "id": "J40_m5",
+          "role": "human",
+          "text": "Karar uygulaması ayrı onayda kalsın."
+        },
+        {
+          "id": "J40_m6",
+          "role": "assistant",
+          "text": "Öteki projedeki benzer soruya bağlama."
+        }
+      ]
+    },
+    {
+      "id": "J41",
+      "title": "Question revised before late answer",
+      "messages": [
+        {
+          "id": "J41_m1",
+          "role": "human",
+          "text": "Q_STORE v1: A dosya B SQLite."
+        },
+        {
+          "id": "J41_m2",
+          "role": "assistant",
+          "text": "Soruyu revize ettik."
+        },
+        {
+          "id": "J41_m3",
+          "role": "human",
+          "text": "Q_STORE v2: A SQLite B PostgreSQL."
+        },
+        {
+          "id": "J41_m4",
+          "role": "assistant",
+          "text": "Ben önceki v1 sorunun B seçeneğini seçiyorum."
+        },
+        {
+          "id": "J41_m5",
+          "role": "human",
+          "text": "Eski cevabı geçmişte koru."
+        },
+        {
+          "id": "J41_m6",
+          "role": "assistant",
+          "text": "Yeni soruda otomatik PostgreSQL seçme."
+        }
+      ]
+    },
+    {
+      "id": "J42",
+      "title": "Multiple answers and reversal",
+      "messages": [
+        {
+          "id": "J42_m1",
+          "role": "human",
+          "text": "Q_UI için A pano B liste."
+        },
+        {
+          "id": "J42_m2",
+          "role": "assistant",
+          "text": "A seçeneğini seçiyorum."
+        },
+        {
+          "id": "J42_m3",
+          "role": "human",
+          "text": "Başka taskı konuşalım."
+        },
+        {
+          "id": "J42_m4",
+          "role": "assistant",
+          "text": "Önceki tercihimden vazgeçtim, B liste istiyorum."
+        },
+        {
+          "id": "J42_m5",
+          "role": "human",
+          "text": "İki cevabı da kaynaklarıyla koru."
+        },
+        {
+          "id": "J42_m6",
+          "role": "assistant",
+          "text": "Yetkili yeni karar incelemesini iste."
+        }
+      ]
+    },
+    {
+      "id": "J43",
+      "title": "Branch-specific execution",
+      "messages": [
+        {
+          "id": "J43_m1",
+          "role": "human",
+          "text": "Main branch üzerinde test görevi açık."
+        },
+        {
+          "id": "J43_m2",
+          "role": "assistant",
+          "text": "Feature branchte uygulama bitti."
+        },
+        {
+          "id": "J43_m3",
+          "role": "human",
+          "text": "Main hedefi henüz değişmedi."
+        },
+        {
+          "id": "J43_m4",
+          "role": "assistant",
+          "text": "Feature branch testleri geçti."
+        },
+        {
+          "id": "J43_m5",
+          "role": "human",
+          "text": "Hedef branch kanıtını ayrı tut."
+        },
+        {
+          "id": "J43_m6",
+          "role": "assistant",
+          "text": "Main görevini otomatik Done yapma."
+        }
+      ]
+    },
+    {
+      "id": "J44",
+      "title": "Acceptance scope reduced explicitly",
+      "messages": [
+        {
+          "id": "J44_m1",
+          "role": "human",
+          "text": "Taskta AC1 ve AC2 zorunlu."
+        },
+        {
+          "id": "J44_m2",
+          "role": "assistant",
+          "text": "Yalnız AC1 geçti."
+        },
+        {
+          "id": "J44_m3",
+          "role": "human",
+          "text": "AC2 artık kapsam dışı öneriliyor."
+        },
+        {
+          "id": "J44_m4",
+          "role": "assistant",
+          "text": "Owner yeni kapsamı gerekçesiyle onaylamalı."
+        },
+        {
+          "id": "J44_m5",
+          "role": "human",
+          "text": "Eski sözleşmeyi silmeyelim."
+        },
+        {
+          "id": "J44_m6",
+          "role": "assistant",
+          "text": "Onay gelmeden AC2 gereksiz sayılmaz."
+        }
+      ]
+    },
+    {
+      "id": "J45",
+      "title": "Dependency resolved but task not finished",
+      "messages": [
+        {
+          "id": "J45_m1",
+          "role": "human",
+          "text": "A işi B bitmeden tamamlanamaz."
+        },
+        {
+          "id": "J45_m2",
+          "role": "assistant",
+          "text": "A çalışması hazır, B blocked."
+        },
+        {
+          "id": "J45_m3",
+          "role": "human",
+          "text": "B blockerı çözüldü."
+        },
+        {
+          "id": "J45_m4",
+          "role": "assistant",
+          "text": "Bnin bağımsız kabulü de tamamlandı."
+        },
+        {
+          "id": "J45_m5",
+          "role": "human",
+          "text": "A bitiş kapısı açıldı."
+        },
+        {
+          "id": "J45_m6",
+          "role": "assistant",
+          "text": "A için ayrıca güncel kriterleri inceleyelim."
+        }
+      ]
+    },
+    {
+      "id": "J46",
+      "title": "Two agents conflicting reports",
+      "messages": [
+        {
+          "id": "J46_m1",
+          "role": "human",
+          "text": "Aynı task üzerinde agent bir ve iki çalışıyor."
+        },
+        {
+          "id": "J46_m2",
+          "role": "assistant",
+          "text": "Agent bir iş bitti dedi."
+        },
+        {
+          "id": "J46_m3",
+          "role": "human",
+          "text": "Agent iki testlerin başarısız olduğunu bildirdi."
+        },
+        {
+          "id": "J46_m4",
+          "role": "assistant",
+          "text": "Kaynak ve çalışma kimliklerini ayır."
+        },
+        {
+          "id": "J46_m5",
+          "role": "human",
+          "text": "Çelişkiyi insan incelemesine bırak."
+        },
+        {
+          "id": "J46_m6",
+          "role": "assistant",
+          "text": "Son gelen agentı otomatik otorite sayma."
+        }
+      ]
+    },
+    {
+      "id": "J47",
+      "title": "Unknown API result holds budget",
+      "messages": [
+        {
+          "id": "J47_m1",
+          "role": "human",
+          "text": "Model isteği gönderilmeden rezerv ayrıldı."
+        },
+        {
+          "id": "J47_m2",
+          "role": "assistant",
+          "text": "İstek sonucu belirsiz kaldı."
+        },
+        {
+          "id": "J47_m3",
+          "role": "human",
+          "text": "Kullanımı unknown kaydet."
+        },
+        {
+          "id": "J47_m4",
+          "role": "assistant",
+          "text": "Bir süre sonra aynı mesaj yeniden geldi."
+        },
+        {
+          "id": "J47_m5",
+          "role": "human",
+          "text": "İsteği körlemesine tekrar etme."
+        },
+        {
+          "id": "J47_m6",
+          "role": "assistant",
+          "text": "Yeni izinli iş için ayrı risk incelemesi gerekir."
+        }
+      ]
+    },
+    {
+      "id": "J48",
+      "title": "Full lifecycle with decision revision",
+      "messages": [
+        {
+          "id": "J48_m1",
+          "role": "human",
+          "text": "Task planlandı ve kapsamı onaylandı."
+        },
+        {
+          "id": "J48_m2",
+          "role": "assistant",
+          "text": "İşe başlandı, sonra izin nedeniyle blocked oldu."
+        },
+        {
+          "id": "J48_m3",
+          "role": "human",
+          "text": "Sekiz gün sonra uyarı gösterildi."
+        },
+        {
+          "id": "J48_m4",
+          "role": "assistant",
+          "text": "İzin geldi; bağımsız review ve kriter kanıtları tamamlandı."
+        },
+        {
+          "id": "J48_m5",
+          "role": "human",
+          "text": "Task Done oldu; yeni mimari kararla yeni ihtiyaç çıktı."
+        },
+        {
+          "id": "J48_m6",
+          "role": "assistant",
+          "text": "Ayrı onayla yeniden açıldı, kapsam değişti ve sonunda iptal edildi."
+        }
+      ]
     }
   ]
 }

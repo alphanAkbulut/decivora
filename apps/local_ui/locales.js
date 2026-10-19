@@ -367,7 +367,12 @@ window.DecivoraCatalogs = {
     "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.",
     "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "A matching question already exists. Review or revise it in Question Inbox before presenting another.",
     "Suggested review step: {stage}": "Suggested review step: {stage}",
-    "Review task workflow": "Review task workflow"
+    "Review task workflow": "Review task workflow",
+    "Blocker duration unknown": "Blocker duration unknown",
+    "Blocked over 7 days · {days}d": "Blocked over 7 days · {days}d",
+    "Known blocker age · {days}d": "Known blocker age · {days}d",
+    "Some blocker start times are unknown.": "Some blocker start times are unknown.",
+    "Elapsed time since the recorded blocker began.": "Elapsed time since the recorded blocker began."
   },
   "tr": {
     "Dil": "Dil",
@@ -737,7 +742,12 @@ window.DecivoraCatalogs = {
     "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Bu işlem yalnızca soruyu açar. Cevap seçmez, karar uygulamaz veya görevleri değiştirmez.",
     "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "Eşleşen bir soru zaten var. Yeni bir soru açmadan önce Soru Kutusu üzerinden mevcut soruyu incele veya güncelle.",
     "Suggested review step: {stage}": "Önerilen inceleme adımı: {stage}",
-    "Review task workflow": "Görev akışını incele"
+    "Review task workflow": "Görev akışını incele",
+    "Blocker duration unknown": "Blocker süresi bilinmiyor",
+    "Blocked over 7 days · {days}d": "7 günü aşan blocker · {days} gün",
+    "Known blocker age · {days}d": "Bilinen blocker süresi · {days} gün",
+    "Some blocker start times are unknown.": "Bazı blocker başlangıç zamanları bilinmiyor.",
+    "Elapsed time since the recorded blocker began.": "Kayıtlı blocker başlangıcından beri geçen süre."
   },
   "es": {
     "Dil": "Idioma",
@@ -1107,7 +1117,12 @@ window.DecivoraCatalogs = {
     "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Esta acción solo abre la pregunta. No selecciona una respuesta, aplica una decisión ni cambia tareas.",
     "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "Ya existe una pregunta coincidente. Revísala o modifícala en la bandeja de preguntas antes de abrir otra.",
     "Suggested review step: {stage}": "Paso de revisión sugerido: {stage}",
-    "Review task workflow": "Revisar flujo de la tarea"
+    "Review task workflow": "Revisar flujo de la tarea",
+    "Blocker duration unknown": "Duración del bloqueo desconocida",
+    "Blocked over 7 days · {days}d": "Bloqueado más de 7 días · {days}d",
+    "Known blocker age · {days}d": "Duración conocida del bloqueo · {days}d",
+    "Some blocker start times are unknown.": "Se desconocen algunas fechas de inicio de bloqueo.",
+    "Elapsed time since the recorded blocker began.": "Tiempo desde el inicio del bloqueo registrado."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1477,7 +1492,12 @@ window.DecivoraCatalogs = {
     "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Esta ação apenas abre a pergunta. Não seleciona uma resposta, aplica uma decisão nem altera tarefas.",
     "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "Já existe uma pergunta correspondente. Revise ou edite a pergunta na caixa de perguntas antes de abrir outra.",
     "Suggested review step: {stage}": "Etapa de revisão sugerida: {stage}",
-    "Review task workflow": "Revisar fluxo da tarefa"
+    "Review task workflow": "Revisar fluxo da tarefa",
+    "Blocker duration unknown": "Duração do bloqueio desconhecida",
+    "Blocked over 7 days · {days}d": "Bloqueado há mais de 7 dias · {days}d",
+    "Known blocker age · {days}d": "Duração conhecida do bloqueio · {days}d",
+    "Some blocker start times are unknown.": "Algumas datas de início de bloqueio são desconhecidas.",
+    "Elapsed time since the recorded blocker began.": "Tempo desde o início do bloqueio registrado."
   },
   "ar": {
     "Dil": "اللغة",
@@ -1847,6 +1867,11 @@ window.DecivoraCatalogs = {
     "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "يفتح هذا الإجراء السؤال فقط. ولا يختار إجابة أو يطبق قرارًا أو يغير المهام.",
     "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "يوجد سؤال مطابق بالفعل. راجعه أو عدّله في صندوق الأسئلة قبل فتح سؤال آخر.",
     "Suggested review step: {stage}": "خطوة المراجعة المقترحة: {stage}",
-    "Review task workflow": "مراجعة سير المهمة"
+    "Review task workflow": "مراجعة سير المهمة",
+    "Blocker duration unknown": "مدة العائق غير معروفة",
+    "Blocked over 7 days · {days}d": "عائق لأكثر من 7 أيام · {days} يوم",
+    "Known blocker age · {days}d": "مدة العائق المعروفة · {days} يوم",
+    "Some blocker start times are unknown.": "بعض أوقات بدء العوائق غير معروفة.",
+    "Elapsed time since the recorded blocker began.": "الوقت المنقضي منذ بدء العائق المسجل."
   }
 };

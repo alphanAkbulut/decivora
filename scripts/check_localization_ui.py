@@ -47,6 +47,15 @@ def main():
             def partial_extract(self,source):
                 result=original_extract(self,source);result['coverage']='partial';return result
             Extractor.__call__=partial_extract
+        if os.environ.get('DECIVORA_AGED_BLOCKER_UI_FIXTURE')=='1':
+            import time
+            from unittest.mock import patch
+            for title,days in [('Old blocker fixture',8),('Recent blocker fixture',2)]:
+                server.app.command(dict(action='create_task',title=title,description='Synthetic age display fixture'))
+                task=next(t for t in server.app.state()['tasks'] if t['body']['title']==title)
+                recorded=time.time()-days*86400
+                with patch('time.time',return_value=recorded):
+                    server.app.command(dict(action='task_blocker',task=task['id'],task_version=task['version'],base_revision=0,blocked=True,reason='Fixture permission pending',next_action='Review permission'))
         thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         config=Path(directory)/'session.json'
         config.write_text(json.dumps(dict(origin=server.origin,bootstrap=server.app.bootstrap,file_fixture=str(file_root) if file_root else None)));config.chmod(0o600)

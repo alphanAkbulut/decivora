@@ -31,7 +31,7 @@ Yeni `DialogueTraceService.view(scope, project, source_ids=[...])`, mevcut kayı
 
 ## Çeşitlendirilmiş senaryolar
 
-[Kaynaklar](../../examples/dialogue-journeys/sources.json) ve [ayrı AI-authored beklenti taslakları](../../examples/dialogue-journeys/oracles.json):12case/78mesaj. Gerçek kullanıcı verisi yok. Oracle metni modele verilmez. Bunlar insan onaylı gold veya sealed holdout değildir; bütün semantik run'lar `not_run`.
+[Kaynaklar](../../examples/dialogue-journeys/sources.json) ve [ayrı AI-authored beklenti taslakları](../../examples/dialogue-journeys/oracles.json):48case/294mesaj. Gerçek kullanıcı verisi yok. Oracle metni modele verilmez. Bunlar insan onaylı gold veya sealed holdout değildir; bütün semantik run'lar `not_run`.
 
 | Case | Ne zorlanıyor? | Kritik yanlış sonuç |
 |---|---|---|
@@ -68,7 +68,14 @@ Mevcut native pilot DB üzerinde yeni trace sorgusu8kaynak/1record bağlantısı
 
 Tur bazında source hash, context hash, payload/model/fiyat revision, truncated/omitted işaretleri, sonuç, eşlenen task ID, literal quote, review sonucu, canonical durum ve token/maliyet/latency kaydedilir. Diyalog bazında: doğru konu/kapsam korunumu, doğru mevcut task ID, yanlış yeni task sayısı, status-claim doğruluğu, belirsizlikte çekimserlik, false Done/yanlış iptal, düzeltme süresi ve toplam harcama karşılaştırılır. Eksik/unknown yanıtlar paydadan gizlenmez; insan düzeltmeleri ayrıca sayılır. Önceden bağımsız etiket ve değerlendirme kuralı olmadan başarı yüzdesi yayınlanmaz.
 
-Mevcut3USD root, source/context izni, HTTP/token tavanları ve unknown rezervi korunur. Bu belge model çağrısı veya süresi dolan manifesti yenileme izni değildir. Semantic runner'ın bu12yolculuğu sıralı ve snapshot'lı yürütmesi ve bağımsız etiket review'u hâlâ açıktır. Yeni case sayısı tek başına MVP tamamlanması veya model doğruluk kanıtı değildir.
+Mevcut3USD root, source/context izni, HTTP/token tavanları ve unknown rezervi korunur. Bu belge model çağrısı veya süresi dolan manifesti yenileme izni değildir. Semantic runner'ın bu48yolculuğu sıralı ve snapshot'lı yürütmesi ve bağımsız etiket review'u hâlâ açıktır. Yeni case sayısı tek başına MVP tamamlanması veya model doğruluk kanıtı değildir.
 
 
 **Teslim kontrolü:**632runtime testi geçti.12input/oracle hash eşleşmesi ve78mesaj doğrulandı; doküman/link/anchor kontrolü geçti. Mevcut56Mermaid kaynağı değiştirilmedi; bu teslimde yeniden render edilmiş diye sayılmaz. UI kodu değişmedi; yeni bir timeline ekranı veya browser akışı test edildiği iddia edilmez.
+
+
+## 20 Ekim — 48 senaryoya genişleme ve blocker timer
+
+İlk12case korundu; J13–J48 ile toplam48case/294mesaj. Bunlar gerçek modelle henüz çalıştırılmadı; source/oracle ayrı ve AI-authored draft kalır. J13–J18 iptal/yeniden açma/karar değişimi; J19–J24 kanıtla Done, eksik/başarısız/stale kriter ve rollback; J25–J36 blocked yaş/sınır/restart/unknown/iptal; J37–J48 AND/OR, erişim iptali, çok sohbet, eski soru sürümü, çelişkili cevap/agent, hedef branch, AC kapsamı ve tam yaşam döngüsüdür.
+
+[Çalışan7gün uyarısı ve sınırları](blocker-aging.md): başlangıcı bilinen manual/soru beklemelerinde UI timer; başlangıcı bilinmeyen dependency süreleri unknown. Timer durum değişimi veya notification delivery otoritesi değildir.

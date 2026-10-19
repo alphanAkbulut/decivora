@@ -117,3 +117,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 
 
 **20Ekim çok turlu diyalog takibi:** CAP-01/02/05,VER-01,AUD-01 → T09/T14/T17 → [diyalog yolculukları](dialogue-journeys.md):12case/78mesaj, ayrı AI-draft oracle, salt okunur source→task→status lineage ve5yerel çok turlu guard kontrolü. Native pilot mevcut kayıt trace'i çalıştırıldı; yeni12case gerçek model kalite kabulü yapılmadı.
+
+
+**20Ekim48case/aging:** T09/T14/T17 kapsamında48case/294mesaj; T14 waiting/attention ve priority-flow kapsamında [7gün timer](blocker-aging.md). Manual/soru başlangıcı için çalışan yerel alt kapsam; dependency episode onset ve dış bildirim teslimi açık. Bütün48case gerçek modelle doğrulanmadı.

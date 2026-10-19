@@ -136,6 +136,366 @@
       "label_status": "ai_authored_draft",
       "human_gold": false,
       "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J13",
+      "source_sha256": "5dc389f165a051bbf532a8b3355bd5f6449ce13b21cb6a91c7cae9c496859c23",
+      "expectations": [
+        "Explicit lifecycle approval may cancel; never delete source or pretend execution completed."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J14",
+      "source_sha256": "69777a97b84cfd32f316ac2244c14aa4a20afa17b79a5c81b591af8fcaf63d7a",
+      "expectations": [
+        "Keep in-progress history; separate cancellation authority and replacement task."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J15",
+      "source_sha256": "6afa799378360eff95f991c60da6d505e034e1a235553f0ef05f91d88497f2f3",
+      "expectations": [
+        "Reopen with current scope/revisions; retain cancellation; no automatic In Progress."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J16",
+      "source_sha256": "545b43721f92b463c23c712f4cb1cc744f63c426fa0565509024aec3e23595ed",
+      "expectations": [
+        "Cancelled task suppresses active aging alert; blocker history preserved."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J17",
+      "source_sha256": "5710bd9b01b5effad49abebc447e1a203149af057b1090ce6152895bfeab36c1",
+      "expectations": [
+        "Decision impact is per-task; shared keyword does not cancel all related work."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J18",
+      "source_sha256": "f8ae0281287e56e89e7b0e813ef253439293975e4c3f372211e16febbb4daec7",
+      "expectations": [
+        "New decision/task does not silently finish or cancel old reviewed task."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J19",
+      "source_sha256": "96dfbc9c458d07f9e425a123576f025588092e87c6db78c2a9b98e612bca7ac0",
+      "expectations": [
+        "Done only after separate trusted criterion evidence and valid workflow review, not chat assertions alone."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J20",
+      "source_sha256": "a52db9301c9a5f80c2a25ca07e781ad91a4657b3e5979ceb16d8a917e83faafa",
+      "expectations": [
+        "Partial criterion completion remains Awaiting Verification; prompt remaining required verification."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J21",
+      "source_sha256": "9c575dee27d43b5a42fb6de625658aa2c8ea058cf277deabebfd89625528cda3",
+      "expectations": [
+        "One failed required criterion blocks verified completion."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J22",
+      "source_sha256": "35686e6eff2fbef2acf17fe874729c169c1a4f79b5d00794e3388159fb18cceb",
+      "expectations": [
+        "New acceptance contract invalidates old evidence; no stale Done."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J23",
+      "source_sha256": "cf51a8bd2f7fa9fa509fb41ac9c19407d6e30d9f412d300907e830497e3440c4",
+      "expectations": [
+        "Reopen preserves historical completion; new scope/current evidence governs progress."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J24",
+      "source_sha256": "4f48abc8944342f31bd7a31f529d37415b62cef5375fd864b22a062603fc6b2a",
+      "expectations": [
+        "Dependency completion becomes stale; current top task cannot rely on outdated success."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J25",
+      "source_sha256": "bb8d463261a5e0a44dad1fb478bcfdefe6f1173f4ab0f5a940b1a31056196625",
+      "expectations": [
+        "After strictly more than seven elapsed days show local overdue warning; no model call or status change."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J26",
+      "source_sha256": "b09fbb71aeb0e04329d26e331e5d549482631b813649ea82fec512c6dcde66c6",
+      "expectations": [
+        "No overdue at 604800 seconds; overdue at 604801 seconds."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J27",
+      "source_sha256": "420b0d443d88b14d8d6d53020b9bb4acdbc06ed680b3d1e69eea6345d3ebcf29",
+      "expectations": [
+        "Linked question presented_at supports known waiting age; no automatic answer."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J28",
+      "source_sha256": "f5aecdda17f06bd66fa85e3c40a22fdc1df3db7565d3d9532dae1daf5a59f5f3",
+      "expectations": [
+        "Selection is not applied decision; continued linked-question wait can warn."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J29",
+      "source_sha256": "fe71320d2ad896414e6b3d741a8c9b9fa4c1af87ec064d2a0ca224d54f9a3591",
+      "expectations": [
+        "Known manual external-input blocker warns with owner/next action after threshold."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J30",
+      "source_sha256": "d046f26898bdbdaf3980a2d8fde5fefedecf36173eb9cf0aba8fe89dfa17edfa",
+      "expectations": [
+        "Aging warning is not retry or extra spending authority."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J31",
+      "source_sha256": "001e7bbeac1485b805aaaf8480f708cc0070e02a956c56ca79688f916f0cdcce",
+      "expectations": [
+        "Resolved episode remains history; new manual blocker starts a new timer."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J32",
+      "source_sha256": "c17c2d850a323172d57f7a36cfaa8521e2900c1a462408ca9e185e4092b8ff3a",
+      "expectations": [
+        "Persisted timestamp survives restart; no transient timer reset."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J33",
+      "source_sha256": "3395374e238560fbb183e9f2970451e112e34b03bbe8e25fe714d8c11ee6e516",
+      "expectations": [
+        "Cancellation suppresses overdue warning on read and restart without erasing old impediment."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J34",
+      "source_sha256": "720bdb14e55134ff0538ca9c53d6a2e24ca4ec18556e170af1bf48bf79c30d84",
+      "expectations": [
+        "Dependency onset unknown must remain unknown; aging coverage explicitly partial."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J35",
+      "source_sha256": "946e580ce61d1cfe8fffec30fcaa963df4a40a5b301097a2813059cb51c1666a",
+      "expectations": [
+        "Future timestamp yields unknown age; no negative duration or premature warning."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J36",
+      "source_sha256": "0a658d663c07509de190b334c56a9279e4027ead198a3da545cd0445adfd16f7",
+      "expectations": [
+        "Known overdue and unknown-onset warning coexist; do not imply complete blocker coverage."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J37",
+      "source_sha256": "d5f757c5fc0267eef01e284489fcd4b8227eb096c3b3b76a7fe91c1b029b39f2",
+      "expectations": [
+        "AND impact reviewed separately; no destructive edge removal."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J38",
+      "source_sha256": "37ead18d6612f2e72d442257a7c8316881660adc0771f03cb14840c7a33cfc03",
+      "expectations": [
+        "Valid alternative rationale prevents false obsolescence."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J39",
+      "source_sha256": "b8b34feb87de1a038a5f89552d2e28d179de2455693feb1992ff35d8a7f7dacd",
+      "expectations": [
+        "Revocation blocks new capture/egress; stale grant cannot authorize dispatch."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J40",
+      "source_sha256": "a525eabc48bced72b6f02cc496f48b21e538d237d75795f47ccbc3aeab7f1e10",
+      "expectations": [
+        "Exact authorized cross-chat question linkage; no blind lexical association."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J41",
+      "source_sha256": "226f5ec97143d379de61c3da6b10343c666436ae0c047b6d53ff00c956d94235",
+      "expectations": [
+        "Stale answer keeps original option meaning; no reinterpretation under new revision."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J42",
+      "source_sha256": "3969c341168464ce656cfb3fb275e152bead53d20edf29d1674c4dfb1a8ff433",
+      "expectations": [
+        "Distinct source-bound answers; changed choice is not silent last-answer-wins."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J43",
+      "source_sha256": "eb38c2c1f839d697bb557bb07f00cb02b4d8da7634926e8d82e665288e0c4f18",
+      "expectations": [
+        "Evidence target/ref mismatch must not complete canonical target task."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J44",
+      "source_sha256": "fcfbc121d1e5222614286e1839c4af636130be6a76f74f5a658e5693b0f6a4a9",
+      "expectations": [
+        "Criterion removal requires explicit contract revision; no test scope weakening."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J45",
+      "source_sha256": "34cf5d2f9ea49ecc7b98db40c1be9625383315bd6d314b34e0b055b30cee0521",
+      "expectations": [
+        "Unblocked dependency enables review; it does not itself complete dependent task."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J46",
+      "source_sha256": "b95906c3195b758fc5c26db4376f8e81dc0c0c9bfd7176aa873a1a2cfc7b12d5",
+      "expectations": [
+        "Conflicting reports preserved; no automatic completion or privileged agent inference."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J47",
+      "source_sha256": "a50c11c3dd18f82aa74f0517f1a6b0fc6c9c8f57ddb190765bfb2965a1152730",
+      "expectations": [
+        "Unknown usage retains reserve and dedup; dialogue retry is not spend reset."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J48",
+      "source_sha256": "2c126691f5ae0fd1e9ab586931175bcbc8652777ab56d84683a49adb57335b38",
+      "expectations": [
+        "Retain every episode; timer does not mutate workflow; Done/reopen/cancel require their own trusted actions."
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
     }
   ]
 }

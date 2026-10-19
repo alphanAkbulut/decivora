@@ -1,12 +1,12 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 26 belgede 53 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory:30belgede57Mermaid şeması — blocker aging delivery,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
 **2026-10-13 Blocker UI:** local-preview1 human block/resolve→append-only audit→board/start gate ile güncellendi;42/21sayımı aynı. Cached Mermaid gerçek render + SVG XML/source hash kaydı; önceki proof superseded history’de korundu.
 
-## Güncel inventory — 2026-10-19
+## Güncel inventory — 2026-10-20
 
 <!-- diagram-inventory:start -->
 | Belge | Mermaid sayısı |
@@ -40,6 +40,7 @@
 | [docs/quality/dialogue-status-runtime.md](dialogue-status-runtime.md) | 1 |
 | [docs/quality/todo-development-review.md](todo-development-review.md) | 1 |
 | [docs/quality/codex-e2e-001.md](codex-e2e-001.md) | 1 |
+| [docs/quality/blocker-aging.md](blocker-aging.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -256,3 +257,6 @@ Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç
 
 
 19Ekim takip aksiyonları: aynı Codex şeması2normalhuman yakalama ve ayrı owner onayıyla rezerv koruyarak yeni işe devam yolunu gösterir.56Mermaid ağ kapalı render edildi; değişen tam SVG/PNG görsel olarak incelendi. İlk assistant-only/unknown/frozen kanıtı superseded history içinde korunur. Unknown gerçek kullanım veya tüm MVP başarısı iddia edilmez.
+
+
+20Ekim blocker aging:57şema/30belge offline render edildi. Yeni akışta aktif/Cancelled ayrımı, bilinen/unknown başlangıç, strict7gün eşiği ve yalnız yerel timer gösterildi. Tam PNG görsel incelendi; ürün runtime ve native model kalitesi kanıtından ayrıdır.

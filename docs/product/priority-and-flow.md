@@ -134,3 +134,8 @@ Gelecek workflow için In Review / Awaiting Verification / On Hold gibi durumlar
 ## 14 Ekim 2026 — Workflow ve tanıdık UI güncellemesi
 
 [ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md) kabul edildi. Local UI altı ana stage + ayrı Cancelled filtre, Blocks/Blocked by, manual start/finish/both gate ve linked soru finish engeli sunar. Recorded dependency assessment UI’ya bağlandı; exhaustive semantic capture/PO priority otomasyonu değil. Daha önceki “otomatik graph UI yok” ifadesi semantic/source-aware tam kapsam için geçerlidir; kayıtlı ilişkiler dilimi artık vardır.
+
+
+## 20 Ekim — yerel yedi gün bekleme uyarısı
+
+Kullanıcı blocked iş7günden uzun beklerse uyarı istedi. [Uygulama sözleşmesi](../quality/blocker-aging.md): bilinen manual/soru başlangıcından kesin geçen süre, strict604800saniye eşiği; yorum/refresh/restart resetlemez. Blocked ayrı stage değildir. Çözülme ve yeni blocker ayrı olaydır. Başlangıcı bilinmeyen dependency/context bekleme süreleri unknown kalır; bu alanların episode kaydı açık kapsamdır.

@@ -154,7 +154,7 @@ class TaskWorkflowService:
         resolved={(json.loads(raw)['question'],json.loads(raw)['revision']) for raw, in self.core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='question_decision_proposed'",(self.core.workspace,project)) if json.loads(raw)['id'] in applied}
         for q in QuestionService(self.core)._view(project)['questions']:
             if q.get('task')==task and (q['status'] in ('Open','Deferred') or q['status']=='Answered' and (q['id'],q['revision']) not in resolved):
-                blockers.append(dict(kind='approval' if q['status']=='Answered' else 'decision',gate='finish',reason=q['text'],next_action='Approve and apply the linked decision.' if q['status']=='Answered' else 'Answer the linked decision question.',owner='unassigned',source=q['id']))
+                blockers.append(dict(kind='approval' if q['status']=='Answered' else 'decision',gate='finish',reason=q['text'],next_action='Approve and apply the linked decision.' if q['status']=='Answered' else 'Answer the linked decision question.',owner='unassigned',source=q['id'],since=q.get('presented_at')))
         blocks=[r[0] for r in self.core.db.execute("SELECT origin FROM edges WHERE workspace=? AND project=? AND target=? AND kind='depends_on' AND state='asserted'",(self.core.workspace,project,task))]
         if not self._context_component(project,task)['complete']:blockers.append(dict(kind='context',gate='finish',reason='Recorded context exceeds local assessment bounds.',next_action='Review or narrow context before completion.',owner='unassigned',source='recorded_context_limit'))
         start=any(b['gate'] in ('start','both') for b in blockers);finish=any(b["gate"] in ("finish","both") for b in blockers)

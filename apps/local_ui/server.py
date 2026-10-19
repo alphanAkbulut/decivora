@@ -94,6 +94,8 @@ class LocalApp:
                 if body['type']!='Task':continue
                 workflow=TaskWorkflowService(core).view(owner,selected,rid)
                 tasks.append(dict(id=rid,version=version,body=body,lifecycle=core.task_history(owner,selected,rid),acceptance=AcceptanceService(core).view(owner,selected,rid),workflow=workflow,file_bindings=__import__('packages.verification.files',fromlist=['FileVerificationService']).FileVerificationService(core).bindings(selected,rid),rationale=__import__('packages.domain.task_rationale',fromlist=['TaskRationaleService']).TaskRationaleService(core).view(owner,selected,rid),routing=RoutingService(core).view(owner,selected,rid),blocker=TaskBlockerService(core).view(owner,selected,rid),lane=workflow['stage']))
+                from packages.domain.blocker_age import assess as blocker_age
+                tasks[-1]['blocker_age']=blocker_age(workflow['assessment'],cancelled=body.get('execution')=='cancelled')
             task_sources={}
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_candidates_applied'",(core.workspace,selected)):
                 receipt=json.loads(raw)
