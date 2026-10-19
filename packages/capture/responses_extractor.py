@@ -15,7 +15,7 @@ def request_payload(source,*,model,max_output_tokens,dialogue_request=None):
     from packages.privacy.secrets import ensure_safe
     ensure_safe(source);ensure_safe(dialogue_request)
     if type(model) is not str or not model.strip() or type(max_output_tokens) is not int or not 1<=max_output_tokens<=8192:raise ContractError('provider_config_required','Explicit model and bounded output required.')
-    payload=dict(model=model,instructions=INSTRUCTIONS,input=canonical({k:source[k] for k in ('id','sha256','text')}),text=dict(format=dict(type='json_schema',name='decivora_conversation',strict=True,schema=output_schema())),max_output_tokens=max_output_tokens,store=False,tools=[],stream=False)
+    payload=dict(model=model,instructions=INSTRUCTIONS,input=canonical({k:source[k] for k in ('id','sha256','text')}),text=dict(format=dict(type='json_schema',name='decivora_conversation',strict=True,schema=output_schema())),max_output_tokens=max_output_tokens,store=False,tools=[],stream=False,service_tier='default')
     if dialogue_request is not None:
         if dialogue_request['source']!={k:source[k] for k in ('id','sha256','text')}:raise ContractError('stale_source','Prepared dialogue request is bound to another source.')
         payload.update(instructions=dialogue_request['instructions'],input=canonical({k:dialogue_request[k] for k in ('source','context','context_sha256')}))

@@ -1,5 +1,7 @@
 # Mevcut durum
 
+**19 Ekim — API hazırlığı güncellendi:** kullanıcı bakiye yüklediğini bildirdi ve yalnız sentetik Luna/Sol,≤20HTTP attempt, input≤10000/output≤2000,≤$1, retry0 kapsamını onayladı. Fixed-host transport, input-count→generation, kalıcı ortak para/HTTP admission ve güvenli yerel key helper kodlandı. Gerçek key henüz kurulmadı; paid run yapılmadı. [Çalışan kod ve ilk kullanım kapısı](../quality/openai-pilot-runtime.md). Normal/TEST UI varsayılanı model kapalı; native capture/MVP kabulü açık. Ana7/14/9 korunur.
+
 [Güncel ürün resmi ve kalan kod işleri — 19 Ekim](current-state.md):12geliştirme ana işi,2entegrasyon/release kapısı,3P0 kabul/kalite işi açık;6gelecek-faz işi ayrı. Ana/alt görevler toplanmaz.
 
 2026-10-14 — **P1a çekirdek geliştirme + açık P0 kanıt işleri**.

@@ -17,6 +17,9 @@ flowchart TB
     I0 --> MG["Current human dispatch grant<br/>source + approved dialogue context hash / provider / model / output cap / run / expiry"]
     MG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
+    M0 -. opt-in isolated synthetic PILOT only .-> PC["Approved exact payload / private key<br/>shared USD + HTTP ledger; reserve before network"]
+    PC --> PT["Count input tokens, then bounded Responses<br/>TLS fixed host / standard tier / no retry"]
+    PT --> PF["Usage unknown or overrun: freeze<br/>No automatic canonical apply; real run pending key"]
     M0 --> US["Record actual or unknown usage<br/>overrun persists and blocks workspace dispatch"]
     US --> K0["Kaynak hash + unique quote<br/>span kodla; typed candidates"]
     K0 --> RP["Source-bound relation suggestion<br/>Task required_by Decision / Task depends_on Task<br/>Decision NEW supersedes Decision OLD"]
@@ -76,7 +79,7 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH,PR,RA guard;
+    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH,PR,RA,PC,PT,PF guard;
     class D,W,B,H,R,N stored;
     class Q,P,U,I0,M0,DQ,SP,AP,RP launcher;
     class EX pending;
@@ -112,7 +115,7 @@ Question state_revision onay dayanağına bağlanır; defer→resume eski approv
 
 ## Ana konuşma/öneri arayüzü
 
-[ConversationService](../../packages/capture/conversations.py) manuel gerçek kaynak için ayrı bounded receipt saklar; eski synthetic SourceEvent'e gerçek metin diye synthetic=True basmaz. [Responses adapter](../../packages/capture/responses_extractor.py) request schema ve response parser sağlar; actual network transport, account/grant/price/token cap aktivasyonu henüz yok. DefaultUI providerNone ile Waiting for model. Testte trusted injected fixture kullanılır; semantic kalite kabulü değildir. Candidate accept yalnız typed create/source attachment, current human scope/base revision ve atomic audit kullanır; Task Done veya impact cancellation üretmez. [Teslim ve sınırlar](../quality/conversation-review-runtime.md).
+[ConversationService](../../packages/capture/conversations.py) manuel gerçek kaynak için ayrı bounded receipt saklar; eski synthetic SourceEvent'e gerçek metin diye synthetic=True basmaz. [Responses adapter](../../packages/capture/responses_extractor.py) request schema ve response parser sağlar. [Sınırlı OpenAI pilot transport](../quality/openai-pilot-runtime.md) gerçek TLS bağlantı kodu, exact payload/source/context grant, provider token sayımı ve ortak kalıcı USD/HTTP admission sağlar; yalnız ayrı sentetik PILOT runner'a bağlandı. Gerçek çalışma anahtarı bekler. DefaultUI providerNone ile Waiting for model; normal/test kullanıcı verisi kendiliğinden API'ye gitmez. Testte injected HTTP double kullanılır; semantic kalite kabulü değildir. Candidate accept yalnız typed create/source attachment, current human scope/base revision ve atomic audit kullanır; Task Done veya impact cancellation üretmez. [Temel review sınırları](../quality/conversation-review-runtime.md).
 
 
 ## UI locale sunum sınırı

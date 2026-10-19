@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "286a72a51d579da9e2a654f666d8f00d20dde8fe",
+  "input_base_ref": "2e8cd7ec5199d5bac4ea605a3d1cab518cf7b2ea",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "40a1ea9fc34df39ca47fe00edb08d88a340e6bb077907a33f9144f9874b22295",
+      "svg_sha256": "cdbb6cb588c9ed934755158b7e9691e695ed558b0b29d362735cf6c7e06015c9",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "05bda3e4bfe53a541fa31332af7e2df3744e847f0602d5bd8adb3e1002609090",
+      "source_sha256": "bc0c88190591d0894cfd5a95b8609c0fa29788079813f26eab3cf426e3be1b58",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 3845.4140625 3902.85302734375",
+      "view_box": "0 0 4155.4140625 3950.85302734375",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "ef15ea5004a98ef6b4b7c51e4ad506b09e1ccdb5882123fd449dc9cbd5d05c21",
+      "svg_sha256": "1cf57cedde58cd2d11dc27efe46f9cb0278b07b527b6087904f1217ca837ae4d",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "5df5d63eabe83b38f9202fec5fbb8954a05a71812b4213abfd234269d69d36ed",
+      "svg_sha256": "61a54e5d764e3226a6e6eeddbe1a7e1410e4de8798e32d3e7cde6d558da3e2d3",
       "error": null
     },
     {
@@ -6147,6 +6147,25 @@
     }
   ],
   "all_sources_rendered": true,
-  "visual_review": "New diagnostics ER and unfinished-record projection diagrams inspected; all50sources rendered. Documentation-only explanation, not new runtime tracing.",
-  "scope_note": "Impact task scope review select/approve/apply UI wired; cancellation and automatic semantic proposals remain separate."
+  "visual_review": "Changed local-preview flow inspected after render; isolated synthetic pilot, fixed-host token counting and budget/freeze branch visible. All50sources rendered offline. Not a live-model or MVP acceptance result.",
+  "scope_note": "Bounded OpenAI PILOT CLI and exact-payload money/HTTP admission implemented; default UI remains unconfigured and native capture unverified.",
+  "superseded": [
+    {
+      "reason": "Before bounded isolated OpenAI pilot transport",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "05bda3e4bfe53a541fa31332af7e2df3744e847f0602d5bd8adb3e1002609090",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 3845.4140625 3902.85302734375",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "ef15ea5004a98ef6b4b7c51e4ad506b09e1ccdb5882123fd449dc9cbd5d05c21",
+          "error": null
+        }
+      ]
+    }
+  ]
 }
