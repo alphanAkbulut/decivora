@@ -112,3 +112,8 @@ Takip private receipt SHA256: `7b8334cceaa54dc0a49a1d6e7de4549f8cdb2d34f141f1cf3
 
 
 **Takip doğrulaması:**627runtime ve49repo/tracker testi geçti;21transport testi içinde4yeni regresyon var.56Mermaid ağ kapalı render edildi, değişen şekil görsel incelendi. Repo testlerinin ilk sandbox koşusunda3yerel port erişimi hatası vardı; aynı testler yerel port izniyle geçti, test kapsamı daraltılmadı. UI kodu değişmedi; bu tur yeni browser ürün akışı testi yapıldığı iddia edilmez.
+
+
+## 20 Ekim — çok turlu iz ve genişletilmiş senaryolar
+
+[Çok turlu diyalog raporu](dialogue-journeys.md)12case/78mesaj, kaynaklı lineage sorgusu, context sınırları ve gerçek model ölçüm planını ayırır. `DialogueTraceService` mevcut pilotun8kaynağında1record bağlantısı/2status önerisini salt okunur gösterdi; yeni API çağrısı0. Bu yeni sorgu, eski model bulgularını yeni semantik test diye sunmaz.

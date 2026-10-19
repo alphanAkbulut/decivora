@@ -1,0 +1,468 @@
+{
+  "format": "decivora-dialogue-journeys-1",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "J01",
+      "title": "Plan, start, unverified completion",
+      "messages": [
+        {
+          "id": "J01_m1",
+          "role": "human",
+          "text": "Atlas için yedek geri yükleme kontrolü ekleyelim; henüz başlamadım."
+        },
+        {
+          "id": "J01_m2",
+          "role": "assistant",
+          "text": "Bu kontrol bir yedekten örnek dosyanın geri geldiğini sınayacak."
+        },
+        {
+          "id": "J01_m3",
+          "role": "human",
+          "text": "Kapsamı böyle tutalım."
+        },
+        {
+          "id": "J01_m4",
+          "role": "assistant",
+          "text": "Yedek geri yükleme kontrolüne başladım."
+        },
+        {
+          "id": "J01_m5",
+          "role": "human",
+          "text": "Son durum nedir?"
+        },
+        {
+          "id": "J01_m6",
+          "role": "assistant",
+          "text": "Kontrolü bitirdim; testleri çalıştırmadım."
+        }
+      ]
+    },
+    {
+      "id": "J02",
+      "title": "Topic switch and return",
+      "messages": [
+        {
+          "id": "J02_m1",
+          "role": "human",
+          "text": "Yedek geri yükleme kontrolü açalım."
+        },
+        {
+          "id": "J02_m2",
+          "role": "assistant",
+          "text": "Önce kontrolün kapsamını netleştirelim."
+        },
+        {
+          "id": "J02_m3",
+          "role": "human",
+          "text": "Bu arada giriş sayfasının rengi mavi olsun mu?"
+        },
+        {
+          "id": "J02_m4",
+          "role": "assistant",
+          "text": "Renk seçimini erteleyelim."
+        },
+        {
+          "id": "J02_m5",
+          "role": "human",
+          "text": "Yedek kontrolüne dönelim; ona başladım."
+        },
+        {
+          "id": "J02_m6",
+          "role": "assistant",
+          "text": "Renk işi henüz başlamadı."
+        }
+      ]
+    },
+    {
+      "id": "J03",
+      "title": "Two similar tasks, ambiguous pronoun",
+      "messages": [
+        {
+          "id": "J03_m1",
+          "role": "human",
+          "text": "Yedek alma testi ve yedek geri yükleme testi ayrı iki iş olsun."
+        },
+        {
+          "id": "J03_m2",
+          "role": "assistant",
+          "text": "İki farklı kabul kapsamı var."
+        },
+        {
+          "id": "J03_m3",
+          "role": "human",
+          "text": "Ona başladım."
+        },
+        {
+          "id": "J03_m4",
+          "role": "assistant",
+          "text": "Hangisine: alma mı geri yükleme mi?"
+        },
+        {
+          "id": "J03_m5",
+          "role": "human",
+          "text": "Geri yükleme testine başladım."
+        },
+        {
+          "id": "J03_m6",
+          "role": "assistant",
+          "text": "Yedek alma testi henüz başlamadı."
+        }
+      ]
+    },
+    {
+      "id": "J04",
+      "title": "Delayed answer with two open questions",
+      "messages": [
+        {
+          "id": "J04_m1",
+          "role": "human",
+          "text": "Depolama için Q_STORE: A dosya, B SQLite."
+        },
+        {
+          "id": "J04_m2",
+          "role": "assistant",
+          "text": "Arayüz için Q_UI: A pano, B liste."
+        },
+        {
+          "id": "J04_m3",
+          "role": "human",
+          "text": "Önce test kapsamını konuşalım."
+        },
+        {
+          "id": "J04_m4",
+          "role": "assistant",
+          "text": "Başka bir konuya geçtik."
+        },
+        {
+          "id": "J04_m5",
+          "role": "human",
+          "text": "Önceki Q_STORE sorusunun B seçeneğiyle, SQLite ile devam."
+        },
+        {
+          "id": "J04_m6",
+          "role": "assistant",
+          "text": "Arayüz seçimini henüz yapmadım."
+        }
+      ]
+    },
+    {
+      "id": "J05",
+      "title": "Decision replacement and retained history",
+      "messages": [
+        {
+          "id": "J05_m1",
+          "role": "human",
+          "text": "Kararımız Markdown ana veri kaynağı."
+        },
+        {
+          "id": "J05_m2",
+          "role": "assistant",
+          "text": "Markdown senkronizasyon görevini bunun için açtık."
+        },
+        {
+          "id": "J05_m3",
+          "role": "human",
+          "text": "Yeni karar: SQLite ana veri kaynağı olacak."
+        },
+        {
+          "id": "J05_m4",
+          "role": "assistant",
+          "text": "Markdown senkronu başka bir gereksinimi de karşılıyor olabilir."
+        },
+        {
+          "id": "J05_m5",
+          "role": "human",
+          "text": "Eski görevin gerekçelerini kontrol edelim."
+        },
+        {
+          "id": "J05_m6",
+          "role": "assistant",
+          "text": "İptali henüz onaylamadım."
+        }
+      ]
+    },
+    {
+      "id": "J06",
+      "title": "Independent simultaneous task progression",
+      "messages": [
+        {
+          "id": "J06_m1",
+          "role": "human",
+          "text": "A işi yedek alma, B işi geri yükleme olsun."
+        },
+        {
+          "id": "J06_m2",
+          "role": "assistant",
+          "text": "A işine başladım."
+        },
+        {
+          "id": "J06_m3",
+          "role": "human",
+          "text": "B henüz başlamadı."
+        },
+        {
+          "id": "J06_m4",
+          "role": "assistant",
+          "text": "A kodu bitti ama kabul testleri yok."
+        },
+        {
+          "id": "J06_m5",
+          "role": "human",
+          "text": "B işine şimdi başladım."
+        },
+        {
+          "id": "J06_m6",
+          "role": "assistant",
+          "text": "A kabulü hâlâ bekliyor."
+        }
+      ]
+    },
+    {
+      "id": "J07",
+      "title": "Negation, quotation and hypothetical completion",
+      "messages": [
+        {
+          "id": "J07_m1",
+          "role": "human",
+          "text": "Kontrol görevini oluşturalım."
+        },
+        {
+          "id": "J07_m2",
+          "role": "assistant",
+          "text": "Örnek raporda \"iş bitti\" yazıyor."
+        },
+        {
+          "id": "J07_m3",
+          "role": "human",
+          "text": "Bizim görev bitmedi."
+        },
+        {
+          "id": "J07_m4",
+          "role": "assistant",
+          "text": "Testler geçerse bitirdim diyebilirim."
+        },
+        {
+          "id": "J07_m5",
+          "role": "human",
+          "text": "Henüz başlamadım."
+        },
+        {
+          "id": "J07_m6",
+          "role": "assistant",
+          "text": "Gelecek hafta başlayacağım."
+        }
+      ]
+    },
+    {
+      "id": "J08",
+      "title": "Later failure contradicts earlier claim",
+      "messages": [
+        {
+          "id": "J08_m1",
+          "role": "human",
+          "text": "Geri yükleme işine başladım."
+        },
+        {
+          "id": "J08_m2",
+          "role": "assistant",
+          "text": "Kodu bitirdim; test bekliyor."
+        },
+        {
+          "id": "J08_m3",
+          "role": "human",
+          "text": "Rollback testi başarısız oldu."
+        },
+        {
+          "id": "J08_m4",
+          "role": "assistant",
+          "text": "Diğer kriterler de tekrar kontrol edilecek."
+        },
+        {
+          "id": "J08_m5",
+          "role": "human",
+          "text": "Düzeltmeye yeniden başladım."
+        },
+        {
+          "id": "J08_m6",
+          "role": "assistant",
+          "text": "Eski bitirme beyanını geçmişte tutalım."
+        }
+      ]
+    },
+    {
+      "id": "J09",
+      "title": "Subagent execution versus task acceptance",
+      "messages": [
+        {
+          "id": "J09_m1",
+          "role": "human",
+          "text": "Ana görev geri yükleme; alt agent test kodunu yazacak."
+        },
+        {
+          "id": "J09_m2",
+          "role": "assistant",
+          "text": "Alt agent kendi çalışmasını tamamladı."
+        },
+        {
+          "id": "J09_m3",
+          "role": "human",
+          "text": "Ana görevin entegrasyon testi çalışmadı."
+        },
+        {
+          "id": "J09_m4",
+          "role": "assistant",
+          "text": "İncelemeye gönderebiliriz."
+        },
+        {
+          "id": "J09_m5",
+          "role": "human",
+          "text": "Henüz kullanıcı kabulü yok."
+        },
+        {
+          "id": "J09_m6",
+          "role": "assistant",
+          "text": "Ana görevi tamamlandı sayma."
+        }
+      ]
+    },
+    {
+      "id": "J10",
+      "title": "Long gap beyond context window",
+      "messages": [
+        {
+          "id": "J10_m1",
+          "role": "human",
+          "text": "Geri yükleme kontrolü oluşturulsun."
+        },
+        {
+          "id": "J10_m2",
+          "role": "assistant",
+          "text": "Kapsamını onayladık."
+        },
+        {
+          "id": "J10_m3",
+          "role": "human",
+          "text": "Ara konu 0: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m4",
+          "role": "assistant",
+          "text": "Ara konu 1: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m5",
+          "role": "human",
+          "text": "Ara konu 2: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m6",
+          "role": "assistant",
+          "text": "Ara konu 3: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m7",
+          "role": "human",
+          "text": "Ara konu 4: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m8",
+          "role": "assistant",
+          "text": "Ara konu 5: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m9",
+          "role": "human",
+          "text": "Ara konu 6: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m10",
+          "role": "assistant",
+          "text": "Ara konu 7: arayüz ayrıntısını sonra görüşelim."
+        },
+        {
+          "id": "J10_m11",
+          "role": "human",
+          "text": "Önceki geri yükleme kontrolüne şimdi başladım."
+        },
+        {
+          "id": "J10_m12",
+          "role": "assistant",
+          "text": "Kabul testleri henüz çalışmadı."
+        }
+      ]
+    },
+    {
+      "id": "J11",
+      "title": "Late arrival and stale review",
+      "messages": [
+        {
+          "id": "J11_m1",
+          "role": "human",
+          "text": "Göreve başladım."
+        },
+        {
+          "id": "J11_m2",
+          "role": "assistant",
+          "text": "İncelemeye gönderdim."
+        },
+        {
+          "id": "J11_m3",
+          "role": "human",
+          "text": "Daha eski mesaj geç teslim edildi: göreve başladım."
+        },
+        {
+          "id": "J11_m4",
+          "role": "assistant",
+          "text": "Bu mesaj önceki tura ait."
+        },
+        {
+          "id": "J11_m5",
+          "role": "human",
+          "text": "Güncel durumu geri alma."
+        },
+        {
+          "id": "J11_m6",
+          "role": "assistant",
+          "text": "Yeni bir inceleme gerekiyor."
+        }
+      ]
+    },
+    {
+      "id": "J12",
+      "title": "Secrets and scope isolation",
+      "messages": [
+        {
+          "id": "J12_m1",
+          "role": "human",
+          "text": "Atlas projesindeki kontrol için password=synthetic-private-value kullanılacak."
+        },
+        {
+          "id": "J12_m2",
+          "role": "assistant",
+          "text": "Ayrı Boreal projesinde de aynı isimde bir kontrol var."
+        },
+        {
+          "id": "J12_m3",
+          "role": "human",
+          "text": "Atlas kontrolüne başladım."
+        },
+        {
+          "id": "J12_m4",
+          "role": "assistant",
+          "text": "Boreal için bir işlem yapmadım."
+        },
+        {
+          "id": "J12_m5",
+          "role": "human",
+          "text": "Yalnız Atlas kaynağına izin verdim."
+        },
+        {
+          "id": "J12_m6",
+          "role": "assistant",
+          "text": "Anahtarları hata loguna yazma."
+        }
+      ]
+    }
+  ]
+}

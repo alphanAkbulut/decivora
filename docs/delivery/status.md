@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**20Ekim çok turlu diyalog:**12sentetik case/78mesaj ve ayrı draft oracle hazırlandı. Salt okunur `DialogueTraceService` kaynak→aday→record→durum review→canonical stage izini birleştiriyor; mevcut8kaynaklı pilotta çalıştı.5yeni yerel integration testi konu geçişi, aynı task ilerlemesi, test edilmemiş bitirme, uzun/Unicode context, profil izolasyonu ve restart izini kapsıyor. Scripted output semantik doğruluk değildir; yeni API çağrısı0. [Kapsam ve ölçüm planı](../quality/dialogue-journeys.md).
+
 **19Ekim Codex takip aksiyonları:** Aynı izinli test thread'inde native capture2human+6assistant kaynağı doğruladı; ikinci geçiş8→8, duplicate yok. Count/generation/usage hata aşaması ve güvenli review packet kodlandı. Kullanıcı unknown rezerv2250microusd korunarak yalnız yeni izinli işlere devamı onayladı; root freeze kaldırıldı, actual=null ve eski tekrar engeli korundu. Yeni API çağrısı0. [Plan, kanıt ve risk](../quality/codex-e2e-001.md#19-ekim--aksiyon-planı-ve-uygulama-sonucu).
 
 **19Ekim Codex ana zincir gerçek deneyi:** Yeni Atlas Demo sohbetinden4assistant kaynak; gerçek model ilk3kaynakta Task→mevcut Task In Progress→Done claim üretti. Test operatörü ayrı review/handoff yaptı; mevcut Task In Review, testler not_run. Dördüncü model çağrısı unknown/frozen; ilk geçişte native kullanıcı mesajı bu tool-created yüzeyde görünmedi; takip sonucu yukarıdadır. Yeni selected-thread capture→grant-filtered queue ve güvenli workflow rehberliği kodlandı. [Sonuç ve açık kapılar](../quality/codex-e2e-001.md). Ana7/21/2korunur; MVP değil.

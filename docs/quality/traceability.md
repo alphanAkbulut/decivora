@@ -114,3 +114,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 **19Ekim8TODO kod teslimleri:** CAP-02/05,PRJ-01 → T16/T16b Claude hook bridge; KNO-02/GRF-02 → T26 read-only orphan audit; VER-01 → T27 exact-commit content observer; CST-02/ROU-02 → T28 paired cost; EVAL-01 → T24q/T24c14AC evidence inventory; OSS-01 → T29 local ZIP CLI packaging. [Kod/kalan kapılar](todo-development-review.md), `tests/runtime/test_todo_delivery.py`. Gerçek host/model/semantic/public/ekip kabulü değildir. T25/T30 sonraki karar/keşif kapısıyla TODO kalır.
 
 **Codex ana zincir gerçek deneyi:** CAP-01/02/05,VER-01,APR-01,UX-01 / T09,T14,T17,T19,T24q → [4native assistant kaynak ve gerçek model deneyi](codex-e2e-001.md). Selected-thread queue isolation, missing-human visibility, reported Done vs review handoff, safe failure code regresyonları `tests/runtime/test_codex_project_pipeline.py`. Tool-created kullanıcı mesajı capture ve4.request usage unknown açık; tam E2E/MVP kabulü değil.
+
+
+**20Ekim çok turlu diyalog takibi:** CAP-01/02/05,VER-01,AUD-01 → T09/T14/T17 → [diyalog yolculukları](dialogue-journeys.md):12case/78mesaj, ayrı AI-draft oracle, salt okunur source→task→status lineage ve5yerel çok turlu guard kontrolü. Native pilot mevcut kayıt trace'i çalıştırıldı; yeni12case gerçek model kalite kabulü yapılmadı.

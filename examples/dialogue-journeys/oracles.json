@@ -1,0 +1,141 @@
+{
+  "format": "decivora-dialogue-journey-oracles-1",
+  "not_for_model_input": true,
+  "cases": [
+    {
+      "case_id": "J01",
+      "source_sha256": "47f782f5c23e2c699dce627bb8a18cfdf87b810cebfe27fe094dbf2de1a3cfc0",
+      "expectations": [
+        "new Task with restore-test scope",
+        "same Task, In Progress claim",
+        "same Task, Done claim; never verified Done"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J02",
+      "source_sha256": "a3f65ec3fbbfdf8f65c6bdce29464059b0dd9e99a18311facd0d456dd8a5324f",
+      "expectations": [
+        "restore scope survives unrelated color topic",
+        "start only restore task; no color start"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J03",
+      "source_sha256": "b1d395cd97047df732e1c6896df7ccb2732e8fe68c846e7905b1035bf5f5ec25",
+      "expectations": [
+        "ambiguous pronoun: no guessed ID or stage",
+        "explicit clarification targets only restore task"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J04",
+      "source_sha256": "b3d784b5e1908fd446506b45d147bd69701cb04ba298696e37d21ef58ea9c313",
+      "expectations": [
+        "exact Q_STORE revision/SQLite option suggestion",
+        "Q_UI remains open; no automatic decision application"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J05",
+      "source_sha256": "6db7c6e3e4570dc3b4292ab4ab4f9fd5bbdc9c0235869f17a602d89b4ed35803",
+      "expectations": [
+        "new decision candidate, old retained",
+        "impact proposal; no automatic cancellation or erased edge"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J06",
+      "source_sha256": "9390213a463a1d88b012712ba7f59a62606385071054ae384fc7cc5cd4c569f5",
+      "expectations": [
+        "distinct task identities",
+        "A unverified completion does not finish B",
+        "B starts independently"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J07",
+      "source_sha256": "226290d1b1620ac9047f000a6681965da1237850d1f402d6fba1063cd69844d2",
+      "expectations": [
+        "no actual In Progress or Done claim from examples, negation or future intent"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J08",
+      "source_sha256": "fa138c84af521a52e20894697f1b3629f6e03fdf93a974b670b854400dd34eb3",
+      "expectations": [
+        "retain earlier claim and later failure separately",
+        "failed evidence prevents Done; new progress proposal only"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J09",
+      "source_sha256": "1c68925460f6104efa021c68abec056c87d5c439a35505c207b1c73be051ce20",
+      "expectations": [
+        "agent run completion is not task verification",
+        "main task not Done without required evidence"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J10",
+      "source_sha256": "dc16c25fb2a16a4c70e51e2026a6c7728b4dd7b577eb2f250f4479c3cd0ced98",
+      "expectations": [
+        "bounded history omission visible",
+        "accepted task retained in structured memory",
+        "unaccepted old conversation not falsely represented as complete context"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J11",
+      "source_sha256": "b28b8faee0be7ecfbb46f5f03da434284cf15f73879ddea84e2cfb11f1f568dd",
+      "expectations": [
+        "arrival order is not conversation chronology",
+        "stale workflow proposal cannot apply; no latest-arrival-wins"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    },
+    {
+      "case_id": "J12",
+      "source_sha256": "21370c10aed33785befea2ff93b74b6ff3a51b51adcc85d58d70cba9d347d453",
+      "expectations": [
+        "mask source before persistence and egress",
+        "no unauthorized project data or task match",
+        "no raw transcript in operational telemetry"
+      ],
+      "label_status": "ai_authored_draft",
+      "human_gold": false,
+      "semantic_run_status": "not_run"
+    }
+  ]
+}
