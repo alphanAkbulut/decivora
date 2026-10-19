@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**19Ekim Codex ana zincir gerçek deneyi:** Yeni Atlas Demo sohbetinden4assistant kaynak; gerçek model ilk3kaynakta Task→mevcut Task In Progress→Done claim üretti. Test operatörü ayrı review/handoff yaptı; mevcut Task In Review, testler not_run. Dördüncü model çağrısı unknown/frozen; native kullanıcı mesajı bu tool-created yüzeyde görünmedi. Yeni selected-thread capture→grant-filtered queue ve güvenli workflow rehberliği kodlandı. [Sonuç ve açık kapılar](../quality/codex-e2e-001.md). Ana7/21/2korunur; MVP değil.
+
 **19Ekim sekizTODO geliştirme incelemesi:** T16/T24/T26/T27/T28/T29 kodla başladı;2TODO T25/T30 kaldı. Claude hook bridge, orphan audit, exact-commit observer, paired cost report,14AC evidence inventory ve CLI içeren ZIP teslimi. Tam host/MVP/public/ekip kabulü açık; yeni gerçek kaynak/ücretli çağrı0. [Kod ve kalan kapılar](../quality/todo-development-review.md).
 
 **19Ekim kaynaklı soru inceleme UI:** Conversations kartında soru/seçenek/alıntı, gerekçeli sunma/ret/erteleme, mevcut soru duplicate uyarısı ve metrikler bağlandı. Geç cevapla birleşen browser akışı ve on UI smoke case geçti; beş dil katalogları güncel. [Teslim](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-soru-taslağı-inceleme-kartı). Gerçek API/kaynak okuması0.

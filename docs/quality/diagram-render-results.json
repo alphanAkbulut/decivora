@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "ce9d64fb817c97b37fc8e16b7d96f9793376fd85",
+  "input_base_ref": "0914f9d59e0ce06ee538131a132ad5254de629b3",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "45c5703dc3d3f342af18f188fd9b792f73870cb19efa349553db929d1d8ab85d",
+      "svg_sha256": "466e524d26fa70b5f43dc30176c96ecaf810fa0ea002096880886ed2e2f3c8a4",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "a2729e2639619e92e5ebfa063ff92dfafb7fb8c1f98b2f64b5770d94de1b1c8a",
+      "svg_sha256": "579a4257ed7ede3884881ecdf6ac1b5297e29e8166fd796397d6eca5c48bc096",
       "error": null
     },
     {
@@ -561,6 +561,18 @@
       "error": null
     },
     {
+      "path": "docs/quality/codex-e2e-001.md",
+      "block": 1,
+      "source_sha256": "efd6073a43cc60fe3d8060c2f80bdc7dcf3a1d2ef1d35e8f880adbedf27503fa",
+      "status": "rendered",
+      "title": "Yeni Codex sohbetinde gözlenen proje ilerleme zinciri",
+      "description_present": true,
+      "view_box": "0 0 1505.171875 1294",
+      "artifact": "docs--quality--codex-e2e-001--1.svg",
+      "svg_sha256": "ad71e25de8d158f487fbb123fa6f426007e951b4e4c8117578a0f48ccb2116a4",
+      "error": null
+    },
+    {
       "path": "docs/quality/dialogue-status-runtime.md",
       "block": 1,
       "source_sha256": "8a9b7f3d13d9136b769330b1c275b509fe87c342e0f9ddf0fbfe8ef155a8fc89",
@@ -569,7 +581,7 @@
       "description_present": true,
       "view_box": "0 0 930.05859375 1845.46875",
       "artifact": "docs--quality--dialogue-status-runtime--1.svg",
-      "svg_sha256": "c41196cf3b0235def3e42780d3e12f425d04302dae6576c24fb41316384676b8",
+      "svg_sha256": "d55586a8d3f5e0509f8c865bd4559a6e9e07646896a3541868a7fc52779da879",
       "error": null
     },
     {
@@ -581,7 +593,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "816459e051ef063e4dfd9c5867b31723b1f35402efb9927773ce544e978bed12",
+      "svg_sha256": "eb29c0766efed2eda1cee1c8bdf7e683cde39e7ae90ab6fbfe3de3f6c8aef7c3",
       "error": null
     },
     {
@@ -593,7 +605,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "87612aad75a1c358501a15529849fc99cb587eb26493a0615d5f168500f297e7",
+      "svg_sha256": "3f5f6b8b9fbad11c0075828f043ac0206dbafe5c1bfe5a2bb8e15712a77163ea",
       "error": null
     },
     {
@@ -605,7 +617,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "103ec341b331c9514dd809d6748b5cf4ff49c1a7f37ded52e70dab1b10950546",
+      "svg_sha256": "52546ec8531994751b4d5c63d99736b230e69c079d13db2f3ae1b3c93ef7b5d8",
       "error": null
     },
     {
@@ -617,7 +629,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "2430feff96787064419a4523679e88e0ff064580dac7a6584e5401d6fd25ef27",
+      "svg_sha256": "ea8ed1bc24fdf5ad536e7a9a18c65e570983ab7b21860cd71584e69b8035c6c0",
       "error": null
     },
     {
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "be48921828357c6fa527711b2ecd49d5f4bd8255611e29360c8522246f27b13f",
+      "svg_sha256": "3a9693446ef8da1cc08712a78b2c78cc731d54a857337a8832d9f28b6b2d9b80",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 1148.84375 1838.421875",
       "artifact": "docs--quality--todo-development-review--1.svg",
-      "svg_sha256": "41f97133dd9a0d0e2ed5a37ea446ff373dc7a0c48fe05dfad36ba795cc023da7",
+      "svg_sha256": "a4bb796ba20c10314fc014cc43de9ba72d7041da91c93c69ae25cf1a60b6b859",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "d74e8670f7fc4138e393757a99705017af85c9d88f17a910d0a94dbbd514d070",
+      "svg_sha256": "358d49fb59f93cda4d41680cbd9dce52a92ab5c8c916c48fa947ddefb146689d",
       "error": null
     },
     {
@@ -665,7 +677,7 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "da579e5d9151ee6d3f751ee347fba5a50747b0ff617db804579f323028621196",
+      "svg_sha256": "9fa47645a97e62692f708577c978ad8c6f0abd87158675571523e94636babe38",
       "error": null
     }
   ],
@@ -6437,5 +6449,6 @@
     }
   ],
   "question_backend_render_note": "All 54 current sources rendered offline. New question flow visually inspected. No model or new UI card tested.",
-  "todo_delivery_render_note": "55 current Mermaid sources rendered offline; new Claude hook flow visually inspected. This is not native host acceptance."
+  "todo_delivery_render_note": "55 current Mermaid sources rendered offline; new Claude hook flow visually inspected. This is not native host acceptance.",
+  "codex_e2e_render_note": "56 current Mermaid sources rendered offline. New diagram reflects actual partial success and unknown/frozen branch, not full MVP acceptance."
 }

@@ -128,6 +128,7 @@ function renderDialogueReview(box,item){
   card.append(el('h3',t('Task status proposal')+' · '+(task?.body.title||proposal.task_id)),
    el('p',proposal.from_stage+' → '+proposal.stage,'badge'),el('p',proposal.quote),el('p',proposal.state));
   if(proposal.stage==='Done')card.append(el('p',t('A completion statement is a claim. Current acceptance evidence and a separate scope review are required for Done.'),'notice'));
+  if(proposal.stage==='Done'&&proposal.workflow_guidance?.suggested_review_stage&&proposal.workflow_guidance.suggested_review_stage!=='Done'){card.append(el('p',t('Suggested review step: {stage}',{stage:proposal.workflow_guidance.suggested_review_stage}),'notice'));if(task){const handoff=el('button',t('Review task workflow'),'secondary');handoff.dataset.reviewTaskWorkflow=task.id;handoff.onclick=()=>show(task.id);card.append(handoff);}}
   if(proposal.stale&& !['Applied','Rejected'].includes(proposal.state))card.append(el('p',t('Task context changed. Prepare a fresh request; the old proposal stays in history.'),'notice'));
   if(!['Applied','Rejected'].includes(proposal.state)){
    const reason=el('input');reason.id='dialogue_reason_'+proposal.id;reason.setAttribute('aria-label',t('Review reason'));reason.placeholder=t('Review reason');reason.value=drafts[proposal.id]||'';reason.oninput=()=>drafts[proposal.id]=reason.value;

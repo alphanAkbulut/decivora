@@ -1,0 +1,120 @@
+{
+  "format": "decivora-native-codex-e2e-1",
+  "date": "2026-10-19",
+  "source_scope": "new_synthetic_probe_thread_only",
+  "thread_id": "01a15585-128c-76f3-9092-d7835f81bd3e",
+  "host_version": "0.162.0-alpha.17.2",
+  "public_sources": 4,
+  "observed_roles": [
+    "assistant"
+  ],
+  "human_messages_observed": false,
+  "stages": [
+    {
+      "name": "initial",
+      "analysis_status": "Ready for review",
+      "candidate_types": [
+        "Decision",
+        "Task"
+      ],
+      "proposed_stages": [],
+      "usage_status": "settled",
+      "provider_failure_code": null
+    },
+    {
+      "name": "started",
+      "analysis_status": "Ready for review",
+      "candidate_types": [],
+      "proposed_stages": [
+        "In Progress"
+      ],
+      "usage_status": "settled",
+      "provider_failure_code": null
+    },
+    {
+      "name": "completed_claim",
+      "analysis_status": "Ready for review",
+      "candidate_types": [],
+      "proposed_stages": [
+        "Done"
+      ],
+      "usage_status": "settled",
+      "provider_failure_code": null
+    },
+    {
+      "name": "review_handoff",
+      "analysis_status": "Analysis failed",
+      "candidate_types": [],
+      "proposed_stages": [],
+      "usage_status": "unknown",
+      "provider_failure_code": "not_recorded_before_fix"
+    }
+  ],
+  "task_count": 1,
+  "current_task_stage": "In Review",
+  "verification_passed": false,
+  "done_apply_denied": "invalid_transition",
+  "completion_claim_guidance": {
+    "reported_stage": "Done",
+    "current_stage": "In Progress",
+    "suggested_review_stage": "In Review",
+    "verification_passed": false,
+    "finish_blocked": false,
+    "automatic_transition": false,
+    "scope_review_still_required": true
+  },
+  "test_operator_review": true,
+  "human_product_acceptance": false,
+  "mvp_accepted": false,
+  "full_dialogue_capture_verified": false,
+  "automatic_retries": 0,
+  "automatic_model_upgrade": false,
+  "known_estimated_microusd": 1135,
+  "unknown_reserved_microusd": 2250,
+  "root": {
+    "ceiling_microusd": 3000000,
+    "dispatches": 30,
+    "http_attempts": 60,
+    "known_estimated_microusd": 53690,
+    "held_unknown_microusd": 2250,
+    "frozen": true
+  },
+  "remaining": [
+    "Native userMessage capture for a normal user-entered test message",
+    "Fourth model request outcome and actual usage unknown; no retry",
+    "Continuous source/model onboarding and production human review not accepted"
+  ],
+  "guided_handoff_test_operator_applied": true,
+  "model_dispatch_admissions": 4,
+  "generation_responses_received": 3,
+  "http_budget_attempts_accounted": 8,
+  "actual_http_attempts_for_failed_dispatch": null,
+  "invoice_verified": false,
+  "code_sha256": {
+    "packages/capture/codex/project_pipeline.py": "cbb2634acb71e4c1318c4aa8854634b781ec94325eaeb2299e6e5be0a52d782f",
+    "packages/capture/processing_queue.py": "4790460236b1373b4dd6d989a0512505eeaebbe4a88636fdf81963ee533d62f6",
+    "packages/capture/dialogue_review.py": "4f3bebb4c18846f24c1ff9abbe81cbf20e814331872ab39d8aa88cee849ce6b1",
+    "packages/capture/conversations.py": "f1076c565fcfa2c2cfff144b5486f6dde983e83be3a2e96879affb0af86607f6",
+    "packages/operations/local.py": "2e5660d02a0e3ede1e3e940a88c4eec6dd28aa6a5c69513a70348f9f7e1896c6",
+    "apps/local_ui/app.js": "e263d79bf7c8aa8a5ce7103db1a8022bfe260648324586f6b0a30d3dad07875f",
+    "apps/local_ui/locales.js": "4652705ea96929ae63683c831fc7661ef05530ade28b2bd49b7097c118929f96",
+    "tests/runtime/test_codex_project_pipeline.py": "fab4c27d6f4beca631d5ddc48d8b217ab730024c007fd0c9450268fd4df1e26f",
+    "tests/ui-dialogue.cjs": "8219556e892f1e0d312db28cb9f7b0378322d95359cd90493d9cd49b57de3b2e"
+  },
+  "local_checks": {
+    "runtime_tests": 623,
+    "repository_tests": 49,
+    "mermaid_renders": 56,
+    "synthetic_browser": {
+      "synthetic_model_output": true,
+      "conversation_creates_task_after_review": true,
+      "second_dialogue_updates_existing_task_after_review": true,
+      "prior_decision_and_question_context_visible": true,
+      "reload_and_source_link": true,
+      "false_done_rejected": true,
+      "mobile_no_overflow": true,
+      "model_dispatches": 0,
+      "page_errors": 0
+    }
+  }
+}

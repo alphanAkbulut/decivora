@@ -123,10 +123,10 @@ class ConversationService:
             self.core._reserve(scope,project,grant['root_run'],reservation_key,grant['reserved_tokens'])
             self._put(scope,project,'conversation_analysis_started',dict(source=source_id,sha256=source['sha256'],provider=extractor.provider,grant=grant['id'],root_run=grant['root_run'],reservation_key=reservation_key))
         # No network/model within a DB transaction; accepted receipt survives timeout/crash.
-        raw_text=None
+        raw_text=None;failure_stage='provider_call'
         try:
             ensure_safe(source)
-            raw=extractor(source);ensure_safe(raw);raw_text=canonical(raw)
+            raw=extractor(source);failure_stage='response_validation';ensure_safe(raw);raw_text=canonical(raw)
             if len(raw_text.encode())>16384:raise ContractError('output_limit','Model output exceeds bounded local review size.')
             if getattr(extractor,'dialogue_review',False):
                 from packages.capture.dialogue_review import DialogueReviewService
@@ -135,8 +135,10 @@ class ConversationService:
                     result=DialogueReviewService(self.core).validate_response(scope,project,source,raw)
             else:result=anchored(source,raw)
             finished=dict(source=source_id,status='Ready for review',**result,model_calls=1,provider=extractor.provider)
-        except Exception:
-            finished=dict(source=source_id,status='Analysis failed',candidates=[],coverage='unknown',model_calls=1,provider=extractor.provider,reason='Provider response failed the output/source contract; usage may be unknown.')
+        except Exception as error:
+            from packages.operations.local import safe_code
+            code=safe_code(error.code if isinstance(error,ContractError) else 'provider_outcome_unknown')
+            finished=dict(source=source_id,status='Analysis failed',candidates=[],coverage='unknown',model_calls=1,provider=extractor.provider,failure_code=code,failure_stage=failure_stage,reason='Provider response failed the output/source contract; usage may be unknown.')
         if raw_text is not None:finished.update(raw_output=raw_text if len(raw_text.encode())<=16384 else None,raw_sha256=digest(raw_text))
         finished['usage']=getattr(extractor,'usage',None)
         usage=finished['usage'];actual=usage.get('total_tokens') if type(usage) is dict else None

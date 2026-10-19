@@ -39,6 +39,7 @@
 | [docs/architecture/logging-diagrams-and-schema.md](../architecture/logging-diagrams-and-schema.md) | 3 |
 | [docs/quality/dialogue-status-runtime.md](dialogue-status-runtime.md) | 1 |
 | [docs/quality/todo-development-review.md](todo-development-review.md) | 1 |
+| [docs/quality/codex-e2e-001.md](codex-e2e-001.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -248,3 +249,7 @@ Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç
 ## 19Ekim — Claude hook ve8TODO geliştirme incelemesi
 
 [Yeni akış](todo-development-review.md): seçili session/cwd/sürüm ve güncel insan kaynak izni, eksik Stop metni, maskeleme, kimlik/retry ve atomik source/queue/receipt ayrı çizildi. Model/data/bütçe, insan review ve AC sonraki ayrı kapılardır. Yeni şeklin render/hash kaydı JSON raporunda; kurulu Claude host doğrulaması değildir.
+
+## 19Ekim — gerçek Codex sohbeti ana zincir deneyi
+
+[Gerçek gözlenen akış](codex-e2e-001.md) assistant-only capture, normal userMessage açığı, exact-grant kuyruğu, üç model sonucu, ayrı operatör handoff ve unknown/frozen dördüncü denemeyi ayırır. Otomatik insan onayı veya tam E2E/MVP başarısı çizilmez.

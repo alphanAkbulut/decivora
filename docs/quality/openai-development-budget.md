@@ -57,3 +57,7 @@ Son karşılaştırmada eski/yeni source ID ve context hashleri aynı, payload h
 Tam anlam kalitesi, role/source ayrımı, onaylı gerçek Codex adapter'ı ve ana UI aktivasyonu mevcut görevlerde açık. Bu kapsam bütçe hazırlığını yeniden insan blocker'ı yapmaz; mevcut root sınırları içindeki sentetik işlerde tekrar genel harcama onayı gerekmez. Gerçek kaynak veya kapsam değişikliği ayrı izin ister.
 
 **Yerel doğrulama:**475runtime ve48repo testi geçti;50Mermaid kaynağı offline render edildi. UI kodu değiştirilmedi; browser testleri bu tur yeniden koşulmuş sayılmaz. Test ve rapor üretimi ek API çağrısı yapmadı. İlk ücretli grupla birlikte bütün private receipt kayıtları korunur; raw içerik veya API key GitHub'a gönderilmez.
+
+## 19Ekim — native sentetik Codex sohbet deneyi
+
+[Codex E2E raporu](codex-e2e-001.md): mevcut geçerli3USD ortak root altında4model dispatch kabulü/8HTTP bütçe payı daha sayıldı;3settled/1unknown. Belirsiz işte gerçek HTTP/generation sayısı kesinleşmedi. Root30dispatch/60HTTP bütçe sayımı, known tahmin$0.053690 +held unknown$0.002250. Dördüncü request sonrası root frozen; yeni retry/çağrı veya policy reset yok. Bu kullanım yeni açılmış sentetik sohbetten assistant kaynaklarıdır, gerçek kullanıcı geçmişi paylaşımı değildir. Kesin fatura ve unknown kullanım uzlaştırması açık.

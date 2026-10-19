@@ -4,6 +4,8 @@
 
 ## Nerede olduğumuz
 
+**Son Codex ana zincir deneyi:** [Yeni sentetik sohbet pilotu](../quality/codex-e2e-001.md)3gerçek model sonucunda Task/başlama/Done beyanını aynı işe bağladı; görev ayrı test operatörü handoff’u ile In Review, AC’ler not_run. Dördüncü dispatch unknown/frozen. Bu tool-created sohbette normal userMessage görünürlüğü doğrulanmadı; tam E2E/MVP başarısı değildir.
+
 Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çekirdeği mevcut. Konuşma import'u, kaynaklı aday incelemesi, görev/durum onayı ve etki kartından task scope select→approve→apply kodlandı. **Otomatik konuşma yakalama ve gerçek anlam çıkarımıyla bütünleşmiş MVP henüz tamamlanmadı. Release adayı aşamasında değiliz.**
 
 | Kanonik ana iş grubu | Kapalı | Devam eden | Başlanacak | Açık toplam |

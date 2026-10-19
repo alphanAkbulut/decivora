@@ -198,7 +198,15 @@ class DialogueReviewService:
                 task=self.workflow._task(project,proposal['task_id'])
                 stale=task['version']!=proposal['task_version'] or self._task_digest(project,proposal['task_id'],current)!=proposal['workflow_sha256']
             except ContractError:stale=True
-            result.append(dict(proposal,state=state,stale=stale,history=reviews))
+            guidance=None
+            if not stale:
+                from packages.domain.task_workflow import TRANSITIONS
+                view=current;current_stage=view['stage'];suggested=proposal['stage']
+                if suggested=='Done':
+                    suggested={'In Progress':'In Review','In Review':'Awaiting Verification'}.get(current_stage,'Done' if current_stage=='Awaiting Verification' and view['verification']['passed'] and not view['assessment']['finish_blocked'] else None)
+                elif suggested not in TRANSITIONS.get(current_stage,set()):suggested=None
+                guidance=dict(reported_stage=proposal['stage'],current_stage=current_stage,suggested_review_stage=suggested,verification_passed=view['verification']['passed'],finish_blocked=view['assessment']['finish_blocked'],automatic_transition=False,scope_review_still_required=proposal['stage']=='Done')
+            result.append(dict(proposal,state=state,stale=stale,history=reviews,workflow_guidance=guidance))
         return result
 
     def review_status(self,scope,project,*,source_id,proposal_id,decision,key,reason,scope_reviewed=False):

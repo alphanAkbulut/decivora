@@ -352,6 +352,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Risk durumu:** Source kapasitesi1000ve sayfalı UI kodlandı; onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
 - **Sıradaki adım:** İndeksli/paged kapasite teslim edildi; sırada bağlantı/izin kartı, sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
 
+- **19Ekim gerçek bağlantı:** [Yeni Codex sohbetiyle pilot](../quality/codex-e2e-001.md): native assistant capture→gerçek model→Task/status, selected-thread pipeline ve human visibility warning. Tool gönderimli mesajlarda userMessage yok; normal kullanıcı girişi ve continuous onboarding açık.
+
 ## T18 — Minimal MCP ve cross-agent read
 
 - **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T17. **Kapsam ID:** INT-02,CST-01.

@@ -22,9 +22,15 @@ class ConversationQueue:
             return dict(**summary,background_worker_active=False,automatic_dispatch=False,
                         capacity=SOURCE_CAPACITY,scope='selected_project',coverage='saved_sources_only')
 
-    def process(self, scope, project, *, extractor_factory=None, limit=1):
+    def process(self, scope, project, *, extractor_factory=None, limit=1, source_ids=None):
         if type(limit) is not int or not 1<=limit<=10:
             raise ContractError('invalid_request','One to ten sources per explicit worker pass required.')
+        if source_ids is not None:
+            from packages.domain.project_binding import identifier
+            if type(source_ids) is not list or len(source_ids)>1000:raise ContractError('invalid_request','Bounded selected-source allowlist required.')
+            for value in source_ids:identifier(value)
+            if len(set(source_ids))!=len(source_ids):raise ContractError('invalid_request','Unique selected sources required.')
+            source_ids=set(source_ids)
         with self.core.read_snapshot():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             snapshot=self.view(scope,project)
@@ -36,6 +42,7 @@ class ConversationQueue:
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             pending=queue_rows(self.core,project,pending_only=True,limit=SOURCE_CAPACITY)
         for item in pending:
+            if source_ids is not None and item['source_id'] not in source_ids:continue
             if item['status']!='Waiting for model':continue
             # Inspect grants before constructing a transport. No model activation from text.
             with self.core.read_snapshot():
