@@ -89,3 +89,5 @@ Birinci teslimin kabulü bütün gelecekteki UI/entegrasyonlara bağlanıp gerek
 - İncelenecek uygulama kararları: checkpoint/source storage migration sınırı; live/backfill öncelik policy'si; izin kartındaki veri/retention kapsamı; gerçek metin model grant'i. Teknik varsayımlar ADR kabulü veya yeni kullanıcı onayı gibi kaydedilmedi.
 
 İlk analizde kod/yayın yapılmamıştı. Kullanıcının “önerilerinle devam et” onayı sonrası ilk teslim uygulandı; kapsamı ve doğrulaması yukarıdaki uygulama kaydındadır. İkinci ve üçüncü teslim, gerçek kaynak/model yetkisini kendiliğinden açmaz.
+
+İkinci teslim ilerlemesi: [source outbox, izinli worker, ilerleme kartı ve native tanı](conversation-processing-runtime.md) kodlandı. İndeksli kapasite/paging ve live/backfill henüz bu dilime dahil değil. Worker üçüncü teslimin mevcut proposal-review ucuna bağlanır; sürekli otomatik izin/model akışı ve gerçek kalite kabulü açık.

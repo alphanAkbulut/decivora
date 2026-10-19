@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "667b11a035ebf4476baadf9a066fb8edeed813db",
+  "input_base_ref": "b29e1b195be6c46edb0f0993dbe67144d17c42a2",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "0d27a93657a05c68d3debb42eb0936815ab9bf7821dfc2ae68607b978c3187d0",
+      "svg_sha256": "dbd3b2a1156ca915ae26e768b16897931a29be9dbac052111ab60494ddf38c37",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "3b36b4d6cd64fc8f4ca36f6b61c1085f35c67fcdeb2eda57b0f614dc9265a0a5",
+      "source_sha256": "f1b4d9ab1f62be86b2f84c89c1e1f20e3ae4715a0ba578277a726f7e7dee6f16",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 4478.50390625 4223.279296875",
+      "view_box": "0 0 4102.17578125 4743.279296875",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "22a9220ea024db2daafc5920b73123983b51a6e913e2fa2e3f8aade850dcaf10",
+      "svg_sha256": "5c06e3630427a2f5a33d4c75d8256e295da6dd6b9e84492547c5d216f1660ded",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "a707ea152a21962b52975d45fa82501ec98d32c23738f5d2714926022242fcdb",
+      "svg_sha256": "f3beb02758e6f8cb6c1939b19b51537cd1b8b10859096b0860183816edc93d86",
       "error": null
     },
     {
@@ -539,13 +539,13 @@
     {
       "path": "docs/quality/operations-runtime.md",
       "block": 1,
-      "source_sha256": "da964c7e59ceebce843f64983f82452ea935ccf619979a0c11618e6d9998de30",
+      "source_sha256": "286bcc59a5292848d163efde57dbd03b8c762263f47674861be53fca4e56c09f",
       "status": "rendered",
       "title": "Local operations and separate test data",
       "description_present": true,
-      "view_box": "0 0 1047.375 902",
+      "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "9d13c37a6042c32d7ad38ddf148e621414ab32b23c5e4366800cbcc4ea6cc769",
+      "svg_sha256": "e7ee97552085e20ba6740a3d45d011bcbb575b58e93ff559ffd211fd8ff0fc57",
       "error": null
     },
     {
@@ -6273,6 +6273,37 @@
           "view_box": "0 0 4759.1640625 4118.85302734375",
           "artifact": "docs--architecture--local-preview--1.svg",
           "svg_sha256": "7d7ae9a2a78e47206ebf3b5b8fa3da142829abd30af7f7340a5be0d493b82e24",
+          "error": null
+        }
+      ]
+    },
+    {
+      "checked_at": "2026-10-19",
+      "input_base_ref": "667b11a035ebf4476baadf9a066fb8edeed813db",
+      "reason": "Source outbox and bounded queue worker; native capture Operations boundary and safe source-state projection.",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "3b36b4d6cd64fc8f4ca36f6b61c1085f35c67fcdeb2eda57b0f614dc9265a0a5",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 4478.50390625 4223.279296875",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "22a9220ea024db2daafc5920b73123983b51a6e913e2fa2e3f8aade850dcaf10",
+          "error": null
+        },
+        {
+          "path": "docs/quality/operations-runtime.md",
+          "block": 1,
+          "source_sha256": "da964c7e59ceebce843f64983f82452ea935ccf619979a0c11618e6d9998de30",
+          "status": "rendered",
+          "title": "Local operations and separate test data",
+          "description_present": true,
+          "view_box": "0 0 1047.375 902",
+          "artifact": "docs--quality--operations-runtime--1.svg",
+          "svg_sha256": "9d13c37a6042c32d7ad38ddf148e621414ab32b23c5e4366800cbcc4ea6cc769",
           "error": null
         }
       ]

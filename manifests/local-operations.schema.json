@@ -252,10 +252,103 @@
       "type": "boolean"
     },
     "native_capture": {
-      "const": false
+      "const": false,
+      "description": "Application-managed native background worker is disabled; explicit native CLI passes can still appear in runs."
     },
     "external_mcp_host": {
       "const": "not_verified"
+    },
+    "conversation_queue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "applied_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string"
+              },
+              "source_kind": {
+                "enum": [
+                  "manual_paste",
+                  "codex_exec_jsonl",
+                  "codex_app_server"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "Waiting for model",
+                  "Ready for review",
+                  "Analysis failed",
+                  "Analysis unknown"
+                ]
+              },
+              "received_at": {
+                "type": "number"
+              },
+              "durable_outbox": {
+                "type": "boolean"
+              },
+              "applied": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "source_id",
+              "source_kind",
+              "status",
+              "received_at",
+              "durable_outbox",
+              "applied"
+            ]
+          }
+        },
+        "background_worker_active": {
+          "const": false
+        },
+        "automatic_dispatch": {
+          "const": false
+        },
+        "capacity": {
+          "const": 32
+        },
+        "scope": {
+          "const": "selected_project"
+        },
+        "coverage": {
+          "const": "saved_sources_only"
+        }
+      },
+      "required": [
+        "total",
+        "counts",
+        "applied_sources",
+        "items",
+        "background_worker_active",
+        "automatic_dispatch",
+        "capacity",
+        "scope",
+        "coverage"
+      ]
     }
   },
   "required": [
@@ -275,6 +368,7 @@
     "model_configured",
     "file_checker_configured",
     "native_capture",
-    "external_mcp_host"
+    "external_mcp_host",
+    "conversation_queue"
   ]
 }

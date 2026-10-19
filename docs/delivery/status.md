@@ -772,3 +772,5 @@ Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task ed
 ### 19 Ekim — T17 kaldığı yerden devam eden capture
 
 Sayfa başına source+checkpoint atomik kayıt, restart/timeout devamı, aktif assistant bekletme ve aynı yerel profile yeni binding dedup kodlandı. [Sözleşme ve sınırlar](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october). Önceki gerçek6kaynak yeniden okunmadı, model paylaşımı yapılmadı. Gap UI/indexed kapasite/queue ve otomatik dispatch teslimleri açık; T17 In Progress.
+
+19 Ekim ana akış kodu: [source→outbox→izinli queue worker→review ve ilerleme kartı](../quality/conversation-processing-runtime.md) bağlandı. Native CLI collect success/failure Operations trace'i kalıcı. Otomatik grant/background activation yok;32source/indexed kapasite, kaynak onboarding ve gerçek model/native kabulü açık. Yeni parent veya erken Done yaratılmadı.

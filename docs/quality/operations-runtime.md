@@ -42,6 +42,11 @@ flowchart TB
   L["Decivora.command<br/>LOCAL application"] --> LC["Current project authorization<br/>typed command dispatch"]
   LC --> LD["LOCAL workspace.sqlite<br/>canonical events / audit / records"]
   LC --> LT["LOCAL operations sidecar<br/>safe spans / bounded errors"]
+  NC["Explicit selected-thread Codex CLI pass<br/>Current human source consent"] --> NR["native_capture run / bounded collect span<br/>Safe success or failure code / no content"]
+  NR --> LT
+  NC --> LD
+  LD --> CQ["Saved-source queue projection<br/>waiting / review-ready / failed / unknown<br/>Read-only; no model dispatch"]
+  CQ --> LV
   LT --> LV["Read-only Operations<br/>project traces + installation safe errors"]
   T["Decivora Test.command<br/>TEST label / separate cookie and port"] --> TC["Same application code<br/>model / file target disabled"]
   TC --> TD["Separate TEST workspace<br/>environment marker checked"]
@@ -52,7 +57,8 @@ flowchart TB
   classDef app fill:#e8f1ff,stroke:#31649b,color:#1b3855;
   classDef data fill:#e6f4eb,stroke:#357654,color:#214934;
   classDef guard fill:#fff2d5,stroke:#9b762c,color:#443919;
-  class L,LC,LV app;
+  class L,LC,LV,NC,CQ app;
+  class NR guard;
   class LD,LT,TD,TT data;
   class T,TC,X,V guard;
 ```
@@ -114,3 +120,5 @@ Markdown/local-link/anchor, canonical planning and unchanged Mermaid source-hash
 Bu kod tesliminde387runtime testi (19Operations testi dahil),48root kontrolü ve11gerçek browser senaryosu geçti. Yeni negatifler: client actor taklidi, forged/stale/wrong-project scope, revoked agent, eski sidecar'ın additive açılışı, kimlik yazım arızasında atomik rollback ve domain sonucunun korunması, authority revision değişimi ve identity eviction cascade. Tarayıcı aktör/yetki sürümü satırını, filtre/yenileme ve mobil görünümü doğruladı.50Mermaid render başarılı; güncel fiziksel ER görsel incelendi. Bu sayılar bağımsız multiuser veya gerçek model kabulü değildir.
 
 LOCAL53610ve TEST53611yedek/integrity kontrolü sonrası yeni kodla yeniden başlatıldı. İki canonical DB'nin mantıksal içeriği ve eski dört diagnostics tablosu bire bir korundu; eski izlere kimlik doldurulmadı. Gerçek kullanıcı verisine sentetik kayıt eklenmedi, ücretli çağrı yapılmadı. Gerçek ekip login/own/shared/admin/support izin ve tenant testleri, native/MCP instrumentation ve model zinciri hâlâ kendi ilk-kullanım kapılarında açık.
+
+19 Ekim [native capture tanısı ve queue görünümü](conversation-processing-runtime.md) eklendi. Normal komut sınırlarının yanında ayrı CLI collect sınırı izlenir; her page/RPC/model span varmış gibi sunulmaz. Yeni `conversation_queue` DTO alanı ve arayüzü içeriksiz source durumlarını gösterir.

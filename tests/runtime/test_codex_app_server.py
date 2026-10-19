@@ -197,4 +197,22 @@ class AppServerCaptureTests(unittest.TestCase):
         self.assertEqual(len(lines[0]['source_ids']),2)
         self.assertEqual(lines[1]['source_ids'],[])
         self.assertEqual(lines[1]['item_pages'],0)
+        from packages.operations.local import LocalOperations
+        runs=LocalOperations(self.path.with_suffix('.operations.sqlite')).view('p')['runs']
+        self.assertEqual(len(runs),2)
+        self.assertTrue(all(r['action']=='native_capture' and r['outcome']=='succeeded' for r in runs))
+        self.assertNotIn('backup test',json.dumps(runs))
+        self.assertEqual(len(self.adapter.sources._rows('p','conversation_enqueued')),2)
         self.assertEqual(len(self.adapter.sources._rows('p','conversation_imported')),2)
+
+    def test_native_cli_failed_capture_is_in_persistent_operations_without_source_text(self):
+        executable,_=self.fake_binary(metadata_pad=1048577)
+        args=['--db',str(self.path),'--workspace','w','--principal','owner','--project','p','--capture-id','failed_cli_capture',
+              '--thread-id','thread_1','--provider-version','fixture-1','--codex-executable',str(executable),'--consent']
+        with redirect_stdout(io.StringIO()) as out:self.assertEqual(main(args),1)
+        self.assertEqual(json.loads(out.getvalue())['code'],'capture_limit')
+        from packages.operations.local import LocalOperations
+        runs=LocalOperations(self.path.with_suffix('.operations.sqlite')).view('p')['runs']
+        self.assertEqual(runs[0]['code'],'capture_limit');self.assertEqual(runs[0]['outcome'],'failed')
+        self.assertEqual(runs[0]['identity']['actor_id'],'owner')
+        self.assertNotIn('PRIVATE-BODY',json.dumps(runs))

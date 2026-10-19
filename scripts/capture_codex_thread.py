@@ -12,6 +12,7 @@ from packages.capture.codex.app_server import CodexAppServerCapture
 from packages.capture.codex.read_client import ReadOnlyAppServer
 from packages.domain.source_event import ContractError
 from packages.storage.workspace import Workspace
+from packages.operations.local import LocalOperations, identity_from_scope
 
 
 def main(argv=None):
@@ -29,15 +30,24 @@ def main(argv=None):
     if not 1<=args.turn_limit<=10: parser.error('Turn limit must be between 1 and 10.')
     db = Path(args.db)
     if not db.is_file() or db.is_symlink(): parser.error('Select an existing regular workspace database.')
+    operations=None; run=None; started=None
     try:
         with Workspace(db,args.workspace) as core:
             scope = core.authority.issue_scope(args.principal)
             adapter = CodexAppServerCapture(core)
             adapter.connect(scope,args.project,capture_id=args.capture_id,thread_id=args.thread_id,
                             provider_version=args.provider_version,consent=args.consent)
+            operations=LocalOperations(db.with_suffix('.operations.sqlite'))
             with ReadOnlyAppServer(args.codex_executable,args.thread_id,cwd=ROOT,codex_home=args.codex_home) as client:
                 for poll in range(args.polls):
-                    receipt = adapter.collect(scope,args.project,capture_id=args.capture_id,client=client,limit=args.turn_limit)
+                    identity=identity_from_scope(core,scope,args.project)
+                    started=time.monotonic();run=operations.begin(args.project,'native_capture',identity=identity)
+                    try:
+                        with operations.span(run,1,'capture','execute_command'):
+                            receipt = adapter.collect(scope,args.project,capture_id=args.capture_id,client=client,limit=args.turn_limit)
+                    except Exception as error:
+                        operations.finish(run,started,error);run=None;raise
+                    operations.finish(run,started);run=None
                     print(json.dumps({k:v for k,v in receipt.items() if k!='fingerprints'}),flush=True)
                     if poll+1<args.polls: time.sleep(args.interval)
         return 0

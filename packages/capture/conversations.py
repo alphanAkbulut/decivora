@@ -61,7 +61,9 @@ class ConversationService:
             source=dict(id=source_id,sha256=sha,text=text,source_kind='manual_paste' if capture is None else capture.get('source_surface','codex_exec_jsonl'),actor=scope.principal_id,received_at=time.time(),revision=1)
             if capture is not None:source['capture']=capture
             source['redaction']=dict(policy=POLICY,counts=redaction_counts,original_retained=False)
-            self._put(scope,project,'conversation_imported',source);return source
+            self._put(scope,project,'conversation_imported',source)
+            self._put(scope,project,'conversation_enqueued',dict(source=source_id,sha256=sha,received_at=source['received_at'],status='Pending authorization'))
+            return source
     def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason,context_sha256=None):
         """Trusted human configuration only; never inferred from source/model text."""
         identifier(source_id);identifier(key);identifier(root_run)

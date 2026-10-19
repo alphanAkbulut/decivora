@@ -224,3 +224,7 @@ flowchart TB
 ## Güncel kimlik alanının sınırı
 
 Yeni kimlik alanı ve fiziksel ER, [yerel attribution teslimini](../quality/operations-runtime.md#yerel-actor-attribution--19-ekim2026) yansıtır. Yukarıdaki ilk açıklama tesliminin runtime değişikliği yapmadığına ilişkin tarihsel sonuç, bu sonraki additive kod teslimiyle karıştırılmamalı. Ekip erişim kapıları açıktır.
+
+## Konuşma işleme görünümü ve native collect sınırı
+
+Operations DTO'suna `conversation_queue` eklendi: selected-project source metadata, waiting/review-ready/failed/unknown sayıları, applied-source sayısı ve preview kapasitesi. Kaynak metni taşımaz; state/operations okumaları worker/model tetiklemez. Mevcut sidecar ER tabloları değişmedi. Native CLI `native_capture` run ve bir `capture/execute_command` span'i yazar; her item için ayrı trace yoktur. [Çalışan sözleşme ve açıklar](../quality/conversation-processing-runtime.md).

@@ -229,3 +229,5 @@ Local-preview çizimine human complete rationale review→versioned audit/facts�
 19 Ekim gerçek capture bulgusu: local-preview1 artık metadata→one-item paging,1MiB/32sayfa koruması ve kısmi kapsamı gösterir.50şema render edildi; kaynak/hash kayıtları ve değişen SVG yenilendi; önceki proof superseded içinde korunur.6gerçek source kaydı tam-capture/model kabulü değildir.
 
 19 Ekim kalıcı capture devamı: local-preview1 source/cursor transaction, private checkpoint ve yalnız izinli sonraki poll döngüsünü gösterir.50diagram yerel Mermaid/Chrome ile render edildi, değişen görsel incelendi; kaynak hash/proof ve SVG yenilendi. Tam UI/native/model kabulü değildir.
+
+19 Ekim source queue ve native log: local-preview1 outbox→explicit bounded worker→mevcut exact grant yolunu; operations-runtime1 native collect trace ve read-only kaynak ilerlemesini gösterir.50Mermaid render edildi; değişen operasyon görseli ve mobil queue kartı incelendi. Kaynak hash/proof ve local-preview SVG yenilendi; eski proof korunur.
