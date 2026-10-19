@@ -150,6 +150,41 @@
           }
         }
       }
+    },
+    "question_proposals": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_text",
+          "options",
+          "quote"
+        ],
+        "properties": {
+          "question_text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            }
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        }
+      }
     }
   },
   "required": [
@@ -160,7 +195,8 @@
     "context_sha256",
     "status_changes",
     "answer_proposals",
-    "relation_proposals"
+    "relation_proposals",
+    "question_proposals"
   ],
   "additionalProperties": false
 }

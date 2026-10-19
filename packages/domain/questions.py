@@ -38,6 +38,10 @@ class QuestionService:
         if self.core.db.execute("SELECT COUNT(*) FROM audit WHERE workspace=? AND project=? AND action IN ('question_presented','question_answered','question_state','question_answer_associated')",(self.core.workspace,project)).fetchone()[0]>=512:raise ContractError('question_history_limit','Manual preview history capacity reached; accepted records remain intact.')
         self.core.db.execute('INSERT INTO audit(workspace,project,actor,action,ref) VALUES (?,?,?,?,?)',(self.core.workspace,project,scope.principal_id,action,canonical(value)))
     def present(self,scope,project,*,question,base_revision,text,options,task=None,reason=''):
+        with self.core.transaction():return self._present(scope,project,question=question,base_revision=base_revision,text=text,options=options,task=task,reason=reason)
+
+    def _present(self,scope,project,*,question,base_revision,text,options,task=None,reason='',provenance=None):
+        if not self.core.db.in_transaction:raise ContractError('transaction_required','Question presentation requires an atomic workspace transaction.')
         identifier(question)
         if type(base_revision) is not int or base_revision<0 or type(text) is not str or not text.strip() or len(text)>2048 or type(options) is not list or not 2<=len(options)<=8:raise ContractError('invalid_question','Bounded question and options required.')
         if type(reason) is not str or len(reason)>1024 or (base_revision>0 and not reason.strip()):raise ContractError('question_change_reason','Question revision change requires a bounded reason.')
@@ -48,20 +52,24 @@ class QuestionService:
             if option['id'] in ids or type(option['label']) is not str or not option['label'].strip() or len(option['label'])>512:raise ContractError('invalid_question','Unique options with bounded labels required.')
             ids.add(option['id'])
         if task is not None:identifier(task)
-        with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
-            current=next((q for q in self._view(project)['questions'] if q['id']==question),None)
-            if current and current['revision']==base_revision+1:
-                old=next(r['payload'] for r in reversed(current['history']) if r['action']=='question_presented')
-                if old.get('text')==text and old.get('options')==options and old.get('task')==task and old.get('reason','')==reason and current['responder']==scope.principal_id:return old
-            if (current['revision'] if current else 0)!=base_revision:raise ContractError('stale_question','Question revision changed.')
-            if current is None and len(self._view(project)['questions'])>=100:raise ContractError('question_limit','Manual preview supports 100 questions per project.')
-            if task is not None:
-                row=self.core.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.core.workspace,project,task)).fetchone()
-                if row is None or json.loads(row[0])['type']!='Task':raise ContractError('task_unavailable','Selected Task unavailable.')
-            value=dict(id=question,revision=base_revision+1,text=text,options=options,task=task,source_kind='manual_ui',responder=scope.principal_id,presented_at=time.time(),reason=reason)
-            self._save(scope,project,'question_presented',value)
-            return value
+        self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+        current=next((q for q in self._view(project)['questions'] if q['id']==question),None)
+        if current and current['revision']==base_revision+1:
+            old=next(r['payload'] for r in reversed(current['history']) if r['action']=='question_presented')
+            if old.get('text')==text and old.get('options')==options and old.get('task')==task and old.get('reason','')==reason and current['responder']==scope.principal_id:return old
+        if (current['revision'] if current else 0)!=base_revision:raise ContractError('stale_question','Question revision changed.')
+        if current is None and len(self._view(project)['questions'])>=100:raise ContractError('question_limit','Manual preview supports 100 questions per project.')
+        if task is not None:
+            row=self.core.db.execute('SELECT body FROM records WHERE workspace=? AND project=? AND id=?',(self.core.workspace,project,task)).fetchone()
+            if row is None or json.loads(row[0])['type']!='Task':raise ContractError('task_unavailable','Selected Task unavailable.')
+        value=dict(id=question,revision=base_revision+1,text=text,options=options,task=task,source_kind='manual_ui',responder=scope.principal_id,presented_at=time.time(),reason=reason)
+        if provenance is not None:
+            if type(provenance) is not dict or set(provenance)!={'source','source_sha256','proposal'}:raise ContractError('invalid_question','Exact question provenance required.')
+            identifier(provenance['source']);identifier(provenance['proposal'])
+            if type(provenance['source_sha256']) is not str or len(provenance['source_sha256'])!=64:raise ContractError('invalid_question','Exact source digest required.')
+            value.update(source_kind='dialogue_review',provenance=dict(provenance))
+        self._save(scope,project,'question_presented',value)
+        return value
     def answer(self,scope,project,*,request_id,question,revision,option):
         with self.core.transaction():return self._answer(scope,project,request_id=request_id,question=question,revision=revision,option=option)
 

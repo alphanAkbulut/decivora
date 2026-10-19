@@ -9,14 +9,15 @@ MAX_ERRORS=100
 CAPTURE_CODES=frozenset('codex_read_timeout codex_read_failed codex_transport_failed codex_transport_closed codex_host_unavailable invalid_codex_page invalid_codex_cursor capture_limit conversation_limit capture_binding_mismatch capture_checkpoint_stale capture_pending_turn_unavailable capture_item_changed capture_disconnected capture_permission_changed capture_consent_required invalid_source_cursor'.split())
 ACTIVATION_CODES=frozenset('activation_required activation_unavailable invalid_activation activation_history_limit activation_denied stale_activation activation_transition_denied activation_inactive model_grant_required'.split())
 LOOP_CODES=frozenset('invalid_processing_loop processing_loop_unavailable processing_loop_permission_changed processing_loop_expired processing_loop_denied processing_loop_stopped processing_loop_limit processing_loop_model_required processing_loop_history_limit processing_worker_busy'.split())
-ERROR_CODES=LOOP_CODES|ACTIVATION_CODES|CAPTURE_CODES|frozenset('application_error sensitive_content invalid_request storage_unavailable storage_failure origin_denied session_required session_or_csrf_required not_found rate_limited bounded_json_required acceptance_required verification_required task_blocked stale_workflow stale_record stale_base stale_impact invalid_transition invalid_approval review_unavailable lifecycle_blocker lifecycle_review permission_denied scope_denied inactive_principal'.split())
+QUESTION_DRAFT_CODES=frozenset('invalid_question_proposal ambiguous_question unsupported_question question_duplicate'.split())
+ERROR_CODES=QUESTION_DRAFT_CODES|LOOP_CODES|ACTIVATION_CODES|CAPTURE_CODES|frozenset('application_error sensitive_content invalid_request storage_unavailable storage_failure origin_denied session_required session_or_csrf_required not_found rate_limited bounded_json_required acceptance_required verification_required task_blocked stale_workflow stale_record stale_base stale_impact invalid_transition invalid_approval review_unavailable lifecycle_blocker lifecycle_review permission_denied scope_denied inactive_principal'.split())
 COMPONENT_ACTIONS={
  'capture':{'import_conversation','native_capture'},
  'extraction':{'create_processing_loop','run_processing_pass','start_processing_loop','stop_processing_loop','processing_tick','create_model_activation','change_model_activation','process_conversation_queue','analyze_conversation','prepare_dialogue_review','import_dialogue_response'},
  'reconciliation':{'accept_candidates','review_dialogue_status','review_dialogue_answer','review_dialogue_relation'},
  'impact':{'preview_decision_change','save_task_rationale','link_task_rationale','link_dependency'},
  'review':{'prepare_impact_updates','prepare_task_lifecycle','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal'},
- 'questions':{'ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question'},
+ 'questions':{'review_dialogue_question','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question'},
  'verification':{'acceptance','start','workflow_transition','criterion_evidence','bind_file_check','run_file_check'},
  'routing':{'work_routing'},'tasks':{'create_task','task_blocker'},
 }

@@ -172,7 +172,7 @@ Sıradaki adım: T10a/b kapsamındaki açıklanabilir karşı kanıt ve belirsiz
 
 ### T13 · Review işlemi ve güvenilir onay
 
-19 Ekim2026 — Status/answer/relation/replacement, scope edit ve lifecycle select→approve→apply kodlu; [son durum](../quality/workflow-ui-runtime.md).
+19 Ekim2026 — [Kaynaklı seçenekli soru backend bağlantısı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına): model taslağı→ayrı insan review→atomik kalıcı soru→geç cevap. Duplicate/ret/erteleme ve provenance korunur; UI taslak kartı ve genel soru türleri açık.
 
 **Aktif teknik risk:** Konuşmadan QuestionRequest üretimi, genel clarification ve split planı atomik kabulü açık.
 
@@ -180,7 +180,7 @@ Sıradaki adım: T10a/b kapsamındaki açıklanabilir karşı kanıt ve belirsiz
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: T13d split ve T13e soru/candidate çözümünü mevcut onay/revision guards ile tamamla.
+Sıradaki adım: T13d split, T13e genel/serbest metin soru ve çatışma çözümü; T19 kaynaklı soru taslağı inceleme kartı. Seçenekli soru backend bağlantısı aşağıda teslim edildi.
 
 ### T14 · Evidence ve false-done düzeltmesi
 
@@ -395,4 +395,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `da1f3b3b8149f7eba906dce16ef2f9ccb7efb70b205b6079689fdf7def9fb91c`
+Kaynak fingerprint: `e41fff7a66273551c7691cf2bc41fad845ba92f11dedfcb9cc02beab554d6c56`

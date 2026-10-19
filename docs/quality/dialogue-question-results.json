@@ -1,0 +1,49 @@
+{
+  "kind": "synthetic_backend_question_delivery",
+  "date": "2026-10-19",
+  "input_base_ref": "ed1724cf3c51f2fb5b4a1b85dff13b95f11394e3",
+  "new_tests": 14,
+  "runtime_tests": 585,
+  "repository_tests": 49,
+  "real_model_calls": 0,
+  "new_real_source_reads": 0,
+  "semantic_correctness_verified": false,
+  "new_question_draft_ui_verified": false,
+  "files": {
+    "packages/capture/dialogue_questions.py": "bc50259588be08f2cc86fa3bffde8b36da0f871d2e20b40fb07670597f7ce5db",
+    "packages/capture/dialogue_review.py": "4907f0504e6cc1d0bb1bdfe636b969eef566912e81d58955b7e32cef8e4803d4",
+    "packages/capture/conversations.py": "173cb150237bab92af15296dde2e2ea804193a999dfd28d9f7543fee40f2309c",
+    "packages/domain/questions.py": "c38de9a1d5c49ce06f0dc67be8fefdb34096a127040a6bf4199f7888f68b124d",
+    "packages/operations/local.py": "f25be06f1b6330c87ac2e6de97d6ebae1e4f471302e677bcbd1c1d719483df06",
+    "apps/local_ui/server.py": "f4ffe16775ccd77d4e6b3fb415f62078806c338569b3fccb9165c00a465e0b65",
+    "manifests/dialogue-review-response.schema.json": "41800f93c59ed9c321a9983b5fc91e807ec82289b429a572c4156439cd2b5c51",
+    "tests/runtime/test_dialogue_questions.py": "a9db60656cc9c33c4b6059ded2ebd197c35ae8babd7a439a7a87a54602fc7469"
+  },
+  "checks": [
+    "literal source and choices",
+    "separate human review",
+    "atomic presentation and receipt rollback",
+    "late answer revision binding",
+    "duplicate no silent merge",
+    "scope/agent denial",
+    "session and CSRF HTTP",
+    "fake provider strict schema and queue",
+    "backup restore",
+    "legacy output compatibility",
+    "capacity fail closed"
+  ],
+  "limitations": [
+    "Choice questions only",
+    "Project owner responder only",
+    "UI draft review card pending",
+    "Real model semantic question scoring pending",
+    "Existing exact payload packets require newly scoped preparation"
+  ],
+  "existing_dialogue_browser_regression": {
+    "passed": true,
+    "page_errors": 0,
+    "mobile_no_overflow": true,
+    "synthetic_model_output": true,
+    "new_draft_card_tested": false
+  }
+}

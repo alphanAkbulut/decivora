@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "2f6fe6fa96e81dd06731223a3e94470df19114cc",
+  "input_base_ref": "ed1724cf3c51f2fb5b4a1b85dff13b95f11394e3",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "095c805ce1dcaa503845fa66e488a4ace569b8b6d98618c2e14567f2d3161e41",
+      "svg_sha256": "5c638bd7f01a73fec45eb64e5b2f3345a56471a5d2296b7b75af51f493524d7e",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "0f264652febe9ded613146eb980415d809ba9ad93445ec2b18a7d1038ecc0687",
+      "svg_sha256": "9188dd2a57c9bf895a2d06acef7266604fb271638b89c15b407c9c2c7e6bd913",
       "error": null
     },
     {
@@ -561,6 +561,18 @@
       "error": null
     },
     {
+      "path": "docs/quality/dialogue-status-runtime.md",
+      "block": 1,
+      "source_sha256": "8a9b7f3d13d9136b769330b1c275b509fe87c342e0f9ddf0fbfe8ef155a8fc89",
+      "status": "rendered",
+      "title": "Kaynaklı soru taslağı ve ayrı insan kararı",
+      "description_present": true,
+      "view_box": "0 0 930.05859375 1845.46875",
+      "artifact": "docs--quality--dialogue-status-runtime--1.svg",
+      "svg_sha256": "c41196cf3b0235def3e42780d3e12f425d04302dae6576c24fb41316384676b8",
+      "error": null
+    },
+    {
       "path": "docs/quality/membership-002-result.md",
       "block": 1,
       "source_sha256": "7814338eeb8c6f56cb32c042ff234f72be4f9b8877118af08d293982cea9f340",
@@ -569,7 +581,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "828fff95f49643d4ba3005fb4a6bab2e5ab3b6059edd54286eb5084aa0f1638d",
+      "svg_sha256": "816459e051ef063e4dfd9c5867b31723b1f35402efb9927773ce544e978bed12",
       "error": null
     },
     {
@@ -581,7 +593,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "9b6f58c5127aa557bf776c98e920928a94174d5a14a916f52008e8492d122af9",
+      "svg_sha256": "87612aad75a1c358501a15529849fc99cb587eb26493a0615d5f168500f297e7",
       "error": null
     },
     {
@@ -593,7 +605,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "02caf1b54267bd0f9233891b89d19df4eb6b382ac01bcf738fb04aff0240a270",
+      "svg_sha256": "103ec341b331c9514dd809d6748b5cf4ff49c1a7f37ded52e70dab1b10950546",
       "error": null
     },
     {
@@ -605,7 +617,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "ff30c4a426a01df1cd402a8cc9f159925c00a1c87b249f89814de070abed0b6a",
+      "svg_sha256": "2430feff96787064419a4523679e88e0ff064580dac7a6584e5401d6fd25ef27",
       "error": null
     },
     {
@@ -617,7 +629,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "3aa2b8d0a621cafef046583af6a33aad264509ea4a47e8a8fab1d651d5ed5597",
+      "svg_sha256": "be48921828357c6fa527711b2ecd49d5f4bd8255611e29360c8522246f27b13f",
       "error": null
     },
     {
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "042f1896bcf6a646eed6d02f1ae9d871ae2b155000c86a031622a824c1a31ce7",
+      "svg_sha256": "d656afdcdb24d3f833dea49e6fa4991b953247c59e469d7fc1fec8348e84ec90",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "34a4afe91c0c2aea58a395d98e00fd488ea7919338bb3646fec5daab7bf7ac11",
+      "svg_sha256": "5003d983a660a39ed70d396e7529c50aa2d8a22f60ff716e2da2e9efe71e019a",
       "error": null
     }
   ],
@@ -6411,5 +6423,6 @@
         }
       ]
     }
-  ]
+  ],
+  "question_backend_render_note": "All 54 current sources rendered offline. New question flow visually inspected. No model or new UI card tested."
 }

@@ -37,6 +37,7 @@
 | [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 2 |
 | [docs/quality/operations-runtime.md](operations-runtime.md) | 2 |
 | [docs/architecture/logging-diagrams-and-schema.md](../architecture/logging-diagrams-and-schema.md) | 3 |
+| [docs/quality/dialogue-status-runtime.md](dialogue-status-runtime.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -238,3 +239,7 @@ Local-preview çizimine human complete rationale review→versioned audit/facts�
 19Ekim backend follow-up: model activation state+sequence2yeni blok ve local-preview admission gate güncellendi.52blok/26belge cachedMermaid11.17.2 ile ağsız render edildi; yeni state/sequence görsel kontrolü yapıldı. [Çalışan model activation](../architecture/model-activation-runtime.md); ürün acceptance sonucu değildir.
 
 19Ekim finite-worker follow-up: model-activation-runtime3 ve local-preview içindeki scheduler/admission bağlantısı güncellendi.53blok/26belge offline render edildi; yeni loop akışı görsel incelendi. Worker/backend runtime sonucu ayrı [makine kaydında](processing-loop-results.json).
+
+## 19 Ekim — seçenekli soru backend akışı
+
+Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç cevap→ayrı karar uygulaması çizildi. Duplicate/ret/erteleme dalları gösterilir. Bu şekil backend sözleşmesini anlatır; yeni UI kartı veya gerçek model doğruluğu iddiası değildir. Yerel render sonuçları [hash raporunda](diagram-render-results.json) tutulur.

@@ -118,3 +118,59 @@ Hazırlanan diyalog context'i bu kayıtları `rationales` alanında taşır; raw
 Browser test yazımında önce geniş diyalog case'ine eklenen adımlar source hazırlama timeout'u verdi; yeni kısa/izole fixture'a ayrıldı. Ardından testin önceki impact kartını okumaması, project-command zarfını izlemesi ve reload sonrası gizli Conversations öğesini beklememesi düzeltildi. Ürün guard/limit/kabul kriteri gevşetilmedi. Core testleri passing sonucu bu harness hatalarını gizlemek için kullanılmadı.
 
 Ek performans kontrolü: rationale audit geçmişi state içindeki her task için yeniden sorgulanmaz; scoped transaction/read-snapshot cache'i kullanılır, dışarı verilen mutable kayıt kopyadır ve write/snapshot sonunda yenilenir. Cache mutation/stale-snapshot regresyonu eklendi. Uzun browser diyalog helper'ı da `.last()` yerine import response'undaki exact source ID'yi ve yeni impact yanıtını bekler; eski DOM'un hazır olması yeni sonucu geçmiş sayılmaz.
+
+## 19 Ekim — konuşmadaki seçenekli sorudan kalıcı soru kaydına
+
+**Uygulandı: backend bağlantısı.** T09/T13e/T19 kapsamındaki bu dilim, model çıktısındaki `question_proposals` taslaklarını kaynak incelemesine ve `QuestionService` kayıtlarına bağlar. Yeni ana iş veya kabul kapsamı oluşturulmadı. Kullanıcı arayüzünde taslaklara özel inceleme kartı henüz yok; mevcut Question Inbox yalnız kabul edilerek sunulmuş soruları gösterir.
+
+| Adım | Kod / sözleşme | Kalıcı sonuç |
+|---|---|---|
+| Çıkarım | `dialogue_review.response_schema`, `manifests/dialogue-review-response.schema.json` | En fazla32taslak. Soru metni,2–8seçenek etiketi ve tek kaynak alıntısı |
+| Kaynak doğrulaması | `packages/capture/dialogue_questions.py` | Soru ve her seçenek alıntıda harfi harfine bulunmalı. Alıntı kaynakta bir kez geçmeli. Kimlik ve span backend tarafından üretilir |
+| İnsan incelemesi | `review_dialogue_question` command | `accept/reject/defer`, exact source/proposal, idempotency key ve gerekçe. Pending/Deferred/Presented/Rejected ayrı |
+| Sunma | `QuestionService._present`, aynı SQLite transaction | Kabul edilen soru Open/revision1 olarak, kaynak hash/proposal provenance ile kaydedilir. İnceleme makbuzu yazılamazsa soru da rollback olur |
+| Geç cevap | Mevcut `answer_proposals` + `review_dialogue_answer` | Sonraki kaynak context'inde soruID/revision/option bulunur. Ayrı insan incelemesinden sonra Answered olabilir |
+| Karar ve etki | Mevcut prepare/approve/apply | Soruya cevap verilmesi kararın uygulanması, eski işin iptali veya görevin Done olması değildir |
+
+Mevcut soruID veya normalize edilmiş aynı soru metni bulunursa yeni soru sessizce açılmaz/birleştirilmez: `question_duplicate`; taslak Pending kalır ve `existing_question_matches` gösterilir. Farklı seçenekli aynı metin de bu konservatif sınıra girer. Önce mevcut soru açıkça incelenmeli/revize edilmelidir; otomatik yeniden ilişkilendirme bu teslimde yok.
+
+Soru proje kapsamındadır; responder mevcut yetkili insan owner'dır. Model responder, yetki, task bağlantısı, deadline veya blocker belirleyemez. İki seçenekten az olan serbest metin soruları, agent/ekip routing ve genel çatışma çözümü açıktır. Literal kaynak eşleşmesi semantik doğruluğu kanıtlamaz: varsayımsal/alınmış kararı soruya dönüştürmeme talimatı ve insan incelemesi korunur, gerçek model değerlendirmesi ayrıca gerekir.
+
+Yeni provider şemasında `question_proposals` zorunlu; eski kayıtlı/import çıktıları alan yoksa boş liste olarak kabul edilir. Şema/talimat değişikliği exact model payload hash'ini değiştirir. Eski özel pilot paketleri/izinleri otomatik yenilenmedi, yeniden gönderilmedi ve bu teslimde gerçek API/sohbet okuması yapılmadı. Yeni SQL tablo/migration gerekmedi; mevcut scoped audit ve question projection kullanılır.
+
+```mermaid
+flowchart TD
+  accTitle: Kaynaklı soru taslağı ve ayrı insan kararı
+  accDescr: Kaynak ve seçenek kontrolünden geçen taslak ayrı insan incelemesiyle kalıcı Open soruya dönüşür. Geç cevap ayrı incelemeyle kaydedilir, karar uygulaması ayrıca onay gerektirir.
+  S[İzinli konuşma kaynağı] --> M[Model çıktısı: soru taslağı]
+  M --> V{Tek alıntı ve literal seçenekler?}
+  V -->|Hayır| X[Ret: soru oluşmaz]
+  V -->|Evet| D[Pending taslak]
+  D --> H{Yetkili insan incelemesi}
+  H -->|Ertele| F[Deferred taslak]
+  F --> H
+  H -->|Reddet| R[Rejected: tarihçe korunur]
+  H -->|Kabul| U{Mevcut aynı soru var mı?}
+  U -->|Evet| C[Çakışma: açık inceleme gerekli]
+  U -->|Hayır| Q[Atomik: Open soru ve inceleme makbuzu]
+  Q --> A[Sonraki mesaj: ID ve sürüme bağlı cevap önerisi]
+  A --> J[Ayrı insan cevap incelemesi]
+  J --> K[Answered soru: karar uygulanmış değildir]
+  K -.-> P[Ayrı karar hazırlama ve onay ve uygulama]
+  classDef input fill:#dbeafe,stroke:#2563eb,color:#172554
+  classDef review fill:#fef3c7,stroke:#b45309,color:#451a03
+  classDef saved fill:#dcfce7,stroke:#15803d,color:#14532d
+  classDef stop fill:#fee2e2,stroke:#b91c1c,color:#450a0a
+  classDef separate fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+  class S,M,D,A input
+  class V,H,U,F,J review
+  class Q,K saved
+  class X,R,C stop
+  class P separate
+```
+
+Doğrulama:14yeni sentetik runtime testi; gerçek yerel HTTP session/CSRF ve command, sahte provider üzerinden strict schema→queue→draft, ayrı review, geç cevap, ret/erteleme, duplicate, ajan/proje reddi, transaction rollback, kapasite ve backup/restore. Bunlar modelin gerçek konuşmayı doğru anladığının veya yeni inceleme kartının UI kanıtı değildir. İlk iki ek entegrasyon testi test harness'inde yanlış state anahtarı ve schema konumu nedeniyle hata verdi; ürün guard gevşetilmeden fixture düzeltildi. Son toplu doğrulama aşağıdaki teslim kaydında belirtilir.
+
+Son toplu doğrulama:585runtime ve49repo/tracker testi geçti;54Mermaid kaynak ağ kapalı render edildi ve yeni soru şekli görsel incelendi. [Kaynak hash’leri ve sınırlar](dialogue-question-results.json). Repo testlerinin ilk sandbox çalıştırmasında3loopback testi ortam izni nedeniyle hata verdi; yerel HTTP izniyle aynı49test geçti.
+
+Mevcut gerçek browser diyalog regresyonu da geçti: source→Task review, mevcut task durum önerisi, prior question context, reload/source link, false-Done reddi ve mobil taşma kontrolü; page error0, gerçek model dispatch0. Yeni soru taslak kartı bu testte yoktur.
