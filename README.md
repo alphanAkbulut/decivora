@@ -1,54 +1,41 @@
 # Decivora
 
-19 Ekim gerçek bağlantı: [seçilmiş Codex sohbetinden6mesaj TEST'e kaydedildi](docs/quality/codex-real-capture-001.md). İlk yanıt boyutu bulgusu sayfalama ile düzeltildi; eksik item/cursor ve model aşaması açık. Sürekli izleme veya gerçek metin API paylaşımı açılmadı.
-
-19 Ekim kullanıcı mesajı bağlantısı: [seçilen Codex oturumunu salt okunur izleme kodu](docs/quality/codex-exec-capture-runtime.md#19-october--app-server-user-message-capture-and-bounded-polling), user/assistant kimlikleri ve sınırlı yakın bağlam eklendi. Gerçek oturum ve UI activation kabulü ayrı; otomatik MVP tamamlandı değildir.
-
-19 Ekim Codex bağlantısı: [seçilmiş CLI olay akışı → kalıcı kaynak → görev incelemesi](docs/quality/codex-exec-capture-runtime.md) kodlandı. Tekrar/güncellik/maskeleme kontrolleri var; masaüstü sohbetlerini canlı yakalama ve tam MVP kabulü hâlâ açık.
-
-19 Ekim Operations teslimi: [kalıcı güvenli tanı kayıtları ve ayrı TEST ortamı](docs/quality/operations-runtime.md). Komut sınırları/süreleri izlenir; bütün engine zinciri ve tam backoffice kabulü açık.
-
-
-19 Ekim yerel kod teslimi: [insan doğrulamalı gerekçeden iptal/yeniden açma](docs/quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü), typed waiting rozetleri ve sunucu kaynaklı workflow. Gerçek model/native capture ve tam MVP kabulü açık.
-
-
-**Ana ürün akışı henüz tamamlanmadı:** [güncel kod denetimi, yeniden üretilen kopukluklar ve öncelikler](docs/quality/primary-flow-audit.md). Çalışan yerel parçalar gerçek native/semantic uçtan uca kabulün yerine geçmez.
-
-18 Ekim çalışan yerel dilim: [konuşmadan yeni görev ve mevcut göreve durum önerisi](docs/quality/dialogue-status-runtime.md). Kaynak/context doğrulaması, ayrı insan incelemesi ve ortak workflow/kanıt kontrolü; gerçek model kalitesi/native capture kabulü açık.
-
 ### Living project memory. Decisions, actions, and evidence stay connected.
 
-**Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
+**Decivora, AI ile yürütülen projelerde konuşmaları, kararları ve görevleri birbirine bağlayan yaşayan bir proje hafızası geliştirmeyi amaçlar.** Hedefi, farklı sohbetlerde ne konuşulduğunu, kullanıcının neye karar verdiğini, hangi işlerin kaldığını ve gerçekte neyin uygulandığını kaynaklarıyla takip etmektir.
 
-> [!NOTE]
-> **Aşama: P1a yerel çekirdekte7 ana görev Done; P0 kalite kanıtları açık.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri, source-bound semantik çıktı bağlantısı ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+Bir AI'ın “dosyayı hazırladım” demesi, dosyanın repoya yüklendiği anlamına gelmez. Yeni bir mimari karar da eski görevleri kendiliğinden güncellemez. Decivora bu kopukluğu kapatmayı; konuşmadan kaynaklı öneriler üretmeyi, karar değişikliklerinin etkisini göstermeyi ve tamamlanma iddialarını kanıttan ayırmayı hedefler.
 
-**Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Q15-A kabul edildi: Python3.12/SQLite ile koşullu yerel MVP çekirdeği başladı. T01/T02/T03 model/capture/native/ROI kanıtları açık; bütün MVP kabulü değil. [Runtime başlangıcı](apps/hub/README.md) · [Kabul edilmiş ADR-0012](docs/architecture/adr/0012-conditional-python-runtime.md). [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
+## Kimler için?
 
-## Çalışmanın neresindeyiz?
+- **AI ile proje geliştiren bireyler:** farklı sohbetlerde kalan fikirleri, açık soruları ve işleri kaybetmemek için.
+- **Birden fazla coding agent kullanan geliştiriciler:** agent çalışma beyanlarıyla projenin doğrulanmış durumunu ayırmak için.
+- **Ürün sahipleri ve ekipler:** kararların neden alındığını ve hangi işleri etkilediğini izlemek için. Ortak ekip erişimi sonraki fazdadır; bugünkü uygulama tek yerel kullanıcı önizlemesidir.
 
-[Konuşma aktarımı ve inceleme akışı](docs/quality/conversation-review-runtime.md) ana yerel arayüzdür. [Workflow/UI kanıtı](docs/quality/workflow-ui-runtime.md) altı aşama, blocker/dependency ve insan incelemesiyle Done sınırlarını gösterir. [İlk gerçek API pilotu](docs/quality/openai-pilot-001.md): ayrı sentetik ortamda10model/10count,10source/schema pass; model davranış farkları ve cache-write maliyet düzeltmesi kaydedildi. [Onaylı ortak geliştirme bütçesi](docs/quality/openai-development-budget.md) ile toplam20model/40HTTPye ulaşıldı; Türkçe/İngilizce claim, negation/future ve özgün önceki claim karşılaştırması kaydedildi. Toplam tahmin$0.049592/$3; nihai fatura değil. Gerçek semantik kalite veya native Codex capture kabulü değildir; ana UI varsayılan model kapalı, kişisel workspace ilk açılışta boş gelir. Manuel araçlar yardımcı bölümlerdedir.
+## Nasıl bir ürün geliştiriyoruz?
 
-**7 Done / 14 In Progress / 9 To Do.** [Altı kod teslim paketi ve uygulama sırası](docs/delivery/build-delivery-plan.md):9 To Do işinin3’ü MVP (T16/T17/T24),6’sı sonraki fazlardır; T14 doğrulama akışı başladı. Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo](docs/quality/integrated-core.md) + [kritik düzeltmeler](docs/quality/core-critical-review.md): `python3.12 -B -m apps.hub core-demo`. [T12 impact preview](docs/quality/impact-preview.md) ve `python3.12 -B -m apps.hub impact-demo` tamamlandı;130runtime test. [T13a review çekirdeği](docs/quality/review-kernel.md), `review-demo` ve [yeni akış/şema](docs/architecture/review-runtime.md) eklendi;148runtime test. [T13b iptal/geri dönüş](docs/quality/task-lifecycle.md) ve `lifecycle-demo` eklendi;168runtime test. [Tıklanarak çalışan yerel sürüm](README_LOCAL.md): **Decivora.command**;185runtime test, T13c Done, T19/T20 UI In Progress. [T13e cevaptan ayrı onaylı karar](docs/quality/question-decision-runtime.md) arayüzde çalışır;208runtime test. Ana T13 devam ediyor. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
+Kullanıcı konuşmaya devam eder; sistem izinli kaynaklardan görev, karar ve değişiklik **önerileri** hazırlar. Belirsizlikleri ve gerekli insan onayını görünür tutar. Kullanıcı yerel web arayüzünde konuşmaları, inceleme kutusunu, görev panosunu, kararları, ilişkileri ve geçmişi takip eder.
 
+**Ana farklılaştırma hedefi: karar farkındalıklı değişiklik etki analizi.** Örneğin proje Markdown depolamadan SQLite'a geçerse, eski senkronizasyon görevi gereksizleşme adayı olabilir. Başka bir gerekçeye de hizmet eden görev ise korunmalıdır. Sistem bu etkiyi gerekçesiyle incelemeye sunmalı; geçmişi silmemeli veya görevleri kanıtsız kapatmamalıdır.
 
-> [!WARNING]
-> **Yeni sekiz mesajlık testte altı draft aday ve iki alıntı/plan negatif örneği eşleşti; genel kalite kapısı açık.** MEMBERSHIP-003 source/type/quote kontrollerini geçti; eski/current soru revision ve ENnot_run korundu. H4 partial insan review kaydedildi; gold/holdout veya production kanıtı değil. [Güncel ölçüm ve çok-aday sınırı](docs/quality/membership-003-result.md) · [Çoklu cevap kod düzeltmesi ve 102 test](docs/quality/proposal-collection.md) · [Devam paketi ve eşit bilgiyle dosya kıyası](docs/quality/resume-file-comparison.md) · [Kayıpsız paket küçültme ve okunabilir görünüm](docs/quality/resume-compaction.md) · [Yeni sohbet deneyi: hazır istek ve evaluator](docs/quality/receiver-smoke-plan.md) · [İlk Luna/Low receiver sonucu: sözleşme geçmedi](docs/quality/receiver-001-result.md) · [Yerel schema/source düzeltmesi: 16 yeni test](docs/quality/receiver-contract.md) · [Bağımsız proje review ve geç açıklama cevabı: 20 yeni test](docs/quality/project-review.md) · [Yeni machine-schema ile gerçek ikinci run: sözleşme geçmedi](docs/quality/receiver-002-result.md) · [Tipli bilgiden model çağrısız inceleme taslağı](docs/quality/typed-review.md) · [Aktif riskler](docs/governance/risks.md). Kayıtlı önceki adaylardan [13 controlled karar/etki/kanıt checkpoint’i](docs/quality/membership-chain-replay.md) de geçti; fixture onayları üretim yetkisi değildir.
+## Bugün ne çalışıyor, ne henüz tamamlanmadı?
 
+| Alan | Mevcut durum |
+|---|---|
+| Yerel uygulama | Python3.12/SQLite; konuşma aktarımı, Board/List/Graph/Timeline, görev ve karar incelemesi, AC/DoD, ayrı insan onayı ve kalıcı geçmiş kodlandı |
+| Karar ve etki | Kaynaklı ilişki/karar önerileri, AND/OR gerekçeleri ve insan onaylı etki/görev güncelleme parçaları mevcut |
+| Codex bağlantısı | Seçilmiş oturum için salt okunur capture kodu var. Sınırlı gerçek denemede6mesaj TEST'e alındı; sonraki kalıcı sayfa ilerlemesi sentetik doğrulandı |
+| Otomatik uçtan uca akış | **Henüz tamamlanmadı.** Capture kurulumu, kaynak kapasitesi/ilerleme görünümü ve izinli otomatik model zincirinin kalan bağlantıları geliştiriliyor. Varsayılan uygulamada model kapalı |
+| Release ve ekip kullanımı | MVP release adayı değil. Ekip kimliği/izolasyonu ve gerçek host/model kabul kapıları açık |
 
-**[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) Board/Liste görünümü, görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.
+Konuşmanın kaydedilmesi, bir önerinin onaylanması ve işin doğrulanarak tamamlanması ayrı durumlardır. Her platformdaki bütün sohbetlere otomatik erişim veya kusursuz anlam çıkarımı vaat edilmez. Decivora çalışma adıdır; marka uygunluğu kesinleşmemiştir.
 
-| Alan | Bugünkü durum | Sonraki kanıt |
-|---|---|---|
-| Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli; T01 ilk corpus hazır | İnsan etiket incelemesi ve çalışan sistemde ölçüm |
-| Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
-| Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
-| Pilot ve uygulama | P0: capture, typed zincir, lexical baseline ve semantik output contract/import/bridge testleri çalıştı; insan pilotu başlamadı | İnsan gold review, zorunlu semantik model deneyi, gerçek host ve native kıyası; Codex B sonra |
+## Başlamak için
 
-**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti. [Lexical baseline](docs/quality/audit-remediation.md) düşük başarı gösterdi; insan gold incelemesi ve geçerli gerçek model çıktısının semantik ölçümü bekliyor; S02-002 kaynak konumu kontrolünde reddedildi.
-
-> [!IMPORTANT]
-> **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.
+- **Yerel uygulama:** [kurulum ve kullanım](README_LOCAL.md); desteklenen yerel ortamda `Decivora.command` başlatıcısı.
+- **Ürün ve kapsam:** [vizyon](docs/product/vision.md), [MVP](docs/product/mvp.md), [tam kapsam](docs/product/full-scope.md) ve [roadmap](ROADMAP.md).
+- **Güncel geliştirme:** [çalışan kod ve kalan işler](docs/delivery/current-state.md), [ilerleme görünümü](docs/delivery/progress.md), [capture iyileştirme planı](docs/quality/capture-improvement-assessment.md).
+- **Mühendislik:** [mimari atlas](docs/architecture/diagrams.md), [agent çalışma kuralları](AGENTS.md) ve [güvenlik sınırları](SECURITY.md).
 
 ## Çözdüğümüz problem
 
@@ -225,3 +212,61 @@ Başlangıç repository'si private olarak tasarlanmıştır. Açık kaynak yayı
 ## 18 Ekim 2026 — son teknik inceleme ve düzeltmeler
 
 [Altı teyit edilmiş bulgu ve aksiyon](docs/quality/review-remediation-2026-10-18.md): önkoşul kanıtı değişince current Done zinciri yeniden değerlendirilir; overrun saklanıp yeni workspace rezervasyonu durur; kaynak/model/outputcap/bütçe grant'i olmayan analyze çağrısı çalışmaz. Kısmi çıkarım kapsamı UI'da görünür.44Mermaid yeniden render edildi; iki diyagram güncellendi. Gerçek model/money/context/host/release kabulü hâlâ açık.
+
+
+<details>
+<summary><strong>Önceki geliştirme ve deney notları — tarihsel kayıtlar</strong></summary>
+
+Bu bölüm önceki README girişindeki teslim/deney notlarını korur. Tarihli sayımlar ve sınırlar o teslimin bağlamıdır; bugünkü durum için [güncel resmi](docs/delivery/current-state.md) kullanın. Yeni girişte belirtilen çalışan kod, otomatik MVP kabulü anlamına gelmez.
+
+19 Ekim gerçek bağlantı: [seçilmiş Codex sohbetinden6mesaj TEST'e kaydedildi](docs/quality/codex-real-capture-001.md). İlk yanıt boyutu bulgusu sayfalama ile düzeltildi; eksik item/cursor ve model aşaması açık. Sürekli izleme veya gerçek metin API paylaşımı açılmadı.
+
+19 Ekim kullanıcı mesajı bağlantısı: [seçilen Codex oturumunu salt okunur izleme kodu](docs/quality/codex-exec-capture-runtime.md#19-october--app-server-user-message-capture-and-bounded-polling), user/assistant kimlikleri ve sınırlı yakın bağlam eklendi. Gerçek oturum ve UI activation kabulü ayrı; otomatik MVP tamamlandı değildir.
+
+19 Ekim Codex bağlantısı: [seçilmiş CLI olay akışı → kalıcı kaynak → görev incelemesi](docs/quality/codex-exec-capture-runtime.md) kodlandı. Tekrar/güncellik/maskeleme kontrolleri var; masaüstü sohbetlerini canlı yakalama ve tam MVP kabulü hâlâ açık.
+
+19 Ekim Operations teslimi: [kalıcı güvenli tanı kayıtları ve ayrı TEST ortamı](docs/quality/operations-runtime.md). Komut sınırları/süreleri izlenir; bütün engine zinciri ve tam backoffice kabulü açık.
+
+
+19 Ekim yerel kod teslimi: [insan doğrulamalı gerekçeden iptal/yeniden açma](docs/quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü), typed waiting rozetleri ve sunucu kaynaklı workflow. Gerçek model/native capture ve tam MVP kabulü açık.
+
+
+**Ana ürün akışı henüz tamamlanmadı:** [güncel kod denetimi, yeniden üretilen kopukluklar ve öncelikler](docs/quality/primary-flow-audit.md). Çalışan yerel parçalar gerçek native/semantic uçtan uca kabulün yerine geçmez.
+
+18 Ekim çalışan yerel dilim: [konuşmadan yeni görev ve mevcut göreve durum önerisi](docs/quality/dialogue-status-runtime.md). Kaynak/context doğrulaması, ayrı insan incelemesi ve ortak workflow/kanıt kontrolü; gerçek model kalitesi/native capture kabulü açık.
+
+### Living project memory. Decisions, actions, and evidence stay connected.
+
+**Kararlarla evrilen AI-native proje hafızası.** Neyi konuştuk, neyi seçtik, ne gerçekten uygulandı ve hangi işler yeni karardan etkilendi? Decivora bu ayrımları kaynak ve kanıtlarıyla farklı oturumlar boyunca korumayı hedefler.
+
+> [!NOTE]
+> **Aşama: P1a yerel çekirdekte7 ana görev Done; P0 kalite kanıtları açık.** Fixture testli capture düzeneği, karar–etki–kanıt zinciri, source-bound semantik çıktı bağlantısı ve bağımsız scorer var. Kurulabilir ürün MVP’si, gerçek host entegrasyon başarısı ve performans üstünlüğü henüz doğrulanmadı. Decivora geçici çalışma adıdır; marka ve alan adı uygunluğu kesinleşmemiştir.
+
+**Güncel odak — tasarım revizyonu 03:** Claude Projects sonrasında ilk yatırım sorusu, kullanıcı seçimi ile hedefte gerçekleşen işlemin sürekliliğidir. Önce sınırlı prototip + adil native karşılaştırması önerilir; tam vizyon/P1b MVP korunur. Q15-A kabul edildi: Python3.12/SQLite ile koşullu yerel MVP çekirdeği başladı. T01/T02/T03 model/capture/native/ROI kanıtları açık; bütün MVP kabulü değil. [Runtime başlangıcı](apps/hub/README.md) · [Kabul edilmiş ADR-0012](docs/architecture/adr/0012-conditional-python-runtime.md). [Güncel yön ve önce/sonra tablosu](docs/product/current-direction.md) · [Tek belge seti, sürüm düzeni](docs/governance/versioning.md).
+
+## Çalışmanın neresindeyiz?
+
+[Konuşma aktarımı ve inceleme akışı](docs/quality/conversation-review-runtime.md) ana yerel arayüzdür. [Workflow/UI kanıtı](docs/quality/workflow-ui-runtime.md) altı aşama, blocker/dependency ve insan incelemesiyle Done sınırlarını gösterir. [İlk gerçek API pilotu](docs/quality/openai-pilot-001.md): ayrı sentetik ortamda10model/10count,10source/schema pass; model davranış farkları ve cache-write maliyet düzeltmesi kaydedildi. [Onaylı ortak geliştirme bütçesi](docs/quality/openai-development-budget.md) ile toplam20model/40HTTPye ulaşıldı; Türkçe/İngilizce claim, negation/future ve özgün önceki claim karşılaştırması kaydedildi. Toplam tahmin$0.049592/$3; nihai fatura değil. Gerçek semantik kalite veya native Codex capture kabulü değildir; ana UI varsayılan model kapalı, kişisel workspace ilk açılışta boş gelir. Manuel araçlar yardımcı bölümlerdedir.
+
+**Tarihsel sayım:7 Done / 14 In Progress / 9 To Do.** [Altı kod teslim paketi ve uygulama sırası](docs/delivery/build-delivery-plan.md):9 To Do işinin3’ü MVP (T16/T17/T24),6’sı sonraki fazlardır; T14 doğrulama akışı başladı. Bu toplu teslimde T05 proje/binding, T06 source/jobs, T07 event/projector/restore, T08 atomic approval ve T11 typed graph çekirdekleri kapandı. [Çalışan uçtan uca demo](docs/quality/integrated-core.md) + [kritik düzeltmeler](docs/quality/core-critical-review.md): `python3.12 -B -m apps.hub core-demo`. [T12 impact preview](docs/quality/impact-preview.md) ve `python3.12 -B -m apps.hub impact-demo` tamamlandı;130runtime test. [T13a review çekirdeği](docs/quality/review-kernel.md), `review-demo` ve [yeni akış/şema](docs/architecture/review-runtime.md) eklendi;148runtime test. [T13b iptal/geri dönüş](docs/quality/task-lifecycle.md) ve `lifecycle-demo` eklendi;168runtime test. [Tıklanarak çalışan yerel sürüm](README_LOCAL.md): **Decivora.command**;185runtime test, T13c Done, T19/T20 UI In Progress. [T13e cevaptan ayrı onaylı karar](docs/quality/question-decision-runtime.md) arayüzde çalışır;208runtime test. Ana T13 devam ediyor. T09/T10 structured/lexical kodu var; gerçek semantik extraction/kalite kabulü açık. Yerel sentetik/manual profile; actual capture/login/provider/UI/MVP release değildir.
+
+
+> [!WARNING]
+> **Yeni sekiz mesajlık testte altı draft aday ve iki alıntı/plan negatif örneği eşleşti; genel kalite kapısı açık.** MEMBERSHIP-003 source/type/quote kontrollerini geçti; eski/current soru revision ve ENnot_run korundu. H4 partial insan review kaydedildi; gold/holdout veya production kanıtı değil. [Güncel ölçüm ve çok-aday sınırı](docs/quality/membership-003-result.md) · [Çoklu cevap kod düzeltmesi ve 102 test](docs/quality/proposal-collection.md) · [Devam paketi ve eşit bilgiyle dosya kıyası](docs/quality/resume-file-comparison.md) · [Kayıpsız paket küçültme ve okunabilir görünüm](docs/quality/resume-compaction.md) · [Yeni sohbet deneyi: hazır istek ve evaluator](docs/quality/receiver-smoke-plan.md) · [İlk Luna/Low receiver sonucu: sözleşme geçmedi](docs/quality/receiver-001-result.md) · [Yerel schema/source düzeltmesi: 16 yeni test](docs/quality/receiver-contract.md) · [Bağımsız proje review ve geç açıklama cevabı: 20 yeni test](docs/quality/project-review.md) · [Yeni machine-schema ile gerçek ikinci run: sözleşme geçmedi](docs/quality/receiver-002-result.md) · [Tipli bilgiden model çağrısız inceleme taslağı](docs/quality/typed-review.md) · [Aktif riskler](docs/governance/risks.md). Kayıtlı önceki adaylardan [13 controlled karar/etki/kanıt checkpoint’i](docs/quality/membership-chain-replay.md) de geçti; fixture onayları üretim yetkisi değildir.
+
+
+**[Proje ilerleme ekranı](docs/delivery/progress.md)** — mevcut kod parçaları, açık işler ve bekleyen kapılar tek görünümde. [Canlı yerel ekran](docs/delivery/progress-guide.md) Board/Liste görünümü, görev/faz araması, kabul kriterleri, alt görevler ve 10 engine planı sunar; kaynak dosyaları değişince yenilenir. Bu geliştirme takip aracıdır; kurulabilir ürün MVP’si değildir.
+
+| Alan | Bugünkü durum | Sonraki kanıt |
+|---|---|---|
+| Ürün vizyonu ve fazlar | Tam kapsam, ayrı MVP ve küçük görevler belgeli; T01 ilk corpus hazır | İnsan etiket incelemesi ve çalışan sistemde ölçüm |
+| Mimari | Mantıksal model, ADR önerileri ve 24 gap kaydı | Seçilen sınırda çalışan conformance testleri |
+| Görsel anlatım | Renkli Mermaid atlası ve açıklama sözlüğü | Render kaydı; ürün UI testi değildir |
+| Pilot ve uygulama | P0: capture, typed zincir, lexical baseline ve semantik output contract/import/bridge testleri çalıştı; insan pilotu başlamadı | İnsan gold review, zorunlu semantik model deneyi, gerçek host ve native kıyası; Codex B sonra |
+
+**İlk test seti:** [6 oturum / 58 mesaj / 46 farklı bilgi kaydı](examples/corpus/README.md) ve ayrı beklenen sonuçlar hazırlandı. [Hazırlık raporu](docs/quality/baseline.md) MVP/future kapsamını ve kalanları gösterir. Veri kontrolü geçti. [Lexical baseline](docs/quality/audit-remediation.md) düşük başarı gösterdi; insan gold incelemesi ve geçerli gerçek model çıktısının semantik ölçümü bekliyor; S02-002 kaynak konumu kontrolünde reddedildi.
+
+> [!IMPORTANT]
+> **Önerildi → insan seçti → hedefte gözlendi → kabul kriterleri doğrulandı** ayrı durumlardır. Belge, dosya veya agent iddiası bu zinciri tek başına tamamlamaz.
+
+</details>
