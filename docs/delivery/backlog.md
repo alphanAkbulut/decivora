@@ -286,10 +286,10 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:**2026-10-13 · [Kalıcı cevaptan karar](../quality/question-decision-runtime.md): separate prepare/approve/apply; [soru lifecycle](../quality/question-lifecycle-runtime.md) cancel/defer/resume/revise/orphan association,221runtime test + gerçek browser akışı geçti.
-- **Sıradaki adım:** T13d split, T13e genel/serbest metin soru ve çatışma çözümü; T19 kaynaklı soru taslağı inceleme kartı. Seçenekli soru backend bağlantısı aşağıda teslim edildi.
+- **Sıradaki adım:** T13d split, T13e genel/serbest metin soru ve çatışma çözümü; T19 genel çatışma çözümü ve kaynak/model onboarding. Seçenekli soru backend ve inceleme kartı aşağıda teslim edildi.
 - **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
 - **Son ilerleme:** 19 Ekim2026 — Status/answer/relation/replacement, scope edit ve lifecycle select→approve→apply kodlu; [son durum](../quality/workflow-ui-runtime.md).
-- **Son ilerleme:** 19 Ekim2026 — [Kaynaklı seçenekli soru backend bağlantısı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına): model taslağı→ayrı insan review→atomik kalıcı soru→geç cevap. Duplicate/ret/erteleme ve provenance korunur; UI taslak kartı ve genel soru türleri açık.
+- **Son ilerleme:** 19 Ekim2026 — [Kaynaklı seçenekli soru backend bağlantısı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına): model taslağı→ayrı insan review→atomik kalıcı soru→geç cevap. Duplicate/ret/erteleme ve provenance korunur; Kaynaklı taslak inceleme kartı da bağlandı; genel soru türleri ve ekip routing açık.
 - **Risk durumu:** Konuşmadan QuestionRequest üretimi, genel clarification ve split planı atomik kabulü açık.
 
 ## T14 — Evidence ve false-done düzeltmesi

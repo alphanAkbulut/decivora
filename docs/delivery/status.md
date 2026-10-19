@@ -4,7 +4,9 @@
 
 # Mevcut durum
 
-**19Ekim kaynaklı soru backend:** seçenekli soru taslağı çıkarım şemasına, kaynak/proje doğrulamasına ve ayrı insan review API’sine bağlandı. Kabulde soru+makbuz atomik kaydedilir; sonraki kaynakta geç cevap ayrı incelemeyle ilişkilendirilebilir. UI taslak kartı ve gerçek model soru kalite kabulü açık. [Kod/sınırlar](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına). Yeni ücretli çağrı/kaynak okuması0, ana statüler değişmedi.
+**19Ekim kaynaklı soru inceleme UI:** Conversations kartında soru/seçenek/alıntı, gerekçeli sunma/ret/erteleme, mevcut soru duplicate uyarısı ve metrikler bağlandı. Geç cevapla birleşen browser akışı ve on UI smoke case geçti; beş dil katalogları güncel. [Teslim](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-soru-taslağı-inceleme-kartı). Gerçek API/kaynak okuması0.
+
+**19Ekim kaynaklı soru backend:** seçenekli soru taslağı çıkarım şemasına, kaynak/proje doğrulamasına ve ayrı insan review API’sine bağlandı. Kabulde soru+makbuz atomik kaydedilir; sonraki kaynakta geç cevap ayrı incelemeyle ilişkilendirilebilir. UI taslak kartı sonraki teslimde bağlandı; gerçek model soru kalite kabulü açık. [Kod/sınırlar](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına). Yeni ücretli çağrı/kaynak okuması0, ana statüler değişmedi.
 
 **19Ekim bounded worker backend:** kalıcı pass/source sınırları, interval/expiry, atomik claim, manuel start/stop ve arka plan thread bağlandı. Unfinished claim/unknown usage durur; restart otomatik başlatmaz. [Kod ve sınırlar](../architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi).571runtime/49tracker,53Mermaid; yeni gerçek source/provider çağrısı0. Ana7/15/8aynı.
 

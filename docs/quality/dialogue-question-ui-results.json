@@ -1,0 +1,85 @@
+{
+  "kind": "synthetic_question_review_ui",
+  "date": "2026-10-19",
+  "input_base_ref": "0719adfbac3897c7cf277007f0850567170138ce",
+  "real_model_calls": 0,
+  "new_real_source_reads": 0,
+  "files": {
+    "apps/local_ui/app.js": "6ec8f1b5e986d7687758374eb44876087ba94204c6864ecc1d94e99f951bae92",
+    "apps/local_ui/locales.js": "0e42fbe7bbfc1a13648f276da58045651a9a3b121709259843d026e7917a21cc",
+    "tests/ui-dialogue-questions.cjs": "2dea2e4e3e08599e1b0ec3954b580da5a35f4ddf83736938e32f2c0c034a4c63",
+    "scripts/check_ui_smoke.py": "ddc540e26132025ee3b50b40e4221ad30797f39984d4d868de8770cbacba7bfa"
+  },
+  "browser": {
+    "synthetic_outputs": true,
+    "question_draft_review": true,
+    "defer_reload": true,
+    "present_reload": true,
+    "duplicate_disabled": true,
+    "reject": true,
+    "late_answer_bound": true,
+    "no_task_or_decision_apply": true,
+    "tr_reason_preserved": true,
+    "ar_rtl_mobile": true,
+    "page_errors": 0,
+    "real_model_calls": 0
+  },
+  "smoke": {
+    "fixtures": true,
+    "paid_calls": 0,
+    "results": [
+      {
+        "case": "source-pages",
+        "returncode": 0
+      },
+      {
+        "case": "rationale",
+        "returncode": 0
+      },
+      {
+        "case": "dialogue",
+        "returncode": 0
+      },
+      {
+        "case": "dialogue-questions",
+        "returncode": 0
+      },
+      {
+        "case": "workflow",
+        "returncode": 0
+      },
+      {
+        "case": "coverage",
+        "returncode": 0
+      },
+      {
+        "case": "impact",
+        "returncode": 0
+      },
+      {
+        "case": "lifecycle",
+        "returncode": 0
+      },
+      {
+        "case": "operations",
+        "returncode": 0
+      },
+      {
+        "case": "projects",
+        "returncode": 0
+      }
+    ]
+  },
+  "localization_tests": 2,
+  "js_syntax_checked": true,
+  "test_server_restarted": true,
+  "test_database_logically_unchanged": true,
+  "live_source_capture_enabled": false,
+  "model_enabled": false,
+  "limitations": [
+    "Real model question semantic quality not measured",
+    "Free-text question types and team responder routing pending",
+    "ES/PT-BR/AR native language review pending"
+  ],
+  "diagram_change": "No topology change: prior source-question flow still applies; UI implementation status updated in current documentation."
+}

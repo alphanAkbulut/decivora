@@ -15,7 +15,7 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 
 **MVP release yolunda17ana iş açık:14ürün/entegrasyon işi ve3P0 hazırlık/kalite işi.** Bunlar17eşit büyüklükte küçük PR değildir. Done görünen7iş çekirdek kabul kapsamıdır; otomatik kullanıcı yolculuğunun tamamı değildir. T15 ve T24 esasen entegrasyon/kabul kapısıdır; diğer12açık MVP ana işte kalan ürün kodu vardır. Kabulde çıkacak gerçek hatalar bu işlerde düzeltilir; gelecekte bulunacak hata sayısı tahmin edilmedi.
 
-**19 Ekim T13e backend güncellemesi:** [Kaynaklı seçenekli soru taslağı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına) ayrı insan incelemesiyle kalıcı soru olur ve geç cevaba bağlanır. Genel/serbest metin soruları, ekip routing ve UI taslak inceleme kartı açık.
+**19 Ekim T13e backend güncellemesi:** [Kaynaklı seçenekli soru taslağı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına) ayrı insan incelemesiyle kalıcı soru olur ve geç cevaba bağlanır. Kaynaklı taslak inceleme kartı da Conversations ekranına bağlandı. Genel/serbest metin soruları ve ekip routing açık.
 
 **19 Ekim T17 güncellemesi:** [seçilmiş Codex exec JSONL capture](../quality/codex-exec-capture-runtime.md) kaynak/review yoluna bağlandı; T17 artık In Progress. Sadece public assistant mesajları, partial coverage; gerçek masaüstü bağlantısı ve sürekli tam konuşma kabulü açık. Ana sayım güncellendi; ana iş kapanışı veya MVP kabulü yok.
 

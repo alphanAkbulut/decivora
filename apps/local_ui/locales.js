@@ -359,7 +359,13 @@ window.DecivoraCatalogs = {
     "First source page": "First source page",
     "Previous source page": "Previous source page",
     "Next source page": "Next source page",
-    "Proposals on this page": "Proposals on this page"
+    "Proposals on this page": "Proposals on this page",
+    "Question draft": "Question draft",
+    "Present question": "Present question",
+    "Reject question draft": "Reject question draft",
+    "Defer question draft": "Defer question draft",
+    "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.",
+    "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "A matching question already exists. Review or revise it in Question Inbox before presenting another."
   },
   "tr": {
     "Dil": "Dil",
@@ -721,7 +727,13 @@ window.DecivoraCatalogs = {
     "First source page": "İlk kaynak sayfası",
     "Previous source page": "Önceki kaynak sayfası",
     "Next source page": "Sonraki kaynak sayfası",
-    "Proposals on this page": "Bu sayfadaki öneriler"
+    "Proposals on this page": "Bu sayfadaki öneriler",
+    "Question draft": "Soru taslağı",
+    "Present question": "Soruyu aç",
+    "Reject question draft": "Soru taslağını reddet",
+    "Defer question draft": "Soru taslağını ertele",
+    "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Bu işlem yalnızca soruyu açar. Cevap seçmez, karar uygulamaz veya görevleri değiştirmez.",
+    "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "Eşleşen bir soru zaten var. Yeni bir soru açmadan önce Soru Kutusu üzerinden mevcut soruyu incele veya güncelle."
   },
   "es": {
     "Dil": "Idioma",
@@ -1083,7 +1095,13 @@ window.DecivoraCatalogs = {
     "First source page": "First source page",
     "Previous source page": "Previous source page",
     "Next source page": "Next source page",
-    "Proposals on this page": "Proposals on this page"
+    "Proposals on this page": "Proposals on this page",
+    "Question draft": "Borrador de pregunta",
+    "Present question": "Abrir pregunta",
+    "Reject question draft": "Rechazar borrador",
+    "Defer question draft": "Posponer borrador",
+    "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Esta acción solo abre la pregunta. No selecciona una respuesta, aplica una decisión ni cambia tareas.",
+    "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "Ya existe una pregunta coincidente. Revísala o modifícala en la bandeja de preguntas antes de abrir otra."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1445,7 +1463,13 @@ window.DecivoraCatalogs = {
     "First source page": "First source page",
     "Previous source page": "Previous source page",
     "Next source page": "Next source page",
-    "Proposals on this page": "Proposals on this page"
+    "Proposals on this page": "Proposals on this page",
+    "Question draft": "Rascunho de pergunta",
+    "Present question": "Abrir pergunta",
+    "Reject question draft": "Rejeitar rascunho",
+    "Defer question draft": "Adiar rascunho",
+    "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "Esta ação apenas abre a pergunta. Não seleciona uma resposta, aplica uma decisão nem altera tarefas.",
+    "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "Já existe uma pergunta correspondente. Revise ou edite a pergunta na caixa de perguntas antes de abrir outra."
   },
   "ar": {
     "Dil": "اللغة",
@@ -1807,6 +1831,12 @@ window.DecivoraCatalogs = {
     "First source page": "First source page",
     "Previous source page": "Previous source page",
     "Next source page": "Next source page",
-    "Proposals on this page": "Proposals on this page"
+    "Proposals on this page": "Proposals on this page",
+    "Question draft": "مسودة سؤال",
+    "Present question": "فتح السؤال",
+    "Reject question draft": "رفض مسودة السؤال",
+    "Defer question draft": "تأجيل مسودة السؤال",
+    "Presenting opens this question only. It does not select an answer, apply a decision or change tasks.": "يفتح هذا الإجراء السؤال فقط. ولا يختار إجابة أو يطبق قرارًا أو يغير المهام.",
+    "A matching question already exists. Review or revise it in Question Inbox before presenting another.": "يوجد سؤال مطابق بالفعل. راجعه أو عدّله في صندوق الأسئلة قبل فتح سؤال آخر."
   }
 };

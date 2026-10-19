@@ -121,7 +121,7 @@ Ek performans kontrolü: rationale audit geçmişi state içindeki her task içi
 
 ## 19 Ekim — konuşmadaki seçenekli sorudan kalıcı soru kaydına
 
-**Uygulandı: backend bağlantısı.** T09/T13e/T19 kapsamındaki bu dilim, model çıktısındaki `question_proposals` taslaklarını kaynak incelemesine ve `QuestionService` kayıtlarına bağlar. Yeni ana iş veya kabul kapsamı oluşturulmadı. Kullanıcı arayüzünde taslaklara özel inceleme kartı henüz yok; mevcut Question Inbox yalnız kabul edilerek sunulmuş soruları gösterir.
+**Uygulandı: backend bağlantısı.** T09/T13e/T19 kapsamındaki bu dilim, model çıktısındaki `question_proposals` taslaklarını kaynak incelemesine ve `QuestionService` kayıtlarına bağlar. Yeni ana iş veya kabul kapsamı oluşturulmadı. Sonraki UI teslimi aşağıdadır: kaynak kartında taslak inceleme eklendi; Question Inbox yalnız kabul edilerek sunulmuş soruları gösterir.
 
 | Adım | Kod / sözleşme | Kalıcı sonuç |
 |---|---|---|
@@ -174,3 +174,11 @@ Doğrulama:14yeni sentetik runtime testi; gerçek yerel HTTP session/CSRF ve com
 Son toplu doğrulama:585runtime ve49repo/tracker testi geçti;54Mermaid kaynak ağ kapalı render edildi ve yeni soru şekli görsel incelendi. [Kaynak hash’leri ve sınırlar](dialogue-question-results.json). Repo testlerinin ilk sandbox çalıştırmasında3loopback testi ortam izni nedeniyle hata verdi; yerel HTTP izniyle aynı49test geçti.
 
 Mevcut gerçek browser diyalog regresyonu da geçti: source→Task review, mevcut task durum önerisi, prior question context, reload/source link, false-Done reddi ve mobil taşma kontrolü; page error0, gerçek model dispatch0. Yeni soru taslak kartı bu testte yoktur.
+
+## 19 Ekim — kaynaklı soru taslağı inceleme kartı
+
+**Uygulandı: mevcut Conversations ekranı.** Her taslak soru metni, literal seçenekleri, kaynak alıntısı, soruID ve Pending/Deferred/Presented/Rejected durumu ile görünür. İnsan gerekçe girerek **Present question / Reject question draft / Defer question draft** işlemlerini kullanır. Presented/Rejected geçmiş kartında yeniden işlem düğmesi gösterilmez. Ertelenmiş taslak tekrar incelenebilir. Kaynak başına taslaklar toplam inceleme sayısına dahil edilir; sunulunca bu sayıdan çıkar ve Open soru sayısına girer.
+
+Eşleşen mevcut soru varsa yeni sunma düğmesi kapalı ve ilgili soruID görünür; ret/erteleme kullanılabilir. Bu UI kontrolü backend duplicate/authority/transaction kontrolünün yerine geçmez. Soru açmak cevap seçmek, bir Decision uygulamak veya task durumunu değiştirmek değildir. Kart bu ayrımı açıklar. Beş katalogda yeni metinler eklendi (EN/TR/ES/PT-BR/AR; ES/PT/AR native dil incelemesi hâlâ açık). Dil değişiminde doldurulan review gerekçesi korunur; yeni model çağrısı yapılmaz.
+
+`tests/ui-dialogue-questions.cjs` gerçek tarayıcı/yerel HTTP/SQLite yolunda sentetik çıktı→taslak→defer→reload→present→reload→duplicate ret→geç cevap incelemesini sınar. Task/Decision kayıtları değişmeden kaldı. TR taslak korunumu ve390pxArabic RTL taşma kontrolü geçti. Yeni case CI smoke listesine eklendi; on ana UI case geçti. Yerel model kapalıdır, gerçek anlam doğruluğu veya sürekli kaynak/model onboarding kabulü değildir. [UI kanıt kaydı](dialogue-question-ui-results.json).
