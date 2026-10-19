@@ -155,6 +155,8 @@ class PilotTransport:
             db.execute('CREATE TABLE IF NOT EXISTS policy (id INTEGER PRIMARY KEY CHECK(id=1), digest TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS dispatch (hash TEXT PRIMARY KEY, state TEXT NOT NULL, reserved INTEGER NOT NULL, attempts INTEGER NOT NULL, input_tokens INTEGER, output_tokens INTEGER, actual INTEGER)')
             db.execute('CREATE TABLE IF NOT EXISTS batches (digest TEXT PRIMARY KEY, payload_hashes TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS dispatch_diagnostics (hash TEXT PRIMARY KEY, phase TEXT NOT NULL, failure_code TEXT, updated_at INTEGER NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS unknown_reviews (hash TEXT PRIMARY KEY, snapshot_sha256 TEXT NOT NULL, approval_ref TEXT NOT NULL, reviewed_at INTEGER NOT NULL)')
             db.execute('BEGIN IMMEDIATE')
             previous = db.execute('SELECT digest FROM policy WHERE id=1').fetchone()
             if previous and previous[0] != fingerprint(policy):
@@ -175,12 +177,62 @@ class PilotTransport:
 
     def snapshot(self):
         with self._db() as db:
-            rows = db.execute('SELECT state,reserved,attempts,input_tokens,output_tokens,actual FROM dispatch').fetchall()
+            rows = db.execute('SELECT state,reserved,attempts,input_tokens,output_tokens,actual,hash FROM dispatch').fetchall()
+            reviewed = {r[0] for r in db.execute('SELECT hash FROM unknown_reviews')}
         return dict(dispatches=self.prior_usage['dispatches'] + len(rows),
                     http_attempts=self.prior_usage['http_attempts'] + sum(r[2] for r in rows),
                     committed_microusd=self.prior_usage['cost_microusd'] + sum(r[5] if r[5] is not None else r[1] for r in rows),
-                    frozen=any(r[0] in ('pending', 'unknown', 'overrun') for r in rows),
+                    frozen=any(r[0] in ('pending', 'overrun') or (r[0] == 'unknown' and r[6] not in reviewed) for r in rows),
                     states=[r[0] for r in rows])
+
+    def review_packet(self):
+        """Read-only owner review, without keys, payload text or guessed usage.
+
+        An accepted unknown keeps its reservation and original state forever.
+        This local trusted-owner method is not an agent/remote approval endpoint.
+        """
+        with self._db() as db:
+            policy = db.execute('SELECT digest FROM policy WHERE id=1').fetchone()[0]
+            rows = db.execute('SELECT hash,state,reserved,attempts,input_tokens,output_tokens,actual FROM dispatch ORDER BY hash').fetchall()
+            reviews = {r[0]: r[1] for r in db.execute('SELECT hash,approval_ref FROM unknown_reviews')}
+            diagnostics = {r[0]: dict(phase=r[1], failure_code=r[2]) for r in db.execute('SELECT hash,phase,failure_code FROM dispatch_diagnostics')}
+        snapshot = fingerprint(dict(policy=policy, dispatches=rows, reviews=reviews))
+        unresolved = [r for r in rows if r[1] in ('pending', 'overrun') or (r[1] == 'unknown' and r[0] not in reviews)]
+        return dict(snapshot_sha256=snapshot, frozen=bool(unresolved),
+                    unknowns=[dict(payload_sha256=r[0], state=r[1],
+                        reserved_microusd=r[2], http_budget_slots=r[3],
+                        actual_microusd=r[6], diagnostic=diagnostics.get(r[0]),
+                        continuation_approval_ref=reviews.get(r[0])) for r in rows if r[1] == 'unknown'],
+                    can_accept_reserved_continuation=bool(unresolved) and all(r[1] == 'unknown' for r in unresolved))
+
+    def accept_reserved_unknown(self, identity, *, snapshot_sha256, approval_ref):
+        """Explicit owner risk acceptance; never refund, retry, or invent usage.
+
+        The host must obtain human approval before calling. A stale packet or
+        pending/overrun dispatch cannot be used to clear the stop. All existing
+        exact-source, expiry, count and money gates continue to apply.
+        """
+        if (type(approval_ref) is not str or not 1 <= len(approval_ref) <= 160 or
+                any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_:. /-' for c in approval_ref)):
+            raise ContractError('pilot_review_invalid', 'A bounded safe owner approval reference is required.')
+        ensure_safe(approval_ref)
+        with self._db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            packet = self.review_packet()
+            if packet['snapshot_sha256'] != snapshot_sha256:
+                raise ContractError('pilot_review_stale', 'Budget changed since owner review.')
+            row = next((r for r in packet['unknowns'] if r['payload_sha256'] == identity), None)
+            if (not packet['can_accept_reserved_continuation'] or row is None or
+                    row['continuation_approval_ref'] is not None):
+                raise ContractError('pilot_review_invalid', 'Only an unreviewed unknown can retain its reserve for continuation.')
+            db.execute('INSERT INTO unknown_reviews VALUES(?,?,?,?)',
+                       (identity, snapshot_sha256, approval_ref, int(time.time())))
+        return self.review_packet()
+
+    def _diagnostic(self, identity, phase, failure_code=None):
+        with self._db() as db:
+            db.execute('INSERT OR REPLACE INTO dispatch_diagnostics VALUES(?,?,?,?)',
+                       (identity, phase, failure_code, int(time.time())))
 
     def __call__(self, payload):
         payload = copy.deepcopy(payload)
@@ -206,7 +258,9 @@ class PilotTransport:
         with self._db() as db:
             db.execute('BEGIN IMMEDIATE')
             rows = db.execute('SELECT state,reserved,attempts,actual FROM dispatch').fetchall()
-            if any(r[0] in ('pending', 'unknown', 'overrun') for r in rows):
+            reviewed = {r[0] for r in db.execute('SELECT hash FROM unknown_reviews')}
+            blocked = db.execute("SELECT hash,state FROM dispatch WHERE state IN ('pending','unknown','overrun')").fetchall()
+            if any(state != 'unknown' or identity not in reviewed for identity, state in blocked):
                 raise ContractError('pilot_review_required', 'Uncertain or overrun request requires review; dispatch frozen.')
             if db.execute('SELECT 1 FROM dispatch WHERE hash=?', (identity,)).fetchone():
                 raise ContractError('pilot_retry_denied', 'This exact request already consumed its attempt.')
@@ -217,6 +271,8 @@ class PilotTransport:
             # Persist both reserved HTTP slots before either request. Crashes cannot refund them.
             db.execute('INSERT INTO dispatch(hash,state,reserved,attempts) VALUES(?, ?, ?, 2)', (identity, 'pending', reserve))
         try:
+            phase = 'input_count'
+            self._diagnostic(identity, phase)
             count_payload = {k: payload[k] for k in ('model', 'instructions', 'input', 'text', 'tools')}
             count = self.post('/v1/responses/input_tokens', count_payload, key)
             n = count.get('input_tokens') if type(count) is dict else None
@@ -226,7 +282,13 @@ class PilotTransport:
                 with self._db() as db:
                     db.execute("UPDATE dispatch SET state='input_rejected',input_tokens=? WHERE hash=?", (n, identity))
                 raise ContractError('pilot_input_exceeded', 'Generation not sent: counted input exceeds the approved ceiling.')
+            phase = 'generation'
+            with self._db() as db:
+                db.execute('UPDATE dispatch SET input_tokens=? WHERE hash=?', (n, identity))
+            self._diagnostic(identity, phase)
             response = self.post('/v1/responses', payload, key)
+            phase = 'usage_validation'
+            self._diagnostic(identity, phase)
             usage = response.get('usage') if type(response) is dict else None
             if (type(usage) is not dict or any(type(usage.get(k)) is not int or usage[k] < 0
                     for k in ('input_tokens', 'output_tokens', 'total_tokens')) or
@@ -248,7 +310,9 @@ class PilotTransport:
             if overrun:
                 raise ContractError('pilot_usage_overrun', 'Provider exceeded a bound; actual usage saved and pilot frozen.')
             return response
-        except Exception:
+        except Exception as exc:
+            from packages.operations.local import safe_code
+            self._diagnostic(identity, phase, safe_code(getattr(exc, 'code', 'provider_outcome_unknown')))
             with self._db() as db:
                 db.execute("UPDATE dispatch SET state='unknown' WHERE hash=? AND state='pending'", (identity,))
             raise

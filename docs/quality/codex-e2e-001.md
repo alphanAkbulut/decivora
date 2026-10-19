@@ -19,9 +19,9 @@
 
 Bu uygulamada `create_thread` / `send_message_to_thread` ile gönderdiğimiz mesajlar App Server item listesinde `functionCallOutput` türündeydi; gerçek `userMessage` değildi. Adapter dört assistant metnini aldı, bu araç gövdelerini bilerek almadı. Read-thread aracı da aynı türleri doğruladı; özel tool output veya reasoning okunmadı/konuşma gibi kaydedilmedi.
 
-Bu nedenle **normal insanın yazdığı mesajların otomatik yakalanması bu yeni sohbette doğrulanmış değil**. İşleyen assistant kaynaklı durum tespiti tam diyalog capture'ı yerine sunulamaz. Kullanıcıya aynı test sohbetine tek normal mesaj yazması soruldu. Ana sohbette soru yanıtı olarak gelen test cümlesi test thread'inden yakalanmış sayılmadı, başka gerçek sohbet okunmadı. Bu ana mesajı native test kaynağı gibi yerleştirmedik.
+İlk geçişte **normal insanın yazdığı mesajların otomatik yakalanması bu yeni sohbette doğrulanmamıştı**. İşleyen assistant kaynaklı durum tespiti tam diyalog capture'ı yerine sunulamaz. Kullanıcıya aynı test sohbetine tek normal mesaj yazması soruldu. Ana sohbette soru yanıtı olarak gelen test cümlesi test thread'inden yakalanmış sayılmadı, başka gerçek sohbet okunmadı. Bu ana mesajı native test kaynağı gibi yerleştirmedik.
 
-[OpenAI App Server belgesi](https://developers.openai.com/codex/app-server/) thread/turn/item ve pagination sözleşmesini anlatır; kurulu yüzeyde userMessage bulunacağını her gönderim yönteminde garanti etmez. Yerel Native UI otomasyonu bu uygulama için kullanılamadı; başka yöntemle UI erişim kısıtı aşılmadı. Normal kullanıcı mesajı doğrulaması açık kapıdır. Mevcut capture yeteneği olanak/kurulumdan ayrı tutulur.
+[OpenAI App Server belgesi](https://developers.openai.com/codex/app-server/) thread/turn/item ve pagination sözleşmesini anlatır; kurulu yüzeyde userMessage bulunacağını her gönderim yönteminde garanti etmez. Yerel Native UI otomasyonu bu uygulama için kullanılamadı; başka yöntemle UI erişim kısıtı aşılmadı. Aşağıdaki takip geçişi normal kullanıcı mesajını doğruladı; ilk geçişin assistant-only sonucu tarihsel olarak korunur. Mevcut capture yeteneği olanak/kurulumdan ayrı tutulur.
 
 ## Kod bağlantıları
 
@@ -41,19 +41,20 @@ Dördüncü çağrının eski failure receipt'i güvenli somut hata kodunu sakla
 
 ## Kalan kapanış koşulları
 
-1. Normal kullanıcı mesajının aynı yeni thread'de native capture'ını doğrulamak.
-2. Bilinmeyen request'in provider kullanımını veya muhafazakâr settlement politikasını ayrı doğrulamak; frozen root'u sessiz açmamak.
+1. Normal kullanıcı mesajı: aşağıdaki takip geçişinde doğrulandı. Bütün geçmişin eksiksiz alındığı iddia edilmez.
+2. Bilinmeyen request: kullanıcı rezerv koruyarak devamı onayladı; aşağıda uygulandı. Gerçek kullanım ve kök neden hâlâ bilinmiyor.
 3. Kaynak/model kurulumunu UI'dan, sonlu izin/bütçe ve görünür stop/resume ile günlük kullanıma bağlamak.
 4. İnsan review ve gerçek tamamlanma kanıtıyla kalan AC'leri geçirmek. Bu küçük örnek genel model doğruluk/holdout sonucu değildir.
 
-Yerel pilot `http://127.0.0.1:53612/`: ayrı DB;4kaynak/1Task, In Review, verification not_run, model bağlantısı önizlemede kapalı. Dışa/public yayın değildir. Private DB, exact model payload'lar, anahtar ve ledger repoya konmadı.
+Yerel pilot `http://127.0.0.1:53612/`: ayrı DB; ilk geçişte4, takipte8kaynak/1Task, In Review, verification not_run, model bağlantısı önizlemede kapalı. Dışa/public yayın değildir. Private DB, exact model payload'lar, anahtar ve ledger repoya konmadı.
 
 ```mermaid
 flowchart TD
   accTitle: Yeni Codex sohbetinde gözlenen proje ilerleme zinciri
-  accDescr: Yalnız assistant metinleri alınabildi. Üç gerçek model sonucu görev ve durum önerisi verdi. Ayrı test operatörü incelemesiyle ilerleme kaydedildi. Dördüncü çağrı belirsiz kaldı ve kök bütçe durdu.
+  accDescr: İlk geçişte dört assistant metni, takipte iki gerçek kullanıcı ve iki yeni assistant metni alındı. Dördüncü model çağrısı belirsiz kaldı. Kullanıcı onayıyla rezerv korunarak yalnız yeni izinli işlere devam edilebilir.
   C[Yeni sentetik Codex sohbeti] --> A[4 assistant metni yakalandı]
-  C --> U[Normal userMessage görünürlüğü açık]
+  C --> U[Takip: 2 normal userMessage yakalandı]
+  U --> Q
   A --> Q[Seçili thread kaynak kuyruğu]
   Q --> G{Exact source ve context ve bütçe izni}
   G -->|Yok| W[Kaynak bekler: model çağrısı yok]
@@ -69,12 +70,16 @@ flowchart TD
   D --> V[Doğrulanmış Done reddedildi]
   M --> F[4. çağrı: usage unknown]
   F --> X[Ortak bütçe frozen: retry yok]
+  X --> O{Ayrı owner risk onayı}
+  O -->|Onaylandı| K[Rezerv korunur: unknown değişmez]
+  K --> N[Yalnız yeni izinli payload: tüm limitler geçerli]
   classDef input fill:#dbeafe,stroke:#2563eb,color:#172554
   classDef review fill:#fef3c7,stroke:#b45309,color:#451a03
   classDef saved fill:#dcfce7,stroke:#15803d,color:#14532d
   classDef stop fill:#fee2e2,stroke:#b91c1c,color:#450a0a
   class C,A,Q,M,T,S,D input
-  class U,G,W,R,H review
+  class G,W,R,H,O review
+  class U,K,N saved
   class B saved
   class F,X,V stop
 ```
@@ -82,3 +87,28 @@ flowchart TD
 ## Yerel regresyon ve yayımlama sınırı
 
 623runtime ve49repo/tracker kontrolü geçti.8yeni hedefli test selected-source izolasyonu, grantsiz bekleme, assistant-only uyarı, revoke, source allowlist, güvenli Done rehberliği ve redacted failure makbuzunu kapsar. Mevcut gerçek-browser diyalog akışı yeni In Review bağlantısını tıklayarak doğrulandı; false-Done reddi, source/answer/relation ve390px taşma kontrolü geçti.56Mermaid kaynak ağ kapalı render edildi. Bu yerel pass’ler dördüncü gerçek API başarısızlığını veya eksik normal-user capture kapısını kapatmaz.
+
+
+## 19 Ekim — aksiyon planı ve uygulama sonucu
+
+| Aksiyon | Uygulama / kabul ölçütü | Sonuç |
+|---|---|---|
+| A1 Normal kullanıcı girişini doğrula | Aynı izinli test thread'ini native adapter ile oku; tool output'u kullanıcı metni yapma | 4→8 kaynak;6assistant+2human. `human_text_observed=true`; önceki assistant-only uyarısı kalktı |
+| A2 Devam ve dedup kontrolü | Checkpoint üzerinden ikinci geçiş; aynı item'ı tekrar oluşturma | İki geçişte8→8; yeni ücretli çağrı0 |
+| A3 Güvenli tanı geliştir | Count / generation / usage_validation aşaması ve allowlist hata kodu; raw exception yok | `dispatch_diagnostics` tablosu. Tarihsel çağrının tanısı null kalır; yeni kod geçmiş nedeni tahmin etmez |
+| A4 Belirsiz harcamayı incele | Salt okunur packet; exact ledger snapshot hash; ayrı insan risk onayı | Kullanıcı rezerv koruyarak yalnız yeni izinli işlere devamı açıkça onayladı |
+| A5 Onaylı devamı uygula | `unknown_reviews` ayrı kayıt; orijinal dispatch/usage/rezerv/counter silinmez | Root frozen true→false;30dispatch/60HTTP bütçe payı ve55940microusd toplam hesap değişmedi |
+| A6 Regresyon ve yayın | Count/generation hata ayrımı, stale onay, pending/overrun reddi, restart, tekrar ve bütçe kapıları | Transport testleri ve tüm runtime kontrolü; aşağıdaki güncel doğrulama kaydı |
+
+### Belirsiz kullanımda devam sözleşmesi
+
+`PilotTransport.review_packet()` payload/anahtar/konuşma içermez; payload hash, unknown state, rezerv, HTTP bütçe payı, varsa güvenli tanı ve snapshot hash döndürür. `accept_reserved_unknown(..., snapshot_sha256, approval_ref)` yalnız güvenilir yerel host/owner çağrısıdır; insan onayı yerine geçmez ve MCP/agent'a açılmadı. İnceleme/insert aynı yazma kilidi altında; stale snapshot reddedilir. Pending veya overrun bu yöntemle açılamaz. Birden fazla unknown varsa her biri ayrıca incelenir; son açık engel kalkana kadar freeze sürer.
+
+Uygulanan karar: unknown2250microusd ($0.002250) hâlâ harcanmış gibi bütçeden düşülür; actual=null, ilk dispatch state=unknown, aynı payload tekrar engeli ve60HTTP payı korunur. Bilinen tahmin53690+held2250=55940microusd ($0.055940). Ortak3USD tavan, mevcut expiry, source/context/model izinleri, input/output ve HTTP sınırları değişmedi. Yeni model isteği bu takip tesliminde yapılmadı. Önceki unknown kaynağı otomatik kuyruğa dönmez.
+
+**Risk:** rezerv, benimsenmiş fiyat ve onaylı token sınırları üzerinden hesaplanan yerel üst tahmindir; sağlayıcının gerçekte ne faturaladığını ispatlamaz. Provider'ın sınırları aşması gibi bilinmeyen davranışı garantiyle sınırlayan hesap genelinde bir ödeme kontrolü değildir. Kullanıcı bu belirsizliği rezervi koruyarak kabul etti. Gerçek usage veya sağlayıcı faturası daha sonra doğrulanırsa ayrı kanıt/inceleme gerekir; bu API unknown kullanımını sıfıra veya settled'a çevirmez.
+
+Takip private receipt SHA256: `7b8334cceaa54dc0a49a1d6e7de4549f8cdb2d34f141f1cf3bc72f725a01a88f`. Sadece izinli sentetik test thread'i okundu. Yeni kullanıcı mesajlarının model tarafından anlamlandırılması veya tüm geçmişin capture tamamlanması bu iki yerel okumayla kanıtlanmadı. Genel kalite, sürekli UI aktivasyonu, insan review ve gerçek completion evidence kapanışları açıktır.
+
+
+**Takip doğrulaması:**627runtime ve49repo/tracker testi geçti;21transport testi içinde4yeni regresyon var.56Mermaid ağ kapalı render edildi, değişen şekil görsel incelendi. Repo testlerinin ilk sandbox koşusunda3yerel port erişimi hatası vardı; aynı testler yerel port izniyle geçti, test kapsamı daraltılmadı. UI kodu değişmedi; bu tur yeni browser ürün akışı testi yapıldığı iddia edilmez.

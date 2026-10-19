@@ -198,6 +198,66 @@ class PilotTransportTests(unittest.TestCase):
         altered = dict(self.payload, model='unapproved-model')
         self.assert_code('pilot_payload_denied', lambda: self.transport()(altered))
 
+    def test_unknown_review_is_explicit_retains_reserve_and_denies_retry(self):
+        def failed(path, payload, key):
+            raise TimeoutError('private response content')
+        transport = self.transport(failed)
+        self.assertRaises(TimeoutError, transport, self.payload)
+        original = transport.snapshot()
+        packet = transport.review_packet()
+        self.assertTrue(packet['can_accept_reserved_continuation'])
+        self.assertEqual(packet['unknowns'][0]['diagnostic'],
+                         dict(phase='input_count', failure_code='provider_outcome_unknown'))
+        self.assert_code('pilot_review_required', lambda: self.transport()(self.other))
+        reviewed = transport.accept_reserved_unknown(fingerprint(self.payload),
+                    snapshot_sha256=packet['snapshot_sha256'], approval_ref='owner-test-approval')
+        self.assertFalse(reviewed['frozen'])
+        after = self.transport().snapshot()
+        self.assertEqual(after['committed_microusd'], original['committed_microusd'])
+        self.assertEqual(after['http_attempts'], original['http_attempts'])
+        self.assertEqual(after['states'], ['unknown'])
+        self.assertIsNone(reviewed['unknowns'][0]['actual_microusd'])
+        self.assert_code('pilot_retry_denied', lambda: self.transport()(self.payload))
+        self.transport()(self.other)
+        self.assertEqual(len(self.calls), 2)
+        self.assertNotIn(b'private response', (self.root/'pilot.sqlite').read_bytes())
+
+    def test_review_cannot_accept_stale_or_invented_or_unsafe_reference(self):
+        transport = self.transport(lambda *args: (_ for _ in ()).throw(TimeoutError()))
+        self.assertRaises(TimeoutError, transport, self.payload)
+        packet = transport.review_packet()
+        self.assert_code('pilot_review_stale', lambda: transport.accept_reserved_unknown(
+            fingerprint(self.payload), snapshot_sha256='0'*64, approval_ref='owner-test'))
+        for identity, ref in [('0'*64, 'owner-test'), (fingerprint(self.payload), 'unsafe\ntext')]:
+            self.assert_code('pilot_review_invalid', lambda: transport.accept_reserved_unknown(
+                identity, snapshot_sha256=packet['snapshot_sha256'], approval_ref=ref))
+        self.assertTrue(transport.snapshot()['frozen'])
+
+    def test_pending_and_overrun_cannot_be_cleared_as_unknown(self):
+        transport = self.transport()
+        with transport._db() as db:
+            db.execute('INSERT INTO dispatch VALUES(?,?,?,?,?,?,?)',
+                       (fingerprint(self.payload), 'pending', 2250, 2, None, None, None))
+        for state in ('pending', 'overrun'):
+            with transport._db() as db:
+                db.execute('UPDATE dispatch SET state=?', (state,))
+            packet = transport.review_packet()
+            self.assertFalse(packet['can_accept_reserved_continuation'])
+            self.assert_code('pilot_review_invalid', lambda: transport.accept_reserved_unknown(
+                fingerprint(self.payload), snapshot_sha256=packet['snapshot_sha256'], approval_ref='owner-test'))
+
+    def test_generation_error_phase_is_distinct_from_count(self):
+        def failed(path, payload, key):
+            if path.endswith('input_tokens'):
+                return dict(object='response.input_tokens', input_tokens=300)
+            raise ContractError('provider_connection_unknown', 'secret raw body')
+        transport = self.transport(failed)
+        self.assert_code('provider_connection_unknown', lambda: transport(self.payload))
+        unknown = transport.review_packet()['unknowns'][0]
+        self.assertEqual(unknown['diagnostic'], dict(phase='generation', failure_code='provider_connection_unknown'))
+        self.assertIsNone(unknown['actual_microusd'])
+        self.assertNotIn(b'secret raw', (self.root/'pilot.sqlite').read_bytes())
+
 
 if __name__ == '__main__':
     unittest.main()

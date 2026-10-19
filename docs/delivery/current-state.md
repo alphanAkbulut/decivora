@@ -4,7 +4,7 @@
 
 ## Nerede olduğumuz
 
-**Son Codex ana zincir deneyi:** [Yeni sentetik sohbet pilotu](../quality/codex-e2e-001.md)3gerçek model sonucunda Task/başlama/Done beyanını aynı işe bağladı; görev ayrı test operatörü handoff’u ile In Review, AC’ler not_run. Dördüncü dispatch unknown/frozen. Bu tool-created sohbette normal userMessage görünürlüğü doğrulanmadı; tam E2E/MVP başarısı değildir.
+**Son Codex ana zincir deneyi:** [Yeni sentetik sohbet pilotu](../quality/codex-e2e-001.md)3gerçek model sonucunda Task/başlama/Done beyanını aynı işe bağladı; görev ayrı test operatörü handoff’u ile In Review, AC’ler not_run. Dördüncü dispatch ilk geçişte unknown/frozen kaldı. Takipte2human native kaynak doğrulandı; kullanıcı rezerv koruyarak yeni işlere devamı onayladı. Eski unknown ve gerçek usage belirsizliği korunur; tam E2E/MVP başarısı değildir.
 
 Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çekirdeği mevcut. Konuşma import'u, kaynaklı aday incelemesi, görev/durum onayı ve etki kartından task scope select→approve→apply kodlandı. **Otomatik konuşma yakalama ve gerçek anlam çıkarımıyla bütünleşmiş MVP henüz tamamlanmadı. Release adayı aşamasında değiliz.**
 
@@ -106,3 +106,8 @@ Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenili
 19 Ekim [kaynak kapasitesi ve sayfalama](../quality/source-capacity-pagination.md) tamamlandı:1000source/proje, indexed origin/ID,25lik source sayfaları, worker'ın ilk sayfa dışındaki izinli source'u işlemesi ve native50public item guard. Bu alt teslim ana iş sayımını veya kalan onboarding/live-backfill/semantic kabulünü kapatmaz.
 
 19Ekim backend follow-up: [kalıcı finite processing loop](../architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi) mevcut Active grant kapsamıyla thread/API/Operations yoluna bağlandı. Restart caps sıfırlamaz; unfinished claim otomatik retry olmaz, aynı loop ikinci worker dispatch etmez. Default LOCAL/TEST değişmedi, gerçek provider çağrısı0; UI onboarding, yeni kaynak policy ve gerçek günlük kabul açık. Ana7/15/8korunur.
+
+
+## 19 Ekim — native kaynak / unknown bütçe takip düzeltmesi
+
+İlk assistant-only testin ardından aynı thread'de2gerçek human+6assistant native kaynak doğrulandı; iki checkpoint geçişi8→8, duplicate yok. API unknown için güvenli phase tanısı ve snapshot'a bağlı ayrı owner review kodlandı. Kullanıcının rezerv koruyarak devam onayı uygulandı; root yeni izinli istekler için açık, eski unknown ve actual=null korunur. Yeni API çağrısı0. [Aksiyon planı ve açık kabul sınırları](../quality/codex-e2e-001.md#19-ekim--aksiyon-planı-ve-uygulama-sonucu). Ana görev sayıları değişmedi; bu düzeltme MVP'nin tamamlandığı anlamına gelmez.

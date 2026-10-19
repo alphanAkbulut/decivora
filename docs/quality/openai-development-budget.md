@@ -61,3 +61,6 @@ Tam anlam kalitesi, role/source ayrımı, onaylı gerçek Codex adapter'ı ve an
 ## 19Ekim — native sentetik Codex sohbet deneyi
 
 [Codex E2E raporu](codex-e2e-001.md): mevcut geçerli3USD ortak root altında4model dispatch kabulü/8HTTP bütçe payı daha sayıldı;3settled/1unknown. Belirsiz işte gerçek HTTP/generation sayısı kesinleşmedi. Root30dispatch/60HTTP bütçe sayımı, known tahmin$0.053690 +held unknown$0.002250. Dördüncü request sonrası root frozen; yeni retry/çağrı veya policy reset yok. Bu kullanım yeni açılmış sentetik sohbetten assistant kaynaklarıdır, gerçek kullanıcı geçmişi paylaşımı değildir. Kesin fatura ve unknown kullanım uzlaştırması açık.
+
+
+**19Ekim takip kararı:** Kullanıcı rezerv koruyarak devamı açıkça onayladı. `unknown_reviews` kaydı root freeze'i kaldırdı; orijinalunknown, actual=null,2250microusd rezerv,30dispatch/60HTTP bütçe sayımı ve aynı payload tekrar reddi korundu. Toplam55940microusd yerel taahhüt; tavan3USD ve önceki expiry değişmedi. Yeni çağrı0. Pending/overrun bu işlemle açılamaz; kalan limitler ve exact source izinleri yeni istekte tekrar uygulanır. [Uygulama/risk sözleşmesi](codex-e2e-001.md#belirsiz-kullanımda-devam-sözleşmesi). Bu karar gerçek fatura uzlaştırması değildir.

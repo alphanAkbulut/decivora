@@ -253,3 +253,6 @@ Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç
 ## 19Ekim — gerçek Codex sohbeti ana zincir deneyi
 
 [Gerçek gözlenen akış](codex-e2e-001.md) assistant-only capture, normal userMessage açığı, exact-grant kuyruğu, üç model sonucu, ayrı operatör handoff ve unknown/frozen dördüncü denemeyi ayırır. Otomatik insan onayı veya tam E2E/MVP başarısı çizilmez.
+
+
+19Ekim takip aksiyonları: aynı Codex şeması2normalhuman yakalama ve ayrı owner onayıyla rezerv koruyarak yeni işe devam yolunu gösterir.56Mermaid ağ kapalı render edildi; değişen tam SVG/PNG görsel olarak incelendi. İlk assistant-only/unknown/frozen kanıtı superseded history içinde korunur. Unknown gerçek kullanım veya tüm MVP başarısı iddia edilmez.

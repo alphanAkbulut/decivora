@@ -116,5 +116,41 @@
       "model_dispatches": 0,
       "page_errors": 0
     }
+  },
+  "followup": {
+    "date": "2026-10-19",
+    "source_scope": "same_selected_synthetic_thread_only",
+    "source_count_before": 4,
+    "source_count_after": 8,
+    "observed_role_counts": {
+      "assistant": 6,
+      "human": 2
+    },
+    "human_text_observed": true,
+    "source_counts_two_passes": [
+      8,
+      8
+    ],
+    "capture_receipt_sha256": "7b8334cceaa54dc0a49a1d6e7de4549f8cdb2d34f141f1cf3bc72f725a01a88f",
+    "new_paid_calls": 0,
+    "full_history_capture_verified": false,
+    "model_semantics_for_new_messages_verified": false,
+    "unknown_review": {
+      "owner_approved": true,
+      "root_frozen_after": false,
+      "actual_microusd": null,
+      "reserved_microusd": 2250,
+      "known_estimated_microusd": 53690,
+      "committed_microusd": 55940,
+      "dispatch_budget_count": 30,
+      "http_budget_slots": 60,
+      "original_state": "unknown",
+      "same_payload_retry_allowed": false,
+      "historical_failure_diagnostic": null
+    },
+    "code_sha256": {
+      "packages/capture/openai_transport.py": "8c63df5b55623923cf069cf6c911f96a5e93b7cf17cab14f03278f3613ba2b06",
+      "tests/runtime/test_openai_transport.py": "c10cede466dc2582079ea23568362f339756deb16d2f3431b3392c1f812dc3d0"
+    }
   }
 }

@@ -563,13 +563,13 @@
     {
       "path": "docs/quality/codex-e2e-001.md",
       "block": 1,
-      "source_sha256": "efd6073a43cc60fe3d8060c2f80bdc7dcf3a1d2ef1d35e8f880adbedf27503fa",
+      "source_sha256": "c5743ddb5cddf44695bdca4a200a1859975ada23e81ea0cd96c8d46f6ac32a99",
       "status": "rendered",
       "title": "Yeni Codex sohbetinde gözlenen proje ilerleme zinciri",
       "description_present": true,
-      "view_box": "0 0 1505.171875 1294",
+      "view_box": "0 0 1505.171875 1595.609375",
       "artifact": "docs--quality--codex-e2e-001--1.svg",
-      "svg_sha256": "ad71e25de8d158f487fbb123fa6f426007e951b4e4c8117578a0f48ccb2116a4",
+      "svg_sha256": "272ec7770003c6aa146ff61a44800762dd96361d443af940a94655df7201ca17",
       "error": null
     },
     {
@@ -6216,6 +6216,23 @@
           "error": null
         }
       ]
+    },
+    {
+      "reason": "2026-10-19 normal human capture follow-up and owner-approved reserve-retained continuation",
+      "records": [
+        {
+          "path": "docs/quality/codex-e2e-001.md",
+          "block": 1,
+          "source_sha256": "efd6073a43cc60fe3d8060c2f80bdc7dcf3a1d2ef1d35e8f880adbedf27503fa",
+          "status": "rendered",
+          "title": "Yeni Codex sohbetinde gözlenen proje ilerleme zinciri",
+          "description_present": true,
+          "view_box": "0 0 1505.171875 1294",
+          "artifact": "docs--quality--codex-e2e-001--1.svg",
+          "svg_sha256": "ad71e25de8d158f487fbb123fa6f426007e951b4e4c8117578a0f48ccb2116a4",
+          "error": null
+        }
+      ]
     }
   ],
   "all_sources_rendered": true,
@@ -6450,5 +6467,6 @@
   ],
   "question_backend_render_note": "All 54 current sources rendered offline. New question flow visually inspected. No model or new UI card tested.",
   "todo_delivery_render_note": "55 current Mermaid sources rendered offline; new Claude hook flow visually inspected. This is not native host acceptance.",
-  "codex_e2e_render_note": "56 current Mermaid sources rendered offline. New diagram reflects actual partial success and unknown/frozen branch, not full MVP acceptance."
+  "codex_e2e_render_note": "56 current Mermaid sources rendered offline. New diagram reflects actual partial success and unknown/frozen branch, not full MVP acceptance.",
+  "codex_e2e_followup_render_note": "56 current Mermaid sources rendered offline; changed Codex flow visually inspected. Human capture and reserve-retained owner approval are shown; unknown actual usage remains unresolved."
 }
