@@ -104,7 +104,7 @@ class Workspace:
     def transaction(self):
         try:
             self.db.execute('BEGIN IMMEDIATE')
-            self.workflow_audit_read_cache=None
+            self.workflow_audit_read_cache=None;self.rationale_history_cache=None
             self.file_observation_cache={};self.file_read_limit_reached=False;self.workflow_context_cache={};self.mcp_visibility_cache={}
             yield
             self.db.execute('COMMIT')
@@ -120,12 +120,12 @@ class Workspace:
         owned = not self.db.in_transaction
         if owned:
             self.db.execute('BEGIN');self.file_observation_cache={};self.file_read_limit_reached=False;self.workflow_context_cache={};self.mcp_visibility_cache={}
-            self.workflow_audit_read_cache={}
+            self.workflow_audit_read_cache={};self.rationale_history_cache={}
         try:
             yield
         finally:
             if owned:
-                self.workflow_audit_read_cache=None
+                self.workflow_audit_read_cache=None;self.rationale_history_cache=None
                 if self.db.in_transaction:self.db.execute('ROLLBACK')
 
     def active(self, scope, project):

@@ -4,8 +4,8 @@
   "renderer": "Mermaid 11.17.2 cached bundle",
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
-  "checked_at": "2026-10-18",
-  "input_base_ref": "a92a96bd393e80b1c9c38dc8ca6479c783a8770d",
+  "checked_at": "2026-10-19",
+  "input_base_ref": "286a72a51d579da9e2a654f666d8f00d20dde8fe",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "9ae815b6e8e71ba47173b29129bc49918c30f76d0e0fd735c4479cddaf63bd1e",
+      "svg_sha256": "40a1ea9fc34df39ca47fe00edb08d88a340e6bb077907a33f9144f9874b22295",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "daa1162797766eef5e12ffd0d46440c2737732f3da67ff1543c72865c58aafea",
+      "source_sha256": "05bda3e4bfe53a541fa31332af7e2df3744e847f0602d5bd8adb3e1002609090",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 3502.9140625 3902.85302734375",
+      "view_box": "0 0 3845.4140625 3902.85302734375",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "fcb8484dc1e0a017e903c0a7934617f17d7a2916814619c39e8aeaa57ac141de",
+      "svg_sha256": "ef15ea5004a98ef6b4b7c51e4ad506b09e1ccdb5882123fd449dc9cbd5d05c21",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "1d1f1ad6f7cd4bf864a6e475eb35062850a0c52e209de4fb6ae86509bf60936b",
+      "svg_sha256": "5df5d63eabe83b38f9202fec5fbb8954a05a71812b4213abfd234269d69d36ed",
       "error": null
     },
     {
@@ -6124,6 +6124,23 @@
           "view_box": "0 0 3487.9140625 4023.705810546875",
           "artifact": "docs--architecture--local-preview--1.svg",
           "svg_sha256": "5fae05dfa41e3ab5a0aa0ec53455a71c3c4b78bdd368b7206abee28679825692",
+          "error": null
+        }
+      ]
+    },
+    {
+      "reason": "Before persisted AND OR rationale editor",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "daa1162797766eef5e12ffd0d46440c2737732f3da67ff1543c72865c58aafea",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 3502.9140625 3902.85302734375",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "fcb8484dc1e0a017e903c0a7934617f17d7a2916814619c39e8aeaa57ac141de",
           "error": null
         }
       ]

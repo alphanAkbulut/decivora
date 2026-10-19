@@ -21,6 +21,7 @@ Yeni: tanınan credential'lar yeni manuel kaynakta DB öncesi maskelenir; model/
 
 - Kalıcı workspace/project/human-agent scope, kaynak alım/checkpoint/worker çekirdeği; gerçek native adapter kabulü ayrı.
 - Append-only domain event log, projection/replay, atomik değişiklik ve onay kontrolleri.
+- Kalıcı insan onaylı AND/OR expression/facts, görev editorü ve impact/continuation-context bağlantısı; nested writer API'de bounded, UI düz AND/OR.
 - Tipli ilişki ve AND/OR/unknown impact kernel'i; UI'da kayıtlı ilişkilerin görselleştirilmesi.
 - Manuel konuşma import'u; hash/span bağlı JSON/provider-callback adapter'ı; görev/karar/bekleyen karar adayları. Dialog context artık görevler yanında canonical karar/kayıtları, soruları ve ilişki snapshot'ını da taşır.
 - Kaynaklı mevcut kayıtlara required_by/depends_on ve Decision NEW supersedes OLD önerisi; ayrı human review ile graph apply, replacement öncesi/sonrası impact hipotezi. Genel gerekçe/validity planı açık.

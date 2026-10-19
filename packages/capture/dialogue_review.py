@@ -70,7 +70,9 @@ class DialogueReviewService:
         rows=self.core.db.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? ORDER BY origin,target,kind LIMIT 501',(self.core.workspace,project)).fetchall()
         if len(rows)>500:raise ContractError('context_limit','Relation context exceeds the local complete-snapshot bound.')
         relations=[dict(zip(('origin','target','kind','revision','state','valid_from','valid_to'),r)) for r in rows]
-        return dict(format='decivora-dialogue-context-2',workspace=self.core.workspace,project=project,
+        from packages.domain.task_rationale import TaskRationaleService
+        rationales=[value for t in tasks if (value:=TaskRationaleService(self.core).view(scope,project,t['id'])) is not None]
+        return dict(rationales=rationales,format='decivora-dialogue-context-2',workspace=self.core.workspace,project=project,
             knowledge_revision=self.core.project(scope,project)['knowledge_revision'],tasks=tasks,records=records,
             questions=questions,relations=relations,coverage=dict(record_snapshot='complete_within_local_bounds',
                 descriptions='explicit_excerpts',relation_scope='recorded_only',source_history_included=False,

@@ -217,3 +217,7 @@ Local-preview çizimine manuel konuşmadan önce deterministik redaction adımı
 ### 19 Ekim — kaynaklı karar replacement
 
 Mevcut local-preview ilişki düğümü Decision NEW supersedes OLD için genişletildi; impact okunun onay öncesi/sonrası açık insan hipotezi olduğu belirtildi.50diagram/25belge render edildi; model doğruluğu veya otomatik karar/task iptal kanıtı değildir.
+
+### 19 Ekim — kalıcı AND/OR review
+
+Local-preview çizimine human complete rationale review→versioned audit/facts→impact bağlantısı eklendi.50diagram/25belge render başarılı; geçerlilik değerleri explicit insan varsayımıdır, gerçek model/target kanıtı değildir.

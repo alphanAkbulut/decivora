@@ -82,3 +82,7 @@ Dialogue/model JSON artık source quote ile mevcut Task→Decision required_by v
 ### 19 Ekim devamı — kaynaklı karar replacement
 
 Dar Decision→Decision supersedes önerisi human review ile canonical edge ve kaynaklı makbuza bağlandı. Karttan onay öncesi/sonrası etki önizlemesi var. Eski kayıt/gerekçe/Done geçmişi korunur; yeni graph bağlamı current verification'ı geçersiz kılabilir. Global validity/AND-OR karar planı ve gerçek anlam doğruluğu açık. [Güncel sınır](dialogue-status-runtime.md#19-ekim--konuşmadan-kararın-yerini-alan-seçim).
+
+### 19 Ekim devamı — kalıcı AND/OR
+
+Recorded rationale→human complete review→versioned audit/facts→current impact kernel zinciri bağlandı. Task/Decision/related graph revision, unknown/conflicting validity, stale approval ve Done invalidation korunur. UI düz editor; bounded nested API; otomatik model anlamı ve gerçek validity doğrulaması henüz yok. [Kod ve sınırlar](dialogue-status-runtime.md#19-ekim--kalıcı-andor-gerekçesi-ve-etki-bağlantısı).

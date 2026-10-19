@@ -73,7 +73,7 @@ class LocalApp:
                 body=json.loads(raw)
                 if body['type']!='Task':continue
                 workflow=TaskWorkflowService(core).view(owner,selected,rid)
-                tasks.append(dict(id=rid,version=version,body=body,lifecycle=core.task_history(owner,selected,rid),acceptance=AcceptanceService(core).view(owner,selected,rid),workflow=workflow,file_bindings=__import__('packages.verification.files',fromlist=['FileVerificationService']).FileVerificationService(core).bindings(selected,rid),routing=RoutingService(core).view(owner,selected,rid),blocker=TaskBlockerService(core).view(owner,selected,rid),lane=workflow['stage']))
+                tasks.append(dict(id=rid,version=version,body=body,lifecycle=core.task_history(owner,selected,rid),acceptance=AcceptanceService(core).view(owner,selected,rid),workflow=workflow,file_bindings=__import__('packages.verification.files',fromlist=['FileVerificationService']).FileVerificationService(core).bindings(selected,rid),rationale=__import__('packages.domain.task_rationale',fromlist=['TaskRationaleService']).TaskRationaleService(core).view(owner,selected,rid),routing=RoutingService(core).view(owner,selected,rid),blocker=TaskBlockerService(core).view(owner,selected,rid),lane=workflow['stage']))
             task_sources={}
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_candidates_applied'",(core.workspace,selected)):
                 receipt=json.loads(raw)
@@ -131,7 +131,7 @@ class LocalApp:
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
             selected=identifier(body['project_id']);body=body['command']
-        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','save_task_rationale','import_conversation','analyze_conversation','accept_candidates'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
             if action in ('prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes'):
@@ -145,6 +145,10 @@ class LocalApp:
                 if action=='approve_impact_changes':return dict(approval=service.approve(owner,selected,body['selection_id']))
                 if action=='apply_impact_changes':return service.apply(owner,selected,body['selection_id'],body['approval'])
                 return service.decide(owner,selected,body['key'],body['action_id'],body['decision'])
+            if action=='save_task_rationale':
+                if set(body)!={'action','task','task_version','base_revision','expression','facts','reviewed_complete','reason','key'}:raise ContractError('invalid_request','Exact rationale confirmation fields required.')
+                from packages.domain.task_rationale import TaskRationaleService
+                return TaskRationaleService(core).save(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action=='preview_decision_change':
                 if set(body) not in ({'action','decision','decision_version','base_revision','key'},{'action','decision','decision_version','base_revision','key','rationale_tasks','decision_active'}):raise ContractError('invalid_request','Exact decision-preview fields required.')
                 return DecisionImpactService(core).preview(owner,selected,**{k:v for k,v in body.items() if k!='action'})

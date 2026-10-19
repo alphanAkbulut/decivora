@@ -59,7 +59,10 @@ class TaskWorkflowService:
             edges=self.core.db.execute('SELECT origin,target,kind,revision,state,valid_from,valid_to FROM edges WHERE workspace=? AND project=? LIMIT 1001',(self.core.workspace,project)).fetchall()
             rows=self.core.db.execute('SELECT id,version,body FROM records WHERE workspace=? AND project=? LIMIT 2001',(self.core.workspace,project)).fetchall()
             complete=len(edges)<=1000 and len(rows)<=2000
-            cache[project]=dict(complete=complete,edges=edges,records={rid:[version,digest(body)] for rid,version,body in rows})
+            from packages.domain.task_rationale import rows as rationale_rows
+            rationale_latest={}
+            for r in rationale_rows(self.core,project):rationale_latest[r['task']]=dict(revision=r['revision'],digest=r['request_digest'])
+            cache[project]=dict(rationales=rationale_latest,complete=complete,edges=edges,records={rid:[version,digest(body)] for rid,version,body in rows})
             self.core.workflow_context_cache=cache
         data=cache[project]
         if not data['complete']:return dict(complete=False,records=[],relations=[],knowledge_revision=self.core.db.execute('SELECT knowledge_revision FROM projects WHERE workspace=? AND id=?',(self.core.workspace,project)).fetchone()[0])
@@ -73,7 +76,10 @@ class TaskWorkflowService:
             for neighbor in out.get(rid,[])+replacement.get(rid,[]):
                 if neighbor not in reached:reached.add(neighbor);pending.append(neighbor)
         relations=sorted(e for e in data['edges'] if e[0] in reached or e[2]=='supersedes' and e[1] in reached)
-        return dict(complete=True,records=[dict(id=rid,record=data['records'].get(rid)) for rid in sorted(reached)],relations=relations)
+        result=dict(complete=True,records=[dict(id=rid,record=data['records'].get(rid)) for rid in sorted(reached)],relations=relations)
+        latest={task:value for task,value in data['rationales'].items() if task in reached}
+        if latest:result['rationales']=latest
+        return result
     def _legacy_context_changed(self,project,task,done):
         context=self._context_component(project,task)
         if not context['complete']:return True

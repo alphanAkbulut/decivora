@@ -754,3 +754,7 @@ Yeni manuel konuşmada pre-storage redaction, sanitized-source hash/quote, provi
 ### 19 Ekim — T09/T10/T11/T13/T19 karar replacement
 
 Source-bound Decision NEW supersedes OLD önerisi, onay öncesi/sonrası impact önizlemesi, ayrı insan onayıyla atomik lineage kaydı kodlandı. Conflicting replacement/stale endpoint/cycle guard'ları ve tarihsel Done korunarak current verification invalidation doğrulanır. [Kapsam](../quality/dialogue-status-runtime.md#19-ekim--konuşmadan-kararın-yerini-alan-seçim). Genel validity/AND-OR, semantic/native kabulü ve parent görevler açık; yeni ana task yok.
+
+### 19 Ekim — T11/T12/T13/T19/T20 kalıcı AND/OR
+
+Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task editor, prepared context ve impact bağlantısı kodlandı. Unknown/conflicting/stale facts otomatik false sayılmaz; eski tek-karar override'ı stale ifadeyi geçemez. [Kapsam](../quality/dialogue-status-runtime.md#19-ekim--kalıcı-andor-gerekçesi-ve-etki-bağlantısı). Parent/semantic/native release kapıları açık; ücretli çağrı yok.

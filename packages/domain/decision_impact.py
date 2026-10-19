@@ -27,14 +27,24 @@ class DecisionImpactService:
                 edge=self.core.db.execute("SELECT 1 FROM edges WHERE workspace=? AND project=? AND origin=? AND target=? AND kind='required_by' AND state='asserted'",(self.core.workspace,project,task,decision)).fetchone()
                 if not edge:raise ContractError('invalid_rationale','Confirm only an existing task required_by decision relationship.')
                 confirmed.add(task)
+            from packages.domain.task_rationale import TaskRationaleService
+            rationale_service=TaskRationaleService(self.core)
+            stored={rid:rationale_service.view(scope,project,rid) for rid,(version,body) in records.items() if body['type']=='Task'}
+            # Conflicting explicit facts across tasks are unknown, never last-write-wins.
+            fact_values={}
+            for value in stored.values():
+                if value and not value['stale']:
+                    for ref,fact in value['facts'].items():fact_values.setdefault(ref,set()).add(fact['valid'])
             annotations={};before={};after={}
             workflow=TaskWorkflowService(self.core)
             for rid,(version,body) in records.items():
                 if body['type']=='Task':
-                    annotations[rid]=dict(version=version,required_when=dict(any=[dict(ref=decision,revision=decision_version)]) if rid in confirmed else None,historically_completed=workflow.view(scope,project,rid)['stage']=='Done',replacement=None)
+                    rationale=stored[rid];expression=rationale['expression'] if rationale and not rationale['stale'] else dict(any=[dict(ref=decision,revision=decision_version)]) if rid in confirmed and rationale is None else None
+                    annotations[rid]=dict(version=version,required_when=expression,historically_completed=workflow.view(scope,project,rid)['stage']=='Done',replacement=None)
                 else:
-                    before[rid]=dict(revision=version,valid=not decision_active if rid==decision else None)
-                    after[rid]=dict(revision=version,valid=decision_active if rid==decision else None)
+                    values=fact_values.get(rid,set());known=next(iter(values)) if len(values)==1 else None
+                    before[rid]=dict(revision=version,valid=not decision_active if rid==decision else known)
+                    after[rid]=dict(revision=version,valid=decision_active if rid==decision else known)
         # Knowledge/authority/record/source guards are rechecked in the persisted
         # preview transaction. No inferred AND/OR justification or mutation.
         return self.core.impact_preview(scope,project,key,dict(record=decision,version=decision_version,kind='decision_approved' if decision_active else 'decision_superseded'),annotations,before,after,expected_revision=base_revision)

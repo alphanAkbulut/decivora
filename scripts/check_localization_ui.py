@@ -12,6 +12,11 @@ def main():
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
         server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
+        if os.environ.get('DECIVORA_RATIONALE_UI_FIXTURE')=='1':
+            with server.app.core() as core:
+                owner=core.authority.issue_scope('local_owner')
+                ops=[dict(op='create',id=k,body=dict(type='Task' if k=='task' else 'Decision',title=k,description='Synthetic rationale fixture')) for k in ('task','A','B')]+[dict(op='link',origin='task',target=k,kind='required_by') for k in ('A','B')]
+                plan=core.plan(owner,'personal','rationale_fixture',ops);core.apply(owner,plan,core.approve(owner,plan))
         if os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1':
             from packages.domain.questions import QuestionService
             with server.app.core() as core:

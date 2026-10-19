@@ -51,6 +51,9 @@ flowchart TB
     O --> C[("Apply: Decision event + resolution audit<br/>atomic / retry tek effect")]
     T --> A["AC + DoD şablonunu incele<br/>ayrı açık onay + version + reason"]
     A --> D[("Private SQLite / WAL at startup<br/>Task records + acceptance_contract events")]
+    G --> RA["Human complete rationale review<br/>AND / OR + revision-bound validity assumptions"]
+    RA --> RD[("Versioned rationale audit + basis digest<br/>knowledge revision / unknown preserved")]
+    RD --> IP
     G --> IP["Human selected decision hypothesis<br/>record + knowledge + authz recheck"]
     IP --> IX[("Persisted impact preview<br/>unknown rationale stays review; no task mutation")]
     IX --> IE["Explicit revised task scope<br/>Prepare typed update groups"]
@@ -73,11 +76,11 @@ flowchart TB
     classDef stored fill:#e5f5e9,stroke:#327347,color:#193c24;
     classDef pending fill:#fff1d6,stroke:#a47511,color:#463008;
     class L,S,T launcher;
-    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH,PR guard;
+    class G,A,O,Z,K0,E0,MG,BR,US,DI,SG,WG,IE,IS,IA,AH,RH,PR,RA guard;
     class D,W,B,H,R,N stored;
     class Q,P,U,I0,M0,DQ,SP,AP,RP launcher;
     class EX pending;
-    class C stored;
+    class C,RD stored;
     class V pending;
 ```
 
@@ -158,3 +161,5 @@ Read-only authenticated `/api/operations` returns selected-project command bound
 19 Ekim privacy: yeni manuel konuşma PR maskelemesi sonrasında hash/quote kaynağı olur. Model/context/MCP çıkış guard'ları ve display maskesi ayrı savunmalardır; eski DB/backup purge ve encryption değildir. [Sözleşme](../quality/credential-redaction-runtime.md).
 
 19 Ekim replacement: NEW supersedes OLD, current endpoint/competing-choice guard ve ayrı human approval ile ilişki/event kaydına gider. Impact onaydan önce/sonra salt önizlemedir; task iptal/onay politikası değişmedi. [Sınırlar](../quality/dialogue-status-runtime.md#19-ekim--konuşmadan-kararın-yerini-alan-seçim).
+
+19 Ekim AND/OR: explicit tam gerekçe incelemesi ve revision-bound facts mevcut kernel'e gider. Unknown, stale ve çelişki otomatik obsolete değildir. [Sözleşme](../quality/dialogue-status-runtime.md#19-ekim--kalıcı-andor-gerekçesi-ve-etki-bağlantısı).
