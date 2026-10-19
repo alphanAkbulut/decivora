@@ -10,13 +10,27 @@ Bir AI'ın “dosyayı hazırladım” demesi, dosyanın repoya yüklendiği anl
 
 - **AI ile proje geliştiren bireyler:** farklı sohbetlerde kalan fikirleri, açık soruları ve işleri kaybetmemek için.
 - **Birden fazla coding agent kullanan geliştiriciler:** agent çalışma beyanlarıyla projenin doğrulanmış durumunu ayırmak için.
-- **Ürün sahipleri ve ekipler:** kararların neden alındığını ve hangi işleri etkilediğini izlemek için. Ortak ekip erişimi sonraki fazdadır; bugünkü uygulama tek yerel kullanıcı önizlemesidir.
+- **Business Analyst, Product Owner ve proje yöneticileri:** gereksinimlerin kaynağını, karar gerekçelerini, değişiklik etkisini ve bekleyen işleri izlemek için. Ortak ekip erişimi sonraki fazdadır; bugünkü uygulama tek yerel kullanıcı önizlemesidir.
 
 ## Nasıl bir ürün geliştiriyoruz?
 
 Kullanıcı konuşmaya devam eder; sistem izinli kaynaklardan görev, karar ve değişiklik **önerileri** hazırlar. Belirsizlikleri ve gerekli insan onayını görünür tutar. Kullanıcı yerel web arayüzünde konuşmaları, inceleme kutusunu, görev panosunu, kararları, ilişkileri ve geçmişi takip eder.
 
 **Ana farklılaştırma hedefi: karar farkındalıklı değişiklik etki analizi.** Örneğin proje Markdown depolamadan SQLite'a geçerse, eski senkronizasyon görevi gereksizleşme adayı olabilir. Başka bir gerekçeye de hizmet eden görev ise korunmalıdır. Sistem bu etkiyi gerekçesiyle incelemeye sunmalı; geçmişi silmemeli veya görevleri kanıtsız kapatmamalıdır.
+
+## İş analizi, ürün ve proje yönetimine katkısı
+
+Decivora'nın hedeflediği katkı, konuşmalardaki bilgiyi **ihtiyaç → gereksinim → karar ve gerekçe → görev → kabul kriteri → kanıt** zincirinde izlenebilir tutmaktır. Aşağıdakiler kullanım hedefleridir; tamamı çalışan otomasyon veya ölçülmüş verimlilik sonucu değildir.
+
+| Rol / alan | Desteklemek istediğimiz iş | Beklenen katkı |
+|---|---|---|
+| **Business Analyst — iş ve gereksinim analizi** | Farklı konuşmalardaki ihtiyaçları, varsayımları, çelişkileri ve açık soruları kaynaklarıyla ilişkilendirmek; gereksinim değişimini ilgili görev ve kabul kriterlerine bağlamak | “Bu gereksinim nereden geldi, neden değişti, hangi sorular cevapsız ve neyi yeniden doğrulamalıyız?” sorularını yanıtlamayı kolaylaştırmak; eksik veya çelişen analizleri incelemeye sunmak |
+| **Product Owner — ürün yönetimi** | Kullanıcı problemi ve ürün hedefiyle backlog arasındaki gerekçeyi korumak; yeni kararda hâlâ değerli, değişmesi gereken veya gereksizleşen işleri ayırmak; MVP ve sonraki fazları görünür tutmak | Backlog refinement ve kapsam/öncelik kararları için kaynaklı etki önerileri sunmak; yalnız kart sayısı yerine hedef, değer hipotezi ve doğrulama durumuyla değerlendirme yapmak |
+| **Project management — proje ve teslim yönetimi** | Görev bağımlılıklarını, blocker'ları, bekleyen kararları, insan/agent çalışma beyanlarını ve doğrulanmış tamamlanmayı birlikte izlemek | Başka işleri açabilecek adımları, gecikme nedenlerini ve devirde kalan bağlamı görünür kılmak; durum raporu hazırlamak için geçmiş sohbetleri tekrar okuma ihtiyacını azaltmak |
+
+**Örnek:** Bir depolama kararı değiştiğinde iş analisti hangi gereksinim ve kriterlerin etkilendiğini; Product Owner eski işlerin hâlâ ürün değerine hizmet edip etmediğini; proje yöneticisi ise hangi bağımlılıkların ve teslim sırasının yeniden değerlendirilmesi gerektiğini görebilmelidir. Öneriyi üretmek ile değişikliği onaylamak ayrı kalır.
+
+Ürün, paydaş görüşmesinin, problem doğrulamasının veya insanın kapsam/öncelik kararının yerine geçmez. Otomatik ROI, teslim tarihi, kaynak planı ya da Scrum/PMI uygunluğu iddiası yoktur. Beklenen katkıyı; bağlama dönüş ve inceleme süresi, kaçırılan açık sorular/değişiklikler, yanlış gereksizleşme veya tamamlanma önerileri ve kullanıcı düzeltme yüküyle [ölçmeyi planlıyoruz](docs/quality/measurement.md). Ekip senaryoları ilgili kimlik ve erişim kapıları tamamlandıktan sonra doğrulanacaktır.
 
 ## Bugün ne çalışıyor, ne henüz tamamlanmadı?
 
