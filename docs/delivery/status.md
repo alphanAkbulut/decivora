@@ -1,5 +1,7 @@
 # Mevcut durum
 
+**19 Ekim — $3 geliştirme kapsamı kabul edildi ve kodlandı:** ilk pilot dahil100generation/200HTTP/$3ortak root; prior usage taşınır, yeni batch/restart sıfırlamaz.10yeni gerçek generation: Türkçe/İngilizce completion claim, future/negation ve özgün eski claim yeni talimatla denendi;10source/schema pass ve bu dar örneklerde beklenen öneriler alındı. Otomatik apply yok. Toplam20generation/40HTTP, tahmin$0.049592; kalan$2.950408. [Kod, onay ve sonuç](../quality/openai-development-budget.md). Yeni kaynak izni veya native/MVP kabulü değildir; mevcut scope içinde yeniden genel ücret onayı beklenmez.
+
 **19 Ekim — ilk gerçek API pilotu tamamlandı:** kullanıcı private anahtarı kurdu; onaylı sentetik Luna/Sol batch'inde10generation+10count, retry0,10/10source/schema pass. Toplam13275token; cache-write dahil tahmin$0.024165, nihai fatura değil. Luna completion claim'i atladı; Sol bunu yalnız Pending Done önerisi yaptı; canonical apply yok. Cache-write fiyatlama eksikliği kodda düzeltildi; eski ledger korunarak ayrı düzeltme raporu eklendi. [Sonuç ve sınırlar](../quality/openai-pilot-001.md).20HTTP izin tüketildi; yeni çağrı yok. Normal/TEST UI model kapalı, native capture/MVP kabulü açık. Ana7/14/9 korunur.
 
 [Güncel ürün resmi ve kalan kod işleri — 19 Ekim](current-state.md):12geliştirme ana işi,2entegrasyon/release kapısı,3P0 kabul/kalite işi açık;6gelecek-faz işi ayrı. Ana/alt görevler toplanmaz.

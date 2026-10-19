@@ -98,6 +98,34 @@ class PilotWiringTests(unittest.TestCase):
         self.pilot.run(self.folder, self.key, post)
         self.assertEqual(len(self.calls), 2)
 
+    def test_development_runner_carries_history_into_new_bounded_batch(self):
+        self.pilot.prepare(self.folder)
+        self.pilot.run(self.folder, self.key, self.post)
+        development = load('run_openai_development')
+        folder = self.root / 'development'
+        packet = development.prepare_claim_batch(folder, self.folder)
+        self.assertEqual(len(packet['jobs']), 8)
+        self.assertEqual(packet['manifest']['prior_usage']['cost_microusd'], 15750)
+        self.assertEqual(packet['manifest']['prior_usage']['dispatches'], 10)
+        result = development.run_claim_batch(folder, self.key, self.post)
+        self.assertEqual(len(result['outcomes']), 8)
+        self.assertEqual(result['shared_budget']['dispatches'], 18)
+        self.assertEqual(result['shared_budget']['http_attempts'], 36)
+        self.assertEqual(result['shared_budget']['committed_microusd'], 15750 + 12600)
+        self.assertEqual(len(self.calls), 36)
+        original = development.prepare_original_claim_batch(folder, self.folder)
+        self.assertEqual(len(original['jobs']), 2)
+        comparison = development.run_original_claim_batch(folder, self.key, self.post)
+        self.assertEqual(comparison['shared_budget']['dispatches'], 20)
+        self.assertEqual(comparison['shared_budget']['http_attempts'], 40)
+        self.assertEqual(comparison['shared_budget']['committed_microusd'], 31500)
+        self.assertEqual(len(self.calls), 40)
+        report = load('report_openai_development').build(folder)
+        self.assertEqual(report['estimated_total_microusd'], 31500)
+        self.assertEqual(report['total_model_calls'], 20)
+        self.assertEqual(report['total_http_attempts'], 40)
+        self.assertEqual(len(self.calls), 40)
+
     def test_missing_key_has_no_analysis_attempt(self):
         packet = self.pilot.prepare(self.folder)
         with self.assertRaises(FileNotFoundError):

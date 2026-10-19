@@ -90,3 +90,7 @@ Recorded rationale→human complete review→versioned audit/facts→current imp
 ## 19 Ekim — gerçek API bağlantısı ilk kez çalıştı
 
 [Pilot001](openai-pilot-001.md): onaylı ayrı sentetik çalışma alanında10model/10count; kaynak-context-schema10/10pass, canonical auto-apply0. Bu eski native capture boşluğunu kapatmaz. Luna kanıtsız completion claim'ini atladı; Sol bunu Pending Done önerisi üretti. Model coverage complete etiketi kalite kanıtı değildir. Cache-write fiyat eksikliği düzeltildi; orijinal21368microusd ledger korunup corrected24165microusd tahmin ayrı raporlandı. İlk20HTTP izni tüketildi. Native kaynak, ana UI ve gerçek review/apply zinciri hâlâ açık; local geliştirme için yeni API izni gerekmiyor.
+
+## 19 Ekim — ortak bütçe ve completion-claim ayrımı
+
+[USD3kapsamı](openai-development-budget.md) ilk pilot dahil kabul edildi; sentetik maliyet API blocker'ı değil. Aynı root'ta20generation/40HTTP ve$0.049592tahmin kaydedildi. Yeni talimat, kanıtsız bitirme iddiasını kaybetmeden Done önerisi olarak ayırır; canonical completion hâlâ ayrı workflow/AC/evidence kapılarındadır. Türkçe/İngilizce yeni örnekler ve aynı özgün kaynak/context karşılaştırması kaydedildi. Yerel UI veya gerçek Codex kaynak capture'ı bu sonuçla kendiliğinden aktif sayılmaz.

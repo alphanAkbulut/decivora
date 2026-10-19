@@ -105,14 +105,17 @@ class PilotTransport:
         self.manifest = copy.deepcopy(manifest)
         expected = {'approval_ref', 'price_revision', 'expires_at', 'max_http_attempts',
                     'max_cost_microusd', 'max_input_tokens', 'max_output_tokens', 'payloads'}
-        if type(manifest) is not dict or set(manifest) != expected:
+        shared_fields = {'budget_scope', 'prior_usage'}
+        shared = type(manifest) is dict and set(manifest) == expected | shared_fields
+        if type(manifest) is not dict or (set(manifest) != expected and not shared):
             raise ContractError('pilot_manifest_invalid', 'Exact approved pilot manifest required.')
         ensure_safe(manifest)
         if (not isinstance(manifest['approval_ref'], str) or not manifest['approval_ref'].strip() or
                 manifest['price_revision'] != PRICE_REVISION or
                 type(manifest['expires_at']) is not int or manifest['expires_at'] <= time.time()):
             raise ContractError('pilot_manifest_invalid', 'Current explicit approval and prices required.')
-        for field, ceiling in (('max_http_attempts', 20), ('max_cost_microusd', 1000000),
+        for field, ceiling in (('max_http_attempts', 200 if shared else 20),
+                               ('max_cost_microusd', 3000000 if shared else 1000000),
                                ('max_input_tokens', 10000), ('max_output_tokens', 2000)):
             value = manifest[field]
             if type(value) is not int or not 1 <= value <= ceiling:
@@ -122,6 +125,24 @@ class PilotTransport:
                 any(type(h) is not str or len(h) != 64 or any(c not in '0123456789abcdef' for c in h) for h in hashes) or
                 len(set(hashes)) != len(hashes)):
             raise ContractError('pilot_manifest_invalid', 'Bounded unique exact payload hashes required.')
+        self.prior_usage = dict(dispatches=0, http_attempts=0, cost_microusd=0)
+        policy = copy.deepcopy(manifest)
+        if shared:
+            prior = manifest['prior_usage']
+            if (manifest['budget_scope'] != 'decivora-development-2026-10-19-usd3' or
+                    type(prior) is not dict or set(prior) != {'dispatches', 'http_attempts', 'cost_microusd', 'evidence_sha256'} or
+                    any(type(prior.get(k)) is not int or prior[k] < 0 for k in self.prior_usage) or
+                    prior['dispatches'] > 100 or prior['http_attempts'] > manifest['max_http_attempts'] or
+                    prior['http_attempts'] != 2 * prior['dispatches'] or
+                    prior['cost_microusd'] > manifest['max_cost_microusd'] or
+                    type(prior['evidence_sha256']) is not str or len(prior['evidence_sha256']) != 64 or
+                    any(c not in '0123456789abcdef' for c in prior['evidence_sha256'])):
+                raise ContractError('pilot_manifest_invalid', 'Shared owner-approved scope and prior-usage evidence required.')
+            self.prior_usage = {k: prior[k] for k in self.prior_usage}
+            # New bounded synthetic batches share this immutable root policy.
+            # Their exact manifests are recorded below; limits/prior spend cannot reset.
+            policy.pop('payloads')
+        self.shared = shared
         self.key_file = Path(key_file)
         self.post = http_post if post is None else post
         self.path = Path(ledger)
@@ -133,10 +154,13 @@ class PilotTransport:
         with self._db() as db:
             db.execute('CREATE TABLE IF NOT EXISTS policy (id INTEGER PRIMARY KEY CHECK(id=1), digest TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS dispatch (hash TEXT PRIMARY KEY, state TEXT NOT NULL, reserved INTEGER NOT NULL, attempts INTEGER NOT NULL, input_tokens INTEGER, output_tokens INTEGER, actual INTEGER)')
+            db.execute('CREATE TABLE IF NOT EXISTS batches (digest TEXT PRIMARY KEY, payload_hashes TEXT NOT NULL)')
+            db.execute('BEGIN IMMEDIATE')
             previous = db.execute('SELECT digest FROM policy WHERE id=1').fetchone()
-            if previous and previous[0] != fingerprint(manifest):
+            if previous and previous[0] != fingerprint(policy):
                 raise ContractError('pilot_policy_changed', 'Existing pilot ledger cannot adopt a different budget or manifest.')
-            db.execute('INSERT OR IGNORE INTO policy VALUES(1, ?)', (fingerprint(manifest),))
+            db.execute('INSERT OR IGNORE INTO policy VALUES(1, ?)', (fingerprint(policy),))
+            db.execute('INSERT OR IGNORE INTO batches VALUES(?, ?)', (fingerprint(manifest), canonical(hashes)))
 
     @contextmanager
     def _db(self):
@@ -152,8 +176,9 @@ class PilotTransport:
     def snapshot(self):
         with self._db() as db:
             rows = db.execute('SELECT state,reserved,attempts,input_tokens,output_tokens,actual FROM dispatch').fetchall()
-        return dict(dispatches=len(rows), http_attempts=sum(r[2] for r in rows),
-                    committed_microusd=sum(r[5] if r[5] is not None else r[1] for r in rows),
+        return dict(dispatches=self.prior_usage['dispatches'] + len(rows),
+                    http_attempts=self.prior_usage['http_attempts'] + sum(r[2] for r in rows),
+                    committed_microusd=self.prior_usage['cost_microusd'] + sum(r[5] if r[5] is not None else r[1] for r in rows),
                     frozen=any(r[0] in ('pending', 'unknown', 'overrun') for r in rows),
                     states=[r[0] for r in rows])
 
@@ -185,8 +210,9 @@ class PilotTransport:
                 raise ContractError('pilot_review_required', 'Uncertain or overrun request requires review; dispatch frozen.')
             if db.execute('SELECT 1 FROM dispatch WHERE hash=?', (identity,)).fetchone():
                 raise ContractError('pilot_retry_denied', 'This exact request already consumed its attempt.')
-            if (sum(r[2] for r in rows) + 2 > self.manifest['max_http_attempts'] or
-                    sum(r[3] if r[3] is not None else r[1] for r in rows) + reserve > self.manifest['max_cost_microusd']):
+            if ((self.shared and self.prior_usage['dispatches'] + len(rows) + 1 > 100) or
+                    self.prior_usage['http_attempts'] + sum(r[2] for r in rows) + 2 > self.manifest['max_http_attempts'] or
+                    self.prior_usage['cost_microusd'] + sum(r[3] if r[3] is not None else r[1] for r in rows) + reserve > self.manifest['max_cost_microusd']):
                 raise ContractError('pilot_budget_exceeded', 'Shared HTTP or money ceiling would be exceeded.')
             # Persist both reserved HTTP slots before either request. Crashes cannot refund them.
             db.execute('INSERT INTO dispatch(hash,state,reserved,attempts) VALUES(?, ?, ?, 2)', (identity, 'pending', reserve))

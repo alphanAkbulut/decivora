@@ -42,7 +42,7 @@ def private_json(path, value):
         os.fsync(handle.fileno())
 
 
-def prepare(folder=DEFAULT):
+def prepare(folder=DEFAULT, *, cases=None, manifest_overrides=None):
     folder = Path(folder)
     folder.mkdir(mode=0o700, parents=True, exist_ok=True)
     packet = folder / 'prepared.json'
@@ -50,7 +50,7 @@ def prepare(folder=DEFAULT):
         # An existing manifest/expiry is immutable; no fresh budget on restart.
         return json.loads(packet.read_text())
     jobs = []
-    for case_id, text, expectation in CASES:
+    for case_id, text, expectation in (CASES if cases is None else cases):
         for model in ('gpt-6-luna', 'gpt-6.1-sol'):
             job_id = case_id + '-' + model
             db = folder / (job_id + '.sqlite')
@@ -82,20 +82,24 @@ def prepare(folder=DEFAULT):
                     max_http_attempts=20, max_cost_microusd=1000000,
                     max_input_tokens=10000, max_output_tokens=2000,
                     payloads=[job['payload_sha256'] for job in jobs])
+    if manifest_overrides is not None:
+        if 'payloads' in manifest_overrides:
+            raise ValueError('Caller cannot replace exact prepared payload identities.')
+        manifest.update(manifest_overrides)
     result = dict(format='decivora-openai-pilot-1', manifest=manifest, jobs=jobs,
                   scope='synthetic_only_no_user_transcripts', model_dispatches=0,
-                  max_generation_calls=10, max_token_count_calls=10,
+                  max_generation_calls=len(jobs), max_token_count_calls=len(jobs),
                   automatic_retry=False, auto_accept=False)
     private_json(packet, result)
     return result
 
 
-def run(folder=DEFAULT, key_file=KEY, post=None):
+def run(folder=DEFAULT, key_file=KEY, post=None, *, ledger_path=None):
     folder = Path(folder)
     packet = json.loads((folder / 'prepared.json').read_text())
     read_key(key_file)  # Fail locally before creating a grant or recording an analysis attempt.
     manifest = packet['manifest']
-    transport = PilotTransport(folder / 'shared-budget.sqlite', manifest=manifest,
+    transport = PilotTransport(folder / 'shared-budget.sqlite' if ledger_path is None else ledger_path, manifest=manifest,
                                key_file=key_file, post=post)
     if transport.snapshot()['frozen']:
         return dict(outcomes=[], shared_budget=transport.snapshot(),

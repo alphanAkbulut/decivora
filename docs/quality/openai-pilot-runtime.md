@@ -2,6 +2,8 @@
 
 **19 Ekim 2026 · T09/T15/T21/T23 alt teslimi.** HTTP transport ve kontrollü CLI çalıştırıcı kodlandı. İlk offline doğrulamadan sonra anahtar kuruldu ve [pilot001gerçek sonucu](openai-pilot-001.md) kaydedildi:10generation+10count,10source/schema pass, semantik farklar ve cache-write muhasebesi düzeltmesi. Native Codex capture veya bütün MVP kabulü değildir. Ana tasklar kendi geniş kabulüyle açık kalır.
 
+**Güncel kapsam:** pilot001sonrasında kullanıcı ilk pilot dahil$3/100generation/200HTTPsentetik geliştirmeyi ayrıca onayladı. Çok-batch ortak root ve tamamlanan TR/ENclaim dilimi [yeni bütçe raporunda](openai-development-budget.md); aşağıdaki20HTTPkayıt ilk pilotun tarihsel kapsamıdır.
+
 ## Kullanıcının verdiği izin
 
 Kullanıcı API bakiyesini yüklediğini bildirdi ve bu sohbette kapsamı açıkça onayladı: yalnız sentetik örnekler; OpenAI `gpt-6-luna` ve `gpt-6.1-sol`; toplam en fazla20istek; retry0; istek başına giriş≤10000 ve toplam çıkış≤2000token; toplam≤$1. Gerçek konuşmalar veya kullanıcı veritabanı bu izin kapsamında gönderilmez. Anahtar sonradan yerel yardımcıyla kuruldu ve bu20HTTP izinli pilot tamamlandı. Kod anahtar keşfetmez, credential dosyalarını taramaz ve kullanıcı hesabında key oluşturmaz; yeni batch için bu izin yeniden kullanılmaz.

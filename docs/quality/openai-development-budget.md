@@ -1,0 +1,57 @@
+# Onaylı geliştirme bütçesi ve completion-claim dilimi
+
+**19 Ekim 2026 · T03/T09/T15/T21.** Kullanıcı “$3 bütçe ve bu sınırlarla devam et” diyerek önerilen sınırları açıkça onayladı. Bu yeni kapsam ilk pilotu da içerir; her alt grup için yeniden$3açılmaz. Ana task/MVP kapanışı değildir.
+
+## Ortak sınırlar
+
+| Alan | Kabul edilen sınır |
+|---|---|
+| Toplam model-token maliyet tahmini | ≤$3; pilot001dahil |
+| Model generation | ≤100; pilot001dahil |
+| HTTP attempt | ≤200; count dahil, pilot001dahil |
+| Her generation | ≤10000input +≤2000toplam output token |
+| Modeller | OpenAI GPT-6 Luna ve GPT-6.1 Sol; standard tier |
+| Kaynak | Yalnız kontrollü sentetik örnekler; gerçek sohbet paylaşımı yok |
+| Çalışma biçimi | Küçük gruplar; unknown/error/overrun'da dur, otomatik retry0 |
+
+Anahtar veya raw transcript repo/loga girmez. Onaylı modeller dışına geçiş, gerçek kaynak paylaşımı, bu sınırların artması veya farklı ücretli araç bu izin kapsamında değildir. Fiyatlama ve provider riskleri nedeniyle bu model-token admission sınırı banka ekstresine/account'taki başka programlara kesin tavan iddiası değildir.
+
+## Kodlanan ortak muhasebe
+
+[PilotTransport](../../packages/capture/openai_transport.py) eski20HTTP/$1manifestlerini genişletmez. Yeni `budget_scope=decivora-development-2026-10-19-usd3` biçimi; sabit root policy, kaynaklı prior usage ve küçük exact-payload batch grant'leri kullanır. Root SQLite policy ilk kurulumda `BEGIN IMMEDIATE` ile bağlanır; başka batch/restart onay, limit, fiyat, expiry veya prior kullanımını sıfırlayamaz. Batch hashleri ayrıca kaydedilir.100generation admission,200HTTP ve$3aynı transaction içinde denetlenir. Unknown bir batch bütün root'u dondurur.
+
+[Çalıştırıcı](../../scripts/run_openai_development.py), pilot001private receipt'lerini [salt okunur raporlayıcıyla](../../scripts/report_openai_pilot.py) yeniden okuyarak10generation/20HTTP ve cache-aware24165microusd geçmişini root'a **bir kez** taşır. Eski kayıtlar düzenlenmez. Yeni örnekler ayrı Workspace'lerde; hepsi tek `openai-development-001/shared-budget.sqlite` altında sayılır. Her istekte mevcut domain source/context grant'i ve token rezervasyonu da korunur.24saatlik teknik manifest geçerliliği, bütçeyi yenilemez veya işi arka planda sürdürme izni vermez.
+
+`--prepare`offline'dır; `--run`belirli mevcut grubu çalıştırır. `claims` ve `original-claim` ayrı bilinçli deneylerdir. Receipt'i olan işi yeniden göndermez. Ham model çıktısı değişmez; validator kalitesi geçsin diye gevşetilmez. LOCAL/TEST UI provider'ı kendiliğinden etkinleştirilmedi.
+
+## Kaybolan completion claim için kod değişikliği
+
+[DialogueReviewService](../../packages/capture/dialogue_review.py) talimatı netleştirildi: mevcut task için açık “bitirdim ama testler çalışmadı” raporu, qualifications içeren literal quote ve `status_changes.stage=Done` **iddiası** olarak yakalanmalı. Bu alan canonical Done veya AC/DoD kanıtı değildir. Negation, future conditional, example veya hypothetical completion'da öneri üretmemeli. Türkçe ayrımı açıkça eklendi.
+
+UI, onay, workflow ve verification kapıları değiştirilmedi. Model çıktısı sonradan kural/regex ile başarılı görünecek biçimde düzeltilmedi. Talimat değiştiği için yeni exact payload hashleriyle yeni batch hazırlandı; eski model yanıtı veya pilot001manifesti üzerine yazılmadı.
+
+API payloadında ayrı reasoning seviyesi gönderilmedi; çağrılar Low/Medium diye etiketlenmedi ve provider varsayılanının hangi düzey olduğu doğrulanmadı. Geliştirme sohbetindeki model/düşünme ayarı APIye taşınmaz. Dönen reasoning tokenları output alt kategorisinde saklanır; maliyet ve2000output sınırında ikinci kez eklenmez.
+
+## Gerçek sonuç
+
+[Makine raporu](openai-development-001-results.json) ve [salt okunur üreticisi](../../scripts/report_openai_development.py).
+
+| Grup / kaynak | Model sayısı | Gözlenen sonuç |
+|---|---:|---|
+| İngilizce “bitirdim, testler çalışmadı” |2 | İki modelde de kaynaklı Done **iddiası** |
+| Türkçe “bitirdim, testleri çalıştırmadım” |2 | İki modelde de kaynaklı Done **iddiası** |
+| İngilizce “iş bitince ... henüz başlamadım” |2 | Durum önerisi yok |
+| Türkçe “bitirmedim, henüz başlamadım” |2 | Durum önerisi yok |
+| Pilot001'deki özgün claim cümlesi, yeni talimat |2 | Luna ve Sol'da kaynaklı Done **iddiası** |
+
+Son karşılaştırmada eski/yeni source ID ve context hashleri aynı, payload hashleri farklıdır. İlk Luna yanıtı claim'i atlamıştı; yeni talimatla **aynı tek örnekte** yakalandı. Bu tek karşılaştırma nedensel veya genellenebilir model doğruluğu oranı değildir. Yeni5kaynağın beklentileri AI-authored; bağımsız human-gold/holdout değildir.10yeni source/schema kontrolü geçti; otomatik canonical apply0, başlangıç task/versionları korundu. Gerçek Codex native capture denenmedi.
+
+**Bütçe durumu:** yeni10generation/20HTTP, ilk pilotla birlikte toplam**20generation/40HTTP**. Cache-aware model-token maliyet tahmini toplam**$0.049592**; kalan tahmini pay**$2.950408**,80generation ve160HTTP. Nihai fatura doğrulanmadı. Tavanı tüketmek amaç değildir; bu bulgu için ek çağrı yapılmadı.
+
+## Doğrulama ve kalan sınırlar
+
+[Ortak bütçe testleri](../../tests/runtime/test_development_budget.py) geçmiş para/çağrı/generation taşımasını, başka batch/restart ile sıfırlamayı reddetmeyi, shared freeze ve eski manifestin sessizce genişlememesini sınar. [Runner testi](../../tests/runtime/test_openai_pilot.py) ilk pilot→8iş→2iş zincirini ve salt okunur raporun API çağırmadığını kontrol eder. Sahte HTTP çıktıları semantik kalite kanıtı sayılmaz.
+
+Tam anlam kalitesi, role/source ayrımı, onaylı gerçek Codex adapter'ı ve ana UI aktivasyonu mevcut görevlerde açık. Bu kapsam bütçe hazırlığını yeniden insan blocker'ı yapmaz; mevcut root sınırları içindeki sentetik işlerde tekrar genel harcama onayı gerekmez. Gerçek kaynak veya kapsam değişikliği ayrı izin ister.
+
+**Yerel doğrulama:**475runtime ve48repo testi geçti;50Mermaid kaynağı offline render edildi. UI kodu değiştirilmedi; browser testleri bu tur yeniden koşulmuş sayılmaz. Test ve rapor üretimi ek API çağrısı yapmadı. İlk ücretli grupla birlikte bütün private receipt kayıtları korunur; raw içerik veya API key GitHub'a gönderilmez.

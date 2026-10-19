@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "6fc224a8d4ebacd6dcf691f2c4de957a4c480718",
+  "input_base_ref": "5b5bc418dce841759b69f2254fb16a999b0141da",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "e9a82611038075a72158dc571a148bc417741c9d44c552109c7780f78c9446b7",
+      "svg_sha256": "2b0e3a14235eb8ee52a1ea8a8c7639f4ab39d8f40c09a7b34e3ee7b7e00d2221",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "006bbfa9c43840c78c48dfbb9597c13bb83f69b2392de45709ca49be1da580bc",
+      "source_sha256": "60f1c80332ad9b1df80429d033b04332672a3a33072595641299cbd2b53a02da",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 4155.4140625 3998.85302734375",
+      "view_box": "0 0 4155.4140625 4046.85302734375",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "73d41c9a305b126bee2ce1bd1099f16f3ab73a69feb0a60bbcfddd570528f2f8",
+      "svg_sha256": "be9f0f039280f66042353cce6b6b1eb4c54de9bb66d40916c5f56a9eaa9519d1",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "c536f9036f530cf22d9768e0270c2ff6db1ad2099d30d1418e3488524ebe16ba",
+      "svg_sha256": "4bd63c45cc33d5798d0567a2ba37bfa01dd9dd4537916c7346e42605c665a909",
       "error": null
     },
     {
@@ -6147,8 +6147,8 @@
     }
   ],
   "all_sources_rendered": true,
-  "visual_review": "All50sources rendered offline; local-preview labels updated to completed isolated pilot and cache-aware admission. No native capture or full MVP acceptance claim.",
-  "scope_note": "Actual synthetic API batch completed; corrected estimate separate from original private ledger; default UI remains unconfigured.",
+  "visual_review": "All50sources rendered offline; local-preview root budget label includes historical usage,100generations/200HTTP/USD3 and shared freeze. No new native/UI activation claim.",
+  "scope_note": "Shared development budget and completion-claim prompt implemented; TR/EN and paired original source outputs recorded; default UI remains unconfigured.",
   "superseded": [
     {
       "reason": "Before bounded isolated OpenAI pilot transport",
@@ -6180,6 +6180,23 @@
           "view_box": "0 0 4155.4140625 3950.85302734375",
           "artifact": "docs--architecture--local-preview--1.svg",
           "svg_sha256": "1cf57cedde58cd2d11dc27efe46f9cb0278b07b527b6087904f1217ca837ae4d",
+          "error": null
+        }
+      ]
+    },
+    {
+      "reason": "Before explicit shared USD3 development root",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "006bbfa9c43840c78c48dfbb9597c13bb83f69b2392de45709ca49be1da580bc",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 4155.4140625 3998.85302734375",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "73d41c9a305b126bee2ce1bd1099f16f3ab73a69feb0a60bbcfddd570528f2f8",
           "error": null
         }
       ]

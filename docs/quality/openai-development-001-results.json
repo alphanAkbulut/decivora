@@ -1,0 +1,345 @@
+{
+  "format": "decivora-openai-development-result-1",
+  "scope": "decivora-development-2026-10-19-usd3",
+  "approval_ref": "owner-chat-2026-10-19-explicit-usd3-100-generation-200-http",
+  "first_pilot_included": true,
+  "prior_usage": {
+    "dispatches": 10,
+    "http_attempts": 20,
+    "cost_microusd": 24165,
+    "evidence_sha256": "de2f52e79731f30461600e3768c19b08f613823157eebd1d8b97ffaa6c815d85"
+  },
+  "batch_model_calls": 10,
+  "batch_http_attempts": 20,
+  "total_model_calls": 20,
+  "total_http_attempts": 40,
+  "estimated_total_microusd": 49592,
+  "max_cost_microusd": 3000000,
+  "remaining_cost_microusd": 2950408,
+  "max_model_calls": 100,
+  "max_http_attempts": 200,
+  "frozen": false,
+  "final_invoice_verified": false,
+  "independent_gold": false,
+  "canonical_auto_apply": false,
+  "native_capture_verified": false,
+  "mvp_acceptance": false,
+  "paired_original_comparisons": [
+    {
+      "model": "gpt-6-luna",
+      "same_source": true,
+      "same_context": true,
+      "different_payload": true,
+      "before_stages": [],
+      "after_stages": [
+        "Done"
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "same_source": true,
+      "same_context": true,
+      "different_payload": true,
+      "before_stages": [
+        "Done"
+      ],
+      "after_stages": [
+        "Done"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "batch": "claims-002",
+      "job": "done-en-gpt-6-luna",
+      "model": "gpt-6-luna",
+      "status": "Ready for review",
+      "stages": [
+        "Done"
+      ],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_8d2f395d2cf6296421a026f5",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "ecdd62a620269d7414c5fdacb169e2bb6ffe24c32bd7c60cc12a2dfb67019bde",
+      "usage": {
+        "input_tokens": 1168,
+        "input_tokens_details": {
+          "cache_write_tokens": 1165,
+          "cached_tokens": 0
+        },
+        "output_tokens": 259,
+        "output_tokens_details": {
+          "reasoning_tokens": 69
+        },
+        "total_tokens": 1427
+      },
+      "estimated_cost_microusd": 276,
+      "seed_unchanged": true,
+      "raw_output_sha256": "b54743a61a9c5ca5e65e63fd006e1375898a820d5cd82c2155d342e148852e0a",
+      "private_receipt_sha256": "128ec10274f2ac2986a698a83edf79670beaf859c4e289a3dcb5d331f35f7bc7"
+    },
+    {
+      "batch": "claims-002",
+      "job": "done-en-gpt-6.1-sol",
+      "model": "gpt-6.1-sol",
+      "status": "Ready for review",
+      "stages": [
+        "Done"
+      ],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_8d2f395d2cf6296421a026f5",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "49281785eb4efa8455b63137d87043deacef4c396ab7c7fa720f93cbaa11bb27",
+      "usage": {
+        "input_tokens": 1168,
+        "input_tokens_details": {
+          "cache_write_tokens": 1165,
+          "cached_tokens": 0
+        },
+        "output_tokens": 188,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1356
+      },
+      "estimated_cost_microusd": 4799,
+      "seed_unchanged": true,
+      "raw_output_sha256": "b54743a61a9c5ca5e65e63fd006e1375898a820d5cd82c2155d342e148852e0a",
+      "private_receipt_sha256": "a4a8f0447835c97050c89754fc078fdf4e4af0bf63c296254016acd31d2326d8"
+    },
+    {
+      "batch": "claims-002",
+      "job": "done-tr-gpt-6-luna",
+      "model": "gpt-6-luna",
+      "status": "Ready for review",
+      "stages": [
+        "Done"
+      ],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_9c94942095780be9a737db1d",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "007b87166a8c69c7740e7bee835915504a07b552781bee913eee4bf9728c965e",
+      "usage": {
+        "input_tokens": 1164,
+        "input_tokens_details": {
+          "cache_write_tokens": 1161,
+          "cached_tokens": 0
+        },
+        "output_tokens": 247,
+        "output_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "total_tokens": 1411
+      },
+      "estimated_cost_microusd": 269,
+      "seed_unchanged": true,
+      "raw_output_sha256": "5e21f8c68465aa564483f006970e18d95885f0d8c1f4cbf95002ae373f570b71",
+      "private_receipt_sha256": "51f24dfa4ad6bc2e574ad46dc05330f1485ecd2fbff6537a142ca8a94cdce19f"
+    },
+    {
+      "batch": "claims-002",
+      "job": "done-tr-gpt-6.1-sol",
+      "model": "gpt-6.1-sol",
+      "status": "Ready for review",
+      "stages": [
+        "Done"
+      ],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_9c94942095780be9a737db1d",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "72c30bc16b9229f6d2a3f5ca4e057b70278c151bf9861ea3d5f3c2e38d2a9465",
+      "usage": {
+        "input_tokens": 1164,
+        "input_tokens_details": {
+          "cache_write_tokens": 1161,
+          "cached_tokens": 0
+        },
+        "output_tokens": 184,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1348
+      },
+      "estimated_cost_microusd": 4749,
+      "seed_unchanged": true,
+      "raw_output_sha256": "5e21f8c68465aa564483f006970e18d95885f0d8c1f4cbf95002ae373f570b71",
+      "private_receipt_sha256": "d9981a16b028001109f841e7b89bf44226a002700518e36b9791302947fe33a7"
+    },
+    {
+      "batch": "claims-002",
+      "job": "future-en-gpt-6-luna",
+      "model": "gpt-6-luna",
+      "status": "Ready for review",
+      "stages": [],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_c369a7b289aa527f78772f64",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "264514bd945fb96b740d565bfab45edc4578e5818520ff0fe919114af4f7a485",
+      "usage": {
+        "input_tokens": 1168,
+        "input_tokens_details": {
+          "cache_write_tokens": 1165,
+          "cached_tokens": 0
+        },
+        "output_tokens": 230,
+        "output_tokens_details": {
+          "reasoning_tokens": 94
+        },
+        "total_tokens": 1398
+      },
+      "estimated_cost_microusd": 261,
+      "seed_unchanged": true,
+      "raw_output_sha256": "f4bf7cec494ee454588556311a09d6d58d8c83090191da96c0489ceffd81d5ff",
+      "private_receipt_sha256": "9d20a9133daff96965a62344de9bcf84cdf5881c90eee44c8e22bda08807e7b5"
+    },
+    {
+      "batch": "claims-002",
+      "job": "future-en-gpt-6.1-sol",
+      "model": "gpt-6.1-sol",
+      "status": "Ready for review",
+      "stages": [],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_c369a7b289aa527f78772f64",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "d5fba484792947ad88473f863d567076b9f81b54a9b28b55b6d51afbd41cbd73",
+      "usage": {
+        "input_tokens": 1168,
+        "input_tokens_details": {
+          "cache_write_tokens": 1165,
+          "cached_tokens": 0
+        },
+        "output_tokens": 174,
+        "output_tokens_details": {
+          "reasoning_tokens": 38
+        },
+        "total_tokens": 1342
+      },
+      "estimated_cost_microusd": 4659,
+      "seed_unchanged": true,
+      "raw_output_sha256": "f4bf7cec494ee454588556311a09d6d58d8c83090191da96c0489ceffd81d5ff",
+      "private_receipt_sha256": "0c090f954983ffd9d29aed06cfa9f43bbc69742320b4e90ef7535beb1a62beaf"
+    },
+    {
+      "batch": "claims-002",
+      "job": "negation-tr-gpt-6-luna",
+      "model": "gpt-6-luna",
+      "status": "Ready for review",
+      "stages": [],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_0cefebe0ae68e87b70d6a185",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "840d2c856f72031b459a2dc0e83f86e8dbfc620ebc9cf22a4203d693c019f7a8",
+      "usage": {
+        "input_tokens": 1168,
+        "input_tokens_details": {
+          "cache_write_tokens": 1165,
+          "cached_tokens": 0
+        },
+        "output_tokens": 209,
+        "output_tokens_details": {
+          "reasoning_tokens": 71
+        },
+        "total_tokens": 1377
+      },
+      "estimated_cost_microusd": 251,
+      "seed_unchanged": true,
+      "raw_output_sha256": "9c6925652991d536dc4363489bff25b783e187824a88da2e5b763035e94890bb",
+      "private_receipt_sha256": "f846d0f63f1843a8667a1d4dec3285940032a21ce0bf0c2d291dc558c99d9e03"
+    },
+    {
+      "batch": "claims-002",
+      "job": "negation-tr-gpt-6.1-sol",
+      "model": "gpt-6.1-sol",
+      "status": "Ready for review",
+      "stages": [],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_0cefebe0ae68e87b70d6a185",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "14bac5ad38e364031bd18d07a04336df77757899f956397fb284d474c83da140",
+      "usage": {
+        "input_tokens": 1168,
+        "input_tokens_details": {
+          "cache_write_tokens": 1165,
+          "cached_tokens": 0
+        },
+        "output_tokens": 212,
+        "output_tokens_details": {
+          "reasoning_tokens": 74
+        },
+        "total_tokens": 1380
+      },
+      "estimated_cost_microusd": 5039,
+      "seed_unchanged": true,
+      "raw_output_sha256": "9c6925652991d536dc4363489bff25b783e187824a88da2e5b763035e94890bb",
+      "private_receipt_sha256": "1a8c8b8c3bfea831a8f2af8deb0ca2360ebba14b5d85f858fd98b61230a59935"
+    },
+    {
+      "batch": "original-claim-003",
+      "job": "original-claim-gpt-6-luna",
+      "model": "gpt-6-luna",
+      "status": "Ready for review",
+      "stages": [
+        "Done"
+      ],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_94cd2e5d9f2d524a4dd985b2",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "1804e50128eb72984a7e8674a17edae3acba59401addb33d30aa8cf348931d08",
+      "usage": {
+        "input_tokens": 1173,
+        "input_tokens_details": {
+          "cache_write_tokens": 1170,
+          "cached_tokens": 0
+        },
+        "output_tokens": 231,
+        "output_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "total_tokens": 1404
+      },
+      "estimated_cost_microusd": 263,
+      "seed_unchanged": true,
+      "raw_output_sha256": "b1b8d0bb6fd3ab2b0d49a340aadcc59de08a96eb6578c052ac63a5baa5379b04",
+      "private_receipt_sha256": "ee8c6b682e30a352787c6c6cadd672000694fb6eca6c73a4b47a7474b2ea481d"
+    },
+    {
+      "batch": "original-claim-003",
+      "job": "original-claim-gpt-6.1-sol",
+      "model": "gpt-6.1-sol",
+      "status": "Ready for review",
+      "stages": [
+        "Done"
+      ],
+      "candidate_count": 0,
+      "coverage": "complete",
+      "source_id": "source_94cd2e5d9f2d524a4dd985b2",
+      "context_sha256": "5255c2d4ad4f7034b2abc32016cf98ade960461c31c2c6526a1e67eed2634525",
+      "request_payload_sha256": "5257196094b5e62774d8fddb3e3b614c660a48e7668d8147bac4c230fad3b01d",
+      "usage": {
+        "input_tokens": 1173,
+        "input_tokens_details": {
+          "cache_write_tokens": 1170,
+          "cached_tokens": 0
+        },
+        "output_tokens": 193,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1366
+      },
+      "estimated_cost_microusd": 4861,
+      "seed_unchanged": true,
+      "raw_output_sha256": "b1b8d0bb6fd3ab2b0d49a340aadcc59de08a96eb6578c052ac63a5baa5379b04",
+      "private_receipt_sha256": "934b4e8f99414ef61e7a3d7fb139a416e7e2e2f479b4d80e44234e0adc71a4e1"
+    }
+  ]
+}
