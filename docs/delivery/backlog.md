@@ -321,12 +321,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T17 — Codex adapter
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T16. **Kapsam ID:** CAP-02.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T16. **Kapsam ID:** CAP-02.
 - **İş:** T02 sonuçlarına göre desteklenen yüzeye ayrı adapter; varsayımsal hook adı kullanma.
 - **Kabul:** Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.
 - **Doğrulama:** Adapter sözleşme suite; CLI/desktop ayrımı.
-- **Beklenen dosya alanı:** `packages/capture/codex/` (henüz oluşmamış yollar uygulama sırasında açılır).
+- **Beklenen dosya alanı:** `packages/capture/codex/`, `scripts/capture_codex_exec.py`.
 - **Boyut:** 1 küçük PR.
+
+- **19 Ekim kod dilimi:** seçilmiş exec JSONL→kalıcı kaynak→mevcut review bağlantısı, cursor/retry/privacy/atomik rollback. [Uygulama ve kalan host kapıları](../quality/codex-exec-capture-runtime.md). Gerçek CLI/desktop capture ve tam konuşma kabulü açık; T16 release bağı kaldırılmadı.
 
 ## T18 — Minimal MCP ve cross-agent read
 

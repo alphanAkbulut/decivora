@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "5b5bc418dce841759b69f2254fb16a999b0141da",
+  "input_base_ref": "1bd0f92253d9b210bbf1b22523430dffc14de70f",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "2b0e3a14235eb8ee52a1ea8a8c7639f4ab39d8f40c09a7b34e3ee7b7e00d2221",
+      "svg_sha256": "f9437b62555de589bb5dece9a9f7833c0c0fdf33b2bd31ec4392f69bfb2ab0b3",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "60f1c80332ad9b1df80429d033b04332672a3a33072595641299cbd2b53a02da",
+      "source_sha256": "5bdde8dea9ca966af6dabcdc9b9b5c3384aea91d000795bdbc5cfb3153913eda",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 4155.4140625 4046.85302734375",
+      "view_box": "0 0 4299.57421875 4118.85302734375",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "be9f0f039280f66042353cce6b6b1eb4c54de9bb66d40916c5f56a9eaa9519d1",
+      "svg_sha256": "6e15975df184c846c9bd825db54985f4c143166dc3c97c2179ad9bd0699a889c",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "4bd63c45cc33d5798d0567a2ba37bfa01dd9dd4537916c7346e42605c665a909",
+      "svg_sha256": "e1b67f796cdfee1ec98ffaba97c1c586e9b9339b579a6b5a63ab954d333890e2",
       "error": null
     },
     {
@@ -6197,6 +6197,25 @@
           "view_box": "0 0 4155.4140625 3998.85302734375",
           "artifact": "docs--architecture--local-preview--1.svg",
           "svg_sha256": "73d41c9a305b126bee2ce1bd1099f16f3ab73a69feb0a60bbcfddd570528f2f8",
+          "error": null
+        }
+      ]
+    },
+    {
+      "checked_at": "2026-10-19",
+      "input_base_ref": "5b5bc418dce841759b69f2254fb16a999b0141da",
+      "reason": "Selected Codex exec capture source/transaction boundary added; prior source render retained.",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "60f1c80332ad9b1df80429d033b04332672a3a33072595641299cbd2b53a02da",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 4155.4140625 4046.85302734375",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "be9f0f039280f66042353cce6b6b1eb4c54de9bb66d40916c5f56a9eaa9519d1",
           "error": null
         }
       ]

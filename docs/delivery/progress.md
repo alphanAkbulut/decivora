@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 14 |
-| TODO | 9 |
+| IN_PROGRESS | 15 |
+| TODO | 8 |
 
 ## İş türü ve bekleyen insan kapıları
 
@@ -207,6 +207,18 @@ Sıradaki adım: Ayrıntılı backlog'u kontrol et.
 
 Sıradaki adım: Kontrollü503düzeltmesi ve snapshot audit optimizasyonu testli; T23d uzun soak/disk ve remaining503korelasyonu açık. T13/T19 karar etkisi önizlemesi çalışıyor; tam etki/onay/apply ve gerçek extraction/native kabulü açık.
 
+### T17 · Codex adapter
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 ### T18 · Minimal MCP ve cross-agent read
 
 Son ilerleme kaydı yok.
@@ -361,7 +373,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 | 4 |
 | T15 | P1a | IN_PROGRESS | Teknik kanıt kapısı | T14, T07c | 1 |
 | T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
-| T17 | P1b | TODO | Codex adapter | T16 | 0 |
+| T17 | P1b | IN_PROGRESS | Codex adapter | T16 | 0 |
 | T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 | 9 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
@@ -384,4 +396,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `8adaf45233d0b3d4eef740deaeb6720d21a128bc35b2c2a7147b7abae0624b9d`
+Kaynak fingerprint: `5bebf7eb78adf7572a30ce6450bd870c70dee95efaf8c0aed5bd7493de10c8aa`

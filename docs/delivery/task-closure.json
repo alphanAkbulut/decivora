@@ -141,7 +141,9 @@
     "T17": {
       "core_acceptance": "Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.",
       "core_verified": false,
-      "evidence": [],
+      "evidence": [
+        "docs/quality/codex-exec-capture-runtime.md"
+      ],
       "release_scope": "MVP"
     },
     "T18": {

@@ -9,11 +9,13 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 | Kanonik ana iş grubu | Kapalı | Devam eden | Başlanacak | Açık toplam |
 |---|---:|---:|---:|---:|
 | P0 hazırlık/kalite T01–T03 | 0 | 3 | 0 | 3 |
-| MVP T04–T24 | 7 | 11 | 3 | 14 |
+| MVP T04–T24 | 7 | 12 | 2 | 14 |
 | MVP sonrası T25–T30 | 0 | 0 | 6 | 6 |
-| **Toplam** | **7** | **14** | **9** | **23** |
+| **Toplam** | **7** | **15** | **8** | **23** |
 
 **MVP release yolunda17ana iş açık:14ürün/entegrasyon işi ve3P0 hazırlık/kalite işi.** Bunlar17eşit büyüklükte küçük PR değildir. Done görünen7iş çekirdek kabul kapsamıdır; otomatik kullanıcı yolculuğunun tamamı değildir. T15 ve T24 esasen entegrasyon/kabul kapısıdır; diğer12açık MVP ana işte kalan ürün kodu vardır. Kabulde çıkacak gerçek hatalar bu işlerde düzeltilir; gelecekte bulunacak hata sayısı tahmin edilmedi.
+
+**19 Ekim T17 güncellemesi:** [seçilmiş Codex exec JSONL capture](../quality/codex-exec-capture-runtime.md) kaynak/review yoluna bağlandı; T17 artık In Progress. Sadece public assistant mesajları, partial coverage; gerçek masaüstü bağlantısı ve sürekli tam konuşma kabulü açık. Ana sayım güncellendi; ana iş kapanışı veya MVP kabulü yok.
 
 ## Elimizde çalışan kod
 

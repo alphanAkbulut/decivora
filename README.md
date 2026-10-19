@@ -1,5 +1,7 @@
 # Decivora
 
+19 Ekim Codex bağlantısı: [seçilmiş CLI olay akışı → kalıcı kaynak → görev incelemesi](docs/quality/codex-exec-capture-runtime.md) kodlandı. Tekrar/güncellik/maskeleme kontrolleri var; masaüstü sohbetlerini canlı yakalama ve tam MVP kabulü hâlâ açık.
+
 19 Ekim Operations teslimi: [kalıcı güvenli tanı kayıtları ve ayrı TEST ortamı](docs/quality/operations-runtime.md). Komut sınırları/süreleri izlenir; bütün engine zinciri ve tam backoffice kabulü açık.
 
 

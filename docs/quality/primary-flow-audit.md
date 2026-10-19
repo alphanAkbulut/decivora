@@ -94,3 +94,7 @@ Recorded rationale→human complete review→versioned audit/facts→current imp
 ## 19 Ekim — ortak bütçe ve completion-claim ayrımı
 
 [USD3kapsamı](openai-development-budget.md) ilk pilot dahil kabul edildi; sentetik maliyet API blocker'ı değil. Aynı root'ta20generation/40HTTP ve$0.049592tahmin kaydedildi. Yeni talimat, kanıtsız bitirme iddiasını kaybetmeden Done önerisi olarak ayırır; canonical completion hâlâ ayrı workflow/AC/evidence kapılarındadır. Türkçe/İngilizce yeni örnekler ve aynı özgün kaynak/context karşılaştırması kaydedildi. Yerel UI veya gerçek Codex kaynak capture'ı bu sonuçla kendiliğinden aktif sayılmaz.
+
+## 19 Ekim — T17 ilk capture köprüsü
+
+[Seçilmiş exec JSONL capture](codex-exec-capture-runtime.md) artık source persistence ve mevcut review/apply koduna bağlı. Kontrollü fixture ile capture→prepare→structured proposal→explicit Task accept çalışır; model çıktısı enjekte edildiği için semantik doğruluk kanıtı değildir. Native desktop/user-message capture, canlı scheduling ve gerçek transcript model grant bağlantısı açık. Yeni ücretli çağrı yok; önceki API kullanım kayıtları değişmedi.

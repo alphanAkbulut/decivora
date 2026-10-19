@@ -221,3 +221,5 @@ Mevcut local-preview ilişki düğümü Decision NEW supersedes OLD için geniş
 ### 19 Ekim — kalıcı AND/OR review
 
 Local-preview çizimine human complete rationale review→versioned audit/facts→impact bağlantısı eklendi.50diagram/25belge render başarılı; geçerlilik değerleri explicit insan varsayımıdır, gerçek model/target kanıtı değildir.
+
+19 Ekim Codex exec capture: mevcut local-preview1 şemasına seçilmiş CLI stream→atomik kaynak/cursor→hazırlanan context yolu eklendi.50/25 inventory aynı;50şema cached Mermaid11.17.2 ile ağ kapalı render edildi, kaynak/hash kayıtları güncellendi. Önceki değişen render superseded içinde korundu. Native desktop veya gerçek semantik ürün kabulü değildir.

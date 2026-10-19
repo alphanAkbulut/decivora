@@ -43,3 +43,7 @@ Her adapter için: yeni mesaj, assistant final, tool failure, stop olmadan kapan
 [Güncel yön](../product/current-direction.md) T02'de iki coding yüzeyinin kaynak capability'sini korur; sınırlı deney için ayrıca **tek seçilmiş hedef** read-back fizibilitesi ister. Local read/GitHub erişimi ile source transcript erişimi ayrı izin ve coverage'dır. Generated artifact sinyali (ID/revision/hash/availability), güvenilir insan selection kaynağı ve upload observation/report alanları platform tarafından sunulmuyorsa unknown/manual fallback kalır.
 
 Typed sentetik input ile state testi extraction/capture doğruluğunu kanıtlamaz. Import edilen assistant “user accepted” özeti insan principal yaratmaz. Hedef diff/refetch desteklenmedikçe durumun sürekli güncel kaldığı iddiası yok. GAP-01–10 ve T02d bu contract raporunu tamamlar.
+
+## 19 Ekim — mevcut ilk Codex CLI kodu
+
+[Seçilmiş exec JSONL adapter ve kullanım](../quality/codex-exec-capture-runtime.md) public assistant mesajlarını mevcut kaynak/review yoluna yazar. Explicit consent/project/thread/version, append-only prefix kontrolü ve source+cursor transaction uygulanmıştır. Bu bölüm yukarıdaki genel tasarımın dar uygulanmış alt kümesidir; `collect` caller-supplied snapshot alır, kendi başına dosya taramaz veya arka planda tail etmez. Masaüstü, user prompt capture, tam health UI ve gerçek host version probe açık.

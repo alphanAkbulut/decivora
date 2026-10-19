@@ -3,6 +3,7 @@
 No lexical extraction fallback. Unconfigured model stays visibly waiting.
 """
 import json,time
+from contextlib import nullcontext
 from packages.privacy.secrets import redact_text,ensure_safe,POLICY
 from packages.domain.project_binding import identifier
 from packages.domain.source_event import ContractError
@@ -18,6 +19,7 @@ def output_schema():
 def anchored(source,output):
     if type(output) is not dict or set(output)!={'source_id','source_sha256','coverage','candidates'} or output['source_id']!=source['id'] or output['source_sha256']!=source['sha256']:raise ContractError('stale_source','Output must bind this exact conversation.')
     if output['coverage'] not in ('complete','partial','unknown') or type(output['candidates']) is not list or len(output['candidates'])>32:raise ContractError('invalid_output','Bounded candidates and coverage required.')
+    if source.get('source_kind')=='codex_exec_jsonl' and output['coverage']=='complete':raise ContractError('coverage_overclaim','Assistant-only capture cannot establish complete conversation coverage.')
     candidates=[];seen=set()
     for item in output['candidates']:
         if type(item) is not dict or set(item)!={'type','title','quote','intent'} or item['type'] not in KINDS or item['intent'] not in ('proposed','reported','planned','rejected'):raise ContractError('invalid_candidate','Exact typed candidate required.')
@@ -42,14 +44,22 @@ class ConversationService:
         if source is None:raise ContractError('source_unavailable','Conversation unavailable.')
         return source
     def ingest(self,scope,project,*,text):
+        return self._ingest(scope,project,text=text)
+    def _ingest(self,scope,project,*,text,capture=None,in_transaction=False):
+        """Internal adapter bridge; public manual input cannot claim host provenance."""
         if type(text) is not str or not text.strip() or len(text.encode('utf-8'))>12000:raise ContractError('conversation_limit','Nonempty conversation up to 12000 UTF-8 bytes required.')
-        with self.core.transaction():
+        if in_transaction and not self.core.db.in_transaction:raise ContractError('transaction_required','Capture source and cursor require one transaction.')
+        with nullcontext() if in_transaction else self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             text,redaction_counts=redact_text(text)
-            sha=digest(text);old=next((s for s in self._rows(project,'conversation_imported') if s['sha256']==sha),None)
+            sha=digest(text)
+            identity=sha if capture is None else digest(canonical([capture,sha]))
+            source_id='source_'+identity[:24]
+            old=next((s for s in self._rows(project,'conversation_imported') if s['id']==source_id),None)
             if old:return old
             if len(self._rows(project,'conversation_imported'))>=32:raise ContractError('conversation_limit','Preview supports 32 imports per project; accepted sources remain intact.')
-            source=dict(id='source_'+sha[:24],sha256=sha,text=text,source_kind='manual_paste',actor=scope.principal_id,received_at=time.time(),revision=1)
+            source=dict(id=source_id,sha256=sha,text=text,source_kind='manual_paste' if capture is None else 'codex_exec_jsonl',actor=scope.principal_id,received_at=time.time(),revision=1)
+            if capture is not None:source['capture']=capture
             source['redaction']=dict(policy=POLICY,counts=redaction_counts,original_retained=False)
             self._put(scope,project,'conversation_imported',source);return source
     def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason,context_sha256=None):

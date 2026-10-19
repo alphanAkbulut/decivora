@@ -10,6 +10,8 @@ flowchart TB
     S --> G["Exact Host / Origin / CSRF<br/>32KiB JSON / 30 write per minute"]
     G --> PR["Credential detection before source persistence<br/>masked text / policy counts / no original secret"]
     PR --> I0["Manuel konuşma aktarımı<br/>real source: manual_paste; private receipt"]
+    CX["Selected Codex exec JSONL snapshot<br/>explicit project, thread, version and local consent<br/>No desktop discovery or model dispatch"] --> CC["Completed public assistant messages only<br/>prefix/retry guard; partial coverage<br/>mask before persistence; source and cursor commit atomically"]
+    CC --> DQ
     I0 --> DQ["Prepared request: source + tasks + decisions<br/>questions + recorded relations / context hash<br/>No model dispatch or egress permission"]
     DQ --> EX["User sends to an existing LLM<br/>External identity and usage unverified"]
     EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]

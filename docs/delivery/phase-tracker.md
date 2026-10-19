@@ -76,7 +76,7 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
 | T16 | P1b | TODO | Claude Code adapter | T15 |
-| T17 | P1b | TODO | Codex adapter | T16 |
+| T17 | P1b | IN_PROGRESS | Codex adapter | T16 |
 | T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 |
