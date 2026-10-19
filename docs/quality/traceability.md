@@ -120,3 +120,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 
 
 **20Ekim48case/aging:** T09/T14/T17 kapsamında48case/294mesaj; T14 waiting/attention ve priority-flow kapsamında [7gün timer](blocker-aging.md). Manual/soru başlangıcı için çalışan yerel alt kapsam; dependency episode onset ve dış bildirim teslimi açık. Bütün48case gerçek modelle doğrulanmadı.
+
+
+**İlk gerçek4case batch:** T03/T09/T14/T17 → [ayrı sonuç/tespit raporu](dialogue-batch-001.md). Sıralı snapshot, gelecek mesaj/oracle izolasyonu, scripted operator ve sabit4case runner. J01 dar pass; J02 policy/transport bulgusu; J03/J04 not_run. Yeni unknown için risk onayı ve seçeneksiz açıklama ihtiyacının kaydı açık karardır.

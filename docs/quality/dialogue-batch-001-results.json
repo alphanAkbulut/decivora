@@ -1,0 +1,488 @@
+{
+  "format": "decivora-dialogue-batch-public-1",
+  "date": "2026-10-20",
+  "requested_model": "gpt-6-luna",
+  "native_host_test": false,
+  "human_gold": false,
+  "grading": "Predeclared AI-authored draft checks; inspect findings before product acceptance.",
+  "automatic_next_batch": false,
+  "cases": [
+    {
+      "case_id": "J01",
+      "verdict": "passed_draft_checks",
+      "processed_turns": 6,
+      "planned_turns": 6,
+      "turns": [
+        {
+          "message_id": "J01_m1",
+          "source_sha256": "f84d0fb53de45292f54079ddccc202f1593a2915a2466023550a53a5a5b27a35",
+          "context_sha256": "a6593f9ae820924200cc9b44fd774ff58cc5bf8652470b856385e2adb417eba8",
+          "payload_sha256": "80b84502ca755bb5e6acb67fc232822ae911006d9ec014299dfd5c00994840cf",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 6008,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [
+            "Task"
+          ],
+          "candidate_titles": [
+            "Atlas için yedek geri yükleme kontrolü eklemek"
+          ],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "To Do"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1258,
+            "input_tokens_details": {
+              "cache_write_tokens": 1255,
+              "cached_tokens": 0
+            },
+            "output_tokens": 284,
+            "output_tokens_details": {
+              "reasoning_tokens": 97
+            },
+            "total_tokens": 1542
+          },
+          "private_receipt_sha256": "5924929b936f37b699d59841535603c060ee2a17e9887d2d2b3185ea2a26b8c2"
+        },
+        {
+          "message_id": "J01_m2",
+          "source_sha256": "e38e912da40a030d75bf836141aa0c4d1d8220f919af97c0d706a92fca611eb6",
+          "context_sha256": "dca50dde69fff2fec68b688df042d5865b268390e625e8f6be450d8f097ec508",
+          "payload_sha256": "af06d4bb9335c64606e66aabfd9e1ef62b09f985d3968a976e9c0d4b4f732edc",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 4979,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [],
+          "candidate_titles": [],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "To Do"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1507,
+            "input_tokens_details": {
+              "cache_write_tokens": 1504,
+              "cached_tokens": 0
+            },
+            "output_tokens": 277,
+            "output_tokens_details": {
+              "reasoning_tokens": 140
+            },
+            "total_tokens": 1784
+          },
+          "private_receipt_sha256": "36de70b39081d1555fc29ef135448061c477f9a7552f8806bc94fcd7e0ea42ec"
+        },
+        {
+          "message_id": "J01_m3",
+          "source_sha256": "cb9be068c88e07c15cf8dec366bf1bdbefa54fa91fd53ae4eaa4fe419de1cdc3",
+          "context_sha256": "71d3ac529940296f2347533a431c71bd551580b85d140f19a035840317a94024",
+          "payload_sha256": "4bd6dc8c16b828fda4c60306b6e68f37cd8aae300ba0fbf92c60b31c0c4d2a65",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 12820,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [
+            "Decision"
+          ],
+          "candidate_titles": [
+            "Kapsamı böyle tutmak"
+          ],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "To Do"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1604,
+            "input_tokens_details": {
+              "cache_write_tokens": 1601,
+              "cached_tokens": 0
+            },
+            "output_tokens": 478,
+            "output_tokens_details": {
+              "reasoning_tokens": 308
+            },
+            "total_tokens": 2082
+          },
+          "private_receipt_sha256": "050192db9b6bdc0f3b230e19e4c5aa574b376b169f8f1a07a2f2f29802957f1d"
+        },
+        {
+          "message_id": "J01_m4",
+          "source_sha256": "8966b7992325875c129dc3945ead47b061a243361f283462ba72f29cb351f4c3",
+          "context_sha256": "51b40d379daf1d19f2a2fd967c7427deba615f17b1b1c9fa24de999b20337991",
+          "payload_sha256": "2ff6cf172c28cb1cda623d562af3b644343c0c5da14962b170bf646908ab98e8",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 4373,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [],
+          "candidate_titles": [],
+          "status_claims": [
+            {
+              "task_id": "record_191e0fc5963e29438d4afd56",
+              "stage": "In Progress"
+            }
+          ],
+          "canonical_stages": {
+            "restore": "In Progress"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1703,
+            "input_tokens_details": {
+              "cache_write_tokens": 1700,
+              "cached_tokens": 0
+            },
+            "output_tokens": 235,
+            "output_tokens_details": {
+              "reasoning_tokens": 60
+            },
+            "total_tokens": 1938
+          },
+          "private_receipt_sha256": "c5932937ebce428a8b3965d8c74e7fff220bc71839f557f96b14199d88d9f86c"
+        },
+        {
+          "message_id": "J01_m5",
+          "source_sha256": "cf8f5d37cb29883140bfc165c9e1347ebbfe4cf28bffc5482f17f9aeb0289f0e",
+          "context_sha256": "05fa9a4098818c4cb83369f726715357ff8978245004b0457c300b28f5c1d66d",
+          "payload_sha256": "4a8ac0567367c1a831bb5101985ef8c80642d5f5230ec2672a9e8221006957a6",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 26124,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [],
+          "candidate_titles": [],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "In Progress"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1800,
+            "input_tokens_details": {
+              "cache_write_tokens": 1797,
+              "cached_tokens": 0
+            },
+            "output_tokens": 241,
+            "output_tokens_details": {
+              "reasoning_tokens": 96
+            },
+            "total_tokens": 2041
+          },
+          "private_receipt_sha256": "c0ed671bf06ee06e34b0fd3833c205876155ad49025f18dc59aae96e1d1731ce"
+        },
+        {
+          "message_id": "J01_m6",
+          "source_sha256": "4b9c4b95e296fb13b59bb9a8d31fa126834c786981c5a0654ce8907603ce77cb",
+          "context_sha256": "bdfc7657af7ff55f79a0228660654c37fcc2b3ee5da83c12123d5f66a28a17aa",
+          "payload_sha256": "6db26beb35d0e5678e0d56d59f2b04a8d7a9d8bf4af3e3322b0a47eebc558389",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 5137,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [],
+          "candidate_titles": [],
+          "status_claims": [
+            {
+              "task_id": "record_191e0fc5963e29438d4afd56",
+              "stage": "Done"
+            }
+          ],
+          "canonical_stages": {
+            "restore": "In Progress"
+          },
+          "done_guard_code": "invalid_transition",
+          "usage": {
+            "input_tokens": 1905,
+            "input_tokens_details": {
+              "cache_write_tokens": 1902,
+              "cached_tokens": 0
+            },
+            "output_tokens": 292,
+            "output_tokens_details": {
+              "reasoning_tokens": 109
+            },
+            "total_tokens": 2197
+          },
+          "private_receipt_sha256": "ae07a4ff5bda76374028a10ddf0b7ef147a5059fb2987017f09d3eb48ca02b87"
+        }
+      ],
+      "test_operator_actions": [
+        {
+          "turn": 1,
+          "action": "scripted_task_and_scope_review",
+          "roles": {
+            "restore": "record_191e0fc5963e29438d4afd56"
+          }
+        },
+        {
+          "turn": 4,
+          "action": "scripted_start_review"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "case_id": "J02",
+      "verdict": "incomplete",
+      "processed_turns": 4,
+      "planned_turns": 6,
+      "turns": [
+        {
+          "message_id": "J02_m1",
+          "source_sha256": "dffe52bfee1160e91fe7b233c03cc493fc4512e44d285c54b3a29361aae6c925",
+          "context_sha256": "a6593f9ae820924200cc9b44fd774ff58cc5bf8652470b856385e2adb417eba8",
+          "payload_sha256": "b74cbb9b851a69a26b8a5a3b3e0c7f398dd1e6fa4c280edfab632b1e21554331",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 14667,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [
+            "Task"
+          ],
+          "candidate_titles": [
+            "Yedek geri yükleme kontrolü"
+          ],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "To Do"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1245,
+            "input_tokens_details": {
+              "cache_write_tokens": 1242,
+              "cached_tokens": 0
+            },
+            "output_tokens": 244,
+            "output_tokens_details": {
+              "reasoning_tokens": 74
+            },
+            "total_tokens": 1489
+          },
+          "private_receipt_sha256": "c816e59772b109422694027085b8c9a032230a6fdc2ab8a9ad45b046845150ec"
+        },
+        {
+          "message_id": "J02_m2",
+          "source_sha256": "50b3f51de5ab2e01becde894aba72104da2eba99ca64f2bf973dc59de7a2de8b",
+          "context_sha256": "af145619cf2739b026e66e420861a400b0c9d017018a7dfe8c73d8ac14feca33",
+          "payload_sha256": "c8bbdea3e647ab270e25562f783455f164609bd048b2619ac37219e835c0db93",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 6082,
+          "findings": [
+            "unexpected_new_task_candidate"
+          ],
+          "verdict": "failed",
+          "candidate_types": [
+            "Task"
+          ],
+          "candidate_titles": [
+            "Kontrolün kapsamını netleştirme"
+          ],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "To Do"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1479,
+            "input_tokens_details": {
+              "cache_write_tokens": 1476,
+              "cached_tokens": 0
+            },
+            "output_tokens": 420,
+            "output_tokens_details": {
+              "reasoning_tokens": 242
+            },
+            "total_tokens": 1899
+          },
+          "private_receipt_sha256": "920ea7810313a14b5d8dd2a582bfca93c314f246ac16e3f4fafecdfa0db7d211"
+        },
+        {
+          "message_id": "J02_m3",
+          "source_sha256": "96c171dc7bed2e3409d0ac389261644919a711a961daafbd32747654c3f3a8e1",
+          "context_sha256": "ce01963bcb27630a4f6f7edf108936ea23e3e40ec0daba01495035b776b82421",
+          "payload_sha256": "9e5e0090634a2fb188de0665b9af373ee7bfdf34be04b433a4af11705bfe1e8b",
+          "analysis_status": "Ready for review",
+          "failure_code": null,
+          "latency_ms": 5265,
+          "findings": [],
+          "verdict": "passed_draft_check",
+          "candidate_types": [],
+          "candidate_titles": [],
+          "status_claims": [],
+          "canonical_stages": {
+            "restore": "To Do"
+          },
+          "done_guard_code": null,
+          "usage": {
+            "input_tokens": 1579,
+            "input_tokens_details": {
+              "cache_write_tokens": 1576,
+              "cached_tokens": 0
+            },
+            "output_tokens": 272,
+            "output_tokens_details": {
+              "reasoning_tokens": 132
+            },
+            "total_tokens": 1851
+          },
+          "private_receipt_sha256": "e429bc806eb85f45ead18a8b47282c8578c1e96a85b65a57b8a01d1c1fa642be"
+        },
+        {
+          "message_id": "J02_m4",
+          "source_sha256": "2dfadb00715208ebbca56d8b710656e447dbc96a8ea7c1d08e21d9a2b75ac220",
+          "context_sha256": "c15f0cdb8f3a4b437fdf807772f597419c32414065bcbdf15a9d543a55327d09",
+          "payload_sha256": "0f7a696b90c1ea8f994bf682c02a73d73562d8b1c8b25c583e9979e94b7b5fbf",
+          "analysis_status": "Analysis failed",
+          "failure_code": "provider_connection_unknown",
+          "latency_ms": 45584,
+          "findings": [
+            "analysis_failed"
+          ],
+          "verdict": "failed",
+          "candidate_types": [],
+          "candidate_titles": [],
+          "status_claims": [],
+          "canonical_stages": null,
+          "done_guard_code": null,
+          "usage": null,
+          "private_receipt_sha256": "0be0590338b5261910913487a2dddef4337b5941bc67bce510b2fb867917fb07"
+        }
+      ],
+      "test_operator_actions": [
+        {
+          "turn": 1,
+          "action": "scripted_task_and_scope_review",
+          "roles": {
+            "restore": "record_ab8fe4de94620f4206a72394"
+          }
+        }
+      ],
+      "questions": []
+    }
+  ],
+  "not_run": [
+    "J03",
+    "J04"
+  ],
+  "stopped": "analysis_or_usage_requires_review",
+  "dispatches": 10,
+  "http_budget_slots_delta": 20,
+  "local_committed_microusd_delta": 5386,
+  "invoice_verified": false,
+  "budget_before": {
+    "dispatches": 30,
+    "http_attempts": 60,
+    "committed_microusd": 55940,
+    "frozen": false,
+    "states": [
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "unknown"
+    ]
+  },
+  "budget_after": {
+    "dispatches": 40,
+    "http_attempts": 80,
+    "committed_microusd": 61326,
+    "frozen": true,
+    "states": [
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "unknown",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "settled",
+      "unknown"
+    ]
+  },
+  "private_batch_report_sha256": "13f44fc51baf3ad0e3fb4ab5068d419d3703984d6b6eee3c0a53e86ea3a57bbe",
+  "analyst_review": [
+    {
+      "id": "B001-F1",
+      "case": "J02",
+      "turn": 2,
+      "classification": "product_policy_review",
+      "observation": "Scope clarification was proposed as a separate Task; the strict draft check rejects all later new tasks. The proposal was not applied.",
+      "proposed_action": "Prefer a linked clarification need on the existing task unless a separate deliverable is explicitly requested. Requires owner decision; no prompt change applied."
+    },
+    {
+      "id": "B001-F2",
+      "case": "J02",
+      "turn": 4,
+      "classification": "transport_outcome_unknown",
+      "observation": "Input count succeeded with1682tokens; generation exchange returned provider_connection_unknown. Exact historical timeout/TLS/JSON cause unproven.",
+      "proposed_action": "Keep2250microusd reserve and do not retry this payload. Separate timeout/TLS/JSON diagnostic classes added for future calls."
+    },
+    {
+      "id": "B001-F3",
+      "case": "J02",
+      "turn": 3,
+      "classification": "evaluation_coverage_gap",
+      "observation": "The color-choice question produced no candidate; draft checks covered task identity/status but did not require a PendingDecision or open-question result.",
+      "proposed_action": "Specify how unanswered non-optioned questions should be captured and add a dedicated check before claiming full dialogue correctness."
+    },
+    {
+      "id": "B001-F4",
+      "case": "J01",
+      "turn": 3,
+      "classification": "unreviewed_decision_candidate",
+      "observation": "A scope-confirmation Decision candidate was produced; it was not applied. J01 passed task/status checks, not all possible decision semantics.",
+      "proposed_action": "Keep the narrow pass scope explicit; review decision granularity separately."
+    }
+  ]
+}

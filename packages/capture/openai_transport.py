@@ -76,6 +76,12 @@ def http_post(path, payload, key):
         return json.loads(raw, object_pairs_hook=pairs)
     except ContractError:
         raise
+    except TimeoutError:
+        raise ContractError('provider_timeout_unknown', 'Provider wait timed out; outcome unknown, no automatic retry.') from None
+    except ssl.SSLError:
+        raise ContractError('provider_tls_unknown', 'Provider TLS exchange failed; outcome unknown, no automatic retry.') from None
+    except (ValueError, UnicodeError):
+        raise ContractError('provider_json_invalid', 'Provider JSON could not be decoded; no automatic retry.') from None
     except Exception:
         raise ContractError('provider_connection_unknown', 'Provider outcome unknown; no automatic retry.') from None
     finally:

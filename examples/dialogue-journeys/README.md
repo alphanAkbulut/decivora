@@ -4,7 +4,7 @@
 
 - `sources.json`: only case metadata, roles and dialogue text.
 - `oracles.json`: separate AI-authored expectation drafts and canonical source hashes. Never send these labels as model context. No human-gold or sealed holdout claim.
-- Real semantic runs: **not_run** for every case.
+- Real first batch: J01 completed draft task/status checks; J02 partial/review required; J03–J48 not_run. [Findings and approval gate](../../docs/quality/dialogue-batch-001.md).
 
 The five local integration tests use controlled messages and scripted outputs; they test production capture/context/review/lineage guards, not semantic accuracy. They do not execute all48journeys as model experiments.
 

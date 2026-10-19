@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**20Ekim ilk gerçek4case batch:** J01 görev/status kontrolleri6/6geçti; J02 kapsam-netleştirme adayı ve4.tur generation unknown ile eksik. J03/J04 çalışmadı.10dispatch/20HTTP bütçe payı; yeni bilinen$0.003136+held$0.002250. Ortak root$0.061326ve frozen; yeni risk onayı yok. Güvenli timeout/TLS/JSON tanısı ayrıldı. [Senaryo tablosu, bulgular ve onay kapısı](../quality/dialogue-batch-001.md).
+
 **20Ekim48case ve blocker timer:**48sentetik çok turlu case/294mesaj; model run'lar not_run. Başlangıcı bilinen blocker7günü aşarsa kart/liste/attention/detayda uyarı; çözülme/iptal uyarıyı kaldırır, yeniden block yeni süre başlatır. Restart başlangıcı korur. Süresi kayıtsız bağımlılıklar unknown; e-posta/OS push yok. [Kod, test ve kapsam](../quality/blocker-aging.md). Yeni API çağrısı0.
 
 **20Ekim çok turlu diyalog:**12sentetik case/78mesaj ve ayrı draft oracle hazırlandı. Salt okunur `DialogueTraceService` kaynak→aday→record→durum review→canonical stage izini birleştiriyor; mevcut8kaynaklı pilotta çalıştı.5yeni yerel integration testi konu geçişi, aynı task ilerlemesi, test edilmemiş bitirme, uzun/Unicode context, profil izolasyonu ve restart izini kapsıyor. Scripted output semantik doğruluk değildir; yeni API çağrısı0. [Kapsam ve ölçüm planı](../quality/dialogue-journeys.md).

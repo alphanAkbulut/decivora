@@ -64,3 +64,8 @@ Tam anlam kalitesi, role/source ayrımı, onaylı gerçek Codex adapter'ı ve an
 
 
 **19Ekim takip kararı:** Kullanıcı rezerv koruyarak devamı açıkça onayladı. `unknown_reviews` kaydı root freeze'i kaldırdı; orijinalunknown, actual=null,2250microusd rezerv,30dispatch/60HTTP bütçe sayımı ve aynı payload tekrar reddi korundu. Toplam55940microusd yerel taahhüt; tavan3USD ve önceki expiry değişmedi. Yeni çağrı0. Pending/overrun bu işlemle açılamaz; kalan limitler ve exact source izinleri yeni istekte tekrar uygulanır. [Uygulama/risk sözleşmesi](codex-e2e-001.md#belirsiz-kullanımda-devam-sözleşmesi). Bu karar gerçek fatura uzlaştırması değildir.
+
+
+## İlk4case diyalog batch
+
+[Bulgu raporu](dialogue-batch-001.md):10yeni dispatch/20HTTP bütçe payı,9usage yanıtı,1generation unknown. Yeni bilinen3136microusd+rezerv2250=5386yerel taahhüt. Root40dispatch/80HTTP,known56826+held4500=61326microusd.3USD/expiry değişmedi. Eski unknown onayı yeni unknown için kullanılmadı; root frozen ve yeni continuation onayı bekliyor. Fatura doğrulanmadı.

@@ -111,3 +111,8 @@ Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenili
 ## 19 Ekim — native kaynak / unknown bütçe takip düzeltmesi
 
 İlk assistant-only testin ardından aynı thread'de2gerçek human+6assistant native kaynak doğrulandı; iki checkpoint geçişi8→8, duplicate yok. API unknown için güvenli phase tanısı ve snapshot'a bağlı ayrı owner review kodlandı. Kullanıcının rezerv koruyarak devam onayı uygulandı; root yeni izinli istekler için açık, eski unknown ve actual=null korunur. Yeni API çağrısı0. [Aksiyon planı ve açık kabul sınırları](../quality/codex-e2e-001.md#19-ekim--aksiyon-planı-ve-uygulama-sonucu). Ana görev sayıları değişmedi; bu düzeltme MVP'nin tamamlandığı anlamına gelmez.
+
+
+## İlk gerçek çok turlu4case grubu
+
+[J01–J04](../quality/dialogue-batch-001.md): J01 altı turda aynı görev/ilerleme/false-Done guard geçti; J02 ayrı netleştirme görevi önerisi ve generation unknown nedeniyle eksik. J03/J04henüz koşulmadı. Yeni unknown root'u durdurdu; kapsam/netleştirme politikası ve kalan14mesaj için ayrı owner review bekliyor. Bu, tüm48case veya MVP kabulü değildir.

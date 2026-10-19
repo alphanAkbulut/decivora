@@ -1,6 +1,6 @@
 # Çok turlu diyalog: bağlam, görev kimliği ve ilerleme
 
-**20 Ekim 2026 — çalışan iz backend'i ve yerel çok turlu kontroller; yeni semantik API ölçümü yapılmadı.** Tek mesajın capture edilmesi, konunun anlaşılması veya bütün projenin doğru izlenmesi değildir. Önceki [native pilot](codex-e2e-001.md) aynı task için üç gerçek model sonucu içeriyordu; yine de kısa, operatör yönlendirmeli bir örnekti. Genel diyalog başarısı diye sunulamaz. Eski altı oturumluk corpus da bütün ürün yolunun native/semantik kabulü değildir.
+**20 Ekim 2026 — çalışan iz backend'i ve yerel çok turlu kontroller; ilk gerçek dört-case grubu [ayrı bulgu raporunda](dialogue-batch-001.md).** Tek mesajın capture edilmesi, konunun anlaşılması veya bütün projenin doğru izlenmesi değildir. Önceki [native pilot](codex-e2e-001.md) aynı task için üç gerçek model sonucu içeriyordu; yine de kısa, operatör yönlendirmeli bir örnekti. Genel diyalog başarısı diye sunulamaz. Eski altı oturumluk corpus da bütün ürün yolunun native/semantik kabulü değildir.
 
 ## Ayrı ölçülecek üç katman
 
@@ -31,7 +31,7 @@ Yeni `DialogueTraceService.view(scope, project, source_ids=[...])`, mevcut kayı
 
 ## Çeşitlendirilmiş senaryolar
 
-[Kaynaklar](../../examples/dialogue-journeys/sources.json) ve [ayrı AI-authored beklenti taslakları](../../examples/dialogue-journeys/oracles.json):48case/294mesaj. Gerçek kullanıcı verisi yok. Oracle metni modele verilmez. Bunlar insan onaylı gold veya sealed holdout değildir; bütün semantik run'lar `not_run`.
+[Kaynaklar](../../examples/dialogue-journeys/sources.json) ve [ayrı AI-authored beklenti taslakları](../../examples/dialogue-journeys/oracles.json):48case/294mesaj. Gerçek kullanıcı verisi yok. Oracle metni modele verilmez. Bunlar insan onaylı gold veya sealed holdout değildir; İlk hazırlıkta bütün run'lar `not_run` idi; güncel ilk-grup sonucu aşağıdaki rapordadır.
 
 | Case | Ne zorlanıyor? | Kritik yanlış sonuç |
 |---|---|---|
@@ -79,3 +79,8 @@ Mevcut3USD root, source/context izni, HTTP/token tavanları ve unknown rezervi k
 İlk12case korundu; J13–J48 ile toplam48case/294mesaj. Bunlar gerçek modelle henüz çalıştırılmadı; source/oracle ayrı ve AI-authored draft kalır. J13–J18 iptal/yeniden açma/karar değişimi; J19–J24 kanıtla Done, eksik/başarısız/stale kriter ve rollback; J25–J36 blocked yaş/sınır/restart/unknown/iptal; J37–J48 AND/OR, erişim iptali, çok sohbet, eski soru sürümü, çelişkili cevap/agent, hedef branch, AC kapsamı ve tam yaşam döngüsüdür.
 
 [Çalışan7gün uyarısı ve sınırları](blocker-aging.md): başlangıcı bilinen manual/soru beklemelerinde UI timer; başlangıcı bilinmeyen dependency süreleri unknown. Timer durum değişimi veya notification delivery otoritesi değildir.
+
+
+## İlk gerçek dört-case batch
+
+[J01–J04 bulgu raporu](dialogue-batch-001.md): J01 altı görev/durum kontrolü geçti; J02 ikinci turda ayrı netleştirme Task'ı önerdi ve dördüncü turda generation unknown nedeniyle yarım kaldı. J03/J04 çalışmadı. Diğer44case için API çağrısı yok. Sonraki adım owner review'a bağlı; runner kendiliğinden sonraki grubu açmaz.

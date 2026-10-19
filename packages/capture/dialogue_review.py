@@ -88,7 +88,7 @@ class DialogueReviewService:
 
     def _source_context(self,scope,project,source):
         context=self._context(scope,project)
-        if source.get('source_kind') not in ('codex_app_server','claude_code_hook'):return context
+        if source.get('source_kind') not in ('codex_app_server','claude_code_hook','synthetic_dialogue'):return context
         capture=source['capture'];prior=[]
         from packages.capture.source_pages import nearby as prior_sources
         prior=prior_sources(self.core,project,source)

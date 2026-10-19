@@ -12,7 +12,8 @@
       ],
       "label_status": "ai_authored_draft",
       "human_gold": false,
-      "semantic_run_status": "not_run"
+      "semantic_run_status": "completed_draft_checks_passed",
+      "latest_batch": "dialogue-batch-001"
     },
     {
       "case_id": "J02",
@@ -23,7 +24,8 @@
       ],
       "label_status": "ai_authored_draft",
       "human_gold": false,
-      "semantic_run_status": "not_run"
+      "semantic_run_status": "partial_requires_review",
+      "latest_batch": "dialogue-batch-001"
     },
     {
       "case_id": "J03",
@@ -34,7 +36,9 @@
       ],
       "label_status": "ai_authored_draft",
       "human_gold": false,
-      "semantic_run_status": "not_run"
+      "semantic_run_status": "not_run",
+      "latest_batch": "dialogue-batch-001",
+      "not_run_reason": "batch_stopped_on_J02_generation_unknown"
     },
     {
       "case_id": "J04",
@@ -45,7 +49,9 @@
       ],
       "label_status": "ai_authored_draft",
       "human_gold": false,
-      "semantic_run_status": "not_run"
+      "semantic_run_status": "not_run",
+      "latest_batch": "dialogue-batch-001",
+      "not_run_reason": "batch_stopped_on_J02_generation_unknown"
     },
     {
       "case_id": "J05",
