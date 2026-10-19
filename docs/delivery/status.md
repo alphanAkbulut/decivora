@@ -1,3 +1,7 @@
+# Güncel takip teyidi —19Ekim2026
+
+30ana/129alt kayıt incelendi: ana7Done/15InProgress/8ToDo; alt56Done/39InProgress/29ToDo/5Proposed,UNSPECIFIED0. [Gerekçe/kanıt ve kalan kabul](../quality/task-status-audit.md). Aşağıdaki tarihli teslim kayıtları tarihsel sonuçları korur; eski sayımlar bugünkü toplam değildir.
+
 # Mevcut durum
 
 **19 Ekim — ilk gerçek Codex kaynak aktarımı:** kullanıcı onaylı tek yerel TEST okuması, seçilmiş2turdan6user/assistant mesajı kaydetti; TEST API readback doğrulandı. İlk full-response byte sınırı hatası korundu; metadata+one-item pagination düzeltildi. İki turda da okunmamış item var; kalıcı cursor/backfill açık, T17 kapanmadı.6kaynak Waiting for model; yeni Task0 ve ücretli çağrı0; kaynak izni kullanılıp bağlantı kapatıldı. [Bulgu, düzeltme ve kanıt](../quality/codex-real-capture-001.md). Ana7/15/8 korunur.

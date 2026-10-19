@@ -1,6 +1,6 @@
 {
   "format": "decivora-work-breakdown-1",
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "method": "Manually reviewed primary output of each completed subtask. One category per ID; development includes runtime, prototype, validation tooling and executable schemas, not only shipped product. Tests and documentation accompanying code are not extra tasks. Counts are not hours, effort or product completion percentages.",
   "labels": {
     "development": "Kod geliştirme / araç / sözleşme",
@@ -70,18 +70,18 @@
     {
       "id": "G-API",
       "topic": "Gerçek model deneyi",
-      "needs": "API erişimi, provider/model, gönderilecek veri ve toplam harcama tavanı",
+      "needs": "API erişimi ve$3sentetik kapsam mevcut; gerçek sohbet/veri paylaşımı, exact kaynak/context ve uygulama aktivasyonu ayrı izin ister",
       "timing": "İlk ücretli dispatch öncesi",
       "tasks": [
         "T09",
         "T10"
       ],
-      "status": "Activation not authorized"
+      "status": "Synthetic scope approved; real transcript activation not authorized"
     },
     {
       "id": "G-HOST",
       "topic": "Gerçek coding/MCP kaynağı",
-      "needs": "Seçilen istemci/oturum ve dar erişim izni",
+      "needs": "Yeni gerçek okuma/izleme veya başka istemci için seçilmiş host/oturum ve dar izin; önceki Codex tek TEST izni tüketildi",
       "timing": "Gerçek host bağlantısı öncesi",
       "tasks": [
         "T02",
@@ -89,7 +89,7 @@
         "T17",
         "T18"
       ],
-      "status": "First-use gate"
+      "status": "Limited Codex readback completed; new reads/continuous capture require scope"
     },
     {
       "id": "G-TARGET",
@@ -142,5 +142,6 @@
       "date": "2026-10-18",
       "implementation_complete": false
     }
-  ]
+  ],
+  "status_review": "docs/quality/task-status-audit.json"
 }

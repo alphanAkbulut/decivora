@@ -1,0 +1,2053 @@
+{
+  "format": "decivora-task-status-audit-1",
+  "date": "2026-10-19",
+  "input_base_ref": "db61d217ee7b79cb9fd66407aad9bbeaaa16cf68",
+  "method": "159 kayıt statik kod/teslim/kabul incelemesi; mevcut runtime/CI kanıtları ayrı. Yeni ürün/model/pilot deneyi yapılmadı. Kabul daraltılmadı; komşu test kapsamı tam task kabulü sayılmadı.",
+  "before": {
+    "main": {
+      "IN_PROGRESS": 15,
+      "DONE": 7,
+      "TODO": 8
+    },
+    "subtasks": {
+      "DONE": 56,
+      "TODO": 10,
+      "IN_PROGRESS": 16,
+      "UNSPECIFIED": 42,
+      "PROPOSED": 5
+    }
+  },
+  "after": {
+    "main": {
+      "IN_PROGRESS": 15,
+      "DONE": 7,
+      "TODO": 8
+    },
+    "subtasks": {
+      "DONE": 56,
+      "IN_PROGRESS": 39,
+      "TODO": 29,
+      "PROPOSED": 5
+    }
+  },
+  "main_tasks": [
+    {
+      "id": "T01",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T02",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T03",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T04",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/runtime-scaffold-results.json"
+      ]
+    },
+    {
+      "id": "T05",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ]
+    },
+    {
+      "id": "T06",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ]
+    },
+    {
+      "id": "T07",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ]
+    },
+    {
+      "id": "T08",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ]
+    },
+    {
+      "id": "T09",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T10",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T11",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ]
+    },
+    {
+      "id": "T12",
+      "status": "DONE",
+      "changed": false,
+      "core_verified": true,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/impact-preview-results.json"
+      ]
+    },
+    {
+      "id": "T13",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T14",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/workflow-ui-runtime.md"
+      ]
+    },
+    {
+      "id": "T15",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ]
+    },
+    {
+      "id": "T16",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T17",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/codex-exec-capture-runtime.md",
+        "docs/quality/codex-real-capture-001.md"
+      ]
+    },
+    {
+      "id": "T18",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ]
+    },
+    {
+      "id": "T19",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T20",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T21",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ]
+    },
+    {
+      "id": "T22",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T23",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/quality/private-backup-runtime.md"
+      ]
+    },
+    {
+      "id": "T24",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T25",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T26",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T27",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T28",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T29",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    },
+    {
+      "id": "T30",
+      "status": "TODO",
+      "changed": false,
+      "core_verified": false,
+      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ]
+    }
+  ],
+  "subtasks": [
+    {
+      "id": "T01g",
+      "parent": "T01",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/human-review-queue.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T01h",
+      "parent": "T01",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "examples/adversarial-smoke/README.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T01i",
+      "parent": "T01",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/reviews/h4-behavior.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T01e",
+      "parent": "T01",
+      "before": "TODO",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "TR/EN development claim/negation/future/quote örnekleri ve gerçek sentetik API sonuçları var; insan gold/holdout tamam değil.",
+      "evidence": [
+        "docs/quality/openai-development-budget.md",
+        "examples/adversarial-smoke/README.md"
+      ],
+      "remaining_acceptance": "LEX-01–04/07; örnekler source span/actor taşır, gerçek veri yoksa sıklık/tasarruf unknown; mevcut corpus şartı korunur"
+    },
+    {
+      "id": "T01f",
+      "parent": "T01",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı"
+    },
+    {
+      "id": "T02b",
+      "parent": "T02",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Codex selected-thread schema/readback mevcut; Claude ve gerçek MCP/hook capability matrisi eksik.",
+      "evidence": [
+        "docs/quality/codex-real-capture-001.md",
+        "docs/quality/codex-exec-capture-runtime.md"
+      ],
+      "remaining_acceptance": "[CON-01/02/07](../architecture/connection-and-context.md); Q02 yanıtı gerçek yüzey seçimini belirler"
+    },
+    {
+      "id": "T02d",
+      "parent": "T02",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "[READBACK-01](../quality/first-target-readback.md) tek GitHub dokümanında manuel happy-path eşleşmesi; otomatik capability, missing/permission/partial/stale ve kaynak coverage henüz not_run. Capture/target izinleri ayrı; ücret/erişim ayrıca"
+    },
+    {
+      "id": "T02c",
+      "parent": "T02",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/team-data-plan.md"
+      ],
+      "remaining_acceptance": "AGT-01–03; gerçek host/build; erişilemeyen alan unknown. Q02 yüzey seçimi, gerçek veri/ücret için Q03"
+    },
+    {
+      "id": "T03g",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/source-anchor-adapter.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03h",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/quote-api-package.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03i",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/local-observer.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03j",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-chain.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03k",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/membership-smoke-plan.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03l",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/membership-001-result.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03m",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/membership-001-result.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03n",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/membership-002-result.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03o",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/membership-chain-replay.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03p",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/same-source-comparison.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03q",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/membership-003-result.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03r",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/proposal-collection.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03s",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/resume-file-comparison.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03t",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/resume-compaction.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03u",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/receiver-smoke-plan.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03v",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/receiver-001-result.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03w",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/receiver-contract.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03x",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/project-review.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03y",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/receiver-next-plan.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03z",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/project-review-next.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03aa",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/typed-review.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03ab",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/review-store.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03ac",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/reply-store.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03a",
+      "parent": "T03",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "Native baseline koşulları, GAP/RES oracle, input/target izni, sınırlar ve cleanup; production ADR accepted değil"
+    },
+    {
+      "id": "T03b",
+      "parent": "T03",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "GAP-01–10 + uygulanabilir RES; API/UI/LLM sonuçları ayrı, not_run gizlenmez; gerçek host/capture test edilmeden otomatik vaat yok"
+    },
+    {
+      "id": "T03c",
+      "parent": "T03",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/reviews/q15-build-approval.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T03f",
+      "parent": "T03",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz"
+    },
+    {
+      "id": "T04a",
+      "parent": "T04",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/runtime-scaffold-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T04b",
+      "parent": "T04",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Yerel HTTP ingress guard uygulandı; manifestteki native activation sahibi T16 kapsamında tam kabul açık.",
+      "evidence": [
+        "apps/local_ui/server.py",
+        "tests/runtime/test_local_app.py"
+      ],
+      "remaining_acceptance": "Yetkisiz kaynak/command reddedilir; payload/queue limiti tanımlı; V10/V23 · hub/capture"
+    },
+    {
+      "id": "T04c",
+      "parent": "T04",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/runtime-scaffold-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T04d",
+      "parent": "T04",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/runtime-scaffold-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T05h",
+      "parent": "T05",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/local-authority.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T05g",
+      "parent": "T05",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/project-store.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T05f",
+      "parent": "T05",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/project-binding-core.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T05a",
+      "parent": "T05",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T05c",
+      "parent": "T05",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/connection-authorization.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T05d",
+      "parent": "T05",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Native turn/item/actor provenance ve source→candidate→record bağı var; konu segmenti ve genel çok-chat sözleşmesi açık.",
+      "evidence": [
+        "packages/capture/codex/app_server.py",
+        "packages/capture/conversations.py"
+      ],
+      "remaining_acceptance": "P1a: CHAT-01/04/05; seçilmemiş session, karışık proje, yanlış binding düzeltmesi ve ACL"
+    },
+    {
+      "id": "T05e",
+      "parent": "T05",
+      "before": "PROPOSED",
+      "status": "PROPOSED",
+      "changed": false,
+      "evidence_level": "future_proposal",
+      "reason": "Gelecek/öneri sınıfı korunur; mevcut UI locale alt kümesi veya komşu kod bu önerinin tam kabulü değildir.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "LANG-01/04/07; şema provenance alanları, ayrı UI locale; fiziksel stack seçimi ayrıca"
+    },
+    {
+      "id": "T05b",
+      "parent": "T05",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06a",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06b",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06c",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06e",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06f",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06g",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T06d",
+      "parent": "T06",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T07a",
+      "parent": "T07",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T07c",
+      "parent": "T07",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T07b",
+      "parent": "T07",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T08a",
+      "parent": "T08",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T08c",
+      "parent": "T08",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T08b",
+      "parent": "T08",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T09b",
+      "parent": "T09",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Source dedup, finished-analysis reuse ve fingerprint var; genel chunk manifest/recall kabulü açık.",
+      "evidence": [
+        "packages/capture/conversations.py",
+        "packages/capture/codex/checkpoint.py"
+      ],
+      "remaining_acceptance": "[TOK-01/02/03](../architecture/routing-token-economy.md); recall ölçümü; model hatası no-op olmaz"
+    },
+    {
+      "id": "T09c",
+      "parent": "T09",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Exact grant/reservation kontrollü bounded worker bağlandı; genel profil/scheduler otomasyonu açık.",
+      "evidence": [
+        "packages/capture/processing_queue.py",
+        "tests/runtime/test_processing_queue.py"
+      ],
+      "remaining_acceptance": "P1a/P1b profil tamamlaması: SEQ-02/03/05/06; no-op/duplicate/manual mod çağrı sayacı; minimum bütçe guard önce"
+    },
+    {
+      "id": "T09d",
+      "parent": "T09",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Bounded reservation/overrun/no-grant dispatch guard var; toplam plan risk assessment ve TRA kapsamı tamamlanmadı.",
+      "evidence": [
+        "packages/capture/openai_transport.py",
+        "packages/storage/workspace.py"
+      ],
+      "remaining_acceptance": "P1a: TRA-01–07/09 çekirdek fixture; missing policy/unknown cap otomatik dispatch açmaz; ilk gerçek model çağrısından önce"
+    },
+    {
+      "id": "T09e",
+      "parent": "T09",
+      "before": "PROPOSED",
+      "status": "PROPOSED",
+      "changed": false,
+      "evidence_level": "future_proposal",
+      "reason": "Gelecek/öneri sınıfı korunur; mevcut UI locale alt kümesi veya komşu kod bu önerinin tam kabulü değildir.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "LEX-01–06/08; unmatched içerik kaybolmaz, hiçbir keyword doğrudan command/onay üretmez; negatif örneklerle runtime test gerekir"
+    },
+    {
+      "id": "T10a",
+      "parent": "T10",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Reconcile rationale/counter_evidence/uncertainty alanları var; kapsamlı Idea Evaluation ve karşı kanıt akışı açık.",
+      "evidence": [
+        "packages/reconciliation/core.py",
+        "packages/capture/conversations.py"
+      ],
+      "remaining_acceptance": "New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 · reconciliation"
+    },
+    {
+      "id": "T10b",
+      "parent": "T10",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Multi-session corpus, source-bound ilişkiler ve geç cevap fixture vardır; semantic cross-chat equivalence/conflict corpus kabulü açık.",
+      "evidence": [
+        "examples/corpus/README.md",
+        "tests/runtime/test_dialogue_relations.py",
+        "tests/runtime/test_dialogue_review.py"
+      ],
+      "remaining_acceptance": "P1a: CHAT-02/03/04; kaynaklar korunur, benzerlik tek başına merge/approval değildir"
+    },
+    {
+      "id": "T11c",
+      "parent": "T11",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/integrated-core-results.json"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T11b",
+      "parent": "T11",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/product/graph-experience.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T12a",
+      "parent": "T12",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/impact-preview.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T13a",
+      "parent": "T13",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/review-kernel.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T13b",
+      "parent": "T13",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/task-lifecycle.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T13c",
+      "parent": "T13",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/quality/local-preview.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T13d",
+      "parent": "T13",
+      "before": "TODO",
+      "status": "TODO",
+      "changed": false,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "[Split sözleşmesi](../product/task-context-and-acceptance.md): cycle/ACL/stale/retry/yarım işlem; mevcut parent/kanıt korunur"
+    },
+    {
+      "id": "T13e",
+      "parent": "T13",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "[Manuel kalıcı soru dilimi](../quality/pending-question-runtime.md) + [ayrı onaylı karar bağı](../quality/question-decision-runtime.md); ASK-01–06/08 + LATE-01–07 tam core kabulü açık; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur"
+    },
+    {
+      "id": "T14a",
+      "parent": "T14",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/quality/workflow-ui-runtime.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 · verification"
+    },
+    {
+      "id": "T14b",
+      "parent": "T14",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/quality/workflow-ui-runtime.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir"
+    },
+    {
+      "id": "T14c",
+      "parent": "T14",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Human/file evidence→current AC→guarded completion mevcut; genel runner ve parent-child kabulü açık.",
+      "evidence": [
+        "packages/domain/task_workflow.py",
+        "tests/runtime/test_task_workflow.py",
+        "tests/runtime/test_file_verification.py"
+      ],
+      "remaining_acceptance": "P1a: SEQ-01/06, DBR-02/03; parent ve stale kanıt; runner yoksa not_run"
+    },
+    {
+      "id": "T14d",
+      "parent": "T14",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/quality/workflow-ui-runtime.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1a: GAP-01/03/04/05/07/10; gözlem AC/deploy yerine geçmez; yetkisiz okuma/yazma yok"
+    },
+    {
+      "id": "T15a",
+      "parent": "T15",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder · quality fixtures"
+    },
+    {
+      "id": "T16b",
+      "parent": "T16",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular"
+    },
+    {
+      "id": "T18a",
+      "parent": "T18",
+      "before": "DONE",
+      "status": "DONE",
+      "changed": false,
+      "evidence_level": "existing_scoped_completion",
+      "reason": "Mevcut dar teslim ve bağlı kayıt gözden geçirildi; Done yalnız yazılı alt kabul kapsamıdır. Tarihsel deneyin olumsuz sonucu veya gelecek entegrasyon kapsamı gizlenmedi.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md"
+      ],
+      "remaining_acceptance": "Kendi dar alt teslimi kapalı; dışlanan kapsam ve first-use gate manifestte korunur."
+    },
+    {
+      "id": "T18c",
+      "parent": "T18",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz"
+    },
+    {
+      "id": "T18f",
+      "parent": "T18",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Signed snapshot/query cursor ve stale guard var; notification/reconnect continuation kabulü açık.",
+      "evidence": [
+        "packages/mcp/server.py",
+        "tests/runtime/test_mcp_local.py"
+      ],
+      "remaining_acceptance": "P1b: SEQ-02/08; UI fallback policy, stale görünümü; host otomatik tool çağırır varsayımı yok"
+    },
+    {
+      "id": "T18g",
+      "parent": "T18",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Bounded brief, source→task görünümü ve extraction coverage mevcut; delta/live context senkronizasyonu açık.",
+      "evidence": [
+        "packages/mcp/server.py",
+        "apps/local_ui/server.py",
+        "apps/local_ui/app.js"
+      ],
+      "remaining_acceptance": "P1b: CHAT-05/06, LAG-06; host desteklenmiyorsa sync/stop iddiası yok"
+    },
+    {
+      "id": "T18h",
+      "parent": "T18",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1b adayı: RES-02–07; copy model/runner başlatmaz, kritik eksik context görünür; yeni özet metered gate'e tabidir"
+    },
+    {
+      "id": "T18i",
+      "parent": "T18",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Prepared context canonical karar/soru/ilişki ve unknown sınırlarını taşıyor; tam GAP continuation/alternatifler açık.",
+      "evidence": [
+        "packages/capture/dialogue_review.py",
+        "packages/mcp/server.py"
+      ],
+      "remaining_acceptance": "P1b: GAP-02/05/06/09; host desteklenmiyorsa teslim/kullanım garantisi yok"
+    },
+    {
+      "id": "T18e",
+      "parent": "T18",
+      "before": "TODO",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Seçilmiş host turn/item/role metadata ve kaynaklı late-answer normalizasyonu kısmi; delivery/resume capability açık.",
+      "evidence": [
+        "packages/capture/codex/app_server.py",
+        "packages/capture/dialogue_review.py",
+        "docs/quality/codex-real-capture-001.md"
+      ],
+      "remaining_acceptance": "ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok"
+    },
+    {
+      "id": "T18b",
+      "parent": "T18",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Private-derived record/context için MCP visibility deny uygulanıyor; personal→project paylaşım proposal akışı açık.",
+      "evidence": [
+        "packages/mcp/server.py",
+        "tests/runtime/test_mcp_local.py"
+      ],
+      "remaining_acceptance": "Private özet/citation sızmaz; MU05/MU10"
+    },
+    {
+      "id": "T18d",
+      "parent": "T18",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "İki agent ile proposal/read ve untrusted execution claim fixture mevcut; native run/task/usage bağları ve pilot açık.",
+      "evidence": [
+        "tests/runtime/test_mcp_local.py",
+        "packages/domain/agent_proposals.py"
+      ],
+      "remaining_acceptance": "AGT-01–06; duplicate/race/revoke/usage; agent başlatma zorunlu değil"
+    },
+    {
+      "id": "T19b",
+      "parent": "T19",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1b: TRA-05/06/08/10; stale/revoked/duplicate; UI hazır değilken yüksek riskli iş bekler"
+    },
+    {
+      "id": "T20e",
+      "parent": "T20",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "FLOW-05–08/12–15; canonical priority/rank/execution order ayrı, grant kontrollü board; stale/override, tekrar bildirim ve bağımsız iş"
+    },
+    {
+      "id": "T20a",
+      "parent": "T20",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Workflow readiness, blocker ve current Done predicate uygulanmış; tüm V28/health oracle kabulü açık.",
+      "evidence": [
+        "packages/domain/task_workflow.py",
+        "tests/runtime/test_task_workflow.py",
+        "tests/runtime/test_task_blockers.py"
+      ],
+      "remaining_acceptance": "Pending impact/unknown prerequisite ready olmaz; aynı snapshot UI; V28 · domain/web"
+    },
+    {
+      "id": "T20b",
+      "parent": "T20",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı"
+    },
+    {
+      "id": "T20c",
+      "parent": "T20",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen"
+    },
+    {
+      "id": "T20d",
+      "parent": "T20",
+      "before": "TODO",
+      "status": "TODO",
+      "changed": false,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "Gerekli child iptali başarı sayılmaz; tüm child'lar passed olsa da parent AC/DoD eksikse completed olmaz; değişen payda ve toplam bütçe görünür"
+    },
+    {
+      "id": "T20f",
+      "parent": "T20",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "ADM-01/05/06; rol negatif API ve temel UI akışı, incident kapanınca task değişmez"
+    },
+    {
+      "id": "T20g",
+      "parent": "T20",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur"
+    },
+    {
+      "id": "T20h",
+      "parent": "T20",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Source timestamp/coverage, review/defer ve işleme durumu gösteriliyor; pending-age ve genel RES görünümü açık.",
+      "evidence": [
+        "apps/local_ui/app.js",
+        "packages/capture/processing_queue.py"
+      ],
+      "remaining_acceptance": "P1b adayı: RES-01/05; yaş tek başına unutuldu/obsolete/priority değildir"
+    },
+    {
+      "id": "T20i",
+      "parent": "T20",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Karar onayı, source claim ve task completion ayrı gösteriliyor; önkoşula bağlı odaklı durum sorusu otomasyonu açık.",
+      "evidence": [
+        "packages/domain/question_decisions.py",
+        "apps/local_ui/app.js"
+      ],
+      "remaining_acceptance": "P1b: GAP-03/08/10; tekrarlı nag/model çağrısı yok; independent işler açık"
+    },
+    {
+      "id": "T21b",
+      "parent": "T21",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/delivery/api-independent-development.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "TOK-03–07; eşzamanlı harcama, timeout/retry ve limit-deferred testleri"
+    },
+    {
+      "id": "T21c",
+      "parent": "T21",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "ADM-03/04; concurrent config, rollback ve in-flight reservation testi"
+    },
+    {
+      "id": "T22b",
+      "parent": "T22",
+      "before": "TODO",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Onaylı dar kaynak için manifest/readback ve kalıcı sayfa checkpoint kodlandı; genel 1C arşiv/retention/fairness kabulü açık.",
+      "evidence": [
+        "packages/capture/codex/checkpoint.py",
+        "docs/quality/conversation-processing-runtime.md"
+      ],
+      "remaining_acceptance": "[1C sözleşmesi](../architecture/connection-and-context.md): tekrar import, restart, eski kararın geç gelmesi, eksik coverage, bütçe defer ve işlenmemiş arşiv korunumu"
+    },
+    {
+      "id": "T23a",
+      "parent": "T23",
+      "before": "IN_PROGRESS",
+      "status": "IN_PROGRESS",
+      "changed": false,
+      "evidence_level": "implemented_subset",
+      "reason": "Kısmi uygulama ve açık kabul sınırı teslim kayıtlarıyla doğrulandı; ana işi/alt işi kapatacak tam kabul kanıtı yok.",
+      "evidence": [
+        "docs/quality/private-backup-runtime.md",
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "Hash/sequence/digest kanıtı, uyumsuz schema guard, dış delivery varsayılan durur; V17/V27 · storage"
+    },
+    {
+      "id": "T23b",
+      "parent": "T23",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/team-data-plan.md"
+      ],
+      "remaining_acceptance": "Redaction/tombstone izlenir; ilgili index/cache/backup politikası V26 ile kanıtlı · storage/governance"
+    },
+    {
+      "id": "T23e",
+      "parent": "T23",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Bounded diagnostics, private backup ve capture disconnect mevcut; kapsamlı pause/recovery/archive TTL UX açık.",
+      "evidence": [
+        "packages/operations/local.py",
+        "packages/storage/local_backup.py",
+        "packages/capture/codex/exec_stream.py"
+      ],
+      "remaining_acceptance": "ADM-07/08/09; disk/audit arızası, archive TTL ve sıfır replay yan etkisi"
+    },
+    {
+      "id": "T23c",
+      "parent": "T23",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/team-data-plan.md"
+      ],
+      "remaining_acceptance": "TTL ve restore drill; MU11/MU12; OPEN-08 gerçek veri öncesi"
+    },
+    {
+      "id": "T23d",
+      "parent": "T23",
+      "before": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "SQLite backup/WAL ve sentetik mixed-load raporları mevcut; blob/disk soak ve ölçülmüş RPO/RTO kabulü açık.",
+      "evidence": [
+        "docs/quality/mixed-load.md",
+        "docs/quality/local-performance.md",
+        "packages/storage/workspace.py"
+      ],
+      "remaining_acceptance": "Hata ve capacity raporu, ölçülmüş RPO/RTO; MU15/MU16"
+    },
+    {
+      "id": "T24d",
+      "parent": "T24",
+      "before": "TODO",
+      "status": "TODO",
+      "changed": false,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "FLOW-01–15; 40+ sentetik task; zorunlu sette yanlış ready/yetkisiz mutation 0; bekleme, next-action seçimi ve uyarı yükü baseline"
+    },
+    {
+      "id": "T24a",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "V19–V28 MVP yollarında raporlu; false-stale, pending age ve no-text review yükü ölçülmüş · quality"
+    },
+    {
+      "id": "T24c",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "TOK-08 + GUX; token azalırken recall/false closure korunmalı"
+    },
+    {
+      "id": "T24g",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run"
+    },
+    {
+      "id": "T24h",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu"
+    },
+    {
+      "id": "T24i",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1b: SEQ-01–06/08 + DBR-01–06; P3 dış teslim SEQ-07 açık not_run"
+    },
+    {
+      "id": "T24j",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run"
+    },
+    {
+      "id": "T24k",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1b: TRA-01–10; gerçek provider yalnız ayrı izinle, aksi halde sentetik/not_run"
+    },
+    {
+      "id": "T24l",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı"
+    },
+    {
+      "id": "T24m",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "RES-08 + RES-01–07 regresyonları; model/gerçek veri izni yoksa yalnız hazır sentetik protokol + not_run"
+    },
+    {
+      "id": "T24n",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run"
+    },
+    {
+      "id": "T24o",
+      "parent": "T24",
+      "before": "TODO",
+      "status": "TODO",
+      "changed": false,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "LEX-07/08; aynı holdout/kalite/coverage; bütün token/çağrı/false-done/review ve bakım yükü; ücretli model için Q03 ayrıca"
+    },
+    {
+      "id": "T24p",
+      "parent": "T24",
+      "before": "TODO",
+      "status": "TODO",
+      "changed": false,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "LANG-01/04/05/07/08 uygulanabilir temel yollar; otomatik çok dil/mixed kalite P2 not_run, 14 MVP AC korunur"
+    },
+    {
+      "id": "T24f",
+      "parent": "T24",
+      "before": "TODO",
+      "status": "IN_PROGRESS",
+      "changed": true,
+      "evidence_level": "implemented_subset",
+      "reason": "Soru revision, belirsiz/geç cevap ve human approval negatif fixture uygulanmış; tam ASK/LATE integrated kabulü açık.",
+      "evidence": [
+        "tests/runtime/test_questions.py",
+        "tests/runtime/test_dialogue_review.py",
+        "tests/runtime/test_question_decisions.py"
+      ],
+      "remaining_acceptance": "ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon"
+    },
+    {
+      "id": "T24q",
+      "parent": "T24",
+      "before": "TODO",
+      "status": "TODO",
+      "changed": false,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz"
+    },
+    {
+      "id": "T24b",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/team-data-plan.md"
+      ],
+      "remaining_acceptance": "Kullanıcı “kim görür/ne silinir?” yanıtını doğru verebilir; kalan sınırlar raporlu"
+    },
+    {
+      "id": "T24e",
+      "parent": "T24",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/team-data-plan.md"
+      ],
+      "remaining_acceptance": "AGT-01–06; false completed yok, görünmeyen input/muhakeme uydurulmaz"
+    },
+    {
+      "id": "T25a",
+      "parent": "T25",
+      "before": "PROPOSED",
+      "status": "PROPOSED",
+      "changed": false,
+      "evidence_level": "future_proposal",
+      "reason": "Gelecek/öneri sınıfı korunur; mevcut UI locale alt kümesi veya komşu kod bu önerinin tam kabulü değildir.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "LANG-01–03/08; Q12-A dil önerisi/ret/yanıtsız/onay ve revision yolları; seçilen diller/model/host için destek matrisi"
+    },
+    {
+      "id": "T26b",
+      "parent": "T26",
+      "before": "PROPOSED",
+      "status": "PROPOSED",
+      "changed": false,
+      "evidence_level": "future_proposal",
+      "reason": "Gelecek/öneri sınıfı korunur; mevcut UI locale alt kümesi veya komşu kod bu önerinin tam kabulü değildir.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "FLOW-16–17 + FLOW-01–15 regresyonu; factor contribution/unknown, veri kalitesi, deterministik baseline kıyası, süre/maliyet/UX ölçümü, go/no-go ve fallback"
+    },
+    {
+      "id": "T26c",
+      "parent": "T26",
+      "before": "PROPOSED",
+      "status": "PROPOSED",
+      "changed": false,
+      "evidence_level": "future_proposal",
+      "reason": "Gelecek/öneri sınıfı korunur; mevcut UI locale alt kümesi veya komşu kod bu önerinin tam kabulü değildir.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "LANG-01–08; holdout/quality-cost-recall ve kullanıcı review; bütün geçmişi yeniden çevirmeme, egress/usage/ACL kapıları"
+    },
+    {
+      "id": "T28c",
+      "parent": "T28",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/backlog.md"
+      ],
+      "remaining_acceptance": "P3: SEQ-05/07, DBR-04; provider bazında idempotency/Retry-After/permission kanıtı"
+    },
+    {
+      "id": "T28b",
+      "parent": "T28",
+      "before": "UNSPECIFIED",
+      "status": "TODO",
+      "changed": true,
+      "evidence_level": "planned_not_accepted",
+      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "evidence": [
+        "docs/delivery/team-data-plan.md"
+      ],
+      "remaining_acceptance": "MU18; belirsiz dış sonuç doğru gösterilir; P3'e kadar uygulanmaz"
+    }
+  ]
+}

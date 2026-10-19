@@ -15,7 +15,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
-**Güncel ana durum:7 DONE,14 IN_PROGRESS,9 TODO. Üç P0 kalite işi ve14 MVP işi açık; diğer6 açık ana iş gelecek fazlardadır.** İlk uygulama iskeleti tamamlandı; T05 kabul edilmiş çekirdek teslimidir; kalan entegrasyonlar kendi kayıtlarında izlenir. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
+**Güncel ana durum:7 DONE,15 IN_PROGRESS,8 TODO. Üç P0 kalite işi ve14 MVP işi açık; diğer6 açık ana iş gelecek fazlardadır.** İlk uygulama iskeleti tamamlandı; T05 kabul edilmiş çekirdek teslimidir; kalan entegrasyonlar kendi kayıtlarında izlenir. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.
 
@@ -61,8 +61,8 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Hazırlanan çıktı:** [Corpus](../../examples/corpus/README.md), [baseline hazırlığı](../quality/baseline.md), `scripts/check_corpus.py`. 6 oturum/2 proje, 58 mesaj/66 annotation/46 farklı KnowledgeRecord ve 7 no-new-record; kaynak/oracle ayrı, aile split ve Unicode span hashleri denetlendi. Etiketler AI taslağı; insan review'u pending, sealed holdout yok. Ürün testleri not_run.
 - **Kalan kapanış:** İnsan örneklem/etiket incelemesi, tam karşılaştırma koşulları, T01e/T01f ayrıntıları ve FLOW/authority/crash fixture kapsamı; yalnız veri kontrolüyle T01 complete yapılmaz.
 - **Boyut:** 1 küçük oturum.
-- **Son ilerleme:** 2026-10-13 · T01g/H1-H3 ve T01i/H4 partial davranış review tamamlandı; source/rubric/cevap kayıtları korunur. T03y receiver hazırlığı tamamlandı; bu T01 exact gold/adjudication/holdout kapanışı değildir.
-- **Sıradaki adım:** Exact kaynak/etiket inceleme ve adjudication kuyruğundaki kalanları küçük örneklerle tamamla; human gold/holdout gate açık. Receiver isteği tekrar hazırlanmayacak: T03y DONE, Q03-R6 RECEIVER-002 tek run için tüketildi; yeni run izni yok.
+- **Son ilerleme:** 19 Ekim2026 — TR/EN development örnekleri, H1–H4 kısmi insan review ve scorer/corpus mevcut; [durum teyidi](../quality/task-status-audit.md).
+- **Sıradaki adım:** Exact etiket/adjudication ve family holdout kabulünü T01e/f kapsamında tamamla.
 
 
 ### İlk üç davranış incelemesi kapanışı
@@ -72,6 +72,7 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 | T01g / — | DONE / P0: H1/H2/H3 ilk davranış incelemesi | Üç açık insan yanıtı, soru/açıklama/kapsam ve source/oracle hash bağlı ayrı review kayıtları mevcut; [kuyruk](../quality/human-review-queue.md). Exact candidate etiketleri, tam oracle/adjudication/gold/holdout bu kapanışın dışında |
 | T01h / T01g | DONE / P0: iki yeni development family ve ayrı kaynak/rubric paket | Sekiz sentetik mesaj/iki proje; eski-güncel soru revision,quoted/planned,EN claim/not_run/ambiguous; hash/source/schema consistency ve5 harness testi; [paket](../../examples/adversarial-smoke/README.md). İnsan exact gold/holdout/gerçek inference değil |
 | T01i / T01h | DONE / P0: H4 quoted/planned partial insan review | Kullanıcı1-EVET, source/rubric hash ve explicit kapsam [review kaydında](../quality/reviews/h4-behavior.json); tam6label/gold/holdout veya dispatch yetkisi değil |
+- **Risk durumu:** Development örneği insan gold/holdout değildir; genel doğruluk hâlâ açık.
 
 ## T02 — İki coding yüzeyinde capability spike
 
@@ -81,8 +82,9 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Yeni mesaj, final output, tool failure, kapanışsız session ve offline deneyi.
 - **Beklenen dosya alanı:** `docs/discovery/adapter-feasibility.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Yüzey başına küçük deney.
-- **Son ilerleme:** 2026-10-13 · Salt okunur host inventory: PATH Codex CLI0.162.0-alpha.17.2 version çıktı; sandbox alias yazımını reddetti. Claude command PATH'te yok, installation unknown. Capture40fixture korunur; gerçek hook/session/transcript veya model çalıştırılmadı.
-- **Sıradaki adım:** [Hazırlık kapısında](implementation-readiness.md) seçilmiş Codex/Claude host ve scoped grant ile gerçek capability kontrolü. MCP erişimi tam otomatik capture kanıtı değil.
+- **Son ilerleme:** 19 Ekim2026 — [Codex readback](../quality/codex-real-capture-001.md)6gerçek TEST source; offline şema ve bounded App Server client mevcut.
+- **Sıradaki adım:** Claude ve MCP/hook yüzey raporunu dar izinle tamamla; Codex yeni checkpoint sürümünü sonraki izinli okumada doğrula.
+- **Risk durumu:** Tek kısmi readback iki gerçek host veya sürekli capture garantisi değildir.
 
 ## T03 — Native/extend/build ve teknoloji kararı
 
@@ -92,11 +94,11 @@ T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken 
 - **Doğrulama:** Versiyonlu rapor ve owner karar kaydı; test yapılmadıysa kapı açık kalır.
 - **Beklenen dosya alanı:** `docs/discovery/pilot-comparison.md; docs/architecture/adr/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Karşılaştırma başına küçük deney.
-- **Risk durumu:** Observed / High · R23/R24: iki actual receiver çıktı contract/source gate geçmedi. Tipli dönüşüm/durable reply fixture kodu çalışıyor; genel model/capture/native kalite kapıları açık. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
+- **Risk durumu:** Dar schema/source başarıları genel semantik kalite, native üstünlük veya ROI kanıtı değildir.
 - **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 - **Etkilenen iş:** T03 semantik receiver kalite ve gerçek capture/native-ROI kıyası açık; T03c/Q15-A conditional yatırım/runtime kararı kabul edildi. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
-- **Son ilerleme:** 2026-10-13 · T03ac [kalıcı explicit reply proposal](../quality/reply-store.md) DONE;14 yeni/248 semantik test. Late source binding/restart/dedup/conflict/current-context/atomic no-resume; gerçek approval, UI/IAM/semantik reply parsing yok. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
-- **Sıradaki adım:** RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI kanıtları açık; T03c koşullu karar kapandı.
+- **Son ilerleme:** 19 Ekim2026 — RECEIVER-001/002 invalid_contract geçmişi korunur; sonra20generation/40HTTP sentetik API deneyi ve$3root guard çalıştı. [Güncel sonuç](../quality/openai-development-budget.md).
+- **Sıradaki adım:** Aynı bağımsız beklentilerde tam ürün zincirini ve adil native kıyası değerlendir; yeni genel keşif turuyla uzatma.
 
 
 ### T03 altında tamamlanan küçük teslimler
@@ -234,6 +236,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
 
 - **18 Ekim kod teslimi:** [Diyalog→görev/durum](../quality/dialogue-status-runtime.md): kaynak/current task context bağlı yanıt; task create ve status önerileri ayrı review; provider/import ortak doğrulaması. Gerçek serbest metin kalitesi ve otomatik capture açık; ana T09 kapanmadı.
+- **Son ilerleme:** 19 Ekim2026 — [Source outbox ve izinli bounded worker](../quality/conversation-processing-runtime.md) review ucuna bağlandı; source/context grant ve actual/unknown bütçe guard korunur.
+- **Risk durumu:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
+- **Sıradaki adım:** Kaynak kapasitesi/index/paging ve source-specific model aktivasyonu; ardından bağımsız semantic ölçüm.
 
 ## T10 — Temel reconciliation
 
@@ -245,6 +250,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
+- **Son ilerleme:** 19 Ekim2026 — Exact duplicate/source attach, kaynaklı relation ve Decision replacement review kodlandı. [Sözleşme](../quality/dialogue-status-runtime.md).
+- **Risk durumu:** Semantik conflict/refinement/equivalence ve genel Idea Evaluation tamamlanmadı.
+- **Sıradaki adım:** T10a/b kapsamındaki açıklanabilir karşı kanıt ve belirsizlik çözümünü tamamla; similarity ile otomatik merge yapma.
 
 ## T11 — Tipli gerekçe graph
 
@@ -278,8 +286,10 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:**2026-10-13 · [Kalıcı cevaptan karar](../quality/question-decision-runtime.md): separate prepare/approve/apply; [soru lifecycle](../quality/question-lifecycle-runtime.md) cancel/defer/resume/revise/orphan association,221runtime test + gerçek browser akışı geçti.
-- **Sıradaki adım:** T13e ASK/LATE kapsam eşlemesini ve agent-question routing sınırını doğrula; ardından T14 evidence/Done.
+- **Sıradaki adım:** T13d split ve T13e soru/candidate çözümünü mevcut onay/revision guards ile tamamla.
 - **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
+- **Son ilerleme:** 19 Ekim2026 — Status/answer/relation/replacement, scope edit ve lifecycle select→approve→apply kodlu; [son durum](../quality/workflow-ui-runtime.md).
+- **Risk durumu:** Konuşmadan QuestionRequest üretimi, genel clarification ve split planı atomik kabulü açık.
 
 ## T14 — Evidence ve false-done düzeltmesi
 
@@ -291,6 +301,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:**14Ekim2026 · [Yerel human-verifier + workflow](../quality/workflow-ui-runtime.md): current criterion evidence, completion guard ve yeni UI. Automatic runner/target artifact/parent/policy tüm kabulü açık; T14 Done değil.
+- **Son ilerleme:** 19 Ekim2026 — Human/file-SHA AC/DoD, false-Done/current basis ve önkoşul invalidation kodlandı. [Kanıt sınırı](../quality/workflow-ui-runtime.md).
+- **Risk durumu:** Gerçek artifact/target/runner yetkisi ve parent-child completion tam kapsamı açık.
+- **Sıradaki adım:** T14a–d kapsamında exact hedef/recipe ve parent completion bağlantısını doğrula; transcript komutu çalıştırma.
 
 ## T15 — Teknik kanıt kapısı
 
@@ -304,11 +317,11 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `docs/quality/poc-results.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 kontrol oturumu.
 
-- **Son ilerleme:** 14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
-- **Risk durumu:** Reproduced mechanism corrected / historical trace unknown · Kontrollü SQLite rollback-mode kilit sırası503üretti; WAL startup aynı sırada200verdi. İlk uninstrumented koşunun birebir kök nedeni kanıtlanmadı; tüm503nedenleri kapanmış sayılmaz.
+- **Son ilerleme:** 19 Ekim2026 — Core crash/restore/replay, source checkpoint ve queue backup/restore fixture mevcut. [Son worker dilimi](../quality/conversation-processing-runtime.md).
+- **Risk durumu:** Modül/regresyon başarıları bütün native/model/target zincirinin kabulü değildir.
 - **Denemeler / sonuç:** Aynı394ilişki/1409event/2327audit yükünde WAL + snapshot audit reuse:133ms/260msmedyan; kaynak korunumu/falseDone0,100record preview truncated. [318runtime/7browser ve teslim](../quality/concurrency-impact-delivery.md).
 - **Güncel kanıt:** 319 runtime test; uncheckpointed WAL→private backup→offline restore aynı event/projection. Populated impact-history mixed-load ve sınırlar [takip raporunda](../quality/concurrency-impact-delivery.md#follow-up-wal-recovery-and-populated-impact-history). Bu alt kanıt T15/T23 release kabulünü tek başına kapatmaz.
-- **Sıradaki adım:** Kontrollü503düzeltmesi ve snapshot audit optimizasyonu testli; T23d uzun soak/disk ve remaining503korelasyonu açık. T13/T19 karar etkisi önizlemesi çalışıyor; tam etki/onay/apply ve gerçek extraction/native kabulü açık.
+- **Sıradaki adım:** Aynı kaynak/revision üzerinden tam zinciri ve recovery proof raporunu birleştir.
 
 ## T16 — Claude Code adapter
 
@@ -332,6 +345,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **İkinci kod dilimi:** App Server selected-thread user/assistant read ve bounded polling, aynı capture yakın bağlamı; installed offline schema probe0.162.0-alpha.17.2. Gerçek source/model activation ve desktop readback açık.
 
 - **Gerçek readback001:** onaylı tek TEST aktarımında6user/assistant source ve UI readback doğrulandı. [Bulgu/sonuç](../quality/codex-real-capture-001.md). Full-turn byte sınırı için metadata+one-item pagination eklendi;1MiB tavanı korunur.32sayfa sonunda iki turn eksik; **Kalıcı item cursor + source/cursor atomik checkpoint + pending assistant/dedup** sonraki kod diliminde uygulandı; gap UI, kapasite ve gerçek host yeniden doğrulaması T17 kapsamında açık. Bir defalık gerçek source izni tüketildi, binding kapalı; model paylaşımı yok.
+- **Son ilerleme:** 19 Ekim2026 — Seçilmiş thread user/assistant capture,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending ve native Operations trace kodlu. [Teslim](../quality/conversation-processing-runtime.md).
+- **Risk durumu:** 32source kapasitesi, onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
+- **Sıradaki adım:** İndeksli/paged kapasite ve bağlantı/izin kartı; sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
 
 ## T18 — Minimal MCP ve cross-agent read
 
@@ -343,6 +359,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
+- **Son ilerleme:** 19 Ekim2026 — Beş-tool bounded stdio MCP, signed query cursor, private-derived visibility guard ve iki-agent fixture var. [Kod/kapsam](api-independent-development.md).
+- **Risk durumu:** Brief/delta/continuation, paylaşım proposalı ve gerçek host onboarding/delivery kabulü açık.
+- **Sıradaki adım:** T18b–i kalan kabulü: source ACL korunarak deterministic devam bağlamı ve gerçek client kurulumu.
 
 ## T19 — Proje seçimi ve Review Inbox UI
 
@@ -354,6 +373,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **İlk çalışan UI dilimi:** [Yerel program](../quality/local-preview.md); manuel tek proje/AC card/board. Full selector/inbox/graph/timeline açık; native/MCP bağımlılığı kaldırılmadı, disabled manual slice önce kuruldu.
+- **Son ilerleme:** 19 Ekim2026 — Conversation proposal/status/answer/relation/replacement review, proje seçimi ve source processing kartı kodlu. [Son UI bağlantısı](../quality/conversation-processing-runtime.md).
+- **Risk durumu:** Proje/kaynak kurulum izin wizardı ve risk plan kartı yok; bütün öneri türleri tamamlanmadı.
+- **Sıradaki adım:** T19b risk kartı ve source/model onboarding; mevcut source/proposal review uçlarını yeniden yazma.
 
 ## T20 — Board, Graph ve Timeline
 
@@ -365,6 +387,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **İlk çalışan UI dilimi:** [Yerel program](../quality/local-preview.md); manuel tek proje/AC card/board. Full selector/inbox/graph/timeline açık; native/MCP bağımlılığı kaldırılmadı, disabled manual slice önce kuruldu.
+- **Son ilerleme:** 19 Ekim2026 — Board/List/Graph/Timeline, blockers/lifecycle, AND/OR yazarı ve Operations/queue görünümü kodlu. [Güncel UI](../quality/workflow-ui-runtime.md).
+- **Risk durumu:** Parent-child/split, milestone context export ve tam pending-age/bağlantı envanteri açık.
+- **Sıradaki adım:** T20c/d/g/h/i kapsamını mevcut UIya bağla; parent kriterlerini child sayısıyla tamamlandı sayma.
 
 ## T21 — Routing etiketleri ve usage kaydı
 
@@ -376,6 +401,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
+- **Son ilerleme:** 19 Ekim2026 — Shared root token/money reservation, count+actual/unknown/overrun ve routing etiketleri mevcut. [API bütçe kaydı](../quality/openai-development-budget.md).
+- **Risk durumu:** Dönem/config UI ve genel source-specific aktivasyon açık; tahmin nihai fatura değildir.
+- **Sıradaki adım:** T21b/c kalan dönem/parametre görünümü ve trusted reconciliation; root bütçeyi yeni batch ile sıfırlama.
 
 ## T22 — Chat import ve prompt lineage
 
@@ -385,8 +413,10 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Doğrulama:** AC-03/11; tekrar import ve farklı source IDs.
 - **Beklenen dosya alanı:** `packages/capture/import/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Son ilerleme:**2026-10-13 · [Konuşma aktarımı ve model-adapter inceleme zinciri](../quality/conversation-review-runtime.md),237runtime test + gerçek browser fixture akışı. Gerçek provider dispatch kapalı; API hazırlığı kullanıcı tarafından yarına bırakıldı.
-- **Sıradaki adım:** Onaylı model/veri/bütçe ile gerçek provider transport ve kalite; message/prompt lineage ve coverage kabulü açık.
+- **Sıradaki adım:** T22b kapasite/manifest ve izinli geçmiş işleme; eski gerçek kaynaklar için izin kendiliğinden yenilenmez.
 - **Boyut:** 1 küçük PR.
+- **Son ilerleme:** 19 Ekim2026 — Manual/native source provenance, redaction, turn/item/role ve source+outbox checkpoint kodlu. [Kaynak akışı](../quality/conversation-processing-runtime.md).
+- **Risk durumu:** Genel1C arşiv/fairness/retention ve iki-host lineage bağları açık.
 
 ## T23 — Backup, export ve yerel güvenlik
 
@@ -398,6 +428,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **Son ilerleme:**14Ekim2026 · [Özel yedek indirme](../quality/private-backup-runtime.md): UI acknowledgement, scoped bounded backup ZIP, offline temporary restore validation. Aktif restore/migration/redacted export/purge/retention açık; T23 Done değil. T22 tam kapanmadan bağımsız yerel backup dilimi öne alındı.
+- **Son ilerleme:** 19 Ekim2026 — Private SQLite backup/offline restore, loopback security, credential redaction ve safe Operations sidecar mevcut. [Son TEST readback](../quality/conversation-processing-runtime.md).
+- **Risk durumu:** Aktif migration/recovery, purge/retention/encryption ve ölçülmüş RPO/RTO açık.
+- **Sıradaki adım:** T23a–e kalan recovery/privacy ve kapasite kabulünü tamamla; accepted kaynakları limitte silme.
 
 ## T24 — MVP kabul ve kullanıcı pilotu
 
@@ -471,7 +504,7 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | Alt dilim / parent | Küçük uygulanabilir iş | Kabul kriteri / doğrulama | Dosya alanı |
 |---|---|---|---|
 | T04a / T04 | DONE / P1a: Versioned envelope/command/query şemaları ve error taxonomy | Unsupported schema ve invalid input state değiştirmez; snapshot/cursor alanları şema testli | domain |
-| T04b / T04 | İlk network ingress için loopback/auth/origin ve bounded config | Yetkisiz kaynak/command reddedilir; payload/queue limiti tanımlı; V10/V23 | hub/capture |
+| T04b / T04 | IN_PROGRESS: İlk network ingress için loopback/auth/origin ve bounded config | Yetkisiz kaynak/command reddedilir; payload/queue limiti tanımlı; V10/V23 | hub/capture |
 | T05a / T05 | DONE / P1a: Immutable project binding epoch ve quarantine | Binding değişimi yeni event'leri etkiler; geçmiş transfer ayrı correction; V18/V25 | domain/storage |
 | T06a / T06 | DONE / P1a: Source+job atomic receipt ve ingest cursor | Disk/response kaybı senaryoları V19 geçer | capture/storage |
 | T06b / T06 | DONE / P1a: Worker lease/fencing ve job transitions | Expired worker sonuç yazamaz; V20 geçer | capture/storage |
@@ -479,16 +512,16 @@ Bu ek, 2026-10-09 mimari incelemesinde bulunan boşlukları mevcut görevlere ba
 | T07a / T07 | DONE / P1a: Replay mode ve projector version gate | Bilinmeyen event sessiz atlanmaz; replay aynı digest, sıfır dış yan etki; V14/V27 | storage |
 | T07c / T06,T07a | DONE / P1a: ** Minimal çekirdek DB+payload backup/restore | Tutarlı checkpoint, source payload manifest/hash, event sequence ve projection digest; boş hedefe restore, eksik/uyumsuz veri fail closed; replay sıfır dış dispatch; V17/V27. T15a bunu sınar; T23a migration/privacy/export/operasyon kapsamını tamamlar | storage |
 | T08a / T08 | DONE / P1a: Command identity, key/digest ve policy capability | Aynı key güvenli; spoofed human reddi; V03/V23 | domain/hub |
-| T10a / T10 | Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
+| T10a / T10 | IN_PROGRESS: Idea Evaluation için gerekçe ve karşı kanıt alanları | New-is-not-true; kaynak yetersizse uncertainty; ret gerekçesi korunur; V12 | reconciliation |
 | T12a / T12 | DONE — ImpactRun snapshot, visited/frontier ve knowledge revision | [21test/impact-demo](../quality/impact-preview.md): OR edge/gap/ACL/restart/limit; source snapshot da bağlı | impact/storage |
 | T13a / T13 | DONE — Onay token'ı snapshot/policy/digest ile bağla | [18test/review-demo](../quality/review-kernel.md): partial reference, stale source/policy, double connection tek effect | hub/domain |
 | T14a / T14 | IN_PROGRESS: Evidence authority ve izinli runner arayüzü | Transcript komutu otomatik çalışmaz; artifact/AC race stale; V24 | verification |
 | T15a / T15 | IN_PROGRESS: Crash/restore/replay proof dilimi | V19–V24/V27/V28 uygulanabilir çekirdek yollarında raporlu; başarısız test kapıyı bloke eder | quality fixtures |
 | T18a / T18 | DONE / P1b: Scope/snapshot-bound query cursor ve context limits | Başka projeye cursor taşınamaz; truncated sonuç açık; V25 | mcp/storage |
-| T20a / T20 | Health ve ready oracle | Pending impact/unknown prerequisite ready olmaz; aynı snapshot UI; V28 | domain/web |
+| T20a / T20 | IN_PROGRESS: Health ve ready oracle | Pending impact/unknown prerequisite ready olmaz; aynı snapshot UI; V28 | domain/web |
 | T23a / T23 | IN_PROGRESS: DB+payload tutarlı backup/migration/restore | Hash/sequence/digest kanıtı, uyumsuz schema guard, dış delivery varsayılan durur; V17/V27 | storage |
-| T23b / T23 | Payload purge ve türev cache/export retention akışı | Redaction/tombstone izlenir; ilgili index/cache/backup politikası V26 ile kanıtlı | storage/governance |
-| T24a / T24 | Yeni güvenilirlik ve UX ölçümleri | V19–V28 MVP yollarında raporlu; false-stale, pending age ve no-text review yükü ölçülmüş | quality |
+| T23b / T23 | TODO: Payload purge ve türev cache/export retention akışı | Redaction/tombstone izlenir; ilgili index/cache/backup politikası V26 ile kanıtlı | storage/governance |
+| T24a / T24 | TODO: Yeni güvenilirlik ve UX ölçümleri | V19–V28 MVP yollarında raporlu; false-stale, pending age ve no-text review yükü ölçülmüş | quality |
 
 T07c erken restore teslimidir; T15 ve T15a kapanış için T07c kanıtını zorunlu tutar. P0 fixture backup testi bu production işi kapatmaz; payload bundle/migration/runner/izin kapsamı henüz yok. T23, erken auth/runner sınırlarının ilk kez eklendiği görev değildir; önceki kontrolleri restore/privacy açısından tamamlar. Dış connector'a özgü V27 teslim senaryoları T28'de ayrıca çalıştırılır. Gelecek capability henüz uygulanmıyorsa `not_run + faz` yazılır; mevcut MVP invariant'ı bu gerekçeyle atlanmaz.
 
@@ -506,14 +539,14 @@ Bunlar mevcut ana görevlerin detaylarıdır; yeni servis veya bağımsız ürü
 
 | Alt dilim / bağımlılık | Somut teslim | Kabul |
 |---|---|---|
-| T02b / T02 | Seçilen host/build MCP+hook+transcript capability raporu; tools-only/remote smoke test | [CON-01/02/07](../architecture/connection-and-context.md); Q02 yanıtı gerçek yüzey seçimini belirler |
-| T09b / T06,T09 | No-op/structured duplicate bypass; chunk manifest; evaluation fingerprint | [TOK-01/02/03](../architecture/routing-token-economy.md); recall ölçümü; model hatası no-op olmaz |
+| T02b / T02 | IN_PROGRESS: Seçilen host/build MCP+hook+transcript capability raporu; tools-only/remote smoke test | [CON-01/02/07](../architecture/connection-and-context.md); Q02 yanıtı gerçek yüzey seçimini belirler |
+| T09b / T06,T09 | IN_PROGRESS: No-op/structured duplicate bypass; chunk manifest; evaluation fingerprint | [TOK-01/02/03](../architecture/routing-token-economy.md); recall ölçümü; model hatası no-op olmaz |
 | T11b / T07,T11 | DONE / P1a: Edge revision, ended/invalidated ve sequence geçerliliği | [GUX-03](../product/graph-experience.md); replay, current traversal ve knowledge revision |
 | T13b / T11b,T13 | DONE — Task cancel ve edge ending için farklı impact preview/compensating olay | [20test/lifecycle-demo](../quality/task-lifecycle.md): aktif gerekçe/downstream ret, history/restore, ayrı onaylı reopen |
 | T18c / T18a,T18b | IN_PROGRESS: Kısa brief, since_revision/tombstone, bounded resync ve ayrıntı getir | CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz |
 | T20b / T11b,T13b,T19 | IN_PROGRESS: Graph durum sözlüğü, seçili task bağlamı, history/diff ve liste alternatifi | GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı |
 | T21b / T08b,T09b,T21 | IN_PROGRESS: Usage sınıfları, dönem/run limitleri, atomik reservation ve unknown settlement | TOK-03–07; eşzamanlı harcama, timeout/retry ve limit-deferred testleri |
-| T24c / T18c,T20b,T21b | Eşit corpus/kalite ile maliyet ve graph anlaşılabilirliği pilotu | TOK-08 + GUX; token azalırken recall/false closure korunmalı |
+| T24c / T18c,T20b,T21b | TODO: Eşit corpus/kalite ile maliyet ve graph anlaşılabilirliği pilotu | TOK-08 + GUX; token azalırken recall/false closure korunmalı |
 
 T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatch'i başlamadan önce minimum budget/data-egress guard bulunmalı; T21b tam dönem/usage arayüzünü tamamlar. Ücretli model yokken sentetik/fake provider testleriyle budget concurrency doğrulanabilir; gerçek provider harcaması için Q03 gerekir.
 
@@ -523,7 +556,7 @@ T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatc
 |---|---|---|
 | T13c / T08,T13 | DONE — İş öncesi versioned AC/DoD hazırlama/onay; applicability gerekçesi | [9test+local app](../quality/local-preview.md): diff acknowledgment, start guard, history/restore; sessiz kriter düşürme yok |
 | T14b / T13c,T14 | IN_PROGRESS: AC/DoD→evidence matrisi ve current completion predicate | CTX-04; failed/not_run/stale/unknown farklı, parent bağımsız kontrol edilir |
-| T20c / T07,T14b,T20b | Ana task context snapshot, evrim sekmesi, template ve seçilen export yolu | CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen |
+| T20c / T07,T14b,T20b | TODO: Ana task context snapshot, evrim sekmesi, template ve seçilen export yolu | CTX-01/02/05/06; duplicate trigger/ACL/export failure ve reopen |
 
 T20c ilk sürümde deterministik kaynaklı şablondur; modelle anlatı güzelleştirme opsiyonel ve bütçeli kalır. Otomatik Markdown Q06-A ile kabul edildi (18 Ekim); uygulama açık; kullanıcı reposuna otomatik commit/push yetkisi çıkarılmaz.
 
@@ -531,7 +564,7 @@ T20c ilk sürümde deterministik kaynaklı şablondur; modelle anlatı güzelle�
 
 | Alt dilim / bağımlılık | Teslim / durum | Gözlenebilir kabul |
 |---|---|---|
-| T22b / T06,T09b,T18c,T21b,T22 | **TODO / P1b:** kabul edilen Q07/1C için kaynak manifest'i ve checkpoint; aktif iş önceliği; geçmiş intake öncesi OPEN-08 retention kapısı | [1C sözleşmesi](../architecture/connection-and-context.md): tekrar import, restart, eski kararın geç gelmesi, eksik coverage, bütçe defer ve işlenmemiş arşiv korunumu |
+| T22b / T06,T09b,T18c,T21b,T22 | IN_PROGRESS: kabul edilen Q07/1C için kaynak manifest'i ve checkpoint; aktif iş önceliği; geçmiş intake öncesi OPEN-08 retention kapısı | [1C sözleşmesi](../architecture/connection-and-context.md): tekrar import, restart, eski kararın geç gelmesi, eksik coverage, bütçe defer ve işlenmemiş arşiv korunumu |
 | T13d / Q08,T11b,T13c | **TODO / P1b:** onaylı Q08-A split önizlemesi, part_of, AC eşlemesi ve atomik onay | [Split sözleşmesi](../product/task-context-and-acceptance.md): cycle/ACL/stale/retry/yarım işlem; mevcut parent/kanıt korunur |
 | T20d / Q08,T13d,T14b,T20b | **TODO / P1b:** parent/child liste+graph, sayım ve iptal/blocked görünümü | Gerekli child iptali başarı sayılmaz; tüm child'lar passed olsa da parent AC/DoD eksikse completed olmaz; değişen payda ve toplam bütçe görünür |
 
@@ -544,9 +577,9 @@ Q08-A 18 Ekim kabul edildi: T13d/T20d planlı TODO; uygulanmış veya tamamlanm�
 | Dilim / bağımlılık | Küçük teslim | Kabul |
 |---|---|---|
 | T20f / T07b,T08b,T20a | IN_PROGRESS: Owner yerel sağlık/hata görünümü; sıradan kullanıcı için güvenli hata ve referans | ADM-01/05/06; rol negatif API ve temel UI akışı, incident kapanınca task değişmez |
-| T21c / T08b,T21b | Parametre sicili; miras/etkin değer, tavan, config önizleme ve revision/audit | ADM-03/04; concurrent config, rollback ve in-flight reservation testi |
-| T23e / T20f,T21c,T23c,T23d | Kapsamlı pause/retry, bounded hata kaydı, yedek/recovery görünümü | ADM-07/08/09; disk/audit arızası, archive TTL ve sıfır replay yan etkisi |
-| T24g / T20f,T21c,T23e | Owner “neden bekliyor/ne değiştirebilirim?” pilotu ve yerel admin negatif fixture'ları | ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run |
+| T21c / T08b,T21b | TODO: Parametre sicili; miras/etkin değer, tavan, config önizleme ve revision/audit | ADM-03/04; concurrent config, rollback ve in-flight reservation testi |
+| T23e / T20f,T21c,T23c,T23d | IN_PROGRESS: Kapsamlı pause/retry, bounded hata kaydı, yedek/recovery görünümü | ADM-07/08/09; disk/audit arızası, archive TTL ve sıfır replay yan etkisi |
+| T24g / T20f,T21c,T23e | TODO: Owner “neden bekliyor/ne değiştirebilirim?” pilotu ve yerel admin negatif fixture'ları | ADM-01/03–10 uygulanabilir P1 yolları; hosted/L1 kısmı C05/C06'ya açık not_run |
 
 P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yönetimi, platform konsolu, süreli destek ve kotaları tamamlar. ADM-02 ve ADM-10'un hosted kısmı o kapılarda test edilir. T20f ölçülen temel incident görünümüyle sınırlıdır; tam ticketing/on-call entegrasyonu MVP değildir.
 
@@ -557,9 +590,9 @@ P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yön
 | Dilim / bağımlılık | Somut teslim | Kabul |
 |---|---|---|
 | T05c / T05b | DONE / P1a: kaynak/hedef binding ve versioned izin makbuzu schema/rule fixture | [9 test ve demo](../quality/connection-authorization.md): ACC-01/03/07 ayrı source/target/grantor/digest/revision ret; actual activation T08b/T07b sonrasında, makbuz persistence ayrı |
-| T16b / T02b,T05c,T08b,T07b,T16 | P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü | ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular |
-| T20g / T05c,T16b,T20f | P1b proje bağlantı envanteri, kurulum soruları ve izin farkı önizlemesi | ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur |
-| T24h / T16b,T17,T20g | Yerel/sentetik erişim oracle ve UX pilotu | ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu |
+| T16b / T02b,T05c,T08b,T07b,T16 | TODO: P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü | ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular |
+| T20g / T05c,T16b,T20f | TODO: P1b proje bağlantı envanteri, kurulum soruları ve izin farkı önizlemesi | ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur |
+| T24h / T16b,T17,T20g | TODO: Yerel/sentetik erişim oracle ve UX pilotu | ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu |
 
 P4 C03/C05 aynı sözleşmeyi farklı kaynak sahibi ve ekip yöneticisiyle doğrular. Gerçek provider grant, hesap bağlantısı veya veri aktarımı ilgili somut izinler olmadan yapılmaz. T05c çekirdek sözleşmesi yeni veri ingestion'ından önce, UI görünümü P1b'de gelir.
 
@@ -571,11 +604,11 @@ P4 C03/C05 aynı sözleşmeyi farklı kaynak sahibi ve ekip yöneticisiyle doğr
 |---|---|---|
 | T04c / T04a | DONE / P1a: Source, command, trigger ve async result şemaları; ER composite key/N:M ilişki kontratı | P1a: DBR-01/02/03 fixture tanımı; HTTP/MCP mapping seçilen transport'ta açık |
 | T06e / T04c,T06a,T06b,T06c | DONE / P1a: Kalıcı due jobs, kaçan wake-up taraması, max-wait/fairness ve replay suppression | P1a: SEQ-03/04/08, DBR-04; domain commit entegrasyonu T07/T08'de, erken scheduler ücretli çağrı açmaz |
-| T09c / T06e,T09b | TRG-02 deterministik bypass, profil ve izin/rezervasyon kapısından koşullu semantik dispatch | P1a/P1b profil tamamlaması: SEQ-02/03/05/06; no-op/duplicate/manual mod çağrı sayacı; minimum bütçe guard önce |
-| T14c / T14a,T14b,T08b | Run sonucu→evidence→AC/DoD assessment→completion command akışı | P1a: SEQ-01/06, DBR-02/03; parent ve stale kanıt; runner yoksa not_run |
-| T18f / T18c,T06e | Query/result/notification cursor ve reconnect contract fixture | P1b: SEQ-02/08; UI fallback policy, stale görünümü; host otomatik tool çağırır varsayımı yok |
-| T24i / T09c,T14c,T18f,T21b,T23a | Fake-clock/crash/replay/ilişki corpus'u ve izinli gerçek yüzey raporu | P1b: SEQ-01–06/08 + DBR-01–06; P3 dış teslim SEQ-07 açık not_run |
-| T28c / T28b | Outbox→API→callback/poll korelasyonu, unknown reconciliation ve endpoint sözleşmesi | P3: SEQ-05/07, DBR-04; provider bazında idempotency/Retry-After/permission kanıtı |
+| T09c / T06e,T09b | IN_PROGRESS: TRG-02 deterministik bypass, profil ve izin/rezervasyon kapısından koşullu semantik dispatch | P1a/P1b profil tamamlaması: SEQ-02/03/05/06; no-op/duplicate/manual mod çağrı sayacı; minimum bütçe guard önce |
+| T14c / T14a,T14b,T08b | IN_PROGRESS: Run sonucu→evidence→AC/DoD assessment→completion command akışı | P1a: SEQ-01/06, DBR-02/03; parent ve stale kanıt; runner yoksa not_run |
+| T18f / T18c,T06e | IN_PROGRESS: Query/result/notification cursor ve reconnect contract fixture | P1b: SEQ-02/08; UI fallback policy, stale görünümü; host otomatik tool çağırır varsayımı yok |
+| T24i / T09c,T14c,T18f,T21b,T23a | TODO: Fake-clock/crash/replay/ilişki corpus'u ve izinli gerçek yüzey raporu | P1b: SEQ-01–06/08 + DBR-01–06; P3 dış teslim SEQ-07 açık not_run |
+| T28c / T28b | TODO: Outbox→API→callback/poll korelasyonu, unknown reconciliation ve endpoint sözleşmesi | P3: SEQ-05/07, DBR-04; provider bazında idempotency/Retry-After/permission kanıtı |
 
 T04c fiziksel DB'yi erken seçmez; T05–T08 seçilmiş stack'te FK/unique/transaction kısıtlarını uygular. Güncel AC/DoD ve zorunlu review'lar task sonucunda policy katmanında denetlenir; event veya model cevabı doğrudan executor başlatmaz. T23/C02 migration ve restore DBR-05/06'yı kendi fazlarında tekrar doğrular.
 
@@ -598,7 +631,7 @@ P2 yerleşimi takvim veya uygulama taahhüdü değildir. Faz yalnız feasibility
 | T04d / T04b,T04c | DONE / P1a: Sonlu request/body/burst/concurrency config, erken admission, güvenli hata/transport eşlemesi | P1a ilk ingress: LIM-01/03/04 temel fixture; input limitleri pahalı parse/LLM'den önce, ret domain mutasyonu yapmaz |
 | T06f / T04d,T06d,T06e,T05b | DONE / P1a: Bounded queue/storage admission, scope adaleti, restart sayaç ve receipt/backpressure | P1a: LIM-05/08/09 yerel kısmı; receipt sonrası iş kaybolmaz, replay yan etkisiz |
 | T08c / T06f,T08b,T07b | DONE / P1a: Principal/proje/workspace toplamı, parent-run bütçesi, DB transaction sınırı ve limiter arıza davranışı | P1a: LIM-02/06/07/08 sentetik; ilk model dispatch'i bu minimum rezervasyon guard'ına bağlı, T21b raporlama/settlement'i tamamlar |
-| T24j / T08c,T21b,T21c,T23e | Etkin limit/ret/rezervasyon admin görünümü ve tekrar üretilebilir limit-aşımı pilot raporu | P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run |
+| T24j / T08c,T21b,T21c,T23e | TODO: Etkin limit/ret/rezervasyon admin görünümü ve tekrar üretilebilir limit-aşımı pilot raporu | P1b: LIM-01–10 uygulanabilir yerel yollar; eşikler, ortam, yanlış throttle ve sıfır izinsiz LLM kanıtı; P4 parçaları not_run |
 
 T08c/T09b ilk model dispatch'inde provider/account ortak çıkış sınırını ve 429/retry davranışını da uygular. T28c bunu P3 dış yazma connector'larına taşır; C06 dağıtık atomik sayaç, tenant yük izolasyonu ve hosted ağ sınırını P4'te doğrular. T04/T06 temel ilkeleri, T08c tam kimlik/maliyet entegrasyonunu sağlar; deployment bu kapıları atlayamaz. Sayısal eşikler OPEN-12/16 ile seçilecek; ücretli veya dış sisteme yük testi yetkisi verilmiş değildir.
 
@@ -608,11 +641,11 @@ T08c/T09b ilk model dispatch'inde provider/account ortak çıkış sınırını 
 
 | Dilim / bağımlılık | Teslim | Kabul ve faz |
 |---|---|---|
-| T09d / T09b,T08c | Deterministik assessment, toplam plan tahmini, reason codes ve dispatch risk kapısı | P1a: TRA-01–07/09 çekirdek fixture; missing policy/unknown cap otomatik dispatch açmaz; ilk gerçek model çağrısından önce |
-| T19b / T09d,T19,T08b,T07b | Yetkili insan risk kartı, sınırlı plan approval ve audit; ertele/reddet/küçült | P1b: TRA-05/06/08/10; stale/revoked/duplicate; UI hazır değilken yüksek riskli iş bekler |
-| T24k / T19b,T21b,T21c | Risk corpus'u, yanlış uyarı/tahmin sapması ve onay yükü pilot raporu | P1b: TRA-01–10; gerçek provider yalnız ayrı izinle, aksi halde sentetik/not_run |
+| T09d / T09b,T08c | IN_PROGRESS: Deterministik assessment, toplam plan tahmini, reason codes ve dispatch risk kapısı | P1a: TRA-01–07/09 çekirdek fixture; missing policy/unknown cap otomatik dispatch açmaz; ilk gerçek model çağrısından önce |
+| T19b / T09d,T19,T08b,T07b | TODO: Yetkili insan risk kartı, sınırlı plan approval ve audit; ertele/reddet/küçült | P1b: TRA-05/06/08/10; stale/revoked/duplicate; UI hazır değilken yüksek riskli iş bekler |
+| T24k / T19b,T21b,T21c | TODO: Risk corpus'u, yanlış uyarı/tahmin sapması ve onay yükü pilot raporu | P1b: TRA-01–10; gerçek provider yalnız ayrı izinle, aksi halde sentetik/not_run |
 
-T09b'nin minimum bütçe guard'ı korunur; T09d bunun risk değerlendirmesini tamamlar. T21c sayısal risk policy'sini, T21b usage/unknown muhasebesini sağlar. Normal, önceden yetkili düşük riskli işler her seferinde onay istemez. Eşikler ölçüm kapısında, kod henüz yok.
+T09b'nin minimum bütçe guard'ı korunur; T09d bunun risk değerlendirmesini tamamlar. T21c sayısal risk policy'sini, T21b usage/unknown muhasebesini sağlar. Normal, önceden yetkili düşük riskli işler her seferinde onay istemez. Eşiklerin tam risk policy seçimi açık; mevcut bounded bütçe/unknown guard kodu T08c/T21b içinde, toplam plan risk assessment ve T19b kartı henüz tamamlanmadı.
 
 ## Çoklu chat bağlamı ve işleme gecikmesi — 2026-10-11
 
@@ -620,11 +653,11 @@ T09b'nin minimum bütçe guard'ı korunur; T09d bunun risk değerlendirmesini ta
 
 | Dilim / bağımlılık | Teslim | Kabul ve faz |
 |---|---|---|---|
-| T05d / T05c,T08b | Session/span binding, konu segmenti ve kaynak→aday→record ilişki sözleşmesi | P1a: CHAT-01/04/05; seçilmemiş session, karışık proje, yanlış binding düzeltmesi ve ACL |
-| T10b / T10,T05d | Chat'ler arası duplicate/refinement/conflict ve geç kaynak reconciliation corpus'u | P1a: CHAT-02/03/04; kaynaklar korunur, benzerlik tek başına merge/approval değildir |
+| T05d / T05c,T08b | IN_PROGRESS: Session/span binding, konu segmenti ve kaynak→aday→record ilişki sözleşmesi | P1a: CHAT-01/04/05; seçilmemiş session, karışık proje, yanlış binding düzeltmesi ve ACL |
+| T10b / T10,T05d | IN_PROGRESS: Chat'ler arası duplicate/refinement/conflict ve geç kaynak reconciliation corpus'u | P1a: CHAT-02/03/04; kaynaklar korunur, benzerlik tek başına merge/approval değildir |
 | T06g / T06f | DONE / P1a: Session frontier, max-wait flush, bounded catch-up ve gap/lag ölçümü | P1a: LAG-01–05 sentetik/crash; queue dolunca sahte receipt ve sessiz source drop yok |
-| T18g / T18c,T10b,T20g,T06g | Bounded proje context/delta ve chat→task kaynak görünümü; stale/coverage UX | P1b: CHAT-05/06, LAG-06; host desteklenmiyorsa sync/stop iddiası yok |
-| T24l / T18g,T06g,T24k | Çoklu chat + burst/uzun yük + geciken provider/onay corpus raporu | P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı |
+| T18g / T18c,T10b,T20g,T06g | IN_PROGRESS: Bounded proje context/delta ve chat→task kaynak görünümü; stale/coverage UX | P1b: CHAT-05/06, LAG-06; host desteklenmiyorsa sync/stop iddiası yok |
+| T24l / T18g,T06g,T24k | TODO: Çoklu chat + burst/uzun yük + geciken provider/onay corpus raporu | P1b: CHAT-01–06/LAG-01–06; hız ile kalite, ACL, coverage ve token birlikte; eşik/ortam kayıtlı |
 
 Adapter gerçek erişim testi T02/T16/T17'de; sentetik yük sonucu provider kapasitesi garantisi değildir. Kapasite hedefi OPEN-12/16'da pilot öncesi seçilir. UI tamamlanana kadar trace/cursor çıktısıyla çekirdek kontroller doğrulanır; yüksek riskli catch-up izinsiz model çağrısı açmaz.
 
@@ -634,9 +667,9 @@ Adapter gerçek erişim testi T02/T16/T17'de; sentetik yük sonucu provider kapa
 
 | Dilim / bağımlılık | Teslim | Kabul / faz |
 |---|---|---|
-| T20h / T20e,T14b,T06g | Bekleyen işler için kaynaklı yaş/kanıt/coverage görünümü ve ertele/incele | P1b adayı: RES-01/05; yaş tek başına unutuldu/obsolete/priority değildir |
-| T18h / T18g,T14b,T08b,T09d | Revision/ACL bağlı deterministic resume şablonu, bounded önizle/kopyala; Q11 tercihi doğrultusunda | P1b adayı: RES-02–07; copy model/runner başlatmaz, kritik eksik context görünür; yeni özet metered gate'e tabidir |
-| T24m / T20h,T18h,T24l | Fresh-session oracle, prompt/paket/full-source koşulları ve izinli deney raporu | RES-08 + RES-01–07 regresyonları; model/gerçek veri izni yoksa yalnız hazır sentetik protokol + not_run |
+| T20h / T20e,T14b,T06g | IN_PROGRESS: Bekleyen işler için kaynaklı yaş/kanıt/coverage görünümü ve ertele/incele | P1b adayı: RES-01/05; yaş tek başına unutuldu/obsolete/priority değildir |
+| T18h / T18g,T14b,T08b,T09d | TODO: Revision/ACL bağlı deterministic resume şablonu, bounded önizle/kopyala; Q11 tercihi doğrultusunda | P1b adayı: RES-02–07; copy model/runner başlatmaz, kritik eksik context görünür; yeni özet metered gate'e tabidir |
+| T24m / T20h,T18h,T24l | TODO: Fresh-session oracle, prompt/paket/full-source koşulları ve izinli deney raporu | RES-08 + RES-01–07 regresyonları; model/gerçek veri izni yoksa yalnız hazır sentetik protokol + not_run |
 
 S1-01–06 deney adları ana 30 göreve yeni task sayısı eklemez. Ayrı sentetik prototype stack kapısından sonra incelenebilir; üretim entegrasyonu yukarıdaki bağımlılıklara bağlıdır. Q11-A kopyala önerisi, B başlatma capability araştırması açık; hiçbir düğme execution, egress, ücret veya scope iznini sessiz genişletmez.
 
@@ -647,9 +680,9 @@ S1-01–06 deney adları ana 30 göreve yeni task sayısı eklemez. Ayrı sentet
 | Dilim / bağımlılık | Teslim | Kabul / faz |
 |---|---|---|
 | T14d / T14b,T05c,T08b | IN_PROGRESS: Artifact expected-effect ve exact hedefe bağlı read-back assessment; human reported ayrı | P1a: GAP-01/03/04/05/07/10; gözlem AC/deploy yerine geçmez; yetkisiz okuma/yazma yok |
-| T18i / T18h,T14d,T10b | Güncel context'te kabul/uygulama/unknown ve alternatiflerin kaynağı | P1b: GAP-02/05/06/09; host desteklenmiyorsa teslim/kullanım garantisi yok |
-| T20i / T20h,T14d,T13 | Karar ve teslim durumu ayrı görünüm; ön koşul olduğunda odaklı durum sorusu | P1b: GAP-03/08/10; tekrarlı nag/model çağrısı yok; independent işler açık |
-| T24n / T18i,T20i,T24m | Aynı sentetik görevden fresh-session + dış hedef belirsizliği karşılaştırması | GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run |
+| T18i / T18h,T14d,T10b | IN_PROGRESS: Güncel context'te kabul/uygulama/unknown ve alternatiflerin kaynağı | P1b: GAP-02/05/06/09; host desteklenmiyorsa teslim/kullanım garantisi yok |
+| T20i / T20h,T14d,T13 | IN_PROGRESS: Karar ve teslim durumu ayrı görünüm; ön koşul olduğunda odaklı durum sorusu | P1b: GAP-03/08/10; tekrarlı nag/model çağrısı yok; independent işler açık |
+| T24n / T18i,T20i,T24m | TODO: Aynı sentetik görevden fresh-session + dış hedef belirsizliği karşılaştırması | GAP-01–10; yanlış kabul/uygulama ataması, süre, soru, token/API istekleri; izin yoksa not_run |
 
 İlk local veya GitHub adapter'ı T02/T03 capability seçimine bağlıdır; gelecekteki GitHub evidence T27 kapsamı kaybolmaz. Bu plan yeni hesap bağlantısı veya otomatik upload yetkisi değildir.
 
@@ -672,7 +705,7 @@ Aşağıdaki dilimler ENG-02'nin mevcut kapsamını açar; yeni ana görev/engin
 
 | Alt dilim / bağımlılık | Teslim / durum | Kabul ve doğrulama |
 |---|---|---|
-| T01e / T01 | TODO / P0: TR/EN claim/request/negation/quote/future/implicit karar etiketleri ve holdout; izin varsa ayrıca redakte gerçek çıktı örneklemi | LEX-01–04/07; örnekler source span/actor taşır, gerçek veri yoksa sıklık/tasarruf unknown; mevcut corpus şartı korunur |
+| T01e / T01 | IN_PROGRESS: TR/EN claim/request/negation/quote/future/implicit karar etiketleri ve holdout; izin varsa ayrıca redakte gerçek çıktı örneklemi | LEX-01–04/07; örnekler source span/actor taşır, gerçek veri yoksa sıklık/tasarruf unknown; mevcut corpus şartı korunur |
 | T09e / T01e,T09b,T09c | PROPOSED / P1a: sürümlü rule config, guard'lar ve structured-first candidate yolu; shadow mode, bounded matcher ve provenance dedup | LEX-01–06/08; unmatched içerik kaybolmaz, hiçbir keyword doğrudan command/onay üretmez; negatif örneklerle runtime test gerekir |
 | T24o / T09e,T24 | TODO / P1b: uygun batch baseline / lexical+fallback / structured-first hibrit kıyası | LEX-07/08; aynı holdout/kalite/coverage; bütün token/çağrı/false-done/review ve bakım yükü; ücretli model için Q03 ayrıca |
 
@@ -706,8 +739,8 @@ Kullanıcının Q12'ye geç verdiği yanıt [somut sözleşmede](../product/pend
 | Alt dilim / bağımlılık | Teslim / durum | Kabul |
 |---|---|---|
 | T13e / T13,T07,T08,T05 | IN_PROGRESS / P1a: kalıcı QuestionRequest/PendingDecision bağı, option/presentation snapshot, AnswerRecord ve atomic/revision-bound çözüm | [Manuel kalıcı soru dilimi](../quality/pending-question-runtime.md) + [ayrı onaylı karar bağı](../quality/question-decision-runtime.md); ASK-01–06/08 + LATE-01–07 tam core kabulü açık; silence/timeout approval değil; ID/ref ve authority ayrı; candidate/unmatched cevap korunur |
-| T18e / T13e,T18,T06 | TODO / P1b: host soru/cevap metadata coverage, exact reply/selection normalizasyonu ve delivery capability | ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok |
-| T24f / T13e,T18e,T19,T20i,T24 | TODO / P1b: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması | ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon |
+| T18e / T13e,T18,T06 | IN_PROGRESS: host soru/cevap metadata coverage, exact reply/selection normalizasyonu ve delivery capability | ASK-07 + LATE-02/06/07/08; read/propose/execution farklı; metadata yoksa açık manual fallback; teslim/resume unsupported ise iddia yok |
+| T24f / T13e,T18e,T19,T20i,T24 | IN_PROGRESS: sentetik delayed-answer oracle ve ilgili pending Inbox/brief akışı doğrulaması | ASK-01–08 + LATE-01–08; iki A/B sorusu, changed options, cancel/conflict/retry/restart/gap; yanlış human approval engelleyici regresyon |
 
 T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez. T19/T20i UI, T18g/T18h bounded context açık soruları ve yanıt eşleme durumunu gösterir. P2 bütçeli semantic association kalitesi T25/T26'nın aday refinement'ıdır; tüm platformlarda P1 otomatik eşleme garantisi yok. Ana görev statü/bağımlılıkları değişmedi; bu dilimler ve bütün kontroller not_run.
 
@@ -717,7 +750,7 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 
 - **İş:** ER-R1 bounded keşif DOC_COMPLETE; ER-R2 Graphiti/LangGraph/LiteLLM export/dependency/contract closure TODO; ER-R3 native/config/extension/port/own deney önerisi TODO; ER-R4 kanıtlı adoption önerisi TODO. Ekip modeline ihtiyaç varsa OpenFGA/Cedar; distributed gerekçesi varsa Temporal. Her aday zorunlu runtime dependency değildir.
 - **Kabul:** gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.
-- **Korunan kapı:** yeni mimari/stack/kod alımı owner adoption kararı gerektirir; Q13 ve T03d kapanmadı. 30 ana görev korunur; T01 IN_PROGRESS, diğer 29 TODO; bu alt dilim MVP'den önce on framework kurma talimatı değildir.
+- **Korunan kapı:** yeni mimari/stack/kod alımı owner adoption kararı gerektirir; Q13 ve T03d kapanmadı. 30 ana görev korunur; tarihsel keşif anında T01 IN_PROGRESS, diğer29TODO idi; güncel sayım üsttedir; bu alt dilim MVP'den önce on framework kurma talimatı değildir.
 
 ## Karar→etki→gerçekleşme ölçüm alt dilimleri
 
@@ -729,7 +762,7 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 | T03f / T01f,T02,T03a | IN_PROGRESS / P0 (P0 harness/scorer kısmi; gerçek adapter/telemetry açık): sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
 | T24q / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
 
-Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev korunur; T01 IN_PROGRESS, diğer 29 TODO.
+Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev korunur; bu araştırmanın ilk kaydında T01 IN_PROGRESS, diğer29TODO idi; güncel sayım üsttedir.
 
 ## Teknik boşluk kapanışları — 2026-10-11
 
@@ -807,3 +840,7 @@ Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task ed
 19 Ekim T17 ek kod: [page-atomic continuation](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october), checkpoint/restart/rollback/revoke guard ve yerel origin dedup. Ana T17 In Progress; yeni parent açılmadı, source/model izni genişlemedi.
 
 19 Ekim ana akış kodu: [source→outbox→izinli queue worker→review ve ilerleme kartı](../quality/conversation-processing-runtime.md) bağlandı. Native CLI collect success/failure Operations trace'i kalıcı. Otomatik grant/background activation yok;32source/indexed kapasite, kaynak onboarding ve gerçek model/native kabulü açık. Yeni parent veya erken Done yaratılmadı.
+
+## 19 Ekim görev durumu teyidi
+
+30ana ve129alt kayıt, kendi kabulü ve mevcut kanıtıyla gözden geçirildi. [Satır bazlı önce/sonra, gerekçe ve kanıt](../quality/task-status-audit.json) · [okunabilir sonuç](../quality/task-status-audit.md).42durumsuz kayıt sınıflandı;4eskiTODO kısmi uygulama kanıtıyla In Progress oldu. Kabul daraltılmadı, yeni görev eklenmedi veya ana görev kapatılmadı.

@@ -20,6 +20,27 @@ def validate(root=ROOT, manifest=None):
             rows[match[1]] = dict(status=state[0] if state else 'UNSPECIFIED', dependencies=match[2])
     if manifest['format'] != 'decivora-task-closure-1' or set(manifest['tasks']) != set(tasks) or set(manifest['subtasks']) != set(rows):
         raise ValueError('Closure manifest must cover exact canonical task/subtask inventory.')
+    if any(row['status']=='UNSPECIFIED' for row in rows.values()):
+        raise ValueError('Canonical subtasks need an explicit reviewed status; UNSPECIFIED is not allowed.')
+    review_path=(root / manifest.get('status_review','')).resolve()
+    if not review_path.is_relative_to(root.resolve()) or not review_path.is_file():
+        raise ValueError('Missing task status review artifact.')
+    review=json.loads(review_path.read_text())
+    reviewed={r['id']:r for r in review['subtasks']}
+    reviewed_main={r['id']:r for r in review['main_tasks']}
+    if len(review['subtasks'])!=len(rows) or set(reviewed)!=set(rows) or len(review['main_tasks'])!=len(tasks) or set(reviewed_main)!=set(tasks):
+        raise ValueError('Status review must cover every canonical task exactly once.')
+    for sid,row in rows.items():
+        audit=reviewed[sid]
+        if audit['status']!=row['status'] or not audit['reason'].strip() or not audit['evidence']:
+            raise ValueError('Status review needs matching state, reason and evidence: '+sid)
+        for name in audit['evidence']:
+            path=(root/name).resolve()
+            if not path.is_relative_to(root.resolve()) or not path.is_file():
+                raise ValueError('Status review evidence is missing: '+sid)
+    for tid,task in tasks.items():
+        if reviewed_main[tid]['status']!=task['status']:
+            raise ValueError('Main task status review is stale: '+tid)
     if manifest['mvp_criteria'] != [f'AC-{i:02}' for i in range(1, 15)]:
         raise ValueError('MVP criteria must be preserved.')
     graph = {tid: list(t['dependencies']) for tid, t in tasks.items()}

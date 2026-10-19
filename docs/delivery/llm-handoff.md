@@ -1,5 +1,7 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+Görev durumları19Ekim'de129alt/30ana satır üzerinden [teyit edildi](../quality/task-status-audit.md). Tanımsız statü0; kod/test/plan ve tam kabul ayrımı korunur. Eski tarihli “açık/uygulanmadı” metnini tek başına yeni blocker yapma; current-state ve audit reason/evidence/remaining kabulünü kullan.
+
 Güncel T17: [kalıcı sayfa checkpoint](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october) source/cursor/restart/pending assistant ve yerel profile dedup kodunu anlatır. Önceki gerçek source izni tüketildi; yeni kod yalnız sentetik doğrulandı. Sırada indexed kapasite + progress/gap/queue; sonra ayrı yetkili otomatik model zinciri. Plan: [iyileştirme değerlendirmesi](../quality/capture-improvement-assessment.md). Parent T17 açık.
 
 Log ekip erişimi: [kod/doküman boşluk incelemesi](../quality/log-access-retention-gap-review.md). HTTP hâlâ local_owner; own-user filtre, actor/on_behalf_of, loga özel roller ve zaman bazlı retention uygulanmış sayılmaz. Tasarım rol matrisiyle çalışan local görünümü karıştırma.

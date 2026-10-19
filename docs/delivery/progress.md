@@ -21,10 +21,9 @@ Ana görev ve alt teslim sayıları toplanmaz. Tür, tamamlanan alt teslimin bir
 | Alt teslim durumu | Sayı |
 |---|---|
 | DONE | 56 |
-| IN_PROGRESS | 16 |
+| IN_PROGRESS | 39 |
 | PROPOSED | 5 |
-| TODO | 10 |
-| UNSPECIFIED | 42 |
+| TODO | 29 |
 
 | Tamamlanan alt teslimin türü | Sayı |
 |---|---|
@@ -36,8 +35,8 @@ Kod kategorisi prototipleri, araçları ve executable sözleşmeleri de kapsar; 
 
 | İnsan katkısı/izni gereken kapı | Gereken | Ne zaman |
 |---|---|---|
-| Gerçek model deneyi | API erişimi, provider/model, gönderilecek veri ve toplam harcama tavanı | İlk ücretli dispatch öncesi |
-| Gerçek coding/MCP kaynağı | Seçilen istemci/oturum ve dar erişim izni | Gerçek host bağlantısı öncesi |
+| Gerçek model deneyi | API erişimi ve$3sentetik kapsam mevcut; gerçek sohbet/veri paylaşımı, exact kaynak/context ve uygulama aktivasyonu ayrı izin ister | İlk ücretli dispatch öncesi |
+| Gerçek coding/MCP kaynağı | Yeni gerçek okuma/izleme veya başka istemci için seçilmiş host/oturum ve dar izin; önceki Codex tek TEST izni tüketildi | Gerçek host bağlantısı öncesi |
 | Gerçek dosya hedefi | Seçilen kök, dosya, beklenen içerik ve kriter kapsamı | Kullanıcı dosyasını okumadan önce |
 | İnsan doğruluk incelemesi | Hazırlanmış exact etiket/holdout incelemesi; önceki H1–H4 yeniden sorulmaz | Kalite/ürün kabulü öncesi |
 
@@ -113,194 +112,194 @@ Ana görev kapanışı ile hazırlık/kod/ölçüm ilerlemesi ayrıdır. Aşağ�
 
 ### T01 · Golden corpus ve karşılaştırma protokolü
 
-2026-10-13 · T01g/H1-H3 ve T01i/H4 partial davranış review tamamlandı; source/rubric/cevap kayıtları korunur. T03y receiver hazırlığı tamamlandı; bu T01 exact gold/adjudication/holdout kapanışı değildir.
+19 Ekim2026 — TR/EN development örnekleri, H1–H4 kısmi insan review ve scorer/corpus mevcut; [durum teyidi](../quality/task-status-audit.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Development örneği insan gold/holdout değildir; genel doğruluk hâlâ açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Exact kaynak/etiket inceleme ve adjudication kuyruğundaki kalanları küçük örneklerle tamamla; human gold/holdout gate açık. Receiver isteği tekrar hazırlanmayacak: T03y DONE, Q03-R6 RECEIVER-002 tek run için tüketildi; yeni run izni yok.
+Sıradaki adım: Exact etiket/adjudication ve family holdout kabulünü T01e/f kapsamında tamamla.
 
 ### T02 · İki coding yüzeyinde capability spike
 
-2026-10-13 · Salt okunur host inventory: PATH Codex CLI0.162.0-alpha.17.2 version çıktı; sandbox alias yazımını reddetti. Claude command PATH'te yok, installation unknown. Capture40fixture korunur; gerçek hook/session/transcript veya model çalıştırılmadı.
+19 Ekim2026 — [Codex readback](../quality/codex-real-capture-001.md)6gerçek TEST source; offline şema ve bounded App Server client mevcut.
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Tek kısmi readback iki gerçek host veya sürekli capture garantisi değildir.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: [Hazırlık kapısında](implementation-readiness.md) seçilmiş Codex/Claude host ve scoped grant ile gerçek capability kontrolü. MCP erişimi tam otomatik capture kanıtı değil.
+Sıradaki adım: Claude ve MCP/hook yüzey raporunu dar izinle tamamla; Codex yeni checkpoint sürümünü sonraki izinli okumada doğrula.
 
 ### T03 · Native/extend/build ve teknoloji kararı
 
-2026-10-13 · T03ac [kalıcı explicit reply proposal](../quality/reply-store.md) DONE;14 yeni/248 semantik test. Late source binding/restart/dedup/conflict/current-context/atomic no-resume; gerçek approval, UI/IAM/semantik reply parsing yok. Actual receiver raw aynı, yeni model/API0; Q03-R6 tüketildi.
+19 Ekim2026 — RECEIVER-001/002 invalid_contract geçmişi korunur; sonra20generation/40HTTP sentetik API deneyi ve$3root guard çalıştı. [Güncel sonuç](../quality/openai-development-budget.md).
 
-**Aktif teknik risk:** Observed / High · R23/R24: iki actual receiver çıktı contract/source gate geçmedi. Tipli dönüşüm/durable reply fixture kodu çalışıyor; genel model/capture/native kalite kapıları açık. Usage/hard cap unknown; [ilk run](../quality/receiver-001-result.md), [yeni öneri](../quality/receiver-next-plan.md).
+**Aktif teknik risk:** Dar schema/source başarıları genel semantik kalite, native üstünlük veya ROI kanıtı değildir.
 
 **Denemeler / sonuç:** S02 erişim/span failure, MEMBERSHIP-001 incomplete, MEMBERSHIP-002/003 dar typed/source draft eşleşmeleri. RECEIVER-001 invalid_contract/unscored; RECEIVER-002 actual tek run invalid_contract/unscored; missing next_actions ve ambiguous soru bağlama ret. R22 multi-answer fixture düzeltmesi T03r DONE; eski run hataları korunur, güncel teknik engel diye tekrar sunulmaz.
 
 **Etkilenen iş:** T03 semantik receiver kalite ve gerçek capture/native-ROI kıyası açık; T03c/Q15-A conditional yatırım/runtime kararı kabul edildi. T03y istek/scorer ve T03x bağımsız review fixture kodu DONE; insan gold/gerçek hedef/production IAM/UI kabulü değildir.
 
-Sıradaki adım: RECEIVER-002 tek run tamamlandı/invalid_contract; Q03-R6 tüketildi, yeniden izin bekleyen iş değil. T03aa typed/source-bound readback/action taslağı tamamlandı, tekrar hazırlanmaz; ilk raw/strict scorer değiştirilmez. [Q15-A](build-transition-proposal.md) kabul edildi; T04 başlangıcı T03c/ADR-0012 ile açıldı, parent T03 evidence açık kalır. T01 exact label/T02 capture/T03 native-ROI ölçümleri ayrıca açık kalır. Yeni model dispatch yetkisi yok; production/native/gold/ROI kanıtları açık; T03c koşullu karar kapandı.
+Sıradaki adım: Aynı bağımsız beklentilerde tam ürün zincirini ve adil native kıyası değerlendir; yeni genel keşif turuyla uzatma.
 
 ### T09 · Extraction ve bounded retrieval
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — [Source outbox ve izinli bounded worker](../quality/conversation-processing-runtime.md) review ucuna bağlandı; source/context grant ve actual/unknown bütçe guard korunur.
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: Kaynak kapasitesi/index/paging ve source-specific model aktivasyonu; ardından bağımsız semantic ölçüm.
 
 ### T10 · Temel reconciliation
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Exact duplicate/source attach, kaynaklı relation ve Decision replacement review kodlandı. [Sözleşme](../quality/dialogue-status-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Semantik conflict/refinement/equivalence ve genel Idea Evaluation tamamlanmadı.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T10a/b kapsamındaki açıklanabilir karşı kanıt ve belirsizlik çözümünü tamamla; similarity ile otomatik merge yapma.
 
 ### T13 · Review işlemi ve güvenilir onay
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Status/answer/relation/replacement, scope edit ve lifecycle select→approve→apply kodlu; [son durum](../quality/workflow-ui-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Konuşmadan QuestionRequest üretimi, genel clarification ve split planı atomik kabulü açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: T13e ASK/LATE kapsam eşlemesini ve agent-question routing sınırını doğrula; ardından T14 evidence/Done.
+Sıradaki adım: T13d split ve T13e soru/candidate çözümünü mevcut onay/revision guards ile tamamla.
 
 ### T14 · Evidence ve false-done düzeltmesi
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Human/file-SHA AC/DoD, false-Done/current basis ve önkoşul invalidation kodlandı. [Kanıt sınırı](../quality/workflow-ui-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Gerçek artifact/target/runner yetkisi ve parent-child completion tam kapsamı açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T14a–d kapsamında exact hedef/recipe ve parent completion bağlantısını doğrula; transcript komutu çalıştırma.
 
 ### T15 · Teknik kanıt kapısı
 
-14Ekim2026 · [API-bağımsız dilim](api-independent-development.md) ve [üç karışık yük profili](../quality/mixed-load.md) ölçüldü; kullanıcı verisi/model yok, ana kabul açık.
+19 Ekim2026 — Core crash/restore/replay, source checkpoint ve queue backup/restore fixture mevcut. [Son worker dilimi](../quality/conversation-processing-runtime.md).
 
-**Aktif teknik risk:** Reproduced mechanism corrected / historical trace unknown · Kontrollü SQLite rollback-mode kilit sırası503üretti; WAL startup aynı sırada200verdi. İlk uninstrumented koşunun birebir kök nedeni kanıtlanmadı; tüm503nedenleri kapanmış sayılmaz.
+**Aktif teknik risk:** Modül/regresyon başarıları bütün native/model/target zincirinin kabulü değildir.
 
 **Denemeler / sonuç:** Aynı394ilişki/1409event/2327audit yükünde WAL + snapshot audit reuse:133ms/260msmedyan; kaynak korunumu/falseDone0,100record preview truncated. [318runtime/7browser ve teslim](../quality/concurrency-impact-delivery.md).
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Kontrollü503düzeltmesi ve snapshot audit optimizasyonu testli; T23d uzun soak/disk ve remaining503korelasyonu açık. T13/T19 karar etkisi önizlemesi çalışıyor; tam etki/onay/apply ve gerçek extraction/native kabulü açık.
+Sıradaki adım: Aynı kaynak/revision üzerinden tam zinciri ve recovery proof raporunu birleştir.
 
 ### T17 · Codex adapter
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Seçilmiş thread user/assistant capture,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending ve native Operations trace kodlu. [Teslim](../quality/conversation-processing-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** 32source kapasitesi, onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: İndeksli/paged kapasite ve bağlantı/izin kartı; sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
 
 ### T18 · Minimal MCP ve cross-agent read
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Beş-tool bounded stdio MCP, signed query cursor, private-derived visibility guard ve iki-agent fixture var. [Kod/kapsam](api-independent-development.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Brief/delta/continuation, paylaşım proposalı ve gerçek host onboarding/delivery kabulü açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T18b–i kalan kabulü: source ACL korunarak deterministic devam bağlamı ve gerçek client kurulumu.
 
 ### T19 · Proje seçimi ve Review Inbox UI
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Conversation proposal/status/answer/relation/replacement review, proje seçimi ve source processing kartı kodlu. [Son UI bağlantısı](../quality/conversation-processing-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Proje/kaynak kurulum izin wizardı ve risk plan kartı yok; bütün öneri türleri tamamlanmadı.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T19b risk kartı ve source/model onboarding; mevcut source/proposal review uçlarını yeniden yazma.
 
 ### T20 · Board, Graph ve Timeline
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Board/List/Graph/Timeline, blockers/lifecycle, AND/OR yazarı ve Operations/queue görünümü kodlu. [Güncel UI](../quality/workflow-ui-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Parent-child/split, milestone context export ve tam pending-age/bağlantı envanteri açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T20c/d/g/h/i kapsamını mevcut UIya bağla; parent kriterlerini child sayısıyla tamamlandı sayma.
 
 ### T21 · Routing etiketleri ve usage kaydı
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Shared root token/money reservation, count+actual/unknown/overrun ve routing etiketleri mevcut. [API bütçe kaydı](../quality/openai-development-budget.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Dönem/config UI ve genel source-specific aktivasyon açık; tahmin nihai fatura değildir.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T21b/c kalan dönem/parametre görünümü ve trusted reconciliation; root bütçeyi yeni batch ile sıfırlama.
 
 ### T22 · Chat import ve prompt lineage
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Manual/native source provenance, redaction, turn/item/role ve source+outbox checkpoint kodlu. [Kaynak akışı](../quality/conversation-processing-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Genel1C arşiv/fairness/retention ve iki-host lineage bağları açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Onaylı model/veri/bütçe ile gerçek provider transport ve kalite; message/prompt lineage ve coverage kabulü açık.
+Sıradaki adım: T22b kapasite/manifest ve izinli geçmiş işleme; eski gerçek kaynaklar için izin kendiliğinden yenilenmez.
 
 ### T23 · Backup, export ve yerel güvenlik
 
-Son ilerleme kaydı yok.
+19 Ekim2026 — Private SQLite backup/offline restore, loopback security, credential redaction ve safe Operations sidecar mevcut. [Son TEST readback](../quality/conversation-processing-runtime.md).
 
-**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+**Aktif teknik risk:** Aktif migration/recovery, purge/retention/encryption ve ölçülmüş RPO/RTO açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+Sıradaki adım: T23a–e kalan recovery/privacy ve kapasite kabulünü tamamla; accepted kaynakları limitte silme.
 
 
 ## Mevcut teslim parçaları
 
 Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production engine/MVP değildir.
 
-- **T09/T10/T22 konuşma→öneri→pano** — Manual conversation receipts, Responses request/parser, source quote binding, reconciliation/review; main UX konuşma alanı; [237runtime + browser fixture](../quality/conversation-review-runtime.md); real model/transport/grant/kalite/MCP/capture açık
+- **T09/T10/T22 konuşma→öneri→pano** — Manual conversation receipts, Responses request/parser, source quote binding, reconciliation/review; main UX konuşma alanı; [237runtime + browser fixture](../quality/conversation-review-runtime.md); ilk rapor bu alanları doğrulamadı; sonradan transport/grant/MCP/partial Codex ve queue kodlandı, gerçek genel kalite/aktivasyon kabulü açık
 - **T13e soru→karar dilimi** — Kalıcı manual soru/cevap→gerekçeli proposal→ayrı human approve/apply→Decision; stale ve tek resolution guards; [208runtime + gerçek browser](../quality/question-decision-runtime.md); [cancel/defer/revise/orphan](../quality/question-lifecycle-runtime.md)221runtime testli; fullT13e agent-routing/source kabulü açık
 - **Yerel program/T13c** — Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package; [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık
-- **T13b lifecycle** — Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history; [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık
-- **T13a review kernel** — Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply; [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık
+- **T13b lifecycle** — Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history; [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); lifecycle UI sonradan bağlandı; gerçek completion ve otomatik plan kabulü açık
+- **T13a review kernel** — Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply; [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c ve temel UI sonradan bağlandı; tam T13e/otomatik ürün kabulü açık
 - **T12/T12a impact preview** — Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard; [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14
 - **Beş ana yerel çekirdek teslimi** — T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph; [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok
 - **T09/T10 çalışan hazırlık** — Structured source-span validator/lexical context/exact duplicate relationship review; [Kod ve açık kalite sınırı](../quality/integrated-core.md); semantic inference/FTS/gold ölçümü açık, ana görevler In Progress
@@ -350,7 +349,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 |---|---|---|
 | Receiver model kalitesi ve genelleme | RECEIVER-002 düzeltmeli tek run da invalid_contract; missing required field ve ambiguous-question binding kaynak retleri gözlendi. Dar MEMBERSHIP-002/003 source/type draft eşleşmesi genel kalite değildir | [İlk failure](../quality/receiver-001-result.md), [ikinci gerçek failure](../quality/receiver-002-result.md); ham çıktılar değişmedi. R22 multi-answer fixture toplama T03r DONE; production reconciliation, gold/native/ROI açık |
 | Gold etiket/adjudication | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
-| Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
+| Gerçek Codex/Claude capture | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | Codex selected-thread6source readback doğrulandı; checkpoint/queue ve native trace kodlandı. Claude ve sürekli capture/onboarding/kapsam kabulü açık; native receiver sohbeti tek başına transcript adapter kanıtı değildir |
 | Native/dosya/resume kıyas | Üstünlük ve yatırım yeniden değerlendirmesi; Q15-A core start değil | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
 
 ## Fazlara göre tüm ana işler
@@ -396,4 +395,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `c76ea5942499228c7ff5830450057d542568749a30110de43893618f44fb1095`
+Kaynak fingerprint: `e0ed60832ed67cd790f1d8ed03fb83cadd91bb6b8dd629821c8e2d42862272ae`

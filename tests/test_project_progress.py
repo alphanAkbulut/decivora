@@ -25,7 +25,9 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual(len({s['id'] for s in rows}),129)
         self.assertIn('T05b',{s['id'] for s in rows})
         self.assertEqual(data['work_summary']['statuses']['DONE'],56)
-        self.assertEqual(data['work_summary']['statuses']['UNSPECIFIED'],42)
+        self.assertEqual(data['work_summary']['statuses'].get('UNSPECIFIED',0),0)
+        self.assertEqual(data['work_summary']['statuses']['IN_PROGRESS'],39)
+        self.assertEqual(data['work_summary']['statuses']['TODO'],29)
 
     def test_completed_primary_types_do_not_double_count_test_functions(self):
         summary=progress.build()['work_summary']

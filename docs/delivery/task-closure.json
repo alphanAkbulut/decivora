@@ -273,7 +273,7 @@
     "T01e": {
       "parent": "T01",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T01"
       ],
@@ -299,7 +299,7 @@
     "T02b": {
       "parent": "T02",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T02"
       ],
@@ -693,7 +693,7 @@
     "T04b": {
       "parent": "T04",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T04"
       ],
@@ -798,7 +798,7 @@
     "T05d": {
       "parent": "T05",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T05c",
         "T08b"
@@ -965,7 +965,7 @@
     "T09b": {
       "parent": "T09",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T06",
         "T09"
@@ -979,7 +979,7 @@
     "T09c": {
       "parent": "T09",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T06e",
         "T09b"
@@ -993,7 +993,7 @@
     "T09d": {
       "parent": "T09",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T09b",
         "T08c"
@@ -1022,7 +1022,7 @@
     "T10a": {
       "parent": "T10",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T10"
       ],
@@ -1035,7 +1035,7 @@
     "T10b": {
       "parent": "T10",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T10",
         "T05d"
@@ -1187,7 +1187,7 @@
     "T14c": {
       "parent": "T14",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T14a",
         "T14b",
@@ -1230,7 +1230,7 @@
     "T16b": {
       "parent": "T16",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T02b",
         "T05c",
@@ -1274,7 +1274,7 @@
     "T18f": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T18c",
         "T06e"
@@ -1288,7 +1288,7 @@
     "T18g": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T18c",
         "T10b",
@@ -1304,7 +1304,7 @@
     "T18h": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T18g",
         "T14b",
@@ -1320,7 +1320,7 @@
     "T18i": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T18h",
         "T14d",
@@ -1335,7 +1335,7 @@
     "T18e": {
       "parent": "T18",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T13e",
         "T18",
@@ -1350,7 +1350,7 @@
     "T19b": {
       "parent": "T19",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T09d",
         "T19",
@@ -1381,7 +1381,7 @@
     "T20a": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T20"
       ],
@@ -1409,7 +1409,7 @@
     "T20c": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T07",
         "T14b",
@@ -1454,7 +1454,7 @@
     "T20g": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T05c",
         "T16b",
@@ -1469,7 +1469,7 @@
     "T20h": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T20e",
         "T14b",
@@ -1484,7 +1484,7 @@
     "T20i": {
       "parent": "T20",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T20h",
         "T14d",
@@ -1514,7 +1514,7 @@
     "T21c": {
       "parent": "T21",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T08b",
         "T21b"
@@ -1528,7 +1528,7 @@
     "T22b": {
       "parent": "T22",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T06",
         "T09b",
@@ -1558,7 +1558,7 @@
     "T23b": {
       "parent": "T23",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T23"
       ],
@@ -1571,7 +1571,7 @@
     "T23e": {
       "parent": "T23",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T20f",
         "T21c",
@@ -1601,7 +1601,7 @@
     "T24a": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T24"
       ],
@@ -1614,7 +1614,7 @@
     "T24c": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T18c",
         "T20b",
@@ -1629,7 +1629,7 @@
     "T24g": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T20f",
         "T21c",
@@ -1644,7 +1644,7 @@
     "T24h": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T16b",
         "T17",
@@ -1659,7 +1659,7 @@
     "T24i": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T09c",
         "T14c",
@@ -1676,7 +1676,7 @@
     "T24j": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T08c",
         "T21b",
@@ -1692,7 +1692,7 @@
     "T24k": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T19b",
         "T21b",
@@ -1707,7 +1707,7 @@
     "T24l": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T18g",
         "T06g",
@@ -1722,7 +1722,7 @@
     "T24m": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T20h",
         "T18h",
@@ -1737,7 +1737,7 @@
     "T24n": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T18i",
         "T20i",
@@ -1780,7 +1780,7 @@
     "T24f": {
       "parent": "T24",
       "source": "docs/delivery/backlog.md",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T13e",
         "T18e",
@@ -1859,7 +1859,7 @@
     "T28c": {
       "parent": "T28",
       "source": "docs/delivery/backlog.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T28b"
       ],
@@ -1928,7 +1928,7 @@
     "T18b": {
       "parent": "T18",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T18a",
         "T08b"
@@ -1942,7 +1942,7 @@
     "T23c": {
       "parent": "T23",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T23a",
         "T23b"
@@ -1956,7 +1956,7 @@
     "T23d": {
       "parent": "T23",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T23c"
       ],
@@ -1969,7 +1969,7 @@
     "T24b": {
       "parent": "T24",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T23d",
         "T18b"
@@ -1983,7 +1983,7 @@
     "T28b": {
       "parent": "T28",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T28",
         "T08b"
@@ -1997,7 +1997,7 @@
     "T02c": {
       "parent": "T02",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T02"
       ],
@@ -2010,7 +2010,7 @@
     "T18d": {
       "parent": "T18",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "IN_PROGRESS",
       "dependencies": [
         "T05b",
         "T08b",
@@ -2027,7 +2027,7 @@
     "T24e": {
       "parent": "T24",
       "source": "docs/delivery/team-data-plan.md",
-      "status": "UNSPECIFIED",
+      "status": "TODO",
       "dependencies": [
         "T18d",
         "T24b"
@@ -2038,5 +2038,6 @@
       "reason": "Existing accepted core scope; no evidence inferred from unspecified status.",
       "required_for_parent_closure": true
     }
-  }
+  },
+  "status_review": "docs/quality/task-status-audit.json"
 }

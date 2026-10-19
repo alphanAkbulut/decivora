@@ -2,7 +2,7 @@
 
 2026-10-13 — **uygulama sırası**, yeni görev listesi veya altı ayrı program değildir. Mevcut Python 3.12/SQLite çekirdeği ve yerel web arayüzü büyütülecek. Tam vizyon korunur; paketler MVP teslimini yönetir. [Backlog](backlog.md) görev otoritesidir; paket adı yeni task sayılmaz.
 
-Bugün 7 ana iş Done, 14 In Progress, 9 To Do. To Do'nun **3'ü MVP (T16,T17,T24), 6'sı sonraki fazlar (T25–T30)**. T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
+19Ekim teyidi:7ana iş Done,15InProgress,8ToDo. ToDo'nun **2'si MVP (T16,T24),6'sı sonraki fazlar (T25–T30)**; T17 artık InProgress. [129alt kayıt teyidi](../quality/task-status-audit.md). T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.
 
 | Paket | Kod işi / mevcut görevler | Mevcut kodu güncelleme ve yeni modül | Kullanıcının göreceği teslim | Paket kabulü |
 |---|---|---|---|---|
@@ -35,7 +35,7 @@ Kullanıcı diyalogdan gerçek görev ve durum üretimini öne aldı. [Diyalog i
 
 ### İlk sonraki kod teslimi
 
-**Ana akış denetimi önceliği güncelledi:** [kritik bağlantılar ve kanıt](../quality/primary-flow-audit.md). Önce mevcut T09/T10 kaynaklı karar/ilişki/soru proposal köprüsü ve T13/T19 impact review→ayrı approve/apply bağlantısı dar senaryoda kapatılmalı. Mevcut context'e karar/soru/ilişki ekleme bu tur uygulandı; tam semantik ilişki çıkarımı sayılmaz. Bu işler API beklemez. Model aktivasyonu/token-context-para kontrolleri gerçek dispatch öncesinde yine zorunludur; maliyet ekranı ana ürün zincirinin yerine geçirilmez. Native capture ve izinli next-agent context ayrı açık kabul kapılarıdır.
+**Güncel kod sırası:** native source kapasitesi/index/paging → kaynak/model onboarding ve izinli queue aktivasyonu → gerçek semantik kalite/reconciliation → bütünleşik impact/review/verification/continuation kabulü. Source-bound answer/relation/replacement, AND/OR gerekçe yazarı, scope/lifecycle apply, gerçek kısmi Codex readback, kalıcı checkpoint ve bounded source queue worker kodlandı. Bunları yeniden yapılacak özellik diye sayma. [Güncel durum](current-state.md) ve [teyit](../quality/task-status-audit.md) çalışan alt küme ile kalan kabulü ayırır. Claude adapter, kaynak izin UI, full backfill ve gerçek günlük kullanım kabulü açık.
 
 ### Neler birlikte ilerleyebilir?
 

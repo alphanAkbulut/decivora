@@ -1,6 +1,8 @@
 # Faz bazlı proje ağacı ve takip görünümü
 
-**2026-10-13 — Q15-A ile P1a çekirdek başladı; P0 kanıt işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
+**19 Ekim2026 — durum teyidi:7Done/15InProgress/8ToDo; P0 kalite ve P1 uygulama işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
+
+[129alt kaydın teyidi](../quality/task-status-audit.md):56Done/39InProgress/29ToDo/5Proposed; durumu tanımsız kayıt yok.
 
 **Otorite:** İşin tanımı, ana/alt görev, bağımlılık ve kabul kriterleri [backlog](backlog.md) ve bağlı [ekip/veri planında](team-data-plan.md); gerçekleşen ilerleme/kanıt [status](status.md); ürün çıkış sınırı [MVP](../product/mvp.md) ve [roadmap](../../ROADMAP.md) içindedir. Aşağıdaki 30 ana görev satırı backlog'dan türetilmiştir; doküman kontrolü ID/faz/durum/başlık/ön koşul eşleşmesini denetler. Bunları bağımsız güncelleme.
 

@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -22,6 +23,13 @@ class ClosureTests(unittest.TestCase):
         self.assertEqual(result['main_tasks'], 30)
         self.assertEqual(result['subtasks'], 129)
         self.assertEqual(result['dependency_cycles'], 0)
+
+    def test_missing_canonical_status_is_rejected_instead_of_becoming_invisible_work(self):
+        data=closure.build(ROOT)
+        data['tasks'][0]['subtasks'][0]['status']='UNSPECIFIED'
+        with patch.object(closure,'build',return_value=data):
+            with self.assertRaisesRegex(ValueError,'explicit reviewed status'):
+                closure.validate(ROOT,self.manifest)
 
     def test_reintroducing_parent_downstream_cycle_is_rejected(self):
         row = self.manifest['subtasks']['T05d']

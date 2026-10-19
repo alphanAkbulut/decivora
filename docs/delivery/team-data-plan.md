@@ -25,11 +25,11 @@ Ana görevler [T01–T30](backlog.md) korunur. Bu mevcut alt dilimler [Q16-A man
 | T08b / T05b,T08a | DONE / P1a: `authorize(action,resource,context)` sınırı, dar grant, authz revision/commit kontrolü | Spoof/revoke/stale run reddi; MU02–MU04/MU06 |
 | T06d / T06a,T05b | DONE / P1a: Receipt/dedup ömrünü raw payload'dan ayır; bounded spool/backpressure | Ack olmayan veri TTL ile kaybolmaz; MU11 |
 | T07b / T07a,T08b | DONE / P1a: Domain command + güvenlik audit atomikliği; güvenli structured logger | Audit arızası mutation'ı durdurur; log secret içermez; MU08/MU09 |
-| T18b / T18a,T08b | ACL-aware retrieval/context; personal→project paylaşım proposal'ı | Private özet/citation sızmaz; MU05/MU10 |
-| T23c / T23a,T23b | Versioned retention, expiry preview, türev invalidation, purge/restore manifest | TTL ve restore drill; MU11/MU12; OPEN-08 gerçek veri öncesi |
-| T23d / T23c | Tutarlı DB+blob snapshot; disk/WAL/backup health; sentetik load harness | Hata ve capacity raporu, ölçülmüş RPO/RTO; MU15/MU16 |
-| T24b / T23d,T18b | Bireysel pilot erişim/retention anlaşılabilirliği ve kaynak kaybı ölçümü | Kullanıcı “kim görür/ne silinir?” yanıtını doğru verebilir; kalan sınırlar raporlu |
-| T28b / T28,T08b | Dış delivery öncesi güncel connector/actor scope kontrolü | MU18; belirsiz dış sonuç doğru gösterilir; P3'e kadar uygulanmaz |
+| T18b / T18a,T08b | IN_PROGRESS: ACL-aware retrieval/context; personal→project paylaşım proposal'ı | Private özet/citation sızmaz; MU05/MU10 |
+| T23c / T23a,T23b | TODO: Versioned retention, expiry preview, türev invalidation, purge/restore manifest | TTL ve restore drill; MU11/MU12; OPEN-08 gerçek veri öncesi |
+| T23d / T23c | IN_PROGRESS: Tutarlı DB+blob snapshot; disk/WAL/backup health; sentetik load harness | Hata ve capacity raporu, ölçülmüş RPO/RTO; MU15/MU16 |
+| T24b / T23d,T18b | TODO: Bireysel pilot erişim/retention anlaşılabilirliği ve kaynak kaybı ölçümü | Kullanıcı “kim görür/ne silinir?” yanıtını doğru verebilir; kalan sınırlar raporlu |
+| T28b / T28,T08b | TODO: Dış delivery öncesi güncel connector/actor scope kontrolü | MU18; belirsiz dış sonuç doğru gösterilir; P3'e kadar uygulanmaz |
 
 ## Çok-agent ve ekip teslim kapıları
 
@@ -37,9 +37,9 @@ Ana görevler [T01–T30](backlog.md) korunur. Bu mevcut alt dilimler [Q16-A man
 
 | Dilim / bağımlılık | Somut çıktı | Kabul |
 |---|---|---|
-| T02c / T02 | İki izinli oturum/run için kimlik, parent, input, tool, output, usage ve stop capability raporu | AGT-01–03; gerçek host/build; erişilemeyen alan unknown. Q02 yüzey seçimi, gerçek veri/ücret için Q03 |
-| T18d / T05b,T08b,T18b,T18c,T02c | Aynı kişisel projede iki agent'ın kaynaklı kaydı, run/task bağları ve sınırlandırılmış context'i | AGT-01–06; duplicate/race/revoke/usage; agent başlatma zorunlu değil |
-| T24e / T18d,T24b | Tek owner + iki agent pilotu; sentetik başlangıç, coverage ve kanıt incelemesi | AGT-01–06; false completed yok, görünmeyen input/muhakeme uydurulmaz |
+| T02c / T02 | TODO: İki izinli oturum/run için kimlik, parent, input, tool, output, usage ve stop capability raporu | AGT-01–03; gerçek host/build; erişilemeyen alan unknown. Q02 yüzey seçimi, gerçek veri/ücret için Q03 |
+| T18d / T05b,T08b,T18b,T18c,T02c | IN_PROGRESS: Aynı kişisel projede iki agent'ın kaynaklı kaydı, run/task bağları ve sınırlandırılmış context'i | AGT-01–06; duplicate/race/revoke/usage; agent başlatma zorunlu değil |
+| T24e / T18d,T24b | TODO: Tek owner + iki agent pilotu; sentetik başlangıç, coverage ve kanıt incelemesi | AGT-01–06; false completed yok, görünmeyen input/muhakeme uydurulmaz |
 
 SDK/orchestrator ile aktif execution daha sonraki ROU-02 kapsamıdır. Görevleri takip etmek ve agent'ı başlatmak aynı teslim değildir.
 
@@ -47,11 +47,11 @@ SDK/orchestrator ile aktif execution daha sonraki ROU-02 kapsamıdır. Görevler
 
 | Dilim / bağımlılık | Somut çıktı / faz | Kabul |
 |---|---|---|
-| T13e / T08b,T13 | P1a sözleşme, P1b inbox: kalıcı QuestionRequest/AnswerRecord; tür, karar capability'si, dedup, stale ve wait links | [ASK-01–06/08](../architecture/agent-and-team-operation.md); soru/yanıt/approval/task completion ayrı |
-| T18e / T02c,T13e,T18d | P1b: read/report + question/answer delivery capability raporu, delivery_pending/unsupported görünümü | ASK-03/05/07; gözlem-only host'ta pause/resume iddiası yok. Aktif bridge/auto-resume ROU-02 execution kapısında |
-| T24f / T13e,T18e | P1b: bilgi sorusu, insan kararı, timeout, stale, conflict, döngü, revocation ve unsupported delivery fixture'ları | ASK-01–08; timeout veya parent mesajı insan approval'ı üretemez |
+| T13e / T08b,T13 | IN_PROGRESS: P1a sözleşme, P1b inbox: kalıcı QuestionRequest/AnswerRecord; tür, karar capability'si, dedup, stale ve wait links | [ASK-01–06/08](../architecture/agent-and-team-operation.md); soru/yanıt/approval/task completion ayrı |
+| T18e / T02c,T13e,T18d | IN_PROGRESS: P1b: read/report + question/answer delivery capability raporu, delivery_pending/unsupported görünümü | ASK-03/05/07; gözlem-only host'ta pause/resume iddiası yok. Aktif bridge/auto-resume ROU-02 execution kapısında |
+| T24f / T13e,T18e | IN_PROGRESS: P1b: bilgi sorusu, insan kararı, timeout, stale, conflict, döngü, revocation ve unsupported delivery fixture'ları | ASK-01–08; timeout veya parent mesajı insan approval'ı üretemez |
 
-Bu dilimler uygulanmadı. Sayısal danışma/hop/retry limitleri engineering fixture'ında hazırlanır; bu belge soru yönlendirmek adına yeni model/agent çalıştırma izni vermez. Ayrı yetkili insan gerekmesi ve erişim/coverage eksikliği sessizce düşük review policy'sine çevrilemez.
+Bu dilimlerin tam kabulü açık. T13e/T18e/T24f için kısmi soru/capture/fixture kodu mevcut; güncel durumları backlog otoritesi ve görev durumu teyidinde ayrılır. Sayısal danışma/hop/retry limitleri engineering fixture'ında hazırlanır; bu belge soru yönlendirmek adına yeni model/agent çalıştırma izni vermez. Ayrı yetkili insan gerekmesi ve erişim/coverage eksikliği sessizce düşük review policy'sine çevrilemez.
 
 ### P4 ekip kurulum ve erişim kapıları
 

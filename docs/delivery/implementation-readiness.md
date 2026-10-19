@@ -1,6 +1,6 @@
 # Kod geliştirme hazırlığı: gerçek blocker ve bağımsız işler
 
-**2026-10-12 · P0.** Kullanıcı insan bağımlılığı olmayan işleri tamamlamamızı, teknik belirsizlikleri somutlaştırmamızı istedi. Bu talep mevcut P0 zincirini geliştirme yetkisidir; ayrı ücret, dış model aktarımı, gerçek host ayarı veya production stack kabulü değildir.
+**19Ekim2026 güncel giriş; aşağıdaki tarihli ilk teslim kanıtları kendi kapsamıyla korunur.** [159kayıt durum teyidi](../quality/task-status-audit.md) ve [bugünkü ürün resmi](current-state.md) mevcut kaynaklardır. **İlk talep12Ekim/P0 idi.** Kullanıcı insan bağımlılığı olmayan işleri tamamlamamızı, teknik belirsizlikleri somutlaştırmamızı istedi. Bu talep mevcut P0 zincirini geliştirme yetkisidir; ayrı ücret, dış model aktarımı, gerçek host ayarı veya production stack kabulü değildir.
 
 ## “Deney” tam olarak ne?
 
@@ -10,11 +10,11 @@ Python kaynak kodu, testler ve ölçüm komutlarıdır. [Spike-0](../../spikes/s
 
 | İş | Çıktı | Doğrulama |
 |---|---|---|
-| T09/T10/T22 konuşma→öneri→pano | Manual conversation receipts, Responses request/parser, source quote binding, reconciliation/review; main UX konuşma alanı | [237runtime + browser fixture](../quality/conversation-review-runtime.md); real model/transport/grant/kalite/MCP/capture açık |
+| T09/T10/T22 konuşma→öneri→pano | Manual conversation receipts, Responses request/parser, source quote binding, reconciliation/review; main UX konuşma alanı | [237runtime + browser fixture](../quality/conversation-review-runtime.md); ilk rapor bu alanları doğrulamadı; sonradan transport/grant/MCP/partial Codex ve queue kodlandı, gerçek genel kalite/aktivasyon kabulü açık |
 | T13e soru→karar dilimi | Kalıcı manual soru/cevap→gerekçeli proposal→ayrı human approve/apply→Decision; stale ve tek resolution guards | [208runtime + gerçek browser](../quality/question-decision-runtime.md); [cancel/defer/revise/orphan](../quality/question-lifecycle-runtime.md)221runtime testli; fullT13e agent-routing/source kabulü açık |
 | Yerel program/T13c | Kalıcı Task board, AC/DoD sürümü/onayı, work-start; executable launcher/package | [185runtime + real browser flow](../quality/local-preview.md); T19/T20 IP, semantic/Done/native/MCP açık |
-| T13b lifecycle | Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history | [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); real completion ve UI açık |
-| T13a review kernel | Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply | [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c/e ve UI açık |
+| T13b lifecycle | Complete rationale + downstream guard, explicit cancel/reopen event, preserved edges/history | [20yeni/168runtime test/lifecycle-demo](../quality/task-lifecycle.md); lifecycle UI sonradan bağlandı; gerçek completion ve otomatik plan kabulü açık |
+| T13a review kernel | Persisted selection/dependent groups/separate approval, source+policy recheck/atomic apply | [18yeni/148runtime test/review-demo](../quality/review-kernel.md); T13b/c ve temel UI sonradan bağlandı; tam T13e/otomatik ürün kabulü açık |
 | T12/T12a impact preview | Bounded deterministic proposal, visited/frontier, source/knowledge/authz snapshot + persisted stale guard | [21yeni/130runtime test ve impact-demo](../quality/impact-preview.md); manual input, apply/verification T13/T14 |
 | Beş ana yerel çekirdek teslimi | T05/T06/T07/T08/T11: normalized tenant binding, durable receipts/jobs, event/replay/restore, atomic approval/audit/budget, typed graph | [44 yeni/95 runtime test ve core-demo](../quality/integrated-core.md); gerçek source/login/model/UI yok |
 | T09/T10 çalışan hazırlık | Structured source-span validator/lexical context/exact duplicate relationship review | [Kod ve açık kalite sınırı](../quality/integrated-core.md); semantic inference/FTS/gold ölçümü açık, ana görevler In Progress |
@@ -68,7 +68,7 @@ T04 runtime source contract ve CLI gerçekten kodlandı; graph/IAM/API/UI/semant
 |---|---|---|---|
 | Receiver model kalitesi ve genelleme | Gerçek model ölçümü bekliyor | RECEIVER-002 düzeltmeli tek run da invalid_contract; missing required field ve ambiguous-question binding kaynak retleri gözlendi. Dar MEMBERSHIP-002/003 source/type draft eşleşmesi genel kalite değildir | [İlk failure](../quality/receiver-001-result.md), [ikinci gerçek failure](../quality/receiver-002-result.md); ham çıktılar değişmedi. R22 multi-answer fixture toplama T03r DONE; production reconciliation, gold/native/ROI açık |
 | Gold etiket/adjudication | İnsan değerlendirmesi | Kodun çalışmasını değil, kalite skorlarının insan doğruluğu ve release genellemesini sınırlar | T01g/H1-H3 ve T01i/H4 partial davranış review DONE; [review kuyruğu](../quality/human-review-queue.md), exact etiket/adjudication/holdout açık |
-| Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | A source import önce; B bağlantı sonraki kapı. Capture ölçüm düzeneği var; native receiver sohbeti transcript capture adapter testi değildir |
+| Gerçek Codex/Claude capture | Seçilmiş sandbox/host ve grant | Otomatik capture/capability iddiası; MCP tool erişimi full capture değildir | Codex selected-thread6source readback doğrulandı; checkpoint/queue ve native trace kodlandı. Claude ve sürekli capture/onboarding/kapsam kabulü açık; native receiver sohbeti tek başına transcript adapter kanıtı değildir |
 | Native/dosya/resume kıyas | Adil koşullar ve gerçek ölçüm | Üstünlük ve yatırım yeniden değerlendirmesi; Q15-A core start değil | [Kıyas protokolü](../quality/pilot-comparison-plan.md): offline serialization/byte kıyası tamamlandı; gerçek alıcı/native/user-burden/ROI kıyası not_run |
 
 MVP kapsamındaki olay geçmişi, backup, source isolation, yetki/onay ve verification invariant’ları önceden uygulanabilir sözleşmelere bağlandı; doğru runtime/host davranışları testlerle kanıtlanacak. Ekip/cloud ve ileri dil/connector detaylarının tamamını şimdi seçmek gerekmiyor.
