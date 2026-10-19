@@ -1,5 +1,7 @@
 # Mevcut durum
 
+**19 Ekim — ilk gerçek Codex kaynak aktarımı:** kullanıcı onaylı tek yerel TEST okuması, seçilmiş2turdan6user/assistant mesajı kaydetti; TEST API readback doğrulandı. İlk full-response byte sınırı hatası korundu; metadata+one-item pagination düzeltildi. İki turda da okunmamış item var; kalıcı cursor/backfill açık, T17 kapanmadı.6kaynak Waiting for model; yeni Task0 ve ücretli çağrı0; kaynak izni kullanılıp bağlantı kapatıldı. [Bulgu, düzeltme ve kanıt](../quality/codex-real-capture-001.md). Ana7/15/8 korunur.
+
 **19 Ekim — kullanıcı mesajı capture bağlantısı kodlandı:** App Server üzerinden seçilmiş tek thread'in bounded user/assistant metin okuması ve açık sınırlı polling komutu eklendi. Önceki mesajlardan bounded bağlam, actor/item/turn kimliği, tekrar/değişiklik/privacy ve revoke/commit kontrolleri var. Kurulu CLI offline şeması doğrulandı; gerçek sohbet okuma/normal UI etkinleştirme yapılmadı. [Kod, sürüm ve sınırlar](../quality/codex-exec-capture-runtime.md#19-october--app-server-user-message-capture-and-bounded-polling). T17 In Progress; ana7/15/8 aynı, yeni ücretli çağrı0.
 
 **19 Ekim — T17 Codex capture kodu başladı:** seçilmiş `codex exec --json` akışındaki tamamlanmış assistant mesajları kalıcı, kaynak kimlikli conversation kaydına ve mevcut review zincirine bağlandı. Cursor/retry/restart, partial coverage, privacy ve atomik rollback var. Gerçek desktop sohbet yakalama/otomatik model dispatch yok; T17 tamamlanmadı. [Kod ve sınırlar](../quality/codex-exec-capture-runtime.md). Ana7Done/15InProgress/8ToDo; ücretli yeni çağrı0.

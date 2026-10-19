@@ -225,3 +225,5 @@ Local-preview çizimine human complete rationale review→versioned audit/facts�
 19 Ekim Codex exec capture: mevcut local-preview1 şemasına seçilmiş CLI stream→atomik kaynak/cursor→hazırlanan context yolu eklendi.50/25 inventory aynı;50şema cached Mermaid11.17.2 ile ağ kapalı render edildi, kaynak/hash kayıtları güncellendi. Önceki değişen render superseded içinde korundu. Native desktop veya gerçek semantik ürün kabulü değildir.
 
 19 Ekim App Server user/assistant yolu local-preview1 çizimine eklendi.50şema ağ kapalı Mermaid11.17.2ile render edildi; inventory50/25korundu, source/SVG hashleri yenilendi. Önceki değişen source kaydı superseded içinde korundu; gerçek host/model kabulü değildir.
+
+19 Ekim gerçek capture bulgusu: local-preview1 artık metadata→one-item paging,1MiB/32sayfa koruması ve kısmi kapsamı gösterir.50şema render edildi; kaynak/hash kayıtları ve değişen SVG yenilendi; önceki proof superseded içinde korunur.6gerçek source kaydı tam-capture/model kabulü değildir.

@@ -142,7 +142,8 @@
       "core_acceptance": "Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.",
       "core_verified": false,
       "evidence": [
-        "docs/quality/codex-exec-capture-runtime.md"
+        "docs/quality/codex-exec-capture-runtime.md",
+        "docs/quality/codex-real-capture-001.md"
       ],
       "release_scope": "MVP"
     },

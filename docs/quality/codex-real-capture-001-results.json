@@ -1,0 +1,31 @@
+{
+  "format": "decivora-selected-source-readback-1",
+  "date": "2026-10-19",
+  "source_surface": "codex_app_server",
+  "provider_version": "0.162.0-alpha.17.2",
+  "target_environment": "test",
+  "authorized_max_turns": 10,
+  "requested_turns": 2,
+  "attempts": [
+    {"method": "full_turn_page", "outcome": "capture_limit", "source_imports": 0},
+    {"method": "turn_metadata_then_item_pages", "outcome": "partial_capture", "local_rpc_requests": 34, "source_imports": 6}
+  ],
+  "item_pages": 32,
+  "incomplete_item_turns": 2,
+  "older_turns_omitted": true,
+  "actors_observed": ["human", "assistant"],
+  "known_credential_matches": 0,
+  "test_ui_readback": true,
+  "waiting_for_model": 6,
+  "new_canonical_records": 0,
+  "paid_calls": 0,
+  "provider_dispatches": 0,
+  "source_text_in_report": false,
+  "reasoning_or_tool_bodies_persisted": false,
+  "disconnected": true,
+  "normal_db_file_hash_unchanged": true,
+  "complete_turn_coverage": false,
+  "durable_item_cursor_implemented": false,
+  "semantic_quality_measured": false,
+  "mvp_accepted": false
+}

@@ -14,14 +14,18 @@ def public_messages(page):
     """Keep roles and item identity; never retain private tool/reasoning bodies."""
     if type(page) is not dict or type(page.get('data')) is not list or len(page['data']) > MAX_TURNS:
         _fail('invalid_codex_page')
-    messages = []; seen = set(); turns = set(); skipped = 0; active = 0
+    transport_counts={key:page.get(key,0) for key in ('item_pages','ignored_private_items','capture_unsupported_items')}
+    if any(type(v) is not int or not 0<=v<=32 for v in transport_counts.values()): _fail('invalid_codex_page')
+    messages = []; seen = set(); turns = set(); skipped = 0; active = 0; incomplete=0
     for turn in reversed(page['data']):  # read request is newest first
         if type(turn) is not dict: _fail('invalid_codex_page')
         identifier(turn.get('id'))
         if turn['id'] in turns: _fail('capture_item_conflict')
         turns.add(turn['id'])
         status = turn.get('status')
-        if turn.get('itemsView','full') != 'full': _fail('capture_incomplete_page')
+        partial=page.get('capture_transport')=='decivora-codex-item-pages-1' and turn.get('capture_items_truncated') is True
+        if turn.get('itemsView','full') != 'full' and not partial: _fail('capture_incomplete_page')
+        incomplete+=partial
         if status not in ('completed','interrupted','failed','inProgress'):
             _fail('invalid_codex_page')
         if type(turn.get('items')) is not list or len(turn['items']) > 256:
@@ -61,7 +65,8 @@ def public_messages(page):
                                  observed_actor='human' if kind == 'userMessage' else 'assistant', text=text))
     if type(page.get('nextCursor')) not in (str, type(None)): _fail('invalid_codex_page')
     return dict(messages=messages, older_turns_omitted=page.get('nextCursor') is not None,
-                active_turns=active, unsupported_items=skipped)
+                active_turns=active, unsupported_items=skipped+transport_counts['capture_unsupported_items'],incomplete_item_turns=incomplete,
+                item_pages=transport_counts['item_pages'],ignored_private_items=transport_counts['ignored_private_items'])
 
 
 class CodexAppServerCapture(CodexExecCapture):
@@ -72,12 +77,13 @@ class CodexAppServerCapture(CodexExecCapture):
                     desktop_sessions='selected thread availability requires host verification',
                     automatic_discovery=False, model_dispatch=False, max_turns=MAX_TURNS)
 
-    def collect(self, scope, project, *, capture_id, client):
+    def collect(self, scope, project, *, capture_id, client, limit=MAX_TURNS):
         identifier(capture_id)
+        if type(limit) is not int or not 1<=limit<=MAX_TURNS: _fail('capture_limit')
         # Scope validated before any source read. No host request inside a transaction.
         with self.core.read_snapshot():
             binding = self._authorize(scope, project, capture_id)
-        page = client.read_turns(binding['thread_id'], limit=MAX_TURNS)
+        page = client.read_turns(binding['thread_id'], limit=limit)
         parsed = public_messages(page)
         # Persist sanitized public content only; provider metadata/error bodies stay out.
         with self.core.transaction():

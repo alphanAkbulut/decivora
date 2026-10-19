@@ -21,10 +21,12 @@ def main(argv=None):
     parser.add_argument('--codex-home')
     parser.add_argument('--consent',action='store_true')
     parser.add_argument('--polls',type=int,default=1)
+    parser.add_argument('--turn-limit',type=int,default=10)
     parser.add_argument('--interval',type=float,default=2)
     args = parser.parse_args(argv)
     if not args.consent: parser.error('Explicit selected-thread local capture consent is required.')
     if not 1<=args.polls<=300 or not 0.25<=args.interval<=60: parser.error('Bounded polls/interval required.')
+    if not 1<=args.turn_limit<=10: parser.error('Turn limit must be between 1 and 10.')
     db = Path(args.db)
     if not db.is_file() or db.is_symlink(): parser.error('Select an existing regular workspace database.')
     try:
@@ -35,7 +37,7 @@ def main(argv=None):
                             provider_version=args.provider_version,consent=args.consent)
             with ReadOnlyAppServer(args.codex_executable,args.thread_id,cwd=ROOT,codex_home=args.codex_home) as client:
                 for poll in range(args.polls):
-                    receipt = adapter.collect(scope,args.project,capture_id=args.capture_id,client=client)
+                    receipt = adapter.collect(scope,args.project,capture_id=args.capture_id,client=client,limit=args.turn_limit)
                     print(json.dumps({k:v for k,v in receipt.items() if k!='fingerprints'}),flush=True)
                     if poll+1<args.polls: time.sleep(args.interval)
         return 0

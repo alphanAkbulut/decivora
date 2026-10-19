@@ -331,6 +331,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **19 Ekim kod dilimi:** seçilmiş exec JSONL→kalıcı kaynak→mevcut review bağlantısı, cursor/retry/privacy/atomik rollback. [Uygulama ve kalan host kapıları](../quality/codex-exec-capture-runtime.md). Gerçek CLI/desktop capture ve tam konuşma kabulü açık; T16 release bağı kaldırılmadı.
 - **İkinci kod dilimi:** App Server selected-thread user/assistant read ve bounded polling, aynı capture yakın bağlamı; installed offline schema probe0.162.0-alpha.17.2. Gerçek source/model activation ve desktop readback açık.
 
+- **Gerçek readback001:** onaylı tek TEST aktarımında6user/assistant source ve UI readback doğrulandı. [Bulgu/sonuç](../quality/codex-real-capture-001.md). Full-turn byte sınırı için metadata+one-item pagination eklendi;1MiB tavanı korunur.32sayfa sonunda iki turn eksik; **kalıcı item cursor + source/cursor atomik checkpoint + gap UI** bu T17 kapsamında açık. Bir defalık gerçek source izni tüketildi, binding kapalı; model paylaşımı yok.
+
 ## T18 — Minimal MCP ve cross-agent read
 
 - **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T17. **Kapsam ID:** INT-02,CST-01.

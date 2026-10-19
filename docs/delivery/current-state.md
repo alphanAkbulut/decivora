@@ -19,6 +19,8 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 
 Yeni T17 kodu: App Server üzerinden yalnız seçilen oturumu okumak için stdio client ve bounded polling hazır; user/assistant metinleri ayrı kimlikle mevcut review yoluna bağlanır. Kurulu CLI şeması offline doğrulandı. Gerçek oturum okuması ve normal arayüzden capture kurulumu henüz açılmadı.
 
+**Gerçek kaynak sınaması:** [Codex readback001](../quality/codex-real-capture-001.md)2turun erişilen kısmından6mesajı TEST'e kaydetti. User/assistant kaynak→DB→TEST UI bağlantısı bu örnekte doğrulandı; okunmamış item'lar nedeniyle tam capture ve kalıcı cursor açık. Kaynaklar model bekliyor, gerçek metin API paylaşımı yetkilendirilmedi.
+
 ## Elimizde çalışan kod
 
 Yeni: tanınan credential'lar yeni manuel kaynakta DB öncesi maskelenir; model/import/context/MCP çıkış kontrolleri ve POSIX DB izinleri vardır. [Kapsam](../quality/credential-redaction-runtime.md): tam DLP, encryption veya geçmiş yedek purge değildir.
