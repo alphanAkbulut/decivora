@@ -1,8 +1,10 @@
 # Güncel takip teyidi —19Ekim2026
 
-30ana/129alt kayıt incelendi: ana7Done/15InProgress/8ToDo; alt56Done/39InProgress/29ToDo/5Proposed,UNSPECIFIED0. [Gerekçe/kanıt ve kalan kabul](../quality/task-status-audit.md). Aşağıdaki tarihli teslim kayıtları tarihsel sonuçları korur; eski sayımlar bugünkü toplam değildir.
+30ana/129alt kayıt incelendi: ana7Done/21InProgress/2ToDo; alt56Done/42InProgress/26ToDo/5Proposed,UNSPECIFIED0. [Gerekçe/kanıt ve kalan kabul](../quality/task-status-audit.md). Aşağıdaki tarihli teslim kayıtları tarihsel sonuçları korur; eski sayımlar bugünkü toplam değildir.
 
 # Mevcut durum
+
+**19Ekim sekizTODO geliştirme incelemesi:** T16/T24/T26/T27/T28/T29 kodla başladı;2TODO T25/T30 kaldı. Claude hook bridge, orphan audit, exact-commit observer, paired cost report,14AC evidence inventory ve CLI içeren ZIP teslimi. Tam host/MVP/public/ekip kabulü açık; yeni gerçek kaynak/ücretli çağrı0. [Kod ve kalan kapılar](../quality/todo-development-review.md).
 
 **19Ekim kaynaklı soru inceleme UI:** Conversations kartında soru/seçenek/alıntı, gerekçeli sunma/ret/erteleme, mevcut soru duplicate uyarısı ve metrikler bağlandı. Geç cevapla birleşen browser akışı ve on UI smoke case geçti; beş dil katalogları güncel. [Teslim](../quality/dialogue-status-runtime.md#19-ekim--kaynaklı-soru-taslağı-inceleme-kartı). Gerçek API/kaynak okuması0.
 
@@ -39,7 +41,7 @@
 | T01 corpus hazırlığı | IN_PROGRESS; 6 sentetik oturum/58 mesaj/46 farklı bilgi kaydı; insan incelemesi pending |
 | Lisans ve nihai marka | Karar bekliyor |
 
-**Güncel işler: 7 Done / 15 In Progress / 8 To Do. T15/T18/T21 kod dilimleri başladı; native/model/target/release kabulü açık.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
+**Güncel işler: 7 Done / 21 In Progress / 2 To Do. T15/T18/T21 kod dilimleri başladı; native/model/target/release kabulü açık.** Q15-A koşullu build seçimi kabul edildi; T04 artık T03 parent kapanışını beklemiyor. [Hazırlık matrisi](implementation-readiness.md): source→typed model candidate→guard bağlantısı kaydedilmiş gerçek output ile sınandı. MEMBERSHIP-002 dört authored_draft beklentiyle eşleşti; ayrı fixture guard karar veya verification uygulamadı. 26 küçük P0 teslim + T03c koşullu yatırım kararı DONE; ilk ana runtime görevi T04 DONE. T01/T02/T03 kalite kapıları ve tüm ürün MVP kabulü açık. Kayıtlı gerçek v2 aday zincir replay13 kontrollü checkpoint geçti; same-source kıyas da çalıştı; yeni8-message MEMBERSHIP-003 ve H4 partial review tamamlandı; çok-aday P0 read-only collector tamamlandı; resume/eşit bilgi dosya kıyası ve kayıpsız küçültme/readable view tamamlandı; receiver tek Luna/Low native run kaydedildi fakat contract geçmedi; yerel schema/source guard ve Q14-A bağımsız proje review katmanı tamamlandı; yeni model ve native karşılaştırma açık. Q15-A/T03c ilk yatırım ve runtime seçimi kabul edildi; T04 tamamlandı. Diğer mimari/release kararları açık. Test/aday sayıları ürün yüzde tamamlanması değildir.
 
 ## İlerleme kaydetme düzeni
 

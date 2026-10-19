@@ -31,3 +31,7 @@ Kod ve test/teslim kayıtları statik olarak karşılaştırıldı; bağlı geç
 `check_task_closure.py` canonical satırların açık durumunu ve exact audit envanterini denetler. Durum değişince aynı incelemede audit/manifest güncellenir; tarihi kanıt yeniden yazılmaz. Parser tanımsız fixture'ı hâlâ Unspecified gösterebilir; canonical CI bunu kabul etmez. Böylece sessizce kaybolan iş veya kanıtsız Done yerine açık, kaynaklı takip kalır.
 
 Doğrulama:49tracker/araç testi geçti; closure/dependency kontrolü30ana/129alt kaydı ve sıfır cycle doğruladı. Önce/sonra129alt kabul ve bağımlılık alanı bire bir eşleşti. Doküman/link/anchor kontrolleri geçti; Mermaid kaynakları değişmedi.15InProgress ana görevin güncel ilerleme/risk/sonraki adım alanları da yenilendi. Yerel8765panosu yeni sayımları ve15ilerleme kaydını salt okunur readback ile sundu; ürün53611görev verileri değiştirilmedi.
+
+## 19Ekim — kullanıcı talebiyle8TODO geliştirme güncellemesi
+
+[Somut kod ve kalan kabul](todo-development-review.md) sonrasında6ana TODO IN_PROGRESS oldu; T25/T30TODO kaldı. Güncel ana7Done/21InProgress/2ToDo; alt56Done/42InProgress/26ToDo/5Proposed. Yukarıdaki ilk tarama sayımları tarihsel başlangıçtır; current JSON/canonical backlog bu dar güncellemeyi içerir. Hiçbir ana kabul azaltılmadı ve yeni Done iddiası yok.

@@ -38,6 +38,7 @@
 | [docs/quality/operations-runtime.md](operations-runtime.md) | 2 |
 | [docs/architecture/logging-diagrams-and-schema.md](../architecture/logging-diagrams-and-schema.md) | 3 |
 | [docs/quality/dialogue-status-runtime.md](dialogue-status-runtime.md) | 1 |
+| [docs/quality/todo-development-review.md](todo-development-review.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -243,3 +244,7 @@ Local-preview çizimine human complete rationale review→versioned audit/facts�
 ## 19 Ekim — seçenekli soru backend akışı
 
 Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç cevap→ayrı karar uygulaması çizildi. Duplicate/ret/erteleme dalları gösterilir. Bu şekil backend sözleşmesini anlatır; yeni UI kartı veya gerçek model doğruluğu iddiası değildir. Yerel render sonuçları [hash raporunda](diagram-render-results.json) tutulur.
+
+## 19Ekim — Claude hook ve8TODO geliştirme incelemesi
+
+[Yeni akış](todo-development-review.md): seçili session/cwd/sürüm ve güncel insan kaynak izni, eksik Stop metni, maskeleme, kimlik/retry ve atomik source/queue/receipt ayrı çizildi. Model/data/bütçe, insan review ve AC sonraki ayrı kapılardır. Yeni şeklin render/hash kaydı JSON raporunda; kurulu Claude host doğrulaması değildir.

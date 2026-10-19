@@ -3,9 +3,11 @@ from pathlib import Path
 import argparse,zipfile,hashlib,json
 ROOT=Path(__file__).resolve().parents[1]
 def build(target):
-    paths=[ROOT/'Decivora.command',ROOT/'Decivora Test.command',ROOT/'README_LOCAL.md']
+    paths=[ROOT/'Decivora.command',ROOT/'Decivora Test.command',ROOT/'README_LOCAL.md',ROOT/'docs/quality/todo-development-review.md']
     paths += [p for base in ('packages','apps/local_ui') for p in (ROOT/base).rglob('*') if p.is_file() and p.suffix in ('.py','.html','.js','.css') and '__pycache__' not in p.parts]
     if (ROOT/'apps/__init__.py').exists():paths.append(ROOT/'apps/__init__.py')
+    # Adapter entrypoints must ship with their package modules; never package keys/data.
+    paths += [ROOT/'scripts'/name for name in ('capture_claude_hook.py','capture_codex_exec.py','capture_codex_thread.py','audit_project_memory.py','check_mvp_evidence.py','report_paired_cost.py')]
     target=Path(target);target.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(target,'w',compression=zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(set(paths)):

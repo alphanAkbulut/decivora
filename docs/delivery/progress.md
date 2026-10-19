@@ -2,7 +2,7 @@
 
 > Otomatik üretilir. Ana kaynak backlog’dur; bu dosyayı elle düzenleme.
 
-**Açık çalışma fazı: P0, P1a, P1b**
+**Açık çalışma fazı: P0, P1a, P1b, P2, P3**
 
 [Canlı yerel ekranı açma ve güncelleme rehberi](progress-guide.md). GitHub bu Markdown görünümünü gösterir; canlı ekran yerel dosyaları izler.
 
@@ -11,8 +11,8 @@
 | Ana görev durumu | Sayı |
 |---|---|
 | DONE | 7 |
-| IN_PROGRESS | 15 |
-| TODO | 8 |
+| IN_PROGRESS | 21 |
+| TODO | 2 |
 
 ## İş türü ve bekleyen insan kapıları
 
@@ -21,9 +21,9 @@ Ana görev ve alt teslim sayıları toplanmaz. Tür, tamamlanan alt teslimin bir
 | Alt teslim durumu | Sayı |
 |---|---|
 | DONE | 56 |
-| IN_PROGRESS | 39 |
+| IN_PROGRESS | 42 |
 | PROPOSED | 5 |
-| TODO | 29 |
+| TODO | 26 |
 
 | Tamamlanan alt teslimin türü | Sayı |
 |---|---|
@@ -206,6 +206,18 @@ Sıradaki adım: T14a–d kapsamında exact hedef/recipe ve parent completion ba
 
 Sıradaki adım: Aynı kaynak/revision üzerinden tam zinciri ve recovery proof raporunu birleştir.
 
+### T16 · Claude Code adapter
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 ### T17 · Codex adapter
 
 19 Ekim2026 — Seçilmiş thread user/assistant capture,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending ve native Operations trace kodlu. [Teslim](../quality/conversation-processing-runtime.md).
@@ -290,6 +302,66 @@ Sıradaki adım: T22b kapasite/manifest ve izinli geçmiş işleme; eski gerçek
 
 Sıradaki adım: T23a–e kalan recovery/privacy ve kapasite kabulünü tamamla; accepted kaynakları limitte silme.
 
+### T24 · MVP kabul ve kullanıcı pilotu
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T26 · Gelişmiş reconciliation ve orphan audit
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T27 · GitHub evidence ve görünür panel deneyi
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T28 · Maliyet raporu ve kontrollü entegrasyonlar
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
+### T29 · Public release hazırlığı
+
+Son ilerleme kaydı yok.
+
+**Aktif teknik risk:** Bu görev için ayrı risk kaydı yok; risksiz olduğu anlamına gelmez.
+
+**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
+
+**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
+
+Sıradaki adım: Ayrıntılı backlog'u kontrol et.
+
 
 ## Mevcut teslim parçaları
 
@@ -371,7 +443,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T13 | P1a | IN_PROGRESS | Review işlemi ve güvenilir onay | T12 | 5 |
 | T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 | 4 |
 | T15 | P1a | IN_PROGRESS | Teknik kanıt kapısı | T14, T07c | 1 |
-| T16 | P1b | TODO | Claude Code adapter | T15 | 1 |
+| T16 | P1b | IN_PROGRESS | Claude Code adapter | T15 | 1 |
 | T17 | P1b | IN_PROGRESS | Codex adapter | T16 | 0 |
 | T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 | 9 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
@@ -379,12 +451,12 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T21 | P1b | IN_PROGRESS | Routing etiketleri ve usage kaydı | T20 | 2 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 | 1 |
 | T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 | 5 |
-| T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 | 17 |
+| T24 | P1b | IN_PROGRESS | MVP kabul ve kullanıcı pilotu | T23 | 17 |
 | T25 | P2 | TODO | Chat yüzeyleri ve cross-provider adapter araştırması | T24 | 1 |
-| T26 | P2 | TODO | Gelişmiş reconciliation ve orphan audit | T25 | 2 |
-| T27 | P2 | TODO | GitHub evidence ve görünür panel deneyi | T26 | 0 |
-| T28 | P3 | TODO | Maliyet raporu ve kontrollü entegrasyonlar | T27 | 2 |
-| T29 | P3 | TODO | Public release hazırlığı | T28 | 0 |
+| T26 | P2 | IN_PROGRESS | Gelişmiş reconciliation ve orphan audit | T25 | 2 |
+| T27 | P2 | IN_PROGRESS | GitHub evidence ve görünür panel deneyi | T26 | 0 |
+| T28 | P3 | IN_PROGRESS | Maliyet raporu ve kontrollü entegrasyonlar | T27 | 2 |
+| T29 | P3 | IN_PROGRESS | Public release hazırlığı | T28 | 0 |
 | T30 | P4 | TODO | Ekip/cloud/open-core keşfi | T29 | 0 |
 
 ## Kanıt kapsamı
@@ -395,4 +467,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `56ab277a4ed14ef2a9068fdab627b3a202f844506c55a5918d30bdf10e6582d9`
+Kaynak fingerprint: `191a4504c41505ca6ca0282929da2b37f3c95fcda66aeb63df6baacf89566666`

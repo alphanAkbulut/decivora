@@ -26,8 +26,8 @@ class ProgressTests(unittest.TestCase):
         self.assertIn('T05b',{s['id'] for s in rows})
         self.assertEqual(data['work_summary']['statuses']['DONE'],56)
         self.assertEqual(data['work_summary']['statuses'].get('UNSPECIFIED',0),0)
-        self.assertEqual(data['work_summary']['statuses']['IN_PROGRESS'],39)
-        self.assertEqual(data['work_summary']['statuses']['TODO'],29)
+        self.assertEqual(data['work_summary']['statuses']['IN_PROGRESS'],42)
+        self.assertEqual(data['work_summary']['statuses']['TODO'],26)
 
     def test_completed_primary_types_do_not_double_count_test_functions(self):
         summary=progress.build()['work_summary']
@@ -55,9 +55,11 @@ class ProgressTests(unittest.TestCase):
     def test_canonical_status_and_acceptance_not_inferred_from_test_pass(self):
         data = progress.build(self.root)
         self.assertEqual(len(data["tasks"]), 30)
-        self.assertEqual(data["counts"], {"IN_PROGRESS": 15, "DONE": 7, "TODO": 8})
+        self.assertEqual(data["counts"], {"IN_PROGRESS": 21, "DONE": 7, "TODO": 2})
         self.assertEqual(next(t for t in data['tasks'] if t['id']=='T12')['status'], 'DONE')
         self.assertEqual(next(t for t in data['tasks'] if t['id']=='T13')['status'], 'IN_PROGRESS')
+        for tid in ('T16','T24','T26','T27','T28','T29'):self.assertEqual(next(t for t in data['tasks'] if t['id']==tid)['status'],'IN_PROGRESS')
+        for tid in ('T25','T30'):self.assertEqual(next(t for t in data['tasks'] if t['id']==tid)['status'],'TODO')
         self.assertEqual(data["tasks"][3]["status"], "DONE")
         self.assertEqual(data["tasks"][3]["dependencies"], ["T03c"])
         self.assertEqual(data["worker_activity"], "unknown")

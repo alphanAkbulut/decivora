@@ -14,7 +14,7 @@ Use the conversation language for titles. Do not invent missing decisions or que
 def source_envelope(source):
     """Exact model-facing provenance, shared by preparation and dispatch validation."""
     result={k:source[k] for k in ('id','sha256','text')}
-    if source.get('source_kind') in ('codex_exec_jsonl','codex_app_server'):
+    if source.get('source_kind') in ('codex_exec_jsonl','codex_app_server','claude_code_hook'):
         result.update(source_kind=source['source_kind'],capture=source['capture'],capture_notice=(
             'Assistant messages only; no human message authority. Coverage must be partial or unknown. Do not infer human selections from assistant reports.'
             if source['source_kind']=='codex_exec_jsonl' else

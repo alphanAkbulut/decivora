@@ -1,0 +1,56 @@
+{
+  "kind": "todo_development_slices",
+  "date": "2026-10-19",
+  "input_base_ref": "ce9d64fb817c97b37fc8e16b7d96f9793376fd85",
+  "new_targeted_tests": 30,
+  "runtime_tests": 615,
+  "repository_tests": 49,
+  "offline_mermaid_sources": 55,
+  "real_model_calls": 0,
+  "new_real_source_reads": 0,
+  "claude_native_host_verified": false,
+  "github_observer_live_transport_verified": false,
+  "independent_semantic_quality_verified": false,
+  "release_authorized": false,
+  "task_counts": {
+    "DONE": 7,
+    "IN_PROGRESS": 21,
+    "TODO": 2
+  },
+  "new_done_tasks": 0,
+  "remaining_todo": [
+    "T25",
+    "T30"
+  ],
+  "files": {
+    "packages/capture/claude_code/__init__.py": "d02cfaa4e4502d4421ead829755983f27100dcf99e02a1352d321deace163dd4",
+    "packages/capture/claude_code/hooks.py": "0914e6a8ca255daa6792c45e99ce7ce1d215427479176247379600bebe1f7c7b",
+    "scripts/capture_claude_hook.py": "930b246ff66c1475f703f25dfebf7f212ede26133652529fd6c6063df2d92b12",
+    "packages/capture/conversations.py": "4196538249b8b76d94f659fd32899c103b1ecbdd1efce904ea19efce94f256cd",
+    "packages/capture/responses_extractor.py": "648468e588a6e3c0bc6239874878713da67cc310a63b742d399f3b1c9d362152",
+    "packages/capture/dialogue_review.py": "65f67dc5d1ca664264f88443af54c2b7624a5c5da6fdd6fc184e248b68aad7d9",
+    "packages/capture/source_pages.py": "a65f730aaa8f99f734f9789a34ac3e74330b9d4756984e03a71b948fbb2ad2d7",
+    "packages/reconciliation/orphan_audit.py": "6408007ebd762fa83e3c5147adc880403ff273cb06bcb155fe184cc3032a7d01",
+    "scripts/audit_project_memory.py": "b53c52072b6b6ac254794fd93d7780bebb90b8a8eaad4a5e3698dac8d6dfd3ba",
+    "packages/verification/github_commit.py": "036f7b73970274d09726444f5adb7077b690a8345479c9523e55e4849f032f79",
+    "packages/analytics/__init__.py": "69eeda538bc3905a284b8d29f46ad0aa111cb692b710727388ca95be7b4817ae",
+    "packages/analytics/paired_cost.py": "4ab9729be859d0836269ab6924f04e443cff3c9a0263634f4826e640a194d204",
+    "packages/analytics/acceptance_inventory.py": "6b7dd5406eae30d180df176cdad4e71e9c869a3620cf4de13431c58896f062d2",
+    "scripts/report_paired_cost.py": "6ddc21e3f8dd17dfd2c62900df28dea086251f0890d03ce3d1eaaa3b5fc59dba",
+    "scripts/check_mvp_evidence.py": "05b6900dfa29bcd03947d64fc975e433e08485609929741c773589e30630c42d",
+    "scripts/package_local_preview.py": "a4619202a272abf864ff6dca47a49e2d954be236db6393d65aaecb459282f2ee",
+    "tests/runtime/test_todo_delivery.py": "a78f434b253a8c553e7e93815569939bf24dd6e68c270e1ef03b932e6efbebd1",
+    "tests/test_project_progress.py": "3c3183aa23d4bc014c61f3fa9a47a0d82cf07a5da0341541cf07b0bb38ba8091"
+  },
+  "package": {
+    "artifact": "decivora-todo-local.zip",
+    "sha256": "8824bbf854be52e984fa472986848f1ed2c42294f42b6c661cb97b60ff33a64c",
+    "files": 80,
+    "contains_user_data": false
+  },
+  "notes": [
+    "Final full runtime suite includes all 30 new targeted tests, malformed UTF-8 rejection and cross-surface context isolation.",
+    "Root tracker tests initially failed on old static counts; expected new IN_PROGRESS and preserved TODO/DONE cases were updated after canonical evidence review.",
+    "No host settings, real transcript or third-party account was modified."
+  ]
+}

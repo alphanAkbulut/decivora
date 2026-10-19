@@ -9,11 +9,13 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 | Kanonik ana iş grubu | Kapalı | Devam eden | Başlanacak | Açık toplam |
 |---|---:|---:|---:|---:|
 | P0 hazırlık/kalite T01–T03 | 0 | 3 | 0 | 3 |
-| MVP T04–T24 | 7 | 12 | 2 | 14 |
-| MVP sonrası T25–T30 | 0 | 0 | 6 | 6 |
-| **Toplam** | **7** | **15** | **8** | **23** |
+| MVP T04–T24 | 7 | 14 | 0 | 14 |
+| MVP sonrası T25–T30 | 0 | 4 | 2 | 6 |
+| **Toplam** | **7** | **21** | **2** | **23** |
 
 **MVP release yolunda17ana iş açık:14ürün/entegrasyon işi ve3P0 hazırlık/kalite işi.** Bunlar17eşit büyüklükte küçük PR değildir. Done görünen7iş çekirdek kabul kapsamıdır; otomatik kullanıcı yolculuğunun tamamı değildir. T15 ve T24 esasen entegrasyon/kabul kapısıdır; diğer12açık MVP ana işte kalan ürün kodu vardır. Kabulde çıkacak gerçek hatalar bu işlerde düzeltilir; gelecekte bulunacak hata sayısı tahmin edilmedi.
+
+**19 Ekim8TODO incelemesi:**6iş kodla başladı; Claude hook bridge, orphan audit, GitHub commit observer, paired-cost,14AC evidence inventory ve ZIP CLI. [Kalan kapılar](../quality/todo-development-review.md); tüm işleri tamamlanmış saymıyoruz.
 
 **19 Ekim T13e backend güncellemesi:** [Kaynaklı seçenekli soru taslağı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına) ayrı insan incelemesiyle kalıcı soru olur ve geç cevaba bağlanır. Kaynaklı taslak inceleme kartı da Conversations ekranına bağlandı. Genel/serbest metin soruları ve ekip routing açık.
 

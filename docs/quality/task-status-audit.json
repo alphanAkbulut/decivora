@@ -19,14 +19,14 @@
   },
   "after": {
     "main": {
-      "IN_PROGRESS": 15,
+      "IN_PROGRESS": 21,
       "DONE": 7,
-      "TODO": 8
+      "TODO": 2
     },
     "subtasks": {
       "DONE": 56,
-      "IN_PROGRESS": 39,
-      "TODO": 29,
+      "IN_PROGRESS": 42,
+      "TODO": 26,
       "PROPOSED": 5
     }
   },
@@ -183,12 +183,12 @@
     },
     {
       "id": "T16",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ]
     },
     {
@@ -264,12 +264,12 @@
     },
     {
       "id": "T24",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ]
     },
     {
@@ -284,42 +284,42 @@
     },
     {
       "id": "T26",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ]
     },
     {
       "id": "T27",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ]
     },
     {
       "id": "T28",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ]
     },
     {
       "id": "T29",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ]
     },
     {
@@ -1381,12 +1381,12 @@
       "id": "T16b",
       "parent": "T16",
       "before": "UNSPECIFIED",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "changed": true,
       "evidence_level": "planned_not_accepted",
-      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ],
       "remaining_acceptance": "ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular"
     },
@@ -1791,12 +1791,12 @@
       "id": "T24c",
       "parent": "T24",
       "before": "UNSPECIFIED",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "changed": true,
       "evidence_level": "planned_not_accepted",
-      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ],
       "remaining_acceptance": "TOK-08 + GUX; token azalırken recall/false closure korunmalı"
     },
@@ -1949,12 +1949,12 @@
       "id": "T24q",
       "parent": "T24",
       "before": "TODO",
-      "status": "TODO",
-      "changed": false,
+      "status": "IN_PROGRESS",
+      "changed": true,
       "evidence_level": "planned_not_accepted",
-      "reason": "Bu alt dilimin kendi tam teslimine ait uygulama/pilot kanıtı bulunmadı; komşu modül veya eski P0 fixture bu kabulü kapatmaz. Kapsam ve kabul korunur.",
+      "reason": "Concrete code and targeted tests delivered; full host/product/release acceptance still open.",
       "evidence": [
-        "docs/delivery/backlog.md"
+        "docs/quality/todo-development-review.md"
       ],
       "remaining_acceptance": "Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz"
     },
@@ -2049,5 +2049,11 @@
       ],
       "remaining_acceptance": "MU18; belirsiz dış sonuç doğru gösterilir; P3'e kadar uygulanmaz"
     }
-  ]
+  ],
+  "development_update": {
+    "date": "2026-10-19",
+    "input_base_ref": "ce9d64fb817c97b37fc8e16b7d96f9793376fd85",
+    "report": "docs/quality/todo-development-review.md",
+    "note": "Six TODO main tasks and three subtasks have concrete implementation started, not accepted complete."
+  }
 }

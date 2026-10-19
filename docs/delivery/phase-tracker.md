@@ -1,8 +1,8 @@
 # Faz bazlı proje ağacı ve takip görünümü
 
-**19 Ekim2026 — durum teyidi:7Done/15InProgress/8ToDo; P0 kalite ve P1 uygulama işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
+**19 Ekim2026 — durum teyidi:7Done/21InProgress/2ToDo; P0 kalite ve P1 uygulama işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
 
-[129alt kaydın teyidi](../quality/task-status-audit.md):56Done/39InProgress/29ToDo/5Proposed; durumu tanımsız kayıt yok.
+[129alt kaydın teyidi](../quality/task-status-audit.md):56Done/42InProgress/26ToDo/5Proposed; durumu tanımsız kayıt yok.
 
 **Otorite:** İşin tanımı, ana/alt görev, bağımlılık ve kabul kriterleri [backlog](backlog.md) ve bağlı [ekip/veri planında](team-data-plan.md); gerçekleşen ilerleme/kanıt [status](status.md); ürün çıkış sınırı [MVP](../product/mvp.md) ve [roadmap](../../ROADMAP.md) içindedir. Aşağıdaki 30 ana görev satırı backlog'dan türetilmiştir; doküman kontrolü ID/faz/durum/başlık/ön koşul eşleşmesini denetler. Bunları bağımsız güncelleme.
 
@@ -77,7 +77,7 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
-| T16 | P1b | TODO | Claude Code adapter | T15 |
+| T16 | P1b | IN_PROGRESS | Claude Code adapter | T15 |
 | T17 | P1b | IN_PROGRESS | Codex adapter | T16 |
 | T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 |
@@ -85,7 +85,7 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | T21 | P1b | IN_PROGRESS | Routing etiketleri ve usage kaydı | T20 |
 | T22 | P1b | IN_PROGRESS | Chat import ve prompt lineage | T21 |
 | T23 | P1b | IN_PROGRESS | Backup, export ve yerel güvenlik | T22 |
-| T24 | P1b | TODO | MVP kabul ve kullanıcı pilotu | T23 |
+| T24 | P1b | IN_PROGRESS | MVP kabul ve kullanıcı pilotu | T23 |
 
 P1 temel dil dilimleri T05e/T24p: Unicode/source/ref korunumu ve açık pilot dili. Otomatik çok dil desteği P2 T25a/T26c önerisidir; MVP'de teslim edilmiş sayılmaz.
 
@@ -111,8 +111,8 @@ Aşağıdaki gruplar **önemli örneklerdir**, bütün alt görevlerin kopyası 
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
 | T25 | P2 | TODO | Chat yüzeyleri ve cross-provider adapter araştırması | T24 |
-| T26 | P2 | TODO | Gelişmiş reconciliation ve orphan audit | T25 |
-| T27 | P2 | TODO | GitHub evidence ve görünür panel deneyi | T26 |
+| T26 | P2 | IN_PROGRESS | Gelişmiş reconciliation ve orphan audit | T25 |
+| T27 | P2 | IN_PROGRESS | GitHub evidence ve görünür panel deneyi | T26 |
 
 | Çalışma paketi | Planlanan sonuç | Çıkış kanıtı |
 |---|---|---|
@@ -130,8 +130,8 @@ P0/P1a'daki tek hedef uygulama kontrolü T27'nin bütün GitHub evidence entegra
 
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
-| T28 | P3 | TODO | Maliyet raporu ve kontrollü entegrasyonlar | T27 |
-| T29 | P3 | TODO | Public release hazırlığı | T28 |
+| T28 | P3 | IN_PROGRESS | Maliyet raporu ve kontrollü entegrasyonlar | T27 |
+| T29 | P3 | IN_PROGRESS | Public release hazırlığı | T28 |
 
 | Çalışma paketi | Planlanan sonuç | Çıkış kanıtı |
 |---|---|---|
@@ -170,3 +170,5 @@ Bugünkü snapshot'ta T04/T05/T06/T07/T08/T11/T12 DONE, T01/T02/T03/T09/T10/T13/
 ## Kapanış denetimi
 
 [30 ana/117 alt satır denetimi ve Q16](../quality/task-closure-audit.md): gerçek release eksikleri, downstream entegrasyon ve stale kayıtlar ayrıldı. Q16-A kabul edildi; [129 cross-file alt kayıt manifesti](task-closure.md) ile closure policy uygulandı. Ana status ve14AC değişmedi.
+
+19Ekim: [8TODO kod incelemesi](../quality/todo-development-review.md) ile6ana işin bağımsız implementasyonu başladı; host/kabul/public/team kapıları korunur. Bu, P2/P3 fazının bütünüyle açıldığı veya MVP kabul edildiği anlamına gelmez.

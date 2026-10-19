@@ -73,3 +73,7 @@ Yeni görünüm: sidebar Conversations/Review inbox/Task board/Questions and dec
 Sol menü **Operations**: işlem kimliğiyle ara, sonucu filtrele, komutun authorization/execute aşamalarını aç; süre ve güvenli hata kodunu gör. **Refresh diagnostics** yalnız okur. Kayıtlar restart sonrası korunur; kapsama/saklama sınırı ve kaydedilemeyen yazım uyarıları ekranda görünür. Ham konuşma ve API anahtarı bu logda tutulmaz. Bu ekran tam engine zinciri veya güvenlik audit konsolu değildir.
 
 **Decivora Test.command** dosyasını çalıştır: ayrı53611portu, ayrı test veri klasörü ve belirgin TEST etiketi kullanır. Normal yerel kayıtlar kopyalanmaz; model/file-target bağlantıları kapalıdır. İki ortam aynı tarayıcıda farklı oturum çerezleriyle çalışır. Test işlerini burada elle sentetik veriyle deneyebilirsin. Veri sıfırlama düğmesi veya ücretli model aktivasyonu yoktur. [Ayrıntı](https://github.com/alphanAkbulut/decivora/blob/main/docs/quality/operations-runtime.md).
+
+## Explicit capture and offline audit commands
+
+The source ZIP now includes `scripts/capture_claude_hook.py`, `capture_codex_exec.py`, `capture_codex_thread.py`, `audit_project_memory.py`, `check_mvp_evidence.py` and `report_paired_cost.py` alongside their package modules. Run the selected script with `--help` from the extracted folder using Python3.12. Claude hooks require explicit session/project consent and manual host configuration; launching Decivora does not install hooks or send captured text to a model. [Implemented paths and first-use limits](docs/quality/todo-development-review.md).

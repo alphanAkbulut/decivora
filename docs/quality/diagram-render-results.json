@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "ed1724cf3c51f2fb5b4a1b85dff13b95f11394e3",
+  "input_base_ref": "ce9d64fb817c97b37fc8e16b7d96f9793376fd85",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "5c638bd7f01a73fec45eb64e5b2f3345a56471a5d2296b7b75af51f493524d7e",
+      "svg_sha256": "45c5703dc3d3f342af18f188fd9b792f73870cb19efa349553db929d1d8ab85d",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "9188dd2a57c9bf895a2d06acef7266604fb271638b89c15b407c9c2c7e6bd913",
+      "svg_sha256": "a2729e2639619e92e5ebfa063ff92dfafb7fb8c1f98b2f64b5770d94de1b1c8a",
       "error": null
     },
     {
@@ -633,6 +633,18 @@
       "error": null
     },
     {
+      "path": "docs/quality/todo-development-review.md",
+      "block": 1,
+      "source_sha256": "7409e880ffc3d6ffaf5e2c0421896b3072f0eba853d1d85f327b42e709a6bbfb",
+      "status": "rendered",
+      "title": "Claude Code seçili oturum capture ve kabul kapıları",
+      "description_present": true,
+      "view_box": "0 0 1148.84375 1838.421875",
+      "artifact": "docs--quality--todo-development-review--1.svg",
+      "svg_sha256": "41f97133dd9a0d0e2ed5a37ea446ff373dc7a0c48fe05dfad36ba795cc023da7",
+      "error": null
+    },
+    {
       "path": "docs/quality/workflow-ui-runtime.md",
       "block": 1,
       "source_sha256": "dde36281733bfc93b9c8cd78b20a7080d43461fba2de0bb8ee08786616bf92aa",
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "d656afdcdb24d3f833dea49e6fa4991b953247c59e469d7fc1fec8348e84ec90",
+      "svg_sha256": "d74e8670f7fc4138e393757a99705017af85c9d88f17a910d0a94dbbd514d070",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "5003d983a660a39ed70d396e7529c50aa2d8a22f60ff716e2da2e9efe71e019a",
+      "svg_sha256": "da579e5d9151ee6d3f751ee347fba5a50747b0ff617db804579f323028621196",
       "error": null
     }
   ],
@@ -6424,5 +6436,6 @@
       ]
     }
   ],
-  "question_backend_render_note": "All 54 current sources rendered offline. New question flow visually inspected. No model or new UI card tested."
+  "question_backend_render_note": "All 54 current sources rendered offline. New question flow visually inspected. No model or new UI card tested.",
+  "todo_delivery_render_note": "55 current Mermaid sources rendered offline; new Claude hook flow visually inspected. This is not native host acceptance."
 }

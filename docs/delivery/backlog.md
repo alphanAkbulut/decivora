@@ -326,12 +326,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T16 — Claude Code adapter
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T15. **Kapsam ID:** CAP-02.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T15. **Kapsam ID:** CAP-02.
 - **İş:** T02'de kanıtlanan sürüm/yüzey için adapter; consent, binding, queue ve coverage UI data.
 - **Kabul:** Gerçek fixture session otomatik yakalanır; başarısız hook sağlıklı sayılmaz.
 - **Doğrulama:** Adapter sözleşme suite; sürüm kayıtlı.
 - **Beklenen dosya alanı:** `packages/capture/claude-code/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
+
+- **19Ekim kod ilerlemesi:** [8TODO incelemesi ve çalışan dilimler](../quality/todo-development-review.md). Kalan kabul kapıları korunur; IN_PROGRESS tam kapanış değildir.
 
 ## T17 — Codex adapter
 
@@ -435,12 +437,14 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T24 — MVP kabul ve kullanıcı pilotu
 
-- **Durum / faz:** TODO / P1b. **Bağımlılık:** T23. **Kapsam ID:** EVAL-01.
+- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T23. **Kapsam ID:** EVAL-01.
 - **İş:** AC-01..14, iki adapter, gerçek otomatik extractor ile holdout corpus ve management overhead pilotu. Semantik extraction testi zorunludur; fixture/code sonucu yerine geçmez.
 - **Kabul:** Tüm zorunlu kapılar geçer veya sınırlı pilot adıyla açık istisna kararı; MVP iddiası kanıta bağlı.
 - **Doğrulama:** Ölçüm planı; gerçek tıklama ve source coverage.
 - **Beklenen dosya alanı:** `docs/quality/mvp-results.md` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 ölçüm oturumu.
+
+- **19Ekim kod ilerlemesi:** [8TODO incelemesi ve çalışan dilimler](../quality/todo-development-review.md). Kalan kabul kapıları korunur; IN_PROGRESS tam kapanış değildir.
 
 ## T25 — Chat yüzeyleri ve cross-provider adapter araştırması
 
@@ -453,39 +457,47 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T26 — Gelişmiş reconciliation ve orphan audit
 
-- **Durum / faz:** TODO / P2. **Bağımlılık:** T25. **Kapsam ID:** KNO-02,GRF-02,IMP-02.
+- **Durum / faz:** IN_PROGRESS / P2. **Bağımlılık:** T25. **Kapsam ID:** KNO-02,GRF-02,IMP-02.
 - **İş:** Embedding yalnız baseline gerekçelendirirse; unlink/stale/refinement audit ve semantic diff.
 - **Kabul:** İyileşme holdout ile ölçülür; unsupported certainty yok.
 - **Doğrulama:** Recall/false obsolete regresyonu ve bütçe eşitliği.
 - **Beklenen dosya alanı:** `packages/reconciliation/; packages/impact/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Özellik başına küçük görev.
 
+- **19Ekim kod ilerlemesi:** [8TODO incelemesi ve çalışan dilimler](../quality/todo-development-review.md). Kalan kabul kapıları korunur; IN_PROGRESS tam kapanış değildir.
+
 ## T27 — GitHub evidence ve görünür panel deneyi
 
-- **Durum / faz:** TODO / P2. **Bağımlılık:** T26. **Kapsam ID:** VER-01,UX-03.
+- **Durum / faz:** IN_PROGRESS / P2. **Bağımlılık:** T26. **Kapsam ID:** VER-01,UX-03.
 - **İş:** Önce read-only commit/PR kanıtı; ayrıca host izinleriyle panel fizibilitesi.
 - **Kabul:** PR varlığı AC geçişi sayılmaz; panel olmayan host'ta açık fallback.
 - **Doğrulama:** Commit freshness ve host UI testi.
 - **Beklenen dosya alanı:** `packages/verification/; docs/discovery/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** İki ayrı küçük görev.
 
+- **19Ekim kod ilerlemesi:** [8TODO incelemesi ve çalışan dilimler](../quality/todo-development-review.md). Kalan kabul kapıları korunur; IN_PROGRESS tam kapanış değildir.
+
 ## T28 — Maliyet raporu ve kontrollü entegrasyonlar
 
-- **Durum / faz:** TODO / P3. **Bağımlılık:** T27. **Kapsam ID:** ROU-02,CST-02,INT-01.
+- **Durum / faz:** IN_PROGRESS / P3. **Bağımlılık:** T27. **Kapsam ID:** ROU-02,CST-02,INT-01.
 - **İş:** Routing optimizasyonu, fiyat snapshot, yetkili outbox sync; GitHub/Linear/Jira ayrı connector görevleri.
 - **Kabul:** Quality eşitliğinde maliyet raporu; retry external duplicate üretmez; scope açık.
 - **Doğrulama:** Paired benchmark, webhook/conflict/permission testleri.
 - **Beklenen dosya alanı:** `packages/integrations/; apps/web/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Connector başına ayrı PR.
 
+- **19Ekim kod ilerlemesi:** [8TODO incelemesi ve çalışan dilimler](../quality/todo-development-review.md). Kalan kabul kapıları korunur; IN_PROGRESS tam kapanış değildir.
+
 ## T29 — Public release hazırlığı
 
-- **Durum / faz:** TODO / P3. **Bağımlılık:** T28. **Kapsam ID:** OSS-01.
+- **Durum / faz:** IN_PROGRESS / P3. **Bağımlılık:** T28. **Kapsam ID:** OSS-01.
 - **İş:** Lisans/isim kararı, temiz kurulum, sentetik demo, contributor rehberi ve release checklist.
 - **Kabul:** Public için explicit owner onayı; test edilmeyen claim yok; dependency/license inventory tam.
 - **Doğrulama:** Temiz makine kurulumu, demo, secrets ve docs kontrolü.
 - **Beklenen dosya alanı:** `docs/governance/; release belgeleri` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** Küçük release görevleri.
+
+- **19Ekim kod ilerlemesi:** [8TODO incelemesi ve çalışan dilimler](../quality/todo-development-review.md). Kalan kabul kapıları korunur; IN_PROGRESS tam kapanış değildir.
 
 ## T30 — Ekip/cloud/open-core keşfi
 
@@ -547,7 +559,7 @@ Bunlar mevcut ana görevlerin detaylarıdır; yeni servis veya bağımsız ürü
 | T18c / T18a,T18b | IN_PROGRESS: Kısa brief, since_revision/tombstone, bounded resync ve ayrıntı getir | CON-04/05 ve TOK-02; ACL/coverage bilgisi token kırpmasında kaybolmaz |
 | T20b / T11b,T13b,T19 | IN_PROGRESS: Graph durum sözlüğü, seçili task bağlamı, history/diff ve liste alternatifi | GUX-01–08; gerçek klavye/tıklama testi; graph gezmede sıfır model çağrısı |
 | T21b / T08b,T09b,T21 | IN_PROGRESS: Usage sınıfları, dönem/run limitleri, atomik reservation ve unknown settlement | TOK-03–07; eşzamanlı harcama, timeout/retry ve limit-deferred testleri |
-| T24c / T18c,T20b,T21b | TODO: Eşit corpus/kalite ile maliyet ve graph anlaşılabilirliği pilotu | TOK-08 + GUX; token azalırken recall/false closure korunmalı |
+| T24c / T18c,T20b,T21b | IN_PROGRESS: Eşit corpus/kalite ile maliyet ve graph anlaşılabilirliği pilotu | TOK-08 + GUX; token azalırken recall/false closure korunmalı |
 
 T16/T17 kurulum/kaldırma akışları CON-03/06/08'i içerir. T09b model dispatch'i başlamadan önce minimum budget/data-egress guard bulunmalı; T21b tam dönem/usage arayüzünü tamamlar. Ücretli model yokken sentetik/fake provider testleriyle budget concurrency doğrulanabilir; gerçek provider harcaması için Q03 gerekir.
 
@@ -591,7 +603,7 @@ P4 C03/C05/C06 [ekip planında](team-data-plan.md) gerçek çok-kullanıcı yön
 | Dilim / bağımlılık | Somut teslim | Kabul |
 |---|---|---|
 | T05c / T05b | DONE / P1a: kaynak/hedef binding ve versioned izin makbuzu schema/rule fixture | [9 test ve demo](../quality/connection-authorization.md): ACC-01/03/07 ayrı source/target/grantor/digest/revision ret; actual activation T08b/T07b sonrasında, makbuz persistence ayrı |
-| T16b / T02b,T05c,T08b,T07b,T16 | TODO: P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü | ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular |
+| T16b / T02b,T05c,T08b,T07b,T16 | IN_PROGRESS: P1b adapter kaynak allowlist/path sınırı; requested/granted/effective scope; activation/disconnect kontrolü | ACC-01–07 uçtan uca; T17 diğer coding yüzeyinde aynı sözleşmeyi doğrular |
 | T20g / T05c,T16b,T20f | TODO: P1b proje bağlantı envanteri, kurulum soruları ve izin farkı önizlemesi | ACC-07/08; owner “hangi kaynak, kim izin verdi, ne yapabilir?” yanıtını ekrandan bulur |
 | T24h / T16b,T17,T20g | TODO: Yerel/sentetik erişim oracle ve UX pilotu | ACC-01–08 uygulanabilir yollar; provider revocation/metadata desteği ayrı raporlu |
 
@@ -761,7 +773,7 @@ T01 corpus Q12 benzeri sentetik vakalar içerir; özel transcript import edilmez
 |---|---|---|
 | T01f / T01 | IN_PROGRESS / P0 (draft oracle + bağımsız source-span scorer; insan/critical domain kapsamı açık): frozen checkpoint/identity/source-span oracle, bağımsız rubric ve error taxonomy | 6 session/30 meaningful kayıt şartı korunur; positive/negative authority/AND/OR/unknown/verified coverage; scenario-family holdout, reviewer ve hash kaydı |
 | T03f / T01f,T02,T03a | IN_PROGRESS / P0 (P0 harness/scorer kısmi; gerçek adapter/telemetry açık): sınırlı deney harness/adapter ve scorer contract'ı; T03a içinde tasarım, T03b içinde yetkili uygulama | One-to-one matching, critical evaluation_error→incomplete, mock/real observer, run manifest, failure/unknown/coverage/payda raporu; framework/production ADR seçilmiş sayılmaz |
-| T24q / T03f,T24 | TODO / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
+| T24q / T03f,T24 | IN_PROGRESS / P1b: domain/extraction/target/fresh-session/UI zinciri kabul raporu; T03b'de yalnız erken örneklem | Aynı revision/case ile native/config/extension/own, critical wrong approval/verified/closure 0 hedefi, kalite+maliyet+review süresi; not_run/permission/gap sonuçtan çıkarılmaz |
 
 Deep dive ölçümün açık contract sorularıyla sınırlıdır; T03e araştırması T01/harness işini ertelemek için sınırsız repo incelemesine dönüşmez. Q03 model/veri/bütçe ve Q13 kod alımı açık; gerçek provider veya ücretli model bu dokümanla yetkilendirilmez. 30 ana görev korunur; bu araştırmanın ilk kaydında T01 IN_PROGRESS, diğer29TODO idi; güncel sayım üsttedir.
 

@@ -20,7 +20,7 @@ def output_schema():
 def anchored(source,output):
     if type(output) is not dict or set(output)!={'source_id','source_sha256','coverage','candidates'} or output['source_id']!=source['id'] or output['source_sha256']!=source['sha256']:raise ContractError('stale_source','Output must bind this exact conversation.')
     if output['coverage'] not in ('complete','partial','unknown') or type(output['candidates']) is not list or len(output['candidates'])>32:raise ContractError('invalid_output','Bounded candidates and coverage required.')
-    if source.get('source_kind') in ('codex_exec_jsonl','codex_app_server') and output['coverage']=='complete':raise ContractError('coverage_overclaim','Bounded capture cannot establish complete conversation coverage.')
+    if source.get('source_kind') in ('codex_exec_jsonl','codex_app_server','claude_code_hook') and output['coverage']=='complete':raise ContractError('coverage_overclaim','Bounded capture cannot establish complete conversation coverage.')
     candidates=[];seen=set()
     for item in output['candidates']:
         if type(item) is not dict or set(item)!={'type','title','quote','intent'} or item['type'] not in KINDS or item['intent'] not in ('proposed','reported','planned','rejected'):raise ContractError('invalid_candidate','Exact typed candidate required.')
