@@ -1,6 +1,6 @@
 # Diyagram tutarlılık incelemesi
 
-**Güncel inventory: 25 belgede 50 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory: 26 belgede 52 Mermaid şeması — API-independent lifecycle UI delivery, 2026-10-19.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -20,6 +20,7 @@
 | [docs/architecture/identity-access.md](../../docs/architecture/identity-access.md) | 1 |
 | [docs/architecture/local-preview.md](../../docs/architecture/local-preview.md) | 1 |
 | [docs/architecture/logging-audit.md](../../docs/architecture/logging-audit.md) | 1 |
+| [docs/architecture/model-activation-runtime.md](../../docs/architecture/model-activation-runtime.md) | 2 |
 | [docs/architecture/overview.md](../../docs/architecture/overview.md) | 1 |
 | [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
 | [docs/architecture/storage-memory-capacity.md](../../docs/architecture/storage-memory-capacity.md) | 1 |
@@ -233,3 +234,5 @@ Local-preview çizimine human complete rationale review→versioned audit/facts�
 19 Ekim source queue ve native log: local-preview1 outbox→explicit bounded worker→mevcut exact grant yolunu; operations-runtime1 native collect trace ve read-only kaynak ilerlemesini gösterir.50Mermaid render edildi; değişen operasyon görseli ve mobil queue kartı incelendi. Kaynak hash/proof ve local-preview SVG yenilendi; eski proof korunur.
 
 19 Ekim source kapasitesi: local-preview1 ve operations-runtime1 indexed1000source/25UI kaydı ile queue metadata sınırlarını gösterir.50diagram render edildi; değişen operation görseli ve desktop/mobile sayfalama kartı incelendi. Önceki proof superseded içinde korundu; değişen local-preview SVG yenilendi.
+
+19Ekim backend follow-up: model activation state+sequence2yeni blok ve local-preview admission gate güncellendi.52blok/26belge cachedMermaid11.17.2 ile ağsız render edildi; yeni state/sequence görsel kontrolü yapıldı. [Çalışan model activation](../architecture/model-activation-runtime.md); ürün acceptance sonucu değildir.

@@ -45,3 +45,10 @@ Yerel TEST deployment readback: `ce81f52938fd1e36b016fd0b92f61edceb230174` kodu5
 Kullanıcı ayrı gerçek veri paylaşım kapsamını açıkça onayladı ve tek çalışma tamamlandı:6generation+6count,6Ready for review,6Task+1Decision önerisi, $0.002963tahmini maliyet. Yeni host okuması/auto-apply/retry yok; orijinal TEST değişmedi. Tek deneme izni kullanıldı; sürekli aktarım açılmadı. [Onay, gerçek hata/düzeltme, sonuç ve sınırlar](saved-source-pilot-001.md).
 
 Nihai bu teslim doğrulaması:543runtime,49kök/tracker testi geçti; ayrıca browser dialogue senaryosu source-linked Task oluşturma, ikinci mesajdan mevcut task güncelleme için ayrı review, false Done reddi, reload ve mobil overflow kontrollerini geçti (sentetik model,0provider dispatch). İlk kök koşusunda3loopback test sandbox port yasağından çalışmadı; izinli koşuda49geçti. İlk browser denemesi yanlış Playwright environment değişkeni nedeniyle yüklenemedi; doğru kurulu modül yolu ile geçti. Assertions veya sınırlar kaldırılmadı. Bu teslim Mermaid akış/topoloji bloğunu değiştirmedi;50blok inventory eşleşmesi kontrol edildi, yeniden render sonucu iddia edilmiyor.
+
+
+## Kalıcı aktivasyon yaşam döngüsü — backend teslimi
+
+19Ekim: [Paused/Active/Revoked backend API, audit ve admission gate](../architecture/model-activation-runtime.md) kodlandı. Source/model registry artık `ManagedResponsesFactory` ile durable bir profile bağlanabilir; aynı grant kayıtlı bir profile bağlandıysa legacy extractor da kontrolü atlayamaz. Pause→resume eski extractor revision'ını geçerli yapmaz. İzin/expiry değişimi yeni gönderimi durdurur. Önceden admit edilmiş çağrının sonucu ve maliyeti korunur; auto-apply yok. Restart+restore, HTTP session/CSRF, archive/scope, rollback ve capacity fail-closed hedefli kontrolleri var.
+
+Yeni grants/credential/budget veya sürekli scheduler oluşturulmadı. Mevcut LOCAL/TEST verisi ve kayıtlı tek-gerçek-pilot izinleri değiştirilmedi; bu teslimin ücretli çağrısı0. İnsan kaynak paylaşım izni yerine activation state kullanılamaz. T09/T17/T19/T21 kapsamındaki backend alt teslimidir; onboarding UI ve gerçek günlük kabul hâlâ açık.

@@ -26,7 +26,8 @@ flowchart TB
     EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]
     DI --> K0
     I0 --> MG["Current human dispatch grant<br/>source + approved dialogue context hash / provider / model / output cap / run / expiry"]
-    MG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
+    MG --> AG["If a durable activation exists: current Active revision required<br/>Paused / revoked / expired blocks admission<br/>Legacy extractor cannot bypass the saved gate"]
+    AG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
     M0 -. opt-in isolated synthetic only .-> PC["Approved exact payload / private key<br/>Shared root: USD3 / 100generation / 200HTTP<br/>Prior usage included; reserve before network"]
     PC --> PT["Count input tokens, then bounded Responses<br/>TLS fixed host / standard tier / no retry<br/>Highest input tariff reserved incl. cache writes"]

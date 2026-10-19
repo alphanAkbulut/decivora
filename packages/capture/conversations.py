@@ -105,6 +105,12 @@ class ConversationService:
             if any(a['source']==source_id for a in self._rows(project,'conversation_analysis_started')):raise ContractError('analysis_unknown','Previous dispatch may have consumed usage; no automatic retry.')
             grant=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==getattr(extractor,'grant_id',None)),None)
             if not grant or grant['source']!=source_id or grant['sha256']!=source['sha256'] or grant['provider']!=extractor.provider or grant['model']!=getattr(extractor,'model',None) or grant['max_output_tokens']!=getattr(extractor,'max_output_tokens',None) or grant['actor']!=scope.principal_id or grant['authority_revision']!=self.core.authority.revision() or grant['expires_at']<=time.time():raise ContractError('model_grant_required','Current source/provider/model/budget grant required.')
+            from packages.capture.model_activation import ModelActivationService
+            activation=ModelActivationService(self.core)
+            if getattr(extractor,'activation_id',None) is not None:
+                activation.require(scope,project,extractor.activation_id,grant,getattr(extractor,'activation_revision',None))
+            elif activation.control_required(project,grant):
+                raise ContractError('activation_required','This source grant requires its durable activation gate.')
             if getattr(extractor,'dialogue_review',False):
                 from packages.capture.dialogue_review import DialogueReviewService
                 prepared=DialogueReviewService(self.core)._prepare(scope,project,source_id=source_id)

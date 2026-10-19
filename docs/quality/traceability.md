@@ -102,3 +102,5 @@ Kullanıcı Q04 cevabında olgunlaşma hikâyesi ve AC/DoD/test görünürlüğ�
 ## R24 sonrası tipli dönüşüm kanıtı
 
 ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve doğrulama](typed-review.md), zaten yapılandırılmış source-bound kayıtların tekrar modelle üretilmesini bu iki P0 fixture'da kaldırır. T09 extraction, T13 production approval ve T21 usage görevleri bununla complete sayılmaz; yeni ürün kapsamı veya engine status değişimi değildir.
+
+19Ekim kaynak/model yönetim alt kanıtı: CAP-02/03 ve APR-01/T09/T17/T19/T21 için [kalıcı activation backend](../architecture/model-activation-runtime.md), API/queue/admission ve revoke/restore/legacy-bypass kontrolleri. Yeni feature veya task değil; gerçek kaynak paylaşımı ve ücret onayı ayrı kalır.

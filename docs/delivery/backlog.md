@@ -846,3 +846,5 @@ Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task ed
 30ana ve129alt kayıt, kendi kabulü ve mevcut kanıtıyla gözden geçirildi. [Satır bazlı önce/sonra, gerekçe ve kanıt](../quality/task-status-audit.json) · [okunabilir sonuç](../quality/task-status-audit.md).42durumsuz kayıt sınıflandı;4eskiTODO kısmi uygulama kanıtıyla In Progress oldu. Kabul daraltılmadı, yeni görev eklenmedi veya ana görev kapatılmadı.
 
 19 Ekim capacity alt teslimi (T09b/T17/T19/T22b/T23d): [1000source indexed/paged kaynak yolu](../quality/source-capacity-pagination.md). Yeni task eklenmedi; genel chunk manifest, onboarding, arşiv/fairness ve recovery kabulü mevcut sahiplerinde açık.
+
+19Ekim T09/T17/T19/T21 backend alt teslimi: [kalıcı kaynak-model aktivasyonu](../architecture/model-activation-runtime.md). Exact source grant kapsamlama, Paused/Active/Revoked, current admission revision, legacy bypass reddi, expiry/yetki ve capacity durması, API/Operations, restart/restore kodlandı. Yeni ana/alt task ve erken parent Done yok; kaynak/model onboarding UI ve sürekli worker kurulumu mevcut sahiplerinde açık.

@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-19",
-  "input_base_ref": "827fad7907818b3e261b13dfd1295a2e60efe23e",
+  "input_base_ref": "d3d9cf12ef062c28455c04ab152bfb97725c1d56",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "5c9773370e84b52308388c70b9765726bc6b1a4a114373f3e604803f28247505",
+      "svg_sha256": "f57f74873c2da583844a176ae509d4b48f649e271fdfb1d0cb8eb2f7472c53dc",
       "error": null
     },
     {
@@ -299,13 +299,13 @@
     {
       "path": "docs/architecture/local-preview.md",
       "block": 1,
-      "source_sha256": "b2f2834d2a4162e66a9b8e1c9832b931c81cdbd2efb2c9b920964ed6a4e286a6",
+      "source_sha256": "92342fe54f94af1fda178d8f22107faa3a600c0edc4cf93b219639959631acdb",
       "status": "rendered",
       "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
       "description_present": true,
-      "view_box": "0 0 4102.17578125 4767.279296875",
+      "view_box": "0 0 4102.17578125 5015.279296875",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "24708dd528a9e5a218e7b3b22363f55ea42f35a997fdae05b32b9c36e0145509",
+      "svg_sha256": "c814ee8b21c77355cf73f84ac369d849a34dea9c289f05d570ad4e11d666f086",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "3b544f297f972b4598c6116134bb131b57cf5d9d5812c999f5e28fab734e4155",
+      "svg_sha256": "c35cf86cda64bf4d22dc584b5132272b6e821ecaa8d225383360b686648da7e1",
       "error": null
     },
     {
@@ -357,6 +357,30 @@
       "error": null
     },
     {
+      "path": "docs/architecture/model-activation-runtime.md",
+      "block": 1,
+      "source_sha256": "af479c801709a60bee89e64cba2617d4d80085fe387f147764dc9b68622c3efd",
+      "status": "rendered",
+      "title": "Kalıcı model aktivasyonunun durumları",
+      "description_present": true,
+      "view_box": "0 0 1387.34375 332",
+      "artifact": "docs--architecture--model-activation-runtime--1.svg",
+      "svg_sha256": "9058e4e48532b62637dca3ab214d3b03d2565f1cda588b3a0e26e85c750271aa",
+      "error": null
+    },
+    {
+      "path": "docs/architecture/model-activation-runtime.md",
+      "block": 2,
+      "source_sha256": "b9391f8ffc525b25f4f7d85c0d010579528f7538a74c4bd5aa177cc2d405e7eb",
+      "status": "rendered",
+      "title": "Aktivasyon kontrolü ve model çağrısının transaction sınırı",
+      "description_present": true,
+      "view_box": "-50 -10 1849.5 760",
+      "artifact": "docs--architecture--model-activation-runtime--2.svg",
+      "svg_sha256": "69c8376a9b752921933ef81c32320171652e73f6fc08c4fb8827e4bfbff120d6",
+      "error": null
+    },
+    {
       "path": "docs/architecture/overview.md",
       "block": 1,
       "source_sha256": "e351a74ab2276d86bfa08e0e2d27ebe63fadea1d6253d8ba307a065520a3bf9a",
@@ -365,7 +389,7 @@
       "description_present": true,
       "view_box": "0 0 1046.67578125 1376.4000244140625",
       "artifact": "docs--architecture--overview--1.svg",
-      "svg_sha256": "326f5ba51083b5ab44c73fa94588a3c1ba6efa6324d2b9ba0ea18548d47523b9",
+      "svg_sha256": "0e1a41979de4997ef406d2b3a53950ec62549ff4bb5ad505d8061dcfb83a978f",
       "error": null
     },
     {
@@ -377,7 +401,7 @@
       "description_present": true,
       "view_box": "-50 -10 1248 1311",
       "artifact": "docs--architecture--review-runtime--1.svg",
-      "svg_sha256": "4a130d5bc14c863c8cb7d719710747ee86fa1f423388605a61bb391a8a9fffd0",
+      "svg_sha256": "b56592a002577f9658e5728024e13df8f95c507f003012370029ac8df11cf642",
       "error": null
     },
     {
@@ -389,7 +413,7 @@
       "description_present": true,
       "view_box": "0 0 1089.140625 1166.3734130859375",
       "artifact": "docs--architecture--review-runtime--2.svg",
-      "svg_sha256": "27e4e66308696bf7c409d1564a005eb8713e000dac943ba7fd27d6cb2de6b498",
+      "svg_sha256": "e9a115bc2fbaece25bef0aa76642b51d951d3e731b436ce69b70a70219877189",
       "error": null
     },
     {
@@ -401,7 +425,7 @@
       "description_present": true,
       "view_box": "0 0 2498.9736328125 395.5390625",
       "artifact": "docs--architecture--storage-memory-capacity--1.svg",
-      "svg_sha256": "1b96e8d1a0eb6fba45859a758d07b41f8f0400cc06796d8a78be8f4d940e2d40",
+      "svg_sha256": "474f89184c0869e13f7076143578fd28297ca836aae3061572f72a9a01a7e64b",
       "error": null
     },
     {
@@ -413,7 +437,7 @@
       "description_present": true,
       "view_box": "0 0 1174.41015625 1020.6778564453125",
       "artifact": "docs--architecture--task-lifecycle--1.svg",
-      "svg_sha256": "ea072817cf5328f7273a49136238a01cc9e395f39635364a09f5eb7c74be96f3",
+      "svg_sha256": "3d280ae2f27d3cdd31aeaa237ec7c69c3c0ea998593937601da4009027985c94",
       "error": null
     },
     {
@@ -425,7 +449,7 @@
       "description_present": true,
       "view_box": "0 0 896 1085.4720458984375",
       "artifact": "docs--delivery--api-independent-development--1.svg",
-      "svg_sha256": "f89354bba5cca4f619ad3e23bc161031a28d692d4df654d7df9010d8d5a1c7c0",
+      "svg_sha256": "54967579083e6f95a8271985630d326e469fbbd9944466485c85ca910c968ec6",
       "error": null
     },
     {
@@ -437,7 +461,7 @@
       "description_present": true,
       "view_box": "0 0 2364.25 88",
       "artifact": "docs--delivery--team-data-plan--1.svg",
-      "svg_sha256": "8ae3f54566af362c3c1c29e15c86a1d2d777b95e07d49985020f6dd1a9f42c9a",
+      "svg_sha256": "5fdae6ee113fb35153ac801fd22c513f1be4d2c9a75096f690aa488132ecb6b5",
       "error": null
     },
     {
@@ -449,7 +473,7 @@
       "description_present": true,
       "view_box": "0 0 1741.15625 676",
       "artifact": "docs--product--current-direction--1.svg",
-      "svg_sha256": "6d6c6696979bb0fd38aa156a189cd2278c6871ba168eb1e05fc571b5e4f7b93b",
+      "svg_sha256": "d869d3a5d7110d2f5c80c592ea7382a7efa23af245985b25436526349445bae4",
       "error": null
     },
     {
@@ -461,7 +485,7 @@
       "description_present": true,
       "view_box": "0 0 896 900",
       "artifact": "docs--product--decision-map--1.svg",
-      "svg_sha256": "ce4d96010c9a7edb1a6fd5a6c068af21e797d4f9e2a631f3c3eaa32fde4e7a5a",
+      "svg_sha256": "1d49e673ae1f190edfd46e62d52a98e5b6b2f2cb333db4ffda6d0df11c6a7152",
       "error": null
     },
     {
@@ -473,7 +497,7 @@
       "description_present": true,
       "view_box": "0 0 1526 534",
       "artifact": "docs--product--decision-map--2.svg",
-      "svg_sha256": "7c25dd52469fca126930f502d808079268ba7d5fe8e4f1213fc0aec2cd340c07",
+      "svg_sha256": "65fbc3195c4999ee18ef9b80f794808ffac869c9ce4b045be5c49aeec9fdd101",
       "error": null
     },
     {
@@ -485,7 +509,7 @@
       "description_present": true,
       "view_box": "0 0 739.4375 435.8500061035156",
       "artifact": "docs--product--graph-experience--1.svg",
-      "svg_sha256": "e25eeb3f99052c262467aa395ff9ae63a69b904517af3dc0a5062b2b33ce8c99",
+      "svg_sha256": "9580b031e45a25aba07f83f4aaad486811011ce0d954695fa4a0d8b5f69ff57e",
       "error": null
     },
     {
@@ -497,7 +521,7 @@
       "description_present": true,
       "view_box": "0 0 606.7734375 655",
       "artifact": "docs--product--graph-experience--2.svg",
-      "svg_sha256": "f37863b7bc798b17e9cee5e7b07ae0f7d715c5ef3e14397fe3d54e4341baaa86",
+      "svg_sha256": "9def1839703c06cace977ee5bd6debfccbc46f0f6cda7490ad628559165f1b08",
       "error": null
     },
     {
@@ -509,7 +533,7 @@
       "description_present": true,
       "view_box": "0 0 1220.390625 1251.90625",
       "artifact": "docs--product--intent-to-reality-gap--1.svg",
-      "svg_sha256": "33f76f545a8f1ac48c8b9b67c99910f303d3b4170284881fe82bde20e86d7f1f",
+      "svg_sha256": "c38eb37170936f15f5f256208a3b33984430a5a86a115c3de907a429cbd4cd76",
       "error": null
     },
     {
@@ -521,7 +545,7 @@
       "description_present": true,
       "view_box": "-50 -10 851 1190",
       "artifact": "docs--product--intent-to-reality-gap--2.svg",
-      "svg_sha256": "23ca444cd00228399f481c134f5711b1017e4770caee8836e5a2ab620db136b4",
+      "svg_sha256": "3be5b83b1fef06b70cda664e6ccf861a72b98a90d3361ee689c9c0038920aab0",
       "error": null
     },
     {
@@ -533,7 +557,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "aacb427dbf734407b59e2dd4e379df4b07a0a3342eb235bcfa5d70468d111dc4",
+      "svg_sha256": "99767ab0497175a228d0e556a6bf42c5ac1254334a135567be8384f262a16ac4",
       "error": null
     },
     {
@@ -545,7 +569,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "fc707470162d04c0f7c35231b820d52abb6ce2059060b9f4e30dbeb81bddffb9",
+      "svg_sha256": "1e3e6248572a7796b489d79c18256a953f6401ca4d224be69f07874ca7d78729",
       "error": null
     },
     {
@@ -557,7 +581,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "c6f8c8d18f386ce563d9cdcbe315731eb6d6a8255f6e5fe332244acf98a02de5",
+      "svg_sha256": "262a1b39d6bf22947d1a46b1a399cd370987bdacbf1a1f5b08c1463d40080d36",
       "error": null
     },
     {
@@ -569,7 +593,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "0f927dc48435e68b75c68a8d72571352597b4a0e55dd77588450af2aad076d06",
+      "svg_sha256": "d6e28cd5cafd3eb44167ac03b85800917d3a33cbb42831dc3856bcefb9ce23b0",
       "error": null
     },
     {
@@ -581,7 +605,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "6f77319aa25f452436d0a75d1b8c4116cd5911cca320a2b0f82f2af79c38dd2b",
+      "svg_sha256": "a6aa461c52ed1e4448b350b08ba468388f637ac398f4b52e257d757d34257ff6",
       "error": null
     },
     {
@@ -593,7 +617,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "f3ffa8ef0bc34d1d20bc84d49e9573089de9d07352bd7c04af73cc1daa611b40",
+      "svg_sha256": "832022c5fc9849d1e1644e4cb2a32998143d54eaafbad432019ed24a198233a5",
       "error": null
     },
     {
@@ -605,11 +629,11 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "d540368532f4ffb20961d0390a504935888971ae6d2ac7e3bba4e30115430cc2",
+      "svg_sha256": "1a89def235b98260d53448fd5f126b3dd1170fb77041ee817e3d3c1a3d5e787c",
       "error": null
     }
   ],
-  "artifacts_location": "Local verification artifacts outside repository; source hashes and results recorded here.",
+  "artifacts_location": "/tmp/decivora-managed-activation-diagrams-verified",
   "readme_fallback": {
     "path": "assets/diagrams/overview.svg",
     "source_sha256": "0d465c1e6dddca0dd19f15d28bca9822c6a00438ff0dd7c1facaa2e418d671bf",
@@ -6147,8 +6171,8 @@
     }
   ],
   "all_sources_rendered": true,
-  "visual_review": "All50sources rendered offline; local-preview root budget label includes historical usage,100generations/200HTTP/USD3 and shared freeze. No new native/UI activation claim.",
-  "scope_note": "Shared development budget and completion-claim prompt implemented; TR/EN and paired original source outputs recorded; default UI remains unconfigured.",
+  "visual_review": "New activation state and sequence PNGs inspected; labels, branches and admission/in-flight boundary readable.",
+  "scope_note": "52 Mermaid sources rendered offline; documentation only, not model/native/MVP acceptance.",
   "superseded": [
     {
       "reason": "Before bounded isolated OpenAI pilot transport",
@@ -6335,6 +6359,24 @@
           "view_box": "0 0 1192.375 1174",
           "artifact": "docs--quality--operations-runtime--1.svg",
           "svg_sha256": "e7ee97552085e20ba6740a3d45d011bcbb575b58e93ff559ffd211fd8ff0fc57",
+          "error": null
+        }
+      ]
+    },
+    {
+      "reason": "Durable model activation admission gate",
+      "input_base_ref": "827fad7907818b3e261b13dfd1295a2e60efe23e",
+      "records": [
+        {
+          "path": "docs/architecture/local-preview.md",
+          "block": 1,
+          "source_sha256": "b2f2834d2a4162e66a9b8e1c9832b931c81cdbd2efb2c9b920964ed6a4e286a6",
+          "status": "rendered",
+          "title": "Çalışan yerel program, onaylı AC ve kalıcı kayıt",
+          "description_present": true,
+          "view_box": "0 0 4102.17578125 4767.279296875",
+          "artifact": "docs--architecture--local-preview--1.svg",
+          "svg_sha256": "24708dd528a9e5a218e7b3b22363f55ea42f35a997fdae05b32b9c36e0145509",
           "error": null
         }
       ]

@@ -230,3 +230,5 @@ Yeni kimlik alanı ve fiziksel ER, [yerel attribution teslimini](../quality/oper
 Operations DTO'suna `conversation_queue` eklendi: selected-project source metadata, waiting/review-ready/failed/unknown sayıları, applied-source sayısı ve preview kapasitesi. Kaynak metni taşımaz; state/operations okumaları worker/model tetiklemez. Mevcut sidecar ER tabloları değişmedi. Native CLI `native_capture` run ve bir `capture/execute_command` span'i yazar; her item için ayrı trace yoktur. [Çalışan sözleşme ve açıklar](../quality/conversation-processing-runtime.md).
 
 Source kapasitesi follow-up: `conversation_queue.items`25ile sınırlı, `items_truncated` açık; total/counts1000kurulum sınırındaki kayıtlı kaynakları kapsar. [İndeksler ve HTTP source page sözleşmesi](../quality/source-capacity-pagination.md); tanı sidecar tabloları değişmedi.
+
+Model aktivasyonu follow-up: `create_model_activation` ve `change_model_activation` extraction command trace olarak izlenir. Kalıcı yaşam döngüsü Workspace audit tablosunda, içeriksiz operation süre/hata izi ayrı Operations DBdedir; yeni sidecar tablosu yok. [Durum, transaction yarışı ve API alanları](model-activation-runtime.md).
