@@ -768,3 +768,7 @@ Source-bound Decision NEW supersedes OLD önerisi, onay öncesi/sonrası impact 
 ### 19 Ekim — T11/T12/T13/T19/T20 kalıcı AND/OR
 
 Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task editor, prepared context ve impact bağlantısı kodlandı. Unknown/conflicting/stale facts otomatik false sayılmaz; eski tek-karar override'ı stale ifadeyi geçemez. [Kapsam](../quality/dialogue-status-runtime.md#19-ekim--kalıcı-andor-gerekçesi-ve-etki-bağlantısı). Parent/semantic/native release kapıları açık; ücretli çağrı yok.
+
+### 19 Ekim — T17 kaldığı yerden devam eden capture
+
+Sayfa başına source+checkpoint atomik kayıt, restart/timeout devamı, aktif assistant bekletme ve aynı yerel profile yeni binding dedup kodlandı. [Sözleşme ve sınırlar](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october). Önceki gerçek6kaynak yeniden okunmadı, model paylaşımı yapılmadı. Gap UI/indexed kapasite/queue ve otomatik dispatch teslimleri açık; T17 In Progress.

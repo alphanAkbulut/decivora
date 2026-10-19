@@ -13,7 +13,10 @@ flowchart TB
     CX["Selected Codex exec JSONL snapshot<br/>explicit project, thread, version and local consent<br/>No desktop discovery or model dispatch"] --> CC["Completed public assistant messages only<br/>prefix/retry guard; partial coverage<br/>mask before persistence; source and cursor commit atomically"]
     CC --> DQ
     AS["Selected Codex App Server thread<br/>Turn metadata, then one-item pages<br/>No thread discovery, resume or turn start"] --> AC["Up to 10 turns / 32 item pages<br/>1 MiB per RPC; private bodies discarded<br/>Public text only; unread items explicitly partial"]
-    AC --> DQ
+    AC --> CK["Reauthorize + compare checkpoint revision<br/>Page source and cursor commit together<br/>Timeout preserves previously accepted pages"]
+    CK --> CP[("Private checkpoint audit<br/>Selected turn frontier / cursor / last item<br/>Active assistant stays pending until terminal")]
+    CP -. next explicitly permitted poll .-> AS
+    CK --> DQ
     I0 --> DQ["Prepared request: source + tasks + decisions<br/>questions + recorded relations / context hash<br/>No model dispatch or egress permission"]
     DQ --> EX["User sends to an existing LLM<br/>External identity and usage unverified"]
     EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]
@@ -87,7 +90,9 @@ flowchart TB
     class D,W,B,H,R,N stored;
     class Q,P,U,I0,M0,DQ,SP,AP,RP launcher;
     class EX pending;
-    class C,RD stored;
+    class C,RD,CP stored;
+    class CK guard;
+    class AS,AC launcher;
     class V pending;
 ```
 

@@ -17,9 +17,9 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 
 **19 Ekim T17 güncellemesi:** [seçilmiş Codex exec JSONL capture](../quality/codex-exec-capture-runtime.md) kaynak/review yoluna bağlandı; T17 artık In Progress. Sadece public assistant mesajları, partial coverage; gerçek masaüstü bağlantısı ve sürekli tam konuşma kabulü açık. Ana sayım güncellendi; ana iş kapanışı veya MVP kabulü yok.
 
-Yeni T17 kodu: App Server üzerinden yalnız seçilen oturumu okumak için stdio client ve bounded polling hazır; user/assistant metinleri ayrı kimlikle mevcut review yoluna bağlanır. Kurulu CLI şeması offline doğrulandı. Gerçek oturum okuması ve normal arayüzden capture kurulumu henüz açılmadı.
+Yeni T17 kodu: App Server üzerinden yalnız seçilen oturumu okumak için stdio client ve bounded polling hazır; user/assistant metinleri ayrı kimlikle mevcut review yoluna bağlanır. Kurulu CLI şeması offline doğrulandı. Sınırlı gerçek oturum okuması aşağıdaki readback ile yapıldı; normal arayüzden capture kurulumu henüz açılmadı.
 
-**Gerçek kaynak sınaması:** [Codex readback001](../quality/codex-real-capture-001.md)2turun erişilen kısmından6mesajı TEST'e kaydetti. User/assistant kaynak→DB→TEST UI bağlantısı bu örnekte doğrulandı; okunmamış item'lar nedeniyle tam capture ve kalıcı cursor açık. Kaynaklar model bekliyor, gerçek metin API paylaşımı yetkilendirilmedi.
+**Gerçek kaynak sınaması:** [Codex readback001](../quality/codex-real-capture-001.md)2turun erişilen kısmından6mesajı TEST'e kaydetti. User/assistant kaynak→DB→TEST UI bağlantısı bu örnekte doğrulandı; okunmamış item'lar nedeniyle tam capture açık. Sonraki kod dilimi kalıcı cursor/sayfa checkpoint'ini sentetik doğruladı; gerçek kaynağa yeniden uygulanmadı. Kaynaklar model bekliyor, gerçek metin API paylaşımı yetkilendirilmedi.
 
 ## Elimizde çalışan kod
 
@@ -90,3 +90,5 @@ Q09 harici bildirim kanalı/sıklığı ayrıntıları açık; uygulama içi inb
 Alt takipte129kayıt var:56DONE,16IN_PROGRESS,10TODO,5PROPOSED,42UNSPECIFIED. Açık olduğu açıkça kaydedilen31alt kayıt ile durumu belirsiz42satır aynı şey değildir; bunları “73yeni kod işi” diye toplamıyoruz. Kaynaklı teslimler ana görevlere parça parça ekleniyor; son kodun ana kabulü bitirmemesi parent sayısını değiştirmiyor.42satırın mevcut kanıtla kapanış sınırlarının ayrıca gözden geçirilmesi takip borcudur; her biri yeni eksik özellik olarak kabul edilmez.
 
 Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenilir yüzde/saat/gün verilmez. Mevcut durum **önemli çekirdeği olan, ana otomatik entegrasyonları hâlâ geliştirilmekte olan ürün**dür; yalnız paketleme veya kozmetik düzeltme kalmadı. Yeni görev veya faz eklenmedi.
+
+19 Ekim T17 ilk iyileştirme teslimi: [kalıcı sayfa ilerlemesi](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october) kodlandı.32source sınırı, progress/gap kartı, indexed queue ve izinli otomatik model zinciri açık; ana sayım değişmedi.

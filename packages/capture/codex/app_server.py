@@ -80,6 +80,9 @@ class CodexAppServerCapture(CodexExecCapture):
     def collect(self, scope, project, *, capture_id, client, limit=MAX_TURNS):
         identifier(capture_id)
         if type(limit) is not int or not 1<=limit<=MAX_TURNS: _fail('capture_limit')
+        if callable(getattr(client, 'read_item_page', None)):
+            from packages.capture.codex.checkpoint import collect_incremental
+            return collect_incremental(self, scope, project, capture_id=capture_id, client=client, limit=limit)
         # Scope validated before any source read. No host request inside a transaction.
         with self.core.read_snapshot():
             binding = self._authorize(scope, project, capture_id)
@@ -87,26 +90,41 @@ class CodexAppServerCapture(CodexExecCapture):
         parsed = public_messages(page)
         # Persist sanitized public content only; provider metadata/error bodies stay out.
         with self.core.transaction():
-            current = self._authorize(scope, project, capture_id)
-            if current != binding: _fail('capture_binding_mismatch')
-            old = next((v for v in reversed(self.sources._rows(project, 'codex_app_server_collected')) if v['id'] == capture_id), None)
-            fingerprints = dict(old['fingerprints']) if old else {}
-            ids = []; incoming = parsed.pop('messages')
-            for message in incoming:
-                key = digest(canonical([message['turn_id'], message['item_id']]))
-                safe_text, _ = redact_text(message['text'])
-                sha = digest(canonical(dict(message,text=safe_text)))
-                if key in fingerprints and fingerprints[key] != sha:
-                    _fail('capture_item_changed')
-                provenance = dict(id=capture_id, thread_id=binding['thread_id'],
-                    turn_id=message['turn_id'], item_id=message['item_id'],
-                    provider_version=binding['provider_version'], source_surface=self.surface,
-                    observed_actor=message['observed_actor'], coverage='partial')
+            return self._persist(scope, project, capture_id, binding, parsed)
+
+    def _persist(self, scope, project, capture_id, binding, parsed, *, profile_ref=None):
+        current = self._authorize(scope, project, capture_id)
+        if current != binding: _fail('capture_binding_mismatch')
+        old = next((v for v in reversed(self.sources._rows(project, 'codex_app_server_collected')) if v['id'] == capture_id), None)
+        fingerprints = dict(old['fingerprints']) if old else {}
+        ids = []; incoming = parsed.pop('messages')
+        for message in incoming:
+            key = digest(canonical([message['turn_id'], message['item_id']]))
+            safe_text, _ = redact_text(message['text'])
+            sha = digest(canonical(dict(message,text=safe_text)))
+            if key in fingerprints and fingerprints[key] != sha:
+                _fail('capture_item_changed')
+            provenance = dict(id=capture_id, thread_id=binding['thread_id'],
+                turn_id=message['turn_id'], item_id=message['item_id'],
+                provider_version=binding['provider_version'], source_surface=self.surface,
+                observed_actor=message['observed_actor'], coverage='partial')
+            source = None
+            if profile_ref is not None:
+                provenance['profile_ref'] = profile_ref
+                # Scope is already reauthorized; legacy unnamespaced sources stay separate.
+                for prior in self.sources._rows(project, 'conversation_imported'):
+                    origin = prior.get('capture', {})
+                    if all(origin.get(k)==provenance[k] for k in ('profile_ref','thread_id','turn_id','item_id','source_surface')):
+                        if prior['sha256'] != digest(safe_text) or origin.get('observed_actor') != message['observed_actor']:
+                            _fail('capture_item_changed')
+                        source = prior
+                        break
+            if source is None:
                 source = self.sources._ingest(scope, project, text=message['text'], capture=provenance, in_transaction=True)
-                fingerprints[key] = sha; ids.append(source['id'])
-            if len(fingerprints) > 32: _fail('capture_limit')
-            receipt = dict(id=capture_id, source_ids=ids, fingerprints=fingerprints, **parsed,
-                           coverage='partial', missing=['bounded_history','non_text_content','host_continuity_not_verified'])
-            if old != receipt:
-                self.sources._put(scope, project, 'codex_app_server_collected', receipt)
-            return receipt
+            fingerprints[key] = sha; ids.append(source['id'])
+        if len(fingerprints) > 32: _fail('capture_limit')
+        receipt = dict(id=capture_id, source_ids=ids, fingerprints=fingerprints, **parsed,
+                       coverage='partial', missing=['bounded_history','non_text_content','host_continuity_not_verified'])
+        if old != receipt:
+            self.sources._put(scope, project, 'codex_app_server_collected', receipt)
+        return receipt

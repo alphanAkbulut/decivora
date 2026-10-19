@@ -194,5 +194,7 @@ class AppServerCaptureTests(unittest.TestCase):
               '--thread-id','thread_1','--provider-version','fixture-1','--codex-executable',str(executable),'--consent','--polls','2','--interval','.25']
         with redirect_stdout(io.StringIO()) as out: self.assertEqual(main(args),0)
         lines=[json.loads(v) for v in out.getvalue().splitlines()]
-        self.assertEqual(lines[0]['source_ids'],lines[1]['source_ids'])
+        self.assertEqual(len(lines[0]['source_ids']),2)
+        self.assertEqual(lines[1]['source_ids'],[])
+        self.assertEqual(lines[1]['item_pages'],0)
         self.assertEqual(len(self.adapter.sources._rows('p','conversation_imported')),2)

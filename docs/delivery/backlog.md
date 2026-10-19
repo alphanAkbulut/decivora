@@ -331,7 +331,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **19 Ekim kod dilimi:** seçilmiş exec JSONL→kalıcı kaynak→mevcut review bağlantısı, cursor/retry/privacy/atomik rollback. [Uygulama ve kalan host kapıları](../quality/codex-exec-capture-runtime.md). Gerçek CLI/desktop capture ve tam konuşma kabulü açık; T16 release bağı kaldırılmadı.
 - **İkinci kod dilimi:** App Server selected-thread user/assistant read ve bounded polling, aynı capture yakın bağlamı; installed offline schema probe0.162.0-alpha.17.2. Gerçek source/model activation ve desktop readback açık.
 
-- **Gerçek readback001:** onaylı tek TEST aktarımında6user/assistant source ve UI readback doğrulandı. [Bulgu/sonuç](../quality/codex-real-capture-001.md). Full-turn byte sınırı için metadata+one-item pagination eklendi;1MiB tavanı korunur.32sayfa sonunda iki turn eksik; **kalıcı item cursor + source/cursor atomik checkpoint + gap UI** bu T17 kapsamında açık. Bir defalık gerçek source izni tüketildi, binding kapalı; model paylaşımı yok.
+- **Gerçek readback001:** onaylı tek TEST aktarımında6user/assistant source ve UI readback doğrulandı. [Bulgu/sonuç](../quality/codex-real-capture-001.md). Full-turn byte sınırı için metadata+one-item pagination eklendi;1MiB tavanı korunur.32sayfa sonunda iki turn eksik; **Kalıcı item cursor + source/cursor atomik checkpoint + pending assistant/dedup** sonraki kod diliminde uygulandı; gap UI, kapasite ve gerçek host yeniden doğrulaması T17 kapsamında açık. Bir defalık gerçek source izni tüketildi, binding kapalı; model paylaşımı yok.
 
 ## T18 — Minimal MCP ve cross-agent read
 
@@ -803,3 +803,5 @@ Source-bound Decision NEW supersedes OLD önerisi, onay öncesi/sonrası impact 
 ### 19 Ekim — T11/T12/T13/T19/T20 kalıcı AND/OR
 
 Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task editor, prepared context ve impact bağlantısı kodlandı. Unknown/conflicting/stale facts otomatik false sayılmaz; eski tek-karar override'ı stale ifadeyi geçemez. [Kapsam](../quality/dialogue-status-runtime.md#19-ekim--kalıcı-andor-gerekçesi-ve-etki-bağlantısı). Parent/semantic/native release kapıları açık; ücretli çağrı yok.
+
+19 Ekim T17 ek kod: [page-atomic continuation](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october), checkpoint/restart/rollback/revoke guard ve yerel origin dedup. Ana T17 In Progress; yeni parent açılmadı, source/model izni genişlemedi.

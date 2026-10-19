@@ -19,6 +19,7 @@ class ReadOnlyAppServer:
         if not 0 < timeout <= 30: _fail('invalid_capture_timeout')
         self.thread_id = thread_id; self.timeout = timeout; self.buffer = b''
         self.request_id = 0
+        self.profile_namespace = [str(Path(executable).resolve()), str(Path(codex_home or os.environ.get('HOME', str(Path.cwd()))).resolve())]
         env = {k:os.environ[k] for k in ('HOME','PATH','SYSTEMROOT','TMPDIR') if k in os.environ}
         if codex_home is not None: env['CODEX_HOME'] = str(Path(codex_home).resolve())
         self.process = subprocess.Popen([str(executable), 'app-server', '--listen', 'stdio://'],
@@ -58,6 +59,48 @@ class ReadOnlyAppServer:
             received += len(chunk)
             if received > MAX_STREAM_BYTES: _fail('capture_limit')
             self.buffer += chunk
+
+    @property
+    def profile_ref(self):
+        # Local installation namespace, not a verified provider account identity.
+        from packages.storage.project_store import digest, canonical
+        return digest(canonical(self.profile_namespace))
+
+    def read_metadata(self, thread_id, *, limit):
+        if thread_id != self.thread_id or type(limit) is not int or not 1<=limit<=10:
+            _fail('capture_binding_mismatch')
+        self.request_id += 1
+        result = self._request(self.request_id, 'thread/turns/list',
+            dict(threadId=thread_id,limit=limit,sortDirection='desc',itemsView='notLoaded'))
+        if type(result.get('data')) is not list or len(result['data'])>limit:
+            _fail('invalid_codex_page')
+        return result
+
+    def read_item_page(self, thread_id, turn_id, *, cursor):
+        if thread_id != self.thread_id: _fail('capture_binding_mismatch')
+        identifier(turn_id)
+        self.request_id += 1
+        params=dict(threadId=thread_id,turnId=turn_id,limit=1,sortDirection='asc')
+        if cursor is not None: params['cursor']=cursor
+        result=self._request(self.request_id,'thread/items/list',params)
+        if type(result.get('data')) is not list or len(result['data'])>1:
+            _fail('invalid_codex_page')
+        items=[]; ignored=0; unsupported=0; last_item=None
+        for entry in result['data']:
+            if type(entry) is not dict or entry.get('turnId')!=turn_id or type(entry.get('item')) is not dict:
+                _fail('capture_binding_mismatch')
+            item=entry['item']; identifier(item.get('id')); kind=item.get('type')
+            if type(kind) is not str: _fail('invalid_codex_page')
+            last_item=item['id']
+            if kind in ('userMessage','agentMessage'): items.append(item)
+            else:
+                ignored+=1; unsupported+=kind not in IGNORED
+        next_cursor=result.get('nextCursor')
+        if next_cursor is not None and (type(next_cursor) is not str or not next_cursor or len(next_cursor)>4096):
+            _fail('invalid_codex_cursor')
+        if next_cursor is not None and next_cursor==cursor: _fail('invalid_codex_cursor')
+        return dict(items=items,next_cursor=next_cursor,last_item_id=last_item,
+                    ignored_private_items=ignored,capture_unsupported_items=unsupported)
 
     def read_turns(self, thread_id, *, limit):
         if thread_id != self.thread_id or type(limit) is not int or not 1<=limit<=10:
