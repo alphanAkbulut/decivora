@@ -232,3 +232,5 @@ Operations DTO'suna `conversation_queue` eklendi: selected-project source metada
 Source kapasitesi follow-up: `conversation_queue.items`25ile sınırlı, `items_truncated` açık; total/counts1000kurulum sınırındaki kayıtlı kaynakları kapsar. [İndeksler ve HTTP source page sözleşmesi](../quality/source-capacity-pagination.md); tanı sidecar tabloları değişmedi.
 
 Model aktivasyonu follow-up: `create_model_activation` ve `change_model_activation` extraction command trace olarak izlenir. Kalıcı yaşam döngüsü Workspace audit tablosunda, içeriksiz operation süre/hata izi ayrı Operations DBdedir; yeni sidecar tablosu yok. [Durum, transaction yarışı ve API alanları](model-activation-runtime.md).
+
+Bounded worker eklentisi: `processing_tick` run/span ve start/stop komutları aynı sidecar tablolarına yazılır; processing loop limit/claim/finish/stop eventleri Workspace audit tablosundadır. Model/HTTP attempt başına ayrı span yoktur. DTOdaki worker/automatic_dispatch flagleri boolean canlı thread durumudur; varsayılanfalse kalır. [Claim, API ve recovery sınırı](model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi).

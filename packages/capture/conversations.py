@@ -111,6 +111,9 @@ class ConversationService:
                 activation.require(scope,project,extractor.activation_id,grant,getattr(extractor,'activation_revision',None))
             elif activation.control_required(project,grant):
                 raise ContractError('activation_required','This source grant requires its durable activation gate.')
+            if getattr(extractor,'processing_loop_id',None) is not None:
+                from packages.capture.processing_loop import ProcessingLoopService
+                ProcessingLoopService(self.core).require_pass(scope,project,extractor.processing_loop_id,getattr(extractor,'processing_pass_id',None),grant)
             if getattr(extractor,'dialogue_review',False):
                 from packages.capture.dialogue_review import DialogueReviewService
                 prepared=DialogueReviewService(self.core)._prepare(scope,project,source_id=source_id)

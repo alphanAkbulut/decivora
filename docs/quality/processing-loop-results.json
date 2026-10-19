@@ -1,0 +1,31 @@
+{
+  "kind": "bounded_processing_worker_runtime",
+  "date": "2026-10-19",
+  "input_base_ref": "2f6fe6fa96e81dd06731223a3e94470df19114cc",
+  "runtime_tests": 571,
+  "root_tests": 49,
+  "worker_tests_included": 15,
+  "browser_case": "Operations synthetic TEST",
+  "mermaid_rendered": 53,
+  "real_source_reads": 0,
+  "paid_provider_calls": 0,
+  "automatic_apply": false,
+  "default_worker_start": false,
+  "source_sha256": {
+    "packages/capture/processing_loop.py": "a71896423d7e04d29ccff3bd543656b6b820d96bfdf4b6209289760f67f4b317",
+    "packages/capture/processing_worker.py": "d03986a354c6998dd656ba79140dcdafebbbfe19114dceef1eae2ed95435ff0e",
+    "packages/capture/conversations.py": "3c240c5a73445b37920165438289e29f0215d77754cf41d952ede51d5b8177ab",
+    "apps/local_ui/server.py": "7ffa76c5cbd633a2652af8e1021f459667fcda18a063e5d8cec6ea16b6e03f3e",
+    "packages/operations/local.py": "8208729b96cf420f029a748fdc43e70a2dc77253ac5d499d5393b736385e4f60",
+    "manifests/local-operations.schema.json": "5b8ed03fb05fa81c955d215dd6fa0b6b2584ef1b192403ffe63e068fbda1d9d9",
+    "tests/runtime/test_processing_loop.py": "598b2d32ea29691d54a62c9a850ee54b1b59c65b2673de9d78ce190536a18441"
+  },
+  "scope_limits": [
+    "Fake providers; no semantic-quality proof",
+    "No live source/model activation",
+    "No auto-resume or unfinished-pass reconciliation",
+    "No new-message data-sharing permission",
+    "No throughput/concurrency SLA"
+  ],
+  "worker_test_timing": "Interval boundary uses a fixed clock; final targeted run repeated without API calls."
+}

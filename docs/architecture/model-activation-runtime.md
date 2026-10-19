@@ -1,6 +1,6 @@
 # Kalıcı model aktivasyonu — çalışan backend
 
-**19 Ekim 2026 · T09/T17/T19/T21. Uygulanan yerel alt kapsam.** [Kod](../../packages/capture/model_activation.py), [test](../../tests/runtime/test_model_activation.py). Yeni kaynak okuma, API harcama veya sürekli izleme izni vermez. Kullanıcıya dönük kurulum ekranı ve zamanlayıcı henüz bağlı değildir; varsayılan LOCAL/TEST uygulaması model kapalı kalır.
+**19 Ekim 2026 · T09/T17/T19/T21. Uygulanan yerel alt kapsam.** [Kod](../../packages/capture/model_activation.py), [test](../../tests/runtime/test_model_activation.py). Yeni kaynak okuma, API harcama veya sürekli izleme izni vermez. Kullanıcıya dönük kurulum ekranı henüz bağlı değildir; aşağıdaki bounded worker backend API ile açıkça başlatılabilir; varsayılan LOCAL/TEST uygulaması model kapalı kalır.
 
 ## İş kuralı ve durumlar
 
@@ -78,3 +78,58 @@ Operations iki komutu extraction bileşeninde normal command span olarak izler. 
 13hedefli test: pause/active/resume/revoke, factory→admission yarışının engellenmesi, eski extractor, expiry/yetki değişimi, grant/expiry genişletme reddi, insan/agent/proje sınırı, idempotent create, restart+restore, audit rollback, eksik profil, in-flight yanıtın korunması ve legacy bypass engeli. Bütün provider çıktıları sentetik; gerçek API0. Arayüz butonları, background timer, sürekli izinli source/model onboarding ve günlük kullanıcı kabulü mevcut T09/T17/T19/T21 işlerinde açık kalır.
 
 Nihai doğrulama:556runtime ve49kök/tracker testi geçti.13yeni hedefli test bunlara dahildir.52Mermaid blok offline render edildi; yeni iki diyagram görsel olarak incelendi. İlk sequence renderındaki metin ayraç hatası düzeltildi; başarısız koşular başarı diye kaydedilmedi. Bu tur gerçek provider çağrısı0, kaynak okuması0.
+
+## Kalıcı sınırlı işleme döngüsü — sonraki backend teslimi
+
+[ProcessingLoopService](../../packages/capture/processing_loop.py) ve [LocalProcessingWorker](../../packages/capture/processing_worker.py), mevcut aktivasyona bağlı **açıkça başlatılan** yerel bir döngü sağlar. [Regresyonlar](../../tests/runtime/test_processing_loop.py). Default startup, GET/state/Operations okuması veya source import worker başlatmaz. TEST model bağlantısı yasağı değişmedi. Gerçek veri paylaşımı veya ücretli çalışma bu kod teslimiyle etkinleştirilmedi.
+
+İnsan seçimi gereken konfigürasyon: exact activation/config digest, pass sayısı, her pass kaynak sayısı, toplam kaynak denemesi, interval ve expiry. Uygulama tavanları300pass,10kaynak/pass,10toplam kaynak ve0.25–60sinterval'dir; gerçek kullanıma otomatik seçilmiş/onaylanmış politika değildir. Activation expiry uzatılamaz. Yeni kaynak/grant/payload veya bütçe üretilmez. Bu finite whitelist döngüsü gelecek bütün mesajlar için sürekli paylaşım izni değildir; yeni kaynak onboarding/consent yolu ayrı kalır.
+
+| API action | Alanlar (`action` dışında) | Davranış |
+|---|---|---|
+| `create_processing_loop` | `loop_id`, `activation_id`, `activation_sha256`, `max_passes`, `max_sources_per_pass`, `max_total_sources`, `interval_seconds`, `expires_at`, `reason` | Sadece immutable konfigürasyon; başlatmaz |
+| `run_processing_pass` | `loop_id`, `configuration_sha256` | Tek kalıcı bounded pass |
+| `start_processing_loop` | `loop_id`, `configuration_sha256` | Matching managed transport ve Active izin varsa bir yerel thread başlatır |
+| `stop_processing_loop` | `loop_id`, `configuration_sha256`, `reason` | Terminal stop event ve interruptible wait; in-flight yanıt silinmez |
+
+Mevcut human/project/session/Origin/CSRF korumalı `/api/command` kullanılır. Source/grant olmadan provider eklenemez; model kapalıyken worker başlamaz. `/api/state.processing_loops` kalıcı sayaç/durumları, `processing_worker` yalnız bu süreçteki thread durumunu gösterir. Operations `background_worker_active` ile queue `automatic_dispatch/background_worker_active` alanları artık boolean çalışma gözlemidir; schema'da sabitfalse değildir. Bütün alanlar varsayılan uygulamadafalse kalır. Processflag çağrı yapıldığı veya capture çalıştığı anlamına gelmez.
+
+### Claim, limit ve restart
+
+Aynı Workspace `audit` tablosunda `conversation_processing_loop` event'leri kullanılır: configured, pass_started, pass_finished, stopped. Yeni fiziksel tablo yoktur. Pass başlarken allowance atomik reserve edilir; finished receipt bilinen attempted sayısıyla yerleşir. `max_total_sources` **kaynak denemesi tavanıdır**, token/USD/HTTP sayacı değildir. Model token reservation ve trusted transport'un ortak para/istek tavanı ayrıca geçerlidir. Yeni loop veya server restart bu root bütçeyi sıfırlamaz.
+
+```mermaid
+flowchart TD
+  accTitle: Kalıcı ve sınırlı kaynak işleme döngüsü
+  accDescr: Açık insan başlatması ve mevcut Active activation gerekir. Kalıcı pass claim toplam limitleri korur. Yarım claim yeniden denenmez. Kaynak/grant/context ve loop claim aynı analiz transactionında kontrol edilir. İnceleme gerektiren sonuç döngüyü durdurur; yeni kayıtları kendiliğinden yetkilendirmez.
+  P["Konfigürasyonu kaydet<br/>Kaynak bütçesi + interval + expiry"] --> H["Açık insan start komutu<br/>Managed transport + Active activation"]
+  H --> C["Atomik pass claim<br/>Kalıcı pass ve source allowance sayaçları"]
+  C -->|"Yarım claim / stop / limit"| X["Bekle veya dur<br/>Otomatik recovery / retry yok"]
+  C --> G["Kaynak ve exact grant seçimi<br/>Context + activation + loop claim gate"]
+  G --> M["TX dışında provider<br/>Mevcut token / USD transport limitleri"]
+  M --> F["Sonuç ve actual / unknown usage<br/>Pass receipt kalıcı"]
+  F -->|"Hata / belirsiz kullanım"| R["Review required<br/>Yeni pass yok"]
+  F -->|"Başarılı veya izin bekliyor"| W["Interruptible interval<br/>Aynı kalıcı limitler"]
+  W --> C
+  F -.-> V["Kaynaklı öneri incelemesi<br/>Canonical apply ayrı insan işlemi"]
+  classDef control fill:#dbeafe,stroke:#1e40af,color:#172554
+  classDef stopped fill:#fee2e2,stroke:#991b1b,color:#450a0a
+  classDef stored fill:#dcfce7,stroke:#166534,color:#052e16
+  class P,H,C,G control
+  class X,R stopped
+  class F,V stored
+```
+
+Factory seçimi yeterli değildir: `ConversationService.analyze` loop/pass ve grant'in aynı activation kapsamında olduğunu rezervasyonla aynı transactionda tekrar kontrol eder. Stop commit'i önceyse yeni çağrı yoktur. Daha önce admit edilmiş çağrı bitince receipt/maliyet korunur. Unknown usage, başarısız cevap veya eksik pass claim'i otomatik retry üretmez.
+
+İkinci worker unfinished claim gördüğünde işlemez; crash sonrası para harcanmadığını varsayıp allowance iade etmez. Aynı loop kimliğiyle farklı limit kaydı idempotency conflict olur. Restart worker'ı otomatik açmaz. Şimdiki uygulama unfinished pass için otomatik reconciliation sağlamaz; insan/kanıtlı kurtarma yolu ayrıca gereklidir. Queue boş veya grant yoksa yeni model çağrısı olmaz; yerel boş pass sayısı yine finite max_passes'e dahildir. Shared-budget transport freeze kontrolü ayrıca korunur.
+
+Kontrol geçmişi2048event ile bounded; dolunca yeni dispatch ve değişiklik fail-closed durur. Önceki kaynaklar ve receipt'ler silinmez. Bekleme sırasında stop Event ile kesilir; activation pause ise admission'ı hemen keser ve worker sonraki tick'te durur. Graceful shutdown beklemeyi keser, thread için en fazla2sjoin dener; process force-close sırasında bitmemiş dış çağrının sonucu unknown kalabilir. Yeni açılış otomatik retry yapmaz.
+
+### Tanı ve doğrulama sınırı
+
+`processing_tick` extraction run/span'i; açık create/start/run/stop komutları mevcut Operations command trace'idir. Her HTTP/model çağrısı için ayrı span iddiası yoktur. Scope preflight reddi trace başlamadan oluşabilir; worker'ın safe code alanı tanıyı tamamlar. Ham source, credential, provider hata gövdesi ve exception metni loga konmaz.
+
+Sınırlı gerçek kaynak pilotu bu teslimde tekrar edilmedi. Sahte sağlayıcıyla gerçek thread ve HTTP testleri; pause/stop yarışları, unknown usage durması, aynı DB üzerinde iki worker, limit/interval, restart/restore ve öneri→ayrı review sınırını doğrular. Kaynak/model kurulum ekranı, yeni mesajlara kaynak paylaşım policy'si, gerçek izinli live-capture + model günlük kabulü mevcut T09/T17/T19/T21'de açık kalır.
+
+Son bounded-worker doğrulaması:571runtime,49kök/tracker testi,15worker testi (runtime setine dahil), Operations browser ve53Mermaid render geçti. Worker testleri gerçek yerel thread/HTTP, sahte provider ile çalıştı. Bir negatif kontrolde farklı activationın kaynak grantine rastlanması pass istisnası üretiyordu; kapsam dışı grant gönderilmeden atlanacak şekilde düzeltildi. Grant/activation/admission doğrulaması kaldırılmadı. [Kod hashleri ve makine sonucu](../quality/processing-loop-results.json).

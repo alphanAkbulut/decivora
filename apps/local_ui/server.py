@@ -43,6 +43,13 @@ class LocalApp:
             self.storage_journal_mode=mode
         from packages.operations.local import LocalOperations
         self.operations=LocalOperations(self.path.with_suffix('.operations.sqlite'))
+        from packages.capture.processing_worker import LocalProcessingWorker
+        self.processing_worker=LocalProcessingWorker(self)
+    def _queue_view(self,core,owner,project):
+        from packages.capture.processing_queue import ConversationQueue
+        view=ConversationQueue(core).view(owner,project)
+        active=self.processing_worker.view(project)['active']
+        return dict(view,background_worker_active=active,automatic_dispatch=active)
     def _source_extractor(self,core,owner,project,source_id):
         if self.extractor_factory is None:return self.extractor
         service=ConversationService(core)
@@ -108,7 +115,7 @@ class LocalApp:
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC LIMIT 5",(core.workspace,selected)):
                 impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
             with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
-            return dict(environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=__import__('packages.capture.processing_queue',fromlist=['ConversationQueue']).ConversationQueue(core).view(owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=(self.extractor is not None or self.extractor_factory is not None),model_activations=__import__('packages.capture.model_activation',fromlist=['ModelActivationService']).ModelActivationService(core).view(owner,selected),project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+            return dict(environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=self._queue_view(core,owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=(self.extractor is not None or self.extractor_factory is not None),model_activations={**__import__('packages.capture.model_activation',fromlist=['ModelActivationService']).ModelActivationService(core).view(owner,selected),'background_worker_active':self.processing_worker.view(selected)['active']},processing_worker=self.processing_worker.view(selected),processing_loops=__import__('packages.capture.processing_loop',fromlist=['ProcessingLoopService']).ProcessingLoopService(core).view(owner,selected),project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
     def conversation_page(self,selected='personal',cursor=None,source_id=None):
         with self.core() as core,core.read_snapshot():
             identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected);core.active(owner,selected)
@@ -120,8 +127,8 @@ class LocalApp:
             queue=dict(core.db.execute('SELECT j.status,count(*) FROM jobs j JOIN sources s ON s.seq=j.source_seq WHERE j.project=? AND s.workspace=? GROUP BY j.status',(selected,core.workspace)))
             result=self.operations.view(selected)
             from packages.capture.processing_queue import ConversationQueue
-            result['conversation_queue']=ConversationQueue(core).view(owner,selected)
-            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=False,queue=queue,model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
+            result['conversation_queue']=self._queue_view(core,owner,selected)
+            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=self.processing_worker.view(selected)['active'],queue=queue,model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
             return result
     def command(self,body):
         from packages.operations.local import ACTIONS,identity_from_scope
@@ -151,7 +158,7 @@ class LocalApp:
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
             selected=identifier(body['project_id']);body=body['command']
-        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','save_task_rationale','import_conversation','analyze_conversation','process_conversation_queue','accept_candidates','create_model_activation','change_model_activation'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','save_task_rationale','import_conversation','analyze_conversation','process_conversation_queue','accept_candidates','create_model_activation','change_model_activation','create_processing_loop','run_processing_pass','start_processing_loop','stop_processing_loop'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
             if action in ('prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes'):
@@ -228,6 +235,16 @@ class LocalApp:
                 service=DialogueReviewService(core)
                 method={'review_dialogue_answer':service.review_answer,'prepare_dialogue_review':service.prepare,'import_dialogue_response':service.import_response,'review_dialogue_status':service.review_status}[action]
                 return method(owner,selected,**{k:v for k,v in body.items() if k!='action'})
+            if action in ('create_processing_loop','run_processing_pass','start_processing_loop','stop_processing_loop'):
+                from packages.capture.processing_loop import ProcessingLoopService
+                fields={'action','loop_id','activation_id','activation_sha256','max_passes','max_sources_per_pass','max_total_sources','interval_seconds','expires_at','reason'} if action=='create_processing_loop' else {'action','loop_id','configuration_sha256'}|({'reason'} if action=='stop_processing_loop' else set())
+                if set(body)!=fields:raise ContractError('invalid_request','Exact bounded processing loop fields required.')
+                service=ProcessingLoopService(core);args={k:v for k,v in body.items() if k!='action'}
+                if action=='create_processing_loop':return service.create(owner,selected,**args)
+                if action=='start_processing_loop':return self.processing_worker.start(core,owner,selected,**args)
+                if action=='stop_processing_loop':
+                    result=service.stop(owner,selected,**args);self.processing_worker.cancel(selected,body['loop_id']);return result
+                return service.execute_pass(owner,selected,registry=self.extractor_factory,**args)
             if action in ('create_model_activation','change_model_activation'):
                 from packages.capture.model_activation import ModelActivationService
                 fields={'action','activation_id','grant_ids','expires_at','reason'} if action=='create_model_activation' else {'action','activation_id','base_revision','configuration_sha256','state','reason'}
@@ -339,7 +356,7 @@ def make_server(path,port=0,extractor=None,verification_root=None,environment='l
             if self.path not in ('/api/command','/api/shutdown','/api/backup'):return self.answer(404,dict(error='not_found'))
             if not self.authenticated() or not secrets.compare_digest(self.headers.get('X-CSRF-Token',''),app.csrf):return self.answer(403,dict(error='session_or_csrf_required'))
             if self.path=='/api/shutdown':
-                self.answer(200,dict(status='stopping'));threading.Thread(target=self.server.shutdown,daemon=True).start();return
+                self.answer(200,dict(status='stopping'));app.processing_worker.shutdown();threading.Thread(target=self.server.shutdown,daemon=True).start();return
             with app.rate_lock:
                 window=int(time.monotonic()//60)
                 if app.window!=window:app.window=window;app.writes=0
@@ -369,5 +386,5 @@ def main():
     if not args.no_browser:webbrowser.open(server.origin+'/#'+server.app.bootstrap)
     try:server.serve_forever()
     except KeyboardInterrupt:pass
-    finally:server.server_close()
+    finally:server.app.processing_worker.shutdown();server.server_close()
 if __name__=='__main__':main()

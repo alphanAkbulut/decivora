@@ -1,6 +1,6 @@
 # Ana ürün akışı denetimi — 18 Ekim 2026
 
-**19 Ekim güncel durum:** aşağıdaki18Ekim tablosu ilk tespit kaydıdır. Sonraki source-bound answer/relation/replacement, AND/OR UI, gerçek kısmi Codex readback, checkpoint ve queue/Operations kodları [güncel ürün resminde](../delivery/current-state.md), [task teyidinde](task-status-audit.md) ve [son işleme tesliminde](conversation-processing-runtime.md) ayrılır. Tarihsel “henüz yok” ifadesini bugünün yeni eksiği sayma. Ana uçtan uca otomasyon kabulü açık.
+**19 Ekim güncel durum:** aşağıdaki18Ekim tablosu ilk tespit kaydıdır. Sonraki source-bound answer/relation/replacement, AND/OR UI, gerçek kısmi Codex readback, checkpoint ve queue/Operations kodları [güncel ürün resminde](../delivery/current-state.md), [task teyidinde](task-status-audit.md) ve [son işleme tesliminde](conversation-processing-runtime.md) ayrılır. Tarihsel “henüz yok” ifadesini bugünün yeni eksiği sayma. Sonraki [kalıcı aktivasyon ve finite worker](../architecture/model-activation-runtime.md) backend API/thread zinciri de kodlandı; kaynak/model onboarding ekranı ve yeni mesaj paylaşım policy yolu açık. Ana uçtan uca otomasyon kabulü açık.
 
 **Sonuç: ana otomatik ürün akışı tamamlanmış değil.** Yerel çekirdek, source review, task workflow ve verification parçaları çalışıyor; sürekli konuşma yakalama → gerçek çıkarım → kaynaklı ilişki/karar değişimi → onaylı görev etkisi → sonraki agent'a izinli devam bağlamı zincirinde kritik bağlantılar açık. Test sayısı ve tamamlanan alt parçalar bu zincirin kabulü değildir.
 

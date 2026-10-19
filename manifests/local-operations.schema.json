@@ -236,7 +236,7 @@
       "const": 1
     },
     "background_worker_active": {
-      "const": false
+      "type": "boolean"
     },
     "queue": {
       "type": "object",
@@ -323,10 +323,10 @@
           }
         },
         "background_worker_active": {
-          "const": false
+          "type": "boolean"
         },
         "automatic_dispatch": {
-          "const": false
+          "type": "boolean"
         },
         "capacity": {
           "const": 1000

@@ -236,9 +236,9 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
 
 - **18 Ekim kod teslimi:** [Diyalog→görev/durum](../quality/dialogue-status-runtime.md): kaynak/current task context bağlı yanıt; task create ve status önerileri ayrı review; provider/import ortak doğrulaması. Gerçek serbest metin kalitesi ve otomatik capture açık; ana T09 kapanmadı.
-- **Son ilerleme:** 19 Ekim2026 — [Source outbox ve izinli bounded worker](../quality/conversation-processing-runtime.md) review ucuna bağlandı; source/context grant ve actual/unknown bütçe guard korunur.
+- **Son ilerleme:** 19 Ekim2026 — [Exact-source aktivasyon + kalıcı bounded processing worker](../architecture/model-activation-runtime.md) API/thread/queue yoluna bağlandı. Pass/source caps restartta korunur; stop, unfinished claim ve unknown usage yeni dispatch keser. Kaynak/context ve root bütçe guard korunur.
 - **Risk durumu:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
-- **Sıradaki adım:** Kaynak kapasitesi/index/paging kodlandı; sırada source-specific model aktivasyonu, ardından bağımsız semantic ölçüm.
+- **Sıradaki adım:** Kaynak/model onboarding ekranını hazır backend komutlarına bağla; yeni mesaj paylaşım kapsamını mevcut tek-deneme izinlerinden ayrı al. Bağımsız semantic ölçüm kendi kapısında açık.
 
 ## T10 — Temel reconciliation
 
@@ -373,7 +373,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **İlk çalışan UI dilimi:** [Yerel program](../quality/local-preview.md); manuel tek proje/AC card/board. Full selector/inbox/graph/timeline açık; native/MCP bağımlılığı kaldırılmadı, disabled manual slice önce kuruldu.
-- **Son ilerleme:** 19 Ekim2026 — Conversation proposal/status/answer/relation/replacement review, proje seçimi ve source processing kartı kodlu. [Son UI bağlantısı](../quality/conversation-processing-runtime.md).
+- **Son ilerleme:** 19 Ekim2026 — Mevcut proposal/status/answer/relation review yanında [finite worker yönetim backend API](../architecture/model-activation-runtime.md) create/start/run/stop ve state metadata tamamlandı. Kurulum/aktivasyon UI bağlantısı açık.
 - **Risk durumu:** Proje/kaynak kurulum izin wizardı ve risk plan kartı yok; bütün öneri türleri tamamlanmadı.
 - **Sıradaki adım:** T19b risk kartı ve source/model onboarding; mevcut source/proposal review uçlarını yeniden yazma.
 
@@ -402,7 +402,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
 - **Son ilerleme:** 19 Ekim2026 — Shared root token/money reservation, count+actual/unknown/overrun ve routing etiketleri mevcut. [API bütçe kaydı](../quality/openai-development-budget.md).
-- **Risk durumu:** Dönem/config UI ve genel source-specific aktivasyon açık; tahmin nihai fatura değildir.
+- **Risk durumu:** Dönem/config ve source/model onboarding UI açık; source activation/finite-loop backend kodlu, tahmin nihai fatura değildir.
 - **Sıradaki adım:** T21b/c kalan dönem/parametre görünümü ve trusted reconciliation; root bütçeyi yeni batch ile sıfırlama.
 
 ## T22 — Chat import ve prompt lineage
@@ -848,3 +848,5 @@ Human-confirmed versioned rationale/facts, eksiksiz known-edge kapsamı, task ed
 19 Ekim capacity alt teslimi (T09b/T17/T19/T22b/T23d): [1000source indexed/paged kaynak yolu](../quality/source-capacity-pagination.md). Yeni task eklenmedi; genel chunk manifest, onboarding, arşiv/fairness ve recovery kabulü mevcut sahiplerinde açık.
 
 19Ekim T09/T17/T19/T21 backend alt teslimi: [kalıcı kaynak-model aktivasyonu](../architecture/model-activation-runtime.md). Exact source grant kapsamlama, Paused/Active/Revoked, current admission revision, legacy bypass reddi, expiry/yetki ve capacity durması, API/Operations, restart/restore kodlandı. Yeni ana/alt task ve erken parent Done yok; kaynak/model onboarding UI ve sürekli worker kurulumu mevcut sahiplerinde açık.
+
+19Ekim T09/T17/T19/T21 bounded-worker teslimi: [durable pass claim ve açık start/stop](../architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi). Kalıcı source/pass caps, interval/expiry ve current grant kontrolü; thread/HTTP/Operations entegrasyonu.571runtime/49tracker/53diagram. Yeni task eklenmedi veya full-parent Done yapılmadı; yeni kaynak consent/onboarding UI ve günlük native kabul mevcut sahiplerinde açık.

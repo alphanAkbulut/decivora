@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**19Ekim bounded worker backend:** kalıcı pass/source sınırları, interval/expiry, atomik claim, manuel start/stop ve arka plan thread bağlandı. Unfinished claim/unknown usage durur; restart otomatik başlatmaz. [Kod ve sınırlar](../architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi).571runtime/49tracker,53Mermaid; yeni gerçek source/provider çağrısı0. Ana7/15/8aynı.
+
 **19Ekim backend:** mevcut source grantleri için [kalıcı aktivasyon yönetimi](../architecture/model-activation-runtime.md) API/queue/analysis transactionına bağlandı. Paused/Active/Revoked, expiry/authz, legacy bypass ve restart/restore kontrolleri var. Gerçek veri/API çağrısı0, ana statüler7/15/8aynı; onboarding ve sürekli izinli worker açık.
 
 **19 Ekim — kaynak başına model bağlantısı ve ilk kayıtlı gerçek sohbet pilotu:**6mesaj ayrı kopyada gerçek Luna ile işlendi;6Ready for review,6Task+1Decision önerisi. Maliyet tahmini$0.002963, toplam$0.052555; original TEST/model kapalı durumu korundu. Native source envelope uyumsuzluğu offline bulunup düzeltildi; auto-apply0. Sürekli aktivasyon ve insan anlam doğruluğu kabulü açık. [Kanıt/sınırlar](../quality/saved-source-pilot-001.md). Ana7/15/8korunur.

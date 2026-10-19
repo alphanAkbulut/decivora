@@ -20,13 +20,15 @@ flowchart TB
     CK --> SQ[("Indexed source audit + minimal outbox<br/>1000 sources/project; 25 per UI page<br/>Same transaction as page checkpoint")]
     I0 --> SQ
     SQ --> QW["Explicit bounded queue pass<br/>No default timer or new grants<br/>Unknown call or usage stops; no retry"]
+    LP["Explicit start: finite local processing worker<br/>Persisted pass / source caps, interval and expiry<br/>No auto-start, source grants or budget renewal"] --> QW
+    G -->|explicit loop setup and start| LP
     QW -->|existing exact source and model grant| MG
     I0 --> DQ["Prepared request: source + tasks + decisions<br/>questions + recorded relations / context hash<br/>No model dispatch or egress permission"]
     DQ --> EX["User sends to an existing LLM<br/>External identity and usage unverified"]
     EX --> DI["Import structured JSON<br/>source + context + unique quote validation"]
     DI --> K0
     I0 --> MG["Current human dispatch grant<br/>source + approved dialogue context hash / provider / model / output cap / run / expiry"]
-    MG --> AG["If a durable activation exists: current Active revision required<br/>Paused / revoked / expired blocks admission<br/>Legacy extractor cannot bypass the saved gate"]
+    MG --> AG["If a durable activation exists: current Active revision required<br/>Paused / revoked / expired blocks admission<br/>Legacy extractor cannot bypass the saved gate<br/>Loop claim is also checked when present"]
     AG --> BR["Atomic root-budget reservation<br/>commit receipt before model; no model in TX"]
     BR --> M0["Provider request / response adapter<br/>varsayılan model etkin değil"]
     M0 -. opt-in isolated synthetic only .-> PC["Approved exact payload / private key<br/>Shared root: USD3 / 100generation / 200HTTP<br/>Prior usage included; reserve before network"]

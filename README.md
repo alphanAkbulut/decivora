@@ -39,7 +39,8 @@ Decivora'nın hedeflediği katkı, konuşmalardaki bilgiyi **ihtiyaç → gereks
 | Yerel uygulama | Python3.12/SQLite; konuşma aktarımı, Board/List/Graph/Timeline, görev ve karar incelemesi, AC/DoD, ayrı insan onayı ve kalıcı geçmiş kodlandı |
 | Karar ve etki | Kaynaklı ilişki/karar önerileri, AND/OR gerekçeleri ve insan onaylı etki/görev güncelleme parçaları mevcut |
 | Codex bağlantısı | Seçilmiş oturum için salt okunur capture kodu var. Sınırlı gerçek denemede6mesaj TEST'e alındı; sonraki kalıcı sayfa ilerlemesi sentetik doğrulandı |
-| Otomatik uçtan uca akış | **Henüz tamamlanmadı.** 1000kaynak kapasitesi, sayfalı inceleme ve işleme durumu kodlandı. Capture kurulumu ve izinli sürekli otomatik model zincirinin kalan bağlantıları geliştiriliyor. Varsayılan uygulamada model kapalı |
+| Otomatik uçtan uca akış | **Henüz tamamlanmadı.** 1000kaynak kapasitesi, sayfalı inceleme, kalıcı aktivasyon ve açıkça başlatılan bounded worker backend kodlandı. Capture/izin kurulum ekranı ve yeni mesajları kapsayan otomatik zincirin bağlantıları geliştiriliyor. Varsayılan uygulamada model kapalı |
+| Gerçek model kanıtı | Ayrı izinli6kayıtlı mesaj pilotu:6Ready for review,7öneri; genel anlam doğruluğu veya otomatik apply kanıtı değil. [Pilot](docs/quality/saved-source-pilot-001.md) · [Worker sınırları](docs/architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi) |
 | Release ve ekip kullanımı | MVP release adayı değil. Ekip kimliği/izolasyonu ve gerçek host/model kabul kapıları açık |
 
 Konuşmanın kaydedilmesi, bir önerinin onaylanması ve işin doğrulanarak tamamlanması ayrı durumlardır. Her platformdaki bütün sohbetlere otomatik erişim veya kusursuz anlam çıkarımı vaat edilmez. Decivora çalışma adıdır; marka uygunluğu kesinleşmemiştir.

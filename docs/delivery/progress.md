@@ -148,7 +148,7 @@ Sıradaki adım: Aynı bağımsız beklentilerde tam ürün zincirini ve adil na
 
 ### T09 · Extraction ve bounded retrieval
 
-19 Ekim2026 — [Source outbox ve izinli bounded worker](../quality/conversation-processing-runtime.md) review ucuna bağlandı; source/context grant ve actual/unknown bütçe guard korunur.
+19 Ekim2026 — [Exact-source aktivasyon + kalıcı bounded processing worker](../architecture/model-activation-runtime.md) API/thread/queue yoluna bağlandı. Pass/source caps restartta korunur; stop, unfinished claim ve unknown usage yeni dispatch keser. Kaynak/context ve root bütçe guard korunur.
 
 **Aktif teknik risk:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
 
@@ -156,7 +156,7 @@ Sıradaki adım: Aynı bağımsız beklentilerde tam ürün zincirini ve adil na
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Kaynak kapasitesi/index/paging kodlandı; sırada source-specific model aktivasyonu, ardından bağımsız semantic ölçüm.
+Sıradaki adım: Kaynak/model onboarding ekranını hazır backend komutlarına bağla; yeni mesaj paylaşım kapsamını mevcut tek-deneme izinlerinden ayrı al. Bağımsız semantic ölçüm kendi kapısında açık.
 
 ### T10 · Temel reconciliation
 
@@ -232,7 +232,7 @@ Sıradaki adım: T18b–i kalan kabulü: source ACL korunarak deterministic deva
 
 ### T19 · Proje seçimi ve Review Inbox UI
 
-19 Ekim2026 — Conversation proposal/status/answer/relation/replacement review, proje seçimi ve source processing kartı kodlu. [Son UI bağlantısı](../quality/conversation-processing-runtime.md).
+19 Ekim2026 — Mevcut proposal/status/answer/relation review yanında [finite worker yönetim backend API](../architecture/model-activation-runtime.md) create/start/run/stop ve state metadata tamamlandı. Kurulum/aktivasyon UI bağlantısı açık.
 
 **Aktif teknik risk:** Proje/kaynak kurulum izin wizardı ve risk plan kartı yok; bütün öneri türleri tamamlanmadı.
 
@@ -258,7 +258,7 @@ Sıradaki adım: T20c/d/g/h/i kapsamını mevcut UIya bağla; parent kriterlerin
 
 19 Ekim2026 — Shared root token/money reservation, count+actual/unknown/overrun ve routing etiketleri mevcut. [API bütçe kaydı](../quality/openai-development-budget.md).
 
-**Aktif teknik risk:** Dönem/config UI ve genel source-specific aktivasyon açık; tahmin nihai fatura değildir.
+**Aktif teknik risk:** Dönem/config ve source/model onboarding UI açık; source activation/finite-loop backend kodlu, tahmin nihai fatura değildir.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
@@ -395,4 +395,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `c58845922ec765c82c50de804dd822edd78a1a69a1c66857cbb7ae243d4a5dd0`
+Kaynak fingerprint: `da1f3b3b8149f7eba906dce16ef2f9ccb7efb70b205b6079689fdf7def9fb91c`
