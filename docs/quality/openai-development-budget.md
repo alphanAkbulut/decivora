@@ -2,6 +2,8 @@
 
 **19 Ekim 2026 · T03/T09/T15/T21.** Kullanıcı “$3 bütçe ve bu sınırlarla devam et” diyerek önerilen sınırları açıkça onayladı. Bu yeni kapsam ilk pilotu da içerir; her alt grup için yeniden$3açılmaz. Ana task/MVP kapanışı değildir.
 
+**Sonraki ayrı veri izni:** kullanıcı6kayıtlı maskelenmiş gerçek mesajın Luna ile≤6generation/6count/$0.25denemesini ayrıca onayladı; aynı$3root altında çalışıldı. [Sonuç](saved-source-pilot-001.md): bu ek iş$0.002963; genel26generation/52HTTP/$0.052555. Aşağıdaki synthetic-only tablosu ilk onayın kapsamıdır; bütün gerçek sohbetlerin paylaşılmasına veya sürekli aktarımına dönüşmez.
+
 ## Ortak sınırlar
 
 | Alan | Kabul edilen sınır |

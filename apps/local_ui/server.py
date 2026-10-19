@@ -21,12 +21,13 @@ from packages.capture.conversations import ConversationService
 
 ROOT=Path(__file__).parent
 class LocalApp:
-    def __init__(self,path,extractor=None,verification_root=None,environment='local'):
+    def __init__(self,path,extractor=None,verification_root=None,environment='local',*,extractor_factory=None):
         from packages.operations.environment import bind_environment
         bind_environment(path,environment)
-        if environment=='test' and (extractor is not None or verification_root is not None):raise ContractError('test_connection_disabled','Test environment disables model and file-target connections.')
+        if environment=='test' and (extractor is not None or extractor_factory is not None or verification_root is not None):raise ContractError('test_connection_disabled','Test environment disables model and file-target connections.')
         self.environment=environment;self.cookie_name='decivora_test_session' if environment=='test' else 'decivora_session';self.started_at=time.time();self.started_monotonic=time.monotonic();self.operations_context=threading.local()
-        self.extractor=extractor
+        if extractor is not None and extractor_factory is not None:raise ContractError('invalid_model_configuration','Choose one trusted model configuration.')
+        self.extractor=extractor;self.extractor_factory=extractor_factory
         from packages.verification.files import FileChecker
         self.file_checker=FileChecker(verification_root) if verification_root is not None else None
         self.path=Path(path);fresh=not self.path.exists();self.path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
@@ -42,6 +43,17 @@ class LocalApp:
             self.storage_journal_mode=mode
         from packages.operations.local import LocalOperations
         self.operations=LocalOperations(self.path.with_suffix('.operations.sqlite'))
+    def _source_extractor(self,core,owner,project,source_id):
+        if self.extractor_factory is None:return self.extractor
+        service=ConversationService(core)
+        with core.read_snapshot():
+            core.scope(owner,project,write=True,human=True);core.active(owner,project)
+            source=service._source(project,source_id)
+            grants=[g for g in service._rows(project,'conversation_dispatch_authorized')
+                    if g['source']==source_id and g['sha256']==source['sha256']
+                    and g['actor']==owner.principal_id and g['authority_revision']==core.authority.revision()
+                    and g['expires_at']>time.time()]
+        return self.extractor_factory(source,grants[-1]) if grants else None
     def record_error(self,endpoint,code):
         endpoint=endpoint if endpoint in ('/api/state','/api/command','/api/backup','/api/session','/api/shutdown','/api/conversations') else 'other'
         code=code if type(code) is str and re.fullmatch('[a-z_]{1,64}',code) else 'application_error'
@@ -94,8 +106,8 @@ class LocalApp:
             impact_reviews=[]
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC LIMIT 5",(core.workspace,selected)):
                 impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
-            with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
-            return dict(environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=__import__('packages.capture.processing_queue',fromlist=['ConversationQueue']).ConversationQueue(core).view(owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=self.extractor is not None,project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+            with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
+            return dict(environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=__import__('packages.capture.processing_queue',fromlist=['ConversationQueue']).ConversationQueue(core).view(owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=(self.extractor is not None or self.extractor_factory is not None),project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
     def conversation_page(self,selected='personal',cursor=None,source_id=None):
         with self.core() as core,core.read_snapshot():
             identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected);core.active(owner,selected)
@@ -108,7 +120,7 @@ class LocalApp:
             result=self.operations.view(selected)
             from packages.capture.processing_queue import ConversationQueue
             result['conversation_queue']=ConversationQueue(core).view(owner,selected)
-            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=False,queue=queue,model_configured=self.extractor is not None,file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
+            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=False,queue=queue,model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
             return result
     def command(self,body):
         from packages.operations.local import ACTIONS,identity_from_scope
@@ -221,16 +233,17 @@ class LocalApp:
                     if set(body)!={'action','limit'}:raise ContractError('invalid_request','Exact bounded queue pass required.')
                     from packages.capture.processing_queue import ConversationQueue
                     def factory(source,grant):
+                        if self.extractor_factory is not None:return self.extractor_factory(source,grant)
                         if self.extractor is None or getattr(self.extractor,'grant_id',None)!=grant['id']:return None
                         return self.extractor
-                    return ConversationQueue(core).process(owner,selected,extractor_factory=factory if self.extractor is not None else None,limit=body['limit'])
+                    return ConversationQueue(core).process(owner,selected,extractor_factory=factory if (self.extractor is not None or self.extractor_factory is not None) else None,limit=body['limit'])
                 if action=='import_conversation':
                     if set(body)!={'action','text'}:raise ContractError('invalid_request','Exact conversation fields required.')
                     source=service.ingest(owner,selected,text=body['text'])
-                    return dict(source=source,analysis=service.analyze(owner,selected,source['id'],self.extractor))
+                    return dict(source=source,analysis=service.analyze(owner,selected,source['id'],self._source_extractor(core,owner,selected,source['id'])))
                 if action=='analyze_conversation':
                     if set(body)!={'action','source_id'}:raise ContractError('invalid_request','Exact source ID required.')
-                    return service.analyze(owner,selected,body['source_id'],self.extractor)
+                    return service.analyze(owner,selected,body['source_id'],self._source_extractor(core,owner,selected,body['source_id']))
                 if set(body)!={'action','source_id','key','selected','base_revision'}:raise ContractError('invalid_request','Exact candidate review required.')
                 return service.accept(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action=='question_state':
@@ -267,8 +280,8 @@ class LocalApp:
             plan=core.plan(owner,selected,'ui_'+uuid.uuid4().hex,ops);token=core.approve(owner,plan)
             return core.apply(owner,plan,token)
 
-def make_server(path,port=0,extractor=None,verification_root=None,environment='local'):
-    app=LocalApp(path,extractor=extractor,verification_root=verification_root,environment=environment)
+def make_server(path,port=0,extractor=None,verification_root=None,environment='local',*,extractor_factory=None):
+    app=LocalApp(path,extractor=extractor,verification_root=verification_root,environment=environment,extractor_factory=extractor_factory)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
         def answer(self,code,body,kind='application/json',cookie=False):

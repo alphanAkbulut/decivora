@@ -4,6 +4,8 @@
 
 # Mevcut durum
 
+**19 Ekim — kaynak başına model bağlantısı ve ilk kayıtlı gerçek sohbet pilotu:**6mesaj ayrı kopyada gerçek Luna ile işlendi;6Ready for review,6Task+1Decision önerisi. Maliyet tahmini$0.002963, toplam$0.052555; original TEST/model kapalı durumu korundu. Native source envelope uyumsuzluğu offline bulunup düzeltildi; auto-apply0. Sürekli aktivasyon ve insan anlam doğruluğu kabulü açık. [Kanıt/sınırlar](../quality/saved-source-pilot-001.md). Ana7/15/8korunur.
+
 **19 Ekim — ilk gerçek Codex kaynak aktarımı:** kullanıcı onaylı tek yerel TEST okuması, seçilmiş2turdan6user/assistant mesajı kaydetti; TEST API readback doğrulandı. İlk full-response byte sınırı hatası korundu; metadata+one-item pagination düzeltildi. İki turda da okunmamış item var; kalıcı cursor/backfill açık, T17 kapanmadı.6kaynak Waiting for model; yeni Task0 ve ücretli çağrı0; kaynak izni kullanılıp bağlantı kapatıldı. [Bulgu, düzeltme ve kanıt](../quality/codex-real-capture-001.md). Ana7/15/8 korunur.
 
 **19 Ekim — kullanıcı mesajı capture bağlantısı kodlandı:** App Server üzerinden seçilmiş tek thread'in bounded user/assistant metin okuması ve açık sınırlı polling komutu eklendi. Önceki mesajlardan bounded bağlam, actor/item/turn kimliği, tekrar/değişiklik/privacy ve revoke/commit kontrolleri var. Kurulu CLI offline şeması doğrulandı; gerçek sohbet okuma/normal UI etkinleştirme yapılmadı. [Kod, sürüm ve sınırlar](../quality/codex-exec-capture-runtime.md#19-october--app-server-user-message-capture-and-bounded-polling). T17 In Progress; ana7/15/8 aynı, yeni ücretli çağrı0.
