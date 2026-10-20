@@ -1,6 +1,6 @@
 # Kısa proje yönetim planı
 
-**Aşama: P0 — Discovery / Product Definition.** Ürün çalışmıyor. Amaç: AI konuşmalarını yaşayan, karar farkındalıklı hafızaya dönüştürmek; eskimiş işleri açıklanabilir biçimde yeniden değerlendirmek ve manuel yönetim yükünü azaltmak. Tam kapsam korunur; P1b tam MVP çıkışıdır. Güncel ilk öğrenme teslimi [tasarım revizyonu 03](../product/current-direction.md) için P0 gerçekleşme/devam prototipi + native karşılaştırması önerisidir; P1b tamamlandı anlamına gelmez.
+**Güncel aşama: çalışan yerel çekirdek ve kısmi native/model entegrasyonu; MVP kabulü açık.** P0 kalite kanıtlarının bir bölümü açıkken P1a/P1b uygulaması ilerliyor. [Güncel sprint](sprint-plan.md) ve [teslim akışı retrospektifi](../quality/delivery-flow-retrospective.md) güncel yürütme kaynağıdır. Amaç: AI konuşmalarını yaşayan, karar farkındalıklı hafızaya dönüştürmek; eskimiş işleri açıklanabilir biçimde yeniden değerlendirmek ve manuel yönetim yükünü azaltmak. Tam kapsam korunur; P1b tam MVP çıkışıdır. [Tasarım yönü](../product/current-direction.md) korunur; sıradaki teslim yeni mesajın izinli analiz/review bağlantısıdır. Native/semantik kıyas kendi kalite kapılarında açık kalır; P1b tamamlandı anlamına gelmez.
 
 **Pilot kararı (2026-10-09):** önce owner'ın bireysel kullanımı; sonra benzer kullanıcılar. [Sorular/cevaplar](decision-brief.md) pilot erişimi ve bütçe sınırını izler. [Şikâyet araştırması](../discovery/user-research.md) görüşme akışını ve ürünü terk ettirebilecek riskleri; [benchmark bulguları](../discovery/benchmark-findings.md) ölçülmüş sonuç ile kaynak araştırmasını ayırır.
 
@@ -27,7 +27,13 @@ Bunlar görev rolleridir; kurulmuş ayrı bir ekip veya atanmış çalışan idd
 | P3 | Cost report, yetkili dış yazma, release hazırlığı | İzin, lisans, isim, kurulum/demo kanıtı |
 | P4 | Takım/cloud/ticari sınırlar | Talep, isolation/sync tasarımı ve owner kararı |
 
-Tarih ve bütçe henüz taahhüt edilmedi. Bağımlılık kapısını geçemeyen özellik full scope'ta kalır; sınırlı pilot diye adlandırılır. Güncel durumun otoritesi [status](status.md), uygulanabilir işin otoritesi [backlog](backlog.md).
+Sabit teslim tarihi taahhüt edilmedi. API bütçe ve kaynak izinlerinin geçerli kapsamı kendi kayıtlarında izlenir; bu belge yeni harcama izni değildir. Bağımlılık kapısını geçemeyen özellik full scope'ta kalır; sınırlı pilot diye adlandırılır. Güncel durumun otoritesi [status](status.md), uygulanabilir işin otoritesi [backlog](backlog.md).
+
+## Teslim boyutu ve kapanış düzeltmesi
+
+20 Ekim incelemesi: geniş ana paket, küçük teslim ve ürün kabulü aynı sayaçta yorumlanınca ilerleme görünmez kaldı; eski özetler ve parser hatası bunu artırdı. [Kök neden, kanıt ve aksiyon raporu](../quality/delivery-flow-retrospective.md) süreç sorumluluğunu ve uygulanmış/planlı ayrımını kaydeder.
+
+Mevcut WIP=1, aktif çalışan kullanıcı sonucu içindir; 20 kısmi In Progress parent'ın aynı anda yürütülmesi değildir. Başlamadan mevcut alt dilim, beklenen çalışan sonuç, kabul ve evidence düzeyi belirlenir. Bitişte kendi kabulü karşılanan alt iş kapanır; parent'ın core ve required seti aynı teslimde kontrol edilir. Tamamlanmayan parent için exact kalan alt ID ve neden raporlanır. Bütün release'i bekleyerek kanıtlanmış küçük teslimi açık tutma; tek küçük testle geniş parent'ı kapatma. Aynı kanıt uygun birden fazla kabulde referanslanabilir, yeni iş diye çoğaltılmaz.
 
 ## Çalışma ritmi
 

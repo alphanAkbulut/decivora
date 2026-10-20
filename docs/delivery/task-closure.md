@@ -31,3 +31,9 @@ Yeni eksik eklemeden mevcut kayıt/kanıt/kararı kontrol et. Kalan işi aynı I
 Toplu manual/synthetic profile network ingress açmadığı için T04b owner/first-use T16 olarak netleştirildi; gereksinim ve açık durum korunur. T09/T10 kalite işleri bitmeden typed/manual graph kernel test edilebilir; plan sırası gerçek çalışma engeli değildir, full14MVP AC karşılanmış sayılmaz.
 
 19Ekim [satır bazlı durum teyidi](../quality/task-status-audit.md)30ana/129alt kaydı kapsar. Checker artık canonical UNSPECIFIED durumunu, eksik/tekrarlı audit satırını, durum-audit uyumsuzluğunu ve eksik evidence yolunu reddeder. Kanıt yolunun varlığı semantik doğruluk veya ürün kabulünün yerine geçmez; açık kalan kabul audit'te ayrı yazılır.
+
+## Kapanışlar final güne yığılmayacak
+
+[20 Ekim retrospektifi](../quality/delivery-flow-retrospective.md), geniş paket/küçük teslim ayrımını ve yanlış raporlama etkisini inceler. Alt dilim kabulü tamamlandığında ilgili mevcut kayıt kapanır; parent kendi core/required setiyle aynı teslimde değerlendirilir. Eksik varsa exact ID ve neden görünür kalır. Başka release veya gelecek-faz işini kapatma bahanesiyle kanıtlı alt teslim açık tutulmaz.
+
+Bir ortak entegrasyon birkaç parent'ın son eksiğini aynı anda giderirse ayrı kriter/evidence kontrolleriyle birkaç kapanış olabilir. Bu, toplu otomatik Done değildir. Sonraki modüle bağlı gereksinim atlanmaz; owner/first-use gate zaten manifestte açık tutulur. Bu açıklama kabul, sahiplik, statü veya 14 MVP kriterini değiştirmez.

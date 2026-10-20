@@ -86,3 +86,7 @@ Yeni araştırma turu veya yeni ana görev açılmayacak. Önce Sprint 1 birleş
 Doğrulama: peer-heading parser regresyonu, repo/tracker suite, closure, doküman/anchor ve generated progress eşleşmesi bu düzeltmenin kontrol kapsamıdır. Ürün runtime ve gerçek model testleri bu inceleme adına yeniden çalıştırılmış sayılmaz. Yeni chat okuması, veri paylaşımı veya ücretli dispatch yapılmadı.
 
 Kontrol sonucu: **50 repo/takip testi geçti**; closure 30 ana/129 alt kayıt ve sıfır cycle, doküman/anchor/progress kontrolleri geçti. Salt okunur 8765 takip süreci güncel parser ile yeniden başlatıldı; API readback özgün T30 kabulünü ve değişmeyen 8/20/2 sayımını doğruladı. Ürün süreçleri/veritabanları değiştirilmedi. Mermaid kaynakları değişmedi; yeniden render iddiası yok.
+
+## Süreç nedenleri ve düzeltme yaklaşımı
+
+Kullanıcının kapanışların bir anda olup olmayacağı sorusu üzerine [teslim akışı retrospektifi](delivery-flow-retrospective.md) hazırlandı. Geniş parent sayımını açıklamak tek başına çözüm değildir: modül/deney çıktıları ile çalışan günlük kullanıcı sonucu ayrılır, küçük kabul kapanışı final release’e ertelenmez, parent kendi kalan required setiyle kontrol edilir. Uygulanmış tracker düzeltmeleri ile henüz tamamlanmamış ürün entegrasyonları ayrı gösterilir.

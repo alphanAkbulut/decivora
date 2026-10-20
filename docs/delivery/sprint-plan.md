@@ -38,6 +38,10 @@ Sprintler teslim sırasıdır; sabit takvim veya Scrum sertifikasyon iddiası de
 
 Claude kapsamdan çıkarılmadı; **Codex günlük akışı önce** tamamlanır. Tek adapter kabulü sınırlı pilot olarak adlandırılır. Ekip/cloud, ek chat yüzeyleri, gelişmiş reconciliation ve public release T25–T30 kapsamındadır; MVP'ye sessizce taşınmaz.
 
+## Teslimi nasıl görünür kapatacağız?
+
+[Retrospektif](../quality/delivery-flow-retrospective.md) uyarınca tek aktif sonuç Sprint 1'in ilerleyen mesaj yolculuğudur. Mevcut küçük dilim kendi kabulünde kapanır; parent aynı teslimde core/required-set kontrolünden geçer. Parent açık kaldıysa kalan exact alt ID ve kanıt eksiği raporlanır. Tek entegrasyon farklı kriterleri sağlarsa birkaç kayıt birlikte kapanabilir; final güne erteleme veya otomatik toplu Done yok. 20 In Progress ana paket aktif WIP sayısı değildir. Bu plan yeni task veya scope üretmez.
+
 ## Sıradaki mikro plan — Sprint 1
 
 Bunlar yeni ana görev değildir; mevcut işlerin uygulanacak dilimleridir.
