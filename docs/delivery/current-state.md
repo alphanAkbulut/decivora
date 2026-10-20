@@ -1,6 +1,8 @@
 # Güncel ürün ve kalan geliştirme resmi
 
-**Paylaşım/ilk-scope son doğrulama:**680runtime+49repo, yeni sharing browser ve mevcut5locale/false-Done regresyonları geçti. LOCAL53610/TEST53611aynı verilerle güncellendi; worker0. LOCALpolicyExpired, model_ready=false; yeni ücret veya gerçek source dispatch yok. Mevcut$3toplam tavanı ve geçmiş rezervleri koruyan24saatlik süre yenileme önerisi onay bekler; kod bağımsız geliştirme tamamlandı.
+**20 Ekim — onaylı API süre yenilemesi:** Kullanıcı aynı toplam sınırlarla 24 saat yenilemeyi onayladı. Dönem 20 Ekim 13:35:38–21 Ekim 13:35:38 Türkiye saati (UTC+3). $3 toplam tavan, 100 model/200 HTTP, istek başına 10.000 giriş/2.000 çıkış korunur; geçmiş 52 dispatch/104 HTTP bütçe payı ve $0.067286 taahhüt taşındı. Üç unknown actual=null ve toplam $0.006750 rezerviyle korunur. Kalan 48 model/96 HTTP ve $2.932714 yerel paydır; hesap bakiyesi/fatura değildir. LOCAL profil Available, worker kapalı; yeni sohbet okuma/model çağrısı yok. Kaynak paylaşımı ve aktivasyon ayrıca gerekir. [Taşıma ve doğrulama](../quality/openai-development-budget.md#20-ekim--aynı-toplam-sınırlarla-onaylı-süre-yenilemesi).
+
+**Paylaşım/ilk-scope son doğrulama:**680runtime+49repo, yeni sharing browser ve mevcut5locale/false-Done regresyonları geçti. LOCAL53610/TEST53611aynı verilerle güncellendi; worker0. Bu kod tesliminde LOCALpolicyExpired idi; sonraki onaylı yenileme yukarıdaki güncel kayıttadır. Kod doğrulaması, yeni gerçek source/provider kabulü değildir.
 
 
 **20 Ekim Sprint1 — paylaşım ve ilk scope:** Yeni kaynağın exact source/context model-sharing preview+approval akışı ve ilk Task review'ında human AC/DoD veya bağlı clarification kodlandı. Approval dispatch değildir; kriterler not_run. [Uygulama, sınırlar ve NM-02](../architecture/source-sharing-and-first-review.md). Gerçek provider UI kabulü yeni source scope ve geçerli policy dönemi gerektirir; ücretli çağrı0.

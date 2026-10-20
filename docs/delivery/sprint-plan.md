@@ -33,7 +33,7 @@ Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası de�
 - Yapılan: Sources ekranındaki mevcut-grant aktivasyon ve worker kontrolleri. [Kod, bulgu ve sınırlar](../architecture/model-activation-runtime.md#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri).
 - Gözlenen: İlk native görev review'ı AC hazırlamadığı için başlangıçta ek kapsam adımı gerekti; NM-01görünürlük düzeltildi, NM-02hazırlık işi açık. Gerçek soru yakalamada J04semantik hatası da açık; yeni UI bu hatayı çözmüş sayılmaz.
 - Sıradaki: Yerel kaynak kurulumunu sınırlı gerçek kabul ile doğrulamak; yeni paylaşım+ilk scope UI akışını geçerli kaynak/policy dönemiyle sınırlı gerçek provider kabulünde doğrulamak. [Kod/sınırlar](../architecture/source-sharing-and-first-review.md). Yeni genel benchmark taraması öncelik değildir.
-- Engel ayrımı: Yerel kod geliştirmesi için API gerekmez. Önceki iki-chat capture ve iki model isteği izinleri tüketildi; yeni gerçek okuma/dispatch için somut kaynak/süre/bütçe kapsamı gerekir. Genel bütçenin kalanı veya bu plan, süresi dolan izni yenilemez.
+- Engel ayrımı: Yerel kod geliştirmesi için API gerekmez. Önceki iki-chat capture ve iki model isteği izinleri tüketildi; yeni gerçek okuma/dispatch için somut kaynak/süre/bütçe kapsamı gerekir. 20 Ekim owner onayı yalnız API dönemini 21 Ekim 13:35:38 Türkiye saatine yeniledi; kaynak paylaşımı veya otomatik çalışma izni vermedi. Geçmiş kullanım/unknown rezervleri ve toplam sınırlar korundu.
 
 ## Takip ve sprint kapanışı
 

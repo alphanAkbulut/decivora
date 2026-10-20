@@ -72,3 +72,29 @@ Tam anlam kalitesi, role/source ayrımı, onaylı gerçek Codex adapter'ı ve an
 
 
 **Onaylı devam:** Önceki J02_m4unknown rezervi user onayıyla korundu;8yeni dispatch/16HTTP payı,7usage ve1yeni timeout unknown. Root48dispatch/96HTTP;known59332+held6750=66082microusd. Yeni unknown nedeniyle frozen; diğer iki unknown onayı bunu kapsamaz. Kalan6mesaj çağrılmadı. [Detay ve yeni owner kapısı](dialogue-batch-001-continuation.md).
+
+
+## 20 Ekim — aynı toplam sınırlarla onaylı süre yenilemesi
+
+**Karar ve gerekçe:** Kullanıcı `call_2c463c6c33ae4cfaa8d5aa94bd09955a` cevabında aynı toplam sınırlarla 24 saat yenilemeyi onayladı. Başlangıç onayın alındığı 20 Ekim 2026 10:35:38 UTC; bitiş 21 Ekim 2026 10:35:38 UTC / **13:35:38 Türkiye**. Amaç süresi dolmuş izin dönemini yenilemektir; harcama tavanını veya kaynak erişimini genişletmek değildir.
+
+| Sınır / kullanım | Yenileme sonrası |
+|---|---:|
+| Birikimli para tavanı | $3 |
+| Birikimli model / HTTP sınırı | 100 / 200 |
+| İstek başına giriş / çıkış | 10.000 / 2.000 token |
+| Taşınan dispatch / HTTP bütçe payı | 52 / 104 |
+| Bilinen maliyet tahmini | $0.060536 |
+| Unknown sayısı / korunan rezerv | 3 / $0.006750 |
+| Birikimli yerel taahhüt | $0.067286 |
+| Kalan model / HTTP payı | 48 / 96 |
+| Kalan ihtiyatlı yerel harcama payı | $2.932714 |
+| Bu yenilemede yeni dispatch / HTTP | 0 / 0 |
+
+HTTP bütçe payı kesin wire/generation sayısı değildir; unknown actual kullanım halen bilinmiyor. Yerel pay provider hesap bakiyesi veya fatura değildir. Önceden benimsenmiş fiyat revision'ı değişmedi; bu işlem güncel fiyat araştırması değildir.
+
+**Uygulama:** Eski policy ve ledger değiştirilmedi. Tutarlı private SQLite predecessor yedeği, policy/ledger hashleri, unknown rezervleri ve önceki continuation onaylarını bağlayan taşıma makbuzu korundu. Successor immutable policy aynı budget_scope ve tam birikimli `prior_usage` ile oluşturuldu. Dispatch satırlarını ayrıca kopyalamamak çifte sayımı önler; prior_usage'ı sıfırlamamak yeni $3 bütçe açılmasını önler. Eski dönem expired kaldığı için önceki launcher yeni çağrı için geçerli izin kazanmaz. Private dosyalar, anahtar, DB ve ham sohbet GitHub'a konmadı.
+
+**Doğrulama:** Constructor/snapshot yerel ve ağsız çalıştırıldı; olmayan credential yolu ve çağrılırsa hata veren transport kullanıldı. Sayaçlar 52/104/67286microusd ve yeni dispatch0 doğrulandı; eski unknown satırları actual=null, rezerv6750microusd ve devam onaylarıyla değişmeden kaldı. LOCAL yedeği alınıp idle kontrolüyle yalnız LOCAL yeniden başlatıldı; tüm uygulama tablolarının fingerprint'leri eşit, seçili native bağlantı0, worker kapalı, profil Available. TEST yeniden başlatılmadı. Yeni gerçek sohbet okuma, anahtar okuma veya provider çağrısı yok.
+
+**Açık sınır:** Yeni profile digest eski source consent'i geçerli kılmaz. Sonraki gerçek kabul için exact kaynak/context paylaşımı ve ayrı aktivasyon gerekir. Bu yenileme bunları veya otomatik retry/model yükseltmesini onaylamaz. Önceki 680runtime/49repo ve 62Mermaid render sonucu kod teslimine aittir; bu config değişikliği için tümü yeniden koşulmuş sayılmaz. Diyagramların onay→ayrı aktivasyon→dispatch sınırları değişmedi; Mermaid içeriği değiştirilmedi. Bu yenilemede 7 birikimli bütçe regresyon testi, docs/anchor ve progress kontrolleri geçti.
