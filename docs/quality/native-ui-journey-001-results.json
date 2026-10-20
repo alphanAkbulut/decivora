@@ -57,10 +57,10 @@
   ],
   "same_task_id": true,
   "canonical_tasks": 1,
-  "canonical_stage": "To Do",
+  "canonical_stage": "In Progress",
   "scope_choice": "linked clarification",
-  "acceptance_contract": null,
-  "open_clarifications": 1,
+  "acceptance_contract": 1,
+  "open_clarifications": 0,
   "verified_completion": false,
   "case_cost_microusd": 609,
   "root_dispatches": 54,
@@ -76,5 +76,21 @@
   "worker_active": false,
   "reload_preserved": true,
   "mobile_no_overflow": true,
-  "unrelated_project_tables_preserved": 12
+  "unrelated_project_tables_preserved": 12,
+  "initial_canonical_stage": "To Do",
+  "initial_open_clarifications": 1,
+  "resolved_clarifications": 1,
+  "criterion_statuses": {
+    "AC1": "not_run",
+    "DOD1": "not_run"
+  },
+  "scope_followup": {
+    "owner_approved": true,
+    "apply_method": "current_human_transition_after_scope_approval",
+    "old_model_proposal": "Deferred and stale",
+    "new_model_calls": 0,
+    "new_chat_reads": 0,
+    "reload_verified": true,
+    "original_task_id_preserved": true
+  }
 }

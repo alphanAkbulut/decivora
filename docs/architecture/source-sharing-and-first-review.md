@@ -115,3 +115,6 @@ Eski policy/ledger korundu. Yeni immutable policy, önceki toplamı `prior_usage
 [LOCAL iki sohbet raporu](../quality/native-ui-journey-001.md): capture→exact paylaşım→ayrı activation/Analyze→Task+linked clarification gerçek ürün arayüzünden geçti; ikinci sohbet aynı Task ID için In Progress önerdi. Owner clarification seçtiği için contract yok ve başlangıç uygulanmadı; bu dal diyagramdaki mevcut açık-soru yoludur. Sürekli capture/genel semantik kalite/Done kabulü değildir.
 
 UI-J01: aynı kaynağın eski paylaşım makbuzu yeni exact planın approval formunu gizliyordu. `renderSourceSharing`, hazırlanmış plan varken saved makbuzunu source yanında plan ID ile eşleştirir; yeni kutu unchecked başlar. Backend admission veya audit geçmişi değiştirilmedi. Düzeltme öncesi başarısız browser regression, düzeltme sonrası yeni grant ve ayrı consent ile geçti.
+
+
+**Son owner kapsam onayı:** [Aynı LOCAL pilotun devamında](../quality/native-ui-journey-001.md#son-owner-kararı--kapsam-onayı-ve-güncel-başlangıç) kullanıcı açıklama sonrası somut AC/DoD ve current başlangıcı onayladı. Contract v1→clarification Resolved→eski model önerisi stale/Deferred→güncel insan transition ile In Progress yolu gerçek arayüzden doğrulandı. Kriterler not_run; yeni inference0. Bu, ilk clarification seçimini geçmişten silmez veya eski model response'unu güncelmiş gibi yeniden kullanmaz.

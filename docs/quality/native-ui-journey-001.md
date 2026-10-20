@@ -1,5 +1,7 @@
 # Gerçek LOCAL arayüzü — iki sohbet, tek görev ve açık kapsam sorusu
 
+**Güncel sonuç:** Son owner onayıyla aynı tek Task In Progress, contract v1; kapsam sorusu Resolved, AC/DoD not_run. Aşağıdaki ilk turdaki clarification/To Do gözlemleri tarihsel ara aşamadır. Model çağrısı hâlâ2; follow-up yeni API veya chat read yapmadı.
+
 **20 Ekim 2026 · Sprint1 · T09/T13/T17/T19/T21/T22.** Bu, önceki CLI/service pilotundan ayrı olarak gerçek yerel ürün arayüzü üzerinden yürütülen dar kullanıcı yolculuğudur. Kaynaklar daha önce insan tarafından yazılmış iki sentetik Codex sohbetidir; bu tur yeni sohbet veya yeni mesaj üretilmedi. İki sohbet tekrar ve yalnız birer kez okundu. Manuel Task metni girişi, fixture/model yanıtı import'u veya doğrudan domain status uygulaması kullanılmadı.
 
 ## Aşamalar ve sonuç
@@ -41,7 +43,7 @@ Reasoning output'un alt kategorisidir; toplam ve maliyete ikinci kez eklenmedi. 
 
 Düzeltme: hazırlanmış bir önizleme varken saved makbuzu aynı **plan ID**'sine de bağlı olmalı. Önceki audit/grant korunur; yeni plan yeni, işaretlenmemiş onay kutusu ister. Kaynak, model, context veya politika kapısı gevşetilmedi. Mevcut source-sharing tarayıcı testi değişen output sınırıyla genişletildi: düzeltme öncesi yeni checkbox beklemesi başarısız oldu; düzeltme sonrası yeni grant ID ve ayrı onayla tüm Task/AC akışı geçti. Sahte provider1, gerçek dış çağrı0. Gerçek A/B yolculuğu ile sentetik UI regresyonu ayrı kanıtlardır.
 
-## Açık kalan ve sonraki adım
+## İlk kabul sonunda açık kalanlar
 
 Owner'ın seçtiği kapsam sorusu gerçek açık kayıttır; gereksiz tamamlanmadı etiketi değildir. Soru cevaplanıp AC/DoD ayrıca onaylanmadan başlangıç uygulamasını tamamlanmış saymayız. B'nin önerisi geçmişte korunur; kapsam değişirse eski öneriyi current saymak yerine güncel insan işlemi/yeniden değerlendirme gerekir. Bunun için otomatik yeni API izni veya tekrar verilmedi.
 
@@ -49,3 +51,23 @@ Owner'ın seçtiği kapsam sorusu gerçek açık kayıttır; gereksiz tamamlanma
 
 
 **Kapanış kontrolü:** İki model aktivasyonu ayrı Pause komutuyla duraklatıldı; worker kapalı, iki native bağlantı disconnected. Sayfa reload sonrası tek To Do Task, tek Opened kapsam sorusu ve aynı Task ID için tek start önerisi korundu;390px görünümde yatay taşma yok. Yeni pilot dışındaki 12 project-scoped tablonun satırları önceki yedekle aynı; owner yetkisine yalnız bu yeni pilot proje eklendi. Diğer proje içerikleri değiştirilmedi. Dört assistant kaynak capture edilmiş fakat bu iki-human model iznine dahil olmadığından analiz edilmedi; UI'daki kalan Waiting for model sayısı gizli hata veya yeni okuma izni değildir.
+
+
+## Son owner kararı — kapsam onayı ve güncel başlangıç
+
+Kullanıcı ilk seçeneği tam anlamadığını belirtti. Seçenekler açıklanıp, yalnız sentetik pilot için önerilen AC/DoD'yi kabul etme ve current insan işlemiyle başlangıcı uygulama önerildi. Kullanıcı açıkça öneriye katılıp ilerlemeyi onayladı. Önceki clarification tercihi silinmedi; onu izleyen yeni insan kararıyla soru çözüldü.
+
+| Alan | Son durum |
+|---|---|
+| Canonical Task | Aynı tek Task, In Progress |
+| Acceptance contract | v1, insan onaylı |
+| AC1 | Yedek geri yükleme kontrolü eklenmiş olmalı. — not_run |
+| DOD1 | Kontrolün çalıştığını gösteren doğrulama sonucu kaydedilmiş ve insan tarafından incelenmiş olmalı. — not_run |
+| Kapsam sorusu | Resolved; çözüm metni onaylanan kriterleri ve kanıt olmadığını belirtir |
+| Eski B model önerisi | Kapsam değiştiği için stale; Deferred olarak geçmişte korundu |
+| Başlangıç uygulaması | Son owner onayına dayalı, güncel workflow revision'ıyla ayrı insan işlemi |
+| Yeni model isteği / sohbet okuma | 0 / 0 |
+
+Gerçek LOCAL arayüzünde AC/DoD alanları somut onaylanan metinle dolduruldu; template bırakılmadı. Ardından bağlı soru çözüldü, eski önerinin approve düğmesinin stale nedeniyle kapalı olduğu görüldü ve current workflow'dan In Progress uygulandı. Sayfa reload sonrası tek Task, contract v1, iki not_run sonuç ve Resolved soru doğrulandı; page-error0. İki aktivasyon Paused, bağlantılar disconnected ve worker kapalı kaldı. Root54dispatch/108HTTP/$0.067895 aynıdır; yeni harcama veya kanıt üretilmedi. Bu işlem gerçek restore kontrolünün geliştirildiği, test edildiği veya Task'ın Done olduğu anlamına gelmez.
+
+Sıradaki ürün kodu bağımsızdır: seçilmiş sohbetlerin süre/read sınırlarıyla düzenli yakalanması. Bu sentetik Task'ın gerçek yedekleme işini yapmasını ürün geliştirmesinin zorunlu önkoşulu saymayız. Sürekli otomasyon, birleşik günlük kabul ve genellenebilir semantik kalite hâlâ açık. Diyagramdaki clarification→ayrı kapsam/uygulama yolu değişmedi; Mermaid kaynağı/renderı değiştirilmedi.
