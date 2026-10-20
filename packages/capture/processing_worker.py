@@ -27,6 +27,7 @@ class LocalProcessingWorker:
         if state['passes']>=config['max_passes'] or state['reserved_or_attempted']>=config['max_total_sources']:
             raise ContractError('processing_loop_limit','The durable loop limit has already been consumed.')
         registry=self.app.extractor_factory
+        if hasattr(registry,'for_activation'):registry=registry.for_activation(config['activation_id'])
         if getattr(registry,'activation_id',None)!=config['activation_id'] or not hasattr(registry,'bind_scope'):
             raise ContractError('processing_loop_model_required','Matching managed model configuration is required.')
         with self.lock:

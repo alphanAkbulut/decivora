@@ -12,6 +12,15 @@ def main():
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
         server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_SOURCE_PAGES_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
+        if os.environ.get('DECIVORA_SHARING_UI_FIXTURE')=='1':
+            import time
+            from packages.capture.source_sharing import SharingProfile,SharingResponsesFactory
+            def sharing_send(payload):
+                request=json.loads(payload['input']);source=request['source']
+                output=dict(source_id=source['id'],source_sha256=source['sha256'],context_sha256=request['context_sha256'],coverage='partial',candidates=[dict(type='Task',title='Shared restore fixture',quote=source['text'],intent='proposed')],status_changes=[],answer_proposals=[],relation_proposals=[],question_proposals=[],clarification_proposals=[])
+                return dict(status='completed',usage=dict(total_tokens=100),output=[dict(type='message',role='assistant',status='completed',content=[dict(type='output_text',text=json.dumps(output))])])
+            profile=SharingProfile('ui_fixture',('fixture-model',),int(time.time())+3600,10000,2000,3000000,200,100000,'b'*64,sharing_send)
+            server.app.extractor=None;server.app.sharing_profile=profile;server.app.extractor_factory=SharingResponsesFactory(profile)
         if os.environ.get('DECIVORA_NATIVE_UI_FIXTURE')=='1':
             from contextlib import contextmanager
             from packages.capture.codex.ui_connection import NativeConnector

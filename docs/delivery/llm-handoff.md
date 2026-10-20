@@ -1,5 +1,8 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+**20 Ekim Sprint1 — paylaşım ve ilk scope:** Yeni kaynağın exact source/context model-sharing preview+approval akışı ve ilk Task review'ında human AC/DoD veya bağlı clarification kodlandı. Approval dispatch değildir; kriterler not_run. [Uygulama, sınırlar ve NM-02](../architecture/source-sharing-and-first-review.md). Gerçek provider UI kabulü yeni source scope ve geçerli policy dönemi gerektirir; ücretli çağrı0.
+
+
 **20 Ekim sonraki Sprint1 teslimi:** Sources ekranına exact Codex chat ID/link ile bounded yerel capture izni, ayrı tek-okuma ve disconnect bağlandı. Yapılandırma host/sohbet okumaz; model egress grant oluşturmaz. [Uygulama, hata/yarış sınırları ve sequence](../architecture/codex-source-onboarding.md). Native kabul yeni gerçek kaynak izniyle ayrıca yapılacak; NM-02ve sürekli otomasyon halen açık.
 
 

@@ -18,7 +18,7 @@ Bir AI'ın “dosyayı hazırladım” demesi, dosyanın repoya yüklendiği anl
 - **Birden fazla coding agent kullanan geliştiriciler:** agent çalışma beyanlarıyla projenin doğrulanmış durumunu ayırmak için.
 - **Business Analyst, Product Owner ve proje yöneticileri:** gereksinimlerin kaynağını, karar gerekçelerini, değişiklik etkisini ve bekleyen işleri izlemek için. Ortak ekip erişimi sonraki fazdadır; bugünkü uygulama tek yerel kullanıcı önizlemesidir.
 
-**Geliştirme planı:** [MVP sprintleri ve ilk çalışan teslim](docs/delivery/sprint-plan.md). Sources ekranına mevcut izinlerle aktivasyon/worker kontrolleri eklendi; exact Codex chat ID/link ile sınırlı yerel kaynak kurulumu da eklendi. Sürekli capture, yeni kaynak model-sharing kurulumu ve tam günlük otomasyon halen açık. [Kaynak akışı](docs/architecture/codex-source-onboarding.md).
+**Geliştirme planı:** [MVP sprintleri ve ilk çalışan teslim](docs/delivery/sprint-plan.md). Sources ekranına mevcut izinlerle aktivasyon/worker kontrolleri eklendi; exact Codex chat ID/link ile sınırlı yerel kaynak kurulumu da eklendi. Exact kaynak model-sharing preview/onayı ve ilk Task scope review da kodlandı. Sürekli capture ve tam günlük otomasyon kabulü halen açık. [Paylaşım ve ilk scope](docs/architecture/source-sharing-and-first-review.md). [Kaynak akışı](docs/architecture/codex-source-onboarding.md).
 
 ## Nasıl bir ürün geliştiriyoruz?
 

@@ -1,5 +1,8 @@
 # İki gerçek sohbetten tek görev ve başlangıç durumu — sınırlı model deneyi
 
+**Sonraki20Ekim kod teslimi:** NM-02ilk review hazırlığı için human AC/DoD veya bağlı kapsam sorusu yeni UI'a eklendi. [Kod ve kapsam](../architecture/source-sharing-and-first-review.md). Aşağıdaki gerçek A/B deneyinin orijinal bulgusu değişmez; yeni yol fake provider ile doğrulandı, gerçek model kriter üretimi sınanmış sayılmaz.
+
+
 **20 Ekim 2026 — bu küçük zincir doğrulandı; genel MVP kabulü değil.** [Gerçek Native A/B capture denemesinde](native-two-chat-001.md) kaydedilmiş iki sentetik human mesajı ayrı model paylaşım izniyle işlendi. Yeni sohbet okunmadı. [Makine makbuzu](native-two-model-001-results.json) source/context/receipt hash'lerini, tokenları, ayrı insan review ve stale/ACguard ayrımını korur.
 
 ## Önceden onaylı sınırlar

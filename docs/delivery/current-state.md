@@ -1,5 +1,11 @@
 # Güncel ürün ve kalan geliştirme resmi
 
+**Paylaşım/ilk-scope son doğrulama:**680runtime+49repo, yeni sharing browser ve mevcut5locale/false-Done regresyonları geçti. LOCAL53610/TEST53611aynı verilerle güncellendi; worker0. LOCALpolicyExpired, model_ready=false; yeni ücret veya gerçek source dispatch yok. Mevcut$3toplam tavanı ve geçmiş rezervleri koruyan24saatlik süre yenileme önerisi onay bekler; kod bağımsız geliştirme tamamlandı.
+
+
+**20 Ekim Sprint1 — paylaşım ve ilk scope:** Yeni kaynağın exact source/context model-sharing preview+approval akışı ve ilk Task review'ında human AC/DoD veya bağlı clarification kodlandı. Approval dispatch değildir; kriterler not_run. [Uygulama, sınırlar ve NM-02](../architecture/source-sharing-and-first-review.md). Gerçek provider UI kabulü yeni source scope ve geçerli policy dönemi gerektirir; ücretli çağrı0.
+
+
 **LOCAL/TEST çalışma sürümü:**20Ekim sonraki kaynak-UI teslimiyle53610/53611aynı veriler korunarak yeniden başlatıldı; fingerprint eşit, model/worker kapalı. LOCALtrustedCodexreader hazır fakat seçili bağlantı0; yeni gerçek sohbet okunmadı.669runtime/49repo ve60Mermaid render kontrolü geçti.
 
 

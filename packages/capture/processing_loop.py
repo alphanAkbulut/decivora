@@ -98,6 +98,7 @@ class ProcessingLoopService:
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             config=self._config(project,loop_id);self._authority(scope,project,config)
+            if hasattr(registry,'for_activation'):registry=registry.for_activation(config['activation_id'])
             if config['configuration_sha256']!=configuration_sha256:raise ContractError('processing_loop_denied','Exact loop configuration required.')
             state=self._state(project,config)
             if state['stopped']:return dict(id=loop_id,status='Stopped',attempted=0)

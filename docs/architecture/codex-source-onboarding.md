@@ -1,5 +1,8 @@
 # Codex kaynak kurulumu — yerel kullanıcı akışı
 
+**Sonraki20Ekim bağlantısı:** Yeni kaynak için [exact model paylaşım önizlemesi/onayı ve ilk Task kapsam review](source-sharing-and-first-review.md) kodlandı. Aşağıdaki ilk capture tesliminde açık kalan model-egress kurulumunun bu yerel alt yolu artık mevcut; geçerli policy/gerçek provider UI kabulü ayrı.
+
+
 **20 Ekim 2026 · Sprint1, T17/T19/T22.** Uygulanan: Sources ekranında exact chat ID veya `codex://threads/ID` seçimi, açık süre/okuma/tur sınırı, ayrı yerel okuma ve disconnect. Bu teslim sürekli otomatik yakalama, sohbet keşfi, yeni model paylaşım izni veya Task onayı değildir.
 
 ## Kullanıcı ne yapar?

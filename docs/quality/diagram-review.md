@@ -1,5 +1,9 @@
 # Diyagram tutarlılık incelemesi
 
+## 20 Ekim — model paylaşımı ve ilk scope
+
+Exact veri önizlemesi→ayrı consent→aktivasyon/dispatch sequence ve human AC/DoD veya clarification flowchart eklendi.62blok/34belge dış ağ kapalı render edildi; yeni iki bloğun tam görüntüsü incelendi. Source/model/runtime kabulü yerine geçmez.
+
 ## 20 Ekim — Codex kaynak kurulumu
 
 Sources→exact consent→ayrı read claim→seçili host→checkpoint izin kontrolü sequence diyagramı eklendi.60blok/33belge dış ağ kapalı render edildi; yeni blok tam görüntüsü incelendi. Bu, gerçek host/model kabulü değildir.
@@ -10,7 +14,7 @@ Sources→exact consent→ayrı read claim→seçili host→checkpoint izin kont
 
 Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya tüm akışların runtime kabulü değildir. Gelecek ekip, erişim, depolama ve servis şemaları tasarım statüsünü korur; yeni tenant/auth/production iddiası eklenmedi. [Bulgu/karar raporu](documentation-currency-audit.md) hangi metnin neden değiştiğini, hangi deneylerin eksik kaldığını kaydeder.
 
-**Güncel inventory:33belgede60Mermaid şeması — Codex kaynak kurulumu,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory:34belgede62Mermaid şeması — kaynak paylaşımı ve ilk scope review,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -35,6 +39,7 @@ Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya t
 | [docs/architecture/model-activation-runtime.md](../../docs/architecture/model-activation-runtime.md) | 3 |
 | [docs/architecture/overview.md](../../docs/architecture/overview.md) | 1 |
 | [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
+| [docs/architecture/source-sharing-and-first-review.md](../../docs/architecture/source-sharing-and-first-review.md) | 2 |
 | [docs/architecture/storage-memory-capacity.md](../../docs/architecture/storage-memory-capacity.md) | 1 |
 | [docs/architecture/task-lifecycle.md](../../docs/architecture/task-lifecycle.md) | 1 |
 | [docs/delivery/api-independent-development.md](../../docs/delivery/api-independent-development.md) | 1 |

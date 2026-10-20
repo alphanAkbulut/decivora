@@ -72,26 +72,31 @@ class ConversationService:
             return source
     def authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason,context_sha256=None):
         """Trusted human configuration only; never inferred from source/model text."""
+        with self.core.transaction():
+            return self._authorize_analysis(scope,project,source_id=source_id,key=key,root_run=root_run,reserved_tokens=reserved_tokens,provider=provider,model=model,max_output_tokens=max_output_tokens,expires_at=expires_at,reason=reason,context_sha256=context_sha256)
+
+    def _authorize_analysis(self,scope,project,*,source_id,key,root_run,reserved_tokens,provider,model,max_output_tokens,expires_at,reason,context_sha256=None):
+        """Internal primitive within a caller-owned source-sharing transaction."""
+        if not self.core.db.in_transaction:raise ContractError('transaction_required','Sharing grant requires an atomic transaction.')
         identifier(source_id);identifier(key);identifier(root_run)
         if type(reserved_tokens) is not int or not 1<=reserved_tokens<=100000 or type(expires_at) is not int or expires_at<=time.time():raise ContractError('invalid_model_grant','Explicit bounded reservation and future expiry required.')
         if type(max_output_tokens) is not int or not 1<=max_output_tokens<=min(8192,reserved_tokens):raise ContractError('invalid_model_grant','Output ceiling must fit the explicit total reservation.')
         for value in (provider,model,reason):
             if type(value) is not str or not value.strip() or len(value)>1024:raise ContractError('invalid_model_grant','Provider, model and data-sharing reason required.')
-        with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
-            ensure_safe(source)
-            if not self.core.db.execute('SELECT 1 FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.core.workspace,project,root_run)).fetchone():raise ContractError('budget_unavailable','Create the explicit shared run budget first.')
-            grant=dict(id=key,source=source_id,sha256=source['sha256'],root_run=root_run,reserved_tokens=reserved_tokens,provider=provider,model=model,max_output_tokens=max_output_tokens,expires_at=expires_at,reason=reason,actor=scope.principal_id,authority_revision=self.core.authority.revision())
-            if context_sha256 is not None:
-                from packages.capture.dialogue_review import DialogueReviewService
-                if type(context_sha256) is not str:raise ContractError('invalid_model_grant','Exact prepared context digest required.')
-                DialogueReviewService(self.core)._package(scope,project,source_id,context_sha256)
-                grant['context_sha256']=context_sha256
-            old=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==key),None)
-            if old:
-                if old!=grant:raise ContractError('idempotency_conflict','Dispatch grant identity changed.')
-                return old
-            self._put(scope,project,'conversation_dispatch_authorized',grant);return grant
+        self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project);source=self._source(project,source_id)
+        ensure_safe(source)
+        if not self.core.db.execute('SELECT 1 FROM run_budgets WHERE workspace=? AND project=? AND run=?',(self.core.workspace,project,root_run)).fetchone():raise ContractError('budget_unavailable','Create the explicit shared run budget first.')
+        grant=dict(id=key,source=source_id,sha256=source['sha256'],root_run=root_run,reserved_tokens=reserved_tokens,provider=provider,model=model,max_output_tokens=max_output_tokens,expires_at=expires_at,reason=reason,actor=scope.principal_id,authority_revision=self.core.authority.revision())
+        if context_sha256 is not None:
+            from packages.capture.dialogue_review import DialogueReviewService
+            if type(context_sha256) is not str:raise ContractError('invalid_model_grant','Exact prepared context digest required.')
+            DialogueReviewService(self.core)._package(scope,project,source_id,context_sha256)
+            grant['context_sha256']=context_sha256
+        old=next((g for g in self._rows(project,'conversation_dispatch_authorized') if g['id']==key),None)
+        if old:
+            if old!=grant:raise ContractError('idempotency_conflict','Dispatch grant identity changed.')
+            return old
+        self._put(scope,project,'conversation_dispatch_authorized',grant);return grant
 
     def analyze(self,scope,project,source_id,extractor=None):
         identifier(source_id)
@@ -173,20 +178,22 @@ class ConversationService:
                 status_changes=DialogueReviewService(self.core).statuses(scope,project,source['id'],analysis or {})
                 result.append(dict(source=source,analysis=analysis,candidates=candidates,relation_proposals=DialogueRelationService(self.core).view(scope,project,source['id'],analysis or {}),status_changes=status_changes,question_proposals=DialogueQuestionService(self.core).view(scope,project,source['id'],analysis or {}),clarification_proposals=ClarificationService(self.core).proposals(scope,project,source['id'],analysis or {}),answer_proposals=DialogueReviewService(self.core).answers(scope,project,source['id'],analysis or {}),status=analysis['status'] if analysis else 'Analysis unknown' if any(a['source']==source['id'] for a in started) else 'Waiting for model',comparison_incomplete=existing['truncated']))
             return dict(imports=result,knowledge_revision=existing['knowledge_revision'],automatic_capture=False,total=source_page['total'],next_cursor=source_page['next_cursor'],has_more=source_page['has_more'])
-    def accept(self,scope,project,*,source_id,key,selected,base_revision):
+    def accept(self,scope,project,*,source_id,key,selected,base_revision,scope_reviews=None):
         identifier(source_id);identifier(key)
         if type(selected) is not list or not selected or len(selected)>32 or any(type(v) is not str for v in selected) or len(set(selected))!=len(selected):raise ContractError('invalid_selection','Bounded unique candidate IDs required.')
         with self.core.transaction():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             old=next((a for a in self._rows(project,'conversation_candidates_applied') if a['key']==key),None)
             if old:
-                if old['source']!=source_id or old['selected']!=selected or old['base_revision']!=base_revision:raise ContractError('idempotency_conflict','Review identity changed.')
+                if old['source']!=source_id or old['selected']!=selected or old['base_revision']!=base_revision or old.get('scope_reviews')!=scope_reviews:raise ContractError('idempotency_conflict','Review identity changed.')
                 return old['result']
             view=self.view(scope,project,source_id=source_id)
             if type(base_revision) is not int or base_revision!=view['knowledge_revision']:raise ContractError('stale_base','Project changed; refresh candidate comparison before accepting.')
             imported=next((i for i in view['imports'] if i['source']['id']==source_id),None)
             if imported is None or imported['status']!='Ready for review' or imported['comparison_incomplete']:raise ContractError('review_unavailable','Complete local comparison and validated output required.')
             indexed={c['id']:c for c in imported['candidates']};ops=[];attached=[];titles=set()
+            from packages.capture import candidate_scope
+            scopes=candidate_scope.validate(scope_reviews,indexed,selected) if scope_reviews is not None else {}
             for cid in selected:
                 if cid not in indexed:raise ContractError('invalid_selection','Unknown candidate.')
                 c=indexed[cid]
@@ -201,5 +208,9 @@ class ConversationService:
             result=dict(status='sources_attached',temp_ids={},event_sequences=[])
             if ops:
                 plan=self.core.plan(scope,project,key,ops);result=self.core._apply(scope,plan,self.core._approve(scope,plan))
-            self._put(scope,project,'conversation_candidates_applied',dict(key=key,source=source_id,selected=selected,base_revision=base_revision,result=result,attached=attached))
+            if scope_reviews is not None:
+                scoped=candidate_scope.apply(self.core,scope,project,self._source(project,source_id),key,result['temp_ids'],scopes)
+                result['scope_review']=scoped['items'];result['event_sequences'].extend(scoped['event_sequences'])
+                result['knowledge_revision']=self.core.project(scope,project)['knowledge_revision']
+            self._put(scope,project,'conversation_candidates_applied',dict(key=key,source=source_id,selected=selected,base_revision=base_revision,result=result,attached=attached,scope_reviews=scope_reviews))
             return result
