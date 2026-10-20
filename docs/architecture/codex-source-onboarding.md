@@ -86,3 +86,60 @@ Güvenli kodlar: capture_consent_required, capture_permission_expired, capture_r
 Açık LOCAL53610 ve TEST53611 süreçleri active-worker=false doğrulamasından ve private SQLite backup'tan sonra graceful shutdown ile güncellendi. Aynı veritabanları/portlar kullanıldı; tüm uygulama tablolarının satır fingerprint'leri önce/sonra aynı. LOCAL'de kuruluCLI0.162.0-alpha.17.2yalnız trusted reader olarak hazırlandı; connection0, native read0, model/worker kapalı. TEST'te native/model kapalı.8765geliştirme tracker'ıdır; ürün süreciyle karıştırılmaz. Oturum belirteçleri yenilenir; private bootstrap yeniden açılış yolu içindir, repo/final rapora konmaz.
 
 Tam sayfa browser PNG'sinde tekrarlı görüntü artefaktı görüldü; bunu ürünün düzgün görünümü diye kabul etmedik. Aynı form/connection akışı viewport screenshot ve DOM etkileşimleriyle ayrıca doğrulandı; artefaktın kesin render kök nedeni araştırılmadı. Screenshot'lar sentetik veya salt okunur yerel QA'dır, gerçek native conversation kabulü değildir.
+
+
+## Düzenli seçili-sohbet yakalama — uygulanan yerel kod
+
+`CaptureLoopService` ve `LocalCaptureWorker` mevcut `UIConnectionService.read_once` üzerinden çalışır. Yeni servis dağıtımı, model erişimi veya kaynak keşfi değildir; tek uygulama sürecinde model işleyicisinden ayrı bir yerel thread'dir. Plan ve tick makbuzları mevcut SQLite append-only audit'inde `codex_capture_loop` altında kalır; migration veya yeni DB gerekmez.
+
+Sources → Scheduled capture: bağlı sohbet için max_ticks, interval_seconds, expires_at ve reason doldurulur. Plan kaydetmek okuma yapmaz. Ayrı consent ve Start komutu düzenli yerel okuma başlatır. Stop kalıcı ve terminaldir; yeni plan eski read sayacını sıfırlamaz. Mevcut Refresh processing state düğmesi durumu yeniden okur; UI kendi başına model veya yeni okuma başlatmaz.
+
+| Kural | Uygulanan sınır |
+|---|---|
+| Kaynak | Tek existing exact connection, actor/project/authz revision ve trusted host |
+| Bütçe | max_ticks 1–300; mevcut iznin kalan read sayısından büyük olamaz; manuel okumalar da aynı capture sayacını tüketir |
+| Aralık | 1–3600 saniye; bitmiş okumanın sonundan itibaren; teknik üst/alt sınır, performans veya kullanıcı adına otomatik izin değil |
+| Süre | Schedule expiry capture consent expiry'den uzun olamaz; her tick ve checkpoint tekrar kontrol edilir |
+| Eşzamanlılık | Yerel uygulamada bir capture worker; kalıcı tick/read claim ikinci process veya manuel okumayla çakışmayı engeller |
+| Durdurma | Uyuyan worker event ile uyanır; in-flight host çağrısı anında kesilmiş sayılmaz, sonraki checkpoint stop/cancel guard'ında reddedilir; daha önce kabul edilmiş sayfalar korunur |
+| Crash / hata | Pending tick veya unfinished read yeniden çalıştırılmaz. Failed tick terminal review ister; kör retry yok |
+| Restart | Plan/sayaç/checkpoint kalıcı; worker otomatik başlamaz. İzinli, tamamlanmamış plan ancak yeni açık Start ile devam edebilir |
+| Model / Task | Yeni kaynak kaydedilir; yeni source-sharing grant, model activation, Task veya status apply üretilmez |
+
+```mermaid
+sequenceDiagram
+  accTitle: Sınırlı düzenli Codex yakalama döngüsü
+  accDescr: Plan kaydı okumaz. Ayrı insan start komutu mevcut capture izniyle kalıcı tick ve read claim üretir. Her checkpoint süre ve stop kontrolüne bağlıdır; model gönderimi yoktur. Restart kendiliğinden okumaz.
+  actor H as Kullanıcı
+  participant UI as Sources
+  participant W as Yerel capture worker
+  participant DB as SQLite audit ve kaynaklar
+  participant C as Seçilmiş Codex host
+  H->>UI: Mevcut bağlantı ve açık süre aralık read sınırı
+  UI->>DB: Immutable plan kaydı
+  Note over UI,C: Henüz okuma veya model çağrısı yok
+  H->>UI: Ayrı consent ile Start
+  UI->>W: Onaylı planı çalıştır
+  loop Süre ve toplam read sınırı içinde
+    W->>DB: Güncel yetki ve kalıcı tick claim
+    W->>C: Mevcut read_once ile seçili sohbet
+    C-->>W: Bounded public metin
+    alt Stop veya expiry veya yetki değişti
+      W->>DB: Sonraki checkpoint reddi ve güvenli makbuz
+    else İzin geçerli
+      W->>DB: Maskeli kaynak ve cursor atomik checkpoint
+      W->>DB: Tick sonucu ve kalıcı sayaç
+    end
+    W->>W: Durdurulabilir interval beklemesi
+  end
+  H->>UI: Stop
+  UI->>DB: Terminal stop kaydı
+  UI->>W: Event ile yeni okumaları durdur
+  Note over W,C: Hata veya crash kör retry yapmaz. Model ve Task apply ayrı kalır.
+```
+
+Yeni command API: `create_capture_loop` exact loop_id/capture_id/capture_sha256/max_ticks/interval_seconds/expires_at/reason; `start_capture_loop` exact loop_id/configuration_sha256/consent=true; `stop_capture_loop` exact loop_id/configuration_sha256/reason. Human/project/Origin/CSRF kapıları korunur. Tarayıcı executable, host veya API key seçemez. Schedule view current proje/actor ile sınırlıdır.
+
+Operations `capture_tick` eylemini capture bileşeninde süre, outcome ve safe code ile kaydeder. `native_capture` ve `background_worker_active` aktif capture işleyicisini de yansıtır; dormant plan aktif sayılmaz. Ham metin, credential veya host exception body loglanmaz. Yeni safe codes: invalid_capture_loop, capture_loop_unavailable/limit/denied/expired/stopped, capture_worker_busy. Kaynak read kodları aynen korunur.
+
+Sentetik kontrol ve gerçek kabul ayrımı [teslim raporunda](../quality/scheduled-capture-runtime.md). Önceki Native A/B read izinleri tüketildi; bu kod teslimi gerçek periyodik okuma başlatmadı. Yeni düzenli kaynak okuma izni ve yeni mesajların modele paylaşım politikası sonraki ayrı kabul kapılarıdır.

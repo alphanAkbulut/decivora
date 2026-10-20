@@ -68,12 +68,13 @@ class UIConnectionService:
             CodexAppServerCapture(self.core)._connect(scope,project,capture_id=capture_id,thread_id=thread_id,provider_version=self.connector.provider_version)
             self.sources._put(scope,project,self.CONFIG,config)
             return config
-    def read_once(self,scope,project,*,capture_id,configuration_sha256,read_id,consent):
+    def read_once(self,scope,project,*,capture_id,configuration_sha256,read_id,consent,guard=None):
         identifier(read_id)
         if consent is not True:raise ContractError('capture_consent_required','Confirm this explicit local read.')
         with self.core.transaction():
             self.authorize(scope,project,capture_id,configuration_sha256)
             config=self.config(project,capture_id);starts,finished,pending=self.counts(project,capture_id)
+            if guard is not None:guard()
             previous=next((r for r in self.rows(project,self.START) if r['read_id']==read_id),None)
             if previous is not None:
                 if previous['id']!=capture_id:raise ContractError('capture_binding_conflict','Read identity belongs to another connection.')
@@ -87,7 +88,9 @@ class UIConnectionService:
         service=self
         class ScopedCapture(CodexAppServerCapture):
             def _authorize(self,scope,project,capture_id):
-                return service.authorize(scope,project,capture_id,configuration_sha256)
+                binding=service.authorize(scope,project,capture_id,configuration_sha256)
+                if guard is not None:guard()
+                return binding
         try:
             with self.connector.open_client(config['thread_id']) as client:
                 receipt=ScopedCapture(self.core).collect(scope,project,capture_id=capture_id,client=client,limit=config['turn_limit'])

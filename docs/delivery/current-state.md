@@ -1,5 +1,7 @@
 # Güncel ürün ve kalan geliştirme resmi
 
+**20 Ekim — düzenli yakalama kodlandı:** Mevcut seçili-sohbet iznine bağlı kalıcı plan/tick, sınırlı worker, ayrı start/stop ve Sources kontrolleri eklendi. Süre/read/interval, in-flight stop ve restart-no-autostart korunur. Yeni kayıt modele otomatik paylaşılmaz. Gerçek periyodik sohbet okuması başlatılmadı; önceki izinler tüketilmiş kalır. [Kod, bulgular ve kalan kapılar](../quality/scheduled-capture-runtime.md).
+
 **Son owner onayı — kapsam ve başlangıç:** İlk turdaki bağlı soru tercihi korundu; kullanıcı açıklamadan sonra önerilen AC/DoD ve güncel başlangıç işlemini onayladı. Aynı tek Task artık **In Progress**, contract v1; kapsam sorusu **Resolved**, AC1/DOD1 **not_run**. Eski model önerisi stale/Deferred geçmişte tutuldu; yeni API veya chat read0, bütçe değişmedi. [Karar ve uygulama kanıtı](../quality/native-ui-journey-001.md#son-owner-kararı--kapsam-onayı-ve-güncel-başlangıç).
 
 **20 Ekim — gerçek LOCAL kullanıcı yolculuğu:** İki seçili sentetik Codex sohbeti arayüzden birer kez yakalandı (6kaynak); iki Luna isteği A'da tek Task, B'de aynı Task ID'sine In Progress önerisi üretti. Owner AC/DoD yerine bağlı kapsam sorusunu seçti: Task To Do, soru Opened; durum uygulanmadı, kanıt/Done yok. İki istek4236token, tahmin$0.000609; root54dispatch/108HTTP/$0.067895 (önceki3unknown rezervi dahil). Kaynak/model dar izinleri tüketildi. [Sonuç, karar gerekçesi ve UI-J01 düzeltmesi](../quality/native-ui-journey-001.md).

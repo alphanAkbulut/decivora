@@ -1,5 +1,9 @@
 # Diyagram tutarlılık incelemesi
 
+## 20 Ekim — düzenli capture
+
+Codex kaynak kurulumu belgesine plan→ayrı start→kalıcı claim→checkpoint guard→terminal stop sequence eklendi; toplam63blok/34belge. 63kaynağın tamamı ağ kapalı render edildi; yeni sequence tam görüntüsü incelendi. Makbuz source hashleriyle güncel; çizim model/native kabul kanıtı değildir.
+
 ## 20 Ekim — model paylaşımı ve ilk scope
 
 Exact veri önizlemesi→ayrı consent→aktivasyon/dispatch sequence ve human AC/DoD veya clarification flowchart eklendi.62blok/34belge dış ağ kapalı render edildi; yeni iki bloğun tam görüntüsü incelendi. Source/model/runtime kabulü yerine geçmez.
@@ -14,7 +18,7 @@ Sources→exact consent→ayrı read claim→seçili host→checkpoint izin kont
 
 Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya tüm akışların runtime kabulü değildir. Gelecek ekip, erişim, depolama ve servis şemaları tasarım statüsünü korur; yeni tenant/auth/production iddiası eklenmedi. [Bulgu/karar raporu](documentation-currency-audit.md) hangi metnin neden değiştiğini, hangi deneylerin eksik kaldığını kaydeder.
 
-**Güncel inventory:34belgede62Mermaid şeması — kaynak paylaşımı ve ilk scope review,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory:34belgede63Mermaid şeması — kaynak paylaşımı ve ilk scope review,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -27,7 +31,7 @@ Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya t
 |---|---:|
 | [README.md](../../README.md) | 1 |
 | [ROADMAP.md](../../ROADMAP.md) | 2 |
-| [docs/architecture/codex-source-onboarding.md](../../docs/architecture/codex-source-onboarding.md) | 1 |
+| [docs/architecture/codex-source-onboarding.md](../../docs/architecture/codex-source-onboarding.md) | 2 |
 | [docs/architecture/connection-and-context.md](../../docs/architecture/connection-and-context.md) | 1 |
 | [docs/architecture/data-relationships.md](../../docs/architecture/data-relationships.md) | 3 |
 | [docs/architecture/diagrams.md](../../docs/architecture/diagrams.md) | 13 |

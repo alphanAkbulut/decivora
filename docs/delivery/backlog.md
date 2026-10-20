@@ -354,6 +354,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **19Ekim gerçek bağlantı:** [Yeni Codex sohbetiyle pilot](../quality/codex-e2e-001.md): native assistant capture→gerçek model→Task/status, selected-thread pipeline ve human visibility warning. Tool gönderimli mesajlarda userMessage yok; normal kullanıcı girişi ve continuous onboarding açık.
 
+- **20 Ekim düzenli capture kodu:** Immutable schedule, kalıcı tick/read cap, ayrı worker start/stop, expiry/revoke/crash guard ve Sources UI uygulandı. [Kanıt ve kalan kapılar](../quality/scheduled-capture-runtime.md). Eski onboarding/sürekli çalışma ifadeleri ilk teslim tarihine aittir; periyodik native kabul ve yeni-mesaj paylaşım politikası hâlâ açık.
+
 ## T18 — Minimal MCP ve cross-agent read
 
 - **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T17. **Kapsam ID:** INT-02,CST-01.

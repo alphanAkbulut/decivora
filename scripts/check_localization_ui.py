@@ -24,10 +24,14 @@ def main():
         if os.environ.get('DECIVORA_NATIVE_UI_FIXTURE')=='1':
             from contextlib import contextmanager
             from packages.capture.codex.ui_connection import NativeConnector
+            native_reads=[0]
             @contextmanager
             def native_client(thread):
                 class Client:
                     def read_turns(self,thread_id,limit):
+                        if os.environ.get('DECIVORA_CAPTURE_LOOP_UI_FIXTURE')=='1':
+                            native_reads[0]+=1;n=native_reads[0]
+                            return dict(data=[dict(id='scheduled_turn_'+str(n),status='completed',items=[dict(id='scheduled_message_'+str(n),type='userMessage',content=[dict(type='text',text='Synthetic scheduled message '+str(n))])])],nextCursor=None)
                         return dict(data=[dict(id='native_ui_turn',status='completed',items=[dict(id='native_ui_message',type='userMessage',content=[dict(type='text',text='Synthetic selected chat task; not started.')])])],nextCursor=None)
                 yield Client()
             server.app.native_connector=NativeConnector('fixture','host_ui_fixture',native_client)

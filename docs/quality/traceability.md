@@ -134,3 +134,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 
 
 20 Ekim LOCAL UI takip kanıtı: [iki sentetik chat→aynı Task ID](native-ui-journey-001.md), T09/T13/T17/T19/T21/T22 altında dar gerçek UI/provider kabulü. Owner'ın linked-clarification kararıyla Task To Do korunur; parent kapanışı veya doğrulanmış Done değildir. UI-J01, mevcut source-sharing browser regresyonuna yeni plan/yeni consent kontrolü eklenerek düzeltildi;20hedefli runtime kontrolü geçti.
+
+
+20 Ekim T17/T19/T22/T23 düzenli yakalama: [kalıcı bounded capture planı](scheduled-capture-runtime.md), source consent→schedule→tick/read claim→checkpoint guard→kaynak yolu. Capture modeli veya onayı tetiklemez; sentetik worker/browser kanıtı gerçek periyodik native kabulünden ayrıdır.

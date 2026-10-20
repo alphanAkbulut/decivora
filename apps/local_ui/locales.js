@@ -463,7 +463,20 @@ window.DecivoraCatalogs = {
     "Configured model spending period expired. No new source will be sent until it is explicitly renewed.": "Configured model spending period expired. No new source will be sent until it is explicitly renewed.",
     "Scope clarification": "Scope clarification",
     "Prepare task scope before saving": "Prepare task scope before saving",
-    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis."
+    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis.",
+    "Scheduled capture": "Scheduled capture",
+    "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.": "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.",
+    "Capture worker": "Capture worker",
+    "Schedule selected chat": "Schedule selected chat",
+    "Maximum scheduled reads": "Maximum scheduled reads",
+    "Capture interval seconds": "Capture interval seconds",
+    "Capture schedule expires": "Capture schedule expires",
+    "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.": "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.",
+    "Save capture schedule": "Save capture schedule",
+    "I authorize scheduled local reads of this selected chat within the saved limits.": "I authorize scheduled local reads of this selected chat within the saved limits.",
+    "Start scheduled capture": "Start scheduled capture",
+    "Capture stop reason": "Capture stop reason",
+    "Stop scheduled capture": "Stop scheduled capture"
   },
   "tr": {
     "Dil": "Dil",
@@ -929,7 +942,20 @@ window.DecivoraCatalogs = {
     "Configured model spending period expired. No new source will be sent until it is explicitly renewed.": "Yapılandırılmış model harcama süresi doldu. Açıkça yenilenmeden yeni kaynak gönderilmez.",
     "Scope clarification": "Kapsam netleştirme sorusu",
     "Prepare task scope before saving": "Kaydetmeden önce görev kapsamını hazırla",
-    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model bağlantısı yapılandırılmış. Yeni kaynakların analizi için ayrıca paylaşım izni ve aktivasyon gerekir."
+    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model bağlantısı yapılandırılmış. Yeni kaynakların analizi için ayrıca paylaşım izni ve aktivasyon gerekir.",
+    "Scheduled capture": "Düzenli yakalama",
+    "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.": "Düzenli yakalama yalnız yerel kaynak kaydeder. Yeni mesajları modele göndermez veya görev uygulamaz.",
+    "Capture worker": "Yakalama işleyicisi",
+    "Schedule selected chat": "Seçili sohbeti zamanla",
+    "Maximum scheduled reads": "En fazla planlı okuma",
+    "Capture interval seconds": "Yakalama aralığı (saniye)",
+    "Capture schedule expires": "Yakalama planının bitişi",
+    "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.": "Planı kaydetmek yakalamayı başlatmaz. Plan, seçili sohbetin izin sınırlarını genişletemez.",
+    "Save capture schedule": "Yakalama planını kaydet",
+    "I authorize scheduled local reads of this selected chat within the saved limits.": "Seçili sohbetin kayıtlı sınırlar içinde düzenli olarak yerel okunmasına izin veriyorum.",
+    "Start scheduled capture": "Düzenli yakalamayı başlat",
+    "Capture stop reason": "Yakalamayı durdurma gerekçesi",
+    "Stop scheduled capture": "Düzenli yakalamayı durdur"
   },
   "es": {
     "Dil": "Idioma",
@@ -1395,7 +1421,20 @@ window.DecivoraCatalogs = {
     "Configured model spending period expired. No new source will be sent until it is explicitly renewed.": "Configured model spending period expired. No new source will be sent until it is explicitly renewed.",
     "Scope clarification": "Scope clarification",
     "Prepare task scope before saving": "Prepare task scope before saving",
-    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis."
+    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis.",
+    "Scheduled capture": "Scheduled capture",
+    "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.": "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.",
+    "Capture worker": "Capture worker",
+    "Schedule selected chat": "Schedule selected chat",
+    "Maximum scheduled reads": "Maximum scheduled reads",
+    "Capture interval seconds": "Capture interval seconds",
+    "Capture schedule expires": "Capture schedule expires",
+    "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.": "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.",
+    "Save capture schedule": "Save capture schedule",
+    "I authorize scheduled local reads of this selected chat within the saved limits.": "I authorize scheduled local reads of this selected chat within the saved limits.",
+    "Start scheduled capture": "Start scheduled capture",
+    "Capture stop reason": "Capture stop reason",
+    "Stop scheduled capture": "Stop scheduled capture"
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1861,7 +1900,20 @@ window.DecivoraCatalogs = {
     "Configured model spending period expired. No new source will be sent until it is explicitly renewed.": "Configured model spending period expired. No new source will be sent until it is explicitly renewed.",
     "Scope clarification": "Scope clarification",
     "Prepare task scope before saving": "Prepare task scope before saving",
-    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis."
+    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis.",
+    "Scheduled capture": "Scheduled capture",
+    "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.": "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.",
+    "Capture worker": "Capture worker",
+    "Schedule selected chat": "Schedule selected chat",
+    "Maximum scheduled reads": "Maximum scheduled reads",
+    "Capture interval seconds": "Capture interval seconds",
+    "Capture schedule expires": "Capture schedule expires",
+    "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.": "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.",
+    "Save capture schedule": "Save capture schedule",
+    "I authorize scheduled local reads of this selected chat within the saved limits.": "I authorize scheduled local reads of this selected chat within the saved limits.",
+    "Start scheduled capture": "Start scheduled capture",
+    "Capture stop reason": "Capture stop reason",
+    "Stop scheduled capture": "Stop scheduled capture"
   },
   "ar": {
     "Dil": "اللغة",
@@ -2327,6 +2379,19 @@ window.DecivoraCatalogs = {
     "Configured model spending period expired. No new source will be sent until it is explicitly renewed.": "Configured model spending period expired. No new source will be sent until it is explicitly renewed.",
     "Scope clarification": "Scope clarification",
     "Prepare task scope before saving": "Prepare task scope before saving",
-    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis."
+    "Model transport configured. New sources require separate sharing consent and activation before analysis.": "Model transport configured. New sources require separate sharing consent and activation before analysis.",
+    "Scheduled capture": "Scheduled capture",
+    "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.": "Capture scheduling saves local sources only. It never shares new messages with a model or applies tasks.",
+    "Capture worker": "Capture worker",
+    "Schedule selected chat": "Schedule selected chat",
+    "Maximum scheduled reads": "Maximum scheduled reads",
+    "Capture interval seconds": "Capture interval seconds",
+    "Capture schedule expires": "Capture schedule expires",
+    "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.": "Saving this plan does not start capture. Its limits cannot extend the selected chat permission.",
+    "Save capture schedule": "Save capture schedule",
+    "I authorize scheduled local reads of this selected chat within the saved limits.": "I authorize scheduled local reads of this selected chat within the saved limits.",
+    "Start scheduled capture": "Start scheduled capture",
+    "Capture stop reason": "Capture stop reason",
+    "Stop scheduled capture": "Stop scheduled capture"
   }
 };

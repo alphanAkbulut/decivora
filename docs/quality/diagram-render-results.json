@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-20",
-  "input_base_ref": "75cac4fdd69d80158289e17d0459437af049c61e",
+  "input_base_ref": "ad5682a59bff3fdb951f17ca19a3560c65f95159",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -57,6 +57,18 @@
       "error": null
     },
     {
+      "path": "docs/architecture/codex-source-onboarding.md",
+      "block": 2,
+      "source_sha256": "9a8bc0ce7998adcfd24c997ac8e505e84cac75274d22bd744e2f5c9415495500",
+      "status": "rendered",
+      "title": "Sınırlı düzenli Codex yakalama döngüsü",
+      "description_present": true,
+      "view_box": "-50 -10 1615.5 1100",
+      "artifact": "docs--architecture--codex-source-onboarding--2.svg",
+      "svg_sha256": "7d7d9c252b9f7848bacbd834d64bd757b1d9b5519332359b5d033b01b492fe9e",
+      "error": null
+    },
+    {
       "path": "docs/architecture/connection-and-context.md",
       "block": 1,
       "source_sha256": "0c1b286c82669fab3659eff4f83b8c5f9ebc6b9b579e55dd9078b16583f8ca2c",
@@ -65,7 +77,7 @@
       "description_present": true,
       "view_box": "0 0 1833.796875 269",
       "artifact": "docs--architecture--connection-and-context--1.svg",
-      "svg_sha256": "9e8d2dd539a6b31f8ac6df8435c826d014af6d25e547550807a8fba2a6d49f93",
+      "svg_sha256": "bd828145f7776b7b6b31a72f46ea7a2093d9d15168148fa69f2051f6683485b8",
       "error": null
     },
     {
@@ -77,7 +89,7 @@
       "description_present": true,
       "view_box": "0 0 1123.91015625 1183",
       "artifact": "docs--architecture--data-relationships--1.svg",
-      "svg_sha256": "0d63bf642bd3770122414787de4560e5d64984bf735c58eab8d1c890516e0a0e",
+      "svg_sha256": "2237269a9ff06f5a366a0783cce43ad4f4ff7c779e13c17da81764ae0f793e8d",
       "error": null
     },
     {
@@ -89,7 +101,7 @@
       "description_present": true,
       "view_box": "0 0 2522.6328125 640",
       "artifact": "docs--architecture--data-relationships--2.svg",
-      "svg_sha256": "75229b14a0547b02b2f745510b7c072ee47dc8ee81e87c27e4a66c1348e1be31",
+      "svg_sha256": "ff1b93151e2049aacf3c7d65ff4f3e081dacdbcde8d612f795716faee2ae2135",
       "error": null
     },
     {
@@ -101,7 +113,7 @@
       "description_present": true,
       "view_box": "0 0 1507.28515625 821",
       "artifact": "docs--architecture--data-relationships--3.svg",
-      "svg_sha256": "f3c3e7d7a046651ec488898eef37544d927fcdc49effdccfc6af11ae97824c0e",
+      "svg_sha256": "5581130c47e68735cdf91e65ebc3ead0897511034a8c8517afed01ddbc50e109",
       "error": null
     },
     {
@@ -113,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1617.265625 895",
       "artifact": "docs--architecture--diagrams--1.svg",
-      "svg_sha256": "d78c459f922d5d5465bb8159bf7ea6338f719183157bc912ed8b9266dc465040",
+      "svg_sha256": "fb012f08854eaeb909f1a382e30ad29eaad8e45072a5cd6218f90e9297917a8b",
       "error": null
     },
     {
@@ -125,7 +137,7 @@
       "description_present": true,
       "view_box": "0 0 1022.610595703125 836",
       "artifact": "docs--architecture--diagrams--2.svg",
-      "svg_sha256": "31ea43507fed060bb66b0fb8fbadea979daf5cc0ee122ab23e234c58a42896fe",
+      "svg_sha256": "1056535e262242ee0aa4304ad04b44b7df9da134fc36bc9ae9df7938e76c55e3",
       "error": null
     },
     {
@@ -137,7 +149,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "c4c70a9f2a30945fba9c453890d348418d11e3d7f3a35695f6c42d220c13e877",
+      "svg_sha256": "66a9da436add1584cf9700f31c4418a3e412c44e41c3368dba2e5cbcfdbcb3cd",
       "error": null
     },
     {
@@ -149,7 +161,7 @@
       "description_present": true,
       "view_box": "-69 -10 1081 1682",
       "artifact": "docs--architecture--diagrams--4.svg",
-      "svg_sha256": "4a99deee914aa35562a6e8d1d408ecc7b50170b9eccd51b3d7f87928a8f7a038",
+      "svg_sha256": "68b8b5c610ddb9e065f89813eea0078880ff3d95b95254c63bb433e308907dc8",
       "error": null
     },
     {
@@ -161,7 +173,7 @@
       "description_present": true,
       "view_box": "-50 -10 861 966",
       "artifact": "docs--architecture--diagrams--5.svg",
-      "svg_sha256": "4fa43b9ef2d12e8b382dd4947445327cebf423e85c2349efaa098abc44aea0e8",
+      "svg_sha256": "612590ee0775fab1b75a102356c8776cf96619361c93b2a6bc0d81907fcff3b2",
       "error": null
     },
     {
@@ -173,7 +185,7 @@
       "description_present": true,
       "view_box": "0 0 1680.1953125 331",
       "artifact": "docs--architecture--diagrams--6.svg",
-      "svg_sha256": "b3abd70644aa7929da8a3eb2254fa1402d4e8e15e66db51241157aebe0a52e8e",
+      "svg_sha256": "218ddcd17bcc60815649bb0289fa137f62355c06ba4cd4bbe4b18e0b91cf65b6",
       "error": null
     },
     {
@@ -185,7 +197,7 @@
       "description_present": true,
       "view_box": "0 0 1199.53125 438",
       "artifact": "docs--architecture--diagrams--7.svg",
-      "svg_sha256": "a848e1017eab8eecbe2e46da3b6bbbecdbf0fd65faa5314d04a9129eca968a3d",
+      "svg_sha256": "d4a300b6ac84d4f340ef6b3f234b10874ec5dd2e15a43d5d4175e8391b401f17",
       "error": null
     },
     {
@@ -197,7 +209,7 @@
       "description_present": true,
       "view_box": "0 0 888.71484375 938",
       "artifact": "docs--architecture--diagrams--8.svg",
-      "svg_sha256": "ddc072b77eeb15c9e7f87562da8baac64fe68e261364c359db0f672981ddbf03",
+      "svg_sha256": "aa04beedf372d973d3ce27c294754aee275f7b4dfc459bc690f30e5735bbf113",
       "error": null
     },
     {
@@ -209,7 +221,7 @@
       "description_present": true,
       "view_box": "0 0 2404.1875 269",
       "artifact": "docs--architecture--diagrams--9.svg",
-      "svg_sha256": "415796fbbe97747c7e6c34efb7f10a4a302804292429f172125d0586a6efe1e1",
+      "svg_sha256": "ac4551ae2add2dce2db4eb37a15035c40525d8ebc0450772bef686f597643d07",
       "error": null
     },
     {
@@ -221,7 +233,7 @@
       "description_present": true,
       "view_box": "0 0 867.65234375 1678.546875",
       "artifact": "docs--architecture--diagrams--10.svg",
-      "svg_sha256": "e7a99bb724c44cc217abde112e5028835b9a8fb3fb9273ead5ad914db397a27e",
+      "svg_sha256": "639d2a21c194468ac3b02aa753d70d7b7cc967a563b00f29ca82b3644d02cb22",
       "error": null
     },
     {
@@ -233,7 +245,7 @@
       "description_present": true,
       "view_box": "0 0 621 1084.171875",
       "artifact": "docs--architecture--diagrams--11.svg",
-      "svg_sha256": "cece98f7bf798ece13f6ff46d754265ddd16390bacea4f18a6aeccadd01e43de",
+      "svg_sha256": "681743b6220d225b5e310c5fc0aa9f8d46ef9be6745273f4af4ffde882976282",
       "error": null
     },
     {
@@ -245,7 +257,7 @@
       "description_present": true,
       "view_box": "0 0 1140.8828125 610.4000244140625",
       "artifact": "docs--architecture--diagrams--12.svg",
-      "svg_sha256": "13aaf5ab619e33e72de766dae62b9a680ac971758af788024f670bb616453152",
+      "svg_sha256": "4fd307f349811268d03ab00bcecdf2e2534fd65f26fbc033a50bd1236c5fb122",
       "error": null
     },
     {
@@ -257,7 +269,7 @@
       "description_present": true,
       "view_box": "0 0 997.984375 1141",
       "artifact": "docs--architecture--diagrams--13.svg",
-      "svg_sha256": "8f92bf1033b5745146e6d56265f0532112151e22f113ad72dd036954dabafa20",
+      "svg_sha256": "7412d19a00e965e6dec176ae93c8968d7015fc7e20cfc139136f3c5874a2a372",
       "error": null
     },
     {
@@ -269,7 +281,7 @@
       "description_present": true,
       "view_box": "-50 -10 1250 1694",
       "artifact": "docs--architecture--execution-and-integrations--1.svg",
-      "svg_sha256": "5653cab8cfae22866225f374a341cc26e13454020b5c36fa3d087d392f36ad14",
+      "svg_sha256": "7c9a4ce0e3f37a59c890de7e4ed8ca6de7461ce7a17809adc64ea71736bfe6b7",
       "error": null
     },
     {
@@ -281,7 +293,7 @@
       "description_present": true,
       "view_box": "-50 -10 1254 1639",
       "artifact": "docs--architecture--execution-and-integrations--2.svg",
-      "svg_sha256": "585ba1102cffdb50e30c718bca698cc3acc9541b0a2467e3dfe54a678062b8b4",
+      "svg_sha256": "82625bde4e37fe86413c1f1aeee9a70fd07bbb6194d8281c8d7213411840b135",
       "error": null
     },
     {
@@ -293,7 +305,7 @@
       "description_present": true,
       "view_box": "-50 -10 1073 1374",
       "artifact": "docs--architecture--execution-and-integrations--3.svg",
-      "svg_sha256": "fb22e3699a77b030773346a03f3dc0292a2288e6f1b6d849c27f42509a5a7603",
+      "svg_sha256": "405e03c7b2f47bb53cc1e73483a36c5082e9647288d48acfe559e3bde3086619",
       "error": null
     },
     {
@@ -305,7 +317,7 @@
       "description_present": true,
       "view_box": "0 0 705.33984375 836",
       "artifact": "docs--architecture--identity-access--1.svg",
-      "svg_sha256": "616a2b5297261e98184cf17f0be21f4c4fc3eeb5971e136d2626d34f063f0958",
+      "svg_sha256": "6d1311de977fde59a7dd6efa55e65c60c7dee729e58495ea8834daf26b7caabf",
       "error": null
     },
     {
@@ -317,7 +329,7 @@
       "description_present": true,
       "view_box": "0 0 4183.42578125 5063.279296875",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "2286a896da77def36c39e2690ce4a21aa934c42d3c9b1d0b3a41b7ae1b4e57a7",
+      "svg_sha256": "bd733cd8229d09255be4b89104b24726606c44a9d5692e3ef4abd6c83ddee588",
       "error": null
     },
     {
@@ -329,7 +341,7 @@
       "description_present": true,
       "view_box": "-50 -10 1054 1021",
       "artifact": "docs--architecture--logging-audit--1.svg",
-      "svg_sha256": "8b7cba167a7cff7af3caa22e3ce5feba74ed74aebe5f789ea31c6ab42a87d35e",
+      "svg_sha256": "f8c7ff8cf0a67d1106a8e173028c766a48306d77282ec193e585e3b5b014ddb3",
       "error": null
     },
     {
@@ -341,7 +353,7 @@
       "description_present": true,
       "view_box": "0 0 741 974",
       "artifact": "docs--architecture--logging-diagrams-and-schema--1.svg",
-      "svg_sha256": "fad313598a29931a33b982438c6016f654dfdb59043467265048241c7e5e71db",
+      "svg_sha256": "fdd2229aebfdf1221e1078445c5c59b9a8bfa2ebd1e472ed88d2ecf7a38b423e",
       "error": null
     },
     {
@@ -353,7 +365,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "c002448f2325116143cd4855bb696b551a5b77474973e2d655ab6cbbb6405f2b",
+      "svg_sha256": "6eed20f5c5a1e026e7b937b39cff12fd6cc5a44d9286f57f7cad4c45171e7afb",
       "error": null
     },
     {
@@ -365,7 +377,7 @@
       "description_present": true,
       "view_box": "0 0 739.796875 1142.46875",
       "artifact": "docs--architecture--logging-diagrams-and-schema--3.svg",
-      "svg_sha256": "3e088bcc157670822ef1d7358ac1b2e45d9bbb74c632389f463e57eb9e1f04de",
+      "svg_sha256": "6a567277a2c494432d4f4514af9c8d4c979506803474b5cf787bef591f5fb41e",
       "error": null
     },
     {
@@ -377,7 +389,7 @@
       "description_present": true,
       "view_box": "0 0 1387.34375 332",
       "artifact": "docs--architecture--model-activation-runtime--1.svg",
-      "svg_sha256": "6255ef54a382c69bc9b28778082f6e9676fc4714f77df3fec6bf33fa71b3ac05",
+      "svg_sha256": "371d1bc4d8bee78745f2263c7adbab297dc22f3098be29ae80b1b3c9a77cf3f1",
       "error": null
     },
     {
@@ -389,7 +401,7 @@
       "description_present": true,
       "view_box": "-50 -10 1849.5 760",
       "artifact": "docs--architecture--model-activation-runtime--2.svg",
-      "svg_sha256": "34f2da975c4823abf31a8342aecf01022dd2700f61718b245ee975e11902792c",
+      "svg_sha256": "697de2fa843af6d26549d690fcb9d17bc33b1d2ba8580167faa8915466207507",
       "error": null
     },
     {
@@ -401,7 +413,7 @@
       "description_present": true,
       "view_box": "0 0 954.5 1102",
       "artifact": "docs--architecture--model-activation-runtime--3.svg",
-      "svg_sha256": "c01aa62640701001acc49bb2448bdae988b8f81ce491f6d42fe00f20fbf10cf0",
+      "svg_sha256": "1f549b6e207ff05892be99f9a6fc91fb8d35e990ae220b43821f841015dc1b30",
       "error": null
     },
     {
@@ -413,7 +425,7 @@
       "description_present": true,
       "view_box": "0 0 1046.67578125 1376.4000244140625",
       "artifact": "docs--architecture--overview--1.svg",
-      "svg_sha256": "6f3e8a611832f203919b85d05fb246503d936edb40e6f307f6a984d973d56301",
+      "svg_sha256": "09ed2fc204e7b4c125185f5721c53a60b46bdd48bb0872916ac4147286f1f0f8",
       "error": null
     },
     {
@@ -425,7 +437,7 @@
       "description_present": true,
       "view_box": "-50 -10 1248 1311",
       "artifact": "docs--architecture--review-runtime--1.svg",
-      "svg_sha256": "12e5edaffb7c8a11f15949b8e656bfcb0179de7b5f54b1e8d7a10dfbda9a6881",
+      "svg_sha256": "4d97f653a57b002751033bf214278924d52756aae2f2b9a47cd9bbab47e8ef45",
       "error": null
     },
     {
@@ -437,7 +449,7 @@
       "description_present": true,
       "view_box": "0 0 1089.140625 1166.3734130859375",
       "artifact": "docs--architecture--review-runtime--2.svg",
-      "svg_sha256": "84f3d2a25133611fe5db19ecffe90430bd797e49baca1ff08c061e99de95c53a",
+      "svg_sha256": "814a14de21b6a29d7c87ee8f4522fcfeedba00602ecb70b843945951cc64aa4a",
       "error": null
     },
     {
@@ -449,7 +461,7 @@
       "description_present": true,
       "view_box": "-50 -10 1547 878",
       "artifact": "docs--architecture--source-sharing-and-first-review--1.svg",
-      "svg_sha256": "543e67fa29964010ab555c9c11cdb83f65e448b6bad16d5b224949388e0aa0e7",
+      "svg_sha256": "d1858f7035b843d2b8afa1047a5b765dce97968b5d860374565895c3d30a08c3",
       "error": null
     },
     {
@@ -461,7 +473,7 @@
       "description_present": true,
       "view_box": "0 0 586 606",
       "artifact": "docs--architecture--source-sharing-and-first-review--2.svg",
-      "svg_sha256": "8387f63341bfaf6f3d5ac56ba0f9ad467b792932b49d0fe6880cad56e122a985",
+      "svg_sha256": "db7bbea03d567ddbfbf425f1e6cfd902d0a934a40b29040fe8c01fa88a77bda1",
       "error": null
     },
     {
@@ -473,7 +485,7 @@
       "description_present": true,
       "view_box": "0 0 2498.9736328125 395.5390625",
       "artifact": "docs--architecture--storage-memory-capacity--1.svg",
-      "svg_sha256": "c798ea84fde8ab46580804440cbc0a14ea1668e14e36bb20d1454a067317843d",
+      "svg_sha256": "ce4412838c434d774a43d0cb0b3b817f89124e52a68569e64b04c790a477c3b8",
       "error": null
     },
     {
@@ -485,7 +497,7 @@
       "description_present": true,
       "view_box": "0 0 1174.41015625 1020.6778564453125",
       "artifact": "docs--architecture--task-lifecycle--1.svg",
-      "svg_sha256": "e27c833dd03f90192bd47963e3d8cbddf6d33baf1b2bb1279da4ac9401ed9160",
+      "svg_sha256": "2eb30b3d71d9edd11c6d84a894404af7f5569c8cdb6d80789fb401885f161ba7",
       "error": null
     },
     {
@@ -497,7 +509,7 @@
       "description_present": true,
       "view_box": "0 0 896 1085.4720458984375",
       "artifact": "docs--delivery--api-independent-development--1.svg",
-      "svg_sha256": "a55f0872f3a437ec9d1919697dc8a9b37780d7af7b1556e283e4ba7ca63ea3e6",
+      "svg_sha256": "364d0644409dd734f9f4a3013dfd6b5d0f38fa46b51e015935cae2ea3e3bb6a6",
       "error": null
     },
     {
@@ -509,7 +521,7 @@
       "description_present": true,
       "view_box": "0 0 2364.25 88",
       "artifact": "docs--delivery--team-data-plan--1.svg",
-      "svg_sha256": "9e83d7f5115d6d8685a816ba0412baa1eb795c147bec93b52782285f01f3e872",
+      "svg_sha256": "aee605b4fd013a751208ea38d0ffd83b9f71ad9b9f6d20380c1fa3514143ccf9",
       "error": null
     },
     {
@@ -521,7 +533,7 @@
       "description_present": true,
       "view_box": "0 0 1741.15625 676",
       "artifact": "docs--product--current-direction--1.svg",
-      "svg_sha256": "a91194caf21cea56478556e43809d7e5d3e60bb2e4b19b1a52128363ee5f22d7",
+      "svg_sha256": "fa76625e156e0e8e3f9f8136202ef378910bd7264f494c5e3187ca426c21d509",
       "error": null
     },
     {
@@ -533,7 +545,7 @@
       "description_present": true,
       "view_box": "0 0 1291.296875 900",
       "artifact": "docs--product--decision-map--1.svg",
-      "svg_sha256": "b809b27f417c312169bacdd6be36a272ece7f63c76b8eed0efd33785c25453b4",
+      "svg_sha256": "3a0f16bcddcb60b8772f85ea436932189f50e109b57503eb070884feb8d80365",
       "error": null
     },
     {
@@ -545,7 +557,7 @@
       "description_present": true,
       "view_box": "0 0 1526 534",
       "artifact": "docs--product--decision-map--2.svg",
-      "svg_sha256": "6fc5275ab3dc0bd73462b7b6fcd74e337922bb2ea5b13fbf94ab20600e534214",
+      "svg_sha256": "d914ef41c241a7a88c1019b6987391d1197015e9c9f7adb4a33647e9bed9a8f5",
       "error": null
     },
     {
@@ -557,7 +569,7 @@
       "description_present": true,
       "view_box": "0 0 739.4375 435.8500061035156",
       "artifact": "docs--product--graph-experience--1.svg",
-      "svg_sha256": "8d0fd31c868a60743b1850a69aec957a5307981c3a204cb21803e83dbc77370e",
+      "svg_sha256": "a97fef7f60a5aa62efef16084bf959eaa53210abfc899e33fc0c09c4b19d92ad",
       "error": null
     },
     {
@@ -569,7 +581,7 @@
       "description_present": true,
       "view_box": "0 0 606.7734375 655",
       "artifact": "docs--product--graph-experience--2.svg",
-      "svg_sha256": "8f43f3df29b35abaf48660f55344a85494122e53c17df5253a4c97075ec65558",
+      "svg_sha256": "75c697fa16c9f666d13549d8bd5df8f1fa8b09fd46852ac067f344cc6f438ced",
       "error": null
     },
     {
@@ -581,7 +593,7 @@
       "description_present": true,
       "view_box": "0 0 1220.390625 1251.90625",
       "artifact": "docs--product--intent-to-reality-gap--1.svg",
-      "svg_sha256": "81c05b0a223d46abd8ebceb33eb24334a8f7b2bf2e06fd283857a29fdefc4a53",
+      "svg_sha256": "540e6009c08a2389d711fdf1b8bc7df29511c3b2c0e2959368b018f02b57cf72",
       "error": null
     },
     {
@@ -593,7 +605,7 @@
       "description_present": true,
       "view_box": "-50 -10 851 1190",
       "artifact": "docs--product--intent-to-reality-gap--2.svg",
-      "svg_sha256": "a897d9018631922d2f654523f3c02de1fc42b45aff187e6add80b55a744912d1",
+      "svg_sha256": "4d10bf69b8c3434c12ed77940677ca08cb8a2a210dddb0bfdcf16382767ff4d4",
       "error": null
     },
     {
@@ -605,7 +617,7 @@
       "description_present": true,
       "view_box": "0 0 824.1328125 1813.046875",
       "artifact": "docs--quality--blocker-aging--1.svg",
-      "svg_sha256": "df9703d2b5a29f4ebef414d88ad18e1a6a7b6d67d73f76ebe51d58010a2cb48d",
+      "svg_sha256": "7794dcf4490377fb009d17705f90cb4a53fa837043660e8bf3596a4be8dc6a89",
       "error": null
     },
     {
@@ -617,7 +629,7 @@
       "description_present": true,
       "view_box": "0 0 1505.171875 1595.609375",
       "artifact": "docs--quality--codex-e2e-001--1.svg",
-      "svg_sha256": "3fd502f99308c498133351b008e6f74b635698986389289d8493b71f9ba7ea3e",
+      "svg_sha256": "6331ef66bac1341408b1697ce43e16544ae2bb1a6588e6b4a987f72e49410f78",
       "error": null
     },
     {
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "0 0 1318.76171875 1869.46875",
       "artifact": "docs--quality--dialogue-status-runtime--1.svg",
-      "svg_sha256": "1cb550b3acd6988f8fc4d16dd54d941d7326cdf840dd426cd177f95b52134ff8",
+      "svg_sha256": "c5ae7b8e650b46beeeae5e5a35f5ec49add6df1566c7671ef59e97ca3a6d811b",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "fb695d7b4ca8a2dbc1606e564784b6ecdfd17847cb87cef9d1485f2e8a13d870",
+      "svg_sha256": "be4fa4d02380173572ce3cbc9e3cf4a75cb4bc2f86d2b6bc7abe590e044f68a7",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "0 0 1174 1750.426513671875",
       "artifact": "docs--quality--native-two-chat-review--1.svg",
-      "svg_sha256": "5ae6c18f72dbb2b99e69d2e5e937f748fc140eae55ebc6c5aec4be39574f9404",
+      "svg_sha256": "661b5f263c82042c81d8dbc3fbbbdc047fc62b0b02b2e4d80e2c2c33e0d5c666",
       "error": null
     },
     {
@@ -665,7 +677,7 @@
       "description_present": true,
       "view_box": "-50 -10 1548 792",
       "artifact": "docs--quality--native-two-model-001--1.svg",
-      "svg_sha256": "a317fdf94ae7560618d750879ae4d65bbd900d82fab85b087f2280bbf8825230",
+      "svg_sha256": "36aed99f4d00945af675186c0587bca2fa999730e048202bb4c0a9d62434100f",
       "error": null
     },
     {
@@ -677,7 +689,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "45a76aa5f6d263bf7dcab42aed5c0625b57726c32ae46ec53f18e5616cd01635",
+      "svg_sha256": "2885152b1c430864e778874f1e57ac3b746aa03cdbdb43e301503fcc9b0c9828",
       "error": null
     },
     {
@@ -689,7 +701,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "945847f1d7bb64ed0b4c39612e0797c61f5306e8c854d08304cabea5dcbecc4b",
+      "svg_sha256": "1d78c056cfc193ff24b979a94fab27753e3a7716cf33c534ed22cb654beb5d27",
       "error": null
     },
     {
@@ -701,7 +713,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "964d5988b6d0c80c5276d1e5eeaac6632367185680e9d8782f8e1a76fdc1370a",
+      "svg_sha256": "9f3633795feb12be834dc24434aacb93cbe82e1cd843b78a26701ab6f7c96dcf",
       "error": null
     },
     {
@@ -713,7 +725,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "030bc2bd54b44d97b2c4199ea3481def6dd7a9d5303d4aec0da9f2ca17e59092",
+      "svg_sha256": "4e845d432c3aeb922df071ad6dff532145fad06d60380e884e0a9356709acb42",
       "error": null
     },
     {
@@ -725,7 +737,7 @@
       "description_present": true,
       "view_box": "0 0 1148.84375 1838.421875",
       "artifact": "docs--quality--todo-development-review--1.svg",
-      "svg_sha256": "97ff934e017d41eace58e455184610044ebf589910228221bebd5afcf12f0fb9",
+      "svg_sha256": "7c99a69168218d5f51e43fbc85ade89729e0f7f672bc2d7463c36696f370f22b",
       "error": null
     },
     {
@@ -737,7 +749,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "7fde07306863517ae7293b8558e582cd1d2f4f972293bdb32415ed9df1a81a78",
+      "svg_sha256": "b2762bf5f8755ddcf44d4c5927c4da19b0417a7d847da903aba62202fc32aeb8",
       "error": null
     },
     {
@@ -749,7 +761,7 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "e243e53fb82d23d9f996187c1ec3528d4a2e651b67e30bfb44449b324e4571c2",
+      "svg_sha256": "34acddef7661e0a7b45be4d24d740ca80a7d91986cc5c7003e4a1dcc57a21595",
       "error": null
     }
   ],

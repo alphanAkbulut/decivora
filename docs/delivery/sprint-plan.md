@@ -23,7 +23,7 @@ Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası de�
 |---|---|---|
 | Mevcut izinleri gör ve aktivasyonu yönet | Kaynak/model/token/expiry görünür; Paused hazırlık dispatch yapmaz; current revision ile activate/pause/revoke | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı**, tam kaynak onboarding değil |
 | Bounded worker kontrolü | Açık caps/interval/expiry; plan kaydetmek çalıştırmaz; ayrı start/stop; eşleşen managed transport gerekir | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı** |
-| Codex kaynak seçimi ve yeni izin kurulumu | Kullanıcı hangi sohbetin hangi projeye hangi kapsamda bağlandığını görür; seçilmeyen okunmaz | **Yerel kod ve sentetik UI kabulü tamamlandı:** exact chat ID/link, süre/read/tur consent ve ayrı read/disconnect; genel discovery/sürekli capture ve model-egress kurulum açık |
+| Codex kaynak seçimi ve yeni izin kurulumu | Kullanıcı hangi sohbetin hangi projeye hangi kapsamda bağlandığını görür; seçilmeyen okunmaz | **Yerel kod ve sentetik UI kabulü tamamlandı:** exact chat ID/link, süre/read/tur consent ve ayrı read/disconnect; genel discovery açık; düzenli capture plan/start/stop kodlandı, gerçek periyodik kabul ve yeni mesajların model-egress politikası açık |
 | İlk görev review'ında kapsam hazırlığı | AC/DoD taslağı veya netleştirme; kaynakta olmayan şart onaysız gereksinim değildir | **Yerel kod ve fake-provider browser kabulü tamamlandı:** human AC/DoD veya linked clarification; otomatik model kriter çıkarımı değildir. Gerçek UI/provider kabulü açık |
 | Tek kullanıcı yolculuğu | Seçilen sohbet→capture→model→review→Task; ilerleyen mesaj aynı işe bağlanır | **Gerçek LOCAL UI dar kabulü geçti:** iki seçili chat→capture→Luna→insan review→tek Task; B aynı ID için start önerdi. İlk clarification kararından sonra owner kapsamı onayladı; aynı Task current insan işlemiyle In Progress, soru Resolved, kriterler not_run. Sürekli/günlük otomasyon ve Done kabulü **açık** |
 | Kesinti/restart/günlük kabul | Cursor/dedup/izin/bütçe ve eski öneri geçmişi korunur | Parça testleri var; birleşik günlük kabul **açık** |
@@ -39,3 +39,6 @@ Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası de�
 ## Takip ve sprint kapanışı
 
 Her daily: çalışan teslim, karşılanan kabul, kalan gerçek eksik, engel sahibi ve sıradaki kod işi raporlanır. Yeni iş üretmeden mevcut backlog'a bağlanır. Test sayısı ve parent sayısı tamamlanma yüzdesi değildir. Sprint review'da kullanıcı çalışan yolu görür; retrospective'te bulgu/karar/gerekçe kaydedilir. Gerçek kaynak, semantik kalite, hedef kanıtı ve ürün kabulünün kanıtları birbirinin yerine geçmez.
+
+
+**Sprint1 sonraki kod dilimi:** [Düzenli capture](../quality/scheduled-capture-runtime.md) yerel plan/worker/UI olarak uygulandı. Yeni gerçek read izni verilmeden aktif edilmedi; sonraki kapı exact kaynak/süre/read sayısıyla native periyodik kabul ve yeni kaynak paylaşımıdır.
