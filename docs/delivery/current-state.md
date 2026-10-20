@@ -1,5 +1,7 @@
 # Güncel ürün ve kalan geliştirme resmi
 
+**20 Ekim — Native A/B model zinciri:** A'dan tek Task önerisi, kullanıcı onayıyla To Do kaydı; B'den yeni Task açmadan aynı ID için In Progress önerisi alındı. İlk uygulama AC guard'ında durdu. Ayrı kapsam onayından sonra eski öneri stale korunarak güncel insan işlemiyle In Progress uygulandı. Tek Task, AC/DoD not_run; iki model + iki sayım isteği, 4.104 token, tahmin $0,000584. [Sonuç ve sınırlar](../quality/native-two-model-001.md). Deney izni tüketildi; varsayılan uygulama otomatik etkinleştirilmedi.
+
 **20Ekim gerçek Native A/B sonucu:** normal input üzerinden2human+4assistant kaynak yakalandı; iki geçişte6→6, yeni duplicate0; reopen readback6. Kaynak izni tüketilip bindingler kapatıldı. Model çağrısı0; aynıTask/ilerleme semantik kabulü henüz yok. [Makbuz ve sınırlar](../quality/native-two-chat-001.md). Aşağıdaki önceki “hazır/izin bekliyor” notları tarihsel hazırlıktır.
 
 **20Ekim — iki Codex sohbeti:** aynı native sohbeti yeniden bağlamada yakın geçmiş kaybı düzeltildi;1–4explicit seçilmiş thread için ortak sınırlı pipeline ve read-only CLI eklendi. Shared proje Task/soru context'i ile thread-local raw history ayrı tutulur. [Kök neden ve gerçek iki-pencere test planı](../quality/native-two-chat-review.md). Yerel11kontrol geçti; gerçek iki-pencere kabulü henüz yapılmadı. Yeni ücretli çağrı yok.

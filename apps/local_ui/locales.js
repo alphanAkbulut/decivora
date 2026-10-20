@@ -379,7 +379,8 @@ window.DecivoraCatalogs = {
     "Open clarification": "Open clarification",
     "Clarification resolution": "Clarification resolution",
     "Resolve clarification": "Resolve clarification",
-    "Opened": "Opened"
+    "Opened": "Opened",
+    "Approve current acceptance criteria before starting work.": "Approve current acceptance criteria before starting work."
   },
   "tr": {
     "Dil": "Dil",
@@ -761,7 +762,8 @@ window.DecivoraCatalogs = {
     "Open clarification": "Netleştirme kaydını aç",
     "Clarification resolution": "Netleştirme cevabı",
     "Resolve clarification": "Netleştirmeyi çöz",
-    "Opened": "Kayıt açıldı"
+    "Opened": "Kayıt açıldı",
+    "Approve current acceptance criteria before starting work.": "İşe başlamadan önce güncel kabul kriterlerini onaylayın."
   },
   "es": {
     "Dil": "Idioma",
@@ -1143,7 +1145,8 @@ window.DecivoraCatalogs = {
     "Open clarification": "Abrir aclaración",
     "Clarification resolution": "Respuesta de aclaración",
     "Resolve clarification": "Resolver aclaración",
-    "Opened": "Abierto"
+    "Opened": "Abierto",
+    "Approve current acceptance criteria before starting work.": "Aprueba los criterios de aceptación actuales antes de comenzar."
   },
   "pt-BR": {
     "Dil": "Idioma",
@@ -1525,7 +1528,8 @@ window.DecivoraCatalogs = {
     "Open clarification": "Abrir esclarecimento",
     "Clarification resolution": "Resposta do esclarecimento",
     "Resolve clarification": "Resolver esclarecimento",
-    "Opened": "Aberto"
+    "Opened": "Aberto",
+    "Approve current acceptance criteria before starting work.": "Aprove os critérios de aceitação atuais antes de começar."
   },
   "ar": {
     "Dil": "اللغة",
@@ -1907,6 +1911,7 @@ window.DecivoraCatalogs = {
     "Open clarification": "فتح الاستيضاح",
     "Clarification resolution": "إجابة الاستيضاح",
     "Resolve clarification": "حل الاستيضاح",
-    "Opened": "تم الفتح"
+    "Opened": "تم الفتح",
+    "Approve current acceptance criteria before starting work.": "اعتمد معايير القبول الحالية قبل بدء العمل."
   }
 };

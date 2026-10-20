@@ -1,0 +1,117 @@
+{
+  "format": "decivora-native-two-model-001-result-1",
+  "date": "2026-10-20",
+  "source_capture_report": "native-two-chat-001-results.json",
+  "native_capture": true,
+  "model": "gpt-6-luna",
+  "reasoning_effort_explicitly_sent": false,
+  "max_generation_calls": 2,
+  "actual_generation_calls": 2,
+  "actual_token_count_calls": 2,
+  "automatic_retry": false,
+  "new_host_reads": 0,
+  "source_scope": "two_saved_synthetic_human_messages_plus_own_prior_capture_context",
+  "trial_ceiling_microusd": 20000,
+  "trial_committed_microusd": 584,
+  "root_budget": {
+    "dispatches": 52,
+    "http_attempts": 104,
+    "committed_microusd": 67286,
+    "frozen": false
+  },
+  "invoice_verified": false,
+  "usage": {
+    "input_tokens": 3582,
+    "output_tokens": 522,
+    "total_tokens": 4104
+  },
+  "task_reference_sha256": "6633773dc36943271cddad118eb340e3cf7b33d977ad51836746719419fc37ef",
+  "stages": [
+    {
+      "alias": "Native A",
+      "status": "Ready for review",
+      "candidate_types": [
+        "Task"
+      ],
+      "task_title": "Atlas Native için yedek geri yükleme kontrolü eklemek",
+      "status_changes": 0,
+      "source_hash": "3309c5c57a8bd36cc77391a228b5714e36aea49cf6368adec69736fd00af4208",
+      "context_hash": "4dc381e2be286ebc027fe58d8f9915b558517755f9fa7e065410e9ab5ba76859",
+      "explicit_task_review": true,
+      "canonical_stage_after_review": "To Do",
+      "usage": {
+        "input_tokens": 1721,
+        "input_tokens_details": {
+          "cache_write_tokens": 1718,
+          "cached_tokens": 0
+        },
+        "output_tokens": 288,
+        "output_tokens_details": {
+          "reasoning_tokens": 95
+        },
+        "total_tokens": 2009
+      },
+      "latency_ms": 6044
+    },
+    {
+      "alias": "Native B",
+      "status": "Ready for review",
+      "new_task_candidates": 0,
+      "reported_stage": "In Progress",
+      "same_task_id": true,
+      "source_hash": "c65dff30ce227cfe286eed9ef9c2a52cd89284ff9a5a92a693cee8bbf55f3d6d",
+      "context_hash": "6376d97d2380b4da554609f2c789c46de2a5809bd79f4e0b94515d8c6509b51e",
+      "explicit_status_review": true,
+      "first_apply_rejected": "acceptance_required",
+      "scope_explicitly_approved": true,
+      "original_model_proposal_stale_after_scope_change": true,
+      "original_model_proposal_review": "Deferred",
+      "apply_method": "current_human_transition_after_scope_approval",
+      "canonical_stage_after_review": "In Progress",
+      "usage": {
+        "input_tokens": 1861,
+        "input_tokens_details": {
+          "cache_write_tokens": 765,
+          "cached_tokens": 1093
+        },
+        "output_tokens": 234,
+        "output_tokens_details": {
+          "reasoning_tokens": 36
+        },
+        "total_tokens": 2095
+      },
+      "latency_ms": 5102
+    }
+  ],
+  "canonical_tasks": 1,
+  "restart_readback_stage": "In Progress",
+  "verification_passed": false,
+  "acceptance_contract_version": 1,
+  "criterion_results": [
+    {
+      "id": "AC_RESTORE",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "id": "DOD_REVIEW",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "completion_claim_tested": false,
+  "automatic_apply": false,
+  "original_capture_db_unchanged": true,
+  "permission_consumed": true,
+  "remaining_model_calls": 0,
+  "mvp_acceptance": false,
+  "private_receipt_hashes": {
+    "approval.json": "6d85f09d827ee23f0f2271ae04893071933badf5a06de380a33c9c7fa0d13cc6",
+    "A-result.json": "77488601f94cac89295d5d46b55c0a5f74ac395c2899f7eae3716b9b9dc7cb2b",
+    "A-task-accepted.json": "60cecd4330584903895bbbf93070eed2c9f698627234be375f74a72a90b0560f",
+    "B-result.json": "d811afc7cd3ad4bb8b020791c2daa8041776e29ec7c0ee87a7df11234d94c32f",
+    "B-scope-guard-stop.json": "16a738bc9a70c36bd937213585fd169bbc39e658944a764fa89762b5a4839562",
+    "scope-approved.json": "03217a0375276359220b9024ef2517847033ca8cc21533894b5ab7e269d3ab20",
+    "B-status-accepted.json": "3ffc3b03194fca82e3f12c48afa0bbd5d6300522f642da2775d5b3dd05a14a72"
+  }
+}

@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-20",
-  "input_base_ref": "fc55f7aa1466accb0511dc0cae46dda60491e47c",
+  "input_base_ref": "9fee28592f5240784ce4e5d3ad89fe3df14bd485",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "8bd4158fd3c09e5e7b9934e681831110f7239171b5cb9a674faf572ed9636c46",
+      "svg_sha256": "04babcc4885098531dc11babdeed74c4591c46900084c0d06f0abe957b085006",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "b55c045a587c81a90e8f1b1156c7cda64ca503d34f25428ef0b264a9514e4e22",
+      "svg_sha256": "0c342ef17e2940bdce704c1615b094e643e8d1090309a83b84eede243ae26dc0",
       "error": null
     },
     {
@@ -621,6 +621,18 @@
       "error": null
     },
     {
+      "path": "docs/quality/native-two-model-001.md",
+      "block": 1,
+      "source_sha256": "a2ed1530a1eed3a4fb6553f2aa5afec6069d695a64343b5e939308a8bb1824fc",
+      "status": "rendered",
+      "title": "Native A ve B üzerinden görev önerisi, review ve güncel başlangıç",
+      "description_present": true,
+      "view_box": "-50 -10 1548 792",
+      "artifact": "docs--quality--native-two-model-001--1.svg",
+      "svg_sha256": "33d35c8e937b395da8803edb7c4807a983d0d775b0382f159edd4c7e11e593a2",
+      "error": null
+    },
+    {
       "path": "docs/quality/operations-runtime.md",
       "block": 1,
       "source_sha256": "9700a021eaf1fa1bf78e0365917f895c4a441c314d7f99315b9d0cef52753bb4",
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "ea45ccc20dd7fc5b484955c8c0210a481f6e5159b5c1409dc3f276c5b141f622",
+      "svg_sha256": "ce3bbb15195e8ef10d717286216ce736927b2b2bfb225124aaaebba537b48fae",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "1b035ea136204c7e8803e47cf306327bb4e5e27d2e6f04d7bde2726dd62736da",
+      "svg_sha256": "de2bb23610df40287bdae9bf004b23345766a86a8c94fbdfe448a8dd192807d0",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "04e73e85c0239970febdecd05c66e8d1de340fd66953eb3d1b60df7c50e9e29c",
+      "svg_sha256": "32286ae39554f3aea44581f9a1bc1408c850d0cb2178597347e69a25e1566905",
       "error": null
     },
     {
@@ -665,7 +677,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "b672f7c8d7a41402f98fd0122f0b118d5a0b59c67be06321475c42da7cd079a4",
+      "svg_sha256": "b87c5a8cf185ac7f35ba66f154e4186956e9fcda33fc75d9715f81df617a537a",
       "error": null
     },
     {
@@ -677,7 +689,7 @@
       "description_present": true,
       "view_box": "0 0 1148.84375 1838.421875",
       "artifact": "docs--quality--todo-development-review--1.svg",
-      "svg_sha256": "cf7426ec5404924825e94d5207efe9b2563c5e0e9ed8f16adbb297452156f771",
+      "svg_sha256": "bcdf983f6e7797d17abe5397ea4646f79b9cad1fd8a10cee2be82702fc4ea275",
       "error": null
     },
     {
@@ -689,7 +701,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "65898cb795e1a1e88dd1454e33ed77797eb5bd2ba68da5baceb80a4bb608f1d3",
+      "svg_sha256": "505536c1ef96fff32a78dcd26331c68e08a7e4e87d9565f9f8c8e6af14696f50",
       "error": null
     },
     {
@@ -701,11 +713,11 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "ce0a88f95bb4aa8e3e2f754ec60c849665e14654292cf9df3262ee41ad4457b7",
+      "svg_sha256": "2c8670b9b120087396bbd2364d5e26d2767972e86122ffca1aae1a35f3f38971",
       "error": null
     }
   ],
-  "artifacts_location": "/tmp/decivora-native-two-result-diagrams",
+  "artifacts_location": "/tmp/decivora-native-model-diagrams",
   "readme_fallback": {
     "path": "assets/diagrams/overview.svg",
     "source_sha256": "b56d9e094d2ec1258c2f2b8db2038abed8775dc9d83df31a58947f690ec71ec2",
@@ -6585,5 +6597,6 @@
   "clarification_render_note": "57current Mermaid sources rendered offline; changed existing task clarification branch visually reviewed separately from model quality.",
   "currency_audit_render_note": "All57current blocks rendered offline; changed README1, decision-map2, current-direction1 visually inspected. Product runtime/model not tested by render.",
   "native_two_chat_render_note": "58blocks in31documents rendered offline; new two-selected-chat context/permission flow visually inspected. Real two-window capture and model semantics not tested by rendering.",
-  "native_two_chat_actual_result_render_note": "58current Mermaid blocks rendered offline; updated two-chat flow shows6observed public sources, no semantic model test. Source consent consumed and bindings disconnected."
+  "native_two_chat_actual_result_render_note": "58current Mermaid blocks rendered offline; updated two-chat flow shows6observed public sources, no semantic model test. Source consent consumed and bindings disconnected.",
+  "native_two_model_render_note": "59Mermaid blocks in32documents rendered offline; new actual A/B model-review-scope sequence visually inspected. Scope guard, stale original proposal and current human transition are distinct; not MVP completion."
 }

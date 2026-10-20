@@ -139,6 +139,8 @@ function renderDialogueReview(box,item){
   const task=state.tasks.find(t=>t.id===proposal.task_id);
   card.append(el('h3',t('Task status proposal')+' · '+(task?.body.title||proposal.task_id)),
    el('p',proposal.from_stage+' → '+proposal.stage,'badge'),el('p',proposal.quote),el('p',proposal.state));
+  const acceptanceRequired=proposal.workflow_guidance?.review_requirement==='acceptance_required';
+  if(acceptanceRequired){card.append(el('p',t('Approve current acceptance criteria before starting work.'),'notice'));if(task){const scopeReview=el('button',t('Review task workflow'),'secondary');scopeReview.dataset.reviewTaskWorkflow=task.id;scopeReview.onclick=()=>show(task.id);card.append(scopeReview);}}
   if(proposal.stage==='Done')card.append(el('p',t('A completion statement is a claim. Current acceptance evidence and a separate scope review are required for Done.'),'notice'));
   if(proposal.stage==='Done'&&proposal.workflow_guidance?.suggested_review_stage&&proposal.workflow_guidance.suggested_review_stage!=='Done'){card.append(el('p',t('Suggested review step: {stage}',{stage:proposal.workflow_guidance.suggested_review_stage}),'notice'));if(task){const handoff=el('button',t('Review task workflow'),'secondary');handoff.dataset.reviewTaskWorkflow=task.id;handoff.onclick=()=>show(task.id);card.append(handoff);}}
   if(proposal.stale&& !['Applied','Rejected'].includes(proposal.state))card.append(el('p',t('Task context changed. Prepare a fresh request; the old proposal stays in history.'),'notice'));
@@ -147,7 +149,7 @@ function renderDialogueReview(box,item){
    const scope=el('input');scope.type='checkbox';scope.style.width='auto';scope.id='dialogue_scope_'+proposal.id;const label=el('label');label.append(scope,document.createTextNode(t('I reviewed current scope and impact before completion.')));
    card.append(reason);if(proposal.stage==='Done')card.append(label);
    for(const [decision,title] of [['accept','Approve status change'],['reject','Reject status proposal'],['defer','Defer status proposal']]){
-    const button=el('button',t(title),'secondary');button.dataset.statusDecision=decision;button.disabled=decision==='accept'&&proposal.stale;
+    const button=el('button',t(title),'secondary');button.dataset.statusDecision=decision;button.disabled=decision==='accept'&&(proposal.stale||acceptanceRequired);
     button.onclick=async()=>{button.disabled=true;try{await request('/api/command',{action:'review_dialogue_status',source_id:item.source.id,proposal_id:proposal.id,decision,key:'dialogue_'+crypto.randomUUID().replaceAll('-',''),reason:reason.value,scope_reviewed:scope.checked});message(t('Status review saved. Completion still follows acceptance and verification rules.'));await refresh();}catch(e){button.disabled=false;message(e.message,true);}};card.append(button);
    }
   }
@@ -203,7 +205,7 @@ function renderWorkflowControls(detail,task){
 
  const target=el('select');target.id='dependency_target';for(const other of state.tasks.filter(o=>o.id!==task.id&&o.lane!=='Cancelled')){const option=el('option',other.body.title);option.value=other.id;target.append(option);}const labelTarget=el('label',t('Completion prerequisite'));labelTarget.htmlFor=target.id;const link=el('button',t('Approve dependency'),'secondary');link.disabled=!target.childNodes.length||task.lane==='Cancelled';link.onclick=async()=>{link.disabled=true;try{await request('/api/command',{action:'link_dependency',task:task.id,target:target.value,base_revision:state.snapshot,key:'dependency_'+crypto.randomUUID().replaceAll('-','')});await refresh();}catch(e){link.disabled=false;message(e.message,true);}};detail.append(labelTarget,target,link);for(const d of task.workflow.assessment.dependencies)detail.append(el('p',`Blocked by · ${d.title||d.id} · ${d.status}`));
 
- appendWaitingLabels(detail,task);detail.append(el('p',t('Start gate')+': '+(task.workflow.assessment.start_blocked?'Blocked':'Clear')),el('p',t('Completion gate')+': '+(task.workflow.assessment.finish_blocked?'Blocked':'Clear')));
+ appendWaitingLabels(detail,task);detail.append(el('p',t('Start gate')+': '+(!task.workflow.verification.contract_version||task.workflow.verification.stale?t('Kabul kriterleri bekliyor'):(task.workflow.assessment.start_blocked?'Blocked':'Clear'))),el('p',t('Completion gate')+': '+(task.workflow.assessment.finish_blocked?'Blocked':'Clear')));
  detail.append(el('p',task.lane+' · '+task.workflow.assessment.readiness),el('p',t('Readiness only covers recorded relationships.'),'muted'));
  for(const b of task.workflow.assessment.blockers)detail.append(el('p',`${b.kind} · ${b.gate} · ${b.reason} · ${b.next_action}`));
  const allowed=state.workflow_transitions[task.lane]||[];

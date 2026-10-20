@@ -203,3 +203,9 @@ Eşleşen mevcut soru varsa yeni sunma düğmesi kapalı ve ilgili soruID görü
 Conversations öneri kartı; soru kutusunda açık netleştirme; Task Overview'da metin/kaynak/durum/cevapla çözme; Sources bağlantısı ve pending metric eklendi. Beş UI katalogu güncel. Sonraki model context'i64netleştirme sınırında kayıtları status/revision/resolution ile taşır; taşma silent truncate değil context_limit'tir. Operational log ham kaynak/cevap metni tutmaz, yalnız güvenli işlem/tanı kodları geçerlidir.
 
 Task'a bağlı netleştirmeyi otomatik serbest metin cevapla eşleyip kapatma henüz yok; closure insandadır. Task'sız proje sorularının tümünün yakalandığı veya yeni prompt'un gerçek modelle doğrulandığı iddia edilmez. [İlk devam deneyi ve sürüm ayrımı](dialogue-batch-001-continuation.md).
+
+## 20 Ekim — başlangıç öncesi kabul kapsamını görünür kılma
+
+[Gerçek Native A/B sonucu](native-two-model-001.md) kaynaklı InProgressönerisinin doğruTask'abağlandığını, fakatAC/DoDeksikliği nedeniyle mevcutdomainkorumasının ilkapply'ıreddettiğini gösterdi. Bu guard'ın varlığı başarıdır; kartın ön koşulu göstermemesi NM-01sunum eksikliğidir. Guidance `review_requirement=acceptance_required` ve scope_review_still_required=trueverir, suggestedreviewstage=nullkalır. Approvekapalı, mevcutworkflowdetayına link ve beşdildeaçıklama var. Taskdetail Startgate eksik/staleACiçin pendinggösterir; manual/dependencyBlockerstatüsü değiştirilmez.
+
+ACcontractsonradan onaylanırsa eski modelönerisininworkflowdigest'ideğişmiştir: history korunur, staleöneri doğrudanuygulanmaz. YeniAPIizniolmadangerçekmodelretry yapılmaz. Bu nativeörnektekullanıcı güncelkapsamla başlangıcı ayrıca yetkilendirdiği için modelönerisiDeferred bırakılıp freshhumanworkflowcommanduygulandı; yeniLLMçıktısı gibi gösterilmedi.

@@ -6,7 +6,7 @@
 
 Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya tüm akışların runtime kabulü değildir. Gelecek ekip, erişim, depolama ve servis şemaları tasarım statüsünü korur; yeni tenant/auth/production iddiası eklenmedi. [Bulgu/karar raporu](documentation-currency-audit.md) hangi metnin neden değiştiğini, hangi deneylerin eksik kaldığını kaydeder.
 
-**Güncel inventory:31belgede58Mermaid şeması — blocker aging delivery,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory:32belgede59Mermaid şeması — blocker aging delivery,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -48,6 +48,7 @@ Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya t
 | [docs/quality/codex-e2e-001.md](codex-e2e-001.md) | 1 |
 | [docs/quality/blocker-aging.md](blocker-aging.md) | 1 |
 | [docs/quality/native-two-chat-review.md](native-two-chat-review.md) | 1 |
+| [docs/quality/native-two-model-001.md](native-two-model-001.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı
@@ -276,3 +277,5 @@ Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç
 [İki-chat kök neden raporu](native-two-chat-review.md)1yeni Mermaid blok ekler: toplam31belgede58kaynak. Tümü cachedMermaid11.17.2ile ağ kapalı render edildi; hata0. Yeni tam PNG incelendi; ayrı rawthreadakışı, ortak kabul edilmiş hafıza, ayrıegress/humanreview ve henüz yapılmamış gerçekhost kapısı gösterilir. Önceki57kaynak değişmedi. Bu çizim veya11kontrollü regression testi gerçek iki masaüstü chat/model kabulü değildir.
 
 20Ekim iki gerçek pencere takip sonucu:58kaynak yeniden offline render edildi; native-two-chat-review bloğu henüz-yapılmadı yerine6publiccapture/modelkapalı gözlemini gösterir. Eski render makbuzu history içinde korundu. Güncel blok tam görüntüde incelendi; bu güncelleme semantik task/state kabulü değildir.
+
+20Ekim Native A/B modeltakibi:1sequenceblok eklendi;32belgede59Mermaid kaynak offline render edildi, hata0. Yeni tam PNG görsel incelendi: ayrı Task/status/kapsam onayları, acceptance_required duruşu, staleeskiöneri ve freshhumantransition gösterilir. Kanıt türleri karıştırılmadı.

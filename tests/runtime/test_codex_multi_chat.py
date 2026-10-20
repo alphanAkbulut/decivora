@@ -66,6 +66,18 @@ class MultiChatTests(unittest.TestCase):
         TaskWorkflowService(self.core).transition(self.owner,'p',task=task,task_version=1,base_revision=0,stage='In Progress',reason='Separate first-chat human review',key='first_chat_start')
         with self.assertRaises(ContractError):self.fx.review.review_status(self.owner,'p',source_id=sid,proposal_id=result['status_changes'][0]['id'],decision='accept',key='stale_chat_b',reason='Old snapshot must not apply')
 
+    def test_missing_acceptance_scope_is_visible_before_start_apply(self):
+        sid=self.fx.message('Bir yedek kontrolü ekleyelim.')
+        prepared=self.fx.prepare(sid);result=self.fx.output(sid,prepared,candidates=[dict(type='Task',title='Kontrol',quote='Bir yedek kontrolü ekleyelim.',intent='planned')])
+        accepted=self.fx.sources.accept(self.owner,'p',source_id=sid,key='no_scope_task',selected=[result['candidates'][0]['id']],base_revision=prepared['request']['context']['knowledge_revision']);task=next(iter(accepted['temp_ids'].values()))
+        receipt=self.adapter.collect(self.owner,'p',capture_id='chat_b',client=journey_fx.Client(page('Kontrole başladım.')))
+        sid=receipt['source_ids'][0];result=self.fx.output(sid,self.fx.prepare(sid),statuses=[dict(task_id=task,stage='In Progress',quote='Kontrole başladım.')])
+        proposal=self.fx.sources.view(self.owner,'p',source_id=sid)['imports'][0]['status_changes'][0]
+        guidance=proposal['workflow_guidance'];self.assertEqual(guidance['review_requirement'],'acceptance_required');self.assertTrue(guidance['scope_review_still_required']);self.assertIsNone(guidance['suggested_review_stage'])
+        with self.assertRaises(ContractError) as caught:self.fx.review.review_status(self.owner,'p',source_id=sid,proposal_id=proposal['id'],decision='accept',key='no_scope_start',reason='Must not bypass scope')
+        self.assertEqual(caught.exception.code,'acceptance_required')
+        self.assertEqual(TaskWorkflowService(self.core).view(self.owner,'p',task)['stage'],'To Do')
+
     def test_no_selected_binding_permission_reads_no_host(self):
         a=journey_fx.Client(page('A'));b=journey_fx.Client(page('B'));a.calls=[];b.calls=[]
         def read(client):
