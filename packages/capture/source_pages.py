@@ -64,7 +64,13 @@ def nearby(core,project,source):
     capture=source['capture']
     row=core.db.execute("SELECT seq FROM audit WHERE workspace=? AND project=? AND action='conversation_imported' AND json_extract(ref,'$.id')=?",(core.workspace,project,source['id'])).fetchone()
     if not row:return []
-    rows=core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_imported' AND seq<? AND json_extract(ref,'$.capture.id')=? AND json_extract(ref,'$.capture.thread_id')=? AND json_extract(ref,'$.source_kind')=? AND json_extract(ref,'$.capture.profile_ref') IS ? ORDER BY seq DESC LIMIT 7",(core.workspace,project,row[0],capture['id'],capture['thread_id'],source['source_kind'],capture.get('profile_ref'))).fetchall()
+    # A new local binding does not create a new native conversation. Match the
+    # same origin used by capture dedup; retain binding scope without a profile.
+    query="SELECT ref FROM audit WHERE workspace=? AND project=? AND action='conversation_imported' AND seq<? AND json_extract(ref,'$.capture.thread_id')=? AND json_extract(ref,'$.source_kind')=? AND json_extract(ref,'$.capture.profile_ref') IS ?"
+    params=[core.workspace,project,row[0],capture['thread_id'],source['source_kind'],capture.get('profile_ref')]
+    if capture.get('profile_ref') is None:
+        query+=" AND json_extract(ref,'$.capture.id')=?";params.append(capture['id'])
+    rows=core.db.execute(query+' ORDER BY seq DESC LIMIT 7',params).fetchall()
     return list(reversed([json.loads(raw) for raw, in rows]))
 
 

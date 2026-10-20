@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-20",
-  "input_base_ref": "80f8098a82e9e42c576bc081d1913e7b2292c1ef",
+  "input_base_ref": "6762b704f49a161681aedb42de78b799ac2dfc58",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "430d2cac1e6e56ab24ad1d5b633bb0fa9149efde245d0a5f89ba16f6baeec7dc",
+      "svg_sha256": "592e77d67c41e3455fdb2de276ab489cce3b377e32bdcb0ae064bdac302b7789",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "46f018e0ad9c1b344873ea5c3392306a6cc1db35fb28842c599ee8f5414ef223",
+      "svg_sha256": "794667b52bf1456f1662735f5d13c963d3d84f7429a6007c978d6cbbafdd6a60",
       "error": null
     },
     {
@@ -609,6 +609,18 @@
       "error": null
     },
     {
+      "path": "docs/quality/native-two-chat-review.md",
+      "block": 1,
+      "source_sha256": "bb051a32357317bda48d6617472d622d0837f4805e00493b4f9ab5df4af8ba4a",
+      "status": "rendered",
+      "title": "İki seçilmiş Codex sohbeti ve ortak proje hafızası",
+      "description_present": true,
+      "view_box": "0 0 1174 1750.426513671875",
+      "artifact": "docs--quality--native-two-chat-review--1.svg",
+      "svg_sha256": "b2ea5edd56d17e289b3523eb2fd8be158eeec86f6b4dee5004a9bedf80299235",
+      "error": null
+    },
+    {
       "path": "docs/quality/operations-runtime.md",
       "block": 1,
       "source_sha256": "9700a021eaf1fa1bf78e0365917f895c4a441c314d7f99315b9d0cef52753bb4",
@@ -617,7 +629,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "57029c864bfd1ff43d1328d86b581800bee45868b435a96aebcbb15ed5599ce3",
+      "svg_sha256": "ea45ccc20dd7fc5b484955c8c0210a481f6e5159b5c1409dc3f276c5b141f622",
       "error": null
     },
     {
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "3c39cac9766a982dd86c23da72dc3ef9e4778d5266f7e9953bf1e0e577764855",
+      "svg_sha256": "1b035ea136204c7e8803e47cf306327bb4e5e27d2e6f04d7bde2726dd62736da",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "56d427401725a5a7c59a8488192472da108abe9976f6ff83dc555593e4a076ec",
+      "svg_sha256": "04e73e85c0239970febdecd05c66e8d1de340fd66953eb3d1b60df7c50e9e29c",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "24f2b3c67057f047eb7b068e116a829acb5bd2ca4d0b872043ebfbdb25d37898",
+      "svg_sha256": "b672f7c8d7a41402f98fd0122f0b118d5a0b59c67be06321475c42da7cd079a4",
       "error": null
     },
     {
@@ -665,7 +677,7 @@
       "description_present": true,
       "view_box": "0 0 1148.84375 1838.421875",
       "artifact": "docs--quality--todo-development-review--1.svg",
-      "svg_sha256": "fd6f7a7b765dde092118a0c560240c05a9f63969550dd0b754fab655f68b8c76",
+      "svg_sha256": "cf7426ec5404924825e94d5207efe9b2563c5e0e9ed8f16adbb297452156f771",
       "error": null
     },
     {
@@ -677,7 +689,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "9257a819f6a36c2e417a901f813cc77f6a60ab8b00a88fd22046e9c1e01d83c0",
+      "svg_sha256": "65898cb795e1a1e88dd1454e33ed77797eb5bd2ba68da5baceb80a4bb608f1d3",
       "error": null
     },
     {
@@ -689,11 +701,11 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "5d9fbf05e87ea26c9b0a73bb4d71c5feeb76a099043c5fdc41ca89f65e26bd37",
+      "svg_sha256": "ce0a88f95bb4aa8e3e2f754ec60c849665e14654292cf9df3262ee41ad4457b7",
       "error": null
     }
   ],
-  "artifacts_location": "/tmp/decivora-currency-final-diagrams",
+  "artifacts_location": "/tmp/decivora-multi-diagrams",
   "readme_fallback": {
     "path": "assets/diagrams/overview.svg",
     "source_sha256": "b56d9e094d2ec1258c2f2b8db2038abed8775dc9d83df31a58947f690ec71ec2",
@@ -6553,5 +6565,6 @@
   "codex_e2e_followup_render_note": "56 current Mermaid sources rendered offline; changed Codex flow visually inspected. Human capture and reserve-retained owner approval are shown; unknown actual usage remains unresolved.",
   "blocker_age_render_note": "20Oct2026:57current sources rendered offline. New blocker aging flow visually inspected; only local known-onset warning subset implemented.",
   "clarification_render_note": "57current Mermaid sources rendered offline; changed existing task clarification branch visually reviewed separately from model quality.",
-  "currency_audit_render_note": "All57current blocks rendered offline; changed README1, decision-map2, current-direction1 visually inspected. Product runtime/model not tested by render."
+  "currency_audit_render_note": "All57current blocks rendered offline; changed README1, decision-map2, current-direction1 visually inspected. Product runtime/model not tested by render.",
+  "native_two_chat_render_note": "58blocks in31documents rendered offline; new two-selected-chat context/permission flow visually inspected. Real two-window capture and model semantics not tested by rendering."
 }

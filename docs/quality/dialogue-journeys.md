@@ -25,7 +25,7 @@ Yeni `DialogueTraceService.view(scope, project, source_ids=[...])`, mevcut kayı
 ## Context'in güncel sınırları
 
 - Native capture için mevcut Task/Decision/PendingDecision, soru/seçenek/revision, ilişki ve gerekçeler hazırlanır; task IDs ve workflow revision'ları taşınır.
-- Aynı proje/capture/thread/source surface/**kurulum profili** içinden en fazla6önceki kaynak metni, toplam6000UTF-8byte verilir. Byte/mesaj sınırında kesilen veya dışarıda kalan geçmiş açık belirtilir. Profil eşitliği bu teslimde sorguya eklendi.
+- Aynı proje/thread/source surface/**kurulum profili** içinden (profil yoksa ayrıca aynı capturebinding) en fazla6önceki kaynak metni, toplam6000UTF-8byte verilir. Byte/mesaj sınırında kesilen veya dışarıda kalan geçmiş açık belirtilir. Profil eşitliği bu teslimde sorguya eklendi.
 - Bu komşuluk **alım sırasıdır**, kanıtlanmış tam konuşma kronolojisi değildir. Gecikmiş/eski mesaj otomatik son durum otoritesi olamaz; stale workflow uygulaması reddedilir.
 - Onaylanıp kaydedilmiş görev kısa kaynak penceresinden çıktıktan sonra yapılandırılmış proje hafızasında kalır. Eski konuşmada kalmış, henüz kaydedilmemiş kapsamın pencereden düşmesi gerçek risktir. Konuya dayalı uzun geçmiş retrieval/özetleme bu kodla çözülmüş sayılmaz.
 - Manual paste varsayılanında bu native komşuluk yoktur. Kullanıcı birden fazla mesajı açık role/kimliklerle aktarmazsa eksik bağlam tahmin edilmez.
@@ -89,3 +89,5 @@ Mevcut3USD root, source/context izni, HTTP/token tavanları ve unknown rezervi k
 
 
 **Güncel onaylı devam:** [Ayrı sonuç](dialogue-batch-001-continuation.md): J02 kalan iki ilerleme turu alındı; J03 ilk beş turda doğru ayrım/eşleme verdi, son tur generation timeout nedeniyle unknown. J04henüz çalışmadı. Mevcut Task netleştirme kuralı backend/UI/schema olarak kodlandı; yeni prompt gerçekmodelle henüz retest edilmedi.
+
+20Ekim: [iki-chat ve reconnect incelemesi](native-two-chat-review.md) sharedcanonicalcontext, ayrı ham geçmiş ve unaccepted aday sınırını kanıt türleriyle ayırır.

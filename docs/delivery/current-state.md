@@ -1,5 +1,7 @@
 # Güncel ürün ve kalan geliştirme resmi
 
+**20Ekim — iki Codex sohbeti:** aynı native sohbeti yeniden bağlamada yakın geçmiş kaybı düzeltildi;1–4explicit seçilmiş thread için ortak sınırlı pipeline ve read-only CLI eklendi. Shared proje Task/soru context'i ile thread-local raw history ayrı tutulur. [Kök neden ve gerçek iki-pencere test planı](../quality/native-two-chat-review.md). Yerel11kontrol geçti; gerçek iki-pencere kabulü henüz yapılmadı. Yeni ücretli çağrı yok.
+
 ## 20 Ekim 2026 — güncel kanıt özeti
 
 Bu özet önceki tarihli teslim notlarının yerine geçen güncel okuma noktasıdır; tarihsel raporlar değiştirilmedi. Ana görevler **7 Done / 21 In Progress / 2 To Do**; alt kayıtlar **56 Done / 42 In Progress / 26 To Do / 5 Proposed**. Bunlar farklı seviyelerdir, toplanmaz.
