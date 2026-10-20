@@ -1,5 +1,9 @@
 # İki Codex sohbeti: kök neden, kod düzeltmesi ve gerçek host kabul planı
 
+**20Ekim gerçek host takip sonucu:** Kullanıcı örnekleri iki normal chat input'una yazdı; onaylı iki geçiş tamamlandı. Native A/Bherbiri1human+2assistant, toplam6kaynak; ikinci geçiş yeni0, reopen6, pending/omitted0. Binding'ler kapatıldı; tek kaynak izni tüketildi. Model çağrısı0; [ayrıntılı sonuç](native-two-chat-001.md) semantik/test sınırını açıklar. Aşağıdaki hazırlık ve izin-bekleme ifadeleri testten önceki planın tarihsel kaydıdır.
+
+**20Ekim — onay sonrası hazırlık:** Kullanıcı iki sentetik chat oluşturmayı ve yalnız bunların10'ar turunu iki geçişte yerelTEST'e almayı onayladı. Native A/B oluşturuldu; ikisinin hazırlık yanıtı tamamlandı. İzoleTESTDB ve owner-only manifest hazır; kaynak0, capturegeçişi0/2. Normal human input bekleniyor. Bu yeni onay önceki gerçek iki-pencere not_run sonucunu geçmişe dönük değiştirmez; yeni source/model/APIkabulü yapılmış sayılmaz. Ücretli extractionAPIçağrısı0.
+
 **20 Ekim 2026.** Bu çalışma mevcut T09/T13/T17/T15/T24 kapsamındadır; yeni parent task veya MVP kapanışı değildir. Bu tur gerçek sohbet okunmadı, yeni chat açılmadı, yeni model çağrısı yapılmadı. Önceki J04APIsonuçları korunur.
 
 ## Hangi durum gerçekten farklı?
@@ -64,7 +68,7 @@ Owner ilk paketi kabul edince immutable manifest'e gerçek thread ID'leri/sını
 ```mermaid
 flowchart TD
   accTitle: İki seçilmiş Codex sohbeti ve ortak proje hafızası
-  accDescr: Çoklu toplama ve reconnect düzeltmesi yerel kodla sınandı. Gerçek iki pencere kabulü owner kaynak izni bekler. Ham geçmişler ayrıdır, kabul edilmiş proje kayıtları ortaktır; model önerisi otomatik uygulama değildir.
+  accDescr: Çoklu toplama ve reconnect düzeltmesi yerel kodla sınandı. İki gerçek pencereden6public kaynak alındı; semantik model kabulü yapılmadı. Ham geçmişler ayrıdır, kabul edilmiş proje kayıtları ortaktır; model önerisi otomatik uygulama değildir.
   A[Seçilmiş Chat A: thread ve item kimliği] --> G{İki binding için güncel kaynak yetkisi}
   B[Seçilmiş Chat B: thread ve item kimliği] --> G
   G --> CA[A cursor ve masked public kaynak]
@@ -80,7 +84,7 @@ flowchart TD
   H --> K
   H --> V[AC ve gerçek kanıt: Done ayrı]
   P --> X[Belirsizlik veya validation: uygula yok]
-  N[Gerçek iki pencere deneyi: henüz yapılmadı] -.-> G
+  N[Gerçek iki chat: 6 public kaynak - model kapalı] -.-> G
   classDef source fill:#dbeafe,stroke:#2563eb,color:#172554
   classDef gate fill:#fef3c7,stroke:#b45309,color:#451a03
   classDef store fill:#ccfbf1,stroke:#0f766e,color:#134e4a
@@ -89,11 +93,11 @@ flowchart TD
   class A,B,CA,CB,RA,RB,P source
   class G,M,H,V gate
   class K store
-  class N pending
+  class N store
   class X warning
 ```
 
-Mavi kaynak/işleme, sarı kontrol, turkuaz kalıcı proje bilgisi, mor henüz yapılmamış gerçek test; renk runtime veya model başarısı anlamına gelmez. ArawmetniB'nin yakın geçmişine bağlanmaz. Onaylanmış ortak hafızanın geri beslenmesi ile diğer sohbetin bütün metnini modele göndermek farklıdır.
+Mavi kaynak/işleme, sarı kontrol, turkuaz kalıcı proje bilgisi, mor tasarım/gelecek; gerçek capture sonucu turkuaz; renk runtime veya model başarısı anlamına gelmez. ArawmetniB'nin yakın geçmişine bağlanmaz. Onaylanmış ortak hafızanın geri beslenmesi ile diğer sohbetin bütün metnini modele göndermek farklıdır.
 
 ## Doğrulama sonucu
 

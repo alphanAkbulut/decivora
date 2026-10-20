@@ -1,5 +1,7 @@
 # Decivora
 
+**20Ekim gerçek Native A/B sonucu:** normal input üzerinden2human+4assistant kaynak yakalandı; iki geçişte6→6, yeni duplicate0; reopen readback6. Kaynak izni tüketilip bindingler kapatıldı. Model çağrısı0; aynıTask/ilerleme semantik kabulü henüz yok. [Makbuz ve sınırlar](docs/quality/native-two-chat-001.md). Aşağıdaki önceki “hazır/izin bekliyor” notları tarihsel hazırlıktır.
+
 **20Ekim — iki Codex sohbeti:** aynı native sohbeti yeniden bağlamada yakın geçmiş kaybı düzeltildi;1–4explicit seçilmiş thread için ortak sınırlı pipeline ve read-only CLI eklendi. Shared proje Task/soru context'i ile thread-local raw history ayrı tutulur. [Kök neden ve gerçek iki-pencere test planı](docs/quality/native-two-chat-review.md). Yerel11kontrol geçti; gerçek iki-pencere kabulü henüz yapılmadı. Yeni ücretli çağrı yok.
 
 ### Living project memory. Decisions, actions, and evidence stay connected.

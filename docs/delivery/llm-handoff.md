@@ -1,5 +1,9 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+**20Ekim gerçek Native A/B sonucu:** normal input üzerinden2human+4assistant kaynak yakalandı; iki geçişte6→6, yeni duplicate0; reopen readback6. Kaynak izni tüketilip bindingler kapatıldı. Model çağrısı0; aynıTask/ilerleme semantik kabulü henüz yok. [Makbuz ve sınırlar](../quality/native-two-chat-001.md). Aşağıdaki önceki “hazır/izin bekliyor” notları tarihsel hazırlıktır.
+
+**20Ekim native iki-chat hazırlığı:** Yeni kaynak izni kabul edildi; Native A/B oluşturuldu. Private plan `outputs/decivora-local-data/native-two-chat-001/capture-plan.json`, ayrıpilot.sqlite; workspace native_two_chat_001/project atlas_native/local_owner. İki chat kimliği yalnız bu manifest'ten seçilir; başka kaynak okunmaz. Max10tur/thread, iki geçiş,2saniye; provider_dispatch_allowed=false. Kaynak/geçiş0, normalhumaninput bekleniyor. Henüz gerçek capture yapıldı deme; önce kullanıcı ilgili chatlere örnekleri yazmalı. Sonraki test yalnız bu plan kapsamında başlar; mevcut gerçekTEST/LOCALDB değiştirilmez. Bu hazırlık notu henüz yeniGitHubcommit'i olarak doğrulanmadı.
+
 **20Ekim — iki Codex sohbeti:** aynı native sohbeti yeniden bağlamada yakın geçmiş kaybı düzeltildi;1–4explicit seçilmiş thread için ortak sınırlı pipeline ve read-only CLI eklendi. Shared proje Task/soru context'i ile thread-local raw history ayrı tutulur. [Kök neden ve gerçek iki-pencere test planı](../quality/native-two-chat-review.md). Yerel11kontrol geçti; gerçek iki-pencere kabulü henüz yapılmadı. Yeni ücretli çağrı yok.
 
 ## 20 Ekim 2026 — güncel kanıt özeti

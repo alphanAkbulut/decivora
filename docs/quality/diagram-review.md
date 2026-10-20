@@ -274,3 +274,5 @@ Kaynak→taslak→literal kontrol→ayrı insan review→atomik Open soru→geç
 ## 20 Ekim — iki seçilmiş sohbet ve ortak hafıza
 
 [İki-chat kök neden raporu](native-two-chat-review.md)1yeni Mermaid blok ekler: toplam31belgede58kaynak. Tümü cachedMermaid11.17.2ile ağ kapalı render edildi; hata0. Yeni tam PNG incelendi; ayrı rawthreadakışı, ortak kabul edilmiş hafıza, ayrıegress/humanreview ve henüz yapılmamış gerçekhost kapısı gösterilir. Önceki57kaynak değişmedi. Bu çizim veya11kontrollü regression testi gerçek iki masaüstü chat/model kabulü değildir.
+
+20Ekim iki gerçek pencere takip sonucu:58kaynak yeniden offline render edildi; native-two-chat-review bloğu henüz-yapılmadı yerine6publiccapture/modelkapalı gözlemini gösterir. Eski render makbuzu history içinde korundu. Güncel blok tam görüntüde incelendi; bu güncelleme semantik task/state kabulü değildir.
