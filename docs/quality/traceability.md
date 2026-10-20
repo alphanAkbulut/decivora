@@ -126,3 +126,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 
 
 **Netleştirme kararı/onaylı devam:** T09/T14/T17 → source-bound clarification önerisi, ayrı human review/closure, Task/question inbox UI ve matching published schema. [Uygulama](dialogue-status-runtime.md#mevcut-göreve-bağlı-netleştirmeler); [gerçek baseline devamı](dialogue-batch-001-continuation.md). Yeni kural semantik olarak retest edilmedi; baseline eski prompt/schemada korundu.
+
+
+20 Ekim T17/T19/T22 bağlantısı: kullanıcı onaylı Sprint1 → [Codex kaynak kurulumu](../architecture/codex-source-onboarding.md) → UIConnectionService/yerel Sources →9sentetik runtime kontrolü ve ui-native-source browser kabulü. Mevcut kaynak/izin/konuşma özellikleri altında; yeni ana görev veya doğrulanmış gerçek native/model kalitesi oluşturmaz. Yeni capture izni, model egress izni değildir.

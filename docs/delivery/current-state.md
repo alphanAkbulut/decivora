@@ -1,5 +1,11 @@
 # Güncel ürün ve kalan geliştirme resmi
 
+**LOCAL/TEST çalışma sürümü:**20Ekim sonraki kaynak-UI teslimiyle53610/53611aynı veriler korunarak yeniden başlatıldı; fingerprint eşit, model/worker kapalı. LOCALtrustedCodexreader hazır fakat seçili bağlantı0; yeni gerçek sohbet okunmadı.669runtime/49repo ve60Mermaid render kontrolü geçti.
+
+
+**20 Ekim sonraki Sprint1 teslimi:** Sources ekranına exact Codex chat ID/link ile bounded yerel capture izni, ayrı tek-okuma ve disconnect bağlandı. Yapılandırma host/sohbet okumaz; model egress grant oluşturmaz. [Uygulama, hata/yarış sınırları ve sequence](../architecture/codex-source-onboarding.md). Native kabul yeni gerçek kaynak izniyle ayrıca yapılacak; NM-02ve sürekli otomasyon halen açık.
+
+
 **20 Ekim Sprint1 kod teslimi:** Sources ekranında mevcut izin seçimi→Paused aktivasyon→activate/pause/revoke ve sınırlı worker planı/start/stop bağlandı. Yerel sentetik tarayıcı kabulü; gerçek kaynak/API çağrısı0. Yeni sohbet izin/transport onboarding halen açık. [Sprint/mikro plan](sprint-plan.md) · [Kod ve sınırlar](../architecture/model-activation-runtime.md#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri). Ana7Done/21InProgress/2ToDo korunur.
 
 

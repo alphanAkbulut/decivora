@@ -1,12 +1,16 @@
 # Diyagram tutarlılık incelemesi
 
+## 20 Ekim — Codex kaynak kurulumu
+
+Sources→exact consent→ayrı read claim→seçili host→checkpoint izin kontrolü sequence diyagramı eklendi.60blok/33belge dış ağ kapalı render edildi; yeni blok tam görüntüsü incelendi. Bu, gerçek host/model kabulü değildir.
+
 ## 20 Ekim — güncellik ve karar gerekçesi uzlaştırması
 
 57Mermaid bloğunun tamamı30belgede cachedMermaid11.17.2/Chrome ile dış ağ kapalı render edildi; başarısız0. Dört mevcut blok değişti: README1clarification yolu, decision-map1son ürün kararları, decision-map2yerel event projection kabulü, current-direction1gerçek pilot/kalite ayrımı. Dördünün tam PNG görüntüsü görsel olarak incelendi; erişilebilir başlık/açıklama ve pozitif viewBox kontrolleri geçti. README SVG fallback yenilendi; önceki değişen kaynak makbuzları superseded history içinde korundu. Diğer53kaynak aynı; yalnız render doğrulandı, yeniden tasarlanmadı.
 
 Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya tüm akışların runtime kabulü değildir. Gelecek ekip, erişim, depolama ve servis şemaları tasarım statüsünü korur; yeni tenant/auth/production iddiası eklenmedi. [Bulgu/karar raporu](documentation-currency-audit.md) hangi metnin neden değiştiğini, hangi deneylerin eksik kaldığını kaydeder.
 
-**Güncel inventory:32belgede59Mermaid şeması — blocker aging delivery,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
+**Güncel inventory:33belgede60Mermaid şeması — Codex kaynak kurulumu,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 
 **Q15-A / T04 güncellemesi (2026-10-13):** roadmap2, current-direction1 ve decision-map teknik1 kaynağı değişti; toplam38/18 aynı.5 blok ağ kapalı cachedMermaid11.17.2 ile render edildi (niyet bloğu aynı);4 güncel kayıt hash/XML/provenance ile değiştirildi, önceki render kayıtları superseded history'de korundu. P0 ölçümleri açıkken koşullu P1a başlangıcı ve accepted Python/SQLite ayrımı gösterilir; ürün release kanıtı değildir.
@@ -19,6 +23,7 @@ Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya t
 |---|---:|
 | [README.md](../../README.md) | 1 |
 | [ROADMAP.md](../../ROADMAP.md) | 2 |
+| [docs/architecture/codex-source-onboarding.md](../../docs/architecture/codex-source-onboarding.md) | 1 |
 | [docs/architecture/connection-and-context.md](../../docs/architecture/connection-and-context.md) | 1 |
 | [docs/architecture/data-relationships.md](../../docs/architecture/data-relationships.md) | 3 |
 | [docs/architecture/diagrams.md](../../docs/architecture/diagrams.md) | 13 |
@@ -26,6 +31,7 @@ Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya t
 | [docs/architecture/identity-access.md](../../docs/architecture/identity-access.md) | 1 |
 | [docs/architecture/local-preview.md](../../docs/architecture/local-preview.md) | 1 |
 | [docs/architecture/logging-audit.md](../../docs/architecture/logging-audit.md) | 1 |
+| [docs/architecture/logging-diagrams-and-schema.md](../../docs/architecture/logging-diagrams-and-schema.md) | 3 |
 | [docs/architecture/model-activation-runtime.md](../../docs/architecture/model-activation-runtime.md) | 3 |
 | [docs/architecture/overview.md](../../docs/architecture/overview.md) | 1 |
 | [docs/architecture/review-runtime.md](../../docs/architecture/review-runtime.md) | 2 |
@@ -37,18 +43,17 @@ Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya t
 | [docs/product/decision-map.md](../../docs/product/decision-map.md) | 2 |
 | [docs/product/graph-experience.md](../../docs/product/graph-experience.md) | 2 |
 | [docs/product/intent-to-reality-gap.md](../../docs/product/intent-to-reality-gap.md) | 2 |
+| [docs/quality/blocker-aging.md](../../docs/quality/blocker-aging.md) | 1 |
+| [docs/quality/codex-e2e-001.md](../../docs/quality/codex-e2e-001.md) | 1 |
+| [docs/quality/dialogue-status-runtime.md](../../docs/quality/dialogue-status-runtime.md) | 1 |
 | [docs/quality/membership-002-result.md](../../docs/quality/membership-002-result.md) | 1 |
+| [docs/quality/native-two-chat-review.md](../../docs/quality/native-two-chat-review.md) | 1 |
+| [docs/quality/native-two-model-001.md](../../docs/quality/native-two-model-001.md) | 1 |
+| [docs/quality/operations-runtime.md](../../docs/quality/operations-runtime.md) | 2 |
 | [docs/quality/project-review.md](../../docs/quality/project-review.md) | 1 |
 | [docs/quality/receiver-contract.md](../../docs/quality/receiver-contract.md) | 1 |
+| [docs/quality/todo-development-review.md](../../docs/quality/todo-development-review.md) | 1 |
 | [docs/quality/workflow-ui-runtime.md](../../docs/quality/workflow-ui-runtime.md) | 2 |
-| [docs/quality/operations-runtime.md](operations-runtime.md) | 2 |
-| [docs/architecture/logging-diagrams-and-schema.md](../architecture/logging-diagrams-and-schema.md) | 3 |
-| [docs/quality/dialogue-status-runtime.md](dialogue-status-runtime.md) | 1 |
-| [docs/quality/todo-development-review.md](todo-development-review.md) | 1 |
-| [docs/quality/codex-e2e-001.md](codex-e2e-001.md) | 1 |
-| [docs/quality/blocker-aging.md](blocker-aging.md) | 1 |
-| [docs/quality/native-two-chat-review.md](native-two-chat-review.md) | 1 |
-| [docs/quality/native-two-model-001.md](native-two-model-001.md) | 1 |
 <!-- diagram-inventory:end -->
 
 ## 2026-10-13 — Q14-A proje ayrımı ve geç açıklama cevabı

@@ -12,6 +12,16 @@ def main():
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
         server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_SOURCE_PAGES_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
+        if os.environ.get('DECIVORA_NATIVE_UI_FIXTURE')=='1':
+            from contextlib import contextmanager
+            from packages.capture.codex.ui_connection import NativeConnector
+            @contextmanager
+            def native_client(thread):
+                class Client:
+                    def read_turns(self,thread_id,limit):
+                        return dict(data=[dict(id='native_ui_turn',status='completed',items=[dict(id='native_ui_message',type='userMessage',content=[dict(type='text',text='Synthetic selected chat task; not started.')])])],nextCursor=None)
+                yield Client()
+            server.app.native_connector=NativeConnector('fixture','host_ui_fixture',native_client)
         if os.environ.get('DECIVORA_ACTIVATION_UI_FIXTURE')=='1':
             import time
             from packages.capture.conversations import ConversationService

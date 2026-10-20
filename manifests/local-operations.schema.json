@@ -353,6 +353,10 @@
         "coverage",
         "items_truncated"
       ]
+    },
+    "native_host_configured": {
+      "type": "boolean",
+      "description": "Trusted selected-thread reader configured locally; does not mean capture is active or any chat has been read."
     }
   },
   "required": [
@@ -373,6 +377,7 @@
     "file_checker_configured",
     "native_capture",
     "external_mcp_host",
-    "conversation_queue"
+    "conversation_queue",
+    "native_host_configured"
   ]
 }

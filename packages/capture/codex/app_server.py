@@ -87,6 +87,7 @@ class CodexAppServerCapture(CodexExecCapture):
         with self.core.read_snapshot():
             binding = self._authorize(scope, project, capture_id)
         page = client.read_turns(binding['thread_id'], limit=limit)
+        if type(page) is not dict or type(page.get('data')) is not list or len(page['data'])>limit:_fail('capture_limit')
         parsed = public_messages(page)
         # Persist sanitized public content only; provider metadata/error bodies stay out.
         with self.core.transaction():

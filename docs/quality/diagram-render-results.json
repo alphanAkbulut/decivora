@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-20",
-  "input_base_ref": "9fee28592f5240784ce4e5d3ad89fe3df14bd485",
+  "input_base_ref": "cc8eb00574b80f232058a721670e6a18c0d31a0c",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -45,6 +45,18 @@
       "error": null
     },
     {
+      "path": "docs/architecture/codex-source-onboarding.md",
+      "block": 1,
+      "source_sha256": "230babb9f212325c3497efca5447bf45e9e6b7005dc42f10f0d20fe06fa01da9",
+      "status": "rendered",
+      "title": "Sources ekranından sınırlı Codex kaynak kurulumu",
+      "description_present": true,
+      "view_box": "-50 -10 1235.5 765",
+      "artifact": "docs--architecture--codex-source-onboarding--1.svg",
+      "svg_sha256": "b3487225520fb88d7543829a8661212f1deea17af61282f7d8b3d0d8b4abb11b",
+      "error": null
+    },
+    {
       "path": "docs/architecture/connection-and-context.md",
       "block": 1,
       "source_sha256": "0c1b286c82669fab3659eff4f83b8c5f9ebc6b9b579e55dd9078b16583f8ca2c",
@@ -53,7 +65,7 @@
       "description_present": true,
       "view_box": "0 0 1833.796875 269",
       "artifact": "docs--architecture--connection-and-context--1.svg",
-      "svg_sha256": "a635f69ecb530b68de0fb1e0c5d9d58b308c4eb599bdb07250b36cb450d70f65",
+      "svg_sha256": "9e8d2dd539a6b31f8ac6df8435c826d014af6d25e547550807a8fba2a6d49f93",
       "error": null
     },
     {
@@ -65,7 +77,7 @@
       "description_present": true,
       "view_box": "0 0 1123.91015625 1183",
       "artifact": "docs--architecture--data-relationships--1.svg",
-      "svg_sha256": "cfeb801287c4f97705d3a8b087ec21c5ede2bdbe449a2fd7846b3e570ef452bc",
+      "svg_sha256": "0d63bf642bd3770122414787de4560e5d64984bf735c58eab8d1c890516e0a0e",
       "error": null
     },
     {
@@ -77,7 +89,7 @@
       "description_present": true,
       "view_box": "0 0 2522.6328125 640",
       "artifact": "docs--architecture--data-relationships--2.svg",
-      "svg_sha256": "4db70f8619d1c55b02380acc0f89f9cfc2675c3eceafc38c8ed1dd85998a7cf6",
+      "svg_sha256": "75229b14a0547b02b2f745510b7c072ee47dc8ee81e87c27e4a66c1348e1be31",
       "error": null
     },
     {
@@ -89,7 +101,7 @@
       "description_present": true,
       "view_box": "0 0 1507.28515625 821",
       "artifact": "docs--architecture--data-relationships--3.svg",
-      "svg_sha256": "6a53434419f3e1a10eb0ecd33b92a77ca82fd798f061ecebee32758a32838b74",
+      "svg_sha256": "f3c3e7d7a046651ec488898eef37544d927fcdc49effdccfc6af11ae97824c0e",
       "error": null
     },
     {
@@ -101,7 +113,7 @@
       "description_present": true,
       "view_box": "0 0 1617.265625 895",
       "artifact": "docs--architecture--diagrams--1.svg",
-      "svg_sha256": "4fc909a83fefd8ec8eb7c3ef28111590056bc5860860262ed71603f2bf089035",
+      "svg_sha256": "d78c459f922d5d5465bb8159bf7ea6338f719183157bc912ed8b9266dc465040",
       "error": null
     },
     {
@@ -113,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1022.610595703125 836",
       "artifact": "docs--architecture--diagrams--2.svg",
-      "svg_sha256": "a8ca8d7bfaac56f8582020e5a11d99ff9c1aed1f5c44e363a2eaf03391ebcafd",
+      "svg_sha256": "31ea43507fed060bb66b0fb8fbadea979daf5cc0ee122ab23e234c58a42896fe",
       "error": null
     },
     {
@@ -125,7 +137,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "04babcc4885098531dc11babdeed74c4591c46900084c0d06f0abe957b085006",
+      "svg_sha256": "8e207909ecc50b4903b6b73cee7c71bc9fb392716c492c0557dc997ca8b8424d",
       "error": null
     },
     {
@@ -137,7 +149,7 @@
       "description_present": true,
       "view_box": "-69 -10 1081 1682",
       "artifact": "docs--architecture--diagrams--4.svg",
-      "svg_sha256": "a4bb0d0c5a27e9fe4fc65f6ce2255c0652c0474cd328204753a47e206d7f0425",
+      "svg_sha256": "4a99deee914aa35562a6e8d1d408ecc7b50170b9eccd51b3d7f87928a8f7a038",
       "error": null
     },
     {
@@ -149,7 +161,7 @@
       "description_present": true,
       "view_box": "-50 -10 861 966",
       "artifact": "docs--architecture--diagrams--5.svg",
-      "svg_sha256": "b9ec951a407cff1501b1caa0569cfe3d49f356670cfc1020d687eaa238117f87",
+      "svg_sha256": "4fa43b9ef2d12e8b382dd4947445327cebf423e85c2349efaa098abc44aea0e8",
       "error": null
     },
     {
@@ -161,7 +173,7 @@
       "description_present": true,
       "view_box": "0 0 1680.1953125 331",
       "artifact": "docs--architecture--diagrams--6.svg",
-      "svg_sha256": "1ebfe158796f41b378f1fc549b1e7984ab4badd466553a15485afa01353890fb",
+      "svg_sha256": "b3abd70644aa7929da8a3eb2254fa1402d4e8e15e66db51241157aebe0a52e8e",
       "error": null
     },
     {
@@ -173,7 +185,7 @@
       "description_present": true,
       "view_box": "0 0 1199.53125 438",
       "artifact": "docs--architecture--diagrams--7.svg",
-      "svg_sha256": "3d293b785e8e20b2c855f1c57a43112e6beabfcb82f5d6ca9c4e0123dd0e469d",
+      "svg_sha256": "a848e1017eab8eecbe2e46da3b6bbbecdbf0fd65faa5314d04a9129eca968a3d",
       "error": null
     },
     {
@@ -185,7 +197,7 @@
       "description_present": true,
       "view_box": "0 0 888.71484375 938",
       "artifact": "docs--architecture--diagrams--8.svg",
-      "svg_sha256": "6863bad30f13ac8b2cb4d79d54e40fba47adbb76815058190aa69eade6b5ebdd",
+      "svg_sha256": "ddc072b77eeb15c9e7f87562da8baac64fe68e261364c359db0f672981ddbf03",
       "error": null
     },
     {
@@ -197,7 +209,7 @@
       "description_present": true,
       "view_box": "0 0 2404.1875 269",
       "artifact": "docs--architecture--diagrams--9.svg",
-      "svg_sha256": "f14d85fef97ecb8c4440da10fde81009d6ab3572805c6e34ca4f9d5c0fd0f268",
+      "svg_sha256": "415796fbbe97747c7e6c34efb7f10a4a302804292429f172125d0586a6efe1e1",
       "error": null
     },
     {
@@ -209,7 +221,7 @@
       "description_present": true,
       "view_box": "0 0 867.65234375 1678.546875",
       "artifact": "docs--architecture--diagrams--10.svg",
-      "svg_sha256": "0889587a8718c6f682f86604c149452e350d3dcf7e5f2e6b0b85e88f4f98566d",
+      "svg_sha256": "e7a99bb724c44cc217abde112e5028835b9a8fb3fb9273ead5ad914db397a27e",
       "error": null
     },
     {
@@ -221,7 +233,7 @@
       "description_present": true,
       "view_box": "0 0 621 1084.171875",
       "artifact": "docs--architecture--diagrams--11.svg",
-      "svg_sha256": "51ba8afad34d9410d612261cfb9612ae3b45a59ac9f0aac8bfce769d2b5b62b8",
+      "svg_sha256": "cece98f7bf798ece13f6ff46d754265ddd16390bacea4f18a6aeccadd01e43de",
       "error": null
     },
     {
@@ -233,7 +245,7 @@
       "description_present": true,
       "view_box": "0 0 1140.8828125 610.4000244140625",
       "artifact": "docs--architecture--diagrams--12.svg",
-      "svg_sha256": "4b79a821ebf7f91dde2f27009984fed3b4c8054a09c00b883b1092245fe9ef01",
+      "svg_sha256": "13aaf5ab619e33e72de766dae62b9a680ac971758af788024f670bb616453152",
       "error": null
     },
     {
@@ -245,7 +257,7 @@
       "description_present": true,
       "view_box": "0 0 997.984375 1141",
       "artifact": "docs--architecture--diagrams--13.svg",
-      "svg_sha256": "9dd3ea7d66e811f7617d6b72f806be7fdb78f22c9f9437f35e0f962c7d1b42e0",
+      "svg_sha256": "8f92bf1033b5745146e6d56265f0532112151e22f113ad72dd036954dabafa20",
       "error": null
     },
     {
@@ -257,7 +269,7 @@
       "description_present": true,
       "view_box": "-50 -10 1250 1694",
       "artifact": "docs--architecture--execution-and-integrations--1.svg",
-      "svg_sha256": "a7979c3468ef5d6621b1b7fa964e8c8a104ffff42f6eef4aa42d1f2b6a3f7738",
+      "svg_sha256": "5653cab8cfae22866225f374a341cc26e13454020b5c36fa3d087d392f36ad14",
       "error": null
     },
     {
@@ -269,7 +281,7 @@
       "description_present": true,
       "view_box": "-50 -10 1254 1639",
       "artifact": "docs--architecture--execution-and-integrations--2.svg",
-      "svg_sha256": "c11811eeb929f0aa7a2ceed7af9757248d4f3f825dcb555770822679ceed8cd0",
+      "svg_sha256": "585ba1102cffdb50e30c718bca698cc3acc9541b0a2467e3dfe54a678062b8b4",
       "error": null
     },
     {
@@ -281,7 +293,7 @@
       "description_present": true,
       "view_box": "-50 -10 1073 1374",
       "artifact": "docs--architecture--execution-and-integrations--3.svg",
-      "svg_sha256": "ef3acc2b7a418316de57e119d610da42cb6269086c220b86c39c81ca3f70eb76",
+      "svg_sha256": "fb22e3699a77b030773346a03f3dc0292a2288e6f1b6d849c27f42509a5a7603",
       "error": null
     },
     {
@@ -293,7 +305,7 @@
       "description_present": true,
       "view_box": "0 0 705.33984375 836",
       "artifact": "docs--architecture--identity-access--1.svg",
-      "svg_sha256": "84fcc7f2d698cbea8b741b43a3e4bf72ca8f68206cf1073d6de76afe6a679919",
+      "svg_sha256": "616a2b5297261e98184cf17f0be21f4c4fc3eeb5971e136d2626d34f063f0958",
       "error": null
     },
     {
@@ -305,7 +317,7 @@
       "description_present": true,
       "view_box": "0 0 4183.42578125 5063.279296875",
       "artifact": "docs--architecture--local-preview--1.svg",
-      "svg_sha256": "1dca7e70265e14812b79ff7ceb8722c7328d1a15f2ecfd2a307d64f02ceffebb",
+      "svg_sha256": "2286a896da77def36c39e2690ce4a21aa934c42d3c9b1d0b3a41b7ae1b4e57a7",
       "error": null
     },
     {
@@ -317,7 +329,7 @@
       "description_present": true,
       "view_box": "-50 -10 1054 1021",
       "artifact": "docs--architecture--logging-audit--1.svg",
-      "svg_sha256": "ae0523ba0cdcaf636eb674916d6d9e9bec4f4a1251b897e4fae90fad829fe04b",
+      "svg_sha256": "8b7cba167a7cff7af3caa22e3ce5feba74ed74aebe5f789ea31c6ab42a87d35e",
       "error": null
     },
     {
@@ -329,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 741 974",
       "artifact": "docs--architecture--logging-diagrams-and-schema--1.svg",
-      "svg_sha256": "5fb2f27c7564c3d3aa3147e12c04bffee98db296291f4469683791c80a836e9e",
+      "svg_sha256": "fad313598a29931a33b982438c6016f654dfdb59043467265048241c7e5e71db",
       "error": null
     },
     {
@@ -341,7 +353,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "0c342ef17e2940bdce704c1615b094e643e8d1090309a83b84eede243ae26dc0",
+      "svg_sha256": "65ac9016b339806f9f2eaeaafae8f14197517a660fbc29ba474485f2aa83dcfc",
       "error": null
     },
     {
@@ -353,7 +365,7 @@
       "description_present": true,
       "view_box": "0 0 739.796875 1142.46875",
       "artifact": "docs--architecture--logging-diagrams-and-schema--3.svg",
-      "svg_sha256": "ee856327102482c3e7fc1a0ae3f980b46a3660eef33e266aeb6ae11826fe27c9",
+      "svg_sha256": "3e088bcc157670822ef1d7358ac1b2e45d9bbb74c632389f463e57eb9e1f04de",
       "error": null
     },
     {
@@ -365,7 +377,7 @@
       "description_present": true,
       "view_box": "0 0 1387.34375 332",
       "artifact": "docs--architecture--model-activation-runtime--1.svg",
-      "svg_sha256": "9058e4e48532b62637dca3ab214d3b03d2565f1cda588b3a0e26e85c750271aa",
+      "svg_sha256": "6255ef54a382c69bc9b28778082f6e9676fc4714f77df3fec6bf33fa71b3ac05",
       "error": null
     },
     {
@@ -377,7 +389,7 @@
       "description_present": true,
       "view_box": "-50 -10 1849.5 760",
       "artifact": "docs--architecture--model-activation-runtime--2.svg",
-      "svg_sha256": "69c8376a9b752921933ef81c32320171652e73f6fc08c4fb8827e4bfbff120d6",
+      "svg_sha256": "34f2da975c4823abf31a8342aecf01022dd2700f61718b245ee975e11902792c",
       "error": null
     },
     {
@@ -389,7 +401,7 @@
       "description_present": true,
       "view_box": "0 0 954.5 1102",
       "artifact": "docs--architecture--model-activation-runtime--3.svg",
-      "svg_sha256": "365ee90b6d3b6b76c0862a536b898314364b0e915afd4ab898370621f1ca7077",
+      "svg_sha256": "c01aa62640701001acc49bb2448bdae988b8f81ce491f6d42fe00f20fbf10cf0",
       "error": null
     },
     {
@@ -401,7 +413,7 @@
       "description_present": true,
       "view_box": "0 0 1046.67578125 1376.4000244140625",
       "artifact": "docs--architecture--overview--1.svg",
-      "svg_sha256": "33399e3db4bcb0f8619866898e08cf9e92f44419f7ab8aefaca6f89513dd84a8",
+      "svg_sha256": "6f3e8a611832f203919b85d05fb246503d936edb40e6f307f6a984d973d56301",
       "error": null
     },
     {
@@ -413,7 +425,7 @@
       "description_present": true,
       "view_box": "-50 -10 1248 1311",
       "artifact": "docs--architecture--review-runtime--1.svg",
-      "svg_sha256": "1b35f0c42cff1389e13e90725f88a66ce57f46b81056f57d67b9f9b8e39f7bb5",
+      "svg_sha256": "12e5edaffb7c8a11f15949b8e656bfcb0179de7b5f54b1e8d7a10dfbda9a6881",
       "error": null
     },
     {
@@ -425,7 +437,7 @@
       "description_present": true,
       "view_box": "0 0 1089.140625 1166.3734130859375",
       "artifact": "docs--architecture--review-runtime--2.svg",
-      "svg_sha256": "16ea3f3b53e970c1a0a06f0f0b288494266e20c3a2ce5cf94c7b6d755d157b0e",
+      "svg_sha256": "84f3d2a25133611fe5db19ecffe90430bd797e49baca1ff08c061e99de95c53a",
       "error": null
     },
     {
@@ -437,7 +449,7 @@
       "description_present": true,
       "view_box": "0 0 2498.9736328125 395.5390625",
       "artifact": "docs--architecture--storage-memory-capacity--1.svg",
-      "svg_sha256": "b38461107855b9be0e6d7aad3912d1871293ac9fdd2b4aafd200cdbb99e6578c",
+      "svg_sha256": "6a8858354e51c7b16dbd1660da7489f71b7769553127fc15fa2042a9ee14610c",
       "error": null
     },
     {
@@ -449,7 +461,7 @@
       "description_present": true,
       "view_box": "0 0 1174.41015625 1020.6778564453125",
       "artifact": "docs--architecture--task-lifecycle--1.svg",
-      "svg_sha256": "da5ddfa977161b7d0d4b8c81eece8ed089c73ac3ae1f9fe92cab22ab5443f739",
+      "svg_sha256": "7e97485ff5887dd78b97194a1699773af0d4ecb9ed14f7912f53d3d91c0e7457",
       "error": null
     },
     {
@@ -461,7 +473,7 @@
       "description_present": true,
       "view_box": "0 0 896 1085.4720458984375",
       "artifact": "docs--delivery--api-independent-development--1.svg",
-      "svg_sha256": "aeec4e43123b2acffb53b7da2d1116b763e37bc60431b6b6934273d0be8be36e",
+      "svg_sha256": "153725b158010f744bbccc6eef6876a36bb2128785be82a09753f4db729e40a9",
       "error": null
     },
     {
@@ -473,7 +485,7 @@
       "description_present": true,
       "view_box": "0 0 2364.25 88",
       "artifact": "docs--delivery--team-data-plan--1.svg",
-      "svg_sha256": "93dfd2ec65781595772c7d47baa811c3584994809cbbb8f30f938d95964aca8e",
+      "svg_sha256": "60f5d72ebed8c19b594681ba36393b16a5f7eb1f57e5e3d0f46394880d27d8a3",
       "error": null
     },
     {
@@ -485,7 +497,7 @@
       "description_present": true,
       "view_box": "0 0 1741.15625 676",
       "artifact": "docs--product--current-direction--1.svg",
-      "svg_sha256": "725447475aec2f9fbdd0cd14277888183369db00a0548f76958069a533364740",
+      "svg_sha256": "3c366ae7f215fd6b6f1c1d1c722443efb196fdacc7f585cc382bd5900ca6d30d",
       "error": null
     },
     {
@@ -497,7 +509,7 @@
       "description_present": true,
       "view_box": "0 0 1291.296875 900",
       "artifact": "docs--product--decision-map--1.svg",
-      "svg_sha256": "6359b1768b74b7a0ceaaa2c009b82521dc55781b836074094ed99768516c6bd3",
+      "svg_sha256": "f92724d1066fa40c09f9b1e449ec3425e66690ab40bb75491c7e9bdca7774237",
       "error": null
     },
     {
@@ -509,7 +521,7 @@
       "description_present": true,
       "view_box": "0 0 1526 534",
       "artifact": "docs--product--decision-map--2.svg",
-      "svg_sha256": "68ad90bf81089ddc0fa2a0b9f2bc4c74b03a27ae934151f86d90e1f900d5f8af",
+      "svg_sha256": "ca63a6c3961cabe59cea22addf3afc3339c988404e4e8dbdff988f7088b476cb",
       "error": null
     },
     {
@@ -521,7 +533,7 @@
       "description_present": true,
       "view_box": "0 0 739.4375 435.8500061035156",
       "artifact": "docs--product--graph-experience--1.svg",
-      "svg_sha256": "27bfd9080fc555e37dc940825d0ec9ddb3d214d4e991e72abf7152236fdcbfce",
+      "svg_sha256": "bf0b6924e57205dd36c905d15df85a56d466bf2329d753cceaf1d1b78eb30852",
       "error": null
     },
     {
@@ -533,7 +545,7 @@
       "description_present": true,
       "view_box": "0 0 606.7734375 655",
       "artifact": "docs--product--graph-experience--2.svg",
-      "svg_sha256": "44323d43a1ca2548d81161d2ff7d9c0fdfbe798606505c0b85b66cd699d59ccb",
+      "svg_sha256": "48412267df3ea49b21471ef038fdae59d7a248af5ddc58de4f0eba8a475fdd60",
       "error": null
     },
     {
@@ -545,7 +557,7 @@
       "description_present": true,
       "view_box": "0 0 1220.390625 1251.90625",
       "artifact": "docs--product--intent-to-reality-gap--1.svg",
-      "svg_sha256": "3a018cb3fa72de28511c8f1c89e7f7896067ec068ea0637fa1ac4ba841794d64",
+      "svg_sha256": "66054531110be8eca1c7806926549d4508351410e2e782a0615505387f4bd3cd",
       "error": null
     },
     {
@@ -557,7 +569,7 @@
       "description_present": true,
       "view_box": "-50 -10 851 1190",
       "artifact": "docs--product--intent-to-reality-gap--2.svg",
-      "svg_sha256": "e599d73c6a78916eb93aaf971282ccb7a9a91ca9036931b576e93b6c15a8ca76",
+      "svg_sha256": "48175a99242ac189cc4d7752284044aeef83b3f4c60e3a947e42e0980ced7f3b",
       "error": null
     },
     {
@@ -569,7 +581,7 @@
       "description_present": true,
       "view_box": "0 0 824.1328125 1813.046875",
       "artifact": "docs--quality--blocker-aging--1.svg",
-      "svg_sha256": "0553082ec6fff4d3dbb67773e66fc641afdf8b1b8c5dacedc1d44db8bb664789",
+      "svg_sha256": "fed215fa811a386430e95800282e65f78cdc6bae98af89c2f1471332ff9ed633",
       "error": null
     },
     {
@@ -581,7 +593,7 @@
       "description_present": true,
       "view_box": "0 0 1505.171875 1595.609375",
       "artifact": "docs--quality--codex-e2e-001--1.svg",
-      "svg_sha256": "68e45c7e7acfad8f238f2a32c25c20b813a56a16880d4f05eb6eb6123c759647",
+      "svg_sha256": "70f58637027c420e0b58e4041f7b3e440623fbe379a8c897a10a24e23f5c5c4d",
       "error": null
     },
     {
@@ -593,7 +605,7 @@
       "description_present": true,
       "view_box": "0 0 1318.76171875 1869.46875",
       "artifact": "docs--quality--dialogue-status-runtime--1.svg",
-      "svg_sha256": "48d6911da4d0ffc034fbb368381c5cbfab39e0e00d660b618c09fb484d1a57fb",
+      "svg_sha256": "1eaaa166fd668e313ffe4d2e0632b14da347e9dc5dddaff2fa8cbefb4d8df466",
       "error": null
     },
     {
@@ -605,7 +617,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "32d23ace26ae6542b7c5591ae659ab8dd486866ada2fbc442b4e5f46adc2d9ed",
+      "svg_sha256": "04ede0e22d26e74ae2def5f713c6171b4cf98be0489632a408828c121c974bb8",
       "error": null
     },
     {
@@ -617,7 +629,7 @@
       "description_present": true,
       "view_box": "0 0 1174 1750.426513671875",
       "artifact": "docs--quality--native-two-chat-review--1.svg",
-      "svg_sha256": "e8f6487e91ce6cdfac8268d9aa6e7b06f1a2de77f3e62364853be975dc4d7297",
+      "svg_sha256": "e579594d5ce1e0ba138be3c87d94e27d52510f71b8ac7d86373f6475499bb72c",
       "error": null
     },
     {
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "-50 -10 1548 792",
       "artifact": "docs--quality--native-two-model-001--1.svg",
-      "svg_sha256": "33d35c8e937b395da8803edb7c4807a983d0d775b0382f159edd4c7e11e593a2",
+      "svg_sha256": "6b57f902b9170f4f38f433abf5378541a50d39b7174e18e4bd53723f8034ab34",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "ce3bbb15195e8ef10d717286216ce736927b2b2bfb225124aaaebba537b48fae",
+      "svg_sha256": "2d7c34fc22e3523c9310cd10a2469009f0c7acd5e89120c3e4aa4d91a218f00f",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "de2bb23610df40287bdae9bf004b23345766a86a8c94fbdfe448a8dd192807d0",
+      "svg_sha256": "994329ea0358e6f1a69d7adf866f0972fada6ee2078540e2d24544249cca1c3f",
       "error": null
     },
     {
@@ -665,7 +677,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "32286ae39554f3aea44581f9a1bc1408c850d0cb2178597347e69a25e1566905",
+      "svg_sha256": "7bdc3874ed209c35f4ebe46618557048270bd8eb2a49d6c438eeeadb32db8a4b",
       "error": null
     },
     {
@@ -677,7 +689,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "b87c5a8cf185ac7f35ba66f154e4186956e9fcda33fc75d9715f81df617a537a",
+      "svg_sha256": "dcbb73ccf2d51f81e57b2b1116162590b1434a7035103ab8e3abd5e2dc995162",
       "error": null
     },
     {
@@ -689,7 +701,7 @@
       "description_present": true,
       "view_box": "0 0 1148.84375 1838.421875",
       "artifact": "docs--quality--todo-development-review--1.svg",
-      "svg_sha256": "bcdf983f6e7797d17abe5397ea4646f79b9cad1fd8a10cee2be82702fc4ea275",
+      "svg_sha256": "852115a7a0e0b79896117061a7a49cd1dac3ef7d2919892f3a486545f403c1c6",
       "error": null
     },
     {
@@ -701,7 +713,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "505536c1ef96fff32a78dcd26331c68e08a7e4e87d9565f9f8c8e6af14696f50",
+      "svg_sha256": "d5734cf856b30bebe0b9064abeac42163b698807ce79a6d355292b50cff93957",
       "error": null
     },
     {
@@ -713,7 +725,7 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "2c8670b9b120087396bbd2364d5e26d2767972e86122ffca1aae1a35f3f38971",
+      "svg_sha256": "a8cea4aad1938f24aea81dda3326fd31142973f2a96a693b526244655bdb9016",
       "error": null
     }
   ],

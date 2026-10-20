@@ -120,20 +120,24 @@ class CodexExecCapture:
         if consent is not True:
             _fail('capture_consent_required')
         with self.core.transaction():
-            self.core.scope(scope, project, write=True, human=True)
-            self.core.active(scope, project)
-            old = self._binding(project, capture_id)
-            binding = dict(id=capture_id, thread_id=thread_id, provider_version=provider_version,
-                           actor=scope.principal_id, authority_revision=self.core.authority.revision())
-            if self.surface != 'codex_exec_jsonl':binding['source_surface'] = self.surface
-            if old:
-                if old != binding or self._disconnected(project, capture_id):
-                    _fail('capture_binding_conflict')
-                return old
-            if len(self.sources._rows(project, 'codex_capture_connected')) >= 32:
-                _fail('capture_limit')
-            self.sources._put(scope, project, 'codex_capture_connected', binding)
-            return binding
+            return self._connect(scope,project,capture_id=capture_id,thread_id=thread_id,provider_version=provider_version)
+
+    def _connect(self,scope,project,*,capture_id,thread_id,provider_version):
+        """Internal primitive for a caller-owned atomic setup transaction."""
+        self.core.scope(scope, project, write=True, human=True)
+        self.core.active(scope, project)
+        old = self._binding(project, capture_id)
+        binding = dict(id=capture_id, thread_id=thread_id, provider_version=provider_version,
+                       actor=scope.principal_id, authority_revision=self.core.authority.revision())
+        if self.surface != 'codex_exec_jsonl':binding['source_surface'] = self.surface
+        if old:
+            if old != binding or self._disconnected(project, capture_id):
+                _fail('capture_binding_conflict')
+            return old
+        if len(self.sources._rows(project, 'codex_capture_connected')) >= 32:
+            _fail('capture_limit')
+        self.sources._put(scope, project, 'codex_capture_connected', binding)
+        return binding
 
     def _binding(self, project, capture_id):
         return next((v for v in self.sources._rows(project, 'codex_capture_connected') if v['id'] == capture_id), None)

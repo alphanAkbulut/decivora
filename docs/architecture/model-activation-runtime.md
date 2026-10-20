@@ -1,5 +1,8 @@
 # Kalıcı model aktivasyonu — çalışan backend
 
+**Sonraki20Ekim teslimi:** Exact Codex chat ID/link için yerel capture-consent kurulumu ve ayrı read/disconnect artık [Sources akışında](codex-source-onboarding.md). Yeni kaynak model-egress grant/transport kurulumu ve sürekli otomatik işleme halen açık; aşağıdaki önceki onboarding eksik notları bu ayrımla okunur.
+
+
 **20 Ekim güncel teslim:** Mevcut izinleri seçme, Paused aktivasyon oluşturma ve activate/pause/revoke; bounded worker planı/start/stop artık Sources ekranına bağlı. Yeni Codex kaynak izni/sohbet seçimi ve credential/transport kurulumu halen açık. [Güncel UI kapsamı](#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri). Aşağıdaki19Ekim notları tarihsel backend teslimini anlatır.
 
 **19 Ekim 2026 · T09/T17/T19/T21. Uygulanan yerel alt kapsam.** [Kod](../../packages/capture/model_activation.py), [test](../../tests/runtime/test_model_activation.py). Yeni kaynak okuma, API harcama veya sürekli izleme izni vermez. Kullanıcıya dönük kurulum ekranı henüz bağlı değildir; aşağıdaki bounded worker backend API ile açıkça başlatılabilir; varsayılan LOCAL/TEST uygulaması model kapalı kalır.

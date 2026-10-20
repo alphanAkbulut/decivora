@@ -21,13 +21,13 @@ from packages.capture.conversations import ConversationService
 
 ROOT=Path(__file__).parent
 class LocalApp:
-    def __init__(self,path,extractor=None,verification_root=None,environment='local',*,extractor_factory=None):
+    def __init__(self,path,extractor=None,verification_root=None,environment='local',*,extractor_factory=None,native_connector=None):
         from packages.operations.environment import bind_environment
         bind_environment(path,environment)
-        if environment=='test' and (extractor is not None or extractor_factory is not None or verification_root is not None):raise ContractError('test_connection_disabled','Test environment disables model and file-target connections.')
+        if environment=='test' and (extractor is not None or extractor_factory is not None or verification_root is not None or native_connector is not None):raise ContractError('test_connection_disabled','Test environment disables model and file-target connections.')
         self.environment=environment;self.cookie_name='decivora_test_session' if environment=='test' else 'decivora_session';self.started_at=time.time();self.started_monotonic=time.monotonic();self.operations_context=threading.local()
         if extractor is not None and extractor_factory is not None:raise ContractError('invalid_model_configuration','Choose one trusted model configuration.')
-        self.extractor=extractor;self.extractor_factory=extractor_factory
+        self.extractor=extractor;self.extractor_factory=extractor_factory;self.native_connector=native_connector
         from packages.verification.files import FileChecker
         self.file_checker=FileChecker(verification_root) if verification_root is not None else None
         self.path=Path(path);fresh=not self.path.exists();self.path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
@@ -119,9 +119,9 @@ class LocalApp:
             impact_reviews=[]
             for raw, in core.db.execute("SELECT ref FROM audit WHERE workspace=? AND project=? AND action='impact_preview' ORDER BY seq DESC LIMIT 5",(core.workspace,selected)):
                 impact_reviews.append(core.impact_run(owner,selected,json.loads(raw)['run_id']))
-            with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,mcp_host_activation='not_verified'))
+            with self.health_lock:health=dict(recent_errors=list(self.recent_errors),persistent=False,capabilities=dict(model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,native_host_configured=self.native_connector is not None,mcp_host_activation='not_verified'))
             from packages.capture.clarifications import ClarificationService
-            return dict(task_clarifications=ClarificationService(core).view(owner,selected),environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=self._queue_view(core,owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=(self.extractor is not None or self.extractor_factory is not None),model_activations={**__import__('packages.capture.model_activation',fromlist=['ModelActivationService']).ModelActivationService(core).view(owner,selected),'background_worker_active':self.processing_worker.view(selected)['active']},processing_worker=self.processing_worker.view(selected),managed_activation_id=getattr(self.extractor_factory,'activation_id',None),processing_loops=__import__('packages.capture.processing_loop',fromlist=['ProcessingLoopService']).ProcessingLoopService(core).view(owner,selected),project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
+            return dict(task_clarifications=ClarificationService(core).view(owner,selected),environment=self.environment,impact_reviews=impact_reviews,impact_change_reviews=DecisionImpactService(core).reviews(owner,selected),selected_project=selected,project_choices=choices,project_writable=selected in owner.writable_projects,health=health,audit_timeline=audit_timeline,agent_proposals=AgentProposalService(core).view(owner,selected),relations=relations[:500],relations_truncated=len(relations)>500,timeline=timeline[:100],timeline_truncated=len(timeline)>100,usage=RoutingService(core).usage(owner,selected),task_sources=task_sources,conversation_queue=self._queue_view(core,owner,selected),conversation_review=ConversationService(core).view(owner,selected),model_ready=(self.extractor is not None or self.extractor_factory is not None),model_activations={**__import__('packages.capture.model_activation',fromlist=['ModelActivationService']).ModelActivationService(core).view(owner,selected),'background_worker_active':self.processing_worker.view(selected)['active']},native_connections=__import__('packages.capture.codex.ui_connection',fromlist=['UIConnectionService']).UIConnectionService(core,self.native_connector).view(owner,selected),processing_worker=self.processing_worker.view(selected),managed_activation_id=getattr(self.extractor_factory,'activation_id',None),processing_loops=__import__('packages.capture.processing_loop',fromlist=['ProcessingLoopService']).ProcessingLoopService(core).view(owner,selected),project=project,tasks=tasks,records=[dict(id=rid,version=v,body=json.loads(raw)) for rid,v,raw in rows[:100]],question_inbox=QuestionService(core).view(owner,selected),decision_proposals=QuestionDecisionService(core).view(owner,selected),truncated=len(rows)>100,snapshot=project['knowledge_revision'],workflow_preset=list(__import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES),workflow_transitions={stage:[target for target in __import__('packages.domain.task_workflow',fromlist=['STAGES']).STAGES if target in targets] for stage,targets in __import__('packages.domain.task_workflow',fromlist=['TRANSITIONS']).TRANSITIONS.items()},capabilities=dict(manual_tasks=True,versioned_acceptance=True,automatic_capture=False,semantic_extraction=False,verified_completion=True,verification_methods=['human_review']+(['file_check'] if self.file_checker is not None else []),automatic_verifier=False,file_checker_configured=self.file_checker is not None,file_observation_limited=getattr(core,'file_read_limit_reached',False)),csrf=self.csrf)
     def conversation_page(self,selected='personal',cursor=None,source_id=None):
         with self.core() as core,core.read_snapshot():
             identifier(selected);owner=core.authority.issue_scope('local_owner');core.scope(owner,selected);core.active(owner,selected)
@@ -134,7 +134,7 @@ class LocalApp:
             result=self.operations.view(selected)
             from packages.capture.processing_queue import ConversationQueue
             result['conversation_queue']=self._queue_view(core,owner,selected)
-            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=self.processing_worker.view(selected)['active'],queue=queue,model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,external_mcp_host='not_verified')
+            result.update(environment=self.environment,project=selected,uptime_seconds=round(time.monotonic()-self.started_monotonic,1),application_processes=1,background_worker_active=self.processing_worker.view(selected)['active'],queue=queue,model_configured=(self.extractor is not None or self.extractor_factory is not None),file_checker_configured=self.file_checker is not None,native_capture=False,native_host_configured=self.native_connector is not None,external_mcp_host='not_verified')
             return result
     def command(self,body):
         from packages.operations.local import ACTIONS,identity_from_scope
@@ -164,9 +164,16 @@ class LocalApp:
         if type(body) is dict and 'project_id' in body:
             if set(body)!={'project_id','command'} or type(body['command']) is not dict:raise ContractError('invalid_request','Exact project command envelope required.')
             selected=identifier(body['project_id']);body=body['command']
-        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','save_task_rationale','import_conversation','analyze_conversation','process_conversation_queue','accept_candidates','create_model_activation','change_model_activation','create_processing_loop','run_processing_pass','start_processing_loop','stop_processing_loop','review_dialogue_question','review_clarification','resolve_clarification'):raise ContractError('invalid_request','Unknown UI action.')
+        if type(body) is not dict or body.get('action') not in ('bind_file_check','run_file_check','approve_agent_proposal','apply_agent_proposal','reject_agent_proposal','prepare_task_lifecycle','prepare_impact_updates','select_impact_changes','approve_impact_changes','apply_impact_changes','decide_impact_changes','preview_decision_change','work_routing','link_task_rationale','link_dependency','workflow_transition','criterion_evidence','task_blocker','create_task','acceptance','start','ask_question','answer_question','prepare_decision','approve_decision','apply_decision','question_state','associate_answer','revise_question','prepare_dialogue_review','import_dialogue_response','review_dialogue_status','review_dialogue_answer','review_dialogue_relation','save_task_rationale','import_conversation','analyze_conversation','process_conversation_queue','accept_candidates','create_model_activation','change_model_activation','create_processing_loop','run_processing_pass','start_processing_loop','stop_processing_loop','review_dialogue_question','review_clarification','resolve_clarification','connect_codex_source','read_codex_source','disconnect_codex_source'):raise ContractError('invalid_request','Unknown UI action.')
         with self.core() as core:
             owner=core.authority.issue_scope('local_owner');action=body['action']
+            if action in ('connect_codex_source','read_codex_source','disconnect_codex_source'):
+                from packages.capture.codex.ui_connection import UIConnectionService
+                fields={'connect_codex_source':{'action','capture_id','thread_id','expires_at','max_reads','turn_limit','consent'},'read_codex_source':{'action','capture_id','configuration_sha256','read_id','consent'},'disconnect_codex_source':{'action','capture_id'}}
+                if set(body)!=fields[action]:raise ContractError('invalid_request','Exact selected-source consent fields required.')
+                service=UIConnectionService(core,self.native_connector)
+                method={'connect_codex_source':service.connect,'read_codex_source':service.read_once,'disconnect_codex_source':service.disconnect}[action]
+                return method(owner,selected,**{k:v for k,v in body.items() if k!='action'})
             if action in ('review_clarification','resolve_clarification'):
                 from packages.capture.clarifications import ClarificationService
                 fields={'action','source_id','proposal_id','decision','key','reason'} if action=='review_clarification' else {'action','clarification','base_revision','resolution','key'}
@@ -322,8 +329,8 @@ class LocalApp:
             plan=core.plan(owner,selected,'ui_'+uuid.uuid4().hex,ops);token=core.approve(owner,plan)
             return core.apply(owner,plan,token)
 
-def make_server(path,port=0,extractor=None,verification_root=None,environment='local',*,extractor_factory=None):
-    app=LocalApp(path,extractor=extractor,verification_root=verification_root,environment=environment,extractor_factory=extractor_factory)
+def make_server(path,port=0,extractor=None,verification_root=None,environment='local',*,extractor_factory=None,native_connector=None):
+    app=LocalApp(path,extractor=extractor,verification_root=verification_root,environment=environment,extractor_factory=extractor_factory,native_connector=native_connector)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
         def answer(self,code,body,kind='application/json',cookie=False):
@@ -394,10 +401,15 @@ def make_server(path,port=0,extractor=None,verification_root=None,environment='l
 
 def main():
     if sys.version_info[:2]!=(3,12):raise SystemExit('Bu sürüm Python 3.12 gerektiriyor.')
-    parser=argparse.ArgumentParser();parser.add_argument('--data-dir',type=Path);parser.add_argument('--environment',choices=('local','test'),default='local');parser.add_argument('--port',type=int,default=0);parser.add_argument('--no-browser',action='store_true');parser.add_argument('--verification-root',type=Path);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--data-dir',type=Path);parser.add_argument('--environment',choices=('local','test'),default='local');parser.add_argument('--port',type=int,default=0);parser.add_argument('--no-browser',action='store_true');parser.add_argument('--verification-root',type=Path);parser.add_argument('--codex-executable',type=Path);parser.add_argument('--codex-provider-version');parser.add_argument('--codex-home',type=Path);args=parser.parse_args()
+    if bool(args.codex_executable)!=bool(args.codex_provider_version) or (args.codex_home and not args.codex_executable):parser.error('Provide both trusted Codex executable and provider version; home is optional.')
+    native_connector=None
+    if args.codex_executable:
+        from packages.capture.codex.ui_connection import connector_from_paths
+        native_connector=connector_from_paths(args.codex_executable,args.codex_provider_version,cwd=ROOT.parents[1],codex_home=args.codex_home)
     from packages.operations.environment import DEFAULT_DATA_DIR,TEST_DATA_DIR
     data_dir=args.data_dir or (TEST_DATA_DIR if args.environment=='test' else DEFAULT_DATA_DIR)
-    server=make_server(data_dir/'workspace.sqlite',args.port,verification_root=args.verification_root,environment=args.environment)
+    server=make_server(data_dir/'workspace.sqlite',args.port,verification_root=args.verification_root,environment=args.environment,native_connector=native_connector)
     print('Decivora '+args.environment+' preview: '+server.origin+' — close with Ctrl+C. No model/API calls.',flush=True)
     if not args.no_browser:webbrowser.open(server.origin+'/#'+server.app.bootstrap)
     try:server.serve_forever()

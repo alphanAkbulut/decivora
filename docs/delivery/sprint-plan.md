@@ -23,7 +23,7 @@ Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası de�
 |---|---|---|
 | Mevcut izinleri gör ve aktivasyonu yönet | Kaynak/model/token/expiry görünür; Paused hazırlık dispatch yapmaz; current revision ile activate/pause/revoke | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı**, tam kaynak onboarding değil |
 | Bounded worker kontrolü | Açık caps/interval/expiry; plan kaydetmek çalıştırmaz; ayrı start/stop; eşleşen managed transport gerekir | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı** |
-| Codex kaynak seçimi ve yeni izin kurulumu | Kullanıcı hangi sohbetin hangi projeye hangi kapsamda bağlandığını görür; seçilmeyen okunmaz | **Açık — sıradaki ürün bağlantısı**; CLI capability mevcut, genel UI kurulumu yok |
+| Codex kaynak seçimi ve yeni izin kurulumu | Kullanıcı hangi sohbetin hangi projeye hangi kapsamda bağlandığını görür; seçilmeyen okunmaz | **Yerel kod ve sentetik UI kabulü tamamlandı:** exact chat ID/link, süre/read/tur consent ve ayrı read/disconnect; genel discovery/sürekli capture ve model-egress kurulum açık |
 | İlk görev review'ında kapsam hazırlığı | AC/DoD taslağı veya netleştirme; kaynakta olmayan şart onaysız gereksinim değildir | **Açık NM-02**, T09/T13/T19; sonraki kod dilimi |
 | Tek kullanıcı yolculuğu | Seçilen sohbet→capture→model→review→Task; ilerleyen mesaj aynı işe bağlanır | İki sohbet pilotunda dar örnek var; varsayılan uygulamada tam bağlantı **açık** |
 | Kesinti/restart/günlük kabul | Cursor/dedup/izin/bütçe ve eski öneri geçmişi korunur | Parça testleri var; birleşik günlük kabul **açık** |
@@ -32,7 +32,7 @@ Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası de�
 
 - Yapılan: Sources ekranındaki mevcut-grant aktivasyon ve worker kontrolleri. [Kod, bulgu ve sınırlar](../architecture/model-activation-runtime.md#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri).
 - Gözlenen: İlk native görev review'ı AC hazırlamadığı için başlangıçta ek kapsam adımı gerekti; NM-01görünürlük düzeltildi, NM-02hazırlık işi açık. Gerçek soru yakalamada J04semantik hatası da açık; yeni UI bu hatayı çözmüş sayılmaz.
-- Sıradaki: Kaynak seçimi/izin kurulumunu mevcut Codex read-only binding'e bağlamak; ilk Task review'ında kapsam taslağı/netleştirme. Yeni genel benchmark taraması öncelik değildir.
+- Sıradaki: Yerel kaynak kurulumunu sınırlı gerçek kabul ile doğrulamak; yeni kaynak model-sharing kurulumu ve ilk Task review'ında kapsam taslağı/netleştirme. Yeni genel benchmark taraması öncelik değildir.
 - Engel ayrımı: Yerel kod geliştirmesi için API gerekmez. Önceki iki-chat capture ve iki model isteği izinleri tüketildi; yeni gerçek okuma/dispatch için somut kaynak/süre/bütçe kapsamı gerekir. Genel bütçenin kalanı veya bu plan, süresi dolan izni yenilemez.
 
 ## Takip ve sprint kapanışı
