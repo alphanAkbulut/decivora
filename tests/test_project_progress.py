@@ -55,7 +55,9 @@ class ProgressTests(unittest.TestCase):
     def test_canonical_status_and_acceptance_not_inferred_from_test_pass(self):
         data = progress.build(self.root)
         self.assertEqual(len(data["tasks"]), 30)
-        self.assertEqual(data["counts"], {"IN_PROGRESS": 21, "DONE": 7, "TODO": 2})
+        # T17 closed on native read/cursor evidence; counts are canonical, not inferred from this test run.
+        self.assertEqual(data["counts"], {"IN_PROGRESS": 20, "DONE": 8, "TODO": 2})
+        self.assertEqual(next(t for t in data["tasks"] if t["id"]=="T17")["status"], "DONE")
         self.assertEqual(next(t for t in data['tasks'] if t['id']=='T12')['status'], 'DONE')
         self.assertEqual(next(t for t in data['tasks'] if t['id']=='T13')['status'], 'IN_PROGRESS')
         for tid in ('T16','T24','T26','T27','T28','T29'):self.assertEqual(next(t for t in data['tasks'] if t['id']==tid)['status'],'IN_PROGRESS')

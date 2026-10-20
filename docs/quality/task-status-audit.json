@@ -19,8 +19,8 @@
   },
   "after": {
     "main": {
-      "IN_PROGRESS": 21,
-      "DONE": 7,
+      "IN_PROGRESS": 20,
+      "DONE": 8,
       "TODO": 2
     },
     "subtasks": {
@@ -193,13 +193,16 @@
     },
     {
       "id": "T17",
-      "status": "IN_PROGRESS",
-      "changed": false,
-      "core_verified": false,
-      "reason": "Yazılı ana kabul ve required child/integration gate kontrol edildi. Yedi dar çekirdek kapanışı korunur; kalan ana işlerin tam kabulü açık.",
+      "status": "DONE",
+      "changed": true,
+      "core_verified": true,
+      "reason": "T17 mevcut core kabulü: desteklenen installed App Server yüzeyi, gerçek public capture ve üç scheduled read/cursor-dedup, explicit partial coverage; same read retry/crash contract suite. Günlük/release T24 ve yeni mesaj paylaşımı ayrı açık.",
       "evidence": [
         "docs/quality/codex-exec-capture-runtime.md",
-        "docs/quality/codex-real-capture-001.md"
+        "docs/quality/codex-real-capture-001.md",
+        "docs/quality/native-ui-journey-001.md",
+        "docs/quality/scheduled-capture-runtime.md",
+        "docs/quality/scheduled-native-001.md"
       ]
     },
     {
@@ -2055,5 +2058,11 @@
     "input_base_ref": "ce9d64fb817c97b37fc8e16b7d96f9793376fd85",
     "report": "docs/quality/todo-development-review.md",
     "note": "Six TODO main tasks and three subtasks have concrete implementation started, not accepted complete."
+  },
+  "native_capture_update": {
+    "date": "2026-10-20",
+    "input_base_ref": "0bb4964a3f8cfde79e641aecbde03a03cd77a888",
+    "report": "docs/quality/scheduled-native-001.md",
+    "scope": "T17 core closure only; other historical audit rows unchanged"
   }
 }

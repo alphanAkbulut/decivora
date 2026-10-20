@@ -1,5 +1,7 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+**20 Ekim — gerçek düzenli Codex capture geçti; T17 çekirdeği Done:** Native B,10sarayla3kez seçili scope içinde okundu; kaynak6→6, duplicate0, task/kapsam ve API bütçesi değişmedi. Stop+Disconnect+reload doğrulandı. T17mevcut çekirdek kabulü evidence ile kapandı; ana8Done/20InProgress/2ToDo, MVP yolunda16iş açık. Yeni mesaj eklenmesi/semantik kalite bu3read'de ölçülmedi; günlük/release T24 ve yeni mesaj model paylaşımı açık. [Sonuç ve kapanış gerekçesi](../quality/scheduled-native-001.md).
+
 **20 Ekim — düzenli yakalama kodlandı:** Mevcut seçili-sohbet iznine bağlı kalıcı plan/tick, sınırlı worker, ayrı start/stop ve Sources kontrolleri eklendi. Süre/read/interval, in-flight stop ve restart-no-autostart korunur. Yeni kayıt modele otomatik paylaşılmaz. Gerçek periyodik sohbet okuması başlatılmadı; önceki izinler tüketilmiş kalır. [Kod, bulgular ve kalan kapılar](../quality/scheduled-capture-runtime.md).
 
 **Son owner onayı — kapsam ve başlangıç:** İlk turdaki bağlı soru tercihi korundu; kullanıcı açıklamadan sonra önerilen AC/DoD ve güncel başlangıç işlemini onayladı. Aynı tek Task artık **In Progress**, contract v1; kapsam sorusu **Resolved**, AC1/DOD1 **not_run**. Eski model önerisi stale/Deferred geçmişte tutuldu; yeni API veya chat read0, bütçe değişmedi. [Karar ve uygulama kanıtı](../quality/native-ui-journey-001.md#son-owner-kararı--kapsam-onayı-ve-güncel-başlangıç).

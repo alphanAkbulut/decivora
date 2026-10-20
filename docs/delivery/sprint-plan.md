@@ -1,6 +1,6 @@
 # MVP teslim planı ve aktif sprint
 
-**20 Ekim 2026 · Kullanıcı büyük planı ve ilk sprinti onayladı.** Bu, mevcut backlog'un yürütme görünümüdür; yeni ana görev, daraltılmış MVP veya tarih garantisi değildir. Güncel ana kayıt **7 Done / 21 In Progress / 2 To Do**; MVP yolunda17ana iş, sonraki fazlarda6iş açık. Sprint teslimi parent kapanışı anlamına gelmez.
+**20 Ekim 2026 · Kullanıcı büyük planı ve ilk sprinti onayladı.** Bu, mevcut backlog'un yürütme görünümüdür; yeni ana görev, daraltılmış MVP veya tarih garantisi değildir. Güncel ana kayıt **8 Done / 20 In Progress / 2 To Do**; MVP yolunda16ana iş, sonraki fazlarda6iş açık. Sprint teslimi parent kapanışı anlamına gelmez.
 
 ## Ürün hedefi
 
@@ -42,3 +42,6 @@ Her daily: çalışan teslim, karşılanan kabul, kalan gerçek eksik, engel sah
 
 
 **Sprint1 sonraki kod dilimi:** [Düzenli capture](../quality/scheduled-capture-runtime.md) yerel plan/worker/UI olarak uygulandı. Yeni gerçek read izni verilmeden aktif edilmedi; sonraki kapı exact kaynak/süre/read sayısıyla native periyodik kabul ve yeni kaynak paylaşımıdır.
+
+
+**Gerçek periyodik kabul:** [Native B3tick](../quality/scheduled-native-001.md) geçince T17coreDone; son gerçek scope tüketilip kapatıldı. Yeni-mesaj semantik paylaşım/günlük kabul açık, model izni verilmedi.

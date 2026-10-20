@@ -1,5 +1,7 @@
 # Güncel ürün ve kalan geliştirme resmi
 
+**20 Ekim — gerçek düzenli Codex capture geçti; T17 çekirdeği Done:** Native B,10sarayla3kez seçili scope içinde okundu; kaynak6→6, duplicate0, task/kapsam ve API bütçesi değişmedi. Stop+Disconnect+reload doğrulandı. T17mevcut çekirdek kabulü evidence ile kapandı; ana8Done/20InProgress/2ToDo, MVP yolunda16iş açık. Yeni mesaj eklenmesi/semantik kalite bu3read'de ölçülmedi; günlük/release T24 ve yeni mesaj model paylaşımı açık. [Sonuç ve kapanış gerekçesi](../quality/scheduled-native-001.md).
+
 **20 Ekim — düzenli yakalama kodlandı:** Mevcut seçili-sohbet iznine bağlı kalıcı plan/tick, sınırlı worker, ayrı start/stop ve Sources kontrolleri eklendi. Süre/read/interval, in-flight stop ve restart-no-autostart korunur. Yeni kayıt modele otomatik paylaşılmaz. Gerçek periyodik sohbet okuması başlatılmadı; önceki izinler tüketilmiş kalır. [Kod, bulgular ve kalan kapılar](../quality/scheduled-capture-runtime.md).
 
 **Son owner onayı — kapsam ve başlangıç:** İlk turdaki bağlı soru tercihi korundu; kullanıcı açıklamadan sonra önerilen AC/DoD ve güncel başlangıç işlemini onayladı. Aynı tek Task artık **In Progress**, contract v1; kapsam sorusu **Resolved**, AC1/DOD1 **not_run**. Eski model önerisi stale/Deferred geçmişte tutuldu; yeni API veya chat read0, bütçe değişmedi. [Karar ve uygulama kanıtı](../quality/native-ui-journey-001.md#son-owner-kararı--kapsam-onayı-ve-güncel-başlangıç).
@@ -31,7 +33,7 @@
 
 ## 20 Ekim 2026 — güncel kanıt özeti
 
-Bu özet önceki tarihli teslim notlarının yerine geçen güncel okuma noktasıdır; tarihsel raporlar değiştirilmedi. Ana görevler **7 Done / 21 In Progress / 2 To Do**; alt kayıtlar **56 Done / 42 In Progress / 26 To Do / 5 Proposed**. Bunlar farklı seviyelerdir, toplanmaz.
+Bu özet önceki tarihli teslim notlarının yerine geçen güncel okuma noktasıdır; tarihsel raporlar değiştirilmedi. Ana görevler **8 Done / 20 In Progress / 2 To Do**; alt kayıtlar **56 Done / 42 In Progress / 26 To Do / 5 Proposed**. Bunlar farklı seviyelerdir, toplanmaz.
 
 - Seçilmiş sentetik Codex sohbetinde **2 human + 6 assistant kaynak**, tekrar okumada **8→8**: bu dar native capture doğrulandı. Canonical görev In Review, kabul kriterleri not_run; tam günlük otomasyon değil.
 - İlk dört-case grubunda **J01 6/6 dar kontrol pass; J02/J03 5/6 eksik; J04 iki yanıt aldı, biri valid/biri unsupported_question**.20dispatch/18tam provider yanıtı/2unknown; J04kalan4tur gönderilmedi. [Son rapor](../quality/dialogue-batch-001-j04.md).
@@ -53,11 +55,11 @@ Python3.12/SQLite tabanlı açılabilir yerel uygulama ve çalışan domain çek
 | Kanonik ana iş grubu | Kapalı | Devam eden | Başlanacak | Açık toplam |
 |---|---:|---:|---:|---:|
 | P0 hazırlık/kalite T01–T03 | 0 | 3 | 0 | 3 |
-| MVP T04–T24 | 7 | 14 | 0 | 14 |
+| MVP T04–T24 | 8 | 13 | 0 | 13 |
 | MVP sonrası T25–T30 | 0 | 4 | 2 | 6 |
-| **Toplam** | **7** | **21** | **2** | **23** |
+| **Toplam** | **8** | **20** | **2** | **22** |
 
-**MVP release yolunda17ana iş açık:14ürün/entegrasyon işi ve3P0 hazırlık/kalite işi.** Bunlar17eşit büyüklükte küçük PR değildir. Done görünen7iş çekirdek kabul kapsamıdır; otomatik kullanıcı yolculuğunun tamamı değildir. T15 ve T24 esasen entegrasyon/kabul kapısıdır; diğer12açık MVP ana işte kalan ürün kodu vardır. Kabulde çıkacak gerçek hatalar bu işlerde düzeltilir; gelecekte bulunacak hata sayısı tahmin edilmedi.
+**MVP release yolunda16ana iş açık:13ürün/entegrasyon işi ve3P0 hazırlık/kalite işi.** Bunlar16eşit büyüklükte küçük PR değildir. Done görünen8iş çekirdek kabul kapsamıdır; otomatik kullanıcı yolculuğunun tamamı değildir. T15 ve T24 esasen entegrasyon/kabul kapısıdır; diğer11açık MVP ana işte kalan ürün kodu vardır. Kabulde çıkacak gerçek hatalar bu işlerde düzeltilir; gelecekte bulunacak hata sayısı tahmin edilmedi.
 
 **19 Ekim8TODO incelemesi:**6iş kodla başladı; Claude hook bridge, orphan audit, GitHub commit observer, paired-cost,14AC evidence inventory ve ZIP CLI. [Kalan kapılar](../quality/todo-development-review.md); tüm işleri tamamlanmış saymıyoruz.
 
@@ -94,21 +96,22 @@ Yeni: tanınan credential'lar yeni manuel kaynakta DB öncesi maskelenir; model/
 
 Bunların tamamı aynı olgunlukta değildir. Gerçek model/host/file erişimi olmayan bir yetenek varsayılan programda otomatik çalışıyor diye sunulmaz.
 
-## Kalan ürün kodu —12mevcut ana iş
+## Kalan ürün kodu —11mevcut ana iş
+
+T17 çekirdeği son gerçek kabulden sonra bu açık-iş tablosundan çıkarıldı; günlük/release ve yeni-mesaj paylaşımı mevcut T19/T21/T22/T24 sahiplerinde kalır.
 
 | Ana iş | Mevcut parça | Kalan kod / kullanıcıya teslim | Dış bağımlılık |
 |---|---|---|---|
-| T09 — çıkarım/bağlam | JSON schema/span, current context; fixed-host HTTP + key helper + bounded runner;48dispatch/96HTTP bütçe payı; son unknown frozen; completion claim ve ilk6gerçek kayıtlı mesaj; exact source factory ve kalıcı activation yönetimi | Genel semantik kalite; ana UI aktivasyonu; fikir/gereksinim/prompt/belge talimatı dahil tipler; kaynaklı AC/genel relation; bounded retrieval | İlk pilot dahil$3/100generation/200HTTPsentetik scope onaylı; kalan$2.947445/74generation/148HTTP. Ayrı6gerçek kayıt paylaşımı tamamlandı; yeni gerçek veri paylaşımı ayrıca izin ister |
+| T09 — çıkarım/bağlam | Strict schema/span, task/karar/soru/gerekçe context; fixed-host HTTP, exact kaynak paylaşım UI ve kalıcı activation/worker; gerçek iki-chat görev/start önerileri | Genel semantik kalite, desteklenen ek kayıt tipleri, kaynaklı AC/genel relation, bounded retrieval ve yeni mesajlara izinli otomatik paylaşım politikası | Geçerli root$3toplam sınırı;54dispatch/108HTTP/$0.067895yerel taahhüt. Kalan46model/92HTTP/$2.932105yerel pay; yeni kaynak paylaşımı ayrıca izin ister |
 | T10 — uzlaştırma | Exact duplicate/source attach; refinement işareti | Yeni/eski karar, refinement/conflict/supersession eşleme ve kullanıcı çözümü; belirsizlikte netleştirme. Yanlış task/karar eşleştirmesi önlenmeli | Yerel kod bağımsız; gerçek semantik davranış modeli ayrıca gerektirir |
 | T13 — karar/onay | Review kernel, kaynaklı status/late-answer/relation/decision-replacement review; lifecycle ve task-update apply | Konuşmadan QuestionRequest üretimi; tam belirsizlik/çatışma çözümü; split planının atomik onayı ve genel otomatik değişiklik planı | Yerel kod bağımsız; yeni kaynak/karar eşleştirmesinin kalitesi ayrıca doğrulanır |
 | T14 — doğrulama | Human/file-SHA kriterleri ve current Done guard | Verifier configuration/policy, gerçek artifact/hedef bağı, zorunlu parent-child koşulları ve kriter revision entegrasyonları; izinli otomatik verifier yolunun sınırları | Gerçek dosya/çalıştırma hedefi ve izinleri ilk kullanım öncesi |
 | T16 — Claude Code adapter | Capture/queue sözleşmesi ve ölçüm düzeneği | Desteklenen gerçek host/version olaylarını kaydetme; session binding, interruption/recovery, gap/coverage | Seçilen Claude Code kurulumu/oturumu ve kaynak izni; ayrı ücretli model API zorunluluğu değil |
-| T17 — Codex adapter | Seçilmiş App Server user/assistant read,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending; native log | Kaynak kurulum/izin UI, kapasite/backfill/gap kartı, sürekli çalışma ve yeni kodun gerçek host kabulü | Seçilen destekli Codex host ve kaynak izni; olmayan hook var sayılmaz |
 | T18 — MCP/devam hafızası | Beş-tool stdio subset, current record ve execution read | Gerçek client kurulum/onboarding; kaynak bazlı audience izinleri; private türevleri izinli paylaşma; karar/soru/gerekçe/AC içeren dar continuation context | Gerçek istemci ve somut kaynak paylaşım izni. Proje okuma izni private konuşmayı otomatik açmaz |
-| T19 — proje/inbox | Mevcut proje seçimi; aday/status/answer/relation/replacement/task-update review; source queue kartı | Proje/kaynak oluşturma ve izin kurulumu; eksik proposal tipleri/çatışma çözümü; T19b risk kartı ve model aktivasyon onboarding ekranı; backend Paused/Active/Revoked ve finite worker create/start/stop hazır | Kod bağımsız; bağlantı aktivasyonu seçilen host/model kapsamına bağlı |
+| T19 — proje/inbox | Mevcut proje seçimi; kaynaklı aday/status/answer/relation review; Codex source consent, exact model sharing, first-scope ve activation/worker/schedule kontrolleri | Proje oluşturma UX, eksik proposal tipleri/çatışma çözümü, T19b risk kartı; yeni mesajlara uygulanacak paylaşım izninin kurulumu | Kod bağımsız; gerçek bağlantı ve yeni mesaj paylaşımı exact host/model/source kapsamına bağlı |
 | T20 — günlük takip/context | Board/List/Graph/Timeline, blocker/lifecycle, AND/OR gerekçe yazarı, queue/Operations görünümü | Onaylı Q08-A alt görev/checklist; parent ilerlemesi; Q06-A milestone context dosyası; fikir evrimi ve otomatik etki sonuçlarının tam bütünleşmesi | Deterministik kod bağımsız; ücretli özetleme varsayılmaz |
-| T21 — kullanım/yönlendirme | Class/executor, token reservation/freeze; gerçek count/usage; cache-aware admission; eski kullanım dahil çok-batch ortak root bütçe | Genel UI profil/aktivasyon; dönem policy; trusted overrun reconciliation; nihai invoice doğrulaması | Toplam tahmin$0.052555, root$3. Genel account-wide veya kart limiti iddiası yok |
-| T22 — import/lineage | Manuel source import, provenance, hash, typed review | Mesaj/rol/chat/run kimliği; prompt→execution→artifact lineage; izinli geçmişin aşamalı işlenmesi; iki host ile aynı proje bağlamına uzlaştırma | Kod bağımsız; gerçek kaynak erişimi/retention kapsamı ilk kullanımdan önce |
+| T21 — kullanım/yönlendirme | Class/executor, token rezervi/freeze, gerçek count/usage, cache-aware admission ve geçmiş kullanım dahil ortak root; source paylaşım/activation UI | Genel provider/policy yönetimi, trusted overrun reconciliation, nihai invoice doğrulaması | Yerel taahhüt$0.067895,3unknown rezervi dahil; root$3. Account-wide veya kart limiti iddiası yok |
+| T22 — import/lineage | Manuel import ve Codex public mesaj/rol/thread/item kimliği, provenance/hash, kalıcı cursor ve kaynaklı review | Prompt→execution→artifact lineage; diğer host tiplerinde birleşik source contract; geçmişin izinli işlenmesi ve genel cross-host uzlaştırma | Kod bağımsız; gerçek kaynak/retention/paylaşım kapsamı ilk kullanım öncesi |
 | T23 — işletim/paketleme | Loopback session/Origin/CSRF, private backup, offline restore | Kullanıcıya güvenli aktif restore/recovery/migration; redacted export, purge/retention yönetimi; kurulum ve sürüm güncelleme bütünlüğü | Kod bağımsız; gerçek veri saklama/paylaşma policy'si ilgili ilk kullanımda |
 
 T16 ve T17 ayrı teslimdir; birini yapıp “iki adapter” şartı kapanmaz. Bir satır başka satırın geliştirilmesini tamamen bekletmez: planlama sırası, gerçek teknik bağımlılık, erişim ve release kapısı ayrı tutulur.

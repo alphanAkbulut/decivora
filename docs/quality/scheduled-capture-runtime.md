@@ -1,5 +1,7 @@
 # Düzenli yakalama — kod teslimi ve takip kapıları
 
+**Sonraki gerçek kabul:** [Native B3tick/cursor/dedup](scheduled-native-001.md) gerçek LOCAL arayüzünde geçti. İlk kod tesliminde açık bırakılmış T17çekirdeği bu ve önceki kanıtlarla Done; yeni mesaj ekleme/semantik ve günlük kabul açık kalır. Aşağıdaki “gerçek okuma yapılmadı” ifadeleri ilk kod tesliminin tarihsel sınırıdır.
+
 **20 Ekim 2026 · Sprint1 · T17/T19/T22/T23.** İstenen: seçilmiş Codex sohbetlerinin kullanıcı her defasında Read düğmesine basmadan açık bir süre/aralık/read sınırı içinde yerel kaydedilmesi. [Mimari ve sequence](../architecture/codex-source-onboarding.md#düzenli-seçili-sohbet-yakalama--uygulanan-yerel-kod).
 
 ## Kodlandı

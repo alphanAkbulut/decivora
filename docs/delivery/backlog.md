@@ -337,7 +337,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 ## T17 — Codex adapter
 
-- **Durum / faz:** IN_PROGRESS / P1b. **Bağımlılık:** T16. **Kapsam ID:** CAP-02.
+- **Durum / faz:** DONE / P1b. **Bağımlılık:** T16. **Kapsam ID:** CAP-02.
 - **İş:** T02 sonuçlarına göre desteklenen yüzeye ayrı adapter; varsayımsal hook adı kullanma.
 - **Kabul:** Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.
 - **Doğrulama:** Adapter sözleşme suite; CLI/desktop ayrımı.
@@ -355,6 +355,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **19Ekim gerçek bağlantı:** [Yeni Codex sohbetiyle pilot](../quality/codex-e2e-001.md): native assistant capture→gerçek model→Task/status, selected-thread pipeline ve human visibility warning. Tool gönderimli mesajlarda userMessage yok; normal kullanıcı girişi ve continuous onboarding açık.
 
 - **20 Ekim düzenli capture kodu:** Immutable schedule, kalıcı tick/read cap, ayrı worker start/stop, expiry/revoke/crash guard ve Sources UI uygulandı. [Kanıt ve kalan kapılar](../quality/scheduled-capture-runtime.md). Eski onboarding/sürekli çalışma ifadeleri ilk teslim tarihine aittir; periyodik native kabul ve yeni-mesaj paylaşım politikası hâlâ açık.
+
+- **20 Ekim çekirdek kapanışı:** [Gerçek3tick zamanlı read/cursor/dedup ve coverage makbuzu](../quality/scheduled-native-001.md), önceki real iki-chat yolculuğu ve adapter contract suite mevcut kabulü karşılar. Kalan release/günlük kabul T24; Claude T16 ve yeni-mesaj model paylaşımı T19/T21/T22 ayrı açık kalır.
 
 ## T18 — Minimal MCP ve cross-agent read
 

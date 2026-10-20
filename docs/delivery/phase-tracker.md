@@ -1,6 +1,6 @@
 # Faz bazlı proje ağacı ve takip görünümü
 
-**19 Ekim2026 — durum teyidi:7Done/21InProgress/2ToDo; P0 kalite ve P1 uygulama işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
+**20 Ekim2026 — durum teyidi:8Done/20InProgress/2ToDo; P0 kalite ve P1 uygulama işleri açık.** MVP, P2 ve P3 ayrı bölümlerdedir; tek güncel dosya tutulur. Bu belge mevcut backlog'un gezinme ve takip görünümüdür, yeni scope/bağımsız görev listesi değildir.
 
 [129alt kaydın teyidi](../quality/task-status-audit.md):56Done/42InProgress/26ToDo/5Proposed; durumu tanımsız kayıt yok.
 
@@ -78,7 +78,7 @@ T15 kapısı: import → aday/uzlaştırma → karar etkisi → onay → event/p
 | ID | Faz | Durum | Ana iş | Plan ön koşulu |
 |---|---|---|---|---|
 | T16 | P1b | IN_PROGRESS | Claude Code adapter | T15 |
-| T17 | P1b | IN_PROGRESS | Codex adapter | T16 |
+| T17 | P1b | DONE | Codex adapter | T16 |
 | T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 |

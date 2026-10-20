@@ -142,12 +142,13 @@
     },
     "T17": {
       "core_acceptance": "Desteklenen Codex yüzeyi açık; aynı session retry ve eksik capture raporlu.",
-      "core_verified": false,
+      "core_verified": true,
       "evidence": [
         "docs/quality/codex-exec-capture-runtime.md",
         "docs/quality/codex-real-capture-001.md",
         "docs/quality/native-ui-journey-001.md",
-        "docs/quality/scheduled-capture-runtime.md"
+        "docs/quality/scheduled-capture-runtime.md",
+        "docs/quality/scheduled-native-001.md"
       ],
       "release_scope": "MVP"
     },

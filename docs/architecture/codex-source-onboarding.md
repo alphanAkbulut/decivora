@@ -1,5 +1,7 @@
 # Codex kaynak kurulumu — yerel kullanıcı akışı
 
+**Gerçek düzenli okuma kabulü:** [Native B3tick](../quality/scheduled-native-001.md)10saniye aralıkla ve açık sınırlarda geçti;6→6dedup, scope/task/bütçe korunması ve terminal kapanış doğrulandı. Üç okuma arasında yeni mesaj yoktu; günlük/ilerleyen-mesaj kabulü değildir.
+
 **Gerçek LOCAL UI dar kabulü:** [İki seçili sentetik sohbet](../quality/native-ui-journey-001.md) bu ekran üzerinden birer kez okundu;6kaynak ve ayrı izinlerle2gerçek model isteği, tek Task + bağlı açık kapsam sorusu ve aynı ID için start önerisi elde edildi. Bağlantılar disconnected/aktivasyonlar Paused; sürekli capture veya modelin AC üretim kalitesi kabulü değil. Aşağıdaki ilk teslimin açık UI kabulü bu dar yolla sınandı; genel günlük kullanım kapısı sürer.
 
 **Sonraki20Ekim bağlantısı:** Yeni kaynak için [exact model paylaşım önizlemesi/onayı ve ilk Task kapsam review](source-sharing-and-first-review.md) kodlandı. Aşağıdaki ilk capture tesliminde açık kalan model-egress kurulumunun bu yerel alt yolu artık mevcut; geçerli policy/gerçek provider UI kabulü ayrı.

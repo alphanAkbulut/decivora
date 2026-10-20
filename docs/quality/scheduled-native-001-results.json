@@ -1,0 +1,57 @@
+{
+  "format": "scheduled-native-1",
+  "date": "2026-10-20",
+  "status": "passed_narrow",
+  "approval_ref": "call_df6751014ecd4bf28a9396ea7593cd1a",
+  "selected_chats": 1,
+  "provider_version": "0.162.0-alpha.17.2",
+  "scheduled_reads": 3,
+  "interval_seconds": 10,
+  "permission_window_seconds": 300,
+  "timing": {
+    "ticks_started": 3,
+    "ticks_finished": 3,
+    "successful_native_reads": 3,
+    "interval_gaps_seconds": [
+      10.025750160217285,
+      10.018105030059814
+    ],
+    "unclosed_claims": 0,
+    "source_counts": [
+      3,
+      0,
+      0
+    ],
+    "coverage": [
+      "partial",
+      "partial",
+      "partial"
+    ],
+    "all_pending_turns_zero": true,
+    "all_unsupported_zero": true
+  },
+  "sources_before": 6,
+  "sources_after": 6,
+  "duplicate_sources": 0,
+  "task_count": 1,
+  "task_stage": "In Progress",
+  "task_and_scope_unchanged": true,
+  "final_schedule": "Stopped",
+  "final_connection": "Disconnected",
+  "worker_active": false,
+  "reload_verified": true,
+  "coverage": "partial",
+  "new_model_calls": 0,
+  "reasoning_or_tool_outputs_captured": false,
+  "existing_budget_unchanged": true,
+  "root_dispatches": 54,
+  "root_http_budget_slots": 108,
+  "root_committed_microusd": 67895,
+  "advancing_new_messages_during_polling": "not_tested",
+  "full_history_or_daily_acceptance": "not_claimed",
+  "code_ci": {
+    "commit": "0bb4964a3f8cfde79e641aecbde03a03cd77a888",
+    "run_id": 39428965127,
+    "conclusion": "success"
+  }
+}

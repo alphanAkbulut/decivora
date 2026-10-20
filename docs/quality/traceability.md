@@ -137,3 +137,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 
 
 20 Ekim T17/T19/T22/T23 düzenli yakalama: [kalıcı bounded capture planı](scheduled-capture-runtime.md), source consent→schedule→tick/read claim→checkpoint guard→kaynak yolu. Capture modeli veya onayı tetiklemez; sentetik worker/browser kanıtı gerçek periyodik native kabulünden ayrıdır.
+
+
+T17corekapanışı: [gerçek schedule native001](scheduled-native-001.md)3read timing/cursor/dedup/coverage + önceki iki-chat capture/model + adapter contract suite. Core kabulü değiştirilmedi; daily/release ve yeni-mesaj paylaşımı ayrı task sahiplerinde açık.

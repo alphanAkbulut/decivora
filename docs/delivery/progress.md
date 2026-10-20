@@ -10,8 +10,8 @@
 
 | Ana görev durumu | Sayı |
 |---|---|
-| DONE | 7 |
-| IN_PROGRESS | 21 |
+| DONE | 8 |
+| IN_PROGRESS | 20 |
 | TODO | 2 |
 
 ## İş türü ve bekleyen insan kapıları
@@ -217,18 +217,6 @@ Son ilerleme kaydı yok.
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
 Sıradaki adım: Ayrıntılı backlog'u kontrol et.
-
-### T17 · Codex adapter
-
-19 Ekim2026 — Seçilmiş thread user/assistant capture,6gerçek TEST source, kalıcı sayfa checkpoint/dedup/pending ve native Operations trace kodlu. [Teslim](../quality/conversation-processing-runtime.md).
-
-**Aktif teknik risk:** Source kapasitesi1000ve sayfalı UI kodlandı; onboarding/gap/backfill ve sürekli çalışma açık; tek gerçek kaynak izni tüketildi.
-
-**Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
-
-**Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
-
-Sıradaki adım: İndeksli/paged kapasite teslim edildi; sırada bağlantı/izin kartı, sonra yeni dar izinle güncel kodun gerçek host readback kabulü.
 
 ### T18 · Minimal MCP ve cross-agent read
 
@@ -444,7 +432,7 @@ Bunlar P0 hazırlığı ve kontrollü deney kodudur; tamamlanmış production en
 | T14 | P1a | IN_PROGRESS | Evidence ve false-done düzeltmesi | T13 | 4 |
 | T15 | P1a | IN_PROGRESS | Teknik kanıt kapısı | T14, T07c | 1 |
 | T16 | P1b | IN_PROGRESS | Claude Code adapter | T15 | 1 |
-| T17 | P1b | IN_PROGRESS | Codex adapter | T16 | 0 |
+| T17 | P1b | DONE | Codex adapter | T16 | 0 |
 | T18 | P1b | IN_PROGRESS | Minimal MCP ve cross-agent read | T17 | 9 |
 | T19 | P1b | IN_PROGRESS | Proje seçimi ve Review Inbox UI | T18 | 1 |
 | T20 | P1b | IN_PROGRESS | Board, Graph ve Timeline | T19 | 9 |
@@ -467,4 +455,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `5dbfe92ef917cd90a4591e19673c36c9e46a2c888c0b42f79c3f8dec14c64a1a`
+Kaynak fingerprint: `00f9e5a143fa74b30ce94ea198b1cc014fe7cd057edc1d19faa260fbf8c09fc2`

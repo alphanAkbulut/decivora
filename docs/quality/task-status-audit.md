@@ -1,5 +1,7 @@
 # Görev durumları — satır bazlı teyit
 
+**20 Ekim delta:** [T17 core gerçek kabulü](scheduled-native-001.md) sonrası ana8Done/20InProgress/2ToDo. Yalnız T17 evidence/status gözden geçirildi; aşağıdaki19Ekim tam audit tarihsel kalır. Alt kayıt sayıları56Done/42InProgress/26ToDo/5Proposed değişmedi.
+
 **19 Ekim2026.** Kullanıcının talebiyle30ana görev ve129alt kaydın tamamı gözden geçirildi. Bu bir geliştirme takip düzeltmesidir; yeni ürün özelliği, ücretli çağrı, gerçek kaynak okuması veya MVP kabulü değildir. [Makine tarafından okunabilir159kayıt](task-status-audit.json), önceki durum, yeni durum, gerekçe, evidence seviyesi ve kalan kabulü içerir. Canonical durum backlog/team-data; audit ikinci bağımsız görev listesi değildir.
 
 | Durum | Önce | Sonra |
