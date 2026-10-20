@@ -2064,5 +2064,382 @@
     "input_base_ref": "0bb4964a3f8cfde79e641aecbde03a03cd77a888",
     "report": "docs/quality/scheduled-native-001.md",
     "scope": "T17 core closure only; other historical audit rows unchanged"
+  },
+  "open_work_challenge": {
+    "date": "2026-10-20",
+    "input_base_ref": "6dcadc4d386b8e3d3271490612070801bd99befb",
+    "method": "All 22 open parent definitions and required child ownership checked against current source/test/report paths. Static scope/evidence review, not new host/model/product acceptance. No threshold reduced.",
+    "counts": {
+      "product_code": 10,
+      "host_acceptance": 2,
+      "quality_gate": 2,
+      "integration_gate": 1,
+      "release_gate": 1,
+      "future": 6
+    },
+    "note": "Previous 11-code-owner grouping includes T16 adapter; here its remaining gate is separated as host acceptance. No tasks added, removed or closed.",
+    "findings": [
+      "Stale backlog summary",
+      "Task parser consumed peer guidance after T30 and overwrote acceptance metadata",
+      "Broad partial-parent WIP mixes future work and release gates with active delivery",
+      "Duplicated/dated next actions describe already delivered onboarding as absent"
+    ],
+    "tasks": [
+      {
+        "id": "T01",
+        "status": "IN_PROGRESS",
+        "classification": "quality_gate",
+        "reason": "Veri ve scorer var; bağımsız etiket/adjudication ve geliştirmede kullanılmamış holdout kabulü yok.",
+        "evidence": [
+          "docs/quality/human-review-queue.md",
+          "scripts/check_corpus.py"
+        ],
+        "required_open_slices": [
+          "T01e",
+          "T01f"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T02",
+        "status": "IN_PROGRESS",
+        "classification": "host_acceptance",
+        "reason": "Codex kanıtı var; ikinci coding yüzeyinin gerçek host/version/coverage deneyi tamam değil. T16 ile ilişkili kabul; ayrı iki yeni kod paketi değil.",
+        "evidence": [
+          "docs/quality/scheduled-native-001.md",
+          "packages/capture/claude_code/hooks.py"
+        ],
+        "required_open_slices": [
+          "T02b",
+          "T02d",
+          "T02c"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T03",
+        "status": "IN_PROGRESS",
+        "classification": "quality_gate",
+        "reason": "Build/stack kararı verilmiş; bunu yeniden beklemiyoruz. Açık olan semantik/gerçek zincir ve adil native/management-overhead kıyası.",
+        "evidence": [
+          "docs/architecture/adr/",
+          "docs/quality/dialogue-batch-001-j04.md"
+        ],
+        "required_open_slices": [
+          "T03a",
+          "T03b",
+          "T03f"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T09",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Gerçek provider ve iki-chat öneri kanıtı var; genel bağlam/çıkarım, risk assessment ve yeni mesajın izinli sürekli analiz bağlantısı tamam değil.",
+        "evidence": [
+          "packages/capture/extraction.py",
+          "packages/capture/source_sharing.py"
+        ],
+        "required_open_slices": [
+          "T09b",
+          "T09c",
+          "T09d"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T10",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Exact eşleme ve olası refinement var; semantik eşdeğerlik/çatışma ve karşı kanıt çözümü genel olarak tamam değil.",
+        "evidence": [
+          "packages/reconciliation/core.py",
+          "tests/runtime/test_dialogue_relations.py"
+        ],
+        "required_open_slices": [
+          "T05d",
+          "T10a",
+          "T10b"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T13",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Güvenilir review ve seçenekli kaynak soru var; onaylı split/part_of/AC eşleme ve genel soru-belirsizlik çözümü açık.",
+        "evidence": [
+          "packages/capture/dialogue_questions.py",
+          "tests/runtime/test_review_remediation.py"
+        ],
+        "required_open_slices": [
+          "T13d",
+          "T13e"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T14",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Done guard ve file/human evidence var; genel izinli verifier, hedef/AC revision bağları ve tam parent kriter zinciri açık.",
+        "evidence": [
+          "packages/verification/files.py",
+          "tests/runtime/test_file_verification.py"
+        ],
+        "required_open_slices": [
+          "T14a",
+          "T14b",
+          "T14c",
+          "T14d"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T15",
+        "status": "IN_PROGRESS",
+        "classification": "integration_gate",
+        "reason": "Modül crash/restore kanıtı var; tek uygulama revisionında tam karar-etki-onay-kanıt-düzeltme zinciri raporu eksik. Yeni bağımsız özellik değil.",
+        "evidence": [
+          "tests/runtime/test_api_free_chain.py",
+          "docs/quality/concurrency-impact-delivery.md"
+        ],
+        "required_open_slices": [
+          "T15a"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T16",
+        "status": "IN_PROGRESS",
+        "classification": "host_acceptance",
+        "reason": "Hook adapter kodu ve fixture negatifleri var; kurulu gerçek Claude session/hook kabulü yok. Codex ana yolundan önceye alınmayacak.",
+        "evidence": [
+          "packages/capture/claude_code/hooks.py",
+          "tests/runtime/test_todo_delivery.py"
+        ],
+        "required_open_slices": [
+          "T04b",
+          "T16b"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T18",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Sınırlı MCP/iki-agent fixture var; gerçek client onboarding ve kaynak ACL koruyan kapsamlı continuation teslimi eksik.",
+        "evidence": [
+          "packages/mcp/server.py",
+          "tests/runtime/test_mcp_local.py"
+        ],
+        "required_open_slices": [
+          "T18c",
+          "T18f",
+          "T18h",
+          "T18i",
+          "T18e",
+          "T18b",
+          "T18d"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T19",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Kaynak/paylaşım/ilk scope UI artık kodlu ve dar native kabulü var. Gerçek kalan: T19b risk kartı ve genel çatışma/yeni mesaj policy UI.",
+        "evidence": [
+          "docs/quality/native-ui-journey-001.md",
+          "docs/architecture/source-sharing-and-first-review.md"
+        ],
+        "required_open_slices": [
+          "T19b"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T20",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Board/Graph/Timeline ve blocker timer var; Q08-A split/child ilerlemesi, Q06-A milestone context ve tam görünüm entegrasyonları eksik.",
+        "evidence": [
+          "tests/runtime/test_blocker_age.py",
+          "docs/product/task-context-and-acceptance.md"
+        ],
+        "required_open_slices": [
+          "T18g",
+          "T20e",
+          "T20a",
+          "T20b",
+          "T20c",
+          "T20d",
+          "T20f",
+          "T20g",
+          "T20h",
+          "T20i"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T21",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Rezervasyon, unknown ve source aktivasyon var; parametre sicili/config revision ve trusted settlement tam değil. API bakiyesi veya yeni bütçe seçimi beklenmiyor.",
+        "evidence": [
+          "packages/domain/work_routing.py",
+          "tests/runtime/test_development_budget.py"
+        ],
+        "required_open_slices": [
+          "T21b",
+          "T21c"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T22",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Import/native lineage/cursor var; Q07/1C geçmiş manifest/coverage ve prompt-execution-artifact zincirinin tamamı eksik.",
+        "evidence": [
+          "packages/capture/source_pages.py",
+          "tests/runtime/test_source_pages.py"
+        ],
+        "required_open_slices": [
+          "T22b"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T23",
+        "status": "IN_PROGRESS",
+        "classification": "product_code",
+        "reason": "Loopback/redaction/private backup/offline restore var; aktif recovery/migration ve purge/retention/export tamam değil.",
+        "evidence": [
+          "packages/storage/local_backup.py",
+          "tests/runtime/test_secret_privacy.py"
+        ],
+        "required_open_slices": [
+          "T23a",
+          "T23b",
+          "T23e",
+          "T23c",
+          "T23d"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T24",
+        "status": "IN_PROGRESS",
+        "classification": "release_gate",
+        "reason": "14 AC, iki adapter, bağımsız semantik kabul ve günlük kullanıcı pilotu birleşik kanıtı yok. Her modülün testini yeniden yazma işi değil.",
+        "evidence": [
+          "docs/quality/mvp-test-plan.md",
+          "packages/analytics/acceptance_inventory.py"
+        ],
+        "required_open_slices": [
+          "T24d",
+          "T24a",
+          "T24c",
+          "T24g",
+          "T24h",
+          "T24i",
+          "T24j",
+          "T24k",
+          "T24l",
+          "T24m",
+          "T24n",
+          "T24o",
+          "T24p",
+          "T24f",
+          "T24q",
+          "T24b",
+          "T24e"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T25",
+        "status": "TODO",
+        "classification": "future",
+        "reason": "Ek chat yüzeyleri faz 2; MVP bekleyen işi diye sunulmamalı. Başlanmamış scope korunur.",
+        "evidence": [
+          "docs/product/full-scope.md",
+          "docs/delivery/phase-tracker.md"
+        ],
+        "required_open_slices": [],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T26",
+        "status": "IN_PROGRESS",
+        "classification": "future",
+        "reason": "Orphan audit alt kümesi var; gelişmiş reconciliation/holdout iyileşme faz 2. In Progress kısmi geçmiş teslim, aktif sprint değil.",
+        "evidence": [
+          "packages/reconciliation/orphan_audit.py",
+          "tests/runtime/test_todo_delivery.py"
+        ],
+        "required_open_slices": [],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T27",
+        "status": "IN_PROGRESS",
+        "classification": "future",
+        "reason": "Read-only GitHub observer alt kümesi var; gerçek hedef ve host panel kabulü faz 2. PR varlığı AC kanıtı değildir.",
+        "evidence": [
+          "packages/verification/github_commit.py",
+          "tests/runtime/test_todo_delivery.py"
+        ],
+        "required_open_slices": [],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T28",
+        "status": "IN_PROGRESS",
+        "classification": "future",
+        "reason": "Paired-cost alt kümesi var; dış connector sync/kalite eşitliğinde kıyas faz 3. Güncel MCP/Codex akışını bekletmez.",
+        "evidence": [
+          "packages/analytics/paired_cost.py",
+          "tests/runtime/test_todo_delivery.py"
+        ],
+        "required_open_slices": [
+          "T28c",
+          "T28b"
+        ],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T29",
+        "status": "IN_PROGRESS",
+        "classification": "future",
+        "reason": "Release hazırlık alt kümesi var; public ürün release onayı/temiz kurulum/lisans envanteri tam kabulü faz 3. Repo public olması ürün release değildir.",
+        "evidence": [
+          "docs/governance/versioning.md",
+          "docs/delivery/phase-tracker.md"
+        ],
+        "required_open_slices": [],
+        "disposition": "remain_open_no_acceptance_waiver"
+      },
+      {
+        "id": "T30",
+        "status": "TODO",
+        "classification": "future",
+        "reason": "Ekip/cloud keşfi faz 4. Tracker genel araştırma kabulünü T30 sanıyordu; özgün multi-tenant kapsam/izin/lisans kabulü geri eşlendi.",
+        "evidence": [
+          "docs/delivery/backlog.md",
+          "scripts/project_progress.py"
+        ],
+        "required_open_slices": [],
+        "disposition": "remain_open_no_acceptance_waiver"
+      }
+    ],
+    "validation": {
+      "repo_tracker_tests": 50,
+      "status": "passed",
+      "scope": "Parser/tracker/closure/doc consistency, not runtime product acceptance",
+      "live_tracker_readback": "127.0.0.1:8765 original T30 acceptance and unchanged canonical counts verified"
+    }
   }
 }

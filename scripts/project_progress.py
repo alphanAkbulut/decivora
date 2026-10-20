@@ -43,7 +43,11 @@ def build(root=ROOT):
     headings = list(re.finditer(r"^## (T\d+) — ([^\n]+)\n", backlog, re.M))
     tasks = []
     for i, h in enumerate(headings):
-        section = backlog[h.end():headings[i + 1].start() if i + 1 < len(headings) else len(backlog)]
+        # A task ends at any peer heading, including the general sections after T30.
+        # Otherwise later guidance can overwrite its acceptance, risk and next action.
+        next_section = re.search(r"^## ", backlog[h.end():], re.M)
+        end = h.end() + next_section.start() if next_section else len(backlog)
+        section = backlog[h.end():end]
         meta = re.search(r"- \*\*Durum / faz:\*\* ([^/.\n]+) / ([^.]+)\. \*\*Bağımlılık:\*\* ([^.]+)\.", section)
         if not meta:
             raise ValueError("Eksik görev metadatası: " + h.group(1))

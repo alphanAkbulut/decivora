@@ -241,7 +241,7 @@
       "release_scope": "P3"
     },
     "T30": {
-      "core_acceptance": "gerçek lisans/exception, immutable source path, source→mevcut task/contract, uyarlama maliyeti ve bilinmeyenler. ER-T1–5 not_run; ölçülmeyen metrik null; managed/OSS ve component/product ayrımı. En iyi native baseline korunur. Üç odaklı closure'dan sonra karar için yeterli kanıt varsa tarama durur.",
+      "core_acceptance": "Ürün kanıtı olmadan multi-tenant migration başlamaz; kapsam/izin/lisans kararı ayrı.",
       "core_verified": false,
       "evidence": [],
       "release_scope": "P4"

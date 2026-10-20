@@ -2,6 +2,8 @@
 
 **Durum: 20 Ekim 2026.** Bu plan mevcut backlog'un yürütme görünümüdür; yeni backlog, kapsam daraltma veya tarih garantisi değildir. Kaynaklar: [ana işler](backlog.md), [kapanış kanıtları](task-closure.json), [denetim](../quality/task-status-audit.json). Testlerin yürütülmesi: [MVP test planı](../quality/mvp-test-plan.md).
 
+[22 açık işin gereklilik ve takip hatası incelemesi](../quality/task-status-audit.md#20-ekim--neden-hâlâ-22-açık-ana-iş-var): sayılar değişmedi; her açık satırın kalan kabulü sorgulandı.
+
 ## Güncel sayılar
 
 | Seviye | Done | In Progress | To Do | Proposed | Toplam |

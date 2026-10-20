@@ -15,7 +15,7 @@ Q09/DEC-17 uyarınca engeli kaldıran uygulanabilir adım önce değerlendirilir
 
 T01 corpus FLOW örneklerini de içerir. Bildirim kanalı/sıklığı açıkken yalnız uygulama içi sıra hazırlanır. Alt dilimler planlıdır, uygulanmadı.
 
-**Güncel ana durum:7 DONE,15 IN_PROGRESS,8 TODO. Üç P0 kalite işi ve14 MVP işi açık; diğer6 açık ana iş gelecek fazlardadır.** İlk uygulama iskeleti tamamlandı; T05 kabul edilmiş çekirdek teslimidir; kalan entegrasyonlar kendi kayıtlarında izlenir. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
+**Güncel ana durum: 8 DONE, 20 IN_PROGRESS, 2 TODO. Üç P0 kalite işi ve 13 MVP işi açık; diğer 6 açık ana iş gelecek fazlardadır.** Açık sayıların gereklilik incelemesi ve takip hataları [satır bazlı audit](../quality/task-status-audit.md#20-ekim--neden-hâlâ-22-açık-ana-iş-var) içinde ayrılır. İlk uygulama iskeleti tamamlandı; T05 kabul edilmiş çekirdek teslimidir; kalan entegrasyonlar kendi kayıtlarında izlenir. [Audit düzeltme kaydı](../quality/audit-remediation.md) kanıt/kalan kapsamı ayırır. İlk [corpus hazırlığı](../quality/baseline.md) somut veri çıktısıdır; bu plan ürün uygulamasını gerçekleştirmiş değildir. Her görevi küçük bir PR/çalışma dilimi olarak ele al; büyük keşif satırlarını belirtilen yüzey/connector bazında ayrı alt görevlere böl. Tahminler takvim taahhüdü değil iş parçalama boyutudur. Görev kapanışı: değişiklik + AC kanıtı + ilgili kontrol + status güncellemesi. [Roadmap](../../ROADMAP.md) fazları, [MVP](../product/mvp.md) AC'leri tanımlar.
 
 [Engine haritası](../architecture/engines.md), [runtime sözleşmeleri](../architecture/runtime-contracts.md) ve bu belgenin sonundaki **sistem sözleşmesi alt dilimleri** ilgili görevlerin kapsamına dahildir. “1 küçük PR” üst sınır taahhüdü değildir; bu alt dilimleri sırayla tamamla. 30 ana görev korunmuştur; güvenlik/veri bütünlüğü ayrıntıları son faza ertelenmez.
 
@@ -233,12 +233,12 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **API finansman kontrol noktası:** Kullanıcı gerçek model testinin mecburi olduğu aşamada hatırlatılmasını ve o zaman bakiye yüklemeyi istedi. İlk API-backed semantic run öncesi hazır input/data scope, sağlayıcı/model, input-output/context/call/retry ve toplam harcama tavanını somut sun; kullanıcı bakiye/erişim ve sınırları teyit etmeden dispatch yapma. Bu koşullu niyet harcama izni değildir; bağımsız deterministik işler beklemez. [Kayıt](decision-brief.md#t09-gerçek-model-deneyi-öncesi-api-finansman-hatırlatması).
 
-- **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
+- **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded context ve gerçek provider yolu, T10 exact duplicate/refinement review mevcut. [Gerçek iki-chat UI/model kabulü](../quality/native-ui-journey-001.md) dar görev/start kanıtıdır; genel retrieval/holdout kalite kabulü açık; bu görev Done değil.
 
 - **18 Ekim kod teslimi:** [Diyalog→görev/durum](../quality/dialogue-status-runtime.md): kaynak/current task context bağlı yanıt; task create ve status önerileri ayrı review; provider/import ortak doğrulaması. Gerçek serbest metin kalitesi ve otomatik capture açık; ana T09 kapanmadı.
 - **Son ilerleme:** 19 Ekim2026 — [Exact-source aktivasyon + kalıcı bounded processing worker](../architecture/model-activation-runtime.md) API/thread/queue yoluna bağlandı. Pass/source caps restartta korunur; stop, unfinished claim ve unknown usage yeni dispatch keser. Kaynak/context ve root bütçe guard korunur.
-- **Risk durumu:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
-- **Sıradaki adım:** Kaynak/model onboarding ekranını hazır backend komutlarına bağla; yeni mesaj paylaşım kapsamını mevcut tek-deneme izinlerinden ayrı al. Bağımsız semantic ölçüm kendi kapısında açık.
+- **Risk durumu:** Model için ayrı source paylaşımı ve aktivasyon zorunlu; gerçek provider çalıştı. Genel retrieval/chunking/çıkarım kalitesi ve yeni mesajların birleşik otomatik kabulü açık.
+- **Sıradaki adım:** Kodlu source/model onboarding ve worker üzerine yeni mesajın izinli analiz→review bağlantısını tamamla; mevcut tek-deneme iznini genişletme. Bağımsız semantic ölçüm kendi kapısında açık.
 
 ## T10 — Temel reconciliation
 
@@ -249,7 +249,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Beklenen dosya alanı:** `packages/reconciliation/` (henüz oluşmamış yollar uygulama sırasında açılır).
 - **Boyut:** 1 küçük PR.
 
-- **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded lexical context/model disabled; T10 exact duplicate/refinement review. Real semantic provider/FTS/holdout/gold precision-recall açık; bu görev Done değil.
+- **Son çalışan kod:** [Toplu çekirdek](../quality/integrated-core.md): T09 structured source validator/bounded context ve gerçek provider yolu, T10 exact duplicate/refinement review mevcut. [Gerçek iki-chat UI/model kabulü](../quality/native-ui-journey-001.md) dar görev/start kanıtıdır; genel retrieval/holdout kalite kabulü açık; bu görev Done değil.
 - **Son ilerleme:** 19 Ekim2026 — Exact duplicate/source attach, kaynaklı relation ve Decision replacement review kodlandı. [Sözleşme](../quality/dialogue-status-runtime.md).
 - **Risk durumu:** Semantik conflict/refinement/equivalence ve genel Idea Evaluation tamamlanmadı.
 - **Sıradaki adım:** T10a/b kapsamındaki açıklanabilir karşı kanıt ve belirsizlik çözümünü tamamla; similarity ile otomatik merge yapma.
@@ -290,7 +290,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Teslim:** [T13a review çekirdeği](../quality/review-kernel.md);18yeni/148runtime test, `review-demo`. T13e ve ana kabul açık; seçim/onay/apply ayrıdır. [T13b lifecycle](../quality/task-lifecycle.md) de tamamlandı;168runtime test.
 - **Son ilerleme:** 19 Ekim2026 — Status/answer/relation/replacement, scope edit ve lifecycle select→approve→apply kodlu; [son durum](../quality/workflow-ui-runtime.md).
 - **Son ilerleme:** 19 Ekim2026 — [Kaynaklı seçenekli soru backend bağlantısı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına): model taslağı→ayrı insan review→atomik kalıcı soru→geç cevap. Duplicate/ret/erteleme ve provenance korunur; Kaynaklı taslak inceleme kartı da bağlandı; genel soru türleri ve ekip routing açık.
-- **Risk durumu:** Konuşmadan QuestionRequest üretimi, genel clarification ve split planı atomik kabulü açık.
+- **Risk durumu:** Kaynaklı seçenekli soru üretimi kodlu; genel/serbest metin QuestionRequest, clarification ve split planı atomik kabulü açık.
 
 ## T14 — Evidence ve false-done düzeltmesi
 
@@ -382,8 +382,8 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 - **Boyut:** 1 küçük PR.
 
 - **İlk çalışan UI dilimi:** [Yerel program](../quality/local-preview.md); manuel tek proje/AC card/board. Full selector/inbox/graph/timeline açık; native/MCP bağımlılığı kaldırılmadı, disabled manual slice önce kuruldu.
-- **Son ilerleme:** 19 Ekim2026 — Mevcut proposal/status/answer/relation review yanında [finite worker yönetim backend API](../architecture/model-activation-runtime.md) create/start/run/stop ve state metadata tamamlandı. Kurulum/aktivasyon UI bağlantısı açık.
-- **Risk durumu:** Proje/kaynak kurulum izin wizardı ve risk plan kartı yok; bütün öneri türleri tamamlanmadı.
+- **Son ilerleme:** 19 Ekim2026 — Mevcut proposal/status/answer/relation review yanında [finite worker yönetim backend API](../architecture/model-activation-runtime.md) create/start/run/stop ve state metadata tamamlandı. Kurulum/aktivasyon UI bağlantısı 20 Ekimde kodlandı ve dar native UI kabulü geçti; yeni mesaj akışının birleşik kabulü açık.
+- **Risk durumu:** Seçili Codex kaynak/izin ve model paylaşım kurulumu var; T19b genel risk plan kartı, çatışma ve bütün öneri türleri tamamlanmadı.
 - **Sıradaki adım:** T19b risk kartı ve source/model onboarding; mevcut source/proposal review uçlarını yeniden yazma.
 
 ## T20 — Board, Graph ve Timeline
@@ -411,7 +411,7 @@ Ana gate'in tamamlanması bu tabloyla değişmez. DONE yalnız belirtilen teslim
 
 - **Son ilerleme:**14Ekim2026 · [API-bağımsız kod teslimi ve takip kapıları](api-independent-development.md); yerel dilim uygulanıyor, ana görev kabulü/gerçek entegrasyonlar açık.
 - **Son ilerleme:** 19 Ekim2026 — Shared root token/money reservation, count+actual/unknown/overrun ve routing etiketleri mevcut. [API bütçe kaydı](../quality/openai-development-budget.md).
-- **Risk durumu:** Dönem/config ve source/model onboarding UI açık; source activation/finite-loop backend kodlu, tahmin nihai fatura değildir.
+- **Risk durumu:** Source/model onboarding ve activation UI kodlu; genel dönem/config sicili ve trusted reconciliation açık, tahmin nihai fatura değildir.
 - **Sıradaki adım:** T21b/c kalan dönem/parametre görünümü ve trusted reconciliation; root bütçeyi yeni batch ile sıfırlama.
 
 ## T22 — Chat import ve prompt lineage

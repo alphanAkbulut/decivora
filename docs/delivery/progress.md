@@ -150,13 +150,13 @@ Sıradaki adım: Aynı bağımsız beklentilerde tam ürün zincirini ve adil na
 
 19 Ekim2026 — [Exact-source aktivasyon + kalıcı bounded processing worker](../architecture/model-activation-runtime.md) API/thread/queue yoluna bağlandı. Pass/source caps restartta korunur; stop, unfinished claim ve unknown usage yeni dispatch keser. Kaynak/context ve root bütçe guard korunur.
 
-**Aktif teknik risk:** Varsayılan model kapalı; genel retrieval/chunking/çıkarım kalitesi ve otomatik aktivasyon kabulü açık.
+**Aktif teknik risk:** Model için ayrı source paylaşımı ve aktivasyon zorunlu; gerçek provider çalıştı. Genel retrieval/chunking/çıkarım kalitesi ve yeni mesajların birleşik otomatik kabulü açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
 **Etkilenen iş:** Backlog kabul ve bağımlılıkları geçerli.
 
-Sıradaki adım: Kaynak/model onboarding ekranını hazır backend komutlarına bağla; yeni mesaj paylaşım kapsamını mevcut tek-deneme izinlerinden ayrı al. Bağımsız semantic ölçüm kendi kapısında açık.
+Sıradaki adım: Kodlu source/model onboarding ve worker üzerine yeni mesajın izinli analiz→review bağlantısını tamamla; mevcut tek-deneme iznini genişletme. Bağımsız semantic ölçüm kendi kapısında açık.
 
 ### T10 · Temel reconciliation
 
@@ -174,7 +174,7 @@ Sıradaki adım: T10a/b kapsamındaki açıklanabilir karşı kanıt ve belirsiz
 
 19 Ekim2026 — [Kaynaklı seçenekli soru backend bağlantısı](../quality/dialogue-status-runtime.md#19-ekim--konuşmadaki-seçenekli-sorudan-kalıcı-soru-kaydına): model taslağı→ayrı insan review→atomik kalıcı soru→geç cevap. Duplicate/ret/erteleme ve provenance korunur; Kaynaklı taslak inceleme kartı da bağlandı; genel soru türleri ve ekip routing açık.
 
-**Aktif teknik risk:** Konuşmadan QuestionRequest üretimi, genel clarification ve split planı atomik kabulü açık.
+**Aktif teknik risk:** Kaynaklı seçenekli soru üretimi kodlu; genel/serbest metin QuestionRequest, clarification ve split planı atomik kabulü açık.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
@@ -232,9 +232,9 @@ Sıradaki adım: T18b–i kalan kabulü: source ACL korunarak deterministic deva
 
 ### T19 · Proje seçimi ve Review Inbox UI
 
-19 Ekim2026 — Mevcut proposal/status/answer/relation review yanında [finite worker yönetim backend API](../architecture/model-activation-runtime.md) create/start/run/stop ve state metadata tamamlandı. Kurulum/aktivasyon UI bağlantısı açık.
+19 Ekim2026 — Mevcut proposal/status/answer/relation review yanında [finite worker yönetim backend API](../architecture/model-activation-runtime.md) create/start/run/stop ve state metadata tamamlandı. Kurulum/aktivasyon UI bağlantısı 20 Ekimde kodlandı ve dar native UI kabulü geçti; yeni mesaj akışının birleşik kabulü açık.
 
-**Aktif teknik risk:** Proje/kaynak kurulum izin wizardı ve risk plan kartı yok; bütün öneri türleri tamamlanmadı.
+**Aktif teknik risk:** Seçili Codex kaynak/izin ve model paylaşım kurulumu var; T19b genel risk plan kartı, çatışma ve bütün öneri türleri tamamlanmadı.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
@@ -258,7 +258,7 @@ Sıradaki adım: T20c/d/g/h/i kapsamını mevcut UIya bağla; parent kriterlerin
 
 19 Ekim2026 — Shared root token/money reservation, count+actual/unknown/overrun ve routing etiketleri mevcut. [API bütçe kaydı](../quality/openai-development-budget.md).
 
-**Aktif teknik risk:** Dönem/config ve source/model onboarding UI açık; source activation/finite-loop backend kodlu, tahmin nihai fatura değildir.
+**Aktif teknik risk:** Source/model onboarding ve activation UI kodlu; genel dönem/config sicili ve trusted reconciliation açık, tahmin nihai fatura değildir.
 
 **Denemeler / sonuç:** Ayrıntılı kaynak kayıtlarını kontrol et.
 
@@ -455,4 +455,4 @@ Güncel model denemesi T03 son ilerleme kaydındadır. Bu alan kaynak raporun ta
 
 Görev kabul kriterleri, doğrulama ve alt görevler [kanonik backlog](backlog.md) içinde; 10 production engine [engine sözleşmesinde](../architecture/engines.md) planlıdır.
 
-Kaynak fingerprint: `00f9e5a143fa74b30ce94ea198b1cc014fe7cd057edc1d19faa260fbf8c09fc2`
+Kaynak fingerprint: `e2a7693dd2b2c8d89cbac9c45ead9c2381bb4c1d2de19373b89cec88a77bea22`

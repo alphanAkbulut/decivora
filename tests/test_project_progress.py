@@ -72,6 +72,19 @@ class ProgressTests(unittest.TestCase):
         self.assertTrue(all(e["status"] == "PLANNED_PRODUCTION" for e in data["engines"]))
         self.assertEqual(data["tasks"][14]["dependencies"], ["T14", "T07c"])
 
+    def test_peer_guidance_cannot_overwrite_last_task_acceptance_or_status(self):
+        path = self.root / progress.SOURCES[0]
+        before = next(t for t in progress.build(self.root)['tasks'] if t['id']=='T30')
+        self.assertEqual(before['details']['Kabul'],
+                         'Ürün kanıtı olmadan multi-tenant migration başlamaz; kapsam/izin/lisans kararı ayrı.')
+        path.write_text(path.read_text() + '\n## Unrelated delivery guidance\n'
+                        '- **Kabul:** Not the T30 acceptance.\n'
+                        '- **Risk durumu:** Not the T30 risk.\n'
+                        '- **Durum / faz:** DONE / P4. **Bağımlılık:** —.\n')
+        after = next(t for t in progress.build(self.root)['tasks'] if t['id']=='T30')
+        self.assertEqual(after, before)
+        self.assertEqual(after['status'], 'TODO')
+
     def test_active_risk_remains_visible_when_fixture_evidence_passed(self):
         path = self.root / progress.SOURCES[0]
         original = path.read_text()
