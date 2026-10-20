@@ -1,5 +1,29 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+## 20 Ekim oturum sonu — yarın buradan devam
+
+**Owner durdurdu: tokenları bitti, yarın devam edecek.** Yeni native okuma/model çağrısı veya arka plan deney başlatma. Bu bölüm en güncel devir noktasıdır; aşağıdaki tarihli kayıtlar kendi geçmiş koşullarını anlatır.
+
+- **Son kod commit:** `23227aa6a6adf692c5c0cf76541f38373df08ee1`. `analyze_approved_source(plan_id,start=true)` mevcut exact sharing approval → ayrı activation → tek-source/tek-grant queue → review bağlantısını kurdu. Conversations'ta Start approved analysis düğmesi var; gelecekteki mesajlara grant vermez, Task/durum otomatik uygulanmaz. Manuel activation/worker yolu korunur.
+- **Kanıt:** 12 yeni/704 toplam runtime test, scripted-provider browser exact preview/consent/start/queue/ilk scope/Task/mobil akışı geçti. Aynı-task ikinci kaynak/status/ayrı review testi geçti. 63 Mermaid render, hata0; değişen sequence incelendi. GitHub CI run39437786397 success. Gerçek model anlam doğruluğu değildir.
+- **Durum:** ana8Done/20InProgress/2ToDo; alt56Done/42InProgress/26ToDo/5Proposed. Bu kod dilimi parent'ları kapatmadı. [22 açık iş incelemesi](../quality/task-status-audit.md) ve [süreç nedenleri/düzeltmeler](../quality/delivery-flow-retrospective.md) güncel. Yeni genel araştırma yerine çalışan günlük Codex akışı öncelikli.
+- **Yerel uygulama:** 53610 backend yeni kodla yeniden başlatıldı; private backup ve tüm workspace-table fingerprint eşitliği doğrulandı. Tracker8765 salt okunur; TEST53611 ayrıdır. Portların yarın hâlâ çalıştığını varsayma; başlatma/oturum durumu kontrol edilir, auth token yayınlanmaz. Son gerçek Native UI Pilot görevi In Progress, AC/DoD not_run, soru Resolved olarak korunur.
+- **Yarım bırakılan gerçek test:** izole `Atlas Handoff Pilot` hazırlandı; source/model çağrısı0, canonical Task0. Yalnız bu boş pilotun süreci owner durdurma talebiyle kapatıldı; verisi silinmedi. Kullanıcı iki senaryo cümlesini yazdığını teyit etmedi. Kaynakta yazılmış olduğunu varsayma.
+- **Kaynak izni:** `call_112323546971442fb2e44ca3ed243c9c`, Native A/B için birer yerel read, son en fazla10public tur ve10dakika; API paylaşımı yok. Trial başlatılmadı ve owner erteledi. Yarın bunu yeniden kullanma; yeni dar kaynak/süre izni al. Önceki diğer trial izinleri tüketilmiş kalır.
+- **API dönemi:** mevcut24saat yenilemesi 21Ekim13:35:38Türkiye saatinde biter; devamda güncel saati kontrol et. Aynı$3birikimli tavan/100model/200HTTP,10kinput/2koutput; kayıtlı54dispatch/108HTTP/$0.067895yerel taahhüt (3unknown rezervi dahil). Bunlar hesap bakiyesi değildir. Bu tur yeni gerçek API çağrısı0. Süre yenilemesi gerekirse sadece dönemi açık owner onayıyla yenile; kullanım/unknown rezervlerini sıfırlama. Source paylaşımı ayrıca exact kapsam ister.
+
+### Yarın ilk adımlar
+
+1. Bu bölümü, [sprint mikro planını](sprint-plan.md) ve [tek kaynak handoff uygulamasını](../architecture/source-sharing-and-first-review.md#20-ekim--onaylı-kaynak-ile-analiz-kuyruğu-arasındaki-çalışan-bağlantı) hedefli oku; bütün sohbeti/repo'yu yeniden tüketme. Ana amaç yeni mesaj→izinli analiz→aynı Task önerisi→insan review.
+2. Uygulama/izole pilot durumunu ve güncel policy süresini doğrula; hiçbir worker'ı veya native capture'ı kendiliğinden başlatma.
+3. Owner'a iki cümleyi yazıp yazmadığını sor; yazdıysa tekrar yazdırma. Yerel yeni okuma izniyle yalnız Native A/B'yi bounded yakala. A: “Atlas Handoff Pilot için yedek geri yükleme kontrolü ekleyelim; henüz başlamadım.” B: “Atlas Handoff Pilot projesindeki yedek geri yükleme kontrolüne başladım.” Mesaj gerçekten yoksa görünür missing/not_run; scope genişletme veya kör retry yok.
+4. Yakalanan exact iki kaynak ve ilgili dar context'i önizle; geçerli API dönemi, ücret/token/call ve source sharing kapsamını ayrı somut owner onayına sun. Önce A analiz/review ve açık AC/DoD onayıyla tek Task; sonra güncel Task bağlamıyla B analiz. B aynı ID için In Progress önerir, insan apply ayrı; Done/test kanıtı uydurulmaz. Her kaynak kendi güncel context'iyle hazırlanır.
+5. Gerçek sonucu kaynak/model/öneri/uygulama düzeyleriyle raporla. Sonraki iş yeni mesajların izinli sürekli işleme deneyimi ve açık J04/genel semantik kabulüdür. Local704test veya3eski capture tick bunu kapatmış sayılmaz. Yapılabilecek bağımsız kod yeni izin beklemez.
+
+Yeni sohbette kullanıcı “Decivora'ya devam et; docs/delivery/llm-handoff.md başındaki 20 Ekim oturum sonu bölümünü oku” diyebilir. Devir kaydı kaynak/ücret izni yerine geçmez.
+
+
+
 **20 Ekim — gerçek düzenli Codex capture geçti; T17 çekirdeği Done:** Native B,10sarayla3kez seçili scope içinde okundu; kaynak6→6, duplicate0, task/kapsam ve API bütçesi değişmedi. Stop+Disconnect+reload doğrulandı. T17mevcut çekirdek kabulü evidence ile kapandı; ana8Done/20InProgress/2ToDo, MVP yolunda16iş açık. Yeni mesaj eklenmesi/semantik kalite bu3read'de ölçülmedi; günlük/release T24 ve yeni mesaj model paylaşımı açık. [Sonuç ve kapanış gerekçesi](../quality/scheduled-native-001.md).
 
 **20 Ekim — düzenli yakalama kodlandı:** Mevcut seçili-sohbet iznine bağlı kalıcı plan/tick, sınırlı worker, ayrı start/stop ve Sources kontrolleri eklendi. Süre/read/interval, in-flight stop ve restart-no-autostart korunur. Yeni kayıt modele otomatik paylaşılmaz. Gerçek periyodik sohbet okuması başlatılmadı; önceki izinler tüketilmiş kalır. [Kod, bulgular ve kalan kapılar](../quality/scheduled-capture-runtime.md).
