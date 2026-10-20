@@ -98,3 +98,8 @@ HTTP bütçe payı kesin wire/generation sayısı değildir; unknown actual kull
 **Doğrulama:** Constructor/snapshot yerel ve ağsız çalıştırıldı; olmayan credential yolu ve çağrılırsa hata veren transport kullanıldı. Sayaçlar 52/104/67286microusd ve yeni dispatch0 doğrulandı; eski unknown satırları actual=null, rezerv6750microusd ve devam onaylarıyla değişmeden kaldı. LOCAL yedeği alınıp idle kontrolüyle yalnız LOCAL yeniden başlatıldı; tüm uygulama tablolarının fingerprint'leri eşit, seçili native bağlantı0, worker kapalı, profil Available. TEST yeniden başlatılmadı. Yeni gerçek sohbet okuma, anahtar okuma veya provider çağrısı yok.
 
 **Açık sınır:** Yeni profile digest eski source consent'i geçerli kılmaz. Sonraki gerçek kabul için exact kaynak/context paylaşımı ve ayrı aktivasyon gerekir. Bu yenileme bunları veya otomatik retry/model yükseltmesini onaylamaz. Önceki 680runtime/49repo ve 62Mermaid render sonucu kod teslimine aittir; bu config değişikliği için tümü yeniden koşulmuş sayılmaz. Diyagramların onay→ayrı aktivasyon→dispatch sınırları değişmedi; Mermaid içeriği değiştirilmedi. Bu yenilemede 7 birikimli bütçe regresyon testi, docs/anchor ve progress kontrolleri geçti.
+
+
+## LOCAL UI iki kaynak kabulü — dönem içi yeni kullanım
+
+[Gerçek ürün arayüzü raporu](native-ui-journey-001.md): yeni ve ayrı owner kaynak/paylaşım izniyle2Luna+2sayım,4236token,$0.000609yerel tahmin. Başarılı2settled,unknown0/retry0. Root54dispatch/108HTTP,known$0.061145+öncekiheld$0.006750=$0.067895. Kalan46model/92HTTP ve$2.932105yerel pay; aynı$3/21Ekim13:35:38TRexpiry. Bu dar iki-istek izni tüketildi, genel model aktivasyonu veya yeni kaynak yetkisi değildir. Task/soru/durum onayı ve nihai fatura ayrıdır.

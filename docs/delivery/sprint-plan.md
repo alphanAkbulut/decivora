@@ -25,11 +25,12 @@ Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası de�
 | Bounded worker kontrolü | Açık caps/interval/expiry; plan kaydetmek çalıştırmaz; ayrı start/stop; eşleşen managed transport gerekir | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı** |
 | Codex kaynak seçimi ve yeni izin kurulumu | Kullanıcı hangi sohbetin hangi projeye hangi kapsamda bağlandığını görür; seçilmeyen okunmaz | **Yerel kod ve sentetik UI kabulü tamamlandı:** exact chat ID/link, süre/read/tur consent ve ayrı read/disconnect; genel discovery/sürekli capture ve model-egress kurulum açık |
 | İlk görev review'ında kapsam hazırlığı | AC/DoD taslağı veya netleştirme; kaynakta olmayan şart onaysız gereksinim değildir | **Yerel kod ve fake-provider browser kabulü tamamlandı:** human AC/DoD veya linked clarification; otomatik model kriter çıkarımı değildir. Gerçek UI/provider kabulü açık |
-| Tek kullanıcı yolculuğu | Seçilen sohbet→capture→model→review→Task; ilerleyen mesaj aynı işe bağlanır | İki sohbet pilotunda dar örnek var; varsayılan uygulamada tam bağlantı **açık** |
+| Tek kullanıcı yolculuğu | Seçilen sohbet→capture→model→review→Task; ilerleyen mesaj aynı işe bağlanır | **Gerçek LOCAL UI dar kabulü geçti:** iki seçili chat→capture→Luna→insan review→tek Task; B aynı ID için start önerdi. Owner clarification seçtiği için Task To Do ve soru açık. Sürekli/günlük otomasyon ve uygulanan start/Done kabulü **açık** |
 | Kesinti/restart/günlük kabul | Cursor/dedup/izin/bütçe ve eski öneri geçmişi korunur | Parça testleri var; birleşik günlük kabul **açık** |
 
 ### Daily — ilk teslim
 
+- Son gerçek kabul: [LOCAL iki sohbet yolculuğu](../quality/native-ui-journey-001.md); kaynaklar birer kez okundu, iki model isteğiyle tek Task ve aynı ID için başlangıç önerisi elde edildi. Owner scope-clarification seçimini koruduk; B uygulanmadı.
 - Yapılan: Sources ekranındaki mevcut-grant aktivasyon ve worker kontrolleri. [Kod, bulgu ve sınırlar](../architecture/model-activation-runtime.md#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri).
 - Gözlenen: İlk native görev review'ı AC hazırlamadığı için başlangıçta ek kapsam adımı gerekti; NM-01görünürlük düzeltildi, NM-02hazırlık işi açık. Gerçek soru yakalamada J04semantik hatası da açık; yeni UI bu hatayı çözmüş sayılmaz.
 - Sıradaki: Yerel kaynak kurulumunu sınırlı gerçek kabul ile doğrulamak; yeni paylaşım+ilk scope UI akışını geçerli kaynak/policy dönemiyle sınırlı gerçek provider kabulünde doğrulamak. [Kod/sınırlar](../architecture/source-sharing-and-first-review.md). Yeni genel benchmark taraması öncelik değildir.

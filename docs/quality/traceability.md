@@ -131,3 +131,6 @@ ROU-01/CST-01/APR-01 → E13/F12/F13/F07 → ENG-09/ENG-06 → T03aa. [Kod ve do
 20 Ekim T17/T19/T22 bağlantısı: kullanıcı onaylı Sprint1 → [Codex kaynak kurulumu](../architecture/codex-source-onboarding.md) → UIConnectionService/yerel Sources →9sentetik runtime kontrolü ve ui-native-source browser kabulü. Mevcut kaynak/izin/konuşma özellikleri altında; yeni ana görev veya doğrulanmış gerçek native/model kalitesi oluşturmaz. Yeni capture izni, model egress izni değildir.
 
 20 Ekim T09/T13/T19/T21/T22: [exact source sharing ve ilk scope review](../architecture/source-sharing-and-first-review.md) → SourceSharingService/SharingResponsesFactory/CandidateScope →11runtime ve sentetik browser zinciri. NM-02UI hazırlığı eklendi; eski gerçek A/B deneyinin bulgusu tarihsel kalır. Otomatik model kriter üretimi veya yeni ücret izni değildir.
+
+
+20 Ekim LOCAL UI takip kanıtı: [iki sentetik chat→aynı Task ID](native-ui-journey-001.md), T09/T13/T17/T19/T21/T22 altında dar gerçek UI/provider kabulü. Owner'ın linked-clarification kararıyla Task To Do korunur; parent kapanışı veya doğrulanmış Done değildir. UI-J01, mevcut source-sharing browser regresyonuna yeni plan/yeni consent kontrolü eklenerek düzeltildi;20hedefli runtime kontrolü geçti.

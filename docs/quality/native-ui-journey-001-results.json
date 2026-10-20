@@ -1,0 +1,80 @@
+{
+  "format": "native-ui-journey-1",
+  "date": "2026-10-20",
+  "environment": "LOCAL isolated pilot project",
+  "native_reads": 2,
+  "captured_sources": 6,
+  "human_sources": 2,
+  "assistant_sources": 4,
+  "coverage": "partial",
+  "pending_turns": 0,
+  "unsupported_items": 0,
+  "model": "gpt-6-luna",
+  "model_requests": 2,
+  "count_requests": 2,
+  "retries": 0,
+  "model_results": [
+    {
+      "alias": "A",
+      "status": "Ready for review",
+      "candidates": 1,
+      "status_proposals": 0,
+      "usage": {
+        "input_tokens": 1738,
+        "input_tokens_details": {
+          "cache_write_tokens": 1735,
+          "cached_tokens": 0
+        },
+        "output_tokens": 265,
+        "output_tokens_details": {
+          "reasoning_tokens": 70
+        },
+        "total_tokens": 2003
+      },
+      "latency_ms": 7410,
+      "cost_microusd": 350
+    },
+    {
+      "alias": "B",
+      "status": "Ready for review",
+      "candidates": 0,
+      "status_proposals": 1,
+      "usage": {
+        "input_tokens": 1953,
+        "input_tokens_details": {
+          "cache_write_tokens": 857,
+          "cached_tokens": 1093
+        },
+        "output_tokens": 280,
+        "output_tokens_details": {
+          "reasoning_tokens": 84
+        },
+        "total_tokens": 2233
+      },
+      "latency_ms": 6864,
+      "cost_microusd": 259
+    }
+  ],
+  "same_task_id": true,
+  "canonical_tasks": 1,
+  "canonical_stage": "To Do",
+  "scope_choice": "linked clarification",
+  "acceptance_contract": null,
+  "open_clarifications": 1,
+  "verified_completion": false,
+  "case_cost_microusd": 609,
+  "root_dispatches": 54,
+  "root_http_budget_slots": 108,
+  "root_committed_microusd": 67895,
+  "prior_unknowns": 3,
+  "prior_unknown_reserve_microusd": 6750,
+  "semantic_generalization": "not demonstrated",
+  "continuous_capture": "not demonstrated",
+  "source_permission_consumed": true,
+  "final_activations_paused": 2,
+  "final_connections_disconnected": 2,
+  "worker_active": false,
+  "reload_preserved": true,
+  "mobile_no_overflow": true,
+  "unrelated_project_tables_preserved": 12
+}
