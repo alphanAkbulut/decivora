@@ -27,6 +27,9 @@ class ModelActivationService:
 
     def _grant(self,scope,project,grant_id):
         grant=next((g for g in self.sources._rows(project,'conversation_dispatch_authorized') if g['id']==grant_id),None)
+        return self._validate_grant(scope,project,grant)
+
+    def _validate_grant(self,scope,project,grant):
         if (grant is None or grant['actor']!=scope.principal_id or
                 grant['authority_revision']!=self.core.authority.revision() or grant['expires_at']<=time.time() or
                 'context_sha256' not in grant):
@@ -110,12 +113,23 @@ class ModelActivationService:
             raise ContractError('activation_denied','This exact source grant is not in the activation.')
         return current
 
+    @staticmethod
+    def _summary(grant):
+        # Explicit allowlist: no source text, sharing reason, key or prepared context.
+        return {key:grant[key] for key in ('id','source','provider','model','root_run','reserved_tokens','max_output_tokens','expires_at')}
+
     def view(self,scope,project):
         with self.core.read_snapshot():
             self.core.scope(scope,project);self.core.active(scope,project)
             latest={};history=self._history(project)
             for row in history:latest[row['id']]=row
-            result=[]
+            result=[];eligible=[]
+            grants=self.sources._rows(project,'conversation_dispatch_authorized')
+            grants_by_id={g['id']:g for g in grants}
+            for grant in grants:
+                try:self._validate_grant(scope,project,grant)
+                except ContractError:continue
+                eligible.append(self._summary(grant))
             for row in latest.values():
                 status=row['state']
                 if status!='Revoked' and row['expires_at']<=time.time():status='Expired'
@@ -123,8 +137,8 @@ class ModelActivationService:
                 elif status!='Revoked' and row['authority_revision']!=self.core.authority.revision():status='Permission changed'
                 result.append(dict(id=row['id'],revision=row['revision'],state=row['state'],effective_state=status,
                     configuration_sha256=row['configuration_sha256'],expires_at=row['expires_at'],grant_count=len(row['grants']),
-                    actor=row['actor'],authority_revision=row['authority_revision']))
-            return dict(items=result,background_worker_active=False,creates_grants=False,grants_new_budget=False)
+                    actor=row['actor'],authority_revision=row['authority_revision'],grants=[self._summary(g) for ref in row['grants'] for g in [grants_by_id.get(ref['id'])] if g is not None and g['actor']==scope.principal_id]))
+            return dict(items=result,eligible_grants=eligible[:50],eligible_grants_truncated=len(eligible)>50,background_worker_active=False,creates_grants=False,grants_new_budget=False)
 
 
 class ManagedResponsesFactory:

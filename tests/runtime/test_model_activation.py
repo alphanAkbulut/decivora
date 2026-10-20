@@ -23,6 +23,23 @@ class ModelActivationTests(unittest.TestCase):
 
     def process(self,limit=1):return self.app.command(dict(action='process_conversation_queue',limit=limit))
 
+    def test_ui_permission_inventory_is_scoped_content_free_and_never_dispatches(self):
+        view=self.app.state()['model_activations']
+        self.assertEqual({g['id'] for g in view['eligible_grants']},{g['id'] for g,_ in self.fx.entries})
+        fields={'id','source','provider','model','root_run','reserved_tokens','max_output_tokens','expires_at'}
+        self.assertTrue(all(set(g)==fields for g in view['eligible_grants']))
+        self.assertEqual(view['items'][0]['grants'],view['eligible_grants'])
+        self.assertNotIn('Please add',json.dumps(view));self.assertNotIn('reason',json.dumps(view))
+        self.assertEqual(self.app.state()['managed_activation_id'],'activation_one')
+        self.assertEqual(self.fx.calls,[])
+        with patch('packages.capture.model_activation.time.time',return_value=self.expiry+1):
+            self.assertEqual(self.app.state()['model_activations']['eligible_grants'],[])
+        with self.app.core() as core:
+            a=core.authority;owner=a.issue_scope('local_owner')
+            a.replace_grant(owner,'local_owner',kind='human',readable=frozenset({'personal'}),writable=frozenset({'personal'}),active=True,base_revision=a.revision())
+        self.assertEqual(self.app.state()['model_activations']['eligible_grants'],[])
+        self.assertEqual(self.fx.calls,[])
+
     def test_default_pause_then_active_dispatch_then_pause_resume_and_revoke(self):
         self.assertEqual(self.record['state'],'Paused');self.assertEqual(self.process()['attempted'],0);self.assertEqual(self.fx.calls,[])
         self.change('Active');self.assertEqual(self.process()['attempted'],1)

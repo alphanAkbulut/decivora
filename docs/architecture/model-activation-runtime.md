@@ -1,5 +1,7 @@
 # Kalıcı model aktivasyonu — çalışan backend
 
+**20 Ekim güncel teslim:** Mevcut izinleri seçme, Paused aktivasyon oluşturma ve activate/pause/revoke; bounded worker planı/start/stop artık Sources ekranına bağlı. Yeni Codex kaynak izni/sohbet seçimi ve credential/transport kurulumu halen açık. [Güncel UI kapsamı](#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri). Aşağıdaki19Ekim notları tarihsel backend teslimini anlatır.
+
 **19 Ekim 2026 · T09/T17/T19/T21. Uygulanan yerel alt kapsam.** [Kod](../../packages/capture/model_activation.py), [test](../../tests/runtime/test_model_activation.py). Yeni kaynak okuma, API harcama veya sürekli izleme izni vermez. Kullanıcıya dönük kurulum ekranı henüz bağlı değildir; aşağıdaki bounded worker backend API ile açıkça başlatılabilir; varsayılan LOCAL/TEST uygulaması model kapalı kalır.
 
 ## İş kuralı ve durumlar
@@ -133,3 +135,29 @@ Kontrol geçmişi2048event ile bounded; dolunca yeni dispatch ve değişiklik fa
 Sınırlı gerçek kaynak pilotu bu teslimde tekrar edilmedi. Sahte sağlayıcıyla gerçek thread ve HTTP testleri; pause/stop yarışları, unknown usage durması, aynı DB üzerinde iki worker, limit/interval, restart/restore ve öneri→ayrı review sınırını doğrular. Kaynak/model kurulum ekranı, yeni mesajlara kaynak paylaşım policy'si, gerçek izinli live-capture + model günlük kabulü mevcut T09/T17/T19/T21'de açık kalır.
 
 Son bounded-worker doğrulaması:571runtime,49kök/tracker testi,15worker testi (runtime setine dahil), Operations browser ve53Mermaid render geçti. Worker testleri gerçek yerel thread/HTTP, sahte provider ile çalıştı. Bir negatif kontrolde farklı activationın kaynak grantine rastlanması pass istisnası üretiyordu; kapsam dışı grant gönderilmeden atlanacak şekilde düzeltildi. Grant/activation/admission doğrulaması kaldırılmadı. [Kod hashleri ve makine sonucu](../quality/processing-loop-results.json).
+
+## 20 Ekim — Sources ekranında aktivasyon ve worker kontrolleri
+
+**Sprint1alt teslimi; T09/T17/T19/T21.** Yeni bir adapter, izin, para bütçesi veya ana task oluşturulmadı. Sources ekranı mevcut session/CSRF/proje yetkili komutları kullanır. Mevcut durum diyagramları değişmez: insan komutlarının yeni istemcisi UI'dır; worker/capture/grant yetkileri aynı sınırları korur.
+
+| Kullanıcı adımı | Gerçek davranış / sınır |
+|---|---|
+| Mevcut izinleri seç | Yalnız actor/project/current authority/source hash/expiry/context-bound grant metadata; source ID, provider/model, run budget ID, ayrılan token, output tavanı ve expiry. İlk50görünür; kırpılma açık. Metin, paylaşım gerekçesi, credential veya prepared context taşınmaz. |
+| Paused aktivasyon hazırla |1–10seçim, açık expiry, gerekçe ve kapsam acknowledgment; otomatik varsayılan bütçe/süre yok. Expiry kaynak iznini aşamaz. Yeni grant/bütçe/transport yok. |
+| Activate / Pause / Revoke | Current revision/config hash sunucuya gider. Active worker başlatmaz. Revoke terminaldir; geçmiş silinmez. |
+| Worker planı kaydet | Geçiş/source-per-pass/toplam-source/interval/expiry ve gerekçe kullanıcı girer; boş alan çalışmaz. Backend tavanları uygulanır; plan oluşturmak işlemeyi başlatmaz. |
+| Start / Stop | Ayrı açık acknowledgment ve başlat komutu; yalnız exact managed activation transport + Active izin + uygun loop durumu. Stop terminal; in-flight istek geri çağrılmaz. |
+| Yenile / restart | Salt okunur; worker otomatik başlamaz. Durum manuel yenilenir, arka plan capture/model polling başlatılmaz. |
+
+Token rezervasyonu parasal tavan diye sunulmaz. Root USD tavanı bu ekranda değiştirilmez; eşleşen transport ayrı onaylı para kontrolünü korumalıdır. Grant model metadata'sı gerçek model kalitesi veya native capture varlığı değildir. Envanter tek geçişte okunur; kaynak başına aynı audit listesini tekrar yükleyen kuadratik sorgu eklenmedi.
+
+Default uygulamada geçerli grant/model yoksa boş durum ve kapalı start görünür. Bu teslim yeni izin hazırlama, key saklama veya trusted transport kurulum ekranı değildir. Yeni profil managed transport ile eşleşmiyorsa start kapalı ve nedeni görünür. Kaynak onboarding/egress kapsamı T17/T19/T21'de açık; gerçek çağrı başlatılmadı. EN/TR yeni metinleri mevcut; ES/PT-BR/AR yeni alanlarda İngilizce fallback taşır, tamamlanmış çeviri iddiası yok.
+
+### Doğrulama, bulgular ve kalan aksiyon
+
+- Gerçek tarayıcı + geçici SQLite + sentetik transport: grant seçimi, yapılandırma sırasında sıfır dispatch, Paused→Active→Paused→Active, açık tek kaynak/tek pass limiti, stop/revoke, reload sonrası terminal durum, EN/TR taslak korunumu ve390px taşma kontrolü geçti; page error0. Model/provider HTTP ve gerçek host okuması0. Test `tests/ui-activation.cjs`; CI smoke listesine eklendi.
+- Metadata regresyonu source/credential/gerekçe taşımama, expiry ve authz değişiminde eligible liste boşalması, read-only state'in dispatch yapmamasını kontrol eder. Önceki grant/revision/transaction testleri korunur.
+- İlk sandbox runtime koşusunda loopback bind izin engeli görüldü; ürün hatası olarak etiketlenmedi. İzinli yerel sunucu kapsamıyla yeniden çalıştırıldı. UI fixture provider/response sözleşmesi gerçek test registry'sine uygun hazırlandı; harici servis taklidi ürün kanıtı sayılmaz.
+- Kalan: Codex sohbet seçimi ve yeni scope izin kurulumu; kaynak/context ve parasal policy'yi kullanıcıya inceletme; ilk Task review AC/DoD hazırlığı (NM-02); gerçek sınırlı izinli günlük kabul. Bu teslim bunları Done yapmaz.
+
+Bu teslimin son doğrulaması: **660 runtime +49repo/tracker testi geçti**. Aktivasyon browser akışı ve mevcut5locale/RTL/persistence/draft regresyonları geçti. İlk repo koşusundaki3HTTP kontrolü de sandbox bind engeliydi; geçici loopback izniyle49/49geçti.59Mermaid kaynak bloğu değişmedi; önceki render kanıtı korunur, yeni render yapılmış sayılmaz. Doküman/anchor/task closure/progress kontrolleri geçti. GitHub ve CI durumu ayrıca commit/readback ile doğrulanır.

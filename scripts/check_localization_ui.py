@@ -12,6 +12,26 @@ def main():
         if os.environ.get('DECIVORA_FILE_UI_FIXTURE')=='1':
             file_root=Path(directory)/'approved-root';file_root.mkdir();(file_root/'output.txt').write_bytes(b'file-check-fixture')
         server=make_server(Path(directory)/'fixture.sqlite',extractor=None if os.environ.get('DECIVORA_SOURCE_PAGES_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_DIALOGUE_UI_FIXTURE')=='1' or os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else Extractor(),verification_root=file_root,environment='test' if os.environ.get('DECIVORA_OPERATIONS_UI_FIXTURE')=='1' else 'local')
+        if os.environ.get('DECIVORA_ACTIVATION_UI_FIXTURE')=='1':
+            import time
+            from packages.capture.conversations import ConversationService
+            from packages.capture.dialogue_review import DialogueReviewService
+            from packages.capture.granted_extractors import GrantedResponsesFactory
+            from packages.capture.model_activation import ManagedResponsesFactory
+            def send(payload):
+                request=json.loads(payload['input']);source=request['source']
+                return dict(status='completed',usage=dict(total_tokens=15),output=[dict(type='message',role='assistant',status='completed',content=[dict(type='output_text',text=json.dumps(dict(source_id=source['id'],source_sha256=source['sha256'],context_sha256=request['context_sha256'],coverage='partial',candidates=[],status_changes=[])))])])
+            entries=[]
+            with server.app.core() as core:
+                owner=core.authority.issue_scope('local_owner');service=ConversationService(core)
+                core.create_budget(owner,'personal','ui_fixture_budget',24000)
+                for i in range(2):
+                    source=service.ingest(owner,'personal',text='Synthetic worker source '+str(i))
+                    prepared=DialogueReviewService(core).prepare(owner,'personal',source_id=source['id'])
+                    grant=service.authorize_analysis(owner,'personal',source_id=source['id'],key='ui_grant_'+str(i),root_run='ui_fixture_budget',reserved_tokens=12000,provider='OpenAI Responses configured transport',model='fixture',max_output_tokens=2000,expires_at=int(time.time())+3600,reason='Synthetic no-network browser fixture',context_sha256=prepared['context_sha256'])
+                    entries.append((grant,send))
+            server.app.extractor=None
+            server.app.extractor_factory=ManagedResponsesFactory(GrantedResponsesFactory(entries),'activation_ui_fixture')
         if os.environ.get('DECIVORA_SOURCE_PAGES_UI_FIXTURE')=='1':
             from packages.capture.conversations import ConversationService
             with server.app.core() as core:

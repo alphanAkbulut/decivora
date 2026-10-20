@@ -1,5 +1,8 @@
 # Altı kod teslim paketi
 
+**20 Ekim yürütme güncellemesi:** Aşağıdaki paket yapısı korunur; güncel sıra, sayılar ve kullanıcı onaylı sprint/mikro plan [Sprint planında](sprint-plan.md). Eski tarihli sayılar tarihsel teslim anlarıdır.
+
+
 2026-10-13 — **uygulama sırası**, yeni görev listesi veya altı ayrı program değildir. Mevcut Python 3.12/SQLite çekirdeği ve yerel web arayüzü büyütülecek. Tam vizyon korunur; paketler MVP teslimini yönetir. [Backlog](backlog.md) görev otoritesidir; paket adı yeni task sayılmaz.
 
 19Ekim teyidi:7ana iş Done,15InProgress,8ToDo. ToDo'nun **2'si MVP (T16,T24),6'sı sonraki fazlar (T25–T30)**; T17 artık InProgress. [129alt kayıt teyidi](../quality/task-status-audit.md). T14 yerel insan incelemesiyle başladı; otomatik doğrulama ve tam kabulü açık. In Progress işlerin de MVP kabulünde kalanları var. Bu sayılar tamamlanma yüzdesi değildir. Çift tıklamayla başlayan manuel uygulama zaten mevcut; otomatik hafıza MVP'si tamamlanmış değil.

@@ -1,5 +1,8 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+**20 Ekim Sprint1 kod teslimi:** Sources ekranında mevcut izin seçimi→Paused aktivasyon→activate/pause/revoke ve sınırlı worker planı/start/stop bağlandı. Yerel sentetik tarayıcı kabulü; gerçek kaynak/API çağrısı0. Yeni sohbet izin/transport onboarding halen açık. [Sprint/mikro plan](sprint-plan.md) · [Kod ve sınırlar](../architecture/model-activation-runtime.md#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri). Ana7Done/21InProgress/2ToDo korunur.
+
+
 **20 Ekim — Native A/B model zinciri:** A'dan tek Task önerisi, kullanıcı onayıyla To Do kaydı; B'den yeni Task açmadan aynı ID için In Progress önerisi alındı. İlk uygulama AC guard'ında durdu. Ayrı kapsam onayından sonra eski öneri stale korunarak güncel insan işlemiyle In Progress uygulandı. Tek Task, AC/DoD not_run; iki model + iki sayım isteği, 4.104 token, tahmin $0,000584. [Sonuç ve sınırlar](../quality/native-two-model-001.md). Deney izni tüketildi; varsayılan uygulama otomatik etkinleştirilmedi.
 
 **20Ekim gerçek Native A/B sonucu:** normal input üzerinden2human+4assistant kaynak yakalandı; iki geçişte6→6, yeni duplicate0; reopen readback6. Kaynak izni tüketilip bindingler kapatıldı. Model çağrısı0; aynıTask/ilerleme semantik kabulü henüz yok. [Makbuz ve sınırlar](../quality/native-two-chat-001.md). Aşağıdaki önceki “hazır/izin bekliyor” notları tarihsel hazırlıktır.

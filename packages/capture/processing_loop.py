@@ -153,5 +153,5 @@ class ProcessingLoopService:
                 elif config['authority_revision']!=self.core.authority.revision():status='Permission changed'
                 elif state['passes']>=config['max_passes'] or state['reserved_or_attempted']>=config['max_total_sources']:status='Limit reached'
                 items.append(dict(id=config['id'],activation_id=config['activation_id'],configuration_sha256=config['configuration_sha256'],status=status,
-                    passes=state['passes'],reserved_or_attempted=state['reserved_or_attempted'],max_passes=config['max_passes'],max_total_sources=config['max_total_sources'],interval_seconds=config['interval_seconds'],expires_at=config['expires_at'],automatic_recovery=False))
+                    passes=state['passes'],reserved_or_attempted=state['reserved_or_attempted'],max_sources_per_pass=config['max_sources_per_pass'],max_passes=config['max_passes'],max_total_sources=config['max_total_sources'],interval_seconds=config['interval_seconds'],expires_at=config['expires_at'],automatic_recovery=False))
             return dict(items=items,creates_grants=False,renews_budget=False)

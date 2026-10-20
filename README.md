@@ -18,6 +18,8 @@ Bir AI'ın “dosyayı hazırladım” demesi, dosyanın repoya yüklendiği anl
 - **Birden fazla coding agent kullanan geliştiriciler:** agent çalışma beyanlarıyla projenin doğrulanmış durumunu ayırmak için.
 - **Business Analyst, Product Owner ve proje yöneticileri:** gereksinimlerin kaynağını, karar gerekçelerini, değişiklik etkisini ve bekleyen işleri izlemek için. Ortak ekip erişimi sonraki fazdadır; bugünkü uygulama tek yerel kullanıcı önizlemesidir.
 
+**Geliştirme planı:** [MVP sprintleri ve ilk çalışan teslim](docs/delivery/sprint-plan.md). Sources ekranına mevcut izinlerle aktivasyon/worker kontrolleri eklendi; yeni Codex kaynak kurulumu ve tam günlük otomasyon halen açık.
+
 ## Nasıl bir ürün geliştiriyoruz?
 
 Kullanıcı konuşmaya devam eder; sistem izinli kaynaklardan görev, karar ve değişiklik **önerileri** hazırlar. Belirsizlikleri ve gerekli insan onayını görünür tutar. Kullanıcı yerel web arayüzünde konuşmaları, inceleme kutusunu, görev panosunu, kararları, ilişkileri ve geçmişi takip eder.
