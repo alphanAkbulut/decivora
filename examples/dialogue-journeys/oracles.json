@@ -48,9 +48,9 @@
       ],
       "label_status": "ai_authored_draft",
       "human_gold": false,
-      "semantic_run_status": "not_run",
-      "latest_batch": "dialogue-batch-001-continuation",
-      "not_run_reason": "batch_stopped_on_J03_generation_timeout_unknown"
+      "semantic_run_status": "partial_requires_review",
+      "latest_batch": "dialogue-batch-001-j04",
+      "remaining_not_run_reason": "stopped_after_J04_m2_unsupported_question"
     },
     {
       "case_id": "J05",

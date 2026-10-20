@@ -1,5 +1,22 @@
 # Başka bir LLM bu repodan ne anlamalı?
 
+## 20 Ekim 2026 — güncel kanıt özeti
+
+Bu özet önceki tarihli teslim notlarının yerine geçen güncel okuma noktasıdır; tarihsel raporlar değiştirilmedi. Ana görevler **7 Done / 21 In Progress / 2 To Do**; alt kayıtlar **56 Done / 42 In Progress / 26 To Do / 5 Proposed**. Bunlar farklı seviyelerdir, toplanmaz.
+
+- Seçilmiş sentetik Codex sohbetinde **2 human + 6 assistant kaynak**, tekrar okumada **8→8**: bu dar native capture doğrulandı. Canonical görev In Review, kabul kriterleri not_run; tam günlük otomasyon değil.
+- İlk dört-case grubunda **J01 6/6 dar kontrol pass; J02/J03 5/6 eksik; J04 iki yanıt aldı, biri valid/biri unsupported_question**.20dispatch/18tam provider yanıtı/2unknown; J04kalan4tur gönderilmedi. [Son rapor](../quality/dialogue-batch-001-j04.md).
+- Task'a bağlı netleştirme review/resolve ve >7 günlük bilinen blocker başlangıcı uyarısı yerel kodda var. Yeni clarification talimatı gerçek modelle yeniden ölçülmedi; bilinmeyen blocker başlangıcına yaş uydurulmaz.
+- Son J03unknown rezervi için kullanıcı ayrı onay verdi. Yalnız J04planı iki çağrıdan sonra response-validation hatasında durdu; yeniunknown yok, root frozen=false. Bu, sonraki gruba veya yeni trial'a otomatik izin değildir.
+- Birikimli root kaydı50dispatch/100HTTP bütçe payı; bilinen tahmin$0.059952 + korunan unknown rezerv$0.006750 = $0.066702. Fatura veya hesap toplamı doğrulanmış değildir. Aynı$3/expiry sözleşmesi korunur; süresi geçmiş izin yenilenmiş sayılmaz.
+
+Kararlar ve gerekçeler [DEC-23–27](../product/decision-map.md), bulgu/aksiyon/kanıt ayrımı [güncellik denetiminde](../quality/documentation-currency-audit.md). Varsayılan uygulama modeli kapalıdır; native pilot, sentetik model batch'i ve ürün kabulü ayrı kanıtlardır.
+
+
+## Önceki teslim notları — tarihsel okuma
+
+Aşağıdaki tarihlere bağlı notlar ilk teslim anını anlatır; en üstteki20Ekim özeti ve bağlı son rapor geçerlidir. Eski sayaç/izin/kapasite notunu güncel yetki veya blocker sanma.
+
 Görev durumları19Ekim'de129alt/30ana satır üzerinden [teyit edildi](../quality/task-status-audit.md). Tanımsız statü0; kod/test/plan ve tam kabul ayrımı korunur. Eski tarihli “açık/uygulanmadı” metnini tek başına yeni blocker yapma; current-state ve audit reason/evidence/remaining kabulünü kullan.
 
 Güncel T17: [kalıcı sayfa checkpoint](../quality/codex-exec-capture-runtime.md#page-atomic-continuation--19-october) source/cursor/restart/pending assistant ve yerel profile dedup kodunu anlatır. Önceki gerçek source izni tüketildi; yeni kod yalnız sentetik doğrulandı. Indexed1000kaynak/25sayfa ve queue metadata teslim edildi. Kaynak başına trusted model factory UI command/queue yoluna bağlandı; [aktivasyon sınırları](../quality/conversation-processing-runtime.md#kaynak-başına-model-aktivasyonu--19-ekim-2026). [İlk6gerçek kayıtlı kaynak pilotu](../quality/saved-source-pilot-001.md) tamamlandı:6Ready for review/7öneri/$0.002963; kaynak envelope hatası düzeltildi. Orijinal TEST değişmedi, canonical apply0. Kalıcı [aktivasyon backend lifecycle](../architecture/model-activation-runtime.md) kodlandı; kalıcı sınırlı processing worker API/claim/start/stop bağlantısı da kodlandı. Onboarding ekranı, yeni mesaj kaynak izni ve semantik insan kabulü açık; tek deneme izni tüketildi. Plan: [iyileştirme değerlendirmesi](../quality/capture-improvement-assessment.md). Parent T17 açık.
@@ -15,7 +32,7 @@ Runtime teşhisi: [log çalışma rehberi](../architecture/logging-audit.md#teş
 
 Güncel 19 Ekim ek teslim: [Operations ve TEST ortamı](../quality/operations-runtime.md). Komut sınırları izlenir; bütün pipeline izleniyor deme.
 
-Son durum özeti: [current-state.md](current-state.md). Kanonik ana durum7Done/15InProgress/8ToDo; MVPye giden17ana iş,6gelecek faz. Q06/Q08 kabul edilmiş; work-breakdown deferred_choices listesinden çıkarıldı.
+Son durum özeti: [current-state.md](current-state.md). Kanonik ana durum7Done/21InProgress/2ToDo; MVPye giden17ana iş,6gelecek faz. Q06/Q08 kabul edilmiş; work-breakdown deferred_choices listesinden çıkarıldı.
 
 19 Ekim: [gerekçeli lifecycle UI](../quality/workflow-ui-runtime.md#19-ekim--gerekçeli-iptal-ve-yeniden-açma-arayüzü) iptal/yeniden açma ve history kullanıcı bağlantısı tamamlandı; tek karara bağlı gerekçe insan tarafından açıkça doğrulanır. Genel AND/OR yazarı, semantic relation ve resolution editor açık.
 

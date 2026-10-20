@@ -22,6 +22,20 @@ class DialogueQuestionTests(unittest.TestCase):
     def review(self,proposal,decision='accept',key='review_question'):
         return self.drafts.review(self.owner,'p',source_id=self.source['id'],proposal_id=proposal['id'],decision=decision,key=key,reason='Human checked the question, choices and source.')
 
+    def test_labelled_choice_is_source_literal_not_generated_question(self):
+        from packages.capture.dialogue_questions import validate
+        from packages.capture.dialogue_review import DialogueReviewService
+        text='Arayüz için Q_UI: A pano, B liste.'
+        source=dict(self.source,text=text)
+        literal=dict(question_text='Arayüz için Q_UI',options=['A pano','B liste'],quote=text)
+        self.assertEqual(len(validate(source,[literal])),1)
+        with self.assertRaises(ContractError) as caught:
+            validate(source,[dict(literal,question_text='Arayüz için hangisi?')])
+        self.assertEqual(caught.exception.code,'unsupported_question')
+        instructions=DialogueReviewService(self.core).prepare(self.owner,'p',source_id=self.source['id'])['request']['instructions']
+        self.assertIn('even without a question mark',instructions)
+        self.assertIn('do not paraphrase question_text',instructions)
+
     def test_draft_is_not_a_presented_question_until_separate_human_review(self):
         analysis=self.load();draft=analysis['question_proposals'][0]
         self.assertEqual(self.s.view(self.owner,'p')['questions'],[])

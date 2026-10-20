@@ -1,5 +1,7 @@
 # Çok turlu diyalog: bağlam, görev kimliği ve ilerleme
 
+**20Ekim son güncelleme:** J04için ayrı onay sonrası2model/2sayım çağrısı; m1soru kaçırıldı, m2unsupported_question ile reddedildi. Kalan4tur gönderilmedi; sonraki gruba geçilmedi. [Sonuç ve neden yeni Codex chat açılmadığı](dialogue-batch-001-j04.md). Root50dispatch/100HTTP bütçe payı, tahmin$0.066702; unknown rezervler korunur, frozen=false. Yeni literal-question talimatı yerel regresyonla düzeltildi, gerçek modelle yeniden ölçülmedi. Ana7Done/21InProgress/2ToDo; kabul daraltılmadı.
+
 **20 Ekim 2026 — çalışan iz backend'i ve yerel çok turlu kontroller; ilk gerçek dört-case grubu [ayrı bulgu raporunda](dialogue-batch-001.md).** Tek mesajın capture edilmesi, konunun anlaşılması veya bütün projenin doğru izlenmesi değildir. Önceki [native pilot](codex-e2e-001.md) aynı task için üç gerçek model sonucu içeriyordu; yine de kısa, operatör yönlendirmeli bir örnekti. Genel diyalog başarısı diye sunulamaz. Eski altı oturumluk corpus da bütün ürün yolunun native/semantik kabulü değildir.
 
 ## Ayrı ölçülecek üç katman

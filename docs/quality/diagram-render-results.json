@@ -4,20 +4,20 @@
   "renderer": "Mermaid 11.17.2 cached bundle",
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
-  "checked_at": "2026-10-19",
-  "input_base_ref": "0914f9d59e0ce06ee538131a132ad5254de629b3",
+  "checked_at": "2026-10-20",
+  "input_base_ref": "80f8098a82e9e42c576bc081d1913e7b2292c1ef",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
       "path": "README.md",
       "block": 1,
-      "source_sha256": "0d465c1e6dddca0dd19f15d28bca9822c6a00438ff0dd7c1facaa2e418d671bf",
+      "source_sha256": "b56d9e094d2ec1258c2f2b8db2038abed8775dc9d83df31a58947f690ec71ec2",
       "status": "rendered",
       "title": "Karar, uygulama ve kanıt döngüsü",
       "description_present": true,
-      "view_box": "0 0 906.6484375 1058",
+      "view_box": "0 0 1022.6640625 1099",
       "artifact": "README--1.svg",
-      "svg_sha256": "3381597d166ecd4f44e5e56b00794407e83901b91c7901f9db3e96117d7ab592",
+      "svg_sha256": "38e4438b9a31df618d1ca974a14adbf4232c5f65a0247455924e11758755032f",
       "error": null
     },
     {
@@ -125,7 +125,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "466e524d26fa70b5f43dc30176c96ecaf810fa0ea002096880886ed2e2f3c8a4",
+      "svg_sha256": "430d2cac1e6e56ab24ad1d5b633bb0fa9149efde245d0a5f89ba16f6baeec7dc",
       "error": null
     },
     {
@@ -341,7 +341,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "579a4257ed7ede3884881ecdf6ac1b5297e29e8166fd796397d6eca5c48bc096",
+      "svg_sha256": "46f018e0ad9c1b344873ea5c3392306a6cc1db35fb28842c599ee8f5414ef223",
       "error": null
     },
     {
@@ -479,37 +479,37 @@
     {
       "path": "docs/product/current-direction.md",
       "block": 1,
-      "source_sha256": "3368e6843477a8a8fa9d7dd74bc0009bdd0b2dd22606aa2a33b62296bd77a9c3",
+      "source_sha256": "459ae6ee0560407ee2c7f37913d336c35febfde0ab5bba786b4512024240fafe",
       "status": "rendered",
       "title": "Güncel ilk deney ve owner yatırım kararı",
       "description_present": true,
       "view_box": "0 0 1741.15625 676",
       "artifact": "docs--product--current-direction--1.svg",
-      "svg_sha256": "69a08adfc54fa4f318fa2ac359dd02417e1650534c5c1094d6d5f804e94f927a",
+      "svg_sha256": "725447475aec2f9fbdd0cd14277888183369db00a0548f76958069a533364740",
       "error": null
     },
     {
       "path": "docs/product/decision-map.md",
       "block": 1,
-      "source_sha256": "80983d0e63586a978284ccec26b06e94f2582b451cd0508864da351d8e007583",
+      "source_sha256": "1ec2bc6e0c32b034050d9e5903a46c358877db3faf3e3ba3ce1f09705de96904",
       "status": "rendered",
       "title": "Kabul edilen ürün niyetlerinin evrimi",
       "description_present": true,
-      "view_box": "0 0 896 900",
+      "view_box": "0 0 1291.296875 900",
       "artifact": "docs--product--decision-map--1.svg",
-      "svg_sha256": "36e5aa9fa1ef9f75c12fd7185b7e5611d8cc960981fd472291b73c946f237f30",
+      "svg_sha256": "6359b1768b74b7a0ceaaa2c009b82521dc55781b836074094ed99768516c6bd3",
       "error": null
     },
     {
       "path": "docs/product/decision-map.md",
       "block": 2,
-      "source_sha256": "0362af8c3495da60a50b1563ad9a7003bb798bfe4bef357fad2273c4d47af617",
+      "source_sha256": "701a1b068ba42a3378eee148347a50f404f0cd49d232047c5a9b0edae1fcd65a",
       "status": "rendered",
       "title": "Kabul edilmiş çekirdek ve açık ürün kapıları",
       "description_present": true,
       "view_box": "0 0 1526 534",
       "artifact": "docs--product--decision-map--2.svg",
-      "svg_sha256": "6a94f00486c95897db8fa0e25911826b8af8696c4c9e5c7bf1464a841731d2d7",
+      "svg_sha256": "68ad90bf81089ddc0fa2a0b9f2bc4c74b03a27ae934151f86d90e1f900d5f8af",
       "error": null
     },
     {
@@ -561,6 +561,18 @@
       "error": null
     },
     {
+      "path": "docs/quality/blocker-aging.md",
+      "block": 1,
+      "source_sha256": "d90ac27ae9430290f24af19423ce012a82c99aae4021677ee6f64c3a4aecbc87",
+      "status": "rendered",
+      "title": "Blocker yaşının salt okunur hesaplanması ve yerel uyarı",
+      "description_present": true,
+      "view_box": "0 0 824.1328125 1813.046875",
+      "artifact": "docs--quality--blocker-aging--1.svg",
+      "svg_sha256": "0553082ec6fff4d3dbb67773e66fc641afdf8b1b8c5dacedc1d44db8bb664789",
+      "error": null
+    },
+    {
       "path": "docs/quality/codex-e2e-001.md",
       "block": 1,
       "source_sha256": "c5743ddb5cddf44695bdca4a200a1859975ada23e81ea0cd96c8d46f6ac32a99",
@@ -569,7 +581,7 @@
       "description_present": true,
       "view_box": "0 0 1505.171875 1595.609375",
       "artifact": "docs--quality--codex-e2e-001--1.svg",
-      "svg_sha256": "272ec7770003c6aa146ff61a44800762dd96361d443af940a94655df7201ca17",
+      "svg_sha256": "68e45c7e7acfad8f238f2a32c25c20b813a56a16880d4f05eb6eb6123c759647",
       "error": null
     },
     {
@@ -593,7 +605,7 @@
       "description_present": true,
       "view_box": "0 0 1240.828125 1158",
       "artifact": "docs--quality--membership-002-result--1.svg",
-      "svg_sha256": "eb29c0766efed2eda1cee1c8bdf7e683cde39e7ae90ab6fbfe3de3f6c8aef7c3",
+      "svg_sha256": "32d23ace26ae6542b7c5591ae659ab8dd486866ada2fbc442b4e5f46adc2d9ed",
       "error": null
     },
     {
@@ -605,7 +617,7 @@
       "description_present": true,
       "view_box": "0 0 1192.375 1174",
       "artifact": "docs--quality--operations-runtime--1.svg",
-      "svg_sha256": "3f5f6b8b9fbad11c0075828f043ac0206dbafe5c1bfe5a2bb8e15712a77163ea",
+      "svg_sha256": "57029c864bfd1ff43d1328d86b581800bee45868b435a96aebcbb15ed5599ce3",
       "error": null
     },
     {
@@ -617,7 +629,7 @@
       "description_present": true,
       "view_box": "-50 -10 1454.5 892",
       "artifact": "docs--quality--operations-runtime--2.svg",
-      "svg_sha256": "52546ec8531994751b4d5c63d99736b230e69c079d13db2f3ae1b3c93ef7b5d8",
+      "svg_sha256": "3c39cac9766a982dd86c23da72dc3ef9e4778d5266f7e9953bf1e0e577764855",
       "error": null
     },
     {
@@ -629,7 +641,7 @@
       "description_present": true,
       "view_box": "0 0 1023.70703125 1205.4000244140625",
       "artifact": "docs--quality--project-review--1.svg",
-      "svg_sha256": "ea8ed1bc24fdf5ad536e7a9a18c65e570983ab7b21860cd71584e69b8035c6c0",
+      "svg_sha256": "56d427401725a5a7c59a8488192472da108abe9976f6ff83dc555593e4a076ec",
       "error": null
     },
     {
@@ -641,7 +653,7 @@
       "description_present": true,
       "view_box": "0 0 823.617431640625 1168",
       "artifact": "docs--quality--receiver-contract--1.svg",
-      "svg_sha256": "3a9693446ef8da1cc08712a78b2c78cc731d54a857337a8832d9f28b6b2d9b80",
+      "svg_sha256": "24f2b3c67057f047eb7b068e116a829acb5bd2ca4d0b872043ebfbdb25d37898",
       "error": null
     },
     {
@@ -653,7 +665,7 @@
       "description_present": true,
       "view_box": "0 0 1148.84375 1838.421875",
       "artifact": "docs--quality--todo-development-review--1.svg",
-      "svg_sha256": "a4bb796ba20c10314fc014cc43de9ba72d7041da91c93c69ae25cf1a60b6b859",
+      "svg_sha256": "fd6f7a7b765dde092118a0c560240c05a9f63969550dd0b754fab655f68b8c76",
       "error": null
     },
     {
@@ -665,7 +677,7 @@
       "description_present": true,
       "view_box": "0 0 2244.015625 532",
       "artifact": "docs--quality--workflow-ui-runtime--1.svg",
-      "svg_sha256": "358d49fb59f93cda4d41680cbd9dce52a92ab5c8c916c48fa947ddefb146689d",
+      "svg_sha256": "9257a819f6a36c2e417a901f813cc77f6a60ab8b00a88fd22046e9c1e01d83c0",
       "error": null
     },
     {
@@ -677,28 +689,15 @@
       "description_present": true,
       "view_box": "0 0 2742.90625 286",
       "artifact": "docs--quality--workflow-ui-runtime--2.svg",
-      "svg_sha256": "9fa47645a97e62692f708577c978ad8c6f0abd87158675571523e94636babe38",
-      "error": null
-    },
-    {
-      "path": "docs/quality/blocker-aging.md",
-      "block": 1,
-      "source_sha256": "d90ac27ae9430290f24af19423ce012a82c99aae4021677ee6f64c3a4aecbc87",
-      "status": "rendered",
-      "title": "Blocker yaşının salt okunur hesaplanması ve yerel uyarı",
-      "description_present": true,
-      "view_box": "0 0 824.1328125 1813.046875",
-      "artifact": "docs--quality--blocker-aging--1.svg",
-      "svg_sha256": "0553082ec6fff4d3dbb67773e66fc641afdf8b1b8c5dacedc1d44db8bb664789",
+      "svg_sha256": "5d9fbf05e87ea26c9b0a73bb4d71c5feeb76a099043c5fdc41ca89f65e26bd37",
       "error": null
     }
   ],
-  "artifacts_location": "/tmp/decivora-processing-loop-diagrams",
+  "artifacts_location": "/tmp/decivora-currency-final-diagrams",
   "readme_fallback": {
     "path": "assets/diagrams/overview.svg",
-    "source_sha256": "0d465c1e6dddca0dd19f15d28bca9822c6a00438ff0dd7c1facaa2e418d671bf",
-    "svg_sha256": "de0d1e1af04f68aede0a12a03dd0b3141008e2e8d93c201161b035e42c997b22",
-    "canvas": "explicit white export background"
+    "source_sha256": "b56d9e094d2ec1258c2f2b8db2038abed8775dc9d83df31a58947f690ec71ec2",
+    "svg_sha256": "38e4438b9a31df618d1ca974a14adbf4232c5f65a0247455924e11758755032f"
   },
   "scope_limits": [
     "local renderer 11.17.2, not proof of GitHub version compatibility",
@@ -6262,6 +6261,60 @@
           "error": null
         }
       ]
+    },
+    {
+      "reason": "20 October entry-document currency and decision evolution reconciliation",
+      "input_base_ref": "0914f9d59e0ce06ee538131a132ad5254de629b3",
+      "records": [
+        {
+          "path": "README.md",
+          "block": 1,
+          "source_sha256": "0d465c1e6dddca0dd19f15d28bca9822c6a00438ff0dd7c1facaa2e418d671bf",
+          "status": "rendered",
+          "title": "Karar, uygulama ve kanıt döngüsü",
+          "description_present": true,
+          "view_box": "0 0 906.6484375 1058",
+          "artifact": "README--1.svg",
+          "svg_sha256": "3381597d166ecd4f44e5e56b00794407e83901b91c7901f9db3e96117d7ab592",
+          "error": null
+        },
+        {
+          "path": "docs/product/current-direction.md",
+          "block": 1,
+          "source_sha256": "3368e6843477a8a8fa9d7dd74bc0009bdd0b2dd22606aa2a33b62296bd77a9c3",
+          "status": "rendered",
+          "title": "Güncel ilk deney ve owner yatırım kararı",
+          "description_present": true,
+          "view_box": "0 0 1741.15625 676",
+          "artifact": "docs--product--current-direction--1.svg",
+          "svg_sha256": "69a08adfc54fa4f318fa2ac359dd02417e1650534c5c1094d6d5f804e94f927a",
+          "error": null
+        },
+        {
+          "path": "docs/product/decision-map.md",
+          "block": 1,
+          "source_sha256": "80983d0e63586a978284ccec26b06e94f2582b451cd0508864da351d8e007583",
+          "status": "rendered",
+          "title": "Kabul edilen ürün niyetlerinin evrimi",
+          "description_present": true,
+          "view_box": "0 0 896 900",
+          "artifact": "docs--product--decision-map--1.svg",
+          "svg_sha256": "36e5aa9fa1ef9f75c12fd7185b7e5611d8cc960981fd472291b73c946f237f30",
+          "error": null
+        },
+        {
+          "path": "docs/product/decision-map.md",
+          "block": 2,
+          "source_sha256": "0362af8c3495da60a50b1563ad9a7003bb798bfe4bef357fad2273c4d47af617",
+          "status": "rendered",
+          "title": "Kabul edilmiş çekirdek ve açık ürün kapıları",
+          "description_present": true,
+          "view_box": "0 0 1526 534",
+          "artifact": "docs--product--decision-map--2.svg",
+          "svg_sha256": "6a94f00486c95897db8fa0e25911826b8af8696c4c9e5c7bf1464a841731d2d7",
+          "error": null
+        }
+      ]
     }
   ],
   "all_sources_rendered": true,
@@ -6499,5 +6552,6 @@
   "codex_e2e_render_note": "56 current Mermaid sources rendered offline. New diagram reflects actual partial success and unknown/frozen branch, not full MVP acceptance.",
   "codex_e2e_followup_render_note": "56 current Mermaid sources rendered offline; changed Codex flow visually inspected. Human capture and reserve-retained owner approval are shown; unknown actual usage remains unresolved.",
   "blocker_age_render_note": "20Oct2026:57current sources rendered offline. New blocker aging flow visually inspected; only local known-onset warning subset implemented.",
-  "clarification_render_note": "57current Mermaid sources rendered offline; changed existing task clarification branch visually reviewed separately from model quality."
+  "clarification_render_note": "57current Mermaid sources rendered offline; changed existing task clarification branch visually reviewed separately from model quality.",
+  "currency_audit_render_note": "All57current blocks rendered offline; changed README1, decision-map2, current-direction1 visually inspected. Product runtime/model not tested by render."
 }

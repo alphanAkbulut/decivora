@@ -36,3 +36,20 @@ Araştırma→prompt→agent execution→kod/belge→verification zinciri; daha 
 Bu takip E01–E14 orijinal evrelerini değiştirmez. Yeni Claude Projects'in memory/koordinasyon örtüşmesi [rekabet incelemesinde](claude-projects-overlap.md) kaydedildi. Kullanıcı, dosya üretimi/yükleme talimatı ile gerçek uygulama ve gerçek yaklaşım seçiminin konuşmada karışmasını problem olarak verdi. [GAP sözleşmesi](../product/intent-to-reality-gap.md), yeni domain/ER/event karşılıkları ve [güncel yön](../product/current-direction.md) bu somut ihtiyaca bağlandı.
 
 Sonraki assistant önerisi geniş geliştirmeden önce sınırlı prototip/karşılaştırmadır; kullanıcı tüm belgelere son evrimi yansıtmayı istedi. Bu istek belge revizyonunu yetkilendirir; bağımsız ürün geliştirme, iptal, stack veya model/hesap erişimi kararı çıkarılmaz. Tam vizyon, impact ve ekip geleceği korunur; tasarım revizyonu 03 tek güncel set içinde tutulur.
+
+## Kaynak sonrası uygulama ve öğrenme — 13–20 Ekim 2026
+
+Bu kayıt E01–E14 kaynak haritasını değiştirmez; tarihler build/rapor ve bu geliştirme sohbetinin takip kayıtlarına dayanır. Tarihsel11Ekim belge odağı bugün runtime yok anlamına gelmez.
+
+| Dönüşüm | Önceki varsayım / karşılaşılan kanıt | Alınan yön ve neden | Mevcut sınır |
+|---|---|---|---|
+| Plandan yerel ürüne | Yalnız belgeyle teknik yapılabilirlik kanıtlanamaz | Q15-A/DEC-21 ile Python3.12/SQLite çekirdek; event, onay, review, arayüz ve güvenli kaynak akışı kodlandı | Yerel alt modül başarısı MVP değildir |
+| Tek çıktıdan gerçek bağlama | Regex/schema ve tek mesaj doğru task/durum evrimini göstermez | Geç cevap, aynı task, ayrı işler, belirsizlik ve false-Done için48çok turlu case; dört-case ölçüm | İlk grup eksik; AI-authored oracle insan gold değildir |
+| Gönderilen mesajdan gözlenen kaynağa | Araçla iletilen prompt normal human mesajı olarak görünmedi | Seçilmiş child chatte gerçek insan girişiyle2human/6assistant ve8→8dedup ayrı doğrulandı | Başka sohbetler veya sürekli tam coverage sonucu değil |
+| Test geçmesinden ürün politikasına | J02 kapsam sorusunu model ayrı Task yaptı | Kullanıcı görevle bağlı clarification seçti; domain/schema/review/UI/resolve eklendi | Eski başarısız çıktı korunur; yeni talimat gerçek modelle yeniden sınanmadı |
+| API başarısızlığından güvenli devam yoluna | Generation unknown, sonra45saniye timeout görüldü | Kör retry yok; reserve-retained owner review ve güvenli phase tanısı; geleceğe120saniye socket | Sağlayıcı kök nedeni bilinmiyor; son unknown için ayrı kabul sonrası J04soru yakalama/kaynak validation bulgusu verdi |
+| Dağınık teslim notlarından güncel girişe | README/devir/roadmap eski durumları güncelmiş gibi taşıdı | [20Ekim güncellik denetimi](../quality/documentation-currency-audit.md): güncel özet, karar gerekçesi, tarihsel kanıt ayrımı | Belge/render başarısı semantik ürün kabulü değildir |
+
+Ürün kimliği değişmedi: yaşayan karar farkındalıklı hafıza. Öğrenilen ayrım **kaynağı görebilmek → anlamı çıkarmak → doğru işe bağlamak → yetkili kabul → gerçek kanıt** halkalarının her birinin ayrı doğrulanmasıdır. [DEC-23–27](../product/decision-map.md) gerekçeleri ve sonraki değerlendirme koşullarını saklar.
+
+20Ekim ek öğrenme: Kullanıcı Codex'te yeni chat göremediğini sorunca test yüzeyi ayrımı açıklığa kavuşturuldu. Çok turlu API replay, normal host arayüzü capture deneyi değildir. Onaylı J04iki turda soru kaçırma ve paraphrase reddi gösterdi; literal-question talimatı düzeltildi, eski başarısız sonuçlar korundu. [Sonuç ve yöntem](../quality/dialogue-batch-001-j04.md).

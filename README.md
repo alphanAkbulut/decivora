@@ -38,12 +38,14 @@ Decivora'nın hedeflediği katkı, konuşmalardaki bilgiyi **ihtiyaç → gereks
 |---|---|
 | Yerel uygulama | Python3.12/SQLite; konuşma aktarımı, Board/List/Graph/Timeline, görev ve karar incelemesi, AC/DoD, ayrı insan onayı ve kalıcı geçmiş kodlandı |
 | Karar ve etki | Kaynaklı ilişki/karar önerileri, AND/OR gerekçeleri ve insan onaylı etki/görev güncelleme parçaları mevcut |
-| Codex bağlantısı | Seçilmiş oturum için salt okunur capture kodu var. Sınırlı gerçek denemede6mesaj TEST'e alındı; sonraki kalıcı sayfa ilerlemesi sentetik doğrulandı |
+| Codex bağlantısı | Seçilmiş oturum için salt okunur capture kodu var. İlk6mesaj TEST denemesinden sonra seçilmiş sentetik Codex sohbetinde2human+6assistant kaynak ve8→8 tekrar okuma doğrulandı; bütün sohbet geçmişi veya sürekli capture kabulü değil |
 | Otomatik uçtan uca akış | **Henüz tamamlanmadı.** 1000kaynak kapasitesi, sayfalı inceleme, kalıcı aktivasyon ve açıkça başlatılan bounded worker backend kodlandı. Capture/izin kurulum ekranı ve yeni mesajları kapsayan otomatik zincirin bağlantıları geliştiriliyor. Varsayılan uygulamada model kapalı |
-| Gerçek model kanıtı | Ayrı izinli6kayıtlı mesaj pilotu:6Ready for review,7öneri; genel anlam doğruluğu veya otomatik apply kanıtı değil. [Pilot](docs/quality/saved-source-pilot-001.md) · [Worker sınırları](docs/architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi) |
+| Gerçek model kanıtı | İlk çok turlu grup: J01dar pass; J02/J03eksik. J04iki yanıtta soru kaçırma ve kaynakta olmayan soru metni bulgusuyla durdu; kalan4tur gönderilmedi. Yeni soru talimatı gerçek modelle yeniden ölçülmedi. [Sonuçlar ve test yöntemi](docs/quality/dialogue-batch-001-j04.md) |
 | Release ve ekip kullanımı | MVP release adayı değil. Ekip kimliği/izolasyonu ve gerçek host/model kabul kapıları açık |
 
 Konuşmanın kaydedilmesi, bir önerinin onaylanması ve işin doğrulanarak tamamlanması ayrı durumlardır. Her platformdaki bütün sohbetlere otomatik erişim veya kusursuz anlam çıkarımı vaat edilmez. Decivora çalışma adıdır; marka uygunluğu kesinleşmemiştir.
+
+Güncel kararlar, gerekçeler ve belge çelişkilerinin düzeltmeleri: [20 Ekim denetimi](docs/quality/documentation-currency-audit.md). Önceki yayın `80f8098` için GitHub kontrolleri başarılı; bu, model kalite kabulü değildir.
 
 ## Başlamak için
 
@@ -72,6 +74,8 @@ flowchart TB
     A[AI konuşmaları ve agent çalışma olayları] --> B[Capture]
     B -->|Kaynaklı aday| C[Reconcile]
     C --> D[Karar farkındalıklı etki analizi]
+    C -->|Ayrı teslim istenmemişse| Q[Mevcut göreve bağlı netleştirme önerisi]
+    Q -->|Ayrı insan incelemesi| E
     D -->|Öneri; otomatik karar değil| E[Gerekçeli toplu onay]
     E -->|Yetkili onay ve güncel revision| F[Güncel proje bilgisi]
     F -->|Seçilmiş hedef ve ayrı read izni| X[Artifact ve hedef uygulama durumu]
@@ -93,7 +97,7 @@ flowchart TB
     class E gate
     class F,H store
     class G,X evidence
-    class U warning
+    class U,Q warning
 ```
 
 **Renk anahtarı:** mavi kaynak/işleme · sarı yetki/onay kapısı · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik. Renk, özelliğin çalıştığı veya bir task'ın geçtiği anlamına gelmez.

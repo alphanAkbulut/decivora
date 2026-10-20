@@ -1,6 +1,19 @@
 # Güncel ürün ve kalan geliştirme resmi
 
-**19 Ekim 2026 — son Operations/TEST ortamı, impact review/apply ve iptal/yeniden açma kod teslimleri sonrası.** Bu dosya [backlog](backlog.md), [kapanış kaydı](task-closure.json) ve [ana akış denetiminden](../quality/primary-flow-audit.md) türetilen okunabilir özettir; yeni görev otoritesi veya ayrı backlog değildir. Yayın durumu commit/ref readback ile ayrıca doğrulanır; yerel test başarısını GitHub yayını veya MVP kabulü sayma.
+## 20 Ekim 2026 — güncel kanıt özeti
+
+Bu özet önceki tarihli teslim notlarının yerine geçen güncel okuma noktasıdır; tarihsel raporlar değiştirilmedi. Ana görevler **7 Done / 21 In Progress / 2 To Do**; alt kayıtlar **56 Done / 42 In Progress / 26 To Do / 5 Proposed**. Bunlar farklı seviyelerdir, toplanmaz.
+
+- Seçilmiş sentetik Codex sohbetinde **2 human + 6 assistant kaynak**, tekrar okumada **8→8**: bu dar native capture doğrulandı. Canonical görev In Review, kabul kriterleri not_run; tam günlük otomasyon değil.
+- İlk dört-case grubunda **J01 6/6 dar kontrol pass; J02/J03 5/6 eksik; J04 iki yanıt aldı, biri valid/biri unsupported_question**.20dispatch/18tam provider yanıtı/2unknown; J04kalan4tur gönderilmedi. [Son rapor](../quality/dialogue-batch-001-j04.md).
+- Task'a bağlı netleştirme review/resolve ve >7 günlük bilinen blocker başlangıcı uyarısı yerel kodda var. Yeni clarification talimatı gerçek modelle yeniden ölçülmedi; bilinmeyen blocker başlangıcına yaş uydurulmaz.
+- Son J03unknown rezervi için kullanıcı ayrı onay verdi. Yalnız J04planı iki çağrıdan sonra response-validation hatasında durdu; yeniunknown yok, root frozen=false. Bu, sonraki gruba veya yeni trial'a otomatik izin değildir.
+- Birikimli root kaydı50dispatch/100HTTP bütçe payı; bilinen tahmin$0.059952 + korunan unknown rezerv$0.006750 = $0.066702. Fatura veya hesap toplamı doğrulanmış değildir. Aynı$3/expiry sözleşmesi korunur; süresi geçmiş izin yenilenmiş sayılmaz.
+
+Kararlar ve gerekçeler [DEC-23–27](../product/decision-map.md), bulgu/aksiyon/kanıt ayrımı [güncellik denetiminde](../quality/documentation-currency-audit.md). Varsayılan uygulama modeli kapalıdır; native pilot, sentetik model batch'i ve ürün kabulü ayrı kanıtlardır.
+
+
+**20 Ekim 2026 — native capture, çok turlu model grubu ve clarification teslimleri sonrası.** Bu dosya [backlog](backlog.md), [kapanış kaydı](task-closure.json) ve [ana akış denetiminden](../quality/primary-flow-audit.md) türetilen okunabilir özettir; yeni görev otoritesi veya ayrı backlog değildir. Yayın durumu commit/ref readback ile ayrıca doğrulanır; yerel test başarısını GitHub yayını veya MVP kabulü sayma.
 
 ## Nerede olduğumuz
 
@@ -56,7 +69,7 @@ Bunların tamamı aynı olgunlukta değildir. Gerçek model/host/file erişimi o
 
 | Ana iş | Mevcut parça | Kalan kod / kullanıcıya teslim | Dış bağımlılık |
 |---|---|---|---|
-| T09 — çıkarım/bağlam | JSON schema/span, current context; fixed-host HTTP + key helper + bounded runner;26gerçek generation/52HTTP; completion claim ve ilk6gerçek kayıtlı mesaj; exact source factory ve kalıcı activation yönetimi | Genel semantik kalite; ana UI aktivasyonu; fikir/gereksinim/prompt/belge talimatı dahil tipler; kaynaklı AC/genel relation; bounded retrieval | İlk pilot dahil$3/100generation/200HTTPsentetik scope onaylı; kalan$2.947445/74generation/148HTTP. Ayrı6gerçek kayıt paylaşımı tamamlandı; yeni gerçek veri paylaşımı ayrıca izin ister |
+| T09 — çıkarım/bağlam | JSON schema/span, current context; fixed-host HTTP + key helper + bounded runner;48dispatch/96HTTP bütçe payı; son unknown frozen; completion claim ve ilk6gerçek kayıtlı mesaj; exact source factory ve kalıcı activation yönetimi | Genel semantik kalite; ana UI aktivasyonu; fikir/gereksinim/prompt/belge talimatı dahil tipler; kaynaklı AC/genel relation; bounded retrieval | İlk pilot dahil$3/100generation/200HTTPsentetik scope onaylı; kalan$2.947445/74generation/148HTTP. Ayrı6gerçek kayıt paylaşımı tamamlandı; yeni gerçek veri paylaşımı ayrıca izin ister |
 | T10 — uzlaştırma | Exact duplicate/source attach; refinement işareti | Yeni/eski karar, refinement/conflict/supersession eşleme ve kullanıcı çözümü; belirsizlikte netleştirme. Yanlış task/karar eşleştirmesi önlenmeli | Yerel kod bağımsız; gerçek semantik davranış modeli ayrıca gerektirir |
 | T13 — karar/onay | Review kernel, kaynaklı status/late-answer/relation/decision-replacement review; lifecycle ve task-update apply | Konuşmadan QuestionRequest üretimi; tam belirsizlik/çatışma çözümü; split planının atomik onayı ve genel otomatik değişiklik planı | Yerel kod bağımsız; yeni kaynak/karar eşleştirmesinin kalitesi ayrıca doğrulanır |
 | T14 — doğrulama | Human/file-SHA kriterleri ve current Done guard | Verifier configuration/policy, gerçek artifact/hedef bağı, zorunlu parent-child koşulları ve kriter revision entegrasyonları; izinli otomatik verifier yolunun sınırları | Gerçek dosya/çalıştırma hedefi ve izinleri ilk kullanım öncesi |
@@ -80,7 +93,7 @@ T16 ve T17 ayrı teslimdir; birini yapıp “iki adapter” şartı kapanmaz. Bi
 
 Q06-A ve Q08-A karara bağlandı; bunları yeniden bekleyen seçim saymıyoruz. Bağımsız geliştirmeyi durduran yeni business sorusu yok. Dört mevcut ilk-kullanım/kabul kapısı:
 
-1. **Gerçek model:** anahtar kuruldu; [ortak geliştirme bütçesi](../quality/openai-development-budget.md) ilk pilot dahil$3/100generation/200HTTPolarak açıkça onaylandı.26generation/52HTTPkullanıldı; current scope içindeki sentetik batch için yeniden genel onay gerekmez. Ayrı6mesajlık gerçek konuşma izni kullanıldı; yeni veya sürekli paylaşım ve ana UI otomatik dispatch'i bu genel bütçe iznine dahil değil; native hazırlık için bakiye blocker değil.
+1. **Gerçek model:** anahtar kuruldu; [ortak geliştirme bütçesi](../quality/openai-development-budget.md) ilk pilot dahil$3/100generation/200HTTPolarak açıkça onaylandı.50dispatch/100HTTP bütçe payı kullanıldı; son unknown için ayrı owner kabulü alındı, J04response-validation hatasında durdu. Yeni trial ve geçerli izin olmadan otomatik devam edilmez. Ayrı6mesajlık gerçek konuşma izni kullanıldı; yeni veya sürekli paylaşım ve ana UI otomatik dispatch'i bu genel bütçe iznine dahil değil; native hazırlık için bakiye blocker değil.
 2. **Gerçek host:** seçilmiş Codex/Claude kurulumu, oturum/proje ve dar kaynak yetkisi; source audience paylaşımı ayrıca görünür.
 3. **Gerçek hedef:** seçilmiş root/dosya/artifact ve doğrulanacak kriterin kapsamı; tüm araçlara sınırsız erişim gerekmiyor.
 4. **Kalite/pilot değerlendirmesi:** exact label/holdout ve günlük kullanıcı faydası için insan incelemesi. Önceki cevaplar yeniden sorulmaz.
@@ -95,7 +108,7 @@ Q09 harici bildirim kanalı/sıklığı ayrıntıları açık; uygulama içi inb
 
 ## İş miktarının dürüst sınırı
 
-Alt takipte129kayıt var:56DONE,39IN_PROGRESS,29TODO,5PROPOSED;UNSPECIFIED0. [19Ekim satır bazlı teyit](../quality/task-status-audit.md)42durumsuz kaydı ve4eskiTODO durumunu düzeltti. Bunlar ana işlerle toplanmaz; kabul daraltılmadı veya yeni task üretilmedi. Ana7Done/15InProgress/8ToDo korundu. Tamamlanmış deneylerin durumu ürünün genel doğruluğu veya MVP kapanışı değildir.
+Alt takipte129kayıt var:56DONE,42IN_PROGRESS,26TODO,5PROPOSED;UNSPECIFIED0. [19Ekim satır bazlı teyit](../quality/task-status-audit.md)42durumsuz kaydı ve4eskiTODO durumunu düzeltti. Bunlar ana işlerle toplanmaz; kabul daraltılmadı veya yeni task üretilmedi. Güncel ana sayım7Done/21InProgress/2ToDo; önceki audit anının sayımı tarihsel raporda korunur. Tamamlanmış deneylerin durumu ürünün genel doğruluğu veya MVP kapanışı değildir.
 
 Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenilir yüzde/saat/gün verilmez. Mevcut durum **önemli çekirdeği olan, ana otomatik entegrasyonları hâlâ geliştirilmekte olan ürün**dür; yalnız paketleme veya kozmetik düzeltme kalmadı. Yeni görev veya faz eklenmedi.
 
@@ -108,14 +121,14 @@ Efor büyüklükleri ve kalan belirsizlikler kalibre edilmediği için güvenili
 19Ekim backend follow-up: [kalıcı finite processing loop](../architecture/model-activation-runtime.md#kalıcı-sınırlı-işleme-döngüsü--sonraki-backend-teslimi) mevcut Active grant kapsamıyla thread/API/Operations yoluna bağlandı. Restart caps sıfırlamaz; unfinished claim otomatik retry olmaz, aynı loop ikinci worker dispatch etmez. Default LOCAL/TEST değişmedi, gerçek provider çağrısı0; UI onboarding, yeni kaynak policy ve gerçek günlük kabul açık. Ana7/15/8korunur.
 
 
-## 19 Ekim — native kaynak / unknown bütçe takip düzeltmesi
+## 19 Ekim — native kaynak / unknown bütçe takip düzeltmesi — tarihsel durum
 
 İlk assistant-only testin ardından aynı thread'de2gerçek human+6assistant native kaynak doğrulandı; iki checkpoint geçişi8→8, duplicate yok. API unknown için güvenli phase tanısı ve snapshot'a bağlı ayrı owner review kodlandı. Kullanıcının rezerv koruyarak devam onayı uygulandı; root yeni izinli istekler için açık, eski unknown ve actual=null korunur. Yeni API çağrısı0. [Aksiyon planı ve açık kabul sınırları](../quality/codex-e2e-001.md#19-ekim--aksiyon-planı-ve-uygulama-sonucu). Ana görev sayıları değişmedi; bu düzeltme MVP'nin tamamlandığı anlamına gelmez.
 
 
-## İlk gerçek çok turlu4case grubu
+## İlk gerçek çok turlu4case grubu — tarihsel ilk duruş
 
-[J01–J04](../quality/dialogue-batch-001.md): J01 altı turda aynı görev/ilerleme/false-Done guard geçti; J02 ayrı netleştirme görevi önerisi ve generation unknown nedeniyle eksik. J03/J04henüz koşulmadı. Yeni unknown root'u durdurdu; kapsam/netleştirme politikası ve kalan14mesaj için ayrı owner review bekliyor. Bu, tüm48case veya MVP kabulü değildir.
+[J01–J04](../quality/dialogue-batch-001.md): J01 altı turda aynı görev/ilerleme/false-Done guard geçti; J02 ayrı netleştirme görevi önerisi ve generation unknown nedeniyle eksik. Bu ilk duruş anında J03/J04henüz koşulmamıştı; güncel devam sonucu aşağıdadır. Yeni unknown root'u durdurdu; kapsam/netleştirme politikası ve kalan14mesaj için ayrı owner review bekliyor. Bu, tüm48case veya MVP kabulü değildir.
 
 
 **Onaylı devam:** [Kayıt](../quality/dialogue-batch-001-continuation.md):14yeni istek izninin8'i kullanıldı; yeni timeout ile durdu. J01 dar pass, J02/J03 teknik eksik, J04not_run. Mevcut Task netleştirmesi için yeni typed alan/insan review/UI/closure çalışır; yeni prompt henüz gerçekmodelle sınanmadı. Kalan6J04mesajı yeni unknown risk onayını bekler; sonraki gruba geçilmedi.

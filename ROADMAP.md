@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](docs/quality/visual-documentation.md).
 
-Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenekleri [tam kapsamda](docs/product/full-scope.md) korunur. Mevcut aşama **P0 keşif + kontrollü çalışan deneyler**; ürün MVP’si geliştirilmedi. [Audit sonrası sonuç/kalan işler](docs/quality/audit-remediation.md).
+Takvim değil, kanıt kapılarıyla ilerleyen yol haritası. Tüm ürün yetenekleri [tam kapsamda](docs/product/full-scope.md) korunur. Mevcut aşama **P1 yerel ürün geliştirmesi + açık P0 kalite kapıları**; çalışan kod ve sınırlı gerçek model/native kanıtı var, MVP kabulü tamamlanmadı. [Güncel sonuçlar ve karar gerekçeleri](docs/quality/documentation-currency-audit.md). [Audit sonrası sonuç/kalan işler](docs/quality/audit-remediation.md).
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#eff6ff","primaryTextColor":"#0f172a","primaryBorderColor":"#1d4ed8","lineColor":"#64748b","secondaryColor":"#ccfbf1","tertiaryColor":"#f1f5f9","background":"#ffffff","mainBkg":"#eff6ff","textColor":"#0f172a","clusterBkg":"#f8fafc","clusterBorder":"#94a3b8","edgeLabelBackground":"#ffffff","actorBkg":"#eff6ff","actorTextColor":"#0f172a","actorBorder":"#1d4ed8","signalColor":"#64748b","signalTextColor":"#0f172a","noteBkgColor":"#fef3c7","noteTextColor":"#0f172a","noteBorderColor":"#92400e"},"flowchart":{"htmlLabels":false,"curve":"linear"},"sequence":{"wrap":true},"themeCSS":"background-color:#ffffff;"}}%%
@@ -48,7 +48,7 @@ flowchart TB
 | P3 | Maliyet raporları, model routing, kontrollü GitHub/Linear/Jira yazma, kurulum ve açık kaynak release hazırlığı | Cost/quality kıyası, outbox conflict testleri, lisans/isim kararı |
 | P4 | Takımlar, organization, RBAC, cloud sync, enterprise audit, managed service ve open core değerlendirmesi | Talep kanıtı, güvenlik/uyumluluk ve ticari model onayı |
 
-Güncel yön ve önceki plan karşılaştırması [tasarım revizyonu 03](docs/product/current-direction.md) içindedir. Bu P0 deney önerisidir; tam vizyon ve aşağıdaki P1b çıkış kapısı korunur. Native/extension seçilirse T04–T30 bağımsız uygulama yolu otomatik çalıştırılmaz, ilgili yeni teslim planı owner kararıyla hazırlanır.
+Güncel yön ve önceki plan karşılaştırması [tasarım revizyonu 03](docs/product/current-direction.md) içindedir. Bu bölüm ilk yatırım kapısının tarihsel gerekçesidir; Q15-A ile build başladı. Tam vizyon ve aşağıdaki P1b çıkış kapısı korunur. Native/extension seçilirse T04–T30 bağımsız uygulama yolu otomatik çalıştırılmaz, ilgili yeni teslim planı owner kararıyla hazırlanır.
 
 MVP, P2 ve P3 ana görevleri ayrı tablolarla [faz bazlı proje ağacı ve takip görünümünde](docs/delivery/phase-tracker.md) bulunur. Görev durumları backlog ile eşleştirilir; ayrı sürüm listesi veya ilerleme veritabanı yoktur.
 

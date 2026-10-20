@@ -3,7 +3,7 @@
 > [!NOTE]
 > **Şema anahtarı:** mavi kaynak/işleme · sarı yetki/onay · turkuaz kalıcı bilgi · yeşil kanıt alanı · turuncu belirsizlik · gri tarihçe · mor öneri/gelecek. Renkler implementasyon veya test başarısı değildir. [Görsel sözlük](../quality/visual-documentation.md).
 
-**2026-10-13 / Q15-A koşullu P1a çekirdek build'i başladı; P0 kanıt işleri açık.** 2026-10-11 araştırma odağı aşağıda tarihsel gerekçesiyle korunur. Güncel Python3.12/SQLite seçimi ADR-0012 ile kabul edildi; ücret/gerçek hesap/model izni ve genel ürün başarısı değildir. Tam kapsam [full-scope](full-scope.md), P1b kabulü [MVP](mvp.md), gerçekleşmiş ilerleme [status](../delivery/status.md) otoritesindedir.
+**2026-10-20 / P1 yerel geliştirme sürüyor; P0 kalite ve MVP kabul kapıları açık.** [Güncel bulgular](../quality/documentation-currency-audit.md), [dört-case sonuçları](../quality/dialogue-batch-001-continuation.md) ve [DEC-23–27](decision-map.md) son olgunlaşmayı kaydeder.13Ekim Q15-A koşullu build başlangıcıdır. 2026-10-11 araştırma odağı aşağıda tarihsel gerekçesiyle korunur. Güncel Python3.12/SQLite seçimi ADR-0012 ile kabul edildi; ücret/gerçek hesap/model izni ve genel ürün başarısı değildir. Tam kapsam [full-scope](full-scope.md), P1b kabulü [MVP](mvp.md), gerçekleşmiş ilerleme [status](../delivery/status.md) otoritesindedir.
 
 ## Şimdi hangi problemi sınayacağız?
 
@@ -28,7 +28,7 @@ Yaşayan karar farkındalıklı hafıza ve otomatik impact tam ürünün merkezi
 | Başarı | MVP 14 AC, capture/impact/verification ve UX ölçümleri | Yanlış seçildi/yüklendi varsayımı, stale plan, kullanıcı düzeltme/soru/kurulum yükü |
 | Devam kararı | Build/extend kapısı vardı; bağımsız çekirdek adaydı | Native kullanım / extension / bağımsız ürün / durdurma sonuçları eşit görünür |
 | Gelecek | Ekip, admin, maliyet, sync, entegrasyon ve OSS | Tam kapsamda korunur; kanıt oluşmadan ilk geliştirmeye çekilmez |
-| Gerçek durum | Dokümantasyon; runtime yok | Dokümantasyon; runtime hâlâ yok, üstünlük ve talep ölçülmedi |
+| Gerçek durum | İlk plan tarihinde dokümantasyon; runtime yoktu | Bugün çalışan yerel runtime ve sınırlı native/model pilotu var; sürekli otomatik zincir, genel kalite, üstünlük ve talep kabulü açık |
 
 Bu bir ürün iptali veya bütünüyle farklı ürün kararı değildir. Önceki memory/impact çalışmasının değeri tutulur; rakip örtüşmesi ilk yatırım sorusunu daha somut hale getirir.
 
@@ -41,8 +41,8 @@ flowchart TD
     accDescr: Önerilen tasarım veya açıkça belirtilen sentetik örnek. Renkler alan ve kontrol türünü gösterir; implemented veya passed kanıtı değildir. Yetki, revision ve coverage sınırları korunur.
     T1["T01 Kaynak ve bağımsız oracle"] --> T2["T02 Kaynak ve tek hedef capability"]
     T2 --> A["T03a Sınırlı deney yöntemi ve geçici stack önerisi"]
-    A --> P["T03b Yetkilendirilirse prototip ve native baseline"]
-    P -.-> Q["Native ve model kalite kanıtları açık"]
+    A --> P["T03b Sınırlı prototip ve native pilot yapıldı"]
+    P -.-> Q["Sınırlı kanıt var - genel native ve model kabulü açık"]
     T1 --> R["Q15-A Koşullu owner build kabulü"]
     R -->|ADR-0012 Python ve SQLite| B["P1a çekirdek geliştirme başladı"]
     B -.-> Q

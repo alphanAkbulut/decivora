@@ -17,7 +17,7 @@
 | DEC-08 | Accepted intent: basit işlere insan/otomasyon etiketi | Work class ve executor ayrı eksenler |
 | DEC-09 | Accepted intent: benchmark ve yasal esinlenme | Kod alımı otomatik karar değildir |
 | DEC-10 | Accepted intent: yeni ad, ayrı private repo ve profesyonel devir | Decivora çalışma adı; public ve lisans ayrı karar |
-| DEC-11 | Proposed: SQLite canonical state + event projection | Markdown çalışma planı bootstrap; runtime store değil |
+| DEC-11 | İlk öneri; DEC-21/ADR-0012 ile ilk yerel runtime için seçildi ve kodlandı | SQLite/event projection yerel kabul; cloud/ekip ölçeği kabulü değildir. Markdown plan, canonical runtime store değildir |
 | DEC-12 | Proposed: kendi domain/impact çekirdeği, adapter üzerinden yeniden kullanım | Build/extend deneyi sonrası ADR kesinleşir |
 | DEC-13 | Historical backend candidate: TypeScript; React UI adayı açık | Q15-A/DEC-21 ilk backend için Python3.12/SQLite seçti; frontend framework henüz seçilmedi |
 | DEC-14 | Proposed: AGPLv3 adayı; Apache-2.0 alternatif | Public release öncesi lisans/katkı hakları kontrolü |
@@ -27,10 +27,13 @@
 | DEC-18 | Accepted problem intent: gerçek insan seçimi ve dosyanın hedefe uygulanması kaybolmasın | 2026-10-11 kullanıcı örneği; generated/sessizlik yükleme veya kabul kanıtı değildir. [GAP sözleşmesi](intent-to-reality-gap.md); mekanizma teknik öneri |
 | DEC-19 | Proposed investment path: ilk sınırlı gerçekleşme/devam deneyi + native karşılaştırması | [Güncel yön](current-direction.md); build/extend/native/durdur sonuçları açık. Son belge güncelleme isteği runtime yatırımını kabul etmiş sayılmaz |
 | DEC-20 | Accepted intent: Q12-A, proje çıktı dili sabit; dil değişimi insan seçimiyle | 2026-10-11 doğrudan “a ile devam et” yanıtı; başka session dili yalnız öneri, eski notlar otomatik çevrilmez. [Seçenek/gerekçe ve kabul](language-and-localization.md#q12--karma-projede-çıktı-dili-değişimi); detector/faz ayrıntıları öneri |
-
 | DEC-21 | Accepted conditional build: Q15-A, Python3.12/SQLite ilk çekirdek; T04 başlangıcı T03c/ADR-0012 | [İnsan yanıtı](../quality/reviews/q15-build-approval.json); model/capture/native/ROI/14AC kapıları açık, release başarısı değil |
-
 | DEC-22 | Accepted direction: altı stage preset + ayrı blocker/approval/verification/resolution, familiar UI | 14Ekim2026 kullanıcı workflow/UX paketini ve doküman/schema/diagram/GitHub güncellemesini onayladı. [ADR-0013](../architecture/adr/0013-task-workflow-and-familiar-ui.md); native capture/paid API/final MVP onayı değildir |
+| DEC-23 | Accepted intent:48 çok turlu senaryo, dört-case gruplar ve bulgu sonrası owner review | Tek mesaj task çıkarımı gerçek bağlam/durum evrimini sınamaz. Bulk48 yerine sınırlı gruplar; ilk J01–J04 hâlâ eksik, J05 başlamadı |
+| DEC-24 | Accepted intent: bilinen blocker başlangıcından kesinlikle7gün fazla ise uyar | Blocker'ın görünmeden beklemesini önle. Tam7gün aşım değildir; başlangıç unknown ise yaş unknown. Yerel açık uygulama uyarısı; harici bildirim seçilmedi |
+| DEC-25 | Accepted rule: mevcut Task kapsamını netleştirme ayrı teslim istenmedikçe yeni To Do değildir | B001-F1 ve kullanıcının “Mevcut göreve bağlı netleştirme olarak tut” seçimi. Kaynaklı review/resolve kodlandı; gerçek model uyumu yeniden ölçülmedi |
+| DEC-26 | Accepted per occurrence: üç ayrı unknown için olay bazında rezerv korunarak yalnız yeni izinli işlere devam | Kör retry/rezerv iadesi yerine actual unknown korunur. Son J03_m6 için de ayrı kabul geldi; J04iki tur sonrası validation bulgusuyla durdu. Genel sürekli devam yetkisi değildir |
+| DEC-27 | Engineering adopted: gelecekteki HTTP socket beklemesi45→120saniye | J03_m6 generation timeout tanısı. Bütçe/token/no-retry değişmedi; provider kök nedeni veya120saniyenin yeterliliği gerçek çağrıda doğrulanmadı |
 
 **Kabul edilen ürün niyetleri:** aşağıdaki oklar düşüncenin gelişimini anlatır; task dependency veya tamamlanma kanıtı değildir. Her DEC'nin ayrı gerekçesi üst tablodadır.
 
@@ -49,8 +52,12 @@ flowchart TB
     COST --> LANGUAGE[DEC-20 Sabit proje çıktı dili]
     IMPACT --> REAL[DEC-18 Gerçek seçim ve uygulama bilinmeyeni]
     REAL --> BENCH[DEC-09 Benchmark ve yasal esinlenme]
-    VALUE --> HANDOFF[DEC-10 Private repo ve profesyonel devir]
+    VALUE --> HANDOFF[DEC-10 İlk private niyeti ve profesyonel devir]
     BENCH --> HANDOFF
+    REVIEW --> CLARIFY[DEC-25 Göreve bağlı netleştirme]
+    VALUE --> AGE[DEC-24 Yedi günü aşan blocker uyarısı]
+    REAL --> BATCH[DEC-23 Dört-case ölçüm ve insan incelemesi]
+    BATCH --> UNKNOWN[DEC-26 Unknown rezervi ve ayrı risk kararı]
     LANGUAGE --> HANDOFF
     classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
     class P source
@@ -58,6 +65,7 @@ flowchart TB
     class MEMORY,LIVE,REVIEW,IMPACT,SCOPE,VALUE,COST,LANGUAGE,REAL,BENCH process
     classDef store fill:#ccfbf1,stroke:#0f766e,color:#0f172a
     class HANDOFF store
+    class CLARIFY,AGE,BATCH,UNKNOWN process
 ```
 
 **Teknik seçim ve öneriler:** DEC-21/Q15-A ilk Python3.12/SQLite runtime'ını kabul etti; domain/reuse/split/public lisans ve native/ROI koşulları kendi statülerini korur. Kabul implemented/release anlamına gelmez.
@@ -67,12 +75,12 @@ flowchart TB
 flowchart TB
     accTitle: Kabul edilmiş çekirdek ve açık ürün kapıları
     accDescr: Karar tablosundaki niyet ve teknik öneriler ayrıdır. Renk accepted teknoloji veya runtime başarısı kanıtı değildir.
-    NEED[Ürün niyetleri kabul edildi] --> CORE[DEC-11 Domain event projection tasarımı]
+    NEED[Ürün niyetleri kabul edildi] --> CORE[DEC-11 Yerel event projection kodlandı]
     CORE -.-> REUSE[DEC-12 Domain ve adapter reuse koşulları açık]
     NEED --> OWNER[Q15-A Koşullu çekirdek build kabul edildi]
     OWNER --> STACK[DEC-21 Python 3.12 ve SQLite seçildi]
     STACK --> APP[T04 Uygulama iskeleti]
-    CORE -.-> TEST[DEC-19 Native ve model kalite ölçümleri açık]
+    CORE -.-> TEST[DEC-19 Sınırlı native ve model kanıtı - genel kabul açık]
     TEST -.-> PILOT[Pilot ve release kabulü henüz yok]
     NEED --> SPLIT[DEC-16 Alt görev ve checklist - Q08-A kabul]
     SPLIT -.-> OWNER
@@ -82,9 +90,9 @@ flowchart TB
     classDef source fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
     class NEED source
     classDef future fill:#ede9fe,stroke:#6d28d9,color:#0f172a,stroke-dasharray:5 3
-    class CORE,REUSE,TEST,SPLIT,LICENSE,GOV,RELEASE,PILOT future
+    class REUSE,TEST,SPLIT,LICENSE,GOV,RELEASE,PILOT future
     classDef accepted fill:#ccfbf1,stroke:#0f766e,color:#0f172a
-    class STACK,APP accepted
+    class CORE,STACK,APP accepted
     classDef gate fill:#fef3c7,stroke:#92400e,color:#0f172a,stroke-width:2px
     class OWNER gate
 ```
@@ -115,3 +123,17 @@ Gerekçe standardı: tetikleyen ihtiyaç/kaynak → tarih ve karar sahibi → ge
 
 
 18 Ekim Q06-A: önemli karar değişimi/ana görev kapanışında yerel kaynaklı Markdown context snapshot kabul edildi; canonical kaynak DB/event log. [Exact kullanıcı yanıtı, Q08-A ve alternatifler](../delivery/decision-brief.md). Otomatik Git push veya yeni ücret/erişim izni değildir; otomasyon geliştirmesi açık.
+
+## DEC-23–27 — alternatif, gerekçe ve yeniden değerlendirme
+
+20Ekim kaydı; kullanıcı seçimlerinin kaynağı bu geliştirme sohbetindeki48senaryo/dört-case ve clarification yanıtlarıdır. Yeni tarihsel turn ID veya geriye dönük onay üretilmedi.
+
+| Tetikleyen ihtiyaç | Değerlendirilen yol → seçilen yol | Neden / bedel | Kanıt ve yeniden değerlendirme |
+|---|---|---|---|
+| Tek mesajla anlam doğruluğunu aşırı genelleme | Tek mesaj veya48bulk → dört-case çok turlu grup | Aynı task kimliği, iptal/geri açma, belirsiz cevap ve karar etkisi izlenir; daha yavaş fakat hatanın kaynağı incelenebilir | [İlk grup](../quality/dialogue-batch-001.md), [devam](../quality/dialogue-batch-001-continuation.md). AI oracle taslağı bağımsız human gold değildir |
+| Kapsam sorusunun gereksiz yeni işe dönüşmesi | Yeni Task veya konuyu yok sayma → mevcut Task'a bağlı clarification | Konu kaybolmaz, backlog şişmez. İnsan çözümü/revision gerekir; otomatik cevap eşleme henüz yok | B001-F1, AGENTS domain13 ve [runtime sözleşmesi](../quality/dialogue-status-runtime.md#mevcut-göreve-bağlı-netleştirmeler). Yeni model trial sonrası tekrar değerlendir |
+| Uzun bekleyen blocker | Süresiz görünmez bekleme → bilinen başlangıçta >7gün uyar | Öncelik incelemesi sağlar; otomatik status değişimi ve dış bildirim yok | [Yaş sözleşmesi](../quality/blocker-aging.md); unknown başlangıç ve dependency episode kapsamı açık |
+| Belirsiz ücretli sonuç | Kör retry/rezervi sıfırlama veya bütün işi bırakma → yalnız açıkça onaylanmış olayın rezervli devamı | Çift harcama önlenir, bilinmeyen sonuç başarılı sayılmaz; owner yeni unknown'u ayrıca değerlendirir | Her olay ayrı audit; son J03unknown için ayrı kabul sonrası J04iki turda validation bulgusuyla durdu |
+| Generation bekleme süresi aşımı |45saniye socket veya gelecekte120saniye →120saniye bounded socket | Daha uzun üretime alan açar; gerçek uçtan uca deadline değildir, unknown yine durdurur | Güvenli diagnostic/fake HTTP testi; yeni gerçek çağrı yapılmadan yeterlilik iddiası yok |
+
+DEC-10 private başlangıç niyeti tarihsel seçimdir.20Ekim GitHub API gözlemi repo için public gösterdi; bu inceleme ayar değiştirmedi. Görünürlüğün kim/ne zaman değiştirdiği bu kanıttan çıkarılamaz. Bu gözlem lisans seçimi veya public release kabulü değildir.

@@ -1,5 +1,7 @@
 # Güncel takip teyidi —19Ekim2026
 
+**20Ekim son güncelleme:** J04için ayrı onay sonrası2model/2sayım çağrısı; m1soru kaçırıldı, m2unsupported_question ile reddedildi. Kalan4tur gönderilmedi; sonraki gruba geçilmedi. [Sonuç ve neden yeni Codex chat açılmadığı](../quality/dialogue-batch-001-j04.md). Root50dispatch/100HTTP bütçe payı, tahmin$0.066702; unknown rezervler korunur, frozen=false. Yeni literal-question talimatı yerel regresyonla düzeltildi, gerçek modelle yeniden ölçülmedi. Ana7Done/21InProgress/2ToDo; kabul daraltılmadı.
+
 30ana/129alt kayıt incelendi: ana7Done/21InProgress/2ToDo; alt56Done/42InProgress/26ToDo/5Proposed,UNSPECIFIED0. [Gerekçe/kanıt ve kalan kabul](../quality/task-status-audit.md). Aşağıdaki tarihli teslim kayıtları tarihsel sonuçları korur; eski sayımlar bugünkü toplam değildir.
 
 # Mevcut durum

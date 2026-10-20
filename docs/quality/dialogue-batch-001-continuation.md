@@ -1,5 +1,7 @@
 # İlk grubun onaylı devamı ve netleştirme geliştirmesi
 
+**Takip:** Bu rapor8yeni isteğin tarihsel makbuzudur. Sonradan onaylı J04iki turda soru/validation bulgusuyla durdu; [güncel takip](dialogue-batch-001-j04.md). Aşağıdaki0/6ve frozen sayıları bu rapor anına aittir, eski receipt değiştirilmedi.
+
 **20 Ekim 2026.** Kullanıcı iki kararı açıkça onayladı: ayrı teslim/alt görev istenmedikçe netleştirme mevcut Task'a bağlı tutulacak; J02_m4'ün2250microusd rezervi korunarak aynı istek tekrarlanmadan ilk grubun kalan14mesajı işlenebilecek. [İlk rapor](dialogue-batch-001.md) ve private receipt'leri değiştirilmedi. [Devam makine raporu](dialogue-batch-001-continuation-results.json).
 
 ## Güncel dört-case görünümü

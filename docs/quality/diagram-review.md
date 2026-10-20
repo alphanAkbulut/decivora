@@ -1,5 +1,11 @@
 # Diyagram tutarlılık incelemesi
 
+## 20 Ekim — güncellik ve karar gerekçesi uzlaştırması
+
+57Mermaid bloğunun tamamı30belgede cachedMermaid11.17.2/Chrome ile dış ağ kapalı render edildi; başarısız0. Dört mevcut blok değişti: README1clarification yolu, decision-map1son ürün kararları, decision-map2yerel event projection kabulü, current-direction1gerçek pilot/kalite ayrımı. Dördünün tam PNG görüntüsü görsel olarak incelendi; erişilebilir başlık/açıklama ve pozitif viewBox kontrolleri geçti. README SVG fallback yenilendi; önceki değişen kaynak makbuzları superseded history içinde korundu. Diğer53kaynak aynı; yalnız render doğrulandı, yeniden tasarlanmadı.
+
+Bu kontrol bütün etiketlerin her ekranda ölçülmüş kontrast/overlap veya tüm akışların runtime kabulü değildir. Gelecek ekip, erişim, depolama ve servis şemaları tasarım statüsünü korur; yeni tenant/auth/production iddiası eklenmedi. [Bulgu/karar raporu](documentation-currency-audit.md) hangi metnin neden değiştiğini, hangi deneylerin eksik kaldığını kaydeder.
+
 **Güncel inventory:30belgede57Mermaid şeması — blocker aging delivery,20Ekim2026.** Önceki kayıtlar aşağıda tarihsel doğrulama kapsamıyla korunur; eski sayım veya render sonucu değişen çizim için başarı kanıtı değildir.
 
 

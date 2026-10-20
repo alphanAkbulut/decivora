@@ -97,6 +97,11 @@ class DialogueBatchTests(unittest.TestCase):
         self.assertEqual(final['cases'][1]['verdict'],'incomplete');self.assertEqual(final['cases'][2]['verdict'],'incomplete')
         self.assertEqual(final['cases'][3]['verdict'],'passed_draft_checks')
         self.assertEqual(hashlib.sha256((folder/'continuation-report.json').read_bytes()).hexdigest(),mid_hash)
+        from scripts.report_dialogue_batch import build
+        count=len(self.calls);public=build(folder,j04=True)
+        self.assertEqual(public['dispatches'],6);self.assertEqual(public['cumulative_dispatches'],24)
+        self.assertEqual(public['cases'][3]['verdict'],'passed_draft_checks');self.assertEqual(len(self.calls),count)
+        with self.assertRaises(ValueError):build(folder,continuation=True,j04=True)
 
     def test_expired_approval_is_not_renewed(self):
         self.policy_path.write_text(json.dumps(dict(self.policy,expires_at=1)));folder=self.root/'batch';prepare(folder,self.policy_path)

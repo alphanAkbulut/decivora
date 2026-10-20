@@ -3,8 +3,9 @@
 import argparse,hashlib,json
 from pathlib import Path
 
-def build(folder,*,continuation=False):
-    folder=Path(folder);path=folder/('continuation-report.json' if continuation else 'report.json');report=json.loads(path.read_text())
+def build(folder,*,continuation=False,j04=False):
+    if continuation and j04:raise ValueError('Select one immutable report.')
+    folder=Path(folder);path=folder/('j04-report.json' if j04 else 'continuation-report.json' if continuation else 'report.json');report=json.loads(path.read_text())
     if report['case_ids']!=['J01','J02','J03','J04'] or report['human_gold'] is not False:
         raise ValueError('Unexpected batch receipt.')
     cases=[]
