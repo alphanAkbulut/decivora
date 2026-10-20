@@ -1,6 +1,6 @@
 # Doğrulama stratejisi
 
-Bugün uygulama yoktur. Aşağıdaki suite **uygulanacak test planıdır**. Dokümantasyon check'i runtime doğrulaması sayılmaz.
+Yerel uygulama ve doğrulanmış alt kümeler vardır. Aşağıdaki suite **senaryo sözleşmesidir**; bütün satırların çalıştırıldığı veya geçtiği anlamına gelmez. Güncel kanıt, yürütme sırası ve açık kapılar [MVP test yürütme planında](mvp-test-plan.md) ayrılır. Dokümantasyon check’i runtime doğrulaması sayılmaz.
 
 ## Katmanlar
 

@@ -1,5 +1,8 @@
 # Güncel takip teyidi —19Ekim2026
 
+Güncel yürütme görünümü: [sprint ve mikro plan](sprint-plan.md); [MVP test planı](../quality/mvp-test-plan.md). Aşağıdaki tarihli teslim notları kendi koşullarının tarihçesidir; güncel sayılar ve sıradaki iş sprint planındadır.
+
+
 **20 Ekim — gerçek düzenli Codex capture geçti; T17 çekirdeği Done:** Native B,10sarayla3kez seçili scope içinde okundu; kaynak6→6, duplicate0, task/kapsam ve API bütçesi değişmedi. Stop+Disconnect+reload doğrulandı. T17mevcut çekirdek kabulü evidence ile kapandı; ana8Done/20InProgress/2ToDo, MVP yolunda16iş açık. Yeni mesaj eklenmesi/semantik kalite bu3read'de ölçülmedi; günlük/release T24 ve yeni mesaj model paylaşımı açık. [Sonuç ve kapanış gerekçesi](../quality/scheduled-native-001.md).
 
 **20 Ekim — düzenli yakalama kodlandı:** Mevcut seçili-sohbet iznine bağlı kalıcı plan/tick, sınırlı worker, ayrı start/stop ve Sources kontrolleri eklendi. Süre/read/interval, in-flight stop ve restart-no-autostart korunur. Yeni kayıt modele otomatik paylaşılmaz. Gerçek periyodik sohbet okuması başlatılmadı; önceki izinler tüketilmiş kalır. [Kod, bulgular ve kalan kapılar](../quality/scheduled-capture-runtime.md).

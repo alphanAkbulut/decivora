@@ -1,47 +1,56 @@
 # MVP teslim planı ve aktif sprint
 
-**20 Ekim 2026 · Kullanıcı büyük planı ve ilk sprinti onayladı.** Bu, mevcut backlog'un yürütme görünümüdür; yeni ana görev, daraltılmış MVP veya tarih garantisi değildir. Güncel ana kayıt **8 Done / 20 In Progress / 2 To Do**; MVP yolunda16ana iş, sonraki fazlarda6iş açık. Sprint teslimi parent kapanışı anlamına gelmez.
+**Durum: 20 Ekim 2026.** Bu plan mevcut backlog'un yürütme görünümüdür; yeni backlog, kapsam daraltma veya tarih garantisi değildir. Kaynaklar: [ana işler](backlog.md), [kapanış kanıtları](task-closure.json), [denetim](../quality/task-status-audit.json). Testlerin yürütülmesi: [MVP test planı](../quality/mvp-test-plan.md).
 
-## Ürün hedefi
+## Güncel sayılar
 
-Kullanıcı izinli Codex konuşmalarına devam ederken kaynaklar kaybolmadan yakalansın; mevcut proje bilgisiyle görev, soru, karar ve durum önerileri oluşsun; insan onayı, karar etkisi ve gerçek kabul kanıtı birbirinden ayrı izlenebilsin. Aynı projedeki ikinci sohbet canonical bilgiyi kullansın; bütün özel sohbetler kendiliğinden birleştirilmesin.
+| Seviye | Done | In Progress | To Do | Proposed | Toplam |
+|---|---:|---:|---:|---:|---:|
+| Ana işler | 8 | 20 | 2 | 0 | 30 |
+| Alt kayıtlar | 56 | 42 | 26 | 5 | 129 |
+
+Ana ve alt kayıtlar birbirine eklenmez. Açık 22 ana işin **16'sı MVP yolunda, 6'sı sonraki fazlardadır**. MVP yolundaki 16 iş: 11 ürün kodu sahibi (T09/T10/T13/T14/T16/T18/T19/T20/T21/T22/T23), 3 P0 kalite/karar işi (T01–T03), 2 entegrasyon ve kabul kapısı (T15/T24). Bu ayrım görev kapsamını veya kabul kriterlerini değiştirmez. In Progress kayıtları aynı anda çalışan 20 agent değildir; kısmi teslimi olan açık ana işlerdir. Sayılar tamamlanma yüzdesi veya süre tahmini değildir.
+
+Done: **T04** runtime/sözleşmeler, **T05** proje binding, **T06** ingress/checkpoint, **T07** olay logu/projector, **T08** atomik change set/policy, **T11** gerekçe graph, **T12** impact preview/apply planı, **T17** desteklenen Codex adapter çekirdeği. Her kapanış kendi kapsamına aittir; bütün MVP bitmiş değildir.
+
+Tamamlanan 56 alt kaydın birincil çıktı sınıflaması: **42 kod/araç/sözleşme, 13 test/deney/değerlendirme hazırlığı, 1 analiz/karar**. Bu, toplam harcanan eforun veya bütün dokümanların sayımı değildir; kodla gelen test/doküman ikinci görev sayılmaz. Sınıflama [work breakdown](work-breakdown.json) içindedir.
+
+## Ürün hedefi ve mevcut kanıt
+
+İzinli Codex konuşması → kaynaklı görev/karar/soru önerisi → mevcut görevle eşleme → insan incelemesi → durum/karar etkisi → güncel kabul kanıtı → sonraki sohbetin proje bağlamı.
+
+- [İki gerçek Codex sohbetinin dar UI yolculuğu](../quality/native-ui-journey-001.md): 6 kaynak ve 2 Luna isteği; A tek görev önerdi, B aynı Task ID için başlangıç önerdi. Owner kapsamı ve güncel insan geçişini onayladı: tek Task In Progress, bağlı soru Resolved; AC/DoD not_run. Eski stale model önerisi tarihçede kaldı.
+- [Düzenli native capture](../quality/scheduled-native-001.md): 10 saniye arayla 3 okuma; kaynak 6→6, duplicate 0; Stop/Disconnect/reload geçti, API harcaması ve task değişimi olmadı. Okumalar arasında yeni mesaj yazılmadı. Bu nedenle yeni mesajların sürekli anlamlandırılması henüz kabul edilmiş değildir.
+- Kaynak kurulumu, exact paylaşım önizlemesi, ayrı aktivasyon, ilk review'da AC/DoD veya bağlı netleştirme ve sınırlı capture/model worker kodu var. Günlük birleşik otomasyon, genel semantik kalite ve doğrulanmış Done zinciri açık.
 
 ## Büyük plan
 
-| Sprint | Çalışan teslim hedefi | Mevcut iş sahipleri | Çıkış kanıtı |
+Sprintler teslim sırasıdır; sabit takvim veya Scrum sertifikasyon iddiası değildir. Ürün önceliği kullanıcı/PO'da, teknik uygulama planı mevcut bağımlılıklara göre ilerler. Süre tahmini, ilk birleşik teslimin gerçek kapasitesiyle yapılır.
+
+| Sprint | Çalışan sonuç | Mevcut sahipler | Çıkış kapısı |
 |---|---|---|---|
-| 1 · Bağla ve işle | Kaynak seçimi/izin, model aktivasyonu, bounded worker ve görev review aynı uygulamada | T09/T13/T17/T19/T21/T22 | Açık kullanıcı kurulumu; yalnız seçilmiş kaynak; görünen sınırlar; öneri→onay→pano; restart/stop/revoke |
-| 2 · Diyaloğu takip et | Aynı görev ilerlemesi, Blocked/iptal, kalıcı soru/geç cevap ve karar değişimi | T09/T10/T13/T17/T19/T20/T22 | Çeşitli çok turlu örnekler; dört-case gruplar; case bazlı pass/fail/unknown/not_run ve insan değerlendirmesi |
-| 3 · Sonucu kanıtla | Done beyanı→güncel AC→izinli hedef kanıtı→ayrı kabul; karar etkisi ve geri alma | T11/T12/T13/T14/T15/T20 | Yanlış Done/obsolete olmaması; stale kanıt/onay reddi; uygulanmış doğru revision ve restore |
-| 4 · Günlük kullanım/release | MCP/devam bağlamı, kalan adapter, temiz kurulum, recovery ve günlük pilot | T16/T18/T22/T23/T24 ve P0 kabul işleri | Mevcut14MVP AC; iki gerçek coding adapter; temiz yerel kurulum; owner kullanımı |
+| 1 · Konuşmayı düzenli işle | Yeni mesajı kayıpsız al; izinli bağlamla analiz et; Inbox'a tek öneri getir; aynı görevi ilerlet | T09/T13/T19/T21/T22; T17 tamamlanmış temel | İlerleyen gerçek sohbet; iki sohbet aynı proje; stop/revoke/expiry; duplicate ve izinsiz egress yok |
+| 2 · Diyaloğu ve değişimi takip et | Konu dönüşü, açık soru/geç cevap, benzer görev, Blocked/Cancelled ve karar değişimi | T09/T10/T13/T20/T22; T01/T03 kalite kararı | Dörder case; bağımsız beklentiyle pass/fail/unknown/not_run; yanlış eşleme veya false Done çözülmeden grup kapanmaz |
+| 3 · Sonucu ve etkiyi kanıtla | Done beyanı → güncel kriter → izinli hedef kanıtı → ayrı kabul; AND/OR ve karar değişimi | T13/T14/T20/T23; T11/T12 mevcut temel; T15 kapısı | Eski kanıt/onay reddi; yanlış obsolete yok; rollback/replay/restore aynı doğru state |
+| 4 · Günlük kullanım ve MVP kabul | MCP devam bağlamı, ikinci coding adapter, temiz kurulum, recovery ve günlük pilot | T16/T18/T19/T21/T22/T23/T24; T02 iki yüzey kanıtı | Mevcut 14 MVP AC'nin kanıt matrisi; iki adapter raporu; kullanıcı lokal kurulumdan gerçek işi tamamlar |
 
-Bunlar zaman tahmini veya tek başına Scrum uygunluk/sertifikasyon iddiası değildir. Sprint1sonrasında gerçek kapasiteye göre sabit sprint süresi planlanır. Ürün önceliği kullanıcı/PO'da; teknik sıralama mevcut bağımlılıkla yönetilir. Claude MVP kapsamından çıkarılmadı; Codex günlük yolculuğu önce gelir. Tek-adapter kabulü sınırlı pilot diye adlandırılır.
+Claude kapsamdan çıkarılmadı; **Codex günlük akışı önce** tamamlanır. Tek adapter kabulü sınırlı pilot olarak adlandırılır. Ekip/cloud, ek chat yüzeyleri, gelişmiş reconciliation ve public release T25–T30 kapsamındadır; MVP'ye sessizce taşınmaz.
 
-## Sprint1 mikro planı
+## Sıradaki mikro plan — Sprint 1
 
-| Dilim | Kabul | Güncel durum |
-|---|---|---|
-| Mevcut izinleri gör ve aktivasyonu yönet | Kaynak/model/token/expiry görünür; Paused hazırlık dispatch yapmaz; current revision ile activate/pause/revoke | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı**, tam kaynak onboarding değil |
-| Bounded worker kontrolü | Açık caps/interval/expiry; plan kaydetmek çalıştırmaz; ayrı start/stop; eşleşen managed transport gerekir | **Yerel kod ve sentetik tarayıcı kabulü tamamlandı** |
-| Codex kaynak seçimi ve yeni izin kurulumu | Kullanıcı hangi sohbetin hangi projeye hangi kapsamda bağlandığını görür; seçilmeyen okunmaz | **Yerel kod ve sentetik UI kabulü tamamlandı:** exact chat ID/link, süre/read/tur consent ve ayrı read/disconnect; genel discovery açık; düzenli capture plan/start/stop kodlandı, gerçek periyodik kabul ve yeni mesajların model-egress politikası açık |
-| İlk görev review'ında kapsam hazırlığı | AC/DoD taslağı veya netleştirme; kaynakta olmayan şart onaysız gereksinim değildir | **Yerel kod ve fake-provider browser kabulü tamamlandı:** human AC/DoD veya linked clarification; otomatik model kriter çıkarımı değildir. Gerçek UI/provider kabulü açık |
-| Tek kullanıcı yolculuğu | Seçilen sohbet→capture→model→review→Task; ilerleyen mesaj aynı işe bağlanır | **Gerçek LOCAL UI dar kabulü geçti:** iki seçili chat→capture→Luna→insan review→tek Task; B aynı ID için start önerdi. İlk clarification kararından sonra owner kapsamı onayladı; aynı Task current insan işlemiyle In Progress, soru Resolved, kriterler not_run. Sürekli/günlük otomasyon ve Done kabulü **açık** |
-| Kesinti/restart/günlük kabul | Cursor/dedup/izin/bütçe ve eski öneri geçmişi korunur | Parça testleri var; birleşik günlük kabul **açık** |
+Bunlar yeni ana görev değildir; mevcut işlerin uygulanacak dilimleridir.
 
-### Daily — ilk teslim
+| Sıra | Kod/entegrasyon teslimi | Kabul / kanıt | Bağımlılık |
+|---|---|---|---|
+| 1 | Yeni yakalanan mesaj için model paylaşım kapsamı ve aktivasyonun uçtan uca bağlantısı | Yeni mesaj ya izin kapsamındadır ya bekleyen exact paylaşım önizlemesidir; eski grant yeni metne otomatik yetki vermez; kullanıcı seçilmiş kaynak/model/süre/bütçeyi görür | Mevcut capture ve paylaşım temelini kullanır; daha geniş sürekli paylaşım politikası gerekiyorsa somut owner kararı |
+| 2 | Capture receipt → analiz kuyruğu → bounded worker → review bağlantısı | Her uygun kaynak bir kez işlenir; gap/unknown görünür; stop/revoke yeni dispatch'i durdurur; restart kendiliğinden başlamaz | 1'in yetki sözleşmesi; yerel kod/fixture geliştirmesi API izni beklemez |
+| 3 | İlerleyen konuşma ve ikinci sohbet bağlamı | Yeni görevden sonra başlama/blocked bilgisi aynı ID'ye önerilir; ayrı proje karışmaz; insan uygulaması ayrı kalır | 2; kayıtlı proje bağlamı ve schema |
+| 4 | Gerçek UI kabulü ve sprint review | Yeni mesaj aktif okuma sırasında eklenir; capture, öneri ve insan uygulaması ayrı kanıtlanır; kullanıcı günlük akışı görür | Yerel kontroller geçer; yalnız gerekli exact kaynak ve ücretli paylaşım izinleri alınır |
 
-- Son gerçek kabul: [LOCAL iki sohbet yolculuğu](../quality/native-ui-journey-001.md); kaynaklar birer kez okundu, iki model isteğiyle tek Task ve aynı ID için başlangıç önerisi elde edildi. İlk scope-clarification seçimi tarihçede korundu; son owner onayıyla AC/DoD ve current insan başlangıcı uygulandı. Eski B önerisi stale/Deferred kaldı.
-- Yapılan: Sources ekranındaki mevcut-grant aktivasyon ve worker kontrolleri. [Kod, bulgu ve sınırlar](../architecture/model-activation-runtime.md#20-ekim--sources-ekranında-aktivasyon-ve-worker-kontrolleri).
-- Gözlenen: İlk native görev review'ı AC hazırlamadığı için başlangıçta ek kapsam adımı gerekti; NM-01görünürlük düzeltildi, NM-02hazırlık işi açık. Gerçek soru yakalamada J04semantik hatası da açık; yeni UI bu hatayı çözmüş sayılmaz.
-- Sıradaki: Yerel kaynak kurulumunu sınırlı gerçek kabul ile doğrulamak; yeni paylaşım+ilk scope UI akışını geçerli kaynak/policy dönemiyle sınırlı gerçek provider kabulünde doğrulamak. [Kod/sınırlar](../architecture/source-sharing-and-first-review.md). Yeni genel benchmark taraması öncelik değildir.
-- Engel ayrımı: Yerel kod geliştirmesi için API gerekmez. Önceki iki-chat capture ve iki model isteği izinleri tüketildi; yeni gerçek okuma/dispatch için somut kaynak/süre/bütçe kapsamı gerekir. 20 Ekim owner onayı yalnız API dönemini 21 Ekim 13:35:38 Türkiye saatine yeniledi; kaynak paylaşımı veya otomatik çalışma izni vermedi. Geçmiş kullanım/unknown rezervleri ve toplam sınırlar korundu.
+Kalan checklist/timeline UX, verifier ve backup işleri uygun bağımsız dilimlerde ilerleyebilir; bütün işler tek sıra beklemek zorunda değildir. Buna karşılık source yetkisi → dispatch, güncel kapsam → durum uygulaması ve güncel kanıt → Done bağımlılıkları atlanmaz.
 
-## Takip ve sprint kapanışı
+## Daily ve takip
 
-Her daily: çalışan teslim, karşılanan kabul, kalan gerçek eksik, engel sahibi ve sıradaki kod işi raporlanır. Yeni iş üretmeden mevcut backlog'a bağlanır. Test sayısı ve parent sayısı tamamlanma yüzdesi değildir. Sprint review'da kullanıcı çalışan yolu görür; retrospective'te bulgu/karar/gerekçe kaydedilir. Gerçek kaynak, semantik kalite, hedef kanıtı ve ürün kabulünün kanıtları birbirinin yerine geçmez.
+**Yapılan:** T17 core gerçek native kanıtla kapandı; ilk scope ve iki sohbet dar yolculuğu doğrulandı. **Şu anki eksik:** yeni mesajın düzenli yakalanmasından izinli model işlemesine ve aynı göreve öneriye kadar birleşik günlük akış. **İlk teknik iş:** yukarıdaki 1–2 dilimi. **Karar bekleme:** şu anda bu plan için cevapsız yeni soru yok; yeni gerçek okuma/egress testi için kapsam test öncesi sunulur. Önceki deneme izinleri tüketilmiştir; genel API tavanı kaynak paylaşım izni değildir.
 
-
-**Sprint1 sonraki kod dilimi:** [Düzenli capture](../quality/scheduled-capture-runtime.md) yerel plan/worker/UI olarak uygulandı. Yeni gerçek read izni verilmeden aktif edilmedi; sonraki kapı exact kaynak/süre/read sayısıyla native periyodik kabul ve yeni kaynak paylaşımıdır.
-
-
-**Gerçek periyodik kabul:** [Native B3tick](../quality/scheduled-native-001.md) geçince T17coreDone; son gerçek scope tüketilip kapatıldı. Yeni-mesaj semantik paylaşım/günlük kabul açık, model izni verilmedi.
+Her teslimde ilgili test ve log kanıtı, kalan gerçek eksik ve sonraki kod adımı yazılır. Ana görev yalnız kendi kabulü sağlandığında kapanır; sayıyı azaltmak için kriter düşürülmez. Eski kanıtlar raporlarda/Git geçmişinde korunur; bu plan güncel tek yürütme görünümüdür.
