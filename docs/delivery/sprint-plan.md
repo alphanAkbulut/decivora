@@ -38,6 +38,10 @@ Sprintler teslim sırasıdır; sabit takvim veya Scrum sertifikasyon iddiası de
 
 Claude kapsamdan çıkarılmadı; **Codex günlük akışı önce** tamamlanır. Tek adapter kabulü sınırlı pilot olarak adlandırılır. Ekip/cloud, ek chat yüzeyleri, gelişmiş reconciliation ve public release T25–T30 kapsamındadır; MVP'ye sessizce taşınmaz.
 
+## Son çalışan dilim — onaylı kaynak analizi
+
+[20 Ekim kod/kanıt](../architecture/source-sharing-and-first-review.md#20-ekim--onaylı-kaynak-ile-analiz-kuyruğu-arasındaki-çalışan-bağlantı): ayrı paylaşım onayı sonrası tek-source start, mevcut activation ve queue'ya bağlandı; öneri Inbox'a gelir, Task/durum kendiliğinden uygulanmaz. 12 yeni/704 toplam runtime ve desktop/mobile scripted-provider browser akışı geçti. Gelecek mesajları kapsayan paylaşım politikası ve ilerleyen gerçek sohbet kabulü açık; bu dilim parent'ları kapatmıyor. Sonraki gerçek testte kullanıcıya J01'den kısa cümle ve yazılacak exact chat verilecek; yeni source read/model izni testten önce ayrı alınır.
+
 ## Teslimi nasıl görünür kapatacağız?
 
 [Retrospektif](../quality/delivery-flow-retrospective.md) uyarınca tek aktif sonuç Sprint 1'in ilerleyen mesaj yolculuğudur. Mevcut küçük dilim kendi kabulünde kapanır; parent aynı teslimde core/required-set kontrolünden geçer. Parent açık kaldıysa kalan exact alt ID ve kanıt eksiği raporlanır. Tek entegrasyon farklı kriterleri sağlarsa birkaç kayıt birlikte kapanabilir; final güne erteleme veya otomatik toplu Done yok. 20 In Progress ana paket aktif WIP sayısı değildir. Bu plan yeni task veya scope üretmez.

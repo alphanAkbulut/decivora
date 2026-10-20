@@ -5,7 +5,7 @@
   "browser": "Google Chrome via bundled Playwright",
   "network_requests_allowed": false,
   "checked_at": "2026-10-20",
-  "input_base_ref": "ad5682a59bff3fdb951f17ca19a3560c65f95159",
+  "input_base_ref": "ad295972128c6ce32c7fe78c5f13e1141d25e539",
   "renderer_bundle_sha256": "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8",
   "records": [
     {
@@ -149,7 +149,7 @@
       "description_present": true,
       "view_box": "0 0 1463.625 2309",
       "artifact": "docs--architecture--diagrams--3.svg",
-      "svg_sha256": "66a9da436add1584cf9700f31c4418a3e412c44e41c3368dba2e5cbcfdbcb3cd",
+      "svg_sha256": "aa0695af198081f581731313b88fd70af593c1b2eceebcab07423f7044600d3f",
       "error": null
     },
     {
@@ -365,7 +365,7 @@
       "description_present": true,
       "view_box": "0 0 2119.64453125 1035.75",
       "artifact": "docs--architecture--logging-diagrams-and-schema--2.svg",
-      "svg_sha256": "6eed20f5c5a1e026e7b937b39cff12fd6cc5a44d9286f57f7cad4c45171e7afb",
+      "svg_sha256": "7667010eb6f1538f93d8a93ddf679d28af36b4de1d66acf1e5b8835e3531c329",
       "error": null
     },
     {
@@ -455,13 +455,13 @@
     {
       "path": "docs/architecture/source-sharing-and-first-review.md",
       "block": 1,
-      "source_sha256": "f86f3a226177cef7cffad53a07ada5e74f224ef875edfeb0638b2b3af62a7e0f",
+      "source_sha256": "7be927dd22643fbac60cbbba9326ae40981e54a308e62b6a65159d538823f0b8",
       "status": "rendered",
       "title": "Kaynağın paylaşım onayından ayrı model gönderimine",
       "description_present": true,
-      "view_box": "-50 -10 1547 878",
+      "view_box": "-50 -10 1557 878",
       "artifact": "docs--architecture--source-sharing-and-first-review--1.svg",
-      "svg_sha256": "d1858f7035b843d2b8afa1047a5b765dce97968b5d860374565895c3d30a08c3",
+      "svg_sha256": "c1d259f85a5137b3315443b899c2a29bd5de59dd68c712fe085ee1f1b96fbbe8",
       "error": null
     },
     {
@@ -1002,6 +1002,18 @@
       "network_requests_allowed": false,
       "superseded_at": "2026-10-13",
       "superseded_reason": "Local UI explicit blocker and resolution audit added"
+    },
+    {
+      "path": "docs/architecture/source-sharing-and-first-review.md",
+      "block": 1,
+      "source_sha256": "f86f3a226177cef7cffad53a07ada5e74f224ef875edfeb0638b2b3af62a7e0f",
+      "status": "rendered",
+      "title": "Kaynağın paylaşım onayından ayrı model gönderimine",
+      "description_present": true,
+      "view_box": "-50 -10 1547 878",
+      "artifact": "docs--architecture--source-sharing-and-first-review--1.svg",
+      "svg_sha256": "d1858f7035b843d2b8afa1047a5b765dce97968b5d860374565895c3d30a08c3",
+      "error": null
     }
   ],
   "incremental_reviews": [

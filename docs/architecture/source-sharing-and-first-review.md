@@ -8,7 +8,7 @@
 2. Model, çıktı token tavanı, izin bitişi ve paylaşım gerekçesini seç. Provider/model seçenekleri ve para/HTTP/input tavanları güvenilir startup profilinden gelir; browser para tavanı, key, ledger veya endpoint değiştiremez.
 3. Preview exact source and context ile maskeli kaynak, aynı thread'in sınırlı önceki metni ve ilgili canonical proje context'ini incele. Bu adım yerel; provider çağrısı yok.
 4. Ayrı checkbox ve onayla exact source/context/payload hash'ine bağlı grant oluştur. Bu onay aktivasyon veya dispatch değildir.
-5. Sources ekranında bu grant ile Paused aktivasyon oluştur; ayrı Active işlemi ve gerekirse bounded worker planı/start uygula. Tek Analyze komutu da aynı activation ve budget kontrollerini kullanır.
+5. Onaydan sonra aynı kaynak kartındaki **Start approved analysis** düğmesiyle tek exact kaynak için ayrı aktivasyonu ve kuyruk geçişini başlat. Consent tek başına çağrı başlatmaz. Sources ekranındaki manuel Paused→Active ve bounded worker yolu da korunur; yeni düğme daha geniş kaynak veya gelecek mesaj izni vermez.
 6. Modelin Task önerisini ilk kez kaydederken iki açık seçenek vardır: insanın yazıp onayladığı AC/DoD ile kaydet veya kapsam eksikse aynı Task'a bağlı bir netleştirme sorusuyla kaydet.
 
 Varsayılan seçim kapsamı netleştirmektir; başlık veya “başladım” cümlesi kriter diye doldurulmaz. Sistem soru metni **önerilen insan review taslağıdır**, kaynakta zaten sorulmuş soru veya model alıntısı diye sunulmaz. Task+contract ya da Task+clarification tek transaction'dır. AC/DoD onayı sonuç/evidence üretmez: kriterler not_run, Task To Do kalır. Kapsam sorusu ikinci Task, otomatik Blocked veya otomatik karar değildir.
@@ -38,7 +38,7 @@ sequenceDiagram
   H->>UI: Veri paylaşım onayı
   UI->>D: Token budget ve exact source grant atomik kayıt
   Note over H,M: Henüz model çağrısı veya Task uygulaması yok
-  H->>UI: Ayrı aktivasyon ve Analyze / bounded start
+  H->>UI: Onaylı tek analizi başlat / ayrı bounded start
   UI->>D: Current source, context, grant ve activation kontrolü
   alt Stale veya expired
     D-->>H: Yeni gönderim reddi - kapsamı tekrar incele
@@ -85,6 +85,7 @@ Mevcut session/CSRF/Origin ve human/project yetkili command API:
 |---|---|---|
 | prepare_source_sharing | source_id, model, max_output_tokens, reserved_tokens, expires_at, reason | Yerel exact preview; grant veya dispatch yok |
 | approve_source_sharing | plan_id, consent=true | Current profile/context ile grant+token budget+approval atomik |
+| analyze_approved_source | plan_id, start=true | Mevcut exact consent için ayrı start; atomik activation kurulumu ve tek-source/tek-grant queue pass; canonical apply yok |
 | accept_candidates | Önceki alanlar + isteğe bağlı scope_reviews | Yeni UI'da Task ile approved contract veya clarification birlikte |
 
 `scope_reviews` her candidate için mode, criteria, dod, clarification ve reason taşır. Approved iki nonempty liste ister; clarify iki listeyi boş ve soruyu dolu ister. Yeni source-sharing event'leri mevcut audit tablosunda append-only tutulur. İlk human scope sorusu origin=first_task_human_scope_review ve quote/span=null taşır; source-literal alıntı diye sunulmaz. Canonical AC event store'dadır. Key, endpoint, ledger yolu veya ham provider hata metni API/loga konmaz. Prepared context aynı workspace'de private kalır; operasyon logları yalnız komut sınırı/kod içerir.
@@ -118,3 +119,15 @@ UI-J01: aynı kaynağın eski paylaşım makbuzu yeni exact planın approval for
 
 
 **Son owner kapsam onayı:** [Aynı LOCAL pilotun devamında](../quality/native-ui-journey-001.md#son-owner-kararı--kapsam-onayı-ve-güncel-başlangıç) kullanıcı açıklama sonrası somut AC/DoD ve current başlangıcı onayladı. Contract v1→clarification Resolved→eski model önerisi stale/Deferred→güncel insan transition ile In Progress yolu gerçek arayüzden doğrulandı. Kriterler not_run; yeni inference0. Bu, ilk clarification seçimini geçmişten silmez veya eski model response'unu güncelmiş gibi yeniden kullanmaz.
+
+## 20 Ekim — onaylı kaynak ile analiz kuyruğu arasındaki çalışan bağlantı
+
+**Uygulandı:** Conversations kartında paylaşım onayından sonra ayrı Start approved analysis düğmesi var. Komut current insan/proje, exact plan/payload/context, geçerli profile/expiry ve mevcut grant'i doğrular; yalnız o grant için aktivasyon kurup tek-source queue pass çalıştırır. Browser'ın activation formu veya worker planı hazırlaması gerekmez. Aynı kaynağın başka yeni grant'i bulunsa bile seçilen planın grant ID'si pinlenir; otomatik son grant seçimi yapılmaz. Model sonucu öneri olarak Inbox'ta kalır; Task/AC/durum uygulaması yine ayrı insan adımıdır.
+
+Activation kurulumu tek transaction'dır; create ve Active geçişinden biri hata verirse yarım setup kalmaz. Mevcut public activation API transaction davranışı korunur, iç primitive'ler caller-owned transaction gerektirir. Model çağrısı transaction dışında gerçekleşir. Kullanıcının daha önce pause/revoke ettiği aktivasyon bu kısa yoldan yeniden açılamaz. Başlamış/bitmemiş analiz tekrar gönderilmez; bitmiş başarılı/başarısız sonuç çağrı yapılmadan geri okunur. Eşzamanlı ikinci start ikinci provider isteği üretmez. Shared USD/token/HTTP/root unknown rezervleri değişmeyen admission yolunda kalır.
+
+**Kalan:** capture ile yeni mesaj kaydedilir, fakat önceki mesajın exact consent'i onu kapsamaz; yeni mesaj Pending/Waiting for model kalır. Düğme sürekli gelecek-mesaj paylaşım politikası veya yeni source için otomatik grant üretmez. Yeni mesajların yetkili sürekli işleme deneyimi ve genel extraction kalitesi hâlâ açık; ana T09/T19/T21/T22 kabulü bu dar teslimle kapanmadı.
+
+**Doğrulama:** 12 yeni runtime kontrolü, toplam704runtime test geçti. Gerçek tarayıcıda preview→iki ayrı exact plan/consent→tek start→queue→scripted model→insan AC/DoD→tek To Do Task; ardından yeni mesajın izinsiz analiz edilmemesi ve dar ekranda overflow olmaması doğrulandı. Aynı-görev ikinci kaynak/start/ayrı insan apply yerel scripted provider testiyle geçti. Bu, gerçek model anlam kalitesi veya yeni native mesaj okumasının kanıtı değildir. External API/native read0. Operations komutu extraction bileşeniyle içeriksiz izler; raw kaynak/key loga eklenmez.
+
+İlk uygulama kontrolünde nested SQLite transaction setup'ı durdurdu; public activation davranışı gevşetilmeden mevcut primitive caller-owned transaction'a ayrıldı ve rollback testi eklendi. İncelemede aynı kaynağa birden çok grant olduğunda queue'nun son grant'i seçmesiyle yanlış planın beklemesi de saptandı; exact grant allowlist ile düzeltildi. Başarısız yerel deneme dış API çağırmadı.

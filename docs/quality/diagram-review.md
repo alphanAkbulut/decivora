@@ -1,5 +1,10 @@
 # Diyagram tutarlılık incelemesi
 
+## 20 Ekim — onaylı tek kaynak analizi
+
+Source-sharing sequence ayrı Start approved analysis işlemini gösterir: consent çağrı başlatmaz; aynı exact kaynak aktivasyonu ve queue pass daha sonra başlar. 63 blok/34 belge dış ağ kapalı render edildi, başarısız0; değişen sequence tam görüntüsü incelendi. Kaynak hashleri yenilendi, değişen önceki kayıt superseded history içinde korundu. Gerçek model/native kabulü değildir.
+
+
 ## 20 Ekim — düzenli capture
 
 Codex kaynak kurulumu belgesine plan→ayrı start→kalıcı claim→checkpoint guard→terminal stop sequence eklendi; toplam63blok/34belge. 63kaynağın tamamı ağ kapalı render edildi; yeni sequence tam görüntüsü incelendi. Makbuz source hashleriyle güncel; çizim model/native kabul kanıtı değildir.

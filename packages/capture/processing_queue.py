@@ -22,7 +22,7 @@ class ConversationQueue:
             return dict(**summary,background_worker_active=False,automatic_dispatch=False,
                         capacity=SOURCE_CAPACITY,scope='selected_project',coverage='saved_sources_only')
 
-    def process(self, scope, project, *, extractor_factory=None, limit=1, source_ids=None):
+    def process(self, scope, project, *, extractor_factory=None, limit=1, source_ids=None, grant_ids=None):
         if type(limit) is not int or not 1<=limit<=10:
             raise ContractError('invalid_request','One to ten sources per explicit worker pass required.')
         if source_ids is not None:
@@ -31,6 +31,12 @@ class ConversationQueue:
             for value in source_ids:identifier(value)
             if len(set(source_ids))!=len(source_ids):raise ContractError('invalid_request','Unique selected sources required.')
             source_ids=set(source_ids)
+        if grant_ids is not None:
+            from packages.domain.project_binding import identifier
+            if type(grant_ids) is not list or not 1<=len(grant_ids)<=10 or len(set(grant_ids))!=len(grant_ids):
+                raise ContractError('invalid_request','One to ten unique exact grant identifiers required.')
+            for value in grant_ids:identifier(value)
+            grant_ids=set(grant_ids)
         with self.core.read_snapshot():
             self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
             snapshot=self.view(scope,project)
@@ -51,7 +57,7 @@ class ConversationQueue:
                 grants=[g for g in self.sources._rows(project,'conversation_dispatch_authorized')
                         if g['source']==source['id'] and g['sha256']==source['sha256']
                         and g['actor']==scope.principal_id and g['authority_revision']==self.core.authority.revision()
-                        and g['expires_at']>time.time()]
+                        and g['expires_at']>time.time() and (grant_ids is None or g['id'] in grant_ids)]
             if not grants:continue
             extractor=extractor_factory(source,grants[-1])
             if extractor is None:continue

@@ -79,6 +79,47 @@ class SourceSharingService:
             grant=self.sources._authorize_analysis(scope,project,source_id=plan['source'],key='grant_'+plan_id,root_run=plan['root_run'],reserved_tokens=plan['reserved_tokens'],provider='OpenAI Responses configured transport',model=plan['model'],max_output_tokens=plan['max_output_tokens'],expires_at=plan['expires_at'],reason=plan['reason'],context_sha256=plan['context_sha256'])
             receipt=dict(id=plan_id,grant_id=grant['id'],source=plan['source'],payload_sha256=plan['payload_sha256'],actor=scope.principal_id,dispatch_started=False)
             self.sources._put(scope,project,self.APPROVAL,receipt);return receipt
+    def analyze_approved(self,scope,project,*,plan_id,start):
+        """Explicit one-source activation + queue pass, never future-source consent.
+
+        Sharing approval alone still does not dispatch. A repeated start may read
+        an existing result, but cannot retry an unfinished or failed analysis.
+        """
+        identifier(plan_id)
+        if start is not True:
+            raise ContractError('sharing_consent_required','Explicit start of the approved one-source analysis is required.')
+        from packages.capture.model_activation import ModelActivationService
+        from packages.capture.processing_queue import ConversationQueue
+        with self.core.transaction():
+            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+            plan=next((p for p in self.rows(project,self.PLAN) if p['id']==plan_id and p['actor']==scope.principal_id),None)
+            approval=next((a for a in self.rows(project,self.APPROVAL) if a['id']==plan_id and a['actor']==scope.principal_id),None)
+            if plan is None or approval is None or approval['source']!=plan['source'] or approval['payload_sha256']!=plan['payload_sha256']:
+                raise ContractError('sharing_consent_required','Current human approval of this exact source plan is required.')
+            finished=next((a for a in reversed(self.rows(project,'conversation_analysis_finished')) if a['source']==plan['source']),None)
+            if finished:
+                return dict(source=plan['source'],status=finished['status'],attempted=0,reused_result=True,canonical_apply=False)
+            if any(a['source']==plan['source'] for a in self.rows(project,'conversation_analysis_started')):
+                raise ContractError('analysis_unknown','An unfinished analysis cannot be retried automatically.')
+            self._current(scope,project,plan)
+            service=ModelActivationService(self.core)
+            activation=service._create(scope,project,activation_id='analysis_'+plan_id,
+                grant_ids=[approval['grant_id']],expires_at=plan['expires_at'],reason='Explicit start of one approved source analysis.')
+            # Only a newly configured Paused activation can be started here.
+            # Replaying this convenience command cannot undo a user's pause/revoke.
+            if activation['state']=='Paused' and activation['revision']==1:
+                activation=service._transition(scope,project,activation_id=activation['id'],base_revision=1,
+                    configuration_sha256=activation['configuration_sha256'],state='Active',reason='Explicit start of one approved source analysis.')
+            if activation['state']!='Active':
+                raise ContractError('activation_inactive','The existing analysis activation was paused or revoked; review its controls explicitly.')
+            service._valid_configuration(scope,project,activation)
+        registry=SharingResponsesFactory(self.profile,activation['id'])
+        result=ConversationQueue(self.core).process(scope,project,extractor_factory=registry.bind_scope(self.core,scope,project),limit=1,source_ids=[plan['source']],grant_ids=[approval['grant_id']])
+        outcome=next((o for o in result['outcomes'] if o['source_id']==plan['source']),None)
+        return dict(source=plan['source'],status=outcome['status'] if outcome else result['status'],
+                    attempted=result['attempted'],reused_result=False,canonical_apply=False,
+                    **({'code':outcome['code']} if outcome and 'code' in outcome else {}))
+
     def view(self,scope,project):
         with self.core.read_snapshot():
             self.core.scope(scope,project);self.core.active(scope,project)

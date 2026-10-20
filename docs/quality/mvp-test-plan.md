@@ -6,7 +6,7 @@
 
 | Katman | Kayıtlı sonuç | Kanıtın sınırı |
 |---|---|---|
-| Runtime | Son kayıtlı koşuda 692 test geçti | Otomatik kod testleri; bütün modeller/hostlar veya 14 ürün AC'si geçmiştir demek değil |
+| Runtime | Son kayıtlı koşuda 704 test geçti (12 yeni approved-source handoff kontrolü) | Otomatik kod testleri; bütün modeller/hostlar veya 14 ürün AC'si geçmiştir demek değil |
 | Repo/tracker | Son kayıtlı koşuda 49 test geçti | Takip, kapanış ve değerlendirme araçları; ürün semantik kabulü değil |
 | Diyagram | 34 belgede 63 Mermaid render; hata 0 | Görsel/sözdizim kanıtı; runtime davranışı değil |
 | Native capture | 3 sınırlı okuma, duplicate 0, Stop/Disconnect/reload geçti | Aynı mevcut mesajlar; okumalar arasında yeni mesaj gelmedi |
@@ -19,7 +19,7 @@ Referanslar: [düzenli capture kodu](scheduled-capture-runtime.md), [native sonu
 
 | Aşama / sahip | Test akışı | Beklenen ve ölçülecek sonuç | Bugünkü durum / izin |
 |---|---|---|---|
-| Sprint 1 / T09,T13,T19,T21,T22 | Yeni kaynak → exact paylaşım → aktivasyon → kuyruk → worker → Inbox → ayrı insan apply | Uygun kaynak bir kez; işlenmeyen/gap görünür; grant/hash/revision eşleşir; izin yoksa dispatch 0 | Parça kanıtları var; birleşik ilerleyen mesaj kabulü açık. Yerel fixture/API fake yanıtı yeni ücret gerektirmez |
+| Sprint 1 / T09,T13,T19,T21,T22 | Yeni kaynak → exact paylaşım → aktivasyon → kuyruk → worker → Inbox → ayrı insan apply | Uygun kaynak bir kez; işlenmeyen/gap görünür; grant/hash/revision eşleşir; izin yoksa dispatch 0 | Onaylı tek kaynağın ayrı start→queue→review bağlantısı kodlu ve scripted-provider UI kanıtı var; birleşik ilerleyen native mesaj kabulü açık. Yerel fixture/API fake yanıtı yeni ücret gerektirmez |
 | Sprint 1 / T17 temeli,T24 | Aktif capture sırasında gerçek A sohbetine yeni kullanıcı mesajı; ardından aynı proje B'de başlangıç; ayrı projede benzer isim | Gerçek yeni mesaj alınır; aynı görev ID'sine öneri; duplicate 0, proje sızıntısı 0; tamlık sınırı görünür | Yeni mesajlı native kabul not_run. Testten önce exact kaynak/süre/read ve egress kapsamı ayrı |
 | Sprint 1 / T13,T21,T23 | Stop/disconnect/revoke/expiry; eşzamanlı manual read; crash/restart; pending/unknown | Yeni yetkisiz read/dispatch 0; toplam sayaç reset olmaz; önceki commit korunur; otomatik kör retry/restart yok | Yerel kontroller var; birleşik günlük koşuya alınacak. V01/02/11/13/19–21/23/27 |
 | Sprint 2 / T09,T10,T13,T20 | Önce açık J04 hatası; ardından J05–J08, J09–J12 ve kalan gruplar dörder | Soru ID/sürüm eşleşmesi; belirsizde abstain; konu değişimi yeni görev şişirmemeli; durum ve lifecycle ayrı; Done beyanı doğrulama değil | Gerçek model grupları açık; her grubun rapor/owner incelemesi tamamlanmadan sonraki grup yok |

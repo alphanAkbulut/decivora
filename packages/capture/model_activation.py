@@ -53,19 +53,23 @@ class ModelActivationService:
         for g in grant_ids:identifier(g)
         self._reason(reason)
         with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
-            grants=[self._grant(scope,project,g) for g in sorted(grant_ids)]
-            if any(expires_at>g['expires_at'] for g in grants):
-                raise ContractError('invalid_activation','Activation cannot outlive a source grant.')
-            config=dict(id=activation_id,actor=scope.principal_id,authority_revision=self.core.authority.revision(),expires_at=expires_at,
-                        grants=[dict(id=g['id'],sha256=digest(canonical(g))) for g in grants])
-            fingerprint=digest(canonical(config))
-            old=next((v for v in self._history(project) if v['id']==activation_id),None)
-            if old:
-                if old['configuration_sha256']!=fingerprint or old['reason']!=reason:
-                    raise ContractError('idempotency_conflict','Activation identity already belongs to a different configuration.')
-                return self._current(project,activation_id)
-            return self._save(scope,project,dict(**config,configuration_sha256=fingerprint,revision=1,state='Paused',reason=reason,recorded_at=time.time()))
+            return self._create(scope,project,activation_id=activation_id,grant_ids=grant_ids,expires_at=expires_at,reason=reason)
+
+    def _create(self,scope,project,*,activation_id,grant_ids,expires_at,reason):
+        if not self.core.db.in_transaction:raise ContractError('transaction_required','Activation setup requires a caller-owned transaction.')
+        self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+        grants=[self._grant(scope,project,g) for g in sorted(grant_ids)]
+        if any(expires_at>g['expires_at'] for g in grants):
+            raise ContractError('invalid_activation','Activation cannot outlive a source grant.')
+        config=dict(id=activation_id,actor=scope.principal_id,authority_revision=self.core.authority.revision(),expires_at=expires_at,
+                    grants=[dict(id=g['id'],sha256=digest(canonical(g))) for g in grants])
+        fingerprint=digest(canonical(config))
+        old=next((v for v in self._history(project) if v['id']==activation_id),None)
+        if old:
+            if old['configuration_sha256']!=fingerprint or old['reason']!=reason:
+                raise ContractError('idempotency_conflict','Activation identity already belongs to a different configuration.')
+            return self._current(project,activation_id)
+        return self._save(scope,project,dict(**config,configuration_sha256=fingerprint,revision=1,state='Paused',reason=reason,recorded_at=time.time()))
 
     @staticmethod
     def _reason(reason):
@@ -77,17 +81,21 @@ class ModelActivationService:
         if state not in ('Active','Paused','Revoked') or type(base_revision) is not int:
             raise ContractError('invalid_activation','Typed revision and supported activation state required.')
         with self.core.transaction():
-            self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
-            current=self._current(project,activation_id)
-            if current['actor']!=scope.principal_id:raise ContractError('activation_denied','Only the activation owner can change it.')
-            if current['revision']!=base_revision or current['configuration_sha256']!=configuration_sha256:
-                raise ContractError('stale_activation','Refresh the exact current activation revision and configuration.')
-            if current['state']=='Revoked' or current['state']==state:
-                raise ContractError('activation_transition_denied','Revoked activation is terminal; choose a different supported state.')
-            if state=='Active':
-                self._valid_configuration(scope,project,current)
-            value=dict(current,state=state,revision=base_revision+1,reason=reason,recorded_at=time.time())
-            return self._save(scope,project,value)
+            return self._transition(scope,project,activation_id=activation_id,base_revision=base_revision,configuration_sha256=configuration_sha256,state=state,reason=reason)
+
+    def _transition(self,scope,project,*,activation_id,base_revision,configuration_sha256,state,reason):
+        if not self.core.db.in_transaction:raise ContractError('transaction_required','Activation change requires a caller-owned transaction.')
+        self.core.scope(scope,project,write=True,human=True);self.core.active(scope,project)
+        current=self._current(project,activation_id)
+        if current['actor']!=scope.principal_id:raise ContractError('activation_denied','Only the activation owner can change it.')
+        if current['revision']!=base_revision or current['configuration_sha256']!=configuration_sha256:
+            raise ContractError('stale_activation','Refresh the exact current activation revision and configuration.')
+        if current['state']=='Revoked' or current['state']==state:
+            raise ContractError('activation_transition_denied','Revoked activation is terminal; choose a different supported state.')
+        if state=='Active':
+            self._valid_configuration(scope,project,current)
+        value=dict(current,state=state,revision=base_revision+1,reason=reason,recorded_at=time.time())
+        return self._save(scope,project,value)
 
     def _valid_configuration(self,scope,project,current):
         if (current['actor']!=scope.principal_id or current['authority_revision']!=self.core.authority.revision() or
